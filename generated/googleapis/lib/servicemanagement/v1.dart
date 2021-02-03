@@ -89,7 +89,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -294,7 +294,7 @@ class ServicesResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// [overview](/service-management/overview) for naming requirements. For
+  /// \[overview\](/service-management/overview) for naming requirements. For
   /// example: `example.googleapis.com`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -523,7 +523,7 @@ class ServicesResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// [overview](/service-management/overview) for naming requirements. For
+  /// \[overview\](/service-management/overview) for naming requirements. For
   /// example: `example.googleapis.com`.
   ///
   /// [configId] - Required. The id of the service configuration resource. This
@@ -605,7 +605,7 @@ class ServicesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^services/[^/]+$".
+  /// Value must have pattern `^services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -748,7 +748,7 @@ class ServicesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^services/[^/]+$".
+  /// Value must have pattern `^services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -814,7 +814,7 @@ class ServicesResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^services/[^/]+$".
+  /// Value must have pattern `^services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -876,7 +876,7 @@ class ServicesResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// [overview](/service-management/overview) for naming requirements. For
+  /// \[overview\](/service-management/overview) for naming requirements. For
   /// example: `example.googleapis.com`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -943,7 +943,7 @@ class ServicesConfigsResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// [overview](/service-management/overview) for naming requirements. For
+  /// \[overview\](/service-management/overview) for naming requirements. For
   /// example: `example.googleapis.com`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1001,7 +1001,7 @@ class ServicesConfigsResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// [overview](/service-management/overview) for naming requirements. For
+  /// \[overview\](/service-management/overview) for naming requirements. For
   /// example: `example.googleapis.com`.
   ///
   /// [configId] - Required. The id of the service configuration resource. This
@@ -1078,7 +1078,7 @@ class ServicesConfigsResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// [overview](/service-management/overview) for naming requirements. For
+  /// \[overview\](/service-management/overview) for naming requirements. For
   /// example: `example.googleapis.com`.
   ///
   /// [pageSize] - The max number of items to include in the response list. Page
@@ -1157,7 +1157,7 @@ class ServicesConfigsResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// [overview](/service-management/overview) for naming requirements. For
+  /// \[overview\](/service-management/overview) for naming requirements. For
   /// example: `example.googleapis.com`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1228,7 +1228,7 @@ class ServicesConsumersResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^services/[^/]+/consumers/[^/]+$".
+  /// Value must have pattern `^services/\[^/\]+/consumers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1292,7 +1292,7 @@ class ServicesConsumersResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^services/[^/]+/consumers/[^/]+$".
+  /// Value must have pattern `^services/\[^/\]+/consumers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1358,7 +1358,7 @@ class ServicesConsumersResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^services/[^/]+/consumers/[^/]+$".
+  /// Value must have pattern `^services/\[^/\]+/consumers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1433,7 +1433,7 @@ class ServicesRolloutsResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// [overview](/service-management/overview) for naming requirements. For
+  /// \[overview\](/service-management/overview) for naming requirements. For
   /// example: `example.googleapis.com`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1491,7 +1491,7 @@ class ServicesRolloutsResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// [overview](/service-management/overview) for naming requirements. For
+  /// \[overview\](/service-management/overview) for naming requirements. For
   /// example: `example.googleapis.com`.
   ///
   /// [rolloutId] - Required. The id of the rollout resource.
@@ -1553,14 +1553,14 @@ class ServicesRolloutsResource {
   /// Request parameters:
   ///
   /// [serviceName] - Required. The name of the service. See the
-  /// [overview](/service-management/overview) for naming requirements. For
+  /// \[overview\](/service-management/overview) for naming requirements. For
   /// example: `example.googleapis.com`.
   ///
   /// [filter] - Required. Use `filter` to return subset of rollouts. The
   /// following filters are supported: -- To limit the results to only those in
-  /// [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
+  /// \[status\](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
   /// filter='status=SUCCESS' -- To limit the results to those in
-  /// [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or
+  /// \[status\](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or
   /// 'FAILED', use filter='status=CANCELLED OR status=FAILED'
   ///
   /// [pageSize] - The max number of items to include in the response list. Page
@@ -1776,13 +1776,13 @@ class Api {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
@@ -1824,9 +1824,9 @@ class AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -1868,17 +1868,17 @@ class AuditLogConfig {
   }
 }
 
-/// Configuration for an authentication provider, including support for [JSON
+/// Configuration for an authentication provider, including support for \[JSON
 /// Web Token
-/// (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
+/// (JWT)\](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
 class AuthProvider {
   /// The list of JWT
   /// [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).
   ///
   /// that are allowed to access. A JWT containing any of these audiences will
   /// be accepted. When this setting is absent, JWTs with audiences: -
-  /// "https://[service.name]/[google.protobuf.Api.name]" -
-  /// "https://[service.name]/" will be accepted. For example, if no audiences
+  /// "https://\[service.name\]/\[google.protobuf.Api.name\]" -
+  /// "https://\[service.name\]/" will be accepted. For example, if no audiences
   /// are in the setting, LibraryService API will accept JWTs with the following
   /// audiences: -
   /// https://library-example.googleapis.com/google.example.library.v1.LibraryService
@@ -1910,8 +1910,8 @@ class AuthProvider {
   ///
   /// See [OpenID
   /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
-  /// Optional if the key set document: - can be retrieved from [OpenID
-  /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html of
+  /// Optional if the key set document: - can be retrieved from \[OpenID
+  /// Discovery\](https://openid.net/specs/openid-connect-discovery-1_0.html of
   /// the issuer. - can be inferred from the email domain of the issuer (e.g. a
   /// Google service account). Example:
   /// https://www.googleapis.com/oauth2/v1/certs
@@ -1980,9 +1980,9 @@ class AuthProvider {
   }
 }
 
-/// User-defined authentication requirements, including support for [JSON Web
+/// User-defined authentication requirements, including support for \[JSON Web
 /// Token
-/// (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
+/// (JWT)\](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
 class AuthRequirement {
   /// NOTE: This will be deprecated soon, once AuthProvider.audiences is
   /// implemented and accepted in all the runtime components.
@@ -2490,7 +2490,7 @@ class ChangeReport {
   /// The changes will be alphabetically sorted based on the identifier of each
   /// change. A ConfigChange identifier is a dot separated path to the
   /// configuration. Example:
-  /// visibility.rules[selector='LibraryService.CreateBook'].restriction
+  /// visibility.rules\[selector='LibraryService.CreateBook'\].restriction
   core.List<ConfigChange> configChanges;
 
   ChangeReport();
@@ -2543,9 +2543,10 @@ class ConfigChange {
   /// index (usually selector, name, or id). For maps, the term 'key' is used.
   /// If the field has no unique identifier, the numeric index is used.
   /// Examples: -
-  /// visibility.rules[selector=="google.LibraryService.ListBooks"].restriction
-  /// - quota.metric_rules[selector=="google"].metric_costs[key=="reads"].value
-  /// - logging.producer_destinations[0]
+  /// visibility.rules\[selector=="google.LibraryService.ListBooks"\].restriction
+  /// -
+  /// quota.metric_rules\[selector=="google"\].metric_costs\[key=="reads"\].value
+  /// - logging.producer_destinations\[0\]
   core.String element;
 
   /// Value of the changed object in the new Service configuration, in JSON
@@ -3072,9 +3073,9 @@ class DisableServiceResponse {
 /// where documentation provided by config rules overrides IDL provided. A
 /// number of constructs specific to the API platform are supported in
 /// documentation text. In order to reference a proto element, the following
-/// notation can be used: [fully.qualified.proto.name][] To override the display
-/// text used for the link, this can be used: [display
-/// text][fully.qualified.proto.name] Text can be excluded from doc using the
+/// notation can be used: \[fully.qualified.proto.name\]\[\] To override the
+/// display text used for the link, this can be used: \[display
+/// text\]\[fully.qualified.proto.name\] Text can be excluded from doc using the
 /// following notation: (-- internal comment --) A few directives are available
 /// in documentation. Note that directives must appear on a single line to be
 /// properly identified. The `include` directive includes a markdown file from
@@ -4002,22 +4003,22 @@ class Http {
 /// same name. 2. If HttpRule.body is "*", there is no URL query parameter, all
 /// fields are passed via URL path and HTTP request body. 3. If HttpRule.body is
 /// omitted, there is no HTTP request body, all fields are passed via URL path
-/// and URL query parameters. ### Path template syntax Template = "/" Segments [
-/// Verb ] ; Segments = Segment { "/" Segment } ; Segment = "*" | "**" | LITERAL
-/// | Variable ; Variable = "{" FieldPath [ "=" Segments ] "}" ; FieldPath =
-/// IDENT { "." IDENT } ; Verb = ":" LITERAL ; The syntax `*` matches a single
-/// URL path segment. The syntax `**` matches zero or more URL path segments,
-/// which must be the last part of the URL path except the `Verb`. The syntax
-/// `Variable` matches part of the URL path as specified by its template. A
-/// variable template must not contain other variables. If a variable matches a
-/// single path segment, its template may be omitted, e.g. `{var}` is equivalent
-/// to `{var=*}`. The syntax `LITERAL` matches literal text in the URL path. If
-/// the `LITERAL` contains any reserved character, such characters should be
-/// percent-encoded before the matching. If a variable contains exactly one path
-/// segment, such as `"{var}"` or `"{var=*}"`, when such a variable is expanded
-/// into a URL path on the client side, all characters except `[-_.~0-9a-zA-Z]`
-/// are percent-encoded. The server side does the reverse decoding. Such
-/// variables show up in the [Discovery
+/// and URL query parameters. ### Path template syntax Template = "/" Segments
+/// \[ Verb \] ; Segments = Segment { "/" Segment } ; Segment = "*" | "**" |
+/// LITERAL | Variable ; Variable = "{" FieldPath \[ "=" Segments \] "}" ;
+/// FieldPath = IDENT { "." IDENT } ; Verb = ":" LITERAL ; The syntax `*`
+/// matches a single URL path segment. The syntax `**` matches zero or more URL
+/// path segments, which must be the last part of the URL path except the
+/// `Verb`. The syntax `Variable` matches part of the URL path as specified by
+/// its template. A variable template must not contain other variables. If a
+/// variable matches a single path segment, its template may be omitted, e.g.
+/// `{var}` is equivalent to `{var=*}`. The syntax `LITERAL` matches literal
+/// text in the URL path. If the `LITERAL` contains any reserved character, such
+/// characters should be percent-encoded before the matching. If a variable
+/// contains exactly one path segment, such as `"{var}"` or `"{var=*}"`, when
+/// such a variable is expanded into a URL path on the client side, all
+/// characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The server side
+/// does the reverse decoding. Such variables show up in the [Discovery
 /// Document](https://developers.google.com/discovery/v1/reference/apis) as
 /// `{var}`. If a variable contains multiple path segments, such as `"{var=foo /
 /// * }"` or `"{var=**}"`, when such a variable is expanded into a URL path on
@@ -4460,8 +4461,9 @@ class LogDescriptor {
   /// The name of the log.
   ///
   /// It must be less than 512 characters long and can include the following
-  /// characters: upper- and lower-case alphanumeric characters [A-Za-z0-9], and
-  /// punctuation characters including slash, underscore, hyphen, period [/_-.].
+  /// characters: upper- and lower-case alphanumeric characters \[A-Za-z0-9\],
+  /// and punctuation characters including slash, underscore, hyphen, period
+  /// \[/_-.\].
   core.String name;
 
   LogDescriptor();
@@ -4609,7 +4611,8 @@ class ManagedService {
 
   /// The name of the service.
   ///
-  /// See the [overview](/service-management/overview) for naming requirements.
+  /// See the \[overview\](/service-management/overview) for naming
+  /// requirements.
   core.String serviceName;
 
   ManagedService();
@@ -4850,7 +4853,7 @@ class MetricDescriptor {
   /// underlying cumulative or delta value). * `.` multiplication or composition
   /// (as an infix operator). For examples, `GBy.d` or `k{watt}.h`. The grammar
   /// for a unit is as follows: Expression = Component { "." Component } { "/"
-  /// Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] |
+  /// Component } ; Component = ( \[ PREFIX \] UNIT | "%" ) \[ Annotation \] |
   /// Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: * `Annotation` is
   /// just a comment if it follows a `UNIT`. If the annotation is used alone,
   /// then the unit is equivalent to `1`. For examples, `{request}/s == 1/s`,
@@ -5729,14 +5732,14 @@ class Page {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
@@ -6070,18 +6073,18 @@ class ResourceReference {
   ///
   /// This is useful for annotating the `parent` field that doesn't have a fixed
   /// resource type. Example: message ListLogEntriesRequest { string parent = 1
-  /// [(google.api.resource_reference) = { child_type:
+  /// \[(google.api.resource_reference) = { child_type:
   /// "logging.googleapis.com/LogEntry" }; }
   core.String childType;
 
   /// The resource type that the annotated field references.
   ///
   /// Example: message Subscription { string topic = 2
-  /// [(google.api.resource_reference) = { type: "pubsub.googleapis.com/Topic"
-  /// }]; } Occasionally, a field may reference an arbitrary resource. In this
+  /// \[(google.api.resource_reference) = { type: "pubsub.googleapis.com/Topic"
+  /// }\]; } Occasionally, a field may reference an arbitrary resource. In this
   /// case, APIs use the special value * in their resource reference. Example:
   /// message GetIamPolicyRequest { string resource = 2
-  /// [(google.api.resource_reference) = { type: "*" }]; }
+  /// \[(google.api.resource_reference) = { type: "*" }\]; }
   core.String type;
 
   ResourceReference();
@@ -6336,9 +6339,9 @@ class Service {
 
   /// A list of all proto message types included in this API service.
   ///
-  /// It serves similar purpose as [google.api.Service.types], except that these
-  /// types are not needed by user-defined APIs. Therefore, they will not show
-  /// up in the generated discovery doc. This field should only be used to
+  /// It serves similar purpose as \[google.api.Service.types\], except that
+  /// these types are not needed by user-defined APIs. Therefore, they will not
+  /// show up in the generated discovery doc. This field should only be used to
   /// define system APIs in ESF.
   core.List<Type> systemTypes;
 
@@ -7220,8 +7223,8 @@ class Usage {
   /// The full resource name of a channel used for sending notifications to the
   /// service producer.
   ///
-  /// Google Service Management currently only supports [Google Cloud
-  /// Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To
+  /// Google Service Management currently only supports \[Google Cloud
+  /// Pub/Sub\](https://cloud.google.com/pubsub) as a notification channel. To
   /// use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud
   /// Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in
   /// https://cloud.google.com/pubsub/docs/overview.

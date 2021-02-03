@@ -69,7 +69,7 @@ class ShelvesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the shelf to retrieve.
-  /// Value must have pattern "^shelves/[^/]+$".
+  /// Value must have pattern `^shelves/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -195,7 +195,7 @@ class ShelvesBooksResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the book to borrow.
-  /// Value must have pattern "^shelves/[^/]+/books/[^/]+$".
+  /// Value must have pattern `^shelves/\[^/\]+/books/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -249,7 +249,7 @@ class ShelvesBooksResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the book to retrieve.
-  /// Value must have pattern "^shelves/[^/]+/books/[^/]+$".
+  /// Value must have pattern `^shelves/\[^/\]+/books/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -305,7 +305,7 @@ class ShelvesBooksResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the shelf whose books we'd like to list.
-  /// Value must have pattern "^shelves/[^/]+$".
+  /// Value must have pattern `^shelves/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. Server may return fewer books than
   /// requested. If unspecified, server will pick an appropriate default.
@@ -376,7 +376,7 @@ class ShelvesBooksResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the book to return.
-  /// Value must have pattern "^shelves/[^/]+/books/[^/]+$".
+  /// Value must have pattern `^shelves/\[^/\]+/books/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

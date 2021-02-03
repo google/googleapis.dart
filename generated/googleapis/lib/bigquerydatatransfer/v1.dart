@@ -111,7 +111,7 @@ class ProjectsDataSourcesResource {
   /// [name] - Required. The data source in the form:
   /// `projects/{project_id}/dataSources/{data_source_id}` or
   /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.
-  /// Value must have pattern "^projects/[^/]+/dataSources/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/dataSources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -172,7 +172,7 @@ class ProjectsDataSourcesResource {
   /// [name] - Required. The field will contain name of the resource requested,
   /// for example: `projects/{project_id}/dataSources/{data_source_id}` or
   /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
-  /// Value must have pattern "^projects/[^/]+/dataSources/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/dataSources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -225,9 +225,9 @@ class ProjectsDataSourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The BigQuery project id for which data sources should
-  /// be returned. Must be in the form: `projects/{project_id}` or
-  /// `projects/{project_id}/locations/{location_id}
-  /// Value must have pattern "^projects/[^/]+$".
+  /// be returned. Must be in the form: \`projects/{project_id}\` or
+  /// \`projects/{project_id}/locations/{location_id}
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
@@ -308,7 +308,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -359,7 +359,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -448,7 +448,7 @@ class ProjectsLocationsDataSourcesResource {
   /// `projects/{project_id}/dataSources/{data_source_id}` or
   /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/dataSources/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataSources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -510,7 +510,7 @@ class ProjectsLocationsDataSourcesResource {
   /// for example: `projects/{project_id}/dataSources/{data_source_id}` or
   /// `projects/{project_id}/locations/{location_id}/dataSources/{data_source_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/dataSources/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dataSources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -563,9 +563,9 @@ class ProjectsLocationsDataSourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The BigQuery project id for which data sources should
-  /// be returned. Must be in the form: `projects/{project_id}` or
-  /// `projects/{project_id}/locations/{location_id}
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// be returned. Must be in the form: \`projects/{project_id}\` or
+  /// \`projects/{project_id}/locations/{location_id}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
@@ -651,7 +651,7 @@ class ProjectsLocationsTransferConfigsResource {
   /// projects/{project_id}/locations/{location_id} or projects/{project_id}. If
   /// specified location and location of the destination bigquery dataset do not
   /// match - the request will fail.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [authorizationCode] - Optional OAuth2 authorization code to use with this
   /// transfer configuration. This is required if new credentials are needed, as
@@ -752,7 +752,7 @@ class ProjectsLocationsTransferConfigsResource {
   /// for example: `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -806,7 +806,7 @@ class ProjectsLocationsTransferConfigsResource {
   /// for example: `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -860,7 +860,7 @@ class ProjectsLocationsTransferConfigsResource {
   /// [parent] - Required. The BigQuery project id for which data sources should
   /// be returned: `projects/{project_id}` or
   /// `projects/{project_id}/locations/{location_id}`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [dataSourceIds] - When specified, only configurations of requested data
   /// sources are returned.
@@ -948,7 +948,7 @@ class ProjectsLocationsTransferConfigsResource {
   /// is not provided, usually a uuid, even though it is not guaranteed or
   /// required, will be generated for config_id.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
   /// [authorizationCode] - Optional OAuth2 authorization code to use with this
   /// transfer configuration. If it is provided, the transfer configuration will
@@ -1046,7 +1046,7 @@ class ProjectsLocationsTransferConfigsResource {
     );
   }
 
-  /// Creates transfer runs for a time range [start_time, end_time].
+  /// Creates transfer runs for a time range \[start_time, end_time\].
   ///
   /// For each date - or whatever granularity the data source supports - in the
   /// range, one transfer run is created. Note that runs are created per UTC
@@ -1060,7 +1060,7 @@ class ProjectsLocationsTransferConfigsResource {
   /// `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1128,7 +1128,7 @@ class ProjectsLocationsTransferConfigsResource {
   /// `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1200,7 +1200,7 @@ class ProjectsLocationsTransferConfigsRunsResource {
   /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+/runs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1255,7 +1255,7 @@ class ProjectsLocationsTransferConfigsRunsResource {
   /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+/runs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1311,7 +1311,7 @@ class ProjectsLocationsTransferConfigsRunsResource {
   /// is: `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
@@ -1406,7 +1406,7 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResource {
   /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/transferConfigs/\[^/\]+/runs/\[^/\]+$`.
   ///
   /// [messageTypes] - Message types to return. If not populated - INFO, WARNING
   /// and ERROR messages are returned.
@@ -1499,7 +1499,7 @@ class ProjectsTransferConfigsResource {
   /// projects/{project_id}/locations/{location_id} or projects/{project_id}. If
   /// specified location and location of the destination bigquery dataset do not
   /// match - the request will fail.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [authorizationCode] - Optional OAuth2 authorization code to use with this
   /// transfer configuration. This is required if new credentials are needed, as
@@ -1599,7 +1599,7 @@ class ProjectsTransferConfigsResource {
   /// [name] - Required. The field will contain name of the resource requested,
   /// for example: `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
-  /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1652,7 +1652,7 @@ class ProjectsTransferConfigsResource {
   /// [name] - Required. The field will contain name of the resource requested,
   /// for example: `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`
-  /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1706,7 +1706,7 @@ class ProjectsTransferConfigsResource {
   /// [parent] - Required. The BigQuery project id for which data sources should
   /// be returned: `projects/{project_id}` or
   /// `projects/{project_id}/locations/{location_id}`
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [dataSourceIds] - When specified, only configurations of requested data
   /// sources are returned.
@@ -1793,7 +1793,7 @@ class ProjectsTransferConfigsResource {
   /// CreateTransferConfigRequest along with project_id and region. If config_id
   /// is not provided, usually a uuid, even though it is not guaranteed or
   /// required, will be generated for config_id.
-  /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
   /// [authorizationCode] - Optional OAuth2 authorization code to use with this
   /// transfer configuration. If it is provided, the transfer configuration will
@@ -1891,7 +1891,7 @@ class ProjectsTransferConfigsResource {
     );
   }
 
-  /// Creates transfer runs for a time range [start_time, end_time].
+  /// Creates transfer runs for a time range \[start_time, end_time\].
   ///
   /// For each date - or whatever granularity the data source supports - in the
   /// range, one transfer run is created. Note that runs are created per UTC
@@ -1904,7 +1904,7 @@ class ProjectsTransferConfigsResource {
   /// [parent] - Required. Transfer configuration name in the form:
   /// `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
-  /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1971,7 +1971,7 @@ class ProjectsTransferConfigsResource {
   /// [parent] - Transfer configuration name in the form:
   /// `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
-  /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2043,7 +2043,7 @@ class ProjectsTransferConfigsRunsResource {
   /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
+  /// `^projects/\[^/\]+/transferConfigs/\[^/\]+/runs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2098,7 +2098,7 @@ class ProjectsTransferConfigsRunsResource {
   /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
+  /// `^projects/\[^/\]+/transferConfigs/\[^/\]+/runs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2153,7 +2153,7 @@ class ProjectsTransferConfigsRunsResource {
   /// runs should be retrieved. Format of transfer configuration resource name
   /// is: `projects/{project_id}/transferConfigs/{config_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
-  /// Value must have pattern "^projects/[^/]+/transferConfigs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/transferConfigs/\[^/\]+$`.
   ///
   /// [pageSize] - Page size. The default page size is the maximum value of 1000
   /// results.
@@ -2247,7 +2247,7 @@ class ProjectsTransferConfigsRunsTransferLogsResource {
   /// `projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}` or
   /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}/runs/{run_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$".
+  /// `^projects/\[^/\]+/transferConfigs/\[^/\]+/runs/\[^/\]+$`.
   ///
   /// [messageTypes] - Message types to return. If not populated - INFO, WARNING
   /// and ERROR messages are returned.
@@ -3399,8 +3399,8 @@ class TransferConfig {
   /// The number of days to look back to automatically refresh the data.
   ///
   /// For example, if `data_refresh_window_days = 10`, then every day BigQuery
-  /// reingests data for [today-10, today-1], rather than ingesting data for
-  /// just [today-1]. Only valid if the data source supports the feature. Set
+  /// reingests data for \[today-10, today-1\], rather than ingesting data for
+  /// just \[today-1\]. Only valid if the data source supports the feature. Set
   /// the value to 0 to use the default value.
   core.int dataRefreshWindowDays;
 

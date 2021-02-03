@@ -168,7 +168,7 @@ class AdvertisersResource {
   /// Request parameters:
   ///
   /// [advertiserId] - Required. The ID of the advertiser to audit.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [readMask] - Optional. The specific fields to return. If no mask is
   /// specified, all fields in the response proto will be filled. Valid values
@@ -239,7 +239,7 @@ class AdvertisersResource {
   /// Request parameters:
   ///
   /// [advertiserId] - Required. The ID of the advertiser.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -299,7 +299,7 @@ class AdvertisersResource {
   ///
   /// [advertiserId] - Required. The ID of the advertiser the line item belongs
   /// to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -451,7 +451,7 @@ class AdvertisersResource {
   /// Request parameters:
   ///
   /// [advertiserId] - The ID of the advertiser we need to delete.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -503,7 +503,7 @@ class AdvertisersResource {
   /// Request parameters:
   ///
   /// [advertiserId] - Required. The ID of the advertiser to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -656,7 +656,7 @@ class AdvertisersResource {
   ///
   /// [advertiserId] - Output only. The unique ID of the advertiser. Assigned by
   /// the system.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [updateMask] - Required. The mask to control which fields to update.
   ///
@@ -731,7 +731,7 @@ class AdvertisersAssetsResource {
   /// Request parameters:
   ///
   /// [advertiserId] - Required. The ID of the advertiser this asset belongs to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -813,7 +813,7 @@ class AdvertisersCampaignsResource {
   ///
   /// [advertiserId] - Output only. The unique ID of the advertiser the campaign
   /// belongs to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -874,10 +874,10 @@ class AdvertisersCampaignsResource {
   /// Request parameters:
   ///
   /// [advertiserId] - The ID of the advertiser this campaign belongs to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [campaignId] - The ID of the campaign we need to delete.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -936,10 +936,10 @@ class AdvertisersCampaignsResource {
   ///
   /// [advertiserId] - Required. The ID of the advertiser this campaign belongs
   /// to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [campaignId] - Required. The ID of the campaign to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1001,7 +1001,7 @@ class AdvertisersCampaignsResource {
   /// Request parameters:
   ///
   /// [advertiserId] - The ID of the advertiser to list campaigns for.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [filter] - Allows filtering by campaign properties. Supported syntax: *
   /// Filter expressions are made up of one or more restrictions. * Restrictions
@@ -1100,11 +1100,11 @@ class AdvertisersCampaignsResource {
   ///
   /// [advertiserId] - Output only. The unique ID of the advertiser the campaign
   /// belongs to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [campaignId] - Output only. The unique ID of the campaign. Assigned by the
   /// system.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [updateMask] - Required. The mask to control which fields to update.
   ///
@@ -1186,7 +1186,7 @@ class AdvertisersChannelsResource {
   /// Request parameters:
   ///
   /// [advertiserId] - The ID of the advertiser that owns the created channel.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [partnerId] - The ID of the partner that owns the created channel.
   ///
@@ -1249,10 +1249,10 @@ class AdvertisersChannelsResource {
   /// Request parameters:
   ///
   /// [advertiserId] - The ID of the advertiser that owns the fetched channel.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [channelId] - Required. The ID of the channel to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [partnerId] - The ID of the partner that owns the fetched channel.
   ///
@@ -1316,7 +1316,7 @@ class AdvertisersChannelsResource {
   /// Request parameters:
   ///
   /// [advertiserId] - The ID of the advertiser that owns the channels.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [filter] - Allows filtering by channel fields. Supported syntax: * Filter
   /// expressions for channel currently can only contain at most one *
@@ -1418,7 +1418,7 @@ class AdvertisersChannelsResource {
   /// Request parameters:
   ///
   /// [advertiserId] - The ID of the advertiser that owns the created channel.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [channelId] - Output only. The unique ID of the channel. Assigned by the
   /// system.
@@ -1511,7 +1511,7 @@ class AdvertisersChannelsSitesResource {
   ///
   /// [channelId] - Required. The ID of the parent channel to which the sites
   /// belong.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1580,7 +1580,7 @@ class AdvertisersChannelsSitesResource {
   ///
   /// [channelId] - Required. The ID of the parent channel in which the site
   /// will be created.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [partnerId] - The ID of the partner that owns the parent channel.
   ///
@@ -1652,10 +1652,10 @@ class AdvertisersChannelsSitesResource {
   ///
   /// [channelId] - Required. The ID of the parent channel to which the site
   /// belongs.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [urlOrAppId] - Required. The URL or app ID of the site to delete.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [partnerId] - The ID of the partner that owns the parent channel.
   ///
@@ -1725,11 +1725,11 @@ class AdvertisersChannelsSitesResource {
   /// Request parameters:
   ///
   /// [advertiserId] - The ID of the advertiser that owns the parent channel.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [channelId] - Required. The ID of the parent channel to which the
   /// requested sites belong.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [filter] - Allows filtering by site fields. Supported syntax: * Filter
   /// expressions for site currently can only contain at most one * restriction.
@@ -1844,7 +1844,7 @@ class AdvertisersCreativesResource {
   ///
   /// [advertiserId] - Output only. The unique ID of the advertiser the creative
   /// belongs to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1905,10 +1905,10 @@ class AdvertisersCreativesResource {
   /// Request parameters:
   ///
   /// [advertiserId] - The ID of the advertiser this creative belongs to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [creativeId] - The ID of the creative to be deleted.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1967,10 +1967,10 @@ class AdvertisersCreativesResource {
   ///
   /// [advertiserId] - Required. The ID of the advertiser this creative belongs
   /// to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [creativeId] - Required. The ID of the creative to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2032,7 +2032,7 @@ class AdvertisersCreativesResource {
   /// Request parameters:
   ///
   /// [advertiserId] - Required. The ID of the advertiser to list creatives for.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [filter] - Allows filtering by creative properties. Supported syntax: *
   /// Filter expressions are made up of one or more restrictions. * Restriction
@@ -2153,11 +2153,11 @@ class AdvertisersCreativesResource {
   ///
   /// [advertiserId] - Output only. The unique ID of the advertiser the creative
   /// belongs to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [creativeId] - Output only. The unique ID of the creative. Assigned by the
   /// system.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [updateMask] - Required. The mask to control which fields to update.
   ///
@@ -2237,7 +2237,7 @@ class AdvertisersInsertionOrdersResource {
   ///
   /// [advertiserId] - Output only. The unique ID of the advertiser the
   /// insertion order belongs to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2299,10 +2299,10 @@ class AdvertisersInsertionOrdersResource {
   /// Request parameters:
   ///
   /// [advertiserId] - The ID of the advertiser this insertion order belongs to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [insertionOrderId] - The ID of the insertion order we need to delete.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2363,10 +2363,10 @@ class AdvertisersInsertionOrdersResource {
   ///
   /// [advertiserId] - Required. The ID of the advertiser this insertion order
   /// belongs to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [insertionOrderId] - Required. The ID of the insertion order to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2430,7 +2430,7 @@ class AdvertisersInsertionOrdersResource {
   ///
   /// [advertiserId] - Required. The ID of the advertiser to list insertion
   /// orders for.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [filter] - Allows filtering by insertion order properties. Supported
   /// syntax: * Filter expressions are made up of one or more restrictions. *
@@ -2536,11 +2536,11 @@ class AdvertisersInsertionOrdersResource {
   ///
   /// [advertiserId] - Output only. The unique ID of the advertiser the
   /// insertion order belongs to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [insertionOrderId] - Output only. The unique ID of the insertion order.
   /// Assigned by the system.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [updateMask] - Required. The mask to control which fields to update.
   ///
@@ -2627,11 +2627,11 @@ class AdvertisersLineItemsResource {
   ///
   /// [advertiserId] - Required. The ID of the advertiser the line item belongs
   /// to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [lineItemId] - Required. The ID of the line item the assigned targeting
   /// option will belong to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2697,11 +2697,11 @@ class AdvertisersLineItemsResource {
   ///
   /// [advertiserId] - Required. The ID of the advertiser the line item belongs
   /// to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [lineItemId] - Required. The ID of the line item to list assigned
   /// targeting options for.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [filter] - Allows filtering by assigned targeting option properties.
   /// Supported syntax: * Filter expressions are made up of one or more
@@ -2811,7 +2811,7 @@ class AdvertisersLineItemsResource {
   ///
   /// [advertiserId] - Output only. The unique ID of the advertiser the line
   /// item belongs to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2872,10 +2872,10 @@ class AdvertisersLineItemsResource {
   /// Request parameters:
   ///
   /// [advertiserId] - The ID of the advertiser this line item belongs to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [lineItemId] - The ID of the line item we need to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2934,10 +2934,10 @@ class AdvertisersLineItemsResource {
   ///
   /// [advertiserId] - Required. The ID of the advertiser this line item belongs
   /// to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [lineItemId] - Required. The ID of the line item to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3000,7 +3000,7 @@ class AdvertisersLineItemsResource {
   ///
   /// [advertiserId] - Required. The ID of the advertiser to list line items
   /// for.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [filter] - Allows filtering by line item properties. Supported syntax: *
   /// Filter expressions are made up of one or more restrictions. * Restrictions
@@ -3112,11 +3112,11 @@ class AdvertisersLineItemsResource {
   ///
   /// [advertiserId] - Output only. The unique ID of the advertiser the line
   /// item belongs to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [lineItemId] - Output only. The unique ID of the line item. Assigned by
   /// the system.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [updateMask] - Required. The mask to control which fields to update.
   ///
@@ -3209,15 +3209,15 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   ///
   /// [advertiserId] - Required. The ID of the advertiser the line item belongs
   /// to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [lineItemId] - Required. The ID of the line item the assigned targeting
   /// option will belong to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
   /// or is unknown in this version.
@@ -3367,15 +3367,15 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   ///
   /// [advertiserId] - Required. The ID of the advertiser the line item belongs
   /// to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [lineItemId] - Required. The ID of the line item the assigned targeting
   /// option belongs to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
   /// or is unknown in this version.
@@ -3458,7 +3458,7 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3530,15 +3530,15 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   ///
   /// [advertiserId] - Required. The ID of the advertiser the line item belongs
   /// to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [lineItemId] - Required. The ID of the line item the assigned targeting
   /// option belongs to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
   /// or is unknown in this version.
@@ -3622,7 +3622,7 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this line item that identifies the assigned targeting
   /// option being requested.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3695,15 +3695,15 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
   ///
   /// [advertiserId] - Required. The ID of the advertiser the line item belongs
   /// to.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [lineItemId] - Required. The ID of the line item to list assigned
   /// targeting options for.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of assigned targeting
   /// options to list.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
   /// or is unknown in this version.
@@ -3905,7 +3905,7 @@ class AdvertisersLocationListsResource {
   ///
   /// [advertiserId] - Required. The ID of the DV360 advertiser to which the
   /// location list belongs.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3964,10 +3964,10 @@ class AdvertisersLocationListsResource {
   ///
   /// [advertiserId] - Required. The ID of the DV360 advertiser to which the
   /// fetched location list belongs.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [locationListId] - Required. The ID of the location list to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4027,7 +4027,7 @@ class AdvertisersLocationListsResource {
   ///
   /// [advertiserId] - Required. The ID of the DV360 advertiser to which the
   /// fetched location lists belong.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [filter] - Allows filtering by location list fields. Supported syntax: *
   /// Filter expressions are made up of one or more restrictions. * Restrictions
@@ -4125,7 +4125,7 @@ class AdvertisersLocationListsResource {
   ///
   /// [advertiserId] - Required. The ID of the DV360 advertiser to which the
   /// location lists belongs.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [locationListId] - Output only. The unique ID of the location list.
   /// Assigned by the system.
@@ -4216,7 +4216,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
   ///
   /// [locationListId] - Required. The ID of the location list to which these
   /// assignments are assigned.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4356,7 +4356,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
   ///
   /// [assignedLocationId] - Required. The ID of the assigned location to
   /// delete.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4536,7 +4536,7 @@ class AdvertisersNegativeKeywordListsResource {
   ///
   /// [advertiserId] - Required. The ID of the DV360 advertiser to which the
   /// negative keyword list will belong.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4596,11 +4596,11 @@ class AdvertisersNegativeKeywordListsResource {
   ///
   /// [advertiserId] - Required. The ID of the DV360 advertiser to which the
   /// negative keyword list belongs.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [negativeKeywordListId] - Required. The ID of the negative keyword list to
   /// delete.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4660,11 +4660,11 @@ class AdvertisersNegativeKeywordListsResource {
   ///
   /// [advertiserId] - Required. The ID of the DV360 advertiser to which the
   /// fetched negative keyword list belongs.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [negativeKeywordListId] - Required. The ID of the negative keyword list to
   /// fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4724,7 +4724,7 @@ class AdvertisersNegativeKeywordListsResource {
   ///
   /// [advertiserId] - Required. The ID of the DV360 advertiser to which the
   /// fetched negative keyword lists belong.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. Must be between `1` and `100`. Defaults
   /// to `100` if not set. Returns error code `INVALID_ARGUMENT` if an invalid
@@ -4800,7 +4800,7 @@ class AdvertisersNegativeKeywordListsResource {
   ///
   /// [advertiserId] - Required. The ID of the DV360 advertiser to which the
   /// negative keyword list belongs.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [negativeKeywordListId] - Output only. The unique ID of the negative
   /// keyword list. Assigned by the system.
@@ -4893,7 +4893,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
   ///
   /// [negativeKeywordListId] - Required. The ID of the parent negative keyword
   /// list to which the negative keywords belong.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4963,7 +4963,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
   ///
   /// [negativeKeywordListId] - Required. The ID of the parent negative keyword
   /// list in which the negative keyword will be created.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5031,11 +5031,11 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
   ///
   /// [negativeKeywordListId] - Required. The ID of the parent negative keyword
   /// list to which the negative keyword belongs.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [keywordValue] - Required. The keyword value of the negative keyword to
   /// delete.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5100,11 +5100,11 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
   ///
   /// [advertiserId] - Required. The ID of the DV360 advertiser to which the
   /// parent negative keyword list belongs.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [negativeKeywordListId] - Required. The ID of the parent negative keyword
   /// list to which the requested negative keywords belong.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [filter] - Allows filtering by negative keyword fields. Supported syntax:
   /// * Filter expressions for negative keyword currently can only contain at
@@ -5224,11 +5224,11 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// Request parameters:
   ///
   /// [advertiserId] - Required. The ID of the advertiser.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
   /// or is unknown in this version.
@@ -5371,11 +5371,11 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// Request parameters:
   ///
   /// [advertiserId] - Required. The ID of the advertiser.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
   /// or is unknown in this version.
@@ -5458,7 +5458,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5523,11 +5523,11 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// Request parameters:
   ///
   /// [advertiserId] - Required. The ID of the advertiser.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
   /// or is unknown in this version.
@@ -5611,7 +5611,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this advertiser that identifies the assigned targeting
   /// option being requested.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5677,11 +5677,11 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// Request parameters:
   ///
   /// [advertiserId] - Required. The ID of the advertiser.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of assigned targeting
   /// options to list.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
   /// or is unknown in this version.
@@ -5865,7 +5865,7 @@ class CombinedAudiencesResource {
   /// Request parameters:
   ///
   /// [combinedAudienceId] - Required. The ID of the combined audience to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - The ID of the advertiser that has access to the fetched
   /// combined audience.
@@ -6039,7 +6039,7 @@ class CustomBiddingAlgorithmsResource {
   ///
   /// [customBiddingAlgorithmId] - Required. The ID of the custom bidding
   /// algorithm to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - The ID of the DV360 partner that has access to the custom
   /// bidding algorithm.
@@ -6222,7 +6222,7 @@ class CustomListsResource {
   /// Request parameters:
   ///
   /// [customListId] - Required. The ID of the custom list to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - The ID of the DV360 advertiser that has access to the
   /// fetched custom lists.
@@ -6382,7 +6382,7 @@ class FirstAndThirdPartyAudiencesResource {
   ///
   /// [firstAndThirdPartyAudienceId] - Required. The ID of the first and third
   /// party audience to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - The ID of the advertiser that has access to the fetched
   /// first and third party audience.
@@ -6557,7 +6557,7 @@ class FloodlightGroupsResource {
   /// Request parameters:
   ///
   /// [floodlightGroupId] - Required. The ID of the Floodlight group to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [partnerId] - Required. The partner context by which the Floodlight group
   /// is being accessed.
@@ -6697,7 +6697,7 @@ class GoogleAudiencesResource {
   /// Request parameters:
   ///
   /// [googleAudienceId] - Required. The ID of the Google audience to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - The ID of the advertiser that has access to the fetched
   /// Google audience.
@@ -6944,7 +6944,7 @@ class InventorySourceGroupsResource {
   ///
   /// [inventorySourceGroupId] - Required. The ID of the inventory source group
   /// to delete.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - The ID of the advertiser that owns the inventory source
   /// group. The parent partner does not have access to this group.
@@ -7011,7 +7011,7 @@ class InventorySourceGroupsResource {
   ///
   /// [inventorySourceGroupId] - Required. The ID of the inventory source group
   /// to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - The ID of the advertiser that has access to the inventory
   /// source group. If an inventory source group is partner-owned, only
@@ -7278,7 +7278,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
   ///
   /// [inventorySourceGroupId] - Required. The ID of the inventory source group
   /// to which the assignments are assigned.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7340,7 +7340,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
   ///
   /// [inventorySourceGroupId] - Required. The ID of the inventory source group
   /// to which the assignment will be assigned.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - The ID of the advertiser that owns the parent inventory
   /// source group. The parent partner will not have access to this assigned
@@ -7416,11 +7416,11 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
   ///
   /// [inventorySourceGroupId] - Required. The ID of the inventory source group
   /// to which this assignment is assigned.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [assignedInventorySourceId] - Required. The ID of the assigned inventory
   /// source to delete.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - The ID of the advertiser that owns the parent inventory
   /// source group. The parent partner does not have access to this assigned
@@ -7496,7 +7496,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
   ///
   /// [inventorySourceGroupId] - Required. The ID of the inventory source group
   /// to which these assignments are assigned.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - The ID of the advertiser that has access to the
   /// assignment. If the parent inventory source group is partner-owned, only
@@ -7611,7 +7611,7 @@ class InventorySourcesResource {
   /// Request parameters:
   ///
   /// [inventorySourceId] - Required. The ID of the inventory source to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [partnerId] - Required. The ID of the DV360 partner to which the fetched
   /// inventory source is permissioned.
@@ -7786,7 +7786,7 @@ class MediaResource {
   ///
   /// [resourceName] - Name of the media that is being downloaded. See
   /// ReadRequest.resource_name.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7871,7 +7871,7 @@ class PartnersResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the partner.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7930,7 +7930,7 @@ class PartnersResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the partner to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8079,7 +8079,7 @@ class PartnersChannelsResource {
   /// Request parameters:
   ///
   /// [partnerId] - The ID of the partner that owns the created channel.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - The ID of the advertiser that owns the created channel.
   ///
@@ -8142,10 +8142,10 @@ class PartnersChannelsResource {
   /// Request parameters:
   ///
   /// [partnerId] - The ID of the partner that owns the fetched channel.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [channelId] - Required. The ID of the channel to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - The ID of the advertiser that owns the fetched channel.
   ///
@@ -8209,7 +8209,7 @@ class PartnersChannelsResource {
   /// Request parameters:
   ///
   /// [partnerId] - The ID of the partner that owns the channels.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - The ID of the advertiser that owns the channels.
   ///
@@ -8311,7 +8311,7 @@ class PartnersChannelsResource {
   /// Request parameters:
   ///
   /// [partnerId] - The ID of the partner that owns the created channel.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [channelId] - Output only. The unique ID of the channel. Assigned by the
   /// system.
@@ -8404,7 +8404,7 @@ class PartnersChannelsSitesResource {
   ///
   /// [channelId] - Required. The ID of the parent channel to which the sites
   /// belong.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8473,7 +8473,7 @@ class PartnersChannelsSitesResource {
   ///
   /// [channelId] - Required. The ID of the parent channel in which the site
   /// will be created.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - The ID of the advertiser that owns the parent channel.
   ///
@@ -8545,10 +8545,10 @@ class PartnersChannelsSitesResource {
   ///
   /// [channelId] - Required. The ID of the parent channel to which the site
   /// belongs.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [urlOrAppId] - Required. The URL or app ID of the site to delete.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - The ID of the advertiser that owns the parent channel.
   ///
@@ -8618,11 +8618,11 @@ class PartnersChannelsSitesResource {
   /// Request parameters:
   ///
   /// [partnerId] - The ID of the partner that owns the parent channel.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [channelId] - Required. The ID of the parent channel to which the
   /// requested sites belong.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - The ID of the advertiser that owns the parent channel.
   ///
@@ -8748,11 +8748,11 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the partner.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL`
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
   /// or is unknown in this version.
@@ -8895,11 +8895,11 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the partner.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL`
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
   /// or is unknown in this version.
@@ -8982,7 +8982,7 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   ///
   /// [assignedTargetingOptionId] - Required. The ID of the assigned targeting
   /// option to delete.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9047,11 +9047,11 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the partner.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
   /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL`
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
   /// or is unknown in this version.
@@ -9135,7 +9135,7 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// [assignedTargetingOptionId] - Required. An identifier unique to the
   /// targeting type in this partner that identifies the assigned targeting
   /// option being requested.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9201,11 +9201,11 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the partner.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of assigned targeting
   /// options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL`
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
   /// or is unknown in this version.
@@ -9459,7 +9459,7 @@ class SdfdownloadtasksOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^sdfdownloadtasks/operations/[^/]+$".
+  /// Value must have pattern `^sdfdownloadtasks/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9526,7 +9526,7 @@ class TargetingTypesTargetingOptionsResource {
   /// Request parameters:
   ///
   /// [targetingType] - Required. The type of targeting option to retrieve.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
   /// or is unknown in this version.
@@ -9609,7 +9609,7 @@ class TargetingTypesTargetingOptionsResource {
   ///
   /// [targetingOptionId] - Required. The ID of the of targeting option to
   /// retrieve.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [advertiserId] - Required. The Advertiser this request is being made in
   /// the context of.
@@ -9675,7 +9675,7 @@ class TargetingTypesTargetingOptionsResource {
   /// Request parameters:
   ///
   /// [targetingType] - Required. The type of targeting option to be listed.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
   /// or is unknown in this version.
@@ -9874,7 +9874,7 @@ class UsersResource {
   ///
   /// [userId] - Required. The ID of the user to which the assigned user roles
   /// belong.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9984,7 +9984,7 @@ class UsersResource {
   /// Request parameters:
   ///
   /// [userId] - Required. The ID of the user to delete.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10035,7 +10035,7 @@ class UsersResource {
   /// Request parameters:
   ///
   /// [userId] - Required. The ID of the user to fetch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10191,7 +10191,7 @@ class UsersResource {
   /// Request parameters:
   ///
   /// [userId] - Output only. The unique ID of the user. Assigned by the system.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [updateMask] - Required. The mask to control which fields to update.
   ///
@@ -13794,9 +13794,10 @@ class Channel {
 class ChannelAssignedTargetingOptionDetails {
   /// ID of the channel.
   ///
-  /// Should refer to the channel ID field on a [Partner-owned
-  /// channel](partners.channels#Channel.FIELDS.channel_id) or [advertiser-owned
-  /// channel](advertisers.channels#Channel.FIELDS.channel_id) resource.
+  /// Should refer to the channel ID field on a \[Partner-owned
+  /// channel\](partners.channels#Channel.FIELDS.channel_id) or
+  /// \[advertiser-owned
+  /// channel\](advertisers.channels#Channel.FIELDS.channel_id) resource.
   ///
   /// Required.
   core.String channelId;
@@ -14507,7 +14508,7 @@ class CreateAssignedTargetingOptionsRequest {
   }
 }
 
-/// Request message for [SdfDownloadTaskService.CreateSdfDownloadTask].
+/// Request message for \[SdfDownloadTaskService.CreateSdfDownloadTask\].
 class CreateSdfDownloadTaskRequest {
   /// The ID of the advertiser to download SDF for.
   core.String advertiserId;
@@ -23021,7 +23022,7 @@ class SdfConfig {
 }
 
 /// Type for the response returned by
-/// [SdfDownloadTaskService.CreateSdfDownloadTask].
+/// \[SdfDownloadTaskService.CreateSdfDownloadTask\].
 class SdfDownloadTask {
   /// A resource name to be used in media.download to Download the prepared
   /// files.
@@ -23050,7 +23051,7 @@ class SdfDownloadTask {
 }
 
 /// Type for the metadata returned by
-/// [SdfDownloadTaskService.CreateSdfDownloadTask].
+/// \[SdfDownloadTaskService.CreateSdfDownloadTask\].
 class SdfDownloadTaskMetadata {
   /// The time when the operation was created.
   core.String createTime;

@@ -71,7 +71,7 @@ class AgentUsersResource {
   /// Request parameters:
   ///
   /// [agentUserId] - Required. Third-party user ID.
-  /// Value must have pattern "^agentUsers/.*$".
+  /// Value must have pattern `^agentUsers/.*$`.
   ///
   /// [requestId] - Request ID used for debugging.
   ///
@@ -703,7 +703,7 @@ class Empty {
 }
 
 /// Request type for the
-/// [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call.
+/// \[`Query`\](#google.home.graph.v1.HomeGraphApiService.Query) call.
 class QueryRequest {
   /// Third-party user ID.
   ///
@@ -800,7 +800,7 @@ class QueryRequestPayload {
 }
 
 /// Response type for the
-/// [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call.
+/// \[`Query`\](#google.home.graph.v1.HomeGraphApiService.Query) call.
 ///
 /// This should follow the same format as the Google smart home
 /// `action.devices.QUERY`
@@ -938,7 +938,7 @@ class ReportStateAndNotificationDevice {
 }
 
 /// Request type for the
-/// [`ReportStateAndNotification`](#google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification)
+/// \[`ReportStateAndNotification`\](#google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification)
 /// call.
 ///
 /// It may include states, notifications, or both. States and notifications are
@@ -1014,7 +1014,7 @@ class ReportStateAndNotificationRequest {
 }
 
 /// Response type for the
-/// [`ReportStateAndNotification`](#google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification)
+/// \[`ReportStateAndNotification`\](#google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification)
 /// call.
 class ReportStateAndNotificationResponse {
   /// Request ID copied from ReportStateAndNotificationRequest.
@@ -1038,7 +1038,7 @@ class ReportStateAndNotificationResponse {
 }
 
 /// Request type for the
-/// [`RequestSyncDevices`](#google.home.graph.v1.HomeGraphApiService.RequestSyncDevices)
+/// \[`RequestSyncDevices`\](#google.home.graph.v1.HomeGraphApiService.RequestSyncDevices)
 /// call.
 class RequestSyncDevicesRequest {
   /// Third-party user ID.
@@ -1079,7 +1079,7 @@ class RequestSyncDevicesRequest {
 }
 
 /// Response type for the
-/// [`RequestSyncDevices`](#google.home.graph.v1.HomeGraphApiService.RequestSyncDevices)
+/// \[`RequestSyncDevices`\](#google.home.graph.v1.HomeGraphApiService.RequestSyncDevices)
 /// call.
 ///
 /// Intentionally empty upon success. An HTTP response code is returned with
@@ -1121,7 +1121,7 @@ class StateAndNotificationPayload {
 }
 
 /// Request type for the
-/// [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call.
+/// \[`Sync`\](#google.home.graph.v1.HomeGraphApiService.Sync) call.
 class SyncRequest {
   /// Third-party user ID.
   ///
@@ -1155,7 +1155,7 @@ class SyncRequest {
 }
 
 /// Response type for the
-/// [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call.
+/// \[`Sync`\](#google.home.graph.v1.HomeGraphApiService.Sync) call.
 ///
 /// This should follow the same format as the Google smart home
 /// `action.devices.SYNC`

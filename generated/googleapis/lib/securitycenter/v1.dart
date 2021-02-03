@@ -82,8 +82,9 @@ class OrganizationsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the organization to get organization settings
-  /// for. Its format is "organizations/[organization_id]/organizationSettings".
-  /// Value must have pattern "^organizations/[^/]+/organizationSettings$".
+  /// for. Its format is
+  /// "organizations/\[organization_id\]/organizationSettings".
+  /// Value must have pattern `^organizations/\[^/\]+/organizationSettings$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -139,7 +140,7 @@ class OrganizationsResource {
   /// [name] - The relative resource name of the settings. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example: "organizations/{organization_id}/organizationSettings".
-  /// Value must have pattern "^organizations/[^/]+/organizationSettings$".
+  /// Value must have pattern `^organizations/\[^/\]+/organizationSettings$`.
   ///
   /// [updateMask] - The FieldMask to use when updating the settings resource.
   /// If empty all mutable fields will be updated.
@@ -212,8 +213,8 @@ class OrganizationsAssetsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the organization to groupBy. Its format is
-  /// "organizations/[organization_id]".
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// "organizations/\[organization_id\]".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -271,8 +272,8 @@ class OrganizationsAssetsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the organization assets should belong to. Its
-  /// format is "organizations/[organization_id]".
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// format is "organizations/\[organization_id\]".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
   /// "state_change" attribute is updated to indicate whether the asset was
@@ -442,8 +443,8 @@ class OrganizationsAssetsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the organization to run asset discovery for.
-  /// Its format is "organizations/[organization_id]".
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Its format is "organizations/\[organization_id\]".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -507,7 +508,7 @@ class OrganizationsAssetsResource {
   /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
   /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
   /// Value must have pattern
-  /// "^organizations/[^/]+/assets/[^/]+/securityMarks$".
+  /// `^organizations/\[^/\]+/assets/\[^/\]+/securityMarks$`.
   ///
   /// [startTime] - The time at which the updated SecurityMarks take effect. If
   /// not set uses current server time. Updates will be applied to the
@@ -589,8 +590,8 @@ class OrganizationsNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the new notification config's
-  /// parent. Its format is "organizations/[organization_id]".
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// parent. Its format is "organizations/\[organization_id\]".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [configId] - Required. Unique identifier provided by the client within the
   /// parent scope. It must be between 1 and 128 characters, and contains
@@ -656,8 +657,9 @@ class OrganizationsNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the notification config to delete. Its format
-  /// is "organizations/[organization_id]/notificationConfigs/[config_id]".
-  /// Value must have pattern "^organizations/[^/]+/notificationConfigs/[^/]+$".
+  /// is "organizations/\[organization_id\]/notificationConfigs/\[config_id\]".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -708,8 +710,9 @@ class OrganizationsNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the notification config to get. Its format is
-  /// "organizations/[organization_id]/notificationConfigs/[config_id]".
-  /// Value must have pattern "^organizations/[^/]+/notificationConfigs/[^/]+$".
+  /// "organizations/\[organization_id\]/notificationConfigs/\[config_id\]".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -761,8 +764,8 @@ class OrganizationsNotificationConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the organization to list notification
-  /// configs. Its format is "organizations/[organization_id]".
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// configs. Its format is "organizations/\[organization_id\]".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
   /// Default is 10, minimum is 1, maximum is 1000.
@@ -840,7 +843,8 @@ class OrganizationsNotificationConfigsResource {
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example:
   /// "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
-  /// Value must have pattern "^organizations/[^/]+/notificationConfigs/[^/]+$".
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/notificationConfigs/\[^/\]+$`.
   ///
   /// [updateMask] - The FieldMask to use when updating the notification config.
   /// If empty all mutable fields will be updated.
@@ -919,7 +923,7 @@ class OrganizationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^organizations/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -974,7 +978,7 @@ class OrganizationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^organizations/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1028,7 +1032,7 @@ class OrganizationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^organizations/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1088,7 +1092,7 @@ class OrganizationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^organizations/[^/]+/operations$".
+  /// Value must have pattern `^organizations/\[^/\]+/operations$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -1170,8 +1174,8 @@ class OrganizationsSourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the new source's parent. Its format
-  /// should be "organizations/[organization_id]".
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// should be "organizations/\[organization_id\]".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1227,8 +1231,8 @@ class OrganizationsSourcesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Relative resource name of the source. Its format is
-  /// "organizations/[organization_id]/source/[source_id]".
-  /// Value must have pattern "^organizations/[^/]+/sources/[^/]+$".
+  /// "organizations/\[organization_id\]/source/\[source_id\]".
+  /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1283,7 +1287,7 @@ class OrganizationsSourcesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^organizations/[^/]+/sources/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1340,8 +1344,8 @@ class OrganizationsSourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the parent of sources to list. Its
-  /// format should be "organizations/[organization_id]".
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// format should be "organizations/\[organization_id\]".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
   /// Default is 10, minimum is 1, maximum is 1000.
@@ -1413,7 +1417,7 @@ class OrganizationsSourcesResource {
   /// [name] - The relative resource name of this source. See:
   /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
   /// Example: "organizations/{organization_id}/sources/{source_id}"
-  /// Value must have pattern "^organizations/[^/]+/sources/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [updateMask] - The FieldMask to use when updating the source resource. If
   /// empty all mutable fields will be updated.
@@ -1479,7 +1483,7 @@ class OrganizationsSourcesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^organizations/[^/]+/sources/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1540,7 +1544,7 @@ class OrganizationsSourcesResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^organizations/[^/]+/sources/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1609,8 +1613,8 @@ class OrganizationsSourcesFindingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the new finding's parent. Its format
-  /// should be "organizations/[organization_id]/sources/[source_id]".
-  /// Value must have pattern "^organizations/[^/]+/sources/[^/]+$".
+  /// should be "organizations/\[organization_id\]/sources/\[source_id\]".
+  /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [findingId] - Required. Unique identifier provided by the client within
   /// the parent scope. It must be alphanumeric and less than or equal to 32
@@ -1680,10 +1684,10 @@ class OrganizationsSourcesFindingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the source to groupBy. Its format is
-  /// "organizations/[organization_id]/sources/[source_id]". To groupBy across
-  /// all sources provide a source_id of `-`. For example:
+  /// "organizations/\[organization_id\]/sources/\[source_id\]". To groupBy
+  /// across all sources provide a source_id of `-`. For example:
   /// organizations/{organization_id}/sources/-
-  /// Value must have pattern "^organizations/[^/]+/sources/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1744,10 +1748,10 @@ class OrganizationsSourcesFindingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the source the findings belong to. Its format
-  /// is "organizations/[organization_id]/sources/[source_id]". To list across
-  /// all sources provide a source_id of `-`. For example:
+  /// is "organizations/\[organization_id\]/sources/\[source_id\]". To list
+  /// across all sources provide a source_id of `-`. For example:
   /// organizations/{organization_id}/sources/-
-  /// Value must have pattern "^organizations/[^/]+/sources/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [compareDuration] - When compare_duration is set, the ListFindingsResult's
   /// "state_change" attribute is updated to indicate whether the finding had
@@ -1907,7 +1911,7 @@ class OrganizationsSourcesFindingsResource {
   /// Example:
   /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
   /// Value must have pattern
-  /// "^organizations/[^/]+/sources/[^/]+/findings/[^/]+$".
+  /// `^organizations/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
   /// [updateMask] - The FieldMask to use when updating the finding resource.
   /// This field should not be specified when creating a finding. When updating
@@ -1978,7 +1982,7 @@ class OrganizationsSourcesFindingsResource {
   /// Example:
   /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
   /// Value must have pattern
-  /// "^organizations/[^/]+/sources/[^/]+/findings/[^/]+$".
+  /// `^organizations/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2040,7 +2044,7 @@ class OrganizationsSourcesFindingsResource {
   /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
   /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
   /// Value must have pattern
-  /// "^organizations/[^/]+/sources/[^/]+/findings/[^/]+/securityMarks$".
+  /// `^organizations/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+/securityMarks$`.
   ///
   /// [startTime] - The time at which the updated SecurityMarks take effect. If
   /// not set uses current server time. Updates will be applied to the
@@ -2270,13 +2274,13 @@ class AssetDiscoveryConfig {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
@@ -2318,9 +2322,9 @@ class AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -4101,7 +4105,7 @@ class NotificationConfig {
 
   /// The Pub/Sub topic to send notifications to.
   ///
-  /// Its format is "projects/[project_id]/topics/[topic]".
+  /// Its format is "projects/\[project_id\]/topics/\[topic\]".
   core.String pubsubTopic;
 
   /// The service account that needs "pubsub.topics.publish" permission to
@@ -4260,8 +4264,8 @@ class OrganizationSettings {
 
   /// A flag that indicates if Asset Discovery should be enabled.
   ///
-  /// If the flag is set to `true`, then discovery of assets will occur. If it
-  /// is set to `false, all historical assets will remain, but discovery of
+  /// If the flag is set to \`true\`, then discovery of assets will occur. If it
+  /// is set to \`false, all historical assets will remain, but discovery of
   /// future assets will not occur.
   core.bool enableAssetDiscovery;
 
@@ -4316,14 +4320,14 @@ class OrganizationSettings {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

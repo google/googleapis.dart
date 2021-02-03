@@ -90,7 +90,7 @@ class ProjectsNotesResource {
   ///
   /// [parent] - Required. The name of the project in the form of
   /// `projects/[PROJECT_ID]`, under which the notes are to be created.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -151,7 +151,7 @@ class ProjectsNotesResource {
   ///
   /// [parent] - Required. The name of the project in the form of
   /// `projects/[PROJECT_ID]`, under which the note is to be created.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [noteId] - Required. The ID to use for this note.
   ///
@@ -215,7 +215,7 @@ class ProjectsNotesResource {
   ///
   /// [name] - Required. The name of the note in the form of
   /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
-  /// Value must have pattern "^projects/[^/]+/notes/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/notes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -267,7 +267,7 @@ class ProjectsNotesResource {
   ///
   /// [name] - Required. The name of the note in the form of
   /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
-  /// Value must have pattern "^projects/[^/]+/notes/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/notes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -328,7 +328,7 @@ class ProjectsNotesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/notes/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/notes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -386,7 +386,7 @@ class ProjectsNotesResource {
   ///
   /// [parent] - Required. The name of the project to list notes for in the form
   /// of `projects/[PROJECT_ID]`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The filter expression.
   ///
@@ -462,7 +462,7 @@ class ProjectsNotesResource {
   ///
   /// [name] - Required. The name of the note in the form of
   /// `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
-  /// Value must have pattern "^projects/[^/]+/notes/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/notes/\[^/\]+$`.
   ///
   /// [updateMask] - The fields to update.
   ///
@@ -533,7 +533,7 @@ class ProjectsNotesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/notes/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/notes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -600,7 +600,7 @@ class ProjectsNotesResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/notes/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/notes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -669,7 +669,7 @@ class ProjectsNotesOccurrencesResource {
   ///
   /// [name] - Required. The name of the note to list occurrences for in the
   /// form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
-  /// Value must have pattern "^projects/[^/]+/notes/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/notes/\[^/\]+$`.
   ///
   /// [filter] - The filter expression.
   ///
@@ -751,7 +751,7 @@ class ProjectsOccurrencesResource {
   ///
   /// [parent] - Required. The name of the project in the form of
   /// `projects/[PROJECT_ID]`, under which the occurrences are to be created.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -812,7 +812,7 @@ class ProjectsOccurrencesResource {
   ///
   /// [parent] - Required. The name of the project in the form of
   /// `projects/[PROJECT_ID]`, under which the occurrence is to be created.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -874,7 +874,7 @@ class ProjectsOccurrencesResource {
   ///
   /// [name] - Required. The name of the occurrence in the form of
   /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
-  /// Value must have pattern "^projects/[^/]+/occurrences/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/occurrences/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -926,7 +926,7 @@ class ProjectsOccurrencesResource {
   ///
   /// [name] - Required. The name of the occurrence in the form of
   /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
-  /// Value must have pattern "^projects/[^/]+/occurrences/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/occurrences/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -988,7 +988,7 @@ class ProjectsOccurrencesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/occurrences/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/occurrences/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1049,7 +1049,7 @@ class ProjectsOccurrencesResource {
   ///
   /// [name] - Required. The name of the occurrence in the form of
   /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
-  /// Value must have pattern "^projects/[^/]+/occurrences/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/occurrences/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1102,7 +1102,7 @@ class ProjectsOccurrencesResource {
   ///
   /// [parent] - Required. The name of the project to get a vulnerability
   /// summary for in the form of `projects/[PROJECT_ID]`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The filter expression.
   ///
@@ -1163,7 +1163,7 @@ class ProjectsOccurrencesResource {
   ///
   /// [parent] - Required. The name of the project to list occurrences for in
   /// the form of `projects/[PROJECT_ID]`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The filter expression.
   ///
@@ -1240,7 +1240,7 @@ class ProjectsOccurrencesResource {
   ///
   /// [name] - Required. The name of the occurrence in the form of
   /// `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
-  /// Value must have pattern "^projects/[^/]+/occurrences/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/occurrences/\[^/\]+$`.
   ///
   /// [updateMask] - The fields to update.
   ///
@@ -1312,7 +1312,7 @@ class ProjectsOccurrencesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/occurrences/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/occurrences/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1379,7 +1379,7 @@ class ProjectsOccurrencesResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/occurrences/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/occurrences/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1445,7 +1445,7 @@ class ProjectsScanConfigsResource {
   ///
   /// [name] - Required. The name of the scan configuration in the form of
   /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
-  /// Value must have pattern "^projects/[^/]+/scanConfigs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/scanConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1498,7 +1498,7 @@ class ProjectsScanConfigsResource {
   ///
   /// [parent] - Required. The name of the project to list scan configurations
   /// for in the form of `projects/[PROJECT_ID]`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - Required. The filter expression.
   ///
@@ -1573,7 +1573,7 @@ class ProjectsScanConfigsResource {
   ///
   /// [name] - Required. The name of the scan configuration in the form of
   /// `projects/[PROJECT_ID]/scanConfigs/[SCAN_CONFIG_ID]`.
-  /// Value must have pattern "^projects/[^/]+/scanConfigs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/scanConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2784,8 +2784,8 @@ class Derived {
   Fingerprint fingerprint;
 
   /// This contains layer-specific metadata, if populated it has length
-  /// "distance" and is ordered with [distance] being the layer immediately
-  /// following the base image and [1] being the final layer.
+  /// "distance" and is ordered with \[distance\] being the layer immediately
+  /// following the base image and \[1\] being the final layer.
   core.List<Layer> layerInfo;
 
   Derived();
@@ -3328,9 +3328,9 @@ class Fingerprint {
   /// Required.
   core.List<core.String> v2Blob;
 
-  /// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom
-  /// := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob
-  /// is kept.
+  /// The name of the image's v2 blobs computed via: \[bottom\] := v2_blobbottom
+  /// := sha256(v2_blob\[N\] + " " + v2_name\[N+1\]) Only the name of the final
+  /// blob is kept.
   ///
   /// Output only.
   core.String v2Name;
@@ -4236,7 +4236,7 @@ class Installation {
 }
 
 class KnowledgeBase {
-  /// The KB name (generally of the form KB[0-9]+ i.e. KB123456).
+  /// The KB name (generally of the form KB\[0-9\]+ i.e. KB123456).
   core.String name;
 
   /// A link to the KB in the Windows update catalog -
@@ -4330,8 +4330,8 @@ class Link {
   /// This can also be empty if links are generated for operations that aren't
   /// directly mapped to a specific command. Each term in the command is an
   /// independent string in the list. An example of a command in the in-toto
-  /// metadata field is: "command": ["git", "clone",
-  /// "https://github.com/in-toto/demo-project.git"]
+  /// metadata field is: "command": \["git", "clone",
+  /// "https://github.com/in-toto/demo-project.git"\]
   core.List<core.String> command;
 
   /// This is a field that can be used to capture information about the
@@ -4348,8 +4348,8 @@ class Link {
   /// used for the operation performed.
   ///
   /// The key of the map is the path of the artifact and the structure contains
-  /// the recorded hash information. An example is: "materials": [ {
-  /// "resource_uri": "foo/bar", "hashes": { "sha256": "ebebf...", : } } ]
+  /// the recorded hash information. An example is: "materials": \[ {
+  /// "resource_uri": "foo/bar", "hashes": { "sha256": "ebebf...", : } } \]
   core.List<GrafeasV1beta1IntotoArtifact> materials;
 
   /// Products are the supply chain artifacts generated as a result of the step.
@@ -5179,14 +5179,14 @@ class PgpSignedAttestation {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

@@ -75,7 +75,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -233,7 +233,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -293,7 +293,7 @@ class ProjectsLocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -371,7 +371,7 @@ class SpeechResource {
   /// Returns either an `Operation.error` or an `Operation.response` which
   /// contains a `LongRunningRecognizeResponse` message. For more information on
   /// asynchronous speech recognition, see the
-  /// [how-to](https://cloud.google.com/speech-to-text/docs/async-recognize).
+  /// \[how-to\](https://cloud.google.com/speech-to-text/docs/async-recognize).
   ///
   /// [request] - The metadata request object.
   ///
@@ -872,7 +872,7 @@ class RecognitionConfig {
   core.String encoding;
 
   /// The language of the supplied audio as a
-  /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
+  /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
   ///
   /// Example: "en-US". See [Language
   /// Support](https://cloud.google.com/speech-to-text/docs/languages) for a

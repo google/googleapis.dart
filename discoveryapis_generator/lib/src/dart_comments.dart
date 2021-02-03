@@ -6,7 +6,14 @@ library discoveryapis_generator.dart_comments;
 
 import 'utils.dart';
 
-final _notEndOfSentence = RegExp(r'\.[a-zA-Z]\. ');
+const _markdownToEscape = {'[', ']', '`'};
+
+String markdownEscape(String input) {
+  for (var char in _markdownToEscape) {
+    input = input.replaceAll(char, '\\$char');
+  }
+  return input;
+}
 
 const _docPrefixes = {
   'Required',
@@ -17,6 +24,45 @@ const _docPrefixes = {
   'Unimplemented',
 };
 
+final _notEndOfSentence = RegExp(r'\.[a-zA-Z]\. ');
+final _validLinkRegexp = RegExp(
+  r"(\[[\w ,'\.]+\])" // the bit in brackets
+  r'[ ]?' // optional one space between, because discovery docs can be weird
+  r'(\(http[s]?://[^\)\s]+\))' // the bit in parens
+  ,
+);
+
+String bracketClean(String input) {
+  if (input == null || input.isEmpty) {
+    return input;
+  }
+
+  // Attempt to find weird, whitespace between the bracket and the link in
+  // link syntax and fix it.
+  input = input.replaceAll('] (http', '](http');
+
+  // Attempt to find code blocks within "ticks". This seemed a bit more
+  // straight forward that using regexp.
+  final splits = input.split('`');
+  if (splits.length > 1 && splits.length.isOdd) {
+    // every sections at an odd index is within ticks
+    // clean out the ones at even indexes.
+    for (var i = 0; i < splits.length; i += 2) {
+      splits[i] = _bracketClean(splits[i]);
+    }
+    return splits.join('`');
+  } else {
+    return _bracketClean(input);
+  }
+}
+
+/// Returns [input] with likely invalid markdown `[links]` removed.
+String _bracketClean(String input) => input.splitMapJoin(
+      _validLinkRegexp,
+      onMatch: (match) => '${match[1]}${match[2]}',
+      onNonMatch: markdownEscape,
+    );
+
 /// Represents a comment of a dart element (e.g. class, method, ...)
 class Comment {
   static final empty = Comment('');
@@ -25,7 +71,7 @@ class Comment {
   Comment(String raw)
       : rawComment = (raw != null && raw.isNotEmpty) ? raw.trimRight() : '';
 
-  factory Comment.header(String raw) {
+  factory Comment.header(String raw, bool clean) {
     if (raw == null) return Comment(raw);
 
     final prefixes = <String>{};
@@ -44,6 +90,10 @@ class Comment {
         }
       }
     } while (match != null);
+
+    if (clean) {
+      raw = bracketClean(raw);
+    }
 
     // Very annoying. Sometimes we have first sentences like
     //

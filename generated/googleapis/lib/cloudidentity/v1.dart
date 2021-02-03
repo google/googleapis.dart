@@ -100,7 +100,7 @@ class DevicesResource {
   /// in format: `devices/{device_id}`, where device_id is the unique ID
   /// assigned to the Device, and device_user_id is the unique ID assigned to
   /// the User.
-  /// Value must have pattern "^devices/[^/]+$".
+  /// Value must have pattern `^devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -222,7 +222,7 @@ class DevicesResource {
   /// name](https://cloud.google.com/apis/design/resource_names) of the Device
   /// in format: `devices/{device_id}`, where device_id is the unique ID
   /// assigned to the Device.
-  /// Value must have pattern "^devices/[^/]+$".
+  /// Value must have pattern `^devices/\[^/\]+$`.
   ///
   /// [customer] - Required. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the
@@ -287,7 +287,7 @@ class DevicesResource {
   /// name](https://cloud.google.com/apis/design/resource_names) of the Device
   /// in the format: `devices/{device_id}`, where device_id is the unique ID
   /// assigned to the Device.
-  /// Value must have pattern "^devices/[^/]+$".
+  /// Value must have pattern `^devices/\[^/\]+$`.
   ///
   /// [customer] - Required. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the Customer
@@ -464,7 +464,7 @@ class DevicesResource {
   /// in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where
   /// device_id is the unique ID assigned to the Device, and device_user_id is
   /// the unique ID assigned to the User.
-  /// Value must have pattern "^devices/[^/]+$".
+  /// Value must have pattern `^devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -534,7 +534,7 @@ class DevicesDeviceUsersResource {
   /// in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where
   /// device_id is the unique ID assigned to the Device, and device_user_id is
   /// the unique ID assigned to the User.
-  /// Value must have pattern "^devices/[^/]+/deviceUsers/[^/]+$".
+  /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -595,7 +595,7 @@ class DevicesDeviceUsersResource {
   /// in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where
   /// device_id is the unique ID assigned to the Device, and device_user_id is
   /// the unique ID assigned to the User.
-  /// Value must have pattern "^devices/[^/]+/deviceUsers/[^/]+$".
+  /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -659,7 +659,7 @@ class DevicesDeviceUsersResource {
   /// in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where
   /// device_id is the unique ID assigned to the Device, and device_user_id is
   /// the unique ID assigned to the User.
-  /// Value must have pattern "^devices/[^/]+/deviceUsers/[^/]+$".
+  /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -721,7 +721,7 @@ class DevicesDeviceUsersResource {
   /// in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where
   /// device_id is the unique ID assigned to the Device, and device_user_id is
   /// the unique ID assigned to the User.
-  /// Value must have pattern "^devices/[^/]+/deviceUsers/[^/]+$".
+  /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
   /// [customer] - Required. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the
@@ -787,7 +787,7 @@ class DevicesDeviceUsersResource {
   /// in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where
   /// device_id is the unique ID assigned to the Device, and device_user_id is
   /// the unique ID assigned to the User.
-  /// Value must have pattern "^devices/[^/]+/deviceUsers/[^/]+$".
+  /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
   /// [customer] - Required. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the
@@ -852,7 +852,7 @@ class DevicesDeviceUsersResource {
   /// [parent] - Required. To list all DeviceUsers, set this to "devices/-". To
   /// list all DeviceUsers owned by a device, set this to the resource name of
   /// the device. Format: devices/{device}
-  /// Value must have pattern "^devices/[^/]+$".
+  /// Value must have pattern `^devices/\[^/\]+$`.
   ///
   /// [customer] - Required. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the
@@ -961,10 +961,10 @@ class DevicesDeviceUsersResource {
   ///
   /// [parent] - Must be set to "devices/-/deviceUsers" to search across all
   /// DeviceUser belonging to the user.
-  /// Value must have pattern "^devices/[^/]+/deviceUsers$".
+  /// Value must have pattern `^devices/\[^/\]+/deviceUsers$`.
   ///
   /// [androidId] - Android Id returned by
-  /// [Settings.Secure#ANDROID_ID](https://developer.android.com/reference/android/provider/Settings.Secure.html#ANDROID_ID).
+  /// \[Settings.Secure#ANDROID_ID\](https://developer.android.com/reference/android/provider/Settings.Secure.html#ANDROID_ID).
   ///
   /// [pageSize] - The maximum number of DeviceUsers to return. If unspecified,
   /// at most 20 DeviceUsers will be returned. The maximum value is 20; values
@@ -1071,7 +1071,7 @@ class DevicesDeviceUsersResource {
   /// in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where
   /// device_id is the unique ID assigned to the Device, and device_user_id is
   /// the unique ID assigned to the User.
-  /// Value must have pattern "^devices/[^/]+/deviceUsers/[^/]+$".
+  /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1140,7 +1140,7 @@ class DevicesDeviceUsersClientStatesResource {
   /// the unique ID assigned to the User and partner_id identifies the partner
   /// storing the data.
   /// Value must have pattern
-  /// "^devices/[^/]+/deviceUsers/[^/]+/clientStates/[^/]+$".
+  /// `^devices/\[^/\]+/deviceUsers/\[^/\]+/clientStates/\[^/\]+$`.
   ///
   /// [customer] - Required. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the
@@ -1206,7 +1206,7 @@ class DevicesDeviceUsersClientStatesResource {
   /// "devices/-/deviceUsers/-". To list all ClientStates owned by a DeviceUser,
   /// set this to the resource name of the DeviceUser. Format:
   /// devices/{device}/deviceUsers/{deviceUser}
-  /// Value must have pattern "^devices/[^/]+/deviceUsers/[^/]+$".
+  /// Value must have pattern `^devices/\[^/\]+/deviceUsers/\[^/\]+$`.
   ///
   /// [customer] - Required. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the
@@ -1314,7 +1314,7 @@ class DevicesDeviceUsersClientStatesResource {
   /// letter 'C'. The customer ID to be used in this API is the string after the
   /// letter 'C' (not including 'C')
   /// Value must have pattern
-  /// "^devices/[^/]+/deviceUsers/[^/]+/clientStates/[^/]+$".
+  /// `^devices/\[^/\]+/deviceUsers/\[^/\]+/clientStates/\[^/\]+$`.
   ///
   /// [customer] - Required. [Resource
   /// name](https://cloud.google.com/apis/design/resource_names) of the
@@ -1463,7 +1463,7 @@ class GroupsResource {
   /// name](https://cloud.google.com/apis/design/resource_names) of the Group in
   /// the format: `groups/{group_id}`, where `group_id` is the unique ID
   /// assigned to the Group.
-  /// Value must have pattern "^groups/[^/]+$".
+  /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1517,7 +1517,7 @@ class GroupsResource {
   /// name](https://cloud.google.com/apis/design/resource_names) of the Group in
   /// the format: `groups/{group_id}`, where `group_id` is the unique ID
   /// assigned to the Group.
-  /// Value must have pattern "^groups/[^/]+$".
+  /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1575,7 +1575,7 @@ class GroupsResource {
   ///
   /// [parent] - Required. Customer ID to list all groups from.
   ///
-  /// [view] - Group resource view to be returned. Defaults to [View.BASIC]().
+  /// [view] - Group resource view to be returned. Defaults to \[View.BASIC\]().
   /// Possible string values are:
   /// - "VIEW_UNSPECIFIED" : Default. Should not be used.
   /// - "BASIC" : Server responses only include basic information.
@@ -1712,7 +1712,7 @@ class GroupsResource {
   /// name](https://cloud.google.com/apis/design/resource_names) of the Group in
   /// the format: `groups/{group_id}`, where group_id is the unique ID assigned
   /// to the Group. Must be left blank while creating a Group.
-  /// Value must have pattern "^groups/[^/]+$".
+  /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Editable fields: `display_name`, `description`
   ///
@@ -1783,7 +1783,7 @@ class GroupsResource {
   /// match ('==') is supported on parent, and CONTAINS match ('in') is
   /// supported on labels.
   ///
-  /// [view] - Group resource view to be returned. Defaults to [View.BASIC]().
+  /// [view] - Group resource view to be returned. Defaults to \[View.BASIC\]().
   /// Possible string values are:
   /// - "VIEW_UNSPECIFIED" : Default. Should not be used.
   /// - "BASIC" : Server responses only include basic information.
@@ -1862,7 +1862,7 @@ class GroupsMembershipsResource {
   /// name](https://cloud.google.com/apis/design/resource_names) of the Group to
   /// create Membership within. Format: `groups/{group_id}`, where `group_id` is
   /// the unique ID assigned to the Group.
-  /// Value must have pattern "^groups/[^/]+$".
+  /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1924,7 +1924,7 @@ class GroupsMembershipsResource {
   /// `groups/{group_id}/memberships/{member_id}`, where `group_id` is the
   /// unique ID assigned to the Group to which Membership belongs to, and
   /// member_id is the unique ID assigned to the member.
-  /// Value must have pattern "^groups/[^/]+/memberships/[^/]+$".
+  /// Value must have pattern `^groups/\[^/\]+/memberships/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1980,7 +1980,7 @@ class GroupsMembershipsResource {
   /// `groups/{group_id}/memberships/{member_id}`, where `group_id` is the
   /// unique id assigned to the Group to which Membership belongs to, and
   /// `member_id` is the unique ID assigned to the member.
-  /// Value must have pattern "^groups/[^/]+/memberships/[^/]+$".
+  /// Value must have pattern `^groups/\[^/\]+/memberships/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2035,7 +2035,7 @@ class GroupsMembershipsResource {
   /// name](https://cloud.google.com/apis/design/resource_names) of the Group to
   /// list Memberships within. Format: `groups/{group_id}`, where `group_id` is
   /// the unique ID assigned to the Group.
-  /// Value must have pattern "^groups/[^/]+$".
+  /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [pageSize] - The default page size is 200 (max 1000) for the BASIC view,
   /// and 50 (max 500) for the FULL view.
@@ -2118,7 +2118,7 @@ class GroupsMembershipsResource {
   /// name](https://cloud.google.com/apis/design/resource_names) of the Group to
   /// lookup Membership within. Format: `groups/{group_id}`, where `group_id` is
   /// the unique ID assigned to the Group.
-  /// Value must have pattern "^groups/[^/]+$".
+  /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [memberKey_id] - The ID of the entity within the given namespace. The ID
   /// must be unique within its namespace.
@@ -2194,7 +2194,7 @@ class GroupsMembershipsResource {
   /// name](https://cloud.google.com/apis/design/resource_names) of the
   /// `Membership` whose roles are to be modified. Must be of the form
   /// `groups/{group_id}/memberships/{membership_id}`.
-  /// Value must have pattern "^groups/[^/]+/memberships/[^/]+$".
+  /// Value must have pattern `^groups/\[^/\]+/memberships/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

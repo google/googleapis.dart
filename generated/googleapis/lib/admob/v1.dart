@@ -75,7 +75,7 @@ class AccountsResource {
   ///
   /// [name] - Resource name of the publisher account to retrieve. Example:
   /// accounts/pub-9876543210987654
-  /// Value must have pattern "^accounts/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -200,7 +200,7 @@ class AccountsMediationReportResource {
   ///
   /// [parent] - Resource name of the account to generate the report for.
   /// Example: accounts/pub-9876543210987654
-  /// Value must have pattern "^accounts/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -269,7 +269,7 @@ class AccountsNetworkReportResource {
   ///
   /// [parent] - Resource name of the account to generate the report for.
   /// Example: accounts/pub-9876543210987654
-  /// Value must have pattern "^accounts/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -444,13 +444,14 @@ class GenerateMediationReportRequest {
 /// response contains the report header, then a stream of row responses, and
 /// finally a footer as the last response message.
 ///
-/// For example: [{ "header": { "date_range": { "start_date": {"year": 2018,
+/// For example: \[{ "header": { "date_range": { "start_date": {"year": 2018,
 /// "month": 9, "day": 1}, "end_date": {"year": 2018, "month": 9, "day": 1} },
 /// "localization_settings": { "currency_code": "USD", "language_code": "en-US"
 /// } } }, { "row": { "dimension_values": { "DATE": {"value": "20180918"},
 /// "APP": { "value": "ca-app-pub-8123415297019784~1001342552", "display_label":
 /// "My app name!" } }, "metric_values": { "ESTIMATED_EARNINGS":
-/// {"decimal_value": "1324746"} } } }, { "footer": {"matching_row_count": 1} }]
+/// {"decimal_value": "1324746"} } } }, { "footer": {"matching_row_count": 1}
+/// }\]
 class GenerateMediationReportResponse {
   /// Additional information about the generated report, such as warnings about
   /// the data.
@@ -522,13 +523,13 @@ class GenerateNetworkReportRequest {
 /// contains the report header, then a stream of row responses, and finally a
 /// footer as the last response message.
 ///
-/// For example: [{ "header": { "dateRange": { "startDate": {"year": 2018,
+/// For example: \[{ "header": { "dateRange": { "startDate": {"year": 2018,
 /// "month": 9, "day": 1}, "endDate": {"year": 2018, "month": 9, "day": 1} },
 /// "localizationSettings": { "currencyCode": "USD", "languageCode": "en-US" } }
 /// }, { "row": { "dimensionValues": { "DATE": {"value": "20180918"}, "APP": {
 /// "value": "ca-app-pub-8123415297019784~1001342552", displayLabel: "My app
 /// name!" } }, "metricValues": { "ESTIMATED_EARNINGS": {"microsValue": 6500000}
-/// } } }, { "footer": {"matchingRowCount": 1} }]
+/// } } }, { "footer": {"matchingRowCount": 1} }\]
 class GenerateNetworkReportResponse {
   /// Additional information about the generated report, such as warnings about
   /// the data.
@@ -655,10 +656,10 @@ class LocalizationSettings {
 /// app for the 'US' and 'CN' countries can look like the following example: {
 /// "date_range": { "start_date": {"year": 2018, "month": 9, "day": 1},
 /// "end_date": {"year": 2018, "month": 9, "day": 30} }, "dimensions":
-/// ["AD_SOURCE", "APP", "COUNTRY"], "metrics": ["OBSERVED_ECPM"],
-/// "dimension_filters": [ { "dimension": "COUNTRY", "matches_any": {"values":
-/// [{"value": "US", "value": "CN"}]} } ], "sort_conditions": [
-/// {"dimension":"APP", order: "ASCENDING"} ], "localization_settings": {
+/// \["AD_SOURCE", "APP", "COUNTRY"\], "metrics": \["OBSERVED_ECPM"\],
+/// "dimension_filters": \[ { "dimension": "COUNTRY", "matches_any": {"values":
+/// \[{"value": "US", "value": "CN"}\]} } \], "sort_conditions": \[
+/// {"dimension":"APP", order: "ASCENDING"} \], "localization_settings": {
 /// "currency_code": "USD", "language_code": "en-US" } } For a better
 /// understanding, you can treat the preceding specification like the following
 /// pseudo SQL: SELECT AD_SOURCE, APP, COUNTRY, OBSERVED_ECPM FROM
@@ -944,12 +945,12 @@ class MediationReportSpecSortCondition {
 /// For example, the specification to get clicks and estimated earnings for only
 /// the 'US' and 'CN' countries can look like the following example: {
 /// 'date_range': { 'start_date': {'year': 2018, 'month': 9, 'day': 1},
-/// 'end_date': {'year': 2018, 'month': 9, 'day': 30} }, 'dimensions': ['DATE',
-/// 'APP', 'COUNTRY'], 'metrics': ['CLICKS', 'ESTIMATED_EARNINGS'],
-/// 'dimension_filters': [ { 'dimension': 'COUNTRY', 'matches_any': {'values':
-/// [{'value': 'US', 'value': 'CN'}]} } ], 'sort_conditions': [
+/// 'end_date': {'year': 2018, 'month': 9, 'day': 30} }, 'dimensions': \['DATE',
+/// 'APP', 'COUNTRY'\], 'metrics': \['CLICKS', 'ESTIMATED_EARNINGS'\],
+/// 'dimension_filters': \[ { 'dimension': 'COUNTRY', 'matches_any': {'values':
+/// \[{'value': 'US', 'value': 'CN'}\]} } \], 'sort_conditions': \[
 /// {'dimension':'APP', order: 'ASCENDING'}, {'metric':'CLICKS', order:
-/// 'DESCENDING'} ], 'localization_settings': { 'currency_code': 'USD',
+/// 'DESCENDING'} \], 'localization_settings': { 'currency_code': 'USD',
 /// 'language_code': 'en-US' } } For a better understanding, you can treat the
 /// preceding specification like the following pseudo SQL: SELECT DATE, APP,
 /// COUNTRY, CLICKS, ESTIMATED_EARNINGS FROM NETWORK_REPORT WHERE DATE >=

@@ -2918,7 +2918,7 @@ class OrgunitsResource {
   /// [customerId] - Immutable ID of the G Suite account
   ///
   /// [orgUnitPath] - Full path of the organizational unit or its ID
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2978,7 +2978,7 @@ class OrgunitsResource {
   /// [customerId] - Immutable ID of the G Suite account
   ///
   /// [orgUnitPath] - Full path of the organizational unit or its ID
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3167,7 +3167,7 @@ class OrgunitsResource {
   /// [customerId] - Immutable ID of the G Suite account
   ///
   /// [orgUnitPath] - Full path of the organizational unit or its ID
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3233,7 +3233,7 @@ class OrgunitsResource {
   /// [customerId] - Immutable ID of the G Suite account
   ///
   /// [orgUnitPath] - Full path of the organizational unit or its ID
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4000,7 +4000,7 @@ class ResourcesCalendarsResource {
   /// [orderBy] - Field(s) to sort results by in either ascending or descending
   /// order. Supported fields include resourceId, resourceName, capacity,
   /// buildingId, and floorName. If no order is specified, defaults to
-  /// ascending. Should be of the form "field [asc|desc], field [asc|desc],
+  /// ascending. Should be of the form "field \[asc|desc\], field \[asc|desc\],
   /// ...". For example buildingId, capacity desc would return results sorted
   /// first by buildingId in ascending order then by capacity in descending
   /// order.
@@ -7590,8 +7590,8 @@ class Building {
   /// The display names for all floors in this building.
   ///
   /// The floors are expected to be sorted in ascending order, from lowest floor
-  /// to highest floor. For example, ["B2", "B1", "L", "1", "2", "2M", "3",
-  /// "PH"] Must contain at least one entry.
+  /// to highest floor. For example, \["B2", "B1", "L", "1", "2", "2M", "3",
+  /// "PH"\] Must contain at least one entry.
   core.List<core.String> floorNames;
 
   /// Kind of resource this is.
@@ -8339,10 +8339,10 @@ class ChromeOsDeviceDeviceFiles {
 }
 
 class ChromeOsDeviceDiskVolumeReportsVolumeInfo {
-  /// Free disk space [in bytes]
+  /// Free disk space \[in bytes\]
   core.String storageFree;
 
-  /// Total disk space [in bytes]
+  /// Total disk space \[in bytes\]
   core.String storageTotal;
 
   /// Volume id
@@ -8681,7 +8681,7 @@ class ChromeOsDevice {
   /// Reports of amounts of available RAM memory (Read-only)
   core.List<ChromeOsDeviceSystemRamFreeReports> systemRamFreeReports;
 
-  /// Total RAM on the device [in bytes] (Read-only)
+  /// Total RAM on the device \[in bytes\] (Read-only)
   core.String systemRamTotal;
 
   /// Trusted Platform Module (TPM) (Read-only)

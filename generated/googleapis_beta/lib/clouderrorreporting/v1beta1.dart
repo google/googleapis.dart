@@ -81,7 +81,7 @@ class ProjectsResource {
   /// [Google Cloud Platform project
   /// ID](https://support.google.com/cloud/answer/6158840). Example:
   /// `projects/my-project-123`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -145,7 +145,7 @@ class ProjectsEventsResource {
   /// [Google Cloud Platform project
   /// ID](https://support.google.com/cloud/answer/6158840). Example:
   /// `projects/my-project-123`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [groupId] - Required. The group for which events shall be returned.
   ///
@@ -156,13 +156,13 @@ class ProjectsEventsResource {
   /// response.
   ///
   /// [serviceFilter_resourceType] - Optional. The exact value to match against
-  /// [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+  /// \[`ServiceContext.resource_type`\](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
   ///
   /// [serviceFilter_service] - Optional. The exact value to match against
-  /// [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+  /// \[`ServiceContext.service`\](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
   ///
   /// [serviceFilter_version] - Optional. The exact value to match against
-  /// [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+  /// \[`ServiceContext.version`\](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
   ///
   /// [timeRange_period] - Restricts the query to the specified time range.
   /// Possible string values are:
@@ -270,7 +270,7 @@ class ProjectsEventsResource {
   /// [Google Cloud Platform project
   /// ID](https://support.google.com/cloud/answer/6158840). Example: //
   /// `projects/my-project-123`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -338,7 +338,7 @@ class ProjectsGroupStatsResource {
   /// [Google Cloud Platform project
   /// ID](https://support.google.com/cloud/answer/6158840). Example:
   /// `projects/my-project-123`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [alignment] - Optional. The alignment of the timed counts to be returned.
   /// Default is `ALIGNMENT_EQUAL_AT_END`.
@@ -382,13 +382,13 @@ class ProjectsGroupStatsResource {
   /// identical query parameters as the first request.
   ///
   /// [serviceFilter_resourceType] - Optional. The exact value to match against
-  /// [`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
+  /// \[`ServiceContext.resource_type`\](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).
   ///
   /// [serviceFilter_service] - Optional. The exact value to match against
-  /// [`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
+  /// \[`ServiceContext.service`\](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).
   ///
   /// [serviceFilter_version] - Optional. The exact value to match against
-  /// [`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
+  /// \[`ServiceContext.version`\](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).
   ///
   /// [timeRange_period] - Restricts the query to the specified time range.
   /// Possible string values are:
@@ -510,10 +510,10 @@ class ProjectsGroupsResource {
   ///
   /// [groupName] - Required. The group resource name. Written as
   /// `projects/{projectID}/groups/{group_name}`. Call
-  /// [`groupStats.list`](https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.groupStats/list)
+  /// \[`groupStats.list`\](https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.groupStats/list)
   /// to return a list of groups belonging to this project. Example:
   /// `projects/my-project-123/groups/my-group`
-  /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -570,7 +570,7 @@ class ProjectsGroupsResource {
   ///
   /// [name] - The group resource name. Example:
   /// projects/my-project-123/groups/CNSgkpnppqKCUw
-  /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1178,20 +1178,20 @@ class ReportedErrorEvent {
   /// languages and formats. Supported languages are Java, Python, JavaScript,
   /// Ruby, C#, PHP, and Go. Supported stack trace formats are: * **Java**: Must
   /// be the return value of
-  /// [`Throwable.printStackTrace()`](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29).
+  /// \[`Throwable.printStackTrace()`\](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29).
   /// * **Python**: Must be the return value of
-  /// [`traceback.format_exc()`](https://docs.python.org/2/library/traceback.html#traceback.format_exc).
+  /// \[`traceback.format_exc()`\](https://docs.python.org/2/library/traceback.html#traceback.format_exc).
   /// * **JavaScript**: Must be the value of
-  /// [`error.stack`](https://github.com/v8/v8/wiki/Stack-Trace-API) as returned
-  /// by V8. * **Ruby**: Must contain frames returned by
-  /// [`Exception.backtrace`](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace).
+  /// \[`error.stack`\](https://github.com/v8/v8/wiki/Stack-Trace-API) as
+  /// returned by V8. * **Ruby**: Must contain frames returned by
+  /// \[`Exception.backtrace`\](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace).
   /// * **C#**: Must be the return value of
-  /// [`Exception.ToString()`](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx).
+  /// \[`Exception.ToString()`\](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx).
   /// * **PHP**: Must start with `PHP (Notice|Parse error|Fatal error|Warning)`
   /// and contain the result of
-  /// [`(string)$exception`](http://php.net/manual/en/exception.tostring.php). *
-  /// **Go**: Must be the return value of
-  /// [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack).
+  /// \[`(string)$exception`\](http://php.net/manual/en/exception.tostring.php).
+  /// * **Go**: Must be the return value of
+  /// \[`runtime.Stack()`\](https://golang.org/pkg/runtime/debug/#Stack).
   ///
   /// Required.
   core.String message;

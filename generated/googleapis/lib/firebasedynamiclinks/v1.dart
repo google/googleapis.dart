@@ -1268,7 +1268,7 @@ class GetIosPostInstallAttributionResponse {
   ///
   /// It is the same as the requested_link, if it is long. Parameters from this
   /// should not be used directly (ie: server can default
-  /// utm_[campaign|medium|source] to a value when requested_link lack them,
+  /// utm_\[campaign|medium|source\] to a value when requested_link lack them,
   /// server determine the best fallback_link when requested_link specifies >1
   /// fallback links).
   core.String resolvedLink;

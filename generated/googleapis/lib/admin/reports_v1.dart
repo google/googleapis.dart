@@ -97,7 +97,7 @@ class ActivitiesResource {
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)|(gcp)|(context_aware_access)|(data_studio)|(chrome)".
+  /// `(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)|(gcp)|(context_aware_access)|(data_studio)|(chrome)`.
   /// Possible string values are:
   /// - "application_name_undefined"
   /// - "access_transparency" : The G Suite Access Transparency activity reports
@@ -153,7 +153,7 @@ class ActivitiesResource {
   /// and IPv6 address versions.
   ///
   /// [customerId] - The unique ID of the customer to retrieve data for.
-  /// Value must have pattern "C.+".
+  /// Value must have pattern `C.+`.
   ///
   /// [endTime] - Sets the end of the range of time shown in the report. The
   /// date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The
@@ -170,7 +170,7 @@ class ActivitiesResource {
   /// the most recent 180 days if the startTime is more than 180 days in the
   /// past.
   /// Value must have pattern
-  /// "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
+  /// `(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|(\[-+\])(\d\d):(\d\d))`.
   ///
   /// [eventName] - The name of the event being queried by the API. Each
   /// eventName is related to a specific G Suite service or feature which the
@@ -184,8 +184,8 @@ class ActivitiesResource {
   ///
   /// [filters] - The filters query string is a comma-separated list. The list
   /// is composed of event parameters that are manipulated by relational
-  /// operators. Event parameters are in the form parameter1 name[parameter1
-  /// value],parameter2 name[parameter2 value],... These event parameters are
+  /// operators. Event parameters are in the form parameter1 name\[parameter1
+  /// value\],parameter2 name\[parameter2 value\],... These event parameters are
   /// associated with a specific eventName. An empty report is returned if the
   /// filtered request's parameter does not belong to the eventName. For more
   /// information about eventName parameters, see the list of event names for
@@ -214,7 +214,7 @@ class ActivitiesResource {
   /// corresponding to the remaining valid request parameters. If no parameters
   /// are requested, all parameters are returned.
   /// Value must have pattern
-  /// "(.+[<,<=,==,>=,>,<>].+,)*(.+[<,<=,==,>=,>,<>].+)".
+  /// `(.+\[<,<=,==,>=,>,<>\].+,)*(.+\[<,<=,==,>=,>,<>\].+)`.
   ///
   /// [maxResults] - Determines how many activity records are shown on each
   /// response page. For example, if the request sets maxResults=1 and the
@@ -226,7 +226,7 @@ class ActivitiesResource {
   /// [orgUnitID] - ID of the organizational unit to report on. Activity records
   /// will be shown only for users who belong to the specified organizational
   /// unit. Data before Dec 17, 2018 doesn't appear in the filtered results.
-  /// Value must have pattern "(id:[a-z0-9]+)".
+  /// Value must have pattern `(id:\[a-z0-9\]+)`.
   ///
   /// [pageToken] - The token to specify next page. A report with multiple pages
   /// has a nextPageToken property in the response. In your follow-on request
@@ -239,7 +239,7 @@ class ActivitiesResource {
   /// startTime must be before the endTime (if specified) and the current time
   /// when the request is made, or the API returns an error.
   /// Value must have pattern
-  /// "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
+  /// `(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|(\[-+\])(\d\d):(\d\d))`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -344,7 +344,7 @@ class ActivitiesResource {
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// "(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)|(gcp)|(context_aware_access)|(data_studio)|(chrome)".
+  /// `(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)|(gcp)|(context_aware_access)|(data_studio)|(chrome)`.
   /// Possible string values are:
   /// - "application_name_unspecified"
   /// - "access_transparency" : The G Suite Access Transparency activity reports
@@ -400,7 +400,7 @@ class ActivitiesResource {
   /// and IPv6 address versions.
   ///
   /// [customerId] - The unique ID of the customer to retrieve data for.
-  /// Value must have pattern "C.+".
+  /// Value must have pattern `C.+`.
   ///
   /// [endTime] - Sets the end of the range of time shown in the report. The
   /// date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The
@@ -417,7 +417,7 @@ class ActivitiesResource {
   /// the most recent 180 days if the startTime is more than 180 days in the
   /// past.
   /// Value must have pattern
-  /// "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
+  /// `(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|(\[-+\])(\d\d):(\d\d))`.
   ///
   /// [eventName] - The name of the event being queried by the API. Each
   /// eventName is related to a specific G Suite service or feature which the
@@ -431,8 +431,8 @@ class ActivitiesResource {
   ///
   /// [filters] - The filters query string is a comma-separated list. The list
   /// is composed of event parameters that are manipulated by relational
-  /// operators. Event parameters are in the form parameter1 name[parameter1
-  /// value],parameter2 name[parameter2 value],... These event parameters are
+  /// operators. Event parameters are in the form parameter1 name\[parameter1
+  /// value\],parameter2 name\[parameter2 value\],... These event parameters are
   /// associated with a specific eventName. An empty report is returned if the
   /// filtered request's parameter does not belong to the eventName. For more
   /// information about eventName parameters, see the list of event names for
@@ -461,7 +461,7 @@ class ActivitiesResource {
   /// corresponding to the remaining valid request parameters. If no parameters
   /// are requested, all parameters are returned.
   /// Value must have pattern
-  /// "(.+[<,<=,==,>=,>,<>].+,)*(.+[<,<=,==,>=,>,<>].+)".
+  /// `(.+\[<,<=,==,>=,>,<>\].+,)*(.+\[<,<=,==,>=,>,<>\].+)`.
   ///
   /// [maxResults] - Determines how many activity records are shown on each
   /// response page. For example, if the request sets maxResults=1 and the
@@ -473,7 +473,7 @@ class ActivitiesResource {
   /// [orgUnitID] - ID of the organizational unit to report on. Activity records
   /// will be shown only for users who belong to the specified organizational
   /// unit. Data before Dec 17, 2018 doesn't appear in the filtered results.
-  /// Value must have pattern "(id:[a-z0-9]+)".
+  /// Value must have pattern `(id:\[a-z0-9\]+)`.
   ///
   /// [pageToken] - The token to specify next page. A report with multiple pages
   /// has a nextPageToken property in the response. In your follow-on request
@@ -486,7 +486,7 @@ class ActivitiesResource {
   /// startTime must be before the endTime (if specified) and the current time
   /// when the request is made, or the API returns an error.
   /// Value must have pattern
-  /// "(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|([-+])(\d\d):(\d\d))".
+  /// `(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|(\[-+\])(\d\d):(\d\d))`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -655,10 +655,10 @@ class CustomerUsageReportsResource {
   /// [date] - Represents the date the usage occurred. The timestamp is in the
   /// ISO 8601 format, yyyy-mm-dd. We recommend you use your account's time zone
   /// for this.
-  /// Value must have pattern "(\d){4}-(\d){2}-(\d){2}".
+  /// Value must have pattern `(\d){4}-(\d){2}-(\d){2}`.
   ///
   /// [customerId] - The unique ID of the customer to retrieve data for.
-  /// Value must have pattern "C.+".
+  /// Value must have pattern `C.+`.
   ///
   /// [pageToken] - Token to specify next page. A report with multiple pages has
   /// a nextPageToken property in the response. For your follow-on requests
@@ -681,7 +681,7 @@ class CustomerUsageReportsResource {
   /// does not belong to the application. If no parameters are requested, all
   /// parameters are returned.
   /// Value must have pattern
-  /// "(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)|(meet)):[^,]+,)*(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)|(meet)):[^,]+)".
+  /// `(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)|(meet)):\[^,\]+,)*(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)|(meet)):\[^,\]+)`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -757,7 +757,7 @@ class EntityUsageReportsResource {
   /// Request parameters:
   ///
   /// [entityType] - Represents the type of entity for the report.
-  /// Value must have pattern "(gplus_communities)".
+  /// Value must have pattern `(gplus_communities)`.
   /// Possible string values are:
   /// - "entity_type_undefined"
   /// - "gplus_communities" : Returns a report on Google+ communities.
@@ -773,19 +773,19 @@ class EntityUsageReportsResource {
   /// [date] - Represents the date the usage occurred. The timestamp is in the
   /// ISO 8601 format, yyyy-mm-dd. We recommend you use your account's time zone
   /// for this.
-  /// Value must have pattern "(\d){4}-(\d){2}-(\d){2}".
+  /// Value must have pattern `(\d){4}-(\d){2}-(\d){2}`.
   ///
   /// [customerId] - The unique ID of the customer to retrieve data for.
-  /// Value must have pattern "C.+".
+  /// Value must have pattern `C.+`.
   ///
   /// [filters] - The filters query string is a comma-separated list of an
   /// application's event parameters where the parameter's value is manipulated
   /// by a relational operator. The filters query string includes the name of
   /// the application whose usage is returned in the report. The application
   /// values for the Entities usage report include accounts, docs, and gmail.
-  /// Filters are in the form [application name]:parameter name[parameter
-  /// value],.... In this example, the <> 'not equal to' operator is URL-encoded
-  /// in the request's query string (%3C%3E): GET
+  /// Filters are in the form \[application name\]:parameter name\[parameter
+  /// value\],.... In this example, the <> 'not equal to' operator is
+  /// URL-encoded in the request's query string (%3C%3E): GET
   /// https://www.googleapis.com/admin/reports/v1/usage/gplus_communities/all/dates/2017-12-01
   /// ?parameters=gplus:community_name,gplus:num_total_members
   /// &filters=gplus:num_total_members>0 The relational operators include: - ==
@@ -795,7 +795,7 @@ class EntityUsageReportsResource {
   /// - 'greater than or equal to'. It is URL-encoded (%3E=). Filters can only
   /// be applied to numeric parameters.
   /// Value must have pattern
-  /// "(((gplus)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((gplus)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)".
+  /// `(((gplus)):\[a-z0-9_\]+\[<,<=,==,>=,>,!=\]\[^,\]+,)*(((gplus)):\[a-z0-9_\]+\[<,<=,==,>=,>,!=\]\[^,\]+)`.
   ///
   /// [maxResults] - Determines how many activity records are shown on each
   /// response page. For example, if the request sets maxResults=1 and the
@@ -812,16 +812,16 @@ class EntityUsageReportsResource {
   /// event parameters that refine a report's results. The parameter is
   /// associated with a specific application. The application values for the
   /// Entities usage report are only gplus. A parameter query string is in the
-  /// CSV form of [app_name1:param_name1], [app_name2:param_name2].... *Note:*
-  /// The API doesn't accept multiple values of a parameter. If a particular
-  /// parameter is supplied more than once in the API request, the API only
-  /// accepts the last value of that request parameter. In addition, if an
-  /// invalid request parameter is supplied in the API request, the API ignores
-  /// that request parameter and returns the response corresponding to the
-  /// remaining valid request parameters. An example of an invalid request
+  /// CSV form of \[app_name1:param_name1\], \[app_name2:param_name2\]....
+  /// *Note:* The API doesn't accept multiple values of a parameter. If a
+  /// particular parameter is supplied more than once in the API request, the
+  /// API only accepts the last value of that request parameter. In addition, if
+  /// an invalid request parameter is supplied in the API request, the API
+  /// ignores that request parameter and returns the response corresponding to
+  /// the remaining valid request parameters. An example of an invalid request
   /// parameter is one that does not belong to the application. If no parameters
   /// are requested, all parameters are returned.
-  /// Value must have pattern "(((gplus)):[^,]+,)*(((gplus)):[^,]+)".
+  /// Value must have pattern `(((gplus)):\[^,\]+,)*(((gplus)):\[^,\]+)`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -923,19 +923,19 @@ class UserUsageReportResource {
   /// [date] - Represents the date the usage occurred. The timestamp is in the
   /// ISO 8601 format, yyyy-mm-dd. We recommend you use your account's time zone
   /// for this.
-  /// Value must have pattern "(\d){4}-(\d){2}-(\d){2}".
+  /// Value must have pattern `(\d){4}-(\d){2}-(\d){2}`.
   ///
   /// [customerId] - The unique ID of the customer to retrieve data for.
-  /// Value must have pattern "C.+".
+  /// Value must have pattern `C.+`.
   ///
   /// [filters] - The filters query string is a comma-separated list of an
   /// application's event parameters where the parameter's value is manipulated
   /// by a relational operator. The filters query string includes the name of
   /// the application whose usage is returned in the report. The application
   /// values for the Users Usage Report include accounts, docs, and gmail.
-  /// Filters are in the form [application name]:parameter name[parameter
-  /// value],.... In this example, the <> 'not equal to' operator is URL-encoded
-  /// in the request's query string (%3C%3E): GET
+  /// Filters are in the form \[application name\]:parameter name\[parameter
+  /// value\],.... In this example, the <> 'not equal to' operator is
+  /// URL-encoded in the request's query string (%3C%3E): GET
   /// https://www.googleapis.com/admin/reports/v1/usage/users/all/dates/2013-03-03
   /// ?parameters=accounts:last_login_time
   /// &filters=accounts:last_login_time>2010-10-28T10:26:35.000Z The relational
@@ -945,7 +945,7 @@ class UserUsageReportResource {
   /// It is URL-encoded (%3E). - >= - 'greater than or equal to'. It is
   /// URL-encoded (%3E=).
   /// Value must have pattern
-  /// "(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)".
+  /// `(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[a-z0-9_\]+\[<,<=,==,>=,>,!=\]\[^,\]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[a-z0-9_\]+\[<,<=,==,>=,>,!=\]\[^,\]+)`.
   ///
   /// [maxResults] - Determines how many activity records are shown on each
   /// response page. For example, if the request sets maxResults=1 and the
@@ -957,7 +957,7 @@ class UserUsageReportResource {
   /// [orgUnitID] - ID of the organizational unit to report on. User activity
   /// will be shown only for users who belong to the specified organizational
   /// unit. Data before Dec 17, 2018 doesn't appear in the filtered results.
-  /// Value must have pattern "(id:[a-z0-9]+)".
+  /// Value must have pattern `(id:\[a-z0-9\]+)`.
   ///
   /// [pageToken] - Token to specify next page. A report with multiple pages has
   /// a nextPageToken property in the response. In your follow-on request
@@ -980,7 +980,7 @@ class UserUsageReportResource {
   /// does not belong to the application. If no parameters are requested, all
   /// parameters are returned.
   /// Value must have pattern
-  /// "(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+)".
+  /// `(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[^,\]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[^,\]+)`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1174,8 +1174,8 @@ class ActivityActor {
 /// Nested parameter value pairs associated with this parameter.
 ///
 /// Complex value type for a parameter are returned as a list of parameter
-/// values. For example, the address parameter may have a value as [{parameter:
-/// [{name: city, value: abc}]}]
+/// values. For example, the address parameter may have a value as \[{parameter:
+/// \[{name: city, value: abc}\]}\]
 class ActivityEventsParametersMessageValue {
   /// Parameter values
   core.List<NestedParameter> parameter;
@@ -1235,7 +1235,7 @@ class ActivityEventsParameters {
   ///
   /// Complex value type for a parameter are returned as a list of parameter
   /// values. For example, the address parameter may have a value as
-  /// [{parameter: [{name: city, value: abc}]}]
+  /// \[{parameter: \[{name: city, value: abc}\]}\]
   ActivityEventsParametersMessageValue messageValue;
 
   /// Integer values of the parameter.

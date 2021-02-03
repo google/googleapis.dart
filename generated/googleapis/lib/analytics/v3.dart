@@ -141,31 +141,31 @@ class DataGaResource {
   ///
   /// [ids] - Unique table ID for retrieving Analytics data. Table ID is of the
   /// form ga:XXXX, where XXXX is the Analytics view (profile) ID.
-  /// Value must have pattern "ga:[0-9]+".
+  /// Value must have pattern `ga:\[0-9\]+`.
   ///
   /// [startDate] - Start date for fetching Analytics data. Requests can specify
   /// a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today,
   /// yesterday, or 7daysAgo). The default value is 7daysAgo.
   /// Value must have pattern
-  /// "[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)".
+  /// `\[0-9\]{4}-\[0-9\]{2}-\[0-9\]{2}|today|yesterday|\[0-9\]+(daysAgo)`.
   ///
   /// [endDate] - End date for fetching Analytics data. Request can should
   /// specify an end date formatted as YYYY-MM-DD, or as a relative date (e.g.,
   /// today, yesterday, or 7daysAgo). The default value is yesterday.
   /// Value must have pattern
-  /// "[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)".
+  /// `\[0-9\]{4}-\[0-9\]{2}-\[0-9\]{2}|today|yesterday|\[0-9\]+(daysAgo)`.
   ///
   /// [metrics] - A comma-separated list of Analytics metrics. E.g.,
   /// 'ga:sessions,ga:pageviews'. At least one metric must be specified.
-  /// Value must have pattern "ga:.+".
+  /// Value must have pattern `ga:.+`.
   ///
   /// [dimensions] - A comma-separated list of Analytics dimensions. E.g.,
   /// 'ga:browser,ga:city'.
-  /// Value must have pattern "(ga:.+)?".
+  /// Value must have pattern `(ga:.+)?`.
   ///
   /// [filters] - A comma-separated list of dimension or metric filters to be
   /// applied to Analytics data.
-  /// Value must have pattern "ga:.+".
+  /// Value must have pattern `ga:.+`.
   ///
   /// [includeEmptyRows] - The response will include empty rows if this
   /// parameter is set to true, the default is true
@@ -190,7 +190,7 @@ class DataGaResource {
   ///
   /// [sort] - A comma-separated list of dimensions or metrics that determine
   /// the sort order for Analytics data.
-  /// Value must have pattern "(-)?ga:.+".
+  /// Value must have pattern `(-)?ga:.+`.
   ///
   /// [startIndex] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
@@ -303,32 +303,32 @@ class DataMcfResource {
   ///
   /// [ids] - Unique table ID for retrieving Analytics data. Table ID is of the
   /// form ga:XXXX, where XXXX is the Analytics view (profile) ID.
-  /// Value must have pattern "ga:[0-9]+".
+  /// Value must have pattern `ga:\[0-9\]+`.
   ///
   /// [startDate] - Start date for fetching Analytics data. Requests can specify
   /// a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today,
   /// yesterday, or 7daysAgo). The default value is 7daysAgo.
   /// Value must have pattern
-  /// "[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)".
+  /// `\[0-9\]{4}-\[0-9\]{2}-\[0-9\]{2}|today|yesterday|\[0-9\]+(daysAgo)`.
   ///
   /// [endDate] - End date for fetching Analytics data. Requests can specify a
   /// start date formatted as YYYY-MM-DD, or as a relative date (e.g., today,
   /// yesterday, or 7daysAgo). The default value is 7daysAgo.
   /// Value must have pattern
-  /// "[0-9]{4}-[0-9]{2}-[0-9]{2}|today|yesterday|[0-9]+(daysAgo)".
+  /// `\[0-9\]{4}-\[0-9\]{2}-\[0-9\]{2}|today|yesterday|\[0-9\]+(daysAgo)`.
   ///
   /// [metrics] - A comma-separated list of Multi-Channel Funnels metrics. E.g.,
   /// 'mcf:totalConversions,mcf:totalConversionValue'. At least one metric must
   /// be specified.
-  /// Value must have pattern "mcf:.+".
+  /// Value must have pattern `mcf:.+`.
   ///
   /// [dimensions] - A comma-separated list of Multi-Channel Funnels dimensions.
   /// E.g., 'mcf:source,mcf:medium'.
-  /// Value must have pattern "(mcf:.+)?".
+  /// Value must have pattern `(mcf:.+)?`.
   ///
   /// [filters] - A comma-separated list of dimension or metric filters to be
   /// applied to the Analytics data.
-  /// Value must have pattern "mcf:.+".
+  /// Value must have pattern `mcf:.+`.
   ///
   /// [maxResults] - The maximum number of entries to include in this feed.
   ///
@@ -342,7 +342,7 @@ class DataMcfResource {
   ///
   /// [sort] - A comma-separated list of dimensions or metrics that determine
   /// the sort order for the Analytics data.
-  /// Value must have pattern "(-)?mcf:.+".
+  /// Value must have pattern `(-)?mcf:.+`.
   ///
   /// [startIndex] - An index of the first entity to retrieve. Use this
   /// parameter as a pagination mechanism along with the max-results parameter.
@@ -443,25 +443,25 @@ class DataRealtimeResource {
   ///
   /// [ids] - Unique table ID for retrieving real time data. Table ID is of the
   /// form ga:XXXX, where XXXX is the Analytics view (profile) ID.
-  /// Value must have pattern "ga:[0-9]+".
+  /// Value must have pattern `ga:\[0-9\]+`.
   ///
   /// [metrics] - A comma-separated list of real time metrics. E.g.,
   /// 'rt:activeUsers'. At least one metric must be specified.
-  /// Value must have pattern "(ga:.+)|(rt:.+)".
+  /// Value must have pattern `(ga:.+)|(rt:.+)`.
   ///
   /// [dimensions] - A comma-separated list of real time dimensions. E.g.,
   /// 'rt:medium,rt:city'.
-  /// Value must have pattern "(ga:.+)|(rt:.+)".
+  /// Value must have pattern `(ga:.+)|(rt:.+)`.
   ///
   /// [filters] - A comma-separated list of dimension or metric filters to be
   /// applied to real time data.
-  /// Value must have pattern "(ga:.+)|(rt:.+)".
+  /// Value must have pattern `(ga:.+)|(rt:.+)`.
   ///
   /// [maxResults] - The maximum number of entries to include in this feed.
   ///
   /// [sort] - A comma-separated list of dimensions or metrics that determine
   /// the sort order for real time data.
-  /// Value must have pattern "(-)?((ga:.+)|(rt:.+))".
+  /// Value must have pattern `(-)?((ga:.+)|(rt:.+))`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1034,10 +1034,10 @@ class ManagementCustomDataSourcesResource {
   /// Request parameters:
   ///
   /// [accountId] - Account Id for the custom data sources to retrieve.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [webPropertyId] - Web property Id for the custom data sources to retrieve.
-  /// Value must have pattern "UA-(\d+)-(\d+)".
+  /// Value must have pattern `UA-(\d+)-(\d+)`.
   ///
   /// [maxResults] - The maximum number of custom data sources to include in
   /// this response.
@@ -2121,13 +2121,13 @@ class ManagementExperimentsResource {
   /// Request parameters:
   ///
   /// [accountId] - Account ID to retrieve experiments for.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [webPropertyId] - Web property ID to retrieve experiments for.
-  /// Value must have pattern "UA-(\d+)-(\d+)".
+  /// Value must have pattern `UA-(\d+)-(\d+)`.
   ///
   /// [profileId] - View (Profile) ID to retrieve experiments for.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [maxResults] - The maximum number of experiments to include in this
   /// response.
@@ -2555,7 +2555,7 @@ class ManagementFiltersResource {
   /// Request parameters:
   ///
   /// [accountId] - Account ID to retrieve filters for.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [maxResults] - The maximum number of filters to include in this response.
   ///
@@ -3166,17 +3166,17 @@ class ManagementProfileFilterLinksResource {
   /// Request parameters:
   ///
   /// [accountId] - Account ID to which the profile filter link belongs.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [webPropertyId] - Web property Id to which the profile filter link
   /// belongs.
-  /// Value must have pattern "UA-(\d+)-(\d+)".
+  /// Value must have pattern `UA-(\d+)-(\d+)`.
   ///
   /// [profileId] - Profile ID to which the filter link belongs.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [linkId] - ID of the profile filter link to delete.
-  /// Value must have pattern "\d+:\d+".
+  /// Value must have pattern `\d+:\d+`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3246,16 +3246,16 @@ class ManagementProfileFilterLinksResource {
   /// Request parameters:
   ///
   /// [accountId] - Account ID to retrieve profile filter link for.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [webPropertyId] - Web property Id to retrieve profile filter link for.
-  /// Value must have pattern "UA-(\d+)-(\d+)".
+  /// Value must have pattern `UA-(\d+)-(\d+)`.
   ///
   /// [profileId] - Profile ID to retrieve filter link for.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [linkId] - ID of the profile filter link.
-  /// Value must have pattern "\d+:\d+".
+  /// Value must have pattern `\d+:\d+`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3328,13 +3328,13 @@ class ManagementProfileFilterLinksResource {
   /// Request parameters:
   ///
   /// [accountId] - Account ID to create profile filter link for.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [webPropertyId] - Web property Id to create profile filter link for.
-  /// Value must have pattern "UA-(\d+)-(\d+)".
+  /// Value must have pattern `UA-(\d+)-(\d+)`.
   ///
   /// [profileId] - Profile ID to create filter link for.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3404,7 +3404,7 @@ class ManagementProfileFilterLinksResource {
   /// Request parameters:
   ///
   /// [accountId] - Account ID to retrieve profile filter links for.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [webPropertyId] - Web property Id for profile filter links for. Can either
   /// be a specific web property ID or '~all', which refers to all the web
@@ -3496,16 +3496,16 @@ class ManagementProfileFilterLinksResource {
   /// Request parameters:
   ///
   /// [accountId] - Account ID to which profile filter link belongs.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [webPropertyId] - Web property Id to which profile filter link belongs
-  /// Value must have pattern "UA-(\d+)-(\d+)".
+  /// Value must have pattern `UA-(\d+)-(\d+)`.
   ///
   /// [profileId] - Profile ID to which filter link belongs
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [linkId] - ID of the profile filter link to be updated.
-  /// Value must have pattern "\d+:\d+".
+  /// Value must have pattern `\d+:\d+`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3582,16 +3582,16 @@ class ManagementProfileFilterLinksResource {
   /// Request parameters:
   ///
   /// [accountId] - Account ID to which profile filter link belongs.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [webPropertyId] - Web property Id to which profile filter link belongs
-  /// Value must have pattern "UA-(\d+)-(\d+)".
+  /// Value must have pattern `UA-(\d+)-(\d+)`.
   ///
   /// [profileId] - Profile ID to which filter link belongs
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [linkId] - ID of the profile filter link to be updated.
-  /// Value must have pattern "\d+:\d+".
+  /// Value must have pattern `\d+:\d+`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4066,13 +4066,13 @@ class ManagementProfilesResource {
   /// Request parameters:
   ///
   /// [accountId] - Account ID to retrieve the view (profile) for.
-  /// Value must have pattern "[0-9]+".
+  /// Value must have pattern `\[0-9\]+`.
   ///
   /// [webPropertyId] - Web property ID to retrieve the view (profile) for.
-  /// Value must have pattern "UA-[0-9]+-[0-9]+".
+  /// Value must have pattern `UA-\[0-9\]+-\[0-9\]+`.
   ///
   /// [profileId] - View (Profile) ID to retrieve the view (profile) for.
-  /// Value must have pattern "[0-9]+".
+  /// Value must have pattern `\[0-9\]+`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5265,14 +5265,14 @@ class ManagementUploadsResource {
   /// Request parameters:
   ///
   /// [accountId] - Account Id for the uploads to be deleted.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [webPropertyId] - Web property Id for the uploads to be deleted.
-  /// Value must have pattern "UA-(\d+)-(\d+)".
+  /// Value must have pattern `UA-(\d+)-(\d+)`.
   ///
   /// [customDataSourceId] - Custom data source Id for the uploads to be
   /// deleted.
-  /// Value must have pattern ".{22}".
+  /// Value must have pattern `.{22}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5341,16 +5341,16 @@ class ManagementUploadsResource {
   /// Request parameters:
   ///
   /// [accountId] - Account Id for the upload to retrieve.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [webPropertyId] - Web property Id for the upload to retrieve.
-  /// Value must have pattern "UA-(\d+)-(\d+)".
+  /// Value must have pattern `UA-(\d+)-(\d+)`.
   ///
   /// [customDataSourceId] - Custom data source Id for upload to retrieve.
-  /// Value must have pattern ".{22}".
+  /// Value must have pattern `.{22}`.
   ///
   /// [uploadId] - Upload Id to retrieve.
-  /// Value must have pattern ".{22}".
+  /// Value must have pattern `.{22}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5420,13 +5420,13 @@ class ManagementUploadsResource {
   /// Request parameters:
   ///
   /// [accountId] - Account Id for the uploads to retrieve.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [webPropertyId] - Web property Id for the uploads to retrieve.
-  /// Value must have pattern "UA-(\d+)-(\d+)".
+  /// Value must have pattern `UA-(\d+)-(\d+)`.
   ///
   /// [customDataSourceId] - Custom data source Id for uploads to retrieve.
-  /// Value must have pattern ".{22}".
+  /// Value must have pattern `.{22}`.
   ///
   /// [maxResults] - The maximum number of uploads to include in this response.
   ///
@@ -5504,10 +5504,10 @@ class ManagementUploadsResource {
   /// Request parameters:
   ///
   /// [accountId] - Account Id associated with the upload.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [webPropertyId] - Web property UA-string associated with the upload.
-  /// Value must have pattern "UA-\d+-\d+".
+  /// Value must have pattern `UA-\d+-\d+`.
   ///
   /// [customDataSourceId] - Custom data source Id to which the data being
   /// uploaded belongs.
@@ -5815,7 +5815,7 @@ class ManagementWebPropertyAdWordsLinksResource {
   /// Request parameters:
   ///
   /// [accountId] - ID of the account which the given web property belongs to.
-  /// Value must have pattern "\d+".
+  /// Value must have pattern `\d+`.
   ///
   /// [webPropertyId] - Web property ID to retrieve the Google Ads links for.
   ///
@@ -6051,10 +6051,10 @@ class ManagementWebpropertiesResource {
   /// Request parameters:
   ///
   /// [accountId] - Account ID to retrieve the web property for.
-  /// Value must have pattern "[0-9]+".
+  /// Value must have pattern `\[0-9\]+`.
   ///
   /// [webPropertyId] - ID to retrieve the web property for.
-  /// Value must have pattern "UA-[0-9]+-[0-9]+".
+  /// Value must have pattern `UA-\[0-9\]+-\[0-9\]+`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6686,7 +6686,7 @@ class MetadataColumnsResource {
   ///
   /// [reportType] - Report type. Allowed Values: 'ga'. Where 'ga' corresponds
   /// to the Core Reporting API
-  /// Value must have pattern "ga".
+  /// Value must have pattern `ga`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9222,7 +9222,7 @@ class Experiment {
   /// This field is read-only.
   core.String kind;
 
-  /// An integer number in [3, 90].
+  /// An integer number in \[3, 90\].
   ///
   /// Specifies the minimum length of the experiment. Can be changed for a
   /// running experiment. This field may not be changed for an experiments whose
@@ -9314,7 +9314,7 @@ class Experiment {
   /// field is required when creating an experiment.
   core.String status;
 
-  /// A floating-point number in (0, 1].
+  /// A floating-point number in (0, 1\].
   ///
   /// Specifies the fraction of the traffic that participates in the experiment.
   /// Can be changed for a running experiment. This field may not be changed for
@@ -12656,7 +12656,7 @@ class ProfileFilterLink {
   /// to the same profile.
   /// For readonly (i.e., list and get) operations, the rank always starts at 1.
   /// For write (i.e., create, update, or delete) operations, you may specify a
-  /// value between 0 and 255 inclusively, [0, 255].
+  /// value between 0 and 255 inclusively, \[0, 255\].
   ///
   /// In order to insert a link at the end of the list, either don't specify a
   /// rank or set a rank to a number greater than the largest rank in the list.

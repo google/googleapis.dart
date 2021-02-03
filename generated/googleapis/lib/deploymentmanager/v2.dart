@@ -92,10 +92,10 @@ class DeploymentsResource {
   ///
   /// [project] - The project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [deployment] - The name of the deployment for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -158,7 +158,7 @@ class DeploymentsResource {
   ///
   /// [project] - The project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [deployment] - The name of the deployment for this request.
   ///
@@ -227,10 +227,10 @@ class DeploymentsResource {
   ///
   /// [project] - The project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [deployment] - The name of the deployment for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -291,11 +291,11 @@ class DeploymentsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -357,7 +357,7 @@ class DeploymentsResource {
   ///
   /// [project] - The project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [createPolicy] - Sets the policy to use for creating new resources.
   /// Possible string values are:
@@ -435,7 +435,7 @@ class DeploymentsResource {
   ///
   /// [project] - The project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -552,10 +552,10 @@ class DeploymentsResource {
   ///
   /// [project] - The project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [deployment] - The name of the deployment for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [createPolicy] - Sets the policy to use for creating new resources.
   /// Possible string values are:
@@ -654,11 +654,11 @@ class DeploymentsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -726,10 +726,10 @@ class DeploymentsResource {
   ///
   /// [project] - The project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [deployment] - The name of the deployment for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -794,11 +794,11 @@ class DeploymentsResource {
   ///
   /// [project] - Project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [resource] - Name or id of the resource for this request.
   /// Value must have pattern
-  /// "[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}".
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -865,10 +865,10 @@ class DeploymentsResource {
   ///
   /// [project] - The project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [deployment] - The name of the deployment for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [createPolicy] - Sets the policy to use for creating new resources.
   /// Possible string values are:
@@ -969,13 +969,13 @@ class ManifestsResource {
   ///
   /// [project] - The project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [deployment] - The name of the deployment for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [manifest] - The name of the manifest for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1039,10 +1039,10 @@ class ManifestsResource {
   ///
   /// [project] - The project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [deployment] - The name of the deployment for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -1169,7 +1169,7 @@ class OperationsResource {
   ///
   /// [project] - The project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [operation] - The name of the operation for this request.
   ///
@@ -1229,7 +1229,7 @@ class OperationsResource {
   ///
   /// [project] - The project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -1349,10 +1349,10 @@ class ResourcesResource {
   ///
   /// [project] - The project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [deployment] - The name of the deployment for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [resource] - The name of the resource for this request.
   ///
@@ -1418,10 +1418,10 @@ class ResourcesResource {
   ///
   /// [project] - The project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [deployment] - The name of the deployment for this request.
-  /// Value must have pattern "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?".
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -1548,7 +1548,7 @@ class TypesResource {
   ///
   /// [project] - The project ID for this request.
   /// Value must have pattern
-  /// "(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))".
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
   ///
   /// [filter] - A filter expression that filters resources listed in the
   /// response. The expression must specify the field name, a comparison
@@ -1670,12 +1670,12 @@ class TypesResource {
 ///
 /// Example Policy with multiple AuditConfigs:
 ///
-/// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ {
-/// "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] },
-/// { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ] }, {
-/// "service": "sampleservice.googleapis.com" "audit_log_configs": [ {
+/// { "audit_configs": \[ { "service": "allServices" "audit_log_configs": \[ {
+/// "log_type": "DATA_READ", "exempted_members": \[ "user:jose@example.com" \]
+/// }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } \] }, {
+/// "service": "sampleservice.googleapis.com" "audit_log_configs": \[ {
 /// "log_type": "DATA_READ", }, { "log_type": "DATA_WRITE", "exempted_members":
-/// [ "user:aliya@example.com" ] } ] } ] }
+/// \[ "user:aliya@example.com" \] } \] } \] }
 ///
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
@@ -1730,8 +1730,8 @@ class AuditConfig {
 ///
 /// Example:
 ///
-/// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE", } ] }
+/// { "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE", } \] }
 ///
 /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
 /// jose@example.com from DATA_READ logging.
@@ -1739,7 +1739,7 @@ class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission.
   ///
-  /// Follows the same format of [Binding.members][].
+  /// Follows the same format of \[Binding.members\]\[\].
   core.List<core.String> exemptedMembers;
   core.bool ignoreChildExemptions;
 
@@ -2052,7 +2052,7 @@ class Deployment {
   /// Output only.
   core.String selfLink;
 
-  /// [Input Only] The parameters that define your deployment, including the
+  /// \[Input Only\] The parameters that define your deployment, including the
   /// deployment configuration and relevant templates.
   TargetConfiguration target;
 
@@ -2652,16 +2652,16 @@ class LogConfigCloudAuditOptions {
 /// Field names correspond to IAM request parameters and field values are their
 /// respective values.
 ///
-/// Supported field names: - "authority", which is "[token]" if IAMContext.token
-/// is present, otherwise the value of IAMContext.authority_selector if present,
-/// and otherwise a representation of IAMContext.principal; or -
-/// "iam_principal", a representation of IAMContext.principal even if a token or
-/// authority selector is present; or - "" (empty string), resulting in a
-/// counter with no fields.
+/// Supported field names: - "authority", which is "\[token\]" if
+/// IAMContext.token is present, otherwise the value of
+/// IAMContext.authority_selector if present, and otherwise a representation of
+/// IAMContext.principal; or - "iam_principal", a representation of
+/// IAMContext.principal even if a token or authority selector is present; or -
+/// "" (empty string), resulting in a counter with no fields.
 ///
 /// Examples: counter { metric: "/debug_access_count" field: "iam_principal" }
-/// ==> increment counter /iam/policy/debug_access_count {iam_principal=[value
-/// of IAMContext.principal]}
+/// ==> increment counter /iam/policy/debug_access_count {iam_principal=\[value
+/// of IAMContext.principal\]}
 class LogConfigCounterOptions {
   /// Custom fields.
   core.List<LogConfigCounterOptionsCustomField> customFields;
@@ -3034,7 +3034,7 @@ class OperationWarnings {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<OperationWarningsData> data;
@@ -3080,9 +3080,9 @@ class OperationWarnings {
 ///
 /// Google Compute Engine has three Operation resources:
 ///
-/// * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) *
-/// [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) *
-/// [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations)
+/// * \[Global\](/compute/docs/reference/rest/{$api_version}/globalOperations) *
+/// \[Regional\](/compute/docs/reference/rest/{$api_version}/regionOperations) *
+/// \[Zonal\](/compute/docs/reference/rest/{$api_version}/zoneOperations)
 ///
 /// You can use an operation resource to manage asynchronous API requests.
 ///
@@ -3459,14 +3459,14 @@ class OperationsListResponse {
 ///
 /// **JSON example:**
 ///
-/// { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin",
-/// "members": [ "user:mike@example.com", "group:admins@example.com",
+/// { "bindings": \[ { "role": "roles/resourcemanager.organizationAdmin",
+/// "members": \[ "user:mike@example.com", "group:admins@example.com",
 /// "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 }
 ///
 /// **YAML example:**
@@ -3663,7 +3663,7 @@ class ResourceWarnings {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ResourceWarningsData> data;
@@ -4010,7 +4010,7 @@ class ResourceUpdateWarnings {
   /// Metadata about this warning in key: value format.
   ///
   /// For example:
-  /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ResourceUpdateWarningsData> data;

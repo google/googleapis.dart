@@ -106,7 +106,7 @@ class ProjectsDatabasesResource {
   ///
   /// [name] - Required. Database to export. Should be of the form:
   /// `projects/{project_id}/databases/{database_id}`.
-  /// Value must have pattern "^projects/[^/]+/databases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -173,7 +173,7 @@ class ProjectsDatabasesResource {
   ///
   /// [name] - Required. Database to import into. Should be of the form:
   /// `projects/{project_id}/databases/{database_id}`.
-  /// Value must have pattern "^projects/[^/]+/databases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -252,7 +252,7 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
   /// [name] - Required. A name of the form
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$".
+  /// `^projects/\[^/\]+/databases/\[^/\]+/collectionGroups/\[^/\]+/fields/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -311,7 +311,7 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
   /// [parent] - Required. A parent name of the form
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$".
+  /// `^projects/\[^/\]+/databases/\[^/\]+/collectionGroups/\[^/\]+$`.
   ///
   /// [filter] - The filter to apply to list results. Currently,
   /// FirestoreAdmin.ListFields only supports listing fields that have been
@@ -417,7 +417,7 @@ class ProjectsDatabasesCollectionGroupsFieldsResource {
   /// / * ` Indexes defined on this `Field` will be applied to all fields which
   /// do not have their own `Field` index configuration.
   /// Value must have pattern
-  /// "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/fields/[^/]+$".
+  /// `^projects/\[^/\]+/databases/\[^/\]+/collectionGroups/\[^/\]+/fields/\[^/\]+$`.
   ///
   /// [updateMask] - A mask, relative to the field. If specified, only
   /// configuration specified by this field_mask will be updated in the field.
@@ -495,7 +495,7 @@ class ProjectsDatabasesCollectionGroupsIndexesResource {
   /// [parent] - Required. A parent name of the form
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$".
+  /// `^projects/\[^/\]+/databases/\[^/\]+/collectionGroups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -554,7 +554,7 @@ class ProjectsDatabasesCollectionGroupsIndexesResource {
   /// [name] - Required. A name of the form
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$".
+  /// `^projects/\[^/\]+/databases/\[^/\]+/collectionGroups/\[^/\]+/indexes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -607,7 +607,7 @@ class ProjectsDatabasesCollectionGroupsIndexesResource {
   /// [name] - Required. A name of the form
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+/indexes/[^/]+$".
+  /// `^projects/\[^/\]+/databases/\[^/\]+/collectionGroups/\[^/\]+/indexes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -661,7 +661,7 @@ class ProjectsDatabasesCollectionGroupsIndexesResource {
   /// [parent] - Required. A parent name of the form
   /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/databases/[^/]+/collectionGroups/[^/]+$".
+  /// `^projects/\[^/\]+/databases/\[^/\]+/collectionGroups/\[^/\]+$`.
   ///
   /// [filter] - The filter to apply to list results.
   ///
@@ -747,7 +747,7 @@ class ProjectsDatabasesDocumentsResource {
   ///
   /// [database] - Required. The database name. In the format:
   /// `projects/{project_id}/databases/{database_id}`.
-  /// Value must have pattern "^projects/[^/]+/databases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -814,7 +814,7 @@ class ProjectsDatabasesDocumentsResource {
   ///
   /// [database] - Required. The database name. In the format:
   /// `projects/{project_id}/databases/{database_id}`.
-  /// Value must have pattern "^projects/[^/]+/databases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -875,7 +875,7 @@ class ProjectsDatabasesDocumentsResource {
   ///
   /// [database] - Required. The database name. In the format:
   /// `projects/{project_id}/databases/{database_id}`.
-  /// Value must have pattern "^projects/[^/]+/databases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -936,7 +936,7 @@ class ProjectsDatabasesDocumentsResource {
   ///
   /// [database] - Required. The database name. In the format:
   /// `projects/{project_id}/databases/{database_id}`.
-  /// Value must have pattern "^projects/[^/]+/databases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -998,7 +998,8 @@ class ProjectsDatabasesDocumentsResource {
   /// [parent] - Required. The parent resource. For example:
   /// `projects/{project_id}/databases/{database_id}/documents` or
   /// `projects/{project_id}/databases/{database_id}/documents/chatrooms/{chatroom_id}`
-  /// Value must have pattern "^projects/[^/]+/databases/[^/]+/documents/.*$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/databases/\[^/\]+/documents/.*$`.
   ///
   /// [collectionId] - Required. The collection ID, relative to `parent`, to
   /// list. For example: `chatrooms`.
@@ -1080,7 +1081,7 @@ class ProjectsDatabasesDocumentsResource {
   /// format:
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$".
+  /// `^projects/\[^/\]+/databases/\[^/\]+/documents/\[^/\]+/.*$`.
   ///
   /// [currentDocument_exists] - When set to `true`, the target document must
   /// exist. When set to `false`, the target document must not exist.
@@ -1148,7 +1149,7 @@ class ProjectsDatabasesDocumentsResource {
   /// format:
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$".
+  /// `^projects/\[^/\]+/databases/\[^/\]+/documents/\[^/\]+/.*$`.
   ///
   /// [mask_fieldPaths] - The list of field paths in the mask. See
   /// Document.fields for a field path syntax reference.
@@ -1224,7 +1225,7 @@ class ProjectsDatabasesDocumentsResource {
   /// For example: `projects/my-project/databases/my-database/documents` or
   /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
   /// Value must have pattern
-  /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$".
+  /// `^projects/\[^/\]+/databases/\[^/\]+/documents/\[^/\]+/.*$`.
   ///
   /// [collectionId] - Required. The collection ID, relative to `parent`, to
   /// list. For example: `chatrooms` or `messages`.
@@ -1342,7 +1343,7 @@ class ProjectsDatabasesDocumentsResource {
   /// For example:
   /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
   /// Value must have pattern
-  /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$".
+  /// `^projects/\[^/\]+/databases/\[^/\]+/documents/\[^/\]+/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1403,7 +1404,7 @@ class ProjectsDatabasesDocumentsResource {
   ///
   /// [database] - Required. The database name. In the format:
   /// `projects/{project_id}/databases/{database_id}`.
-  /// Value must have pattern "^projects/[^/]+/databases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1471,7 +1472,7 @@ class ProjectsDatabasesDocumentsResource {
   /// resource names are not supported; only database resource names can be
   /// specified.
   /// Value must have pattern
-  /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$".
+  /// `^projects/\[^/\]+/databases/\[^/\]+/documents/\[^/\]+/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1533,7 +1534,7 @@ class ProjectsDatabasesDocumentsResource {
   /// [name] - The resource name of the document, for example
   /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$".
+  /// `^projects/\[^/\]+/databases/\[^/\]+/documents/\[^/\]+/.*$`.
   ///
   /// [currentDocument_exists] - When set to `true`, the target document must
   /// exist. When set to `false`, the target document must not exist.
@@ -1619,7 +1620,7 @@ class ProjectsDatabasesDocumentsResource {
   ///
   /// [database] - Required. The database name. In the format:
   /// `projects/{project_id}/databases/{database_id}`.
-  /// Value must have pattern "^projects/[^/]+/databases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1683,7 +1684,7 @@ class ProjectsDatabasesDocumentsResource {
   /// For example: `projects/my-project/databases/my-database/documents` or
   /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
   /// Value must have pattern
-  /// "^projects/[^/]+/databases/[^/]+/documents/[^/]+/.*$".
+  /// `^projects/\[^/\]+/databases/\[^/\]+/documents/\[^/\]+/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1744,7 +1745,7 @@ class ProjectsDatabasesDocumentsResource {
   /// [database] - Required. The database name. In the format:
   /// `projects/{project_id}/databases/{database_id}`. This is only required in
   /// the first message.
-  /// Value must have pattern "^projects/[^/]+/databases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1821,7 +1822,7 @@ class ProjectsDatabasesOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/databases/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/databases/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1881,7 +1882,7 @@ class ProjectsDatabasesOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/databases/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/databases/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1936,7 +1937,7 @@ class ProjectsDatabasesOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/databases/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/databases/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1997,7 +1998,7 @@ class ProjectsDatabasesOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/databases/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -2074,7 +2075,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2125,7 +2126,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -4439,12 +4440,12 @@ class GoogleLongrunningOperation {
 class LatLng {
   /// The latitude in degrees.
   ///
-  /// It must be in the range [-90.0, +90.0].
+  /// It must be in the range \[-90.0, +90.0\].
   core.double latitude;
 
   /// The longitude in degrees.
   ///
-  /// It must be in the range [-180.0, +180.0].
+  /// It must be in the range \[-180.0, +180.0\].
   core.double longitude;
 
   LatLng();

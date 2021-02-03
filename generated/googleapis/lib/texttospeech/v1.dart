@@ -127,7 +127,7 @@ class VoicesResource {
   /// Request parameters:
   ///
   /// [languageCode] - Optional. Recommended.
-  /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If
+  /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. If
   /// specified, the ListVoices call will only return voices that can be used to
   /// synthesize this language_code. E.g. when specifying "en-NZ", you will get
   /// supported "en-\*" voices; when specifying "no", you will get supported
@@ -211,9 +211,9 @@ class AudioConfig {
 
   /// Input only.
   ///
-  /// Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones
-  /// from the original pitch. -20 means decrease 20 semitones from the original
-  /// pitch.
+  /// Speaking pitch, in the range \[-20.0, 20.0\]. 20 means increase 20
+  /// semitones from the original pitch. -20 means decrease 20 semitones from
+  /// the original pitch.
   ///
   /// Optional.
   core.double pitch;
@@ -232,7 +232,7 @@ class AudioConfig {
 
   /// Input only.
   ///
-  /// Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native
+  /// Speaking rate/speed, in the range \[0.25, 4.0\]. 1.0 is the normal native
   /// speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is
   /// half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other
   /// values < 0.25 or > 4.0 will return an error.
@@ -243,7 +243,7 @@ class AudioConfig {
   /// Input only.
   ///
   /// Volume gain (in dB) of the normal native volume supported by the specific
-  /// voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0
+  /// voice, in the range \[-96.0, 16.0\]. If unset, or set to a value of 0.0
   /// (dB), will play at normal native signal amplitude. A value of -6.0 (dB)
   /// will play at approximately half the amplitude of the normal native signal
   /// amplitude. A value of +6.0 (dB) will play at approximately twice the
@@ -453,8 +453,8 @@ class SynthesizeSpeechResponse {
 /// Description of a voice supported by the TTS service.
 class Voice {
   /// The languages that this voice supports, expressed as
-  /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags (e.g.
-  /// "en-US", "es-419", "cmn-tw").
+  /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags
+  /// (e.g. "en-US", "es-419", "cmn-tw").
   core.List<core.String> languageCodes;
 
   /// The name of this voice.
@@ -517,8 +517,8 @@ class Voice {
 /// Description of which voice to use for a synthesis request.
 class VoiceSelectionParams {
   /// The language (and potentially also the region) of the voice expressed as a
-  /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag, e.g.
-  /// "en-US".
+  /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag,
+  /// e.g. "en-US".
   ///
   /// This should not include a script tag (e.g. use "cmn-cn" rather than
   /// "cmn-Hant-cn"), because the script will be inferred from the input

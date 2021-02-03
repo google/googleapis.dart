@@ -82,7 +82,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -133,7 +133,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -223,7 +223,7 @@ class ProjectsLocationsInstancesResource {
   /// [parent] - Required. The resource name of the instance location using the
   /// form: `projects/{project_id}/locations/{location_id}` where `location_id`
   /// refers to a GCP region.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [instanceId] - Required. The logical name of the Redis instance in the
   /// customer project with the following restrictions: * Must contain only
@@ -294,7 +294,7 @@ class ProjectsLocationsInstancesResource {
   /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
   /// where `location_id` refers to a GCP region.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -354,7 +354,7 @@ class ProjectsLocationsInstancesResource {
   /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
   /// where `location_id` refers to a GCP region.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -415,7 +415,7 @@ class ProjectsLocationsInstancesResource {
   /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
   /// where `location_id` refers to a GCP region.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -473,7 +473,7 @@ class ProjectsLocationsInstancesResource {
   /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
   /// where `location_id` refers to a GCP region.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -534,7 +534,7 @@ class ProjectsLocationsInstancesResource {
   /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
   /// where `location_id` refers to a GCP region.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -597,7 +597,7 @@ class ProjectsLocationsInstancesResource {
   /// [parent] - Required. The resource name of the instance location using the
   /// form: `projects/{project_id}/locations/{location_id}` where `location_id`
   /// refers to a GCP region.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return. If not specified, a
   /// default value of 1000 will be used by the service. Regardless of the
@@ -681,7 +681,7 @@ class ProjectsLocationsInstancesResource {
   /// instance should be provisioned in. Refer to location_id and
   /// alternative_location_id fields for more details.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Mask of fields to update. At least one path must
   /// be supplied in this field. The elements of the repeated paths field may
@@ -751,7 +751,7 @@ class ProjectsLocationsInstancesResource {
   /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
   /// where `location_id` refers to a GCP region.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -823,7 +823,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -879,7 +879,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -934,7 +934,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -994,7 +994,7 @@ class ProjectsLocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///

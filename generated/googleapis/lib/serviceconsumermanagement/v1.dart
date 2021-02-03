@@ -82,7 +82,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -141,7 +141,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -195,7 +195,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/[^/]+$".
+  /// Value must have pattern `^operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -255,7 +255,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^operations$".
+  /// Value must have pattern `^operations$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -336,7 +336,7 @@ class ServicesResource {
   /// [parent] - Required. Service for which search is performed.
   /// services/{service} {service} the name of a service, for example
   /// 'service.googleapis.com'.
-  /// Value must have pattern "^services/[^/]+$".
+  /// Value must have pattern `^services/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results returned by this
   /// request. Currently, the default maximum is set to 1000. If `page_size`
@@ -437,7 +437,8 @@ class ServicesTenancyUnitsResource {
   ///
   /// [parent] - Required. Name of the tenancy unit. Such as
   /// 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
-  /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+/tenancyUnits/[^/]+$".
+  /// Value must have pattern
+  /// `^services/\[^/\]+/\[^/\]+/\[^/\]+/tenancyUnits/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -512,7 +513,8 @@ class ServicesTenancyUnitsResource {
   ///
   /// [name] - Required. Name of the tenancy unit. Such as
   /// 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
-  /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+/tenancyUnits/[^/]+$".
+  /// Value must have pattern
+  /// `^services/\[^/\]+/\[^/\]+/\[^/\]+/tenancyUnits/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -582,7 +584,8 @@ class ServicesTenancyUnitsResource {
   /// [name] - Required. Name of the tenancy unit that the project will be
   /// attached to. Such as
   /// 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
-  /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+/tenancyUnits/[^/]+$".
+  /// Value must have pattern
+  /// `^services/\[^/\]+/\[^/\]+/\[^/\]+/tenancyUnits/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -651,7 +654,7 @@ class ServicesTenancyUnitsResource {
   /// id} is the consumer numeric id, such as project number: '123456'.
   /// {service} the name of a managed service, such as 'service.googleapis.com'.
   /// Enables service binding using the new tenancy unit.
-  /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+$".
+  /// Value must have pattern `^services/\[^/\]+/\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -712,7 +715,8 @@ class ServicesTenancyUnitsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the tenancy unit to be deleted.
-  /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+/tenancyUnits/[^/]+$".
+  /// Value must have pattern
+  /// `^services/\[^/\]+/\[^/\]+/\[^/\]+/tenancyUnits/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -775,7 +779,8 @@ class ServicesTenancyUnitsResource {
   ///
   /// [name] - Required. Name of the tenancy unit. Such as
   /// 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
-  /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+/tenancyUnits/[^/]+$".
+  /// Value must have pattern
+  /// `^services/\[^/\]+/\[^/\]+/\[^/\]+/tenancyUnits/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -842,7 +847,7 @@ class ServicesTenancyUnitsResource {
   /// example 'projects', or 'organizations'. {resource id} is the consumer
   /// numeric id, such as project number: '123456'. {service} the name of a
   /// service, such as 'service.googleapis.com'.
-  /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+$".
+  /// Value must have pattern `^services/\[^/\]+/\[^/\]+/\[^/\]+$`.
   ///
   /// [filter] - Optional. Filter expression over tenancy resources field.
   /// Optional.
@@ -929,7 +934,8 @@ class ServicesTenancyUnitsResource {
   ///
   /// [name] - Required. Name of the tenancy unit. Such as
   /// 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
-  /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+/tenancyUnits/[^/]+$".
+  /// Value must have pattern
+  /// `^services/\[^/\]+/\[^/\]+/\[^/\]+/tenancyUnits/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -994,7 +1000,8 @@ class ServicesTenancyUnitsResource {
   ///
   /// [name] - Required. Name of the tenancy unit. Such as
   /// 'services/service.googleapis.com/projects/12345/tenancyUnits/abcd'.
-  /// Value must have pattern "^services/[^/]+/[^/]+/[^/]+/tenancyUnits/[^/]+$".
+  /// Value must have pattern
+  /// `^services/\[^/\]+/\[^/\]+/\[^/\]+/tenancyUnits/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1287,17 +1294,17 @@ class AttachTenantProjectRequest {
   }
 }
 
-/// Configuration for an authentication provider, including support for [JSON
+/// Configuration for an authentication provider, including support for \[JSON
 /// Web Token
-/// (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
+/// (JWT)\](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
 class AuthProvider {
   /// The list of JWT
   /// [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).
   ///
   /// that are allowed to access. A JWT containing any of these audiences will
   /// be accepted. When this setting is absent, JWTs with audiences: -
-  /// "https://[service.name]/[google.protobuf.Api.name]" -
-  /// "https://[service.name]/" will be accepted. For example, if no audiences
+  /// "https://\[service.name\]/\[google.protobuf.Api.name\]" -
+  /// "https://\[service.name\]/" will be accepted. For example, if no audiences
   /// are in the setting, LibraryService API will accept JWTs with the following
   /// audiences: -
   /// https://library-example.googleapis.com/google.example.library.v1.LibraryService
@@ -1329,8 +1336,8 @@ class AuthProvider {
   ///
   /// See [OpenID
   /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
-  /// Optional if the key set document: - can be retrieved from [OpenID
-  /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html of
+  /// Optional if the key set document: - can be retrieved from \[OpenID
+  /// Discovery\](https://openid.net/specs/openid-connect-discovery-1_0.html of
   /// the issuer. - can be inferred from the email domain of the issuer (e.g. a
   /// Google service account). Example:
   /// https://www.googleapis.com/oauth2/v1/certs
@@ -1399,9 +1406,9 @@ class AuthProvider {
   }
 }
 
-/// User-defined authentication requirements, including support for [JSON Web
+/// User-defined authentication requirements, including support for \[JSON Web
 /// Token
-/// (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
+/// (JWT)\](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
 class AuthRequirement {
   /// NOTE: This will be deprecated soon, once AuthProvider.audiences is
   /// implemented and accepted in all the runtime components.
@@ -2179,9 +2186,9 @@ class DeleteTenantProjectRequest {
 /// where documentation provided by config rules overrides IDL provided. A
 /// number of constructs specific to the API platform are supported in
 /// documentation text. In order to reference a proto element, the following
-/// notation can be used: [fully.qualified.proto.name][] To override the display
-/// text used for the link, this can be used: [display
-/// text][fully.qualified.proto.name] Text can be excluded from doc using the
+/// notation can be used: \[fully.qualified.proto.name\]\[\] To override the
+/// display text used for the link, this can be used: \[display
+/// text\]\[fully.qualified.proto.name\] Text can be excluded from doc using the
 /// following notation: (-- internal comment --) A few directives are available
 /// in documentation. Note that directives must appear on a single line to be
 /// properly identified. The `include` directive includes a markdown file from
@@ -2799,22 +2806,22 @@ class Http {
 /// same name. 2. If HttpRule.body is "*", there is no URL query parameter, all
 /// fields are passed via URL path and HTTP request body. 3. If HttpRule.body is
 /// omitted, there is no HTTP request body, all fields are passed via URL path
-/// and URL query parameters. ### Path template syntax Template = "/" Segments [
-/// Verb ] ; Segments = Segment { "/" Segment } ; Segment = "*" | "**" | LITERAL
-/// | Variable ; Variable = "{" FieldPath [ "=" Segments ] "}" ; FieldPath =
-/// IDENT { "." IDENT } ; Verb = ":" LITERAL ; The syntax `*` matches a single
-/// URL path segment. The syntax `**` matches zero or more URL path segments,
-/// which must be the last part of the URL path except the `Verb`. The syntax
-/// `Variable` matches part of the URL path as specified by its template. A
-/// variable template must not contain other variables. If a variable matches a
-/// single path segment, its template may be omitted, e.g. `{var}` is equivalent
-/// to `{var=*}`. The syntax `LITERAL` matches literal text in the URL path. If
-/// the `LITERAL` contains any reserved character, such characters should be
-/// percent-encoded before the matching. If a variable contains exactly one path
-/// segment, such as `"{var}"` or `"{var=*}"`, when such a variable is expanded
-/// into a URL path on the client side, all characters except `[-_.~0-9a-zA-Z]`
-/// are percent-encoded. The server side does the reverse decoding. Such
-/// variables show up in the [Discovery
+/// and URL query parameters. ### Path template syntax Template = "/" Segments
+/// \[ Verb \] ; Segments = Segment { "/" Segment } ; Segment = "*" | "**" |
+/// LITERAL | Variable ; Variable = "{" FieldPath \[ "=" Segments \] "}" ;
+/// FieldPath = IDENT { "." IDENT } ; Verb = ":" LITERAL ; The syntax `*`
+/// matches a single URL path segment. The syntax `**` matches zero or more URL
+/// path segments, which must be the last part of the URL path except the
+/// `Verb`. The syntax `Variable` matches part of the URL path as specified by
+/// its template. A variable template must not contain other variables. If a
+/// variable matches a single path segment, its template may be omitted, e.g.
+/// `{var}` is equivalent to `{var=*}`. The syntax `LITERAL` matches literal
+/// text in the URL path. If the `LITERAL` contains any reserved character, such
+/// characters should be percent-encoded before the matching. If a variable
+/// contains exactly one path segment, such as `"{var}"` or `"{var=*}"`, when
+/// such a variable is expanded into a URL path on the client side, all
+/// characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The server side
+/// does the reverse decoding. Such variables show up in the [Discovery
 /// Document](https://developers.google.com/discovery/v1/reference/apis) as
 /// `{var}`. If a variable contains multiple path segments, such as `"{var=foo /
 /// * }"` or `"{var=**}"`, when such a variable is expanded into a URL path on
@@ -3189,8 +3196,9 @@ class LogDescriptor {
   /// The name of the log.
   ///
   /// It must be less than 512 characters long and can include the following
-  /// characters: upper- and lower-case alphanumeric characters [A-Za-z0-9], and
-  /// punctuation characters including slash, underscore, hyphen, period [/_-.].
+  /// characters: upper- and lower-case alphanumeric characters \[A-Za-z0-9\],
+  /// and punctuation characters including slash, underscore, hyphen, period
+  /// \[/_-.\].
   core.String name;
 
   LogDescriptor();
@@ -3545,7 +3553,7 @@ class MetricDescriptor {
   /// underlying cumulative or delta value). * `.` multiplication or composition
   /// (as an infix operator). For examples, `GBy.d` or `k{watt}.h`. The grammar
   /// for a unit is as follows: Expression = Component { "." Component } { "/"
-  /// Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] |
+  /// Component } ; Component = ( \[ PREFIX \] UNIT | "%" ) \[ Annotation \] |
   /// Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: * `Annotation` is
   /// just a comment if it follows a `UNIT`. If the annotation is used alone,
   /// then the unit is equivalent to `1`. For examples, `{request}/s == 1/s`,
@@ -4789,9 +4797,9 @@ class Service {
 
   /// A list of all proto message types included in this API service.
   ///
-  /// It serves similar purpose as [google.api.Service.types], except that these
-  /// types are not needed by user-defined APIs. Therefore, they will not show
-  /// up in the generated discovery doc. This field should only be used to
+  /// It serves similar purpose as \[google.api.Service.types\], except that
+  /// these types are not needed by user-defined APIs. Therefore, they will not
+  /// show up in the generated discovery doc. This field should only be used to
   /// define system APIs in ESF.
   core.List<Type> systemTypes;
 
@@ -5736,8 +5744,8 @@ class Usage {
   /// The full resource name of a channel used for sending notifications to the
   /// service producer.
   ///
-  /// Google Service Management currently only supports [Google Cloud
-  /// Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To
+  /// Google Service Management currently only supports \[Google Cloud
+  /// Pub/Sub\](https://cloud.google.com/pubsub) as a notification channel. To
   /// use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud
   /// Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in
   /// https://cloud.google.com/pubsub/docs/overview.

@@ -575,8 +575,8 @@ class SpreadsheetsValuesResource {
   /// The input range is used to search for existing data and find a "table"
   /// within that range. Values will be appended to the next row of the table,
   /// starting with the first column of the table. See the
-  /// [guide](/sheets/api/guides/values#appending_values) and [sample
-  /// code](/sheets/api/samples/writing#append_values) for specific details of
+  /// \[guide\](/sheets/api/guides/values#appending_values) and \[sample
+  /// code\](/sheets/api/samples/writing#append_values) for specific details of
   /// how tables are detected and data is appended. The caller must specify the
   /// spreadsheet ID, range, and a valueInputOption. The `valueInputOption` only
   /// controls how the input data will be added to the sheet (column-wise or
@@ -606,7 +606,7 @@ class SpreadsheetsValuesResource {
   /// [responseDateTimeRenderOption] - Determines how dates, times, and
   /// durations in the response should be rendered. This is ignored if
   /// response_value_render_option is FORMATTED_VALUE. The default dateTime
-  /// render option is [DateTimeRenderOption.SERIAL_NUMBER].
+  /// render option is \[DateTimeRenderOption.SERIAL_NUMBER\].
   /// Possible string values are:
   /// - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
   /// be output as doubles in "serial number" format, as popularized by Lotus
@@ -864,7 +864,7 @@ class SpreadsheetsValuesResource {
   /// [dateTimeRenderOption] - How dates, times, and durations should be
   /// represented in the output. This is ignored if value_render_option is
   /// FORMATTED_VALUE. The default dateTime render option is
-  /// [DateTimeRenderOption.SERIAL_NUMBER].
+  /// \[DateTimeRenderOption.SERIAL_NUMBER\].
   /// Possible string values are:
   /// - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
   /// be output as doubles in "serial number" format, as popularized by Lotus
@@ -1239,7 +1239,7 @@ class SpreadsheetsValuesResource {
   /// [dateTimeRenderOption] - How dates, times, and durations should be
   /// represented in the output. This is ignored if value_render_option is
   /// FORMATTED_VALUE. The default dateTime render option is
-  /// [DateTimeRenderOption.SERIAL_NUMBER].
+  /// \[DateTimeRenderOption.SERIAL_NUMBER\].
   /// Possible string values are:
   /// - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
   /// be output as doubles in "serial number" format, as popularized by Lotus
@@ -1679,16 +1679,17 @@ class AddDataSourceResponse {
 ///
 /// If the requested range is a superset of the range of an existing group G,
 /// then the depth of G is incremented and this new group G' has the depth of
-/// that group. For example, a group [C:D, depth 1] + [B:E] results in groups
-/// [B:E, depth 1] and [C:D, depth 2]. If the requested range is a subset of the
-/// range of an existing group G, then the depth of the new group G' becomes one
-/// greater than the depth of G. For example, a group [B:E, depth 1] + [C:D]
-/// results in groups [B:E, depth 1] and [C:D, depth 2]. If the requested range
-/// starts before and ends within, or starts within and ends after, the range of
-/// an existing group G, then the range of the existing group G becomes the
-/// union of the ranges, and the new group G' has depth one greater than the
-/// depth of G and range as the intersection of the ranges. For example, a group
-/// [B:D, depth 1] + [C:E] results in groups [B:E, depth 1] and [C:D, depth 2].
+/// that group. For example, a group \[C:D, depth 1\] + \[B:E\] results in
+/// groups \[B:E, depth 1\] and \[C:D, depth 2\]. If the requested range is a
+/// subset of the range of an existing group G, then the depth of the new group
+/// G' becomes one greater than the depth of G. For example, a group \[B:E,
+/// depth 1\] + \[C:D\] results in groups \[B:E, depth 1\] and \[C:D, depth 2\].
+/// If the requested range starts before and ends within, or starts within and
+/// ends after, the range of an existing group G, then the range of the existing
+/// group G becomes the union of the ranges, and the new group G' has depth one
+/// greater than the depth of G and range as the intersection of the ranges. For
+/// example, a group \[B:D, depth 1\] + \[C:E\] results in groups \[B:E, depth
+/// 1\] and \[C:D, depth 2\].
 class AddDimensionGroupRequest {
   /// The range over which to create a group.
   DimensionRange range;
@@ -3128,7 +3129,7 @@ class BatchGetValuesByDataFilterRequest {
   /// How dates, times, and durations should be represented in the output.
   ///
   /// This is ignored if value_render_option is FORMATTED_VALUE. The default
-  /// dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+  /// dateTime render option is \[DateTimeRenderOption.SERIAL_NUMBER\].
   /// Possible string values are:
   /// - "SERIAL_NUMBER" : Instructs date, time, datetime, and duration fields to
   /// be output as doubles in "serial number" format, as popularized by Lotus
@@ -3362,7 +3363,8 @@ class BatchUpdateSpreadsheetResponse {
   /// The spreadsheet after updates were applied.
   ///
   /// This is only set if
-  /// [BatchUpdateSpreadsheetRequest.include_spreadsheet_in_response] is `true`.
+  /// \[BatchUpdateSpreadsheetRequest.include_spreadsheet_in_response\] is
+  /// `true`.
   Spreadsheet updatedSpreadsheet;
 
   BatchUpdateSpreadsheetResponse();
@@ -5570,29 +5572,29 @@ class ClearValuesResponse {
 /// (alpha != 255) { result.setAlpha( FloatValue .newBuilder()
 /// .setValue(((float) alpha) / denominator) .build()); } return
 /// resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static
-/// UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float
-/// green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
-/// alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
-/// nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red
-/// green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color)
-/// { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green
-/// blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc]
-/// init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue];
-/// if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; }
-/// [result autorelease]; return result; } // ... Example (JavaScript): // ...
-/// var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red ||
-/// 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue
-/// || 0.0; var red = Math.floor(redFrac * 255); var green =
-/// Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if
-/// (!('alpha' in rgb_color)) { return rgbToCssColor_(red, green, blue); } var
-/// alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green,
-/// blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-/// }; var rgbToCssColor_ = function(red, green, blue) { var rgbNumber = new
-/// Number((red << 16) | (green << 8) | blue); var hexString =
-/// rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
-/// resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) {
-/// resultBuilder.push('0'); } resultBuilder.push(hexString); return
-/// resultBuilder.join(''); }; // ...
+/// UIColor* fromProto(Color* protocolor) { float red = \[protocolor red\];
+/// float green = \[protocolor green\]; float blue = \[protocolor blue\];
+/// FloatValue* alpha_wrapper = \[protocolor alpha\]; float alpha = 1.0; if
+/// (alpha_wrapper != nil) { alpha = \[alpha_wrapper value\]; } return \[UIColor
+/// colorWithRed:red green:green blue:blue alpha:alpha\]; } static Color*
+/// toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (!\[color
+/// getRed:&red green:&green blue:&blue alpha:&alpha\]) { return nil; } Color*
+/// result = \[\[Color alloc\] init\]; \[result setRed:red\]; \[result
+/// setGreen:green\]; \[result setBlue:blue\]; if (alpha <= 0.9999) { \[result
+/// setAlpha:floatWrapperWithValue(alpha)\]; } \[result autorelease\]; return
+/// result; } // ... Example (JavaScript): // ... var protoToCssColor =
+/// function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac =
+/// rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red =
+/// Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue
+/// = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return
+/// rgbToCssColor_(red, green, blue); } var alphaFrac = rgb_color.alpha.value ||
+/// 0.0; var rgbParams = \[red, green, blue\].join(','); return \['rgba(',
+/// rgbParams, ',', alphaFrac, ')'\].join(''); }; var rgbToCssColor_ =
+/// function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green
+/// << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6
+/// - hexString.length; var resultBuilder = \['#'\]; for (var i = 0; i <
+/// missingZeros; i++) { resultBuilder.push('0'); }
+/// resultBuilder.push(hexString); return resultBuilder.join(''); }; // ...
 class Color {
   /// The fraction of this color that should be applied to the pixel.
   ///
@@ -5606,13 +5608,13 @@ class Color {
   /// explicitly given with a value of 1.0).
   core.double alpha;
 
-  /// The amount of blue in the color as a value in the interval [0, 1].
+  /// The amount of blue in the color as a value in the interval \[0, 1\].
   core.double blue;
 
-  /// The amount of green in the color as a value in the interval [0, 1].
+  /// The amount of green in the color as a value in the interval \[0, 1\].
   core.double green;
 
-  /// The amount of red in the color as a value in the interval [0, 1].
+  /// The amount of red in the color as a value in the interval \[0, 1\].
   core.double red;
 
   Color();
@@ -9017,7 +9019,7 @@ class GridProperties {
 /// A range on a sheet.
 ///
 /// All indexes are zero-based. Indexes are half open, i.e. the start index is
-/// inclusive and the end index is exclusive -- [start_index, end_index).
+/// inclusive and the end index is exclusive -- \[start_index, end_index).
 /// Missing indexes indicate the range is unbounded on that side. For example,
 /// if `"Sheet1"` is sheet ID 0, then: `Sheet1!A1:A1 == sheet_id: 0,
 /// start_row_index: 0, end_row_index: 1, start_column_index: 0,
@@ -9615,9 +9617,9 @@ class LineStyle {
 /// +-------+-------------------+ | AK | 0.7 | | AL | 4.8 | | AR | 2.9 | ...
 /// +-------+-------------------+ could be turned into a pivot table that
 /// aggregates population by time zone by providing a list of groups (for
-/// example, groupName = 'Central', items = ['AL', 'AR', 'IA', ...]) to a manual
-/// group rule. Note that a similar effect could be achieved by adding a time
-/// zone column to the source data and adjusting the pivot table.
+/// example, groupName = 'Central', items = \['AL', 'AR', 'IA', ...\]) to a
+/// manual group rule. Note that a similar effect could be achieved by adding a
+/// time zone column to the source data and adjusting the pivot table.
 /// +-----------+-------------------+ | Time Zone | SUM of Population |
 /// +-----------+-------------------+ | Central | 106.3 | | Eastern | 151.9 | |
 /// Mountain | 17.4 | ... +-----------+-------------------+
@@ -9884,8 +9886,8 @@ class NumberFormat {
   /// Pattern string used for formatting.
   ///
   /// If not set, a default pattern based on the user's locale will be used if
-  /// necessary for the given type. See the [Date and Number Formats
-  /// guide](/sheets/api/guides/formats) for more information about the
+  /// necessary for the given type. See the \[Date and Number Formats
+  /// guide\](/sheets/api/guides/formats) for more information about the
   /// supported patterns.
   core.String pattern;
 
@@ -14890,8 +14892,8 @@ class UpdateSheetPropertiesRequest {
 class UpdateSlicerSpecRequest {
   /// The fields that should be updated.
   ///
-  /// At least one field must be specified. The root `SlicerSpec` is implied and
-  /// should not be specified. A single "*"` can be used as short-hand for
+  /// At least one field must be specified. The root \`SlicerSpec\` is implied
+  /// and should not be specified. A single "*"\` can be used as short-hand for
   /// listing every field.
   core.String fields;
 

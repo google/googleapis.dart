@@ -255,9 +255,9 @@ class ProjectsLocationsEntryGroupsResource {
   /// all locations.
   ///
   /// Users should enable the Data Catalog API in the project identified by the
-  /// `parent` parameter (see [Data Catalog Resource Project]
-  /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
-  /// more information).
+  /// `parent` parameter (see [Data Catalog Resource
+  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// for more information).
   ///
   /// [request] - The metadata request object.
   ///
@@ -267,7 +267,7 @@ class ProjectsLocationsEntryGroupsResource {
   /// Example: * projects/{project_id}/locations/{location} Note that this
   /// EntryGroup and its child resources may not actually be stored in the
   /// location in this name.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [entryGroupId] - Required. The id of the entry group to create. The id
   /// must begin with a letter or underscore, contain only English letters,
@@ -332,16 +332,16 @@ class ProjectsLocationsEntryGroupsResource {
   ///
   /// Only entry groups that do not contain entries can be deleted. Users should
   /// enable the Data Catalog API in the project identified by the `name`
-  /// parameter (see [Data Catalog Resource Project]
-  /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
-  /// more information).
+  /// parameter (see [Data Catalog Resource
+  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// for more information).
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the entry group. For example,
   /// `projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
   ///
   /// [force] - Optional. If true, deletes all entries in the entry group.
   ///
@@ -400,7 +400,7 @@ class ProjectsLocationsEntryGroupsResource {
   /// [name] - Required. The name of the entry group. For example,
   /// `projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
   ///
   /// [readMask] - The fields to return. If not set or empty, all fields are
   /// returned.
@@ -474,7 +474,7 @@ class ProjectsLocationsEntryGroupsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -533,7 +533,7 @@ class ProjectsLocationsEntryGroupsResource {
   /// [parent] - Required. The name of the location that contains the entry
   /// groups, which can be provided in URL format. Example: *
   /// projects/{project_id}/locations/{location}
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return. Default is
   /// 10. Max limit is 1000. Throws an invalid argument for `page_size > 1000`.
@@ -599,9 +599,9 @@ class ProjectsLocationsEntryGroupsResource {
   /// Updates an EntryGroup.
   ///
   /// The user should enable the Data Catalog API in the project identified by
-  /// the `entry_group.name` parameter (see [Data Catalog Resource Project]
-  /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
-  /// more information).
+  /// the `entry_group.name` parameter (see [Data Catalog Resource
+  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// for more information).
   ///
   /// [request] - The metadata request object.
   ///
@@ -612,7 +612,7 @@ class ProjectsLocationsEntryGroupsResource {
   /// Note that this EntryGroup and its child resources may not actually be
   /// stored in the location in this name.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
   ///
   /// [updateMask] - The fields to update on the entry group. If absent or
   /// empty, all modifiable fields are updated.
@@ -689,7 +689,7 @@ class ProjectsLocationsEntryGroupsResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -758,7 +758,7 @@ class ProjectsLocationsEntryGroupsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -825,10 +825,10 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// Only entries of 'FILESET' type or user-specified type can be created.
   /// Users should enable the Data Catalog API in the project identified by the
-  /// `parent` parameter (see [Data Catalog Resource Project]
-  /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
-  /// more information). A maximum of 100,000 entries may be created per entry
-  /// group.
+  /// `parent` parameter (see [Data Catalog Resource
+  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// for more information). A maximum of 100,000 entries may be created per
+  /// entry group.
   ///
   /// [request] - The metadata request object.
   ///
@@ -840,7 +840,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// Note that this Entry and its child resources may not actually be stored in
   /// the location in this name.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
   ///
   /// [entryId] - Required. The id of the entry to create.
   ///
@@ -903,16 +903,16 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   ///
   /// Only entries created through CreateEntry method can be deleted. Users
   /// should enable the Data Catalog API in the project identified by the `name`
-  /// parameter (see [Data Catalog Resource Project]
-  /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
-  /// more information).
+  /// parameter (see [Data Catalog Resource
+  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// for more information).
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the entry. Example: *
   /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -965,7 +965,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// [name] - Required. The name of the entry. Example: *
   /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1032,7 +1032,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1092,7 +1092,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// entries, which can be provided in URL format. Example: *
   /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return. Default is 10. Max
   /// limit is 1000. Throws an invalid argument for `page_size > 1000`.
@@ -1167,9 +1167,9 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// Updates an existing entry.
   ///
   /// Users should enable the Data Catalog API in the project identified by the
-  /// `entry.name` parameter (see [Data Catalog Resource Project]
-  /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
-  /// more information).
+  /// `entry.name` parameter (see [Data Catalog Resource
+  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// for more information).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1181,7 +1181,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// Note that this Entry and its child resources may not actually be stored in
   /// the location in this name.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+$`.
   ///
   /// [updateMask] - The fields to update on the entry. If absent or empty, all
   /// modifiable fields are updated. The following fields are modifiable: * For
@@ -1262,7 +1262,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1340,7 +1340,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   /// Note that this Tag and its child resources may not actually be stored in
   /// the location in this name.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1399,7 +1399,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   /// [name] - Required. The name of the tag to delete. Example: *
   /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+/tags/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+/tags/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1454,7 +1454,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} *
   /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of tags to return. Default is 10. Max
   /// limit is 1000.
@@ -1527,7 +1527,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   /// where `tag_id` is a system-generated identifier. Note that this Tag may
   /// not actually be stored in the location in this name.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/entries/[^/]+/tags/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/entries/\[^/\]+/tags/\[^/\]+$`.
   ///
   /// [updateMask] - The fields to update on the Tag. If absent or empty, all
   /// modifiable fields are updated. Currently the only modifiable field is the
@@ -1611,7 +1611,7 @@ class ProjectsLocationsEntryGroupsTagsResource {
   /// Note that this Tag and its child resources may not actually be stored in
   /// the location in this name.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1670,7 +1670,7 @@ class ProjectsLocationsEntryGroupsTagsResource {
   /// [name] - Required. The name of the tag to delete. Example: *
   /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/tags/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/tags/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1725,7 +1725,7 @@ class ProjectsLocationsEntryGroupsTagsResource {
   /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} *
   /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of tags to return. Default is 10. Max
   /// limit is 1000.
@@ -1798,7 +1798,7 @@ class ProjectsLocationsEntryGroupsTagsResource {
   /// where `tag_id` is a system-generated identifier. Note that this Tag may
   /// not actually be stored in the location in this name.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/entryGroups/[^/]+/tags/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/entryGroups/\[^/\]+/tags/\[^/\]+$`.
   ///
   /// [updateMask] - The fields to update on the Tag. If absent or empty, all
   /// modifiable fields are updated. Currently the only modifiable field is the
@@ -1879,9 +1879,9 @@ class ProjectsLocationsTagTemplatesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project and the template location
-  /// [region](https://cloud.google.com/data-catalog/docs/concepts/regions.
+  /// \[region\](https://cloud.google.com/data-catalog/docs/concepts/regions.
   /// Example: * projects/{project_id}/locations/us-central1
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [tagTemplateId] - Required. The id of the tag template to create.
   ///
@@ -1943,16 +1943,16 @@ class ProjectsLocationsTagTemplatesResource {
   /// Deletes a tag template and all tags using the template.
   ///
   /// Users should enable the Data Catalog API in the project identified by the
-  /// `name` parameter (see [Data Catalog Resource Project]
-  /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
-  /// more information).
+  /// `name` parameter (see [Data Catalog Resource
+  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// for more information).
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the tag template to delete. Example: *
   /// projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tagTemplates/\[^/\]+$`.
   ///
   /// [force] - Required. Currently, this field must always be set to `true`.
   /// This confirms the deletion of any possible tags using this template.
@@ -2013,7 +2013,7 @@ class ProjectsLocationsTagTemplatesResource {
   /// [name] - Required. The name of the tag template. Example: *
   /// projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tagTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2080,7 +2080,7 @@ class ProjectsLocationsTagTemplatesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tagTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2138,9 +2138,9 @@ class ProjectsLocationsTagTemplatesResource {
   /// template fields are represented as separate resources and should be
   /// updated using their own create/update/delete methods. Users should enable
   /// the Data Catalog API in the project identified by the `tag_template.name`
-  /// parameter (see [Data Catalog Resource Project]
-  /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
-  /// more information).
+  /// parameter (see [Data Catalog Resource
+  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// for more information).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2151,7 +2151,7 @@ class ProjectsLocationsTagTemplatesResource {
   /// Note that this TagTemplate and its child resources may not actually be
   /// stored in the location in this name.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tagTemplates/\[^/\]+$`.
   ///
   /// [updateMask] - The field mask specifies the parts of the template to
   /// overwrite. Allowed fields: * `display_name` If absent or empty, all of the
@@ -2229,7 +2229,7 @@ class ProjectsLocationsTagTemplatesResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tagTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2298,7 +2298,7 @@ class ProjectsLocationsTagTemplatesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tagTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2377,7 +2377,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   /// Example: *
   /// projects/{project_id}/locations/us-central1/tagTemplates/{tag_template_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tagTemplates/\[^/\]+$`.
   ///
   /// [tagTemplateFieldId] - Required. The ID of the tag template field to
   /// create. Field ids can contain letters (both uppercase and lowercase),
@@ -2443,9 +2443,9 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   /// Deletes a field in a tag template and all uses of that field.
   ///
   /// Users should enable the Data Catalog API in the project identified by the
-  /// `name` parameter (see [Data Catalog Resource Project]
-  /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
-  /// more information).
+  /// `name` parameter (see [Data Catalog Resource
+  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// for more information).
   ///
   /// Request parameters:
   ///
@@ -2453,7 +2453,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   /// *
   /// projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+/fields/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tagTemplates/\[^/\]+/fields/\[^/\]+$`.
   ///
   /// [force] - Required. Currently, this field must always be set to `true`.
   /// This confirms the deletion of this field from any tags using this field.
@@ -2511,9 +2511,9 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   ///
   /// This method cannot be used to update the field type. Users should enable
   /// the Data Catalog API in the project identified by the `name` parameter
-  /// (see [Data Catalog Resource Project]
-  /// (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for
-  /// more information).
+  /// (see [Data Catalog Resource
+  /// Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project)
+  /// for more information).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2522,7 +2522,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   /// [name] - Required. The name of the tag template field. Example: *
   /// projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+/fields/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tagTemplates/\[^/\]+/fields/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. The field mask specifies the parts of the
   /// template to be updated. Allowed fields: * `display_name` *
@@ -2600,7 +2600,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
   /// [name] - Required. The name of the tag template. Example: *
   /// projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+/fields/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tagTemplates/\[^/\]+/fields/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2673,7 +2673,7 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResource {
   /// [name] - Required. The name of the enum field value. Example: *
   /// projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id}/fields/{tag_template_field_id}/enumValues/{enum_value_display_name}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/tagTemplates/[^/]+/fields/[^/]+/enumValues/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tagTemplates/\[^/\]+/fields/\[^/\]+/enumValues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2743,7 +2743,7 @@ class ProjectsLocationsTaxonomiesResource {
   ///
   /// [parent] - Required. Resource name of the project that the taxonomy will
   /// belong to.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2806,7 +2806,7 @@ class ProjectsLocationsTaxonomiesResource {
   /// [name] - Required. Resource name of the taxonomy to be deleted. All policy
   /// tags in this taxonomy will also be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2861,7 +2861,7 @@ class ProjectsLocationsTaxonomiesResource {
   ///
   /// [parent] - Required. Resource name of the project that taxonomies to be
   /// exported will share.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [serializedTaxonomies] - Export taxonomies as serialized taxonomies.
   ///
@@ -2928,7 +2928,7 @@ class ProjectsLocationsTaxonomiesResource {
   ///
   /// [name] - Required. Resource name of the requested taxonomy.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2985,7 +2985,7 @@ class ProjectsLocationsTaxonomiesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3049,7 +3049,7 @@ class ProjectsLocationsTaxonomiesResource {
   ///
   /// [parent] - Required. Resource name of project that the imported taxonomies
   /// will belong to.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3109,7 +3109,7 @@ class ProjectsLocationsTaxonomiesResource {
   ///
   /// [parent] - Required. Resource name of the project to list the taxonomies
   /// of.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return. Must be a value
   /// between 1 and 1000. If not set, defaults to 50.
@@ -3181,7 +3181,7 @@ class ProjectsLocationsTaxonomiesResource {
   /// [name] - Output only. Resource name of this taxonomy, whose format is:
   /// "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+$`.
   ///
   /// [updateMask] - The update mask applies to the resource. For the
   /// `FieldMask` definition, see
@@ -3251,7 +3251,7 @@ class ProjectsLocationsTaxonomiesResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3314,7 +3314,7 @@ class ProjectsLocationsTaxonomiesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3383,7 +3383,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   /// [parent] - Required. Resource name of the taxonomy that the policy tag
   /// will belong to.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3445,7 +3445,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   /// [name] - Required. Resource name of the policy tag to be deleted. All of
   /// its descendant policy tags will also be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+/policyTags/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+/policyTags/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3497,7 +3497,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   ///
   /// [name] - Required. Resource name of the requested policy tag.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+/policyTags/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+/policyTags/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3554,7 +3554,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+/policyTags/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+/policyTags/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3613,7 +3613,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   /// [parent] - Required. Resource name of the taxonomy to list the policy tags
   /// of.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return. Must be a value
   /// between 1 and 1000. If not set, defaults to 50.
@@ -3685,7 +3685,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   /// [name] - Output only. Resource name of this policy tag, whose format is:
   /// "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}".
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+/policyTags/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+/policyTags/\[^/\]+$`.
   ///
   /// [updateMask] - The update mask applies to the resource. Only display_name,
   /// description and parent_policy_tag can be updated and thus can be listed in
@@ -3758,7 +3758,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+/policyTags/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+/policyTags/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3821,7 +3821,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/taxonomies/[^/]+/policyTags/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/taxonomies/\[^/\]+/policyTags/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6223,14 +6223,14 @@ class GoogleCloudDatacatalogV1beta1ViewSpec {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

@@ -3911,10 +3911,10 @@ class CustomMetric {
 class DebugInstanceRequest {
   /// Public SSH key to add to the instance.
   ///
-  /// Examples: [USERNAME]:ssh-rsa [KEY_VALUE] [USERNAME] [USERNAME]:ssh-rsa
-  /// [KEY_VALUE] google-ssh
-  /// {"userName":"[USERNAME]","expireOn":"[EXPIRE_TIME]"}For more information,
-  /// see Adding and Removing SSH Keys
+  /// Examples: \[USERNAME\]:ssh-rsa \[KEY_VALUE\] \[USERNAME\]
+  /// \[USERNAME\]:ssh-rsa \[KEY_VALUE\] google-ssh
+  /// {"userName":"\[USERNAME\]","expireOn":"\[EXPIRE_TIME\]"}For more
+  /// information, see Adding and Removing SSH Keys
   /// (https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys).
   core.String sshKey;
 
@@ -6638,7 +6638,7 @@ class Status {
 /// Traffic splits define how traffic directed to the service is assigned to
 /// versions.
 class TrafficSplit {
-  /// Mapping from version IDs within the service to fractional (0.000, 1]
+  /// Mapping from version IDs within the service to fractional (0.000, 1\]
   /// allocations of traffic for that version.
   ///
   /// Each version can be specified only once, but some versions in the service

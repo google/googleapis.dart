@@ -133,7 +133,7 @@ class DomainResource {
   /// Request parameters:
   ///
   /// [domainName] - Full domain name to look up. Example: "example.com"
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

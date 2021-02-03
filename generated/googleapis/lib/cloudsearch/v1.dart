@@ -169,7 +169,7 @@ class DebugDatasourcesItemsResource {
   /// Request parameters:
   ///
   /// [name] - Item name, format: datasources/{source_id}/items/{item_id}
-  /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+/items/\[^/\]+$`.
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
   /// debugging, set this field. Otherwise, ignore this field.
@@ -241,7 +241,7 @@ class DebugDatasourcesItemsResource {
   /// Request parameters:
   ///
   /// [name] - Source name, format: datasources/{source_id}
-  /// Value must have pattern "^datasources/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -309,7 +309,7 @@ class DebugDatasourcesItemsUnmappedidsResource {
   ///
   /// [parent] - The name of the item, in the following format:
   /// datasources/{source_id}/items/{ID}
-  /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+/items/\[^/\]+$`.
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
   /// debugging, set this field. Otherwise, ignore this field.
@@ -408,7 +408,7 @@ class DebugIdentitysourcesItemsResource {
   ///
   /// [parent] - The name of the identity source, in the following format:
   /// identitysources/{source_id}}
-  /// Value must have pattern "^identitysources/[^/]+$".
+  /// Value must have pattern `^identitysources/\[^/\]+$`.
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
   /// debugging, set this field. Otherwise, ignore this field.
@@ -508,7 +508,7 @@ class DebugIdentitysourcesUnmappedidsResource {
   ///
   /// [parent] - The name of the identity source, in the following format:
   /// identitysources/{source_id}
-  /// Value must have pattern "^identitysources/[^/]+$".
+  /// Value must have pattern `^identitysources/\[^/\]+$`.
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
   /// debugging, set this field. Otherwise, ignore this field.
@@ -625,7 +625,7 @@ class IndexingDatasourcesResource {
   ///
   /// [name] - Name of the data source to delete Schema. Format:
   /// datasources/{source_id}
-  /// Value must have pattern "^datasources/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
   /// debugging, set this field. Otherwise, ignore this field.
@@ -690,7 +690,7 @@ class IndexingDatasourcesResource {
   ///
   /// [name] - Name of the data source to get Schema. Format:
   /// datasources/{source_id}
-  /// Value must have pattern "^datasources/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
   /// debugging, set this field. Otherwise, ignore this field.
@@ -759,7 +759,7 @@ class IndexingDatasourcesResource {
   ///
   /// [name] - Name of the data source to update Schema. Format:
   /// datasources/{source_id}
-  /// Value must have pattern "^datasources/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -827,7 +827,7 @@ class IndexingDatasourcesItemsResource {
   ///
   /// [name] - Required. Name of the item to delete. Format:
   /// datasources/{source_id}/items/{item_id}
-  /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+/items/\[^/\]+$`.
   ///
   /// [connectorName] - Name of connector making this call. Format:
   /// datasources/{source_id}/connectors/{ID}
@@ -925,7 +925,7 @@ class IndexingDatasourcesItemsResource {
   ///
   /// [name] - Name of the Data Source to delete items in a queue. Format:
   /// datasources/{source_id}
-  /// Value must have pattern "^datasources/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -986,7 +986,7 @@ class IndexingDatasourcesItemsResource {
   ///
   /// [name] - Name of the item to get info. Format:
   /// datasources/{source_id}/items/{item_id}
-  /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+/items/\[^/\]+$`.
   ///
   /// [connectorName] - Name of connector making this call. Format:
   /// datasources/{source_id}/connectors/{ID}
@@ -1062,7 +1062,7 @@ class IndexingDatasourcesItemsResource {
   ///
   /// [name] - Name of the Item. Format: datasources/{source_id}/items/{item_id}
   /// This is a required field. The maximum length is 1536 characters.
-  /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+/items/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1123,7 +1123,7 @@ class IndexingDatasourcesItemsResource {
   ///
   /// [name] - Name of the Data Source to list Items. Format:
   /// datasources/{source_id}
-  /// Value must have pattern "^datasources/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
   /// [brief] - When set to true, the indexing system only populates the
   /// following fields: name, version, queue. metadata.hash, metadata.title,
@@ -1234,7 +1234,7 @@ class IndexingDatasourcesItemsResource {
   ///
   /// [name] - Name of the Data Source to poll items. Format:
   /// datasources/{source_id}
-  /// Value must have pattern "^datasources/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1299,7 +1299,7 @@ class IndexingDatasourcesItemsResource {
   /// [name] - Name of the item to push into the indexing queue. Format:
   /// datasources/{source_id}/items/{ID} This is a required field. The maximum
   /// length is 1536 characters.
-  /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+/items/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1364,7 +1364,7 @@ class IndexingDatasourcesItemsResource {
   ///
   /// [name] - Name of the Data Source to unreserve all items. Format:
   /// datasources/{source_id}
-  /// Value must have pattern "^datasources/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1429,7 +1429,7 @@ class IndexingDatasourcesItemsResource {
   ///
   /// [name] - Name of the Item to start a resumable upload. Format:
   /// datasources/{source_id}/items/{item_id}. The maximum length is 1536 bytes.
-  /// Value must have pattern "^datasources/[^/]+/items/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+/items/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1498,7 +1498,7 @@ class MediaResource {
   /// Call media.upload to upload the content, as a streaming request, using the
   /// same resource name from the UploadItemRef from step 1. 1. Call
   /// indexing.datasources.items.index to index the item. Populate the
-  /// [ItemContent](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent)
+  /// \[ItemContent\](/cloud-search/docs/reference/rest/v1/indexing.datasources.items#ItemContent)
   /// with the UploadItemRef from step 1. For additional information, see
   /// [Create a content connector using the REST
   /// API](https://developers.google.com/cloud-search/docs/guides/content-connector#rest).
@@ -1510,7 +1510,7 @@ class MediaResource {
   ///
   /// [resourceName] - Name of the media that is being downloaded. See
   /// ReadRequest.resource_name.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1588,7 +1588,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1654,7 +1654,7 @@ class OperationsLroResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -1734,9 +1734,9 @@ class QueryResource {
   /// they can come from data that you have indexed from a third party.
   /// **Note:** This API requires a standard end user account to execute. A
   /// service account can't perform Query API requests directly; to use a
-  /// service account to perform queries, set up [G Suite domain-wide delegation
-  /// of
-  /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+  /// service account to perform queries, set up \[G Suite domain-wide
+  /// delegation of
+  /// authority\](https://developers.google.com/cloud-search/docs/guides/delegation/).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1791,9 +1791,9 @@ class QueryResource {
   ///
   /// **Note:** This API requires a standard end user account to execute. A
   /// service account can't perform Query API requests directly; to use a
-  /// service account to perform queries, set up [G Suite domain-wide delegation
-  /// of
-  /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+  /// service account to perform queries, set up \[G Suite domain-wide
+  /// delegation of
+  /// authority\](https://developers.google.com/cloud-search/docs/guides/delegation/).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1854,9 +1854,9 @@ class QuerySourcesResource {
   ///
   /// **Note:** This API requires a standard end user account to execute. A
   /// service account can't perform Query API requests directly; to use a
-  /// service account to perform queries, set up [G Suite domain-wide delegation
-  /// of
-  /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+  /// service account to perform queries, set up \[G Suite domain-wide
+  /// delegation of
+  /// authority\](https://developers.google.com/cloud-search/docs/guides/delegation/).
   ///
   /// Request parameters:
   ///
@@ -1881,7 +1881,7 @@ class QuerySourcesResource {
   ///
   /// [requestOptions_timeZone] - Current user's time zone id, such as
   /// "America/Los_Angeles" or "Australia/Sydney". These IDs are defined by
-  /// [Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org/)
+  /// \[Unicode Common Locale Data Repository (CLDR)\](http://cldr.unicode.org/)
   /// project, and currently available in the file
   /// [timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml).
   /// This field is used to correctly interpret date and time queries. If this
@@ -2031,7 +2031,7 @@ class SettingsDatasourcesResource {
   /// Request parameters:
   ///
   /// [name] - Name of the datasource. Format: datasources/{source_id}.
-  /// Value must have pattern "^datasources/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
   /// debugging, set this field. Otherwise, ignore this field.
@@ -2093,7 +2093,7 @@ class SettingsDatasourcesResource {
   /// Request parameters:
   ///
   /// [name] - Name of the datasource resource. Format: datasources/{source_id}.
-  /// Value must have pattern "^datasources/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
   /// debugging, set this field. Otherwise, ignore this field.
@@ -2228,7 +2228,7 @@ class SettingsDatasourcesResource {
   ///
   /// [name] - Name of the datasource resource. Format: datasources/{source_id}.
   /// The name is ignored when creating a datasource.
-  /// Value must have pattern "^datasources/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2345,7 +2345,7 @@ class SettingsSearchapplicationsResource {
   ///
   /// [name] - The name of the search application to be deleted. Format:
   /// applications/{application_id}.
-  /// Value must have pattern "^searchapplications/[^/]+$".
+  /// Value must have pattern `^searchapplications/\[^/\]+$`.
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
   /// debugging, set this field. Otherwise, ignore this field.
@@ -2408,7 +2408,7 @@ class SettingsSearchapplicationsResource {
   ///
   /// [name] - Name of the search application. Format:
   /// searchapplications/{application_id}.
-  /// Value must have pattern "^searchapplications/[^/]+$".
+  /// Value must have pattern `^searchapplications/\[^/\]+$`.
   ///
   /// [debugOptions_enableDebugging] - If you are asked by Google to help with
   /// debugging, set this field. Otherwise, ignore this field.
@@ -2544,7 +2544,7 @@ class SettingsSearchapplicationsResource {
   ///
   /// [name] - The name of the search application to be reset. Format:
   /// applications/{application_id}.
-  /// Value must have pattern "^searchapplications/[^/]+$".
+  /// Value must have pattern `^searchapplications/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2606,7 +2606,7 @@ class SettingsSearchapplicationsResource {
   ///
   /// [name] - Name of the Search Application. Format:
   /// searchapplications/{application_id}.
-  /// Value must have pattern "^searchapplications/[^/]+$".
+  /// Value must have pattern `^searchapplications/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3034,7 +3034,7 @@ class StatsIndexDatasourcesResource {
   ///
   /// [name] - The resource id of the data source to retrieve statistics for, in
   /// the following format: "datasources/{source_id}"
-  /// Value must have pattern "^datasources/[^/]+$".
+  /// Value must have pattern `^datasources/\[^/\]+$`.
   ///
   /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
@@ -3143,7 +3143,7 @@ class StatsQuerySearchapplicationsResource {
   ///
   /// [name] - The resource id of the search application query stats, in the
   /// following format: searchapplications/{application_id}
-  /// Value must have pattern "^searchapplications/[^/]+$".
+  /// Value must have pattern `^searchapplications/\[^/\]+$`.
   ///
   /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
@@ -3253,7 +3253,7 @@ class StatsSessionSearchapplicationsResource {
   ///
   /// [name] - The resource id of the search application session stats, in the
   /// following format: searchapplications/{application_id}
-  /// Value must have pattern "^searchapplications/[^/]+$".
+  /// Value must have pattern `^searchapplications/\[^/\]+$`.
   ///
   /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
@@ -3362,7 +3362,7 @@ class StatsUserSearchapplicationsResource {
   ///
   /// [name] - The resource id of the search application session stats, in the
   /// following format: searchapplications/{application_id}
-  /// Value must have pattern "^searchapplications/[^/]+$".
+  /// Value must have pattern `^searchapplications/\[^/\]+$`.
   ///
   /// [fromDate_day] - Day of month. Must be from 1 to 31 and valid for the year
   /// and month.
@@ -4664,7 +4664,7 @@ class FacetBucket {
 
   /// Percent of results that match the bucket value.
   ///
-  /// The returned value is between (0-100], and is rounded down to an integer
+  /// The returned value is between (0-100\], and is rounded down to an integer
   /// if fractional. If the value is not explicitly returned, it represents a
   /// percentage value that rounds to 0. Percentages are returned for all
   /// searches, but are an estimate. Because percentages are always returned,
@@ -5742,7 +5742,7 @@ class Item {
 
 /// Access control list information for the item.
 ///
-/// For more information see [Map ACLs](/cloud-search/docs/guides/acls).
+/// For more information see \[Map ACLs\](/cloud-search/docs/guides/acls).
 class ItemAcl {
   /// Sets the type of access rules to apply when an item inherits its ACL from
   /// a parent.
@@ -6444,7 +6444,7 @@ class ListUnmappedIdentitiesResponse {
   }
 }
 
-/// Matched range of a snippet [start, end).
+/// Matched range of a snippet \[start, end).
 class MatchRange {
   /// End of the match in the snippet.
   core.int end;
@@ -8183,8 +8183,8 @@ class RequestOptions {
   /// Current user's time zone id, such as "America/Los_Angeles" or
   /// "Australia/Sydney".
   ///
-  /// These IDs are defined by [Unicode Common Locale Data Repository
-  /// (CLDR)](http://cldr.unicode.org/) project, and currently available in the
+  /// These IDs are defined by \[Unicode Common Locale Data Repository
+  /// (CLDR)\](http://cldr.unicode.org/) project, and currently available in the
   /// file
   /// [timezone.xml](http://unicode.org/repos/cldr/trunk/common/bcp47/timezone.xml).
   /// This field is used to correctly interpret date and time queries. If this

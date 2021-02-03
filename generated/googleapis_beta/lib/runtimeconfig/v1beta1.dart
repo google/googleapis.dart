@@ -102,7 +102,7 @@ class ProjectsConfigsResource {
   /// [parent] - The [project
   /// ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848)
   /// for this request, in the format `projects/[PROJECT_ID]`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [requestId] - An optional but recommended unique `request_id`. If the
   /// server receives two `create()` requests with the same `request_id`, then
@@ -172,7 +172,7 @@ class ProjectsConfigsResource {
   ///
   /// [name] - The RuntimeConfig resource to delete, in the format:
   /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/configs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -224,7 +224,7 @@ class ProjectsConfigsResource {
   ///
   /// [name] - The name of the RuntimeConfig resource to retrieve, in the
   /// format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/configs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -281,7 +281,7 @@ class ProjectsConfigsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/configs/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -350,7 +350,7 @@ class ProjectsConfigsResource {
   /// [parent] - The [project
   /// ID](https://support.google.com/cloud/answer/6158840?hl=en&ref_topic=6158848)
   /// for this request, in the format `projects/[PROJECT_ID]`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Specifies the number of results to return per page. If there
   /// are fewer elements than the specified number, returns all elements.
@@ -426,7 +426,7 @@ class ProjectsConfigsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/configs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -492,7 +492,7 @@ class ProjectsConfigsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/configs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -555,7 +555,7 @@ class ProjectsConfigsResource {
   ///
   /// [name] - The name of the RuntimeConfig resource to update, in the format:
   /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/configs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -621,7 +621,8 @@ class ProjectsConfigsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+/operations/.*$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/configs/\[^/\]+/operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -681,7 +682,8 @@ class ProjectsConfigsOperationsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+/operations/.*$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/configs/\[^/\]+/operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -745,8 +747,8 @@ class ProjectsConfigsVariablesResource {
   ///
   /// You cannot create a variable with a name that is a prefix of an existing
   /// variable name, or a name that has an existing variable name as a prefix.
-  /// To learn more about creating a variable, read the [Setting and Getting
-  /// Data](/deployment-manager/runtime-configurator/set-and-get-variables)
+  /// To learn more about creating a variable, read the \[Setting and Getting
+  /// Data\](/deployment-manager/runtime-configurator/set-and-get-variables)
   /// documentation.
   ///
   /// [request] - The metadata request object.
@@ -756,7 +758,7 @@ class ProjectsConfigsVariablesResource {
   /// [parent] - The path to the RutimeConfig resource that this variable should
   /// belong to. The configuration must exist beforehand; the path must be in
   /// the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/configs/\[^/\]+$`.
   ///
   /// [requestId] - An optional but recommended unique `request_id`. If the
   /// server receives two `create()` requests with the same `request_id`, then
@@ -830,7 +832,7 @@ class ProjectsConfigsVariablesResource {
   ///
   /// [name] - The name of the variable to delete, in the format:
   /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]`
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+/variables/.*$".
+  /// Value must have pattern `^projects/\[^/\]+/configs/\[^/\]+/variables/.*$`.
   ///
   /// [recursive] - Set to `true` to recursively delete multiple variables with
   /// the same prefix.
@@ -889,7 +891,7 @@ class ProjectsConfigsVariablesResource {
   ///
   /// [name] - The name of the variable to return, in the format:
   /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIBLE_NAME]`
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+/variables/.*$".
+  /// Value must have pattern `^projects/\[^/\]+/configs/\[^/\]+/variables/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -947,7 +949,7 @@ class ProjectsConfigsVariablesResource {
   /// [parent] - The path to the RuntimeConfig resource for which you want to
   /// list variables. The configuration must exist beforehand; the path must be
   /// in the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/configs/\[^/\]+$`.
   ///
   /// [filter] - Filters variables by matching the specified filter. For
   /// example:
@@ -1041,7 +1043,7 @@ class ProjectsConfigsVariablesResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+/variables/.*$".
+  /// Value must have pattern `^projects/\[^/\]+/configs/\[^/\]+/variables/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1102,7 +1104,7 @@ class ProjectsConfigsVariablesResource {
   ///
   /// [name] - The name of the variable to update, in the format:
   /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME]`
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+/variables/.*$".
+  /// Value must have pattern `^projects/\[^/\]+/configs/\[^/\]+/variables/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1161,8 +1163,8 @@ class ProjectsConfigsVariablesResource {
   /// If you set the deadline for watching to a larger value than internal
   /// timeout (60 seconds), the current variable value is returned and the
   /// `variableState` will be `VARIABLE_STATE_UNSPECIFIED`. To learn more about
-  /// creating a watcher, read the [Watching a Variable for
-  /// Changes](/deployment-manager/runtime-configurator/watching-a-variable)
+  /// creating a watcher, read the \[Watching a Variable for
+  /// Changes\](/deployment-manager/runtime-configurator/watching-a-variable)
   /// documentation.
   ///
   /// [request] - The metadata request object.
@@ -1171,7 +1173,7 @@ class ProjectsConfigsVariablesResource {
   ///
   /// [name] - The name of the variable to watch, in the format:
   /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+/variables/.*$".
+  /// Value must have pattern `^projects/\[^/\]+/configs/\[^/\]+/variables/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1244,7 +1246,7 @@ class ProjectsConfigsWaitersResource {
   /// [parent] - The path to the configuration that will own the waiter. The
   /// configuration must exist beforehand; the path must be in the format:
   /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`.
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/configs/\[^/\]+$`.
   ///
   /// [requestId] - An optional but recommended unique `request_id`. If the
   /// server receives two `create()` requests with the same `request_id`, then
@@ -1313,7 +1315,8 @@ class ProjectsConfigsWaitersResource {
   ///
   /// [name] - The Waiter resource to delete, in the format:
   /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]`
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+/waiters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/configs/\[^/\]+/waiters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1366,7 +1369,8 @@ class ProjectsConfigsWaitersResource {
   /// [name] - The fully-qualified name of the Waiter resource object to
   /// retrieve, in the format:
   /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME]`
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+/waiters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/configs/\[^/\]+/waiters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1419,7 +1423,7 @@ class ProjectsConfigsWaitersResource {
   /// [parent] - The path to the configuration for which you want to get a list
   /// of waiters. The configuration must exist beforehand; the path must be in
   /// the format: `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/configs/\[^/\]+$`.
   ///
   /// [pageSize] - Specifies the number of results to return per page. If there
   /// are fewer elements than the specified number, returns all elements.
@@ -1497,7 +1501,8 @@ class ProjectsConfigsWaitersResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/configs/[^/]+/waiters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/configs/\[^/\]+/waiters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2050,14 +2055,14 @@ class Operation {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
@@ -2156,14 +2161,14 @@ class RuntimeConfig {
 
   /// The resource name of a runtime config.
   ///
-  /// The name must have the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]
-  /// The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an
-  /// arbitrary name that matches the
-  /// `[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular expression.
-  /// The length of `[CONFIG_NAME]` must be less than 64 characters. You pick
-  /// the RuntimeConfig resource name, but the server will validate that the
-  /// name adheres to this format. After you create the resource, you cannot
-  /// change the resource's name.
+  /// The name must have the format:
+  /// projects/\[PROJECT_ID\]/configs/\[CONFIG_NAME\] The `[PROJECT_ID]` must be
+  /// a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches
+  /// the `[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular
+  /// expression. The length of `[CONFIG_NAME]` must be less than 64 characters.
+  /// You pick the RuntimeConfig resource name, but the server will validate
+  /// that the name adheres to this format. After you create the resource, you
+  /// cannot change the resource's name.
   core.String name;
 
   RuntimeConfig();
@@ -2339,19 +2344,20 @@ class TestIamPermissionsResponse {
 /// that do not have any child variables).
 class Variable {
   /// The name of the variable resource, in the format:
-  /// projects/[PROJECT_ID]/configs/[CONFIG_NAME]/variables/[VARIABLE_NAME] The
-  /// `[PROJECT_ID]` must be a valid project ID, `[CONFIG_NAME]` must be a valid
-  /// RuntimeConfig resource and `[VARIABLE_NAME]` follows Unix file system file
-  /// path naming.
+  /// projects/\[PROJECT_ID\]/configs/\[CONFIG_NAME\]/variables/\[VARIABLE_NAME\]
+  /// The `[PROJECT_ID]` must be a valid project ID, `[CONFIG_NAME]` must be a
+  /// valid RuntimeConfig resource and `[VARIABLE_NAME]` follows Unix file
+  /// system file path naming.
   ///
   /// The `[VARIABLE_NAME]` can contain ASCII letters, numbers, slashes and
   /// dashes. Slashes are used as path element separators and are not part of
   /// the `[VARIABLE_NAME]` itself, so `[VARIABLE_NAME]` must contain at least
   /// one non-slash character. Multiple slashes are coalesced into single slash
   /// character. Each path segment should match
-  /// [0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])? regular expression. The
-  /// length of a `[VARIABLE_NAME]` must be less than 256 characters. Once you
-  /// create a variable, you cannot change the variable name.
+  /// \[0-9A-Za-z\](?:\[_.A-Za-z0-9-\]{0,62}\[_.A-Za-z0-9\])? regular
+  /// expression. The length of a `[VARIABLE_NAME]` must be less than 256
+  /// characters. Once you create a variable, you cannot change the variable
+  /// name.
   core.String name;
 
   /// The current state of the variable.
@@ -2446,8 +2452,8 @@ class Variable {
 /// to wait until some number of nodes have checked in. Afterwards, your
 /// application runs some arbitrary code after the condition has been met and
 /// the waiter returns successfully. Once created, a Waiter resource is
-/// immutable. To learn more about using waiters, read the [Creating a
-/// Waiter](/deployment-manager/runtime-configurator/creating-a-waiter)
+/// immutable. To learn more about using waiters, read the \[Creating a
+/// Waiter\](/deployment-manager/runtime-configurator/creating-a-waiter)
 /// documentation.
 class Waiter {
   /// The instant at which this Waiter resource was created.
@@ -2484,8 +2490,8 @@ class Waiter {
   EndCondition failure;
 
   /// The name of the Waiter resource, in the format:
-  /// projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME] The
-  /// `[PROJECT_ID]` must be a valid Google Cloud project ID, the
+  /// projects/\[PROJECT_ID\]/configs/\[CONFIG_NAME\]/waiters/\[WAITER_NAME\]
+  /// The `[PROJECT_ID]` must be a valid Google Cloud project ID, the
   /// `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the
   /// `[WAITER_NAME]` must match RFC 1035 segment specification, and the length
   /// of `[WAITER_NAME]` must be less than 64 bytes.

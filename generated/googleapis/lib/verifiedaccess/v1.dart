@@ -319,7 +319,7 @@ class VerifyChallengeResponseResult {
 
   /// For EMCert check, device permanent id is returned here.
   ///
-  /// For EUCert check, signed_public_key_and_challenge [base64 encoded] is
+  /// For EUCert check, signed_public_key_and_challenge \[base64 encoded\] is
   /// returned if present, otherwise empty string is returned. This field is
   /// deprecated, please use device_permanent_id or
   /// signed_public_key_and_challenge fields.

@@ -95,10 +95,10 @@ class ProjectsSnapshotsResource {
   /// `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time`
   /// field. If the name is not provided in the request, the server will assign
   /// a random name for this snapshot on the same project as the subscription,
-  /// conforming to the [resource name format]
-  /// (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated
-  /// name is populated in the returned Snapshot object. Note that for REST API
-  /// requests, you must specify a name in the request.
+  /// conforming to the [resource name
+  /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
+  /// generated name is populated in the returned Snapshot object. Note that for
+  /// REST API requests, you must specify a name in the request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -109,7 +109,7 @@ class ProjectsSnapshotsResource {
   /// snapshot on the same project as the subscription. Note that for REST API
   /// requests, you must specify a name. See the resource name rules. Format is
   /// `projects/{project}/snapshots/{snap}`.
-  /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/snapshots/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -161,21 +161,21 @@ class ProjectsSnapshotsResource {
 
   /// Removes an existing snapshot.
   ///
-  /// Snapshots are used in [Seek]
-  /// (https://cloud.google.com/pubsub/docs/replay-overview) operations, which
-  /// allow you to manage message acknowledgments in bulk. That is, you can set
-  /// the acknowledgment state of messages in an existing subscription to the
-  /// state captured by a snapshot. When the snapshot is deleted, all messages
-  /// retained in the snapshot are immediately dropped. After a snapshot is
-  /// deleted, a new one may be created with the same name, but the new one has
-  /// no association with the old snapshot or its subscription, unless the same
-  /// subscription is specified.
+  /// Snapshots are used in
+  /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+  /// which allow you to manage message acknowledgments in bulk. That is, you
+  /// can set the acknowledgment state of messages in an existing subscription
+  /// to the state captured by a snapshot. When the snapshot is deleted, all
+  /// messages retained in the snapshot are immediately dropped. After a
+  /// snapshot is deleted, a new one may be created with the same name, but the
+  /// new one has no association with the old snapshot or its subscription,
+  /// unless the same subscription is specified.
   ///
   /// Request parameters:
   ///
   /// [snapshot] - Required. The name of the snapshot to delete. Format is
   /// `projects/{project}/snapshots/{snap}`.
-  /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/snapshots/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -231,7 +231,7 @@ class ProjectsSnapshotsResource {
   ///
   /// [snapshot] - Required. The name of the snapshot to get. Format is
   /// `projects/{project}/snapshots/{snap}`.
-  /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/snapshots/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -287,7 +287,7 @@ class ProjectsSnapshotsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/snapshots/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -351,7 +351,7 @@ class ProjectsSnapshotsResource {
 
   /// Lists the existing snapshots.
   ///
-  /// Snapshots are used in [Seek](
+  /// Snapshots are used in \[Seek\](
   /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
   /// allow you to manage message acknowledgments in bulk. That is, you can set
   /// the acknowledgment state of messages in an existing subscription to the
@@ -361,7 +361,7 @@ class ProjectsSnapshotsResource {
   ///
   /// [project] - Required. The name of the project in which to list snapshots.
   /// Format is `projects/{project-id}`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of snapshots to return.
   ///
@@ -435,7 +435,7 @@ class ProjectsSnapshotsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the snapshot.
-  /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/snapshots/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -497,7 +497,7 @@ class ProjectsSnapshotsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/snapshots/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -563,7 +563,7 @@ class ProjectsSnapshotsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/snapshots/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/snapshots/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -637,7 +637,7 @@ class ProjectsSubscriptionsResource {
   ///
   /// [subscription] - Required. The subscription whose message is being
   /// acknowledged. Format is `projects/{project}/subscriptions/{sub}`.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -691,13 +691,13 @@ class ProjectsSubscriptionsResource {
 
   /// Creates a subscription to a given topic.
   ///
-  /// See the [resource name rules]
-  /// (https://cloud.google.com/pubsub/docs/admin#resource_names). If the
+  /// See the [resource name
+  /// rules](https://cloud.google.com/pubsub/docs/admin#resource_names). If the
   /// subscription already exists, returns `ALREADY_EXISTS`. If the
   /// corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not
   /// provided in the request, the server will assign a random name for this
   /// subscription on the same project as the topic, conforming to the [resource
-  /// name format] (https://cloud.google.com/pubsub/docs/admin#resource_names).
+  /// name format](https://cloud.google.com/pubsub/docs/admin#resource_names).
   /// The generated name is populated in the returned Subscription object. Note
   /// that for REST API requests, you must specify a name in the request.
   ///
@@ -711,7 +711,7 @@ class ProjectsSubscriptionsResource {
   /// (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
   /// plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
   /// in length, and it must not start with `"goog"`.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -774,7 +774,7 @@ class ProjectsSubscriptionsResource {
   ///
   /// [subscription] - Required. The subscription to delete. Format is
   /// `projects/{project}/subscriptions/{sub}`.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -830,7 +830,7 @@ class ProjectsSubscriptionsResource {
   ///
   /// [subscription] - Required. The subscription to detach. Format is
   /// `projects/{project}/subscriptions/{subscription}`.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -885,7 +885,7 @@ class ProjectsSubscriptionsResource {
   ///
   /// [subscription] - Required. The name of the subscription to get. Format is
   /// `projects/{project}/subscriptions/{sub}`.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -942,7 +942,7 @@ class ProjectsSubscriptionsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -1010,7 +1010,7 @@ class ProjectsSubscriptionsResource {
   ///
   /// [project] - Required. The name of the project in which to list
   /// subscriptions. Format is `projects/{project-id}`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of subscriptions to return.
   ///
@@ -1086,7 +1086,7 @@ class ProjectsSubscriptionsResource {
   ///
   /// [subscription] - Required. The name of the subscription. Format is
   /// `projects/{project}/subscriptions/{sub}`.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1151,7 +1151,7 @@ class ProjectsSubscriptionsResource {
   ///
   /// [subscription] - Required. The name of the subscription. Format is
   /// `projects/{project}/subscriptions/{sub}`.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1218,7 +1218,7 @@ class ProjectsSubscriptionsResource {
   /// (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
   /// plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
   /// in length, and it must not start with `"goog"`.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1280,7 +1280,7 @@ class ProjectsSubscriptionsResource {
   ///
   /// [subscription] - Required. The subscription from which messages should be
   /// pulled. Format is `projects/{project}/subscriptions/{sub}`.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1336,7 +1336,7 @@ class ProjectsSubscriptionsResource {
   /// Seeks an existing subscription to a point in time or to a given snapshot,
   /// whichever is provided in the request.
   ///
-  /// Snapshots are used in [Seek](
+  /// Snapshots are used in \[Seek\](
   /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
   /// allow you to manage message acknowledgments in bulk. That is, you can set
   /// the acknowledgment state of messages in an existing subscription to the
@@ -1348,7 +1348,7 @@ class ProjectsSubscriptionsResource {
   /// Request parameters:
   ///
   /// [subscription] - Required. The subscription to affect.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1413,7 +1413,7 @@ class ProjectsSubscriptionsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1479,7 +1479,7 @@ class ProjectsSubscriptionsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1545,7 +1545,7 @@ class ProjectsTopicsResource {
 
   /// Creates the given topic with the given name.
   ///
-  /// See the [resource name rules](
+  /// See the \[resource name rules\](
   /// https://cloud.google.com/pubsub/docs/admin#resource_names).
   ///
   /// [request] - The metadata request object.
@@ -1558,7 +1558,7 @@ class ProjectsTopicsResource {
   /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
   /// signs (`%`). It must be between 3 and 255 characters in length, and it
   /// must not start with `"goog"`.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1620,7 +1620,7 @@ class ProjectsTopicsResource {
   ///
   /// [topic] - Required. Name of the topic to delete. Format is
   /// `projects/{project}/topics/{topic}`.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1672,7 +1672,7 @@ class ProjectsTopicsResource {
   ///
   /// [topic] - Required. The name of the topic to get. Format is
   /// `projects/{project}/topics/{topic}`.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1728,7 +1728,7 @@ class ProjectsTopicsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -1796,7 +1796,7 @@ class ProjectsTopicsResource {
   ///
   /// [project] - Required. The name of the project in which to list topics.
   /// Format is `projects/{project-id}`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of topics to return.
   ///
@@ -1872,7 +1872,7 @@ class ProjectsTopicsResource {
   /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
   /// signs (`%`). It must be between 3 and 255 characters in length, and it
   /// must not start with `"goog"`.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1932,7 +1932,7 @@ class ProjectsTopicsResource {
   ///
   /// [topic] - Required. The messages in the request will be published on this
   /// topic. Format is `projects/{project}/topics/{topic}`.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1995,7 +1995,7 @@ class ProjectsTopicsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2061,7 +2061,7 @@ class ProjectsTopicsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2133,7 +2133,7 @@ class ProjectsTopicsSnapshotsResource {
   ///
   /// [topic] - Required. The name of the topic that snapshots are attached to.
   /// Format is `projects/{project}/topics/{topic}`.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of snapshot names to return.
   ///
@@ -2208,7 +2208,7 @@ class ProjectsTopicsSubscriptionsResource {
   ///
   /// [topic] - Required. The name of the topic that subscriptions are attached
   /// to. Format is `projects/{project}/topics/{topic}`.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of subscription names to return.
   ///
@@ -2979,14 +2979,14 @@ class OidcToken {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
@@ -3135,9 +3135,9 @@ class PublishResponse {
 /// attribute. Note that client libraries represent this object differently
 /// depending on the language. See the corresponding [client library
 /// documentation](https://cloud.google.com/pubsub/docs/reference/libraries) for
-/// more information. See [quotas and limits]
-/// (https://cloud.google.com/pubsub/quotas) for more information about message
-/// limits.
+/// more information. See [quotas and
+/// limits](https://cloud.google.com/pubsub/quotas) for more information about
+/// message limits.
 class PubsubMessage {
   /// Attributes for this message.
   ///
@@ -3570,8 +3570,8 @@ class Snapshot {
   /// to create a snapshot that would expire in less than 1 hour after creation.
   core.String expireTime;
 
-  /// See [Creating and managing labels]
-  /// (https://cloud.google.com/pubsub/docs/labels).
+  /// See [Creating and managing
+  /// labels](https://cloud.google.com/pubsub/docs/labels).
   core.Map<core.String, core.String> labels;
 
   /// The name of the snapshot.
@@ -3719,8 +3719,8 @@ class Subscription {
   /// If true, then messages are not expunged from the subscription's backlog,
   /// even if they are acknowledged, until they fall out of the
   /// `message_retention_duration` window. This must be true if you would like
-  /// to [Seek to a timestamp]
-  /// (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time).
+  /// to [Seek to a
+  /// timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time).
   core.bool retainAckedMessages;
 
   /// A policy that specifies how Pub/Sub retries message delivery for this
@@ -3902,8 +3902,8 @@ class Topic {
   /// /cryptoKeys / * `.
   core.String kmsKeyName;
 
-  /// See [Creating and managing labels]
-  /// (https://cloud.google.com/pubsub/docs/labels).
+  /// See [Creating and managing
+  /// labels](https://cloud.google.com/pubsub/docs/labels).
   core.Map<core.String, core.String> labels;
 
   /// Policy constraining the set of Google Cloud Platform regions where

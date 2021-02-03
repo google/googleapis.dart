@@ -2678,7 +2678,7 @@ class BiddersAccountsFilterSetsResource {
   /// representing bidder 123: `bidders/123/accounts/123` - For an account-level
   /// filter set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456`
-  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+$".
+  /// Value must have pattern `^bidders/\[^/\]+/accounts/\[^/\]+$`.
   ///
   /// [isTransient] - Whether the filter set is transient, or should be
   /// persisted indefinitely. By default, filter sets are not transient. If
@@ -2749,7 +2749,8 @@ class BiddersAccountsFilterSetsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern
+  /// `^bidders/\[^/\]+/accounts/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2806,7 +2807,8 @@ class BiddersAccountsFilterSetsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern
+  /// `^bidders/\[^/\]+/accounts/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2862,7 +2864,7 @@ class BiddersAccountsFilterSetsResource {
   /// representing bidder 123: `bidders/123/accounts/123` - For an account-level
   /// filter set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456`
-  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+$".
+  /// Value must have pattern `^bidders/\[^/\]+/accounts/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -2945,7 +2947,8 @@ class BiddersAccountsFilterSetsBidMetricsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern
+  /// `^bidders/\[^/\]+/accounts/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -3030,7 +3033,8 @@ class BiddersAccountsFilterSetsBidResponseErrorsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern
+  /// `^bidders/\[^/\]+/accounts/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -3116,7 +3120,8 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern
+  /// `^bidders/\[^/\]+/accounts/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -3201,7 +3206,8 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern
+  /// `^bidders/\[^/\]+/accounts/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -3290,7 +3296,8 @@ class BiddersAccountsFilterSetsFilteredBidsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern
+  /// `^bidders/\[^/\]+/accounts/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -3375,11 +3382,12 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern
+  /// `^bidders/\[^/\]+/accounts/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [creativeStatusId] - The ID of the creative status for which to retrieve a
   /// breakdown by creative. See
-  /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+  /// \[creative-status-codes\](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -3470,11 +3478,12 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern
+  /// `^bidders/\[^/\]+/accounts/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [creativeStatusId] - The ID of the creative status for which to retrieve a
   /// breakdown by detail. See
-  /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+  /// \[creative-status-codes\](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
   /// Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and
   /// 87.
   ///
@@ -3566,7 +3575,8 @@ class BiddersAccountsFilterSetsImpressionMetricsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern
+  /// `^bidders/\[^/\]+/accounts/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -3650,7 +3660,8 @@ class BiddersAccountsFilterSetsLosingBidsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern
+  /// `^bidders/\[^/\]+/accounts/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -3735,7 +3746,8 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern
+  /// `^bidders/\[^/\]+/accounts/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -3837,7 +3849,7 @@ class BiddersFilterSetsResource {
   /// representing bidder 123: `bidders/123/accounts/123` - For an account-level
   /// filter set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456`
-  /// Value must have pattern "^bidders/[^/]+$".
+  /// Value must have pattern `^bidders/\[^/\]+$`.
   ///
   /// [isTransient] - Whether the filter set is transient, or should be
   /// persisted indefinitely. By default, filter sets are not transient. If
@@ -3908,7 +3920,7 @@ class BiddersFilterSetsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern `^bidders/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3965,7 +3977,7 @@ class BiddersFilterSetsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern `^bidders/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4021,7 +4033,7 @@ class BiddersFilterSetsResource {
   /// representing bidder 123: `bidders/123/accounts/123` - For an account-level
   /// filter set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456`
-  /// Value must have pattern "^bidders/[^/]+$".
+  /// Value must have pattern `^bidders/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -4104,7 +4116,7 @@ class BiddersFilterSetsBidMetricsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern `^bidders/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -4188,7 +4200,7 @@ class BiddersFilterSetsBidResponseErrorsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern `^bidders/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -4273,7 +4285,7 @@ class BiddersFilterSetsBidResponsesWithoutBidsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern `^bidders/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -4357,7 +4369,7 @@ class BiddersFilterSetsFilteredBidRequestsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern `^bidders/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -4446,7 +4458,7 @@ class BiddersFilterSetsFilteredBidsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern `^bidders/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -4530,11 +4542,11 @@ class BiddersFilterSetsFilteredBidsCreativesResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern `^bidders/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [creativeStatusId] - The ID of the creative status for which to retrieve a
   /// breakdown by creative. See
-  /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+  /// \[creative-status-codes\](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -4624,11 +4636,11 @@ class BiddersFilterSetsFilteredBidsDetailsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern `^bidders/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [creativeStatusId] - The ID of the creative status for which to retrieve a
   /// breakdown by detail. See
-  /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+  /// \[creative-status-codes\](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
   /// Details are only available for statuses 10, 14, 15, 17, 18, 19, 86, and
   /// 87.
   ///
@@ -4719,7 +4731,7 @@ class BiddersFilterSetsImpressionMetricsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern `^bidders/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -4803,7 +4815,7 @@ class BiddersFilterSetsLosingBidsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern `^bidders/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -4887,7 +4899,7 @@ class BiddersFilterSetsNonBillableWinningBidsResource {
   /// `bidders/123/accounts/123/filterSets/abc` - For an account-level filter
   /// set for the child seat buyer account 456 whose bidder is 123:
   /// `bidders/123/accounts/456/filterSets/abc`
-  /// Value must have pattern "^bidders/[^/]+/filterSets/[^/]+$".
+  /// Value must have pattern `^bidders/\[^/\]+/filterSets/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The server may return fewer results than
   /// requested. If unspecified, the server will pick an appropriate default.
@@ -5080,11 +5092,11 @@ class AdTechnologyProviders {
   /// contains provider IDs that are outside of those listed in the
   /// `BidRequest.adslot.consented_providers_settings.consented_providers` field
   /// on the (Google bid
-  /// protocol)[https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto]
+  /// protocol)\[https://developers.google.com/authorized-buyers/rtb/downloads/realtime-bidding-proto\]
   /// and the
   /// `BidRequest.user.ext.consented_providers_settings.consented_providers`
   /// field on the (OpenRTB
-  /// protocol)[https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto],
+  /// protocol)\[https://developers.google.com/authorized-buyers/rtb/downloads/openrtb-adx-proto\],
   /// and a bid is submitted with that creative for an impression that will
   /// serve to an EEA user, the bid will be filtered before the auction.
   core.List<core.String> detectedProviderIds;
@@ -5408,7 +5420,7 @@ class CalloutStatusRow {
   /// The ID of the callout status.
   ///
   /// See
-  /// [callout-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/callout-status-codes).
+  /// \[callout-status-codes\](https://developers.google.com/authorized-buyers/rtb/downloads/callout-status-codes).
   core.int calloutStatusId;
 
   /// The number of impressions for which there was a bid request or bid
@@ -6488,7 +6500,7 @@ class CreativeStatusRow {
   /// The ID of the creative status.
   ///
   /// See
-  /// [creative-status-codes](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
+  /// \[creative-status-codes\](https://developers.google.com/authorized-buyers/rtb/downloads/creative-status-codes).
   core.int creativeStatusId;
 
   /// The values of all dimensions associated with metric values in this row.
@@ -7630,7 +7642,7 @@ class FilterSet {
   /// be empty. The filters represented by multiple seller network IDs are ORed
   /// together (i.e., if non-empty, results must match any one of the publisher
   /// networks). See
-  /// [seller-network-ids](https://developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids)
+  /// \[seller-network-ids\](https://developers.google.com/authorized-buyers/rtb/downloads/seller-network-ids)
   /// file for the set of existing seller network IDs.
   core.List<core.int> sellerNetworkIds;
 
@@ -8999,7 +9011,7 @@ class LocationContext {
   /// IDs representing the geo location for this context.
   ///
   /// Please refer to the
-  /// [geo-table.csv](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv)
+  /// \[geo-table.csv\](https://storage.googleapis.com/adx-rtb-dictionaries/geo-table.csv)
   /// file for different geo criteria IDs.
   core.List<core.int> geoCriteriaIds;
 
@@ -9235,7 +9247,7 @@ class NativeContent {
 
   /// The app rating in the app store.
   ///
-  /// Must be in the range [0-5].
+  /// Must be in the range \[0-5\].
   core.double starRating;
 
   /// The URL to the app store to purchase/download the promoted app.

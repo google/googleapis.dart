@@ -78,24 +78,32 @@ void main() {
   group('header', () {
     for (var entry in {
       'Bob is nice. Bob is kind.': '''
-/// Bob is nice.
-///
-/// Bob is kind.
-''',
+Bob is nice.
+
+Bob is kind.''',
       'Bob is nice (e.g. Kritis implementations). Bob is kind.': '''
-/// Bob is nice (e.g. Kritis implementations).
-///
-/// Bob is kind.
-''',
+Bob is nice (e.g. Kritis implementations).
+
+Bob is kind.''',
       'Bob is nice. Bob is kind (e.g. Kritis implementations).': '''
-/// Bob is nice.
-///
-/// Bob is kind (e.g. Kritis implementations).
-''',
+Bob is nice.
+
+Bob is kind (e.g. Kritis implementations).''',
+      '[this] is not': r'\[this\] is not',
+      '`skip/within/[ticks]`': '`skip/within/[ticks]`',
+      '[this](http://is.a/link)': r'[this](http://is.a/link)',
+      'see [Verifying attestations] (https://cloud.google.com/kms/docs/attest-key)':
+          'see [Verifying attestations](https://cloud.google.com/kms/docs/attest-key)',
+      '[this is](https://a.com/link). This https://example.com/[this_is_not]/':
+          r'''
+[this is](https://a.com/link).
+
+This https://example.com/\[this_is_not\]/''',
     }.entries) {
-      test(entry.key, () {
+      test('`${entry.key}`', () {
+        final commentRaw = Comment.header(entry.key, true).rawComment;
         expect(
-          Comment.header(entry.key).asDartDoc(0),
+          commentRaw,
           entry.value,
         );
       });

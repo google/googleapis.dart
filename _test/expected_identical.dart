@@ -1052,9 +1052,11 @@ class StorageResource {
 
   /// Request parameters:
   ///
-  /// [resource] - Path parameter: 'resource'.
+  /// [resource] - Path parameter: 'resource'. Can be used in a url like
+  /// https://example.com/\[resource\]/something
   ///
-  /// [storage] - Path parameter: 'storage'.
+  /// [storage] - Path parameter: 'storage'. Learn more at [the web
+  /// site](https://example.com).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

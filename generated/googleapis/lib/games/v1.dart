@@ -1408,10 +1408,10 @@ class ScoresResource {
   /// Get high scores, and optionally ranks, in leaderboards for the currently
   /// authenticated player.
   ///
-  /// For a specific time span, `leaderboardId` can be set to `ALL` to retrieve
-  /// data for all leaderboards in a given time span. `NOTE: You cannot ask for
-  /// 'ALL' leaderboards and 'ALL' timeSpans in the same request; only one
-  /// parameter may be set to 'ALL'.
+  /// For a specific time span, \`leaderboardId\` can be set to \`ALL\` to
+  /// retrieve data for all leaderboards in a given time span. \`NOTE: You
+  /// cannot ask for 'ALL' leaderboards and 'ALL' timeSpans in the same request;
+  /// only one parameter may be set to 'ALL'.
   ///
   /// Request parameters:
   ///
@@ -1755,7 +1755,7 @@ class ScoresResource {
   /// [scoreTag] - Additional information about the score you're submitting.
   /// Values must contain no more than 64 URI-safe characters as defined by
   /// section 2.3 of RFC 3986.
-  /// Value must have pattern "[a-zA-Z0-9-._~]{0,64}".
+  /// Value must have pattern `\[a-zA-Z0-9-._~\]{0,64}`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

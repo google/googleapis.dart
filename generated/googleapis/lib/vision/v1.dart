@@ -340,7 +340,7 @@ class LocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^locations/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -408,7 +408,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -467,7 +467,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -521,7 +521,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/[^/]+$".
+  /// Value must have pattern `^operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -581,7 +581,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^operations$".
+  /// Value must have pattern `^operations$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -682,7 +682,7 @@ class ProjectsFilesResource {
   /// specified, a region will be chosen automatically. Supported location-ids:
   /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
   /// The European Union. Example: `projects/project-A/locations/eu`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -753,7 +753,7 @@ class ProjectsFilesResource {
   /// specified, a region will be chosen automatically. Supported location-ids:
   /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
   /// The European Union. Example: `projects/project-A/locations/eu`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -822,7 +822,7 @@ class ProjectsImagesResource {
   /// specified, a region will be chosen automatically. Supported location-ids:
   /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
   /// The European Union. Example: `projects/project-A/locations/eu`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -893,7 +893,7 @@ class ProjectsImagesResource {
   /// specified, a region will be chosen automatically. Supported location-ids:
   /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
   /// The European Union. Example: `projects/project-A/locations/eu`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -986,7 +986,7 @@ class ProjectsLocationsFilesResource {
   /// specified, a region will be chosen automatically. Supported location-ids:
   /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
   /// The European Union. Example: `projects/project-A/locations/eu`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1057,7 +1057,7 @@ class ProjectsLocationsFilesResource {
   /// specified, a region will be chosen automatically. Supported location-ids:
   /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
   /// The European Union. Example: `projects/project-A/locations/eu`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1127,7 +1127,7 @@ class ProjectsLocationsImagesResource {
   /// specified, a region will be chosen automatically. Supported location-ids:
   /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
   /// The European Union. Example: `projects/project-A/locations/eu`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1198,7 +1198,7 @@ class ProjectsLocationsImagesResource {
   /// specified, a region will be chosen automatically. Supported location-ids:
   /// `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan, `eu`:
   /// The European Union. Example: `projects/project-A/locations/eu`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1266,7 +1266,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1335,7 +1335,7 @@ class ProjectsLocationsProductSetsResource {
   /// [name] - Required. The resource name for the ProductSet to modify. Format
   /// is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/productSets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1397,7 +1397,7 @@ class ProjectsLocationsProductSetsResource {
   ///
   /// [parent] - Required. The project in which the ProductSet should be
   /// created. Format is `projects/PROJECT_ID/locations/LOC_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [productSetId] - A user-supplied resource id for this ProductSet. If set,
   /// the server will attempt to use this value as the resource id. If it is
@@ -1469,7 +1469,7 @@ class ProjectsLocationsProductSetsResource {
   /// [name] - Required. Resource name of the ProductSet to delete. Format is:
   /// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/productSets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1524,7 +1524,7 @@ class ProjectsLocationsProductSetsResource {
   /// [name] - Required. Resource name of the ProductSet to get. Format is:
   /// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/productSets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1587,7 +1587,7 @@ class ProjectsLocationsProductSetsResource {
   ///
   /// [parent] - Required. The project in which the ProductSets should be
   /// imported. Format is `projects/PROJECT_ID/locations/LOC_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1648,7 +1648,7 @@ class ProjectsLocationsProductSetsResource {
   ///
   /// [parent] - Required. The project from which ProductSets should be listed.
   /// Format is `projects/PROJECT_ID/locations/LOC_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return. Default 10, maximum
   /// 100.
@@ -1726,7 +1726,7 @@ class ProjectsLocationsProductSetsResource {
   /// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This
   /// field is ignored when creating a ProductSet.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/productSets/\[^/\]+$`.
   ///
   /// [updateMask] - The FieldMask that specifies which fields to update. If
   /// update_mask isn't specified, all mutable fields are to be updated. Valid
@@ -1794,7 +1794,7 @@ class ProjectsLocationsProductSetsResource {
   /// [name] - Required. The resource name for the ProductSet to modify. Format
   /// is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/productSets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1865,7 +1865,7 @@ class ProjectsLocationsProductSetsProductsResource {
   /// Format is:
   /// `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/productSets/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/productSets/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return. Default 10, maximum
   /// 100.
@@ -1949,7 +1949,7 @@ class ProjectsLocationsProductsResource {
   ///
   /// [parent] - Required. The project in which the Product should be created.
   /// Format is `projects/PROJECT_ID/locations/LOC_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [productId] - A user-supplied resource id for this Product. If set, the
   /// server will attempt to use this value as the resource id. If it is already
@@ -2019,7 +2019,8 @@ class ProjectsLocationsProductsResource {
   ///
   /// [name] - Required. Resource name of product to delete. Format is:
   /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/products/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/products/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2073,7 +2074,8 @@ class ProjectsLocationsProductsResource {
   ///
   /// [name] - Required. Resource name of the Product to get. Format is:
   /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/products/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/products/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2128,7 +2130,7 @@ class ProjectsLocationsProductsResource {
   ///
   /// [parent] - Required. The project OR ProductSet from which Products should
   /// be listed. Format: `projects/PROJECT_ID/locations/LOC_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return. Default 10, maximum
   /// 100.
@@ -2208,7 +2210,8 @@ class ProjectsLocationsProductsResource {
   /// [name] - The resource name of the product. Format is:
   /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is
   /// ignored when creating a product.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/products/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/products/\[^/\]+$`.
   ///
   /// [updateMask] - The FieldMask that specifies which fields to update. If
   /// update_mask isn't specified, all mutable fields are to be updated. Valid
@@ -2292,7 +2295,7 @@ class ProjectsLocationsProductsResource {
   ///
   /// [parent] - Required. The project and location in which the Products should
   /// be deleted. Format is `projects/PROJECT_ID/locations/LOC_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2373,7 +2376,8 @@ class ProjectsLocationsProductsReferenceImagesResource {
   /// [parent] - Required. Resource name of the product in which to create the
   /// reference image. Format is
   /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/products/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/products/\[^/\]+$`.
   ///
   /// [referenceImageId] - A user-supplied resource id for the ReferenceImage to
   /// be added. If set, the server will attempt to use this value as the
@@ -2449,7 +2453,7 @@ class ProjectsLocationsProductsReferenceImagesResource {
   /// Format is:
   /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/products/[^/]+/referenceImages/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/products/\[^/\]+/referenceImages/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2506,7 +2510,7 @@ class ProjectsLocationsProductsReferenceImagesResource {
   /// is:
   /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/products/[^/]+/referenceImages/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/products/\[^/\]+/referenceImages/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2564,7 +2568,8 @@ class ProjectsLocationsProductsReferenceImagesResource {
   /// [parent] - Required. Resource name of the product containing the reference
   /// images. Format is
   /// `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/products/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/products/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return. Default 10, maximum
   /// 100.
@@ -2642,7 +2647,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3528,7 +3533,7 @@ class Block {
 
   /// Confidence of the OCR results on the block.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// List of paragraphs in this block (if this blocks is of type text).
@@ -3661,29 +3666,29 @@ class CancelOperationRequest {
 /// (alpha != 255) { result.setAlpha( FloatValue .newBuilder()
 /// .setValue(((float) alpha) / denominator) .build()); } return
 /// resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static
-/// UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float
-/// green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
-/// alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
-/// nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red
-/// green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color)
-/// { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green
-/// blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc]
-/// init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue];
-/// if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; }
-/// [result autorelease]; return result; } // ... Example (JavaScript): // ...
-/// var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red ||
-/// 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue
-/// || 0.0; var red = Math.floor(redFrac * 255); var green =
-/// Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if
-/// (!('alpha' in rgb_color)) { return rgbToCssColor_(red, green, blue); } var
-/// alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green,
-/// blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-/// }; var rgbToCssColor_ = function(red, green, blue) { var rgbNumber = new
-/// Number((red << 16) | (green << 8) | blue); var hexString =
-/// rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
-/// resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) {
-/// resultBuilder.push('0'); } resultBuilder.push(hexString); return
-/// resultBuilder.join(''); }; // ...
+/// UIColor* fromProto(Color* protocolor) { float red = \[protocolor red\];
+/// float green = \[protocolor green\]; float blue = \[protocolor blue\];
+/// FloatValue* alpha_wrapper = \[protocolor alpha\]; float alpha = 1.0; if
+/// (alpha_wrapper != nil) { alpha = \[alpha_wrapper value\]; } return \[UIColor
+/// colorWithRed:red green:green blue:blue alpha:alpha\]; } static Color*
+/// toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (!\[color
+/// getRed:&red green:&green blue:&blue alpha:&alpha\]) { return nil; } Color*
+/// result = \[\[Color alloc\] init\]; \[result setRed:red\]; \[result
+/// setGreen:green\]; \[result setBlue:blue\]; if (alpha <= 0.9999) { \[result
+/// setAlpha:floatWrapperWithValue(alpha)\]; } \[result autorelease\]; return
+/// result; } // ... Example (JavaScript): // ... var protoToCssColor =
+/// function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac =
+/// rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red =
+/// Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue
+/// = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return
+/// rgbToCssColor_(red, green, blue); } var alphaFrac = rgb_color.alpha.value ||
+/// 0.0; var rgbParams = \[red, green, blue\].join(','); return \['rgba(',
+/// rgbParams, ',', alphaFrac, ')'\].join(''); }; var rgbToCssColor_ =
+/// function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green
+/// << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6
+/// - hexString.length; var resultBuilder = \['#'\]; for (var i = 0; i <
+/// missingZeros; i++) { resultBuilder.push('0'); }
+/// resultBuilder.push(hexString); return resultBuilder.join(''); }; // ...
 class Color {
   /// The fraction of this color that should be applied to the pixel.
   ///
@@ -3697,13 +3702,13 @@ class Color {
   /// explicitly given with a value of 1.0).
   core.double alpha;
 
-  /// The amount of blue in the color as a value in the interval [0, 1].
+  /// The amount of blue in the color as a value in the interval \[0, 1\].
   core.double blue;
 
-  /// The amount of green in the color as a value in the interval [0, 1].
+  /// The amount of green in the color as a value in the interval \[0, 1\].
   core.double green;
 
-  /// The amount of red in the color as a value in the interval [0, 1].
+  /// The amount of red in the color as a value in the interval \[0, 1\].
   core.double red;
 
   Color();
@@ -3749,12 +3754,12 @@ class ColorInfo {
 
   /// The fraction of pixels the color occupies in the image.
   ///
-  /// Value in range [0, 1].
+  /// Value in range \[0, 1\].
   core.double pixelFraction;
 
   /// Image-specific score for this color.
   ///
-  /// Value in range [0, 1].
+  /// Value in range \[0, 1\].
   core.double score;
 
   ColorInfo();
@@ -3796,7 +3801,7 @@ class CropHint {
 
   /// Confidence of this being a salient region.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Fraction of importance of this salient region with respect to the original
@@ -3931,7 +3936,7 @@ class DetectedBreak {
 class DetectedLanguage {
   /// Confidence of detected language.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// The BCP-47 language code, such as "en-US" or "sr-Latn".
@@ -4020,7 +4025,7 @@ class EntityAnnotation {
   /// Use `score` instead.** The accuracy of the entity detection in an image.
   /// For example, for an image in which the "Eiffel Tower" entity is detected,
   /// this field represents the confidence that there is a tower in the query
-  /// image. Range [0, 1].
+  /// image. Range \[0, 1\].
   core.double confidence;
 
   /// Entity textual description, expressed in its `locale` language.
@@ -4050,7 +4055,7 @@ class EntityAnnotation {
 
   /// Overall score of the result.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double score;
 
   /// The relevancy of the ICA (Image Content Annotation) label to the image.
@@ -4058,7 +4063,7 @@ class EntityAnnotation {
   /// For example, the relevancy of "tower" is likely higher to an image
   /// containing the detected "Eiffel Tower" than to an image containing a
   /// detected distant towering building, even though the confidence that there
-  /// is a tower in each image may be the same. Range [0, 1].
+  /// is a tower in each image may be the same. Range \[0, 1\].
   core.double topicality;
 
   EntityAnnotation();
@@ -4167,7 +4172,7 @@ class FaceAnnotation {
 
   /// Detection confidence.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double detectionConfidence;
 
   /// The `fd_bounding_poly` bounding polygon is tighter than the
@@ -4201,7 +4206,7 @@ class FaceAnnotation {
 
   /// Face landmarking confidence.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double landmarkingConfidence;
 
   /// Detected face landmarks.
@@ -4210,14 +4215,14 @@ class FaceAnnotation {
   /// Yaw angle, which indicates the leftward/rightward angle that the face is
   /// pointing relative to the vertical plane perpendicular to the image.
   ///
-  /// Range [-180,180].
+  /// Range \[-180,180\].
   core.double panAngle;
 
   /// Roll angle, which indicates the amount of clockwise/anti-clockwise
   /// rotation of the face relative to the image vertical about the axis
   /// perpendicular to the face.
   ///
-  /// Range [-180,180].
+  /// Range \[-180,180\].
   core.double rollAngle;
 
   /// Sorrow likelihood.
@@ -4243,7 +4248,7 @@ class FaceAnnotation {
   /// Pitch angle, which indicates the upwards/downwards angle that the face is
   /// pointing relative to the image's horizontal plane.
   ///
-  /// Range [-180,180].
+  /// Range \[-180,180\].
   core.double tiltAngle;
 
   /// Under-exposed likelihood.
@@ -4830,7 +4835,7 @@ class GoogleCloudVisionV1p1beta1Block {
 
   /// Confidence of the OCR results on the block.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// List of paragraphs in this block (if this blocks is of type text).
@@ -4934,12 +4939,12 @@ class GoogleCloudVisionV1p1beta1ColorInfo {
 
   /// The fraction of pixels the color occupies in the image.
   ///
-  /// Value in range [0, 1].
+  /// Value in range \[0, 1\].
   core.double pixelFraction;
 
   /// Image-specific score for this color.
   ///
-  /// Value in range [0, 1].
+  /// Value in range \[0, 1\].
   core.double score;
 
   GoogleCloudVisionV1p1beta1ColorInfo();
@@ -4981,7 +4986,7 @@ class GoogleCloudVisionV1p1beta1CropHint {
 
   /// Confidence of this being a salient region.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Fraction of importance of this salient region with respect to the original
@@ -5082,7 +5087,7 @@ class GoogleCloudVisionV1p1beta1EntityAnnotation {
   /// Use `score` instead.** The accuracy of the entity detection in an image.
   /// For example, for an image in which the "Eiffel Tower" entity is detected,
   /// this field represents the confidence that there is a tower in the query
-  /// image. Range [0, 1].
+  /// image. Range \[0, 1\].
   core.double confidence;
 
   /// Entity textual description, expressed in its `locale` language.
@@ -5112,7 +5117,7 @@ class GoogleCloudVisionV1p1beta1EntityAnnotation {
 
   /// Overall score of the result.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double score;
 
   /// The relevancy of the ICA (Image Content Annotation) label to the image.
@@ -5120,7 +5125,7 @@ class GoogleCloudVisionV1p1beta1EntityAnnotation {
   /// For example, the relevancy of "tower" is likely higher to an image
   /// containing the detected "Eiffel Tower" than to an image containing a
   /// detected distant towering building, even though the confidence that there
-  /// is a tower in each image may be the same. Range [0, 1].
+  /// is a tower in each image may be the same. Range \[0, 1\].
   core.double topicality;
 
   GoogleCloudVisionV1p1beta1EntityAnnotation();
@@ -5231,7 +5236,7 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
 
   /// Detection confidence.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double detectionConfidence;
 
   /// The `fd_bounding_poly` bounding polygon is tighter than the
@@ -5265,7 +5270,7 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
 
   /// Face landmarking confidence.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double landmarkingConfidence;
 
   /// Detected face landmarks.
@@ -5274,14 +5279,14 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
   /// Yaw angle, which indicates the leftward/rightward angle that the face is
   /// pointing relative to the vertical plane perpendicular to the image.
   ///
-  /// Range [-180,180].
+  /// Range \[-180,180\].
   core.double panAngle;
 
   /// Roll angle, which indicates the amount of clockwise/anti-clockwise
   /// rotation of the face relative to the image vertical about the axis
   /// perpendicular to the face.
   ///
-  /// Range [-180,180].
+  /// Range \[-180,180\].
   core.double rollAngle;
 
   /// Sorrow likelihood.
@@ -5307,7 +5312,7 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
   /// Pitch angle, which indicates the upwards/downwards angle that the face is
   /// pointing relative to the image's horizontal plane.
   ///
-  /// Range [-180,180].
+  /// Range \[-180,180\].
   core.double tiltAngle;
 
   /// Under-exposed likelihood.
@@ -5695,7 +5700,7 @@ class GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation {
 
   /// Score of the result.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double score;
 
   GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation();
@@ -5848,7 +5853,7 @@ class GoogleCloudVisionV1p1beta1OutputConfig {
   /// The max number of response protos to put into each output JSON file on
   /// Google Cloud Storage.
   ///
-  /// The valid range is [1, 100]. If not specified, the default value is 20.
+  /// The valid range is \[1, 100\]. If not specified, the default value is 20.
   /// For example, for one pdf file with 100 pages, 100 response protos will be
   /// generated. If `batch_size` = 20, then 5 json files each containing 20
   /// response protos will be written under the prefix `gcs_destination`.`uri`.
@@ -5890,7 +5895,7 @@ class GoogleCloudVisionV1p1beta1Page {
 
   /// Confidence of the OCR results on the page.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Page height.
@@ -5969,7 +5974,7 @@ class GoogleCloudVisionV1p1beta1Paragraph {
 
   /// Confidence of the OCR results for the paragraph.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Additional information detected for the paragraph.
@@ -6310,7 +6315,7 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation {
 
   /// Score of the result.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double score;
 
   GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation();
@@ -6552,7 +6557,7 @@ class GoogleCloudVisionV1p1beta1Symbol {
 
   /// Confidence of the OCR results for the symbol.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Additional information detected for the symbol.
@@ -6684,7 +6689,7 @@ class GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak {
 class GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage {
   /// Confidence of detected language.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// The BCP-47 language code, such as "en-US" or "sr-Latn".
@@ -7094,7 +7099,7 @@ class GoogleCloudVisionV1p1beta1Word {
 
   /// Confidence of the OCR results for the word.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Additional information detected for the word.
@@ -7481,7 +7486,7 @@ class GoogleCloudVisionV1p2beta1Block {
 
   /// Confidence of the OCR results on the block.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// List of paragraphs in this block (if this blocks is of type text).
@@ -7585,12 +7590,12 @@ class GoogleCloudVisionV1p2beta1ColorInfo {
 
   /// The fraction of pixels the color occupies in the image.
   ///
-  /// Value in range [0, 1].
+  /// Value in range \[0, 1\].
   core.double pixelFraction;
 
   /// Image-specific score for this color.
   ///
-  /// Value in range [0, 1].
+  /// Value in range \[0, 1\].
   core.double score;
 
   GoogleCloudVisionV1p2beta1ColorInfo();
@@ -7632,7 +7637,7 @@ class GoogleCloudVisionV1p2beta1CropHint {
 
   /// Confidence of this being a salient region.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Fraction of importance of this salient region with respect to the original
@@ -7733,7 +7738,7 @@ class GoogleCloudVisionV1p2beta1EntityAnnotation {
   /// Use `score` instead.** The accuracy of the entity detection in an image.
   /// For example, for an image in which the "Eiffel Tower" entity is detected,
   /// this field represents the confidence that there is a tower in the query
-  /// image. Range [0, 1].
+  /// image. Range \[0, 1\].
   core.double confidence;
 
   /// Entity textual description, expressed in its `locale` language.
@@ -7763,7 +7768,7 @@ class GoogleCloudVisionV1p2beta1EntityAnnotation {
 
   /// Overall score of the result.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double score;
 
   /// The relevancy of the ICA (Image Content Annotation) label to the image.
@@ -7771,7 +7776,7 @@ class GoogleCloudVisionV1p2beta1EntityAnnotation {
   /// For example, the relevancy of "tower" is likely higher to an image
   /// containing the detected "Eiffel Tower" than to an image containing a
   /// detected distant towering building, even though the confidence that there
-  /// is a tower in each image may be the same. Range [0, 1].
+  /// is a tower in each image may be the same. Range \[0, 1\].
   core.double topicality;
 
   GoogleCloudVisionV1p2beta1EntityAnnotation();
@@ -7882,7 +7887,7 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
 
   /// Detection confidence.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double detectionConfidence;
 
   /// The `fd_bounding_poly` bounding polygon is tighter than the
@@ -7916,7 +7921,7 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
 
   /// Face landmarking confidence.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double landmarkingConfidence;
 
   /// Detected face landmarks.
@@ -7925,14 +7930,14 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
   /// Yaw angle, which indicates the leftward/rightward angle that the face is
   /// pointing relative to the vertical plane perpendicular to the image.
   ///
-  /// Range [-180,180].
+  /// Range \[-180,180\].
   core.double panAngle;
 
   /// Roll angle, which indicates the amount of clockwise/anti-clockwise
   /// rotation of the face relative to the image vertical about the axis
   /// perpendicular to the face.
   ///
-  /// Range [-180,180].
+  /// Range \[-180,180\].
   core.double rollAngle;
 
   /// Sorrow likelihood.
@@ -7958,7 +7963,7 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
   /// Pitch angle, which indicates the upwards/downwards angle that the face is
   /// pointing relative to the image's horizontal plane.
   ///
-  /// Range [-180,180].
+  /// Range \[-180,180\].
   core.double tiltAngle;
 
   /// Under-exposed likelihood.
@@ -8346,7 +8351,7 @@ class GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation {
 
   /// Score of the result.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double score;
 
   GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation();
@@ -8499,7 +8504,7 @@ class GoogleCloudVisionV1p2beta1OutputConfig {
   /// The max number of response protos to put into each output JSON file on
   /// Google Cloud Storage.
   ///
-  /// The valid range is [1, 100]. If not specified, the default value is 20.
+  /// The valid range is \[1, 100\]. If not specified, the default value is 20.
   /// For example, for one pdf file with 100 pages, 100 response protos will be
   /// generated. If `batch_size` = 20, then 5 json files each containing 20
   /// response protos will be written under the prefix `gcs_destination`.`uri`.
@@ -8541,7 +8546,7 @@ class GoogleCloudVisionV1p2beta1Page {
 
   /// Confidence of the OCR results on the page.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Page height.
@@ -8620,7 +8625,7 @@ class GoogleCloudVisionV1p2beta1Paragraph {
 
   /// Confidence of the OCR results for the paragraph.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Additional information detected for the paragraph.
@@ -8961,7 +8966,7 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation {
 
   /// Score of the result.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double score;
 
   GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation();
@@ -9203,7 +9208,7 @@ class GoogleCloudVisionV1p2beta1Symbol {
 
   /// Confidence of the OCR results for the symbol.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Additional information detected for the symbol.
@@ -9335,7 +9340,7 @@ class GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak {
 class GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage {
   /// Confidence of detected language.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// The BCP-47 language code, such as "en-US" or "sr-Latn".
@@ -9745,7 +9750,7 @@ class GoogleCloudVisionV1p2beta1Word {
 
   /// Confidence of the OCR results for the word.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Additional information detected for the word.
@@ -10187,7 +10192,7 @@ class GoogleCloudVisionV1p3beta1Block {
 
   /// Confidence of the OCR results on the block.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// List of paragraphs in this block (if this blocks is of type text).
@@ -10291,12 +10296,12 @@ class GoogleCloudVisionV1p3beta1ColorInfo {
 
   /// The fraction of pixels the color occupies in the image.
   ///
-  /// Value in range [0, 1].
+  /// Value in range \[0, 1\].
   core.double pixelFraction;
 
   /// Image-specific score for this color.
   ///
-  /// Value in range [0, 1].
+  /// Value in range \[0, 1\].
   core.double score;
 
   GoogleCloudVisionV1p3beta1ColorInfo();
@@ -10338,7 +10343,7 @@ class GoogleCloudVisionV1p3beta1CropHint {
 
   /// Confidence of this being a salient region.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Fraction of importance of this salient region with respect to the original
@@ -10439,7 +10444,7 @@ class GoogleCloudVisionV1p3beta1EntityAnnotation {
   /// Use `score` instead.** The accuracy of the entity detection in an image.
   /// For example, for an image in which the "Eiffel Tower" entity is detected,
   /// this field represents the confidence that there is a tower in the query
-  /// image. Range [0, 1].
+  /// image. Range \[0, 1\].
   core.double confidence;
 
   /// Entity textual description, expressed in its `locale` language.
@@ -10469,7 +10474,7 @@ class GoogleCloudVisionV1p3beta1EntityAnnotation {
 
   /// Overall score of the result.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double score;
 
   /// The relevancy of the ICA (Image Content Annotation) label to the image.
@@ -10477,7 +10482,7 @@ class GoogleCloudVisionV1p3beta1EntityAnnotation {
   /// For example, the relevancy of "tower" is likely higher to an image
   /// containing the detected "Eiffel Tower" than to an image containing a
   /// detected distant towering building, even though the confidence that there
-  /// is a tower in each image may be the same. Range [0, 1].
+  /// is a tower in each image may be the same. Range \[0, 1\].
   core.double topicality;
 
   GoogleCloudVisionV1p3beta1EntityAnnotation();
@@ -10588,7 +10593,7 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
 
   /// Detection confidence.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double detectionConfidence;
 
   /// The `fd_bounding_poly` bounding polygon is tighter than the
@@ -10622,7 +10627,7 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
 
   /// Face landmarking confidence.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double landmarkingConfidence;
 
   /// Detected face landmarks.
@@ -10631,14 +10636,14 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
   /// Yaw angle, which indicates the leftward/rightward angle that the face is
   /// pointing relative to the vertical plane perpendicular to the image.
   ///
-  /// Range [-180,180].
+  /// Range \[-180,180\].
   core.double panAngle;
 
   /// Roll angle, which indicates the amount of clockwise/anti-clockwise
   /// rotation of the face relative to the image vertical about the axis
   /// perpendicular to the face.
   ///
-  /// Range [-180,180].
+  /// Range \[-180,180\].
   core.double rollAngle;
 
   /// Sorrow likelihood.
@@ -10664,7 +10669,7 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
   /// Pitch angle, which indicates the upwards/downwards angle that the face is
   /// pointing relative to the image's horizontal plane.
   ///
-  /// Range [-180,180].
+  /// Range \[-180,180\].
   core.double tiltAngle;
 
   /// Under-exposed likelihood.
@@ -10988,7 +10993,7 @@ class GoogleCloudVisionV1p3beta1ImportProductSetsResponse {
   /// and errors.
   ///
   /// The number of statuses here matches the number of lines in the csv file,
-  /// and statuses[i] stores the success or failure status of processing the
+  /// and statuses\[i\] stores the success or failure status of processing the
   /// i-th line of the csv, starting from line 0.
   core.List<Status> statuses;
 
@@ -11099,7 +11104,7 @@ class GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation {
 
   /// Score of the result.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double score;
 
   GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation();
@@ -11252,7 +11257,7 @@ class GoogleCloudVisionV1p3beta1OutputConfig {
   /// The max number of response protos to put into each output JSON file on
   /// Google Cloud Storage.
   ///
-  /// The valid range is [1, 100]. If not specified, the default value is 20.
+  /// The valid range is \[1, 100\]. If not specified, the default value is 20.
   /// For example, for one pdf file with 100 pages, 100 response protos will be
   /// generated. If `batch_size` = 20, then 5 json files each containing 20
   /// response protos will be written under the prefix `gcs_destination`.`uri`.
@@ -11294,7 +11299,7 @@ class GoogleCloudVisionV1p3beta1Page {
 
   /// Confidence of the OCR results on the page.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Page height.
@@ -11373,7 +11378,7 @@ class GoogleCloudVisionV1p3beta1Paragraph {
 
   /// Confidence of the OCR results for the paragraph.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Additional information detected for the paragraph.
@@ -11714,7 +11719,7 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation {
 
   /// Score of the result.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double score;
 
   GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation();
@@ -12018,7 +12023,7 @@ class GoogleCloudVisionV1p3beta1Symbol {
 
   /// Confidence of the OCR results for the symbol.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Additional information detected for the symbol.
@@ -12150,7 +12155,7 @@ class GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak {
 class GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage {
   /// Confidence of detected language.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// The BCP-47 language code, such as "en-US" or "sr-Latn".
@@ -12560,7 +12565,7 @@ class GoogleCloudVisionV1p3beta1Word {
 
   /// Confidence of the OCR results for the word.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Additional information detected for the word.
@@ -13054,7 +13059,7 @@ class GoogleCloudVisionV1p4beta1Block {
 
   /// Confidence of the OCR results on the block.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// List of paragraphs in this block (if this blocks is of type text).
@@ -13200,12 +13205,12 @@ class GoogleCloudVisionV1p4beta1ColorInfo {
 
   /// The fraction of pixels the color occupies in the image.
   ///
-  /// Value in range [0, 1].
+  /// Value in range \[0, 1\].
   core.double pixelFraction;
 
   /// Image-specific score for this color.
   ///
-  /// Value in range [0, 1].
+  /// Value in range \[0, 1\].
   core.double score;
 
   GoogleCloudVisionV1p4beta1ColorInfo();
@@ -13247,7 +13252,7 @@ class GoogleCloudVisionV1p4beta1CropHint {
 
   /// Confidence of this being a salient region.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Fraction of importance of this salient region with respect to the original
@@ -13348,7 +13353,7 @@ class GoogleCloudVisionV1p4beta1EntityAnnotation {
   /// Use `score` instead.** The accuracy of the entity detection in an image.
   /// For example, for an image in which the "Eiffel Tower" entity is detected,
   /// this field represents the confidence that there is a tower in the query
-  /// image. Range [0, 1].
+  /// image. Range \[0, 1\].
   core.double confidence;
 
   /// Entity textual description, expressed in its `locale` language.
@@ -13378,7 +13383,7 @@ class GoogleCloudVisionV1p4beta1EntityAnnotation {
 
   /// Overall score of the result.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double score;
 
   /// The relevancy of the ICA (Image Content Annotation) label to the image.
@@ -13386,7 +13391,7 @@ class GoogleCloudVisionV1p4beta1EntityAnnotation {
   /// For example, the relevancy of "tower" is likely higher to an image
   /// containing the detected "Eiffel Tower" than to an image containing a
   /// detected distant towering building, even though the confidence that there
-  /// is a tower in each image may be the same. Range [0, 1].
+  /// is a tower in each image may be the same. Range \[0, 1\].
   core.double topicality;
 
   GoogleCloudVisionV1p4beta1EntityAnnotation();
@@ -13497,7 +13502,7 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
 
   /// Detection confidence.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double detectionConfidence;
 
   /// The `fd_bounding_poly` bounding polygon is tighter than the
@@ -13531,7 +13536,7 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
 
   /// Face landmarking confidence.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double landmarkingConfidence;
 
   /// Detected face landmarks.
@@ -13540,7 +13545,7 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
   /// Yaw angle, which indicates the leftward/rightward angle that the face is
   /// pointing relative to the vertical plane perpendicular to the image.
   ///
-  /// Range [-180,180].
+  /// Range \[-180,180\].
   core.double panAngle;
 
   /// Additional recognition information.
@@ -13554,7 +13559,7 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
   /// rotation of the face relative to the image vertical about the axis
   /// perpendicular to the face.
   ///
-  /// Range [-180,180].
+  /// Range \[-180,180\].
   core.double rollAngle;
 
   /// Sorrow likelihood.
@@ -13580,7 +13585,7 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
   /// Pitch angle, which indicates the upwards/downwards angle that the face is
   /// pointing relative to the image's horizontal plane.
   ///
-  /// Range [-180,180].
+  /// Range \[-180,180\].
   core.double tiltAngle;
 
   /// Under-exposed likelihood.
@@ -13791,7 +13796,7 @@ class GoogleCloudVisionV1p4beta1FaceRecognitionResult {
 
   /// Recognition confidence.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   GoogleCloudVisionV1p4beta1FaceRecognitionResult();
@@ -13949,7 +13954,7 @@ class GoogleCloudVisionV1p4beta1ImportProductSetsResponse {
   /// and errors.
   ///
   /// The number of statuses here matches the number of lines in the csv file,
-  /// and statuses[i] stores the success or failure status of processing the
+  /// and statuses\[i\] stores the success or failure status of processing the
   /// i-th line of the csv, starting from line 0.
   core.List<Status> statuses;
 
@@ -14060,7 +14065,7 @@ class GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation {
 
   /// Score of the result.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double score;
 
   GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation();
@@ -14213,7 +14218,7 @@ class GoogleCloudVisionV1p4beta1OutputConfig {
   /// The max number of response protos to put into each output JSON file on
   /// Google Cloud Storage.
   ///
-  /// The valid range is [1, 100]. If not specified, the default value is 20.
+  /// The valid range is \[1, 100\]. If not specified, the default value is 20.
   /// For example, for one pdf file with 100 pages, 100 response protos will be
   /// generated. If `batch_size` = 20, then 5 json files each containing 20
   /// response protos will be written under the prefix `gcs_destination`.`uri`.
@@ -14255,7 +14260,7 @@ class GoogleCloudVisionV1p4beta1Page {
 
   /// Confidence of the OCR results on the page.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Page height.
@@ -14334,7 +14339,7 @@ class GoogleCloudVisionV1p4beta1Paragraph {
 
   /// Confidence of the OCR results for the paragraph.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Additional information detected for the paragraph.
@@ -14675,7 +14680,7 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation {
 
   /// Score of the result.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double score;
 
   GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation();
@@ -14979,7 +14984,7 @@ class GoogleCloudVisionV1p4beta1Symbol {
 
   /// Confidence of the OCR results for the symbol.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Additional information detected for the symbol.
@@ -15111,7 +15116,7 @@ class GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak {
 class GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage {
   /// Confidence of detected language.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// The BCP-47 language code, such as "en-US" or "sr-Latn".
@@ -15521,7 +15526,7 @@ class GoogleCloudVisionV1p4beta1Word {
 
   /// Confidence of the OCR results for the word.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Additional information detected for the word.
@@ -15878,7 +15883,7 @@ class ImportProductSetsGcsSource {
   /// `bounding-poly` values for each region of interest. The `bounding-poly`
   /// column must contain an even number of comma-separated numbers, in the
   /// format "p1_x,p1_y,p2_x,p2_y,...,pn_x,pn_y". Use non-negative integers for
-  /// absolute bounding polygons, and float values in [0, 1] for normalized
+  /// absolute bounding polygons, and float values in \[0, 1\] for normalized
   /// bounding polygons. The system will resize the image if the image
   /// resolution is too large to process (larger than 20MP).
   core.String csvFileUri;
@@ -15961,7 +15966,7 @@ class ImportProductSetsResponse {
   /// and errors.
   ///
   /// The number of statuses here matches the number of lines in the csv file,
-  /// and statuses[i] stores the success or failure status of processing the
+  /// and statuses\[i\] stores the success or failure status of processing the
   /// i-th line of the csv, starting from line 0.
   core.List<Status> statuses;
 
@@ -16164,12 +16169,12 @@ class Landmark {
 class LatLng {
   /// The latitude in degrees.
   ///
-  /// It must be in the range [-90.0, +90.0].
+  /// It must be in the range \[-90.0, +90.0\].
   core.double latitude;
 
   /// The longitude in degrees.
   ///
-  /// It must be in the range [-180.0, +180.0].
+  /// It must be in the range \[-180.0, +180.0\].
   core.double longitude;
 
   LatLng();
@@ -16435,7 +16440,7 @@ class LocalizedObjectAnnotation {
 
   /// Score of the result.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double score;
 
   LocalizedObjectAnnotation();
@@ -16553,7 +16558,7 @@ class ObjectAnnotation {
 
   /// Score of the result.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double score;
 
   ObjectAnnotation();
@@ -16739,7 +16744,7 @@ class OutputConfig {
   /// The max number of response protos to put into each output JSON file on
   /// Google Cloud Storage.
   ///
-  /// The valid range is [1, 100]. If not specified, the default value is 20.
+  /// The valid range is \[1, 100\]. If not specified, the default value is 20.
   /// For example, for one pdf file with 100 pages, 100 response protos will be
   /// generated. If `batch_size` = 20, then 5 json files each containing 20
   /// response protos will be written under the prefix `gcs_destination`.`uri`.
@@ -16781,7 +16786,7 @@ class Page {
 
   /// Confidence of the OCR results on the page.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Page height.
@@ -16859,7 +16864,7 @@ class Paragraph {
 
   /// Confidence of the OCR results for the paragraph.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Additional information detected for the paragraph.
@@ -17654,7 +17659,7 @@ class Symbol {
 
   /// Confidence of the OCR results for the symbol.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Additional information detected for the symbol.
@@ -18123,7 +18128,7 @@ class Word {
 
   /// Confidence of the OCR results for the word.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// Additional information detected for the word.

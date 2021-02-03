@@ -856,7 +856,7 @@ class CreateHeaderRequest {
   /// The location of the SectionBreak which begins the section this header
   /// should belong to.
   ///
-  /// If `section_break_location' is unset or if it refers to the first section
+  /// If \`section_break_location' is unset or if it refers to the first section
   /// break in the document body, the header applies to the DocumentStyle
   Location sectionBreakLocation;
 
@@ -2936,7 +2936,8 @@ class ImageProperties {
 
   /// The brightness effect of the image.
   ///
-  /// The value should be in the interval [-1.0, 1.0], where 0 means no effect.
+  /// The value should be in the interval \[-1.0, 1.0\], where 0 means no
+  /// effect.
   core.double brightness;
 
   /// A URI to the image with a default lifetime of 30 minutes.
@@ -2948,7 +2949,8 @@ class ImageProperties {
 
   /// The contrast effect of the image.
   ///
-  /// The value should be in the interval [-1.0, 1.0], where 0 means no effect.
+  /// The value should be in the interval \[-1.0, 1.0\], where 0 means no
+  /// effect.
   core.double contrast;
 
   /// The crop properties of the image.
@@ -2961,7 +2963,7 @@ class ImageProperties {
 
   /// The transparency effect of the image.
   ///
-  /// The value should be in the interval [0.0, 1.0], where 0 means no effect
+  /// The value should be in the interval \[0.0, 1.0\], where 0 means no effect
   /// and 1 means completely transparent.
   core.double transparency;
 
@@ -8188,9 +8190,9 @@ class TableOfContents {
 /// It's important to note that the cells specified by a table range do not
 /// necessarily form a rectangle. For example, let's say we have a 3 x 3 table
 /// where all the cells of the last row are merged together. The table looks
-/// like this: [ ] A table range with table cell location =
+/// like this: \[ \] A table range with table cell location =
 /// (table_start_location, row = 0, column = 0), row span = 3 and column span =
-/// 2 specifies the following cells: x x [ x x x ]
+/// 2 specifies the following cells: x x \[ x x x \]
 class TableRange {
   /// The column span of the table range.
   core.int columnSpan;
@@ -9213,7 +9215,7 @@ class WeightedFontFamily {
   /// The font family of the text.
   ///
   /// The font family can be any font from the Font menu in Docs or from [Google
-  /// Fonts] (https://fonts.google.com/). If the font name is unrecognized, the
+  /// Fonts](https://fonts.google.com/). If the font name is unrecognized, the
   /// text is rendered in `Arial`.
   core.String fontFamily;
 

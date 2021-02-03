@@ -1224,7 +1224,7 @@ class ScriptsResource {
   /// the calling application must share the same Cloud Platform project. This
   /// method requires authorization with an OAuth 2.0 token that includes at
   /// least one of the scopes listed in the
-  /// [Authorization](#authorization-scopes) section; script projects that do
+  /// \[Authorization\](#authorization-scopes) section; script projects that do
   /// not require authorization cannot be executed through this API. To find the
   /// correct scopes to include in the authentication token, open the project in
   /// the script editor, then select **File > Project properties** and click the
@@ -2517,8 +2517,8 @@ class MetricsValue {
 /// run.
 ///
 /// The execution response does not arrive until the function finishes
-/// executing. The maximum execution runtime is listed in the [Apps Script
-/// quotas guide](/apps-script/guides/services/quotas#current_limitations).
+/// executing. The maximum execution runtime is listed in the \[Apps Script
+/// quotas guide\](/apps-script/guides/services/quotas#current_limitations).
 /// After execution has started, it can have one of four outcomes: - If the
 /// script function returns successfully, the response field contains an
 /// ExecutionResponse object with the function's return value in the object's

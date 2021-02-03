@@ -81,7 +81,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -140,7 +140,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -194,7 +194,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -254,7 +254,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^operations$".
+  /// Value must have pattern `^operations$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -346,7 +346,7 @@ class UsersEnvironmentsResource {
   ///
   /// [environment] - Environment this key should be added to, e.g.
   /// `users/me/environments/default`.
-  /// Value must have pattern "^users/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^users/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -411,7 +411,7 @@ class UsersEnvironmentsResource {
   /// [name] - Name of the resource that should receive the credentials, for
   /// example `users/me/environments/default` or
   /// `users/someone@example.com/environments/default`.
-  /// Value must have pattern "^users/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^users/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -471,7 +471,7 @@ class UsersEnvironmentsResource {
   /// [name] - Required. Name of the requested resource, for example
   /// `users/me/environments/default` or
   /// `users/someone@example.com/environments/default`.
-  /// Value must have pattern "^users/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^users/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -530,7 +530,7 @@ class UsersEnvironmentsResource {
   ///
   /// [environment] - Environment this key should be removed from, e.g.
   /// `users/me/environments/default`.
-  /// Value must have pattern "^users/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^users/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -597,7 +597,7 @@ class UsersEnvironmentsResource {
   /// [name] - Name of the resource that should be started, for example
   /// `users/me/environments/default` or
   /// `users/someone@example.com/environments/default`.
-  /// Value must have pattern "^users/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^users/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

@@ -270,7 +270,7 @@ class SitemapsResource {
     );
   }
 
-  /// Lists the [sitemaps-entries](/webmaster-tools/v3/sitemaps) submitted for
+  /// Lists the \[sitemaps-entries\](/webmaster-tools/v3/sitemaps) submitted for
   /// this site, or included in the sitemap index file (if `sitemapIndex` is
   /// specified in the request).
   ///
@@ -1043,7 +1043,7 @@ class RunMobileFriendlyTestResponse {
 }
 
 class SearchAnalyticsQueryRequest {
-  /// [Optional; Default is \"auto\"] How data is aggregated.
+  /// \[Optional; Default is \"auto\"\] How data is aggregated.
   ///
   /// If aggregated by property, all data for the same property is aggregated;
   /// if aggregated by page, all data is aggregated by canonical URI. If you
@@ -1088,26 +1088,26 @@ class SearchAnalyticsQueryRequest {
   /// Required.
   core.String endDate;
 
-  /// [Optional; Default is 1000] The maximum number of rows to return.
+  /// \[Optional; Default is 1000\] The maximum number of rows to return.
   ///
   /// Must be a number from 1 to 25,000 (inclusive).
   core.int rowLimit;
 
-  /// [Optional; Default is \"web\"] The search type to filter for.
+  /// \[Optional; Default is \"web\"\] The search type to filter for.
   /// Possible string values are:
   /// - "WEB"
   /// - "IMAGE"
   /// - "VIDEO"
   core.String searchType;
 
-  /// [Required] Start date of the requested date range, in YYYY-MM-DD format,
+  /// \[Required\] Start date of the requested date range, in YYYY-MM-DD format,
   /// in PST time (UTC - 8:00).
   ///
   /// Must be less than or equal to the end date. This value is included in the
   /// range.
   core.String startDate;
 
-  /// [Optional; Default is 0] Zero-based index of the first row in the
+  /// \[Optional; Default is 0\] Zero-based index of the first row in the
   /// response.
   ///
   /// Must be a non-negative number.

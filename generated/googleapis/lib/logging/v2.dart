@@ -151,12 +151,13 @@ class BillingAccountsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the bucket:
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
-  /// Value must have pattern "^billingAccounts/[^/]+/buckets/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -219,10 +220,10 @@ class BillingAccountsExclusionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource in which to create the exclusion:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
   /// "projects/my-logging-project", "organizations/123456789".
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -280,12 +281,12 @@ class BillingAccountsExclusionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of an existing exclusion to delete:
-  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
   /// "projects/my-project-id/exclusions/my-exclusion-id".
-  /// Value must have pattern "^billingAccounts/[^/]+/exclusions/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -336,12 +337,12 @@ class BillingAccountsExclusionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of an existing exclusion:
-  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
   /// "projects/my-project-id/exclusions/my-exclusion-id".
-  /// Value must have pattern "^billingAccounts/[^/]+/exclusions/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -393,9 +394,9 @@ class BillingAccountsExclusionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource whose exclusions are to be
-  /// listed. "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// listed. "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -468,12 +469,12 @@ class BillingAccountsExclusionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the exclusion to update:
-  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
   /// "projects/my-project-id/exclusions/my-exclusion-id".
-  /// Value must have pattern "^billingAccounts/[^/]+/exclusions/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [updateMask] - Required. A non-empty list of fields to change in the
   /// existing exclusion. New values for the fields are taken from the
@@ -561,9 +562,9 @@ class BillingAccountsLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource in which to create the bucket:
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" Example:
   /// "projects/my-logging-project/locations/global"
-  /// Value must have pattern "^billingAccounts/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
@@ -630,13 +631,14 @@ class BillingAccountsLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the bucket to delete.
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
   /// Value must have pattern
-  /// "^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -687,13 +689,13 @@ class BillingAccountsLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource whose buckets are to be listed:
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion
-  /// of the resource must be specified, but supplying the character - in place
-  /// of LOCATION_ID will return all buckets.
-  /// Value must have pattern "^billingAccounts/[^/]+/locations/[^/]+$".
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" Note: The locations
+  /// portion of the resource must be specified, but supplying the character -
+  /// in place of LOCATION_ID will return all buckets.
+  /// Value must have pattern `^billingAccounts/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -772,15 +774,16 @@ class BillingAccountsLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the bucket to update.
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also
   /// requires permission "resourcemanager.projects.updateLiens" to set the
   /// locked property
   /// Value must have pattern
-  /// "^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Field mask that specifies the fields in bucket
   /// that need an update. A bucket field will be overwritten if, and only if,
@@ -851,13 +854,14 @@ class BillingAccountsLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the bucket to undelete.
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
   /// Value must have pattern
-  /// "^billingAccounts/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -924,14 +928,14 @@ class BillingAccountsLogsResource {
   /// Request parameters:
   ///
   /// [logName] - Required. The resource name of the log to delete:
-  /// "projects/[PROJECT_ID]/logs/[LOG_ID]"
-  /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-  /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For
-  /// example, "projects/my-project-id/logs/syslog",
+  /// "projects/\[PROJECT_ID\]/logs/\[LOG_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]"
+  /// "folders/\[FOLDER_ID\]/logs/\[LOG_ID\]" \[LOG_ID\] must be URL-encoded.
+  /// For example, "projects/my-project-id/logs/syslog",
   /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
   /// For more information about log names, see LogEntry.
-  /// Value must have pattern "^billingAccounts/[^/]+/logs/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+/logs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -984,9 +988,9 @@ class BillingAccountsLogsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name that owns the logs:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -1068,10 +1072,10 @@ class BillingAccountsSinksResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource in which to create the sink:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
   /// "projects/my-logging-project", "organizations/123456789".
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
@@ -1145,12 +1149,12 @@ class BillingAccountsSinksResource {
   ///
   /// [sinkName] - Required. The full resource name of the sink to delete,
   /// including the parent resource and the sink identifier:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^billingAccounts/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1201,12 +1205,12 @@ class BillingAccountsSinksResource {
   /// Request parameters:
   ///
   /// [sinkName] - Required. The resource name of the sink:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^billingAccounts/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1257,9 +1261,9 @@ class BillingAccountsSinksResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource whose sinks are to be listed:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -1335,12 +1339,12 @@ class BillingAccountsSinksResource {
   ///
   /// [sinkName] - Required. The full resource name of the sink to update,
   /// including the parent resource and the sink identifier:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^billingAccounts/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -1429,12 +1433,12 @@ class BillingAccountsSinksResource {
   ///
   /// [sinkName] - Required. The full resource name of the sink to update,
   /// including the parent resource and the sink identifier:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^billingAccounts/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -1646,10 +1650,10 @@ class ExclusionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource in which to create the exclusion:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
   /// "projects/my-logging-project", "organizations/123456789".
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1707,12 +1711,12 @@ class ExclusionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of an existing exclusion to delete:
-  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
   /// "projects/my-project-id/exclusions/my-exclusion-id".
-  /// Value must have pattern "^[^/]+/[^/]+/exclusions/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1763,12 +1767,12 @@ class ExclusionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of an existing exclusion:
-  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
   /// "projects/my-project-id/exclusions/my-exclusion-id".
-  /// Value must have pattern "^[^/]+/[^/]+/exclusions/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1820,9 +1824,9 @@ class ExclusionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource whose exclusions are to be
-  /// listed. "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// listed. "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -1895,12 +1899,12 @@ class ExclusionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the exclusion to update:
-  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
   /// "projects/my-project-id/exclusions/my-exclusion-id".
-  /// Value must have pattern "^[^/]+/[^/]+/exclusions/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [updateMask] - Required. A non-empty list of fields to change in the
   /// existing exclusion. New values for the fields are taken from the
@@ -1991,10 +1995,10 @@ class FoldersExclusionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource in which to create the exclusion:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
   /// "projects/my-logging-project", "organizations/123456789".
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2052,12 +2056,12 @@ class FoldersExclusionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of an existing exclusion to delete:
-  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
   /// "projects/my-project-id/exclusions/my-exclusion-id".
-  /// Value must have pattern "^folders/[^/]+/exclusions/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2108,12 +2112,12 @@ class FoldersExclusionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of an existing exclusion:
-  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
   /// "projects/my-project-id/exclusions/my-exclusion-id".
-  /// Value must have pattern "^folders/[^/]+/exclusions/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2165,9 +2169,9 @@ class FoldersExclusionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource whose exclusions are to be
-  /// listed. "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-  /// Value must have pattern "^folders/[^/]+$".
+  /// listed. "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -2240,12 +2244,12 @@ class FoldersExclusionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the exclusion to update:
-  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
   /// "projects/my-project-id/exclusions/my-exclusion-id".
-  /// Value must have pattern "^folders/[^/]+/exclusions/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [updateMask] - Required. A non-empty list of fields to change in the
   /// existing exclusion. New values for the fields are taken from the
@@ -2332,9 +2336,9 @@ class FoldersLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource in which to create the bucket:
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" Example:
   /// "projects/my-logging-project/locations/global"
-  /// Value must have pattern "^folders/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
@@ -2401,12 +2405,14 @@ class FoldersLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the bucket to delete.
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
-  /// Value must have pattern "^folders/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2457,12 +2463,14 @@ class FoldersLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the bucket:
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
-  /// Value must have pattern "^folders/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2513,13 +2521,13 @@ class FoldersLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource whose buckets are to be listed:
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion
-  /// of the resource must be specified, but supplying the character - in place
-  /// of LOCATION_ID will return all buckets.
-  /// Value must have pattern "^folders/[^/]+/locations/[^/]+$".
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" Note: The locations
+  /// portion of the resource must be specified, but supplying the character -
+  /// in place of LOCATION_ID will return all buckets.
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -2598,14 +2606,16 @@ class FoldersLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the bucket to update.
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also
   /// requires permission "resourcemanager.projects.updateLiens" to set the
   /// locked property
-  /// Value must have pattern "^folders/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Field mask that specifies the fields in bucket
   /// that need an update. A bucket field will be overwritten if, and only if,
@@ -2676,12 +2686,14 @@ class FoldersLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the bucket to undelete.
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
-  /// Value must have pattern "^folders/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2747,14 +2759,14 @@ class FoldersLogsResource {
   /// Request parameters:
   ///
   /// [logName] - Required. The resource name of the log to delete:
-  /// "projects/[PROJECT_ID]/logs/[LOG_ID]"
-  /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-  /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For
-  /// example, "projects/my-project-id/logs/syslog",
+  /// "projects/\[PROJECT_ID\]/logs/\[LOG_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]"
+  /// "folders/\[FOLDER_ID\]/logs/\[LOG_ID\]" \[LOG_ID\] must be URL-encoded.
+  /// For example, "projects/my-project-id/logs/syslog",
   /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
   /// For more information about log names, see LogEntry.
-  /// Value must have pattern "^folders/[^/]+/logs/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+/logs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2807,9 +2819,9 @@ class FoldersLogsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name that owns the logs:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-  /// Value must have pattern "^folders/[^/]+$".
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -2890,10 +2902,10 @@ class FoldersSinksResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource in which to create the sink:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
   /// "projects/my-logging-project", "organizations/123456789".
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
@@ -2967,12 +2979,12 @@ class FoldersSinksResource {
   ///
   /// [sinkName] - Required. The full resource name of the sink to delete,
   /// including the parent resource and the sink identifier:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^folders/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3023,12 +3035,12 @@ class FoldersSinksResource {
   /// Request parameters:
   ///
   /// [sinkName] - Required. The resource name of the sink:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^folders/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3079,9 +3091,9 @@ class FoldersSinksResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource whose sinks are to be listed:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-  /// Value must have pattern "^folders/[^/]+$".
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -3157,12 +3169,12 @@ class FoldersSinksResource {
   ///
   /// [sinkName] - Required. The full resource name of the sink to update,
   /// including the parent resource and the sink identifier:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^folders/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -3251,12 +3263,12 @@ class FoldersSinksResource {
   ///
   /// [sinkName] - Required. The full resource name of the sink to update,
   /// including the parent resource and the sink identifier:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^folders/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -3356,9 +3368,9 @@ class LocationsBucketsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource in which to create the bucket:
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" Example:
   /// "projects/my-logging-project/locations/global"
-  /// Value must have pattern "^[^/]+/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
@@ -3425,12 +3437,14 @@ class LocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the bucket to delete.
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
-  /// Value must have pattern "^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// Value must have pattern
+  /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3481,12 +3495,14 @@ class LocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the bucket:
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
-  /// Value must have pattern "^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// Value must have pattern
+  /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3537,13 +3553,13 @@ class LocationsBucketsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource whose buckets are to be listed:
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion
-  /// of the resource must be specified, but supplying the character - in place
-  /// of LOCATION_ID will return all buckets.
-  /// Value must have pattern "^[^/]+/[^/]+/locations/[^/]+$".
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" Note: The locations
+  /// portion of the resource must be specified, but supplying the character -
+  /// in place of LOCATION_ID will return all buckets.
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -3622,14 +3638,16 @@ class LocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the bucket to update.
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also
   /// requires permission "resourcemanager.projects.updateLiens" to set the
   /// locked property
-  /// Value must have pattern "^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// Value must have pattern
+  /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Field mask that specifies the fields in bucket
   /// that need an update. A bucket field will be overwritten if, and only if,
@@ -3700,12 +3718,14 @@ class LocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the bucket to undelete.
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
-  /// Value must have pattern "^[^/]+/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// Value must have pattern
+  /// `^\[^/\]+/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3771,14 +3791,14 @@ class LogsResource {
   /// Request parameters:
   ///
   /// [logName] - Required. The resource name of the log to delete:
-  /// "projects/[PROJECT_ID]/logs/[LOG_ID]"
-  /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-  /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For
-  /// example, "projects/my-project-id/logs/syslog",
+  /// "projects/\[PROJECT_ID\]/logs/\[LOG_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]"
+  /// "folders/\[FOLDER_ID\]/logs/\[LOG_ID\]" \[LOG_ID\] must be URL-encoded.
+  /// For example, "projects/my-project-id/logs/syslog",
   /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
   /// For more information about log names, see LogEntry.
-  /// Value must have pattern "^[^/]+/[^/]+/logs/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/logs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3831,9 +3851,9 @@ class LogsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name that owns the logs:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -3991,14 +4011,14 @@ class OrganizationsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource for which to retrieve CMEK settings.
-  /// "projects/[PROJECT_ID]/cmekSettings"
-  /// "organizations/[ORGANIZATION_ID]/cmekSettings"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
-  /// "folders/[FOLDER_ID]/cmekSettings" Example:
+  /// "projects/\[PROJECT_ID\]/cmekSettings"
+  /// "organizations/\[ORGANIZATION_ID\]/cmekSettings"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
+  /// "folders/\[FOLDER_ID\]/cmekSettings" Example:
   /// "organizations/12345/cmekSettings".Note: CMEK for the Logs Router can
   /// currently only be configured for GCP organizations. Once configured, it
   /// applies to all projects and folders in the GCP organization.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4064,14 +4084,14 @@ class OrganizationsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name for the CMEK settings to update.
-  /// "projects/[PROJECT_ID]/cmekSettings"
-  /// "organizations/[ORGANIZATION_ID]/cmekSettings"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
-  /// "folders/[FOLDER_ID]/cmekSettings" Example:
+  /// "projects/\[PROJECT_ID\]/cmekSettings"
+  /// "organizations/\[ORGANIZATION_ID\]/cmekSettings"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
+  /// "folders/\[FOLDER_ID\]/cmekSettings" Example:
   /// "organizations/12345/cmekSettings".Note: CMEK for the Logs Router can
   /// currently only be configured for GCP organizations. Once configured, it
   /// applies to all projects and folders in the GCP organization.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. Field mask identifying which fields from
   /// cmek_settings should be updated. A field will be overwritten if and only
@@ -4150,10 +4170,10 @@ class OrganizationsExclusionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource in which to create the exclusion:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
   /// "projects/my-logging-project", "organizations/123456789".
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4211,12 +4231,12 @@ class OrganizationsExclusionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of an existing exclusion to delete:
-  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
   /// "projects/my-project-id/exclusions/my-exclusion-id".
-  /// Value must have pattern "^organizations/[^/]+/exclusions/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4267,12 +4287,12 @@ class OrganizationsExclusionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of an existing exclusion:
-  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
   /// "projects/my-project-id/exclusions/my-exclusion-id".
-  /// Value must have pattern "^organizations/[^/]+/exclusions/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4324,9 +4344,9 @@ class OrganizationsExclusionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource whose exclusions are to be
-  /// listed. "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// listed. "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -4399,12 +4419,12 @@ class OrganizationsExclusionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the exclusion to update:
-  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
   /// "projects/my-project-id/exclusions/my-exclusion-id".
-  /// Value must have pattern "^organizations/[^/]+/exclusions/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [updateMask] - Required. A non-empty list of fields to change in the
   /// existing exclusion. New values for the fields are taken from the
@@ -4492,9 +4512,9 @@ class OrganizationsLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource in which to create the bucket:
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" Example:
   /// "projects/my-logging-project/locations/global"
-  /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
@@ -4561,13 +4581,14 @@ class OrganizationsLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the bucket to delete.
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
   /// Value must have pattern
-  /// "^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4618,13 +4639,14 @@ class OrganizationsLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the bucket:
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
   /// Value must have pattern
-  /// "^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4675,13 +4697,13 @@ class OrganizationsLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource whose buckets are to be listed:
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion
-  /// of the resource must be specified, but supplying the character - in place
-  /// of LOCATION_ID will return all buckets.
-  /// Value must have pattern "^organizations/[^/]+/locations/[^/]+$".
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" Note: The locations
+  /// portion of the resource must be specified, but supplying the character -
+  /// in place of LOCATION_ID will return all buckets.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -4760,15 +4782,16 @@ class OrganizationsLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the bucket to update.
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also
   /// requires permission "resourcemanager.projects.updateLiens" to set the
   /// locked property
   /// Value must have pattern
-  /// "^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Field mask that specifies the fields in bucket
   /// that need an update. A bucket field will be overwritten if, and only if,
@@ -4839,13 +4862,14 @@ class OrganizationsLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the bucket to undelete.
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
   /// Value must have pattern
-  /// "^organizations/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4911,14 +4935,14 @@ class OrganizationsLogsResource {
   /// Request parameters:
   ///
   /// [logName] - Required. The resource name of the log to delete:
-  /// "projects/[PROJECT_ID]/logs/[LOG_ID]"
-  /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-  /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For
-  /// example, "projects/my-project-id/logs/syslog",
+  /// "projects/\[PROJECT_ID\]/logs/\[LOG_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]"
+  /// "folders/\[FOLDER_ID\]/logs/\[LOG_ID\]" \[LOG_ID\] must be URL-encoded.
+  /// For example, "projects/my-project-id/logs/syslog",
   /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
   /// For more information about log names, see LogEntry.
-  /// Value must have pattern "^organizations/[^/]+/logs/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/logs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4971,9 +4995,9 @@ class OrganizationsLogsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name that owns the logs:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -5054,10 +5078,10 @@ class OrganizationsSinksResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource in which to create the sink:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
   /// "projects/my-logging-project", "organizations/123456789".
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
@@ -5131,12 +5155,12 @@ class OrganizationsSinksResource {
   ///
   /// [sinkName] - Required. The full resource name of the sink to delete,
   /// including the parent resource and the sink identifier:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^organizations/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5187,12 +5211,12 @@ class OrganizationsSinksResource {
   /// Request parameters:
   ///
   /// [sinkName] - Required. The resource name of the sink:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^organizations/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5243,9 +5267,9 @@ class OrganizationsSinksResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource whose sinks are to be listed:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -5321,12 +5345,12 @@ class OrganizationsSinksResource {
   ///
   /// [sinkName] - Required. The full resource name of the sink to update,
   /// including the parent resource and the sink identifier:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^organizations/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -5415,12 +5439,12 @@ class OrganizationsSinksResource {
   ///
   /// [sinkName] - Required. The full resource name of the sink to update,
   /// including the parent resource and the sink identifier:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^organizations/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -5527,10 +5551,10 @@ class ProjectsExclusionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource in which to create the exclusion:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
   /// "projects/my-logging-project", "organizations/123456789".
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5588,12 +5612,12 @@ class ProjectsExclusionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of an existing exclusion to delete:
-  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
   /// "projects/my-project-id/exclusions/my-exclusion-id".
-  /// Value must have pattern "^projects/[^/]+/exclusions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5644,12 +5668,12 @@ class ProjectsExclusionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of an existing exclusion:
-  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
   /// "projects/my-project-id/exclusions/my-exclusion-id".
-  /// Value must have pattern "^projects/[^/]+/exclusions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5701,9 +5725,9 @@ class ProjectsExclusionsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource whose exclusions are to be
-  /// listed. "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-  /// Value must have pattern "^projects/[^/]+$".
+  /// listed. "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -5776,12 +5800,12 @@ class ProjectsExclusionsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the exclusion to update:
-  /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
-  /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/exclusions/\[EXCLUSION_ID\]"
+  /// "folders/\[FOLDER_ID\]/exclusions/\[EXCLUSION_ID\]" Example:
   /// "projects/my-project-id/exclusions/my-exclusion-id".
-  /// Value must have pattern "^projects/[^/]+/exclusions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/exclusions/\[^/\]+$`.
   ///
   /// [updateMask] - Required. A non-empty list of fields to change in the
   /// existing exclusion. New values for the fields are taken from the
@@ -5868,9 +5892,9 @@ class ProjectsLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource in which to create the bucket:
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" Example:
   /// "projects/my-logging-project/locations/global"
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [bucketId] - Required. A client-assigned identifier such as "my-bucket".
   /// Identifiers are limited to 100 characters and can include only letters,
@@ -5937,12 +5961,14 @@ class ProjectsLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the bucket to delete.
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5993,12 +6019,14 @@ class ProjectsLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the bucket:
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6049,13 +6077,13 @@ class ProjectsLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource whose buckets are to be listed:
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]" Note: The locations portion
-  /// of the resource must be specified, but supplying the character - in place
-  /// of LOCATION_ID will return all buckets.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" Note: The locations
+  /// portion of the resource must be specified, but supplying the character -
+  /// in place of LOCATION_ID will return all buckets.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -6134,14 +6162,16 @@ class ProjectsLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the bucket to update.
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id". Also
   /// requires permission "resourcemanager.projects.updateLiens" to set the
   /// locked property
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Field mask that specifies the fields in bucket
   /// that need an update. A bucket field will be overwritten if, and only if,
@@ -6212,12 +6242,14 @@ class ProjectsLocationsBucketsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The full resource name of the bucket to undelete.
-  /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]"
-  /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]"
+  /// Example:
   /// "projects/my-project-id/locations/my-location/buckets/my-bucket-id".
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/buckets/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/buckets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6283,14 +6315,14 @@ class ProjectsLogsResource {
   /// Request parameters:
   ///
   /// [logName] - Required. The resource name of the log to delete:
-  /// "projects/[PROJECT_ID]/logs/[LOG_ID]"
-  /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-  /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded. For
-  /// example, "projects/my-project-id/logs/syslog",
+  /// "projects/\[PROJECT_ID\]/logs/\[LOG_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]"
+  /// "folders/\[FOLDER_ID\]/logs/\[LOG_ID\]" \[LOG_ID\] must be URL-encoded.
+  /// For example, "projects/my-project-id/logs/syslog",
   /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
   /// For more information about log names, see LogEntry.
-  /// Value must have pattern "^projects/[^/]+/logs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/logs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6343,9 +6375,9 @@ class ProjectsLogsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name that owns the logs:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-  /// Value must have pattern "^projects/[^/]+$".
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -6422,9 +6454,9 @@ class ProjectsMetricsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource name of the project in which to create
-  /// the metric: "projects/[PROJECT_ID]" The new metric must be provided in the
-  /// request.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// the metric: "projects/\[PROJECT_ID\]" The new metric must be provided in
+  /// the request.
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6480,8 +6512,8 @@ class ProjectsMetricsResource {
   /// Request parameters:
   ///
   /// [metricName] - Required. The resource name of the metric to delete:
-  /// "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
-  /// Value must have pattern "^projects/[^/]+/metrics/[^/]+$".
+  /// "projects/\[PROJECT_ID\]/metrics/\[METRIC_ID\]"
+  /// Value must have pattern `^projects/\[^/\]+/metrics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6532,8 +6564,8 @@ class ProjectsMetricsResource {
   /// Request parameters:
   ///
   /// [metricName] - Required. The resource name of the desired metric:
-  /// "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
-  /// Value must have pattern "^projects/[^/]+/metrics/[^/]+$".
+  /// "projects/\[PROJECT_ID\]/metrics/\[METRIC_ID\]"
+  /// Value must have pattern `^projects/\[^/\]+/metrics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6584,8 +6616,8 @@ class ProjectsMetricsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the project containing the metrics:
-  /// "projects/[PROJECT_ID]"
-  /// Value must have pattern "^projects/[^/]+$".
+  /// "projects/\[PROJECT_ID\]"
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -6657,11 +6689,11 @@ class ProjectsMetricsResource {
   /// Request parameters:
   ///
   /// [metricName] - Required. The resource name of the metric to update:
-  /// "projects/[PROJECT_ID]/metrics/[METRIC_ID]" The updated metric must be
+  /// "projects/\[PROJECT_ID\]/metrics/\[METRIC_ID\]" The updated metric must be
   /// provided in the request and it's name field must be the same as
-  /// [METRIC_ID] If the metric does not exist in [PROJECT_ID], then a new
+  /// \[METRIC_ID\] If the metric does not exist in \[PROJECT_ID\], then a new
   /// metric is created.
-  /// Value must have pattern "^projects/[^/]+/metrics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/metrics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6728,10 +6760,10 @@ class ProjectsSinksResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource in which to create the sink:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
   /// "projects/my-logging-project", "organizations/123456789".
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
@@ -6805,12 +6837,12 @@ class ProjectsSinksResource {
   ///
   /// [sinkName] - Required. The full resource name of the sink to delete,
   /// including the parent resource and the sink identifier:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6861,12 +6893,12 @@ class ProjectsSinksResource {
   /// Request parameters:
   ///
   /// [sinkName] - Required. The resource name of the sink:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6917,9 +6949,9 @@ class ProjectsSinksResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource whose sinks are to be listed:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-  /// Value must have pattern "^projects/[^/]+$".
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -6995,12 +7027,12 @@ class ProjectsSinksResource {
   ///
   /// [sinkName] - Required. The full resource name of the sink to update,
   /// including the parent resource and the sink identifier:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -7089,12 +7121,12 @@ class ProjectsSinksResource {
   ///
   /// [sinkName] - Required. The full resource name of the sink to update,
   /// including the parent resource and the sink identifier:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^projects/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -7188,10 +7220,10 @@ class SinksResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The resource in which to create the sink:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples:
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Examples:
   /// "projects/my-logging-project", "organizations/123456789".
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. Determines the kind of IAM identity
   /// returned as writer_identity in the new sink. If this value is omitted or
@@ -7265,12 +7297,12 @@ class SinksResource {
   ///
   /// [sinkName] - Required. The full resource name of the sink to delete,
   /// including the parent resource and the sink identifier:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^[^/]+/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7321,12 +7353,12 @@ class SinksResource {
   /// Request parameters:
   ///
   /// [sinkName] - Required. The resource name of the sink:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^[^/]+/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7377,9 +7409,9 @@ class SinksResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource whose sinks are to be listed:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]"
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return from this
   /// request. Non-positive values are ignored. The presence of nextPageToken in
@@ -7455,12 +7487,12 @@ class SinksResource {
   ///
   /// [sinkName] - Required. The full resource name of the sink to update,
   /// including the parent resource and the sink identifier:
-  /// "projects/[PROJECT_ID]/sinks/[SINK_ID]"
-  /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]"
-  /// "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example:
+  /// "projects/\[PROJECT_ID\]/sinks/\[SINK_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/sinks/\[SINK_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/sinks/\[SINK_ID\]"
+  /// "folders/\[FOLDER_ID\]/sinks/\[SINK_ID\]" Example:
   /// "projects/my-project-id/sinks/my-sink-id".
-  /// Value must have pattern "^[^/]+/[^/]+/sinks/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/sinks/\[^/\]+$`.
   ///
   /// [uniqueWriterIdentity] - Optional. See sinks.create for a description of
   /// this field. When updating a sink, the effect of this field on the value of
@@ -7554,14 +7586,14 @@ class V2Resource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource for which to retrieve CMEK settings.
-  /// "projects/[PROJECT_ID]/cmekSettings"
-  /// "organizations/[ORGANIZATION_ID]/cmekSettings"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
-  /// "folders/[FOLDER_ID]/cmekSettings" Example:
+  /// "projects/\[PROJECT_ID\]/cmekSettings"
+  /// "organizations/\[ORGANIZATION_ID\]/cmekSettings"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
+  /// "folders/\[FOLDER_ID\]/cmekSettings" Example:
   /// "organizations/12345/cmekSettings".Note: CMEK for the Logs Router can
   /// currently only be configured for GCP organizations. Once configured, it
   /// applies to all projects and folders in the GCP organization.
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7627,14 +7659,14 @@ class V2Resource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name for the CMEK settings to update.
-  /// "projects/[PROJECT_ID]/cmekSettings"
-  /// "organizations/[ORGANIZATION_ID]/cmekSettings"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/cmekSettings"
-  /// "folders/[FOLDER_ID]/cmekSettings" Example:
+  /// "projects/\[PROJECT_ID\]/cmekSettings"
+  /// "organizations/\[ORGANIZATION_ID\]/cmekSettings"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/cmekSettings"
+  /// "folders/\[FOLDER_ID\]/cmekSettings" Example:
   /// "organizations/12345/cmekSettings".Note: CMEK for the Logs Router can
   /// currently only be configured for GCP organizations. Once configured, it
   /// applies to all projects and folders in the GCP organization.
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. Field mask identifying which fields from
   /// cmek_settings should be updated. A field will be overwritten if and only
@@ -8375,8 +8407,8 @@ class ListLogEntriesRequest {
   core.List<core.String> projectIds;
 
   /// Names of one or more parent resources from which to retrieve log entries:
-  /// "projects/[PROJECT_ID]" "organizations/[ORGANIZATION_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Projects
+  /// "projects/\[PROJECT_ID\]" "organizations/\[ORGANIZATION_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]" "folders/\[FOLDER_ID\]" Projects
   /// listed in the project_ids field are added to this list.
   ///
   /// Required.
@@ -8774,17 +8806,17 @@ class LogEntry {
   core.Map<core.String, core.String> labels;
 
   /// The resource name of the log to which this log entry belongs:
-  /// "projects/[PROJECT_ID]/logs/[LOG_ID]"
-  /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-  /// "folders/[FOLDER_ID]/logs/[LOG_ID]" A project number may be used in place
-  /// of PROJECT_ID.
+  /// "projects/\[PROJECT_ID\]/logs/\[LOG_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]"
+  /// "folders/\[FOLDER_ID\]/logs/\[LOG_ID\]" A project number may be used in
+  /// place of PROJECT_ID.
   ///
   /// The project number is translated to its corresponding PROJECT_ID
   /// internally and the log_name field will contain PROJECT_ID in queries and
-  /// exports.[LOG_ID] must be URL-encoded within log_name. Example:
+  /// exports.\[LOG_ID\] must be URL-encoded within log_name. Example:
   /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".
-  /// [LOG_ID] must be less than 512 characters long and can only include the
+  /// \[LOG_ID\] must be less than 512 characters long and can only include the
   /// following characters: upper and lower case alphanumeric characters,
   /// forward-slash, underscore, hyphen, and period.For backward compatibility,
   /// if log_name begins with a forward-slash, such as /projects/..., then the
@@ -9416,7 +9448,7 @@ class LogMetric {
   /// (/) denotes a hierarchy of name pieces, and it cannot be the first
   /// character of the name.The metric identifier in this field must not be
   /// URL-encoded (https://en.wikipedia.org/wiki/Percent-encoding). However,
-  /// when the metric identifier appears as the [METRIC_ID] part of a
+  /// when the metric identifier appears as the \[METRIC_ID\] part of a
   /// metric_name API parameter, then the metric identifier must be URL-encoded.
   /// Example: "projects/my-project/metrics/nginx%2Frequests".
   ///
@@ -9564,11 +9596,11 @@ class LogSink {
   /// Optional.
   core.String description;
 
-  /// The export destination: "storage.googleapis.com/[GCS_BUCKET]"
-  /// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-  /// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's
-  /// writer_identity, set when the sink is created, must have permission to
-  /// write to the destination or else the log entries are not exported.
+  /// The export destination: "storage.googleapis.com/\[GCS_BUCKET\]"
+  /// "bigquery.googleapis.com/projects/\[PROJECT_ID\]/datasets/\[DATASET\]"
+  /// "pubsub.googleapis.com/projects/\[PROJECT_ID\]/topics/\[TOPIC_ID\]" The
+  /// sink's writer_identity, set when the sink is created, must have permission
+  /// to write to the destination or else the log entries are not exported.
   ///
   /// For more information, see Exporting Logs with Sinks
   /// (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
@@ -9595,7 +9627,7 @@ class LogSink {
   ///
   /// The only exported log entries are those that are in the resource owning
   /// the sink and that match the filter. For example:
-  /// logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR
+  /// logName="projects/\[PROJECT_ID\]/logs/\[LOG_ID\]" AND severity>=ERROR
   ///
   /// Optional.
   core.String filter;
@@ -9888,16 +9920,17 @@ class MetricDescriptor {
   /// query time from the underlying cumulative or delta value). .
   /// multiplication or composition (as an infix operator). For examples, GBy.d
   /// or k{watt}.h.The grammar for a unit is as follows: Expression = Component
-  /// { "." Component } { "/" Component } ; Component = ( [ PREFIX ] UNIT | "%"
-  /// ) [ Annotation ] | Annotation | "1" ; Annotation = "{" NAME "}" ; Notes:
-  /// Annotation is just a comment if it follows a UNIT. If the annotation is
-  /// used alone, then the unit is equivalent to 1. For examples, {request}/s ==
-  /// 1/s, By{transmitted}/s == By/s. NAME is a sequence of non-blank printable
-  /// ASCII characters not containing { or }. 1 represents a unitary
-  /// dimensionless unit (https://en.wikipedia.org/wiki/Dimensionless_quantity)
-  /// of 1, such as in 1/s. It is typically used when none of the basic units
-  /// are appropriate. For example, "new users per day" can be represented as
-  /// 1/d or {new-users}/d (and a metric value 5 would mean "5 new users).
+  /// { "." Component } { "/" Component } ; Component = ( \[ PREFIX \] UNIT |
+  /// "%" ) \[ Annotation \] | Annotation | "1" ; Annotation = "{" NAME "}" ;
+  /// Notes: Annotation is just a comment if it follows a UNIT. If the
+  /// annotation is used alone, then the unit is equivalent to 1. For examples,
+  /// {request}/s == 1/s, By{transmitted}/s == By/s. NAME is a sequence of
+  /// non-blank printable ASCII characters not containing { or }. 1 represents a
+  /// unitary dimensionless unit
+  /// (https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in
+  /// 1/s. It is typically used when none of the basic units are appropriate.
+  /// For example, "new users per day" can be represented as 1/d or
+  /// {new-users}/d (and a metric value 5 would mean "5 new users).
   /// Alternatively, "thousands of page views per day" would be represented as
   /// 1000/d or k1/d or k{page_views}/d (and a metric value of 5.3 would mean
   /// "5300 page views per day"). % represents dimensionless value of 1/100, and
@@ -10316,8 +10349,8 @@ class MonitoredResourceMetadata {
   /// System labels are a kind of metadata extracted by Google, including
   /// "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System
   /// label values can be only strings, Boolean values, or a list of strings.
-  /// For example: { "name": "my-test-instance", "security_group": ["a", "b",
-  /// "c"], "spot_instance": false }
+  /// For example: { "name": "my-test-instance", "security_group": \["a", "b",
+  /// "c"\], "spot_instance": false }
   ///
   /// Output only.
   ///
@@ -10862,10 +10895,10 @@ class WriteLogEntriesRequest {
 
   /// A default log resource name that is assigned to all log entries in entries
   /// that do not specify a value for log_name:
-  /// "projects/[PROJECT_ID]/logs/[LOG_ID]"
-  /// "organizations/[ORGANIZATION_ID]/logs/[LOG_ID]"
-  /// "billingAccounts/[BILLING_ACCOUNT_ID]/logs/[LOG_ID]"
-  /// "folders/[FOLDER_ID]/logs/[LOG_ID]" [LOG_ID] must be URL-encoded.
+  /// "projects/\[PROJECT_ID\]/logs/\[LOG_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/logs/\[LOG_ID\]"
+  /// "billingAccounts/\[BILLING_ACCOUNT_ID\]/logs/\[LOG_ID\]"
+  /// "folders/\[FOLDER_ID\]/logs/\[LOG_ID\]" \[LOG_ID\] must be URL-encoded.
   ///
   /// For example: "projects/my-project-id/logs/syslog"
   /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity"

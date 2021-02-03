@@ -79,7 +79,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -130,7 +130,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -211,7 +211,7 @@ class ProjectsLocationsJobsResource {
   ///
   /// [parent] - Required. The location name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -267,7 +267,8 @@ class ProjectsLocationsJobsResource {
   ///
   /// [name] - Required. The job name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -319,7 +320,8 @@ class ProjectsLocationsJobsResource {
   ///
   /// [name] - Required. The job name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -371,7 +373,7 @@ class ProjectsLocationsJobsResource {
   ///
   /// [parent] - Required. The location name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The maximum page size is 500. If
   /// unspecified, the page size will be the maximum. Fewer jobs than requested
@@ -453,15 +455,16 @@ class ProjectsLocationsJobsResource {
   /// [name] - Optionally caller-specified in CreateJob, after which it becomes
   /// output only. The job name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID`
-  /// can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:),
-  /// or periods (.). For more information, see [Identifying
+  /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), colons
+  /// (:), or periods (.). For more information, see [Identifying
   /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the job's location. The list of
   /// available locations can be obtained by calling ListLocations. For more
   /// information, see https://cloud.google.com/about/locations/. * `JOB_ID` can
-  /// contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or
+  /// contain only letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), or
   /// underscores (_). The maximum length is 500 characters.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [updateMask] - A mask used to specify which fields of the job are being
   /// updated.
@@ -531,7 +534,8 @@ class ProjectsLocationsJobsResource {
   ///
   /// [name] - Required. The job name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -593,7 +597,8 @@ class ProjectsLocationsJobsResource {
   ///
   /// [name] - Required. The job name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -654,7 +659,8 @@ class ProjectsLocationsJobsResource {
   ///
   /// [name] - Required. The job name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/jobs/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -709,7 +715,7 @@ class ProjectsLocationsJobsResource {
 ///
 /// The job will be pushed to a job handler by means of an HTTP request via an
 /// http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by
-/// means of an HTTP response code in the range [200 - 299]. Error 503 is
+/// means of an HTTP response code in the range \[200 - 299\]. Error 503 is
 /// considered an App Engine system error instead of an application error.
 /// Requests returning error 503 will be retried regardless of retry
 /// configuration and not counted against retry counts. Any other response code,
@@ -948,7 +954,7 @@ class Empty {
 ///
 /// The job will be pushed to the job handler by means of an HTTP request via an
 /// http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by
-/// means of an HTTP response code in the range [200 - 299]. A failure to
+/// means of an HTTP response code in the range \[200 - 299\]. A failure to
 /// receive a response constitutes a failed execution. For a redirected request,
 /// the response returned by the redirected request is considered.
 class HttpTarget {
@@ -1111,13 +1117,13 @@ class Job {
   ///
   /// The job name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID`
-  /// can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:),
-  /// or periods (.). For more information, see [Identifying
+  /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), colons
+  /// (:), or periods (.). For more information, see [Identifying
   /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the job's location. The list of
   /// available locations can be obtained by calling ListLocations. For more
   /// information, see https://cloud.google.com/about/locations/. * `JOB_ID` can
-  /// contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or
+  /// contain only letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), or
   /// underscores (_). The maximum length is 500 characters.
   core.String name;
 
@@ -1548,9 +1554,9 @@ class PauseJobRequest {
 /// attribute. Note that client libraries represent this object differently
 /// depending on the language. See the corresponding [client library
 /// documentation](https://cloud.google.com/pubsub/docs/reference/libraries) for
-/// more information. See [quotas and limits]
-/// (https://cloud.google.com/pubsub/quotas) for more information about message
-/// limits.
+/// more information. See [quotas and
+/// limits](https://cloud.google.com/pubsub/quotas) for more information about
+/// message limits.
 class PubsubMessage {
   /// Attributes for this message.
   ///

@@ -90,7 +90,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -150,7 +150,7 @@ class ProjectsLocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -526,8 +526,8 @@ class SpeechRecognitionResult {
   /// Output only.
   core.int channelTag;
 
-  /// The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of
-  /// the language in this result.
+  /// The \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag
+  /// of the language in this result.
   ///
   /// This language code was detected to have the most likelihood of being
   /// spoken in the audio.

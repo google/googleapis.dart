@@ -83,7 +83,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -134,7 +134,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -237,7 +237,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   ///
   /// [parent] - Required. The parent resource of the Connectivity Test to
   /// create: `projects/{project_id}/locations/global`
-  /// Value must have pattern "^projects/[^/]+/locations/global$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
   ///
   /// [testId] - Required. The logical name of the Connectivity Test in your
   /// project with the following restrictions: * Must contain only lowercase
@@ -306,7 +306,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// [name] - Required. Connectivity Test resource name using the form:
   /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/connectivityTests/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/connectivityTests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -359,7 +359,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// [name] - Required. `ConnectivityTest` resource name using the form:
   /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/connectivityTests/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/connectivityTests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -417,7 +417,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/connectivityTests/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/connectivityTests/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -485,7 +485,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   ///
   /// [parent] - Required. The parent resource of the Connectivity Tests:
   /// `projects/{project_id}/locations/global`
-  /// Value must have pattern "^projects/[^/]+/locations/global$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
   ///
   /// [filter] - Lists the `ConnectivityTests` that match the filter expression.
   /// A filter expression filters the resources listed in the response. The
@@ -588,7 +588,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// [name] - Required. Unique name of the resource using the form:
   /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/connectivityTests/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/connectivityTests/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Mask of fields to update. At least one path must
   /// be supplied in this field.
@@ -663,7 +663,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// [name] - Required. Connectivity Test resource name using the form:
   /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/connectivityTests/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/connectivityTests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -726,7 +726,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/connectivityTests/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/connectivityTests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -793,7 +793,7 @@ class ProjectsLocationsGlobalConnectivityTestsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/connectivityTests/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/connectivityTests/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -870,7 +870,7 @@ class ProjectsLocationsGlobalOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -930,7 +930,7 @@ class ProjectsLocationsGlobalOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -985,7 +985,7 @@ class ProjectsLocationsGlobalOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1045,7 +1045,7 @@ class ProjectsLocationsGlobalOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/global$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -1177,13 +1177,13 @@ class AbortInfo {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
@@ -1225,9 +1225,9 @@ class AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -1675,8 +1675,8 @@ class Endpoint {
 
   /// The IP address of the endpoint, which can be an external or internal IP.
   ///
-  /// An IPv6 address is only allowed when the test's destination is a [global
-  /// load balancer VIP](/load-balancing/docs/load-balancing-overview).
+  /// An IPv6 address is only allowed when the test's destination is a \[global
+  /// load balancer VIP\](/load-balancing/docs/load-balancing-overview).
   core.String ipAddress;
 
   /// A Compute Engine network URI.
@@ -2803,14 +2803,14 @@ class OperationMetadata {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

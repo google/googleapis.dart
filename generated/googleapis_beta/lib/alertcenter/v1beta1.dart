@@ -364,9 +364,10 @@ class AlertsResource {
   /// caller identity if not provided.
   ///
   /// [filter] - Optional. A query string for filtering alert results. For more
-  /// details, see [Query filters](/admin-sdk/alertcenter/guides/query-filters)
-  /// and [Supported query filter
-  /// fields](/admin-sdk/alertcenter/reference/filter-fields#alerts.list).
+  /// details, see \[Query
+  /// filters\](/admin-sdk/alertcenter/guides/query-filters) and \[Supported
+  /// query filter
+  /// fields\](/admin-sdk/alertcenter/reference/filter-fields#alerts.list).
   ///
   /// [orderBy] - Optional. The sort order of the list results. If not specified
   /// results may be returned in arbitrary order. You can sort the results in
@@ -516,8 +517,8 @@ class AlertsFeedbackResource {
   /// Creates new feedback for an alert.
   ///
   /// Attempting to create a feedback for a non-existent alert returns
-  /// `NOT_FOUND` error. Attempting to create a feedback for an alert that is
-  /// marked for deletion returns `FAILED_PRECONDITION' error.
+  /// \`NOT_FOUND\` error. Attempting to create a feedback for an alert that is
+  /// marked for deletion returns \`FAILED_PRECONDITION' error.
   ///
   /// [request] - The metadata request object.
   ///
@@ -600,10 +601,10 @@ class AlertsFeedbackResource {
   /// from the caller identity if not provided.
   ///
   /// [filter] - Optional. A query string for filtering alert feedback results.
-  /// For more details, see [Query
-  /// filters](/admin-sdk/alertcenter/guides/query-filters) and [Supported query
-  /// filter
-  /// fields](/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).
+  /// For more details, see \[Query
+  /// filters\](/admin-sdk/alertcenter/guides/query-filters) and \[Supported
+  /// query filter
+  /// fields\](/admin-sdk/alertcenter/reference/filter-fields#alerts.feedback.list).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1034,8 +1035,8 @@ class Alert {
   /// The type of the alert.
   ///
   /// This is output only after alert is created. For a list of available alert
-  /// types see [G Suite Alert
-  /// types](/admin-sdk/alertcenter/reference/alert-types).
+  /// types see \[G Suite Alert
+  /// types\](/admin-sdk/alertcenter/reference/alert-types).
   ///
   /// Required.
   core.String type;
@@ -1604,8 +1605,8 @@ class CloudPubsubTopic {
   /// - "JSON" : Use JSON.
   core.String payloadFormat;
 
-  /// The `name` field of a Cloud Pubsub [Topic]
-  /// (https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).
+  /// The `name` field of a Cloud Pubsub
+  /// [Topic](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic).
   core.String topicName;
 
   CloudPubsubTopic();
@@ -2311,8 +2312,8 @@ class MatchInfo {
 
 /// Settings for callback notifications.
 ///
-/// For more details see [G Suite Alert
-/// Notification](/admin-sdk/alertcenter/guides/notifications).
+/// For more details see \[G Suite Alert
+/// Notification\](/admin-sdk/alertcenter/guides/notifications).
 class Notification {
   /// A Google Cloud Pub/sub topic destination.
   CloudPubsubTopic cloudPubsubTopic;
@@ -2338,7 +2339,7 @@ class Notification {
 /// Alert for a spike in user reported phishing.
 ///
 /// *Warning*: This type has been deprecated. Use
-/// [MailPhishing](/admin-sdk/alertcenter/reference/rest/v1beta1/MailPhishing)
+/// \[MailPhishing\](/admin-sdk/alertcenter/reference/rest/v1beta1/MailPhishing)
 /// instead.
 class PhishingSpike {
   /// The domain ID.

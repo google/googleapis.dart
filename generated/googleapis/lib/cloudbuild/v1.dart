@@ -83,7 +83,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -141,7 +141,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -598,7 +598,8 @@ class ProjectsLocationsBuildsResource {
   ///
   /// [name] - The name of the `Build` to retrieve. Format:
   /// `projects/{project}/locations/{location}/builds/{build}`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/builds/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/builds/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -660,7 +661,7 @@ class ProjectsLocationsBuildsResource {
   ///
   /// [parent] - The parent resource where this build will be created. Format:
   /// `projects/{project}/locations/{location}`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [projectId] - Required. ID of the project.
   ///
@@ -725,7 +726,8 @@ class ProjectsLocationsBuildsResource {
   ///
   /// [name] - The name of the `Build` to retrieve. Format:
   /// `projects/{project}/locations/{location}/builds/{build}`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/builds/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/builds/\[^/\]+$`.
   ///
   /// [id] - Required. ID of the build.
   ///
@@ -792,7 +794,7 @@ class ProjectsLocationsBuildsResource {
   ///
   /// [parent] - The parent of the collection of `Builds`. Format:
   /// `projects/{project}/locations/location`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The raw filter text to constrain the results.
   ///
@@ -888,7 +890,8 @@ class ProjectsLocationsBuildsResource {
   ///
   /// [name] - The name of the `Build` to retry. Format:
   /// `projects/{project}/locations/{location}/builds/{build}`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/builds/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/builds/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -962,7 +965,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1021,7 +1024,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2212,7 +2215,7 @@ class BuildStep {
   /// the builder service account's credentials if necessary. The Docker
   /// daemon's cache will already have the latest versions of all of the
   /// officially supported build steps
-  /// ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)).
+  /// (\[https://github.com/GoogleCloudPlatform/cloud-builders\](https://github.com/GoogleCloudPlatform/cloud-builders)).
   /// The Docker daemon will also have cached many of the layers for some
   /// popular images, like "ubuntu", "debian", but they will be refreshed at the
   /// time you attempt to use them. If you built an image in a previous build

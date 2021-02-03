@@ -847,7 +847,7 @@ class Breakpoint {
   /// message.id, message.count ]`.
   core.String logMessageFormat;
 
-  /// The stack at breakpoint time, where stack_frames[0] represents the most
+  /// The stack at breakpoint time, where stack_frames\[0\] represents the most
   /// recently entered function.
   core.List<StackFrame> stackFrames;
 

@@ -77,7 +77,7 @@ class FeedsResource {
   /// (such as "organizations/123"), a folder number (such as "folders/123"), a
   /// project ID (such as "projects/my-project-id")", or a project number (such
   /// as "projects/12345").
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -134,7 +134,7 @@ class FeedsResource {
   /// [name] - Required. The name of the feed and it must be in the format of:
   /// projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id
   /// organizations/organization_number/feeds/feed_id
-  /// Value must have pattern "^[^/]+/[^/]+/feeds/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/feeds/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -187,7 +187,7 @@ class FeedsResource {
   /// [name] - Required. The name of the Feed and it must be in the format of:
   /// projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id
   /// organizations/organization_number/feeds/feed_id
-  /// Value must have pattern "^[^/]+/[^/]+/feeds/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/feeds/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -241,7 +241,7 @@ class FeedsResource {
   /// are to be listed. It can only be using project/folder/organization number
   /// (such as "folders/12345")", or a project ID (such as
   /// "projects/my-project-id").
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -300,7 +300,7 @@ class FeedsResource {
   /// organizations/{organization_number}/feeds/{client-assigned_feed_identifier}
   /// The client-assigned feed identifier must be unique within the parent
   /// project/folder/organization.
-  /// Value must have pattern "^[^/]+/[^/]+/feeds/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/feeds/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -364,7 +364,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^[^/]+/[^/]+/operations/[^/]+/.*$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/operations/\[^/\]+/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -430,7 +430,7 @@ class V1Resource {
   /// an organization number (such as "organizations/123"), a project ID (such
   /// as "projects/my-project-id")", or a project number (such as
   /// "projects/12345").
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [assetNames] - A list of the full names of the assets. See:
   /// https://cloud.google.com/asset-inventory/docs/resource-name-format
@@ -536,7 +536,7 @@ class V1Resource {
   /// an organization number (such as "organizations/123"), a project ID (such
   /// as "projects/my-project-id"), or a project number (such as
   /// "projects/12345"), or a folder number (such as "folders/123").
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -599,13 +599,13 @@ class V1Resource {
   /// [scope] - Required. A scope can be a project, a folder, or an
   /// organization. The search is limited to the IAM policies within the
   /// `scope`. The caller must be granted the
-  /// [`cloudasset.assets.searchAllIamPolicies`](http://cloud.google.com/asset-inventory/docs/access-control#required_permissions)
+  /// \[`cloudasset.assets.searchAllIamPolicies`\](http://cloud.google.com/asset-inventory/docs/access-control#required_permissions)
   /// permission on the desired scope. The allowed values are: *
   /// projects/{PROJECT_ID} (e.g., "projects/foo-bar") *
   /// projects/{PROJECT_NUMBER} (e.g., "projects/12345678") *
   /// folders/{FOLDER_NUMBER} (e.g., "folders/1234567") *
   /// organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456")
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The page size for search result pagination. Page
   /// size is capped at 500 even if a larger value is given. If set to zero,
@@ -709,13 +709,13 @@ class V1Resource {
   /// [scope] - Required. A scope can be a project, a folder, or an
   /// organization. The search is limited to the resources within the `scope`.
   /// The caller must be granted the
-  /// [`cloudasset.assets.searchAllResources`](http://cloud.google.com/asset-inventory/docs/access-control#required_permissions)
+  /// \[`cloudasset.assets.searchAllResources`\](http://cloud.google.com/asset-inventory/docs/access-control#required_permissions)
   /// permission on the desired scope. The allowed values are: *
   /// projects/{PROJECT_ID} (e.g., "projects/foo-bar") *
   /// projects/{PROJECT_NUMBER} (e.g., "projects/12345678") *
   /// folders/{FOLDER_NUMBER} (e.g., "folders/1234567") *
   /// organizations/{ORGANIZATION_NUMBER} (e.g., "organizations/123456")
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [assetTypes] - Optional. A list of asset types that this request searches
   /// for. If empty, it will search all the [searchable asset
@@ -1002,13 +1002,13 @@ class Asset {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
@@ -1050,9 +1050,9 @@ class AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -1137,20 +1137,20 @@ class BigQueryDestination {
   /// the export call returns an INVALID_ARGUMEMT error.
   core.bool force;
 
-  /// [partition_spec] determines whether to export to partitioned table(s) and
-  /// how to partition the data.
+  /// \[partition_spec\] determines whether to export to partitioned table(s)
+  /// and how to partition the data.
   ///
-  /// If [partition_spec] is unset or [partition_spec.partion_key] is unset or
-  /// `PARTITION_KEY_UNSPECIFIED`, the snapshot results will be exported to
-  /// non-partitioned table(s). [force] will decide whether to overwrite
-  /// existing table(s). If [partition_spec] is specified. First, the snapshot
+  /// If \[partition_spec\] is unset or \[partition_spec.partion_key\] is unset
+  /// or `PARTITION_KEY_UNSPECIFIED`, the snapshot results will be exported to
+  /// non-partitioned table(s). \[force\] will decide whether to overwrite
+  /// existing table(s). If \[partition_spec\] is specified. First, the snapshot
   /// results will be written to partitioned table(s) with two additional
   /// timestamp columns, readTime and requestTime, one of which will be the
   /// partition key. Secondly, in the case when any destination table already
   /// exists, it will first try to update existing table's schema as necessary
-  /// by appending additional columns. Then, if [force] is `TRUE`, the
+  /// by appending additional columns. Then, if \[force\] is `TRUE`, the
   /// corresponding partition will be overwritten by the snapshot results (data
-  /// in different partitions will remain intact); if [force] is unset or
+  /// in different partitions will remain intact); if \[force\] is unset or
   /// `FALSE`, it will append the data. An error will be returned if the schema
   /// update or data appension fails.
   PartitionSpec partitionSpec;
@@ -1158,19 +1158,19 @@ class BigQueryDestination {
   /// If this flag is `TRUE`, the snapshot results will be written to one or
   /// multiple tables, each of which contains results of one asset type.
   ///
-  /// The [force] and [partition_spec] fields will apply to each of them. Field
-  /// [table] will be concatenated with "_" and the asset type names (see
-  /// https://cloud.google.com/asset-inventory/docs/supported-asset-types for
-  /// supported asset types) to construct per-asset-type table names, in which
-  /// all non-alphanumeric characters like "." and "/" will be substituted by
-  /// "_". Example: if field [table] is "mytable" and snapshot results contain
-  /// "storage.googleapis.com/Bucket" assets, the corresponding table name will
-  /// be "mytable_storage_googleapis_com_Bucket". If any of these tables does
-  /// not exist, a new table with the concatenated name will be created. When
-  /// [content_type] in the ExportAssetsRequest is `RESOURCE`, the schema of
-  /// each table will include RECORD-type columns mapped to the nested fields in
-  /// the Asset.resource.data field of that asset type (up to the 15 nested
-  /// level BigQuery supports
+  /// The \[force\] and \[partition_spec\] fields will apply to each of them.
+  /// Field \[table\] will be concatenated with "_" and the asset type names
+  /// (see https://cloud.google.com/asset-inventory/docs/supported-asset-types
+  /// for supported asset types) to construct per-asset-type table names, in
+  /// which all non-alphanumeric characters like "." and "/" will be substituted
+  /// by "_". Example: if field \[table\] is "mytable" and snapshot results
+  /// contain "storage.googleapis.com/Bucket" assets, the corresponding table
+  /// name will be "mytable_storage_googleapis_com_Bucket". If any of these
+  /// tables does not exist, a new table with the concatenated name will be
+  /// created. When \[content_type\] in the ExportAssetsRequest is `RESOURCE`,
+  /// the schema of each table will include RECORD-type columns mapped to the
+  /// nested fields in the Asset.resource.data field of that asset type (up to
+  /// the 15 nested level BigQuery supports
   /// (https://cloud.google.com/bigquery/docs/nested-repeated#limitations)). The
   /// fields in >15 nested levels will be stored in JSON format string as a
   /// child column of its parent RECORD column. If error occurs when exporting
@@ -1603,7 +1603,7 @@ class Feed {
   ///
   /// If specified, an asset will be returned only when the expression evaluates
   /// to true. When set, `expression` field in the `Expr` must be a valid [CEL
-  /// expression] (https://github.com/google/cel-spec) on a TemporalAsset with
+  /// expression](https://github.com/google/cel-spec) on a TemporalAsset with
   /// name `temporal_asset`. Example: a Feed with expression
   /// ("temporal_asset.deleted == true") will only publish Asset deletions.
   /// Other fields of `Expr` are optional. See our [user
@@ -1970,8 +1970,8 @@ class GoogleCloudOrgpolicyV1Policy {
   /// The name of the `Constraint` the `Policy` is configuring, for example,
   /// `constraints/serviceuser.services`.
   ///
-  /// A [list of available
-  /// constraints](/resource-manager/docs/organization-policy/org-policy-constraints)
+  /// A \[list of available
+  /// constraints\](/resource-manager/docs/organization-policy/org-policy-constraints)
   /// is available. Immutable after creation.
   core.String constraint;
 
@@ -3127,14 +3127,14 @@ class Permissions {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

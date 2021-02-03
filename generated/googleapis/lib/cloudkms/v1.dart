@@ -88,7 +88,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -139,7 +139,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -225,7 +225,7 @@ class ProjectsLocationsKeyRingsResource {
   ///
   /// [parent] - Required. The resource name of the location associated with the
   /// KeyRings, in the format `projects / * /locations / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [keyRingId] - Required. It must be unique within a location and match the
   /// regular expression `[a-zA-Z0-9_-]{1,63}`
@@ -288,7 +288,8 @@ class ProjectsLocationsKeyRingsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the KeyRing to get.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -344,7 +345,8 @@ class ProjectsLocationsKeyRingsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -412,7 +414,7 @@ class ProjectsLocationsKeyRingsResource {
   ///
   /// [parent] - Required. The resource name of the location associated with the
   /// KeyRings, in the format `projects / * /locations / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Only include resources that match the filter in the
   /// response. For more information, see [Sorting and filtering list
@@ -505,7 +507,8 @@ class ProjectsLocationsKeyRingsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -571,7 +574,8 @@ class ProjectsLocationsKeyRingsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -646,7 +650,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   ///
   /// [parent] - Required. The name of the KeyRing associated with the
   /// CryptoKeys.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+$`.
   ///
   /// [cryptoKeyId] - Required. It must be unique within a KeyRing and match the
   /// regular expression `[a-zA-Z0-9_-]{1,63}`
@@ -727,7 +732,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   /// [name] - Required. The resource name of the CryptoKey to use for
   /// decryption. The server will choose the appropriate version.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -790,7 +795,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   /// to use for encryption. If a CryptoKey is specified, the server will use
   /// its primary version.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/.*$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -848,7 +853,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   ///
   /// [name] - Required. The name of the CryptoKey to get.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -905,7 +910,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -973,7 +978,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   ///
   /// [parent] - Required. The resource name of the KeyRing to list, in the
   /// format `projects / * /locations / * /keyRings / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+$`.
   ///
   /// [filter] - Optional. Only include resources that match the filter in the
   /// response. For more information, see [Sorting and filtering list
@@ -1076,7 +1082,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   /// [name] - Output only. The resource name for this CryptoKey in the format
   /// `projects / * /locations / * /keyRings / * /cryptoKeys / * `.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+$`.
   ///
   /// [updateMask] - Required. List of fields to be updated in this request.
   ///
@@ -1145,7 +1151,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1212,7 +1218,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1275,7 +1281,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   ///
   /// [name] - Required. The resource name of the CryptoKey to update.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1346,7 +1352,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   /// [name] - Required. The resource name of the CryptoKeyVersion to use for
   /// decryption.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+/cryptoKeyVersions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1410,7 +1416,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   /// [name] - Required. The resource name of the CryptoKeyVersion to use for
   /// signing.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+/cryptoKeyVersions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1475,7 +1481,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   /// [parent] - Required. The name of the CryptoKey associated with the
   /// CryptoKeyVersions.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1542,7 +1548,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   ///
   /// [name] - Required. The resource name of the CryptoKeyVersion to destroy.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+/cryptoKeyVersions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1599,7 +1605,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   ///
   /// [name] - Required. The name of the CryptoKeyVersion to get.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+/cryptoKeyVersions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1654,7 +1660,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   ///
   /// [name] - Required. The name of the CryptoKeyVersion public key to get.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+/cryptoKeyVersions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1713,7 +1719,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   ///
   /// [parent] - Required. The name of the CryptoKey to be imported into.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1773,7 +1779,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   /// [parent] - Required. The resource name of the CryptoKey to list, in the
   /// format `projects / * /locations / * /keyRings / * /cryptoKeys / * `.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+$`.
   ///
   /// [filter] - Optional. Only include resources that match the filter in the
   /// response. For more information, see [Sorting and filtering list
@@ -1881,7 +1887,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   /// format `projects / * /locations / * /keyRings / * /cryptoKeys / *
   /// /cryptoKeyVersions / * `.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+/cryptoKeyVersions/\[^/\]+$`.
   ///
   /// [updateMask] - Required. List of fields to be updated in this request.
   ///
@@ -1949,7 +1955,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   ///
   /// [name] - Required. The resource name of the CryptoKeyVersion to restore.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+/cryptoKeyVersions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2017,7 +2023,8 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   ///
   /// [parent] - Required. The name of the KeyRing associated with the
   /// ImportJobs.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+$`.
   ///
   /// [importJobId] - Required. It must be unique within a KeyRing and match the
   /// regular expression `[a-zA-Z0-9_-]{1,63}`
@@ -2082,7 +2089,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   ///
   /// [name] - Required. The name of the ImportJob to get.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/importJobs/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/importJobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2139,7 +2146,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/importJobs/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/importJobs/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -2207,7 +2214,8 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   ///
   /// [parent] - Required. The resource name of the KeyRing to list, in the
   /// format `projects / * /locations / * /keyRings / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+$`.
   ///
   /// [filter] - Optional. Only include resources that match the filter in the
   /// response. For more information, see [Sorting and filtering list
@@ -2302,7 +2310,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/importJobs/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/importJobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2369,7 +2377,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/importJobs/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/importJobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2685,13 +2693,13 @@ class AsymmetricSignResponse {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
@@ -2733,9 +2741,9 @@ class AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -4196,8 +4204,8 @@ class ImportJob {
 
 /// Contains an HSM-generated attestation about a key operation.
 ///
-/// For more information, see [Verifying attestations]
-/// (https://cloud.google.com/kms/docs/attest-key).
+/// For more information, see [Verifying
+/// attestations](https://cloud.google.com/kms/docs/attest-key).
 class KeyOperationAttestation {
   /// The certificate chains needed to validate the attestation
   ///
@@ -4643,14 +4651,14 @@ class LocationMetadata {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
@@ -4802,8 +4810,8 @@ class PublicKey {
   /// For more information, see the [RFC
   /// 7468](https://tools.ietf.org/html/rfc7468) sections for [General
   /// Considerations](https://tools.ietf.org/html/rfc7468#section-2) and
-  /// [Textual Encoding of Subject Public Key Info]
-  /// (https://tools.ietf.org/html/rfc7468#section-13).
+  /// [Textual Encoding of Subject Public Key
+  /// Info](https://tools.ietf.org/html/rfc7468#section-13).
   core.String pem;
 
   /// Integrity verification field.
@@ -4995,8 +5003,8 @@ class WrappingPublicKey {
   /// For more information, see the [RFC
   /// 7468](https://tools.ietf.org/html/rfc7468) sections for [General
   /// Considerations](https://tools.ietf.org/html/rfc7468#section-2) and
-  /// [Textual Encoding of Subject Public Key Info]
-  /// (https://tools.ietf.org/html/rfc7468#section-13).
+  /// [Textual Encoding of Subject Public Key
+  /// Info](https://tools.ietf.org/html/rfc7468#section-13).
   core.String pem;
 
   WrappingPublicKey();

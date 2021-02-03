@@ -149,7 +149,7 @@ class BillingAccountsResource {
   ///
   /// [name] - Required. The resource name of the billing account to retrieve.
   /// For example, `billingAccounts/012345-567890-ABCDEF`.
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -207,7 +207,7 @@ class BillingAccountsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -356,7 +356,7 @@ class BillingAccountsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the billing account resource to be updated.
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [updateMask] - The update mask applied to the resource. Only
   /// "display_name" is currently supported.
@@ -428,7 +428,7 @@ class BillingAccountsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -493,7 +493,7 @@ class BillingAccountsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -565,7 +565,7 @@ class BillingAccountsProjectsResource {
   /// [name] - Required. The resource name of the billing account associated
   /// with the projects that you want to list. For example,
   /// `billingAccounts/012345-567890-ABCDEF`.
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [pageSize] - Requested page size. The maximum page size is 100; this is
   /// also the default.
@@ -636,15 +636,15 @@ class ProjectsResource {
 
   /// Gets the billing information for a project.
   ///
-  /// The current authenticated user must have [permission to view the
-  /// project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo
+  /// The current authenticated user must have \[permission to view the
+  /// project\](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo
   /// ).
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the project for which billing
   /// information is retrieved. For example, `projects/tokyo-rain-123`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -704,7 +704,7 @@ class ProjectsResource {
   /// Console might be billed to the new billing account, even if the charge
   /// occurred before the new billing account was assigned to the project. The
   /// current authenticated user must have ownership privileges for both the
-  /// [project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo
+  /// \[project\](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo
   /// ) and the [billing
   /// account](https://cloud.google.com/billing/docs/how-to/billing-access). You
   /// can disable billing on the project by setting the `billing_account_name`
@@ -726,7 +726,7 @@ class ProjectsResource {
   /// [name] - Required. The resource name of the project associated with the
   /// billing information that you want to update. For example,
   /// `projects/tokyo-rain-123`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -857,7 +857,7 @@ class ServicesSkusResource {
   ///
   /// [parent] - Required. The name of the service. Example:
   /// "services/DA34-426B-A397"
-  /// Value must have pattern "^services/[^/]+$".
+  /// Value must have pattern `^services/\[^/\]+$`.
   ///
   /// [currencyCode] - The ISO 4217 currency code for the pricing info in the
   /// response proto. Will use the conversion rate as of start_time. Optional.
@@ -1008,13 +1008,13 @@ class AggregationInfo {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
@@ -1056,9 +1056,9 @@ class AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -1647,14 +1647,14 @@ class Money {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

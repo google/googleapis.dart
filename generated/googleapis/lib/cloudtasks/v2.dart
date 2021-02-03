@@ -80,7 +80,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -131,7 +131,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -225,7 +225,7 @@ class ProjectsLocationsQueuesResource {
   /// For example: `projects/PROJECT_ID/locations/LOCATION_ID` The list of
   /// allowed locations can be obtained by calling Cloud Tasks' implementation
   /// of ListLocations.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -289,7 +289,8 @@ class ProjectsLocationsQueuesResource {
   ///
   /// [name] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -341,7 +342,8 @@ class ProjectsLocationsQueuesResource {
   ///
   /// [name] - Required. The resource name of the queue. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -401,7 +403,8 @@ class ProjectsLocationsQueuesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -461,7 +464,7 @@ class ProjectsLocationsQueuesResource {
   ///
   /// [parent] - Required. The location name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - `filter` can be used to specify a subset of queues. Any Queue
   /// field can be used as a filter and several operators as supported. For
@@ -559,15 +562,16 @@ class ProjectsLocationsQueuesResource {
   /// becomes output only. The queue name. The queue name must have the
   /// following format:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID`
-  /// can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:),
-  /// or periods (.). For more information, see [Identifying
+  /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), colons
+  /// (:), or periods (.). For more information, see [Identifying
   /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the queue's location. The list of
   /// available locations can be obtained by calling ListLocations. For more
   /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID`
-  /// can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The
+  /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), or hyphens (-). The
   /// maximum length is 100 characters.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [updateMask] - A mask used to specify which fields of the queue are being
   /// updated. If empty, then all fields will be updated.
@@ -636,7 +640,8 @@ class ProjectsLocationsQueuesResource {
   ///
   /// [name] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -698,7 +703,8 @@ class ProjectsLocationsQueuesResource {
   ///
   /// [name] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -764,7 +770,8 @@ class ProjectsLocationsQueuesResource {
   ///
   /// [name] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -829,7 +836,8 @@ class ProjectsLocationsQueuesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -895,7 +903,8 @@ class ProjectsLocationsQueuesResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -967,7 +976,8 @@ class ProjectsLocationsQueuesTasksResource {
   /// [parent] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` The queue must
   /// already exist.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1027,7 +1037,7 @@ class ProjectsLocationsQueuesTasksResource {
   /// [name] - Required. The task name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+/tasks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1080,7 +1090,7 @@ class ProjectsLocationsQueuesTasksResource {
   /// [name] - Required. The task name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+/tasks/\[^/\]+$`.
   ///
   /// [responseView] - The response_view specifies which subset of the Task will
   /// be returned. By default response_view is BASIC; not all information is
@@ -1159,7 +1169,8 @@ class ProjectsLocationsQueuesTasksResource {
   ///
   /// [parent] - Required. The queue name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/queues/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum page size. Fewer tasks than requested might be
   /// returned, even if more tasks exist; use next_page_token in the response to
@@ -1269,7 +1280,7 @@ class ProjectsLocationsQueuesTasksResource {
   /// [name] - Required. The task name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/queues/[^/]+/tasks/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/queues/\[^/\]+/tasks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1324,7 +1335,7 @@ class ProjectsLocationsQueuesTasksResource {
 ///
 /// The message defines the HTTP request that is sent to an App Engine app when
 /// the task is dispatched. Using AppEngineHttpRequest requires
-/// [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control)
+/// \[`appengine.applications.get`\](https://cloud.google.com/appengine/docs/admin-api/access-control)
 /// Google IAM permission for the project and the following scope:
 /// `https://www.googleapis.com/auth/cloud-platform` The task will be delivered
 /// to the App Engine app which belongs to the same project as the queue. For
@@ -1342,15 +1353,15 @@ class ProjectsLocationsQueuesTasksResource {
 /// tasks in the queue, no matter what the setting is for the task-level
 /// app_engine_routing. The `url` that the task will be sent to is: * `url =`
 /// host `+` relative_uri Tasks can be dispatched to secure app handlers,
-/// unsecure app handlers, and URIs restricted with [`login:
-/// admin`](https://cloud.google.com/appengine/docs/standard/python/config/appref).
+/// unsecure app handlers, and URIs restricted with \[`login:
+/// admin`\](https://cloud.google.com/appengine/docs/standard/python/config/appref).
 /// Because tasks are not run as any user, they cannot be dispatched to URIs
-/// restricted with [`login:
-/// required`](https://cloud.google.com/appengine/docs/standard/python/config/appref)
+/// restricted with \[`login:
+/// required`\](https://cloud.google.com/appengine/docs/standard/python/config/appref)
 /// Task dispatches also do not follow redirects. The task attempt has succeeded
 /// if the app's request handler returns an HTTP response code in the range
-/// [`200` - `299`]. The task attempt has failed if the app's handler returns a
-/// non-2xx response code or Cloud Tasks does not receive response before the
+/// \[`200` - `299`\]. The task attempt has failed if the app's handler returns
+/// a non-2xx response code or Cloud Tasks does not receive response before the
 /// deadline. Failed tasks will be retried according to the retry configuration.
 /// `503` (Service Unavailable) is considered an App Engine system error instead
 /// of an application error and will cause Cloud Tasks' traffic congestion
@@ -1493,7 +1504,7 @@ class AppEngineHttpRequest {
 /// and [App Engine Flex request
 /// routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
 /// Using AppEngineRouting requires
-/// [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control)
+/// \[`appengine.applications.get`\](https://cloud.google.com/appengine/docs/admin-api/access-control)
 /// Google IAM permission for the project and the following scope:
 /// `https://www.googleapis.com/auth/cloud-platform`
 class AppEngineRouting {
@@ -1970,8 +1981,8 @@ class GetPolicyOptions {
 ///
 /// The task will be pushed to the worker as an HTTP request. If the worker or
 /// the redirected worker acknowledges the task by returning a successful HTTP
-/// response code ([`200` - `299`]), the task will be removed from the queue. If
-/// any other HTTP response code is returned or no response is received, the
+/// response code (\[`200` - `299`\]), the task will be removed from the queue.
+/// If any other HTTP response code is returned or no response is received, the
 /// task will be retried according to the following: * User-specified
 /// throttling: retry configuration, rate limits, and the queue's state. *
 /// System throttling: To prevent the worker from overloading, Cloud Tasks may
@@ -2055,7 +2066,7 @@ class HttpRequest {
   /// are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will
   /// encode some characters for safety and compatibility. The maximum allowed
   /// URL length is 2083 characters after encoding. The `Location` header
-  /// response from a redirect response [`300` - `399`] may be followed. The
+  /// response from a redirect response \[`300` - `399`\] may be followed. The
   /// redirect is not counted as a separate attempt.
   ///
   /// Required.
@@ -2423,14 +2434,14 @@ class PauseQueueRequest {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
@@ -2551,13 +2562,13 @@ class Queue {
   ///
   /// The queue name. The queue name must have the following format:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID`
-  /// can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:),
-  /// or periods (.). For more information, see [Identifying
+  /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), colons
+  /// (:), or periods (.). For more information, see [Identifying
   /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the queue's location. The list of
   /// available locations can be obtained by calling ListLocations. For more
   /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID`
-  /// can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The
+  /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), or hyphens (-). The
   /// maximum length is 100 characters.
   core.String name;
 
@@ -2609,7 +2620,7 @@ class Queue {
   ///
   /// `state` can only be changed by called PauseQueue, ResumeQueue, or
   /// uploading
-  /// [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref).
+  /// \[queue.yaml/xml\](https://cloud.google.com/appengine/docs/python/config/queueref).
   /// UpdateQueue cannot be used to change `state`.
   ///
   /// Output only.
@@ -2731,16 +2742,16 @@ class RateLimits {
   /// until the number of concurrent requests decreases. If unspecified when the
   /// queue is created, Cloud Tasks will pick the default. The maximum allowed
   /// value is 5,000. This field has the same meaning as
-  /// [max_concurrent_requests in
-  /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests).
+  /// \[max_concurrent_requests in
+  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests).
   core.int maxConcurrentDispatches;
 
   /// The maximum rate at which tasks are dispatched from this queue.
   ///
   /// If unspecified when the queue is created, Cloud Tasks will pick the
   /// default. * The maximum allowed value is 500. This field has the same
-  /// meaning as [rate in
-  /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).
+  /// meaning as \[rate in
+  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).
   core.double maxDispatchesPerSecond;
 
   RateLimits();
@@ -2797,8 +2808,8 @@ class RetryConfig {
   /// first attempt fails, then there will be `max_attempts - 1` retries). Must
   /// be >= -1. If unspecified when the queue is created, Cloud Tasks will pick
   /// the default. -1 indicates unlimited attempts. This field has the same
-  /// meaning as [task_retry_limit in
-  /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+  /// meaning as \[task_retry_limit in
+  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.int maxAttempts;
 
   /// A task will be scheduled for retry between min_backoff and max_backoff
@@ -2807,8 +2818,8 @@ class RetryConfig {
   ///
   /// If unspecified when the queue is created, Cloud Tasks will pick the
   /// default. `max_backoff` will be truncated to the nearest second. This field
-  /// has the same meaning as [max_backoff_seconds in
-  /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+  /// has the same meaning as \[max_backoff_seconds in
+  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.String maxBackoff;
 
   /// The time between retries will double `max_doublings` times.
@@ -2823,8 +2834,8 @@ class RetryConfig {
   /// max_attempts times. Thus, the requests will retry at 10s, 20s, 40s, 80s,
   /// 160s, 240s, 300s, 300s, .... If unspecified when the queue is created,
   /// Cloud Tasks will pick the default. This field has the same meaning as
-  /// [max_doublings in
-  /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+  /// \[max_doublings in
+  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.int maxDoublings;
 
   /// If positive, `max_retry_duration` specifies the time limit for retrying a
@@ -2835,8 +2846,8 @@ class RetryConfig {
   /// task will be deleted. If zero, then the task age is unlimited. If
   /// unspecified when the queue is created, Cloud Tasks will pick the default.
   /// `max_retry_duration` will be truncated to the nearest second. This field
-  /// has the same meaning as [task_age_limit in
-  /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+  /// has the same meaning as \[task_age_limit in
+  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.String maxRetryDuration;
 
   /// A task will be scheduled for retry between min_backoff and max_backoff
@@ -2845,8 +2856,8 @@ class RetryConfig {
   ///
   /// If unspecified when the queue is created, Cloud Tasks will pick the
   /// default. `min_backoff` will be truncated to the nearest second. This field
-  /// has the same meaning as [min_backoff_seconds in
-  /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+  /// has the same meaning as \[min_backoff_seconds in
+  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.String minBackoff;
 
   RetryConfig();
@@ -3077,14 +3088,14 @@ class Task {
   /// For example, if the worker is stuck, it may not react to cancelled
   /// requests. The default and maximum values depend on the type of request: *
   /// For HTTP tasks, the default is 10 minutes. The deadline must be in the
-  /// interval [15 seconds, 30 minutes]. * For App Engine tasks, 0 indicates
+  /// interval \[15 seconds, 30 minutes\]. * For App Engine tasks, 0 indicates
   /// that the request has the default deadline. The default deadline depends on
   /// the [scaling
   /// type](https://cloud.google.com/appengine/docs/standard/go/how-instances-are-managed#instance_scaling)
   /// of the service: 10 minutes for standard apps with automatic scaling, 24
   /// hours for standard apps with manual and basic scaling, and 60 minutes for
-  /// flex apps. If the request deadline is set, it must be in the interval [15
-  /// seconds, 24 hours 15 seconds]. Regardless of the task's
+  /// flex apps. If the request deadline is set, it must be in the interval \[15
+  /// seconds, 24 hours 15 seconds\]. Regardless of the task's
   /// `dispatch_deadline`, the app handler will not run for longer than than the
   /// service's timeout. We recommend setting the `dispatch_deadline` to at most
   /// a few seconds more than the app handler's timeout. For more information
@@ -3116,16 +3127,17 @@ class Task {
   ///
   /// The task name. The task name must have the following format:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
-  /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens
-  /// (-), colons (:), or periods (.). For more information, see [Identifying
+  /// * `PROJECT_ID` can contain letters (\[A-Za-z\]), numbers (\[0-9\]),
+  /// hyphens (-), colons (:), or periods (.). For more information, see
+  /// [Identifying
   /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the task's location. The list of
   /// available locations can be obtained by calling ListLocations. For more
   /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID`
-  /// can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The
+  /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), or hyphens (-). The
   /// maximum length is 100 characters. * `TASK_ID` can contain only letters
-  /// ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum
-  /// length is 500 characters.
+  /// (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), or underscores (_). The
+  /// maximum length is 500 characters.
   core.String name;
 
   /// The number of attempts which have received a response.

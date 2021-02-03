@@ -96,7 +96,7 @@ class ProjectsTracesResource {
   ///
   /// [name] - Required. The name of the project where the spans belong. The
   /// format is `projects/[PROJECT_ID]`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -162,12 +162,12 @@ class ProjectsTracesSpansResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the span in the following format:
-  /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
+  /// projects/\[PROJECT_ID\]/traces/\[TRACE_ID\]/spans/SPAN_ID is a unique
   /// identifier for a trace within a project; it is a 32-character hexadecimal
-  /// encoding of a 16-byte array. [SPAN_ID] is a unique identifier for a span
+  /// encoding of a 16-byte array. \[SPAN_ID\] is a unique identifier for a span
   /// within a trace; it is a 16-character hexadecimal encoding of an 8-byte
   /// array. It should not be zero.
-  /// Value must have pattern "^projects/[^/]+/traces/[^/]+/spans/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/traces/\[^/\]+/spans/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -255,7 +255,7 @@ class Annotation {
   }
 }
 
-/// The allowed types for [VALUE] in a `[KEY]:[VALUE]` attribute.
+/// The allowed types for \[VALUE\] in a `[KEY]:[VALUE]` attribute.
 class AttributeValue {
   /// A Boolean value represented by `true` or `false`.
   core.bool boolValue;
@@ -407,10 +407,10 @@ class Link {
   /// You have have up to 32 attributes per link.
   Attributes attributes;
 
-  /// The [SPAN_ID] for a span within a trace.
+  /// The \[SPAN_ID\] for a span within a trace.
   core.String spanId;
 
-  /// The [TRACE_ID] for a trace within a project.
+  /// The \[TRACE_ID\] for a trace within a project.
   core.String traceId;
 
   /// The relationship of the current span relative to the linked span.
@@ -634,18 +634,18 @@ class Span {
   Links links;
 
   /// The resource name of the span in the following format:
-  /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
+  /// projects/\[PROJECT_ID\]/traces/\[TRACE_ID\]/spans/SPAN_ID is a unique
   /// identifier for a trace within a project; it is a 32-character hexadecimal
   /// encoding of a 16-byte array.
   ///
-  /// [SPAN_ID] is a unique identifier for a span within a trace; it is a
+  /// \[SPAN_ID\] is a unique identifier for a span within a trace; it is a
   /// 16-character hexadecimal encoding of an 8-byte array. It should not be
   /// zero.
   ///
   /// Required.
   core.String name;
 
-  /// The [SPAN_ID] of this span's parent span.
+  /// The \[SPAN_ID\] of this span's parent span.
   ///
   /// If this is a root span, then this field must be empty.
   core.String parentSpanId;
@@ -659,7 +659,7 @@ class Span {
   /// Optional.
   core.bool sameProcessAsParentSpan;
 
-  /// The [SPAN_ID] portion of the span's resource name.
+  /// The \[SPAN_ID\] portion of the span's resource name.
   ///
   /// Required.
   core.String spanId;

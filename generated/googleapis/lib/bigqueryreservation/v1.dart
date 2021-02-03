@@ -78,7 +78,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -138,7 +138,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^operations$".
+  /// Value must have pattern `^operations$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -229,7 +229,8 @@ class ProjectsLocationsResource {
   ///
   /// [name] - Required. Name of the requested reservation, for example:
   /// `projects/{project_id}/locations/{location_id}/bireservation`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/biReservation$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/biReservation$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -294,7 +295,7 @@ class ProjectsLocationsResource {
   ///
   /// [parent] - Required. The resource name with location (project name could
   /// be the wildcard '-'), e.g.: `projects/-/locations/US`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return per page.
   ///
@@ -383,7 +384,7 @@ class ProjectsLocationsResource {
   ///
   /// [parent] - Required. The resource name of the admin project(containing
   /// project and location), e.g.: `projects/myproject/locations/US`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return per page.
   ///
@@ -467,7 +468,8 @@ class ProjectsLocationsResource {
   /// [name] - The resource name of the singleton BI reservation. Reservation
   /// names have the form
   /// `projects/{project_id}/locations/{location_id}/bireservation`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/biReservation$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/biReservation$`.
   ///
   /// [updateMask] - A list of fields to be updated in this request.
   ///
@@ -539,7 +541,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
   ///
   /// [parent] - Required. Resource name of the parent reservation. E.g.,
   /// `projects/myproject/locations/US`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [enforceSingleAdminProjectPerOrg] - If true, fail the request if another
   /// project in the organization has a capacity commitment.
@@ -611,7 +613,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
   /// [name] - Required. Resource name of the capacity commitment to delete.
   /// E.g., `projects/myproject/locations/US/capacityCommitments/123`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/capacityCommitments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/capacityCommitments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -664,7 +666,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
   /// [name] - Required. Resource name of the capacity commitment to retrieve.
   /// E.g., `projects/myproject/locations/US/capacityCommitments/123`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/capacityCommitments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/capacityCommitments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -717,7 +719,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
   ///
   /// [parent] - Required. Resource name of the parent reservation. E.g.,
   /// `projects/myproject/locations/US`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return.
   ///
@@ -792,7 +794,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
   ///
   /// [parent] - Parent resource that identifies admin project and location
   /// e.g., `projects/myproject/locations/us`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -859,7 +861,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
   /// [name] - Output only. The resource name of the capacity commitment, e.g.,
   /// `projects/myproject/locations/US/capacityCommitments/123`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/capacityCommitments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/capacityCommitments/\[^/\]+$`.
   ///
   /// [updateMask] - Standard field mask for the set of fields to be updated.
   ///
@@ -931,7 +933,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
   /// [name] - Required. The resource name e.g.,:
   /// `projects/myproject/locations/US/capacityCommitments/123`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/capacityCommitments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/capacityCommitments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1000,7 +1002,7 @@ class ProjectsLocationsReservationsResource {
   ///
   /// [parent] - Required. Project, location. E.g.,
   /// `projects/myproject/locations/US`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [reservationId] - The reservation ID. This field must only contain lower
   /// case alphanumeric characters or dash. Max length is 64 characters.
@@ -1070,7 +1072,7 @@ class ProjectsLocationsReservationsResource {
   /// [name] - Required. Resource name of the reservation to retrieve. E.g.,
   /// `projects/myproject/locations/US/reservations/team1-prod`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/reservations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1123,7 +1125,7 @@ class ProjectsLocationsReservationsResource {
   /// [name] - Required. Resource name of the reservation to retrieve. E.g.,
   /// `projects/myproject/locations/US/reservations/team1-prod`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/reservations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1176,7 +1178,7 @@ class ProjectsLocationsReservationsResource {
   ///
   /// [parent] - Required. The parent resource name containing project and
   /// location, e.g.: `projects/myproject/locations/US`
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return per page.
   ///
@@ -1247,7 +1249,7 @@ class ProjectsLocationsReservationsResource {
   /// [name] - The resource name of the reservation, e.g., `projects / *
   /// /locations / * /reservations/team1-prod`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/reservations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+$`.
   ///
   /// [updateMask] - Standard field mask for the set of fields to be updated.
   ///
@@ -1338,7 +1340,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
   /// [parent] - Required. The parent resource name of the assignment E.g.
   /// `projects/myproject/locations/US/reservations/team1-prod`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/reservations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1406,7 +1408,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
   /// [name] - Required. Name of the resource, e.g.
   /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/reservations/[^/]+/assignments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+/assignments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1471,7 +1473,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
   /// `projects/myproject/locations/US/reservations/team1-prod` Or:
   /// `projects/myproject/locations/US/reservations/-`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/reservations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return per page.
   ///
@@ -1546,7 +1548,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
   /// [name] - Required. The resource name of the assignment, e.g.
   /// `projects/myproject/locations/US/reservations/team1-prod/assignments/123`
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/reservations/[^/]+/assignments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/reservations/\[^/\]+/assignments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

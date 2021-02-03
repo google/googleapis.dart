@@ -83,7 +83,7 @@ class ProjectsMessagesResource {
   /// `projects/{project_id}`. For legacy support, the numeric project number
   /// with no padding is also supported in the format of
   /// `projects/{project_number}`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -798,29 +798,29 @@ class ApnsFcmOptions {
 /// (alpha != 255) { result.setAlpha( FloatValue .newBuilder()
 /// .setValue(((float) alpha) / denominator) .build()); } return
 /// resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static
-/// UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float
-/// green = [protocolor green]; float blue = [protocolor blue]; FloatValue*
-/// alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper !=
-/// nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red
-/// green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color)
-/// { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green
-/// blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc]
-/// init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue];
-/// if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; }
-/// [result autorelease]; return result; } // ... Example (JavaScript): // ...
-/// var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red ||
-/// 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue
-/// || 0.0; var red = Math.floor(redFrac * 255); var green =
-/// Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if
-/// (!('alpha' in rgb_color)) { return rgbToCssColor_(red, green, blue); } var
-/// alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green,
-/// blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join('');
-/// }; var rgbToCssColor_ = function(red, green, blue) { var rgbNumber = new
-/// Number((red << 16) | (green << 8) | blue); var hexString =
-/// rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var
-/// resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) {
-/// resultBuilder.push('0'); } resultBuilder.push(hexString); return
-/// resultBuilder.join(''); }; // ...
+/// UIColor* fromProto(Color* protocolor) { float red = \[protocolor red\];
+/// float green = \[protocolor green\]; float blue = \[protocolor blue\];
+/// FloatValue* alpha_wrapper = \[protocolor alpha\]; float alpha = 1.0; if
+/// (alpha_wrapper != nil) { alpha = \[alpha_wrapper value\]; } return \[UIColor
+/// colorWithRed:red green:green blue:blue alpha:alpha\]; } static Color*
+/// toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (!\[color
+/// getRed:&red green:&green blue:&blue alpha:&alpha\]) { return nil; } Color*
+/// result = \[\[Color alloc\] init\]; \[result setRed:red\]; \[result
+/// setGreen:green\]; \[result setBlue:blue\]; if (alpha <= 0.9999) { \[result
+/// setAlpha:floatWrapperWithValue(alpha)\]; } \[result autorelease\]; return
+/// result; } // ... Example (JavaScript): // ... var protoToCssColor =
+/// function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac =
+/// rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red =
+/// Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue
+/// = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return
+/// rgbToCssColor_(red, green, blue); } var alphaFrac = rgb_color.alpha.value ||
+/// 0.0; var rgbParams = \[red, green, blue\].join(','); return \['rgba(',
+/// rgbParams, ',', alphaFrac, ')'\].join(''); }; var rgbToCssColor_ =
+/// function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green
+/// << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6
+/// - hexString.length; var resultBuilder = \['#'\]; for (var i = 0; i <
+/// missingZeros; i++) { resultBuilder.push('0'); }
+/// resultBuilder.push(hexString); return resultBuilder.join(''); }; // ...
 class Color {
   /// The fraction of this color that should be applied to the pixel.
   ///
@@ -834,13 +834,13 @@ class Color {
   /// explicitly given with a value of 1.0).
   core.double alpha;
 
-  /// The amount of blue in the color as a value in the interval [0, 1].
+  /// The amount of blue in the color as a value in the interval \[0, 1\].
   core.double blue;
 
-  /// The amount of green in the color as a value in the interval [0, 1].
+  /// The amount of green in the color as a value in the interval \[0, 1\].
   core.double green;
 
-  /// The amount of red in the color as a value in the interval [0, 1].
+  /// The amount of red in the color as a value in the interval \[0, 1\].
   core.double red;
 
   Color();
@@ -1188,8 +1188,8 @@ class WebpushConfig {
   /// Supports Notification instance properties as defined in [Web Notification
   /// API](https://developer.mozilla.org/en-US/docs/Web/API/Notification). If
   /// present, "title" and "body" fields override
-  /// [google.firebase.fcm.v1.Notification.title] and
-  /// [google.firebase.fcm.v1.Notification.body].
+  /// \[google.firebase.fcm.v1.Notification.title\] and
+  /// \[google.firebase.fcm.v1.Notification.body\].
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.

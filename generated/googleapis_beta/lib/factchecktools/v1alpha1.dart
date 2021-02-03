@@ -229,7 +229,7 @@ class PagesResource {
   ///
   /// [name] - The name of the resource to delete, in the form of
   /// `pages/{page_id}`.
-  /// Value must have pattern "^pages/[^/]+$".
+  /// Value must have pattern `^pages/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -282,7 +282,7 @@ class PagesResource {
   ///
   /// [name] - The name of the resource to get, in the form of
   /// `pages/{page_id}`.
-  /// Value must have pattern "^pages/[^/]+$".
+  /// Value must have pattern `^pages/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -437,7 +437,7 @@ class PagesResource {
   /// [name] - The name of this `ClaimReview` markup page resource, in the form
   /// of `pages/{page_id}`. Except for update requests, this field is
   /// output-only and should not be set by the user.
-  /// Value must have pattern "^pages/[^/]+$".
+  /// Value must have pattern `^pages/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

@@ -59,8 +59,8 @@ class AmpUrlsResource {
 
   AmpUrlsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Returns AMP URL(s) and equivalent [AMP Cache
-  /// URL(s)](/amp/cache/overview#amp-cache-url-format).
+  /// Returns AMP URL(s) and equivalent \[AMP Cache
+  /// URL(s)\](/amp/cache/overview#amp-cache-url-format).
   ///
   /// [request] - The metadata request object.
   ///
@@ -117,8 +117,8 @@ class AmpUrl {
   /// The AMP URL pointing to the publisher's web server.
   core.String ampUrl;
 
-  /// The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to
-  /// the cached document in the Google AMP Cache.
+  /// The \[AMP Cache URL\](/amp/cache/overview#amp-cache-url-format) pointing
+  /// to the cached document in the Google AMP Cache.
   core.String cdnAmpUrl;
 
   /// The original non-AMP URL.
@@ -224,8 +224,8 @@ class BatchGetAmpUrlsRequest {
 
   /// List of URLs to look up for the paired AMP URLs.
   ///
-  /// The URLs are case-sensitive. Up to 50 URLs per lookup (see [Usage
-  /// Limits](/amp/cache/reference/limits)).
+  /// The URLs are case-sensitive. Up to 50 URLs per lookup (see \[Usage
+  /// Limits\](/amp/cache/reference/limits)).
   core.List<core.String> urls;
 
   BatchGetAmpUrlsRequest();

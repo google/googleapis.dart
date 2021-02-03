@@ -304,7 +304,7 @@ class DatasetsResource {
   /// [all] - Whether to list all datasets, including hidden ones
   ///
   /// [filter] - An expression for filtering the results of the request by
-  /// label. The syntax is "labels.<name>[:<value>]". Multiple filters can be
+  /// label. The syntax is "labels.<name>\[:<value>\]". Multiple filters can be
   /// ANDed together by connecting with a space. Example:
   /// "labels.department:receiving labels.active". See Filtering datasets using
   /// labels for details.
@@ -528,9 +528,9 @@ class JobsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - [Required] Project ID of the job to cancel
+  /// [projectId] - \[Required\] Project ID of the job to cancel
   ///
-  /// [jobId] - [Required] Job ID of the job to cancel
+  /// [jobId] - \[Required\] Job ID of the job to cancel
   ///
   /// [location] - The geographic location of the job. Required except for US
   /// and EU. See details at
@@ -601,9 +601,9 @@ class JobsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - [Required] Project ID of the requested job
+  /// [projectId] - \[Required\] Project ID of the requested job
   ///
-  /// [jobId] - [Required] Job ID of the requested job
+  /// [jobId] - \[Required\] Job ID of the requested job
   ///
   /// [location] - The geographic location of the job. Required except for US
   /// and EU. See details at
@@ -668,9 +668,9 @@ class JobsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - [Required] Project ID of the query job
+  /// [projectId] - \[Required\] Project ID of the query job
   ///
-  /// [jobId] - [Required] Job ID of the query job
+  /// [jobId] - \[Required\] Job ID of the query job
   ///
   /// [location] - The geographic location where the job should run. Required
   /// except for US and EU. See details at
@@ -1022,13 +1022,13 @@ class ModelsResource {
   /// Request parameters:
   ///
   /// [projectId] - Required. Project ID of the model to delete.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [datasetId] - Required. Dataset ID of the model to delete.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [modelId] - Required. Model ID of the model to delete.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1092,13 +1092,13 @@ class ModelsResource {
   /// Request parameters:
   ///
   /// [projectId] - Required. Project ID of the requested model.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [datasetId] - Required. Dataset ID of the requested model.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [modelId] - Required. Model ID of the requested model.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1164,10 +1164,10 @@ class ModelsResource {
   /// Request parameters:
   ///
   /// [projectId] - Required. Project ID of the models to list.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [datasetId] - Required. Dataset ID of the models to list.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [maxResults] - The maximum number of results to return in a single
   /// response page. Leverage the page tokens to iterate through the entire
@@ -1244,13 +1244,13 @@ class ModelsResource {
   /// Request parameters:
   ///
   /// [projectId] - Required. Project ID of the model to patch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [datasetId] - Required. Dataset ID of the model to patch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [modelId] - Required. Model ID of the model to patch.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1442,13 +1442,13 @@ class RoutinesResource {
   /// Request parameters:
   ///
   /// [projectId] - Required. Project ID of the routine to delete
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [datasetId] - Required. Dataset ID of the routine to delete
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [routineId] - Required. Routine ID of the routine to delete
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1512,13 +1512,13 @@ class RoutinesResource {
   /// Request parameters:
   ///
   /// [projectId] - Required. Project ID of the requested routine
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [datasetId] - Required. Dataset ID of the requested routine
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [routineId] - Required. Routine ID of the requested routine
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [readMask] - If set, only the Routine fields in the field mask are
   /// returned in the response. If unset, all Routine fields are returned.
@@ -1591,10 +1591,10 @@ class RoutinesResource {
   /// Request parameters:
   ///
   /// [projectId] - Required. Project ID of the new routine
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [datasetId] - Required. Dataset ID of the new routine
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1659,10 +1659,10 @@ class RoutinesResource {
   /// Request parameters:
   ///
   /// [projectId] - Required. Project ID of the routines to list
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [datasetId] - Required. Dataset ID of the routines to list
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [filter] - If set, then only the Routines matching this filter are
   /// returned. The current supported form is either "routine_type:" or
@@ -1760,13 +1760,13 @@ class RoutinesResource {
   /// Request parameters:
   ///
   /// [projectId] - Required. Project ID of the routine to update
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [datasetId] - Required. Dataset ID of the routine to update
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [routineId] - Required. Routine ID of the routine to update
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2174,7 +2174,8 @@ class TablesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/datasets/[^/]+/tables/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/datasets/\[^/\]+/tables/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2454,7 +2455,8 @@ class TablesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/datasets/[^/]+/tables/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/datasets/\[^/\]+/tables/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2518,7 +2520,8 @@ class TablesResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/datasets/[^/]+/tables/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/datasets/\[^/\]+/tables/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3236,13 +3239,13 @@ class ArimaSingleModelForecastingMetrics {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
@@ -3284,9 +3287,9 @@ class AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -3329,12 +3332,12 @@ class AuditLogConfig {
 }
 
 class BigQueryModelTraining {
-  /// [Output-only, Beta] Index of current ML training iteration.
+  /// \[Output-only, Beta\] Index of current ML training iteration.
   ///
   /// Updated during create model query job to show job progress.
   core.int currentIteration;
 
-  /// [Output-only, Beta] Expected number of iterations for the create model
+  /// \[Output-only, Beta\] Expected number of iterations for the create model
   /// query job specified as num_iterations in the input query.
   ///
   /// The actual total number of iterations may be less than this number due to
@@ -3377,8 +3380,8 @@ class BigtableColumn {
   core.String encoding;
 
   /// If the qualifier is not a valid BigQuery field identifier i.e. does not
-  /// match [a-zA-Z][a-zA-Z0-9_]*, a valid identifier must be provided as the
-  /// column field name and is used as field name in queries.
+  /// match \[a-zA-Z\]\[a-zA-Z0-9_\]*, a valid identifier must be provided as
+  /// the column field name and is used as field name in queries.
   ///
   /// Optional.
   core.String fieldName;
@@ -3400,7 +3403,7 @@ class BigtableColumn {
   /// specified in the qualifier_string field. Otherwise, a base-64 encoded
   /// value must be set to qualifier_encoded. The column field name is the same
   /// as the column qualifier. However, if the qualifier is not a valid BigQuery
-  /// field identifier i.e. does not match [a-zA-Z][a-zA-Z0-9_]*, a valid
+  /// field identifier i.e. does not match \[a-zA-Z\]\[a-zA-Z0-9_\]*, a valid
   /// identifier must be provided as field_name.
   ///
   /// Required.
@@ -3866,29 +3869,29 @@ class Binding {
 }
 
 class BqmlIterationResult {
-  /// [Output-only, Beta] Time taken to run the training iteration in
+  /// \[Output-only, Beta\] Time taken to run the training iteration in
   /// milliseconds.
   core.String durationMs;
 
-  /// [Output-only, Beta] Eval loss computed on the eval data at the end of the
-  /// iteration.
+  /// \[Output-only, Beta\] Eval loss computed on the eval data at the end of
+  /// the iteration.
   ///
   /// The eval loss is used for early stopping to avoid overfitting. No eval
   /// loss if eval_split_method option is specified as no_split or auto_split
   /// with input data size less than 500 rows.
   core.double evalLoss;
 
-  /// [Output-only, Beta] Index of the ML training iteration, starting from zero
-  /// for each training run.
+  /// \[Output-only, Beta\] Index of the ML training iteration, starting from
+  /// zero for each training run.
   core.int index;
 
-  /// [Output-only, Beta] Learning rate used for this iteration, it varies for
+  /// \[Output-only, Beta\] Learning rate used for this iteration, it varies for
   /// different training iterations if learn_rate_strategy option is not
   /// constant.
   core.double learnRate;
 
-  /// [Output-only, Beta] Training loss computed on the training data at the end
-  /// of the iteration.
+  /// \[Output-only, Beta\] Training loss computed on the training data at the
+  /// end of the iteration.
   ///
   /// The training loss function is defined by model type.
   core.double trainingLoss;
@@ -3934,7 +3937,7 @@ class BqmlIterationResult {
   }
 }
 
-/// [Output-only, Beta] Training options used by this training run.
+/// \[Output-only, Beta\] Training options used by this training run.
 ///
 /// These options are mutable for subsequent training runs. Default values are
 /// explicitly stored for options not specified in the input query of the first
@@ -4018,21 +4021,21 @@ class BqmlTrainingRunTrainingOptions {
 }
 
 class BqmlTrainingRun {
-  /// [Output-only, Beta] List of each iteration results.
+  /// \[Output-only, Beta\] List of each iteration results.
   core.List<BqmlIterationResult> iterationResults;
 
-  /// [Output-only, Beta] Training run start time in milliseconds since the
+  /// \[Output-only, Beta\] Training run start time in milliseconds since the
   /// epoch.
   core.DateTime startTime;
 
-  /// [Output-only, Beta] Different state applicable for a training run.
+  /// \[Output-only, Beta\] Different state applicable for a training run.
   ///
   /// IN PROGRESS: Training run is in progress. FAILED: Training run ended due
   /// to a non-retryable failure. SUCCEEDED: Training run successfully
   /// completed. CANCELLED: Training run cancelled by the user.
   core.String state;
 
-  /// [Output-only, Beta] Training options used by this training run.
+  /// \[Output-only, Beta\] Training options used by this training run.
   ///
   /// These options are mutable for subsequent training runs. Default values are
   /// explicitly stored for options not specified in the input query of the
@@ -4228,7 +4231,7 @@ class ClusterInfo {
 }
 
 class Clustering {
-  /// [Repeated] One or more fields on which data should be clustered.
+  /// \[Repeated\] One or more fields on which data should be clustered.
   ///
   /// Only top-level, non-repeated, simple-type fields are supported. When you
   /// cluster a table using multiple columns, the order of columns you specify
@@ -4257,7 +4260,7 @@ class Clustering {
 
 /// Evaluation metrics for clustering models.
 class ClusteringMetrics {
-  /// [Beta] Information for all clusters.
+  /// \[Beta\] Information for all clusters.
   core.List<Cluster> clusters;
 
   /// Davies-Bouldin index.
@@ -4521,19 +4524,19 @@ class DataSplitResult {
 }
 
 class DatasetAccess {
-  /// [Pick one] A domain to grant access to.
+  /// \[Pick one\] A domain to grant access to.
   ///
   /// Any users signed in with the domain specified will be granted the
   /// specified access. Example: "example.com". Maps to IAM policy member
   /// "domain:DOMAIN".
   core.String domain;
 
-  /// [Pick one] An email address of a Google Group to grant access to.
+  /// \[Pick one\] An email address of a Google Group to grant access to.
   ///
   /// Maps to IAM policy member "group:GROUP".
   core.String groupByEmail;
 
-  /// [Pick one] Some other type of member that appears in the IAM Policy but
+  /// \[Pick one\] Some other type of member that appears in the IAM Policy but
   /// isn't a user, group, domain, or special group.
   core.String iamMember;
 
@@ -4549,7 +4552,7 @@ class DatasetAccess {
   /// Required.
   core.String role;
 
-  /// [Pick one] A special group to grant access to.
+  /// \[Pick one\] A special group to grant access to.
   ///
   /// Possible values include: projectOwners: Owners of the enclosing project.
   /// projectReaders: Readers of the enclosing project. projectWriters: Writers
@@ -4557,13 +4560,13 @@ class DatasetAccess {
   /// BigQuery users. Maps to similarly-named IAM members.
   core.String specialGroup;
 
-  /// [Pick one] An email address of a user to grant access to.
+  /// \[Pick one\] An email address of a user to grant access to.
   ///
   /// For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or
   /// "serviceAccount:EMAIL".
   core.String userByEmail;
 
-  /// [Pick one] A view from a different dataset to grant access to.
+  /// \[Pick one\] A view from a different dataset to grant access to.
   ///
   /// Queries executed against that view will have read access to tables in this
   /// dataset. The role field is not required when this field is set. If that
@@ -4634,12 +4637,12 @@ class Dataset {
   /// entities: access.specialGroup: projectReaders; access.role: READER;
   /// access.specialGroup: projectWriters; access.role: WRITER;
   /// access.specialGroup: projectOwners; access.role: OWNER;
-  /// access.userByEmail: [dataset creator email]; access.role: OWNER;
+  /// access.userByEmail: \[dataset creator email\]; access.role: OWNER;
   ///
   /// Optional.
   core.List<DatasetAccess> access;
 
-  /// [Output-only] The time when this dataset was created, in milliseconds
+  /// \[Output-only\] The time when this dataset was created, in milliseconds
   /// since the epoch.
   core.String creationTime;
 
@@ -4687,7 +4690,7 @@ class Dataset {
   /// Optional.
   core.String description;
 
-  /// [Output-only] A hash of the resource.
+  /// \[Output-only\] A hash of the resource.
   core.String etag;
 
   /// A descriptive name for the dataset.
@@ -4695,15 +4698,15 @@ class Dataset {
   /// Optional.
   core.String friendlyName;
 
-  /// [Output-only] The fully-qualified unique name of the dataset in the format
-  /// projectId:datasetId.
+  /// \[Output-only\] The fully-qualified unique name of the dataset in the
+  /// format projectId:datasetId.
   ///
   /// The dataset name without the project name is given in the datasetId field.
   /// When creating a new dataset, leave this field blank, and instead specify
   /// the datasetId field.
   core.String id;
 
-  /// [Output-only] The resource type.
+  /// \[Output-only\] The resource type.
   core.String kind;
 
   /// The labels associated with this dataset.
@@ -4713,7 +4716,7 @@ class Dataset {
   /// Dataset Labels for more information.
   core.Map<core.String, core.String> labels;
 
-  /// [Output-only] The date when this dataset or any of its tables was last
+  /// \[Output-only\] The date when this dataset or any of its tables was last
   /// modified, in milliseconds since the epoch.
   core.String lastModifiedTime;
 
@@ -4723,10 +4726,10 @@ class Dataset {
   /// https://cloud.google.com/bigquery/docs/locations.
   core.String location;
 
-  /// [Output-only] Reserved for future use.
+  /// \[Output-only\] Reserved for future use.
   core.bool satisfiesPZS;
 
-  /// [Output-only] A URL that can be used to access the resource again.
+  /// \[Output-only\] A URL that can be used to access the resource again.
   ///
   /// You can use this URL in Get or Update requests to the resource.
   core.String selfLink;
@@ -5711,7 +5714,7 @@ class ExternalDataConfiguration {
   /// Optional.
   core.String compression;
 
-  /// [Optional, Trusted Tester] Connection for external data source.
+  /// \[Optional, Trusted Tester\] Connection for external data source.
   core.String connectionId;
 
   /// Additional properties to set if sourceFormat is set to CSV.
@@ -5722,7 +5725,8 @@ class ExternalDataConfiguration {
   /// Optional.
   GoogleSheetsOptions googleSheetsOptions;
 
-  /// [Optional, Trusted Tester] Options to configure hive partitioning support.
+  /// \[Optional, Trusted Tester\] Options to configure hive partitioning
+  /// support.
   HivePartitioningOptions hivePartitioningOptions;
 
   /// Indicates if BigQuery should allow extra values that are not represented
@@ -5764,7 +5768,8 @@ class ExternalDataConfiguration {
   /// For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS".
   /// For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro
   /// files, specify "AVRO". For Google Cloud Datastore backups, specify
-  /// "DATASTORE_BACKUP". [Beta] For Google Cloud Bigtable, specify "BIGTABLE".
+  /// "DATASTORE_BACKUP". \[Beta\] For Google Cloud Bigtable, specify
+  /// "BIGTABLE".
   ///
   /// Required.
   core.String sourceFormat;
@@ -5975,8 +5980,8 @@ class GetQueryResultsResponse {
   /// Whether the query result was fetched from the query cache.
   core.bool cacheHit;
 
-  /// [Output-only] The first errors or warnings encountered during the running
-  /// of the job.
+  /// \[Output-only\] The first errors or warnings encountered during the
+  /// running of the job.
   ///
   /// The final message includes the number of errors that caused the process to
   /// stop. Errors here do not necessarily mean that the job has completed or
@@ -6003,7 +6008,7 @@ class GetQueryResultsResponse {
   /// The resource type of the response.
   core.String kind;
 
-  /// [Output-only] The number of rows affected by a DML statement.
+  /// \[Output-only\] The number of rows affected by a DML statement.
   ///
   /// Present only for DML statements INSERT, UPDATE or DELETE.
   core.String numDmlAffectedRows;
@@ -6357,10 +6362,10 @@ class Job {
   /// Required.
   JobConfiguration configuration;
 
-  /// [Output-only] A hash of this resource.
+  /// \[Output-only\] A hash of this resource.
   core.String etag;
 
-  /// [Output-only] Opaque ID field of the job
+  /// \[Output-only\] Opaque ID field of the job
   core.String id;
 
   /// Reference describing the unique-per-user name of the job.
@@ -6368,23 +6373,23 @@ class Job {
   /// Optional.
   JobReference jobReference;
 
-  /// [Output-only] The type of the resource.
+  /// \[Output-only\] The type of the resource.
   core.String kind;
 
-  /// [Output-only] A URL that can be used to access this resource again.
+  /// \[Output-only\] A URL that can be used to access this resource again.
   core.String selfLink;
 
-  /// [Output-only] Information about the job, including starting time and
+  /// \[Output-only\] Information about the job, including starting time and
   /// ending time of the job.
   JobStatistics statistics;
 
-  /// [Output-only] The status of this job.
+  /// \[Output-only\] The status of this job.
   ///
   /// Examine this value when polling an asynchronous job to see if the job is
   /// complete.
   JobStatus status;
 
-  /// [Output-only] Email address of the user who ran the job.
+  /// \[Output-only\] Email address of the user who ran the job.
   core.String userEmail;
 
   Job();
@@ -6487,7 +6492,7 @@ class JobCancelResponse {
 }
 
 class JobConfiguration {
-  /// [Pick one] Copies a table.
+  /// \[Pick one\] Copies a table.
   JobConfigurationTableCopy copy;
 
   /// If set, don't actually run this job.
@@ -6499,7 +6504,7 @@ class JobConfiguration {
   /// Optional.
   core.bool dryRun;
 
-  /// [Pick one] Configures an extract job.
+  /// \[Pick one\] Configures an extract job.
   JobConfigurationExtract extract;
 
   /// Job timeout in milliseconds.
@@ -6509,7 +6514,7 @@ class JobConfiguration {
   /// Optional.
   core.String jobTimeoutMs;
 
-  /// [Output-only] The type of the job.
+  /// \[Output-only\] The type of the job.
   ///
   /// Can be QUERY, LOAD, EXTRACT, COPY or UNKNOWN.
   core.String jobType;
@@ -6523,10 +6528,10 @@ class JobConfiguration {
   /// and each label in the list must have a different key.
   core.Map<core.String, core.String> labels;
 
-  /// [Pick one] Configures a load job.
+  /// \[Pick one\] Configures a load job.
   JobConfigurationLoad load;
 
-  /// [Pick one] Configures a query job.
+  /// \[Pick one\] Configures a query job.
   JobConfigurationQuery query;
 
   JobConfiguration();
@@ -6618,14 +6623,14 @@ class JobConfigurationExtract {
   /// Optional.
   core.String destinationFormat;
 
-  /// [Pick one] DEPRECATED: Use destinationUris instead, passing only one URI
+  /// \[Pick one\] DEPRECATED: Use destinationUris instead, passing only one URI
   /// as necessary.
   ///
   /// The fully-qualified Google Cloud Storage URI where the extracted table
   /// should be written.
   core.String destinationUri;
 
-  /// [Pick one] A list of fully-qualified Google Cloud Storage URIs where the
+  /// \[Pick one\] A list of fully-qualified Google Cloud Storage URIs where the
   /// extracted table should be written.
   core.List<core.String> destinationUris;
 
@@ -6751,7 +6756,7 @@ class JobConfigurationLoad {
   /// Optional.
   core.bool autodetect;
 
-  /// [Beta] Clustering specification for the destination table.
+  /// \[Beta\] Clustering specification for the destination table.
   ///
   /// Must be specified with time-based partitioning, data in the table will be
   /// first partitioned and subsequently clustered.
@@ -6768,8 +6773,8 @@ class JobConfigurationLoad {
   /// Optional.
   core.String createDisposition;
 
-  /// [Trusted Tester] Defines the list of possible SQL data types to which the
-  /// source decimal values are converted.
+  /// \[Trusted Tester\] Defines the list of possible SQL data types to which
+  /// the source decimal values are converted.
   ///
   /// This list and the precision and the scale parameters of the decimal field
   /// determine the target type. In the order of NUMERIC, BIGNUMERIC, and
@@ -6778,15 +6783,16 @@ class JobConfigurationLoad {
   /// values. If none of the listed types supports the precision and the scale,
   /// the type supporting the widest range in the specified list is picked, and
   /// if a value exceeds the supported range when reading the data, an error
-  /// will be thrown. For example: suppose decimal_target_type = ["NUMERIC",
-  /// "BIGNUMERIC"]. Then if (precision,scale) is: * (38,9) -> NUMERIC; * (39,9)
-  /// -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) ->
+  /// will be thrown. For example: suppose decimal_target_type = \["NUMERIC",
+  /// "BIGNUMERIC"\]. Then if (precision,scale) is: * (38,9) -> NUMERIC; *
+  /// (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) ->
   /// BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) ->
   /// BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported
   /// range). For duplicated types in this field, only one will be considered
   /// and the rest will be ignored. The order of the types in this field is
-  /// ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC",
-  /// "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC.
+  /// ignored. For example, \["BIGNUMERIC", "NUMERIC"\] is the same as
+  /// \["NUMERIC", "BIGNUMERIC"\] and NUMERIC always takes precedence over
+  /// BIGNUMERIC.
   core.List<core.String> decimalTargetTypes;
 
   /// Custom encryption configuration (e.g., Cloud KMS keys).
@@ -6797,8 +6803,8 @@ class JobConfigurationLoad {
   /// Required.
   TableReference destinationTable;
 
-  /// [Beta] [Optional] Properties with which to create the destination table if
-  /// it is new.
+  /// \[Beta\] \[Optional\] Properties with which to create the destination
+  /// table if it is new.
   DestinationTableProperties destinationTableProperties;
 
   /// The character encoding of the data.
@@ -6822,7 +6828,8 @@ class JobConfigurationLoad {
   /// Optional.
   core.String fieldDelimiter;
 
-  /// [Optional, Trusted Tester] Options to configure hive partitioning support.
+  /// \[Optional, Trusted Tester\] Options to configure hive partitioning
+  /// support.
   HivePartitioningOptions hivePartitioningOptions;
 
   /// Indicates if BigQuery should allow extra values that are not represented
@@ -6881,7 +6888,7 @@ class JobConfigurationLoad {
   /// Optional.
   core.String quote;
 
-  /// [TrustedTester] Range partitioning specification for this table.
+  /// \[TrustedTester\] Range partitioning specification for this table.
   ///
   /// Only one of timePartitioning and rangePartitioning should be specified.
   RangePartitioning rangePartitioning;
@@ -6896,7 +6903,7 @@ class JobConfigurationLoad {
 
   /// The inline schema.
   ///
-  /// For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example,
+  /// For CSV schemas, specify as "Field1:Type1\[,Field2:Type2\]*". For example,
   /// "foo:STRING, bar:INTEGER, baz:FLOAT".
   ///
   /// Deprecated.
@@ -7190,7 +7197,7 @@ class JobConfigurationQuery {
   /// Optional.
   core.bool allowLargeResults;
 
-  /// [Beta] Clustering specification for the destination table.
+  /// \[Beta\] Clustering specification for the destination table.
   ///
   /// Must be specified with time-based partitioning, data in the table will be
   /// first partitioned and subsequently clustered.
@@ -7287,7 +7294,7 @@ class JobConfigurationQuery {
   /// Query parameters for standard SQL queries.
   core.List<QueryParameter> queryParameters;
 
-  /// [TrustedTester] Range partitioning specification for this table.
+  /// \[TrustedTester\] Range partitioning specification for this table.
   ///
   /// Only one of timePartitioning and rangePartitioning should be specified.
   RangePartitioning rangePartitioning;
@@ -7570,10 +7577,10 @@ class JobConfigurationTableCopy {
   /// Optional.
   core.String operationType;
 
-  /// [Pick one] Source table to copy.
+  /// \[Pick one\] Source table to copy.
   TableReference sourceTable;
 
-  /// [Pick one] Source tables to copy.
+  /// \[Pick one\] Source tables to copy.
   core.List<TableReference> sourceTables;
 
   /// Specifies the action that occurs if the destination table already exists.
@@ -7660,7 +7667,7 @@ class JobConfigurationTableCopy {
 }
 
 class JobListJobs {
-  /// [Full-projection-only] Specifies the job configuration.
+  /// \[Full-projection-only\] Specifies the job configuration.
   JobConfiguration configuration;
 
   /// A result object that will be present only if the job has failed.
@@ -7681,14 +7688,14 @@ class JobListJobs {
   /// the job succeeded or failed.
   core.String state;
 
-  /// [Output-only] Information about the job, including starting time and
+  /// \[Output-only\] Information about the job, including starting time and
   /// ending time of the job.
   JobStatistics statistics;
 
-  /// [Full-projection-only] Describes the state of the job.
+  /// \[Full-projection-only\] Describes the state of the job.
   JobStatus status;
 
-  /// [Full-projection-only] Email address of the user who ran the job.
+  /// \[Full-projection-only\] Email address of the user who ran the job.
   core.String userEmail;
 
   JobListJobs();
@@ -7862,11 +7869,11 @@ class JobReference {
 }
 
 class JobStatisticsReservationUsage {
-  /// [Output-only] Reservation name or "unreserved" for on-demand resources
+  /// \[Output-only\] Reservation name or "unreserved" for on-demand resources
   /// usage.
   core.String name;
 
-  /// [Output-only] Slot-milliseconds the job spent in the given reservation.
+  /// \[Output-only\] Slot-milliseconds the job spent in the given reservation.
   core.String slotMs;
 
   JobStatisticsReservationUsage();
@@ -7893,71 +7900,72 @@ class JobStatisticsReservationUsage {
 }
 
 class JobStatistics {
-  /// [TrustedTester] [Output-only] Job progress (0.0 -> 1.0) for LOAD and
+  /// \[TrustedTester\] \[Output-only\] Job progress (0.0 -> 1.0) for LOAD and
   /// EXTRACT jobs.
   core.double completionRatio;
 
-  /// [Output-only] Creation time of this job, in milliseconds since the epoch.
+  /// \[Output-only\] Creation time of this job, in milliseconds since the
+  /// epoch.
   ///
   /// This field will be present on all jobs.
   core.String creationTime;
 
-  /// [Output-only] End time of this job, in milliseconds since the epoch.
+  /// \[Output-only\] End time of this job, in milliseconds since the epoch.
   ///
   /// This field will be present whenever a job is in the DONE state.
   core.String endTime;
 
-  /// [Output-only] Statistics for an extract job.
+  /// \[Output-only\] Statistics for an extract job.
   JobStatistics4 extract;
 
-  /// [Output-only] Statistics for a load job.
+  /// \[Output-only\] Statistics for a load job.
   JobStatistics3 load;
 
-  /// [Output-only] Number of child jobs executed.
+  /// \[Output-only\] Number of child jobs executed.
   core.String numChildJobs;
 
-  /// [Output-only] If this is a child job, the id of the parent.
+  /// \[Output-only\] If this is a child job, the id of the parent.
   core.String parentJobId;
 
-  /// [Output-only] Statistics for a query job.
+  /// \[Output-only\] Statistics for a query job.
   JobStatistics2 query;
 
-  /// [Output-only] Quotas which delayed this job's start time.
+  /// \[Output-only\] Quotas which delayed this job's start time.
   core.List<core.String> quotaDeferments;
 
-  /// [Output-only] Job resource usage breakdown by reservation.
+  /// \[Output-only\] Job resource usage breakdown by reservation.
   core.List<JobStatisticsReservationUsage> reservationUsage;
 
-  /// [Output-only] Name of the primary reservation assigned to this job.
+  /// \[Output-only\] Name of the primary reservation assigned to this job.
   ///
   /// Note that this could be different than reservations reported in the
   /// reservation usage field if parent reservations were used to execute this
   /// job.
   core.String reservationId;
 
-  /// [Output-only] [Preview] Statistics for row-level security.
+  /// \[Output-only\] \[Preview\] Statistics for row-level security.
   ///
   /// Present only for query and extract jobs.
   RowLevelSecurityStatistics rowLevelSecurityStatistics;
 
-  /// [Output-only] Statistics for a child job of a script.
+  /// \[Output-only\] Statistics for a child job of a script.
   ScriptStatistics scriptStatistics;
 
-  /// [Output-only] Start time of this job, in milliseconds since the epoch.
+  /// \[Output-only\] Start time of this job, in milliseconds since the epoch.
   ///
   /// This field will be present when the job transitions from the PENDING state
   /// to either RUNNING or DONE.
   core.String startTime;
 
-  /// [Output-only] [Deprecated] Use the bytes processed in the query statistics
-  /// instead.
+  /// \[Output-only\] \[Deprecated\] Use the bytes processed in the query
+  /// statistics instead.
   core.String totalBytesProcessed;
 
-  /// [Output-only] Slot-milliseconds for the job.
+  /// \[Output-only\] Slot-milliseconds for the job.
   core.String totalSlotMs;
 
-  /// [Output-only] [Alpha] Information of the multi-statement transaction if
-  /// this job is part of one.
+  /// \[Output-only\] \[Alpha\] Information of the multi-statement transaction
+  /// if this job is part of one.
   TransactionInfo transactionInfoTemplate;
 
   JobStatistics();
@@ -8089,11 +8097,11 @@ class JobStatistics {
 }
 
 class JobStatistics2ReservationUsage {
-  /// [Output-only] Reservation name or "unreserved" for on-demand resources
+  /// \[Output-only\] Reservation name or "unreserved" for on-demand resources
   /// usage.
   core.String name;
 
-  /// [Output-only] Slot-milliseconds the job spent in the given reservation.
+  /// \[Output-only\] Slot-milliseconds the job spent in the given reservation.
   core.String slotMs;
 
   JobStatistics2ReservationUsage();
@@ -8120,14 +8128,14 @@ class JobStatistics2ReservationUsage {
 }
 
 class JobStatistics2 {
-  /// [Output-only] Billing tier for the job.
+  /// \[Output-only\] Billing tier for the job.
   core.int billingTier;
 
-  /// [Output-only] Whether the query result was fetched from the query cache.
+  /// \[Output-only\] Whether the query result was fetched from the query cache.
   core.bool cacheHit;
 
-  /// [Output-only] [Preview] The number of row access policies affected by a
-  /// DDL statement.
+  /// \[Output-only\] \[Preview\] The number of row access policies affected by
+  /// a DDL statement.
   ///
   /// Present only for DROP ALL ROW ACCESS POLICIES queries.
   core.String ddlAffectedRowAccessPolicyCount;
@@ -8149,50 +8157,50 @@ class JobStatistics2 {
   /// Present only for CREATE/DROP FUNCTION/PROCEDURE queries.
   RoutineReference ddlTargetRoutine;
 
-  /// [Output-only] [Preview] The DDL target row access policy.
+  /// \[Output-only\] \[Preview\] The DDL target row access policy.
   ///
   /// Present only for CREATE/DROP ROW ACCESS POLICY queries.
   RowAccessPolicyReference ddlTargetRowAccessPolicy;
 
-  /// [Output-only] The DDL target table.
+  /// \[Output-only\] The DDL target table.
   ///
   /// Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES
   /// queries.
   TableReference ddlTargetTable;
 
-  /// [Output-only] The original estimate of bytes processed for the job.
+  /// \[Output-only\] The original estimate of bytes processed for the job.
   core.String estimatedBytesProcessed;
 
-  /// [Output-only, Beta] Information about create model query job progress.
+  /// \[Output-only, Beta\] Information about create model query job progress.
   BigQueryModelTraining modelTraining;
 
-  /// [Output-only, Beta] Deprecated; do not use.
+  /// \[Output-only, Beta\] Deprecated; do not use.
   core.int modelTrainingCurrentIteration;
 
-  /// [Output-only, Beta] Deprecated; do not use.
+  /// \[Output-only, Beta\] Deprecated; do not use.
   core.String modelTrainingExpectedTotalIteration;
 
-  /// [Output-only] The number of rows affected by a DML statement.
+  /// \[Output-only\] The number of rows affected by a DML statement.
   ///
   /// Present only for DML statements INSERT, UPDATE or DELETE.
   core.String numDmlAffectedRows;
 
-  /// [Output-only] Describes execution plan for the query.
+  /// \[Output-only\] Describes execution plan for the query.
   core.List<ExplainQueryStage> queryPlan;
 
-  /// [Output-only] Referenced routines (persistent user-defined functions and
+  /// \[Output-only\] Referenced routines (persistent user-defined functions and
   /// stored procedures) for the job.
   core.List<RoutineReference> referencedRoutines;
 
-  /// [Output-only] Referenced tables for the job.
+  /// \[Output-only\] Referenced tables for the job.
   ///
   /// Queries that reference more than 50 tables will not have a complete list.
   core.List<TableReference> referencedTables;
 
-  /// [Output-only] Job resource usage breakdown by reservation.
+  /// \[Output-only\] Job resource usage breakdown by reservation.
   core.List<JobStatistics2ReservationUsage> reservationUsage;
 
-  /// [Output-only] The schema of the results.
+  /// \[Output-only\] The schema of the results.
   ///
   /// Present only for successful dry run of non-legacy SQL queries.
   TableSchema schema;
@@ -8210,25 +8218,25 @@ class JobStatistics2 {
   /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language.
   /// "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query.
   /// "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE
-  /// FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT
+  /// FUNCTION query. "CREATE_MODEL": CREATE \[OR REPLACE\] MODEL ... AS SELECT
   /// ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE
-  /// [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR
-  /// REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW
-  /// ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query.
+  /// \[OR REPLACE\] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE
+  /// \[OR REPLACE\] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE \[OR
+  /// REPLACE\] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query.
   /// "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query.
   /// "DROP_VIEW": DROP VIEW query.
   core.String statementType;
 
-  /// [Output-only] [Beta] Describes a timeline of job execution.
+  /// \[Output-only\] \[Beta\] Describes a timeline of job execution.
   core.List<QueryTimelineSample> timeline;
 
-  /// [Output-only] Total bytes billed for the job.
+  /// \[Output-only\] Total bytes billed for the job.
   core.String totalBytesBilled;
 
-  /// [Output-only] Total bytes processed for the job.
+  /// \[Output-only\] Total bytes processed for the job.
   core.String totalBytesProcessed;
 
-  /// [Output-only] For dry-run jobs, totalBytesProcessed is an estimate and
+  /// \[Output-only\] For dry-run jobs, totalBytesProcessed is an estimate and
   /// this field specifies the accuracy of the estimate.
   ///
   /// Possible values can be: UNKNOWN: accuracy of the estimate is unknown.
@@ -8237,11 +8245,11 @@ class JobStatistics2 {
   /// query would cost.
   core.String totalBytesProcessedAccuracy;
 
-  /// [Output-only] Total number of partitions processed from all partitioned
+  /// \[Output-only\] Total number of partitions processed from all partitioned
   /// tables referenced in the job.
   core.String totalPartitionsProcessed;
 
-  /// [Output-only] Slot-milliseconds for the job.
+  /// \[Output-only\] Slot-milliseconds for the job.
   core.String totalSlotMs;
 
   /// Standard SQL only: list of undeclared query parameters detected during a
@@ -8447,7 +8455,7 @@ class JobStatistics2 {
 }
 
 class JobStatistics3 {
-  /// [Output-only] The number of bad records encountered.
+  /// \[Output-only\] The number of bad records encountered.
   ///
   /// Note that if the job has failed because of more bad records encountered
   /// than the maximum allowed in the load job configuration, then this number
@@ -8455,18 +8463,18 @@ class JobStatistics3 {
   /// data.
   core.String badRecords;
 
-  /// [Output-only] Number of bytes of source data in a load job.
+  /// \[Output-only\] Number of bytes of source data in a load job.
   core.String inputFileBytes;
 
-  /// [Output-only] Number of source files in a load job.
+  /// \[Output-only\] Number of source files in a load job.
   core.String inputFiles;
 
-  /// [Output-only] Size of the loaded data in bytes.
+  /// \[Output-only\] Size of the loaded data in bytes.
   ///
   /// Note that while a load job is in the running state, this value may change.
   core.String outputBytes;
 
-  /// [Output-only] Number of rows imported in a load job.
+  /// \[Output-only\] Number of rows imported in a load job.
   ///
   /// Note that while an import job is in the running state, this value may
   /// change.
@@ -8514,14 +8522,14 @@ class JobStatistics3 {
 }
 
 class JobStatistics4 {
-  /// [Output-only] Number of files per destination URI or URI pattern specified
-  /// in the extract configuration.
+  /// \[Output-only\] Number of files per destination URI or URI pattern
+  /// specified in the extract configuration.
   ///
   /// These values will be in the same order as the URIs specified in the
   /// 'destinationUris' field.
   core.List<core.String> destinationUriFileCounts;
 
-  /// [Output-only] Number of user bytes extracted into the result.
+  /// \[Output-only\] Number of user bytes extracted into the result.
   ///
   /// This is the byte count as computed by BigQuery for billing purposes.
   core.String inputBytes;
@@ -8553,19 +8561,20 @@ class JobStatistics4 {
 }
 
 class JobStatus {
-  /// [Output-only] Final error result of the job.
+  /// \[Output-only\] Final error result of the job.
   ///
   /// If present, indicates that the job has completed and was unsuccessful.
   ErrorProto errorResult;
 
-  /// [Output-only] The first errors encountered during the running of the job.
+  /// \[Output-only\] The first errors encountered during the running of the
+  /// job.
   ///
   /// The final message includes the number of errors that caused the process to
   /// stop. Errors here do not necessarily mean that the job has completed or
   /// was unsuccessful.
   core.List<ErrorProto> errors;
 
-  /// [Output-only] Running state of the job.
+  /// \[Output-only\] Running state of the job.
   core.String state;
 
   JobStatus();
@@ -8738,15 +8747,15 @@ class LocationMetadata {
 }
 
 class MaterializedViewDefinition {
-  /// [TrustedTester] Enable automatic refresh of the materialized view when the
-  /// base table is updated.
+  /// \[TrustedTester\] Enable automatic refresh of the materialized view when
+  /// the base table is updated.
   ///
   /// The default value is "true".
   ///
   /// Optional.
   core.bool enableRefresh;
 
-  /// [Output-only] [TrustedTester] The time when this materialized view was
+  /// \[Output-only\] \[TrustedTester\] The time when this materialized view was
   /// last modified, in milliseconds since the epoch.
   core.String lastRefreshTime;
 
@@ -8755,8 +8764,8 @@ class MaterializedViewDefinition {
   /// Required.
   core.String query;
 
-  /// [TrustedTester] The maximum frequency at which this materialized view will
-  /// be refreshed.
+  /// \[TrustedTester\] The maximum frequency at which this materialized view
+  /// will be refreshed.
   ///
   /// The default value is "1800000" (30 minutes).
   ///
@@ -9014,7 +9023,7 @@ class Model {
   }
 }
 
-/// [Output-only, Beta] Model options used for the first training run.
+/// \[Output-only, Beta\] Model options used for the first training run.
 ///
 /// These options are immutable for subsequent training runs. Default values are
 /// used for any options not specified in the input query.
@@ -9055,16 +9064,16 @@ class ModelDefinitionModelOptions {
 }
 
 class ModelDefinition {
-  /// [Output-only, Beta] Model options used for the first training run.
+  /// \[Output-only, Beta\] Model options used for the first training run.
   ///
   /// These options are immutable for subsequent training runs. Default values
   /// are used for any options not specified in the input query.
   ModelDefinitionModelOptions modelOptions;
 
-  /// [Output-only, Beta] Information about ml training runs, each training run
-  /// comprises of multiple iterations and there may be multiple training runs
-  /// for the model if warm start is used or if a user decides to continue a
-  /// previously cancelled query.
+  /// \[Output-only, Beta\] Information about ml training runs, each training
+  /// run comprises of multiple iterations and there may be multiple training
+  /// runs for the model if warm start is used or if a user decides to continue
+  /// a previously cancelled query.
   core.List<BqmlTrainingRun> trainingRuns;
 
   ModelDefinition();
@@ -9195,14 +9204,14 @@ class MultiClassClassificationMetrics {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
@@ -9723,7 +9732,7 @@ class QueryRequest {
   /// A query string, following the BigQuery query syntax, of the query to
   /// execute.
   ///
-  /// Example: "SELECT count(f1) FROM [myProjectId:myDatasetId.myTableId]".
+  /// Example: "SELECT count(f1) FROM \[myProjectId:myDatasetId.myTableId\]".
   ///
   /// Required.
   core.String query;
@@ -9909,8 +9918,8 @@ class QueryResponse {
   /// Whether the query result was fetched from the query cache.
   core.bool cacheHit;
 
-  /// [Output-only] The first errors or warnings encountered during the running
-  /// of the job.
+  /// \[Output-only\] The first errors or warnings encountered during the
+  /// running of the job.
   ///
   /// The final message includes the number of errors that caused the process to
   /// stop. Errors here do not necessarily mean that the job has completed or
@@ -9934,7 +9943,7 @@ class QueryResponse {
   /// The resource type.
   core.String kind;
 
-  /// [Output-only] The number of rows affected by a DML statement.
+  /// \[Output-only\] The number of rows affected by a DML statement.
   ///
   /// Present only for DML statements INSERT, UPDATE or DELETE.
   core.String numDmlAffectedRows;
@@ -10109,15 +10118,15 @@ class QueryTimelineSample {
   }
 }
 
-/// [TrustedTester] [Required] Defines the ranges for range partitioning.
+/// \[TrustedTester\] \[Required\] Defines the ranges for range partitioning.
 class RangePartitioningRange {
-  /// [TrustedTester] [Required] The end of range partitioning, exclusive.
+  /// \[TrustedTester\] \[Required\] The end of range partitioning, exclusive.
   core.String end;
 
-  /// [TrustedTester] [Required] The width of each interval.
+  /// \[TrustedTester\] \[Required\] The width of each interval.
   core.String interval;
 
-  /// [TrustedTester] [Required] The start of range partitioning, inclusive.
+  /// \[TrustedTester\] \[Required\] The start of range partitioning, inclusive.
   core.String start;
 
   RangePartitioningRange();
@@ -10150,13 +10159,13 @@ class RangePartitioningRange {
 }
 
 class RangePartitioning {
-  /// [TrustedTester] [Required] The table is partitioned by this field.
+  /// \[TrustedTester\] \[Required\] The table is partitioned by this field.
   ///
   /// The field must be a top-level NULLABLE/REQUIRED field. The only supported
   /// type is INTEGER/INT64.
   core.String field;
 
-  /// [TrustedTester] [Required] Defines the ranges for range partitioning.
+  /// \[TrustedTester\] \[Required\] Defines the ranges for range partitioning.
   RangePartitioningRange range;
 
   RangePartitioning();
@@ -10330,12 +10339,12 @@ class Routine {
   /// Required.
   core.String definitionBody;
 
-  /// [Experimental] The description of the routine if defined.
+  /// \[Experimental\] The description of the routine if defined.
   ///
   /// Optional.
   core.String description;
 
-  /// [Experimental] The determinism level of the JavaScript UDF if defined.
+  /// \[Experimental\] The determinism level of the JavaScript UDF if defined.
   ///
   /// Optional.
   /// Possible string values are:
@@ -10636,7 +10645,7 @@ class RowAccessPolicyReference {
 }
 
 class RowLevelSecurityStatistics {
-  /// [Output-only] [Preview] Whether any accessed data was protected by row
+  /// \[Output-only\] \[Preview\] Whether any accessed data was protected by row
   /// access policies.
   core.bool rowLevelSecurityApplied;
 
@@ -10658,23 +10667,23 @@ class RowLevelSecurityStatistics {
 }
 
 class ScriptStackFrame {
-  /// [Output-only] One-based end column.
+  /// \[Output-only\] One-based end column.
   core.int endColumn;
 
-  /// [Output-only] One-based end line.
+  /// \[Output-only\] One-based end line.
   core.int endLine;
 
-  /// [Output-only] Name of the active procedure, empty if in a top-level
+  /// \[Output-only\] Name of the active procedure, empty if in a top-level
   /// script.
   core.String procedureId;
 
-  /// [Output-only] One-based start column.
+  /// \[Output-only\] One-based start column.
   core.int startColumn;
 
-  /// [Output-only] One-based start line.
+  /// \[Output-only\] One-based start line.
   core.int startLine;
 
-  /// [Output-only] Text of the current statement/expression.
+  /// \[Output-only\] Text of the current statement/expression.
   core.String text;
 
   ScriptStackFrame();
@@ -10725,7 +10734,7 @@ class ScriptStackFrame {
 }
 
 class ScriptStatistics {
-  /// [Output-only] Whether this child job was a statement or expression.
+  /// \[Output-only\] Whether this child job was a statement or expression.
   core.String evaluationKind;
 
   /// Stack trace showing the line/column/procedure name of each frame on the
@@ -10839,8 +10848,8 @@ class SnapshotDefinition {
 ///
 /// Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY",
 /// array_element_type="STRING"} STRUCT>: {type_kind="STRUCT",
-/// struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y",
-/// type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
+/// struct_type={fields=\[ {name="x", type={type_kind="STRING"}}, {name="y",
+/// type={type_kind="ARRAY", array_element_type="DATE"}} \]}}
 class StandardSqlDataType {
   /// The type of the array's elements, if type_kind = "ARRAY".
   StandardSqlDataType arrayElementType;
@@ -10972,17 +10981,17 @@ class StandardSqlStructType {
 }
 
 class Streamingbuffer {
-  /// [Output-only] A lower-bound estimate of the number of bytes currently in
+  /// \[Output-only\] A lower-bound estimate of the number of bytes currently in
   /// the streaming buffer.
   core.String estimatedBytes;
 
-  /// [Output-only] A lower-bound estimate of the number of rows currently in
+  /// \[Output-only\] A lower-bound estimate of the number of rows currently in
   /// the streaming buffer.
   core.String estimatedRows;
 
-  /// [Output-only] Contains the timestamp of the oldest entry in the streaming
-  /// buffer, in milliseconds since the epoch, if the streaming buffer is
-  /// available.
+  /// \[Output-only\] Contains the timestamp of the oldest entry in the
+  /// streaming buffer, in milliseconds since the epoch, if the streaming buffer
+  /// is available.
   core.String oldestEntryTime;
 
   Streamingbuffer();
@@ -11015,14 +11024,14 @@ class Streamingbuffer {
 }
 
 class Table {
-  /// [Beta] Clustering specification for the table.
+  /// \[Beta\] Clustering specification for the table.
   ///
   /// Must be specified with partitioning, data in the table will be first
   /// partitioned and subsequently clustered.
   Clustering clustering;
 
-  /// [Output-only] The time when this table was created, in milliseconds since
-  /// the epoch.
+  /// \[Output-only\] The time when this table was created, in milliseconds
+  /// since the epoch.
   core.String creationTime;
 
   /// A user-friendly description of this table.
@@ -11033,7 +11042,7 @@ class Table {
   /// Custom encryption configuration (e.g., Cloud KMS keys).
   EncryptionConfiguration encryptionConfiguration;
 
-  /// [Output-only] A hash of the table metadata.
+  /// \[Output-only\] A hash of the table metadata.
   ///
   /// Used to ensure there were no concurrent modifications to the resource when
   /// attempting an update. Not guaranteed to change when the table contents or
@@ -11064,10 +11073,10 @@ class Table {
   /// Optional.
   core.String friendlyName;
 
-  /// [Output-only] An opaque ID uniquely identifying the table.
+  /// \[Output-only\] An opaque ID uniquely identifying the table.
   core.String id;
 
-  /// [Output-only] The type of the resource.
+  /// \[Output-only\] The type of the resource.
   core.String kind;
 
   /// The labels associated with this table.
@@ -11079,11 +11088,11 @@ class Table {
   /// and each label in the list must have a different key.
   core.Map<core.String, core.String> labels;
 
-  /// [Output-only] The time when this table was last modified, in milliseconds
-  /// since the epoch.
+  /// \[Output-only\] The time when this table was last modified, in
+  /// milliseconds since the epoch.
   core.String lastModifiedTime;
 
-  /// [Output-only] The geographic location where the table resides.
+  /// \[Output-only\] The geographic location where the table resides.
   ///
   /// This value is inherited from the dataset.
   core.String location;
@@ -11093,31 +11102,31 @@ class Table {
   /// Optional.
   MaterializedViewDefinition materializedView;
 
-  /// [Output-only, Beta] Present iff this table represents a ML model.
+  /// \[Output-only, Beta\] Present iff this table represents a ML model.
   ///
   /// Describes the training information for the model, and it is required to
   /// run 'PREDICT' queries.
   ModelDefinition model;
 
-  /// [Output-only] The size of this table in bytes, excluding any data in the
+  /// \[Output-only\] The size of this table in bytes, excluding any data in the
   /// streaming buffer.
   core.String numBytes;
 
-  /// [Output-only] The number of bytes in the table that are considered
+  /// \[Output-only\] The number of bytes in the table that are considered
   /// "long-term storage".
   core.String numLongTermBytes;
 
-  /// [Output-only] [TrustedTester] The physical size of this table in bytes,
-  /// excluding any data in the streaming buffer.
+  /// \[Output-only\] \[TrustedTester\] The physical size of this table in
+  /// bytes, excluding any data in the streaming buffer.
   ///
   /// This includes compression and storage used for time travel.
   core.String numPhysicalBytes;
 
-  /// [Output-only] The number of rows of data in this table, excluding any data
-  /// in the streaming buffer.
+  /// \[Output-only\] The number of rows of data in this table, excluding any
+  /// data in the streaming buffer.
   core.String numRows;
 
-  /// [TrustedTester] Range partitioning specification for this table.
+  /// \[TrustedTester\] Range partitioning specification for this table.
   ///
   /// Only one of timePartitioning and rangePartitioning should be specified.
   RangePartitioning rangePartitioning;
@@ -11133,13 +11142,13 @@ class Table {
   /// Optional.
   TableSchema schema;
 
-  /// [Output-only] A URL that can be used to access this resource again.
+  /// \[Output-only\] A URL that can be used to access this resource again.
   core.String selfLink;
 
-  /// [Output-only] Snapshot definition.
+  /// \[Output-only\] Snapshot definition.
   SnapshotDefinition snapshotDefinition;
 
-  /// [Output-only] Contains information regarding this table's streaming
+  /// \[Output-only\] Contains information regarding this table's streaming
   /// buffer, if one is present.
   ///
   /// This field will be absent if the table is not being streamed to or if
@@ -11156,12 +11165,12 @@ class Table {
   /// Only one of timePartitioning and rangePartitioning should be specified.
   TimePartitioning timePartitioning;
 
-  /// [Output-only] Describes the table type.
+  /// \[Output-only\] Describes the table type.
   ///
   /// The following values are supported: TABLE: A normal BigQuery table. VIEW:
-  /// A virtual table defined by a SQL query. [TrustedTester] SNAPSHOT: An
+  /// A virtual table defined by a SQL query. \[TrustedTester\] SNAPSHOT: An
   /// immutable, read-only table that is a copy of another table.
-  /// [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted.
+  /// \[TrustedTester\] MATERIALIZED_VIEW: SQL query whose result is persisted.
   /// EXTERNAL: A table that references data stored in an external storage
   /// system, such as Google Cloud Storage. The default value is TABLE.
   core.String type;
@@ -11832,7 +11841,7 @@ class TableListTablesView {
 }
 
 class TableListTables {
-  /// [Beta] Clustering specification for this table, if configured.
+  /// \[Beta\] Clustering specification for this table, if configured.
   Clustering clustering;
 
   /// The time when this table was created, in milliseconds since the epoch.
@@ -12191,8 +12200,8 @@ class TimePartitioning {
   /// Optional.
   core.String expirationMs;
 
-  /// [Beta] [Optional] If not set, the table is partitioned by pseudo column,
-  /// referenced via either '_PARTITIONTIME' as TIMESTAMP type, or
+  /// \[Beta\] \[Optional\] If not set, the table is partitioned by pseudo
+  /// column, referenced via either '_PARTITIONTIME' as TIMESTAMP type, or
   /// '_PARTITIONDATE' as DATE type.
   ///
   /// If field is specified, the table is instead partitioned by this field. The
@@ -12476,7 +12485,7 @@ class TrainingOptions {
   /// Minimum split loss for boosted tree models.
   core.double minSplitLoss;
 
-  /// [Beta] Google Cloud Storage URI from which the model was imported.
+  /// \[Beta\] Google Cloud Storage URI from which the model was imported.
   ///
   /// Only applicable for imported models.
   core.String modelUri;
@@ -12886,7 +12895,7 @@ class TrainingRun {
 }
 
 class TransactionInfo {
-  /// [Output-only] // [Alpha] Id of the transaction.
+  /// \[Output-only\] // \[Alpha\] Id of the transaction.
   core.String transactionId;
 
   TransactionInfo();
@@ -12909,19 +12918,19 @@ class TransactionInfo {
 /// This is used for defining User Defined Function (UDF) resources only when
 /// using legacy SQL.
 ///
-/// Users of Standard SQL should leverage either DDL (e.g. CREATE [TEMPORARY]
+/// Users of Standard SQL should leverage either DDL (e.g. CREATE \[TEMPORARY\]
 /// FUNCTION ... ) or the Routines API to define UDF resources. For additional
 /// information on migrating, see:
 /// https://cloud.google.com/bigquery/docs/reference/standard-sql/migrating-from-legacy-sql#differences_in_user-defined_javascript_functions
 class UserDefinedFunctionResource {
-  /// [Pick one] An inline resource that contains code for a user-defined
+  /// \[Pick one\] An inline resource that contains code for a user-defined
   /// function (UDF).
   ///
   /// Providing a inline code resource is equivalent to providing a URI for a
   /// file containing the same code.
   core.String inlineCode;
 
-  /// [Pick one] A code resource to load from a Google Cloud Storage URI
+  /// \[Pick one\] A code resource to load from a Google Cloud Storage URI
   /// (gs://bucket/path).
   core.String resourceUri;
 

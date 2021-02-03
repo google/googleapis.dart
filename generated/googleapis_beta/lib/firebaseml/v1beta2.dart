@@ -82,7 +82,7 @@ class ProjectsModelsResource {
   ///
   /// [parent] - Required. The parent project resource where the model is to be
   /// created. The parent must have the form `projects/{project_id}`
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -140,7 +140,7 @@ class ProjectsModelsResource {
   ///
   /// [name] - Required. The name of the model to delete. The name must have the
   /// form `projects/{project_id}/models/{model_id}`
-  /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/models/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -192,7 +192,7 @@ class ProjectsModelsResource {
   ///
   /// [name] - Required. The name of the model to get. The name must have the
   /// form `projects/{project_id}/models/{model_id}`
-  /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/models/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -243,8 +243,8 @@ class ProjectsModelsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent to list models for. The parent
-  /// must have the form `projects/{project_id}'
-  /// Value must have pattern "^projects/[^/]+$".
+  /// must have the form \`projects/{project_id}'
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - A filter for the list e.g. 'tags: abc' to list models which are
   /// tagged with "abc"
@@ -324,7 +324,7 @@ class ProjectsModelsResource {
   /// [name] - The resource name of the Model. Model names have the form
   /// `projects/{project_id}/models/{model_id}` The name is ignored when
   /// creating a model.
-  /// Value must have pattern "^projects/[^/]+/models/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/models/\[^/\]+$`.
   ///
   /// [updateMask] - The update mask
   ///
@@ -394,7 +394,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

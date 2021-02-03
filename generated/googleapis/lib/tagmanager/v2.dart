@@ -110,7 +110,7 @@ class AccountsResource {
   /// Request parameters:
   ///
   /// [path] - GTM Accounts's API relative path. Example: accounts/{account_id}
-  /// Value must have pattern "^accounts/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -214,7 +214,7 @@ class AccountsResource {
   /// Request parameters:
   ///
   /// [path] - GTM Accounts's API relative path. Example: accounts/{account_id}
-  /// Value must have pattern "^accounts/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the account in storage.
@@ -294,7 +294,7 @@ class AccountsContainersResource {
   ///
   /// [parent] - GTM Account's API relative path. Example:
   /// accounts/{account_id}.
-  /// Value must have pattern "^accounts/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -352,7 +352,7 @@ class AccountsContainersResource {
   ///
   /// [path] - GTM Container's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}
-  /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+/containers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -404,7 +404,7 @@ class AccountsContainersResource {
   ///
   /// [path] - GTM Container's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}
-  /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+/containers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -456,7 +456,7 @@ class AccountsContainersResource {
   ///
   /// [parent] - GTM Accounts's API relative path. Example:
   /// accounts/{account_id}.
-  /// Value must have pattern "^accounts/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
@@ -519,7 +519,7 @@ class AccountsContainersResource {
   ///
   /// [path] - GTM Container's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}
-  /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+/containers/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the container in storage.
@@ -591,7 +591,7 @@ class AccountsContainersEnvironmentsResource {
   ///
   /// [parent] - GTM Container's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}
-  /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+/containers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -651,7 +651,7 @@ class AccountsContainersEnvironmentsResource {
   /// [path] - GTM Environment's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/environments/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -704,7 +704,7 @@ class AccountsContainersEnvironmentsResource {
   /// [path] - GTM Environment's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/environments/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -757,7 +757,7 @@ class AccountsContainersEnvironmentsResource {
   ///
   /// [parent] - GTM Container's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}
-  /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+/containers/\[^/\]+$`.
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
@@ -821,7 +821,7 @@ class AccountsContainersEnvironmentsResource {
   /// [path] - GTM Environment's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/environments/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -883,7 +883,7 @@ class AccountsContainersEnvironmentsResource {
   /// [path] - GTM Environment's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/environments/{environment_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/environments/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the environment in storage.
@@ -954,7 +954,7 @@ class AccountsContainersVersionHeadersResource {
   ///
   /// [parent] - GTM Container's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}
-  /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+/containers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1009,7 +1009,7 @@ class AccountsContainersVersionHeadersResource {
   ///
   /// [parent] - GTM Container's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}
-  /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+/containers/\[^/\]+$`.
   ///
   /// [includeDeleted] - Also retrieve deleted (archived) versions when true.
   ///
@@ -1084,7 +1084,7 @@ class AccountsContainersVersionsResource {
   /// [path] - GTM ContainerVersion's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1137,7 +1137,7 @@ class AccountsContainersVersionsResource {
   /// [path] - GTM ContainerVersion's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [containerVersionId] - The GTM ContainerVersion ID. Specify published to
   /// retrieve the currently published version.
@@ -1197,7 +1197,7 @@ class AccountsContainersVersionsResource {
   ///
   /// [parent] - GTM Container's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}
-  /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+/containers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1253,7 +1253,7 @@ class AccountsContainersVersionsResource {
   /// [path] - GTM ContainerVersion's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the container version in storage.
@@ -1317,7 +1317,7 @@ class AccountsContainersVersionsResource {
   /// [path] - GTM ContainerVersion's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1373,7 +1373,7 @@ class AccountsContainersVersionsResource {
   /// [path] - GTM ContainerVersion's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1431,7 +1431,7 @@ class AccountsContainersVersionsResource {
   /// [path] - GTM ContainerVersion's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/versions/{version_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/versions/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the container version in storage.
@@ -1519,7 +1519,7 @@ class AccountsContainersWorkspacesResource {
   ///
   /// [parent] - GTM parent Container's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}
-  /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+/containers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1582,7 +1582,7 @@ class AccountsContainersWorkspacesResource {
   /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1642,7 +1642,7 @@ class AccountsContainersWorkspacesResource {
   /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1695,7 +1695,7 @@ class AccountsContainersWorkspacesResource {
   /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1748,7 +1748,7 @@ class AccountsContainersWorkspacesResource {
   /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1803,7 +1803,7 @@ class AccountsContainersWorkspacesResource {
   ///
   /// [parent] - GTM parent Container's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}
-  /// Value must have pattern "^accounts/[^/]+/containers/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+/containers/\[^/\]+$`.
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
@@ -1866,7 +1866,7 @@ class AccountsContainersWorkspacesResource {
   /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1925,7 +1925,7 @@ class AccountsContainersWorkspacesResource {
   /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the entity_in_workspace in the merge conflict.
@@ -1993,7 +1993,7 @@ class AccountsContainersWorkspacesResource {
   /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2051,7 +2051,7 @@ class AccountsContainersWorkspacesResource {
   /// [path] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the workspace in storage.
@@ -2123,7 +2123,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
   /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [type] - The types of built-in variables to enable.
   ///
@@ -2185,7 +2185,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
   /// [path] - GTM BuiltInVariable's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/built_in_variables
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/built_in_variables$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/built_in_variables$`.
   ///
   /// [type] - The types of built-in variables to delete.
   ///
@@ -2244,7 +2244,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
   /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
@@ -2306,7 +2306,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
   /// [path] - GTM BuiltInVariable's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/built_in_variables
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [type] - The type of built-in variable to revert.
   /// Possible string values are:
@@ -2488,7 +2488,7 @@ class AccountsContainersWorkspacesFoldersResource {
   /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2547,7 +2547,7 @@ class AccountsContainersWorkspacesFoldersResource {
   /// [path] - GTM Folder's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2600,7 +2600,7 @@ class AccountsContainersWorkspacesFoldersResource {
   /// [path] - GTM Folder's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/folders/\[^/\]+$`.
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
@@ -2662,7 +2662,7 @@ class AccountsContainersWorkspacesFoldersResource {
   /// [path] - GTM Folder's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2715,7 +2715,7 @@ class AccountsContainersWorkspacesFoldersResource {
   /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
@@ -2779,7 +2779,7 @@ class AccountsContainersWorkspacesFoldersResource {
   /// [path] - GTM Folder's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/folders/\[^/\]+$`.
   ///
   /// [tagId] - The tags to be moved to the folder.
   ///
@@ -2856,7 +2856,7 @@ class AccountsContainersWorkspacesFoldersResource {
   /// [path] - GTM Folder's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/folders/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the tag in storage.
@@ -2921,7 +2921,7 @@ class AccountsContainersWorkspacesFoldersResource {
   /// [path] - GTM Folder's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/folders/{folder_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/folders/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/folders/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the folder in storage.
@@ -2994,7 +2994,7 @@ class AccountsContainersWorkspacesTagsResource {
   /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3053,7 +3053,7 @@ class AccountsContainersWorkspacesTagsResource {
   /// [path] - GTM Tag's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/tags/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/tags/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3106,7 +3106,7 @@ class AccountsContainersWorkspacesTagsResource {
   /// [path] - GTM Tag's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/tags/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/tags/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3159,7 +3159,7 @@ class AccountsContainersWorkspacesTagsResource {
   /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
@@ -3221,7 +3221,7 @@ class AccountsContainersWorkspacesTagsResource {
   /// [path] - GTM Tag's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/tags/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/tags/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of thetag in storage.
@@ -3286,7 +3286,7 @@ class AccountsContainersWorkspacesTagsResource {
   /// [path] - GTM Tag's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/tags/{tag_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/tags/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/tags/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the tag in storage.
@@ -3359,7 +3359,7 @@ class AccountsContainersWorkspacesTemplatesResource {
   /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3419,7 +3419,7 @@ class AccountsContainersWorkspacesTemplatesResource {
   /// [path] - GTM Custom Template's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/templates/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/templates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3472,7 +3472,7 @@ class AccountsContainersWorkspacesTemplatesResource {
   /// [path] - GTM Custom Template's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/templates/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/templates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3526,7 +3526,7 @@ class AccountsContainersWorkspacesTemplatesResource {
   /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
@@ -3588,7 +3588,7 @@ class AccountsContainersWorkspacesTemplatesResource {
   /// [path] - GTM Custom Template's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/templates/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/templates/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the template in storage.
@@ -3653,7 +3653,7 @@ class AccountsContainersWorkspacesTemplatesResource {
   /// [path] - GTM Custom Template's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/templates/{template_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/templates/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/templates/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the templates in storage.
@@ -3727,7 +3727,7 @@ class AccountsContainersWorkspacesTriggersResource {
   /// [parent] - GTM Workspaces's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3786,7 +3786,7 @@ class AccountsContainersWorkspacesTriggersResource {
   /// [path] - GTM Trigger's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/triggers/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/triggers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3839,7 +3839,7 @@ class AccountsContainersWorkspacesTriggersResource {
   /// [path] - GTM Trigger's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/triggers/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/triggers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3892,7 +3892,7 @@ class AccountsContainersWorkspacesTriggersResource {
   /// [parent] - GTM Workspaces's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
@@ -3954,7 +3954,7 @@ class AccountsContainersWorkspacesTriggersResource {
   /// [path] - GTM Trigger's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/triggers/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/triggers/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the trigger in storage.
@@ -4019,7 +4019,7 @@ class AccountsContainersWorkspacesTriggersResource {
   /// [path] - GTM Trigger's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/triggers/{trigger_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/triggers/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/triggers/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the trigger in storage.
@@ -4092,7 +4092,7 @@ class AccountsContainersWorkspacesVariablesResource {
   /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4151,7 +4151,7 @@ class AccountsContainersWorkspacesVariablesResource {
   /// [path] - GTM Variable's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/variables/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/variables/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4204,7 +4204,7 @@ class AccountsContainersWorkspacesVariablesResource {
   /// [path] - GTM Variable's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/variables/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/variables/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4257,7 +4257,7 @@ class AccountsContainersWorkspacesVariablesResource {
   /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
@@ -4319,7 +4319,7 @@ class AccountsContainersWorkspacesVariablesResource {
   /// [path] - GTM Variable's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/variables/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/variables/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the variable in storage.
@@ -4384,7 +4384,7 @@ class AccountsContainersWorkspacesVariablesResource {
   /// [path] - GTM Variable's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/variables/{variable_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/variables/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/variables/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the variable in storage.
@@ -4457,7 +4457,7 @@ class AccountsContainersWorkspacesZonesResource {
   /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4516,7 +4516,7 @@ class AccountsContainersWorkspacesZonesResource {
   /// [path] - GTM Zone's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/zones/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/zones/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4569,7 +4569,7 @@ class AccountsContainersWorkspacesZonesResource {
   /// [path] - GTM Zone's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/zones/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/zones/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4622,7 +4622,7 @@ class AccountsContainersWorkspacesZonesResource {
   /// [parent] - GTM Workspace's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
@@ -4684,7 +4684,7 @@ class AccountsContainersWorkspacesZonesResource {
   /// [path] - GTM Zone's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/zones/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/zones/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the zone in storage.
@@ -4749,7 +4749,7 @@ class AccountsContainersWorkspacesZonesResource {
   /// [path] - GTM Zone's API relative path. Example:
   /// accounts/{account_id}/containers/{container_id}/workspaces/{workspace_id}/zones/{zone_id}
   /// Value must have pattern
-  /// "^accounts/[^/]+/containers/[^/]+/workspaces/[^/]+/zones/[^/]+$".
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+/zones/\[^/\]+$`.
   ///
   /// [fingerprint] - When provided, this fingerprint must match the fingerprint
   /// of the zone in storage.
@@ -4820,7 +4820,7 @@ class AccountsUserPermissionsResource {
   /// Request parameters:
   ///
   /// [parent] - GTM Account's API relative path. Example: accounts/{account_id}
-  /// Value must have pattern "^accounts/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4880,7 +4880,7 @@ class AccountsUserPermissionsResource {
   ///
   /// [path] - GTM UserPermission's API relative path. Example:
   /// accounts/{account_id}/user_permissions/{user_permission_id}
-  /// Value must have pattern "^accounts/[^/]+/user_permissions/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+/user_permissions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4932,7 +4932,7 @@ class AccountsUserPermissionsResource {
   ///
   /// [path] - GTM UserPermission's API relative path. Example:
   /// accounts/{account_id}/user_permissions/{user_permission_id}
-  /// Value must have pattern "^accounts/[^/]+/user_permissions/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+/user_permissions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4986,7 +4986,7 @@ class AccountsUserPermissionsResource {
   ///
   /// [parent] - GTM Accounts's API relative path. Example:
   /// accounts/{account_id}
-  /// Value must have pattern "^accounts/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [pageToken] - Continuation token for fetching the next page of results.
   ///
@@ -5049,7 +5049,7 @@ class AccountsUserPermissionsResource {
   ///
   /// [path] - GTM UserPermission's API relative path. Example:
   /// accounts/{account_id}/user_permissions/{user_permission_id}
-  /// Value must have pattern "^accounts/[^/]+/user_permissions/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+/user_permissions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

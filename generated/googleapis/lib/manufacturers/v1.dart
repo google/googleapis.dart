@@ -75,7 +75,7 @@ class AccountsProductsResource {
   ///
   /// [parent] - Parent ID in the format `accounts/{account_id}`. `account_id` -
   /// The ID of the Manufacturer Center account.
-  /// Value must have pattern "^accounts/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [name] - Name in the format
   /// `{target_country}:{content_language}:{product_id}`. `target_country` - The
@@ -84,7 +84,7 @@ class AccountsProductsResource {
   /// ISO 639-1 language code (for example, en). `product_id` - The ID of the
   /// product. For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#id.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -149,7 +149,7 @@ class AccountsProductsResource {
   ///
   /// [parent] - Parent ID in the format `accounts/{account_id}`. `account_id` -
   /// The ID of the Manufacturer Center account.
-  /// Value must have pattern "^accounts/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [name] - Name in the format
   /// `{target_country}:{content_language}:{product_id}`. `target_country` - The
@@ -158,7 +158,7 @@ class AccountsProductsResource {
   /// ISO 639-1 language code (for example, en). `product_id` - The ID of the
   /// product. For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#id.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [include] - The information to be included in the response. Only sections
   /// listed here will be returned.
@@ -224,7 +224,7 @@ class AccountsProductsResource {
   ///
   /// [parent] - Parent ID in the format `accounts/{account_id}`. `account_id` -
   /// The ID of the Manufacturer Center account.
-  /// Value must have pattern "^accounts/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [include] - The information to be included in the response. Only sections
   /// listed here will be returned.
@@ -313,7 +313,7 @@ class AccountsProductsResource {
   ///
   /// [parent] - Parent ID in the format `accounts/{account_id}`. `account_id` -
   /// The ID of the Manufacturer Center account.
-  /// Value must have pattern "^accounts/[^/]+$".
+  /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
   /// [name] - Name in the format
   /// `{target_country}:{content_language}:{product_id}`. `target_country` - The
@@ -322,7 +322,7 @@ class AccountsProductsResource {
   /// ISO 639-1 language code (for example, en). `product_id` - The ID of the
   /// product. For more information, see
   /// https://support.google.com/manufacturers/answer/6124116#id.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

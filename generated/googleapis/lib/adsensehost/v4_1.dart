@@ -839,33 +839,33 @@ class AccountsReportsResource {
   /// [startDate] - Start of the date range to report on in "YYYY-MM-DD" format,
   /// inclusive.
   /// Value must have pattern
-  /// "\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)(([\-\+]\d+[dwmy]){0,3}?)".
+  /// `\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)((\[\-\+\]\d+\[dwmy\]){0,3}?)`.
   ///
   /// [endDate] - End of the date range to report on in "YYYY-MM-DD" format,
   /// inclusive.
   /// Value must have pattern
-  /// "\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)(([\-\+]\d+[dwmy]){0,3}?)".
+  /// `\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)((\[\-\+\]\d+\[dwmy\]){0,3}?)`.
   ///
   /// [dimension] - Dimensions to base the report on.
-  /// Value must have pattern "[a-zA-Z_]+".
+  /// Value must have pattern `\[a-zA-Z_\]+`.
   ///
   /// [filter] - Filters to be run on the report.
-  /// Value must have pattern "[a-zA-Z_]+(==|=@).+".
+  /// Value must have pattern `\[a-zA-Z_\]+(==|=@).+`.
   ///
   /// [locale] - Optional locale to use for translating report output to a local
   /// language. Defaults to "en_US" if not specified.
-  /// Value must have pattern "[a-zA-Z_]+".
+  /// Value must have pattern `\[a-zA-Z_\]+`.
   ///
   /// [maxResults] - The maximum number of rows of report data to return.
   /// Value must be between "0" and "50000".
   ///
   /// [metric] - Numeric columns to include in the report.
-  /// Value must have pattern "[a-zA-Z_]+".
+  /// Value must have pattern `\[a-zA-Z_\]+`.
   ///
   /// [sort] - The name of a dimension or metric to sort the resulting report
   /// on, optionally prefixed with "+" to sort ascending or "-" to sort
   /// descending. If no prefix is specified, the column is sorted ascending.
-  /// Value must have pattern "(\+|-)?[a-zA-Z_]+".
+  /// Value must have pattern `(\+|-)?\[a-zA-Z_\]+`.
   ///
   /// [startIndex] - Index of the first row of report data to return.
   /// Value must be between "0" and "5000".
@@ -1607,33 +1607,33 @@ class ReportsResource {
   /// [startDate] - Start of the date range to report on in "YYYY-MM-DD" format,
   /// inclusive.
   /// Value must have pattern
-  /// "\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)(([\-\+]\d+[dwmy]){0,3}?)".
+  /// `\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)((\[\-\+\]\d+\[dwmy\]){0,3}?)`.
   ///
   /// [endDate] - End of the date range to report on in "YYYY-MM-DD" format,
   /// inclusive.
   /// Value must have pattern
-  /// "\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)(([\-\+]\d+[dwmy]){0,3}?)".
+  /// `\d{4}-\d{2}-\d{2}|(today|startOfMonth|startOfYear)((\[\-\+\]\d+\[dwmy\]){0,3}?)`.
   ///
   /// [dimension] - Dimensions to base the report on.
-  /// Value must have pattern "[a-zA-Z_]+".
+  /// Value must have pattern `\[a-zA-Z_\]+`.
   ///
   /// [filter] - Filters to be run on the report.
-  /// Value must have pattern "[a-zA-Z_]+(==|=@).+".
+  /// Value must have pattern `\[a-zA-Z_\]+(==|=@).+`.
   ///
   /// [locale] - Optional locale to use for translating report output to a local
   /// language. Defaults to "en_US" if not specified.
-  /// Value must have pattern "[a-zA-Z_]+".
+  /// Value must have pattern `\[a-zA-Z_\]+`.
   ///
   /// [maxResults] - The maximum number of rows of report data to return.
   /// Value must be between "0" and "50000".
   ///
   /// [metric] - Numeric columns to include in the report.
-  /// Value must have pattern "[a-zA-Z_]+".
+  /// Value must have pattern `\[a-zA-Z_\]+`.
   ///
   /// [sort] - The name of a dimension or metric to sort the resulting report
   /// on, optionally prefixed with "+" to sort ascending or "-" to sort
   /// descending. If no prefix is specified, the column is sorted ascending.
-  /// Value must have pattern "(\+|-)?[a-zA-Z_]+".
+  /// Value must have pattern `(\+|-)?\[a-zA-Z_\]+`.
   ///
   /// [startIndex] - Index of the first row of report data to return.
   /// Value must be between "0" and "5000".

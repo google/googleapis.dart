@@ -86,8 +86,8 @@ class AssetlinksResource {
   /// [relation] - Query string for the relation. We identify relations with
   /// strings of the format `/`, where `` must be one of a set of pre-defined
   /// purpose categories, and `` is a free-form lowercase alphanumeric string
-  /// that describes the specific use case of the statement. Refer to [our API
-  /// documentation](/digital-asset-links/v1/relation-strings) for the current
+  /// that describes the specific use case of the statement. Refer to \[our API
+  /// documentation\](/digital-asset-links/v1/relation-strings) for the current
   /// list of supported relations. For a query to match an asset link, both the
   /// query's and the asset link's relation strings must match exactly. Example:
   /// A query with relation `delegate_permission/common.handle_all_urls` matches
@@ -113,20 +113,21 @@ class AssetlinksResource {
   /// uses the package name `com.google.android.apps.maps`. REQUIRED
   ///
   /// [source_web_site] - Web assets are identified by a URL that contains only
-  /// the scheme, hostname and port parts. The format is http[s]://[:] Hostnames
-  /// must be fully qualified: they must end in a single period ("`.`"). Only
-  /// the schemes "http" and "https" are currently allowed. Port numbers are
-  /// given as a decimal number, and they must be omitted if the standard port
-  /// numbers are used: 80 for http and 443 for https. We call this limited URL
-  /// the "site". All URLs that share the same scheme, hostname and port are
-  /// considered to be a part of the site and thus belong to the web asset.
-  /// Example: the asset with the site `https://www.google.com` contains all
-  /// these URLs: * `https://www.google.com/` * `https://www.google.com:443/` *
-  /// `https://www.google.com/foo` * `https://www.google.com/foo?bar` *
-  /// `https://www.google.com/foo#bar` * `https://user@password:www.google.com/`
-  /// But it does not contain these URLs: * `http://www.google.com/` (wrong
-  /// scheme) * `https://google.com/` (hostname does not match) *
-  /// `https://www.google.com:444/` (port does not match) REQUIRED
+  /// the scheme, hostname and port parts. The format is http\[s\]://\[:\]
+  /// Hostnames must be fully qualified: they must end in a single period
+  /// ("`.`"). Only the schemes "http" and "https" are currently allowed. Port
+  /// numbers are given as a decimal number, and they must be omitted if the
+  /// standard port numbers are used: 80 for http and 443 for https. We call
+  /// this limited URL the "site". All URLs that share the same scheme, hostname
+  /// and port are considered to be a part of the site and thus belong to the
+  /// web asset. Example: the asset with the site `https://www.google.com`
+  /// contains all these URLs: * `https://www.google.com/` *
+  /// `https://www.google.com:443/` * `https://www.google.com/foo` *
+  /// `https://www.google.com/foo?bar` * `https://www.google.com/foo#bar` *
+  /// `https://user@password:www.google.com/` But it does not contain these
+  /// URLs: * `http://www.google.com/` (wrong scheme) * `https://google.com/`
+  /// (hostname does not match) * `https://www.google.com:444/` (port does not
+  /// match) REQUIRED
   ///
   /// [target_androidApp_certificate_sha256Fingerprint] - The uppercase SHA-265
   /// fingerprint of the certificate. From the PEM certificate, it can be
@@ -148,20 +149,21 @@ class AssetlinksResource {
   /// uses the package name `com.google.android.apps.maps`. REQUIRED
   ///
   /// [target_web_site] - Web assets are identified by a URL that contains only
-  /// the scheme, hostname and port parts. The format is http[s]://[:] Hostnames
-  /// must be fully qualified: they must end in a single period ("`.`"). Only
-  /// the schemes "http" and "https" are currently allowed. Port numbers are
-  /// given as a decimal number, and they must be omitted if the standard port
-  /// numbers are used: 80 for http and 443 for https. We call this limited URL
-  /// the "site". All URLs that share the same scheme, hostname and port are
-  /// considered to be a part of the site and thus belong to the web asset.
-  /// Example: the asset with the site `https://www.google.com` contains all
-  /// these URLs: * `https://www.google.com/` * `https://www.google.com:443/` *
-  /// `https://www.google.com/foo` * `https://www.google.com/foo?bar` *
-  /// `https://www.google.com/foo#bar` * `https://user@password:www.google.com/`
-  /// But it does not contain these URLs: * `http://www.google.com/` (wrong
-  /// scheme) * `https://google.com/` (hostname does not match) *
-  /// `https://www.google.com:444/` (port does not match) REQUIRED
+  /// the scheme, hostname and port parts. The format is http\[s\]://\[:\]
+  /// Hostnames must be fully qualified: they must end in a single period
+  /// ("`.`"). Only the schemes "http" and "https" are currently allowed. Port
+  /// numbers are given as a decimal number, and they must be omitted if the
+  /// standard port numbers are used: 80 for http and 443 for https. We call
+  /// this limited URL the "site". All URLs that share the same scheme, hostname
+  /// and port are considered to be a part of the site and thus belong to the
+  /// web asset. Example: the asset with the site `https://www.google.com`
+  /// contains all these URLs: * `https://www.google.com/` *
+  /// `https://www.google.com:443/` * `https://www.google.com/foo` *
+  /// `https://www.google.com/foo?bar` * `https://www.google.com/foo#bar` *
+  /// `https://user@password:www.google.com/` But it does not contain these
+  /// URLs: * `http://www.google.com/` (wrong scheme) * `https://google.com/`
+  /// (hostname does not match) * `https://www.google.com:444/` (port does not
+  /// match) REQUIRED
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -266,7 +268,7 @@ class StatementsResource {
   /// Request parameters:
   ///
   /// [relation] - Use only associations that match the specified relation. See
-  /// the [`Statement`](#Statement) message for a detailed definition of
+  /// the \[`Statement`\](#Statement) message for a detailed definition of
   /// relation strings. For a query to match a statement, one of the following
   /// must be true: * both the query's and the statement's relation strings
   /// match exactly, or * the query's relation string is empty or missing.
@@ -294,20 +296,21 @@ class StatementsResource {
   /// uses the package name `com.google.android.apps.maps`. REQUIRED
   ///
   /// [source_web_site] - Web assets are identified by a URL that contains only
-  /// the scheme, hostname and port parts. The format is http[s]://[:] Hostnames
-  /// must be fully qualified: they must end in a single period ("`.`"). Only
-  /// the schemes "http" and "https" are currently allowed. Port numbers are
-  /// given as a decimal number, and they must be omitted if the standard port
-  /// numbers are used: 80 for http and 443 for https. We call this limited URL
-  /// the "site". All URLs that share the same scheme, hostname and port are
-  /// considered to be a part of the site and thus belong to the web asset.
-  /// Example: the asset with the site `https://www.google.com` contains all
-  /// these URLs: * `https://www.google.com/` * `https://www.google.com:443/` *
-  /// `https://www.google.com/foo` * `https://www.google.com/foo?bar` *
-  /// `https://www.google.com/foo#bar` * `https://user@password:www.google.com/`
-  /// But it does not contain these URLs: * `http://www.google.com/` (wrong
-  /// scheme) * `https://google.com/` (hostname does not match) *
-  /// `https://www.google.com:444/` (port does not match) REQUIRED
+  /// the scheme, hostname and port parts. The format is http\[s\]://\[:\]
+  /// Hostnames must be fully qualified: they must end in a single period
+  /// ("`.`"). Only the schemes "http" and "https" are currently allowed. Port
+  /// numbers are given as a decimal number, and they must be omitted if the
+  /// standard port numbers are used: 80 for http and 443 for https. We call
+  /// this limited URL the "site". All URLs that share the same scheme, hostname
+  /// and port are considered to be a part of the site and thus belong to the
+  /// web asset. Example: the asset with the site `https://www.google.com`
+  /// contains all these URLs: * `https://www.google.com/` *
+  /// `https://www.google.com:443/` * `https://www.google.com/foo` *
+  /// `https://www.google.com/foo?bar` * `https://www.google.com/foo#bar` *
+  /// `https://user@password:www.google.com/` But it does not contain these
+  /// URLs: * `http://www.google.com/` (wrong scheme) * `https://google.com/`
+  /// (hostname does not match) * `https://www.google.com:444/` (port does not
+  /// match) REQUIRED
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -621,8 +624,8 @@ class ListResponse {
 ///
 /// Statements are always made by the source asset, either directly or by
 /// delegating to a statement list that is stored elsewhere. For more detailed
-/// definitions of statements and assets, please refer to our [API documentation
-/// landing page](/digital-asset-links/v1/getting-started).
+/// definitions of statements and assets, please refer to our \[API
+/// documentation landing page\](/digital-asset-links/v1/getting-started).
 class Statement {
   /// The relation identifies the use of the statement as intended by the source
   /// asset's owner (that is, the person or entity who issued the statement).
@@ -630,8 +633,8 @@ class Statement {
   /// Every complete statement has a relation. We identify relations with
   /// strings of the format `/`, where `` must be one of a set of pre-defined
   /// purpose categories, and `` is a free-form lowercase alphanumeric string
-  /// that describes the specific use case of the statement. Refer to [our API
-  /// documentation](/digital-asset-links/v1/relation-strings) for the current
+  /// that describes the specific use case of the statement. Refer to \[our API
+  /// documentation\](/digital-asset-links/v1/relation-strings) for the current
   /// list of supported relations. Example:
   /// `delegate_permission/common.handle_all_urls` REQUIRED
   core.String relation;
@@ -682,14 +685,14 @@ class WebAsset {
   /// Web assets are identified by a URL that contains only the scheme, hostname
   /// and port parts.
   ///
-  /// The format is http[s]://[:] Hostnames must be fully qualified: they must
-  /// end in a single period ("`.`"). Only the schemes "http" and "https" are
-  /// currently allowed. Port numbers are given as a decimal number, and they
-  /// must be omitted if the standard port numbers are used: 80 for http and 443
-  /// for https. We call this limited URL the "site". All URLs that share the
-  /// same scheme, hostname and port are considered to be a part of the site and
-  /// thus belong to the web asset. Example: the asset with the site
-  /// `https://www.google.com` contains all these URLs: *
+  /// The format is http\[s\]://\[:\] Hostnames must be fully qualified: they
+  /// must end in a single period ("`.`"). Only the schemes "http" and "https"
+  /// are currently allowed. Port numbers are given as a decimal number, and
+  /// they must be omitted if the standard port numbers are used: 80 for http
+  /// and 443 for https. We call this limited URL the "site". All URLs that
+  /// share the same scheme, hostname and port are considered to be a part of
+  /// the site and thus belong to the web asset. Example: the asset with the
+  /// site `https://www.google.com` contains all these URLs: *
   /// `https://www.google.com/` * `https://www.google.com:443/` *
   /// `https://www.google.com/foo` * `https://www.google.com/foo?bar` *
   /// `https://www.google.com/foo#bar` * `https://user@password:www.google.com/`

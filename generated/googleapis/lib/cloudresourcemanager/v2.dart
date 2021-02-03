@@ -155,7 +155,7 @@ class FoldersResource {
   ///
   /// [name] - Required. the resource name of the Folder to be deleted. Must be
   /// of the form `folders/{folder_id}`.
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -211,7 +211,7 @@ class FoldersResource {
   ///
   /// [name] - Required. The resource name of the Folder to retrieve. Must be of
   /// the form `folders/{folder_id}`.
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -272,7 +272,7 @@ class FoldersResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -426,7 +426,7 @@ class FoldersResource {
   ///
   /// [name] - Required. The resource name of the Folder to move. Must be of the
   /// form folders/{folder_id}
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -483,11 +483,12 @@ class FoldersResource {
   /// CreateFolder documentation. The Folder's display name must start and end
   /// with a letter or digit, may contain letters, digits, spaces, hyphens and
   /// underscores and can be no longer than 30 characters. This is captured by
-  /// the regular expression: [\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?.
-  /// The caller must have `resourcemanager.folders.update` permission on the
-  /// identified folder. If the update fails due to the unique name constraint
-  /// then a PreconditionFailure explaining this violation will be returned in
-  /// the Status.details field.
+  /// the regular expression: \[\p{L}\p{N}\](\[\p{L}\p{N}_-
+  /// \]{0,28}\[\p{L}\p{N}\])?. The caller must have
+  /// `resourcemanager.folders.update` permission on the identified folder. If
+  /// the update fails due to the unique name constraint then a
+  /// PreconditionFailure explaining this violation will be returned in the
+  /// Status.details field.
   ///
   /// [request] - The metadata request object.
   ///
@@ -495,7 +496,7 @@ class FoldersResource {
   ///
   /// [name] - Output only. The resource name of the Folder. Its format is
   /// `folders/{folder_id}`, for example: "folders/1234".
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Fields to be updated. Only the `display_name` can
   /// be updated.
@@ -622,7 +623,7 @@ class FoldersResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -687,7 +688,7 @@ class FoldersResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -755,7 +756,7 @@ class FoldersResource {
   ///
   /// [name] - Required. The resource name of the Folder to undelete. Must be of
   /// the form `folders/{folder_id}`.
-  /// Value must have pattern "^folders/[^/]+$".
+  /// Value must have pattern `^folders/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -819,7 +820,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -874,13 +875,13 @@ class OperationsResource {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
@@ -922,9 +923,9 @@ class AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -1155,7 +1156,7 @@ class Folder {
   /// name must start and end with a letter or digit, may contain letters,
   /// digits, spaces, hyphens and underscores and can be no longer than 30
   /// characters. This is captured by the regular expression:
-  /// [\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?.
+  /// \[\p{L}\p{N}\](\[\p{L}\p{N}_- \]{0,28}\[\p{L}\p{N}\])?.
   core.String displayName;
 
   /// The lifecycle state of the folder.
@@ -1554,14 +1555,14 @@ class Operation {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

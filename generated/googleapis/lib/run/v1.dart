@@ -103,7 +103,7 @@ class NamespacesAuthorizeddomainsResource {
   ///
   /// [parent] - Name of the parent Project resource. Example:
   /// `projects/myproject`.
-  /// Value must have pattern "^namespaces/[^/]+$".
+  /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum results to return per page.
   ///
@@ -177,7 +177,7 @@ class NamespacesConfigurationsResource {
   ///
   /// [name] - The name of the configuration to retrieve. For Cloud Run (fully
   /// managed), replace {namespace_id} with the project ID or number.
-  /// Value must have pattern "^namespaces/[^/]+/configurations/[^/]+$".
+  /// Value must have pattern `^namespaces/\[^/\]+/configurations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -232,7 +232,7 @@ class NamespacesConfigurationsResource {
   /// [parent] - The namespace from which the configurations should be listed.
   /// For Cloud Run (fully managed), replace {namespace_id} with the project ID
   /// or number.
-  /// Value must have pattern "^namespaces/[^/]+$".
+  /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [continue_] - Optional encoded string to continue paging.
   ///
@@ -344,7 +344,7 @@ class NamespacesDomainmappingsResource {
   /// [parent] - The namespace in which the domain mapping should be created.
   /// For Cloud Run (fully managed), replace {namespace_id} with the project ID
   /// or number.
-  /// Value must have pattern "^namespaces/[^/]+$".
+  /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -403,7 +403,7 @@ class NamespacesDomainmappingsResource {
   ///
   /// [name] - The name of the domain mapping to delete. For Cloud Run (fully
   /// managed), replace {namespace_id} with the project ID or number.
-  /// Value must have pattern "^namespaces/[^/]+/domainmappings/[^/]+$".
+  /// Value must have pattern `^namespaces/\[^/\]+/domainmappings/\[^/\]+$`.
   ///
   /// [apiVersion] - Cloud Run currently ignores this parameter.
   ///
@@ -477,7 +477,7 @@ class NamespacesDomainmappingsResource {
   ///
   /// [name] - The name of the domain mapping to retrieve. For Cloud Run (fully
   /// managed), replace {namespace_id} with the project ID or number.
-  /// Value must have pattern "^namespaces/[^/]+/domainmappings/[^/]+$".
+  /// Value must have pattern `^namespaces/\[^/\]+/domainmappings/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -532,7 +532,7 @@ class NamespacesDomainmappingsResource {
   /// [parent] - The namespace from which the domain mappings should be listed.
   /// For Cloud Run (fully managed), replace {namespace_id} with the project ID
   /// or number.
-  /// Value must have pattern "^namespaces/[^/]+$".
+  /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [continue_] - Optional encoded string to continue paging.
   ///
@@ -641,7 +641,7 @@ class NamespacesRevisionsResource {
   ///
   /// [name] - The name of the revision to delete. For Cloud Run (fully
   /// managed), replace {namespace_id} with the project ID or number.
-  /// Value must have pattern "^namespaces/[^/]+/revisions/[^/]+$".
+  /// Value must have pattern `^namespaces/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [apiVersion] - Cloud Run currently ignores this parameter.
   ///
@@ -715,7 +715,7 @@ class NamespacesRevisionsResource {
   ///
   /// [name] - The name of the revision to retrieve. For Cloud Run (fully
   /// managed), replace {namespace_id} with the project ID or number.
-  /// Value must have pattern "^namespaces/[^/]+/revisions/[^/]+$".
+  /// Value must have pattern `^namespaces/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -769,7 +769,7 @@ class NamespacesRevisionsResource {
   /// [parent] - The namespace from which the revisions should be listed. For
   /// Cloud Run (fully managed), replace {namespace_id} with the project ID or
   /// number.
-  /// Value must have pattern "^namespaces/[^/]+$".
+  /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [continue_] - Optional encoded string to continue paging.
   ///
@@ -877,7 +877,7 @@ class NamespacesRoutesResource {
   ///
   /// [name] - The name of the route to retrieve. For Cloud Run (fully managed),
   /// replace {namespace_id} with the project ID or number.
-  /// Value must have pattern "^namespaces/[^/]+/routes/[^/]+$".
+  /// Value must have pattern `^namespaces/\[^/\]+/routes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -930,7 +930,7 @@ class NamespacesRoutesResource {
   ///
   /// [parent] - The namespace from which the routes should be listed. For Cloud
   /// Run (fully managed), replace {namespace_id} with the project ID or number.
-  /// Value must have pattern "^namespaces/[^/]+$".
+  /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [continue_] - Optional encoded string to continue paging.
   ///
@@ -1040,7 +1040,7 @@ class NamespacesServicesResource {
   ///
   /// [parent] - The namespace in which the service should be created. For Cloud
   /// Run (fully managed), replace {namespace_id} with the project ID or number.
-  /// Value must have pattern "^namespaces/[^/]+$".
+  /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1101,7 +1101,7 @@ class NamespacesServicesResource {
   ///
   /// [name] - The name of the service to delete. For Cloud Run (fully managed),
   /// replace {namespace_id} with the project ID or number.
-  /// Value must have pattern "^namespaces/[^/]+/services/[^/]+$".
+  /// Value must have pattern `^namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [apiVersion] - Cloud Run currently ignores this parameter.
   ///
@@ -1175,7 +1175,7 @@ class NamespacesServicesResource {
   ///
   /// [name] - The name of the service to retrieve. For Cloud Run (fully
   /// managed), replace {namespace_id} with the project ID or number.
-  /// Value must have pattern "^namespaces/[^/]+/services/[^/]+$".
+  /// Value must have pattern `^namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1229,7 +1229,7 @@ class NamespacesServicesResource {
   /// [parent] - The namespace from which the services should be listed. For
   /// Cloud Run (fully managed), replace {namespace_id} with the project ID or
   /// number.
-  /// Value must have pattern "^namespaces/[^/]+$".
+  /// Value must have pattern `^namespaces/\[^/\]+$`.
   ///
   /// [continue_] - Optional encoded string to continue paging.
   ///
@@ -1338,7 +1338,7 @@ class NamespacesServicesResource {
   ///
   /// [name] - The name of the service being replaced. For Cloud Run (fully
   /// managed), replace {namespace_id} with the project ID or number.
-  /// Value must have pattern "^namespaces/[^/]+/services/[^/]+$".
+  /// Value must have pattern `^namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1413,7 +1413,7 @@ class ProjectsAuthorizeddomainsResource {
   ///
   /// [parent] - Name of the parent Project resource. Example:
   /// `projects/myproject`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum results to return per page.
   ///
@@ -1498,7 +1498,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -1577,7 +1577,7 @@ class ProjectsLocationsAuthorizeddomainsResource {
   ///
   /// [parent] - Name of the parent Project resource. Example:
   /// `projects/myproject`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum results to return per page.
   ///
@@ -1652,7 +1652,7 @@ class ProjectsLocationsConfigurationsResource {
   /// [name] - The name of the configuration to retrieve. For Cloud Run (fully
   /// managed), replace {namespace_id} with the project ID or number.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/configurations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/configurations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1706,7 +1706,7 @@ class ProjectsLocationsConfigurationsResource {
   /// [parent] - The namespace from which the configurations should be listed.
   /// For Cloud Run (fully managed), replace {namespace_id} with the project ID
   /// or number.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [continue_] - Optional encoded string to continue paging.
   ///
@@ -1818,7 +1818,7 @@ class ProjectsLocationsDomainmappingsResource {
   /// [parent] - The namespace in which the domain mapping should be created.
   /// For Cloud Run (fully managed), replace {namespace_id} with the project ID
   /// or number.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1878,7 +1878,7 @@ class ProjectsLocationsDomainmappingsResource {
   /// [name] - The name of the domain mapping to delete. For Cloud Run (fully
   /// managed), replace {namespace_id} with the project ID or number.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/domainmappings/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/domainmappings/\[^/\]+$`.
   ///
   /// [apiVersion] - Cloud Run currently ignores this parameter.
   ///
@@ -1952,7 +1952,7 @@ class ProjectsLocationsDomainmappingsResource {
   /// [name] - The name of the domain mapping to retrieve. For Cloud Run (fully
   /// managed), replace {namespace_id} with the project ID or number.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/domainmappings/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/domainmappings/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2006,7 +2006,7 @@ class ProjectsLocationsDomainmappingsResource {
   /// [parent] - The namespace from which the domain mappings should be listed.
   /// For Cloud Run (fully managed), replace {namespace_id} with the project ID
   /// or number.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [continue_] - Optional encoded string to continue paging.
   ///
@@ -2116,7 +2116,7 @@ class ProjectsLocationsRevisionsResource {
   /// [name] - The name of the revision to delete. For Cloud Run (fully
   /// managed), replace {namespace_id} with the project ID or number.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/revisions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [apiVersion] - Cloud Run currently ignores this parameter.
   ///
@@ -2190,7 +2190,7 @@ class ProjectsLocationsRevisionsResource {
   /// [name] - The name of the revision to retrieve. For Cloud Run (fully
   /// managed), replace {namespace_id} with the project ID or number.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/revisions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2243,7 +2243,7 @@ class ProjectsLocationsRevisionsResource {
   /// [parent] - The namespace from which the revisions should be listed. For
   /// Cloud Run (fully managed), replace {namespace_id} with the project ID or
   /// number.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [continue_] - Optional encoded string to continue paging.
   ///
@@ -2351,7 +2351,8 @@ class ProjectsLocationsRoutesResource {
   ///
   /// [name] - The name of the route to retrieve. For Cloud Run (fully managed),
   /// replace {namespace_id} with the project ID or number.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/routes/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/routes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2403,7 +2404,7 @@ class ProjectsLocationsRoutesResource {
   ///
   /// [parent] - The namespace from which the routes should be listed. For Cloud
   /// Run (fully managed), replace {namespace_id} with the project ID or number.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [continue_] - Optional encoded string to continue paging.
   ///
@@ -2512,7 +2513,7 @@ class ProjectsLocationsServicesResource {
   ///
   /// [parent] - The namespace in which the service should be created. For Cloud
   /// Run (fully managed), replace {namespace_id} with the project ID or number.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2572,7 +2573,8 @@ class ProjectsLocationsServicesResource {
   ///
   /// [name] - The name of the service to delete. For Cloud Run (fully managed),
   /// replace {namespace_id} with the project ID or number.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/services/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [apiVersion] - Cloud Run currently ignores this parameter.
   ///
@@ -2645,7 +2647,8 @@ class ProjectsLocationsServicesResource {
   ///
   /// [name] - The name of the service to retrieve. For Cloud Run (fully
   /// managed), replace {namespace_id} with the project ID or number.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/services/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2701,7 +2704,8 @@ class ProjectsLocationsServicesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/services/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -2770,7 +2774,7 @@ class ProjectsLocationsServicesResource {
   /// [parent] - The namespace from which the services should be listed. For
   /// Cloud Run (fully managed), replace {namespace_id} with the project ID or
   /// number.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [continue_] - Optional encoded string to continue paging.
   ///
@@ -2878,7 +2882,8 @@ class ProjectsLocationsServicesResource {
   ///
   /// [name] - The name of the service being replaced. For Cloud Run (fully
   /// managed), replace {namespace_id} with the project ID or number.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/services/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2939,7 +2944,8 @@ class ProjectsLocationsServicesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/services/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3002,7 +3008,8 @@ class ProjectsLocationsServicesResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/services/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3085,13 +3092,13 @@ class Addressable {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
@@ -3133,9 +3140,9 @@ class AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -5544,14 +5551,14 @@ class OwnerReference {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
@@ -6927,7 +6934,7 @@ class StatusCause {
   /// May include dot and postfix notation for nested attributes. Arrays are
   /// zero-indexed. Fields may appear more than once in an array of causes due
   /// to fields having multiple errors. Optional. Examples: "name" - the field
-  /// "name" on the current resource "items[0].name" - the field "name" on the
+  /// "name" on the current resource "items\[0\].name" - the field "name" on the
   /// first array entry in "items" +optional
   core.String field;
 

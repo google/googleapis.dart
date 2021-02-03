@@ -92,7 +92,7 @@ class ProjectsSubscriptionsResource {
   /// Request parameters:
   ///
   /// [subscription] - The subscription whose message is being acknowledged.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -162,7 +162,7 @@ class ProjectsSubscriptionsResource {
   /// (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
   /// plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
   /// in length, and it must not start with `"goog"`.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -224,7 +224,7 @@ class ProjectsSubscriptionsResource {
   /// Request parameters:
   ///
   /// [subscription] - The subscription to delete.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -275,7 +275,7 @@ class ProjectsSubscriptionsResource {
   /// Request parameters:
   ///
   /// [subscription] - The name of the subscription to get.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -332,7 +332,7 @@ class ProjectsSubscriptionsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -399,7 +399,7 @@ class ProjectsSubscriptionsResource {
   /// Request parameters:
   ///
   /// [project] - The name of the cloud project that subscriptions belong to.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of subscriptions to return.
   ///
@@ -474,7 +474,7 @@ class ProjectsSubscriptionsResource {
   /// Request parameters:
   ///
   /// [subscription] - The name of the subscription.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -538,7 +538,7 @@ class ProjectsSubscriptionsResource {
   /// Request parameters:
   ///
   /// [subscription] - The name of the subscription.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -601,7 +601,7 @@ class ProjectsSubscriptionsResource {
   /// Request parameters:
   ///
   /// [subscription] - The subscription from which messages should be pulled.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -666,7 +666,7 @@ class ProjectsSubscriptionsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -732,7 +732,7 @@ class ProjectsSubscriptionsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/subscriptions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -806,7 +806,7 @@ class ProjectsTopicsResource {
   /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
   /// signs (`%`). It must be between 3 and 255 characters in length, and it
   /// must not start with `"goog"`.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -867,7 +867,7 @@ class ProjectsTopicsResource {
   /// Request parameters:
   ///
   /// [topic] - Name of the topic to delete.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -918,7 +918,7 @@ class ProjectsTopicsResource {
   /// Request parameters:
   ///
   /// [topic] - The name of the topic to get.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -974,7 +974,7 @@ class ProjectsTopicsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -1041,7 +1041,7 @@ class ProjectsTopicsResource {
   /// Request parameters:
   ///
   /// [project] - The name of the cloud project that topics belong to.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of topics to return.
   ///
@@ -1115,7 +1115,7 @@ class ProjectsTopicsResource {
   /// Request parameters:
   ///
   /// [topic] - The messages in the request will be published on this topic.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1180,7 +1180,7 @@ class ProjectsTopicsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1246,7 +1246,7 @@ class ProjectsTopicsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1311,7 +1311,7 @@ class ProjectsTopicsSubscriptionsResource {
   /// Request parameters:
   ///
   /// [topic] - The name of the topic that subscriptions are attached to.
-  /// Value must have pattern "^projects/[^/]+/topics/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of subscription names to return.
   ///
@@ -1838,14 +1838,14 @@ class OidcToken {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
@@ -1997,7 +1997,7 @@ class PubsubMessage {
   /// The message payload.
   ///
   /// For JSON requests, the value of this field must be
-  /// [base64-encoded](https://tools.ietf.org/html/rfc4648).
+  /// \[base64-encoded\](https://tools.ietf.org/html/rfc4648).
   core.String data;
   core.List<core.int> get dataAsBytes => convert.base64.decode(data);
 

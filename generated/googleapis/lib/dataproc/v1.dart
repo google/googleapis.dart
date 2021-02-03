@@ -104,7 +104,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   /// For projects.locations.autoscalingPolicies.create, the resource name of
   /// the location has the following format:
   /// projects/{project_id}/locations/{location}
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -173,7 +173,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   /// policy has the following format:
   /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -232,7 +232,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   /// policy has the following format:
   /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -292,7 +292,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -355,7 +355,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   /// projects.locations.autoscalingPolicies.list, the resource name of the
   /// location has the following format:
   /// projects/{project_id}/locations/{location}
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return in each
   /// response. Must be less than or equal to 1000. Defaults to 100.
@@ -431,7 +431,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -498,7 +498,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -567,7 +567,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   /// has the following format:
   /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/autoscalingPolicies/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -638,7 +638,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
   /// projects.locations.workflowTemplates.create, the resource name of the
   /// location has the following format:
   /// projects/{project_id}/locations/{location}
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -706,7 +706,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
   /// template has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
   /// [version] - Optional. The version of workflow template to delete. If
   /// specified, will only delete the template if the current server version
@@ -774,7 +774,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
   /// template has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
   /// [version] - Optional. The version of workflow template to retrieve. Only
   /// previously instantiated versions can be retrieved.If unspecified,
@@ -842,7 +842,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -919,7 +919,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
   /// template has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -996,7 +996,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
   /// projects.locations.workflowTemplates.instantiateinline, the resource name
   /// of the location has the following format:
   /// projects/{project_id}/locations/{location}
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A tag that prevents multiple concurrent workflow
   /// instances with the same tag from running. This mitigates risk of
@@ -1071,7 +1071,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
   /// projects.locations.workflowTemplates.list, the resource name of the
   /// location has the following format:
   /// projects/{project_id}/locations/{location}
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return in each
   /// response.
@@ -1147,7 +1147,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1214,7 +1214,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1285,7 +1285,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
   /// has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1373,7 +1373,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   /// For projects.locations.autoscalingPolicies.create, the resource name of
   /// the location has the following format:
   /// projects/{project_id}/locations/{location}
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/regions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1442,7 +1442,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   /// policy has the following format:
   /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$".
+  /// `^projects/\[^/\]+/regions/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1501,7 +1501,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   /// policy has the following format:
   /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$".
+  /// `^projects/\[^/\]+/regions/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1561,7 +1561,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$".
+  /// `^projects/\[^/\]+/regions/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1624,7 +1624,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   /// projects.locations.autoscalingPolicies.list, the resource name of the
   /// location has the following format:
   /// projects/{project_id}/locations/{location}
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/regions/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return in each
   /// response. Must be less than or equal to 1000. Defaults to 100.
@@ -1700,7 +1700,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$".
+  /// `^projects/\[^/\]+/regions/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1767,7 +1767,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$".
+  /// `^projects/\[^/\]+/regions/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1836,7 +1836,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   /// has the following format:
   /// projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/regions/[^/]+/autoscalingPolicies/[^/]+$".
+  /// `^projects/\[^/\]+/regions/\[^/\]+/autoscalingPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2229,7 +2229,8 @@ class ProjectsRegionsClustersResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/regions/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2292,15 +2293,16 @@ class ProjectsRegionsClustersResource {
   ///
   /// [filter] - Optional. A filter constraining the clusters to list. Filters
   /// are case-sensitive and have the following syntax:field = value AND field =
-  /// value ...where field is one of status.state, clusterName, or labels.[KEY],
-  /// and [KEY] is a label key. value can be * to match all values. status.state
-  /// can be one of the following: ACTIVE, INACTIVE, CREATING, RUNNING, ERROR,
-  /// DELETING, or UPDATING. ACTIVE contains the CREATING, UPDATING, and RUNNING
-  /// states. INACTIVE contains the DELETING and ERROR states. clusterName is
-  /// the name of the cluster provided at creation time. Only the logical AND
-  /// operator is supported; space-separated items are treated as having an
-  /// implicit AND operator.Example filter:status.state = ACTIVE AND clusterName
-  /// = mycluster AND labels.env = staging AND labels.starred = *
+  /// value ...where field is one of status.state, clusterName, or
+  /// labels.\[KEY\], and \[KEY\] is a label key. value can be * to match all
+  /// values. status.state can be one of the following: ACTIVE, INACTIVE,
+  /// CREATING, RUNNING, ERROR, DELETING, or UPDATING. ACTIVE contains the
+  /// CREATING, UPDATING, and RUNNING states. INACTIVE contains the DELETING and
+  /// ERROR states. clusterName is the name of the cluster provided at creation
+  /// time. Only the logical AND operator is supported; space-separated items
+  /// are treated as having an implicit AND operator.Example filter:status.state
+  /// = ACTIVE AND clusterName = mycluster AND labels.env = staging AND
+  /// labels.starred = *
   ///
   /// [pageSize] - Optional. The standard List page size.
   ///
@@ -2509,7 +2511,8 @@ class ProjectsRegionsClustersResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/regions/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2575,7 +2578,8 @@ class ProjectsRegionsClustersResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/regions/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2867,7 +2871,7 @@ class ProjectsRegionsJobsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/jobs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/regions/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2933,12 +2937,12 @@ class ProjectsRegionsJobsResource {
   ///
   /// [filter] - Optional. A filter constraining the jobs to list. Filters are
   /// case-sensitive and have the following syntax:field = value AND field =
-  /// value ...where field is status.state or labels.[KEY], and [KEY] is a label
-  /// key. value can be * to match all values. status.state can be either ACTIVE
-  /// or NON_ACTIVE. Only the logical AND operator is supported; space-separated
-  /// items are treated as having an implicit AND operator.Example
-  /// filter:status.state = ACTIVE AND labels.env = staging AND labels.starred =
-  /// *
+  /// value ...where field is status.state or labels.\[KEY\], and \[KEY\] is a
+  /// label key. value can be * to match all values. status.state can be either
+  /// ACTIVE or NON_ACTIVE. Only the logical AND operator is supported;
+  /// space-separated items are treated as having an implicit AND
+  /// operator.Example filter:status.state = ACTIVE AND labels.env = staging AND
+  /// labels.starred = *
   ///
   /// [jobStateMatcher] - Optional. Specifies enumerated categories of jobs to
   /// list. (default = match ALL jobs).If filter is provided, jobStateMatcher
@@ -3124,7 +3128,7 @@ class ProjectsRegionsJobsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/jobs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/regions/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3324,7 +3328,7 @@ class ProjectsRegionsJobsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/jobs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/regions/\[^/\]+/jobs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3398,7 +3402,8 @@ class ProjectsRegionsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/operations/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/regions/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3453,7 +3458,8 @@ class ProjectsRegionsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/operations/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/regions/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3507,7 +3513,8 @@ class ProjectsRegionsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/operations/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/regions/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3565,7 +3572,8 @@ class ProjectsRegionsOperationsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/operations/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/regions/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3631,7 +3639,7 @@ class ProjectsRegionsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/operations$".
+  /// Value must have pattern `^projects/\[^/\]+/regions/\[^/\]+/operations$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -3708,7 +3716,8 @@ class ProjectsRegionsOperationsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/operations/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/regions/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3774,7 +3783,8 @@ class ProjectsRegionsOperationsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+/operations/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/regions/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3847,7 +3857,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
   /// projects.locations.workflowTemplates.create, the resource name of the
   /// location has the following format:
   /// projects/{project_id}/locations/{location}
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/regions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3915,7 +3925,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
   /// template has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/regions/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
   /// [version] - Optional. The version of workflow template to delete. If
   /// specified, will only delete the template if the current server version
@@ -3983,7 +3993,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
   /// template has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/regions/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
   /// [version] - Optional. The version of workflow template to retrieve. Only
   /// previously instantiated versions can be retrieved.If unspecified,
@@ -4051,7 +4061,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/regions/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4128,7 +4138,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
   /// template has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/regions/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4205,7 +4215,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
   /// projects.locations.workflowTemplates.instantiateinline, the resource name
   /// of the location has the following format:
   /// projects/{project_id}/locations/{location}
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/regions/\[^/\]+$`.
   ///
   /// [requestId] - Optional. A tag that prevents multiple concurrent workflow
   /// instances with the same tag from running. This mitigates risk of
@@ -4280,7 +4290,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
   /// projects.locations.workflowTemplates.list, the resource name of the
   /// location has the following format:
   /// projects/{project_id}/locations/{location}
-  /// Value must have pattern "^projects/[^/]+/regions/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/regions/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of results to return in each
   /// response.
@@ -4356,7 +4366,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/regions/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4423,7 +4433,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/regions/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4494,7 +4504,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
   /// has the following format:
   /// projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$".
+  /// `^projects/\[^/\]+/regions/\[^/\]+/workflowTemplates/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4559,8 +4569,8 @@ class AcceleratorConfig {
   ///
   /// See Compute Engine AcceleratorTypes
   /// (https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes).Examples:
-  /// https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
-  /// projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
+  /// https://www.googleapis.com/compute/beta/projects/\[project_id\]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
+  /// projects/\[project_id\]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80
   /// nvidia-tesla-k80Auto Zone Exception: If you are using the Dataproc Auto
   /// Zone Placement
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
@@ -4597,8 +4607,8 @@ class AutoscalingConfig {
   /// projectid and location (region) are valid.
   ///
   /// Examples:
-  /// https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]
-  /// projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note
+  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/locations/\[dataproc_region\]/autoscalingPolicies/\[policy_id\]
+  /// projects/\[project_id\]/locations/\[dataproc_region\]/autoscalingPolicies/\[policy_id\]Note
   /// that the policy must be in the same project and Dataproc region.
   ///
   /// Optional.
@@ -5127,8 +5137,8 @@ class ClusterConfig {
   /// node, as shown below using curl (you can also use wget): ROLE=$(curl -H
   /// Metadata-Flavor:Google
   /// http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if
-  /// [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ...
-  /// worker specific actions ... fi
+  /// \[\[ "${ROLE}" == 'Master' \]\]; then ... master specific actions ... else
+  /// ... worker specific actions ... fi
   ///
   /// Optional.
   core.List<NodeInitializationAction> initializationActions;
@@ -5967,8 +5977,8 @@ class GceClusterConfig {
   /// if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks
   /// (https://cloud.google.com/compute/docs/subnetworks) for more
   /// information).A full URL, partial URI, or short name are valid. Examples:
-  /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default
-  /// projects/[project_id]/regions/global/default default
+  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/regions/global/default
+  /// projects/\[project_id\]/regions/global/default default
   ///
   /// Optional.
   core.String networkUri;
@@ -6031,8 +6041,8 @@ class GceClusterConfig {
   ///
   /// Cannot be specified with network_uri.A full URL, partial URI, or short
   /// name are valid. Examples:
-  /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0
-  /// projects/[project_id]/regions/us-east1/subnetworks/sub0 sub0
+  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/regions/us-east1/subnetworks/sub0
+  /// projects/\[project_id\]/regions/us-east1/subnetworks/sub0 sub0
   ///
   /// Optional.
   core.String subnetworkUri;
@@ -6047,8 +6057,8 @@ class GceClusterConfig {
   /// a non-global Dataproc region, the service will pick a zone in the
   /// corresponding Compute Engine region. On a get request, zone will always be
   /// present.A full URL, partial URI, or short name are valid. Examples:
-  /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]
-  /// projects/[project_id]/zones/[zone] us-central1-f
+  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/zones/\[zone\]
+  /// projects/\[project_id\]/zones/\[zone\] us-central1-f
   ///
   /// Optional.
   core.String zoneUri;
@@ -6446,8 +6456,8 @@ class InstanceGroupAutoscalingPolicyConfig {
   ///
   /// Required for primary workers. Note that by default, clusters will not use
   /// secondary workers. Required for secondary workers if the minimum secondary
-  /// instances is set.Primary workers - Bounds: [min_instances, ). Secondary
-  /// workers - Bounds: [min_instances, ). Default: 0.
+  /// instances is set.Primary workers - Bounds: \[min_instances, ). Secondary
+  /// workers - Bounds: \[min_instances, ). Default: 0.
   ///
   /// Required.
   core.int maxInstances;
@@ -6524,13 +6534,13 @@ class InstanceGroupConfig {
 
   /// The Compute Engine image resource used for cluster instances.The URI can
   /// represent an image or image family.Image examples:
-  /// https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/[image-id]
-  /// projects/[project_id]/global/images/[image-id] image-idImage family
+  /// https://www.googleapis.com/compute/beta/projects/\[project_id\]/global/images/\[image-id\]
+  /// projects/\[project_id\]/global/images/\[image-id\] image-idImage family
   /// examples.
   ///
   /// Dataproc will use the most recent image from the family:
-  /// https://www.googleapis.com/compute/beta/projects/[project_id]/global/images/family/[custom-image-family-name]
-  /// projects/[project_id]/global/images/family/[custom-image-family-name]If
+  /// https://www.googleapis.com/compute/beta/projects/\[project_id\]/global/images/family/\[custom-image-family-name\]
+  /// projects/\[project_id\]/global/images/family/\[custom-image-family-name\]If
   /// the URI is unspecified, it will be inferred from
   /// SoftwareConfig.image_version or the system default.
   ///
@@ -6559,8 +6569,8 @@ class InstanceGroupConfig {
   /// partial URI, or short name are valid.
   ///
   /// Examples:
-  /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
-  /// projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
+  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/zones/us-east1-a/machineTypes/n1-standard-2
+  /// projects/\[project_id\]/zones/us-east1-a/machineTypes/n1-standard-2
   /// n1-standard-2Auto Zone Exception: If you are using the Dataproc Auto Zone
   /// Placement
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement)
@@ -8339,7 +8349,7 @@ class PigJob {
   QueryList queryList;
 
   /// Mapping of query variable names to values (equivalent to the Pig command:
-  /// name=[value]).
+  /// name=\[value\]).
   ///
   /// Optional.
   core.Map<core.String, core.String> scriptVariables;
@@ -8428,14 +8438,14 @@ class PigJob {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the IAM documentation
 /// (https://cloud.google.com/iam/help/conditions/resource-policies).JSON
-/// example: { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// example: { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } YAML example: bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
@@ -8779,8 +8789,8 @@ class QueryList {
   /// You do not need to end a query expression with a semicolon. Multiple
   /// queries can be specified in one string by separating each with a
   /// semicolon. Here is an example of a Dataproc API snippet that uses a
-  /// QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [
-  /// "query1", "query2", "query3;query4", ] } }
+  /// QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": \[
+  /// "query1", "query2", "query3;query4", \] } }
   ///
   /// Required.
   core.List<core.String> queries;

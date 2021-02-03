@@ -90,7 +90,7 @@ class BillingAccountsBudgetsResource {
   ///
   /// [parent] - Required. The name of the billing account to create the budget
   /// in. Values are of the form `billingAccounts/{billingAccountId}`.
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -151,7 +151,7 @@ class BillingAccountsBudgetsResource {
   ///
   /// [name] - Required. Name of the budget to delete. Values are of the form
   /// `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
-  /// Value must have pattern "^billingAccounts/[^/]+/budgets/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+/budgets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -209,7 +209,7 @@ class BillingAccountsBudgetsResource {
   ///
   /// [name] - Required. Name of budget to get. Values are of the form
   /// `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
-  /// Value must have pattern "^billingAccounts/[^/]+/budgets/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+/budgets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -267,7 +267,7 @@ class BillingAccountsBudgetsResource {
   ///
   /// [parent] - Required. Name of billing account to list budgets under. Values
   /// are of the form `billingAccounts/{billingAccountId}`.
-  /// Value must have pattern "^billingAccounts/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of budgets to return per page.
   /// The default and maximum value are 100.
@@ -345,7 +345,7 @@ class BillingAccountsBudgetsResource {
   /// [name] - Output only. Resource name of the budget. The resource name
   /// implies the scope of a budget. Values are of the form
   /// `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
-  /// Value must have pattern "^billingAccounts/[^/]+/budgets/[^/]+$".
+  /// Value must have pattern `^billingAccounts/\[^/\]+/budgets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

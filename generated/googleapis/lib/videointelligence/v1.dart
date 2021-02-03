@@ -123,7 +123,7 @@ class OperationsProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -182,7 +182,7 @@ class OperationsProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -238,7 +238,7 @@ class OperationsProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -333,7 +333,7 @@ class ProjectsLocationsCorporaOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/corpora/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/corpora/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -406,7 +406,7 @@ class ProjectsLocationsCorpuraOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/corpura/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/corpura/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -477,7 +477,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -538,7 +538,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -594,7 +594,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -655,7 +655,7 @@ class ProjectsLocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -956,7 +956,7 @@ class GoogleCloudVideointelligenceV1AnnotateVideoResponse {
 class GoogleCloudVideointelligenceV1DetectedAttribute {
   /// Detected attribute confidence.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// The name of the attribute, for example, glasses, dark_glasses, mouth_open.
@@ -1003,7 +1003,7 @@ class GoogleCloudVideointelligenceV1DetectedAttribute {
 class GoogleCloudVideointelligenceV1DetectedLandmark {
   /// The confidence score of the detected landmark.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// The name of this landmark, for example, left_hand, right_shoulder.
@@ -1274,7 +1274,7 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
   /// frame-level detection.
   ///
   /// If not set, it is set to 0.4 by default. The valid range for this
-  /// threshold is [0.1, 0.9]. Any value set outside of this range will be
+  /// threshold is \[0.1, 0.9\]. Any value set outside of this range will be
   /// clipped. Note: For best results, follow the default threshold. We will
   /// update the default threshold everytime when we release a new model.
   core.double frameConfidenceThreshold;
@@ -1307,9 +1307,9 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
   /// video-level and shot-level detections.
   ///
   /// If not set, it's set to 0.3 by default. The valid range for this threshold
-  /// is [0.1, 0.9]. Any value set outside of this range will be clipped. Note:
-  /// For best results, follow the default threshold. We will update the default
-  /// threshold everytime when we release a new model.
+  /// is \[0.1, 0.9\]. Any value set outside of this range will be clipped.
+  /// Note: For best results, follow the default threshold. We will update the
+  /// default threshold everytime when we release a new model.
   core.double videoConfidenceThreshold;
 
   GoogleCloudVideointelligenceV1LabelDetectionConfig();
@@ -1359,7 +1359,7 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
 class GoogleCloudVideointelligenceV1LabelFrame {
   /// Confidence that the label is accurate.
   ///
-  /// Range: [0, 1].
+  /// Range: \[0, 1\].
   core.double confidence;
 
   /// Time-offset, relative to the beginning of the video, corresponding to the
@@ -1393,7 +1393,7 @@ class GoogleCloudVideointelligenceV1LabelFrame {
 class GoogleCloudVideointelligenceV1LabelSegment {
   /// Confidence that the label is accurate.
   ///
-  /// Range: [0, 1].
+  /// Range: \[0, 1\].
   core.double confidence;
 
   /// Video segment where a label was detected.
@@ -1483,7 +1483,7 @@ class GoogleCloudVideointelligenceV1LogoRecognitionAnnotation {
 /// Normalized bounding box.
 ///
 /// The normalized vertex coordinates are relative to the original image. Range:
-/// [0, 1].
+/// \[0, 1\].
 class GoogleCloudVideointelligenceV1NormalizedBoundingBox {
   /// Bottom Y coordinate.
   core.double bottom;
@@ -1876,8 +1876,8 @@ class GoogleCloudVideointelligenceV1SpeechTranscription {
   core.List<GoogleCloudVideointelligenceV1SpeechRecognitionAlternative>
       alternatives;
 
-  /// The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of
-  /// the language in this result.
+  /// The \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag
+  /// of the language in this result.
   ///
   /// This language code was detected to have the most likelihood of being
   /// spoken in the audio.
@@ -1974,7 +1974,7 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
   core.bool filterProfanity;
 
   /// *Required* The language of the supplied audio as a
-  /// [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
+  /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
   ///
   /// Example: "en-US". See [Language
   /// Support](https://cloud.google.com/speech/docs/languages) for a list of the
@@ -2984,7 +2984,7 @@ class GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse {
 class GoogleCloudVideointelligenceV1beta2DetectedAttribute {
   /// Detected attribute confidence.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// The name of the attribute, for example, glasses, dark_glasses, mouth_open.
@@ -3032,7 +3032,7 @@ class GoogleCloudVideointelligenceV1beta2DetectedAttribute {
 class GoogleCloudVideointelligenceV1beta2DetectedLandmark {
   /// The confidence score of the detected landmark.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// The name of this landmark, for example, left_hand, right_shoulder.
@@ -3276,7 +3276,7 @@ class GoogleCloudVideointelligenceV1beta2LabelAnnotation {
 class GoogleCloudVideointelligenceV1beta2LabelFrame {
   /// Confidence that the label is accurate.
   ///
-  /// Range: [0, 1].
+  /// Range: \[0, 1\].
   core.double confidence;
 
   /// Time-offset, relative to the beginning of the video, corresponding to the
@@ -3310,7 +3310,7 @@ class GoogleCloudVideointelligenceV1beta2LabelFrame {
 class GoogleCloudVideointelligenceV1beta2LabelSegment {
   /// Confidence that the label is accurate.
   ///
-  /// Range: [0, 1].
+  /// Range: \[0, 1\].
   core.double confidence;
 
   /// Video segment where a label was detected.
@@ -3400,7 +3400,7 @@ class GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation {
 /// Normalized bounding box.
 ///
 /// The normalized vertex coordinates are relative to the original image. Range:
-/// [0, 1].
+/// \[0, 1\].
 class GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox {
   /// Bottom Y coordinate.
   core.double bottom;
@@ -3711,8 +3711,8 @@ class GoogleCloudVideointelligenceV1beta2SpeechTranscription {
   core.List<GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative>
       alternatives;
 
-  /// The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of
-  /// the language in this result.
+  /// The \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag
+  /// of the language in this result.
   ///
   /// This language code was detected to have the most likelihood of being
   /// spoken in the audio.
@@ -4523,7 +4523,7 @@ class GoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse {
 class GoogleCloudVideointelligenceV1p1beta1DetectedAttribute {
   /// Detected attribute confidence.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// The name of the attribute, for example, glasses, dark_glasses, mouth_open.
@@ -4571,7 +4571,7 @@ class GoogleCloudVideointelligenceV1p1beta1DetectedAttribute {
 class GoogleCloudVideointelligenceV1p1beta1DetectedLandmark {
   /// The confidence score of the detected landmark.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// The name of this landmark, for example, left_hand, right_shoulder.
@@ -4818,7 +4818,7 @@ class GoogleCloudVideointelligenceV1p1beta1LabelAnnotation {
 class GoogleCloudVideointelligenceV1p1beta1LabelFrame {
   /// Confidence that the label is accurate.
   ///
-  /// Range: [0, 1].
+  /// Range: \[0, 1\].
   core.double confidence;
 
   /// Time-offset, relative to the beginning of the video, corresponding to the
@@ -4852,7 +4852,7 @@ class GoogleCloudVideointelligenceV1p1beta1LabelFrame {
 class GoogleCloudVideointelligenceV1p1beta1LabelSegment {
   /// Confidence that the label is accurate.
   ///
-  /// Range: [0, 1].
+  /// Range: \[0, 1\].
   core.double confidence;
 
   /// Video segment where a label was detected.
@@ -4942,7 +4942,7 @@ class GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation {
 /// Normalized bounding box.
 ///
 /// The normalized vertex coordinates are relative to the original image. Range:
-/// [0, 1].
+/// \[0, 1\].
 class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox {
   /// Bottom Y coordinate.
   core.double bottom;
@@ -5255,8 +5255,8 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechTranscription {
   core.List<GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative>
       alternatives;
 
-  /// The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of
-  /// the language in this result.
+  /// The \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag
+  /// of the language in this result.
   ///
   /// This language code was detected to have the most likelihood of being
   /// spoken in the audio.
@@ -6070,7 +6070,7 @@ class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse {
 class GoogleCloudVideointelligenceV1p2beta1DetectedAttribute {
   /// Detected attribute confidence.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// The name of the attribute, for example, glasses, dark_glasses, mouth_open.
@@ -6118,7 +6118,7 @@ class GoogleCloudVideointelligenceV1p2beta1DetectedAttribute {
 class GoogleCloudVideointelligenceV1p2beta1DetectedLandmark {
   /// The confidence score of the detected landmark.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// The name of this landmark, for example, left_hand, right_shoulder.
@@ -6365,7 +6365,7 @@ class GoogleCloudVideointelligenceV1p2beta1LabelAnnotation {
 class GoogleCloudVideointelligenceV1p2beta1LabelFrame {
   /// Confidence that the label is accurate.
   ///
-  /// Range: [0, 1].
+  /// Range: \[0, 1\].
   core.double confidence;
 
   /// Time-offset, relative to the beginning of the video, corresponding to the
@@ -6399,7 +6399,7 @@ class GoogleCloudVideointelligenceV1p2beta1LabelFrame {
 class GoogleCloudVideointelligenceV1p2beta1LabelSegment {
   /// Confidence that the label is accurate.
   ///
-  /// Range: [0, 1].
+  /// Range: \[0, 1\].
   core.double confidence;
 
   /// Video segment where a label was detected.
@@ -6489,7 +6489,7 @@ class GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation {
 /// Normalized bounding box.
 ///
 /// The normalized vertex coordinates are relative to the original image. Range:
-/// [0, 1].
+/// \[0, 1\].
 class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox {
   /// Bottom Y coordinate.
   core.double bottom;
@@ -6802,8 +6802,8 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechTranscription {
   core.List<GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative>
       alternatives;
 
-  /// The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of
-  /// the language in this result.
+  /// The \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag
+  /// of the language in this result.
   ///
   /// This language code was detected to have the most likelihood of being
   /// spoken in the audio.
@@ -7743,7 +7743,7 @@ class GoogleCloudVideointelligenceV1p3beta1CelebrityTrack {
 class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute {
   /// Detected attribute confidence.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// The name of the attribute, for example, glasses, dark_glasses, mouth_open.
@@ -7791,7 +7791,7 @@ class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute {
 class GoogleCloudVideointelligenceV1p3beta1DetectedLandmark {
   /// The confidence score of the detected landmark.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   /// The name of this landmark, for example, left_hand, right_shoulder.
@@ -8089,7 +8089,7 @@ class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation {
 class GoogleCloudVideointelligenceV1p3beta1LabelFrame {
   /// Confidence that the label is accurate.
   ///
-  /// Range: [0, 1].
+  /// Range: \[0, 1\].
   core.double confidence;
 
   /// Time-offset, relative to the beginning of the video, corresponding to the
@@ -8123,7 +8123,7 @@ class GoogleCloudVideointelligenceV1p3beta1LabelFrame {
 class GoogleCloudVideointelligenceV1p3beta1LabelSegment {
   /// Confidence that the label is accurate.
   ///
-  /// Range: [0, 1].
+  /// Range: \[0, 1\].
   core.double confidence;
 
   /// Video segment where a label was detected.
@@ -8213,7 +8213,7 @@ class GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation {
 /// Normalized bounding box.
 ///
 /// The normalized vertex coordinates are relative to the original image. Range:
-/// [0, 1].
+/// \[0, 1\].
 class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox {
   /// Bottom Y coordinate.
   core.double bottom;
@@ -8501,7 +8501,7 @@ class GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity {
 
   /// Recognition confidence.
   ///
-  /// Range [0, 1].
+  /// Range \[0, 1\].
   core.double confidence;
 
   GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity();
@@ -8597,8 +8597,8 @@ class GoogleCloudVideointelligenceV1p3beta1SpeechTranscription {
   core.List<GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative>
       alternatives;
 
-  /// The [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag of
-  /// the language in this result.
+  /// The \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag
+  /// of the language in this result.
   ///
   /// This language code was detected to have the most likelihood of being
   /// spoken in the audio.

@@ -221,7 +221,7 @@ class PresentationsResource {
   /// Request parameters:
   ///
   /// [presentationId] - The ID of the presentation to retrieve.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -337,7 +337,7 @@ class PresentationsPagesResource {
   /// Generates a thumbnail of the latest version of the specified page in the
   /// presentation and returns a URL to the thumbnail image.
   ///
-  /// This request counts as an [expensive read request](/slides/limits) for
+  /// This request counts as an \[expensive read request\](/slides/limits) for
   /// quota purposes.
   ///
   /// Request parameters:
@@ -427,9 +427,9 @@ class PresentationsPagesResource {
   }
 }
 
-/// AffineTransform uses a 3x3 matrix with an implied last row of [ 0 0 1 ] to
+/// AffineTransform uses a 3x3 matrix with an implied last row of \[ 0 0 1 \] to
 /// transform source coordinates (x,y) into destination coordinates (x', y')
-/// according to: x' x = shear_y scale_y translate_y 1 [ 1 ] After
+/// according to: x' x = shear_y scale_y translate_y 1 \[ 1 \] After
 /// transformation, x' = scale_x * x + shear_x * y + translate_x; y' = scale_y *
 /// y + shear_y * x + translate_y; This message is therefore composed of these
 /// six matrix elements.
@@ -729,7 +729,7 @@ class ColorStop {
   /// The relative position of the color stop in the gradient band measured in
   /// percentage.
   ///
-  /// The value should be in the interval [0.0, 1.0].
+  /// The value should be in the interval \[0.0, 1.0\].
   core.double position;
 
   ColorStop();
@@ -1413,10 +1413,10 @@ class CreateSheetsChartRequest {
   /// A user-supplied object ID.
   ///
   /// If specified, the ID must be unique among all pages and page elements in
-  /// the presentation. The ID should start with a word character [a-zA-Z0-9_]
+  /// the presentation. The ID should start with a word character \[a-zA-Z0-9_\]
   /// and then followed by any number of the following characters
-  /// [a-zA-Z0-9_-:]. The length of the ID should not be less than 5 or greater
-  /// than 50. If empty, a unique identifier will be generated.
+  /// \[a-zA-Z0-9_-:\]. The length of the ID should not be less than 5 or
+  /// greater than 50. If empty, a unique identifier will be generated.
   core.String objectId;
 
   /// The ID of the Google Sheets spreadsheet that contains the chart.
@@ -2315,14 +2315,14 @@ class Image {
 class ImageProperties {
   /// The brightness effect of the image.
   ///
-  /// The value should be in the interval [-1.0, 1.0], where 0 means no effect.
-  /// This property is read-only.
+  /// The value should be in the interval \[-1.0, 1.0\], where 0 means no
+  /// effect. This property is read-only.
   core.double brightness;
 
   /// The contrast effect of the image.
   ///
-  /// The value should be in the interval [-1.0, 1.0], where 0 means no effect.
-  /// This property is read-only.
+  /// The value should be in the interval \[-1.0, 1.0\], where 0 means no
+  /// effect. This property is read-only.
   core.double contrast;
 
   /// The crop properties of the image.
@@ -2352,7 +2352,7 @@ class ImageProperties {
 
   /// The transparency effect of the image.
   ///
-  /// The value should be in the interval [0.0, 1.0], where 0 means no effect
+  /// The value should be in the interval \[0.0, 1.0\], where 0 means no effect
   /// and 1 means completely transparent. This property is read-only.
   core.double transparency;
 
@@ -2839,8 +2839,8 @@ class LineConnection {
   /// found in the description of the "cnx" attribute in section 20.1.9.9 and
   /// Annex H. "Predefined DrawingML Shape and Text Geometries" of "Office Open
   /// XML File Formats-Fundamentals and Markup Language Reference", part 1 of
-  /// [ECMA-376 5th edition]
-  /// (http://www.ecma-international.org/publications/standards/Ecma-376.htm).
+  /// \[ECMA-376 5th
+  /// edition\](http://www.ecma-international.org/publications/standards/Ecma-376.htm).
   /// The position of each connection site can also be viewed from Slides
   /// editor.
   core.int connectionSiteIndex;
@@ -6837,8 +6837,8 @@ class TableColumnProperties {
 /// It's important to note that the cells specified by a table range do not
 /// necessarily form a rectangle. For example, let's say we have a 3 x 3 table
 /// where all the cells of the last row are merged together. The table looks
-/// like this: [ ] A table range with location = (0, 0), row span = 3 and column
-/// span = 2 specifies the following cells: x x [ x x x ]
+/// like this: \[ \] A table range with location = (0, 0), row span = 3 and
+/// column span = 2 specifies the following cells: x x \[ x x x \]
 class TableRange {
   /// The column span of the table range.
   core.int columnSpan;
@@ -7149,7 +7149,7 @@ class TextStyle {
   /// The font family of the text.
   ///
   /// The font family can be any font from the Font menu in Slides or from
-  /// [Google Fonts] (https://fonts.google.com/). If the font name is
+  /// [Google Fonts](https://fonts.google.com/). If the font name is
   /// unrecognized, the text is rendered in `Arial`. Some fonts can affect the
   /// weight of the text. If an update request specifies values for both
   /// `font_family` and `bold`, the explicitly-set `bold` value is used.
@@ -8512,7 +8512,7 @@ class WeightedFontFamily {
   /// The font family of the text.
   ///
   /// The font family can be any font from the Font menu in Slides or from
-  /// [Google Fonts] (https://fonts.google.com/). If the font name is
+  /// [Google Fonts](https://fonts.google.com/). If the font name is
   /// unrecognized, the text is rendered in `Arial`.
   core.String fontFamily;
 

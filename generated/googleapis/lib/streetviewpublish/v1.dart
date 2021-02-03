@@ -904,12 +904,12 @@ class Empty {
 class LatLng {
   /// The latitude in degrees.
   ///
-  /// It must be in the range [-90.0, +90.0].
+  /// It must be in the range \[-90.0, +90.0\].
   core.double latitude;
 
   /// The longitude in degrees.
   ///
-  /// It must be in the range [-180.0, +180.0].
+  /// It must be in the range \[-180.0, +180.0\].
   core.double longitude;
 
   LatLng();

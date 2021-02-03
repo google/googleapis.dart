@@ -151,7 +151,7 @@ class CustomersConfigurationsResource {
   ///
   /// [parent] - Required. The customer that manages the configuration. An API
   /// resource name in the format `customers/[CUSTOMER_ID]`.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -214,7 +214,7 @@ class CustomersConfigurationsResource {
   /// [name] - Required. The configuration to delete. An API resource name in
   /// the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. If
   /// the configuration is applied to any devices, the API call fails.
-  /// Value must have pattern "^customers/[^/]+/configurations/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/configurations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -266,7 +266,7 @@ class CustomersConfigurationsResource {
   ///
   /// [name] - Required. The configuration to get. An API resource name in the
   /// format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.
-  /// Value must have pattern "^customers/[^/]+/configurations/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/configurations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -319,7 +319,7 @@ class CustomersConfigurationsResource {
   ///
   /// [parent] - Required. The customer that manages the listed configurations.
   /// An API resource name in the format `customers/[CUSTOMER_ID]`.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -377,13 +377,13 @@ class CustomersConfigurationsResource {
   /// [name] - Output only. The API resource name in the format
   /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by
   /// the server.
-  /// Value must have pattern "^customers/[^/]+/configurations/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/configurations/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The field mask applied to the target
   /// `Configuration` before updating the fields. To learn more about using
   /// field masks, read
-  /// [FieldMask](/protocol-buffers/docs/reference/google.protobuf#fieldmask) in
-  /// the Protocol Buffers documentation.
+  /// \[FieldMask\](/protocol-buffers/docs/reference/google.protobuf#fieldmask)
+  /// in the Protocol Buffers documentation.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -456,7 +456,7 @@ class CustomersDevicesResource {
   ///
   /// [parent] - Required. The customer managing the device. An API resource
   /// name in the format `customers/[CUSTOMER_ID]`.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -514,7 +514,7 @@ class CustomersDevicesResource {
   ///
   /// [name] - Required. The device to get. An API resource name in the format
   /// `customers/[CUSTOMER_ID]/devices/[DEVICE_ID]`.
-  /// Value must have pattern "^customers/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -566,7 +566,7 @@ class CustomersDevicesResource {
   ///
   /// [parent] - Required. The customer managing the devices. An API resource
   /// name in the format `customers/[CUSTOMER_ID]`.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of devices to show in a page of results.
   /// Must be between 1 and 100 inclusive.
@@ -635,7 +635,7 @@ class CustomersDevicesResource {
   ///
   /// [parent] - Required. The customer managing the device in the format
   /// `customers/[CUSTOMER_ID]`.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -699,7 +699,7 @@ class CustomersDevicesResource {
   ///
   /// [parent] - Required. The customer managing the device. An API resource
   /// name in the format `customers/[CUSTOMER_ID]`.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -764,7 +764,7 @@ class CustomersDpcsResource {
   ///
   /// [parent] - Required. The customer that can use the DPCs in configurations.
   /// An API resource name in the format `customers/[CUSTOMER_ID]`.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -825,7 +825,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -901,7 +901,7 @@ class PartnersCustomersResource {
   ///
   /// [parent] - Required. The parent resource ID in the format
   /// `partners/[PARTNER_ID]` that identifies the reseller.
-  /// Value must have pattern "^partners/[^/]+$".
+  /// Value must have pattern `^partners/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -961,7 +961,7 @@ class PartnersCustomersResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the reseller partner.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to be returned. If not
   /// specified or 0, all the records are returned.
@@ -1040,7 +1040,7 @@ class PartnersDevicesResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the reseller partner.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1096,15 +1096,15 @@ class PartnersDevicesResource {
   /// Claims a batch of devices for a customer asynchronously.
   ///
   /// Adds the devices to zero-touch enrollment. To learn more, read
-  /// [Long‑running batch
-  /// operations](/zero-touch/guides/how-it-works#operations).
+  /// \[Long‑running batch
+  /// operations\](/zero-touch/guides/how-it-works#operations).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the reseller partner.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1163,7 +1163,7 @@ class PartnersDevicesResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the reseller partner.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1227,7 +1227,7 @@ class PartnersDevicesResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the reseller partner.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1286,7 +1286,7 @@ class PartnersDevicesResource {
   ///
   /// [name] - Required. The device API resource name in the format
   /// `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.
-  /// Value must have pattern "^partners/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^partners/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1340,10 +1340,10 @@ class PartnersDevicesResource {
   ///
   /// [metadataOwnerId] - Required. The owner of the newly set metadata. Set
   /// this to the partner ID.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [deviceId] - Required. The ID of the device.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1410,7 +1410,7 @@ class PartnersDevicesResource {
   /// Request parameters:
   ///
   /// [partnerId] - Required. The ID of the reseller partner.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1465,15 +1465,15 @@ class PartnersDevicesResource {
   /// Unclaims a batch of devices for a customer asynchronously.
   ///
   /// Removes the devices from zero-touch enrollment. To learn more, read
-  /// [Long‑running batch
-  /// operations](/zero-touch/guides/how-it-works#operations).
+  /// \[Long‑running batch
+  /// operations\](/zero-touch/guides/how-it-works#operations).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [partnerId] - Required. The reseller partner ID.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1528,15 +1528,15 @@ class PartnersDevicesResource {
   /// Updates the reseller metadata attached to a batch of devices.
   ///
   /// This method updates devices asynchronously and returns an `Operation` that
-  /// can be used to track progress. Read [Long‑running batch
-  /// operations](/zero-touch/guides/how-it-works#operations).
+  /// can be used to track progress. Read \[Long‑running batch
+  /// operations\](/zero-touch/guides/how-it-works#operations).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [partnerId] - Required. The reseller partner ID.
-  /// Value must have pattern "^[^/]+$".
+  /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1603,7 +1603,7 @@ class PartnersVendorsResource {
   ///
   /// [parent] - Required. The resource name in the format
   /// `partners/[PARTNER_ID]`.
-  /// Value must have pattern "^partners/[^/]+$".
+  /// Value must have pattern `^partners/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to be returned.
   ///
@@ -1677,7 +1677,7 @@ class PartnersVendorsCustomersResource {
   ///
   /// [parent] - Required. The resource name in the format
   /// `partners/[PARTNER_ID]/vendors/[VENDOR_ID]`.
-  /// Value must have pattern "^partners/[^/]+/vendors/[^/]+$".
+  /// Value must have pattern `^partners/\[^/\]+/vendors/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to be returned.
   ///
@@ -2471,8 +2471,8 @@ class Device {
 /// A record of a device claimed by a reseller for a customer.
 ///
 /// Devices claimed for zero-touch enrollment have a claim with the type
-/// `SECTION_TYPE_ZERO_TOUCH`. To learn more, read [Claim devices for
-/// customers](/zero-touch/guides/how-it-works#claim).
+/// `SECTION_TYPE_ZERO_TOUCH`. To learn more, read \[Claim devices for
+/// customers\](/zero-touch/guides/how-it-works#claim).
 class DeviceClaim {
   /// The ID of the Customer that purchased the device.
   core.String ownerCompanyId;
@@ -2554,7 +2554,7 @@ class DeviceIdentifier {
   ///
   /// Matches the device's built-in value returned from
   /// `android.os.Build.MANUFACTURER`. Allowed values are listed in
-  /// [manufacturers](/zero-touch/resources/manufacturer-names#manufacturers-names).
+  /// \[manufacturers\](/zero-touch/resources/manufacturer-names#manufacturers-names).
   core.String manufacturer;
 
   /// The device’s MEID number.
@@ -2564,7 +2564,7 @@ class DeviceIdentifier {
   ///
   /// Matches the device's built-in value returned from
   /// `android.os.Build.MODEL`. Allowed values are listed in
-  /// [models](/zero-touch/resources/manufacturer-names#model-names).
+  /// \[models\](/zero-touch/resources/manufacturer-names#model-names).
   core.String model;
 
   /// The manufacturer's serial number for the device.
@@ -2687,8 +2687,8 @@ class DeviceReference {
 /// Tracks the status of a long-running operation to asynchronously update a
 /// batch of reseller metadata attached to devices.
 ///
-/// To learn more, read [Long‑running batch
-/// operations](/zero-touch/guides/how-it-works#operations).
+/// To learn more, read \[Long‑running batch
+/// operations\](/zero-touch/guides/how-it-works#operations).
 class DevicesLongRunningOperationMetadata {
   /// The number of metadata updates in the operation.
   ///
@@ -2744,8 +2744,8 @@ class DevicesLongRunningOperationMetadata {
 /// Tracks the status of a long-running operation to claim, unclaim, or attach
 /// metadata to devices.
 ///
-/// To learn more, read [Long‑running batch
-/// operations](/zero-touch/guides/how-it-works#operations).
+/// To learn more, read \[Long‑running batch
+/// operations\](/zero-touch/guides/how-it-works#operations).
 class DevicesLongRunningOperationResponse {
   /// The processing status for each device in the operation.
   ///

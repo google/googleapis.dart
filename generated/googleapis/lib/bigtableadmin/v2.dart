@@ -119,7 +119,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -174,7 +174,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -228,7 +228,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -304,7 +304,7 @@ class OperationsProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^operations/projects/.*$".
+  /// Value must have pattern `^operations/projects/.*$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -402,7 +402,7 @@ class ProjectsInstancesResource {
   ///
   /// [parent] - Required. The unique name of the project in which to create the
   /// new instance. Values are of the form `projects/{project}`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -459,7 +459,7 @@ class ProjectsInstancesResource {
   ///
   /// [name] - Required. The unique name of the instance to be deleted. Values
   /// are of the form `projects/{project}/instances/{instance}`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -511,7 +511,7 @@ class ProjectsInstancesResource {
   ///
   /// [name] - Required. The unique name of the requested instance. Values are
   /// of the form `projects/{project}/instances/{instance}`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -569,7 +569,7 @@ class ProjectsInstancesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -627,7 +627,7 @@ class ProjectsInstancesResource {
   ///
   /// [parent] - Required. The unique name of the project for which a list of
   /// instances is requested. Values are of the form `projects/{project}`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageToken] - DEPRECATED: This field is unused and ignored.
   ///
@@ -692,7 +692,7 @@ class ProjectsInstancesResource {
   ///
   /// [name] - The unique name of the instance. Values are of the form
   /// `projects/{project}/instances/a-z+[a-z0-9]`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [updateMask] - Required. The subset of Instance fields which should be
   /// replaced. Must be explicitly set.
@@ -760,7 +760,7 @@ class ProjectsInstancesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -822,7 +822,7 @@ class ProjectsInstancesResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -887,7 +887,7 @@ class ProjectsInstancesResource {
   ///
   /// [name] - The unique name of the instance. Values are of the form
   /// `projects/{project}/instances/a-z+[a-z0-9]`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -953,7 +953,7 @@ class ProjectsInstancesAppProfilesResource {
   /// [parent] - Required. The unique name of the instance in which to create
   /// the new app profile. Values are of the form
   /// `projects/{project}/instances/{instance}`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [appProfileId] - Required. The ID to be used when referring to the new app
   /// profile within its instance, e.g., just `myprofile` rather than
@@ -1029,7 +1029,7 @@ class ProjectsInstancesAppProfilesResource {
   /// Values are of the form
   /// `projects/{project}/instances/{instance}/appProfiles/{app_profile}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/instances/[^/]+/appProfiles/[^/]+$".
+  /// `^projects/\[^/\]+/instances/\[^/\]+/appProfiles/\[^/\]+$`.
   ///
   /// [ignoreWarnings] - Required. If true, ignore safety checks when deleting
   /// the app profile.
@@ -1090,7 +1090,7 @@ class ProjectsInstancesAppProfilesResource {
   /// are of the form
   /// `projects/{project}/instances/{instance}/appProfiles/{app_profile}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/instances/[^/]+/appProfiles/[^/]+$".
+  /// `^projects/\[^/\]+/instances/\[^/\]+/appProfiles/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1146,7 +1146,7 @@ class ProjectsInstancesAppProfilesResource {
   /// `projects/{project}/instances/{instance}`. Use `{instance} = '-'` to list
   /// AppProfiles for all Instances in a project, e.g.,
   /// `projects/myproject/instances/-`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of results per page. A page_size of zero lets
   /// the server choose the number of items to return. A page_size which is
@@ -1222,7 +1222,7 @@ class ProjectsInstancesAppProfilesResource {
   /// [name] - The unique name of the app profile. Values are of the form
   /// `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
   /// Value must have pattern
-  /// "^projects/[^/]+/instances/[^/]+/appProfiles/[^/]+$".
+  /// `^projects/\[^/\]+/instances/\[^/\]+/appProfiles/\[^/\]+$`.
   ///
   /// [ignoreWarnings] - If true, ignore safety checks when updating the app
   /// profile.
@@ -1305,7 +1305,7 @@ class ProjectsInstancesClustersResource {
   /// [parent] - Required. The unique name of the instance in which to create
   /// the new cluster. Values are of the form
   /// `projects/{project}/instances/{instance}`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [clusterId] - Required. The ID to be used when referring to the new
   /// cluster within its instance, e.g., just `mycluster` rather than
@@ -1371,7 +1371,8 @@ class ProjectsInstancesClustersResource {
   /// [name] - Required. The unique name of the cluster to be deleted. Values
   /// are of the form
   /// `projects/{project}/instances/{instance}/clusters/{cluster}`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1423,7 +1424,8 @@ class ProjectsInstancesClustersResource {
   ///
   /// [name] - Required. The unique name of the requested cluster. Values are of
   /// the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1478,7 +1480,7 @@ class ProjectsInstancesClustersResource {
   /// `projects/{project}/instances/{instance}`. Use `{instance} = '-'` to list
   /// Clusters for all Instances in a project, e.g.,
   /// `projects/myproject/instances/-`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [pageToken] - DEPRECATED: This field is unused and ignored.
   ///
@@ -1540,7 +1542,8 @@ class ProjectsInstancesClustersResource {
   ///
   /// [name] - The unique name of the cluster. Values are of the form
   /// `projects/{project}/instances/{instance}/clusters/a-z*`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1612,7 +1615,8 @@ class ProjectsInstancesClustersBackupsResource {
   /// which this table is located. The backup will be stored in this cluster.
   /// Values are of the form
   /// `projects/{project}/instances/{instance}/clusters/{cluster}`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [backupId] - Required. The id of the backup to be created. The `backup_id`
   /// along with the parent `parent` are combined as
@@ -1681,7 +1685,7 @@ class ProjectsInstancesClustersBackupsResource {
   /// [name] - Required. Name of the backup to delete. Values are of the form
   /// `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$".
+  /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+/backups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1734,7 +1738,7 @@ class ProjectsInstancesClustersBackupsResource {
   /// [name] - Required. Name of the backup. Values are of the form
   /// `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$".
+  /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+/backups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1793,7 +1797,7 @@ class ProjectsInstancesClustersBackupsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$".
+  /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+/backups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1855,7 +1859,8 @@ class ProjectsInstancesClustersBackupsResource {
   /// form `projects/{project}/instances/{instance}/clusters/{cluster}`. Use
   /// `{cluster} = '-'` to list backups for all clusters in an instance, e.g.,
   /// `projects/{project}/instances/{instance}/clusters/-`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [filter] - A filter expression that filters backups listed in the
   /// response. The expression must specify the field name, a comparison
@@ -1974,7 +1979,7 @@ class ProjectsInstancesClustersBackupsResource {
   /// the prefix of the backup name of the form
   /// `projects/{project}/instances/{instance}/clusters/{cluster}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$".
+  /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+/backups/\[^/\]+$`.
   ///
   /// [updateMask] - Required. A mask specifying which fields (e.g.
   /// `expire_time`) in the Backup resource should be updated. This mask is
@@ -2046,7 +2051,7 @@ class ProjectsInstancesClustersBackupsResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$".
+  /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+/backups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2108,7 +2113,7 @@ class ProjectsInstancesClustersBackupsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/instances/[^/]+/clusters/[^/]+/backups/[^/]+$".
+  /// `^projects/\[^/\]+/instances/\[^/\]+/clusters/\[^/\]+/backups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2179,7 +2184,8 @@ class ProjectsInstancesTablesResource {
   /// [name] - Required. The unique name of the Table for which to check
   /// replication consistency. Values are of the form
   /// `projects/{project}/instances/{instance}/tables/{table}`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2244,7 +2250,7 @@ class ProjectsInstancesTablesResource {
   /// [parent] - Required. The unique name of the instance in which to create
   /// the table. Values are of the form
   /// `projects/{project}/instances/{instance}`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2300,7 +2306,8 @@ class ProjectsInstancesTablesResource {
   ///
   /// [name] - Required. The unique name of the table to be deleted. Values are
   /// of the form `projects/{project}/instances/{instance}/tables/{table}`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2358,7 +2365,8 @@ class ProjectsInstancesTablesResource {
   /// [name] - Required. The unique name of the table on which to drop a range
   /// of rows. Values are of the form
   /// `projects/{project}/instances/{instance}/tables/{table}`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2423,7 +2431,8 @@ class ProjectsInstancesTablesResource {
   /// [name] - Required. The unique name of the Table for which to create a
   /// consistency token. Values are of the form
   /// `projects/{project}/instances/{instance}/tables/{table}`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2482,7 +2491,8 @@ class ProjectsInstancesTablesResource {
   ///
   /// [name] - Required. The unique name of the requested table. Values are of
   /// the form `projects/{project}/instances/{instance}/tables/{table}`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
   ///
   /// [view] - The view to be applied to the returned table's fields. Defaults
   /// to `SCHEMA_VIEW` if unspecified.
@@ -2556,7 +2566,8 @@ class ProjectsInstancesTablesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2615,7 +2626,7 @@ class ProjectsInstancesTablesResource {
   /// [parent] - Required. The unique name of the instance for which tables
   /// should be listed. Values are of the form
   /// `projects/{project}/instances/{instance}`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of results per page. A page_size of zero lets
   /// the server choose the number of items to return. A page_size which is
@@ -2709,7 +2720,8 @@ class ProjectsInstancesTablesResource {
   /// [name] - Required. The unique name of the table whose families should be
   /// modified. Values are of the form
   /// `projects/{project}/instances/{instance}/tables/{table}`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2775,7 +2787,7 @@ class ProjectsInstancesTablesResource {
   /// [parent] - Required. The name of the instance in which to create the
   /// restored table. This instance must be the parent of the source backup.
   /// Values are of the form `projects//instances/`.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2838,7 +2850,8 @@ class ProjectsInstancesTablesResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2899,7 +2912,8 @@ class ProjectsInstancesTablesResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/instances/[^/]+/tables/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/instances/\[^/\]+/tables/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2963,7 +2977,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3014,7 +3028,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -3161,13 +3175,13 @@ class AppProfile {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
@@ -3209,9 +3223,9 @@ class AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -5253,14 +5267,14 @@ class PartialUpdateInstanceRequest {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

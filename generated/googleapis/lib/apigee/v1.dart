@@ -148,7 +148,7 @@ class HybridIssuersResource {
   /// Request parameters:
   ///
   /// [name] - Required. Must be of the form `hybrid/issuers`.
-  /// Value must have pattern "^hybrid/issuers$".
+  /// Value must have pattern `^hybrid/issuers$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -299,7 +299,7 @@ class OrganizationsResource {
   ///
   /// [name] - Required. Apigee organization name in the following format:
   /// `organizations/{org}`
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -352,7 +352,7 @@ class OrganizationsResource {
   ///
   /// [name] - Required. Name of the deployed configuration for the organization
   /// in the following format: 'organizations/{org}/deployedIngressConfig'.
-  /// Value must have pattern "^organizations/[^/]+/deployedIngressConfig$".
+  /// Value must have pattern `^organizations/\[^/\]+/deployedIngressConfig$`.
   ///
   /// [view] - When set to FULL, additional details about the specific
   /// deployments receiving traffic will be included in the IngressConfig
@@ -420,7 +420,7 @@ class OrganizationsResource {
   /// Synchronizer to download environment data from the control plane.
   ///
   /// An ETag is returned in the response to `getSyncAuthorization`. Pass that
-  /// ETag when calling [setSyncAuthorization](setSyncAuthorization) to ensure
+  /// ETag when calling \[setSyncAuthorization\](setSyncAuthorization) to ensure
   /// that you are updating the correct version. If you don't pass the ETag in
   /// the call to `setSyncAuthorization`, then the existing authorization is
   /// overwritten indiscriminately. For more information, see [Configure the
@@ -433,7 +433,7 @@ class OrganizationsResource {
   ///
   /// [name] - Required. Name of the Apigee organization. Use the following
   /// structure in your request: `organizations/{org}`
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -496,7 +496,7 @@ class OrganizationsResource {
   ///
   /// [parent] - Required. Use the following structure in your request:
   /// `organizations`
-  /// Value must have pattern "^organizations$".
+  /// Value must have pattern `^organizations$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -549,7 +549,7 @@ class OrganizationsResource {
   /// You must call this API to enable proper functioning of hybrid. Pass the
   /// ETag when calling `setSyncAuthorization` to ensure that you are updating
   /// the correct version. To get an ETag, call
-  /// [getSyncAuthorization](getSyncAuthorization). If you don't pass the ETag
+  /// \[getSyncAuthorization\](getSyncAuthorization). If you don't pass the ETag
   /// in the call to `setSyncAuthorization`, then the existing authorization is
   /// overwritten indiscriminately. For more information, see [Configure the
   /// Synchronizer](https://cloud.google.com/apigee/docs/hybrid/latest/synchronizer-access).
@@ -561,7 +561,7 @@ class OrganizationsResource {
   ///
   /// [name] - Required. Name of the Apigee organization. Use the following
   /// structure in your request: `organizations/{org}`
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -624,7 +624,7 @@ class OrganizationsResource {
   ///
   /// [name] - Required. Apigee organization name in the following format:
   /// `organizations/{org}`
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -700,7 +700,7 @@ class OrganizationsAnalyticsDatastoresResource {
   ///
   /// [parent] - Required. The parent organization name. Must be of the form
   /// `organizations/{org}`.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -760,7 +760,7 @@ class OrganizationsAnalyticsDatastoresResource {
   /// [name] - Required. Resource name of the Datastore to be deleted. Must be
   /// of the form `organizations/{org}/analytics/datastores/{datastoreId}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/analytics/datastores/[^/]+$".
+  /// `^organizations/\[^/\]+/analytics/datastores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -814,7 +814,7 @@ class OrganizationsAnalyticsDatastoresResource {
   /// [name] - Required. Resource name of the Datastore to be get. Must be of
   /// the form `organizations/{org}/analytics/datastores/{datastoreId}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/analytics/datastores/[^/]+$".
+  /// `^organizations/\[^/\]+/analytics/datastores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -867,7 +867,7 @@ class OrganizationsAnalyticsDatastoresResource {
   ///
   /// [parent] - Required. The parent organization name. Must be of the form
   /// `organizations/{org}`.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [targetType] - Optional. TargetType is used to fetch all Datastores that
   /// match the type
@@ -934,7 +934,7 @@ class OrganizationsAnalyticsDatastoresResource {
   ///
   /// [parent] - Required. The parent organization name Must be of the form
   /// `organizations/{org}`
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -996,7 +996,7 @@ class OrganizationsAnalyticsDatastoresResource {
   /// [name] - Required. The resource name of datastore to be updated. Must be
   /// of the form `organizations/{org}/analytics/datastores/{datastoreId}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/analytics/datastores/[^/]+$".
+  /// `^organizations/\[^/\]+/analytics/datastores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1075,7 +1075,7 @@ class OrganizationsApiproductsResource {
   ///
   /// [name] - **Required.** API product name in the following form:
   /// organizations/organization_ID/apiproducts/api_product_name
-  /// Value must have pattern "^organizations/[^/]+/apiproducts/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/apiproducts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1153,7 +1153,7 @@ class OrganizationsApiproductsResource {
   /// [parent] - Required. The parent organization name under which the API
   /// product will be created. Must be in the following form:
   /// organizations/organization_ID
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1221,7 +1221,7 @@ class OrganizationsApiproductsResource {
   ///
   /// [name] - Required. API product name in the following form:
   /// organizations/organization_ID/apiproducts/api_product_name
-  /// Value must have pattern "^organizations/[^/]+/apiproducts/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/apiproducts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1279,7 +1279,7 @@ class OrganizationsApiproductsResource {
   ///
   /// [name] - **Required.** API product name in the following form:
   /// organizations/organization_ID/apiproducts/api_product_name
-  /// Value must have pattern "^organizations/[^/]+/apiproducts/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/apiproducts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1337,7 +1337,7 @@ class OrganizationsApiproductsResource {
   ///
   /// [parent] - **Required.** The parent organization name in the following
   /// form: organizations/organization_ID
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [attributename] - The name of the attribute to search.
   ///
@@ -1436,7 +1436,7 @@ class OrganizationsApiproductsResource {
   ///
   /// [name] - **Required.** API product name in the following form:
   /// organizations/organization_ID/apiproducts/api_product_name
-  /// Value must have pattern "^organizations/[^/]+/apiproducts/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/apiproducts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1501,7 +1501,7 @@ class OrganizationsApiproductsAttributesResource {
   /// [name] - **Required.** API product name in the following form:
   /// organizations/organization_ID/apiproducts/api_product_name/attributes/attribute_name
   /// Value must have pattern
-  /// "^organizations/[^/]+/apiproducts/[^/]+/attributes/[^/]+$".
+  /// `^organizations/\[^/\]+/apiproducts/\[^/\]+/attributes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1555,7 +1555,7 @@ class OrganizationsApiproductsAttributesResource {
   /// [name] - **Required.** API product name in the following form:
   /// organizations/organization_ID/apiproducts/api_product_name/attributes/attribute_name
   /// Value must have pattern
-  /// "^organizations/[^/]+/apiproducts/[^/]+/attributes/[^/]+$".
+  /// `^organizations/\[^/\]+/apiproducts/\[^/\]+/attributes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1608,7 +1608,7 @@ class OrganizationsApiproductsAttributesResource {
   ///
   /// [parent] - Required. The parent organization name. Must be in the
   /// following form: organizations/organization_ID/apiproducts/api_product_name
-  /// Value must have pattern "^organizations/[^/]+/apiproducts/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/apiproducts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1673,7 +1673,7 @@ class OrganizationsApiproductsAttributesResource {
   /// [name] - **Required.** API product name in the following form:
   /// organizations/organization_ID/apiproducts/api_product_name
   /// Value must have pattern
-  /// "^organizations/[^/]+/apiproducts/[^/]+/attributes/[^/]+$".
+  /// `^organizations/\[^/\]+/apiproducts/\[^/\]+/attributes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1761,7 +1761,7 @@ class OrganizationsApisResource {
   ///
   /// [parent] - Required. Name of the organization in the following format:
   /// `organizations/{org}`
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [action] - Action to perform when importing an API proxy configuration
   /// bundle. Set this parameter to one of the following values: * `import` to
@@ -1844,7 +1844,7 @@ class OrganizationsApisResource {
   ///
   /// [name] - Required. Name of the API proxy in the following format:
   /// `organizations/{org}/apis/{api}`
-  /// Value must have pattern "^organizations/[^/]+/apis/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/apis/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1897,7 +1897,7 @@ class OrganizationsApisResource {
   ///
   /// [name] - Required. Name of the API proxy in the following format:
   /// `organizations/{org}/apis/{api}`
-  /// Value must have pattern "^organizations/[^/]+/apis/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/apis/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1953,7 +1953,7 @@ class OrganizationsApisResource {
   ///
   /// [parent] - Required. Name of the organization in the following format:
   /// `organizations/{org}`
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [includeMetaData] - Flag that specifies whether to include API proxy
   /// metadata in the response.
@@ -2027,7 +2027,7 @@ class OrganizationsApisDeploymentsResource {
   ///
   /// [parent] - Required. Name of the API proxy for which to return deployment
   /// information in the following format: `organizations/{org}/apis/{api}`
-  /// Value must have pattern "^organizations/[^/]+/apis/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/apis/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2092,7 +2092,7 @@ class OrganizationsApisKeyvaluemapsResource {
   /// [parent] - Required. The name of the environment in which to create the
   /// key value map. Must be of the form
   /// `organizations/{organization}/apis/{api}`.
-  /// Value must have pattern "^organizations/[^/]+/apis/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/apis/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2152,7 +2152,7 @@ class OrganizationsApisKeyvaluemapsResource {
   /// [name] - Required. The name of the key value map. Must be of the form
   /// `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/apis/[^/]+/keyvaluemaps/[^/]+$".
+  /// `^organizations/\[^/\]+/apis/\[^/\]+/keyvaluemaps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2219,7 +2219,7 @@ class OrganizationsApisRevisionsResource {
   /// [name] - Required. API proxy revision in the following format:
   /// `organizations/{org}/apis/{api}/revisions/{rev}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/apis/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2274,14 +2274,14 @@ class OrganizationsApisRevisionsResource {
   /// curl, specify `-o filename.zip` to save the output to a file; otherwise,
   /// it displays to `stdout`. Then, develop the API proxy configuration locally
   /// and upload the updated API proxy configuration revision, as described in
-  /// [updateApiProxyRevision](updateApiProxyRevision).
+  /// \[updateApiProxyRevision\](updateApiProxyRevision).
   ///
   /// Request parameters:
   ///
   /// [name] - Required. API proxy revision in the following format:
   /// `organizations/{org}/apis/{api}/revisions/{rev}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/apis/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [format] - Format used when downloading the API proxy configuration
   /// revision. Set to `bundle` to download the API proxy configuration revision
@@ -2351,7 +2351,7 @@ class OrganizationsApisRevisionsResource {
   /// [name] - Required. API proxy revision to update in the following format:
   /// `organizations/{org}/apis/{api}/revisions/{rev}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/apis/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [validate] - Ignored. All uploads are validated regardless of the value of
   /// this field. Maintained for compatibility with Apigee Edge API.
@@ -2424,7 +2424,7 @@ class OrganizationsApisRevisionsDeploymentsResource {
   /// deployment information in the following format:
   /// `organizations/{org}/apis/{api}/revisions/{rev}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/apis/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2485,7 +2485,7 @@ class OrganizationsAppsResource {
   ///
   /// [name] - Required. App ID in the following format:
   /// `organizations/{org}/apps/{app}`
-  /// Value must have pattern "^organizations/[^/]+/apps/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2540,7 +2540,7 @@ class OrganizationsAppsResource {
   ///
   /// [parent] - Required. Resource path of the parent in the following format:
   /// `organizations/{org}`
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [apiProduct] - API product.
   ///
@@ -2659,7 +2659,7 @@ class OrganizationsDeploymentsResource {
   ///
   /// [parent] - Required. Name of the organization for which to return
   /// deployment information in the following format: `organizations/{org}`
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [sharedFlows] - Optional. Flag that specifies whether to return shared
   /// flow or API proxy deployments. Set to `true` to return shared flow
@@ -2748,7 +2748,7 @@ class OrganizationsDevelopersResource {
   /// [parent] - Required. Email address of the developer for which attributes
   /// are being updated in the following format:
   /// `organizations/{org}/developers/{developer_email}`
-  /// Value must have pattern "^organizations/[^/]+/developers/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/developers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2814,7 +2814,7 @@ class OrganizationsDevelopersResource {
   /// [parent] - Required. Name of the Apigee organization in which the
   /// developer is created. Use the following structure in your request:
   /// `organizations/{org}`.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2882,7 +2882,7 @@ class OrganizationsDevelopersResource {
   /// [name] - Required. Email address of the developer. Use the following
   /// structure in your request:
   /// `organizations/{org}/developers/{developer_email}`
-  /// Value must have pattern "^organizations/[^/]+/developers/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/developers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2939,7 +2939,7 @@ class OrganizationsDevelopersResource {
   /// [name] - Required. Email address of the developer. Use the following
   /// structure in your request:
   /// `organizations/{org}/developers/{developer_email}`
-  /// Value must have pattern "^organizations/[^/]+/developers/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/developers/\[^/\]+$`.
   ///
   /// [action] - Status of the developer. Valid values are `active` or
   /// `inactive`.
@@ -3005,7 +3005,7 @@ class OrganizationsDevelopersResource {
   ///
   /// [parent] - Required. Name of the Apigee organization. Use the following
   /// structure in your request: `organizations/{org}`.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [count] - Optional. Number of developers to return in the API call. Use
   /// with the `startKey` parameter to provide more targeted filtering. The
@@ -3109,7 +3109,7 @@ class OrganizationsDevelopersResource {
   /// [name] - Required. Email address of the developer. Use the following
   /// structure in your request:
   /// `organizations/{org}/developers/{developer_email}`
-  /// Value must have pattern "^organizations/[^/]+/developers/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/developers/\[^/\]+$`.
   ///
   /// [action] - Status of the developer. Valid values are `active` and
   /// `inactive`.
@@ -3182,7 +3182,7 @@ class OrganizationsDevelopersResource {
   /// [name] - Required. Email address of the developer. Use the following
   /// structure in your request:
   /// `organizations/{org}/developers/{developer_email}`
-  /// Value must have pattern "^organizations/[^/]+/developers/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/developers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3258,7 +3258,7 @@ class OrganizationsDevelopersAppsResource {
   /// in your request:
   /// `organizations/{org}/developers/{developer_email}/apps/{app}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3325,7 +3325,7 @@ class OrganizationsDevelopersAppsResource {
   ///
   /// [parent] - Required. Name of the developer. Use the following structure in
   /// your request: `organizations/{org}/developers/{developer_email}`
-  /// Value must have pattern "^organizations/[^/]+/developers/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/developers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3389,7 +3389,7 @@ class OrganizationsDevelopersAppsResource {
   /// in your request:
   /// `organizations/{org}/developers/{developer_email}/apps/{app}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3470,7 +3470,7 @@ class OrganizationsDevelopersAppsResource {
   /// in your request:
   /// `organizations/{org}/developers/{developer_email}/apps/{app}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [action] - Action. Valid values are `approve` or `revoke`.
   ///
@@ -3536,7 +3536,7 @@ class OrganizationsDevelopersAppsResource {
   /// in your request:
   /// `organizations/{org}/developers/{developer_email}/apps/{app}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [entity] - **Note**: Must be used in conjunction with the `query`
   /// parameter. Set to `apiresources` to return the number of API resources
@@ -3612,7 +3612,7 @@ class OrganizationsDevelopersAppsResource {
   ///
   /// [parent] - Required. Name of the developer. Use the following structure in
   /// your request: `organizations/{org}/developers/{developer_email}`
-  /// Value must have pattern "^organizations/[^/]+/developers/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/developers/\[^/\]+$`.
   ///
   /// [count] - Number of developer apps to return in the API call. Use with the
   /// `startKey` parameter to provide more targeted filtering. The limit is
@@ -3714,7 +3714,7 @@ class OrganizationsDevelopersAppsResource {
   /// in your request:
   /// `organizations/{org}/developers/{developer_email}/apps/{app}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3780,7 +3780,7 @@ class OrganizationsDevelopersAppsAttributesResource {
   /// structure in your request:
   /// `organizations/{org}/developers/{developer_email}/apps/{app}/attributes/{attribute}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+/attributes/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+/attributes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3835,7 +3835,7 @@ class OrganizationsDevelopersAppsAttributesResource {
   /// structure in your request:
   /// `organizations/{org}/developers/{developer_email}/apps/{app}/attributes/{attribute}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+/attributes/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+/attributes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3890,7 +3890,7 @@ class OrganizationsDevelopersAppsAttributesResource {
   /// structure in your request:
   /// `organizations/{org}/developers/{developer_email}/apps/{app}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3956,7 +3956,7 @@ class OrganizationsDevelopersAppsAttributesResource {
   /// structure in your request:
   /// `organizations/{org}/developers/{developer_email}/apps/{app}/attributes/{attribute}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+/attributes/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+/attributes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4040,7 +4040,7 @@ class OrganizationsDevelopersAppsKeysResource {
   /// [parent] - Parent of the developer app key. Use the following structure in
   /// your request: `organizations/{org}/developers/{developer_email}/apps`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4107,7 +4107,7 @@ class OrganizationsDevelopersAppsKeysResource {
   /// your request:
   /// `organizations/{org}/developers/{developer_email}/apps/{app}/keys/{key}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+/keys/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+/keys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4163,7 +4163,7 @@ class OrganizationsDevelopersAppsKeysResource {
   /// your request:
   /// `organizations/{org}/developers/{developer_email}/apps/{app}/keys/{key}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+/keys/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+/keys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4226,7 +4226,7 @@ class OrganizationsDevelopersAppsKeysResource {
   /// your request:
   /// `organizations/{org}/developers/{developer_email}/apps/{app}/keys/{key}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+/keys/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+/keys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4294,7 +4294,7 @@ class OrganizationsDevelopersAppsKeysResource {
   /// your request:
   /// `organizations/{org}/developers/{developer_email}/apps/{app}/keys/{key}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+/keys/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+/keys/\[^/\]+$`.
   ///
   /// [action] - Approve or revoke the consumer key by setting this value to
   /// `approve` or `revoke`, respectively.
@@ -4372,7 +4372,7 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
   /// format:
   /// `organizations/{org}/developers/{developer_email}/apps/{app}/keys/{key}/apiproducts/{apiproduct}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+/keys/[^/]+/apiproducts/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+/keys/\[^/\]+/apiproducts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4433,7 +4433,7 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
   /// format:
   /// `organizations/{org}/developers/{developer_email}/apps/{app}/keys/{key}/apiproducts/{apiproduct}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+/keys/[^/]+/apiproducts/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+/keys/\[^/\]+/apiproducts/\[^/\]+$`.
   ///
   /// [action] - Approve or revoke the consumer key by setting this value to
   /// `approve` or `revoke`, respectively.
@@ -4515,7 +4515,7 @@ class OrganizationsDevelopersAppsKeysCreateResource {
   /// [parent] - Parent of the developer app key. Use the following structure in
   /// your request: `organizations/{org}/developers/{developer_email}/apps`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/apps/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4583,7 +4583,7 @@ class OrganizationsDevelopersAttributesResource {
   /// structure in your request:
   /// `organizations/{org}/developers/{developer_email}/attributes/{attribute}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/attributes/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/attributes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4638,7 +4638,7 @@ class OrganizationsDevelopersAttributesResource {
   /// structure in your request:
   /// `organizations/{org}/developers/{developer_email}/attributes/{attribute}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/attributes/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/attributes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4692,7 +4692,7 @@ class OrganizationsDevelopersAttributesResource {
   /// [parent] - Required. Email address of the developer for which attributes
   /// are being listed in the following format:
   /// `organizations/{org}/developers/{developer_email}`
-  /// Value must have pattern "^organizations/[^/]+/developers/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/developers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4758,7 +4758,7 @@ class OrganizationsDevelopersAttributesResource {
   /// structure in your request:
   /// `organizations/{org}/developers/{developer_email}/attributes/{attribute}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/developers/[^/]+/attributes/[^/]+$".
+  /// `^organizations/\[^/\]+/developers/\[^/\]+/attributes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4827,7 +4827,7 @@ class OrganizationsEnvgroupsResource {
   ///
   /// [parent] - Required. Name of the organization in which to create the
   /// environment group in the following format: `organizations/{org}`.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [name] - ID of the environment group. Overrides any ID in the
   /// environment_group resource.
@@ -4892,7 +4892,7 @@ class OrganizationsEnvgroupsResource {
   ///
   /// [name] - Required. Name of the environment group in the following format:
   /// `organizations/{org}/envgroups/{envgroup}`.
-  /// Value must have pattern "^organizations/[^/]+/envgroups/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/envgroups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4945,7 +4945,7 @@ class OrganizationsEnvgroupsResource {
   ///
   /// [name] - Required. Name of the environment group in the following format:
   /// `organizations/{org}/envgroups/{envgroup}`.
-  /// Value must have pattern "^organizations/[^/]+/envgroups/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/envgroups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4998,7 +4998,7 @@ class OrganizationsEnvgroupsResource {
   ///
   /// [parent] - Required. Name of the organization for which to list
   /// environment groups in the following format: `organizations/{org}`.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of environment groups to return. The page size
   /// defaults to 25.
@@ -5067,8 +5067,8 @@ class OrganizationsEnvgroupsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the environment group to update in the format:
-  /// `organizations/{org}/envgroups/{envgroup}.
-  /// Value must have pattern "^organizations/[^/]+/envgroups/[^/]+$".
+  /// \`organizations/{org}/envgroups/{envgroup}.
+  /// Value must have pattern `^organizations/\[^/\]+/envgroups/\[^/\]+$`.
   ///
   /// [updateMask] - List of fields to be updated.
   ///
@@ -5140,7 +5140,7 @@ class OrganizationsEnvgroupsAttachmentsResource {
   ///
   /// [parent] - Required. EnvironmentGroup under which to create the attachment
   /// in the following format: `organizations/{org}/envgroups/{envgroup}`.
-  /// Value must have pattern "^organizations/[^/]+/envgroups/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/envgroups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5201,7 +5201,7 @@ class OrganizationsEnvgroupsAttachmentsResource {
   /// the following format:
   /// `organizations/{org}/envgroups/{envgroup}/attachments/{attachment}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/envgroups/[^/]+/attachments/[^/]+$".
+  /// `^organizations/\[^/\]+/envgroups/\[^/\]+/attachments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5256,7 +5256,7 @@ class OrganizationsEnvgroupsAttachmentsResource {
   /// following format:
   /// `organizations/{org}/envgroups/{envgroup}/attachments/{attachment}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/envgroups/[^/]+/attachments/[^/]+$".
+  /// `^organizations/\[^/\]+/envgroups/\[^/\]+/attachments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5309,7 +5309,7 @@ class OrganizationsEnvgroupsAttachmentsResource {
   ///
   /// [parent] - Required. Name of the environment group in the following
   /// format: `organizations/{org}/envgroups/{envgroup}`.
-  /// Value must have pattern "^organizations/[^/]+/envgroups/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/envgroups/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of environment group attachments to return.
   /// The page size defaults to 25.
@@ -5420,7 +5420,7 @@ class OrganizationsEnvironmentsResource {
   /// [parent] - Required. Name of the organization in which the environment
   /// will be created. Use the following structure in your request:
   /// `organizations/{org}`
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [name] - Optional. Name of the environment. Alternatively, the name may be
   /// specified in the request body in the name field.
@@ -5486,7 +5486,7 @@ class OrganizationsEnvironmentsResource {
   ///
   /// [name] - Required. Name of the environment. Use the following structure in
   /// your request: `organizations/{org}/environments/{env}`
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5539,7 +5539,7 @@ class OrganizationsEnvironmentsResource {
   ///
   /// [name] - Required. Name of the environment. Use the following structure in
   /// your request: `organizations/{org}/environments/{env}`
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5593,7 +5593,7 @@ class OrganizationsEnvironmentsResource {
   /// [name] - Required. Name of the debug mask. Use the following structure in
   /// your request: `organizations/{org}/environments/{env}/debugmask`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/debugmask$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/debugmask$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5648,7 +5648,7 @@ class OrganizationsEnvironmentsResource {
   /// resource. Use the following structure in your request:
   /// `organizations/{org}/environments/{env}/deployedConfig`
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/deployedConfig$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/deployedConfig$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5707,7 +5707,7 @@ class OrganizationsEnvironmentsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -5785,7 +5785,7 @@ class OrganizationsEnvironmentsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5847,7 +5847,7 @@ class OrganizationsEnvironmentsResource {
   ///
   /// [parent] - Required. Name of the environment. Use the following structure
   /// in your request: `organizations/{org}/environments/{env}`
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5908,7 +5908,7 @@ class OrganizationsEnvironmentsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5969,7 +5969,7 @@ class OrganizationsEnvironmentsResource {
   ///
   /// [parent] - Required. Name of the environment. Use the following structure
   /// in your request: `organizations/{org}/environments/{env}`
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6027,7 +6027,7 @@ class OrganizationsEnvironmentsResource {
   /// When updating properties, you must pass all existing properties to the
   /// API, even if they are not being changed. If you omit properties from the
   /// payload, the properties are removed. To get the current list of properties
-  /// for the environment, use the [Get Environment API](get).
+  /// for the environment, use the \[Get Environment API\](get).
   ///
   /// [request] - The metadata request object.
   ///
@@ -6035,7 +6035,7 @@ class OrganizationsEnvironmentsResource {
   ///
   /// [name] - Required. Name of the environment. Use the following structure in
   /// your request: `organizations/{org}/environments/{env}`
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6094,7 +6094,7 @@ class OrganizationsEnvironmentsResource {
   ///
   /// [name] - Name of the debug mask.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/debugmask$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/debugmask$`.
   ///
   /// [replaceRepeatedFields] - Boolean flag that specifies whether to replace
   /// existing values in the debug mask when doing an update. Set to true to
@@ -6165,7 +6165,7 @@ class OrganizationsEnvironmentsResource {
   /// When updating properties, you must pass all existing properties to the
   /// API, even if they are not being changed. If you omit properties from the
   /// payload, the properties are removed. To get the current list of properties
-  /// for the environment, use the [Get Environment API](get).
+  /// for the environment, use the \[Get Environment API\](get).
   ///
   /// [request] - The metadata request object.
   ///
@@ -6173,7 +6173,7 @@ class OrganizationsEnvironmentsResource {
   ///
   /// [name] - Required. Name of the environment. Use the following structure in
   /// your request: `organizations/{org}/environments/{env}`
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6255,7 +6255,7 @@ class OrganizationsEnvironmentsAnalyticsAdminResource {
   /// of the form
   /// `organizations/{org}/environments/{env}/analytics/admin/schemav2`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/analytics/admin/schemav2$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/analytics/admin/schemav2$`.
   ///
   /// [type] - Required. Type refers to the dataset name whose schema needs to
   /// be retrieved E.g. type=fact or type=agg_cus1
@@ -6328,7 +6328,7 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
   ///
   /// [parent] - Required. Names of the parent organization and environment.
   /// Must be of the form `organizations/{org}/environments/{env}`.
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6391,7 +6391,7 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
   ///
   /// [name] - Required. Resource name of the export to get.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/analytics/exports/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/analytics/exports/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6445,7 +6445,7 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
   ///
   /// [parent] - Required. Names of the parent organization and environment.
   /// Must be of the form `organizations/{org}/environments/{env}`.
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6520,7 +6520,7 @@ class OrganizationsEnvironmentsApisDeploymentsResource {
   /// [parent] - Required. Name representing an API proxy in an environment in
   /// the following format: `organizations/{org}/environments/{env}/apis/{api}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/apis/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6603,7 +6603,7 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   /// following format:
   /// `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/apis/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [override] - Flag that specifies whether the new deployment replaces other
   /// deployed revisions of the API proxy in the environment. Set override to
@@ -6686,7 +6686,7 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   /// environment in the following format:
   /// `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/apis/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6749,7 +6749,7 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   /// following format:
   /// `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/apis/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [sequencedRollout] - If true, a best-effort attempt will be made to remove
   /// the environment group routing rules corresponding to this deployment
@@ -6833,7 +6833,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   /// deployment for which to create the DebugSession. Must be of the form
   /// `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/apis/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [timeout] - Optional. The time in seconds after which this DebugSession
   /// should end. A timeout specified in DebugSession will overwrite this value.
@@ -6904,7 +6904,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   /// form:
   /// `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{debugsession}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/apis/[^/]+/revisions/[^/]+/debugsessions/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+/debugsessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6959,7 +6959,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   /// the form:
   /// `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{session}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/apis/[^/]+/revisions/[^/]+/debugsessions/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+/debugsessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7015,7 +7015,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   /// which to list debug sessions. Must be of the form:
   /// `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/apis/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of debug sessions to return. The page size
   /// defaults to 25.
@@ -7094,7 +7094,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource {
   /// the form:
   /// `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{session}/data/{transaction}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/apis/[^/]+/revisions/[^/]+/debugsessions/[^/]+/data/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+/debugsessions/\[^/\]+/data/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7170,7 +7170,7 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
   /// format:
   /// `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/apis/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [override] - Flag that specifies whether to force the deployment of the
   /// new revision over the currently deployed revision by overriding conflict
@@ -7249,7 +7249,7 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
   /// format:
   /// `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/apis/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/apis/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7313,7 +7313,7 @@ class OrganizationsEnvironmentsCachesResource {
   /// [name] - Required. Cache resource name of the form:
   /// `organizations/{organization_id}/environments/{environment_id}/caches/{cache_id}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/caches/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/caches/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7374,7 +7374,7 @@ class OrganizationsEnvironmentsDeploymentsResource {
   /// [parent] - Required. Name of the environment for which to return
   /// deployment information in the following format:
   /// `organizations/{org}/environments/{env}`
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [sharedFlows] - Optional. Flag that specifies whether to return shared
   /// flow or API proxy deployments. Set to `true` to return shared flow
@@ -7449,7 +7449,7 @@ class OrganizationsEnvironmentsFlowhooksResource {
   /// be attached in the following format:
   /// `organizations/{org}/environments/{env}/flowhooks/{flowhook}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/flowhooks/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/flowhooks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7507,7 +7507,7 @@ class OrganizationsEnvironmentsFlowhooksResource {
   /// [name] - Required. Name of the flow hook to detach in the following
   /// format: `organizations/{org}/environments/{env}/flowhooks/{flowhook}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/flowhooks/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/flowhooks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7564,7 +7564,7 @@ class OrganizationsEnvironmentsFlowhooksResource {
   /// [name] - Required. Name of the flow hook in the following format:
   /// `organizations/{org}/environments/{env}/flowhooks/{flowhook}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/flowhooks/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/flowhooks/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7635,7 +7635,7 @@ class OrganizationsEnvironmentsKeystoresResource {
   /// [parent] - Required. The name of the environment in which to create the
   /// keystore. Must be of the form
   /// `organizations/{organization}/environments/{environment}`.
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [name] - Optional. Overrides the value in Keystore.
   ///
@@ -7700,7 +7700,7 @@ class OrganizationsEnvironmentsKeystoresResource {
   /// [name] - Required. The name of keystore to delete. Must be of the form
   /// `organizations/{organization}/environments/{environment}/keystores/{keystore}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/keystores/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/keystores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7754,7 +7754,7 @@ class OrganizationsEnvironmentsKeystoresResource {
   /// [name] - Required. The name of keystore. Must be of the form
   /// `organizations/{organization}/environments/{environment}/keystores/{keystore}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/keystores/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/keystores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7827,7 +7827,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   /// [parent] - Required. The name of the keystore. Must be of the form
   /// `organizations/{organization}/environments/{environment}/keystores/{keystore}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/keystores/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/keystores/\[^/\]+$`.
   ///
   /// [P_password] - The password for the private key file, if it exists.
   ///
@@ -7924,7 +7924,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   /// [name] - Required. The name of the alias. Must be of the form
   /// `organizations/{organization}/environments/{environment}/keystores/{keystore}/aliases/{alias}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/keystores/[^/]+/aliases/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/keystores/\[^/\]+/aliases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7978,7 +7978,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   /// [name] - Required. The name of the alias. Must be of the form
   /// `organizations/{organization}/environments/{environment}/keystores/{keystore}/aliases/{alias}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/keystores/[^/]+/aliases/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/keystores/\[^/\]+/aliases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8032,7 +8032,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   /// [name] - Required. The name of the alias. Must be of the form
   /// `organizations/{organization}/environments/{environment}/keystores/{keystore}/aliases/{alias}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/keystores/[^/]+/aliases/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/keystores/\[^/\]+/aliases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8086,7 +8086,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   /// [name] - Required. The name of the alias. Must be of the form
   /// `organizations/{organization}/environments/{environment}/keystores/{keystore}/aliases/{alias}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/keystores/[^/]+/aliases/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/keystores/\[^/\]+/aliases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8143,7 +8143,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   /// [name] - Required. The name of the alias. Must be of the form
   /// `organizations/{organization}/environments/{environment}/keystores/{keystore}/aliases/{alias}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/keystores/[^/]+/aliases/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/keystores/\[^/\]+/aliases/\[^/\]+$`.
   ///
   /// [ignoreExpiryValidation] - Required. If `true`, no expiry validation will
   /// be performed.
@@ -8225,7 +8225,7 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
   /// [parent] - Required. The name of the environment in which to create the
   /// key value map. Must be of the form
   /// `organizations/{organization}/environments/{environment}`.
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8285,7 +8285,7 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
   /// [name] - Required. The name of the key value map. Must be of the form
   /// `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/keyvaluemaps/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/keyvaluemaps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8356,7 +8356,7 @@ class OrganizationsEnvironmentsOptimizedStatsResource {
   /// shown below
   /// `organizations/{org}/environments/{env}/stats/apiproxy,request_verb`
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/optimizedStats/.*$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/optimizedStats/.*$`.
   ///
   /// [accuracy] - Legacy field: not used anymore.
   ///
@@ -8525,7 +8525,7 @@ class OrganizationsEnvironmentsQueriesResource {
   ///
   /// [parent] - Required. The parent resource name. Must be of the form
   /// `organizations/{org}/environments/{env}`.
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8586,7 +8586,7 @@ class OrganizationsEnvironmentsQueriesResource {
   /// [name] - Required. Name of the asynchronous query to get. Must be of the
   /// form `organizations/{org}/environments/{env}/queries/{queryId}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/queries/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/queries/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8646,7 +8646,7 @@ class OrganizationsEnvironmentsQueriesResource {
   /// of the form
   /// `organizations/{org}/environments/{env}/queries/{queryId}/result`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/queries/[^/]+/result$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/queries/\[^/\]+/result$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8699,7 +8699,7 @@ class OrganizationsEnvironmentsQueriesResource {
   ///
   /// [parent] - Required. The parent resource name. Must be of the form
   /// `organizations/{org}/environments/{env}`.
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [dataset] - Filter response list by dataset. Example: `api`, `mint`
   ///
@@ -8804,7 +8804,7 @@ class OrganizationsEnvironmentsReferencesResource {
   /// [parent] - Required. The parent environment name under which the Reference
   /// will be created. Must be of the form
   /// `organizations/{org}/environments/{env}`.
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8866,7 +8866,7 @@ class OrganizationsEnvironmentsReferencesResource {
   /// [name] - Required. The name of the Reference to delete. Must be of the
   /// form `organizations/{org}/environments/{env}/references/{ref}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/references/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/references/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8920,7 +8920,7 @@ class OrganizationsEnvironmentsReferencesResource {
   /// [name] - Required. The name of the Reference to get. Must be of the form
   /// `organizations/{org}/environments/{env}/references/{ref}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/references/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/references/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8979,7 +8979,7 @@ class OrganizationsEnvironmentsReferencesResource {
   /// [name] - Required. The name of the Reference to update. Must be of the
   /// form `organizations/{org}/environments/{env}/references/{ref}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/references/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/references/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9041,7 +9041,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
   ///
   /// Specify the `Content-Type` as `application/octet-stream` or
   /// `multipart/form-data`. For more information about resource files, see
-  /// [Resource files](/api-platform/develop/resource-files).
+  /// \[Resource files\](/api-platform/develop/resource-files).
   ///
   /// [request] - The metadata request object.
   ///
@@ -9050,10 +9050,10 @@ class OrganizationsEnvironmentsResourcefilesResource {
   /// [parent] - Required. Name of the environment in which to create the
   /// resource file in the following format:
   /// `organizations/{org}/environments/{env}`.
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [name] - Required. Name of the resource file. Must match the regular
-  /// expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
+  /// expression: \[a-zA-Z0-9:/\\!@#$%^&{}\\[\\]()+\-=,.~'\` \]{1,255}
   ///
   /// [type] - Required. Resource file type. {{ resource_file_type }}
   ///
@@ -9118,19 +9118,19 @@ class OrganizationsEnvironmentsResourcefilesResource {
 
   /// Deletes a resource file.
   ///
-  /// For more information about resource files, see [Resource
-  /// files](/api-platform/develop/resource-files).
+  /// For more information about resource files, see \[Resource
+  /// files\](/api-platform/develop/resource-files).
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the environment in the following format:
   /// `organizations/{org}/environments/{env}`.
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [type] - Required. Resource file type. {{ resource_file_type }}
   ///
   /// [name] - Required. ID of the resource file to delete. Must match the
-  /// regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
+  /// regular expression: \[a-zA-Z0-9:/\\!@#$%^&{}\\[\\]()+\-=,.~'\` \]{1,255}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9192,19 +9192,19 @@ class OrganizationsEnvironmentsResourcefilesResource {
 
   /// Gets the contents of a resource file.
   ///
-  /// For more information about resource files, see [Resource
-  /// files](/api-platform/develop/resource-files).
+  /// For more information about resource files, see \[Resource
+  /// files\](/api-platform/develop/resource-files).
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the environment in the following format:
   /// `organizations/{org}/environments/{env}`.
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [type] - Required. Resource file type. {{ resource_file_type }}
   ///
   /// [name] - Required. ID of the resource file. Must match the regular
-  /// expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
+  /// expression: \[a-zA-Z0-9:/\\!@#$%^&{}\\[\\]()+\-=,.~'\` \]{1,255}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9266,14 +9266,14 @@ class OrganizationsEnvironmentsResourcefilesResource {
 
   /// Lists all resource files.
   ///
-  /// For more information about resource files, see [Resource
-  /// files](/api-platform/develop/resource-files).
+  /// For more information about resource files, see \[Resource
+  /// files\](/api-platform/develop/resource-files).
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the environment in which to list resource
   /// files in the following format: `organizations/{org}/environments/{env}`.
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [type] - Optional. Type of resource files to list. {{ resource_file_type
   /// }}
@@ -9331,14 +9331,14 @@ class OrganizationsEnvironmentsResourcefilesResource {
 
   /// Lists all resource files.
   ///
-  /// For more information about resource files, see [Resource
-  /// files](/api-platform/develop/resource-files).
+  /// For more information about resource files, see \[Resource
+  /// files\](/api-platform/develop/resource-files).
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the environment in which to list resource
   /// files in the following format: `organizations/{org}/environments/{env}`.
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [type] - Optional. Type of resource files to list. {{ resource_file_type
   /// }}
@@ -9400,7 +9400,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
   ///
   /// Specify the `Content-Type` as `application/octet-stream` or
   /// `multipart/form-data`. For more information about resource files, see
-  /// [Resource files](/api-platform/develop/resource-files).
+  /// \[Resource files\](/api-platform/develop/resource-files).
   ///
   /// [request] - The metadata request object.
   ///
@@ -9408,12 +9408,12 @@ class OrganizationsEnvironmentsResourcefilesResource {
   ///
   /// [parent] - Required. Name of the environment in the following format:
   /// `organizations/{org}/environments/{env}`.
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [type] - Required. Resource file type. {{ resource_file_type }}
   ///
   /// [name] - Required. ID of the resource file to update. Must match the
-  /// regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
+  /// regular expression: \[a-zA-Z0-9:/\\!@#$%^&{}\\[\\]()+\-=,.~'\` \]{1,255}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9505,7 +9505,7 @@ class OrganizationsEnvironmentsSharedflowsDeploymentsResource {
   /// the following format:
   /// `organizations/{org}/environments/{env}/sharedflows/{sharedflow}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/sharedflows/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/sharedflows/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9580,7 +9580,7 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   /// following format:
   /// `organizations/{org}/environments/{env}/sharedflows/{sharedflow}/revisions/{rev}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/sharedflows/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/sharedflows/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [override] - Flag that specifies whether to force the deployment of the
   /// new revision over the currently deployed revision by overriding conflict
@@ -9649,7 +9649,7 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   /// the following format:
   /// `organizations/{org}/environments/{env}/sharedflows/{sharedflow}/revisions/{rev}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/sharedflows/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/sharedflows/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9712,7 +9712,7 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   /// following format:
   /// `organizations/{org}/environments/{env}/sharedflows/{sharedflow}/revisions/{rev}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/sharedflows/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/sharedflows/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9785,7 +9785,7 @@ class OrganizationsEnvironmentsStatsResource {
   /// shown below
   /// `organizations/{org}/environments/{env}/stats/apiproxy,request_verb`
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/stats/.*$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/stats/.*$`.
   ///
   /// [accuracy] - Legacy field: not used anymore. This field is present to
   /// support UI calls which still use this parameter.
@@ -9952,7 +9952,7 @@ class OrganizationsEnvironmentsTargetserversResource {
   /// [parent] - Required. The parent environment name under which the
   /// TargetServer will be created. Must be of the form
   /// `organizations/{org}/environments/{env}`.
-  /// Value must have pattern "^organizations/[^/]+/environments/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [name] - Optional. The ID to give the TargetServer. This will overwrite
   /// the value in TargetServer.
@@ -10022,7 +10022,7 @@ class OrganizationsEnvironmentsTargetserversResource {
   /// form
   /// `organizations/{org}/environments/{env}/targetservers/{target_server_id}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/targetservers/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/targetservers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10077,7 +10077,7 @@ class OrganizationsEnvironmentsTargetserversResource {
   /// form
   /// `organizations/{org}/environments/{env}/targetservers/{target_server_id}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/targetservers/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/targetservers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10137,7 +10137,7 @@ class OrganizationsEnvironmentsTargetserversResource {
   /// form
   /// `organizations/{org}/environments/{env}/targetservers/{target_server_id}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/environments/[^/]+/targetservers/[^/]+$".
+  /// `^organizations/\[^/\]+/environments/\[^/\]+/targetservers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10209,7 +10209,7 @@ class OrganizationsInstancesResource {
   ///
   /// [parent] - Required. Name of the organization. Use the following structure
   /// in your request: `organizations/{org}`.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10270,7 +10270,7 @@ class OrganizationsInstancesResource {
   ///
   /// [name] - Required. Name of the instance. Use the following structure in
   /// your request: `organizations/{org}/instance/{instance}`.
-  /// Value must have pattern "^organizations/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10325,7 +10325,7 @@ class OrganizationsInstancesResource {
   ///
   /// [name] - Required. Name of the instance. Use the following structure in
   /// your request: `organizations/{org}/instances/{instance}`.
-  /// Value must have pattern "^organizations/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10380,7 +10380,7 @@ class OrganizationsInstancesResource {
   ///
   /// [parent] - Required. Name of the organization. Use the following structure
   /// in your request: `organizations/{org}`.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of instances to return. Defaults to 25.
   ///
@@ -10450,7 +10450,7 @@ class OrganizationsInstancesResource {
   /// [instance] - The name of the instance reporting this status. For SaaS the
   /// request will be rejected if no instance exists under this name. Format is
   /// organizations/{org}/instances/{instance}
-  /// Value must have pattern "^organizations/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10520,7 +10520,7 @@ class OrganizationsInstancesAttachmentsResource {
   ///
   /// [parent] - Required. Name of the instance. Use the following structure in
   /// your request: `organizations/{org}/instances/{instance}`.
-  /// Value must have pattern "^organizations/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10583,7 +10583,7 @@ class OrganizationsInstancesAttachmentsResource {
   /// your request:
   /// `organizations/{org}/instances/{instance}/attachments/{attachment}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/instances/[^/]+/attachments/[^/]+$".
+  /// `^organizations/\[^/\]+/instances/\[^/\]+/attachments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10640,7 +10640,7 @@ class OrganizationsInstancesAttachmentsResource {
   /// your request:
   /// `organizations/{org}/instances/{instance}/attachments/{attachment}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/instances/[^/]+/attachments/[^/]+$".
+  /// `^organizations/\[^/\]+/instances/\[^/\]+/attachments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10695,7 +10695,7 @@ class OrganizationsInstancesAttachmentsResource {
   ///
   /// [parent] - Required. Name of the organization. Use the following structure
   /// in your request: `organizations/{org}/instances/{instance}`
-  /// Value must have pattern "^organizations/[^/]+/instances/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [pageSize] - Maximum number of instance attachments to return. Defaults to
   /// 25.
@@ -10773,7 +10773,7 @@ class OrganizationsKeyvaluemapsResource {
   ///
   /// [parent] - Required. The name of the organization in which to create the
   /// key value map file. Must be of the form `organizations/{organization}`.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10832,7 +10832,7 @@ class OrganizationsKeyvaluemapsResource {
   ///
   /// [name] - Required. The name of the key value map. Must be of the form
   /// `organizations/{organization}/keyvaluemaps/{keyvaluemap}`.
-  /// Value must have pattern "^organizations/[^/]+/keyvaluemaps/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/keyvaluemaps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10894,7 +10894,7 @@ class OrganizationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^organizations/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10955,7 +10955,7 @@ class OrganizationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -11044,7 +11044,7 @@ class OrganizationsReportsResource {
   /// [parent] - Required. The parent organization name under which the Custom
   /// Report will be created. Must be of the form:
   /// `organizations/{organization_id}/reports`
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11102,7 +11102,7 @@ class OrganizationsReportsResource {
   ///
   /// [name] - Required. Custom Report name of the form:
   /// `organizations/{organization_id}/reports/{report_name}`
-  /// Value must have pattern "^organizations/[^/]+/reports/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/reports/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11155,7 +11155,7 @@ class OrganizationsReportsResource {
   ///
   /// [name] - Required. Custom Report name of the form:
   /// `organizations/{organization_id}/reports/{report_name}`
-  /// Value must have pattern "^organizations/[^/]+/reports/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/reports/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11208,7 +11208,7 @@ class OrganizationsReportsResource {
   ///
   /// [parent] - Required. The parent organization name under which the API
   /// product will be listed `organizations/{organization_id}/reports`
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [expand] - Set to 'true' to get expanded details about each custom report.
   ///
@@ -11270,7 +11270,7 @@ class OrganizationsReportsResource {
   ///
   /// [name] - Required. Custom Report name of the form:
   /// `organizations/{organization_id}/reports/{report_name}`
-  /// Value must have pattern "^organizations/[^/]+/reports/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/reports/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11348,7 +11348,7 @@ class OrganizationsSharedflowsResource {
   /// [parent] - Required. The name of the parent organization under which to
   /// create the shared flow. Must be of the form:
   /// `organizations/{organization_id}`
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [action] - Required. Must be set to either `import` or `validate`.
   ///
@@ -11421,7 +11421,7 @@ class OrganizationsSharedflowsResource {
   ///
   /// [name] - Required. shared flow name of the form:
   /// `organizations/{organization_id}/sharedflows/{shared_flow_id}`
-  /// Value must have pattern "^organizations/[^/]+/sharedflows/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/sharedflows/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11474,7 +11474,7 @@ class OrganizationsSharedflowsResource {
   ///
   /// [name] - Required. The name of the shared flow to get. Must be of the
   /// form: `organizations/{organization_id}/sharedflows/{shared_flow_id}`
-  /// Value must have pattern "^organizations/[^/]+/sharedflows/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/sharedflows/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11527,7 +11527,7 @@ class OrganizationsSharedflowsResource {
   ///
   /// [parent] - Required. The name of the parent organization under which to
   /// get shared flows. Must be of the form: `organizations/{organization_id}`
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [includeMetaData] - Indicates whether to include shared flow metadata in
   /// the response.
@@ -11604,7 +11604,7 @@ class OrganizationsSharedflowsDeploymentsResource {
   /// [parent] - Required. Name of the shared flow for which to return
   /// deployment information in the following format:
   /// `organizations/{org}/sharedflows/{sharedflow}`
-  /// Value must have pattern "^organizations/[^/]+/sharedflows/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/sharedflows/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11674,7 +11674,7 @@ class OrganizationsSharedflowsRevisionsResource {
   /// of the form:
   /// `organizations/{organization_id}/sharedflows/{shared_flow_id}/revisions/{revision_id}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/sharedflows/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/sharedflows/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11732,7 +11732,7 @@ class OrganizationsSharedflowsRevisionsResource {
   /// the form:
   /// `organizations/{organization_id}/sharedflows/{shared_flow_id}/revisions/{revision_id}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/sharedflows/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/sharedflows/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [format] - Specify `bundle` to export the contents of the shared flow
   /// bundle. Otherwise, the bundle metadata is returned.
@@ -11801,7 +11801,7 @@ class OrganizationsSharedflowsRevisionsResource {
   /// of the form:
   /// `organizations/{organization_id}/sharedflows/{shared_flow_id}/revisions/{revision_id}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/sharedflows/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/sharedflows/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [validate] - Ignored. All uploads are validated regardless of the value of
   /// this field. It is kept for compatibility with existing APIs. Must be
@@ -11876,7 +11876,7 @@ class OrganizationsSharedflowsRevisionsDeploymentsResource {
   /// deployment information in the following format:
   /// `organizations/{org}/sharedflows/{sharedflow}/revisions/{rev}`.
   /// Value must have pattern
-  /// "^organizations/[^/]+/sharedflows/[^/]+/revisions/[^/]+$".
+  /// `^organizations/\[^/\]+/sharedflows/\[^/\]+/revisions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11949,7 +11949,7 @@ class OrganizationsSitesApicategoriesResource {
   ///
   /// [parent] - Required. Name of the portal. Use the following structure in
   /// your request: `organizations/{org}/sites/{site}`
-  /// Value must have pattern "^organizations/[^/]+/sites/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/sites/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12010,7 +12010,7 @@ class OrganizationsSitesApicategoriesResource {
   /// your request:
   /// `organizations/{org}/sites/{site}/apicategories/{apicategory}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/sites/[^/]+/apicategories/[^/]+$".
+  /// `^organizations/\[^/\]+/sites/\[^/\]+/apicategories/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12065,7 +12065,7 @@ class OrganizationsSitesApicategoriesResource {
   /// your request:
   /// `organizations/{org}/sites/{site}/apicategories/{apicategory}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/sites/[^/]+/apicategories/[^/]+$".
+  /// `^organizations/\[^/\]+/sites/\[^/\]+/apicategories/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12118,7 +12118,7 @@ class OrganizationsSitesApicategoriesResource {
   ///
   /// [parent] - Required. Name of the portal. Use the following structure in
   /// your request: `organizations/{org}/sites/{site}`
-  /// Value must have pattern "^organizations/[^/]+/sites/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/sites/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12177,7 +12177,7 @@ class OrganizationsSitesApicategoriesResource {
   /// your request:
   /// `organizations/{org}/sites/{site}/apicategories/{apicategory}`
   /// Value must have pattern
-  /// "^organizations/[^/]+/sites/[^/]+/apicategories/[^/]+$".
+  /// `^organizations/\[^/\]+/sites/\[^/\]+/apicategories/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12245,7 +12245,7 @@ class ProjectsResource {
   ///
   /// [project] - Required. Name of the GCP project with which to associate the
   /// Apigee organization.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -16261,7 +16261,7 @@ class GoogleCloudApigeeV1Export {
   core.String created;
 
   /// Name of the datastore that is the destination of the export job
-  /// [datastore]
+  /// \[datastore\]
   core.String datastoreName;
 
   /// Description of the export job.
@@ -16369,7 +16369,7 @@ class GoogleCloudApigeeV1Export {
   }
 }
 
-/// Request body for [CreateExportRequest]
+/// Request body for \[CreateExportRequest\]
 class GoogleCloudApigeeV1ExportRequest {
   /// Delimiter used in the CSV file, if `outputFormat` is set to `csv`.
   ///
@@ -17723,9 +17723,9 @@ class GoogleCloudApigeeV1Metadata {
   /// List of additional information such as data source, if result was
   /// truncated etc.
   ///
-  /// E.g "notices": [ "Source:Postgres", "PG Host:uappg0rw.e2e.apigeeks.net",
+  /// E.g "notices": \[ "Source:Postgres", "PG Host:uappg0rw.e2e.apigeeks.net",
   /// "query served by:4b64601e-40de-4eb1-bfb9-eeee7ac929ed", "Table used:
-  /// edge.api.uapgroup2.agg_api" ]
+  /// edge.api.uapgroup2.agg_api" \]
   core.List<core.String> notices;
 
   GoogleCloudApigeeV1Metadata();
@@ -17757,17 +17757,17 @@ class GoogleCloudApigeeV1Metadata {
 
 /// This message type encapsulates the metric data point.
 ///
-/// Example: { "name": "sum(message_count)", "values" : [ { "timestamp":
+/// Example: { "name": "sum(message_count)", "values" : \[ { "timestamp":
 /// 1549004400000, "value": "39.0" }, { "timestamp" : 1548997200000, "value" :
-/// "0.0" } ] } or { "name": "sum(message_count)", "values" : ["39.0"] }
+/// "0.0" } \] } or { "name": "sum(message_count)", "values" : \["39.0"\] }
 class GoogleCloudApigeeV1Metric {
   /// This field contains the metric name.
   core.String name;
 
   /// List of metric values.
   ///
-  /// Possible value format: "values":["39.0"] or "values":[ { "value": "39.0",
-  /// "timestamp": 1232434354} ]
+  /// Possible value format: "values":\["39.0"\] or "values":\[ { "value":
+  /// "39.0", "timestamp": 1232434354} \]
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -18009,15 +18009,15 @@ class GoogleCloudApigeeV1OptimizedStats {
   /// This field wraps the stats response for Js Optimized Scenario with a
   /// Response key.
   ///
-  /// E.g. { "Response": { "TimeUnit": [], "metaData": { "errors": [],
-  /// "notices": [ "Source:Postgres", "Table used:
+  /// E.g. { "Response": { "TimeUnit": \[\], "metaData": { "errors": \[\],
+  /// "notices": \[ "Source:Postgres", "Table used:
   /// edge.api.aaxgroup001.agg_api", "PG
   /// Host:ruappg08-ro.production.apigeeks.net", "query served
-  /// by:80c4ebca-6a10-4a2e-8faf-c60c1ee306ca" ] }, "resultTruncated": false,
-  /// "stats": { "data": [ { "identifier": { "names": [ "apiproxy" ], "values":
-  /// [ "sirjee" ] }, "metric": [ { "env": "prod", "name": "sum(message_count)",
-  /// "values": [ 36.0 ] }, { "env": "prod", "name": "sum(is_error)", "values":
-  /// [ 36.0 ] } ] } ] } } }
+  /// by:80c4ebca-6a10-4a2e-8faf-c60c1ee306ca" \] }, "resultTruncated": false,
+  /// "stats": { "data": \[ { "identifier": { "names": \[ "apiproxy" \],
+  /// "values": \[ "sirjee" \] }, "metric": \[ { "env": "prod", "name":
+  /// "sum(message_count)", "values": \[ 36.0 \] }, { "env": "prod", "name":
+  /// "sum(is_error)", "values": \[ 36.0 \] } \] } \] } } }
   GoogleCloudApigeeV1OptimizedStatsResponse Response;
 
   GoogleCloudApigeeV1OptimizedStats();
@@ -18039,12 +18039,12 @@ class GoogleCloudApigeeV1OptimizedStats {
 }
 
 /// This message type encapsulates a data node as represented below: {
-/// "identifier": { "names": [ "apiproxy" ], "values": [ "sirjee" ] }, "metric":
-/// [ { "env": "prod", "name": "sum(message_count)", "values": [ 36.0 ] } ] } OR
-/// { "env": "prod", "name": "sum(message_count)", "values": [ 36.0 ] }
-/// Depending on whether a dimension is present in the query or not the data
-/// node type can be a simple metric value or dimension identifier with list of
-/// metrics.
+/// "identifier": { "names": \[ "apiproxy" \], "values": \[ "sirjee" \] },
+/// "metric": \[ { "env": "prod", "name": "sum(message_count)", "values": \[
+/// 36.0 \] } \] } OR { "env": "prod", "name": "sum(message_count)", "values":
+/// \[ 36.0 \] } Depending on whether a dimension is present in the query or not
+/// the data node type can be a simple metric value or dimension identifier with
+/// list of metrics.
 class GoogleCloudApigeeV1OptimizedStatsNode {
   ///
   ///
@@ -18144,7 +18144,7 @@ class GoogleCloudApigeeV1Organization {
   ///
   /// See [Getting started with the Service Networking
   /// API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
-  /// Valid only when [RuntimeType] is set to CLOUD. The value can be updated
+  /// Valid only when \[RuntimeType\] is set to CLOUD. The value can be updated
   /// only when there are no runtime instances. For example: "default".
   /// **Note:** Not supported for Apigee hybrid.
   core.String authorizedNetwork;
@@ -18152,7 +18152,7 @@ class GoogleCloudApigeeV1Organization {
   /// Base64-encoded public certificate for the root CA of the Apigee
   /// organization.
   ///
-  /// Valid only when [RuntimeType] is CLOUD.
+  /// Valid only when \[RuntimeType\] is CLOUD.
   ///
   /// Output only.
   core.String caCertificate;
@@ -18780,7 +18780,7 @@ class GoogleCloudApigeeV1QueryMetadata {
 
   /// Metrics of the AsyncQuery.
   ///
-  /// Example: ["name:message_count,func:sum,alias:sum_message_count"]
+  /// Example: \["name:message_count,func:sum,alias:sum_message_count"\]
   core.List<core.String> metrics;
 
   /// Output format.
@@ -18973,7 +18973,7 @@ class GoogleCloudApigeeV1Reference {
 
   /// The resource id of this reference.
   ///
-  /// Values must match the regular expression [\w\s\-.]+.
+  /// Values must match the regular expression \[\w\s\-.\]+.
   ///
   /// Required.
   core.String name;
@@ -19343,8 +19343,8 @@ class GoogleCloudApigeeV1Result {
 
   /// A list of HTTP headers.
   ///
-  /// for example, '"headers" : [ { "name" : "Content-Length", "value" : "83" },
-  /// { "name" : "Content-Type", "value" : "application/json" } ]'
+  /// for example, '"headers" : \[ { "name" : "Content-Length", "value" : "83"
+  /// }, { "name" : "Content-Type", "value" : "application/json" } \]'
   core.List<GoogleCloudApigeeV1Property> headers;
 
   /// Name value pairs used for DebugInfo ActionResult.
@@ -19836,7 +19836,7 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
 /// ResponseCodeRange represents a group of response codes to capture, from the
 /// first response code to the last response code.
 ///
-/// Each range is a close interval. For example, if an interval is [400, 403],
+/// Each range is a close interval. For example, if an interval is \[400, 403\],
 /// then that means 400, 401, 402, 403 will be all captured.
 class GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange {
   /// The first response code to capture.
@@ -20313,9 +20313,9 @@ class GoogleCloudApigeeV1Stats {
   }
 }
 
-/// This message type encapsulates the environment wrapper: "environments": [ {
-/// "metrics": [ { "name": "sum(message_count)", "values": [ "2.52056245E8" ] }
-/// ], "name": "prod" } ]
+/// This message type encapsulates the environment wrapper: "environments": \[ {
+/// "metrics": \[ { "name": "sum(message_count)", "values": \[ "2.52056245E8" \]
+/// } \], "name": "prod" } \]
 class GoogleCloudApigeeV1StatsEnvironmentStats {
   /// This field contains the list of metrics grouped under dimensions.
   core.List<GoogleCloudApigeeV1DimensionMetric> dimensions;
@@ -20326,11 +20326,12 @@ class GoogleCloudApigeeV1StatsEnvironmentStats {
   /// If no dimensions are provided, then only a top level metrics is provided.
   /// If dimensions are included, then there will be a top level dimensions
   /// field under environments which will contain metrics values and the
-  /// dimension name. Example: "environments": [ { "dimensions": [ { "metrics":
-  /// [ { "name": "sum(message_count)", "values": [ "2.14049521E8" ] } ],
-  /// "name": "nit_proxy" } ], "name": "prod" } ] OR "environments": [ {
-  /// "metrics": [ { "name": "sum(message_count)", "values": [ "2.19026331E8" ]
-  /// } ], "name": "prod" } ] This field contains the list of metric values.
+  /// dimension name. Example: "environments": \[ { "dimensions": \[ {
+  /// "metrics": \[ { "name": "sum(message_count)", "values": \[ "2.14049521E8"
+  /// \] } \], "name": "nit_proxy" } \], "name": "prod" } \] OR "environments":
+  /// \[ { "metrics": \[ { "name": "sum(message_count)", "values": \[
+  /// "2.19026331E8" \] } \], "name": "prod" } \] This field contains the list
+  /// of metric values.
   core.List<GoogleCloudApigeeV1Metric> metrics;
   core.String name;
 
@@ -20400,9 +20401,9 @@ class GoogleCloudApigeeV1SyncAuthorization {
   /// Entity tag (ETag) used for optimistic concurrency control as a way to help
   /// prevent simultaneous updates from overwriting each other.
   ///
-  /// For example, when you call [getSyncAuthorization](getSyncAuthorization) an
-  /// ETag is returned in the response. Pass that ETag when calling the
-  /// [setSyncAuthorization](setSyncAuthorization) to ensure that you are
+  /// For example, when you call \[getSyncAuthorization\](getSyncAuthorization)
+  /// an ETag is returned in the response. Pass that ETag when calling the
+  /// \[setSyncAuthorization\](setSyncAuthorization) to ensure that you are
   /// updating the correct version. If you don't pass the ETag in the call to
   /// `setSyncAuthorization`, then the existing authorization is overwritten
   /// indiscriminately. **Note**: We strongly recommend that you use the ETag in
@@ -21041,13 +21042,13 @@ class GoogleCloudApigeeV1UpdateError {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class GoogleIamV1AuditConfig {
@@ -21090,9 +21091,9 @@ class GoogleIamV1AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class GoogleIamV1AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -21230,14 +21231,14 @@ class GoogleIamV1Binding {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

@@ -86,7 +86,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -137,7 +137,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -240,7 +240,8 @@ class ProjectsLocationsGlobalDomainsResource {
   /// [name] - Required. The resource domain name, project name and location
   /// using the form:
   /// `projects/{project_id}/locations/global/domains/{domain_name}`
-  /// Value must have pattern "^projects/[^/]+/locations/global/domains/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -299,7 +300,7 @@ class ProjectsLocationsGlobalDomainsResource {
   ///
   /// [parent] - Required. The resource project name and location using the
   /// form: `projects/{project_id}/locations/global`
-  /// Value must have pattern "^projects/[^/]+/locations/global$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
   ///
   /// [domainName] - Required. The fully qualified domain name. e.g.
   /// mydomain.myorganization.com, with the following restrictions: * Must
@@ -369,7 +370,8 @@ class ProjectsLocationsGlobalDomainsResource {
   ///
   /// [name] - Required. The domain resource name using the form:
   /// `projects/{project_id}/locations/global/domains/{domain_name}`
-  /// Value must have pattern "^projects/[^/]+/locations/global/domains/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -424,7 +426,8 @@ class ProjectsLocationsGlobalDomainsResource {
   /// [name] - Required. The resource domain name, project name, and location
   /// using the form:
   /// `projects/{project_id}/locations/global/domains/{domain_name}`
-  /// Value must have pattern "^projects/[^/]+/locations/global/domains/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -481,7 +484,8 @@ class ProjectsLocationsGlobalDomainsResource {
   ///
   /// [name] - Required. The domain resource name using the form:
   /// `projects/{project_id}/locations/global/domains/{domain_name}`
-  /// Value must have pattern "^projects/[^/]+/locations/global/domains/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -537,7 +541,8 @@ class ProjectsLocationsGlobalDomainsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/global/domains/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -605,7 +610,7 @@ class ProjectsLocationsGlobalDomainsResource {
   ///
   /// [parent] - Required. The resource name of the domain location using the
   /// form: `projects/{project_id}/locations/global`
-  /// Value must have pattern "^projects/[^/]+/locations/global$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/global$`.
   ///
   /// [filter] - Optional. A filter specifying constraints of a list operation.
   /// For example, `Domain.fqdn="mydomain.myorginization"`.
@@ -693,7 +698,8 @@ class ProjectsLocationsGlobalDomainsResource {
   ///
   /// [name] - Required. The unique name of the domain using the form:
   /// `projects/{project_id}/locations/global/domains/{domain_name}`.
-  /// Value must have pattern "^projects/[^/]+/locations/global/domains/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Mask of fields to update. At least one path must
   /// be supplied in this field. The elements of the repeated paths field may
@@ -761,7 +767,8 @@ class ProjectsLocationsGlobalDomainsResource {
   /// [name] - Required. The resource domain name, project name and location
   /// using the form:
   /// `projects/{project_id}/locations/global/domains/{domain_name}`
-  /// Value must have pattern "^projects/[^/]+/locations/global/domains/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -821,7 +828,8 @@ class ProjectsLocationsGlobalDomainsResource {
   ///
   /// [name] - Required. The domain resource name using the form:
   /// `projects/{project_id}/locations/global/domains/{domain_name}`
-  /// Value must have pattern "^projects/[^/]+/locations/global/domains/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -886,7 +894,8 @@ class ProjectsLocationsGlobalDomainsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/global/domains/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -952,7 +961,8 @@ class ProjectsLocationsGlobalDomainsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/locations/global/domains/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1015,7 +1025,8 @@ class ProjectsLocationsGlobalDomainsResource {
   /// [name] - Required. The resource domain name, project name, and location
   /// using the form:
   /// `projects/{project_id}/locations/global/domains/{domain_name}`
-  /// Value must have pattern "^projects/[^/]+/locations/global/domains/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/global/domains/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1091,7 +1102,7 @@ class ProjectsLocationsGlobalOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1151,7 +1162,7 @@ class ProjectsLocationsGlobalOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1206,7 +1217,7 @@ class ProjectsLocationsGlobalOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/global/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/global/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1266,7 +1277,7 @@ class ProjectsLocationsGlobalOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/global/operations$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/global/operations$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -1500,7 +1511,7 @@ class Domain {
   core.String admin;
 
   /// The full names of the Google Compute Engine
-  /// [networks](/compute/docs/networks-and-firewalls#networks) the domain
+  /// \[networks\](/compute/docs/networks-and-firewalls#networks) the domain
   /// instance is connected to.
   ///
   /// Networks can be added using UpdateDomain. The domain is only available on
@@ -1546,7 +1557,8 @@ class Domain {
   /// The CIDR range of internal addresses that are reserved for this domain.
   ///
   /// Reserved networks must be /24 or larger. Ranges must be unique and
-  /// non-overlapping with existing subnets in [Domain].[authorized_networks].
+  /// non-overlapping with existing subnets in
+  /// \[Domain\].\[authorized_networks\].
   ///
   /// Required.
   core.String reservedIpRange;
@@ -3069,14 +3081,14 @@ class OperationMetadata {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

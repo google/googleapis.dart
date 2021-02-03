@@ -133,14 +133,15 @@ class ProjectsAlertPoliciesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The project in which to create the alerting policy. The
-  /// format is: projects/[PROJECT_ID_OR_NUMBER] Note that this field names the
-  /// parent container in which the alerting policy will be written, not the
+  /// format is: projects/\[PROJECT_ID_OR_NUMBER\] Note that this field names
+  /// the parent container in which the alerting policy will be written, not the
   /// name of the created policy. |name| must be a host project of a workspace,
   /// otherwise INVALID_ARGUMENT error will return. The alerting policy that is
   /// returned will have a name that contains a normalized representation of
   /// this name as a prefix but adds a suffix of the form
-  /// /alertPolicies/[ALERT_POLICY_ID], identifying the policy in the container.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// /alertPolicies/\[ALERT_POLICY_ID\], identifying the policy in the
+  /// container.
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -198,9 +199,9 @@ class ProjectsAlertPoliciesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The alerting policy to delete. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] For more
-  /// information, see AlertPolicy.
-  /// Value must have pattern "^projects/[^/]+/alertPolicies/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/alertPolicies/\[ALERT_POLICY_ID\] For
+  /// more information, see AlertPolicy.
+  /// Value must have pattern `^projects/\[^/\]+/alertPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -251,8 +252,8 @@ class ProjectsAlertPoliciesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The alerting policy to retrieve. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
-  /// Value must have pattern "^projects/[^/]+/alertPolicies/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/alertPolicies/\[ALERT_POLICY_ID\]
+  /// Value must have pattern `^projects/\[^/\]+/alertPolicies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -304,11 +305,11 @@ class ProjectsAlertPoliciesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The project whose alert policies are to be listed. The
-  /// format is: projects/[PROJECT_ID_OR_NUMBER] Note that this field names the
-  /// parent container in which the alerting policies to be listed are stored.
-  /// To retrieve a single alerting policy by name, use the GetAlertPolicy
-  /// operation, instead.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// format is: projects/\[PROJECT_ID_OR_NUMBER\] Note that this field names
+  /// the parent container in which the alerting policies to be listed are
+  /// stored. To retrieve a single alerting policy by name, use the
+  /// GetAlertPolicy operation, instead.
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - If provided, this field specifies the criteria that must be met
   /// by alert policies to be included in the response.For more details, see
@@ -403,11 +404,11 @@ class ProjectsAlertPoliciesResource {
   ///
   /// [name] - Required if the policy exists. The resource name for this policy.
   /// The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
-  /// [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is
-  /// created. When calling the alertPolicies.create method, do not include the
-  /// name field in the alerting policy passed as part of the request.
-  /// Value must have pattern "^projects/[^/]+/alertPolicies/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/alertPolicies/\[ALERT_POLICY_ID\]
+  /// \[ALERT_POLICY_ID\] is assigned by Stackdriver Monitoring when the policy
+  /// is created. When calling the alertPolicies.create method, do not include
+  /// the name field in the alerting policy passed as part of the request.
+  /// Value must have pattern `^projects/\[^/\]+/alertPolicies/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. A list of alerting policy field names. If this
   /// field is not empty, each listed field in the existing alerting policy is
@@ -420,11 +421,12 @@ class ProjectsAlertPoliciesResource {
   /// empty, then the supplied alerting policy replaces the existing policy. It
   /// is the same as deleting the existing policy and adding the supplied
   /// policy, except for the following: The new policy will have the same
-  /// [ALERT_POLICY_ID] as the former policy. This gives you continuity with the
-  /// former policy in your notifications and incidents. Conditions in the new
-  /// policy will keep their former [CONDITION_ID] if the supplied condition
-  /// includes the name field with that [CONDITION_ID]. If the supplied
-  /// condition omits the name field, then a new [CONDITION_ID] is created.
+  /// \[ALERT_POLICY_ID\] as the former policy. This gives you continuity with
+  /// the former policy in your notifications and incidents. Conditions in the
+  /// new policy will keep their former \[CONDITION_ID\] if the supplied
+  /// condition includes the name field with that \[CONDITION_ID\]. If the
+  /// supplied condition omits the name field, then a new \[CONDITION_ID\] is
+  /// created.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -496,8 +498,8 @@ class ProjectsCollectdTimeSeriesResource {
   /// Request parameters:
   ///
   /// [name] - The project in which to create the time series. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  /// Value must have pattern "^projects/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -566,8 +568,8 @@ class ProjectsGroupsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The project in which to create the group. The format
-  /// is: projects/[PROJECT_ID_OR_NUMBER]
-  /// Value must have pattern "^projects/[^/]+$".
+  /// is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [validateOnly] - If true, validate this request but do not create the
   /// group.
@@ -629,8 +631,8 @@ class ProjectsGroupsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The group to delete. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
-  /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/groups/\[GROUP_ID\]
+  /// Value must have pattern `^projects/\[^/\]+/groups/\[^/\]+$`.
   ///
   /// [recursive] - If this field is true, then the request means to delete a
   /// group with all its descendants. Otherwise, the request means to delete a
@@ -689,8 +691,8 @@ class ProjectsGroupsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The group to retrieve. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
-  /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/groups/\[GROUP_ID\]
+  /// Value must have pattern `^projects/\[^/\]+/groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -741,25 +743,26 @@ class ProjectsGroupsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The project whose groups are to be listed. The format
-  /// is: projects/[PROJECT_ID_OR_NUMBER]
-  /// Value must have pattern "^projects/[^/]+$".
+  /// is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [ancestorsOfGroup] - A group name. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] Returns groups that are
-  /// ancestors of the specified group. The groups are returned in order,
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/groups/\[GROUP_ID\] Returns groups that
+  /// are ancestors of the specified group. The groups are returned in order,
   /// starting with the immediate parent and ending with the most distant
   /// ancestor. If the specified group has no immediate parent, the results are
   /// empty.
   ///
   /// [childrenOfGroup] - A group name. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] Returns groups whose
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/groups/\[GROUP_ID\] Returns groups whose
   /// parent_name field contains the group name. If no groups have this parent,
   /// the results are empty.
   ///
   /// [descendantsOfGroup] - A group name. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] Returns the descendants
-  /// of the specified group. This is a superset of the results returned by the
-  /// children_of_group filter, and includes children-of-children, and so forth.
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/groups/\[GROUP_ID\] Returns the
+  /// descendants of the specified group. This is a superset of the results
+  /// returned by the children_of_group filter, and includes
+  /// children-of-children, and so forth.
   ///
   /// [pageSize] - A positive number that is the maximum number of results to
   /// return.
@@ -843,11 +846,11 @@ class ProjectsGroupsResource {
   /// Request parameters:
   ///
   /// [name] - Output only. The name of this group. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group,
-  /// this field is ignored and a new name is created consisting of the project
-  /// specified in the call to CreateGroup and a unique [GROUP_ID] that is
-  /// generated automatically.
-  /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/groups/\[GROUP_ID\] When creating a
+  /// group, this field is ignored and a new name is created consisting of the
+  /// project specified in the call to CreateGroup and a unique \[GROUP_ID\]
+  /// that is generated automatically.
+  /// Value must have pattern `^projects/\[^/\]+/groups/\[^/\]+$`.
   ///
   /// [validateOnly] - If true, validate this request but do not update the
   /// existing group.
@@ -916,8 +919,8 @@ class ProjectsGroupsMembersResource {
   /// Request parameters:
   ///
   /// [name] - Required. The group whose members are listed. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]
-  /// Value must have pattern "^projects/[^/]+/groups/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/groups/\[GROUP_ID\]
+  /// Value must have pattern `^projects/\[^/\]+/groups/\[^/\]+$`.
   ///
   /// [filter] - An optional list filter
   /// (https://cloud.google.com/monitoring/api/learn_more#filtering) describing
@@ -1022,8 +1025,8 @@ class ProjectsMetricDescriptorsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The project on which to execute the request. The format
-  /// is: projects/[PROJECT_ID_OR_NUMBER]
-  /// Value must have pattern "^projects/[^/]+$".
+  /// is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1085,9 +1088,9 @@ class ProjectsMetricDescriptorsResource {
   ///
   /// [name] - Required. The metric descriptor on which to execute the request.
   /// The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID] An example
-  /// of [METRIC_ID] is: "custom.googleapis.com/my_test_metric".
-  /// Value must have pattern "^projects/[^/]+/metricDescriptors/.*$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/metricDescriptors/\[METRIC_ID\] An
+  /// example of \[METRIC_ID\] is: "custom.googleapis.com/my_test_metric".
+  /// Value must have pattern `^projects/\[^/\]+/metricDescriptors/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1141,10 +1144,10 @@ class ProjectsMetricDescriptorsResource {
   ///
   /// [name] - Required. The metric descriptor on which to execute the request.
   /// The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/metricDescriptors/[METRIC_ID] An example
-  /// value of [METRIC_ID] is
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/metricDescriptors/\[METRIC_ID\] An
+  /// example value of \[METRIC_ID\] is
   /// "compute.googleapis.com/instance/disk/read_bytes_count".
-  /// Value must have pattern "^projects/[^/]+/metricDescriptors/.*$".
+  /// Value must have pattern `^projects/\[^/\]+/metricDescriptors/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1198,8 +1201,8 @@ class ProjectsMetricDescriptorsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The project on which to execute the request. The format
-  /// is: projects/[PROJECT_ID_OR_NUMBER]
-  /// Value must have pattern "^projects/[^/]+$".
+  /// is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - If this field is empty, all custom and system-defined metric
   /// descriptors are returned. Otherwise, the filter
@@ -1291,10 +1294,10 @@ class ProjectsMonitoredResourceDescriptorsResource {
   ///
   /// [name] - Required. The monitored resource descriptor to get. The format
   /// is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/monitoredResourceDescriptors/[RESOURCE_TYPE]
-  /// The [RESOURCE_TYPE] is a predefined type, such as cloudsql_database.
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/monitoredResourceDescriptors/\[RESOURCE_TYPE\]
+  /// The \[RESOURCE_TYPE\] is a predefined type, such as cloudsql_database.
   /// Value must have pattern
-  /// "^projects/[^/]+/monitoredResourceDescriptors/.*$".
+  /// `^projects/\[^/\]+/monitoredResourceDescriptors/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1348,8 +1351,8 @@ class ProjectsMonitoredResourceDescriptorsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The project on which to execute the request. The format
-  /// is: projects/[PROJECT_ID_OR_NUMBER]
-  /// Value must have pattern "^projects/[^/]+$".
+  /// is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - An optional filter
   /// (https://cloud.google.com/monitoring/api/v3/filters) describing the
@@ -1441,9 +1444,9 @@ class ProjectsNotificationChannelDescriptorsResource {
   ///
   /// [name] - Required. The channel type for which to execute the request. The
   /// format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[CHANNEL_TYPE]
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/notificationChannelDescriptors/\[CHANNEL_TYPE\]
   /// Value must have pattern
-  /// "^projects/[^/]+/notificationChannelDescriptors/[^/]+$".
+  /// `^projects/\[^/\]+/notificationChannelDescriptors/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1499,10 +1502,11 @@ class ProjectsNotificationChannelDescriptorsResource {
   ///
   /// [name] - Required. The REST resource name of the parent from which to
   /// retrieve the notification channel descriptors. The expected syntax is:
-  /// projects/[PROJECT_ID_OR_NUMBER] Note that this names the parent container
-  /// in which to look for the descriptors; to retrieve a single descriptor by
-  /// name, use the GetNotificationChannelDescriptor operation, instead.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\] Note that this names the parent
+  /// container in which to look for the descriptors; to retrieve a single
+  /// descriptor by name, use the GetNotificationChannelDescriptor operation,
+  /// instead.
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
   /// If not set to a positive number, a reasonable value will be chosen by the
@@ -1582,12 +1586,12 @@ class ProjectsNotificationChannelsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The project on which to execute the request. The format
-  /// is: projects/[PROJECT_ID_OR_NUMBER] This names the container into which
+  /// is: projects/\[PROJECT_ID_OR_NUMBER\] This names the container into which
   /// the channel will be written, this does not name the newly created channel.
   /// The resulting channel's name will have a normalized version of this field
-  /// as a prefix, but will add /notificationChannels/[CHANNEL_ID] to identify
+  /// as a prefix, but will add /notificationChannels/\[CHANNEL_ID\] to identify
   /// the channel.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1646,8 +1650,8 @@ class ProjectsNotificationChannelsResource {
   ///
   /// [name] - Required. The channel for which to execute the request. The
   /// format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
-  /// Value must have pattern "^projects/[^/]+/notificationChannels/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/notificationChannels/\[CHANNEL_ID\]
+  /// Value must have pattern `^projects/\[^/\]+/notificationChannels/\[^/\]+$`.
   ///
   /// [force] - If true, the notification channel will be deleted regardless of
   /// its use in alert policies (the policies will be updated to remove the
@@ -1714,8 +1718,8 @@ class ProjectsNotificationChannelsResource {
   ///
   /// [name] - Required. The channel for which to execute the request. The
   /// format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
-  /// Value must have pattern "^projects/[^/]+/notificationChannels/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/notificationChannels/\[CHANNEL_ID\]
+  /// Value must have pattern `^projects/\[^/\]+/notificationChannels/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1791,7 +1795,7 @@ class ProjectsNotificationChannelsResource {
   /// [name] - Required. The notification channel for which a verification code
   /// is to be generated and retrieved. This must name a channel that is already
   /// verified; if the specified channel is not verified, the request will fail.
-  /// Value must have pattern "^projects/[^/]+/notificationChannels/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/notificationChannels/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1850,11 +1854,11 @@ class ProjectsNotificationChannelsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The project on which to execute the request. The format
-  /// is: projects/[PROJECT_ID_OR_NUMBER] This names the container in which to
+  /// is: projects/\[PROJECT_ID_OR_NUMBER\] This names the container in which to
   /// look for the notification channels; it does not name a specific channel.
   /// To query a specific channel by REST resource name, use the
   /// GetNotificationChannel operation.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - If provided, this field specifies the criteria that must be met
   /// by notification channels to be included in the response.For more details,
@@ -1947,9 +1951,9 @@ class ProjectsNotificationChannelsResource {
   /// Request parameters:
   ///
   /// [name] - The full REST resource name for this channel. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The
-  /// [CHANNEL_ID] is automatically assigned by the server on creation.
-  /// Value must have pattern "^projects/[^/]+/notificationChannels/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/notificationChannels/\[CHANNEL_ID\] The
+  /// \[CHANNEL_ID\] is automatically assigned by the server on creation.
+  /// Value must have pattern `^projects/\[^/\]+/notificationChannels/\[^/\]+$`.
   ///
   /// [updateMask] - The fields to update.
   ///
@@ -2017,7 +2021,7 @@ class ProjectsNotificationChannelsResource {
   ///
   /// [name] - Required. The notification channel to which to send a
   /// verification code.
-  /// Value must have pattern "^projects/[^/]+/notificationChannels/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/notificationChannels/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2078,7 +2082,7 @@ class ProjectsNotificationChannelsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The notification channel to verify.
-  /// Value must have pattern "^projects/[^/]+/notificationChannels/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/notificationChannels/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2146,8 +2150,8 @@ class ProjectsTimeSeriesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The project on which to execute the request. The format
-  /// is: projects/[PROJECT_ID_OR_NUMBER]
-  /// Value must have pattern "^projects/[^/]+$".
+  /// is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2205,8 +2209,8 @@ class ProjectsTimeSeriesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The project on which to execute the request. The format
-  /// is: projects/[PROJECT_ID_OR_NUMBER]
-  /// Value must have pattern "^projects/[^/]+$".
+  /// is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [aggregation_alignmentPeriod] - The alignment_period specifies a time
   /// interval, in seconds, that is used to divide the data in all the time
@@ -2552,8 +2556,8 @@ class ProjectsTimeSeriesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The project on which to execute the request. The format
-  /// is: projects/[PROJECT_ID_OR_NUMBER]
-  /// Value must have pattern "^projects/[^/]+$".
+  /// is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2620,8 +2624,8 @@ class ProjectsUptimeCheckConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The project in which to create the Uptime check. The
-  /// format is: projects/[PROJECT_ID_OR_NUMBER]
-  /// Value must have pattern "^projects/[^/]+$".
+  /// format is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2683,8 +2687,9 @@ class ProjectsUptimeCheckConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The Uptime check configuration to delete. The format
-  /// is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID]
-  /// Value must have pattern "^projects/[^/]+/uptimeCheckConfigs/[^/]+$".
+  /// is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/uptimeCheckConfigs/\[UPTIME_CHECK_ID\]
+  /// Value must have pattern `^projects/\[^/\]+/uptimeCheckConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2735,8 +2740,9 @@ class ProjectsUptimeCheckConfigsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The Uptime check configuration to retrieve. The format
-  /// is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID]
-  /// Value must have pattern "^projects/[^/]+/uptimeCheckConfigs/[^/]+$".
+  /// is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/uptimeCheckConfigs/\[UPTIME_CHECK_ID\]
+  /// Value must have pattern `^projects/\[^/\]+/uptimeCheckConfigs/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2789,8 +2795,8 @@ class ProjectsUptimeCheckConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The project whose Uptime check configurations are
-  /// listed. The format is: projects/[PROJECT_ID_OR_NUMBER]
-  /// Value must have pattern "^projects/[^/]+$".
+  /// listed. The format is: projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
   /// The server may further constrain the maximum number of results returned in
@@ -2869,11 +2875,11 @@ class ProjectsUptimeCheckConfigsResource {
   ///
   /// [name] - A unique resource name for this Uptime check configuration. The
   /// format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] This
-  /// field should be omitted when creating the Uptime check configuration; on
-  /// create, the resource name is assigned by the server and included in the
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/uptimeCheckConfigs/\[UPTIME_CHECK_ID\]
+  /// This field should be omitted when creating the Uptime check configuration;
+  /// on create, the resource name is assigned by the server and included in the
   /// response.
-  /// Value must have pattern "^projects/[^/]+/uptimeCheckConfigs/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/uptimeCheckConfigs/\[^/\]+$`.
   ///
   /// [updateMask] - Optional. If present, only the listed fields in the current
   /// Uptime check configuration are updated with values from the new
@@ -2949,12 +2955,12 @@ class ServicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the parent workspace. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [serviceId] - Optional. The Service id to use for this Service. If
   /// omitted, an id will be generated instead. Must match the pattern
-  /// [a-z0-9\-]+
+  /// \[a-z0-9\-\]+
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3014,8 +3020,8 @@ class ServicesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the Service to delete. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-  /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3066,8 +3072,8 @@ class ServicesResource {
   /// Request parameters:
   ///
   /// [name] - Required. Resource name of the Service. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-  /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3119,8 +3125,8 @@ class ServicesResource {
   ///
   /// [parent] - Required. Resource name of the parent containing the listed
   /// services, either a project or a Monitoring Workspace. The formats are:
-  /// projects/[PROJECT_ID_OR_NUMBER] workspaces/[HOST_PROJECT_ID_OR_NUMBER]
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\] workspaces/\[HOST_PROJECT_ID_OR_NUMBER\]
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [filter] - A filter specifying what Services to return. The filter
   /// currently supports the following fields: - `identifier_case` -
@@ -3209,8 +3215,8 @@ class ServicesResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for this Service. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-  /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [updateMask] - A set of field paths defining which fields to use for the
   /// update.
@@ -3281,12 +3287,12 @@ class ServicesServiceLevelObjectivesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the parent Service. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-  /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [serviceLevelObjectiveId] - Optional. The ServiceLevelObjective id to use
   /// for this ServiceLevelObjective. If omitted, an id will be generated
-  /// instead. Must match the pattern [a-z0-9\-]+
+  /// instead. Must match the pattern \[a-z0-9\-\]+
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3349,9 +3355,9 @@ class ServicesServiceLevelObjectivesResource {
   ///
   /// [name] - Required. Resource name of the ServiceLevelObjective to delete.
   /// The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]/serviceLevelObjectives/\[SLO_NAME\]
   /// Value must have pattern
-  /// "^[^/]+/[^/]+/services/[^/]+/serviceLevelObjectives/[^/]+$".
+  /// `^\[^/\]+/\[^/\]+/services/\[^/\]+/serviceLevelObjectives/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3403,9 +3409,9 @@ class ServicesServiceLevelObjectivesResource {
   ///
   /// [name] - Required. Resource name of the ServiceLevelObjective to get. The
   /// format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]/serviceLevelObjectives/\[SLO_NAME\]
   /// Value must have pattern
-  /// "^[^/]+/[^/]+/services/[^/]+/serviceLevelObjectives/[^/]+$".
+  /// `^\[^/\]+/\[^/\]+/services/\[^/\]+/serviceLevelObjectives/\[^/\]+$`.
   ///
   /// [view] - View of the ServiceLevelObjective to return. If DEFAULT, return
   /// the ServiceLevelObjective as originally defined. If EXPLICIT and the
@@ -3476,9 +3482,9 @@ class ServicesServiceLevelObjectivesResource {
   ///
   /// [parent] - Required. Resource name of the parent containing the listed
   /// SLOs, either a project or a Monitoring Workspace. The formats are:
-  /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-  /// workspaces/[HOST_PROJECT_ID_OR_NUMBER]/services/-
-  /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]
+  /// workspaces/\[HOST_PROJECT_ID_OR_NUMBER\]/services/-
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [filter] - A filter specifying what ServiceLevelObjectives to return.
   ///
@@ -3574,9 +3580,9 @@ class ServicesServiceLevelObjectivesResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for this ServiceLevelObjective. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]/serviceLevelObjectives/\[SLO_NAME\]
   /// Value must have pattern
-  /// "^[^/]+/[^/]+/services/[^/]+/serviceLevelObjectives/[^/]+$".
+  /// `^\[^/\]+/\[^/\]+/services/\[^/\]+/serviceLevelObjectives/\[^/\]+$`.
   ///
   /// [updateMask] - A set of field paths defining which fields to use for the
   /// update.
@@ -4046,10 +4052,10 @@ class AlertPolicy {
   /// Required if the policy exists.
   ///
   /// The resource name for this policy. The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
-  /// [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is
-  /// created. When calling the alertPolicies.create method, do not include the
-  /// name field in the alerting policy passed as part of the request.
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/alertPolicies/\[ALERT_POLICY_ID\]
+  /// \[ALERT_POLICY_ID\] is assigned by Stackdriver Monitoring when the policy
+  /// is created. When calling the alertPolicies.create method, do not include
+  /// the name field in the alerting policy passed as part of the request.
   core.String name;
 
   /// Identifies the notification channels to which notifications should be sent
@@ -4059,7 +4065,7 @@ class AlertPolicy {
   /// Each element of this array corresponds to the name field in each of the
   /// NotificationChannel objects that are returned from the
   /// ListNotificationChannels method. The format of the entries in this field
-  /// is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
+  /// is: projects/\[PROJECT_ID_OR_NUMBER\]/notificationChannels/\[CHANNEL_ID\]
   core.List<core.String> notificationChannels;
 
   /// User-supplied key/value data to be used for organizing and identifying the
@@ -4749,9 +4755,9 @@ class Condition {
   /// Required if the condition exists.
   ///
   /// The unique resource name for this condition. Its format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID]
-  /// [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is
-  /// created as part of a new or updated alerting policy.When calling the
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/alertPolicies/\[POLICY_ID\]/conditions/\[CONDITION_ID\]
+  /// \[CONDITION_ID\] is assigned by Stackdriver Monitoring when the condition
+  /// is created as part of a new or updated alerting policy.When calling the
   /// alertPolicies.create method, do not include the name field in the
   /// conditions of the requested alerting policy. Stackdriver Monitoring
   /// creates the condition identifiers and includes them in the new policy.When
@@ -4759,9 +4765,9 @@ class Condition {
   /// condition name causes the existing condition to be updated. Conditions
   /// without names are added to the updated policy. Existing conditions are
   /// deleted if they are not updated.Best practice is to preserve
-  /// [CONDITION_ID] if you make only small changes, such as those to condition
-  /// thresholds, durations, or trigger values. Otherwise, treat the change as a
-  /// new condition and let the existing condition be deleted.
+  /// \[CONDITION_ID\] if you make only small changes, such as those to
+  /// condition thresholds, durations, or trigger values. Otherwise, treat the
+  /// change as a new condition and let the existing condition be deleted.
   core.String name;
 
   Condition();
@@ -5112,7 +5118,7 @@ class Distribution {
   /// The sum of squared deviations from the mean of the values in the
   /// population.
   ///
-  /// For values x_i this is: Sum[i=1..n]((x_i - mean)^2) Knuth, "The Art of
+  /// For values x_i this is: Sum\[i=1..n\]((x_i - mean)^2) Knuth, "The Art of
   /// Computer Programming", Vol. 2, page 232, 3rd edition describes Welford's
   /// method for accumulating this sum in one pass.If count is zero then this
   /// field must be zero.
@@ -5771,17 +5777,17 @@ class Group {
 
   /// The name of this group.
   ///
-  /// The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When
+  /// The format is: projects/\[PROJECT_ID_OR_NUMBER\]/groups/\[GROUP_ID\] When
   /// creating a group, this field is ignored and a new name is created
   /// consisting of the project specified in the call to CreateGroup and a
-  /// unique [GROUP_ID] that is generated automatically.
+  /// unique \[GROUP_ID\] that is generated automatically.
   ///
   /// Output only.
   core.String name;
 
   /// The name of the group's parent, if it has one.
   ///
-  /// The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For
+  /// The format is: projects/\[PROJECT_ID_OR_NUMBER\]/groups/\[GROUP_ID\] For
   /// groups with no parent, parent_name is the empty string, "".
   core.String parentName;
 
@@ -6009,9 +6015,9 @@ class InternalChecker {
   /// A unique resource name for this InternalChecker.
   ///
   /// The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID]
-  /// [PROJECT_ID_OR_NUMBER] is the Stackdriver Workspace project for the Uptime
-  /// check config associated with the internal checker.
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/internalCheckers/\[INTERNAL_CHECKER_ID\]
+  /// \[PROJECT_ID_OR_NUMBER\] is the Stackdriver Workspace project for the
+  /// Uptime check config associated with the internal checker.
   core.String name;
 
   /// The GCP VPC network (https://cloud.google.com/vpc/docs/vpc) where the
@@ -6095,9 +6101,9 @@ class LabelDescriptor {
   /// The key for this label.
   ///
   /// The key must meet the following criteria: Does not exceed 100 characters.
-  /// Matches the following regular expression: [a-zA-Z][a-zA-Z0-9_]* The first
-  /// character must be an upper- or lower-case letter. The remaining characters
-  /// must be letters, digits, or underscores.
+  /// Matches the following regular expression: \[a-zA-Z\]\[a-zA-Z0-9_\]* The
+  /// first character must be an upper- or lower-case letter. The remaining
+  /// characters must be letters, digits, or underscores.
   core.String key;
 
   /// The type of data that can be assigned to the label.
@@ -7097,16 +7103,17 @@ class MetricDescriptor {
   /// query time from the underlying cumulative or delta value). .
   /// multiplication or composition (as an infix operator). For examples, GBy.d
   /// or k{watt}.h.The grammar for a unit is as follows: Expression = Component
-  /// { "." Component } { "/" Component } ; Component = ( [ PREFIX ] UNIT | "%"
-  /// ) [ Annotation ] | Annotation | "1" ; Annotation = "{" NAME "}" ; Notes:
-  /// Annotation is just a comment if it follows a UNIT. If the annotation is
-  /// used alone, then the unit is equivalent to 1. For examples, {request}/s ==
-  /// 1/s, By{transmitted}/s == By/s. NAME is a sequence of non-blank printable
-  /// ASCII characters not containing { or }. 1 represents a unitary
-  /// dimensionless unit (https://en.wikipedia.org/wiki/Dimensionless_quantity)
-  /// of 1, such as in 1/s. It is typically used when none of the basic units
-  /// are appropriate. For example, "new users per day" can be represented as
-  /// 1/d or {new-users}/d (and a metric value 5 would mean "5 new users).
+  /// { "." Component } { "/" Component } ; Component = ( \[ PREFIX \] UNIT |
+  /// "%" ) \[ Annotation \] | Annotation | "1" ; Annotation = "{" NAME "}" ;
+  /// Notes: Annotation is just a comment if it follows a UNIT. If the
+  /// annotation is used alone, then the unit is equivalent to 1. For examples,
+  /// {request}/s == 1/s, By{transmitted}/s == By/s. NAME is a sequence of
+  /// non-blank printable ASCII characters not containing { or }. 1 represents a
+  /// unitary dimensionless unit
+  /// (https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in
+  /// 1/s. It is typically used when none of the basic units are appropriate.
+  /// For example, "new users per day" can be represented as 1/d or
+  /// {new-users}/d (and a metric value 5 would mean "5 new users).
   /// Alternatively, "thousands of page views per day" would be represented as
   /// 1000/d or k1/d or k{page_views}/d (and a metric value of 5.3 would mean
   /// "5300 page views per day"). % represents dimensionless value of 1/100, and
@@ -7710,8 +7717,8 @@ class MonitoredResourceMetadata {
   /// System labels are a kind of metadata extracted by Google, including
   /// "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System
   /// label values can be only strings, Boolean values, or a list of strings.
-  /// For example: { "name": "my-test-instance", "security_group": ["a", "b",
-  /// "c"], "spot_instance": false }
+  /// For example: { "name": "my-test-instance", "security_group": \["a", "b",
+  /// "c"\], "spot_instance": false }
   ///
   /// Output only.
   ///
@@ -7889,8 +7896,8 @@ class NotificationChannel {
   /// The full REST resource name for this channel.
   ///
   /// The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The
-  /// [CHANNEL_ID] is automatically assigned by the server on creation.
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/notificationChannels/\[CHANNEL_ID\] The
+  /// \[CHANNEL_ID\] is automatically assigned by the server on creation.
   core.String name;
 
   /// The type of the notification channel.
@@ -8070,8 +8077,8 @@ class NotificationChannelDescriptor {
   /// The full REST resource name for this descriptor.
   ///
   /// The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[TYPE] In
-  /// the above, [TYPE] is the value of the type field.
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/notificationChannelDescriptors/\[TYPE\]
+  /// In the above, \[TYPE\] is the value of the type field.
   core.String name;
 
   /// The type of notification channel, such as "email" and "sms".
@@ -8496,8 +8503,8 @@ class RequestBasedSli {
 class ResourceGroup {
   /// The group of resources being monitored.
   ///
-  /// Should be only the [GROUP_ID], and not the full-path
-  /// projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
+  /// Should be only the \[GROUP_ID\], and not the full-path
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/groups/\[GROUP_ID\].
   core.String groupId;
 
   /// The resource type of the group members.
@@ -8572,7 +8579,7 @@ class Service {
 
   /// Resource name for this Service.
   ///
-  /// The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
+  /// The format is: projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]
   core.String name;
 
   /// Configuration for how to query telemetry on a Service.
@@ -8738,7 +8745,7 @@ class ServiceLevelObjective {
   /// Resource name for this ServiceLevelObjective.
   ///
   /// The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/services/\[SERVICE_ID\]/serviceLevelObjectives/\[SLO_NAME\]
   core.String name;
 
   /// A rolling time period, semantically "in the past ".
@@ -8828,16 +8835,16 @@ class SourceContext {
 
 /// The context of a span, attached to Exemplars in Distribution values during
 /// aggregation.It contains the name of a span with format:
-/// projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
+/// projects/\[PROJECT_ID_OR_NUMBER\]/traces/\[TRACE_ID\]/spans/\[SPAN_ID\]
 class SpanContext {
   /// The resource name of the span.
   ///
   /// The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
-  /// [TRACE_ID] is a unique identifier for a trace within a project; it is a
-  /// 32-character hexadecimal encoding of a 16-byte array.[SPAN_ID] is a unique
-  /// identifier for a span within a trace; it is a 16-character hexadecimal
-  /// encoding of an 8-byte array.
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/traces/\[TRACE_ID\]/spans/\[SPAN_ID\]
+  /// \[TRACE_ID\] is a unique identifier for a trace within a project; it is a
+  /// 32-character hexadecimal encoding of a 16-byte array.\[SPAN_ID\] is a
+  /// unique identifier for a span within a trace; it is a 16-character
+  /// hexadecimal encoding of an 8-byte array.
   core.String spanName;
 
   SpanContext();
@@ -8972,7 +8979,7 @@ class Telemetry {
 /// A closed time interval.
 ///
 /// It extends from the start time to the end time, and includes both:
-/// [startTime, endTime]. Valid time intervals depend on the MetricKind of the
+/// \[startTime, endTime\]. Valid time intervals depend on the MetricKind of the
 /// metric value. The end time must not be earlier than the start time. When
 /// writing data points, the start time must not be more than 25 hours in the
 /// past and the end time must not be more than five minutes in the future. For
@@ -9539,9 +9546,9 @@ class UptimeCheckConfig {
   /// A unique resource name for this Uptime check configuration.
   ///
   /// The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] This
-  /// field should be omitted when creating the Uptime check configuration; on
-  /// create, the resource name is assigned by the server and included in the
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/uptimeCheckConfigs/\[UPTIME_CHECK_ID\]
+  /// This field should be omitted when creating the Uptime check configuration;
+  /// on create, the resource name is assigned by the server and included in the
   /// response.
   core.String name;
 

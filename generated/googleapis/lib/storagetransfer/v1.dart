@@ -192,7 +192,7 @@ class TransferJobsResource {
   /// Request parameters:
   ///
   /// [jobName] - Required. " The job to get.
-  /// Value must have pattern "^transferJobs/.*$".
+  /// Value must have pattern `^transferJobs/.*$`.
   ///
   /// [projectId] - Required. The ID of the Google Cloud Platform Console
   /// project that owns the job.
@@ -252,8 +252,8 @@ class TransferJobsResource {
   ///
   /// [filter] - Required. A list of query parameters specified as JSON text in
   /// the form of: {"project_id":"my_project_id",
-  /// "job_names":["jobid1","jobid2",...],
-  /// "job_statuses":["status1","status2",...]}. Since `job_names` and
+  /// "job_names":\["jobid1","jobid2",...\],
+  /// "job_statuses":\["status1","status2",...\]}. Since `job_names` and
   /// `job_statuses` support multiple values, their values must be specified
   /// with array notation. `project``_``id` is required. `job_names` and
   /// `job_statuses` are optional. The valid values for `job_statuses` are
@@ -328,7 +328,7 @@ class TransferJobsResource {
   /// Request parameters:
   ///
   /// [jobName] - Required. The name of job to update.
-  /// Value must have pattern "^transferJobs/.*$".
+  /// Value must have pattern `^transferJobs/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -410,7 +410,7 @@ class TransferOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^transferOperations/.*$".
+  /// Value must have pattern `^transferOperations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -468,7 +468,7 @@ class TransferOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^transferOperations/.*$".
+  /// Value must have pattern `^transferOperations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -519,13 +519,13 @@ class TransferOperationsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The value `transferOperations`.
-  /// Value must have pattern "^transferOperations$".
+  /// Value must have pattern `^transferOperations$`.
   ///
   /// [filter] - Required. A list of query parameters specified as JSON text in
   /// the form of: {"project_id":"my_project_id",
-  /// "job_names":["jobid1","jobid2",...],
-  /// "operation_names":["opid1","opid2",...],
-  /// "transfer_statuses":["status1","status2",...]}. Since `job_names`,
+  /// "job_names":\["jobid1","jobid2",...\],
+  /// "operation_names":\["opid1","opid2",...\],
+  /// "transfer_statuses":\["status1","status2",...\]}. Since `job_names`,
   /// `operation_names`, and `transfer_statuses` support multiple values, they
   /// must be specified with array notation. `project``_``id` is required.
   /// `job_names`, `operation_names`, and `transfer_statuses` are optional. The
@@ -600,7 +600,7 @@ class TransferOperationsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the transfer operation.
-  /// Value must have pattern "^transferOperations/.*$".
+  /// Value must have pattern `^transferOperations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -657,7 +657,7 @@ class TransferOperationsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the transfer operation.
-  /// Value must have pattern "^transferOperations/.*$".
+  /// Value must have pattern `^transferOperations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -849,9 +849,9 @@ class AzureBlobStorageData {
 class AzureCredentials {
   /// Azure shared access signature.
   ///
-  /// (see [Grant limited access to Azure Storage resources using shared access
+  /// (see \[Grant limited access to Azure Storage resources using shared access
   /// signatures
-  /// (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+  /// (SAS)\](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
   ///
   /// Required.
   core.String sasToken;
@@ -1199,12 +1199,12 @@ class GoogleServiceAccount {
 /// information, see [Generating MD5
 /// hashes](https://cloud.google.com/storage-transfer/docs/create-url-list#md5)
 /// * Ensure that each URL you specify is publicly accessible. For example, in
-/// Cloud Storage you can [share an object publicly]
-/// (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a
-/// link to it. * Storage Transfer Service obeys `robots.txt` rules and requires
-/// the source HTTP server to support `Range` requests and to return a
-/// `Content-Length` header in each response. * ObjectConditions have no effect
-/// when filtering objects to transfer.
+/// Cloud Storage you can [share an object
+/// publicly](https://cloud.google.com/storage/docs/cloud-console#_sharingdata)
+/// and get a link to it. * Storage Transfer Service obeys `robots.txt` rules
+/// and requires the source HTTP server to support `Range` requests and to
+/// return a `Content-Length` header in each response. * ObjectConditions have
+/// no effect when filtering objects to transfer.
 class HttpData {
   /// The URL that points to the file that stores the object list entries.
   ///

@@ -101,12 +101,12 @@ class ProjectsAggregatedUsableSubnetworksResource {
   ///
   /// [parent] - The parent project where subnetworks are usable. Specified in
   /// the format `projects / * `.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - Filtering currently only supports equality on the
-  /// networkProjectId and must be in the form: "networkProjectId=[PROJECTID]",
-  /// where `networkProjectId` is the project which owns the listed subnetworks.
-  /// This defaults to the parent project ID.
+  /// networkProjectId and must be in the form:
+  /// "networkProjectId=\[PROJECTID\]", where `networkProjectId` is the project
+  /// which owns the listed subnetworks. This defaults to the parent project ID.
   ///
   /// [pageSize] - The max number of results per page that should be returned.
   /// If the number of available results is larger than `page_size`, a
@@ -193,7 +193,7 @@ class ProjectsLocationsResource {
   ///
   /// [name] - The name (project and location) of the server config to get,
   /// specified in the format `projects / * /locations / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project number](https://support.google.com/cloud/answer/6158840). This
@@ -280,7 +280,8 @@ class ProjectsLocationsClustersResource {
   /// [name] - The name (project, location, cluster id) of the cluster to
   /// complete IP rotation. Specified in the format `projects / * /locations / *
   /// /clusters / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -349,7 +350,7 @@ class ProjectsLocationsClustersResource {
   ///
   /// [parent] - The parent (project and location) where the cluster will be
   /// created. Specified in the format `projects / * /locations / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -412,7 +413,8 @@ class ProjectsLocationsClustersResource {
   ///
   /// [name] - The name (project, location, cluster) of the cluster to delete.
   /// Specified in the format `projects / * /locations / * /clusters / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to delete. This field
   /// has been deprecated and replaced by the name field.
@@ -488,7 +490,8 @@ class ProjectsLocationsClustersResource {
   ///
   /// [name] - The name (project, location, cluster) of the cluster to retrieve.
   /// Specified in the format `projects / * /locations / * /clusters / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [clusterId] - Deprecated. The name of the cluster to retrieve. This field
   /// has been deprecated and replaced by the name field.
@@ -568,7 +571,8 @@ class ProjectsLocationsClustersResource {
   ///
   /// [parent] - The cluster (project, location, cluster id) to get keys for.
   /// Specified in the format `projects / * /locations / * /clusters / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -623,7 +627,7 @@ class ProjectsLocationsClustersResource {
   /// [parent] - The parent (project and location) where the clusters will be
   /// listed. Specified in the format `projects / * /locations / * `. Location
   /// "-" matches all zones and all regions.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project number](https://support.google.com/cloud/answer/6158840). This
@@ -697,7 +701,8 @@ class ProjectsLocationsClustersResource {
   /// [name] - The name (project, location, cluster) of the cluster to set
   /// addons. Specified in the format `projects / * /locations / * /clusters / *
   /// `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -757,7 +762,8 @@ class ProjectsLocationsClustersResource {
   /// [name] - The name (project, location, cluster id) of the cluster to set
   /// legacy abac. Specified in the format `projects / * /locations / *
   /// /clusters / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -822,7 +828,8 @@ class ProjectsLocationsClustersResource {
   /// [name] - The name (project, location, cluster) of the cluster to set
   /// locations. Specified in the format `projects / * /locations / * /clusters
   /// / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -883,7 +890,8 @@ class ProjectsLocationsClustersResource {
   /// [name] - The name (project, location, cluster) of the cluster to set
   /// logging. Specified in the format `projects / * /locations / * /clusters /
   /// * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -943,7 +951,8 @@ class ProjectsLocationsClustersResource {
   /// [name] - The name (project, location, cluster id) of the cluster to set
   /// maintenance policy. Specified in the format `projects / * /locations / *
   /// /clusters / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1006,7 +1015,8 @@ class ProjectsLocationsClustersResource {
   ///
   /// [name] - The name (project, location, cluster) of the cluster to set auth.
   /// Specified in the format `projects / * /locations / * /clusters / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1067,7 +1077,8 @@ class ProjectsLocationsClustersResource {
   /// [name] - The name (project, location, cluster) of the cluster to set
   /// monitoring. Specified in the format `projects / * /locations / * /clusters
   /// / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1128,7 +1139,8 @@ class ProjectsLocationsClustersResource {
   /// [name] - The name (project, location, cluster id) of the cluster to set
   /// networking policy. Specified in the format `projects / * /locations / *
   /// /clusters / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1189,7 +1201,8 @@ class ProjectsLocationsClustersResource {
   /// [name] - The name (project, location, cluster id) of the cluster to set
   /// labels. Specified in the format `projects / * /locations / * /clusters / *
   /// `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1250,7 +1263,8 @@ class ProjectsLocationsClustersResource {
   /// [name] - The name (project, location, cluster id) of the cluster to start
   /// IP rotation. Specified in the format `projects / * /locations / *
   /// /clusters / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1310,7 +1324,8 @@ class ProjectsLocationsClustersResource {
   ///
   /// [name] - The name (project, location, cluster) of the cluster to update.
   /// Specified in the format `projects / * /locations / * /clusters / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1368,7 +1383,8 @@ class ProjectsLocationsClustersResource {
   ///
   /// [name] - The name (project, location, cluster) of the cluster to update.
   /// Specified in the format `projects / * /locations / * /clusters / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1436,7 +1452,8 @@ class ProjectsLocationsClustersNodePoolsResource {
   /// [parent] - The parent (project, location, cluster id) where the node pool
   /// will be created. Specified in the format `projects / * /locations / *
   /// /clusters / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1495,7 +1512,7 @@ class ProjectsLocationsClustersNodePoolsResource {
   /// pool to delete. Specified in the format `projects / * /locations / *
   /// /clusters / * /nodePools / * `.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/nodePools/\[^/\]+$`.
   ///
   /// [clusterId] - Deprecated. The name of the cluster. This field has been
   /// deprecated and replaced by the name field.
@@ -1581,7 +1598,7 @@ class ProjectsLocationsClustersNodePoolsResource {
   /// pool to get. Specified in the format `projects / * /locations / *
   /// /clusters / * /nodePools / * `.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/nodePools/\[^/\]+$`.
   ///
   /// [clusterId] - Deprecated. The name of the cluster. This field has been
   /// deprecated and replaced by the name field.
@@ -1666,7 +1683,8 @@ class ProjectsLocationsClustersNodePoolsResource {
   /// [parent] - The parent (project, location, cluster id) where the node pools
   /// will be listed. Specified in the format `projects / * /locations / *
   /// /clusters / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [clusterId] - Deprecated. The name of the cluster. This field has been
   /// deprecated and replaced by the parent field.
@@ -1751,7 +1769,7 @@ class ProjectsLocationsClustersNodePoolsResource {
   /// poll to rollback upgrade. Specified in the format `projects / * /locations
   /// / * /clusters / * /nodePools / * `.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/nodePools/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1811,7 +1829,7 @@ class ProjectsLocationsClustersNodePoolsResource {
   /// to set autoscaler settings. Specified in the format `projects / *
   /// /locations / * /clusters / * /nodePools / * `.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/nodePools/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1873,7 +1891,7 @@ class ProjectsLocationsClustersNodePoolsResource {
   /// pool to set management properties. Specified in the format `projects / *
   /// /locations / * /clusters / * /nodePools / * `.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/nodePools/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1935,7 +1953,7 @@ class ProjectsLocationsClustersNodePoolsResource {
   /// pool to set size. Specified in the format `projects / * /locations / *
   /// /clusters / * /nodePools / * `.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/nodePools/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1995,7 +2013,7 @@ class ProjectsLocationsClustersNodePoolsResource {
   /// to update. Specified in the format `projects / * /locations / * /clusters
   /// / * /nodePools / * `.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+/nodePools/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2064,7 +2082,8 @@ class ProjectsLocationsClustersWellKnownResource {
   /// [parent] - The cluster (project, location, cluster id) to get the
   /// discovery document for. Specified in the format `projects / * /locations /
   /// * /clusters / * `.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+/clusters/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2130,7 +2149,7 @@ class ProjectsLocationsOperationsResource {
   /// cancel. Specified in the format `projects / * /locations / * /operations /
   /// * `.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2188,7 +2207,7 @@ class ProjectsLocationsOperationsResource {
   /// get. Specified in the format `projects / * /locations / * /operations / *
   /// `.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [operationId] - Deprecated. The server-assigned `name` of the operation.
   /// This field has been deprecated and replaced by the name field.
@@ -2265,7 +2284,7 @@ class ProjectsLocationsOperationsResource {
   /// [parent] - The parent (project and location) where the operations will be
   /// listed. Specified in the format `projects / * /locations / * `. Location
   /// "-" matches all zones and all regions.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [projectId] - Deprecated. The Google Developers Console [project ID or
   /// project number](https://support.google.com/cloud/answer/6158840). This
@@ -5050,7 +5069,7 @@ class AutoprovisioningNodePoolDefaults {
   /// to each node in the node pool.
   ///
   /// This should be of the form
-  /// projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME].
+  /// projects/\[KEY_PROJECT_ID\]/locations/\[LOCATION\]/keyRings/\[RING_NAME\]/cryptoKeys/\[KEY_NAME\].
   /// For more information about protecting resources with Cloud KMS Keys please
   /// see:
   /// https://cloud.google.com/compute/docs/disks/customer-managed-encryption
@@ -6669,7 +6688,7 @@ class DailyMaintenanceWindow {
   /// Time within the maintenance window to start the maintenance operations.
   ///
   /// Time format should be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
-  /// format "HH:MM", where HH : [00-23] and MM : [00-59] GMT.
+  /// format "HH:MM", where HH : \[00-23\] and MM : \[00-59\] GMT.
   core.String startTime;
 
   DailyMaintenanceWindow();
@@ -7973,7 +7992,7 @@ class NodeConfig {
   /// to each node in the node pool.
   ///
   /// This should be of the form
-  /// projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME].
+  /// projects/\[KEY_PROJECT_ID\]/locations/\[LOCATION\]/keyRings/\[RING_NAME\]/cryptoKeys/\[KEY_NAME\].
   /// For more information about protecting resources with Cloud KMS Keys please
   /// see:
   /// https://cloud.google.com/compute/docs/disks/customer-managed-encryption
@@ -8824,10 +8843,10 @@ class Operation {
 
 /// Information about operation (or operation stage) progress.
 class OperationProgress {
-  /// Progress metric bundle, for example: metrics: [{name: "nodes done",
-  /// int_value: 15}, {name: "nodes total", int_value: 32}] or metrics: [{name:
-  /// "progress", double_value: 0.56}, {name: "progress scale", double_value:
-  /// 1.0}]
+  /// Progress metric bundle, for example: metrics: \[{name: "nodes done",
+  /// int_value: 15}, {name: "nodes total", int_value: 32}\] or metrics:
+  /// \[{name: "progress", double_value: 0.56}, {name: "progress scale",
+  /// double_value: 1.0}\]
   core.List<Metric> metrics;
 
   /// A non-parameterized string describing an operation stage.

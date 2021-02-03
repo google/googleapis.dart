@@ -1123,7 +1123,7 @@ class ProjectsHistoriesExecutionsStepsResource {
   /// projects/my-project/histories/bh.1234567890abcdef/executions/
   /// 1234567890123456789/steps/bs.1234567890abcdef Required.
   /// Value must have pattern
-  /// "^projects/[^/]+/histories/[^/]+/executions/[^/]+/steps/[^/]+$".
+  /// `^projects/\[^/\]+/histories/\[^/\]+/executions/\[^/\]+/steps/\[^/\]+$`.
   ///
   /// [locale] - The accepted format is the canonical Unicode format with hyphen
   /// as a delimiter. Language must be lowercase, Language Script - Capitalized,
@@ -3821,7 +3821,8 @@ class FileReference {
 class GraphicsStats {
   /// Histogram of frame render times.
   ///
-  /// There should be 154 buckets ranging from [5ms, 6ms) to [4950ms, infinity)
+  /// There should be 154 buckets ranging from \[5ms, 6ms) to \[4950ms,
+  /// infinity)
   core.List<GraphicsStatsBucket> buckets;
 
   /// Total "high input latency" events.
@@ -7435,8 +7436,8 @@ class Thumbnail {
 /// The count is relative to an epoch at UTC midnight on January 1, 1970, in the
 /// proleptic Gregorian calendar which extends the Gregorian calendar backwards
 /// to year one. All minutes are 60 seconds long. Leap seconds are "smeared" so
-/// that no leap second table is needed for interpretation, using a [24-hour
-/// linear smear](https://developers.google.com/time/smear). The range is from
+/// that no leap second table is needed for interpretation, using a \[24-hour
+/// linear smear\](https://developers.google.com/time/smear). The range is from
 /// 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z. By restricting to
 /// that range, we ensure that we can convert to and from [RFC
 /// 3339](https://www.ietf.org/rfc/rfc3339.txt) date strings.

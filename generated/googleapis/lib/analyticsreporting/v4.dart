@@ -408,7 +408,7 @@ class Cohort {
 
   /// A unique name for the cohort.
   ///
-  /// If not defined name will be auto-generated with values cohort_[1234...].
+  /// If not defined name will be auto-generated with values cohort_\[1234...\].
   core.String name;
 
   /// Type of the cohort.
@@ -454,10 +454,10 @@ class Cohort {
 
 /// Defines a cohort group.
 ///
-/// For example: "cohortGroup": { "cohorts": [{ "name": "cohort 1", "type":
+/// For example: "cohortGroup": { "cohorts": \[{ "name": "cohort 1", "type":
 /// "FIRST_VISIT_DATE", "dateRange": { "startDate": "2015-08-01", "endDate":
 /// "2015-08-01" } },{ "name": "cohort 2" "type": "FIRST_VISIT_DATE"
-/// "dateRange": { "startDate": "2015-07-01", "endDate": "2015-07-01" } }] }
+/// "dateRange": { "startDate": "2015-07-01", "endDate": "2015-07-01" } }\] }
 class CohortGroup {
   /// The definition for the cohort.
   core.List<Cohort> cohorts;
@@ -668,9 +668,9 @@ class Dimension {
   /// values that fall in a bucket get transformed to a new dimension value. For
   /// example, if one gives a list of "0, 1, 3, 4, 7", then we return the
   /// following buckets: - bucket #1: values < 0, dimension value "<0" - bucket
-  /// #2: values in [0,1), dimension value "0" - bucket #3: values in [1,3),
-  /// dimension value "1-2" - bucket #4: values in [3,4), dimension value "3" -
-  /// bucket #5: values in [4,7), dimension value "4-6" - bucket #6: values >=
+  /// #2: values in \[0,1), dimension value "0" - bucket #3: values in \[1,3),
+  /// dimension value "1-2" - bucket #4: values in \[3,4), dimension value "3" -
+  /// bucket #5: values in \[4,7), dimension value "4-6" - bucket #6: values >=
   /// 7, dimension value "7+" NOTE: If you are applying histogram mutation on
   /// any dimension, and using that dimension in sort, you will want to use the
   /// sort type `HISTOGRAM_BUCKET` for that purpose. Without that the dimension
@@ -1036,15 +1036,15 @@ class GetReportsRequest {
   /// `dateRanges`, `viewId`, `segments`, `samplingLevel`, and `cohortGroup`.
   core.List<ReportRequest> reportRequests;
 
-  /// Enables [resource based
-  /// quotas](/analytics/devguides/reporting/core/v4/limits-quotas#analytics_reporting_api_v4),
+  /// Enables \[resource based
+  /// quotas\](/analytics/devguides/reporting/core/v4/limits-quotas#analytics_reporting_api_v4),
   /// (defaults to `False`).
   ///
   /// If this field is set to `True` the per view (profile) quotas are governed
   /// by the computational cost of the request. Note that using cost based
   /// quotas will higher enable sampling rates. (10 Million for `SMALL`, 100M
-  /// for `LARGE`. See the [limits and quotas
-  /// documentation](/analytics/devguides/reporting/core/v4/limits-quotas#analytics_reporting_api_v4)
+  /// for `LARGE`. See the \[limits and quotas
+  /// documentation\](/analytics/devguides/reporting/core/v4/limits-quotas#analytics_reporting_api_v4)
   /// for details.
   core.bool useResourceQuotas;
 
@@ -1950,8 +1950,9 @@ class ReportData {
   /// returns the total number of samples read, one entry per date range.
   ///
   /// If the results are not sampled this field will not be defined. See
-  /// [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)
-  /// for details.
+  /// \[developer
+  /// guide\](/analytics/devguides/reporting/core/v4/basics#sampling) for
+  /// details.
   core.List<core.String> samplesReadCounts;
 
   /// If the results are
@@ -1959,8 +1960,9 @@ class ReportData {
   /// returns the total number of samples present, one entry per date range.
   ///
   /// If the results are not sampled this field will not be defined. See
-  /// [developer guide](/analytics/devguides/reporting/core/v4/basics#sampling)
-  /// for details.
+  /// \[developer
+  /// guide\](/analytics/devguides/reporting/core/v4/basics#sampling) for
+  /// details.
   core.List<core.String> samplingSpaceSizes;
 
   /// For each requested date range, for the set of all rows that match the
@@ -2059,7 +2061,7 @@ class ReportRequest {
   /// Cohort group associated with this request.
   ///
   /// If there is a cohort group in the request the `ga:cohort` dimension must
-  /// be present. Every [ReportRequest](#ReportRequest) within a `batchGet`
+  /// be present. Every \[ReportRequest\](#ReportRequest) within a `batchGet`
   /// method must contain the same `cohortGroup` definition.
   CohortGroup cohortGroup;
 
@@ -2072,7 +2074,7 @@ class ReportRequest {
   /// second date range. The `reportRequest.dateRanges` field should not be
   /// specified for cohorts or Lifetime value requests. If a date range is not
   /// provided, the default date range is (startDate: current date - 7 days,
-  /// endDate: current date - 1 day). Every [ReportRequest](#ReportRequest)
+  /// endDate: current date - 1 day). Every \[ReportRequest\](#ReportRequest)
   /// within a `batchGet` method must contain the same `dateRanges` definition.
   core.List<DateRange> dateRanges;
 
@@ -2163,9 +2165,9 @@ class ReportRequest {
   /// [sample](https://support.google.com/analytics/answer/2637192) size.
   ///
   /// If the the `samplingLevel` field is unspecified the `DEFAULT` sampling
-  /// level is used. Every [ReportRequest](#ReportRequest) within a `batchGet`
-  /// method must contain the same `samplingLevel` definition. See [developer
-  /// guide](/analytics/devguides/reporting/core/v4/basics#sampling) for
+  /// level is used. Every \[ReportRequest\](#ReportRequest) within a `batchGet`
+  /// method must contain the same `samplingLevel` definition. See \[developer
+  /// guide\](/analytics/devguides/reporting/core/v4/basics#sampling) for
   /// details.
   /// Possible string values are:
   /// - "SAMPLING_UNSPECIFIED" : If the `samplingLevel` field is unspecified the
@@ -2181,7 +2183,7 @@ class ReportRequest {
   ///
   /// A segment definition helps look at a subset of the segment request. A
   /// request can contain up to four segments. Every
-  /// [ReportRequest](#ReportRequest) within a `batchGet` method must contain
+  /// \[ReportRequest\](#ReportRequest) within a `batchGet` method must contain
   /// the same `segments` definition. Requests with segments must have the
   /// `ga:segment` dimension.
   core.List<Segment> segments;
@@ -2190,7 +2192,7 @@ class ReportRequest {
   /// ID](https://support.google.com/analytics/answer/1009618) from which to
   /// retrieve data.
   ///
-  /// Every [ReportRequest](#ReportRequest) within a `batchGet` method must
+  /// Every \[ReportRequest\](#ReportRequest) within a `batchGet` method must
   /// contain the same `viewId`.
   core.String viewId;
 
@@ -2481,13 +2483,13 @@ class SearchUserActivityRequest {
   /// Adding this to the request will return the rows after the pageToken. The
   /// pageToken should be the value returned in the nextPageToken parameter in
   /// the response to the
-  /// [SearchUserActivityRequest](#SearchUserActivityRequest) request.
+  /// \[SearchUserActivityRequest\](#SearchUserActivityRequest) request.
   core.String pageToken;
 
   /// Unique user Id to query for.
   ///
-  /// Every [SearchUserActivityRequest](#SearchUserActivityRequest) must contain
-  /// this field.
+  /// Every \[SearchUserActivityRequest\](#SearchUserActivityRequest) must
+  /// contain this field.
   ///
   /// Required.
   User user;
@@ -2496,8 +2498,8 @@ class SearchUserActivityRequest {
   /// ID](https://support.google.com/analytics/answer/1009618) from which to
   /// retrieve data.
   ///
-  /// Every [SearchUserActivityRequest](#SearchUserActivityRequest) must contain
-  /// the `viewId`.
+  /// Every \[SearchUserActivityRequest\](#SearchUserActivityRequest) must
+  /// contain the `viewId`.
   ///
   /// Required.
   core.String viewId;
@@ -2556,7 +2558,7 @@ class SearchUserActivityRequest {
 /// The response from `userActivity:get` call.
 class SearchUserActivityResponse {
   /// This token should be passed to
-  /// [SearchUserActivityRequest](#SearchUserActivityRequest) to retrieve the
+  /// \[SearchUserActivityRequest\](#SearchUserActivityRequest) to retrieve the
   /// next page.
   core.String nextPageToken;
 
@@ -2564,8 +2566,8 @@ class SearchUserActivityResponse {
   /// rate](https://support.google.com/analytics/answer/2637192) for the given
   /// request and is a number between 0.0 to 1.0.
   ///
-  /// See [developer
-  /// guide](/analytics/devguides/reporting/core/v4/basics#sampling) for
+  /// See \[developer
+  /// guide\](/analytics/devguides/reporting/core/v4/basics#sampling) for
   /// details.
   core.double sampleRate;
 
@@ -2782,10 +2784,10 @@ class SegmentFilter {
   /// If true, match the complement of simple or sequence segment.
   ///
   /// For example, to match all visits not from "New York", we can define the
-  /// segment as follows: "sessionSegment": { "segmentFilters": [{
-  /// "simpleSegment" :{ "orFiltersForSegment": [{ "segmentFilterClauses":[{
-  /// "dimensionFilter": { "dimensionName": "ga:city", "expressions": ["New
-  /// York"] } }] }] }, "not": "True" }] },
+  /// segment as follows: "sessionSegment": { "segmentFilters": \[{
+  /// "simpleSegment" :{ "orFiltersForSegment": \[{ "segmentFilterClauses":\[{
+  /// "dimensionFilter": { "dimensionName": "ga:city", "expressions": \["New
+  /// York"\] } }\] }\] }, "not": "True" }\] },
   core.bool not;
 
   /// Sequence conditions consist of one or more steps, where each step is

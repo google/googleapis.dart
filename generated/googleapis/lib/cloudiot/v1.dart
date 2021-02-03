@@ -105,7 +105,7 @@ class ProjectsLocationsRegistriesResource {
   /// [parent] - Required. The name of the registry. For example,
   /// `projects/example-project/locations/us-central1/registries/my-registry`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -167,7 +167,7 @@ class ProjectsLocationsRegistriesResource {
   /// [parent] - Required. The project and cloud region where this device
   /// registry must be created. For example,
   /// `projects/example-project/locations/us-central1`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -227,7 +227,7 @@ class ProjectsLocationsRegistriesResource {
   /// [name] - Required. The name of the device registry. For example,
   /// `projects/example-project/locations/us-central1/registries/my-registry`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -280,7 +280,7 @@ class ProjectsLocationsRegistriesResource {
   /// [name] - Required. The name of the device registry. For example,
   /// `projects/example-project/locations/us-central1/registries/my-registry`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -340,7 +340,7 @@ class ProjectsLocationsRegistriesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -398,7 +398,7 @@ class ProjectsLocationsRegistriesResource {
   ///
   /// [parent] - Required. The project and cloud region path. For example,
   /// `projects/example-project/locations/us-central1`.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of registries to return in the response.
   /// If this value is zero, the service will select a default size. A call may
@@ -474,7 +474,7 @@ class ProjectsLocationsRegistriesResource {
   /// [name] - The resource path name. For example,
   /// `projects/example-project/locations/us-central1/registries/my-registry`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Only updates the `device_registry` fields
   /// indicated by this mask. The field mask must not be empty, and it must not
@@ -547,7 +547,7 @@ class ProjectsLocationsRegistriesResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -612,7 +612,7 @@ class ProjectsLocationsRegistriesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -674,7 +674,7 @@ class ProjectsLocationsRegistriesResource {
   /// [parent] - Required. The name of the registry. For example,
   /// `projects/example-project/locations/us-central1/registries/my-registry`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -749,7 +749,7 @@ class ProjectsLocationsRegistriesDevicesResource {
   /// should be created. For example,
   /// `projects/example-project/locations/us-central1/registries/my-registry`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -809,7 +809,7 @@ class ProjectsLocationsRegistriesDevicesResource {
   /// or
   /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -864,7 +864,7 @@ class ProjectsLocationsRegistriesDevicesResource {
   /// or
   /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [fieldMask] - The fields of the `Device` resource to be returned in the
   /// response. If the field mask is unset or empty, all fields are returned.
@@ -924,7 +924,7 @@ class ProjectsLocationsRegistriesDevicesResource {
   /// [parent] - Required. The device registry path. Required. For example,
   /// `projects/my-project/locations/us-central1/registries/my-registry`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+$`.
   ///
   /// [deviceIds] - A list of device string IDs. For example, `['device0',
   /// 'device12']`. If empty, this field is ignored. Maximum IDs: 10,000
@@ -1065,7 +1065,7 @@ class ProjectsLocationsRegistriesDevicesResource {
   /// or
   /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1130,7 +1130,7 @@ class ProjectsLocationsRegistriesDevicesResource {
   /// When `name` is populated as a response from the service, it always ends in
   /// the device numeric ID.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [updateMask] - Required. Only updates the `device` fields indicated by
   /// this mask. The field mask must not be empty, and it must not contain
@@ -1213,7 +1213,7 @@ class ProjectsLocationsRegistriesDevicesResource {
   /// or
   /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1284,7 +1284,7 @@ class ProjectsLocationsRegistriesDevicesConfigVersionsResource {
   /// or
   /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [numVersions] - The number of versions to list. Versions are listed in
   /// decreasing order of the version number. The maximum number of versions
@@ -1359,7 +1359,7 @@ class ProjectsLocationsRegistriesDevicesStatesResource {
   /// or
   /// `projects/p0/locations/us-central1/registries/registry0/devices/{num_id}`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [numStates] - The number of states to list. States are listed in
   /// descending order of update time. The maximum number of states retained is
@@ -1437,7 +1437,7 @@ class ProjectsLocationsRegistriesGroupsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+/groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1501,7 +1501,7 @@ class ProjectsLocationsRegistriesGroupsResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+/groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1566,7 +1566,7 @@ class ProjectsLocationsRegistriesGroupsResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+/groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1633,7 +1633,7 @@ class ProjectsLocationsRegistriesGroupsDevicesResource {
   /// [parent] - Required. The device registry path. Required. For example,
   /// `projects/my-project/locations/us-central1/registries/my-registry`.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/registries/\[^/\]+/groups/\[^/\]+$`.
   ///
   /// [deviceIds] - A list of device string IDs. For example, `['device0',
   /// 'device12']`. If empty, this field is ignored. Maximum IDs: 10,000
@@ -2991,14 +2991,14 @@ class MqttConfig {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

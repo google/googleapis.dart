@@ -111,7 +111,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -178,7 +178,7 @@ class ProjectsSitesResource {
   ///
   /// [name] - Required. The site for which to get the SiteConfig, in the
   /// format: sites/ site-name/config
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/config$".
+  /// Value must have pattern `^projects/\[^/\]+/sites/\[^/\]+/config$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -233,13 +233,13 @@ class ProjectsSitesResource {
   ///
   /// [name] - Required. The site for which to update the SiteConfig, in the
   /// format: sites/ site-name/config
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/config$".
+  /// Value must have pattern `^projects/\[^/\]+/sites/\[^/\]+/config$`.
   ///
-  /// [updateMask] - A set of field names from your [site
-  /// configuration](../sites.SiteConfig) that you want to update. A field will
+  /// [updateMask] - A set of field names from your \[site
+  /// configuration\](../sites.SiteConfig) that you want to update. A field will
   /// be overwritten if, and only if, it's in the mask. If a mask is not
   /// provided then a default mask of only
-  /// [`max_versions`](../sites.SiteConfig.max_versions) will be used.
+  /// \[`max_versions`\](../sites.SiteConfig.max_versions) will be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -311,7 +311,7 @@ class ProjectsSitesChannelsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The site in which this channel should be created.
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/sites/\[^/\]+$`.
   ///
   /// [channelId] - Required. Immutable. A unique id within the site to identify
   /// the channel.
@@ -377,7 +377,8 @@ class ProjectsSitesChannelsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The fully-qualified identifier for the site.
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/channels/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/sites/\[^/\]+/channels/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -428,7 +429,8 @@ class ProjectsSitesChannelsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The fully-qualified identifier for the channel.
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/channels/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/sites/\[^/\]+/channels/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -481,7 +483,7 @@ class ProjectsSitesChannelsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The site from which to list channels.
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/sites/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of versions to return. The service may
   /// return fewer than this value. If unspecified, at most 25 channels will be
@@ -554,7 +556,8 @@ class ProjectsSitesChannelsResource {
   /// Request parameters:
   ///
   /// [name] - The fully-qualified identifier of the Channel.
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/channels/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/sites/\[^/\]+/channels/\[^/\]+$`.
   ///
   /// [updateMask] - A comma-separated list of fields to be updated in this
   /// request.
@@ -627,7 +630,8 @@ class ProjectsSitesChannelsReleasesResource {
   ///
   /// [parent] - Required. The site that the release belongs to, in the format:
   /// sites/ site-name
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/channels/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/sites/\[^/\]+/channels/\[^/\]+$`.
   ///
   /// [versionName] - The unique identifier for a version, in the format:
   /// /sites/site-name /versions/versionID The site-name in this version
@@ -695,7 +699,8 @@ class ProjectsSitesChannelsReleasesResource {
   ///
   /// [parent] - Required. The parent for which to list files, in the format:
   /// sites/site-name
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/channels/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/sites/\[^/\]+/channels/\[^/\]+$`.
   ///
   /// [pageSize] - The page size to return. Defaults to 100.
   ///
@@ -771,7 +776,7 @@ class ProjectsSitesDomainsResource {
   ///
   /// [parent] - Required. The parent to create the domain association for, in
   /// the format: sites/site-name
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/sites/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -828,7 +833,8 @@ class ProjectsSitesDomainsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the domain association to delete.
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/domains/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/sites/\[^/\]+/domains/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -879,7 +885,8 @@ class ProjectsSitesDomainsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the domain configuration to get.
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/domains/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/sites/\[^/\]+/domains/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -931,7 +938,7 @@ class ProjectsSitesDomainsResource {
   ///
   /// [parent] - Required. The parent for which to list domains, in the format:
   /// sites/ site-name
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/sites/\[^/\]+$`.
   ///
   /// [pageSize] - The page size to return. Defaults to 50.
   ///
@@ -1001,7 +1008,8 @@ class ProjectsSitesDomainsResource {
   ///
   /// [name] - Required. The name of the domain association to update or create,
   /// if an association doesn't already exist.
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/domains/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/sites/\[^/\]+/domains/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1067,7 +1075,7 @@ class ProjectsSitesReleasesResource {
   ///
   /// [parent] - Required. The site that the release belongs to, in the format:
   /// sites/ site-name
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/sites/\[^/\]+$`.
   ///
   /// [versionName] - The unique identifier for a version, in the format:
   /// /sites/site-name /versions/versionID The site-name in this version
@@ -1135,7 +1143,7 @@ class ProjectsSitesReleasesResource {
   ///
   /// [parent] - Required. The parent for which to list files, in the format:
   /// sites/site-name
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/sites/\[^/\]+$`.
   ///
   /// [pageSize] - The page size to return. Defaults to 100.
   ///
@@ -1215,7 +1223,7 @@ class ProjectsSitesVersionsResource {
   ///
   /// [parent] - Required. The target site where the cloned version will reside,
   /// in the format: `sites/{site}`
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/sites/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1275,7 +1283,7 @@ class ProjectsSitesVersionsResource {
   ///
   /// [parent] - Required. The parent to create the version for, in the format:
   /// sites/ site-name
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/sites/\[^/\]+$`.
   ///
   /// [sizeBytes] - The self-reported size of the version. This value is used
   /// for a pre-emptive quota check for legacy version uploads.
@@ -1347,7 +1355,8 @@ class ProjectsSitesVersionsResource {
   ///
   /// [name] - Required. The name of the version to be deleted, in the format:
   /// sites/ site-name/versions/versionID
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/versions/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/sites/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1401,7 +1410,7 @@ class ProjectsSitesVersionsResource {
   ///
   /// [parent] - Required. The parent for which to list files, in the format:
   /// sites/site-name
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/sites/\[^/\]+$`.
   ///
   /// [filter] - The filter string used to return a subset of versions in the
   /// response. Currently supported fields for filtering are: name, status, and
@@ -1479,8 +1488,8 @@ class ProjectsSitesVersionsResource {
   /// Note that this method will fail with `FAILED_PRECONDITION` in the event of
   /// an invalid state transition. The only valid transition for a version is
   /// currently from a `CREATED` status to a `FINALIZED` status. Use
-  /// [`DeleteVersion`](../sites.versions/delete) to set the status of a version
-  /// to `DELETED`.
+  /// \[`DeleteVersion`\](../sites.versions/delete) to set the status of a
+  /// version to `DELETED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1488,14 +1497,16 @@ class ProjectsSitesVersionsResource {
   ///
   /// [name] - The unique identifier for a version, in the format:
   /// sites/site-name /versions/versionID This name is provided in the response
-  /// body when you call the [`CreateVersion`](../sites.versions/create)
+  /// body when you call the \[`CreateVersion`\](../sites.versions/create)
   /// endpoint.
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/versions/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/sites/\[^/\]+/versions/\[^/\]+$`.
   ///
-  /// [updateMask] - A set of field names from your [version](../sites.versions)
-  /// that you want to update. A field will be overwritten if, and only if, it's
-  /// in the mask. If a mask is not provided then a default mask of only
-  /// [`status`](../sites.versions#Version.FIELDS.status) will be used.
+  /// [updateMask] - A set of field names from your
+  /// \[version\](../sites.versions) that you want to update. A field will be
+  /// overwritten if, and only if, it's in the mask. If a mask is not provided
+  /// then a default mask of only
+  /// \[`status`\](../sites.versions#Version.FIELDS.status) will be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1559,7 +1570,8 @@ class ProjectsSitesVersionsResource {
   ///
   /// [parent] - Required. The version to add files to, in the format:
   /// sites/site-name /versions/versionID
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/versions/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/sites/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1625,7 +1637,8 @@ class ProjectsSitesVersionsFilesResource {
   ///
   /// [parent] - Required. The parent to list files for, in the format:
   /// sites/site-name /versions/versionID
-  /// Value must have pattern "^projects/[^/]+/sites/[^/]+/versions/[^/]+$".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/sites/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [pageSize] - The page size to return. Defaults to 1000.
   ///
@@ -1717,7 +1730,7 @@ class SitesResource {
   ///
   /// [name] - Required. The site for which to get the SiteConfig, in the
   /// format: sites/ site-name/config
-  /// Value must have pattern "^sites/[^/]+/config$".
+  /// Value must have pattern `^sites/\[^/\]+/config$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1772,13 +1785,13 @@ class SitesResource {
   ///
   /// [name] - Required. The site for which to update the SiteConfig, in the
   /// format: sites/ site-name/config
-  /// Value must have pattern "^sites/[^/]+/config$".
+  /// Value must have pattern `^sites/\[^/\]+/config$`.
   ///
-  /// [updateMask] - A set of field names from your [site
-  /// configuration](../sites.SiteConfig) that you want to update. A field will
+  /// [updateMask] - A set of field names from your \[site
+  /// configuration\](../sites.SiteConfig) that you want to update. A field will
   /// be overwritten if, and only if, it's in the mask. If a mask is not
   /// provided then a default mask of only
-  /// [`max_versions`](../sites.SiteConfig.max_versions) will be used.
+  /// \[`max_versions`\](../sites.SiteConfig.max_versions) will be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1849,7 +1862,7 @@ class SitesChannelsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The site in which this channel should be created.
-  /// Value must have pattern "^sites/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+$`.
   ///
   /// [channelId] - Required. Immutable. A unique id within the site to identify
   /// the channel.
@@ -1915,7 +1928,7 @@ class SitesChannelsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The fully-qualified identifier for the site.
-  /// Value must have pattern "^sites/[^/]+/channels/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+/channels/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1966,7 +1979,7 @@ class SitesChannelsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The fully-qualified identifier for the channel.
-  /// Value must have pattern "^sites/[^/]+/channels/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+/channels/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2019,7 +2032,7 @@ class SitesChannelsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The site from which to list channels.
-  /// Value must have pattern "^sites/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of versions to return. The service may
   /// return fewer than this value. If unspecified, at most 25 channels will be
@@ -2092,7 +2105,7 @@ class SitesChannelsResource {
   /// Request parameters:
   ///
   /// [name] - The fully-qualified identifier of the Channel.
-  /// Value must have pattern "^sites/[^/]+/channels/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+/channels/\[^/\]+$`.
   ///
   /// [updateMask] - A comma-separated list of fields to be updated in this
   /// request.
@@ -2165,7 +2178,7 @@ class SitesChannelsReleasesResource {
   ///
   /// [parent] - Required. The site that the release belongs to, in the format:
   /// sites/ site-name
-  /// Value must have pattern "^sites/[^/]+/channels/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+/channels/\[^/\]+$`.
   ///
   /// [versionName] - The unique identifier for a version, in the format:
   /// /sites/site-name /versions/versionID The site-name in this version
@@ -2233,7 +2246,7 @@ class SitesChannelsReleasesResource {
   ///
   /// [parent] - Required. The parent for which to list files, in the format:
   /// sites/site-name
-  /// Value must have pattern "^sites/[^/]+/channels/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+/channels/\[^/\]+$`.
   ///
   /// [pageSize] - The page size to return. Defaults to 100.
   ///
@@ -2308,7 +2321,7 @@ class SitesDomainsResource {
   ///
   /// [parent] - Required. The parent to create the domain association for, in
   /// the format: sites/site-name
-  /// Value must have pattern "^sites/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2365,7 +2378,7 @@ class SitesDomainsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the domain association to delete.
-  /// Value must have pattern "^sites/[^/]+/domains/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+/domains/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2416,7 +2429,7 @@ class SitesDomainsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the domain configuration to get.
-  /// Value must have pattern "^sites/[^/]+/domains/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+/domains/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2468,7 +2481,7 @@ class SitesDomainsResource {
   ///
   /// [parent] - Required. The parent for which to list domains, in the format:
   /// sites/ site-name
-  /// Value must have pattern "^sites/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+$`.
   ///
   /// [pageSize] - The page size to return. Defaults to 50.
   ///
@@ -2538,7 +2551,7 @@ class SitesDomainsResource {
   ///
   /// [name] - Required. The name of the domain association to update or create,
   /// if an association doesn't already exist.
-  /// Value must have pattern "^sites/[^/]+/domains/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+/domains/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2603,7 +2616,7 @@ class SitesReleasesResource {
   ///
   /// [parent] - Required. The site that the release belongs to, in the format:
   /// sites/ site-name
-  /// Value must have pattern "^sites/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+$`.
   ///
   /// [versionName] - The unique identifier for a version, in the format:
   /// /sites/site-name /versions/versionID The site-name in this version
@@ -2671,7 +2684,7 @@ class SitesReleasesResource {
   ///
   /// [parent] - Required. The parent for which to list files, in the format:
   /// sites/site-name
-  /// Value must have pattern "^sites/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+$`.
   ///
   /// [pageSize] - The page size to return. Defaults to 100.
   ///
@@ -2750,7 +2763,7 @@ class SitesVersionsResource {
   ///
   /// [parent] - Required. The target site where the cloned version will reside,
   /// in the format: `sites/{site}`
-  /// Value must have pattern "^sites/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2810,7 +2823,7 @@ class SitesVersionsResource {
   ///
   /// [parent] - Required. The parent to create the version for, in the format:
   /// sites/ site-name
-  /// Value must have pattern "^sites/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+$`.
   ///
   /// [sizeBytes] - The self-reported size of the version. This value is used
   /// for a pre-emptive quota check for legacy version uploads.
@@ -2882,7 +2895,7 @@ class SitesVersionsResource {
   ///
   /// [name] - Required. The name of the version to be deleted, in the format:
   /// sites/ site-name/versions/versionID
-  /// Value must have pattern "^sites/[^/]+/versions/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2936,7 +2949,7 @@ class SitesVersionsResource {
   ///
   /// [parent] - Required. The parent for which to list files, in the format:
   /// sites/site-name
-  /// Value must have pattern "^sites/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+$`.
   ///
   /// [filter] - The filter string used to return a subset of versions in the
   /// response. Currently supported fields for filtering are: name, status, and
@@ -3014,8 +3027,8 @@ class SitesVersionsResource {
   /// Note that this method will fail with `FAILED_PRECONDITION` in the event of
   /// an invalid state transition. The only valid transition for a version is
   /// currently from a `CREATED` status to a `FINALIZED` status. Use
-  /// [`DeleteVersion`](../sites.versions/delete) to set the status of a version
-  /// to `DELETED`.
+  /// \[`DeleteVersion`\](../sites.versions/delete) to set the status of a
+  /// version to `DELETED`.
   ///
   /// [request] - The metadata request object.
   ///
@@ -3023,14 +3036,15 @@ class SitesVersionsResource {
   ///
   /// [name] - The unique identifier for a version, in the format:
   /// sites/site-name /versions/versionID This name is provided in the response
-  /// body when you call the [`CreateVersion`](../sites.versions/create)
+  /// body when you call the \[`CreateVersion`\](../sites.versions/create)
   /// endpoint.
-  /// Value must have pattern "^sites/[^/]+/versions/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+/versions/\[^/\]+$`.
   ///
-  /// [updateMask] - A set of field names from your [version](../sites.versions)
-  /// that you want to update. A field will be overwritten if, and only if, it's
-  /// in the mask. If a mask is not provided then a default mask of only
-  /// [`status`](../sites.versions#Version.FIELDS.status) will be used.
+  /// [updateMask] - A set of field names from your
+  /// \[version\](../sites.versions) that you want to update. A field will be
+  /// overwritten if, and only if, it's in the mask. If a mask is not provided
+  /// then a default mask of only
+  /// \[`status`\](../sites.versions#Version.FIELDS.status) will be used.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3094,7 +3108,7 @@ class SitesVersionsResource {
   ///
   /// [parent] - Required. The version to add files to, in the format:
   /// sites/site-name /versions/versionID
-  /// Value must have pattern "^sites/[^/]+/versions/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3159,7 +3173,7 @@ class SitesVersionsFilesResource {
   ///
   /// [parent] - Required. The parent to list files for, in the format:
   /// sites/site-name /versions/versionID
-  /// Value must have pattern "^sites/[^/]+/versions/[^/]+$".
+  /// Value must have pattern `^sites/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [pageSize] - The page size to return. Defaults to 1000.
   ///
@@ -3830,12 +3844,13 @@ class Empty {
   }
 }
 
-/// A [`header`](/docs/hosting/full-config#headers) is an object that specifies
-/// a URL pattern that, if matched to the request URL path, triggers Hosting to
-/// apply the specified custom response headers.
+/// A \[`header`\](/docs/hosting/full-config#headers) is an object that
+/// specifies a URL pattern that, if matched to the request URL path, triggers
+/// Hosting to apply the specified custom response headers.
 class Header {
-  /// The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching)
-  /// to match against the request URL path.
+  /// The user-supplied
+  /// \[glob\](/docs/hosting/full-config#glob_pattern_matching) to match against
+  /// the request URL path.
   core.String glob;
 
   /// The additional headers to add to the response.
@@ -3914,7 +3929,7 @@ class ListChannelsResponse {
 
   /// If there are additional releases remaining beyond the ones in this
   /// response, then supply this token in the next
-  /// [`list`](../sites.channels/list) call to continue with the next set of
+  /// \[`list`\](../sites.channels/list) call to continue with the next set of
   /// releases.
   core.String nextPageToken;
 
@@ -3981,8 +3996,8 @@ class ListDomainsResponse {
 class ListReleasesResponse {
   /// If there are additional releases remaining beyond the ones in this
   /// response, then supply this token in the next
-  /// [`list`](../sites.versions.files/list) call to continue with the next set
-  /// of releases.
+  /// \[`list`\](../sites.versions.files/list) call to continue with the next
+  /// set of releases.
   core.String nextPageToken;
 
   /// The list of hashes of files that still need to be uploaded, if any exist.
@@ -4306,12 +4321,13 @@ class PreviewConfig {
   }
 }
 
-/// A [`redirect`](/docs/hosting/full-config#redirects) object specifies a URL
+/// A \[`redirect`\](/docs/hosting/full-config#redirects) object specifies a URL
 /// pattern that, if matched to the request URL path, triggers Hosting to
 /// respond with a redirect to the specified destination path.
 class Redirect {
-  /// The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching)
-  /// to match against the request URL path.
+  /// The user-supplied
+  /// \[glob\](/docs/hosting/full-config#glob_pattern_matching) to match against
+  /// the request URL path.
   core.String glob;
 
   /// The value to put in the HTTP location header of the response.
@@ -4370,8 +4386,8 @@ class Redirect {
   }
 }
 
-/// A `Release` is a particular [collection of configurations and
-/// files](sites.versions) that is set to be public at a particular time.
+/// A `Release` is a particular \[collection of configurations and
+/// files\](sites.versions) that is set to be public at a particular time.
 class Release {
   /// The deploy description when the release was created.
   ///
@@ -4380,7 +4396,7 @@ class Release {
 
   /// The unique identifier for the release, in the format: sites/
   /// site-name/releases/releaseID This name is provided in the response body
-  /// when you call the [`CreateRelease`](sites.releases/create) endpoint.
+  /// when you call the \[`CreateRelease`\](sites.releases/create) endpoint.
   ///
   /// Output only.
   core.String name;
@@ -4463,7 +4479,7 @@ class Release {
   }
 }
 
-/// A [`rewrite`](/docs/hosting/full-config#rewrites) object specifies a URL
+/// A \[`rewrite`\](/docs/hosting/full-config#rewrites) object specifies a URL
 /// pattern that, if matched to the request URL path, triggers Hosting to
 /// respond as if the service were given the specified destination URL.
 class Rewrite {
@@ -4475,8 +4491,9 @@ class Rewrite {
   /// Must match the exported function name exactly.
   core.String function;
 
-  /// The user-supplied [glob](/docs/hosting/full-config#glob_pattern_matching)
-  /// to match against the request URL path.
+  /// The user-supplied
+  /// \[glob\](/docs/hosting/full-config#glob_pattern_matching) to match against
+  /// the request URL path.
   core.String glob;
 
   /// The URL path to rewrite the request to.
@@ -4542,8 +4559,8 @@ class Rewrite {
 ///
 /// The URL request paths are matched against the specified URL patterns in the
 /// configuration, then Hosting applies the applicable configuration according
-/// to a specific [priority
-/// order](/docs/hosting/full-config#hosting_priority_order).
+/// to a specific \[priority
+/// order\](/docs/hosting/full-config#hosting_priority_order).
 class ServingConfig {
   /// How to handle well known App Association files.
   /// Possible string values are:
@@ -4751,13 +4768,13 @@ class Status {
   }
 }
 
-/// A `Version` is the collection of configuration and [static
-/// files](sites.versions.files) that determine how a site is displayed.
+/// A `Version` is the collection of configuration and \[static
+/// files\](sites.versions.files) that determine how a site is displayed.
 class Version {
   /// The configuration for the behavior of the site.
   ///
   /// This configuration exists in the
-  /// [`firebase.json`](/docs/cli/#the_firebasejson_file) file.
+  /// \[`firebase.json`\](/docs/cli/#the_firebasejson_file) file.
   ServingConfig config;
 
   /// The time at which the version was created.
@@ -4802,7 +4819,7 @@ class Version {
 
   /// The unique identifier for a version, in the format: sites/site-name
   /// /versions/versionID This name is provided in the response body when you
-  /// call the [`CreateVersion`](../sites.versions/create) endpoint.
+  /// call the \[`CreateVersion`\](../sites.versions/create) endpoint.
   core.String name;
 
   /// Version preview configuration for the site version.
@@ -4814,14 +4831,15 @@ class Version {
 
   /// The deploy status of a version.
   ///
-  /// For a successful deploy, call the [`CreateVersion`](sites.versions/create)
-  /// endpoint to make a new version (`CREATED` status), [upload all desired
-  /// files](sites.versions/populateFiles) to the version, then
-  /// [update](sites.versions/patch) the version to the `FINALIZED` status. Note
-  /// that if you leave the version in the `CREATED` state for more than 12
+  /// For a successful deploy, call the
+  /// \[`CreateVersion`\](sites.versions/create) endpoint to make a new version
+  /// (`CREATED` status), \[upload all desired
+  /// files\](sites.versions/populateFiles) to the version, then
+  /// \[update\](sites.versions/patch) the version to the `FINALIZED` status.
+  /// Note that if you leave the version in the `CREATED` state for more than 12
   /// hours, the system will automatically mark the version as `ABANDONED`. You
   /// can also change the status of a version to `DELETED` by calling the
-  /// [`DeleteVersion`](sites.versions/delete) endpoint.
+  /// \[`DeleteVersion`\](sites.versions/delete) endpoint.
   /// Possible string values are:
   /// - "VERSION_STATUS_UNSPECIFIED" : The default status; should not be
   /// intentionally used.

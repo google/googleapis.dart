@@ -924,7 +924,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -979,7 +979,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1033,7 +1033,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^projects/[^/]+/operations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1094,7 +1094,7 @@ class ProjectsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -1693,12 +1693,12 @@ class GoogleDatastoreAdminV1CommonMetadata {
 ///
 /// This is specified as combinations of kinds and namespaces (either or both of
 /// which may be all, as described in the following examples). Example usage:
-/// Entire project: kinds=[], namespace_ids=[] Kinds Foo and Bar in all
-/// namespaces: kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo and Bar only in
-/// the default namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo
-/// and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'],
-/// namespace_ids=['', 'Baz'] The entire Baz namespace: kinds=[],
-/// namespace_ids=['Baz']
+/// Entire project: kinds=\[\], namespace_ids=\[\] Kinds Foo and Bar in all
+/// namespaces: kinds=\['Foo', 'Bar'\], namespace_ids=\[\] Kinds Foo and Bar
+/// only in the default namespace: kinds=\['Foo', 'Bar'\], namespace_ids=\[''\]
+/// Kinds Foo and Bar in both the default and Baz namespaces: kinds=\['Foo',
+/// 'Bar'\], namespace_ids=\['', 'Baz'\] The entire Baz namespace: kinds=\[\],
+/// namespace_ids=\['Baz'\]
 class GoogleDatastoreAdminV1EntityFilter {
   /// If empty, then this represents all kinds.
   core.List<core.String> kinds;
@@ -2376,12 +2376,12 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
 ///
 /// This is specified as combinations of kinds and namespaces (either or both of
 /// which may be all, as described in the following examples). Example usage:
-/// Entire project: kinds=[], namespace_ids=[] Kinds Foo and Bar in all
-/// namespaces: kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo and Bar only in
-/// the default namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo
-/// and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'],
-/// namespace_ids=['', 'Baz'] The entire Baz namespace: kinds=[],
-/// namespace_ids=['Baz']
+/// Entire project: kinds=\[\], namespace_ids=\[\] Kinds Foo and Bar in all
+/// namespaces: kinds=\['Foo', 'Bar'\], namespace_ids=\[\] Kinds Foo and Bar
+/// only in the default namespace: kinds=\['Foo', 'Bar'\], namespace_ids=\[''\]
+/// Kinds Foo and Bar in both the default and Baz namespaces: kinds=\['Foo',
+/// 'Bar'\], namespace_ids=\['', 'Baz'\] The entire Baz namespace: kinds=\[\],
+/// namespace_ids=\['Baz'\]
 class GoogleDatastoreAdminV1beta1EntityFilter {
   /// If empty, then this represents all kinds.
   core.List<core.String> kinds;
@@ -2949,12 +2949,12 @@ class KindExpression {
 class LatLng {
   /// The latitude in degrees.
   ///
-  /// It must be in the range [-90.0, +90.0].
+  /// It must be in the range \[-90.0, +90.0\].
   core.double latitude;
 
   /// The longitude in degrees.
   ///
-  /// It must be in the range [-180.0, +180.0].
+  /// It must be in the range \[-180.0, +180.0\].
   core.double longitude;
 
   LatLng();

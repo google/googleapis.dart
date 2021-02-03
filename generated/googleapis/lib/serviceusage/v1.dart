@@ -90,7 +90,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -149,7 +149,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern "^operations/.*$".
+  /// Value must have pattern `^operations/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -203,7 +203,7 @@ class OperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation resource.
-  /// Value must have pattern "^operations/[^/]+$".
+  /// Value must have pattern `^operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -346,7 +346,7 @@ class ServicesResource {
   /// [parent] - Parent to enable services on. An example name would be:
   /// `projects/123` where `123` is the project number. The
   /// `BatchEnableServices` method currently only supports projects.
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -407,7 +407,7 @@ class ServicesResource {
   /// all of the services specified in `names` must match this field. An example
   /// name would be: `projects/123` where `123` is the project number. The
   /// `BatchGetServices` method currently only supports projects.
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [names] - Names of the services to retrieve. An example name would be:
   /// `projects/123/services/serviceusage.googleapis.com` where `123` is the
@@ -481,7 +481,7 @@ class ServicesResource {
   /// enable and disable methods currently only support projects. An example
   /// name would be: `projects/123/services/serviceusage.googleapis.com` where
   /// `123` is the project number.
-  /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -543,7 +543,7 @@ class ServicesResource {
   /// shared with the user enabling the service. An example name would be:
   /// `projects/123/services/serviceusage.googleapis.com` where `123` is the
   /// project number.
-  /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -601,7 +601,7 @@ class ServicesResource {
   /// An example name would be:
   /// `projects/123/services/serviceusage.googleapis.com` where `123` is the
   /// project number.
-  /// Value must have pattern "^[^/]+/[^/]+/services/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -665,7 +665,7 @@ class ServicesResource {
   ///
   /// [parent] - Parent to search for services on. An example name would be:
   /// `projects/123` where `123` is the project number.
-  /// Value must have pattern "^[^/]+/[^/]+$".
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [filter] - Only list services that conform to the given filter. The
   /// allowed filter strings are `state:ENABLED` and `state:DISABLED`.
@@ -947,17 +947,17 @@ class Api {
   }
 }
 
-/// Configuration for an authentication provider, including support for [JSON
+/// Configuration for an authentication provider, including support for \[JSON
 /// Web Token
-/// (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
+/// (JWT)\](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
 class AuthProvider {
   /// The list of JWT
   /// [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3).
   ///
   /// that are allowed to access. A JWT containing any of these audiences will
   /// be accepted. When this setting is absent, JWTs with audiences: -
-  /// "https://[service.name]/[google.protobuf.Api.name]" -
-  /// "https://[service.name]/" will be accepted. For example, if no audiences
+  /// "https://\[service.name\]/\[google.protobuf.Api.name\]" -
+  /// "https://\[service.name\]/" will be accepted. For example, if no audiences
   /// are in the setting, LibraryService API will accept JWTs with the following
   /// audiences: -
   /// https://library-example.googleapis.com/google.example.library.v1.LibraryService
@@ -989,8 +989,8 @@ class AuthProvider {
   ///
   /// See [OpenID
   /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
-  /// Optional if the key set document: - can be retrieved from [OpenID
-  /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html of
+  /// Optional if the key set document: - can be retrieved from \[OpenID
+  /// Discovery\](https://openid.net/specs/openid-connect-discovery-1_0.html of
   /// the issuer. - can be inferred from the email domain of the issuer (e.g. a
   /// Google service account). Example:
   /// https://www.googleapis.com/oauth2/v1/certs
@@ -1059,9 +1059,9 @@ class AuthProvider {
   }
 }
 
-/// User-defined authentication requirements, including support for [JSON Web
+/// User-defined authentication requirements, including support for \[JSON Web
 /// Token
-/// (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
+/// (JWT)\](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
 class AuthRequirement {
   /// NOTE: This will be deprecated soon, once AuthProvider.audiences is
   /// implemented and accepted in all the runtime components.
@@ -1976,9 +1976,9 @@ class DisableServiceResponse {
 /// where documentation provided by config rules overrides IDL provided. A
 /// number of constructs specific to the API platform are supported in
 /// documentation text. In order to reference a proto element, the following
-/// notation can be used: [fully.qualified.proto.name][] To override the display
-/// text used for the link, this can be used: [display
-/// text][fully.qualified.proto.name] Text can be excluded from doc using the
+/// notation can be used: \[fully.qualified.proto.name\]\[\] To override the
+/// display text used for the link, this can be used: \[display
+/// text\]\[fully.qualified.proto.name\] Text can be excluded from doc using the
 /// following notation: (-- internal comment --) A few directives are available
 /// in documentation. Note that directives must appear on a single line to be
 /// properly identified. The `include` directive includes a markdown file from
@@ -2693,9 +2693,9 @@ class GoogleApiService {
 
   /// A list of all proto message types included in this API service.
   ///
-  /// It serves similar purpose as [google.api.Service.types], except that these
-  /// types are not needed by user-defined APIs. Therefore, they will not show
-  /// up in the generated discovery doc. This field should only be used to
+  /// It serves similar purpose as \[google.api.Service.types\], except that
+  /// these types are not needed by user-defined APIs. Therefore, they will not
+  /// show up in the generated discovery doc. This field should only be used to
   /// define system APIs in ESF.
   core.List<Type> systemTypes;
 
@@ -3415,22 +3415,22 @@ class Http {
 /// same name. 2. If HttpRule.body is "*", there is no URL query parameter, all
 /// fields are passed via URL path and HTTP request body. 3. If HttpRule.body is
 /// omitted, there is no HTTP request body, all fields are passed via URL path
-/// and URL query parameters. ### Path template syntax Template = "/" Segments [
-/// Verb ] ; Segments = Segment { "/" Segment } ; Segment = "*" | "**" | LITERAL
-/// | Variable ; Variable = "{" FieldPath [ "=" Segments ] "}" ; FieldPath =
-/// IDENT { "." IDENT } ; Verb = ":" LITERAL ; The syntax `*` matches a single
-/// URL path segment. The syntax `**` matches zero or more URL path segments,
-/// which must be the last part of the URL path except the `Verb`. The syntax
-/// `Variable` matches part of the URL path as specified by its template. A
-/// variable template must not contain other variables. If a variable matches a
-/// single path segment, its template may be omitted, e.g. `{var}` is equivalent
-/// to `{var=*}`. The syntax `LITERAL` matches literal text in the URL path. If
-/// the `LITERAL` contains any reserved character, such characters should be
-/// percent-encoded before the matching. If a variable contains exactly one path
-/// segment, such as `"{var}"` or `"{var=*}"`, when such a variable is expanded
-/// into a URL path on the client side, all characters except `[-_.~0-9a-zA-Z]`
-/// are percent-encoded. The server side does the reverse decoding. Such
-/// variables show up in the [Discovery
+/// and URL query parameters. ### Path template syntax Template = "/" Segments
+/// \[ Verb \] ; Segments = Segment { "/" Segment } ; Segment = "*" | "**" |
+/// LITERAL | Variable ; Variable = "{" FieldPath \[ "=" Segments \] "}" ;
+/// FieldPath = IDENT { "." IDENT } ; Verb = ":" LITERAL ; The syntax `*`
+/// matches a single URL path segment. The syntax `**` matches zero or more URL
+/// path segments, which must be the last part of the URL path except the
+/// `Verb`. The syntax `Variable` matches part of the URL path as specified by
+/// its template. A variable template must not contain other variables. If a
+/// variable matches a single path segment, its template may be omitted, e.g.
+/// `{var}` is equivalent to `{var=*}`. The syntax `LITERAL` matches literal
+/// text in the URL path. If the `LITERAL` contains any reserved character, such
+/// characters should be percent-encoded before the matching. If a variable
+/// contains exactly one path segment, such as `"{var}"` or `"{var=*}"`, when
+/// such a variable is expanded into a URL path on the client side, all
+/// characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The server side
+/// does the reverse decoding. Such variables show up in the [Discovery
 /// Document](https://developers.google.com/discovery/v1/reference/apis) as
 /// `{var}`. If a variable contains multiple path segments, such as `"{var=foo /
 /// * }"` or `"{var=**}"`, when such a variable is expanded into a URL path on
@@ -3880,8 +3880,9 @@ class LogDescriptor {
   /// The name of the log.
   ///
   /// It must be less than 512 characters long and can include the following
-  /// characters: upper- and lower-case alphanumeric characters [A-Za-z0-9], and
-  /// punctuation characters including slash, underscore, hyphen, period [/_-.].
+  /// characters: upper- and lower-case alphanumeric characters \[A-Za-z0-9\],
+  /// and punctuation characters including slash, underscore, hyphen, period
+  /// \[/_-.\].
   core.String name;
 
   LogDescriptor();
@@ -4236,7 +4237,7 @@ class MetricDescriptor {
   /// underlying cumulative or delta value). * `.` multiplication or composition
   /// (as an infix operator). For examples, `GBy.d` or `k{watt}.h`. The grammar
   /// for a unit is as follows: Expression = Component { "." Component } { "/"
-  /// Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] |
+  /// Component } ; Component = ( \[ PREFIX \] UNIT | "%" ) \[ Annotation \] |
   /// Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: * `Annotation` is
   /// just a comment if it follows a `UNIT`. If the annotation is used alone,
   /// then the unit is equivalent to `1`. For examples, `{request}/s == 1/s`,
@@ -5776,8 +5777,8 @@ class Usage {
   /// The full resource name of a channel used for sending notifications to the
   /// service producer.
   ///
-  /// Google Service Management currently only supports [Google Cloud
-  /// Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To
+  /// Google Service Management currently only supports \[Google Cloud
+  /// Pub/Sub\](https://cloud.google.com/pubsub) as a notification channel. To
   /// use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud
   /// Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in
   /// https://cloud.google.com/pubsub/docs/overview.

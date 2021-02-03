@@ -91,7 +91,7 @@ class ProjectsBrandsResource {
   ///
   /// [parent] - Required. GCP Project number/id under which the brand is to be
   /// created. In the following format: projects/{project_number/id}.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -147,7 +147,7 @@ class ProjectsBrandsResource {
   ///
   /// [name] - Required. Name of the brand to be fetched. In the following
   /// format: projects/{project_number/id}/brands/{brand}.
-  /// Value must have pattern "^projects/[^/]+/brands/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/brands/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -199,7 +199,7 @@ class ProjectsBrandsResource {
   ///
   /// [parent] - Required. GCP Project number/id. In the following format:
   /// projects/{project_number/id}.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -265,7 +265,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
   /// [parent] - Required. Path to create the client in. In the following
   /// format: projects/{project_number/id}/brands/{brand}. The project must
   /// belong to a G Suite account.
-  /// Value must have pattern "^projects/[^/]+/brands/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/brands/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -330,7 +330,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
   /// In the following format:
   /// projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}.
   /// Value must have pattern
-  /// "^projects/[^/]+/brands/[^/]+/identityAwareProxyClients/[^/]+$".
+  /// `^projects/\[^/\]+/brands/\[^/\]+/identityAwareProxyClients/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -386,7 +386,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
   /// In the following format:
   /// projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}.
   /// Value must have pattern
-  /// "^projects/[^/]+/brands/[^/]+/identityAwareProxyClients/[^/]+$".
+  /// `^projects/\[^/\]+/brands/\[^/\]+/identityAwareProxyClients/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -439,7 +439,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
   ///
   /// [parent] - Required. Full brand path. In the following format:
   /// projects/{project_number/id}/brands/{brand}.
-  /// Value must have pattern "^projects/[^/]+/brands/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/brands/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of clients to return. The service may
   /// return fewer than this value. If unspecified, at most 100 clients will be
@@ -520,7 +520,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
   /// have its secret reset. In the following format:
   /// projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}.
   /// Value must have pattern
-  /// "^projects/[^/]+/brands/[^/]+/identityAwareProxyClients/[^/]+$".
+  /// `^projects/\[^/\]+/brands/\[^/\]+/identityAwareProxyClients/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -591,7 +591,7 @@ class V1Resource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -650,7 +650,7 @@ class V1Resource {
   /// [name] - Required. The resource name for which to retrieve the settings.
   /// Authorization: Requires the `getSettings` permission for the associated
   /// resource.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -712,7 +712,7 @@ class V1Resource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -777,7 +777,7 @@ class V1Resource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -839,7 +839,7 @@ class V1Resource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the IAP protected resource.
-  /// Value must have pattern "^.*$".
+  /// Value must have pattern `^.*$`.
   ///
   /// [updateMask] - The field mask specifying which IAP settings should be
   /// updated. If omitted, the all of the settings are updated. See
@@ -1640,14 +1640,14 @@ class OAuthSettings {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
@@ -1874,8 +1874,8 @@ class Resource {
   ///
   /// Must use the Relative Resource Name of the resource, which is the URI path
   /// of the resource without the leading "/". Examples are
-  /// "projects/_/buckets/[BUCKET-ID]" for storage buckets or
-  /// "projects/[PROJECT-ID]/global/firewalls/[FIREWALL-ID]" for a firewall.
+  /// "projects/_/buckets/\[BUCKET-ID\]" for storage buckets or
+  /// "projects/\[PROJECT-ID\]/global/firewalls/\[FIREWALL-ID\]" for a firewall.
   /// This field is required for evaluating conditions with rules on resource
   /// names. For a `list` permission check, the resource.name value must be set
   /// to the parent resource. If the parent resource is a project, this field

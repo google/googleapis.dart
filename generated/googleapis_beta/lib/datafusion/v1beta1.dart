@@ -98,7 +98,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -149,7 +149,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -240,7 +240,7 @@ class ProjectsLocationsInstancesResource {
   ///
   /// [parent] - The instance's project and location in the format
   /// projects/{project}/locations/{location}.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [instanceId] - The name of the instance to create.
   ///
@@ -305,7 +305,7 @@ class ProjectsLocationsInstancesResource {
   /// [name] - The instance resource name in the format
   /// projects/{project}/locations/{location}/instances/{instance}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -358,7 +358,7 @@ class ProjectsLocationsInstancesResource {
   /// [name] - The instance resource name in the format
   /// projects/{project}/locations/{location}/instances/{instance}.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -415,7 +415,7 @@ class ProjectsLocationsInstancesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -485,7 +485,7 @@ class ProjectsLocationsInstancesResource {
   /// information in the format projects/{project}/locations/{location}. If the
   /// location is specified as '-' (wildcard), then all regions available to the
   /// project are queried, and the results are aggregated.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - List filter.
   ///
@@ -569,7 +569,7 @@ class ProjectsLocationsInstancesResource {
   /// [name] - Output only. The name of this instance is in the form of
   /// projects/{project}/locations/{location}/instances/{instance}.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [updateMask] - Field mask is used to specify the fields that the update
   /// will overwrite in an instance resource. The fields specified in the
@@ -641,7 +641,7 @@ class ProjectsLocationsInstancesResource {
   /// [name] - Name of the Data Fusion instance which need to be restarted in
   /// the form of projects/{project}/locations/{location}/instances/{instance}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -706,7 +706,7 @@ class ProjectsLocationsInstancesResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -773,7 +773,7 @@ class ProjectsLocationsInstancesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -839,7 +839,7 @@ class ProjectsLocationsInstancesResource {
   /// Instance will be upgraded with the latest stable version of the Data
   /// Fusion.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -915,7 +915,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -976,7 +976,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1031,7 +1031,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1091,7 +1091,7 @@ class ProjectsLocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -1173,12 +1173,12 @@ class ProjectsLocationsVersionsResource {
   /// [parent] - Required. The project and location for which to retrieve
   /// instance information in the format
   /// projects/{project}/locations/{location}.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [latestPatchOnly] - Whether or not to return the latest patch of every
   /// available minor version. If true, only the latest patch will be returned.
-  /// Ex. if allowed versions is [6.1.1, 6.1.2, 6.2.0] then response will be
-  /// [6.1.2, 6.2.0]
+  /// Ex. if allowed versions is \[6.1.1, 6.1.2, 6.2.0\] then response will be
+  /// \[6.1.2, 6.2.0\]
   ///
   /// [pageSize] - The maximum number of items to return.
   ///
@@ -1281,13 +1281,13 @@ class Accelerator {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
@@ -1329,9 +1329,9 @@ class AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -2374,14 +2374,14 @@ class OperationMetadata {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

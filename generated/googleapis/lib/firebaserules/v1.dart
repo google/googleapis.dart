@@ -98,7 +98,7 @@ class ProjectsResource {
   /// Format: `projects/{project_id}` For tests against a `Ruleset`, this must
   /// be the `Ruleset` resource name: Format:
   /// `projects/{project_id}/rulesets/{ruleset_id}`
-  /// Value must have pattern "^projects/.*$".
+  /// Value must have pattern `^projects/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -179,7 +179,7 @@ class ProjectsReleasesResource {
   ///
   /// [name] - Resource name for the project which owns this `Release`. Format:
   /// `projects/{project_id}`
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -235,7 +235,7 @@ class ProjectsReleasesResource {
   ///
   /// [name] - Resource name for the `Release` to delete. Format:
   /// `projects/{project_id}/releases/{release_id}`
-  /// Value must have pattern "^projects/[^/]+/releases/.*$".
+  /// Value must have pattern `^projects/\[^/\]+/releases/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -287,7 +287,7 @@ class ProjectsReleasesResource {
   ///
   /// [name] - Resource name of the `Release`. Format:
   /// `projects/{project_id}/releases/{release_id}`
-  /// Value must have pattern "^projects/[^/]+/releases/.*$".
+  /// Value must have pattern `^projects/\[^/\]+/releases/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -339,7 +339,7 @@ class ProjectsReleasesResource {
   ///
   /// [name] - Resource name of the `Release`. Format:
   /// `projects/{project_id}/releases/{release_id}`
-  /// Value must have pattern "^projects/[^/]+/releases/.*$".
+  /// Value must have pattern `^projects/\[^/\]+/releases/.*$`.
   ///
   /// [executableVersion] - The requested runtime executable version. Defaults
   /// to FIREBASE_RULES_EXECUTABLE_V1.
@@ -410,7 +410,7 @@ class ProjectsReleasesResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the project. Format: `projects/{project_id}`
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - `Release` filter. The list method supports filters with
   /// restrictions on the `Release.name`, `Release.ruleset_name`, and
@@ -506,7 +506,7 @@ class ProjectsReleasesResource {
   ///
   /// [name] - Resource name for the project which owns this `Release`. Format:
   /// `projects/{project_id}`
-  /// Value must have pattern "^projects/[^/]+/releases/.*$".
+  /// Value must have pattern `^projects/\[^/\]+/releases/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -575,7 +575,7 @@ class ProjectsRulesetsResource {
   ///
   /// [name] - Resource name for Project which owns this `Ruleset`. Format:
   /// `projects/{project_id}`
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -633,7 +633,7 @@ class ProjectsRulesetsResource {
   ///
   /// [name] - Resource name for the ruleset to delete. Format:
   /// `projects/{project_id}/rulesets/{ruleset_id}`
-  /// Value must have pattern "^projects/[^/]+/rulesets/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/rulesets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -685,7 +685,7 @@ class ProjectsRulesetsResource {
   ///
   /// [name] - Resource name for the ruleset to get. Format:
   /// `projects/{project_id}/rulesets/{ruleset_id}`
-  /// Value must have pattern "^projects/[^/]+/rulesets/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/rulesets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -740,7 +740,7 @@ class ProjectsRulesetsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the project. Format: `projects/{project_id}`
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - `Ruleset` filter. The list method supports filters with
   /// restrictions on `Ruleset.name`. Filters on `Ruleset.create_time` should

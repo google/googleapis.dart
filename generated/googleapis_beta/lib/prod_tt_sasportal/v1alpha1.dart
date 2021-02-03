@@ -88,7 +88,7 @@ class CustomersResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the customer.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -201,7 +201,7 @@ class CustomersResource {
   /// Request parameters:
   ///
   /// [name] - Output only. Resource name of the customer.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [updateMask] - Fields to be updated.
   ///
@@ -275,7 +275,7 @@ class CustomersDeploymentsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the deployment to move.
-  /// Value must have pattern "^customers/[^/]+/deployments/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/deployments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -341,7 +341,7 @@ class CustomersDeploymentsDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^customers/[^/]+/deployments/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/deployments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -401,7 +401,7 @@ class CustomersDeploymentsDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^customers/[^/]+/deployments/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/deployments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -459,14 +459,15 @@ class CustomersDeploymentsDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^customers/[^/]+/deployments/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/deployments/\[^/\]+$`.
   ///
   /// [filter] - The filter expression. The filter should have one of the
   /// following formats: "sn=123454" or "display_name=MyDevice". sn corresponds
   /// to serial_number of the device. The filter is case insensitive.
   ///
   /// [pageSize] - The maximum number of devices to return in the response. If
-  /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
+  /// empty or zero, all devices will be listed. Must be in the range \[0,
+  /// 1000\].
   ///
   /// [pageToken] - A pagination token returned from a previous call to
   /// ListDevices that indicates where this listing should continue from.
@@ -545,7 +546,7 @@ class CustomersDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -605,7 +606,7 @@ class CustomersDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -665,7 +666,7 @@ class CustomersDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -723,7 +724,7 @@ class CustomersDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the device.
-  /// Value must have pattern "^customers/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -775,7 +776,7 @@ class CustomersDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the device.
-  /// Value must have pattern "^customers/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -827,14 +828,15 @@ class CustomersDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [filter] - The filter expression. The filter should have one of the
   /// following formats: "sn=123454" or "display_name=MyDevice". sn corresponds
   /// to serial_number of the device. The filter is case insensitive.
   ///
   /// [pageSize] - The maximum number of devices to return in the response. If
-  /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
+  /// empty or zero, all devices will be listed. Must be in the range \[0,
+  /// 1000\].
   ///
   /// [pageToken] - A pagination token returned from a previous call to
   /// ListDevices that indicates where this listing should continue from.
@@ -905,7 +907,7 @@ class CustomersDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the device to move.
-  /// Value must have pattern "^customers/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -964,7 +966,7 @@ class CustomersDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Output only. The resource path name.
-  /// Value must have pattern "^customers/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [updateMask] - Fields to be updated.
   ///
@@ -1028,7 +1030,7 @@ class CustomersDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Output only. The resource path name.
-  /// Value must have pattern "^customers/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1088,7 +1090,7 @@ class CustomersDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the device to update.
-  /// Value must have pattern "^customers/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1158,7 +1160,7 @@ class CustomersNodesResource {
   ///
   /// [parent] - Required. The parent resource name where the node is to be
   /// created.
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1216,7 +1218,7 @@ class CustomersNodesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the node.
-  /// Value must have pattern "^customers/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1268,7 +1270,7 @@ class CustomersNodesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the node.
-  /// Value must have pattern "^customers/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1320,7 +1322,7 @@ class CustomersNodesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name, for example, "nodes/1".
-  /// Value must have pattern "^customers/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of nodes to return in the response.
   ///
@@ -1389,7 +1391,7 @@ class CustomersNodesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the node to move.
-  /// Value must have pattern "^customers/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1448,7 +1450,7 @@ class CustomersNodesResource {
   /// Request parameters:
   ///
   /// [name] - Output only. Resource name.
-  /// Value must have pattern "^customers/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [updateMask] - Fields to be updated.
   ///
@@ -1520,7 +1522,7 @@ class CustomersNodesNodesResource {
   ///
   /// [parent] - Required. The parent resource name where the node is to be
   /// created.
-  /// Value must have pattern "^customers/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1578,7 +1580,7 @@ class CustomersNodesNodesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name, for example, "nodes/1".
-  /// Value must have pattern "^customers/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern `^customers/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of nodes to return in the response.
   ///
@@ -1660,7 +1662,7 @@ class DeploymentsDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the device.
-  /// Value must have pattern "^deployments/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^deployments/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1712,7 +1714,7 @@ class DeploymentsDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the device.
-  /// Value must have pattern "^deployments/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^deployments/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1766,7 +1768,7 @@ class DeploymentsDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the device to move.
-  /// Value must have pattern "^deployments/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^deployments/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1825,7 +1827,7 @@ class DeploymentsDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Output only. The resource path name.
-  /// Value must have pattern "^deployments/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^deployments/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [updateMask] - Fields to be updated.
   ///
@@ -1889,7 +1891,7 @@ class DeploymentsDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Output only. The resource path name.
-  /// Value must have pattern "^deployments/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^deployments/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1949,7 +1951,7 @@ class DeploymentsDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the device to update.
-  /// Value must have pattern "^deployments/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^deployments/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2126,7 +2128,7 @@ class NodesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the node.
-  /// Value must have pattern "^nodes/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2189,7 +2191,7 @@ class NodesDeploymentsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the deployment to move.
-  /// Value must have pattern "^nodes/[^/]+/deployments/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/deployments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2255,7 +2257,7 @@ class NodesDeploymentsDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^nodes/[^/]+/deployments/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/deployments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2315,7 +2317,7 @@ class NodesDeploymentsDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^nodes/[^/]+/deployments/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/deployments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2373,14 +2375,15 @@ class NodesDeploymentsDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^nodes/[^/]+/deployments/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/deployments/\[^/\]+$`.
   ///
   /// [filter] - The filter expression. The filter should have one of the
   /// following formats: "sn=123454" or "display_name=MyDevice". sn corresponds
   /// to serial_number of the device. The filter is case insensitive.
   ///
   /// [pageSize] - The maximum number of devices to return in the response. If
-  /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
+  /// empty or zero, all devices will be listed. Must be in the range \[0,
+  /// 1000\].
   ///
   /// [pageToken] - A pagination token returned from a previous call to
   /// ListDevices that indicates where this listing should continue from.
@@ -2459,7 +2462,7 @@ class NodesDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^nodes/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2519,7 +2522,7 @@ class NodesDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^nodes/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2579,7 +2582,7 @@ class NodesDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^nodes/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2637,7 +2640,7 @@ class NodesDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the device.
-  /// Value must have pattern "^nodes/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2689,7 +2692,7 @@ class NodesDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the device.
-  /// Value must have pattern "^nodes/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2741,14 +2744,15 @@ class NodesDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^nodes/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+$`.
   ///
   /// [filter] - The filter expression. The filter should have one of the
   /// following formats: "sn=123454" or "display_name=MyDevice". sn corresponds
   /// to serial_number of the device. The filter is case insensitive.
   ///
   /// [pageSize] - The maximum number of devices to return in the response. If
-  /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
+  /// empty or zero, all devices will be listed. Must be in the range \[0,
+  /// 1000\].
   ///
   /// [pageToken] - A pagination token returned from a previous call to
   /// ListDevices that indicates where this listing should continue from.
@@ -2819,7 +2823,7 @@ class NodesDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the device to move.
-  /// Value must have pattern "^nodes/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2878,7 +2882,7 @@ class NodesDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Output only. The resource path name.
-  /// Value must have pattern "^nodes/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [updateMask] - Fields to be updated.
   ///
@@ -2942,7 +2946,7 @@ class NodesDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Output only. The resource path name.
-  /// Value must have pattern "^nodes/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3002,7 +3006,7 @@ class NodesDevicesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the device to update.
-  /// Value must have pattern "^nodes/[^/]+/devices/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3073,7 +3077,7 @@ class NodesNodesResource {
   ///
   /// [parent] - Required. The parent resource name where the node is to be
   /// created.
-  /// Value must have pattern "^nodes/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3131,7 +3135,7 @@ class NodesNodesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the node.
-  /// Value must have pattern "^nodes/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3183,7 +3187,7 @@ class NodesNodesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the node.
-  /// Value must have pattern "^nodes/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3235,7 +3239,7 @@ class NodesNodesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name, for example, "nodes/1".
-  /// Value must have pattern "^nodes/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of nodes to return in the response.
   ///
@@ -3304,7 +3308,7 @@ class NodesNodesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the node to move.
-  /// Value must have pattern "^nodes/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3363,7 +3367,7 @@ class NodesNodesResource {
   /// Request parameters:
   ///
   /// [name] - Output only. Resource name.
-  /// Value must have pattern "^nodes/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [updateMask] - Fields to be updated.
   ///
@@ -3435,7 +3439,7 @@ class NodesNodesDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^nodes/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3495,7 +3499,7 @@ class NodesNodesDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^nodes/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3555,7 +3559,7 @@ class NodesNodesDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^nodes/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3613,14 +3617,15 @@ class NodesNodesDevicesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the parent resource.
-  /// Value must have pattern "^nodes/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [filter] - The filter expression. The filter should have one of the
   /// following formats: "sn=123454" or "display_name=MyDevice". sn corresponds
   /// to serial_number of the device. The filter is case insensitive.
   ///
   /// [pageSize] - The maximum number of devices to return in the response. If
-  /// empty or zero, all devices will be listed. Must be in the range [0, 1000].
+  /// empty or zero, all devices will be listed. Must be in the range \[0,
+  /// 1000\].
   ///
   /// [pageToken] - A pagination token returned from a previous call to
   /// ListDevices that indicates where this listing should continue from.
@@ -3698,7 +3703,7 @@ class NodesNodesNodesResource {
   ///
   /// [parent] - Required. The parent resource name where the node is to be
   /// created.
-  /// Value must have pattern "^nodes/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3756,7 +3761,7 @@ class NodesNodesNodesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource name, for example, "nodes/1".
-  /// Value must have pattern "^nodes/[^/]+/nodes/[^/]+$".
+  /// Value must have pattern `^nodes/\[^/\]+/nodes/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of nodes to return in the response.
   ///
@@ -4025,7 +4030,7 @@ class SasPortalAssignment {
 
 /// Request for BulkCreateDevice method.
 class SasPortalBulkCreateDeviceRequest {
-  /// A csv with each row representing a [device].
+  /// A csv with each row representing a \[device\].
   ///
   /// Each row must conform to the regulations described on
   /// CreateDeviceRequest's device field.
@@ -4081,8 +4086,8 @@ class SasPortalBulkCreateDeviceResponse {
 class SasPortalCreateSignedDeviceRequest {
   /// JSON Web Token signed using a CPI private key.
   ///
-  /// Payload must be the JSON encoding of the [Device]. The user_id field must
-  /// be set.
+  /// Payload must be the JSON encoding of the \[Device\]. The user_id field
+  /// must be set.
   ///
   /// Required.
   core.String encodedDevice;
@@ -4718,8 +4723,8 @@ class SasPortalFrequencyRange {
   }
 }
 
-/// Request for GenerateSecret method]
-/// [spectrum.sas.portal.v1alpha1.DeviceManager.GenerateSecret].
+/// Request for GenerateSecret method\]
+/// \[spectrum.sas.portal.v1alpha1.DeviceManager.GenerateSecret\].
 class SasPortalGenerateSecretRequest {
   SasPortalGenerateSecretRequest();
 
@@ -4735,7 +4740,8 @@ class SasPortalGenerateSecretRequest {
 
 /// Response for GenerateSecret method.
 class SasPortalGenerateSecretResponse {
-  /// The secret generated by the string and used by [ValidateInstaller] method.
+  /// The secret generated by the string and used by \[ValidateInstaller\]
+  /// method.
   core.String secret;
 
   SasPortalGenerateSecretResponse();
@@ -5303,15 +5309,15 @@ class SasPortalOperation {
 class SasPortalPolicy {
   core.List<SasPortalAssignment> assignments;
 
-  /// The [etag] is used for optimistic concurrency control as a way to help
+  /// The \[etag\] is used for optimistic concurrency control as a way to help
   /// prevent simultaneous updates of a policy from overwriting each other.
   ///
-  /// It is strongly suggested that systems make use of the [etag] in the
+  /// It is strongly suggested that systems make use of the \[etag\] in the
   /// read-modify-write cycle to perform policy updates in order to avoid race
-  /// conditions: An [etag] is returned in the response to [GetPolicy], and
-  /// systems are expected to put that etag in the request to [SetPolicy] to
+  /// conditions: An \[etag\] is returned in the response to \[GetPolicy\], and
+  /// systems are expected to put that etag in the request to \[SetPolicy\] to
   /// ensure that their change will be applied to the same version of the
-  /// policy. If no [etag] is provided in the call to [SetPolicy], then the
+  /// policy. If no \[etag\] is provided in the call to \[SetPolicy\], then the
   /// existing policy is overwritten blindly.
   core.String etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
@@ -5630,8 +5636,8 @@ class SasPortalValidateInstallerRequest {
   }
 }
 
-/// Response for ValidateInstaller method]
-/// [spectrum.sas.portal.v1alpha1.DeviceManager.ValidateInstaller].
+/// Response for ValidateInstaller method\]
+/// \[spectrum.sas.portal.v1alpha1.DeviceManager.ValidateInstaller\].
 class SasPortalValidateInstallerResponse {
   SasPortalValidateInstallerResponse();
 

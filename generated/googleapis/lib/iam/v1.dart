@@ -217,20 +217,20 @@ class OrganizationsRolesResource {
   ///
   /// [parent] - The `parent` parameter's value depends on the target resource
   /// for the request, namely
-  /// [`projects`](/iam/reference/rest/v1/projects.roles) or
-  /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each
+  /// \[`projects`\](/iam/reference/rest/v1/projects.roles) or
+  /// \[`organizations`\](/iam/reference/rest/v1/organizations.roles). Each
   /// resource type's `parent` value format is described below: *
-  /// [`projects.roles.create()`](/iam/reference/rest/v1/projects.roles/create):
-  /// `projects/{PROJECT_ID}`. This method creates project-level [custom
-  /// roles](/iam/docs/understanding-custom-roles). Example request URL:
+  /// \[`projects.roles.create()`\](/iam/reference/rest/v1/projects.roles/create):
+  /// `projects/{PROJECT_ID}`. This method creates project-level \[custom
+  /// roles\](/iam/docs/understanding-custom-roles). Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles` *
-  /// [`organizations.roles.create()`](/iam/reference/rest/v1/organizations.roles/create):
+  /// \[`organizations.roles.create()`\](/iam/reference/rest/v1/organizations.roles/create):
   /// `organizations/{ORGANIZATION_ID}`. This method creates organization-level
-  /// [custom roles](/iam/docs/understanding-custom-roles). Example request URL:
-  /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles`
+  /// \[custom roles\](/iam/docs/understanding-custom-roles). Example request
+  /// URL: `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -294,23 +294,23 @@ class OrganizationsRolesResource {
   /// Request parameters:
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
-  /// the request, namely [`projects`](/iam/reference/rest/v1/projects.roles) or
-  /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each
+  /// the request, namely \[`projects`\](/iam/reference/rest/v1/projects.roles)
+  /// or \[`organizations`\](/iam/reference/rest/v1/organizations.roles). Each
   /// resource type's `name` value format is described below: *
-  /// [`projects.roles.delete()`](/iam/reference/rest/v1/projects.roles/delete):
+  /// \[`projects.roles.delete()`\](/iam/reference/rest/v1/projects.roles/delete):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method deletes only
-  /// [custom roles](/iam/docs/understanding-custom-roles) that have been
+  /// \[custom roles\](/iam/docs/understanding-custom-roles) that have been
   /// created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// [`organizations.roles.delete()`](/iam/reference/rest/v1/organizations.roles/delete):
+  /// \[`organizations.roles.delete()`\](/iam/reference/rest/v1/organizations.roles/delete):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
-  /// deletes only [custom roles](/iam/docs/understanding-custom-roles) that
+  /// deletes only \[custom roles\](/iam/docs/understanding-custom-roles) that
   /// have been created at the organization level. Example request URL:
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/roles/\[^/\]+$`.
   ///
   /// [etag] - Used to perform a consistent read-modify-write.
   ///
@@ -367,28 +367,28 @@ class OrganizationsRolesResource {
   /// Request parameters:
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
-  /// the request, namely [`roles`](/iam/reference/rest/v1/roles),
-  /// [`projects`](/iam/reference/rest/v1/projects.roles), or
-  /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each
+  /// the request, namely \[`roles`\](/iam/reference/rest/v1/roles),
+  /// \[`projects`\](/iam/reference/rest/v1/projects.roles), or
+  /// \[`organizations`\](/iam/reference/rest/v1/organizations.roles). Each
   /// resource type's `name` value format is described below: *
-  /// [`roles.get()`](/iam/reference/rest/v1/roles/get): `roles/{ROLE_NAME}`.
-  /// This method returns results from all [predefined
-  /// roles](/iam/docs/understanding-roles#predefined_roles) in Cloud IAM.
+  /// \[`roles.get()`\](/iam/reference/rest/v1/roles/get): `roles/{ROLE_NAME}`.
+  /// This method returns results from all \[predefined
+  /// roles\](/iam/docs/understanding-roles#predefined_roles) in Cloud IAM.
   /// Example request URL: `https://iam.googleapis.com/v1/roles/{ROLE_NAME}` *
-  /// [`projects.roles.get()`](/iam/reference/rest/v1/projects.roles/get):
+  /// \[`projects.roles.get()`\](/iam/reference/rest/v1/projects.roles/get):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method returns only
-  /// [custom roles](/iam/docs/understanding-custom-roles) that have been
+  /// \[custom roles\](/iam/docs/understanding-custom-roles) that have been
   /// created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// [`organizations.roles.get()`](/iam/reference/rest/v1/organizations.roles/get):
+  /// \[`organizations.roles.get()`\](/iam/reference/rest/v1/organizations.roles/get):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
-  /// returns only [custom roles](/iam/docs/understanding-custom-roles) that
+  /// returns only \[custom roles\](/iam/docs/understanding-custom-roles) that
   /// have been created at the organization level. Example request URL:
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/roles/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -440,26 +440,26 @@ class OrganizationsRolesResource {
   /// Request parameters:
   ///
   /// [parent] - The `parent` parameter's value depends on the target resource
-  /// for the request, namely [`roles`](/iam/reference/rest/v1/roles),
-  /// [`projects`](/iam/reference/rest/v1/projects.roles), or
-  /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each
+  /// for the request, namely \[`roles`\](/iam/reference/rest/v1/roles),
+  /// \[`projects`\](/iam/reference/rest/v1/projects.roles), or
+  /// \[`organizations`\](/iam/reference/rest/v1/organizations.roles). Each
   /// resource type's `parent` value format is described below: *
-  /// [`roles.list()`](/iam/reference/rest/v1/roles/list): An empty string. This
-  /// method doesn't require a resource; it simply returns all [predefined
-  /// roles](/iam/docs/understanding-roles#predefined_roles) in Cloud IAM.
+  /// \[`roles.list()`\](/iam/reference/rest/v1/roles/list): An empty string.
+  /// This method doesn't require a resource; it simply returns all \[predefined
+  /// roles\](/iam/docs/understanding-roles#predefined_roles) in Cloud IAM.
   /// Example request URL: `https://iam.googleapis.com/v1/roles` *
-  /// [`projects.roles.list()`](/iam/reference/rest/v1/projects.roles/list):
-  /// `projects/{PROJECT_ID}`. This method lists all project-level [custom
-  /// roles](/iam/docs/understanding-custom-roles). Example request URL:
+  /// \[`projects.roles.list()`\](/iam/reference/rest/v1/projects.roles/list):
+  /// `projects/{PROJECT_ID}`. This method lists all project-level \[custom
+  /// roles\](/iam/docs/understanding-custom-roles). Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles` *
-  /// [`organizations.roles.list()`](/iam/reference/rest/v1/organizations.roles/list):
+  /// \[`organizations.roles.list()`\](/iam/reference/rest/v1/organizations.roles/list):
   /// `organizations/{ORGANIZATION_ID}`. This method lists all
-  /// organization-level [custom roles](/iam/docs/understanding-custom-roles).
+  /// organization-level \[custom roles\](/iam/docs/understanding-custom-roles).
   /// Example request URL:
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^organizations/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional limit on the number of roles to include in the
   /// response. The default is 300, and the maximum is 1,000.
@@ -546,23 +546,23 @@ class OrganizationsRolesResource {
   /// Request parameters:
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
-  /// the request, namely [`projects`](/iam/reference/rest/v1/projects.roles) or
-  /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each
+  /// the request, namely \[`projects`\](/iam/reference/rest/v1/projects.roles)
+  /// or \[`organizations`\](/iam/reference/rest/v1/organizations.roles). Each
   /// resource type's `name` value format is described below: *
-  /// [`projects.roles.patch()`](/iam/reference/rest/v1/projects.roles/patch):
+  /// \[`projects.roles.patch()`\](/iam/reference/rest/v1/projects.roles/patch):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method updates only
-  /// [custom roles](/iam/docs/understanding-custom-roles) that have been
+  /// \[custom roles\](/iam/docs/understanding-custom-roles) that have been
   /// created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// [`organizations.roles.patch()`](/iam/reference/rest/v1/organizations.roles/patch):
+  /// \[`organizations.roles.patch()`\](/iam/reference/rest/v1/organizations.roles/patch):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
-  /// updates only [custom roles](/iam/docs/understanding-custom-roles) that
+  /// updates only \[custom roles\](/iam/docs/understanding-custom-roles) that
   /// have been created at the organization level. Example request URL:
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/roles/\[^/\]+$`.
   ///
   /// [updateMask] - A mask describing which fields in the Role have changed.
   ///
@@ -625,23 +625,23 @@ class OrganizationsRolesResource {
   /// Request parameters:
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
-  /// the request, namely [`projects`](/iam/reference/rest/v1/projects.roles) or
-  /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each
+  /// the request, namely \[`projects`\](/iam/reference/rest/v1/projects.roles)
+  /// or \[`organizations`\](/iam/reference/rest/v1/organizations.roles). Each
   /// resource type's `name` value format is described below: *
-  /// [`projects.roles.undelete()`](/iam/reference/rest/v1/projects.roles/undelete):
+  /// \[`projects.roles.undelete()`\](/iam/reference/rest/v1/projects.roles/undelete):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method undeletes only
-  /// [custom roles](/iam/docs/understanding-custom-roles) that have been
+  /// \[custom roles\](/iam/docs/understanding-custom-roles) that have been
   /// created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// [`organizations.roles.undelete()`](/iam/reference/rest/v1/organizations.roles/undelete):
+  /// \[`organizations.roles.undelete()`\](/iam/reference/rest/v1/organizations.roles/undelete):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
-  /// undeletes only [custom roles](/iam/docs/understanding-custom-roles) that
+  /// undeletes only \[custom roles\](/iam/docs/understanding-custom-roles) that
   /// have been created at the organization level. Example request URL:
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^organizations/[^/]+/roles/[^/]+$".
+  /// Value must have pattern `^organizations/\[^/\]+/roles/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -775,20 +775,20 @@ class ProjectsRolesResource {
   ///
   /// [parent] - The `parent` parameter's value depends on the target resource
   /// for the request, namely
-  /// [`projects`](/iam/reference/rest/v1/projects.roles) or
-  /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each
+  /// \[`projects`\](/iam/reference/rest/v1/projects.roles) or
+  /// \[`organizations`\](/iam/reference/rest/v1/organizations.roles). Each
   /// resource type's `parent` value format is described below: *
-  /// [`projects.roles.create()`](/iam/reference/rest/v1/projects.roles/create):
-  /// `projects/{PROJECT_ID}`. This method creates project-level [custom
-  /// roles](/iam/docs/understanding-custom-roles). Example request URL:
+  /// \[`projects.roles.create()`\](/iam/reference/rest/v1/projects.roles/create):
+  /// `projects/{PROJECT_ID}`. This method creates project-level \[custom
+  /// roles\](/iam/docs/understanding-custom-roles). Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles` *
-  /// [`organizations.roles.create()`](/iam/reference/rest/v1/organizations.roles/create):
+  /// \[`organizations.roles.create()`\](/iam/reference/rest/v1/organizations.roles/create):
   /// `organizations/{ORGANIZATION_ID}`. This method creates organization-level
-  /// [custom roles](/iam/docs/understanding-custom-roles). Example request URL:
-  /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles`
+  /// \[custom roles\](/iam/docs/understanding-custom-roles). Example request
+  /// URL: `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -852,23 +852,23 @@ class ProjectsRolesResource {
   /// Request parameters:
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
-  /// the request, namely [`projects`](/iam/reference/rest/v1/projects.roles) or
-  /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each
+  /// the request, namely \[`projects`\](/iam/reference/rest/v1/projects.roles)
+  /// or \[`organizations`\](/iam/reference/rest/v1/organizations.roles). Each
   /// resource type's `name` value format is described below: *
-  /// [`projects.roles.delete()`](/iam/reference/rest/v1/projects.roles/delete):
+  /// \[`projects.roles.delete()`\](/iam/reference/rest/v1/projects.roles/delete):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method deletes only
-  /// [custom roles](/iam/docs/understanding-custom-roles) that have been
+  /// \[custom roles\](/iam/docs/understanding-custom-roles) that have been
   /// created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// [`organizations.roles.delete()`](/iam/reference/rest/v1/organizations.roles/delete):
+  /// \[`organizations.roles.delete()`\](/iam/reference/rest/v1/organizations.roles/delete):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
-  /// deletes only [custom roles](/iam/docs/understanding-custom-roles) that
+  /// deletes only \[custom roles\](/iam/docs/understanding-custom-roles) that
   /// have been created at the organization level. Example request URL:
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^projects/[^/]+/roles/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/roles/\[^/\]+$`.
   ///
   /// [etag] - Used to perform a consistent read-modify-write.
   ///
@@ -925,28 +925,28 @@ class ProjectsRolesResource {
   /// Request parameters:
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
-  /// the request, namely [`roles`](/iam/reference/rest/v1/roles),
-  /// [`projects`](/iam/reference/rest/v1/projects.roles), or
-  /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each
+  /// the request, namely \[`roles`\](/iam/reference/rest/v1/roles),
+  /// \[`projects`\](/iam/reference/rest/v1/projects.roles), or
+  /// \[`organizations`\](/iam/reference/rest/v1/organizations.roles). Each
   /// resource type's `name` value format is described below: *
-  /// [`roles.get()`](/iam/reference/rest/v1/roles/get): `roles/{ROLE_NAME}`.
-  /// This method returns results from all [predefined
-  /// roles](/iam/docs/understanding-roles#predefined_roles) in Cloud IAM.
+  /// \[`roles.get()`\](/iam/reference/rest/v1/roles/get): `roles/{ROLE_NAME}`.
+  /// This method returns results from all \[predefined
+  /// roles\](/iam/docs/understanding-roles#predefined_roles) in Cloud IAM.
   /// Example request URL: `https://iam.googleapis.com/v1/roles/{ROLE_NAME}` *
-  /// [`projects.roles.get()`](/iam/reference/rest/v1/projects.roles/get):
+  /// \[`projects.roles.get()`\](/iam/reference/rest/v1/projects.roles/get):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method returns only
-  /// [custom roles](/iam/docs/understanding-custom-roles) that have been
+  /// \[custom roles\](/iam/docs/understanding-custom-roles) that have been
   /// created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// [`organizations.roles.get()`](/iam/reference/rest/v1/organizations.roles/get):
+  /// \[`organizations.roles.get()`\](/iam/reference/rest/v1/organizations.roles/get):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
-  /// returns only [custom roles](/iam/docs/understanding-custom-roles) that
+  /// returns only \[custom roles\](/iam/docs/understanding-custom-roles) that
   /// have been created at the organization level. Example request URL:
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^projects/[^/]+/roles/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/roles/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -998,26 +998,26 @@ class ProjectsRolesResource {
   /// Request parameters:
   ///
   /// [parent] - The `parent` parameter's value depends on the target resource
-  /// for the request, namely [`roles`](/iam/reference/rest/v1/roles),
-  /// [`projects`](/iam/reference/rest/v1/projects.roles), or
-  /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each
+  /// for the request, namely \[`roles`\](/iam/reference/rest/v1/roles),
+  /// \[`projects`\](/iam/reference/rest/v1/projects.roles), or
+  /// \[`organizations`\](/iam/reference/rest/v1/organizations.roles). Each
   /// resource type's `parent` value format is described below: *
-  /// [`roles.list()`](/iam/reference/rest/v1/roles/list): An empty string. This
-  /// method doesn't require a resource; it simply returns all [predefined
-  /// roles](/iam/docs/understanding-roles#predefined_roles) in Cloud IAM.
+  /// \[`roles.list()`\](/iam/reference/rest/v1/roles/list): An empty string.
+  /// This method doesn't require a resource; it simply returns all \[predefined
+  /// roles\](/iam/docs/understanding-roles#predefined_roles) in Cloud IAM.
   /// Example request URL: `https://iam.googleapis.com/v1/roles` *
-  /// [`projects.roles.list()`](/iam/reference/rest/v1/projects.roles/list):
-  /// `projects/{PROJECT_ID}`. This method lists all project-level [custom
-  /// roles](/iam/docs/understanding-custom-roles). Example request URL:
+  /// \[`projects.roles.list()`\](/iam/reference/rest/v1/projects.roles/list):
+  /// `projects/{PROJECT_ID}`. This method lists all project-level \[custom
+  /// roles\](/iam/docs/understanding-custom-roles). Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles` *
-  /// [`organizations.roles.list()`](/iam/reference/rest/v1/organizations.roles/list):
+  /// \[`organizations.roles.list()`\](/iam/reference/rest/v1/organizations.roles/list):
   /// `organizations/{ORGANIZATION_ID}`. This method lists all
-  /// organization-level [custom roles](/iam/docs/understanding-custom-roles).
+  /// organization-level \[custom roles\](/iam/docs/understanding-custom-roles).
   /// Example request URL:
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional limit on the number of roles to include in the
   /// response. The default is 300, and the maximum is 1,000.
@@ -1104,23 +1104,23 @@ class ProjectsRolesResource {
   /// Request parameters:
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
-  /// the request, namely [`projects`](/iam/reference/rest/v1/projects.roles) or
-  /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each
+  /// the request, namely \[`projects`\](/iam/reference/rest/v1/projects.roles)
+  /// or \[`organizations`\](/iam/reference/rest/v1/organizations.roles). Each
   /// resource type's `name` value format is described below: *
-  /// [`projects.roles.patch()`](/iam/reference/rest/v1/projects.roles/patch):
+  /// \[`projects.roles.patch()`\](/iam/reference/rest/v1/projects.roles/patch):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method updates only
-  /// [custom roles](/iam/docs/understanding-custom-roles) that have been
+  /// \[custom roles\](/iam/docs/understanding-custom-roles) that have been
   /// created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// [`organizations.roles.patch()`](/iam/reference/rest/v1/organizations.roles/patch):
+  /// \[`organizations.roles.patch()`\](/iam/reference/rest/v1/organizations.roles/patch):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
-  /// updates only [custom roles](/iam/docs/understanding-custom-roles) that
+  /// updates only \[custom roles\](/iam/docs/understanding-custom-roles) that
   /// have been created at the organization level. Example request URL:
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^projects/[^/]+/roles/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/roles/\[^/\]+$`.
   ///
   /// [updateMask] - A mask describing which fields in the Role have changed.
   ///
@@ -1183,23 +1183,23 @@ class ProjectsRolesResource {
   /// Request parameters:
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
-  /// the request, namely [`projects`](/iam/reference/rest/v1/projects.roles) or
-  /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each
+  /// the request, namely \[`projects`\](/iam/reference/rest/v1/projects.roles)
+  /// or \[`organizations`\](/iam/reference/rest/v1/organizations.roles). Each
   /// resource type's `name` value format is described below: *
-  /// [`projects.roles.undelete()`](/iam/reference/rest/v1/projects.roles/undelete):
+  /// \[`projects.roles.undelete()`\](/iam/reference/rest/v1/projects.roles/undelete):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method undeletes only
-  /// [custom roles](/iam/docs/understanding-custom-roles) that have been
+  /// \[custom roles\](/iam/docs/understanding-custom-roles) that have been
   /// created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// [`organizations.roles.undelete()`](/iam/reference/rest/v1/organizations.roles/undelete):
+  /// \[`organizations.roles.undelete()`\](/iam/reference/rest/v1/organizations.roles/undelete):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
-  /// undeletes only [custom roles](/iam/docs/understanding-custom-roles) that
+  /// undeletes only \[custom roles\](/iam/docs/understanding-custom-roles) that
   /// have been created at the organization level. Example request URL:
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^projects/[^/]+/roles/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/roles/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1267,7 +1267,7 @@ class ProjectsServiceAccountsResource {
   ///
   /// [name] - Required. The resource name of the project associated with the
   /// service accounts, such as `projects/my-project-123`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1340,7 +1340,7 @@ class ProjectsServiceAccountsResource {
   /// `-` as a wildcard for the `PROJECT_ID` will infer the project from the
   /// account. The `ACCOUNT` value can be the `email` address or the `unique_id`
   /// of the service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1409,7 +1409,7 @@ class ProjectsServiceAccountsResource {
   /// for the `PROJECT_ID` will infer the project from the account. The
   /// `ACCOUNT` value can be the `email` address or the `unique_id` of the
   /// service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1475,7 +1475,7 @@ class ProjectsServiceAccountsResource {
   /// for the `PROJECT_ID` will infer the project from the account. The
   /// `ACCOUNT` value can be the `email` address or the `unique_id` of the
   /// service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1534,7 +1534,7 @@ class ProjectsServiceAccountsResource {
   /// `-` as a wildcard for the `PROJECT_ID` will infer the project from the
   /// account. The `ACCOUNT` value can be the `email` address or the `unique_id`
   /// of the service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1589,7 +1589,7 @@ class ProjectsServiceAccountsResource {
   /// account has role grants on a resource, use the `getIamPolicy` method for
   /// that resource. For example, to view the role grants for a project, call
   /// the Resource Manager API's
-  /// [`projects.getIamPolicy`](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getIamPolicy)
+  /// \[`projects.getIamPolicy`\](https://cloud.google.com/resource-manager/reference/rest/v1/projects/getIamPolicy)
   /// method.
   ///
   /// Request parameters:
@@ -1597,7 +1597,7 @@ class ProjectsServiceAccountsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -1665,7 +1665,7 @@ class ProjectsServiceAccountsResource {
   ///
   /// [name] - Required. The resource name of the project associated with the
   /// service accounts, such as `projects/my-project-123`.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [pageSize] - Optional limit on the number of service accounts to include
   /// in the response. Further accounts can subsequently be obtained by
@@ -1748,7 +1748,7 @@ class ProjectsServiceAccountsResource {
   /// `projects/-/serviceAccounts/fake@example.com`, which does not exist, the
   /// response contains an HTTP `403 Forbidden` error instead of a `404 Not
   /// Found` error.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1819,7 +1819,7 @@ class ProjectsServiceAccountsResource {
   /// [resource] - REQUIRED: The resource for which the policy is being
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1874,7 +1874,7 @@ class ProjectsServiceAccountsResource {
   /// **Note:** This method is deprecated and will stop working on July 1, 2021.
   ///
   /// Use the
-  /// [`signBlob`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signBlob)
+  /// \[`signBlob`\](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signBlob)
   /// method in the IAM Service Account Credentials API instead. If you
   /// currently use this method, see the [migration
   /// guide](https://cloud.google.com/iam/help/credentials/migrate-api) for
@@ -1892,7 +1892,7 @@ class ProjectsServiceAccountsResource {
   /// for the `PROJECT_ID` will infer the project from the account. The
   /// `ACCOUNT` value can be the `email` address or the `unique_id` of the
   /// service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1946,7 +1946,7 @@ class ProjectsServiceAccountsResource {
   /// **Note:** This method is deprecated and will stop working on July 1, 2021.
   ///
   /// Use the
-  /// [`signJwt`](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signJwt)
+  /// \[`signJwt`\](https://cloud.google.com/iam/help/rest-credentials/v1/projects.serviceAccounts/signJwt)
   /// method in the IAM Service Account Credentials API instead. If you
   /// currently use this method, see the [migration
   /// guide](https://cloud.google.com/iam/help/credentials/migrate-api) for
@@ -1964,7 +1964,7 @@ class ProjectsServiceAccountsResource {
   /// for the `PROJECT_ID` will infer the project from the account. The
   /// `ACCOUNT` value can be the `email` address or the `unique_id` of the
   /// service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2025,7 +2025,7 @@ class ProjectsServiceAccountsResource {
   /// [resource] - REQUIRED: The resource for which the policy detail is being
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2093,7 +2093,7 @@ class ProjectsServiceAccountsResource {
   /// [name] - The resource name of the service account in the following format:
   /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT_UNIQUE_ID}`. Using `-` as
   /// a wildcard for the `PROJECT_ID` will infer the project from the account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2165,7 +2165,7 @@ class ProjectsServiceAccountsResource {
   /// `projects/-/serviceAccounts/fake@example.com`, which does not exist, the
   /// response contains an HTTP `403 Forbidden` error instead of a `404 Not
   /// Found` error.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2234,7 +2234,7 @@ class ProjectsServiceAccountsKeysResource {
   /// `-` as a wildcard for the `PROJECT_ID` will infer the project from the
   /// account. The `ACCOUNT` value can be the `email` address or the `unique_id`
   /// of the service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2299,7 +2299,7 @@ class ProjectsServiceAccountsKeysResource {
   /// The `ACCOUNT` value can be the `email` address or the `unique_id` of the
   /// service account.
   /// Value must have pattern
-  /// "^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$".
+  /// `^projects/\[^/\]+/serviceAccounts/\[^/\]+/keys/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2356,7 +2356,7 @@ class ProjectsServiceAccountsKeysResource {
   /// The `ACCOUNT` value can be the `email` address or the `unique_id` of the
   /// service account.
   /// Value must have pattern
-  /// "^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$".
+  /// `^projects/\[^/\]+/serviceAccounts/\[^/\]+/keys/\[^/\]+$`.
   ///
   /// [publicKeyType] - The output format of the public key requested. X509_PEM
   /// is the default output format.
@@ -2423,7 +2423,7 @@ class ProjectsServiceAccountsKeysResource {
   /// `-` as a wildcard for the `PROJECT_ID`, will infer the project from the
   /// account. The `ACCOUNT` value can be the `email` address or the `unique_id`
   /// of the service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [keyTypes] - Filters the types of keys the user wants to include in the
   /// list response. Duplicate key types are not allowed. If no key type is
@@ -2489,7 +2489,7 @@ class ProjectsServiceAccountsKeysResource {
   /// for the `PROJECT_ID` will infer the project from the account. The
   /// `ACCOUNT` value can be the `email` address or the `unique_id` of the
   /// service account.
-  /// Value must have pattern "^projects/[^/]+/serviceAccounts/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/serviceAccounts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2552,28 +2552,28 @@ class RolesResource {
   /// Request parameters:
   ///
   /// [name] - The `name` parameter's value depends on the target resource for
-  /// the request, namely [`roles`](/iam/reference/rest/v1/roles),
-  /// [`projects`](/iam/reference/rest/v1/projects.roles), or
-  /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each
+  /// the request, namely \[`roles`\](/iam/reference/rest/v1/roles),
+  /// \[`projects`\](/iam/reference/rest/v1/projects.roles), or
+  /// \[`organizations`\](/iam/reference/rest/v1/organizations.roles). Each
   /// resource type's `name` value format is described below: *
-  /// [`roles.get()`](/iam/reference/rest/v1/roles/get): `roles/{ROLE_NAME}`.
-  /// This method returns results from all [predefined
-  /// roles](/iam/docs/understanding-roles#predefined_roles) in Cloud IAM.
+  /// \[`roles.get()`\](/iam/reference/rest/v1/roles/get): `roles/{ROLE_NAME}`.
+  /// This method returns results from all \[predefined
+  /// roles\](/iam/docs/understanding-roles#predefined_roles) in Cloud IAM.
   /// Example request URL: `https://iam.googleapis.com/v1/roles/{ROLE_NAME}` *
-  /// [`projects.roles.get()`](/iam/reference/rest/v1/projects.roles/get):
+  /// \[`projects.roles.get()`\](/iam/reference/rest/v1/projects.roles/get):
   /// `projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`. This method returns only
-  /// [custom roles](/iam/docs/understanding-custom-roles) that have been
+  /// \[custom roles\](/iam/docs/understanding-custom-roles) that have been
   /// created at the project level. Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles/{CUSTOM_ROLE_ID}`
   /// *
-  /// [`organizations.roles.get()`](/iam/reference/rest/v1/organizations.roles/get):
+  /// \[`organizations.roles.get()`\](/iam/reference/rest/v1/organizations.roles/get):
   /// `organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`. This method
-  /// returns only [custom roles](/iam/docs/understanding-custom-roles) that
+  /// returns only \[custom roles\](/iam/docs/understanding-custom-roles) that
   /// have been created at the organization level. Example request URL:
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles/{CUSTOM_ROLE_ID}`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
   /// ID or organization ID.
-  /// Value must have pattern "^roles/[^/]+$".
+  /// Value must have pattern `^roles/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2631,21 +2631,21 @@ class RolesResource {
   /// ListRolesResponse.
   ///
   /// [parent] - The `parent` parameter's value depends on the target resource
-  /// for the request, namely [`roles`](/iam/reference/rest/v1/roles),
-  /// [`projects`](/iam/reference/rest/v1/projects.roles), or
-  /// [`organizations`](/iam/reference/rest/v1/organizations.roles). Each
+  /// for the request, namely \[`roles`\](/iam/reference/rest/v1/roles),
+  /// \[`projects`\](/iam/reference/rest/v1/projects.roles), or
+  /// \[`organizations`\](/iam/reference/rest/v1/organizations.roles). Each
   /// resource type's `parent` value format is described below: *
-  /// [`roles.list()`](/iam/reference/rest/v1/roles/list): An empty string. This
-  /// method doesn't require a resource; it simply returns all [predefined
-  /// roles](/iam/docs/understanding-roles#predefined_roles) in Cloud IAM.
+  /// \[`roles.list()`\](/iam/reference/rest/v1/roles/list): An empty string.
+  /// This method doesn't require a resource; it simply returns all \[predefined
+  /// roles\](/iam/docs/understanding-roles#predefined_roles) in Cloud IAM.
   /// Example request URL: `https://iam.googleapis.com/v1/roles` *
-  /// [`projects.roles.list()`](/iam/reference/rest/v1/projects.roles/list):
-  /// `projects/{PROJECT_ID}`. This method lists all project-level [custom
-  /// roles](/iam/docs/understanding-custom-roles). Example request URL:
+  /// \[`projects.roles.list()`\](/iam/reference/rest/v1/projects.roles/list):
+  /// `projects/{PROJECT_ID}`. This method lists all project-level \[custom
+  /// roles\](/iam/docs/understanding-custom-roles). Example request URL:
   /// `https://iam.googleapis.com/v1/projects/{PROJECT_ID}/roles` *
-  /// [`organizations.roles.list()`](/iam/reference/rest/v1/organizations.roles/list):
+  /// \[`organizations.roles.list()`\](/iam/reference/rest/v1/organizations.roles/list):
   /// `organizations/{ORGANIZATION_ID}`. This method lists all
-  /// organization-level [custom roles](/iam/docs/understanding-custom-roles).
+  /// organization-level \[custom roles\](/iam/docs/understanding-custom-roles).
   /// Example request URL:
   /// `https://iam.googleapis.com/v1/organizations/{ORGANIZATION_ID}/roles`
   /// Note: Wildcard (*) values are invalid; you must specify a complete project
@@ -2812,13 +2812,13 @@ class AdminAuditData {
 /// and a specific service, the union of the two AuditConfigs is used for that
 /// service: the log_types specified in each AuditConfig are enabled, and the
 /// exempted_members in each AuditLogConfig are exempted. Example Policy with
-/// multiple AuditConfigs: { "audit_configs": [ { "service": "allServices",
-/// "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [
-/// "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type":
-/// "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
-/// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type":
-/// "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For
-/// sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
@@ -2886,9 +2886,9 @@ class AuditData {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example: { "audit_log_configs": [ { "log_type": "DATA_READ",
-/// "exempted_members": [ "user:jose@example.com" ] }, { "log_type":
-/// "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
@@ -3809,14 +3809,14 @@ class PermissionDelta {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

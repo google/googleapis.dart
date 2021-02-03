@@ -423,7 +423,7 @@ class AllocateQuotaResponse {
   }
 }
 
-/// The allowed types for [VALUE] in a `[KEY]:[VALUE]` attribute.
+/// The allowed types for \[VALUE\] in a `[KEY]:[VALUE]` attribute.
 class AttributeValue {
   /// A Boolean value represented by `true` or `false`.
   core.bool boolValue;
@@ -766,12 +766,12 @@ class Auth {
   /// Reflects the audience (`aud`) claim within a JWT. The audience value(s)
   /// depends on the `issuer`, but typically include one or more of the
   /// following pieces of information: * The services intended to receive the
-  /// credential. For example, ["https://pubsub.googleapis.com/",
-  /// "https://storage.googleapis.com/"]. * A set of service-based scopes. For
-  /// example, ["https://www.googleapis.com/auth/cloud-platform"]. * The client
-  /// id of an app, such as the Firebase project id for JWTs from Firebase Auth.
-  /// Consult the documentation for the credential issuer to determine the
-  /// information provided.
+  /// credential. For example, \["https://pubsub.googleapis.com/",
+  /// "https://storage.googleapis.com/"\]. * A set of service-based scopes. For
+  /// example, \["https://www.googleapis.com/auth/cloud-platform"\]. * The
+  /// client id of an app, such as the Firebase project id for JWTs from
+  /// Firebase Auth. Consult the documentation for the credential issuer to
+  /// determine the information provided.
   core.List<core.String> audiences;
 
   /// Structured claims presented with the credential.
@@ -780,7 +780,7 @@ class Auth {
   /// following is a subset of the standard required and optional claims that
   /// would typically be presented for a Google-based JWT: {'iss':
   /// 'accounts.google.com', 'sub': '113289723416554971153', 'aud':
-  /// ['123456789012', 'pubsub.googleapis.com'], 'azp':
+  /// \['123456789012', 'pubsub.googleapis.com'\], 'azp':
   /// '123456789012.apps.googleusercontent.com', 'email': 'jsmith@example.com',
   /// 'iat': 1353601026, 'exp': 1353604926} SAML assertions are similarly
   /// specified, but with an identity provider dependent structure.
@@ -1385,13 +1385,14 @@ class ConsumerInfo {
 class Distribution {
   /// The number of samples in each histogram bucket.
   ///
-  /// `bucket_counts` are optional. If present, they must sum to the `count`
-  /// value. The buckets are defined below in `bucket_option`. There are N
-  /// buckets. `bucket_counts[0]` is the number of samples in the underflow
-  /// bucket. `bucket_counts[1]` to `bucket_counts[N-1]` are the numbers of
-  /// samples in each of the finite buckets. And `bucket_counts[N] is the number
-  /// of samples in the overflow bucket. See the comments of `bucket_option`
-  /// below for more details. Any suffix of trailing zeros may be omitted.
+  /// \`bucket_counts\` are optional. If present, they must sum to the \`count\`
+  /// value. The buckets are defined below in \`bucket_option\`. There are N
+  /// buckets. \`bucket_counts\[0\]\` is the number of samples in the underflow
+  /// bucket. \`bucket_counts\[1\]\` to \`bucket_counts\[N-1\]\` are the numbers
+  /// of samples in each of the finite buckets. And \`bucket_counts\[N\] is the
+  /// number of samples in the overflow bucket. See the comments of
+  /// \`bucket_option\` below for more details. Any suffix of trailing zeros may
+  /// be omitted.
   core.List<core.String> bucketCounts;
 
   /// The total number of samples in the distribution.
@@ -1428,7 +1429,7 @@ class Distribution {
   /// Ignored if `count` is zero.
   core.double minimum;
 
-  /// The sum of squared deviations from the mean: Sum[i=1..count]((x_i -
+  /// The sum of squared deviations from the mean: Sum\[i=1..count\]((x_i -
   /// mean)^2) where each x_i is a sample values.
   ///
   /// If `count` is zero then this field must be zero, otherwise validation of
@@ -1587,13 +1588,13 @@ class ExplicitBuckets {
   ///
   /// Note that a list of length N-1 defines N buckets because of fenceposting.
   /// See comments on `bucket_options` for details. The i'th finite bucket
-  /// covers the interval [bound[i-1], bound[i]) where i ranges from 1 to
+  /// covers the interval \[bound\[i-1\], bound\[i\]) where i ranges from 1 to
   /// bound_size() - 1. Note that there are no finite buckets at all if 'bound'
   /// only contains a single element; in that special case the single bound
   /// defines the boundary between the underflow and overflow buckets. bucket
-  /// number lower bound upper bound i == 0 (underflow) -inf bound[i] 0 < i <
-  /// bound_size() bound[i-1] bound[i] i == bound_size() (overflow) bound[i-1]
-  /// +inf
+  /// number lower bound upper bound i == 0 (underflow) -inf bound\[i\] 0 < i <
+  /// bound_size() bound\[i-1\] bound\[i\] i == bound_size() (overflow)
+  /// bound\[i-1\] +inf
   core.List<core.double> bounds;
 
   ExplicitBuckets();
@@ -1617,7 +1618,7 @@ class ExplicitBuckets {
 
 /// Describing buckets with exponentially growing width.
 class ExponentialBuckets {
-  /// The i'th exponential bucket covers the interval [scale *
+  /// The i'th exponential bucket covers the interval \[scale *
   /// growth_factor^(i-1), scale * growth_factor^i) where i ranges from 1 to
   /// num_finite_buckets inclusive.
   ///
@@ -1630,7 +1631,7 @@ class ExponentialBuckets {
   /// `num_finite_buckets` + 2. See comments on `bucket_options` for details.
   core.int numFiniteBuckets;
 
-  /// The i'th exponential bucket covers the interval [scale *
+  /// The i'th exponential bucket covers the interval \[scale *
   /// growth_factor^(i-1), scale * growth_factor^i) where i ranges from 1 to
   /// num_finite_buckets inclusive.
   ///
@@ -1743,8 +1744,8 @@ class HttpRequest {
   /// Examples: "HTTP/1.1", "HTTP/2", "websocket"
   core.String protocol;
 
-  /// The referer URL of the request, as defined in [HTTP/1.1 Header Field
-  /// Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+  /// The referer URL of the request, as defined in \[HTTP/1.1 Header Field
+  /// Definitions\](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
   core.String referer;
 
   /// The IP address (IPv4 or IPv6) of the client that issued the HTTP request.
@@ -1896,12 +1897,14 @@ class LinearBuckets {
   /// `num_finite_buckets` + 2. See comments on `bucket_options` for details.
   core.int numFiniteBuckets;
 
-  /// The i'th linear bucket covers the interval [offset + (i-1) * width, offset
-  /// + i * width) where i ranges from 1 to num_finite_buckets, inclusive.
+  /// The i'th linear bucket covers the interval \[offset + (i-1) * width,
+  /// offset + i * width) where i ranges from 1 to num_finite_buckets,
+  /// inclusive.
   core.double offset;
 
-  /// The i'th linear bucket covers the interval [offset + (i-1) * width, offset
-  /// + i * width) where i ranges from 1 to num_finite_buckets, inclusive.
+  /// The i'th linear bucket covers the interval \[offset + (i-1) * width,
+  /// offset + i * width) where i ranges from 1 to num_finite_buckets,
+  /// inclusive.
   ///
   /// Must be strictly positive.
   core.double width;
@@ -3718,12 +3721,12 @@ class ServiceAccountDelegationInfo {
 /// aggregation.
 ///
 /// It contains the name of a span with format:
-/// projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
+/// projects/\[PROJECT_ID_OR_NUMBER\]/traces/\[TRACE_ID\]/spans/\[SPAN_ID\]
 class SpanContext {
   /// The resource name of the span.
   ///
   /// The format is:
-  /// projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID]
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/traces/\[TRACE_ID\]/spans/\[SPAN_ID\]
   /// `[TRACE_ID]` is a unique identifier for a trace within a project; it is a
   /// 32-character hexadecimal encoding of a 16-byte array. `[SPAN_ID]` is a
   /// unique identifier for a span within a trace; it is a 16-character
@@ -3877,15 +3880,15 @@ class TraceSpan {
   core.String endTime;
 
   /// The resource name of the span in the following format:
-  /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique
+  /// projects/\[PROJECT_ID\]/traces/\[TRACE_ID\]/spans/SPAN_ID is a unique
   /// identifier for a trace within a project; it is a 32-character hexadecimal
   /// encoding of a 16-byte array.
   ///
-  /// [SPAN_ID] is a unique identifier for a span within a trace; it is a
+  /// \[SPAN_ID\] is a unique identifier for a span within a trace; it is a
   /// 16-character hexadecimal encoding of an 8-byte array.
   core.String name;
 
-  /// The [SPAN_ID] of this span's parent span.
+  /// The \[SPAN_ID\] of this span's parent span.
   ///
   /// If this is a root span, then this field must be empty.
   core.String parentSpanId;
@@ -3897,7 +3900,7 @@ class TraceSpan {
   /// advantage of this helpful information.
   core.bool sameProcessAsParentSpan;
 
-  /// The [SPAN_ID] portion of the span's resource name.
+  /// The \[SPAN_ID\] portion of the span's resource name.
   core.String spanId;
 
   /// Distinguishes between spans generated in a particular context.

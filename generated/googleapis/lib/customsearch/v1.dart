@@ -132,7 +132,7 @@ class CseResource {
   /// section of [Internationalizing Queries and Results
   /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)
   /// for more information, and (Supported Interface
-  /// Languages)[https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages]
+  /// Languages)\[https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages\]
   /// for a list of supported languages.
   ///
   /// [hq] - Appends the specified query terms to the query, as if they were
@@ -261,8 +261,8 @@ class CseResource {
   ///
   /// [sort] - The sort expression to apply to the results. The sort parameter
   /// specifies that the results be sorted according to the specified expression
-  /// i.e. sort by date. [Example:
-  /// sort=date](https://developers.google.com/custom-search/docs/structured_search#sort-by-attribute).
+  /// i.e. sort by date. \[Example:
+  /// sort=date\](https://developers.google.com/custom-search/docs/structured_search#sort-by-attribute).
   ///
   /// [start] - The index of the first result to return. The default number of
   /// results per page is 10, so `&start=11` would start at the top of the
@@ -515,7 +515,7 @@ class CseSiterestrictResource {
   /// section of [Internationalizing Queries and Results
   /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)
   /// for more information, and (Supported Interface
-  /// Languages)[https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages]
+  /// Languages)\[https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages\]
   /// for a list of supported languages.
   ///
   /// [hq] - Appends the specified query terms to the query, as if they were
@@ -644,8 +644,8 @@ class CseSiterestrictResource {
   ///
   /// [sort] - The sort expression to apply to the results. The sort parameter
   /// specifies that the results be sorted according to the specified expression
-  /// i.e. sort by date. [Example:
-  /// sort=date](https://developers.google.com/custom-search/docs/structured_search#sort-by-attribute).
+  /// i.e. sort by date. \[Example:
+  /// sort=date\](https://developers.google.com/custom-search/docs/structured_search#sort-by-attribute).
   ///
   /// [start] - The index of the first result to return. The default number of
   /// results per page is 10, so `&start=11` would start at the top of the
@@ -1282,8 +1282,8 @@ class SearchQueriesNextPage {
   /// in the `cr` parameter's value. Google WebSearch determines the country of
   /// a document by analyzing the following: * The top-level domain (TLD) of the
   /// document's URL. * The geographic location of the web server's IP address.
-  /// See [Country (cr) Parameter
-  /// Values](https://developers.google.com/custom-search/docs/xml_results#countryCollections)
+  /// See \[Country (cr) Parameter
+  /// Values\](https://developers.google.com/custom-search/docs/xml_results#countryCollections)
   /// for a list of valid values for this parameter.
   core.String cr;
 
@@ -1727,8 +1727,8 @@ class SearchQueriesPreviousPage {
   /// in the `cr` parameter's value. Google WebSearch determines the country of
   /// a document by analyzing the following: * The top-level domain (TLD) of the
   /// document's URL. * The geographic location of the web server's IP address.
-  /// See [Country (cr) Parameter
-  /// Values](https://developers.google.com/custom-search/docs/xml_results#countryCollections)
+  /// See \[Country (cr) Parameter
+  /// Values\](https://developers.google.com/custom-search/docs/xml_results#countryCollections)
   /// for a list of valid values for this parameter.
   core.String cr;
 
@@ -2172,8 +2172,8 @@ class SearchQueriesRequest {
   /// in the `cr` parameter's value. Google WebSearch determines the country of
   /// a document by analyzing the following: * The top-level domain (TLD) of the
   /// document's URL. * The geographic location of the web server's IP address.
-  /// See [Country (cr) Parameter
-  /// Values](https://developers.google.com/custom-search/docs/xml_results#countryCollections)
+  /// See \[Country (cr) Parameter
+  /// Values\](https://developers.google.com/custom-search/docs/xml_results#countryCollections)
   /// for a list of valid values for this parameter.
   core.String cr;
 

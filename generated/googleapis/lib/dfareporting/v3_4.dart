@@ -19312,16 +19312,16 @@ class Conversion {
   /// The display click ID.
   ///
   /// This field is mutually exclusive with encryptedUserId,
-  /// encryptedUserIdCandidates[], matchId, mobileDeviceId and gclid. This or
-  /// encryptedUserId or encryptedUserIdCandidates[] or matchId or
+  /// encryptedUserIdCandidates\[\], matchId, mobileDeviceId and gclid. This or
+  /// encryptedUserId or encryptedUserIdCandidates\[\] or matchId or
   /// mobileDeviceId or gclid is a required field.
   core.String dclid;
 
   /// The alphanumeric encrypted user ID.
   ///
   /// When set, encryptionInfo should also be specified. This field is mutually
-  /// exclusive with encryptedUserIdCandidates[], matchId, mobileDeviceId, gclid
-  /// and dclid. This or encryptedUserIdCandidates[] or matchId or
+  /// exclusive with encryptedUserIdCandidates\[\], matchId, mobileDeviceId,
+  /// gclid and dclid. This or encryptedUserIdCandidates\[\] or matchId or
   /// mobileDeviceId or gclid or dclid is a required field.
   core.String encryptedUserId;
 
@@ -19350,8 +19350,8 @@ class Conversion {
   /// The Google click ID.
   ///
   /// This field is mutually exclusive with encryptedUserId,
-  /// encryptedUserIdCandidates[], matchId, mobileDeviceId and dclid. This or
-  /// encryptedUserId or encryptedUserIdCandidates[] or matchId or
+  /// encryptedUserIdCandidates\[\], matchId, mobileDeviceId and dclid. This or
+  /// encryptedUserId or encryptedUserIdCandidates\[\] or matchId or
   /// mobileDeviceId or dclid is a required field.
   core.String gclid;
 
@@ -19371,16 +19371,16 @@ class Conversion {
   /// A match ID is your own first-party identifier that has been synced with
   /// Google using the match ID feature in Floodlight. This field is mutually
   /// exclusive with encryptedUserId,
-  /// encryptedUserIdCandidates[],mobileDeviceId, gclid and dclid. This or
-  /// encryptedUserId or encryptedUserIdCandidates[] or mobileDeviceId or gclid
-  /// or dclid is a required field.
+  /// encryptedUserIdCandidates\[\],mobileDeviceId, gclid and dclid. This or
+  /// encryptedUserId or encryptedUserIdCandidates\[\] or mobileDeviceId or
+  /// gclid or dclid is a required field.
   core.String matchId;
 
   /// The mobile device ID.
   ///
   /// This field is mutually exclusive with encryptedUserId,
-  /// encryptedUserIdCandidates[], matchId, gclid and dclid. This or
-  /// encryptedUserId or encryptedUserIdCandidates[] or matchId or gclid or
+  /// encryptedUserIdCandidates\[\], matchId, gclid and dclid. This or
+  /// encryptedUserId or encryptedUserIdCandidates\[\] or matchId or gclid or
   /// dclid is a required field.
   core.String mobileDeviceId;
 
@@ -19637,10 +19637,11 @@ class ConversionsBatchInsertRequest {
   /// The set of conversions to insert.
   core.List<Conversion> conversions;
 
-  /// Describes how encryptedUserId or encryptedUserIdCandidates[] is encrypted.
+  /// Describes how encryptedUserId or encryptedUserIdCandidates\[\] is
+  /// encrypted.
   ///
-  /// This is a required field if encryptedUserId or encryptedUserIdCandidates[]
-  /// is used.
+  /// This is a required field if encryptedUserId or
+  /// encryptedUserIdCandidates\[\] is used.
   EncryptionInfo encryptionInfo;
 
   /// Identifies what kind of resource this is.
@@ -21818,7 +21819,7 @@ class CreativeAssetMetadata {
 ///
 /// Applicable to INSTREAM_VIDEO creatives.
 class CreativeAssetSelection {
-  /// A creativeAssets[].id.
+  /// A creativeAssets\[\].id.
   ///
   /// This should refer to one of the parent assets in this creative, and will
   /// be served if none of the rules match. This is a required field.
@@ -23401,7 +23402,7 @@ class CustomFloodlightVariable {
 
   /// The type of custom floodlight variable to supply a value for.
   ///
-  /// These map to the "u[1-20]=" in the tags.
+  /// These map to the "u\[1-20\]=" in the tags.
   /// Possible string values are:
   /// - "U1"
   /// - "U2"
@@ -25698,13 +25699,13 @@ class FloodlightActivity {
   ///
   /// This is optional: if empty, a new tag string will be generated for you.
   /// This string must be 1 to 8 characters long, with valid characters being
-  /// a-z0-9[ _ ]. This tag string must also be unique among activities of the
+  /// a-z0-9\[ _ \]. This tag string must also be unique among activities of the
   /// same activity group. This field is read-only after insertion.
   core.String tagString;
 
   /// List of the user-defined variables used by this conversion tag.
   ///
-  /// These map to the "u[1-100]=" in the tags. Each of these can have a user
+  /// These map to the "u\[1-100\]=" in the tags. Each of these can have a user
   /// defined type. Acceptable values are U1 to U100, inclusive.
   core.List<core.String> userDefinedVariableTypes;
 
@@ -26020,8 +26021,8 @@ class FloodlightActivityGroup {
   ///
   /// This is optional: if empty, a new tag string will be generated for you.
   /// This string must be 1 to 8 characters long, with valid characters being
-  /// a-z0-9[ _ ]. This tag string must also be unique among activity groups of
-  /// the same floodlight configuration. This field is read-only after
+  /// a-z0-9\[ _ \]. This tag string must also be unique among activity groups
+  /// of the same floodlight configuration. This field is read-only after
   /// insertion.
   core.String tagString;
 
@@ -33258,7 +33259,7 @@ class RichMediaExitOverride {
 ///
 /// Applicable to INSTREAM_VIDEO creatives.
 class Rule {
-  /// A creativeAssets[].id.
+  /// A creativeAssets\[\].id.
   ///
   /// This should refer to one of the parent assets in this creative. This is a
   /// required field.

@@ -92,7 +92,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -143,7 +143,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -226,7 +226,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -286,7 +286,7 @@ class ProjectsLocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -376,7 +376,7 @@ class ProjectsLocationsRepositoriesResource {
   ///
   /// [parent] - The name of the parent resource where the repository will be
   /// created.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [repositoryId] - The repository id to use for this repository.
   ///
@@ -444,7 +444,7 @@ class ProjectsLocationsRepositoriesResource {
   ///
   /// [name] - The name of the repository to delete.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -496,7 +496,7 @@ class ProjectsLocationsRepositoriesResource {
   ///
   /// [name] - The name of the repository to retrieve.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -551,7 +551,7 @@ class ProjectsLocationsRepositoriesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
   /// [options_requestedPolicyVersion] - Optional. The policy format version to
   /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
@@ -619,7 +619,7 @@ class ProjectsLocationsRepositoriesResource {
   ///
   /// [parent] - The name of the parent resource whose repositories will be
   /// listed.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of repositories to return.
   ///
@@ -690,7 +690,7 @@ class ProjectsLocationsRepositoriesResource {
   /// [name] - The name of the repository, for example:
   /// "projects/p1/locations/us-central1/repositories/repo1".
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
   /// [updateMask] - The update mask applies to the resource. For the
   /// `FieldMask` definition, see
@@ -759,7 +759,7 @@ class ProjectsLocationsRepositoriesResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -821,7 +821,7 @@ class ProjectsLocationsRepositoriesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -887,7 +887,7 @@ class ProjectsLocationsRepositoriesFilesResource {
   ///
   /// [name] - The name of the file to retrieve.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+/files/.*$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/files/.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -939,7 +939,7 @@ class ProjectsLocationsRepositoriesFilesResource {
   ///
   /// [parent] - The name of the parent resource whose files will be listed.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are case insensitive. The fields eligible for filtering are: *
@@ -1033,7 +1033,7 @@ class ProjectsLocationsRepositoriesPackagesResource {
   ///
   /// [name] - The name of the package to delete.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1085,7 +1085,7 @@ class ProjectsLocationsRepositoriesPackagesResource {
   ///
   /// [name] - The name of the package to retrieve.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1137,7 +1137,7 @@ class ProjectsLocationsRepositoriesPackagesResource {
   ///
   /// [parent] - The name of the parent resource whose packages will be listed.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of packages to return.
   ///
@@ -1214,7 +1214,7 @@ class ProjectsLocationsRepositoriesPackagesTagsResource {
   ///
   /// [parent] - The name of the parent resource where the tag will be created.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+$`.
   ///
   /// [tagId] - The tag id to use for this repository.
   ///
@@ -1277,7 +1277,7 @@ class ProjectsLocationsRepositoriesPackagesTagsResource {
   ///
   /// [name] - The name of the tag to delete.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+/tags/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+/tags/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1329,7 +1329,7 @@ class ProjectsLocationsRepositoriesPackagesTagsResource {
   ///
   /// [name] - The name of the tag to retrieve.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+/tags/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+/tags/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1381,7 +1381,7 @@ class ProjectsLocationsRepositoriesPackagesTagsResource {
   ///
   /// [parent] - The name of the parent resource whose tags will be listed.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+$`.
   ///
   /// [filter] - An expression for filtering the results of the request. Filter
   /// rules are case insensitive. The fields eligible for filtering are: *
@@ -1461,7 +1461,7 @@ class ProjectsLocationsRepositoriesPackagesTagsResource {
   /// [name] - The name of the tag, for example:
   /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+/tags/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+/tags/\[^/\]+$`.
   ///
   /// [updateMask] - The update mask applies to the resource. For the
   /// `FieldMask` definition, see
@@ -1535,7 +1535,7 @@ class ProjectsLocationsRepositoriesPackagesVersionsResource {
   ///
   /// [name] - The name of the version to delete.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+/versions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [force] - By default, a version that is tagged may not be deleted. If
   /// force=true, the version and any tags pointing to the version are deleted.
@@ -1594,7 +1594,7 @@ class ProjectsLocationsRepositoriesPackagesVersionsResource {
   ///
   /// [name] - The name of the version to retrieve.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+/versions/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+/versions/\[^/\]+$`.
   ///
   /// [view] - The view that should be returned in the response.
   /// Possible string values are:
@@ -1658,7 +1658,7 @@ class ProjectsLocationsRepositoriesPackagesVersionsResource {
   ///
   /// [parent] - The name of the parent resource whose versions will be listed.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/repositories/\[^/\]+/packages/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of versions to return.
   ///
@@ -2676,14 +2676,14 @@ class Package {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

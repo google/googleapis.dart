@@ -84,7 +84,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -135,7 +135,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -226,7 +226,7 @@ class ProjectsLocationsInstancesResource {
   /// [parent] - Required. The instance's project and location, in the format
   /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations
   /// map to GCP zones, for example **us-west1-b**.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [instanceId] - Required. The name of the instance to create. The name must
   /// be unique for the specified project and location.
@@ -291,7 +291,7 @@ class ProjectsLocationsInstancesResource {
   /// [name] - Required. The instance resource name, in the format
   /// projects/{project_id}/locations/{location}/instances/{instance_id}
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -344,7 +344,7 @@ class ProjectsLocationsInstancesResource {
   /// [name] - Required. The instance resource name, in the format
   /// projects/{project_id}/locations/{location}/instances/{instance_id}.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -400,7 +400,7 @@ class ProjectsLocationsInstancesResource {
   /// projects/{project_id}/locations/{location}. In Cloud Filestore, locations
   /// map to GCP zones, for example **us-west1-b**. To retrieve instance
   /// information for all locations, use "-" for the {location} value.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - List filter.
   ///
@@ -483,7 +483,7 @@ class ProjectsLocationsInstancesResource {
   /// [name] - Output only. The resource name of the instance, in the format
   /// projects/{project}/locations/{location}/instances/{instance}.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/instances/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
   ///
   /// [updateMask] - Mask of fields to update. At least one path must be
   /// supplied in this field. The elements of the repeated paths field may only
@@ -565,7 +565,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -625,7 +625,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -680,7 +680,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -740,7 +740,7 @@ class ProjectsLocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -1885,8 +1885,8 @@ class NetworkConfig {
   /// For this version, only MODE_IPV4 is supported.
   core.List<core.String> modes;
 
-  /// The name of the Google Compute Engine [VPC
-  /// network](/compute/docs/networks-and-firewalls#networks) to which the
+  /// The name of the Google Compute Engine \[VPC
+  /// network\](/compute/docs/networks-and-firewalls#networks) to which the
   /// instance is connected.
   core.String network;
 

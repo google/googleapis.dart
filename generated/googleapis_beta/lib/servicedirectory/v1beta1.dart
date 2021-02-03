@@ -83,7 +83,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Resource name for the location.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -134,7 +134,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
-  /// Value must have pattern "^projects/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -219,7 +219,7 @@ class ProjectsLocationsNamespacesResource {
   ///
   /// [parent] - Required. The resource name of the project and location the
   /// namespace will be created in.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [namespaceId] - Required. The Resource ID must be 1-63 characters long,
   /// and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -290,7 +290,7 @@ class ProjectsLocationsNamespacesResource {
   ///
   /// [name] - Required. The name of the namespace to delete.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -342,7 +342,7 @@ class ProjectsLocationsNamespacesResource {
   ///
   /// [name] - Required. The name of the namespace to retrieve.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -398,7 +398,7 @@ class ProjectsLocationsNamespacesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -456,7 +456,7 @@ class ProjectsLocationsNamespacesResource {
   ///
   /// [parent] - Required. The resource name of the project and location whose
   /// namespaces we'd like to list.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. The filter to list result by. General filter string
   /// syntax: () can be "name", or "labels." for map field. can be "<, >, <=,
@@ -557,7 +557,7 @@ class ProjectsLocationsNamespacesResource {
   /// [name] - Immutable. The resource name for the namespace in the format
   /// 'projects / * /locations / * /namespaces / * '.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+$`.
   ///
   /// [updateMask] - Required. List of fields to be updated in this request.
   ///
@@ -623,7 +623,7 @@ class ProjectsLocationsNamespacesResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -685,7 +685,7 @@ class ProjectsLocationsNamespacesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -757,7 +757,7 @@ class ProjectsLocationsNamespacesServicesResource {
   /// [parent] - Required. The resource name of the namespace this service will
   /// belong to.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+$`.
   ///
   /// [serviceId] - Required. The Resource ID must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters long
@@ -828,7 +828,7 @@ class ProjectsLocationsNamespacesServicesResource {
   ///
   /// [name] - Required. The name of the service to delete.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -880,7 +880,7 @@ class ProjectsLocationsNamespacesServicesResource {
   ///
   /// [name] - Required. The name of the service to get.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -936,7 +936,7 @@ class ProjectsLocationsNamespacesServicesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -995,7 +995,7 @@ class ProjectsLocationsNamespacesServicesResource {
   /// [parent] - Required. The resource name of the namespace whose services
   /// we'd like to list.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+$`.
   ///
   /// [filter] - Optional. The filter to list result by. General filter string
   /// syntax: () can be "name", or "metadata." for map field. can be "<, >, <=,
@@ -1093,7 +1093,7 @@ class ProjectsLocationsNamespacesServicesResource {
   /// [name] - Immutable. The resource name for the service in the format
   /// 'projects / * /locations / * /namespaces / * /services / * '.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [updateMask] - Required. List of fields to be updated in this request.
   ///
@@ -1159,7 +1159,7 @@ class ProjectsLocationsNamespacesServicesResource {
   ///
   /// [name] - Required. The name of the service to resolve.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1222,7 +1222,7 @@ class ProjectsLocationsNamespacesServicesResource {
   /// specified. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1284,7 +1284,7 @@ class ProjectsLocationsNamespacesServicesResource {
   /// requested. See the operation documentation for the appropriate value for
   /// this field.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1354,7 +1354,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
   /// [parent] - Required. The resource name of the service that this endpoint
   /// provides.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [endpointId] - Required. The Resource ID must be 1-63 characters long, and
   /// comply with RFC1035. Specifically, the name must be 1-63 characters long
@@ -1423,7 +1423,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
   ///
   /// [name] - Required. The name of the endpoint to delete.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+/endpoints/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+/services/\[^/\]+/endpoints/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1475,7 +1475,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
   ///
   /// [name] - Required. The name of the endpoint to get.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+/endpoints/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+/services/\[^/\]+/endpoints/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1528,7 +1528,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
   /// [parent] - Required. The resource name of the service whose endpoints we'd
   /// like to list.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+/services/\[^/\]+$`.
   ///
   /// [filter] - Optional. The filter to list result by. General filter string
   /// syntax: () can be "name", "address", "port" or "metadata." for map field.
@@ -1629,7 +1629,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
   /// 'projects / * /locations / * /namespaces / * /services / * /endpoints / *
   /// '.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/services/[^/]+/endpoints/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/namespaces/\[^/\]+/services/\[^/\]+/endpoints/\[^/\]+$`.
   ///
   /// [updateMask] - Required. List of fields to be updated in this request.
   ///
@@ -1806,7 +1806,7 @@ class Endpoint {
   /// An IPv4 or IPv6 address.
   ///
   /// Service Directory will reject bad addresses like: "8.8.8" "8.8.8.8:53"
-  /// "test:bad:address" "[::1]" "[::1]:8080" Limited to 45 characters.
+  /// "test:bad:address" "\[::1\]" "\[::1\]:8080" Limited to 45 characters.
   ///
   /// Optional.
   core.String address;
@@ -1826,7 +1826,7 @@ class Endpoint {
   /// Immutable.
   core.String name;
 
-  /// Service Directory will reject values outside of [0, 65535].
+  /// Service Directory will reject values outside of \[0, 65535\].
   ///
   /// Optional.
   core.int port;
@@ -2290,14 +2290,14 @@ class Namespace {
 /// resource, or both. To learn which resources support conditions in their IAM
 /// policies, see the [IAM
 /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-/// **JSON example:** { "bindings": [ { "role":
-/// "roles/resourcemanager.organizationAdmin", "members": [
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
-/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
-/// "roles/resourcemanager.organizationViewer", "members": [
-/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": \[
+/// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
-/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
 /// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
 /// user:mike@example.com - group:admins@example.com - domain:google.com -
 /// serviceAccount:my-project-id@appspot.gserviceaccount.com role:

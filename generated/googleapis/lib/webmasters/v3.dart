@@ -709,7 +709,7 @@ class ApiDimensionFilterGroup {
 }
 
 class SearchAnalyticsQueryRequest {
-  /// [Optional; Default is "auto"] How data is aggregated.
+  /// \[Optional; Default is "auto"\] How data is aggregated.
   ///
   /// If aggregated by property, all data for the same property is aggregated;
   /// if aggregated by page, all data is aggregated by canonical URI. If you
@@ -753,12 +753,12 @@ class SearchAnalyticsQueryRequest {
   /// Required.
   core.String endDate;
 
-  /// [Optional; Default is 1000] The maximum number of rows to return.
+  /// \[Optional; Default is 1000\] The maximum number of rows to return.
   ///
   /// Must be a number from 1 to 5,000 (inclusive).
   core.int rowLimit;
 
-  /// [Optional; Default is "web"] The search type to filter for.
+  /// \[Optional; Default is "web"\] The search type to filter for.
   core.String searchType;
 
   /// Start date of the requested date range, in YYYY-MM-DD format, in PST time
@@ -770,7 +770,7 @@ class SearchAnalyticsQueryRequest {
   /// Required.
   core.String startDate;
 
-  /// [Optional; Default is 0] Zero-based index of the first row in the
+  /// \[Optional; Default is 0\] Zero-based index of the first row in the
   /// response.
   ///
   /// Must be a non-negative number.

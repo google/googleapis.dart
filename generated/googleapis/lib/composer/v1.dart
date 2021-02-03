@@ -95,7 +95,7 @@ class ProjectsLocationsEnvironmentsResource {
   ///
   /// [parent] - The parent must be of the form
   /// "projects/{projectId}/locations/{locationId}".
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -154,7 +154,7 @@ class ProjectsLocationsEnvironmentsResource {
   /// [name] - The environment to delete, in the form:
   /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/environments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -207,7 +207,7 @@ class ProjectsLocationsEnvironmentsResource {
   /// [name] - The resource name of the environment to get, in the form:
   /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/environments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -260,7 +260,7 @@ class ProjectsLocationsEnvironmentsResource {
   ///
   /// [parent] - List environments in the given project and location, in the
   /// form: "projects/{projectId}/locations/{locationId}"
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of environments to return.
   ///
@@ -332,7 +332,7 @@ class ProjectsLocationsEnvironmentsResource {
   /// form:
   /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/environments/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [updateMask] - Required. A comma-separated list of paths, relative to
   /// `Environment`, of fields to update. For example, to set the version of
@@ -463,7 +463,7 @@ class ProjectsLocationsImageVersionsResource {
   ///
   /// [parent] - List ImageVersions in the given project and location, in the
   /// form: "projects/{projectId}/locations/{locationId}"
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of image_versions to return.
   ///
@@ -542,7 +542,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -597,7 +597,7 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// "^projects/[^/]+/locations/[^/]+/operations/[^/]+$".
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -657,7 +657,7 @@ class ProjectsLocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern "^projects/[^/]+/locations/[^/]+$".
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - The standard list filter.
   ///
@@ -759,7 +759,7 @@ class Environment {
   /// The labels map can contain no more than 64 entries. Entries of the labels
   /// map are UTF8 strings that comply with the following restrictions: * Keys
   /// must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to
-  /// regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are
+  /// regexp: \[\p{Ll}\p{Lo}\p{N}_-\]{0,63} * Both keys and values are
   /// additionally constrained to be <= 128 bytes in size.
   ///
   /// Optional.
@@ -858,8 +858,8 @@ class Environment {
 /// Configuration information for an environment.
 class EnvironmentConfig {
   /// The URI of the Apache Airflow Web UI hosted within this environment (see
-  /// [Airflow web
-  /// interface](/composer/docs/how-to/accessing/airflow-web-interface)).
+  /// \[Airflow web
+  /// interface\](/composer/docs/how-to/accessing/airflow-web-interface)).
   ///
   /// Output only.
   core.String airflowUri;
@@ -1210,9 +1210,10 @@ class NodeConfig {
   /// Optional.
   IPAllocationPolicy ipAllocationPolicy;
 
-  /// The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy
-  /// the VMs used to run the Apache Airflow software, specified as a [relative
-  /// resource name](/apis/design/resource_names#relative_resource_name).
+  /// The Compute Engine \[zone\](/compute/docs/regions-zones) in which to
+  /// deploy the VMs used to run the Apache Airflow software, specified as a
+  /// \[relative resource
+  /// name\](/apis/design/resource_names#relative_resource_name).
   ///
   /// For example: "projects/{projectId}/zones/{zoneId}". This `location` must
   /// belong to the enclosing environment's project and location. If both this
@@ -1227,9 +1228,9 @@ class NodeConfig {
   /// Optional.
   core.String location;
 
-  /// The Compute Engine [machine type](/compute/docs/machine-types) used for
-  /// cluster instances, specified as a [relative resource
-  /// name](/apis/design/resource_names#relative_resource_name).
+  /// The Compute Engine \[machine type\](/compute/docs/machine-types) used for
+  /// cluster instances, specified as a \[relative resource
+  /// name\](/apis/design/resource_names#relative_resource_name).
   ///
   /// For example:
   /// "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}". The
@@ -1241,7 +1242,7 @@ class NodeConfig {
   /// both fields. If exactly one of this field and `nodeConfig.location` is
   /// specified, the location information from the specified field will be
   /// propagated to the unspecified field. The `machineTypeId` must not be a
-  /// [shared-core machine type](/compute/docs/machine-types#sharedcore). If
+  /// \[shared-core machine type\](/compute/docs/machine-types#sharedcore). If
   /// this field is unspecified, the `machineTypeId` defaults to
   /// "n1-standard-1".
   ///
@@ -1249,14 +1250,14 @@ class NodeConfig {
   core.String machineType;
 
   /// The Compute Engine network to be used for machine communications,
-  /// specified as a [relative resource
-  /// name](/apis/design/resource_names#relative_resource_name).
+  /// specified as a \[relative resource
+  /// name\](/apis/design/resource_names#relative_resource_name).
   ///
-  /// For example: "projects/{projectId}/global/networks/{networkId}". [Shared
-  /// VPC](/vpc/docs/shared-vpc) is not currently supported. The network must
+  /// For example: "projects/{projectId}/global/networks/{networkId}". \[Shared
+  /// VPC\](/vpc/docs/shared-vpc) is not currently supported. The network must
   /// belong to the environment's project. If unspecified, the "default" network
-  /// ID in the environment's project is used. If a [Custom Subnet
-  /// Network](/vpc/docs/vpc#vpc_networks_and_subnets) is provided,
+  /// ID in the environment's project is used. If a \[Custom Subnet
+  /// Network\](/vpc/docs/vpc#vpc_networks_and_subnets) is provided,
   /// `nodeConfig.subnetwork` must also be provided.
   ///
   /// Optional.
@@ -1265,7 +1266,7 @@ class NodeConfig {
   /// The set of Google API scopes to be made available on all node VMs.
   ///
   /// If `oauth_scopes` is empty, defaults to
-  /// ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
+  /// \["https://www.googleapis.com/auth/cloud-platform"\]. Cannot be updated.
   ///
   /// Optional.
   core.List<core.String> oauthScopes;
@@ -1279,8 +1280,8 @@ class NodeConfig {
   core.String serviceAccount;
 
   /// The Compute Engine subnetwork to be used for machine communications,
-  /// specified as a [relative resource
-  /// name](/apis/design/resource_names#relative_resource_name).
+  /// specified as a \[relative resource
+  /// name\](/apis/design/resource_names#relative_resource_name).
   ///
   /// For example:
   /// "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a
@@ -1491,7 +1492,7 @@ class OperationMetadata {
   /// - "UPDATE" : A resource update operation.
   core.String operationType;
 
-  /// The resource being operated on, as a [relative resource name](
+  /// The resource being operated on, as a \[relative resource name\](
   /// /apis/design/resource_names#relative_resource_name).
   ///
   /// Output only.
@@ -1703,15 +1704,15 @@ class SoftwareConfig {
   ///
   /// Property keys contain the section and property names, separated by a
   /// hyphen, for example "core-dags_are_paused_at_creation". Section names must
-  /// not contain hyphens ("-"), opening square brackets ("["), or closing
-  /// square brackets ("]"). The property name must not be empty and must not
+  /// not contain hyphens ("-"), opening square brackets ("\["), or closing
+  /// square brackets ("\]"). The property name must not be empty and must not
   /// contain an equals sign ("=") or semicolon (";"). Section and property
   /// names must not contain a period ("."). Apache Airflow configuration
   /// property names must be written in
   /// [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values
   /// can contain any character, and can be written in any lower/upper case
   /// format. Certain Apache Airflow configuration property values are
-  /// [blocked](/composer/docs/concepts/airflow-configurations), and cannot be
+  /// \[blocked\](/composer/docs/concepts/airflow-configurations), and cannot be
   /// overridden.
   ///
   /// Optional.
@@ -1747,7 +1748,7 @@ class SoftwareConfig {
   /// version number in the same field. The portion of the image version that
   /// follows *airflow-* is an official Apache Airflow repository [release
   /// name](https://github.com/apache/incubator-airflow/releases). See also
-  /// [Version List](/composer/docs/concepts/versioning/composer-versions).
+  /// \[Version List\](/composer/docs/concepts/versioning/composer-versions).
   core.String imageVersion;
 
   /// Custom Python Package Index (PyPI) packages to be installed in the
@@ -1755,7 +1756,7 @@ class SoftwareConfig {
   ///
   /// Keys refer to the lowercase package name such as "numpy" and values are
   /// the lowercase extras and version specifier such as "==1.12.0",
-  /// "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package
+  /// "\[devel,gcp_api\]", or "\[devel\]>=1.8.2, <1.9.2". To specify a package
   /// without pinning it to a version specifier, use the empty string as the
   /// value.
   ///

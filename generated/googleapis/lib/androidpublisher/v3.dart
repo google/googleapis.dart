@@ -7347,9 +7347,10 @@ class TrackRelease {
   /// In-app update priority of the release.
   ///
   /// All newly added APKs in the release will be considered at this priority.
-  /// Can take values in the range [0, 5], with 5 the highest priority. Defaults
-  /// to 0. in_app_update_priority can not be updated once the release is rolled
-  /// out. See https://developer.android.com/guide/playcore/in-app-updates.
+  /// Can take values in the range \[0, 5\], with 5 the highest priority.
+  /// Defaults to 0. in_app_update_priority can not be updated once the release
+  /// is rolled out. See
+  /// https://developer.android.com/guide/playcore/in-app-updates.
   core.int inAppUpdatePriority;
 
   /// The release name.

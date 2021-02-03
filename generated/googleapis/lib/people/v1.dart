@@ -231,7 +231,7 @@ class ContactGroupsResource {
   ///
   /// [resourceName] - Required. The resource name of the contact group to
   /// delete.
-  /// Value must have pattern "^contactGroups/[^/]+$".
+  /// Value must have pattern `^contactGroups/\[^/\]+$`.
   ///
   /// [deleteContacts] - Optional. Set to true to also delete the contacts in
   /// the specified group.
@@ -290,7 +290,7 @@ class ContactGroupsResource {
   /// Request parameters:
   ///
   /// [resourceName] - Required. The resource name of the contact group to get.
-  /// Value must have pattern "^contactGroups/[^/]+$".
+  /// Value must have pattern `^contactGroups/\[^/\]+$`.
   ///
   /// [maxMembers] - Optional. Specifies the maximum number of members to
   /// return. Defaults to 0 if not set, which will return zero members.
@@ -355,7 +355,7 @@ class ContactGroupsResource {
   /// to 0.
   ///
   /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// call to [ListContactGroups](/people/api/rest/v1/contactgroups/list).
+  /// call to \[ListContactGroups\](/people/api/rest/v1/contactgroups/list).
   /// Requests the next page of resources.
   ///
   /// [syncToken] - Optional. A sync token, returned by a previous call to
@@ -425,7 +425,7 @@ class ContactGroupsResource {
   /// [resourceName] - The resource name for the contact group, assigned by the
   /// server. An ASCII string, in the form of
   /// `contactGroups/{contact_group_id}`.
-  /// Value must have pattern "^contactGroups/[^/]+$".
+  /// Value must have pattern `^contactGroups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -495,7 +495,7 @@ class ContactGroupsMembersResource {
   ///
   /// [resourceName] - Required. The resource name of the contact group to
   /// modify.
-  /// Value must have pattern "^contactGroups/[^/]+$".
+  /// Value must have pattern `^contactGroups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -563,7 +563,7 @@ class OtherContactsResource {
   ///
   /// [resourceName] - Required. The resource name of the "Other contact" to
   /// copy.
-  /// Value must have pattern "^otherContacts/[^/]+$".
+  /// Value must have pattern `^otherContacts/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -799,7 +799,7 @@ class PeopleResource {
   /// Request parameters:
   ///
   /// [resourceName] - Required. The resource name of the contact to delete.
-  /// Value must have pattern "^people/[^/]+$".
+  /// Value must have pattern `^people/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -853,7 +853,7 @@ class PeopleResource {
   ///
   /// [resourceName] - Required. The resource name of the contact whose photo
   /// will be deleted.
-  /// Value must have pattern "^people/[^/]+$".
+  /// Value must have pattern `^people/\[^/\]+$`.
   ///
   /// [personFields] - Optional. A field mask to restrict which fields on the
   /// person are returned. Multiple fields can be specified by separating them
@@ -935,8 +935,8 @@ class PeopleResource {
   /// specify `people/me`. - To get information about a google account, specify
   /// `people/{account_id}`. - To get information about a contact, specify the
   /// resource name that identifies the contact as returned by
-  /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
-  /// Value must have pattern "^people/[^/]+$".
+  /// \[`people.connections.list`\](/people/api/rest/v1/people.connections/list).
+  /// Value must have pattern `^people/\[^/\]+$`.
   ///
   /// [personFields] - Required. A field mask to restrict which fields on the
   /// person are returned. Multiple fields can be specified by separating them
@@ -1038,7 +1038,7 @@ class PeopleResource {
   /// google account, specify `people/{account_id}`. - To get information about
   /// a contact, specify the resource name that identifies the contact as
   /// returned by
-  /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
+  /// \[`people.connections.list`\](/people/api/rest/v1/people.connections/list).
   /// You can include up to 50 resource names in one request.
   ///
   /// [sources] - Optional. A mask of what source types to return. Defaults to
@@ -1329,7 +1329,7 @@ class PeopleResource {
   /// [resourceName] - The resource name for the person, assigned by the server.
   /// An ASCII string with a max length of 27 characters, in the form of
   /// `people/{person_id}`.
-  /// Value must have pattern "^people/[^/]+$".
+  /// Value must have pattern `^people/\[^/\]+$`.
   ///
   /// [personFields] - Optional. A field mask to restrict which fields on each
   /// person are returned. Multiple fields can be specified by separating them
@@ -1422,7 +1422,7 @@ class PeopleResource {
   /// Request parameters:
   ///
   /// [resourceName] - Required. Person resource name
-  /// Value must have pattern "^people/[^/]+$".
+  /// Value must have pattern `^people/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1489,7 +1489,7 @@ class PeopleConnectionsResource {
   ///
   /// [resourceName] - Required. The resource name to return connections for.
   /// Only `people/me` is valid.
-  /// Value must have pattern "^people/[^/]+$".
+  /// Value must have pattern `^people/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The number of connections to include in the
   /// response. Valid values are between 1 and 1000, inclusive. Defaults to 100
@@ -1628,8 +1628,8 @@ class Address {
   /// The country of the address.
   core.String country;
 
-  /// The [ISO 3166-1 alpha-2](http://www.iso.org/iso/country_codes.htm) country
-  /// code of the address.
+  /// The \[ISO 3166-1 alpha-2\](http://www.iso.org/iso/country_codes.htm)
+  /// country code of the address.
   core.String countryCode;
 
   /// The extended address of the address; for example, the apartment number.
@@ -2071,7 +2071,7 @@ class ContactGroup {
   ///
   /// The field is not populated for LIST requests and can only be updated
   /// through the
-  /// [ModifyContactGroupMembers](/people/api/rest/v1/contactgroups/members/modify).
+  /// \[ModifyContactGroupMembers\](/people/api/rest/v1/contactgroups/members/modify).
   ///
   /// Output only.
   core.List<core.String> memberResourceNames;
@@ -2197,7 +2197,7 @@ class ContactGroupMetadata {
   /// True if the contact group resource has been deleted.
   ///
   /// Populated only for
-  /// [`ListContactGroups`](/people/api/rest/v1/contactgroups/list) requests
+  /// \[`ListContactGroups`\](/people/api/rest/v1/contactgroups/list) requests
   /// that include a sync token.
   ///
   /// Output only.
@@ -4439,8 +4439,8 @@ class PersonMetadata {
   /// True if the person resource has been deleted.
   ///
   /// Populated only for
-  /// [`connections.list`](/people/api/rest/v1/people.connections/list) requests
-  /// that include a sync token.
+  /// \[`connections.list`\](/people/api/rest/v1/people.connections/list)
+  /// requests that include a sync token.
   ///
   /// Output only.
   core.bool deleted;
@@ -4464,10 +4464,10 @@ class PersonMetadata {
   /// Any former resource names this person has had.
   ///
   /// Populated only for
-  /// [`connections.list`](/people/api/rest/v1/people.connections/list) requests
-  /// that include a sync token. The resource name may change when adding or
-  /// removing fields that link a contact and profile such as a verified email,
-  /// verified phone number, or profile URL.
+  /// \[`connections.list`\](/people/api/rest/v1/people.connections/list)
+  /// requests that include a sync token. The resource name may change when
+  /// adding or removing fields that link a contact and profile such as a
+  /// verified email, verified phone number, or profile URL.
   ///
   /// Output only.
   core.List<core.String> previousResourceNames;
@@ -4526,8 +4526,8 @@ class PersonMetadata {
 
 /// The response for a single person
 class PersonResponse {
-  /// **DEPRECATED** (Please use status instead) [HTTP 1.1 status code]
-  /// (http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+  /// **DEPRECATED** (Please use status instead) [HTTP 1.1 status
+  /// code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
   core.int httpStatusCode;
 
   /// The person.
@@ -4583,8 +4583,8 @@ class PersonResponse {
 
 /// A person's phone number.
 class PhoneNumber {
-  /// The canonicalized [ITU-T
-  /// E.164](https://law.resource.org/pub/us/cfr/ibr/004/itu-t.E.164.1.2008.pdf)
+  /// The canonicalized \[ITU-T
+  /// E.164\](https://law.resource.org/pub/us/cfr/ibr/004/itu-t.E.164.1.2008.pdf)
   /// form of the phone number.
   ///
   /// Output only.
