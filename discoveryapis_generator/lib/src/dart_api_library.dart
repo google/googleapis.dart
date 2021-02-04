@@ -14,7 +14,9 @@ import 'namer.dart';
 import 'utils.dart';
 
 const _ignoreForFileSet = {
-  'camel_case_types', // violated by `container` v1 API,
+  // violated by `container` v1 API,
+  'camel_case_types',
+  // Can remove when https://github.com/dart-lang/linter/issues/2442 is fixed!
   'comment_references',
   'file_names',
   'library_names',
