@@ -618,8 +618,8 @@ class V1Resource {
   /// `next_page_token` from the previous response. The values of all other
   /// method parameters must be identical to those in the previous call.
   ///
-  /// [query] - Optional. The query statement. See [how to construct a
-  /// query](https://cloud.google.com/asset-inventory/docs/searching-iam-policies#how_to_construct_a_query)
+  /// [query] - Optional. The query statement. See
+  /// [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-iam-policies#how_to_construct_a_query)
   /// for more information. If not specified or empty, it will search all the
   /// IAM policies within the specified `scope`. Examples: *
   /// `policy:amy@gmail.com` to find IAM policy bindings that specify user
@@ -718,8 +718,8 @@ class V1Resource {
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
   /// [assetTypes] - Optional. A list of asset types that this request searches
-  /// for. If empty, it will search all the [searchable asset
-  /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+  /// for. If empty, it will search all the
+  /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
   ///
   /// [orderBy] - Optional. A comma separated list of fields specifying the
   /// sorting order of the results. The default order is ascending. Add " DESC"
@@ -741,19 +741,19 @@ class V1Resource {
   /// value of `next_page_token` from the previous response. The values of all
   /// other method parameters, must be identical to those in the previous call.
   ///
-  /// [query] - Optional. The query statement. See [how to construct a
-  /// query](http://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query)
+  /// [query] - Optional. The query statement. See
+  /// [how to construct a query](http://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query)
   /// for more information. If not specified or empty, it will search all the
   /// resources within the specified `scope`. Note that the query string is
   /// compared against each Cloud IAM policy binding, including its members,
   /// roles, and Cloud IAM conditions. The returned Cloud IAM policies will only
   /// contain the bindings that match your query. To learn more about the IAM
-  /// policy structure, see [IAM policy
-  /// doc](https://cloud.google.com/iam/docs/policies#structure). Examples: *
-  /// `name:Important` to find Cloud resources whose name contains "Important"
-  /// as a word. * `displayName:Impor*` to find Cloud resources whose display
-  /// name contains "Impor" as a prefix. * `description:*por*` to find Cloud
-  /// resources whose description contains "por" as a substring. *
+  /// policy structure, see
+  /// [IAM policy doc](https://cloud.google.com/iam/docs/policies#structure).
+  /// Examples: * `name:Important` to find Cloud resources whose name contains
+  /// "Important" as a word. * `displayName:Impor*` to find Cloud resources
+  /// whose display name contains "Impor" as a prefix. * `description:*por*` to
+  /// find Cloud resources whose description contains "por" as a substring. *
   /// `location:us-west*` to find Cloud resources whose location is prefixed
   /// with "us-west". * `labels:prod` to find Cloud resources whose labels
   /// contain "prod" as a key or value. * `labels.env:prod` to find Cloud
@@ -838,24 +838,24 @@ class V1Resource {
 
 /// An asset in Google Cloud.
 ///
-/// An asset can be any resource in the Google Cloud [resource
-/// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
+/// An asset can be any resource in the Google Cloud
+/// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
 /// a resource outside the Google Cloud resource hierarchy (such as Google
 /// Kubernetes Engine clusters and objects), or a policy (e.g. Cloud IAM
-/// policy). See [Supported asset
-/// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+/// policy). See
+/// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
 /// for more information.
 class Asset {
-  /// Please also refer to the [access level user
-  /// guide](https://cloud.google.com/access-context-manager/docs/overview#access-levels).
+  /// Please also refer to the
+  /// [access level user guide](https://cloud.google.com/access-context-manager/docs/overview#access-levels).
   GoogleIdentityAccesscontextmanagerV1AccessLevel accessLevel;
 
-  /// Please also refer to the [access policy user
-  /// guide](https://cloud.google.com/access-context-manager/docs/overview#access-policies).
+  /// Please also refer to the
+  /// [access policy user guide](https://cloud.google.com/access-context-manager/docs/overview#access-policies).
   GoogleIdentityAccesscontextmanagerV1AccessPolicy accessPolicy;
 
-  /// The ancestry path of an asset in Google Cloud [resource
-  /// hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
+  /// The ancestry path of an asset in Google Cloud
+  /// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
   /// represented as a list of relative resource names.
   ///
   /// An ancestry path starts with the closest ancestor in the hierarchy and
@@ -866,8 +866,8 @@ class Asset {
 
   /// The type of the asset.
   ///
-  /// Example: `compute.googleapis.com/Disk` See [Supported asset
-  /// types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+  /// Example: `compute.googleapis.com/Disk` See
+  /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
   /// for more information.
   core.String assetType;
 
@@ -878,22 +878,22 @@ class Asset {
   /// any policies set on parent resources in the resource hierarchy. Therefore,
   /// the effectively policy is the union of both the policy set on this
   /// resource and each policy set on all of the resource's ancestry resource
-  /// levels in the hierarchy. See [this
-  /// topic](https://cloud.google.com/iam/docs/policies#inheritance) for more
-  /// information.
+  /// levels in the hierarchy. See
+  /// [this topic](https://cloud.google.com/iam/docs/policies#inheritance) for
+  /// more information.
   Policy iamPolicy;
 
   /// The full name of the asset.
   ///
   /// Example:
   /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`
-  /// See [Resource
-  /// names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
+  /// See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
   /// for more information.
   core.String name;
 
-  /// A representation of an [organization
-  /// policy](https://cloud.google.com/resource-manager/docs/organization-policy/overview#organization_policy).
+  /// A representation of an
+  /// [organization policy](https://cloud.google.com/resource-manager/docs/organization-policy/overview#organization_policy).
   ///
   /// There can be more than one organization policy with different constraints
   /// set on a given resource.
@@ -902,8 +902,8 @@ class Asset {
   /// A representation of the resource.
   Resource resource;
 
-  /// Please also refer to the [service perimeter user
-  /// guide](https://cloud.google.com/vpc-service-controls/docs/overview).
+  /// Please also refer to the
+  /// [service perimeter user guide](https://cloud.google.com/vpc-service-controls/docs/overview).
   GoogleIdentityAccesscontextmanagerV1ServicePerimeter servicePerimeter;
 
   /// The last update timestamp of an asset.
@@ -1241,8 +1241,7 @@ class Binding {
   /// does not apply to the current request. However, a different role binding
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
-  /// [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -1425,9 +1424,9 @@ class ExportAssetsRequest {
   /// regular expression syntax. If the regular expression does not match any
   /// supported asset type, an INVALID_ARGUMENT error will be returned. If
   /// specified, only matching assets will be returned, otherwise, it will
-  /// snapshot all asset types. See [Introduction to Cloud Asset
-  /// Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all
-  /// supported asset types.
+  /// snapshot all asset types. See
+  /// [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview)
+  /// for all supported asset types.
   core.List<core.String> assetTypes;
 
   /// Asset content type.
@@ -1585,8 +1584,8 @@ class Feed {
   /// updates matching specified asset_names or asset_types are exported to the
   /// feed. Example:
   /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.
-  /// See [Resource
-  /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
+  /// See
+  /// [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
   /// for more info.
   core.List<core.String> assetNames;
 
@@ -1594,20 +1593,20 @@ class Feed {
   ///
   /// You must specify either or both of asset_names and asset_types. Only asset
   /// updates matching specified asset_names or asset_types are exported to the
-  /// feed. Example: `"compute.googleapis.com/Disk"` See [this
-  /// topic](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+  /// feed. Example: `"compute.googleapis.com/Disk"` See
+  /// [this topic](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
   /// for a list of all supported asset types.
   core.List<core.String> assetTypes;
 
   /// A condition which determines whether an asset update should be published.
   ///
   /// If specified, an asset will be returned only when the expression evaluates
-  /// to true. When set, `expression` field in the `Expr` must be a valid [CEL
-  /// expression](https://github.com/google/cel-spec) on a TemporalAsset with
-  /// name `temporal_asset`. Example: a Feed with expression
+  /// to true. When set, `expression` field in the `Expr` must be a valid
+  /// [CEL expression](https://github.com/google/cel-spec) on a TemporalAsset
+  /// with name `temporal_asset`. Example: a Feed with expression
   /// ("temporal_asset.deleted == true") will only publish Asset deletions.
-  /// Other fields of `Expr` are optional. See our [user
-  /// guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#feed_with_condition)
+  /// Other fields of `Expr` are optional. See our
+  /// [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#feed_with_condition)
   /// for detailed instructions.
   Expr condition;
 
@@ -1720,8 +1719,8 @@ class GcsDestination {
   /// The uri of the Cloud Storage object.
   ///
   /// It's the same uri that is used by gsutil. Example:
-  /// "gs://bucket_name/object_name". See [Viewing and Editing Object
-  /// Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata)
+  /// "gs://bucket_name/object_name". See
+  /// [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata)
   /// for more information.
   core.String uri;
 
@@ -2854,8 +2853,8 @@ class IamPolicySearchResult {
   ///
   /// Example:
   /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.
-  /// See [Cloud Asset Inventory Resource Name
-  /// Format](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// See
+  /// [Cloud Asset Inventory Resource Name Format](https://cloud.google.com/asset-inventory/docs/resource-name-format)
   /// for more information. To search against the `resource`: * use a field
   /// query. Example: `resource:organizations/123`
   core.String resource;
@@ -3061,7 +3060,7 @@ class PartitionSpec {
   /// means using non-partitioned table.
   /// - "READ_TIME" : The time when the snapshot is taken. If specified as
   /// partition key, the result table(s) is partitoned by the additional
-  /// timestamp column, readTime. If [read_time] in ExportAssetsRequest is
+  /// timestamp column, readTime. If \[read_time\] in ExportAssetsRequest is
   /// specified, the readTime column's value will be the same as it. Otherwise,
   /// its value will be the current time that is used to take the snapshot.
   /// - "REQUEST_TIME" : The time when the request is received and started to be
@@ -3125,8 +3124,8 @@ class Permissions {
 /// allows access to a resource only if the expression evaluates to `true`. A
 /// condition can add constraints based on attributes of the request, the
 /// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the [IAM
-/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// policies, see the
+/// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
@@ -3142,8 +3141,8 @@ class Permissions {
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
 /// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
-/// version: 3 For a description of IAM and its features, see the [IAM
-/// documentation](https://cloud.google.com/iam/docs/).
+/// version: 3 For a description of IAM and its features, see the
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
@@ -3190,8 +3189,8 @@ class Policy {
   /// the version `3` policy are lost. If a policy does not include any
   /// conditions, operations on that policy may specify any valid version or
   /// leave the field unset. To learn which resources support conditions in
-  /// their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -3289,11 +3288,11 @@ class Resource {
 
   /// The full name of the immediate parent of this resource.
   ///
-  /// See [Resource
-  /// Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
+  /// See
+  /// [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
   /// for more information. For Google Cloud assets, this value is the parent
-  /// resource defined in the [Cloud IAM policy
-  /// hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).
+  /// resource defined in the
+  /// [Cloud IAM policy hierarchy](https://cloud.google.com/iam/docs/overview#policy_hierarchy).
   /// Example: `//cloudresourcemanager.googleapis.com/projects/my_project_123`
   /// For third-party assets, this field may be set differently.
   core.String parent;
@@ -3376,8 +3375,8 @@ class ResourceSearchResult {
   /// `projectId` for Project, `dnsName` for DNS ManagedZone. This field
   /// contains a subset of the resource metadata fields that are returned by the
   /// List or Get APIs provided by the corresponding GCP service (e.g., Compute
-  /// Engine). see [API references and supported searchable
-  /// attributes](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types)
+  /// Engine). see
+  /// [API references and supported searchable attributes](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types)
   /// for more information. You can search values of these fields through free
   /// text search. However, you should not consume the field programically as
   /// the field names and values may change as the GCP service updates to a new
@@ -3412,8 +3411,8 @@ class ResourceSearchResult {
 
   /// Labels associated with this resource.
   ///
-  /// See [Labelling and grouping GCP
-  /// resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
+  /// See
+  /// [Labelling and grouping GCP resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
   /// for more information. To search against the `labels`: * use a field query:
   /// - query on any label's key or value. Example: `labels:prod` - query by a
   /// given label. Example: `labels.env:prod` - query by a given label's
@@ -3432,8 +3431,8 @@ class ResourceSearchResult {
   ///
   /// Example:
   /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`.
-  /// See [Cloud Asset Inventory Resource Name
-  /// Format](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// See
+  /// [Cloud Asset Inventory Resource Name Format](https://cloud.google.com/asset-inventory/docs/resource-name-format)
   /// for more information. To search against the `name`: * use a field query.
   /// Example: `name:instance1` * use a free text query. Example: `instance1`
   core.String name;
@@ -3441,8 +3440,8 @@ class ResourceSearchResult {
   /// Network tags associated with this resource.
   ///
   /// Like labels, network tags are a type of annotations used to group GCP
-  /// resources. See [Labelling GCP
-  /// resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
+  /// resources. See
+  /// [Labelling GCP resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
   /// for more information. To search against the `network_tags`: * use a field
   /// query. Example: `networkTags:internal` * use a free text query. Example:
   /// `internal`

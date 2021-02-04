@@ -7000,7 +7000,7 @@ class Permission {
   /// - user
   /// - group
   /// - domain
-  /// - anyone  When creating a permission, if type is user or group, you must
+  /// - anyone When creating a permission, if type is user or group, you must
   /// provide an emailAddress for the user or group. When type is domain, you
   /// must provide a domain. There isn't extra information required for a anyone
   /// type.

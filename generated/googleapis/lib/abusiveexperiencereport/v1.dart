@@ -183,8 +183,8 @@ class SiteSummaryResponse {
   /// Not set when the filter_status is OFF.
   core.String enforcementTime;
 
-  /// The site's [enforcement
-  /// status](https://support.google.com/webtools/answer/7538608).
+  /// The site's
+  /// [enforcement status](https://support.google.com/webtools/answer/7538608).
   /// Possible string values are:
   /// - "UNKNOWN" : N/A.
   /// - "ON" : Enforcement is on.
@@ -198,10 +198,9 @@ class SiteSummaryResponse {
 
   /// A link to the full Abusive Experience Report for the site.
   ///
-  /// Not set in ViolatingSitesResponse. Note that you must complete the [Search
-  /// Console verification
-  /// process](https://support.google.com/webmasters/answer/9008080) for the
-  /// site before you can access the full report.
+  /// Not set in ViolatingSitesResponse. Note that you must complete the
+  /// [Search Console verification process](https://support.google.com/webmasters/answer/9008080)
+  /// for the site before you can access the full report.
   core.String reportUrl;
 
   /// The name of the reviewed site, e.g. `google.com`.

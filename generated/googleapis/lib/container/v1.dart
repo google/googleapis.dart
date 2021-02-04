@@ -195,9 +195,9 @@ class ProjectsLocationsResource {
   /// specified in the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) to return
@@ -336,8 +336,8 @@ class ProjectsLocationsClustersResource {
   /// Creates a cluster, consisting of the specified number and type of Google
   /// Compute Engine instances.
   ///
-  /// By default, the cluster is created in the project's [default
-  /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
+  /// By default, the cluster is created in the project's
+  /// [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
   /// One firewall is added for the cluster. After cluster creation, the Kubelet
   /// creates routes for each node to allow the containers on that node to
   /// communicate with all other instances in the cluster. Finally, an entry is
@@ -419,9 +419,9 @@ class ProjectsLocationsClustersResource {
   /// [clusterId] - Deprecated. The name of the cluster to delete. This field
   /// has been deprecated and replaced by the name field.
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -496,9 +496,9 @@ class ProjectsLocationsClustersResource {
   /// [clusterId] - Deprecated. The name of the cluster to retrieve. This field
   /// has been deprecated and replaced by the name field.
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -629,9 +629,9 @@ class ProjectsLocationsClustersResource {
   /// "-" matches all zones and all regions.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the parent field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the parent field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -1520,9 +1520,8 @@ class ProjectsLocationsClustersNodePoolsResource {
   /// [nodePoolId] - Deprecated. The name of the node pool to delete. This field
   /// has been deprecated and replaced by the name field.
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
@@ -1606,9 +1605,8 @@ class ProjectsLocationsClustersNodePoolsResource {
   /// [nodePoolId] - Deprecated. The name of the node pool. This field has been
   /// deprecated and replaced by the name field.
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
@@ -1689,9 +1687,8 @@ class ProjectsLocationsClustersNodePoolsResource {
   /// [clusterId] - Deprecated. The name of the cluster. This field has been
   /// deprecated and replaced by the parent field.
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
@@ -2072,8 +2069,8 @@ class ProjectsLocationsClustersWellKnownResource {
 
   /// Gets the OIDC discovery document for the cluster.
   ///
-  /// See the [OpenID Connect Discovery 1.0
-  /// specification](https://openid.net/specs/openid-connect-discovery-1_0.html)
+  /// See the
+  /// [OpenID Connect Discovery 1.0 specification](https://openid.net/specs/openid-connect-discovery-1_0.html)
   /// for details. This API is not yet intended for general use, and is not
   /// available for all clusters.
   ///
@@ -2212,9 +2209,9 @@ class ProjectsLocationsOperationsResource {
   /// [operationId] - Deprecated. The server-assigned `name` of the operation.
   /// This field has been deprecated and replaced by the name field.
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -2286,9 +2283,9 @@ class ProjectsLocationsOperationsResource {
   /// "-" matches all zones and all regions.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the parent field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the parent field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) to return
@@ -2365,9 +2362,9 @@ class ProjectsZonesResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) to return
@@ -2450,9 +2447,9 @@ class ProjectsZonesClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -2530,9 +2527,8 @@ class ProjectsZonesClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
@@ -2608,8 +2604,8 @@ class ProjectsZonesClustersResource {
   /// Creates a cluster, consisting of the specified number and type of Google
   /// Compute Engine instances.
   ///
-  /// By default, the cluster is created in the project's [default
-  /// network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
+  /// By default, the cluster is created in the project's
+  /// [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks).
   /// One firewall is added for the cluster. After cluster creation, the Kubelet
   /// creates routes for each node to allow the containers on that node to
   /// communicate with all other instances in the cluster. Finally, an entry is
@@ -2620,9 +2616,9 @@ class ProjectsZonesClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the parent field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the parent field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -2695,9 +2691,9 @@ class ProjectsZonesClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -2775,9 +2771,9 @@ class ProjectsZonesClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -2857,9 +2853,9 @@ class ProjectsZonesClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -2936,9 +2932,9 @@ class ProjectsZonesClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the parent field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the parent field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -3016,9 +3012,9 @@ class ProjectsZonesClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -3096,9 +3092,9 @@ class ProjectsZonesClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -3176,9 +3172,9 @@ class ProjectsZonesClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -3256,9 +3252,9 @@ class ProjectsZonesClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -3336,9 +3332,8 @@ class ProjectsZonesClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
@@ -3417,8 +3412,8 @@ class ProjectsZonesClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Required. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840).
+  /// [projectId] - Required. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
   ///
   /// [zone] - Required. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -3497,9 +3492,9 @@ class ProjectsZonesClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -3577,9 +3572,8 @@ class ProjectsZonesClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
@@ -3658,9 +3652,8 @@ class ProjectsZonesClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
@@ -3739,9 +3732,9 @@ class ProjectsZonesClustersResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -3825,9 +3818,9 @@ class ProjectsZonesClustersNodePoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -3914,9 +3907,8 @@ class ProjectsZonesClustersNodePoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
@@ -3993,9 +3985,8 @@ class ProjectsZonesClustersNodePoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
@@ -4084,9 +4075,8 @@ class ProjectsZonesClustersNodePoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
@@ -4175,9 +4165,8 @@ class ProjectsZonesClustersNodePoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).
   /// This field has been deprecated and replaced by the parent field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
@@ -4263,9 +4252,9 @@ class ProjectsZonesClustersNodePoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -4352,9 +4341,9 @@ class ProjectsZonesClustersNodePoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -4441,9 +4430,9 @@ class ProjectsZonesClustersNodePoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -4530,9 +4519,9 @@ class ProjectsZonesClustersNodePoolsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -4626,9 +4615,9 @@ class ProjectsZonesOperationsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -4704,9 +4693,9 @@ class ProjectsZonesOperationsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the name field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the name field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) in which the
@@ -4785,9 +4774,9 @@ class ProjectsZonesOperationsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectId] - Deprecated. The Google Developers Console [project ID or
-  /// project number](https://support.google.com/cloud/answer/6158840). This
-  /// field has been deprecated and replaced by the parent field.
+  /// [projectId] - Deprecated. The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
+  /// This field has been deprecated and replaced by the parent field.
   ///
   /// [zone] - Deprecated. The name of the Google Compute Engine
   /// [zone](https://cloud.google.com/compute/docs/zones#available) to return
@@ -5093,8 +5082,8 @@ class AutoprovisioningNodePoolDefaults {
   /// The instance may be scheduled on the specified or newer CPU platform.
   /// Applicable values are the friendly names of CPU platforms, such as
   /// minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For
-  /// more information, read [how to specify min CPU
-  /// platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+  /// more information, read
+  /// [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
   /// To unset the min cpu platform field pass "automatic" as field value.
   core.String minCpuPlatform;
 
@@ -5242,8 +5231,8 @@ class CancelOperationRequest {
   /// Deprecated.
   core.String operationId;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://support.google.com/cloud/answer/6158840).
+  /// The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///
@@ -5492,10 +5481,10 @@ class Cluster {
 
   /// The number of nodes to create in this cluster.
   ///
-  /// You must ensure that your Compute Engine [resource
-  /// quota](https://cloud.google.com/compute/quotas) is sufficient for this
-  /// number of instances. You must also have available firewall and routes
-  /// quota. For requests, this field should only be used in lieu of a
+  /// You must ensure that your Compute Engine
+  /// [resource quota](https://cloud.google.com/compute/quotas) is sufficient
+  /// for this number of instances. You must also have available firewall and
+  /// routes quota. For requests, this field should only be used in lieu of a
   /// "node_pool" object, since this configuration (along with the
   /// "node_config") will be used to create a "NodePool" object with an
   /// auto-generated name. Do not use this and a node_pool at the same time.
@@ -6430,8 +6419,8 @@ class CompleteIPRotationRequest {
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// The Google Developers Console
+  /// [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///
@@ -6531,8 +6520,8 @@ class ConsumptionMeteringConfig {
 
 /// CreateClusterRequest creates a cluster.
 class CreateClusterRequest {
-  /// A [cluster
-  /// resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.locations.clusters)
+  /// A
+  /// [cluster resource](https://cloud.google.com/container-engine/reference/rest/v1/projects.locations.clusters)
   ///
   /// Required.
   Cluster cluster;
@@ -6542,8 +6531,8 @@ class CreateClusterRequest {
   /// Specified in the format `projects / * /locations / * `.
   core.String parent;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://support.google.com/cloud/answer/6158840).
+  /// The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
   ///
   /// This field has been deprecated and replaced by the parent field.
   ///
@@ -6615,8 +6604,8 @@ class CreateNodePoolRequest {
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String parent;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// The Google Developers Console
+  /// [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).
   ///
   /// This field has been deprecated and replaced by the parent field.
   ///
@@ -8031,9 +8020,9 @@ class NodeConfig {
   /// information.
   core.int localSsdCount;
 
-  /// The name of a Google Compute Engine [machine
-  /// type](https://cloud.google.com/compute/docs/machine-types) If unspecified,
-  /// the default machine type is `e2-medium`.
+  /// The name of a Google Compute Engine
+  /// [machine type](https://cloud.google.com/compute/docs/machine-types) If
+  /// unspecified, the default machine type is `e2-medium`.
   core.String machineType;
 
   /// The metadata key/value pairs assigned to instances in the cluster.
@@ -8059,15 +8048,15 @@ class NodeConfig {
   /// The instance may be scheduled on the specified or newer CPU platform.
   /// Applicable values are the friendly names of CPU platforms, such as
   /// `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy
-  /// Bridge"`. For more information, read [how to specify min CPU
-  /// platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+  /// Bridge"`. For more information, read
+  /// [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
   core.String minCpuPlatform;
 
   /// Setting this field will assign instances of this pool to run on the
   /// specified node group.
   ///
-  /// This is useful for running workloads on [sole tenant
-  /// nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
+  /// This is useful for running workloads on
+  /// [sole tenant nodes](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes).
   core.String nodeGroup;
 
   /// The set of Google API scopes to be made available on all of the node VMs
@@ -8077,10 +8066,10 @@ class NodeConfig {
   /// not included: * `https://www.googleapis.com/auth/compute` is required for
   /// mounting persistent storage on your nodes. *
   /// `https://www.googleapis.com/auth/devstorage.read_only` is required for
-  /// communicating with **gcr.io** (the [Google Container
-  /// Registry](https://cloud.google.com/container-registry/)). If unspecified,
-  /// no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled,
-  /// in which case their required scopes will be added.
+  /// communicating with **gcr.io** (the
+  /// [Google Container Registry](https://cloud.google.com/container-registry/)).
+  /// If unspecified, no scopes are added, unless Cloud Logging or Cloud
+  /// Monitoring are enabled, in which case their required scopes will be added.
   core.List<core.String> oauthScopes;
 
   /// Whether the nodes are created as preemptible VM instances.
@@ -8091,8 +8080,8 @@ class NodeConfig {
 
   /// The optional reservation affinity.
   ///
-  /// Setting this field will apply the specified [Zonal Compute
-  /// Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
+  /// Setting this field will apply the specified
+  /// [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
   /// to this node pool.
   ReservationAffinity reservationAffinity;
 
@@ -8356,14 +8345,14 @@ class NodePool {
 
   /// The initial node count for the pool.
   ///
-  /// You must ensure that your Compute Engine [resource
-  /// quota](https://cloud.google.com/compute/quotas) is sufficient for this
-  /// number of instances. You must also have available firewall and routes
-  /// quota.
+  /// You must ensure that your Compute Engine
+  /// [resource quota](https://cloud.google.com/compute/quotas) is sufficient
+  /// for this number of instances. You must also have available firewall and
+  /// routes quota.
   core.int initialNodeCount;
 
-  /// The resource URLs of the [managed instance
-  /// groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances)
+  /// The resource URLs of the
+  /// [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances)
   /// associated with this node pool.
   ///
   /// Output only.
@@ -9331,8 +9320,8 @@ class RollbackNodePoolUpgradeRequest {
   /// Deprecated.
   core.String nodePoolId;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://support.google.com/cloud/answer/6158840).
+  /// The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///
@@ -9510,8 +9499,8 @@ class SetAddonsConfigRequest {
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://support.google.com/cloud/answer/6158840).
+  /// The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///
@@ -9596,8 +9585,8 @@ class SetLabelsRequest {
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// The Google Developers Console
+  /// [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///
@@ -9693,8 +9682,8 @@ class SetLegacyAbacRequest {
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://support.google.com/cloud/answer/6158840).
+  /// The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///
@@ -9777,8 +9766,8 @@ class SetLocationsRequest {
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://support.google.com/cloud/answer/6158840).
+  /// The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///
@@ -9864,8 +9853,8 @@ class SetLoggingServiceRequest {
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://support.google.com/cloud/answer/6158840).
+  /// The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///
@@ -9942,8 +9931,8 @@ class SetMaintenancePolicyRequest {
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://support.google.com/cloud/answer/6158840).
+  /// The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
   ///
   /// Required.
   core.String projectId;
@@ -10024,8 +10013,8 @@ class SetMasterAuthRequest {
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://support.google.com/cloud/answer/6158840).
+  /// The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///
@@ -10121,8 +10110,8 @@ class SetMonitoringServiceRequest {
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://support.google.com/cloud/answer/6158840).
+  /// The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///
@@ -10199,8 +10188,8 @@ class SetNetworkPolicyRequest {
   /// Required.
   NetworkPolicy networkPolicy;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// The Google Developers Console
+  /// [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///
@@ -10286,8 +10275,8 @@ class SetNodePoolAutoscalingRequest {
   /// Deprecated.
   core.String nodePoolId;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://support.google.com/cloud/answer/6158840).
+  /// The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///
@@ -10380,8 +10369,8 @@ class SetNodePoolManagementRequest {
   /// Deprecated.
   core.String nodePoolId;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://support.google.com/cloud/answer/6158840).
+  /// The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///
@@ -10473,8 +10462,8 @@ class SetNodePoolSizeRequest {
   /// Deprecated.
   core.String nodePoolId;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://support.google.com/cloud/answer/6158840).
+  /// The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///
@@ -10616,8 +10605,8 @@ class StartIPRotationRequest {
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://developers.google.com/console/help/new/#projectnumber).
+  /// The Google Developers Console
+  /// [project ID or project number](https://developers.google.com/console/help/new/#projectnumber).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///
@@ -10767,8 +10756,8 @@ class UpdateClusterRequest {
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://support.google.com/cloud/answer/6158840).
+  /// The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///
@@ -10857,8 +10846,8 @@ class UpdateMasterRequest {
   /// Specified in the format `projects / * /locations / * /clusters / * `.
   core.String name;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://support.google.com/cloud/answer/6158840).
+  /// The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///
@@ -10964,8 +10953,8 @@ class UpdateNodePoolRequest {
   /// Required.
   core.String nodeVersion;
 
-  /// The Google Developers Console [project ID or project
-  /// number](https://support.google.com/cloud/answer/6158840).
+  /// The Google Developers Console
+  /// [project ID or project number](https://support.google.com/cloud/answer/6158840).
   ///
   /// This field has been deprecated and replaced by the name field.
   ///

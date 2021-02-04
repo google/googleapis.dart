@@ -1334,8 +1334,8 @@ class AuthProvider {
 
   /// URL of the provider's public key set to validate signature of the JWT.
   ///
-  /// See [OpenID
-  /// Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
+  /// See
+  /// [OpenID Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata).
   /// Optional if the key set document: - can be retrieved from \[OpenID
   /// Discovery\](https://openid.net/specs/openid-connect-discovery-1_0.html of
   /// the issuer. - can be inferred from the email domain of the issuer (e.g. a
@@ -2385,8 +2385,8 @@ class Endpoint {
   core.String name;
 
   /// The specification of an Internet routable address of API frontend that
-  /// will handle requests to this [API
-  /// Endpoint](https://cloud.google.com/apis/design/glossary).
+  /// will handle requests to this
+  /// [API Endpoint](https://cloud.google.com/apis/design/glossary).
   ///
   /// It should be either a valid IPv4 address or a fully-qualified domain name.
   /// For example, "8.8.8.8" or "myservice.appspot.com".
@@ -2727,10 +2727,10 @@ class Http {
 /// method and one or more HTTP REST endpoints.
 ///
 /// It allows developers to build a single API service that supports both gRPC
-/// APIs and REST APIs. Many systems, including [Google
-/// APIs](https://github.com/googleapis/googleapis), [Cloud
-/// Endpoints](https://cloud.google.com/endpoints), [gRPC
-/// Gateway](https://github.com/grpc-ecosystem/grpc-gateway), and
+/// APIs and REST APIs. Many systems, including
+/// [Google APIs](https://github.com/googleapis/googleapis),
+/// [Cloud Endpoints](https://cloud.google.com/endpoints),
+/// [gRPC Gateway](https://github.com/grpc-ecosystem/grpc-gateway), and
 /// [Envoy](https://github.com/envoyproxy/envoy) proxy support this feature and
 /// use it for large scale production services. `HttpRule` defines the schema of
 /// the gRPC/REST mapping. The mapping specifies how different portions of the
@@ -2821,15 +2821,15 @@ class Http {
 /// contains exactly one path segment, such as `"{var}"` or `"{var=*}"`, when
 /// such a variable is expanded into a URL path on the client side, all
 /// characters except `[-_.~0-9a-zA-Z]` are percent-encoded. The server side
-/// does the reverse decoding. Such variables show up in the [Discovery
-/// Document](https://developers.google.com/discovery/v1/reference/apis) as
-/// `{var}`. If a variable contains multiple path segments, such as `"{var=foo /
-/// * }"` or `"{var=**}"`, when such a variable is expanded into a URL path on
-/// the client side, all characters except `[-_.~/0-9a-zA-Z]` are
+/// does the reverse decoding. Such variables show up in the
+/// [Discovery Document](https://developers.google.com/discovery/v1/reference/apis)
+/// as `{var}`. If a variable contains multiple path segments, such as
+/// `"{var=foo / * }"` or `"{var=**}"`, when such a variable is expanded into a
+/// URL path on the client side, all characters except `[-_.~/0-9a-zA-Z]` are
 /// percent-encoded. The server side does the reverse decoding, except "%2F" and
-/// "%2f" are left unchanged. Such variables show up in the [Discovery
-/// Document](https://developers.google.com/discovery/v1/reference/apis) as
-/// `{+var}`. ## Using gRPC API Service Configuration gRPC API Service
+/// "%2f" are left unchanged. Such variables show up in the
+/// [Discovery Document](https://developers.google.com/discovery/v1/reference/apis)
+/// as `{+var}`. ## Using gRPC API Service Configuration gRPC API Service
 /// Configuration (service config) is a configuration language for configuring a
 /// gRPC service to become a user-facing product. The service config is simply
 /// the YAML representation of the `google.api.Service` proto message. As an
@@ -2843,10 +2843,10 @@ class Http {
 /// and applies HttpRule to it. - selector: example.v1.Messaging.GetMessage get:
 /// /v1/messages/{message_id}/{sub.subfield} ## Special notes When gRPC
 /// Transcoding is used to map a gRPC to JSON REST endpoints, the proto to JSON
-/// conversion must follow the [proto3
-/// specification](https://developers.google.com/protocol-buffers/docs/proto3#json).
-/// While the single segment variable follows the semantics of [RFC
-/// 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String
+/// conversion must follow the
+/// [proto3 specification](https://developers.google.com/protocol-buffers/docs/proto3#json).
+/// While the single segment variable follows the semantics of
+/// [RFC 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String
 /// Expansion, the multi segment variable **does not** follow RFC 6570 Section
 /// 3.2.3 Reserved Expansion. The reason is that the Reserved Expansion does not
 /// expand special characters like `?` and `#`, which would lead to invalid
@@ -3476,9 +3476,9 @@ class MetricDescriptor {
   /// and fully qualified for production use.
   /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
   /// removed. For more information, see the “Deprecation Policy” section of our
-  /// [Terms of Service](https://cloud.google.com/terms/) and the [Google Cloud
-  /// Platform Subject to the Deprecation
-  /// Policy](https://cloud.google.com/terms/deprecation) documentation.
+  /// [Terms of Service](https://cloud.google.com/terms/) and the
+  /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
+  /// documentation.
   core.String launchStage;
 
   /// Metadata which can be used to guide usage of the metric.
@@ -3537,28 +3537,29 @@ class MetricDescriptor {
   /// more granular way, you can create a `DOUBLE CUMULATIVE` metric whose
   /// `unit` is `ks{CPU}`, and then write the value `12.005` (which is
   /// `12005/1000`), or use `Kis{CPU}` and write `11.723` (which is
-  /// `12005/1024`). The supported units are a subset of [The Unified Code for
-  /// Units of Measure](http://unitsofmeasure.org/ucum.html) standard: **Basic
-  /// units (UNIT)** * `bit` bit * `By` byte * `s` second * `min` minute * `h`
-  /// hour * `d` day * `1` dimensionless **Prefixes (PREFIX)** * `k` kilo (10^3)
-  /// * `M` mega (10^6) * `G` giga (10^9) * `T` tera (10^12) * `P` peta (10^15)
-  /// * `E` exa (10^18) * `Z` zetta (10^21) * `Y` yotta (10^24) * `m` milli
-  /// (10^-3) * `u` micro (10^-6) * `n` nano (10^-9) * `p` pico (10^-12) * `f`
-  /// femto (10^-15) * `a` atto (10^-18) * `z` zepto (10^-21) * `y` yocto
-  /// (10^-24) * `Ki` kibi (2^10) * `Mi` mebi (2^20) * `Gi` gibi (2^30) * `Ti`
-  /// tebi (2^40) * `Pi` pebi (2^50) **Grammar** The grammar also includes these
-  /// connectors: * `/` division or ratio (as an infix operator). For examples,
-  /// `kBy/{email}` or `MiBy/10ms` (although you should almost never have `/s`
-  /// in a metric `unit`; rates should always be computed at query time from the
-  /// underlying cumulative or delta value). * `.` multiplication or composition
-  /// (as an infix operator). For examples, `GBy.d` or `k{watt}.h`. The grammar
-  /// for a unit is as follows: Expression = Component { "." Component } { "/"
-  /// Component } ; Component = ( \[ PREFIX \] UNIT | "%" ) \[ Annotation \] |
-  /// Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: * `Annotation` is
-  /// just a comment if it follows a `UNIT`. If the annotation is used alone,
-  /// then the unit is equivalent to `1`. For examples, `{request}/s == 1/s`,
-  /// `By{transmitted}/s == By/s`. * `NAME` is a sequence of non-blank printable
-  /// ASCII characters not containing `{` or `}`. * `1` represents a unitary
+  /// `12005/1024`). The supported units are a subset of
+  /// [The Unified Code for Units of Measure](http://unitsofmeasure.org/ucum.html)
+  /// standard: **Basic units (UNIT)** * `bit` bit * `By` byte * `s` second *
+  /// `min` minute * `h` hour * `d` day * `1` dimensionless **Prefixes
+  /// (PREFIX)** * `k` kilo (10^3) * `M` mega (10^6) * `G` giga (10^9) * `T`
+  /// tera (10^12) * `P` peta (10^15) * `E` exa (10^18) * `Z` zetta (10^21) *
+  /// `Y` yotta (10^24) * `m` milli (10^-3) * `u` micro (10^-6) * `n` nano
+  /// (10^-9) * `p` pico (10^-12) * `f` femto (10^-15) * `a` atto (10^-18) * `z`
+  /// zepto (10^-21) * `y` yocto (10^-24) * `Ki` kibi (2^10) * `Mi` mebi (2^20)
+  /// * `Gi` gibi (2^30) * `Ti` tebi (2^40) * `Pi` pebi (2^50) **Grammar** The
+  /// grammar also includes these connectors: * `/` division or ratio (as an
+  /// infix operator). For examples, `kBy/{email}` or `MiBy/10ms` (although you
+  /// should almost never have `/s` in a metric `unit`; rates should always be
+  /// computed at query time from the underlying cumulative or delta value). *
+  /// `.` multiplication or composition (as an infix operator). For examples,
+  /// `GBy.d` or `k{watt}.h`. The grammar for a unit is as follows: Expression =
+  /// Component { "." Component } { "/" Component } ; Component = ( \[ PREFIX \]
+  /// UNIT | "%" ) \[ Annotation \] | Annotation | "1" ; Annotation = "{" NAME
+  /// "}" ; Notes: * `Annotation` is just a comment if it follows a `UNIT`. If
+  /// the annotation is used alone, then the unit is equivalent to `1`. For
+  /// examples, `{request}/s == 1/s`, `By{transmitted}/s == By/s`. * `NAME` is a
+  /// sequence of non-blank printable ASCII characters not containing `{` or
+  /// `}`. * `1` represents a unitary
   /// [dimensionless unit](https://en.wikipedia.org/wiki/Dimensionless_quantity)
   /// of 1, such as in `1/s`. It is typically used when none of the basic units
   /// are appropriate. For example, "new users per day" can be represented as
@@ -3712,9 +3713,9 @@ class MetricDescriptorMetadata {
   /// and fully qualified for production use.
   /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
   /// removed. For more information, see the “Deprecation Policy” section of our
-  /// [Terms of Service](https://cloud.google.com/terms/) and the [Google Cloud
-  /// Platform Subject to the Deprecation
-  /// Policy](https://cloud.google.com/terms/deprecation) documentation.
+  /// [Terms of Service](https://cloud.google.com/terms/) and the
+  /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
+  /// documentation.
   core.String launchStage;
 
   /// The sampling period of metric data points.
@@ -3929,9 +3930,9 @@ class MonitoredResourceDescriptor {
   /// and fully qualified for production use.
   /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
   /// removed. For more information, see the “Deprecation Policy” section of our
-  /// [Terms of Service](https://cloud.google.com/terms/) and the [Google Cloud
-  /// Platform Subject to the Deprecation
-  /// Policy](https://cloud.google.com/terms/deprecation) documentation.
+  /// [Terms of Service](https://cloud.google.com/terms/) and the
+  /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
+  /// documentation.
   core.String launchStage;
 
   /// The resource name of the monitored resource descriptor:
@@ -5744,11 +5745,11 @@ class Usage {
   /// The full resource name of a channel used for sending notifications to the
   /// service producer.
   ///
-  /// Google Service Management currently only supports \[Google Cloud
-  /// Pub/Sub\](https://cloud.google.com/pubsub) as a notification channel. To
-  /// use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud
-  /// Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in
-  /// https://cloud.google.com/pubsub/docs/overview.
+  /// Google Service Management currently only supports
+  /// [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification
+  /// channel. To use Google Cloud Pub/Sub as the channel, this must be the name
+  /// of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format
+  /// documented in https://cloud.google.com/pubsub/docs/overview.
   core.String producerNotificationChannel;
 
   /// Requirements that must be satisfied before a consumer project can use the

@@ -3303,7 +3303,7 @@ class AclRuleScope {
   /// - "default" - The public scope. This is the default value.
   /// - "user" - Limits the scope to a single user.
   /// - "group" - Limits the scope to a group.
-  /// - "domain" - Limits the scope to a domain.  Note: The permissions granted
+  /// - "domain" - Limits the scope to a domain. Note: The permissions granted
   /// to the "default", or public, scope apply to any user, authenticated or
   /// not.
   core.String type;
@@ -5035,7 +5035,7 @@ class Event {
   /// The color of the event.
   ///
   /// This is an ID referring to an entry in the event section of the colors
-  /// definition (see the  colors endpoint). Optional.
+  /// definition (see the colors endpoint). Optional.
   core.String colorId;
 
   /// The conference-related information, such as details of a Google Meet
@@ -5127,7 +5127,7 @@ class Event {
   /// - characters allowed in the ID are those used in base32hex encoding, i.e.
   /// lowercase letters a-v and digits 0-9, see section 3.1.2 in RFC2938
   /// - the length of the ID must be between 5 and 1024 characters
-  /// - the ID must be unique per calendar  Due to the globally distributed
+  /// - the ID must be unique per calendar Due to the globally distributed
   /// nature of the system, we cannot guarantee that ID collisions will be
   /// detected at event creation time. To minimize the risk of collisions we
   /// recommend using an established UUID algorithm such as one described in
@@ -5229,12 +5229,12 @@ class Event {
   /// - All other cancelled events represent deleted events. Clients should
   /// remove their locally synced copies. Such cancelled events will eventually
   /// disappear, so do not rely on them being available indefinitely.
-  /// Deleted events are only guaranteed to have the id field populated.   On
-  /// the organizer's calendar, cancelled events continue to expose event
-  /// details (summary, location, etc.) so that they can be restored
-  /// (undeleted). Similarly, the events to which the user was invited and that
-  /// they manually removed continue to provide details. However, incremental
-  /// sync requests with showDeleted set to false will not return these details.
+  /// Deleted events are only guaranteed to have the id field populated. On the
+  /// organizer's calendar, cancelled events continue to expose event details
+  /// (summary, location, etc.) so that they can be restored (undeleted).
+  /// Similarly, the events to which the user was invited and that they manually
+  /// removed continue to provide details. However, incremental sync requests
+  /// with showDeleted set to false will not return these details.
   /// If an event changes its organizer (for example via the move operation) and
   /// the original organizer is not on the attendee list, it will leave behind a
   /// cancelled event where only the id field is guaranteed to be populated.

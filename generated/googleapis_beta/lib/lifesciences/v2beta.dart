@@ -334,8 +334,8 @@ class ProjectsLocationsOperationsResource {
 
   /// Lists operations that match the specified filter in the request.
   ///
-  /// Authorization requires the following [Google
-  /// IAM](https://cloud.google.com/iam) permission: *
+  /// Authorization requires the following
+  /// [Google IAM](https://cloud.google.com/iam) permission: *
   /// `lifesciences.operations.list`
   ///
   /// Request parameters:
@@ -435,8 +435,8 @@ class ProjectsLocationsPipelinesResource {
   /// is done automatically when the Cloud Life Sciences API is first enabled,
   /// but if you delete this permission you must disable and re-enable the API
   /// to grant the Life Sciences Service Agent the required permissions.
-  /// Authorization requires the following [Google
-  /// IAM](https://cloud.google.com/iam/) permission: *
+  /// Authorization requires the following
+  /// [Google IAM](https://cloud.google.com/iam/) permission: *
   /// `lifesciences.workflows.run`
   ///
   /// [request] - The metadata request object.
@@ -1301,7 +1301,7 @@ class FailedEvent {
   /// seeking or reading past end-of-file. Unlike `INVALID_ARGUMENT`, this error
   /// indicates a problem that may be fixed if the system state changes. For
   /// example, a 32-bit file system will generate `INVALID_ARGUMENT` if asked to
-  /// read at an offset that is not in the range [0,2^32-1], but it will
+  /// read at an offset that is not in the range \[0,2^32-1\], but it will
   /// generate `OUT_OF_RANGE` if asked to read from an offset past the current
   /// file size. There is a fair bit of overlap between `FAILED_PRECONDITION`
   /// and `OUT_OF_RANGE`. We recommend using `OUT_OF_RANGE` (the more specific
@@ -2210,12 +2210,12 @@ class VirtualMachine {
 
   /// Optional set of labels to apply to the VM and any attached disk resources.
   ///
-  /// These labels must adhere to the [name and value
-  /// restrictions](https://cloud.google.com/compute/docs/labeling-resources) on
-  /// VM labels imposed by Compute Engine. Labels keys with the prefix 'google-'
-  /// are reserved for use by Google. Labels applied at creation time to the VM.
-  /// Applied on a best-effort basis to attached disk resources shortly after VM
-  /// creation.
+  /// These labels must adhere to the
+  /// [name and value restrictions](https://cloud.google.com/compute/docs/labeling-resources)
+  /// on VM labels imposed by Compute Engine. Labels keys with the prefix
+  /// 'google-' are reserved for use by Google. Labels applied at creation time
+  /// to the VM. Applied on a best-effort basis to attached disk resources
+  /// shortly after VM creation.
   core.Map<core.String, core.String> labels;
 
   /// The machine type of the virtual machine to create.
@@ -2223,8 +2223,8 @@ class VirtualMachine {
   /// Must be the short name of a standard machine type (such as
   /// "n1-standard-1") or a custom machine type (such as "custom-1-4096", where
   /// "1" indicates the number of vCPUs and "4096" indicates the memory in MB).
-  /// See [Creating an instance with a custom machine
-  /// type](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create)
+  /// See
+  /// [Creating an instance with a custom machine type](https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#create)
   /// for more specifications on creating a custom machine type.
   ///
   /// Required.

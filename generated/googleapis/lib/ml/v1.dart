@@ -452,8 +452,8 @@ class ProjectsJobsResource {
   /// value will be rejected. Requests for policies with any conditional
   /// bindings must specify version 3. Policies without any conditional bindings
   /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2030,8 +2030,8 @@ class ProjectsModelsResource {
   /// value will be rejected. Requests for policies with any conditional
   /// bindings must specify version 3. Policies without any conditional bindings
   /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5916,8 +5916,8 @@ class GoogleCloudMlV1ReplicaConfig {
   /// TPUs\](/ml-engine/docs/tensorflow/runtime-version-list#tpu-support). Note
   /// that the version of TensorFlow included in a runtime version may differ
   /// from the numbering of the runtime version itself, because it may have a
-  /// different [patch
-  /// version](https://www.tensorflow.org/guide/version_compat#semantic_versioning_20).
+  /// different
+  /// [patch version](https://www.tensorflow.org/guide/version_compat#semantic_versioning_20).
   /// In this field, you must specify the runtime version (TensorFlow minor
   /// version). For example, if your custom container runs TensorFlow `1.x.y`,
   /// specify `1.x`.
@@ -6699,10 +6699,10 @@ class GoogleCloudMlV1TrainingInput {
   /// datasets.
   /// - "STANDARD_1" : Many workers and a few parameter servers.
   /// - "PREMIUM_1" : A large number of workers with many parameter servers.
-  /// - "BASIC_GPU" : A single worker instance [with a
-  /// GPU](/ai-platform/training/docs/using-gpus).
-  /// - "BASIC_TPU" : A single worker instance with a [Cloud
-  /// TPU](/ml-engine/docs/tensorflow/using-tpus).
+  /// - "BASIC_GPU" : A single worker instance \[with a
+  /// GPU\](/ai-platform/training/docs/using-gpus).
+  /// - "BASIC_TPU" : A single worker instance with a \[Cloud
+  /// TPU\](/ml-engine/docs/tensorflow/using-tpus).
   /// - "CUSTOM" : The CUSTOM tier is not a set tier, but rather enables you to
   /// use your own cluster specification. When you use this tier, set values to
   /// configure your processing cluster according to these guidelines: * You
@@ -7769,8 +7769,7 @@ class GoogleIamV1Binding {
   /// does not apply to the current request. However, a different role binding
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
-  /// [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   GoogleTypeExpr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -7860,8 +7859,8 @@ class GoogleIamV1Binding {
 /// allows access to a resource only if the expression evaluates to `true`. A
 /// condition can add constraints based on attributes of the request, the
 /// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the [IAM
-/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// policies, see the
+/// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
@@ -7877,8 +7876,8 @@ class GoogleIamV1Binding {
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
 /// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
-/// version: 3 For a description of IAM and its features, see the [IAM
-/// documentation](https://cloud.google.com/iam/docs/).
+/// version: 3 For a description of IAM and its features, see the
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class GoogleIamV1Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<GoogleIamV1AuditConfig> auditConfigs;
@@ -7925,8 +7924,8 @@ class GoogleIamV1Policy {
   /// the version `3` policy are lost. If a policy does not include any
   /// conditions, operations on that policy may specify any valid version or
   /// leave the field unset. To learn which resources support conditions in
-  /// their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   GoogleIamV1Policy();
@@ -8016,8 +8015,8 @@ class GoogleIamV1TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`.
   ///
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see [IAM
-  /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  /// For more information see
+  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
   GoogleIamV1TestIamPermissionsRequest();

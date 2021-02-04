@@ -73,9 +73,9 @@ class PhotoResource {
   /// CreatePhoto publishes the uploaded Photo to Street View on Google Maps.
   ///
   /// Currently, the only way to set heading, pitch, and roll in CreatePhoto is
-  /// through the [Photo Sphere XMP
-  /// metadata](https://developers.google.com/streetview/spherical-metadata) in
-  /// the photo bytes. CreatePhoto ignores the `pose.heading`, `pose.pitch`,
+  /// through the
+  /// [Photo Sphere XMP metadata](https://developers.google.com/streetview/spherical-metadata)
+  /// in the photo bytes. CreatePhoto ignores the `pose.heading`, `pose.pitch`,
   /// `pose.roll`, `pose.altitude`, and `pose.level` fields in Pose. This method
   /// returns the following error codes: * google.rpc.Code.INVALID_ARGUMENT if
   /// the request is malformed or if the uploaded photo is not a 360 photo. *

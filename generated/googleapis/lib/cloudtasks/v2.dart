@@ -213,9 +213,9 @@ class ProjectsLocationsQueuesResource {
   /// days. After a task is 31 days old, the task will be deleted regardless of
   /// whether it was dispatched or not. WARNING: Using this method may have
   /// unintended side effects if you are using an App Engine `queue.yaml` or
-  /// `queue.xml` file to manage your queues. Read [Overview of Queue Management
-  /// and queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before
-  /// using this method.
+  /// `queue.xml` file to manage your queues. Read
+  /// [Overview of Queue Management and queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml)
+  /// before using this method.
   ///
   /// [request] - The metadata request object.
   ///
@@ -281,9 +281,9 @@ class ProjectsLocationsQueuesResource {
   /// you delete a queue, a queue with the same name can't be created for 7
   /// days. WARNING: Using this method may have unintended side effects if you
   /// are using an App Engine `queue.yaml` or `queue.xml` file to manage your
-  /// queues. Read [Overview of Queue Management and
-  /// queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using
-  /// this method.
+  /// queues. Read
+  /// [Overview of Queue Management and queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml)
+  /// before using this method.
   ///
   /// Request parameters:
   ///
@@ -392,9 +392,9 @@ class ProjectsLocationsQueuesResource {
   /// Gets the access control policy for a Queue.
   ///
   /// Returns an empty policy if the resource exists and does not have a policy
-  /// set. Authorization requires the following [Google
-  /// IAM](https://cloud.google.com/iam) permission on the specified resource
-  /// parent: * `cloudtasks.queues.getIamPolicy`
+  /// set. Authorization requires the following
+  /// [Google IAM](https://cloud.google.com/iam) permission on the specified
+  /// resource parent: * `cloudtasks.queues.getIamPolicy`
   ///
   /// [request] - The metadata request object.
   ///
@@ -469,8 +469,8 @@ class ProjectsLocationsQueuesResource {
   /// [filter] - `filter` can be used to specify a subset of queues. Any Queue
   /// field can be used as a filter and several operators as supported. For
   /// example: `<=, <, >=, >, !=, =, :`. The filter syntax is the same as
-  /// described in [Stackdriver's Advanced Logs
-  /// Filters](https://cloud.google.com/logging/docs/view/advanced_filters).
+  /// described in
+  /// [Stackdriver's Advanced Logs Filters](https://cloud.google.com/logging/docs/view/advanced_filters).
   /// Sample filter "state: PAUSED". Note that using filters might cause fewer
   /// queues than the requested page_size to be returned.
   ///
@@ -550,9 +550,8 @@ class ProjectsLocationsQueuesResource {
   /// deleted regardless of whether it was dispatched or not. WARNING: Using
   /// this method may have unintended side effects if you are using an App
   /// Engine `queue.yaml` or `queue.xml` file to manage your queues. Read
-  /// [Overview of Queue Management and
-  /// queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using
-  /// this method.
+  /// [Overview of Queue Management and queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml)
+  /// before using this method.
   ///
   /// [request] - The metadata request object.
   ///
@@ -563,8 +562,8 @@ class ProjectsLocationsQueuesResource {
   /// following format:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID`
   /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), colons
-  /// (:), or periods (.). For more information, see [Identifying
-  /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
+  /// (:), or periods (.). For more information, see
+  /// [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the queue's location. The list of
   /// available locations can be obtained by calling ListLocations. For more
   /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID`
@@ -760,9 +759,8 @@ class ProjectsLocationsQueuesResource {
   /// state of a queue is stored in the queue's state; after calling this method
   /// it will be set to RUNNING. WARNING: Resuming many high-QPS queues at the
   /// same time can lead to target overloading. If you are resuming high-QPS
-  /// queues, follow the 500/50/5 pattern described in [Managing Cloud Tasks
-  /// Scaling
-  /// Risks](https://cloud.google.com/tasks/docs/manage-cloud-task-scaling).
+  /// queues, follow the 500/50/5 pattern described in
+  /// [Managing Cloud Tasks Scaling Risks](https://cloud.google.com/tasks/docs/manage-cloud-task-scaling).
   ///
   /// [request] - The metadata request object.
   ///
@@ -825,9 +823,9 @@ class ProjectsLocationsQueuesResource {
   ///
   /// Replaces any existing policy. Note: The Cloud Console does not check
   /// queue-level IAM permissions yet. Project-level permissions are required to
-  /// use the Cloud Console. Authorization requires the following [Google
-  /// IAM](https://cloud.google.com/iam) permission on the specified resource
-  /// parent: * `cloudtasks.queues.setIamPolicy`
+  /// use the Cloud Console. Authorization requires the following
+  /// [Google IAM](https://cloud.google.com/iam) permission on the specified
+  /// resource parent: * `cloudtasks.queues.setIamPolicy`
   ///
   /// [request] - The metadata request object.
   ///
@@ -1097,8 +1095,9 @@ class ProjectsLocationsQueuesTasksResource {
   /// retrieved by default because some data, such as payloads, might be
   /// desirable to return only when needed because of its large size or because
   /// of the sensitivity of data that it contains. Authorization for FULL
-  /// requires `cloudtasks.tasks.fullView` [Google
-  /// IAM](https://cloud.google.com/iam/) permission on the Task resource.
+  /// requires `cloudtasks.tasks.fullView`
+  /// [Google IAM](https://cloud.google.com/iam/) permission on the Task
+  /// resource.
   /// Possible string values are:
   /// - "VIEW_UNSPECIFIED" : Unspecified. Defaults to BASIC.
   /// - "BASIC" : The basic view omits fields which can be large or can contain
@@ -1188,8 +1187,9 @@ class ProjectsLocationsQueuesTasksResource {
   /// retrieved by default because some data, such as payloads, might be
   /// desirable to return only when needed because of its large size or because
   /// of the sensitivity of data that it contains. Authorization for FULL
-  /// requires `cloudtasks.tasks.fullView` [Google
-  /// IAM](https://cloud.google.com/iam/) permission on the Task resource.
+  /// requires `cloudtasks.tasks.fullView`
+  /// [Google IAM](https://cloud.google.com/iam/) permission on the Task
+  /// resource.
   /// Possible string values are:
   /// - "VIEW_UNSPECIFIED" : Unspecified. Defaults to BASIC.
   /// - "BASIC" : The basic view omits fields which can be large or can contain
@@ -1339,10 +1339,10 @@ class ProjectsLocationsQueuesTasksResource {
 /// Google IAM permission for the project and the following scope:
 /// `https://www.googleapis.com/auth/cloud-platform` The task will be delivered
 /// to the App Engine app which belongs to the same project as the queue. For
-/// more information, see [How Requests are
-/// Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)
-/// and how routing is affected by [dispatch
-/// files](https://cloud.google.com/appengine/docs/python/config/dispatchref).
+/// more information, see
+/// [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)
+/// and how routing is affected by
+/// [dispatch files](https://cloud.google.com/appengine/docs/python/config/dispatchref).
 /// Traffic is encrypted during transport and never leaves Google datacenters.
 /// Because this traffic is carried over a communication mechanism internal to
 /// Google, you cannot explicitly set the protocol (for example, HTTP or HTTPS).
@@ -1406,8 +1406,8 @@ class AppEngineHttpRequest {
   /// only. It cannot be changed. The headers below cannot be set or overridden:
   /// * `Host` * `X-Google-*` * `X-AppEngine-*` In addition, Cloud Tasks sets
   /// some headers when the task is dispatched, such as headers containing
-  /// information about the task; see [request
-  /// headers](https://cloud.google.com/tasks/docs/creating-appengine-handlers#reading_request_headers).
+  /// information about the task; see
+  /// [request headers](https://cloud.google.com/tasks/docs/creating-appengine-handlers#reading_request_headers).
   /// These headers are set only when the task is dispatched, so they are not
   /// visible when the task is returned in a Cloud Tasks response. Although
   /// there is no specific limit for the maximum number of headers or the size,
@@ -1419,11 +1419,10 @@ class AppEngineHttpRequest {
   ///
   /// The default is POST. The app's request handler for the task's target URL
   /// must be able to handle HTTP requests with this http_method, otherwise the
-  /// task attempt fails with error code 405 (Method Not Allowed). See [Writing
-  /// a push task request
-  /// handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler)
-  /// and the App Engine documentation for your runtime on [How Requests are
-  /// Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
+  /// task attempt fails with error code 405 (Method Not Allowed). See
+  /// [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler)
+  /// and the App Engine documentation for your runtime on
+  /// [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
   /// Possible string values are:
   /// - "HTTP_METHOD_UNSPECIFIED" : HTTP method unspecified
   /// - "POST" : HTTP POST
@@ -1495,14 +1494,12 @@ class AppEngineHttpRequest {
 ///
 /// Defines routing characteristics specific to App Engine - service, version,
 /// and instance. For more information about services, versions, and instances
-/// see [An Overview of App
-/// Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine),
-/// [Microservices Architecture on Google App
-/// Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine),
-/// [App Engine Standard request
-/// routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed),
-/// and [App Engine Flex request
-/// routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
+/// see
+/// [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine),
+/// [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine),
+/// [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed),
+/// and
+/// [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
 /// Using AppEngineRouting requires
 /// \[`appengine.applications.get`\](https://cloud.google.com/appengine/docs/admin-api/access-control)
 /// Google IAM permission for the project and the following scope:
@@ -1513,9 +1510,8 @@ class AppEngineRouting {
   /// The host is constructed from the domain name of the app associated with
   /// the queue's project ID (for example .appspot.com), and the service,
   /// version, and instance. Tasks which were created using the App Engine SDK
-  /// might have a custom domain name. For more information, see [How Requests
-  /// are
-  /// Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
+  /// might have a custom domain name. For more information, see
+  /// [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
   ///
   /// Output only.
   core.String host;
@@ -1524,13 +1520,11 @@ class AppEngineRouting {
   ///
   /// By default, the task is sent to an instance which is available when the
   /// task is attempted. Requests can only be sent to a specific instance if
-  /// [manual scaling is used in App Engine
-  /// Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes).
-  /// App Engine Flex does not support instances. For more information, see [App
-  /// Engine Standard request
-  /// routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)
-  /// and [App Engine Flex request
-  /// routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
+  /// [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes).
+  /// App Engine Flex does not support instances. For more information, see
+  /// [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)
+  /// and
+  /// [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
   core.String instance;
 
   /// App service.
@@ -1671,8 +1665,7 @@ class Binding {
   /// does not apply to the current request. However, a different role binding
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
-  /// [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -1954,8 +1947,8 @@ class GetPolicyOptions {
   /// rejected. Requests for policies with any conditional bindings must specify
   /// version 3. Policies without any conditional bindings may specify any valid
   /// value or leave the field unset. To learn which resources support
-  /// conditions in their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// Optional.
   core.int requestedPolicyVersion;
@@ -2042,9 +2035,10 @@ class HttpRequest {
   /// - "OPTIONS" : HTTP OPTIONS
   core.String httpMethod;
 
-  /// If specified, an [OAuth
-  /// token](https://developers.google.com/identity/protocols/OAuth2) will be
-  /// generated and attached as an `Authorization` header in the HTTP request.
+  /// If specified, an
+  /// [OAuth token](https://developers.google.com/identity/protocols/OAuth2)
+  /// will be generated and attached as an `Authorization` header in the HTTP
+  /// request.
   ///
   /// This type of authorization should generally only be used when calling
   /// Google APIs hosted on *.googleapis.com.
@@ -2319,8 +2313,8 @@ class Location {
   }
 }
 
-/// Contains information needed for generating an [OAuth
-/// token](https://developers.google.com/identity/protocols/OAuth2).
+/// Contains information needed for generating an
+/// [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
 ///
 /// This type of authorization should generally only be used when calling Google
 /// APIs hosted on *.googleapis.com.
@@ -2331,9 +2325,8 @@ class OAuthToken {
   /// used.
   core.String scope;
 
-  /// [Service account
-  /// email](https://cloud.google.com/iam/docs/service-accounts) to be used for
-  /// generating OAuth token.
+  /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
+  /// to be used for generating OAuth token.
   ///
   /// The service account must be within the same project as the queue. The
   /// caller must have iam.serviceAccounts.actAs permission for the service
@@ -2363,8 +2356,8 @@ class OAuthToken {
   }
 }
 
-/// Contains information needed for generating an [OpenID Connect
-/// token](https://developers.google.com/identity/protocols/OpenIDConnect).
+/// Contains information needed for generating an
+/// [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
 ///
 /// This type of authorization can be used for many scenarios, including calling
 /// Cloud Run, or endpoints where you intend to validate the token yourself.
@@ -2374,9 +2367,8 @@ class OidcToken {
   /// If not specified, the URI specified in target will be used.
   core.String audience;
 
-  /// [Service account
-  /// email](https://cloud.google.com/iam/docs/service-accounts) to be used for
-  /// generating OIDC token.
+  /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
+  /// to be used for generating OIDC token.
   ///
   /// The service account must be within the same project as the queue. The
   /// caller must have iam.serviceAccounts.actAs permission for the service
@@ -2432,8 +2424,8 @@ class PauseQueueRequest {
 /// allows access to a resource only if the expression evaluates to `true`. A
 /// condition can add constraints based on attributes of the request, the
 /// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the [IAM
-/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// policies, see the
+/// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
@@ -2449,8 +2441,8 @@ class PauseQueueRequest {
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
 /// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
-/// version: 3 For a description of IAM and its features, see the [IAM
-/// documentation](https://cloud.google.com/iam/docs/).
+/// version: 3 For a description of IAM and its features, see the
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members` to a `role`.
   ///
@@ -2494,8 +2486,8 @@ class Policy {
   /// the version `3` policy are lost. If a policy does not include any
   /// conditions, operations on that policy may specify any valid version or
   /// leave the field unset. To learn which resources support conditions in
-  /// their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -2563,8 +2555,8 @@ class Queue {
   /// The queue name. The queue name must have the following format:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID`
   /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), colons
-  /// (:), or periods (.). For more information, see [Identifying
-  /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
+  /// (:), or periods (.). For more information, see
+  /// [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the queue's location. The list of
   /// available locations can be obtained by calling ListLocations. For more
   /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID`
@@ -2575,8 +2567,8 @@ class Queue {
   /// The last time this queue was purged.
   ///
   /// All tasks that were created before this time were purged. A queue can be
-  /// purged using PurgeQueue, the [App Engine Task Queue SDK, or the Cloud
-  /// Console](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue).
+  /// purged using PurgeQueue, the
+  /// [App Engine Task Queue SDK, or the Cloud Console](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-queues#purging_all_tasks_from_a_queue).
   /// Purge time will be truncated to the nearest microsecond. Purge time will
   /// be unset if the queue has never been purged.
   ///
@@ -2606,12 +2598,12 @@ class Queue {
   /// settings cannot be set on individual tasks. * For tasks created using the
   /// App Engine SDK: the queue-level retry settings apply to all tasks in the
   /// queue which do not have retry settings explicitly set on the task and were
-  /// created by the App Engine SDK. See [App Engine
-  /// documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
+  /// created by the App Engine SDK. See
+  /// [App Engine documentation](https://cloud.google.com/appengine/docs/standard/python/taskqueue/push/retrying-tasks).
   RetryConfig retryConfig;
 
-  /// Configuration options for writing logs to [Stackdriver
-  /// Logging](https://cloud.google.com/logging/docs/).
+  /// Configuration options for writing logs to
+  /// [Stackdriver Logging](https://cloud.google.com/logging/docs/).
   ///
   /// If this field is unset, then no logs are written.
   StackdriverLoggingConfig stackdriverLoggingConfig;
@@ -2620,7 +2612,7 @@ class Queue {
   ///
   /// `state` can only be changed by called PauseQueue, ResumeQueue, or
   /// uploading
-  /// \[queue.yaml/xml\](https://cloud.google.com/appengine/docs/python/config/queueref).
+  /// [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref).
   /// UpdateQueue cannot be used to change `state`.
   ///
   /// Output only.
@@ -2716,9 +2708,9 @@ class RateLimits {
   /// tasks are in the queue and the rate is high. This field allows the queue
   /// to have a high rate so processing starts shortly after a task is enqueued,
   /// but still limits resource usage when many tasks are enqueued in a short
-  /// period of time. The [token
-  /// bucket](https://wikipedia.org/wiki/Token_Bucket) algorithm is used to
-  /// control the rate of task dispatches. Each queue has a token bucket that
+  /// period of time. The
+  /// [token bucket](https://wikipedia.org/wiki/Token_Bucket) algorithm is used
+  /// to control the rate of task dispatches. Each queue has a token bucket that
   /// holds tokens, up to the maximum specified by `max_burst_size`. Each time a
   /// task is dispatched, a token is removed from the bucket. Tasks will be
   /// dispatched until the queue's bucket runs out of tokens. The bucket will be
@@ -2742,16 +2734,15 @@ class RateLimits {
   /// until the number of concurrent requests decreases. If unspecified when the
   /// queue is created, Cloud Tasks will pick the default. The maximum allowed
   /// value is 5,000. This field has the same meaning as
-  /// \[max_concurrent_requests in
-  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests).
+  /// [max_concurrent_requests in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests).
   core.int maxConcurrentDispatches;
 
   /// The maximum rate at which tasks are dispatched from this queue.
   ///
   /// If unspecified when the queue is created, Cloud Tasks will pick the
   /// default. * The maximum allowed value is 500. This field has the same
-  /// meaning as \[rate in
-  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).
+  /// meaning as
+  /// [rate in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).
   core.double maxDispatchesPerSecond;
 
   RateLimits();
@@ -2808,8 +2799,8 @@ class RetryConfig {
   /// first attempt fails, then there will be `max_attempts - 1` retries). Must
   /// be >= -1. If unspecified when the queue is created, Cloud Tasks will pick
   /// the default. -1 indicates unlimited attempts. This field has the same
-  /// meaning as \[task_retry_limit in
-  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+  /// meaning as
+  /// [task_retry_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.int maxAttempts;
 
   /// A task will be scheduled for retry between min_backoff and max_backoff
@@ -2818,8 +2809,8 @@ class RetryConfig {
   ///
   /// If unspecified when the queue is created, Cloud Tasks will pick the
   /// default. `max_backoff` will be truncated to the nearest second. This field
-  /// has the same meaning as \[max_backoff_seconds in
-  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+  /// has the same meaning as
+  /// [max_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.String maxBackoff;
 
   /// The time between retries will double `max_doublings` times.
@@ -2834,8 +2825,7 @@ class RetryConfig {
   /// max_attempts times. Thus, the requests will retry at 10s, 20s, 40s, 80s,
   /// 160s, 240s, 300s, 300s, .... If unspecified when the queue is created,
   /// Cloud Tasks will pick the default. This field has the same meaning as
-  /// \[max_doublings in
-  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+  /// [max_doublings in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.int maxDoublings;
 
   /// If positive, `max_retry_duration` specifies the time limit for retrying a
@@ -2846,8 +2836,8 @@ class RetryConfig {
   /// task will be deleted. If zero, then the task age is unlimited. If
   /// unspecified when the queue is created, Cloud Tasks will pick the default.
   /// `max_retry_duration` will be truncated to the nearest second. This field
-  /// has the same meaning as \[task_age_limit in
-  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+  /// has the same meaning as
+  /// [task_age_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.String maxRetryDuration;
 
   /// A task will be scheduled for retry between min_backoff and max_backoff
@@ -2856,8 +2846,8 @@ class RetryConfig {
   ///
   /// If unspecified when the queue is created, Cloud Tasks will pick the
   /// default. `min_backoff` will be truncated to the nearest second. This field
-  /// has the same meaning as \[min_backoff_seconds in
-  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+  /// has the same meaning as
+  /// [min_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.String minBackoff;
 
   RetryConfig();
@@ -2967,11 +2957,11 @@ class SetIamPolicyRequest {
   }
 }
 
-/// Configuration options for writing logs to [Stackdriver
-/// Logging](https://cloud.google.com/logging/docs/).
+/// Configuration options for writing logs to
+/// [Stackdriver Logging](https://cloud.google.com/logging/docs/).
 class StackdriverLoggingConfig {
-  /// Specifies the fraction of operations to write to [Stackdriver
-  /// Logging](https://cloud.google.com/logging/docs/).
+  /// Specifies the fraction of operations to write to
+  /// [Stackdriver Logging](https://cloud.google.com/logging/docs/).
   ///
   /// This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is
   /// the default and means that no operations are logged.
@@ -3090,8 +3080,8 @@ class Task {
   /// For HTTP tasks, the default is 10 minutes. The deadline must be in the
   /// interval \[15 seconds, 30 minutes\]. * For App Engine tasks, 0 indicates
   /// that the request has the default deadline. The default deadline depends on
-  /// the [scaling
-  /// type](https://cloud.google.com/appengine/docs/standard/go/how-instances-are-managed#instance_scaling)
+  /// the
+  /// [scaling type](https://cloud.google.com/appengine/docs/standard/go/how-instances-are-managed#instance_scaling)
   /// of the service: 10 minutes for standard apps with automatic scaling, 24
   /// hours for standard apps with manual and basic scaling, and 60 minutes for
   /// flex apps. If the request deadline is set, it must be in the interval \[15
@@ -3129,8 +3119,7 @@ class Task {
   /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
   /// * `PROJECT_ID` can contain letters (\[A-Za-z\]), numbers (\[0-9\]),
   /// hyphens (-), colons (:), or periods (.). For more information, see
-  /// [Identifying
-  /// projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
+  /// [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the task's location. The list of
   /// available locations can be obtained by calling ListLocations. For more
   /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID`
@@ -3251,8 +3240,8 @@ class TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`.
   ///
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see [IAM
-  /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  /// For more information see
+  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
   TestIamPermissionsRequest();

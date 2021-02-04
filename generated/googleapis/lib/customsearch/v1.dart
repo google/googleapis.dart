@@ -65,19 +65,18 @@ class CseResource {
   ///
   /// Request parameters:
   ///
-  /// [c2coff] - Enables or disables [Simplified and Traditional Chinese
-  /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch).
+  /// [c2coff] - Enables or disables
+  /// [Simplified and Traditional Chinese Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch).
   /// The default value for this parameter is 0 (zero), meaning that the feature
   /// is enabled. Supported values are: * `1`: Disabled * `0`: Enabled (default)
   ///
   /// [cr] - Restricts search results to documents originating in a particular
-  /// country. You may use [Boolean
-  /// operators](https://developers.google.com/custom-search/docs/xml_results_appendices#booleanOperators)
+  /// country. You may use
+  /// [Boolean operators](https://developers.google.com/custom-search/docs/xml_results_appendices#booleanOperators)
   /// in the cr parameter's value. Google Search determines the country of a
   /// document by analyzing: * the top-level domain (TLD) of the document's URL
-  /// * the geographic location of the Web server's IP address See the [Country
-  /// Parameter
-  /// Values](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCollections)
+  /// * the geographic location of the Web server's IP address See the
+  /// [Country Parameter Values](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCollections)
   /// page for a list of valid values for this parameter.
   ///
   /// [cx] - The Programmable Search Engine ID to use for this request.
@@ -96,12 +95,11 @@ class CseResource {
   /// documents in the search results.
   ///
   /// [fileType] - Restricts results to files of a specified extension. A list
-  /// of file types indexable by Google can be found in Search Console [Help
-  /// Center](https://support.google.com/webmasters/answer/35287).
+  /// of file types indexable by Google can be found in Search Console
+  /// [Help Center](https://support.google.com/webmasters/answer/35287).
   ///
   /// [filter] - Controls turning on or off the duplicate content filter. * See
-  /// [Automatic
-  /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)
+  /// [Automatic Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)
   /// for more information about Google's search results filters. Note that host
   /// crowding filtering applies only to multi-site searches. * By default,
   /// Google applies filtering to all search results to improve the quality of
@@ -110,8 +108,8 @@ class CseResource {
   ///
   /// [gl] - Geolocation of end user. * The `gl` parameter value is a two-letter
   /// country code. The `gl` parameter boosts search results whose country of
-  /// origin matches the parameter value. See the [Country
-  /// Codes](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCodes)
+  /// origin matches the parameter value. See the
+  /// [Country Codes](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCodes)
   /// page for a list of valid values. * Specifying a `gl` parameter value
   /// should lead to more relevant results. This is particularly true for
   /// international customers and, even more specifically, for customers in
@@ -127,10 +125,10 @@ class CseResource {
   ///
   /// [hl] - Sets the user interface language. * Explicitly setting this
   /// parameter improves the performance and the quality of your search results.
-  /// * See the [Interface
-  /// Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
-  /// section of [Internationalizing Queries and Results
-  /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)
+  /// * See the
+  /// [Interface Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
+  /// section of
+  /// [Internationalizing Queries and Results Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)
   /// for more information, and (Supported Interface
   /// Languages)\[https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages\]
   /// for a list of supported languages.
@@ -227,8 +225,8 @@ class CseResource {
   ///
   /// [rights] - Filters based on licensing. Supported values include:
   /// `cc_publicdomain`, `cc_attribute`, `cc_sharealike`, `cc_noncommercial`,
-  /// `cc_nonderived` and combinations of these. See [typical
-  /// combinations](https://wiki.creativecommons.org/wiki/CC_Search_integration).
+  /// `cc_nonderived` and combinations of these. See
+  /// [typical combinations](https://wiki.creativecommons.org/wiki/CC_Search_integration).
   ///
   /// [safe] - Search safety level. Acceptable values are: * `"active"`: Enables
   /// SafeSearch filtering. * `"off"`: Disables SafeSearch filtering. (default)
@@ -448,19 +446,18 @@ class CseSiterestrictResource {
   ///
   /// Request parameters:
   ///
-  /// [c2coff] - Enables or disables [Simplified and Traditional Chinese
-  /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch).
+  /// [c2coff] - Enables or disables
+  /// [Simplified and Traditional Chinese Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch).
   /// The default value for this parameter is 0 (zero), meaning that the feature
   /// is enabled. Supported values are: * `1`: Disabled * `0`: Enabled (default)
   ///
   /// [cr] - Restricts search results to documents originating in a particular
-  /// country. You may use [Boolean
-  /// operators](https://developers.google.com/custom-search/docs/xml_results_appendices#booleanOperators)
+  /// country. You may use
+  /// [Boolean operators](https://developers.google.com/custom-search/docs/xml_results_appendices#booleanOperators)
   /// in the cr parameter's value. Google Search determines the country of a
   /// document by analyzing: * the top-level domain (TLD) of the document's URL
-  /// * the geographic location of the Web server's IP address See the [Country
-  /// Parameter
-  /// Values](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCollections)
+  /// * the geographic location of the Web server's IP address See the
+  /// [Country Parameter Values](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCollections)
   /// page for a list of valid values for this parameter.
   ///
   /// [cx] - The Programmable Search Engine ID to use for this request.
@@ -479,12 +476,11 @@ class CseSiterestrictResource {
   /// documents in the search results.
   ///
   /// [fileType] - Restricts results to files of a specified extension. A list
-  /// of file types indexable by Google can be found in Search Console [Help
-  /// Center](https://support.google.com/webmasters/answer/35287).
+  /// of file types indexable by Google can be found in Search Console
+  /// [Help Center](https://support.google.com/webmasters/answer/35287).
   ///
   /// [filter] - Controls turning on or off the duplicate content filter. * See
-  /// [Automatic
-  /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)
+  /// [Automatic Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)
   /// for more information about Google's search results filters. Note that host
   /// crowding filtering applies only to multi-site searches. * By default,
   /// Google applies filtering to all search results to improve the quality of
@@ -493,8 +489,8 @@ class CseSiterestrictResource {
   ///
   /// [gl] - Geolocation of end user. * The `gl` parameter value is a two-letter
   /// country code. The `gl` parameter boosts search results whose country of
-  /// origin matches the parameter value. See the [Country
-  /// Codes](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCodes)
+  /// origin matches the parameter value. See the
+  /// [Country Codes](https://developers.google.com/custom-search/docs/xml_results_appendices#countryCodes)
   /// page for a list of valid values. * Specifying a `gl` parameter value
   /// should lead to more relevant results. This is particularly true for
   /// international customers and, even more specifically, for customers in
@@ -510,10 +506,10 @@ class CseSiterestrictResource {
   ///
   /// [hl] - Sets the user interface language. * Explicitly setting this
   /// parameter improves the performance and the quality of your search results.
-  /// * See the [Interface
-  /// Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
-  /// section of [Internationalizing Queries and Results
-  /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)
+  /// * See the
+  /// [Interface Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
+  /// section of
+  /// [Internationalizing Queries and Results Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)
   /// for more information, and (Supported Interface
   /// Languages)\[https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages\]
   /// for a list of supported languages.
@@ -610,8 +606,8 @@ class CseSiterestrictResource {
   ///
   /// [rights] - Filters based on licensing. Supported values include:
   /// `cc_publicdomain`, `cc_attribute`, `cc_sharealike`, `cc_noncommercial`,
-  /// `cc_nonderived` and combinations of these. See [typical
-  /// combinations](https://wiki.creativecommons.org/wiki/CC_Search_integration).
+  /// `cc_nonderived` and combinations of these. See
+  /// [typical combinations](https://wiki.creativecommons.org/wiki/CC_Search_integration).
   ///
   /// [safe] - Search safety level. Acceptable values are: * `"active"`: Enables
   /// SafeSearch filtering. * `"off"`: Disables SafeSearch filtering. (default)
@@ -912,8 +908,8 @@ class PromotionImage {
 class Promotion {
   /// An array of block objects for this promotion.
   ///
-  /// See [Google WebSearch Protocol
-  /// reference](https://developers.google.com/custom-search/docs/xml_results)
+  /// See
+  /// [Google WebSearch Protocol reference](https://developers.google.com/custom-search/docs/xml_results)
   /// for more information.
   core.List<PromotionBodyLines> bodyLines;
 
@@ -1134,8 +1130,8 @@ class Result {
   /// For this API, it is `customsearch#result.`
   core.String kind;
 
-  /// Encapsulates all information about [refinement
-  /// labels](https://developers.google.com/custom-search/docs/xml_results).
+  /// Encapsulates all information about
+  /// [refinement labels](https://developers.google.com/custom-search/docs/xml_results).
   core.List<ResultLabels> labels;
 
   /// The full URL to which the search result is pointing, e.g.
@@ -1277,8 +1273,8 @@ class SearchQueriesNextPage {
 
   /// Restricts search results to documents originating in a particular country.
   ///
-  /// You may use [Boolean
-  /// operators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators)
+  /// You may use
+  /// [Boolean operators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators)
   /// in the `cr` parameter's value. Google WebSearch determines the country of
   /// a document by analyzing the following: * The top-level domain (TLD) of the
   /// document's URL. * The geographic location of the web server's IP address.
@@ -1303,8 +1299,8 @@ class SearchQueriesNextPage {
   /// specified number of past years.
   core.String dateRestrict;
 
-  /// Enables or disables the [Simplified and Traditional Chinese
-  /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch)
+  /// Enables or disables the
+  /// [Simplified and Traditional Chinese Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch)
   /// feature.
   ///
   /// Supported values are: * `0`: enabled (default) * `1`: disabled
@@ -1326,14 +1322,14 @@ class SearchQueriesNextPage {
   /// Microsoft Word (`doc`) * Microsoft Works (`wks`, `wps`, `wdb`) * Microsoft
   /// Write (`wri`) * Rich Text Format (`rtf`) * Shockwave Flash (`swf`) * Text
   /// (`ans`, `txt`). Additional filetypes may be added in the future. An
-  /// up-to-date list can always be found in Google's [file type
-  /// FAQ](https://support.google.com/webmasters/answer/35287).
+  /// up-to-date list can always be found in Google's
+  /// [file type FAQ](https://support.google.com/webmasters/answer/35287).
   core.String fileType;
 
   /// Activates or deactivates the automatic filtering of Google search results.
   ///
-  /// See [Automatic
-  /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)
+  /// See
+  /// [Automatic Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)
   /// for more information about Google's search results filters. Valid values
   /// for this parameter are: * `0`: Disabled * `1`: Enabled (default) **Note**:
   /// By default, Google applies filtering to all search results to improve the
@@ -1342,8 +1338,8 @@ class SearchQueriesNextPage {
 
   /// Boosts search results whose country of origin matches the parameter value.
   ///
-  /// See [Country
-  /// Codes](https://developers.google.com/custom-search/docs/xml_results#countryCodes)
+  /// See
+  /// [Country Codes](https://developers.google.com/custom-search/docs/xml_results#countryCodes)
   /// for a list of valid values. Specifying a `gl` parameter value in WebSearch
   /// requests should improve the relevance of results. This is particularly
   /// true for international customers and, even more specifically, for
@@ -1363,12 +1359,12 @@ class SearchQueriesNextPage {
   /// Specifies the interface language (host language) of your user interface.
   ///
   /// Explicitly setting this parameter improves the performance and the quality
-  /// of your search results. See the [Interface
-  /// Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
-  /// section of [Internationalizing Queries and Results
-  /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)
-  /// for more information, and [Supported Interface
-  /// Languages](https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages)
+  /// of your search results. See the
+  /// [Interface Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
+  /// section of
+  /// [Internationalizing Queries and Results Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)
+  /// for more information, and
+  /// [Supported Interface Languages](https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages)
   /// for a list of supported languages.
   core.String hl;
 
@@ -1419,8 +1415,8 @@ class SearchQueriesNextPage {
   /// document in the search results must contain at least one of the additional
   /// search terms.
   ///
-  /// You can also use the [Boolean
-  /// OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt)
+  /// You can also use the
+  /// [Boolean OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt)
   /// query term for this type of query.
   core.String orTerms;
 
@@ -1439,8 +1435,8 @@ class SearchQueriesNextPage {
   /// `cc_sharealike` * `cc_noncommercial` * `cc_nonderived`
   core.String rights;
 
-  /// Specifies the [SafeSearch
-  /// level](https://developers.google.com/custom-search/docs/xml_results#safeSearchLevels)
+  /// Specifies the
+  /// [SafeSearch level](https://developers.google.com/custom-search/docs/xml_results#safeSearchLevels)
   /// used for filtering out adult results.
   ///
   /// This is a custom property not defined in the OpenSearch spec. Valid
@@ -1722,8 +1718,8 @@ class SearchQueriesPreviousPage {
 
   /// Restricts search results to documents originating in a particular country.
   ///
-  /// You may use [Boolean
-  /// operators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators)
+  /// You may use
+  /// [Boolean operators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators)
   /// in the `cr` parameter's value. Google WebSearch determines the country of
   /// a document by analyzing the following: * The top-level domain (TLD) of the
   /// document's URL. * The geographic location of the web server's IP address.
@@ -1748,8 +1744,8 @@ class SearchQueriesPreviousPage {
   /// specified number of past years.
   core.String dateRestrict;
 
-  /// Enables or disables the [Simplified and Traditional Chinese
-  /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch)
+  /// Enables or disables the
+  /// [Simplified and Traditional Chinese Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch)
   /// feature.
   ///
   /// Supported values are: * `0`: enabled (default) * `1`: disabled
@@ -1771,14 +1767,14 @@ class SearchQueriesPreviousPage {
   /// Microsoft Word (`doc`) * Microsoft Works (`wks`, `wps`, `wdb`) * Microsoft
   /// Write (`wri`) * Rich Text Format (`rtf`) * Shockwave Flash (`swf`) * Text
   /// (`ans`, `txt`). Additional filetypes may be added in the future. An
-  /// up-to-date list can always be found in Google's [file type
-  /// FAQ](https://support.google.com/webmasters/answer/35287).
+  /// up-to-date list can always be found in Google's
+  /// [file type FAQ](https://support.google.com/webmasters/answer/35287).
   core.String fileType;
 
   /// Activates or deactivates the automatic filtering of Google search results.
   ///
-  /// See [Automatic
-  /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)
+  /// See
+  /// [Automatic Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)
   /// for more information about Google's search results filters. Valid values
   /// for this parameter are: * `0`: Disabled * `1`: Enabled (default) **Note**:
   /// By default, Google applies filtering to all search results to improve the
@@ -1787,8 +1783,8 @@ class SearchQueriesPreviousPage {
 
   /// Boosts search results whose country of origin matches the parameter value.
   ///
-  /// See [Country
-  /// Codes](https://developers.google.com/custom-search/docs/xml_results#countryCodes)
+  /// See
+  /// [Country Codes](https://developers.google.com/custom-search/docs/xml_results#countryCodes)
   /// for a list of valid values. Specifying a `gl` parameter value in WebSearch
   /// requests should improve the relevance of results. This is particularly
   /// true for international customers and, even more specifically, for
@@ -1808,12 +1804,12 @@ class SearchQueriesPreviousPage {
   /// Specifies the interface language (host language) of your user interface.
   ///
   /// Explicitly setting this parameter improves the performance and the quality
-  /// of your search results. See the [Interface
-  /// Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
-  /// section of [Internationalizing Queries and Results
-  /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)
-  /// for more information, and [Supported Interface
-  /// Languages](https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages)
+  /// of your search results. See the
+  /// [Interface Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
+  /// section of
+  /// [Internationalizing Queries and Results Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)
+  /// for more information, and
+  /// [Supported Interface Languages](https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages)
   /// for a list of supported languages.
   core.String hl;
 
@@ -1864,8 +1860,8 @@ class SearchQueriesPreviousPage {
   /// document in the search results must contain at least one of the additional
   /// search terms.
   ///
-  /// You can also use the [Boolean
-  /// OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt)
+  /// You can also use the
+  /// [Boolean OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt)
   /// query term for this type of query.
   core.String orTerms;
 
@@ -1884,8 +1880,8 @@ class SearchQueriesPreviousPage {
   /// `cc_sharealike` * `cc_noncommercial` * `cc_nonderived`
   core.String rights;
 
-  /// Specifies the [SafeSearch
-  /// level](https://developers.google.com/custom-search/docs/xml_results#safeSearchLevels)
+  /// Specifies the
+  /// [SafeSearch level](https://developers.google.com/custom-search/docs/xml_results#safeSearchLevels)
   /// used for filtering out adult results.
   ///
   /// This is a custom property not defined in the OpenSearch spec. Valid
@@ -2167,8 +2163,8 @@ class SearchQueriesRequest {
 
   /// Restricts search results to documents originating in a particular country.
   ///
-  /// You may use [Boolean
-  /// operators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators)
+  /// You may use
+  /// [Boolean operators](https://developers.google.com/custom-search/docs/xml_results#booleanOperators)
   /// in the `cr` parameter's value. Google WebSearch determines the country of
   /// a document by analyzing the following: * The top-level domain (TLD) of the
   /// document's URL. * The geographic location of the web server's IP address.
@@ -2193,8 +2189,8 @@ class SearchQueriesRequest {
   /// specified number of past years.
   core.String dateRestrict;
 
-  /// Enables or disables the [Simplified and Traditional Chinese
-  /// Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch)
+  /// Enables or disables the
+  /// [Simplified and Traditional Chinese Search](https://developers.google.com/custom-search/docs/xml_results#chineseSearch)
   /// feature.
   ///
   /// Supported values are: * `0`: enabled (default) * `1`: disabled
@@ -2216,14 +2212,14 @@ class SearchQueriesRequest {
   /// Microsoft Word (`doc`) * Microsoft Works (`wks`, `wps`, `wdb`) * Microsoft
   /// Write (`wri`) * Rich Text Format (`rtf`) * Shockwave Flash (`swf`) * Text
   /// (`ans`, `txt`). Additional filetypes may be added in the future. An
-  /// up-to-date list can always be found in Google's [file type
-  /// FAQ](https://support.google.com/webmasters/answer/35287).
+  /// up-to-date list can always be found in Google's
+  /// [file type FAQ](https://support.google.com/webmasters/answer/35287).
   core.String fileType;
 
   /// Activates or deactivates the automatic filtering of Google search results.
   ///
-  /// See [Automatic
-  /// Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)
+  /// See
+  /// [Automatic Filtering](https://developers.google.com/custom-search/docs/xml_results#automaticFiltering)
   /// for more information about Google's search results filters. Valid values
   /// for this parameter are: * `0`: Disabled * `1`: Enabled (default) **Note**:
   /// By default, Google applies filtering to all search results to improve the
@@ -2232,8 +2228,8 @@ class SearchQueriesRequest {
 
   /// Boosts search results whose country of origin matches the parameter value.
   ///
-  /// See [Country
-  /// Codes](https://developers.google.com/custom-search/docs/xml_results#countryCodes)
+  /// See
+  /// [Country Codes](https://developers.google.com/custom-search/docs/xml_results#countryCodes)
   /// for a list of valid values. Specifying a `gl` parameter value in WebSearch
   /// requests should improve the relevance of results. This is particularly
   /// true for international customers and, even more specifically, for
@@ -2253,12 +2249,12 @@ class SearchQueriesRequest {
   /// Specifies the interface language (host language) of your user interface.
   ///
   /// Explicitly setting this parameter improves the performance and the quality
-  /// of your search results. See the [Interface
-  /// Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
-  /// section of [Internationalizing Queries and Results
-  /// Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)
-  /// for more information, and [Supported Interface
-  /// Languages](https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages)
+  /// of your search results. See the
+  /// [Interface Languages](https://developers.google.com/custom-search/docs/xml_results#wsInterfaceLanguages)
+  /// section of
+  /// [Internationalizing Queries and Results Presentation](https://developers.google.com/custom-search/docs/xml_results#wsInternationalizing)
+  /// for more information, and
+  /// [Supported Interface Languages](https://developers.google.com/custom-search/docs/xml_results_appendices#interfaceLanguages)
   /// for a list of supported languages.
   core.String hl;
 
@@ -2309,8 +2305,8 @@ class SearchQueriesRequest {
   /// document in the search results must contain at least one of the additional
   /// search terms.
   ///
-  /// You can also use the [Boolean
-  /// OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt)
+  /// You can also use the
+  /// [Boolean OR](https://developers.google.com/custom-search/docs/xml_results#BooleanOrqt)
   /// query term for this type of query.
   core.String orTerms;
 
@@ -2329,8 +2325,8 @@ class SearchQueriesRequest {
   /// `cc_sharealike` * `cc_noncommercial` * `cc_nonderived`
   core.String rights;
 
-  /// Specifies the [SafeSearch
-  /// level](https://developers.google.com/custom-search/docs/xml_results#safeSearchLevels)
+  /// Specifies the
+  /// [SafeSearch level](https://developers.google.com/custom-search/docs/xml_results#safeSearchLevels)
   /// used for filtering out adult results.
   ///
   /// This is a custom property not defined in the OpenSearch spec. Valid
@@ -2739,8 +2735,8 @@ class SearchSpelling {
 
 /// OpenSearch template and URL.
 class SearchUrl {
-  /// The actual [OpenSearch
-  /// template](http://www.opensearch.org/specifications/opensearch/1.1#opensearch_url_template_syntax)
+  /// The actual
+  /// [OpenSearch template](http://www.opensearch.org/specifications/opensearch/1.1#opensearch_url_template_syntax)
   /// for this API.
   core.String template;
 
@@ -2776,8 +2772,8 @@ class Search {
   /// Metadata and refinements associated with the given search engine,
   /// including: * The name of the search engine that was used for the query.
   ///
-  /// * A set of [facet
-  /// objects](https://developers.google.com/custom-search/docs/refinements#create)
+  /// * A set of
+  /// [facet objects](https://developers.google.com/custom-search/docs/refinements#create)
   /// (refinements) you can use for refining a search.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,

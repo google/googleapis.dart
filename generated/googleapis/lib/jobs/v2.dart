@@ -2818,8 +2818,8 @@ class ExtendedCompensationFilter {
   /// Required.
   core.List<core.String> compensationUnits;
 
-  /// Specify currency in 3-letter [ISO
-  /// 4217](https://www.iso.org/iso-4217-currency-codes.html) format.
+  /// Specify currency in 3-letter
+  /// [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) format.
   ///
   /// If unspecified, jobs are returned regardless of currency.
   ///
@@ -4005,11 +4005,11 @@ class GoogleCloudTalentV4Job {
   ///
   /// This field is distinct from any requirements for fluency that are
   /// associated with the job. Language codes must be in BCP-47 format, such as
-  /// "en-US" or "sr-Latn". For more information, see [Tags for Identifying
-  /// Languages](https://tools.ietf.org/html/bcp47){: class="external"
-  /// target="_blank" }. If this field is unspecified and Job.description is
-  /// present, detected language code based on Job.description is assigned,
-  /// otherwise defaults to 'en_US'.
+  /// "en-US" or "sr-Latn". For more information, see
+  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47){:
+  /// class="external" target="_blank" }. If this field is unspecified and
+  /// Job.description is present, detected language code based on
+  /// Job.description is assigned, otherwise defaults to 'en_US'.
   core.String languageCode;
 
   /// Required during job update.
@@ -4747,8 +4747,8 @@ class HistogramResult {
   /// "Mountain View, CA" or "New York, NY".
   /// - "LOCALE" : Filter by the locale field of a job, such as "en-US",
   /// "fr-FR". This is the BCP-47 language code, such as "en-US" or "sr-Latn".
-  /// For more information, see [Tags for Identifying
-  /// Languages](https://tools.ietf.org/html/bcp47).
+  /// For more information, see
+  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
   /// - "LANGUAGE" : Filter by the language code portion of the locale field,
   /// such as "en" or "fr".
   /// - "CATEGORY" : Filter by the Category.
@@ -5100,11 +5100,11 @@ class Job {
   ///
   /// This field is distinct from any requirements for fluency that are
   /// associated with the job. Language codes must be in BCP-47 format, such as
-  /// "en-US" or "sr-Latn". For more information, see [Tags for Identifying
-  /// Languages](https://tools.ietf.org/html/bcp47){: class="external"
-  /// target="_blank" }. If this field is unspecified and Job.description is
-  /// present, detected language code based on Job.description is assigned,
-  /// otherwise defaults to 'en_US'.
+  /// "en-US" or "sr-Latn". For more information, see
+  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47){:
+  /// class="external" target="_blank" }. If this field is unspecified and
+  /// Job.description is present, detected language code based on
+  /// Job.description is assigned, otherwise defaults to 'en_US'.
   ///
   /// Optional.
   core.String languageCode;
@@ -5670,9 +5670,9 @@ class JobFilters {
   ///
   /// If a value is not specified, the search results may contain jobs in any
   /// locale. Language codes should be in BCP-47 format, for example, "en-US" or
-  /// "sr-Latn". For more information, see [Tags for Identifying
-  /// Languages](https://tools.ietf.org/html/bcp47). At most 10 language code
-  /// filters are allowed.
+  /// "sr-Latn". For more information, see
+  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). At
+  /// most 10 language code filters are allowed.
   ///
   /// Optional.
   core.List<core.String> languageCodes;
@@ -6078,9 +6078,9 @@ class JobQuery {
   ///
   /// If a value isn't specified, the search results can contain jobs in any
   /// locale. Language codes should be in BCP-47 format, such as "en-US" or
-  /// "sr-Latn". For more information, see [Tags for Identifying
-  /// Languages](https://tools.ietf.org/html/bcp47). At most 10 language code
-  /// filters are allowed.
+  /// "sr-Latn". For more information, see
+  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). At
+  /// most 10 language code filters are allowed.
   ///
   /// Optional.
   core.List<core.String> languageCodes;
@@ -7420,7 +7420,7 @@ class SearchJobsRequest {
   /// the search results: Job.name, Job.requisition_id, Job.job_title,
   /// Job.company_name, Job.job_locations.
   /// - "FULL" : All available attributes are included in the search results.
-  /// Note: [Job.description, Job.responsibilities, Job.qualifications and
+  /// Note: \[Job.description, Job.responsibilities, Job.qualifications and
   /// Job.incentives are deprecated. These fields are scheduled to be removed
   /// from MatchingJob.Job objects in the SearchJobsResponse results on
   /// 12/31/2018. See the alternative MatchingJob.search_text_snippet and
@@ -7680,7 +7680,7 @@ class SearchJobsResponse {
   /// the search results: Job.name, Job.requisition_id, Job.job_title,
   /// Job.company_name, Job.job_locations.
   /// - "FULL" : All available attributes are included in the search results.
-  /// Note: [Job.description, Job.responsibilities, Job.qualifications and
+  /// Note: \[Job.description, Job.responsibilities, Job.qualifications and
   /// Job.incentives are deprecated. These fields are scheduled to be removed
   /// from MatchingJob.Job objects in the SearchJobsResponse results on
   /// 12/31/2018. See the alternative MatchingJob.search_text_snippet and

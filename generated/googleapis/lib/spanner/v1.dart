@@ -4300,8 +4300,7 @@ class Binding {
   /// does not apply to the current request. However, a different role binding
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
-  /// [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -5375,8 +5374,8 @@ class GetPolicyOptions {
   /// rejected. Requests for policies with any conditional bindings must specify
   /// version 3. Policies without any conditional bindings may specify any valid
   /// value or leave the field unset. To learn which resources support
-  /// conditions in their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// Optional.
   core.int requestedPolicyVersion;
@@ -5453,8 +5452,8 @@ class Instance {
   /// The number of nodes allocated to this instance.
   ///
   /// This may be zero in API responses for instances that are not yet in state
-  /// `READY`. See [the
-  /// documentation](https://cloud.google.com/spanner/docs/instances#node_count)
+  /// `READY`. See
+  /// [the documentation](https://cloud.google.com/spanner/docs/instances#node_count)
   /// for more information about nodes.
   core.int nodeCount;
 
@@ -6880,8 +6879,8 @@ class PlanNode {
 /// allows access to a resource only if the expression evaluates to `true`. A
 /// condition can add constraints based on attributes of the request, the
 /// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the [IAM
-/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// policies, see the
+/// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
@@ -6897,8 +6896,8 @@ class PlanNode {
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
 /// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
-/// version: 3 For a description of IAM and its features, see the [IAM
-/// documentation](https://cloud.google.com/iam/docs/).
+/// version: 3 For a description of IAM and its features, see the
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members` to a `role`.
   ///
@@ -6942,8 +6941,8 @@ class Policy {
   /// the version `3` policy are lost. If a policy does not include any
   /// conditions, operations on that policy may specify any valid version or
   /// leave the field unset. To learn which resources support conditions in
-  /// their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -7299,8 +7298,8 @@ class ReplicaInfo {
   /// If true, this location is designated as the default leader location where
   /// leader replicas are placed.
   ///
-  /// See the [region types
-  /// documentation](https://cloud.google.com/spanner/docs/instances#region_types)
+  /// See the
+  /// [region types documentation](https://cloud.google.com/spanner/docs/instances#region_types)
   /// for more details.
   core.bool defaultLeaderLocation;
 
@@ -8429,7 +8428,8 @@ class Type {
   /// - "ARRAY" : Encoded as `list`, where the list elements are represented
   /// according to array_element_type.
   /// - "STRUCT" : Encoded as `list`, where list element `i` is represented
-  /// according to [struct_type.fields[i]][google.spanner.v1.StructType.fields].
+  /// according to
+  /// \[struct_type.fields\[i\]\]\[google.spanner.v1.StructType.fields\].
   /// - "NUMERIC" : Encoded as `string`, in decimal format or scientific
   /// notation format. Decimal format: `[+-]Digits[.[Digits]]` or `+-.Digits`
   /// Scientific notation: `[+-]Digits[.[Digits]][ExponentIndicator[+-]Digits]`

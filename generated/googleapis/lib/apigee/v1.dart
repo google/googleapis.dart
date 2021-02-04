@@ -230,8 +230,8 @@ class OrganizationsResource {
 
   /// Creates an Apigee organization.
   ///
-  /// See [Create an Apigee
-  /// organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+  /// See
+  /// [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
   ///
   /// [request] - The metadata request object.
   ///
@@ -292,8 +292,8 @@ class OrganizationsResource {
 
   /// Gets the profile for an Apigee organization.
   ///
-  /// See [Understanding
-  /// organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals/organization-structure).
+  /// See
+  /// [Understanding organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals/organization-structure).
   ///
   /// Request parameters:
   ///
@@ -423,8 +423,8 @@ class OrganizationsResource {
   /// ETag when calling \[setSyncAuthorization\](setSyncAuthorization) to ensure
   /// that you are updating the correct version. If you don't pass the ETag in
   /// the call to `setSyncAuthorization`, then the existing authorization is
-  /// overwritten indiscriminately. For more information, see [Configure the
-  /// Synchronizer](https://cloud.google.com/apigee/docs/hybrid/latest/synchronizer-access).
+  /// overwritten indiscriminately. For more information, see
+  /// [Configure the Synchronizer](https://cloud.google.com/apigee/docs/hybrid/latest/synchronizer-access).
   /// **Note**: Available to Apigee hybrid only.
   ///
   /// [request] - The metadata request object.
@@ -489,8 +489,8 @@ class OrganizationsResource {
   /// Lists the Apigee organizations and associated GCP projects that you have
   /// permission to access.
   ///
-  /// See [Understanding
-  /// organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals/organization-structure).
+  /// See
+  /// [Understanding organizations](https://cloud.google.com/apigee/docs/api-platform/fundamentals/organization-structure).
   ///
   /// Request parameters:
   ///
@@ -551,8 +551,8 @@ class OrganizationsResource {
   /// the correct version. To get an ETag, call
   /// \[getSyncAuthorization\](getSyncAuthorization). If you don't pass the ETag
   /// in the call to `setSyncAuthorization`, then the existing authorization is
-  /// overwritten indiscriminately. For more information, see [Configure the
-  /// Synchronizer](https://cloud.google.com/apigee/docs/hybrid/latest/synchronizer-access).
+  /// overwritten indiscriminately. For more information, see
+  /// [Configure the Synchronizer](https://cloud.google.com/apigee/docs/hybrid/latest/synchronizer-access).
   /// **Note**: Available to Apigee hybrid only.
   ///
   /// [request] - The metadata request object.
@@ -5697,8 +5697,8 @@ class OrganizationsEnvironmentsResource {
 
   /// Gets the IAM policy on an environment.
   ///
-  /// For more information, see [Manage users, roles, and permissions using the
-  /// API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles).
+  /// For more information, see
+  /// [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles).
   /// You must have the `apigee.environments.getIamPolicy` permission to call
   /// this API.
   ///
@@ -5714,8 +5714,8 @@ class OrganizationsEnvironmentsResource {
   /// value will be rejected. Requests for policies with any conditional
   /// bindings must specify version 3. Policies without any conditional bindings
   /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5773,8 +5773,8 @@ class OrganizationsEnvironmentsResource {
   /// Sets the IAM policy on an environment, if the policy already exists it
   /// will be replaced.
   ///
-  /// For more information, see [Manage users, roles, and permissions using the
-  /// API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles).
+  /// For more information, see
+  /// [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles).
   /// You must have the `apigee.environments.setIamPolicy` permission to call
   /// this API.
   ///
@@ -9053,7 +9053,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
   /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [name] - Required. Name of the resource file. Must match the regular
-  /// expression: \[a-zA-Z0-9:/\\!@#$%^&{}\\[\\]()+\-=,.~'\` \]{1,255}
+  /// expression: \[a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'\` \]{1,255}
   ///
   /// [type] - Required. Resource file type. {{ resource_file_type }}
   ///
@@ -9130,7 +9130,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
   /// [type] - Required. Resource file type. {{ resource_file_type }}
   ///
   /// [name] - Required. ID of the resource file to delete. Must match the
-  /// regular expression: \[a-zA-Z0-9:/\\!@#$%^&{}\\[\\]()+\-=,.~'\` \]{1,255}
+  /// regular expression: \[a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'\` \]{1,255}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9204,7 +9204,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
   /// [type] - Required. Resource file type. {{ resource_file_type }}
   ///
   /// [name] - Required. ID of the resource file. Must match the regular
-  /// expression: \[a-zA-Z0-9:/\\!@#$%^&{}\\[\\]()+\-=,.~'\` \]{1,255}
+  /// expression: \[a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'\` \]{1,255}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9413,7 +9413,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
   /// [type] - Required. Resource file type. {{ resource_file_type }}
   ///
   /// [name] - Required. ID of the resource file to update. Must match the
-  /// regular expression: \[a-zA-Z0-9:/\\!@#$%^&{}\\[\\]()+\-=,.~'\` \]{1,255}
+  /// regular expression: \[a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'\` \]{1,255}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12722,11 +12722,11 @@ class GoogleCloudApigeeV1ApiProduct {
   /// defined to be `/forecastrss` and the base path defined for the API proxy
   /// is `/weather`, then only requests to `/weather/forecastrss` are permitted
   /// by the API product. You can select a specific path, or you can select all
-  /// subpaths with the following wildcard: -  / * *: Indicates that all
-  /// sub-URIs are included. -  / *  : Indicates that only URIs one level down
-  /// are included. By default, / supports the same resources as  / * * as well
-  /// as the base path defined by the API proxy. For example, if the base path
-  /// of the API proxy is `/v1/weatherapikey`, then the API product supports
+  /// subpaths with the following wildcard: - / * *: Indicates that all sub-URIs
+  /// are included. - / * : Indicates that only URIs one level down are
+  /// included. By default, / supports the same resources as / * * as well as
+  /// the base path defined by the API proxy. For example, if the base path of
+  /// the API proxy is `/v1/weatherapikey`, then the API product supports
   /// requests to `/v1/weatherapikey` and to any sub-URIs, such as
   /// `/v1/weatherapikey/forecastrss`, `/v1/weatherapikey/region/CA`, and so on.
   /// For more information, see: - Manage API products - Managing a transaction
@@ -18130,8 +18130,8 @@ class GoogleCloudApigeeV1OptimizedStatsResponse {
 class GoogleCloudApigeeV1Organization {
   /// Primary GCP region for analytics data storage.
   ///
-  /// For valid values, see [Create an Apigee
-  /// organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+  /// For valid values, see
+  /// [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
   ///
   /// Required.
   core.String analyticsRegion;
@@ -18142,8 +18142,8 @@ class GoogleCloudApigeeV1Organization {
   /// Compute Engine network used for Service Networking to be peered with
   /// Apigee runtime instances.
   ///
-  /// See [Getting started with the Service Networking
-  /// API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
+  /// See
+  /// [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
   /// Valid only when \[RuntimeType\] is set to CLOUD. The value can be updated
   /// only when there are no runtime instances. For example: "default".
   /// **Note:** Not supported for Apigee hybrid.
@@ -18211,8 +18211,8 @@ class GoogleCloudApigeeV1Organization {
   /// Subscription type of the Apigee organization.
   ///
   /// Valid values include trial (free, limited, and for evaluation purposes
-  /// only) or paid (full subscription has been purchased). See [Apigee
-  /// pricing](https://cloud.google.com/apigee/pricing/).
+  /// only) or paid (full subscription has been purchased). See
+  /// [Apigee pricing](https://cloud.google.com/apigee/pricing/).
   ///
   /// Output only.
   /// Possible string values are:
@@ -18583,8 +18583,8 @@ class GoogleCloudApigeeV1Property {
 class GoogleCloudApigeeV1ProvisionOrganizationRequest {
   /// Primary Cloud Platform region for analytics data storage.
   ///
-  /// For valid values, see [Create an
-  /// organization](https://docs.apigee.com/hybrid/latest/precog-provision).
+  /// For valid values, see
+  /// [Create an organization](https://docs.apigee.com/hybrid/latest/precog-provision).
   /// Defaults to us-west1.
   core.String analyticsRegion;
 
@@ -20425,8 +20425,8 @@ class GoogleCloudApigeeV1SyncAuthorization {
   /// You might specify multiple service accounts, for example, if you have
   /// multiple environments and wish to assign a unique service account to each
   /// one. The service accounts must have **Apigee Synchronizer Manager** role.
-  /// See also [Create service
-  /// accounts](https://cloud.google.com/apigee/docs/hybrid/latest/sa-about#create-the-service-accounts).
+  /// See also
+  /// [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/latest/sa-about#create-the-service-accounts).
   ///
   /// Required.
   core.List<core.String> identities;
@@ -20962,7 +20962,7 @@ class GoogleCloudApigeeV1UpdateError {
   /// seeking or reading past end-of-file. Unlike `INVALID_ARGUMENT`, this error
   /// indicates a problem that may be fixed if the system state changes. For
   /// example, a 32-bit file system will generate `INVALID_ARGUMENT` if asked to
-  /// read at an offset that is not in the range [0,2^32-1], but it will
+  /// read at an offset that is not in the range \[0,2^32-1\], but it will
   /// generate `OUT_OF_RANGE` if asked to read from an offset past the current
   /// file size. There is a fair bit of overlap between `FAILED_PRECONDITION`
   /// and `OUT_OF_RANGE`. We recommend using `OUT_OF_RANGE` (the more specific
@@ -21144,8 +21144,7 @@ class GoogleIamV1Binding {
   /// does not apply to the current request. However, a different role binding
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
-  /// [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   GoogleTypeExpr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -21229,8 +21228,8 @@ class GoogleIamV1Binding {
 /// allows access to a resource only if the expression evaluates to `true`. A
 /// condition can add constraints based on attributes of the request, the
 /// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the [IAM
-/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// policies, see the
+/// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
@@ -21246,8 +21245,8 @@ class GoogleIamV1Binding {
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
 /// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
-/// version: 3 For a description of IAM and its features, see the [IAM
-/// documentation](https://cloud.google.com/iam/docs/).
+/// version: 3 For a description of IAM and its features, see the
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class GoogleIamV1Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<GoogleIamV1AuditConfig> auditConfigs;
@@ -21294,8 +21293,8 @@ class GoogleIamV1Policy {
   /// the version `3` policy are lost. If a policy does not include any
   /// conditions, operations on that policy may specify any valid version or
   /// leave the field unset. To learn which resources support conditions in
-  /// their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   GoogleIamV1Policy();
@@ -21385,8 +21384,8 @@ class GoogleIamV1TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`.
   ///
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see [IAM
-  /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  /// For more information see
+  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
   GoogleIamV1TestIamPermissionsRequest();

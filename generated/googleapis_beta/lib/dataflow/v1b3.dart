@@ -646,8 +646,8 @@ class ProjectsJobsResource {
   /// - "ACTIVE" : Filters the jobs that are running ordered on the creation
   /// timestamp.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
@@ -740,8 +740,8 @@ class ProjectsJobsResource {
   /// Creates a Cloud Dataflow job.
   ///
   /// To create a job, we recommend using `projects.locations.jobs.create` with
-  /// a [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.create` is not recommended, as your job will always
   /// start in `us-central1`.
   ///
@@ -752,8 +752,8 @@ class ProjectsJobsResource {
   /// [projectId] - The ID of the Cloud Platform project that the job belongs
   /// to.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
   /// [replaceJobId] - Deprecated. This field is now in the Job message.
@@ -835,8 +835,8 @@ class ProjectsJobsResource {
   /// Gets the state of the specified Cloud Dataflow job.
   ///
   /// To get the state of a job, we recommend using
-  /// `projects.locations.jobs.get` with a [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// `projects.locations.jobs.get` with a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.get` is not recommended, as you can only get the
   /// state of jobs that are running in `us-central1`.
   ///
@@ -847,8 +847,8 @@ class ProjectsJobsResource {
   ///
   /// [jobId] - The job ID.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
   /// [view] - The level of information requested in response.
@@ -925,8 +925,8 @@ class ProjectsJobsResource {
   /// Request the job status.
   ///
   /// To request the status of a job, we recommend using
-  /// `projects.locations.jobs.getMetrics` with a [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// `projects.locations.jobs.getMetrics` with a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.getMetrics` is not recommended, as you can only
   /// request the status of jobs that are running in `us-central1`.
   ///
@@ -936,8 +936,8 @@ class ProjectsJobsResource {
   ///
   /// [jobId] - The job to get metrics for.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the job specified by job_id.
   ///
   /// [startTime] - Return only metric data that has changed since this time.
@@ -1007,8 +1007,8 @@ class ProjectsJobsResource {
   /// List the jobs of a project.
   ///
   /// To list the jobs of a project in a region, we recommend using
-  /// `projects.locations.jobs.list` with a [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// `projects.locations.jobs.list` with a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// To list the all jobs across all regions, use `projects.jobs.aggregated`.
   /// Using `projects.jobs.list` is not recommended, as you can only get the
   /// list of jobs that are running in `us-central1`.
@@ -1029,8 +1029,8 @@ class ProjectsJobsResource {
   /// - "ACTIVE" : Filters the jobs that are running ordered on the creation
   /// timestamp.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
   /// [pageSize] - If there are many jobs, limit response to at most this many.
@@ -1189,8 +1189,8 @@ class ProjectsJobsResource {
   /// Updates the state of an existing Cloud Dataflow job.
   ///
   /// To update the state of an existing job, we recommend using
-  /// `projects.locations.jobs.update` with a [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// `projects.locations.jobs.update` with a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.update` is not recommended, as you can only update
   /// the state of jobs that are running in `us-central1`.
   ///
@@ -1203,8 +1203,8 @@ class ProjectsJobsResource {
   ///
   /// [jobId] - The job ID.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1418,8 +1418,8 @@ class ProjectsJobsMessagesResource {
   /// Request the job status.
   ///
   /// To request the status of a job, we recommend using
-  /// `projects.locations.jobs.messages.list` with a [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// `projects.locations.jobs.messages.list` with a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.messages.list` is not recommended, as you can only
   /// request the status of jobs that are running in `us-central1`.
   ///
@@ -1432,8 +1432,8 @@ class ProjectsJobsMessagesResource {
   /// [endTime] - Return only messages with timestamps < end_time. The default
   /// is now (i.e. return up to the latest messages available).
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the job specified by job_id.
   ///
   /// [minimumImportance] - Filter to only get messages with importance >= level
@@ -1717,8 +1717,8 @@ class ProjectsLocationsResource {
   ///
   /// [projectId] - The project to send the WorkerMessages to.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the job.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1794,8 +1794,8 @@ class ProjectsLocationsFlexTemplatesResource {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
-  /// [location] - Required. The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - Required. The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// to which to direct the request. E.g., us-central1, us-west1.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1876,8 +1876,8 @@ class ProjectsLocationsJobsResource {
   /// Creates a Cloud Dataflow job.
   ///
   /// To create a job, we recommend using `projects.locations.jobs.create` with
-  /// a [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.create` is not recommended, as your job will always
   /// start in `us-central1`.
   ///
@@ -1888,8 +1888,8 @@ class ProjectsLocationsJobsResource {
   /// [projectId] - The ID of the Cloud Platform project that the job belongs
   /// to.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
   /// [replaceJobId] - Deprecated. This field is now in the Job message.
@@ -1973,8 +1973,8 @@ class ProjectsLocationsJobsResource {
   /// Gets the state of the specified Cloud Dataflow job.
   ///
   /// To get the state of a job, we recommend using
-  /// `projects.locations.jobs.get` with a [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// `projects.locations.jobs.get` with a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.get` is not recommended, as you can only get the
   /// state of jobs that are running in `us-central1`.
   ///
@@ -1983,8 +1983,8 @@ class ProjectsLocationsJobsResource {
   /// [projectId] - The ID of the Cloud Platform project that the job belongs
   /// to.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
   /// [jobId] - The job ID.
@@ -2070,8 +2070,8 @@ class ProjectsLocationsJobsResource {
   ///
   /// [projectId] - A project id.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the job specified by job_id.
   ///
   /// [jobId] - The job to get execution details for.
@@ -2154,8 +2154,8 @@ class ProjectsLocationsJobsResource {
   /// Request the job status.
   ///
   /// To request the status of a job, we recommend using
-  /// `projects.locations.jobs.getMetrics` with a [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// `projects.locations.jobs.getMetrics` with a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.getMetrics` is not recommended, as you can only
   /// request the status of jobs that are running in `us-central1`.
   ///
@@ -2163,8 +2163,8 @@ class ProjectsLocationsJobsResource {
   ///
   /// [projectId] - A project id.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the job specified by job_id.
   ///
   /// [jobId] - The job to get metrics for.
@@ -2238,8 +2238,8 @@ class ProjectsLocationsJobsResource {
   /// List the jobs of a project.
   ///
   /// To list the jobs of a project in a region, we recommend using
-  /// `projects.locations.jobs.list` with a [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// `projects.locations.jobs.list` with a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// To list the all jobs across all regions, use `projects.jobs.aggregated`.
   /// Using `projects.jobs.list` is not recommended, as you can only get the
   /// list of jobs that are running in `us-central1`.
@@ -2248,8 +2248,8 @@ class ProjectsLocationsJobsResource {
   ///
   /// [projectId] - The project which owns the jobs.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
   /// [filter] - The kind of filter to use.
@@ -2430,8 +2430,8 @@ class ProjectsLocationsJobsResource {
   /// Updates the state of an existing Cloud Dataflow job.
   ///
   /// To update the state of an existing job, we recommend using
-  /// `projects.locations.jobs.update` with a [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// `projects.locations.jobs.update` with a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.update` is not recommended, as you can only update
   /// the state of jobs that are running in `us-central1`.
   ///
@@ -2442,8 +2442,8 @@ class ProjectsLocationsJobsResource {
   /// [projectId] - The ID of the Cloud Platform project that the job belongs
   /// to.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   ///
   /// [jobId] - The job ID.
@@ -2526,8 +2526,8 @@ class ProjectsLocationsJobsDebugResource {
   ///
   /// [projectId] - The project id.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the job specified by job_id.
   ///
   /// [jobId] - The job id.
@@ -2603,8 +2603,8 @@ class ProjectsLocationsJobsDebugResource {
   ///
   /// [projectId] - The project id.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the job specified by job_id.
   ///
   /// [jobId] - The job id.
@@ -2682,8 +2682,8 @@ class ProjectsLocationsJobsMessagesResource {
   /// Request the job status.
   ///
   /// To request the status of a job, we recommend using
-  /// `projects.locations.jobs.messages.list` with a [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
+  /// `projects.locations.jobs.messages.list` with a
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.messages.list` is not recommended, as you can only
   /// request the status of jobs that are running in `us-central1`.
   ///
@@ -2691,8 +2691,8 @@ class ProjectsLocationsJobsMessagesResource {
   ///
   /// [projectId] - A project id.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the job specified by job_id.
   ///
   /// [jobId] - The job to get messages about.
@@ -2909,8 +2909,8 @@ class ProjectsLocationsJobsStagesResource {
   ///
   /// [projectId] - A project id.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the job specified by job_id.
   ///
   /// [jobId] - The job to get execution details for.
@@ -3025,8 +3025,8 @@ class ProjectsLocationsJobsWorkItemsResource {
   ///
   /// [projectId] - Identifies the project this worker belongs to.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the WorkItem's job.
   ///
   /// [jobId] - Identifies the workflow job this worker belongs to.
@@ -3102,8 +3102,8 @@ class ProjectsLocationsJobsWorkItemsResource {
   ///
   /// [projectId] - The project which owns the WorkItem's job.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the WorkItem's job.
   ///
   /// [jobId] - The job which the WorkItem is part of.
@@ -3400,8 +3400,8 @@ class ProjectsLocationsSqlResource {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// to which to direct the request.
   ///
   /// [query] - The sql query to validate.
@@ -3479,8 +3479,8 @@ class ProjectsLocationsTemplatesResource {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// to which to direct the request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3546,8 +3546,8 @@ class ProjectsLocationsTemplatesResource {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// to which to direct the request.
   ///
   /// [gcsPath] - Required. A Cloud Storage path to the template from which to
@@ -3628,8 +3628,8 @@ class ProjectsLocationsTemplatesResource {
   /// [projectId] - Required. The ID of the Cloud Platform project that the job
   /// belongs to.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// to which to direct the request.
   ///
   /// [dynamicTemplate_gcsPath] - Path to dynamic template spec file on GCS. The
@@ -4011,8 +4011,8 @@ class ProjectsTemplatesResource {
   /// [gcsPath] - Required. A Cloud Storage path to the template from which to
   /// create the job. Must be valid Cloud Storage URL, beginning with 'gs://'.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// to which to direct the request.
   ///
   /// [view] - The view to retrieve. Defaults to METADATA_ONLY.
@@ -4097,8 +4097,8 @@ class ProjectsTemplatesResource {
   /// [gcsPath] - A Cloud Storage path to the template from which to create the
   /// job. Must be valid Cloud Storage URL, beginning with 'gs://'.
   ///
-  /// [location] - The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// [location] - The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// to which to direct the request.
   ///
   /// [validateOnly] - If true, the request is validated but not actually
@@ -5332,8 +5332,8 @@ class CreateJobFromTemplateRequest {
   /// Required.
   core.String jobName;
 
-  /// The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// to which to direct the request.
   core.String location;
 
@@ -6308,12 +6308,12 @@ class ExecutionStageSummary {
   }
 }
 
-/// Indicates which [regional
-/// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+/// Indicates which
+/// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
 /// failed to respond to a request for data.
 class FailedLocation {
-  /// The name of the [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// The name of the
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that failed to respond.
   core.String name;
 
@@ -6388,8 +6388,8 @@ class FlexTemplateRuntimeEnvironment {
 
   /// Additional user labels to be specified for the job.
   ///
-  /// Keys and values must follow the restrictions specified in the [labeling
-  /// restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
+  /// Keys and values must follow the restrictions specified in the
+  /// [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
   /// page. An object containing a list of "key": value pairs. Example: {
   /// "name": "wrench", "mass": "1kg", "count": "3" }.
   core.Map<core.String, core.String> additionalUserLabels;
@@ -6461,8 +6461,8 @@ class FlexTemplateRuntimeEnvironment {
   /// `worker_zone` takes precedence.
   core.String workerZone;
 
-  /// The Compute Engine [availability
-  /// zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)
+  /// The Compute Engine
+  /// [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)
   /// for launching worker instances to run your pipeline.
   ///
   /// In the future, worker_zone will take precedence.
@@ -6639,8 +6639,8 @@ class GetDebugConfigRequest {
   /// The internal component id for which debug configuration is requested.
   core.String componentId;
 
-  /// The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the job specified by job_id.
   core.String location;
 
@@ -7159,8 +7159,8 @@ class Job {
   /// additionally constrained to be <= 128 bytes in size.
   core.Map<core.String, core.String> labels;
 
-  /// The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains this job.
   core.String location;
 
@@ -8158,8 +8158,8 @@ class LeaseWorkItemRequest {
   /// The current timestamp at the worker.
   core.String currentWorkerTime;
 
-  /// The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the WorkItem's job.
   core.String location;
 
@@ -8347,8 +8347,8 @@ class ListJobMessagesResponse {
 /// of ListJobsResponse is not returned and the requests's response body is
 /// empty {}.
 class ListJobsResponse {
-  /// Zero or more messages describing the [regional
-  /// endpoints](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// Zero or more messages describing the
+  /// [regional endpoints](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that failed to respond.
   core.List<FailedLocation> failedLocation;
 
@@ -9909,8 +9909,8 @@ class ReportWorkItemStatusRequest {
   /// The current timestamp at the worker.
   core.String currentWorkerTime;
 
-  /// The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the WorkItem's job.
   core.String location;
 
@@ -10149,8 +10149,8 @@ class RuntimeEnvironment {
 
   /// Additional user labels to be specified for the job.
   ///
-  /// Keys and values should follow the restrictions specified in the [labeling
-  /// restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
+  /// Keys and values should follow the restrictions specified in the
+  /// [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
   /// page. An object containing a list of "key": value pairs. Example: {
   /// "name": "wrench", "mass": "1kg", "count": "3" }.
   core.Map<core.String, core.String> additionalUserLabels;
@@ -10227,8 +10227,8 @@ class RuntimeEnvironment {
   /// `worker_zone` takes precedence.
   core.String workerZone;
 
-  /// The Compute Engine [availability
-  /// zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)
+  /// The Compute Engine
+  /// [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones)
   /// for launching worker instances to run your pipeline.
   ///
   /// In the future, worker_zone will take precedence.
@@ -10518,8 +10518,8 @@ class SendDebugCaptureRequest {
   /// The encoded debug information.
   core.String data;
 
-  /// The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the job specified by job_id.
   core.String location;
 
@@ -10579,8 +10579,8 @@ class SendDebugCaptureResponse {
 
 /// A request for sending worker messages to the service.
 class SendWorkerMessagesRequest {
-  /// The [regional
-  /// endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
+  /// The
+  /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints)
   /// that contains the job.
   core.String location;
 

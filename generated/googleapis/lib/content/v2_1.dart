@@ -9684,7 +9684,7 @@ class CutoffTime {
 
   /// Timezone identifier for the cutoff time.
   ///
-  /// A list of identifiers can be found in  the AdWords API documentation. E.g.
+  /// A list of identifiers can be found in the AdWords API documentation. E.g.
   /// "Europe/Zurich". Required.
   core.String timezone;
 
@@ -10019,7 +10019,7 @@ class DatafeedFormat {
 /// The status of a datafeed, i.e., the result of the last retrieval of the
 /// datafeed computed asynchronously when the feed processing is finished.
 class DatafeedStatus {
-  /// The country for which the status is reported, represented as a  CLDR
+  /// The country for which the status is reported, represented as a CLDR
   /// territory code.
   core.String country;
 
@@ -10234,7 +10234,7 @@ class DatafeedStatusExample {
 
 class DatafeedTarget {
   /// The country where the items in the feed will be included in the search
-  /// index, represented as a  CLDR territory code.
+  /// index, represented as a CLDR territory code.
   core.String country;
 
   /// The list of destinations to exclude for this target (corresponds to
@@ -11162,7 +11162,7 @@ class HolidayCutoff {
 
   /// Timezone identifier for the deadline hour.
   ///
-  /// A list of identifiers can be found in  the AdWords API documentation. E.g.
+  /// A list of identifiers can be found in the AdWords API documentation. E.g.
   /// "Europe/Zurich". Required.
   core.String deadlineTimezone;
 
@@ -13490,7 +13490,7 @@ class OrderCustomer {
   /// documentation of the order.
   ///
   /// Only the last document sent is made available to the customer. For more
-  /// information, see  About automated VAT invoicing for Shopping Actions.
+  /// information, see About automated VAT invoicing for Shopping Actions.
   core.String invoiceReceivingEmail;
 
   /// Loyalty program information.
@@ -16872,8 +16872,8 @@ class OrdersCustomBatchRequestEntryRefundItemShipping {
 class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo {
   /// The carrier handling the shipment.
   ///
-  /// See `shipments[].carrier` in the  Orders resource representation for a
-  /// list of acceptable values.
+  /// See `shipments[].carrier` in the Orders resource representation for a list
+  /// of acceptable values.
   core.String carrier;
 
   /// The ID of the shipment.
@@ -18044,7 +18044,7 @@ class OrdersUpdateMerchantOrderIdResponse {
 class OrdersUpdateShipmentRequest {
   /// The carrier handling the shipment.
   ///
-  /// Not updated if missing. See `shipments[].carrier` in the  Orders resource
+  /// Not updated if missing. See `shipments[].carrier` in the Orders resource
   /// representation for a list of acceptable values.
   core.String carrier;
 
@@ -23227,7 +23227,7 @@ class SettlementReport {
   }
 }
 
-/// Settlement transactions give a detailed breakdown of the  settlement report.
+/// Settlement transactions give a detailed breakdown of the settlement report.
 ///
 /// (== resource_for v2.1.settlementtransactions ==)
 class SettlementTransaction {

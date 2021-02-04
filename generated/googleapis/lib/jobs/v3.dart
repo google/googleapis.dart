@@ -92,8 +92,8 @@ class ProjectsResource {
   ///
   /// [languageCode] - Deprecated. Use language_codes instead. Optional. The
   /// language of the query. This is the BCP-47 language code, such as "en-US"
-  /// or "sr-Latn". For more information, see [Tags for Identifying
-  /// Languages](https://tools.ietf.org/html/bcp47). For
+  /// or "sr-Latn". For more information, see
+  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). For
   /// CompletionType.JOB_TITLE type, only open jobs with the same language_code
   /// are returned. For CompletionType.COMPANY_NAME type, only companies having
   /// open jobs with the same language_code are returned. For
@@ -103,8 +103,8 @@ class ProjectsResource {
   ///
   /// [languageCodes] - Optional. The list of languages of the query. This is
   /// the BCP-47 language code, such as "en-US" or "sr-Latn". For more
-  /// information, see [Tags for Identifying
-  /// Languages](https://tools.ietf.org/html/bcp47). For
+  /// information, see
+  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). For
   /// CompletionType.JOB_TITLE type, only open jobs with the same language_codes
   /// are returned. For CompletionType.COMPANY_NAME type, only companies having
   /// open jobs with the same language_codes are returned. For
@@ -218,9 +218,9 @@ class ProjectsClientEventsResource {
   /// Report events issued when end user interacts with customer's application
   /// that uses Cloud Talent Solution.
   ///
-  /// You may inspect the created events in [self service
-  /// tools](https://console.cloud.google.com/talent-solution/overview). [Learn
-  /// more](https://cloud.google.com/talent-solution/docs/management-tools)
+  /// You may inspect the created events in
+  /// [self service tools](https://console.cloud.google.com/talent-solution/overview).
+  /// [Learn more](https://cloud.google.com/talent-solution/docs/management-tools)
   /// about self service tools.
   ///
   /// [request] - The metadata request object.
@@ -3200,11 +3200,11 @@ class GoogleCloudTalentV4Job {
   ///
   /// This field is distinct from any requirements for fluency that are
   /// associated with the job. Language codes must be in BCP-47 format, such as
-  /// "en-US" or "sr-Latn". For more information, see [Tags for Identifying
-  /// Languages](https://tools.ietf.org/html/bcp47){: class="external"
-  /// target="_blank" }. If this field is unspecified and Job.description is
-  /// present, detected language code based on Job.description is assigned,
-  /// otherwise defaults to 'en_US'.
+  /// "en-US" or "sr-Latn". For more information, see
+  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47){:
+  /// class="external" target="_blank" }. If this field is unspecified and
+  /// Job.description is present, detected language code based on
+  /// Job.description is assigned, otherwise defaults to 'en_US'.
   core.String languageCode;
 
   /// Required during job update.
@@ -3922,8 +3922,8 @@ class HistogramResult {
   /// "Mountain View, CA" or "New York, NY".
   /// - "LOCALE" : Filter by the locale field of a job, such as "en-US",
   /// "fr-FR". This is the BCP-47 language code, such as "en-US" or "sr-Latn".
-  /// For more information, see [Tags for Identifying
-  /// Languages](https://tools.ietf.org/html/bcp47).
+  /// For more information, see
+  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
   /// - "LANGUAGE" : Filter by the language code portion of the locale field,
   /// such as "en" or "fr".
   /// - "CATEGORY" : Filter by the Category.
@@ -4178,11 +4178,11 @@ class Job {
   ///
   /// This field is distinct from any requirements for fluency that are
   /// associated with the job. Language codes must be in BCP-47 format, such as
-  /// "en-US" or "sr-Latn". For more information, see [Tags for Identifying
-  /// Languages](https://tools.ietf.org/html/bcp47){: class="external"
-  /// target="_blank" }. If this field is unspecified and Job.description is
-  /// present, detected language code based on Job.description is assigned,
-  /// otherwise defaults to 'en_US'.
+  /// "en-US" or "sr-Latn". For more information, see
+  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47){:
+  /// class="external" target="_blank" }. If this field is unspecified and
+  /// Job.description is present, detected language code based on
+  /// Job.description is assigned, otherwise defaults to 'en_US'.
   ///
   /// Optional.
   core.String languageCode;
@@ -4795,9 +4795,9 @@ class JobQuery {
   ///
   /// If a value isn't specified, the search results can contain jobs in any
   /// locale. Language codes should be in BCP-47 format, such as "en-US" or
-  /// "sr-Latn". For more information, see [Tags for Identifying
-  /// Languages](https://tools.ietf.org/html/bcp47). At most 10 language code
-  /// filters are allowed.
+  /// "sr-Latn". For more information, see
+  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). At
+  /// most 10 language code filters are allowed.
   ///
   /// Optional.
   core.List<core.String> languageCodes;
@@ -4835,8 +4835,8 @@ class JobQuery {
   /// For example, "en-US". This field helps to better interpret the query. If a
   /// value isn't specified, the query language code is automatically detected,
   /// which may not be accurate. Language code should be in BCP-47 format, such
-  /// as "en-US" or "sr-Latn". For more information, see [Tags for Identifying
-  /// Languages](https://tools.ietf.org/html/bcp47).
+  /// as "en-US" or "sr-Latn". For more information, see
+  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
   core.String queryLanguageCode;
 
   JobQuery();

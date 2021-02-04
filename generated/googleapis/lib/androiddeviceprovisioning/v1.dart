@@ -2404,8 +2404,8 @@ class Device {
 
   /// The metadata attached to the device.
   ///
-  /// Structured as key-value pairs. To learn more, read [Device
-  /// metadata](https://developers.google.com/zero-touch/guides/metadata).
+  /// Structured as key-value pairs. To learn more, read
+  /// [Device metadata](https://developers.google.com/zero-touch/guides/metadata).
   DeviceMetadata deviceMetadata;
 
   /// The API resource name in the format
@@ -2615,8 +2615,8 @@ class DeviceIdentifier {
 
 /// Metadata entries that can be attached to a `Device`.
 ///
-/// To learn more, read [Device
-/// metadata](https://developers.google.com/zero-touch/guides/metadata).
+/// To learn more, read
+/// [Device metadata](https://developers.google.com/zero-touch/guides/metadata).
 class DeviceMetadata {
   /// Metadata entries recorded as key-value pairs.
   core.Map<core.String, core.String> entries;
@@ -2786,8 +2786,8 @@ class DevicesLongRunningOperationResponse {
   }
 }
 
-/// An EMM's DPC ([device policy
-/// controller](http://developer.android.com/work/dpc/build-dpc.html)).
+/// An EMM's DPC
+/// ([device policy controller](http://developer.android.com/work/dpc/build-dpc.html)).
 ///
 /// Zero-touch enrollment installs a DPC (listed in the `Configuration`) on a
 /// device to maintain the customer's mobile policies. All the DPCs listed by

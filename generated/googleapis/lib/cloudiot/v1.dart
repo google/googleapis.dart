@@ -1828,8 +1828,7 @@ class Binding {
   /// does not apply to the current request. However, a different role binding
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
-  /// [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -2719,8 +2718,8 @@ class GetPolicyOptions {
   /// rejected. Requests for policies with any conditional bindings must specify
   /// version 3. Policies without any conditional bindings may specify any valid
   /// value or leave the field unset. To learn which resources support
-  /// conditions in their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// Optional.
   core.int requestedPolicyVersion;
@@ -2989,8 +2988,8 @@ class MqttConfig {
 /// allows access to a resource only if the expression evaluates to `true`. A
 /// condition can add constraints based on attributes of the request, the
 /// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the [IAM
-/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// policies, see the
+/// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
@@ -3006,8 +3005,8 @@ class MqttConfig {
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
 /// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
-/// version: 3 For a description of IAM and its features, see the [IAM
-/// documentation](https://cloud.google.com/iam/docs/).
+/// version: 3 For a description of IAM and its features, see the
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members` to a `role`.
   ///
@@ -3051,8 +3050,8 @@ class Policy {
   /// the version `3` policy are lost. If a policy does not include any
   /// conditions, operations on that policy may specify any valid version or
   /// leave the field unset. To learn which resources support conditions in
-  /// their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -3146,11 +3145,12 @@ class PublicKeyCredential {
   /// This is an invalid default value and must not be used.
   /// - "RSA_PEM" : An RSA public key encoded in base64, and wrapped by
   /// `-----BEGIN PUBLIC KEY-----` and `-----END PUBLIC KEY-----`. This can be
-  /// used to verify `RS256` signatures in JWT tokens ([RFC7518](
+  /// used to verify `RS256` signatures in JWT tokens (\[RFC7518\](
   /// https://www.ietf.org/rfc/rfc7518.txt)).
   /// - "RSA_X509_PEM" : As RSA_PEM, but wrapped in an X.509v3 certificate
-  /// ([RFC5280]( https://www.ietf.org/rfc/rfc5280.txt)), encoded in base64, and
-  /// wrapped by `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
+  /// (\[RFC5280\]( https://www.ietf.org/rfc/rfc5280.txt)), encoded in base64,
+  /// and wrapped by `-----BEGIN CERTIFICATE-----` and `-----END
+  /// CERTIFICATE-----`.
   /// - "ES256_PEM" : Public key for the ECDSA algorithm using P-256 and
   /// SHA-256, encoded in base64, and wrapped by `-----BEGIN PUBLIC KEY-----`
   /// and `-----END PUBLIC KEY-----`. This can be used to verify JWT tokens with
@@ -3158,8 +3158,9 @@ class PublicKeyCredential {
   /// This curve is defined in [OpenSSL](https://www.openssl.org/) as the
   /// `prime256v1` curve.
   /// - "ES256_X509_PEM" : As ES256_PEM, but wrapped in an X.509v3 certificate
-  /// ([RFC5280]( https://www.ietf.org/rfc/rfc5280.txt)), encoded in base64, and
-  /// wrapped by `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
+  /// (\[RFC5280\]( https://www.ietf.org/rfc/rfc5280.txt)), encoded in base64,
+  /// and wrapped by `-----BEGIN CERTIFICATE-----` and `-----END
+  /// CERTIFICATE-----`.
   core.String format;
 
   /// The key data.
@@ -3389,8 +3390,8 @@ class TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`.
   ///
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see [IAM
-  /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  /// For more information see
+  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
   TestIamPermissionsRequest();

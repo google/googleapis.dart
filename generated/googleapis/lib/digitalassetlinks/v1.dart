@@ -77,9 +77,8 @@ class AssetlinksResource {
   /// an insecure HTTP website (that is, the URL starts with `http://` instead
   /// of `https://`), the API cannot verify its statements securely, and it is
   /// not possible to ensure that the website's statements have not been altered
-  /// by a third party. For more information, see the [Digital Asset Links
-  /// technical design
-  /// specification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md).
+  /// by a third party. For more information, see the
+  /// [Digital Asset Links technical design specification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md).
   ///
   /// Request parameters:
   ///
@@ -253,9 +252,8 @@ class StatementsResource {
   ///
   /// The API guarantees that all statements with secure source assets, such as
   /// HTTPS websites or Android apps, have been made in a secure way by the
-  /// owner of those assets, as described in the [Digital Asset Links technical
-  /// design
-  /// specification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md).
+  /// owner of those assets, as described in the
+  /// [Digital Asset Links technical design specification](https://github.com/google/digitalassetlinks/blob/master/well-known/details.md).
   /// Specifically, you should consider that for insecure websites (that is,
   /// where the URL starts with `http://` instead of `https://`), this guarantee
   /// cannot be made. The `List` command is most useful in cases where the API

@@ -1470,8 +1470,8 @@ class ArtifactObjects {
   /// Cloud Storage bucket and optional object path, in the form
   /// "gs://bucket/path/to/somewhere/".
   ///
-  /// (see [Bucket Name
-  /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+  /// (see
+  /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   /// Files in the workspace matching any path pattern will be uploaded to Cloud
   /// Storage with this location as a prefix.
   core.String location;
@@ -1658,8 +1658,8 @@ class Build {
   /// Output only.
   core.String logUrl;
 
-  /// Google Cloud Storage bucket where logs should be written (see [Bucket Name
-  /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+  /// Google Cloud Storage bucket where logs should be written (see
+  /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   ///
   /// Logs file names will be of the format
   /// `${logs_bucket}/log-${build_id}.txt`.
@@ -3920,8 +3920,8 @@ class Status {
 
 /// Location of the source in an archive file in Google Cloud Storage.
 class StorageSource {
-  /// Google Cloud Storage bucket containing the source (see [Bucket Name
-  /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+  /// Google Cloud Storage bucket containing the source (see
+  /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   core.String bucket;
 
   /// Google Cloud Storage generation for the object.

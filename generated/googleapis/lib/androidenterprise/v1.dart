@@ -5538,8 +5538,8 @@ class AppRestrictionsSchemaRestriction {
   /// - "hidden" : A hidden restriction of string type (the default value can be
   /// used to pass along information that cannot be modified, such as a version
   /// code).
-  /// - "bundle" : [M+ devices only] A bundle of restrictions
-  /// - "bundleArray" : [M+ devices only] An array of restriction bundles
+  /// - "bundle" : \[M+ devices only\] A bundle of restrictions
+  /// - "bundleArray" : \[M+ devices only\] An array of restriction bundles
   core.String restrictionType;
 
   /// The name of the restriction.
@@ -5626,8 +5626,8 @@ class AppRestrictionsSchemaRestrictionRestrictionValue {
   /// - "hidden" : A hidden restriction of string type (the default value can be
   /// used to pass along information that cannot be modified, such as a version
   /// code).
-  /// - "bundle" : [M+ devices only] A bundle of restrictions
-  /// - "bundleArray" : [M+ devices only] An array of restriction bundles
+  /// - "bundle" : \[M+ devices only\] A bundle of restrictions
+  /// - "bundleArray" : \[M+ devices only\] An array of restriction bundles
   core.String type;
 
   /// The boolean value - this will only be present if type is bool.

@@ -5041,7 +5041,7 @@ class Flag {
   /// - "INTEGER" : Integer type flag.
   /// - "NONE" : Flag type used for a server startup option.
   /// - "MYSQL_TIMEZONE_OFFSET" : Type introduced specically for MySQL TimeZone
-  /// offset. Accept a string value with the format [-12:59, 13:00].
+  /// offset. Accept a string value with the format \[-12:59, 13:00\].
   /// - "FLOAT" : Float type flag.
   /// - "REPEATED_STRING" : Comma-separated list of the strings in a SqlFlagType
   /// enum.
@@ -5663,8 +5663,8 @@ class IpConfiguration {
   /// The resource link for the VPC network from which the Cloud SQL instance is
   /// accessible for private IP.
   ///
-  /// For example,  * / projects/myProject/global/networks/default*. This
-  /// setting can be updated, but it cannot be removed after it is set.
+  /// For example, * / projects/myProject/global/networks/default*. This setting
+  /// can be updated, but it cannot be removed after it is set.
   core.String privateNetwork;
 
   /// Whether SSL connections over IP are enforced or not.

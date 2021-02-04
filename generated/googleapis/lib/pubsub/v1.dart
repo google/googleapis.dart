@@ -95,10 +95,10 @@ class ProjectsSnapshotsResource {
   /// `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time`
   /// field. If the name is not provided in the request, the server will assign
   /// a random name for this snapshot on the same project as the subscription,
-  /// conforming to the [resource name
-  /// format](https://cloud.google.com/pubsub/docs/admin#resource_names). The
-  /// generated name is populated in the returned Snapshot object. Note that for
-  /// REST API requests, you must specify a name in the request.
+  /// conforming to the
+  /// [resource name format](https://cloud.google.com/pubsub/docs/admin#resource_names).
+  /// The generated name is populated in the returned Snapshot object. Note that
+  /// for REST API requests, you must specify a name in the request.
   ///
   /// [request] - The metadata request object.
   ///
@@ -294,8 +294,8 @@ class ProjectsSnapshotsResource {
   /// value will be rejected. Requests for policies with any conditional
   /// bindings must specify version 3. Policies without any conditional bindings
   /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -691,13 +691,13 @@ class ProjectsSubscriptionsResource {
 
   /// Creates a subscription to a given topic.
   ///
-  /// See the [resource name
-  /// rules](https://cloud.google.com/pubsub/docs/admin#resource_names). If the
-  /// subscription already exists, returns `ALREADY_EXISTS`. If the
+  /// See the
+  /// [resource name rules](https://cloud.google.com/pubsub/docs/admin#resource_names).
+  /// If the subscription already exists, returns `ALREADY_EXISTS`. If the
   /// corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not
   /// provided in the request, the server will assign a random name for this
-  /// subscription on the same project as the topic, conforming to the [resource
-  /// name format](https://cloud.google.com/pubsub/docs/admin#resource_names).
+  /// subscription on the same project as the topic, conforming to the
+  /// [resource name format](https://cloud.google.com/pubsub/docs/admin#resource_names).
   /// The generated name is populated in the returned Subscription object. Note
   /// that for REST API requests, you must specify a name in the request.
   ///
@@ -949,8 +949,8 @@ class ProjectsSubscriptionsResource {
   /// value will be rejected. Requests for policies with any conditional
   /// bindings must specify version 3. Policies without any conditional bindings
   /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1735,8 +1735,8 @@ class ProjectsTopicsResource {
   /// value will be rejected. Requests for policies with any conditional
   /// bindings must specify version 3. Policies without any conditional bindings
   /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2316,8 +2316,7 @@ class Binding {
   /// does not apply to the current request. However, a different role binding
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
-  /// [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -2920,8 +2919,8 @@ class ModifyPushConfigRequest {
   }
 }
 
-/// Contains information needed for generating an [OpenID Connect
-/// token](https://developers.google.com/identity/protocols/OpenIDConnect).
+/// Contains information needed for generating an
+/// [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
 class OidcToken {
   /// Audience to be used when generating OIDC token.
   ///
@@ -2933,9 +2932,8 @@ class OidcToken {
   /// the Push endpoint URL will be used.
   core.String audience;
 
-  /// [Service account
-  /// email](https://cloud.google.com/iam/docs/service-accounts) to be used for
-  /// generating the OIDC token.
+  /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
+  /// to be used for generating the OIDC token.
   ///
   /// The caller (for CreateSubscription, UpdateSubscription, and
   /// ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission
@@ -2977,8 +2975,8 @@ class OidcToken {
 /// allows access to a resource only if the expression evaluates to `true`. A
 /// condition can add constraints based on attributes of the request, the
 /// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the [IAM
-/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// policies, see the
+/// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
@@ -2994,8 +2992,8 @@ class OidcToken {
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
 /// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
-/// version: 3 For a description of IAM and its features, see the [IAM
-/// documentation](https://cloud.google.com/iam/docs/).
+/// version: 3 For a description of IAM and its features, see the
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Associates a list of `members` to a `role`.
   ///
@@ -3039,8 +3037,8 @@ class Policy {
   /// the version `3` policy are lost. If a policy does not include any
   /// conditions, operations on that policy may specify any valid version or
   /// leave the field unset. To learn which resources support conditions in
-  /// their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -3133,11 +3131,11 @@ class PublishResponse {
 ///
 /// The message must contain either a non-empty data field or at least one
 /// attribute. Note that client libraries represent this object differently
-/// depending on the language. See the corresponding [client library
-/// documentation](https://cloud.google.com/pubsub/docs/reference/libraries) for
-/// more information. See [quotas and
-/// limits](https://cloud.google.com/pubsub/quotas) for more information about
-/// message limits.
+/// depending on the language. See the corresponding
+/// [client library documentation](https://cloud.google.com/pubsub/docs/reference/libraries)
+/// for more information. See
+/// [quotas and limits](https://cloud.google.com/pubsub/quotas) for more
+/// information about message limits.
 class PubsubMessage {
   /// Attributes for this message.
   ///
@@ -3570,8 +3568,8 @@ class Snapshot {
   /// to create a snapshot that would expire in less than 1 hour after creation.
   core.String expireTime;
 
-  /// See [Creating and managing
-  /// labels](https://cloud.google.com/pubsub/docs/labels).
+  /// See
+  /// [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
   core.Map<core.String, core.String> labels;
 
   /// The name of the snapshot.
@@ -3675,8 +3673,8 @@ class Subscription {
   /// value for `expiration_policy.ttl` is 1 day.
   ExpirationPolicy expirationPolicy;
 
-  /// An expression written in the Pub/Sub [filter
-  /// language](https://cloud.google.com/pubsub/docs/filtering).
+  /// An expression written in the Pub/Sub
+  /// [filter language](https://cloud.google.com/pubsub/docs/filtering).
   ///
   /// If non-empty, then only `PubsubMessage`s whose `attributes` field matches
   /// the filter are delivered on this subscription. If empty, then no messages
@@ -3719,8 +3717,8 @@ class Subscription {
   /// If true, then messages are not expunged from the subscription's backlog,
   /// even if they are acknowledged, until they fall out of the
   /// `message_retention_duration` window. This must be true if you would like
-  /// to [Seek to a
-  /// timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time).
+  /// to
+  /// [Seek to a timestamp](https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time).
   core.bool retainAckedMessages;
 
   /// A policy that specifies how Pub/Sub retries message delivery for this
@@ -3845,8 +3843,8 @@ class TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`.
   ///
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see [IAM
-  /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  /// For more information see
+  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
   TestIamPermissionsRequest();
@@ -3902,8 +3900,8 @@ class Topic {
   /// /cryptoKeys / * `.
   core.String kmsKeyName;
 
-  /// See [Creating and managing
-  /// labels](https://cloud.google.com/pubsub/docs/labels).
+  /// See
+  /// [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
   core.Map<core.String, core.String> labels;
 
   /// Policy constraining the set of Google Cloud Platform regions where

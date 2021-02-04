@@ -490,8 +490,8 @@ class ProjectsLocationsDatasetsResource {
   /// value will be rejected. Requests for policies with any conditional
   /// bindings must specify version 3. Policies without any conditional bindings
   /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1150,8 +1150,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// value will be rejected. Requests for policies with any conditional
   /// bindings must specify version 3. Policies without any conditional bindings
   /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1416,14 +1416,13 @@ class ProjectsLocationsDatasetsDicomStoresResource {
 
   /// SearchForInstances returns a list of matching instances.
   ///
-  /// See [Search
-  /// Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
-  /// For details on the implementation of SearchForInstances, see [Search
-  /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
+  /// See
+  /// [Search Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// For details on the implementation of SearchForInstances, see
+  /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
-  /// how to call SearchForInstances, see [Searching for studies, series,
-  /// instances, and
-  /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// how to call SearchForInstances, see
+  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
   ///
   /// Request parameters:
   ///
@@ -1491,14 +1490,13 @@ class ProjectsLocationsDatasetsDicomStoresResource {
 
   /// SearchForSeries returns a list of matching series.
   ///
-  /// See [Search
-  /// Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
-  /// For details on the implementation of SearchForSeries, see [Search
-  /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
+  /// See
+  /// [Search Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// For details on the implementation of SearchForSeries, see
+  /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
-  /// how to call SearchForSeries, see [Searching for studies, series,
-  /// instances, and
-  /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// how to call SearchForSeries, see
+  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
   ///
   /// Request parameters:
   ///
@@ -1565,14 +1563,13 @@ class ProjectsLocationsDatasetsDicomStoresResource {
 
   /// SearchForStudies returns a list of matching studies.
   ///
-  /// See [Search
-  /// Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
-  /// For details on the implementation of SearchForStudies, see [Search
-  /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
+  /// See
+  /// [Search Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// For details on the implementation of SearchForStudies, see
+  /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
-  /// how to call SearchForStudies, see [Searching for studies, series,
-  /// instances, and
-  /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// how to call SearchForStudies, see
+  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
   ///
   /// Request parameters:
   ///
@@ -1705,13 +1702,13 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// StoreInstances stores DICOM instances associated with study instance
   /// unique identifiers (SUID).
   ///
-  /// See [Store
-  /// Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).
-  /// For details on the implementation of StoreInstances, see [Store
-  /// transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction)
+  /// See
+  /// [Store Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).
+  /// For details on the implementation of StoreInstances, see
+  /// [Store transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
-  /// how to call StoreInstances, see [Storing DICOM
-  /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
+  /// how to call StoreInstances, see
+  /// [Storing DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
   ///
   /// [request] - The metadata request object.
   ///
@@ -1869,8 +1866,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// into a study while a delete operation is running for that study could
   /// result in the new instances not appearing in search results until the
   /// deletion operation finishes. For samples that show how to call
-  /// DeleteStudy, see [Deleting a study, series, or
-  /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+  /// DeleteStudy, see
+  /// [Deleting a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
   ///
   /// Request parameters:
   ///
@@ -1938,11 +1935,11 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   ///
   /// See
   /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
-  /// For details on the implementation of RetrieveStudyMetadata, see [Metadata
-  /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
+  /// For details on the implementation of RetrieveStudyMetadata, see
+  /// [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
-  /// how to call RetrieveStudyMetadata, see [Retrieving
-  /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+  /// how to call RetrieveStudyMetadata, see
+  /// [Retrieving metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
   ///
   /// Request parameters:
   ///
@@ -2011,11 +2008,11 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   ///
   /// See
   /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
-  /// For details on the implementation of RetrieveStudy, see \[DICOM
-  /// study/series/instances\](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
+  /// For details on the implementation of RetrieveStudy, see
+  /// [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
-  /// how to call RetrieveStudy, see [Retrieving DICOM
-  /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+  /// how to call RetrieveStudy, see
+  /// [Retrieving DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
   ///
   /// Request parameters:
   ///
@@ -2082,14 +2079,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
 
   /// SearchForInstances returns a list of matching instances.
   ///
-  /// See [Search
-  /// Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
-  /// For details on the implementation of SearchForInstances, see [Search
-  /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
+  /// See
+  /// [Search Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// For details on the implementation of SearchForInstances, see
+  /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
-  /// how to call SearchForInstances, see [Searching for studies, series,
-  /// instances, and
-  /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// how to call SearchForInstances, see
+  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
   ///
   /// Request parameters:
   ///
@@ -2157,14 +2153,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
 
   /// SearchForSeries returns a list of matching series.
   ///
-  /// See [Search
-  /// Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
-  /// For details on the implementation of SearchForSeries, see [Search
-  /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
+  /// See
+  /// [Search Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// For details on the implementation of SearchForSeries, see
+  /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
-  /// how to call SearchForSeries, see [Searching for studies, series,
-  /// instances, and
-  /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// how to call SearchForSeries, see
+  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
   ///
   /// Request parameters:
   ///
@@ -2232,13 +2227,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   /// StoreInstances stores DICOM instances associated with study instance
   /// unique identifiers (SUID).
   ///
-  /// See [Store
-  /// Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).
-  /// For details on the implementation of StoreInstances, see [Store
-  /// transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction)
+  /// See
+  /// [Store Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.5).
+  /// For details on the implementation of StoreInstances, see
+  /// [Store transaction](https://cloud.google.com/healthcare/docs/dicom#store_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
-  /// how to call StoreInstances, see [Storing DICOM
-  /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
+  /// how to call StoreInstances, see
+  /// [Storing DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#storing_dicom_data).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2330,8 +2325,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   /// into a series while a delete operation is running for that series could
   /// result in the new instances not appearing in search results until the
   /// deletion operation finishes. For samples that show how to call
-  /// DeleteSeries, see [Deleting a study, series, or
-  /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+  /// DeleteSeries, see
+  /// [Deleting a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
   ///
   /// Request parameters:
   ///
@@ -2401,11 +2396,11 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   ///
   /// See
   /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
-  /// For details on the implementation of RetrieveSeriesMetadata, see [Metadata
-  /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
+  /// For details on the implementation of RetrieveSeriesMetadata, see
+  /// [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
-  /// how to call RetrieveSeriesMetadata, see [Retrieving
-  /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+  /// how to call RetrieveSeriesMetadata, see
+  /// [Retrieving metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
   ///
   /// Request parameters:
   ///
@@ -2474,11 +2469,11 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   ///
   /// See
   /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
-  /// For details on the implementation of RetrieveSeries, see \[DICOM
-  /// study/series/instances\](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
+  /// For details on the implementation of RetrieveSeries, see
+  /// [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
-  /// how to call RetrieveSeries, see [Retrieving DICOM
-  /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+  /// how to call RetrieveSeries, see
+  /// [Retrieving DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
   ///
   /// Request parameters:
   ///
@@ -2545,14 +2540,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
 
   /// SearchForInstances returns a list of matching instances.
   ///
-  /// See [Search
-  /// Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
-  /// For details on the implementation of SearchForInstances, see [Search
-  /// transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
+  /// See
+  /// [Search Transaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.6).
+  /// For details on the implementation of SearchForInstances, see
+  /// [Search transaction](https://cloud.google.com/healthcare/docs/dicom#search_transaction)
   /// in the Cloud Healthcare API conformance statement. For samples that show
-  /// how to call SearchForInstances, see [Searching for studies, series,
-  /// instances, and
-  /// frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
+  /// how to call SearchForInstances, see
+  /// [Searching for studies, series, instances, and frames](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#searching_for_studies_series_instances_and_frames).
   ///
   /// Request parameters:
   ///
@@ -2637,9 +2631,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// Delete requests are equivalent to the GET requests specified in the
   /// Retrieve transaction. Study and series search results can take a few
   /// seconds to be updated after an instance is deleted using DeleteInstance.
-  /// For samples that show how to call DeleteInstance, see [Deleting a study,
-  /// series, or
-  /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
+  /// For samples that show how to call DeleteInstance, see
+  /// [Deleting a study, series, or instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#deleting_a_study_series_or_instance).
   ///
   /// Request parameters:
   ///
@@ -2710,13 +2703,13 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   ///
   /// See
   /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
-  /// For details on the implementation of RetrieveInstance, see \[DICOM
-  /// study/series/instances\](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
-  /// and [DICOM
-  /// instances](https://cloud.google.com/healthcare/docs/dicom#dicom_instances)
+  /// For details on the implementation of RetrieveInstance, see
+  /// [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
+  /// and
+  /// [DICOM instances](https://cloud.google.com/healthcare/docs/dicom#dicom_instances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
-  /// how to call RetrieveInstance, see [Retrieving an
-  /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_an_instance).
+  /// how to call RetrieveInstance, see
+  /// [Retrieving an instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_an_instance).
   ///
   /// Request parameters:
   ///
@@ -2790,11 +2783,10 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// See
   /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveInstanceMetadata, see
-  /// [Metadata
-  /// resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
+  /// [Metadata resources](https://cloud.google.com/healthcare/docs/dicom#metadata_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
-  /// how to call RetrieveInstanceMetadata, see [Retrieving
-  /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
+  /// how to call RetrieveInstanceMetadata, see
+  /// [Retrieving metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_metadata).
   ///
   /// Request parameters:
   ///
@@ -2867,11 +2859,10 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   /// See
   /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
   /// For details on the implementation of RetrieveRenderedInstance, see
-  /// [Rendered
-  /// resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources)
+  /// [Rendered resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
-  /// how to call RetrieveRenderedInstance, see [Retrieving consumer image
-  /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
+  /// how to call RetrieveRenderedInstance, see
+  /// [Retrieving consumer image formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
   ///
   /// Request parameters:
   ///
@@ -2951,11 +2942,11 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   ///
   /// See
   /// \[RetrieveTransaction\](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4}.
-  /// For details on the implementation of RetrieveFrames, see [DICOM
-  /// frames](https://cloud.google.com/healthcare/docs/dicom#dicom_frames) in
-  /// the Cloud Healthcare API conformance statement. For samples that show how
-  /// to call RetrieveFrames, see [Retrieving DICOM
-  /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
+  /// For details on the implementation of RetrieveFrames, see
+  /// [DICOM frames](https://cloud.google.com/healthcare/docs/dicom#dicom_frames)
+  /// in the Cloud Healthcare API conformance statement. For samples that show
+  /// how to call RetrieveFrames, see
+  /// [Retrieving DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
   ///
   /// Request parameters:
   ///
@@ -3028,11 +3019,11 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
   ///
   /// See
   /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
-  /// For details on the implementation of RetrieveRenderedFrames, see [Rendered
-  /// resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources)
+  /// For details on the implementation of RetrieveRenderedFrames, see
+  /// [Rendered resources](https://cloud.google.com/healthcare/docs/dicom#rendered_resources)
   /// in the Cloud Healthcare API conformance statement. For samples that show
-  /// how to call RetrieveRenderedFrames, see [Retrieving consumer image
-  /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
+  /// how to call RetrieveRenderedFrames, see
+  /// [Retrieving consumer image formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_consumer_image_formats).
   ///
   /// Request parameters:
   ///
@@ -3433,8 +3424,8 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// value will be rejected. Requests for policies with any conditional
   /// bindings must specify version 3. Policies without any conditional bindings
   /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4069,16 +4060,16 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// Gets the FHIR capability statement
   /// ([STU3](http://hl7.org/implement/standards/fhir/STU3/capabilitystatement.html),
   /// [R4](http://hl7.org/implement/standards/fhir/R4/capabilitystatement.html)),
-  /// or the [conformance
-  /// statement](http://hl7.org/implement/standards/fhir/DSTU2/conformance.html)
+  /// or the
+  /// [conformance statement](http://hl7.org/implement/standards/fhir/DSTU2/conformance.html)
   /// in the DSTU2 case for the store, which contains a description of
   /// functionality supported by the server.
   ///
   /// Implements the FHIR standard capabilities interaction
   /// ([STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#capabilities),
   /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#capabilities)),
-  /// or the [conformance
-  /// interaction](http://hl7.org/implement/standards/fhir/DSTU2/http.html#conformance)
+  /// or the
+  /// [conformance interaction](http://hl7.org/implement/standards/fhir/DSTU2/http.html#conformance)
   /// in the DSTU2 case. On success, the response body will contain a
   /// JSON-encoded representation of a `CapabilityStatement` resource.
   ///
@@ -5067,8 +5058,8 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   /// value will be rejected. Requests for policies with any conditional
   /// bindings must specify version 3. Policies without any conditional bindings
   /// may specify any valid value or leave the field unset. To learn which
-  /// resources support conditions in their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6178,8 +6169,7 @@ class Binding {
   /// does not apply to the current request. However, a different role binding
   /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
-  /// [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
@@ -7097,8 +7087,8 @@ class FhirStore {
   /// attempts to read the historical versions.
   core.bool disableResourceVersioning;
 
-  /// Whether this FHIR store has the [updateCreate
-  /// capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate).
+  /// Whether this FHIR store has the
+  /// [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate).
   ///
   /// This determines if the client can use an Update operation to create a new
   /// resource with a client-specified ID. If false, all IDs are server-assigned
@@ -7143,10 +7133,10 @@ class FhirStore {
   /// the list, the server stops streaming to that location. Before adding a new
   /// config, you must add the required
   /// \[`bigquery.dataEditor`\](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor)
-  /// role to your project's **Cloud Healthcare Service Agent** [service
-  /// account](https://cloud.google.com/iam/docs/service-accounts). Some lag
-  /// (typically on the order of dozens of seconds) is expected before the
-  /// results show up in the streaming destination.
+  /// role to your project's **Cloud Healthcare Service Agent**
+  /// [service account](https://cloud.google.com/iam/docs/service-accounts).
+  /// Some lag (typically on the order of dozens of seconds) is expected before
+  /// the results show up in the streaming destination.
   core.List<StreamConfig> streamConfigs;
 
   /// The FHIR specification version that this FHIR store supports natively.
@@ -7157,10 +7147,10 @@ class FhirStore {
   /// Possible string values are:
   /// - "VERSION_UNSPECIFIED" : Users must specify a version on store creation
   /// or an error is returned.
-  /// - "DSTU2" : Draft Standard for Trial Use, [Release
-  /// 2](https://www.hl7.org/fhir/DSTU2)
-  /// - "STU3" : Standard for Trial Use, [Release
-  /// 3](https://www.hl7.org/fhir/STU3)
+  /// - "DSTU2" : Draft Standard for Trial Use,
+  /// [Release 2](https://www.hl7.org/fhir/DSTU2)
+  /// - "STU3" : Standard for Trial Use,
+  /// [Release 3](https://www.hl7.org/fhir/STU3)
   /// - "R4" : [Release 4](https://www.hl7.org/fhir/R4)
   core.String version;
 
@@ -7573,7 +7563,7 @@ class Hl7V2NotificationConfig {
   /// existence of a label. For example, `labels."priority":*`.
   core.String filter;
 
-  /// The \[Cloud Pub/Sub\](https://cloud.google.com/pubsub/docs/) topic that
+  /// The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
   /// notifications of changes are published on.
   ///
   /// Supplied by the client. The notification is a `PubsubMessage` with the
@@ -7581,9 +7571,9 @@ class Hl7V2NotificationConfig {
   /// `PubsubMessage.MessageId` is the ID of this notification. It's guaranteed
   /// to be unique within the topic. * `PubsubMessage.PublishTime` is the time
   /// when the message was published. Note that notifications are only sent if
-  /// the topic is non-empty. [Topic
-  /// names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped
-  /// to a project. The Cloud Healthcare API service account,
+  /// the topic is non-empty.
+  /// [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be
+  /// scoped to a project. The Cloud Healthcare API service account,
   /// service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com, must
   /// have publisher permissions on the given Pub/Sub topic. Not having adequate
   /// permissions causes the calls that send notifications to fail. If a
@@ -8408,9 +8398,9 @@ class Location {
 
 /// A complete HL7v2 message.
 ///
-/// See [Introduction to HL7
-/// Standards](https://www.hl7.org/implement/standards/index.cfm?ref=common) for
-/// details on the standard.
+/// See
+/// [Introduction to HL7 Standards](https://www.hl7.org/implement/standards/index.cfm?ref=common)
+/// for details on the standard.
 class Message {
   /// The datetime when the message was created.
   ///
@@ -8546,23 +8536,23 @@ class Message {
 
 /// Specifies where to send notifications upon changes to a data store.
 class NotificationConfig {
-  /// The \[Cloud Pub/Sub\](https://cloud.google.com/pubsub/docs/) topic that
+  /// The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
   /// notifications of changes are published on.
   ///
   /// Supplied by the client. PubsubMessage.Data contains the resource name.
   /// PubsubMessage.MessageId is the ID of this message. It is guaranteed to be
   /// unique within the topic. PubsubMessage.PublishTime is the time at which
   /// the message was published. Notifications are only sent if the topic is
-  /// non-empty. [Topic
-  /// names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped
-  /// to a project. Cloud Healthcare API service account must have publisher
-  /// permissions on the given Cloud Pub/Sub topic. Not having adequate
-  /// permissions causes the calls that send notifications to fail. If a
-  /// notification can't be published to Cloud Pub/Sub, errors are logged to
+  /// non-empty.
+  /// [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be
+  /// scoped to a project. Cloud Healthcare API service account must have
+  /// publisher permissions on the given Cloud Pub/Sub topic. Not having
+  /// adequate permissions causes the calls that send notifications to fail. If
+  /// a notification can't be published to Cloud Pub/Sub, errors are logged to
   /// Cloud Logging (see \[Viewing logs\](/healthcare/docs/how-tos/logging)). If
   /// the number of errors exceeds a certain rate, some aren't submitted. Note
-  /// that not all operations trigger notifications, see \[Configuring Pub/Sub
-  /// notifications\](https://cloud.google.com/healthcare/docs/how-tos/pubsub)
+  /// that not all operations trigger notifications, see
+  /// [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub)
   /// for specific details.
   core.String pubsubTopic;
 
@@ -8862,8 +8852,8 @@ class PatientId {
 /// allows access to a resource only if the expression evaluates to `true`. A
 /// condition can add constraints based on attributes of the request, the
 /// resource, or both. To learn which resources support conditions in their IAM
-/// policies, see the [IAM
-/// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// policies, see the
+/// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 /// **JSON example:** { "bindings": \[ { "role":
 /// "roles/resourcemanager.organizationAdmin", "members": \[
 /// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
@@ -8879,8 +8869,8 @@ class PatientId {
 /// role: roles/resourcemanager.organizationViewer condition: title: expirable
 /// access description: Does not grant access after Sep 2020 expression:
 /// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
-/// version: 3 For a description of IAM and its features, see the [IAM
-/// documentation](https://cloud.google.com/iam/docs/).
+/// version: 3 For a description of IAM and its features, see the
+/// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
   core.List<AuditConfig> auditConfigs;
@@ -8927,8 +8917,8 @@ class Policy {
   /// the version `3` policy are lost. If a policy does not include any
   /// conditions, operations on that policy may specify any valid version or
   /// leave the field unset. To learn which resources support conditions in
-  /// their IAM policies, see the [IAM
-  /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  /// their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
   Policy();
@@ -9159,7 +9149,7 @@ class Segment {
   /// The key string uses zero-based indexes separated by dots to identify
   /// Fields, components and sub-components. A bracket notation is also used to
   /// identify different instances of a repeated field. Regex for key:
-  /// (\d+)(\\[\d+\\])?(.\d+)?(.\d+)? Examples of (key, value) pairs: * (0.1,
+  /// (\d+)(\[\d+\])?(.\d+)?(.\d+)? Examples of (key, value) pairs: * (0.1,
   /// "hemoglobin") denotes that the first component of Field 0 has the value
   /// "hemoglobin". * (1.1.2, "CBC") denotes that the second sub-component of
   /// the first component of Field 1 has the value "CBC". * (1\[0\].1, "HbA1c")
@@ -9417,8 +9407,8 @@ class TestIamPermissionsRequest {
   /// The set of permissions to check for the `resource`.
   ///
   /// Permissions with wildcards (such as '*' or 'storage.*') are not allowed.
-  /// For more information see [IAM
-  /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+  /// For more information see
+  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
   core.List<core.String> permissions;
 
   TestIamPermissionsRequest();

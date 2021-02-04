@@ -78,9 +78,8 @@ class ProjectsResource {
   ///
   /// [projectName] - Required. The resource name of the Google Cloud Platform
   /// project. Written as `projects/{projectID}`, where `{projectID}` is the
-  /// [Google Cloud Platform project
-  /// ID](https://support.google.com/cloud/answer/6158840). Example:
-  /// `projects/my-project-123`.
+  /// [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).
+  /// Example: `projects/my-project-123`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -142,9 +141,8 @@ class ProjectsEventsResource {
   ///
   /// [projectName] - Required. The resource name of the Google Cloud Platform
   /// project. Written as `projects/{projectID}`, where `{projectID}` is the
-  /// [Google Cloud Platform project
-  /// ID](https://support.google.com/cloud/answer/6158840). Example:
-  /// `projects/my-project-123`.
+  /// [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).
+  /// Example: `projects/my-project-123`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [groupId] - Required. The group for which events shall be returned.
@@ -255,10 +253,10 @@ class ProjectsEventsResource {
 
   /// Report an individual error event.
   ///
-  /// This endpoint accepts **either** an OAuth token, **or** an [API
-  /// key](https://support.google.com/cloud/answer/6158862) for authentication.
-  /// To use an API key, append it to the URL as the value of a `key` parameter.
-  /// For example: `POST
+  /// This endpoint accepts **either** an OAuth token, **or** an
+  /// [API key](https://support.google.com/cloud/answer/6158862) for
+  /// authentication. To use an API key, append it to the URL as the value of a
+  /// `key` parameter. For example: `POST
   /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456`
   ///
   /// [request] - The metadata request object.
@@ -267,9 +265,8 @@ class ProjectsEventsResource {
   ///
   /// [projectName] - Required. The resource name of the Google Cloud Platform
   /// project. Written as `projects/{projectId}`, where `{projectId}` is the
-  /// [Google Cloud Platform project
-  /// ID](https://support.google.com/cloud/answer/6158840). Example: //
-  /// `projects/my-project-123`.
+  /// [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).
+  /// Example: // `projects/my-project-123`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -335,9 +332,8 @@ class ProjectsGroupStatsResource {
   ///
   /// [projectName] - Required. The resource name of the Google Cloud Platform
   /// project. Written as `projects/{projectID}`, where `{projectID}` is the
-  /// [Google Cloud Platform project
-  /// ID](https://support.google.com/cloud/answer/6158840). Example:
-  /// `projects/my-project-123`.
+  /// [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).
+  /// Example: `projects/my-project-123`.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [alignment] - Optional. The alignment of the timed counts to be returned.

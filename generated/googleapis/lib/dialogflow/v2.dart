@@ -399,8 +399,8 @@ class ProjectsAgentResource {
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [languageCode] - Optional. The language for which you want a validation
-  /// result. If not specified, the agent's default language is used. [Many
-  /// languages](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// result. If not specified, the agent's default language is used.
+  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
   /// are supported. Note: languages must be enabled in the agent before they
   /// can be used.
   ///
@@ -947,8 +947,8 @@ class ProjectsAgentEntityTypesResource {
   ///
   /// [languageCode] - Optional. The language used to access language-specific
   /// data. If not specified, the agent's default language is used. For more
-  /// information, see [Multilingual intent and entity
-  /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1068,8 +1068,8 @@ class ProjectsAgentEntityTypesResource {
   ///
   /// [languageCode] - Optional. The language used to access language-specific
   /// data. If not specified, the agent's default language is used. For more
-  /// information, see [Multilingual intent and entity
-  /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1130,8 +1130,8 @@ class ProjectsAgentEntityTypesResource {
   ///
   /// [languageCode] - Optional. The language used to access language-specific
   /// data. If not specified, the agent's default language is used. For more
-  /// information, see [Multilingual intent and entity
-  /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
   /// page. By default 100 and at most 1000.
@@ -1211,8 +1211,8 @@ class ProjectsAgentEntityTypesResource {
   ///
   /// [languageCode] - Optional. The language used to access language-specific
   /// data. If not specified, the agent's default language is used. For more
-  /// information, see [Multilingual intent and entity
-  /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
   ///
   /// [updateMask] - Optional. The mask to control which fields get updated.
   ///
@@ -1648,8 +1648,8 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
   /// appropriate `Session ID` and `User Id`. They can be a random number or
   /// some type of user and session identifiers (preferably hashed). The length
   /// of the `Session ID` and `User ID` must not exceed 36 characters. For more
-  /// information, see the [API interactions
-  /// guide](https://cloud.google.com/dialogflow/docs/api-overview).
+  /// information, see the
+  /// [API interactions guide](https://cloud.google.com/dialogflow/docs/api-overview).
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -2542,8 +2542,8 @@ class ProjectsAgentIntentsResource {
   ///
   /// [languageCode] - Optional. The language used to access language-specific
   /// data. If not specified, the agent's default language is used. For more
-  /// information, see [Multilingual intent and entity
-  /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2674,8 +2674,8 @@ class ProjectsAgentIntentsResource {
   ///
   /// [languageCode] - Optional. The language used to access language-specific
   /// data. If not specified, the agent's default language is used. For more
-  /// information, see [Multilingual intent and entity
-  /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2747,8 +2747,8 @@ class ProjectsAgentIntentsResource {
   ///
   /// [languageCode] - Optional. The language used to access language-specific
   /// data. If not specified, the agent's default language is used. For more
-  /// information, see [Multilingual intent and entity
-  /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
   ///
   /// [pageSize] - Optional. The maximum number of items to return in a single
   /// page. By default 100 and at most 1000.
@@ -2838,8 +2838,8 @@ class ProjectsAgentIntentsResource {
   ///
   /// [languageCode] - Optional. The language used to access language-specific
   /// data. If not specified, the agent's default language is used. For more
-  /// information, see [Multilingual intent and entity
-  /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
   ///
   /// [updateMask] - Optional. The mask to control which fields get updated.
   ///
@@ -2992,8 +2992,8 @@ class ProjectsAgentSessionsResource {
   /// appropriate `Session ID` and `User Id`. They can be a random number or
   /// some type of user and session identifiers (preferably hashed). The length
   /// of the `Session ID` and `User ID` must not exceed 36 characters. For more
-  /// information, see the [API interactions
-  /// guide](https://cloud.google.com/dialogflow/docs/api-overview).
+  /// information, see the
+  /// [API interactions guide](https://cloud.google.com/dialogflow/docs/api-overview).
   /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5263,8 +5263,8 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse {
 /// of human language. Dialogflow translates end-user text or audio during a
 /// conversation to structured data that your apps and services can understand.
 /// You design and build a Dialogflow agent to handle the types of conversations
-/// required for your system. For more information about agents, see the [Agent
-/// guide](https://cloud.google.com/dialogflow/docs/agents-overview).
+/// required for your system. For more information about agents, see the
+/// [Agent guide](https://cloud.google.com/dialogflow/docs/agents-overview).
 class GoogleCloudDialogflowV2Agent {
   /// API version displayed in Dialogflow console.
   ///
@@ -5304,10 +5304,10 @@ class GoogleCloudDialogflowV2Agent {
 
   /// The default language of the agent as a language tag.
   ///
-  /// See [Language
-  /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for
-  /// a list of the currently supported language codes. This field cannot be set
-  /// by the `Update` method.
+  /// See
+  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// for a list of the currently supported language codes. This field cannot be
+  /// set by the `Update` method.
   ///
   /// Required.
   core.String defaultLanguageCode;
@@ -5367,9 +5367,9 @@ class GoogleCloudDialogflowV2Agent {
   /// - "TIER_ENTERPRISE_PLUS" : Enterprise tier (Plus).
   core.String tier;
 
-  /// The time zone of this agent from the [time zone
-  /// database](https://www.iana.org/time-zones), e.g., America/New_York,
-  /// Europe/Paris.
+  /// The time zone of this agent from the
+  /// [time zone database](https://www.iana.org/time-zones), e.g.,
+  /// America/New_York, Europe/Paris.
   ///
   /// Required.
   core.String timeZone;
@@ -5465,17 +5465,17 @@ class GoogleCloudDialogflowV2Agent {
 /// The part can be an entity or purely a part of the message between two
 /// entities or message start/end.
 class GoogleCloudDialogflowV2AnnotatedMessagePart {
-  /// The [Dialogflow system entity
-  /// type](https://cloud.google.com/dialogflow/docs/reference/system-entities)
+  /// The
+  /// [Dialogflow system entity type](https://cloud.google.com/dialogflow/docs/reference/system-entities)
   /// of this message part.
   ///
   /// If this is empty, Dialogflow could not annotate the phrase part with a
   /// system entity.
   core.String entityType;
 
-  /// The [Dialogflow system entity formatted value
-  /// ](https://cloud.google.com/dialogflow/docs/reference/system-entities) of
-  /// this message part.
+  /// The
+  /// [Dialogflow system entity formatted value ](https://cloud.google.com/dialogflow/docs/reference/system-entities)
+  /// of this message part.
   ///
   /// For example for a system entity of type `@sys.unit-currency`, this may
   /// contain: { "amount": 5, "currency": "USD" }
@@ -5526,8 +5526,8 @@ class GoogleCloudDialogflowV2BatchCreateEntitiesRequest {
   /// The language used to access language-specific data.
   ///
   /// If not specified, the agent's default language is used. For more
-  /// information, see [Multilingual intent and entity
-  /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
   ///
   /// Optional.
   core.String languageCode;
@@ -5572,8 +5572,8 @@ class GoogleCloudDialogflowV2BatchDeleteEntitiesRequest {
   /// The language used to access language-specific data.
   ///
   /// If not specified, the agent's default language is used. For more
-  /// information, see [Multilingual intent and entity
-  /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
   ///
   /// Optional.
   core.String languageCode;
@@ -5672,8 +5672,8 @@ class GoogleCloudDialogflowV2BatchUpdateEntitiesRequest {
   /// The language used to access language-specific data.
   ///
   /// If not specified, the agent's default language is used. For more
-  /// information, see [Multilingual intent and entity
-  /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
   ///
   /// Optional.
   core.String languageCode;
@@ -5731,8 +5731,8 @@ class GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest {
   /// The language used to access language-specific data.
   ///
   /// If not specified, the agent's default language is used. For more
-  /// information, see [Multilingual intent and entity
-  /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
   ///
   /// Optional.
   core.String languageCode;
@@ -5831,8 +5831,8 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsRequest {
   /// The language used to access language-specific data.
   ///
   /// If not specified, the agent's default language is used. For more
-  /// information, see [Multilingual intent and entity
-  /// data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// information, see
+  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
   ///
   /// Optional.
   core.String languageCode;
@@ -5921,8 +5921,8 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsResponse {
 /// matched, any configured output contexts for that intent become active. While
 /// any contexts are active, Dialogflow is more likely to match intents that are
 /// configured with input contexts that correspond to the currently active
-/// contexts. For more information about context, see the [Contexts
-/// guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
+/// contexts. For more information about context, see the
+/// [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
 class GoogleCloudDialogflowV2Context {
   /// The number of conversational query requests after which the context
   /// expires.
@@ -6251,8 +6251,8 @@ class GoogleCloudDialogflowV2DetectIntentResponse {
 /// times, colors, email addresses, and so on. You can also create your own
 /// custom entities for matching custom data. For example, you could define a
 /// vegetable entity that can match the types of vegetables available for
-/// purchase with a grocery store agent. For more information, see the [Entity
-/// guide](https://cloud.google.com/dialogflow/docs/entities-overview).
+/// purchase with a grocery store agent. For more information, see the
+/// [Entity guide](https://cloud.google.com/dialogflow/docs/entities-overview).
 class GoogleCloudDialogflowV2EntityType {
   /// Indicates whether the entity type can be automatically expanded.
   ///
@@ -6433,9 +6433,8 @@ class GoogleCloudDialogflowV2EntityTypeEntity {
 /// of your agent. When you save the draft agent, it is published to the default
 /// environment. When you create agent versions, you can publish them to custom
 /// environments. You can create a variety of custom environments for: - testing
-/// - development - production - etc. For more information, see the [versions
-/// and environments
-/// guide](https://cloud.google.com/dialogflow/docs/agents-versions).
+/// - development - production - etc. For more information, see the
+/// [versions and environments guide](https://cloud.google.com/dialogflow/docs/agents-versions).
 class GoogleCloudDialogflowV2Environment {
   /// The agent version loaded into this environment.
   ///
@@ -6531,10 +6530,10 @@ class GoogleCloudDialogflowV2Environment {
 class GoogleCloudDialogflowV2EventInput {
   /// The language of this query.
   ///
-  /// See [Language
-  /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for
-  /// a list of the currently supported language codes. Note that queries in the
-  /// same session do not necessarily need to specify the same language.
+  /// See
+  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// for a list of the currently supported language codes. Note that queries in
+  /// the same session do not necessarily need to specify the same language.
   ///
   /// Required.
   core.String languageCode;
@@ -6671,8 +6670,8 @@ class GoogleCloudDialogflowV2ExportAgentResponse {
 /// to that intent by calling a service that you define. For example, if an
 /// end-user wants to schedule a haircut on Friday, your service can check your
 /// database and respond to the end-user with availability information for
-/// Friday. For more information, see the [fulfillment
-/// guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
+/// Friday. For more information, see the
+/// [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
 class GoogleCloudDialogflowV2Fulfillment {
   /// The human-readable name of the fulfillment, unique within the agent.
   ///
@@ -6932,7 +6931,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   /// - "AUDIO_ENCODING_LINEAR_16" : Uncompressed 16-bit signed little-endian
   /// samples (Linear PCM).
   /// - "AUDIO_ENCODING_FLAC" :
-  /// [`FLAC`](https://xiph.org/flac/documentation.html) (Free Lossless Audio
+  /// \[`FLAC`\](https://xiph.org/flac/documentation.html) (Free Lossless Audio
   /// Codec) is the recommended encoding because it is lossless (therefore
   /// recognition is not compromised) and requires only about half the bandwidth
   /// of `LINEAR16`. `FLAC` stream encoding supports 16-bit and 24-bit samples,
@@ -6970,10 +6969,10 @@ class GoogleCloudDialogflowV2InputAudioConfig {
 
   /// The language of the supplied audio.
   ///
-  /// Dialogflow does not do translations. See [Language
-  /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for
-  /// a list of the currently supported language codes. Note that queries in the
-  /// same session do not necessarily need to specify the same language.
+  /// Dialogflow does not do translations. See
+  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// for a list of the currently supported language codes. Note that queries in
+  /// the same session do not necessarily need to specify the same language.
   ///
   /// Required.
   core.String languageCode;
@@ -6985,8 +6984,8 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   /// the parameters in the InputAudioConfig. If enhanced speech model is
   /// enabled for the agent and an enhanced version of the specified model for
   /// the language does not exist, then the speech is recognized using the
-  /// standard version of the specified model. Refer to [Cloud Speech API
-  /// documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model)
+  /// standard version of the specified model. Refer to
+  /// [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model)
   /// for more details.
   core.String model;
 
@@ -6995,17 +6994,17 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   /// - "SPEECH_MODEL_VARIANT_UNSPECIFIED" : No model variant specified. In this
   /// case Dialogflow defaults to USE_BEST_AVAILABLE.
   /// - "USE_BEST_AVAILABLE" : Use the best available variant of the Speech
-  /// model that the caller is eligible for. Please see the [Dialogflow
-  /// docs](https://cloud.google.com/dialogflow/docs/data-logging) for how to
-  /// make your project eligible for enhanced models.
+  /// model that the caller is eligible for. Please see the
+  /// [Dialogflow docs](https://cloud.google.com/dialogflow/docs/data-logging)
+  /// for how to make your project eligible for enhanced models.
   /// - "USE_STANDARD" : Use standard model variant even if an enhanced model is
-  /// available. See the [Cloud Speech
-  /// documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)
+  /// available. See the
+  /// [Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)
   /// for details about enhanced models.
   /// - "USE_ENHANCED" : Use an enhanced model variant: * If an enhanced variant
   /// does not exist for the given model and request language, Dialogflow falls
-  /// back to the standard variant. The [Cloud Speech
-  /// documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)
+  /// back to the standard variant. The
+  /// [Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)
   /// describes which models have enhanced variants. * If the API caller isn't
   /// eligible for enhanced models, Dialogflow returns an error. Please see the
   /// [Dialogflow docs](https://cloud.google.com/dialogflow/docs/data-logging)
@@ -7015,8 +7014,8 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   /// A list of strings containing words and phrases that the speech recognizer
   /// should recognize with higher likelihood.
   ///
-  /// See [the Cloud Speech
-  /// documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
+  /// See
+  /// [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
   /// for more details. This field is deprecated. Please use
   /// \[speech_contexts\]() instead. If you specify both \[phrase_hints\]() and
   /// \[speech_contexts\](), Dialogflow will treat the \[phrase_hints\]() as a
@@ -7025,9 +7024,9 @@ class GoogleCloudDialogflowV2InputAudioConfig {
 
   /// Sample rate (in Hertz) of the audio content sent in the query.
   ///
-  /// Refer to [Cloud Speech API
-  /// documentation](https://cloud.google.com/speech-to-text/docs/basics) for
-  /// more details.
+  /// Refer to
+  /// [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics)
+  /// for more details.
   ///
   /// Required.
   core.int sampleRateHertz;
@@ -7046,8 +7045,8 @@ class GoogleCloudDialogflowV2InputAudioConfig {
 
   /// Context information to assist speech recognition.
   ///
-  /// See [the Cloud Speech
-  /// documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
+  /// See
+  /// [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
   /// for more details.
   core.List<GoogleCloudDialogflowV2SpeechContext> speechContexts;
 
@@ -7129,8 +7128,8 @@ class GoogleCloudDialogflowV2InputAudioConfig {
 /// handle a complete conversation. When an end-user writes or says something,
 /// referred to as an end-user expression or end-user input, Dialogflow matches
 /// the end-user input to the best intent in your agent. Matching an intent is
-/// also known as intent classification. For more information, see the [intent
-/// guide](https://cloud.google.com/dialogflow/docs/intents-overview).
+/// also known as intent classification. For more information, see the
+/// [intent guide](https://cloud.google.com/dialogflow/docs/intents-overview).
 class GoogleCloudDialogflowV2Intent {
   /// The name of the action associated with the intent.
   ///
@@ -7481,8 +7480,8 @@ class GoogleCloudDialogflowV2IntentFollowupIntentInfo {
 /// A rich response message.
 ///
 /// Corresponds to the intent `Response` field in the Dialogflow console. For
-/// more information, see [Rich response
-/// messages](https://cloud.google.com/dialogflow/docs/intents-rich-messages).
+/// more information, see
+/// [Rich response messages](https://cloud.google.com/dialogflow/docs/intents-rich-messages).
 class GoogleCloudDialogflowV2IntentMessage {
   /// The basic card response for Actions on Google.
   GoogleCloudDialogflowV2IntentMessageBasicCard basicCard;
@@ -7526,8 +7525,8 @@ class GoogleCloudDialogflowV2IntentMessage {
   /// - "SKYPE" : Skype.
   /// - "LINE" : Line.
   /// - "VIBER" : Viber.
-  /// - "ACTIONS_ON_GOOGLE" : Google Assistant See [Dialogflow webhook
-  /// format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)
+  /// - "ACTIONS_ON_GOOGLE" : Google Assistant See
+  /// [Dialogflow webhook format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)
   /// - "GOOGLE_HANGOUTS" : Google Hangouts.
   core.String platform;
 
@@ -9734,9 +9733,9 @@ class GoogleCloudDialogflowV2QueryParameters {
   /// this query.
   core.List<GoogleCloudDialogflowV2SessionEntityType> sessionEntityTypes;
 
-  /// The time zone of this conversational query from the [time zone
-  /// database](https://www.iana.org/time-zones), e.g., America/New_York,
-  /// Europe/Paris.
+  /// The time zone of this conversational query from the
+  /// [time zone database](https://www.iana.org/time-zones), e.g.,
+  /// America/New_York, Europe/Paris.
   ///
   /// If not provided, the time zone specified in agent settings is used.
   core.String timeZone;
@@ -9864,9 +9863,9 @@ class GoogleCloudDialogflowV2QueryResult {
 
   /// The language that was triggered during intent detection.
   ///
-  /// See [Language
-  /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for
-  /// a list of the currently supported language codes.
+  /// See
+  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// for a list of the currently supported language codes.
   core.String languageCode;
 
   /// The collection of output contexts.
@@ -10241,8 +10240,8 @@ class GoogleCloudDialogflowV2SentimentAnalysisResult {
 /// Session entities can extend or replace custom entity types and only exist
 /// during the session that they were created for. All session data, including
 /// session entities, is stored by Dialogflow for 20 minutes. For more
-/// information, see the [session entity
-/// guide](https://cloud.google.com/dialogflow/docs/entities-session).
+/// information, see the
+/// [session entity guide](https://cloud.google.com/dialogflow/docs/entities-session).
 class GoogleCloudDialogflowV2SessionEntityType {
   /// The collection of entities associated with this session entity type.
   ///
@@ -10333,9 +10332,8 @@ class GoogleCloudDialogflowV2SpeechContext {
   /// This list can be used to: * improve accuracy for words and phrases you
   /// expect the user to say, e.g. typical commands for your Dialogflow agent *
   /// add additional words to the speech recognizer vocabulary * ... See the
-  /// [Cloud Speech
-  /// documentation](https://cloud.google.com/speech-to-text/quotas) for usage
-  /// limits.
+  /// [Cloud Speech documentation](https://cloud.google.com/speech-to-text/quotas)
+  /// for usage limits.
   ///
   /// Optional.
   core.List<core.String> phrases;
@@ -10458,10 +10456,10 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
 class GoogleCloudDialogflowV2TextInput {
   /// The language of this conversational query.
   ///
-  /// See [Language
-  /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for
-  /// a list of the currently supported language codes. Note that queries in the
-  /// same session do not necessarily need to specify the same language.
+  /// See
+  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// for a list of the currently supported language codes. Note that queries in
+  /// the same session do not necessarily need to specify the same language.
   ///
   /// Required.
   core.String languageCode;
@@ -10716,8 +10714,8 @@ class GoogleCloudDialogflowV2WebhookRequest {
 /// JSON fields to an empty value with the wrong type is a common error. To
 /// avoid this error: - Use `""` for empty strings - Use `{}` or `null` for
 /// empty objects - Use `[]` or `null` for empty arrays For more information,
-/// see the [Protocol Buffers Language
-/// Guide](https://developers.google.com/protocol-buffers/docs/proto3#json).
+/// see the
+/// [Protocol Buffers Language Guide](https://developers.google.com/protocol-buffers/docs/proto3#json).
 class GoogleCloudDialogflowV2WebhookResponse {
   /// Invokes the supplied events.
   ///
@@ -10758,11 +10756,10 @@ class GoogleCloudDialogflowV2WebhookResponse {
   ///
   /// Arbitrary JSON objects are supported. When provided, Dialogflow uses this
   /// field to populate QueryResult.webhook_payload sent to the integration or
-  /// API caller. This field is also used by the [Google Assistant
-  /// integration](https://cloud.google.com/dialogflow/docs/integrations/aog)
-  /// for rich response messages. See the format definition at [Google Assistant
-  /// Dialogflow webhook
-  /// format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)
+  /// API caller. This field is also used by the
+  /// [Google Assistant integration](https://cloud.google.com/dialogflow/docs/integrations/aog)
+  /// for rich response messages. See the format definition at
+  /// [Google Assistant Dialogflow webhook format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)
   ///
   /// Optional.
   ///
@@ -11108,8 +11105,8 @@ class GoogleCloudDialogflowV2beta1BatchUpdateSmartMessagingEntriesResponse {
 /// matched, any configured output contexts for that intent become active. While
 /// any contexts are active, Dialogflow is more likely to match intents that are
 /// configured with input contexts that correspond to the currently active
-/// contexts. For more information about context, see the [Contexts
-/// guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
+/// contexts. For more information about context, see the
+/// [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
 class GoogleCloudDialogflowV2beta1Context {
   /// The number of conversational query requests after which the context
   /// expires.
@@ -11199,8 +11196,8 @@ class GoogleCloudDialogflowV2beta1Context {
 /// times, colors, email addresses, and so on. You can also create your own
 /// custom entities for matching custom data. For example, you could define a
 /// vegetable entity that can match the types of vegetables available for
-/// purchase with a grocery store agent. For more information, see the [Entity
-/// guide](https://cloud.google.com/dialogflow/docs/entities-overview).
+/// purchase with a grocery store agent. For more information, see the
+/// [Entity guide](https://cloud.google.com/dialogflow/docs/entities-overview).
 class GoogleCloudDialogflowV2beta1EntityType {
   /// Indicates whether the entity type can be automatically expanded.
   ///
@@ -11355,10 +11352,10 @@ class GoogleCloudDialogflowV2beta1EntityTypeEntity {
 class GoogleCloudDialogflowV2beta1EventInput {
   /// The language of this query.
   ///
-  /// See [Language
-  /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for
-  /// a list of the currently supported language codes. Note that queries in the
-  /// same session do not necessarily need to specify the same language.
+  /// See
+  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// for a list of the currently supported language codes. Note that queries in
+  /// the same session do not necessarily need to specify the same language.
   ///
   /// Required.
   core.String languageCode;
@@ -11491,8 +11488,8 @@ class GoogleCloudDialogflowV2beta1ImportDocumentsResponse {
 /// handle a complete conversation. When an end-user writes or says something,
 /// referred to as an end-user expression or end-user input, Dialogflow matches
 /// the end-user input to the best intent in your agent. Matching an intent is
-/// also known as intent classification. For more information, see the [intent
-/// guide](https://cloud.google.com/dialogflow/docs/intents-overview).
+/// also known as intent classification. For more information, see the
+/// [intent guide](https://cloud.google.com/dialogflow/docs/intents-overview).
 class GoogleCloudDialogflowV2beta1Intent {
   /// The name of the action associated with the intent.
   ///
@@ -11902,8 +11899,8 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
   /// - "SKYPE" : Skype.
   /// - "LINE" : Line.
   /// - "VIBER" : Viber.
-  /// - "ACTIONS_ON_GOOGLE" : Google Assistant See [Dialogflow webhook
-  /// format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)
+  /// - "ACTIONS_ON_GOOGLE" : Google Assistant See
+  /// [Dialogflow webhook format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)
   /// - "TELEPHONY" : Telephony Gateway.
   /// - "GOOGLE_HANGOUTS" : Google Hangouts.
   core.String platform;
@@ -13957,8 +13954,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech {
 
 /// Transfers the call in Telephony Gateway.
 class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall {
-  /// The phone number to transfer the call to in [E.164
-  /// format](https://en.wikipedia.org/wiki/E.164).
+  /// The phone number to transfer the call to in
+  /// [E.164 format](https://en.wikipedia.org/wiki/E.164).
   ///
   /// We currently only allow transferring to US numbers (+1xxxyyyzzzz).
   ///
@@ -14563,9 +14560,9 @@ class GoogleCloudDialogflowV2beta1QueryResult {
 
   /// The language that was triggered during intent detection.
   ///
-  /// See [Language
-  /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for
-  /// a list of the currently supported language codes.
+  /// See
+  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
+  /// for a list of the currently supported language codes.
   core.String languageCode;
 
   /// The collection of output contexts.
@@ -14842,8 +14839,8 @@ class GoogleCloudDialogflowV2beta1SentimentAnalysisResult {
 /// Session entities can extend or replace custom entity types and only exist
 /// during the session that they were created for. All session data, including
 /// session entities, is stored by Dialogflow for 20 minutes. For more
-/// information, see the [session entity
-/// guide](https://cloud.google.com/dialogflow/docs/entities-session).
+/// information, see the
+/// [session entity guide](https://cloud.google.com/dialogflow/docs/entities-session).
 class GoogleCloudDialogflowV2beta1SessionEntityType {
   /// The collection of entities associated with this session entity type.
   ///
@@ -15118,8 +15115,8 @@ class GoogleCloudDialogflowV2beta1WebhookRequest {
 /// JSON fields to an empty value with the wrong type is a common error. To
 /// avoid this error: - Use `""` for empty strings - Use `{}` or `null` for
 /// empty objects - Use `[]` or `null` for empty arrays For more information,
-/// see the [Protocol Buffers Language
-/// Guide](https://developers.google.com/protocol-buffers/docs/proto3#json).
+/// see the
+/// [Protocol Buffers Language Guide](https://developers.google.com/protocol-buffers/docs/proto3#json).
 class GoogleCloudDialogflowV2beta1WebhookResponse {
   /// Indicates that this intent ends an interaction.
   ///
@@ -15169,11 +15166,10 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
   ///
   /// Arbitrary JSON objects are supported. When provided, Dialogflow uses this
   /// field to populate QueryResult.webhook_payload sent to the integration or
-  /// API caller. This field is also used by the [Google Assistant
-  /// integration](https://cloud.google.com/dialogflow/docs/integrations/aog)
-  /// for rich response messages. See the format definition at [Google Assistant
-  /// Dialogflow webhook
-  /// format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)
+  /// API caller. This field is also used by the
+  /// [Google Assistant integration](https://cloud.google.com/dialogflow/docs/integrations/aog)
+  /// for rich response messages. See the format definition at
+  /// [Google Assistant Dialogflow webhook format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)
   ///
   /// Optional.
   ///

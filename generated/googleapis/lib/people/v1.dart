@@ -4526,8 +4526,8 @@ class PersonMetadata {
 
 /// The response for a single person
 class PersonResponse {
-  /// **DEPRECATED** (Please use status instead) [HTTP 1.1 status
-  /// code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+  /// **DEPRECATED** (Please use status instead)
+  /// [HTTP 1.1 status code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
   core.int httpStatusCode;
 
   /// The person.
@@ -5005,8 +5005,9 @@ class SipAddress {
   /// `work` * `mobile` * `other`
   core.String type;
 
-  /// The SIP address in the [RFC 3261
-  /// 19.1](https://tools.ietf.org/html/rfc3261#section-19.1) SIP URI format.
+  /// The SIP address in the
+  /// [RFC 3261 19.1](https://tools.ietf.org/html/rfc3261#section-19.1) SIP URI
+  /// format.
   core.String value;
 
   SipAddress();
@@ -5079,8 +5080,8 @@ class Skill {
 
 /// The source of a field.
 class Source {
-  /// **Only populated in `person.metadata.sources`.** The [HTTP entity
-  /// tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the source.
+  /// **Only populated in `person.metadata.sources`.** The
+  /// [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the source.
   ///
   /// Used for web cache validation.
   core.String etag;
@@ -5100,18 +5101,18 @@ class Source {
   /// - "ACCOUNT" : [Google Account](https://accounts.google.com).
   /// - "PROFILE" : [Google profile](https://profiles.google.com). You can view
   /// the profile at
-  /// [https://profiles.google.com/](https://profiles.google.com/){id}, where
+  /// \[https://profiles.google.com/\](https://profiles.google.com/){id}, where
   /// {id} is the source id.
-  /// - "DOMAIN_PROFILE" : [G Suite domain
-  /// profile](https://support.google.com/a/answer/1628008).
+  /// - "DOMAIN_PROFILE" :
+  /// [G Suite domain profile](https://support.google.com/a/answer/1628008).
   /// - "CONTACT" : [Google contact](https://contacts.google.com). You can view
   /// the contact at
-  /// [https://contact.google.com/](https://contact.google.com/){id}, where {id}
-  /// is the source id.
-  /// - "OTHER_CONTACT" : [Google "Other
-  /// contact"](https://contacts.google.com/other).
-  /// - "DOMAIN_CONTACT" : [G Suite domain shared
-  /// contact](https://support.google.com/a/answer/9281635).
+  /// \[https://contact.google.com/\](https://contact.google.com/){id}, where
+  /// {id} is the source id.
+  /// - "OTHER_CONTACT" : \[Google "Other
+  /// contact"\](https://contacts.google.com/other).
+  /// - "DOMAIN_CONTACT" :
+  /// [G Suite domain shared contact](https://support.google.com/a/answer/9281635).
   core.String type;
 
   /// **Only populated in `person.metadata.sources`.** Last update timestamp of

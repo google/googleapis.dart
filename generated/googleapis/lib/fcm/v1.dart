@@ -136,8 +136,8 @@ class ProjectsMessagesResource {
   }
 }
 
-/// Android specific options for messages sent through [FCM connection
-/// server](https://goo.gl/4GLdUl).
+/// Android specific options for messages sent through
+/// [FCM connection server](https://goo.gl/4GLdUl).
 class AndroidConfig {
   /// An identifier of a group of messages that can be collapsed, so that only
   /// the last message gets sent when delivery can be resumed.
@@ -153,8 +153,8 @@ class AndroidConfig {
   /// If set to true, messages will be allowed to be delivered to the app while
   /// the device is in direct boot mode.
   ///
-  /// See [Support Direct Boot
-  /// mode](https://developer.android.com/training/articles/direct-boot).
+  /// See
+  /// [Support Direct Boot mode](https://developer.android.com/training/articles/direct-boot).
   core.bool directBootOk;
 
   /// Options for features provided by the FCM SDK for Android.
@@ -165,8 +165,8 @@ class AndroidConfig {
 
   /// Message priority.
   ///
-  /// Can take "normal" and "high" values. For more information, see [Setting
-  /// the priority of a message](https://goo.gl/GjONJv).
+  /// Can take "normal" and "high" values. For more information, see
+  /// [Setting the priority of a message](https://goo.gl/GjONJv).
   /// Possible string values are:
   /// - "NORMAL" : Default priority for data messages. Normal priority messages
   /// won't open network connections on a sleeping device, and their delivery
@@ -310,8 +310,8 @@ class AndroidNotification {
   /// See [String Resources](https://goo.gl/NdFZGI) for more information.
   core.String bodyLocKey;
 
-  /// The [notification's channel
-  /// id](https://developer.android.com/guide/topics/ui/notifiers/notifications#ManageChannels)
+  /// The
+  /// [notification's channel id](https://developer.android.com/guide/topics/ui/notifiers/notifications#ManageChannels)
   /// (new in Android O).
   ///
   /// The app must create a channel with this channel ID before any notification
@@ -387,16 +387,15 @@ class AndroidNotification {
   ///
   /// Some notifications can be bridged to other devices for remote display,
   /// such as a Wear OS watch. This hint can be set to recommend this
-  /// notification not be bridged. See [Wear OS
-  /// guides](https://developer.android.com/training/wearables/notifications/bridger#existing-method-of-preventing-bridging)
+  /// notification not be bridged. See
+  /// [Wear OS guides](https://developer.android.com/training/wearables/notifications/bridger#existing-method-of-preventing-bridging)
   core.bool localOnly;
 
   /// Sets the number of items this notification represents.
   ///
   /// May be displayed as a badge count for launchers that support badging.See
-  /// [Notification
-  /// Badge](https://developer.android.com/training/notify-user/badges). For
-  /// example, this might be useful if you're using just one notification to
+  /// [Notification Badge](https://developer.android.com/training/notify-user/badges).
+  /// For example, this might be useful if you're using just one notification to
   /// represent multiple new messages but you want the count here to represent
   /// the number of total new messages. If zero or unspecified, systems that
   /// support badging use the default, which is to increment a number displayed
@@ -679,16 +678,16 @@ class ApnsConfig {
 
   /// HTTP request headers defined in Apple Push Notification Service.
   ///
-  /// Refer to [APNs request
-  /// headers](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)
+  /// Refer to
+  /// [APNs request headers](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)
   /// for supported headers, e.g. "apns-priority": "10".
   core.Map<core.String, core.String> headers;
 
   /// APNs payload as a JSON object, including both `aps` dictionary and custom
   /// payload.
   ///
-  /// See [Payload Key
-  /// Reference](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification).
+  /// See
+  /// [Payload Key Reference](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification).
   /// If present, it overrides google.firebase.fcm.v1.Notification.title and
   /// google.firebase.fcm.v1.Notification.body.
   ///
@@ -958,8 +957,8 @@ class LightSettings {
 class Message {
   /// Input only.
   ///
-  /// Android specific options for messages sent through [FCM connection
-  /// server](https://goo.gl/4GLdUl).
+  /// Android specific options for messages sent through
+  /// [FCM connection server](https://goo.gl/4GLdUl).
   AndroidConfig android;
 
   /// Input only.
@@ -1185,9 +1184,9 @@ class WebpushConfig {
 
   /// Web Notification options as a JSON object.
   ///
-  /// Supports Notification instance properties as defined in [Web Notification
-  /// API](https://developer.mozilla.org/en-US/docs/Web/API/Notification). If
-  /// present, "title" and "body" fields override
+  /// Supports Notification instance properties as defined in
+  /// [Web Notification API](https://developer.mozilla.org/en-US/docs/Web/API/Notification).
+  /// If present, "title" and "body" fields override
   /// \[google.firebase.fcm.v1.Notification.title\] and
   /// \[google.firebase.fcm.v1.Notification.body\].
   ///

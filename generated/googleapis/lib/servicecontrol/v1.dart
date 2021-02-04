@@ -70,8 +70,8 @@ class ServicesResource {
   ///
   /// It should be called before the operation is executed. This method requires
   /// the `servicemanagement.services.quota` permission on the specified
-  /// service. For more information, see [Cloud
-  /// IAM](https://cloud.google.com/iam). **NOTE:** The client **must**
+  /// service. For more information, see
+  /// [Cloud IAM](https://cloud.google.com/iam). **NOTE:** The client **must**
   /// fail-open on server errors `INTERNAL`, `UNKNOWN`, `DEADLINE_EXCEEDED`, and
   /// `UNAVAILABLE`. To ensure system reliability, the server may inject these
   /// errors to prohibit any hard dependency on the quota functionality.
@@ -218,8 +218,8 @@ class ServicesResource {
   /// window to avoid data loss risk more than 0.01% for business and compliance
   /// reasons. NOTE: the ReportRequest has the size limit (wire-format byte
   /// size) of 1MB. This method requires the `servicemanagement.services.report`
-  /// permission on the specified service. For more information, see [Google
-  /// Cloud IAM](https://cloud.google.com/iam).
+  /// permission on the specified service. For more information, see
+  /// [Google Cloud IAM](https://cloud.google.com/iam).
   ///
   /// [request] - The metadata request object.
   ///
@@ -867,9 +867,8 @@ class AuthenticationInfo {
   ///
   /// For third party identity callers, the `principal_subject` field is
   /// populated instead of this field. For privacy reasons, the principal email
-  /// address is sometimes redacted. For more information, see [Caller
-  /// identities in audit
-  /// logs](https://cloud.google.com/logging/docs/audit#user-id).
+  /// address is sometimes redacted. For more information, see
+  /// [Caller identities in audit logs](https://cloud.google.com/logging/docs/audit#user-id).
   core.String principalEmail;
 
   /// String representation of identity of requesting party.
@@ -1333,8 +1332,8 @@ class ConsumerInfo {
   /// depend on this field anymore.
   core.String projectNumber;
 
-  /// The type of the consumer which should have been defined in [Google
-  /// Resource Manager](https://cloud.google.com/resource-manager/).
+  /// The type of the consumer which should have been defined in
+  /// [Google Resource Manager](https://cloud.google.com/resource-manager/).
   /// Possible string values are:
   /// - "CONSUMER_TYPE_UNSPECIFIED" : This is never used.
   /// - "PROJECT" : The consumer is a Google Cloud Project.
@@ -1744,8 +1743,8 @@ class HttpRequest {
   /// Examples: "HTTP/1.1", "HTTP/2", "websocket"
   core.String protocol;
 
-  /// The referer URL of the request, as defined in \[HTTP/1.1 Header Field
-  /// Definitions\](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+  /// The referer URL of the request, as defined in
+  /// [HTTP/1.1 Header Field Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
   core.String referer;
 
   /// The IP address (IPv4 or IPv6) of the client that issued the HTTP request.

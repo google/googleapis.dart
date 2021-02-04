@@ -8520,18 +8520,18 @@ class ListCreativeStatusBreakdownByDetailResponse {
   /// value will never be returned in responses.
   /// - "CREATIVE_ATTRIBUTE" : Indicates that the detail ID refers to a creative
   /// attribute; see
-  /// [publisher-excludable-creative-attributes](https://developers.google.com/authorized-buyers/rtb/downloads/publisher-excludable-creative-attributes).
+  /// \[publisher-excludable-creative-attributes\](https://developers.google.com/authorized-buyers/rtb/downloads/publisher-excludable-creative-attributes).
   /// - "VENDOR" : Indicates that the detail ID refers to a vendor; see
   /// [vendors](https://developers.google.com/authorized-buyers/rtb/downloads/vendors).
   /// - "SENSITIVE_CATEGORY" : Indicates that the detail ID refers to a
   /// sensitive category; see
-  /// [ad-sensitive-categories](https://developers.google.com/authorized-buyers/rtb/downloads/ad-sensitive-categories).
+  /// \[ad-sensitive-categories\](https://developers.google.com/authorized-buyers/rtb/downloads/ad-sensitive-categories).
   /// - "PRODUCT_CATEGORY" : Indicates that the detail ID refers to a product
   /// category; see
-  /// [ad-product-categories](https://developers.google.com/authorized-buyers/rtb/downloads/ad-product-categories).
+  /// \[ad-product-categories\](https://developers.google.com/authorized-buyers/rtb/downloads/ad-product-categories).
   /// - "DISAPPROVAL_REASON" : Indicates that the detail ID refers to a
   /// disapproval reason; see DisapprovalReason enum in
-  /// [snippet-status-report-proto](https://developers.google.com/authorized-buyers/rtb/downloads/snippet-status-report-proto).
+  /// \[snippet-status-report-proto\](https://developers.google.com/authorized-buyers/rtb/downloads/snippet-status-report-proto).
   /// - "POLICY_TOPIC" : Indicates that the detail ID refers to a policy topic.
   core.String detailType;
 

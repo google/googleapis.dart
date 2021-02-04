@@ -739,8 +739,8 @@ class Operation {
 /// Contains audio data in the encoding specified in the `RecognitionConfig`.
 ///
 /// Either `content` or `uri` must be supplied. Supplying both or neither
-/// returns google.rpc.Code.INVALID_ARGUMENT. See [content
-/// limits](https://cloud.google.com/speech-to-text/quotas#content).
+/// returns google.rpc.Code.INVALID_ARGUMENT. See
+/// [content limits](https://cloud.google.com/speech-to-text/quotas#content).
 class RecognitionAudio {
   /// The audio data bytes encoded as specified in `RecognitionConfig`.
   ///
@@ -760,8 +760,8 @@ class RecognitionAudio {
   /// The file must not be compressed (for example, gzip). Currently, only
   /// Google Cloud Storage URIs are supported, which must be specified in the
   /// following format: `gs://bucket_name/object_name` (other URI formats return
-  /// google.rpc.Code.INVALID_ARGUMENT). For more information, see [Request
-  /// URIs](https://cloud.google.com/storage/docs/reference-uris).
+  /// google.rpc.Code.INVALID_ARGUMENT). For more information, see
+  /// [Request URIs](https://cloud.google.com/storage/docs/reference-uris).
   core.String uri;
 
   RecognitionAudio();
@@ -874,9 +874,9 @@ class RecognitionConfig {
   /// The language of the supplied audio as a
   /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
   ///
-  /// Example: "en-US". See [Language
-  /// Support](https://cloud.google.com/speech-to-text/docs/languages) for a
-  /// list of the currently supported language codes.
+  /// Example: "en-US". See
+  /// [Language Support](https://cloud.google.com/speech-to-text/docs/languages)
+  /// for a list of the currently supported language codes.
   ///
   /// Required.
   core.String languageCode;
@@ -929,8 +929,8 @@ class RecognitionConfig {
   /// Array of SpeechContext.
   ///
   /// A means to provide context to assist the speech recognition. For more
-  /// information, see [speech
-  /// adaptation](https://cloud.google.com/speech-to-text/docs/context-strength).
+  /// information, see
+  /// [speech adaptation](https://cloud.google.com/speech-to-text/docs/context-strength).
   core.List<SpeechContext> speechContexts;
 
   /// Set to true to use an enhanced model for speech recognition.
@@ -1322,10 +1322,10 @@ class SpeechContext {
   /// This can be used to improve the accuracy for specific words and phrases,
   /// for example, if specific commands are typically spoken by the user. This
   /// can also be used to add additional words to the vocabulary of the
-  /// recognizer. See [usage
-  /// limits](https://cloud.google.com/speech-to-text/quotas#content). List
-  /// items can also be set to classes for groups of words that represent common
-  /// concepts that occur in natural language. For example, rather than
+  /// recognizer. See
+  /// [usage limits](https://cloud.google.com/speech-to-text/quotas#content).
+  /// List items can also be set to classes for groups of words that represent
+  /// common concepts that occur in natural language. For example, rather than
   /// providing phrase hints for every month of the year, using the $MONTH class
   /// improves the likelihood of correctly transcribing audio that includes
   /// months.

@@ -6618,7 +6618,7 @@ class App {
   /// The template url for opening files with this app.
   ///
   /// The template will contain {ids} and/or {exportIds} to be replaced by the
-  /// actual file ids. See  Open Files  for the full documentation.
+  /// actual file ids. See Open Files for the full documentation.
   core.String openUrlTemplate;
 
   /// The list of primary file extensions.

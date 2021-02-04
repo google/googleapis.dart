@@ -708,8 +708,8 @@ class TransferOperationsResource {
   }
 }
 
-/// AWS access key (see [AWS Security
-/// Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)).
+/// AWS access key (see
+/// [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)).
 class AwsAccessKey {
   /// AWS access key ID.
   ///
@@ -759,8 +759,8 @@ class AwsS3Data {
   /// Required.
   AwsAccessKey awsAccessKey;
 
-  /// S3 Bucket name (see [Creating a
-  /// bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
+  /// S3 Bucket name (see
+  /// [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
   ///
   /// Required.
   core.String bucketName;
@@ -792,11 +792,10 @@ class AwsS3Data {
 /// An AzureBlobStorageData resource can be a data source, but not a data sink.
 ///
 /// An AzureBlobStorageData resource represents one Azure container. The storage
-/// account determines the [Azure
-/// endpoint](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#storage-account-endpoints).
-/// In an AzureBlobStorageData resource, a blobs's name is the [Azure Blob
-/// Storage blob's key
-/// name](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names).
+/// account determines the
+/// [Azure endpoint](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#storage-account-endpoints).
+/// In an AzureBlobStorageData resource, a blobs's name is the
+/// [Azure Blob Storage blob's key name](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names).
 class AzureBlobStorageData {
   /// Input only.
   ///
@@ -1062,7 +1061,7 @@ class ErrorSummary {
   /// seeking or reading past end-of-file. Unlike `INVALID_ARGUMENT`, this error
   /// indicates a problem that may be fixed if the system state changes. For
   /// example, a 32-bit file system will generate `INVALID_ARGUMENT` if asked to
-  /// read at an offset that is not in the range [0,2^32-1], but it will
+  /// read at an offset that is not in the range \[0,2^32-1\], but it will
   /// generate `OUT_OF_RANGE` if asked to read from an offset past the current
   /// file size. There is a fair bit of overlap between `FAILED_PRECONDITION`
   /// and `OUT_OF_RANGE`. We recommend using `OUT_OF_RANGE` (the more specific
@@ -1133,8 +1132,8 @@ class ErrorSummary {
 /// of Cloud Storage objects, which changes when the content or the metadata of
 /// the object is updated.
 class GcsData {
-  /// Cloud Storage bucket name (see [Bucket Name
-  /// Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+  /// Cloud Storage bucket name (see
+  /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
   ///
   /// Required.
   core.String bucketName;
@@ -1188,19 +1187,19 @@ class GoogleServiceAccount {
 /// has the following tab-delimited fields: * **HTTP URL** — The location of the
 /// object. * **Length** — The size of the object in bytes. * **MD5** — The
 /// base64-encoded MD5 hash of the object. For an example of a valid TSV file,
-/// see [Transferring data from
-/// URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When
-/// transferring data based on a URL list, keep the following in mind: * When an
-/// object located at `http(s)://hostname:port/` is transferred to a data sink,
-/// the name of the object at the data sink is `/`. * If the specified size of
-/// an object does not match the actual size of the object fetched, the object
-/// will not be transferred. * If the specified MD5 does not match the MD5
-/// computed from the transferred bytes, the object transfer will fail. For more
-/// information, see [Generating MD5
-/// hashes](https://cloud.google.com/storage-transfer/docs/create-url-list#md5)
+/// see
+/// [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list).
+/// When transferring data based on a URL list, keep the following in mind: *
+/// When an object located at `http(s)://hostname:port/` is transferred to a
+/// data sink, the name of the object at the data sink is `/`. * If the
+/// specified size of an object does not match the actual size of the object
+/// fetched, the object will not be transferred. * If the specified MD5 does not
+/// match the MD5 computed from the transferred bytes, the object transfer will
+/// fail. For more information, see
+/// [Generating MD5 hashes](https://cloud.google.com/storage-transfer/docs/create-url-list#md5)
 /// * Ensure that each URL you specify is publicly accessible. For example, in
-/// Cloud Storage you can [share an object
-/// publicly](https://cloud.google.com/storage/docs/cloud-console#_sharingdata)
+/// Cloud Storage you can
+/// [share an object publicly](https://cloud.google.com/storage/docs/cloud-console#_sharingdata)
 /// and get a link to it. * Storage Transfer Service obeys `robots.txt` rules
 /// and requires the source HTTP server to support `Range` requests and to
 /// return a `Content-Length` header in each response. * ObjectConditions have
@@ -1323,8 +1322,8 @@ class NotificationConfig {
   /// - "PAYLOAD_FORMAT_UNSPECIFIED" : Illegal value, to avoid allowing a
   /// default.
   /// - "NONE" : No payload is included with the notification.
-  /// - "JSON" : `TransferOperation` is [formatted as a JSON
-  /// response](https://developers.google.com/protocol-buffers/docs/proto3#json),
+  /// - "JSON" : `TransferOperation` is
+  /// [formatted as a JSON response](https://developers.google.com/protocol-buffers/docs/proto3#json),
   /// in application/json.
   core.String payloadFormat;
 

@@ -296,9 +296,9 @@ class OrganizationsDeidentifyTemplatesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -488,9 +488,9 @@ class OrganizationsDeidentifyTemplatesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -664,9 +664,9 @@ class OrganizationsInspectTemplatesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -853,9 +853,9 @@ class OrganizationsInspectTemplatesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -1042,9 +1042,9 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -1234,9 +1234,9 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -1410,9 +1410,9 @@ class OrganizationsLocationsInspectTemplatesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -1599,9 +1599,9 @@ class OrganizationsLocationsInspectTemplatesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -1773,9 +1773,9 @@ class OrganizationsLocationsStoredInfoTypesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -1964,9 +1964,9 @@ class OrganizationsLocationsStoredInfoTypesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -2141,9 +2141,9 @@ class OrganizationsStoredInfoTypesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -2330,9 +2330,9 @@ class OrganizationsStoredInfoTypesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -2527,9 +2527,9 @@ class ProjectsContentResource {
   /// Request parameters:
   ///
   /// [parent] - Parent resource name. The format of this value varies depending
-  /// on whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
@@ -2603,9 +2603,9 @@ class ProjectsContentResource {
   /// Request parameters:
   ///
   /// [parent] - Parent resource name. The format of this value varies depending
-  /// on whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
@@ -2676,9 +2676,9 @@ class ProjectsContentResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
-  /// depending on whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// depending on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
@@ -2757,9 +2757,9 @@ class ProjectsDeidentifyTemplatesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -2947,9 +2947,9 @@ class ProjectsDeidentifyTemplatesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -3185,9 +3185,9 @@ class ProjectsDlpJobsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
-  /// depending on whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// depending on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
@@ -3366,9 +3366,9 @@ class ProjectsDlpJobsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
-  /// depending on whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// depending on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
@@ -3506,9 +3506,9 @@ class ProjectsImageResource {
   /// Request parameters:
   ///
   /// [parent] - Parent resource name. The format of this value varies depending
-  /// on whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
@@ -3586,9 +3586,9 @@ class ProjectsInspectTemplatesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -3773,9 +3773,9 @@ class ProjectsInspectTemplatesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -4007,9 +4007,9 @@ class ProjectsJobTriggersResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
-  /// depending on whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// depending on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
@@ -4186,9 +4186,9 @@ class ProjectsJobTriggersResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
-  /// depending on whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// depending on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
@@ -4400,9 +4400,9 @@ class ProjectsLocationsContentResource {
   /// Request parameters:
   ///
   /// [parent] - Parent resource name. The format of this value varies depending
-  /// on whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
@@ -4476,9 +4476,9 @@ class ProjectsLocationsContentResource {
   /// Request parameters:
   ///
   /// [parent] - Parent resource name. The format of this value varies depending
-  /// on whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
@@ -4549,9 +4549,9 @@ class ProjectsLocationsContentResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
-  /// depending on whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// depending on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
@@ -4630,9 +4630,9 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -4822,9 +4822,9 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -5063,9 +5063,9 @@ class ProjectsLocationsDlpJobsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
-  /// depending on whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// depending on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
@@ -5377,9 +5377,9 @@ class ProjectsLocationsDlpJobsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
-  /// depending on whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// depending on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
@@ -5518,9 +5518,9 @@ class ProjectsLocationsImageResource {
   /// Request parameters:
   ///
   /// [parent] - Parent resource name. The format of this value varies depending
-  /// on whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
@@ -5598,9 +5598,9 @@ class ProjectsLocationsInspectTemplatesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -5787,9 +5787,9 @@ class ProjectsLocationsInspectTemplatesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -6023,9 +6023,9 @@ class ProjectsLocationsJobTriggersResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
-  /// depending on whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// depending on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
@@ -6271,9 +6271,9 @@ class ProjectsLocationsJobTriggersResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
-  /// depending on whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// depending on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID The
   /// following example `parent` string specifies a parent project with the
@@ -6463,9 +6463,9 @@ class ProjectsLocationsStoredInfoTypesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -6654,9 +6654,9 @@ class ProjectsLocationsStoredInfoTypesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -6831,9 +6831,9 @@ class ProjectsStoredInfoTypesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -7020,9 +7020,9 @@ class ProjectsStoredInfoTypesResource {
   ///
   /// [parent] - Required. Parent resource name. The format of this value varies
   /// depending on the scope of the request (project or organization) and
-  /// whether you have [specified a processing
-  /// location](https://cloud.google.com/dlp/docs/specifying-location): +
-  /// Projects scope, location specified:
+  /// whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
   /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
   /// location specified (defaults to global): `projects/`PROJECT_ID +
   /// Organizations scope, location specified:
@@ -8085,8 +8085,9 @@ class GooglePrivacyDlpV2CharsToIgnore {
   /// - "NUMERIC" : 0-9
   /// - "ALPHA_UPPER_CASE" : A-Z
   /// - "ALPHA_LOWER_CASE" : a-z
-  /// - "PUNCTUATION" : US Punctuation, one of !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
-  /// - "WHITESPACE" : Whitespace character, one of [ \t\n\x0B\f\r]
+  /// - "PUNCTUATION" : US Punctuation, one of
+  /// !"#$%&'()*+,-./:;<=>?@\[\]^_\`{|}~
+  /// - "WHITESPACE" : Whitespace character, one of \[ \t\n\x0B\f\r\]
   core.String commonCharactersToIgnore;
 
   GooglePrivacyDlpV2CharsToIgnore();
@@ -10095,8 +10096,8 @@ class GooglePrivacyDlpV2DetectionRule {
 /// This can be used to match sensitive information specific to the data, such
 /// as a list of employee IDs or job titles. Dictionary words are
 /// case-insensitive and all characters other than letters and digits in the
-/// unicode [Basic Multilingual
-/// Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane)
+/// unicode
+/// [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane)
 /// will be replaced with whitespace when scanning for matches, so the
 /// dictionary phrase "Sam Johnson" will match all three phrases "sam johnson",
 /// "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters
@@ -15617,12 +15618,12 @@ class GooglePrivacyDlpV2TimePartConfig {
   /// The part of the time to keep.
   /// Possible string values are:
   /// - "TIME_PART_UNSPECIFIED" : Unused
-  /// - "YEAR" : [0-9999]
-  /// - "MONTH" : [1-12]
-  /// - "DAY_OF_MONTH" : [1-31]
-  /// - "DAY_OF_WEEK" : [1-7]
-  /// - "WEEK_OF_YEAR" : [1-53]
-  /// - "HOUR_OF_DAY" : [0-23]
+  /// - "YEAR" : \[0-9999\]
+  /// - "MONTH" : \[1-12\]
+  /// - "DAY_OF_MONTH" : \[1-31\]
+  /// - "DAY_OF_WEEK" : \[1-7\]
+  /// - "WEEK_OF_YEAR" : \[1-53\]
+  /// - "HOUR_OF_DAY" : \[0-23\]
   core.String partToExtract;
 
   GooglePrivacyDlpV2TimePartConfig();

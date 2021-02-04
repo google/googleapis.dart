@@ -6,11 +6,20 @@ library discoveryapis_generator.dart_comments;
 
 import 'utils.dart';
 
-const _markdownToEscape = {'[', ']', '`'};
+final _markdownToEscape =
+    {'[', ']', '`'}.map((e) => RegExp('([\\\\]*)(\\$e)')).toSet();
 
 String markdownEscape(String input) {
-  for (var char in _markdownToEscape) {
-    input = input.replaceAll(char, '\\$char');
+  for (var pattern in _markdownToEscape) {
+    input = input.replaceAllMapped(
+      pattern,
+      (match) {
+        final slashes = match[1];
+        final char = match[2];
+
+        return '$slashes${slashes.length.isEven ? '\\' : ''}$char';
+      },
+    );
   }
   return input;
 }
@@ -26,9 +35,10 @@ const _docPrefixes = {
 
 final _notEndOfSentence = RegExp(r'\.[a-zA-Z]\. ');
 final _validLinkRegexp = RegExp(
-  r"(\[[\w ,'\.]+\])" // the bit in brackets
+  r"([^ )]*\[[\w ,'\.\/]+\])" // leading non-space, then the bit in brackets
   r'[ ]?' // optional one space between, because discovery docs can be weird
-  r'(\(http[s]?://[^\)\s]+\))' // the bit in parens
+  r'(\(http[s]?://[^\)\s]+\)[^ ]*)' // the bit in parens,
+  // plus an optional trailing non-space
   ,
 );
 
@@ -148,56 +158,67 @@ class Comment {
     final commentString = escapeComment(rawComment);
     final spaces = ' ' * indentationLevel;
 
-    String multilineComment() {
-      final result = StringBuffer();
-
-      final maxCommentLine = 80 - (indentationLevel + '/// '.length);
-      final expandedLines = commentString.split('\n').expand((String s) {
-        if (s.length < maxCommentLine) {
-          return [s];
-        }
-
-        // Try to break the line into several lines.
-        final splitted = <String>[];
-        final sb = StringBuffer();
-
-        for (var part in s.split(' ')) {
-          if ((sb.length + part.length + 1) > maxCommentLine) {
-            // If we have already data, we'll write a new line.
-            if (sb.length > 0) {
-              splitted.add('$sb');
-              sb.clear();
-            }
-          }
-          if (sb.isNotEmpty) sb.write(' ');
-          sb.write(part);
-        }
-        if (sb.isNotEmpty) splitted.add('$sb');
-        return splitted;
-      });
-
-      for (var line in expandedLines) {
-        line = line.trimRight();
-        result.write('$spaces///');
-        if (line.isNotEmpty) {
-          result.writeln(' $line');
-        } else {
-          result.writeln();
-        }
-      }
-
-      return '$result';
-    }
-
     if (!commentString.contains('\n')) {
       final onelineComment =
           '$spaces${'/// ${escapeComment(commentString)}\n'}';
       if (onelineComment.length <= 80) {
         return onelineComment;
       }
-      return multilineComment();
-    } else {
-      return multilineComment();
     }
+
+    final result = StringBuffer();
+
+    final maxCommentLine = 80 - (indentationLevel + '/// '.length);
+    final expandedLines = commentString.split('\n').expand((line) {
+      if (line.length < maxCommentLine) {
+        return [line];
+      }
+
+      // Try to break the line into several lines.
+      final split = <String>[];
+      final buffer = StringBuffer();
+
+      for (var part in urlSplit(line)) {
+        if ((buffer.length + part.length + 1) > maxCommentLine) {
+          // If we have already data, we'll write a new line.
+          if (buffer.length > 0) {
+            split.add(buffer.toString());
+            buffer.clear();
+          }
+        }
+        if (buffer.isNotEmpty) buffer.write(' ');
+        buffer.write(part);
+      }
+      if (buffer.isNotEmpty) split.add(buffer.toString());
+      return split;
+    });
+
+    for (var line in expandedLines) {
+      line = line.trimRight();
+      result.write('$spaces///');
+      if (line.isNotEmpty) {
+        result.writeln(' $line');
+      } else {
+        result.writeln();
+      }
+    }
+
+    return '$result';
   }
+}
+
+List<String> urlSplit(String input) {
+  final result = <String>[];
+
+  input.splitMapJoin(_validLinkRegexp, onMatch: (match) {
+    result.add(match[0]);
+    // no-op - not using the result
+    return '';
+  }, onNonMatch: (value) {
+    result.addAll(value.split(' ').where((element) => element.isNotEmpty));
+    // no-op - not using the result
+    return '';
+  });
+
+  return result;
 }

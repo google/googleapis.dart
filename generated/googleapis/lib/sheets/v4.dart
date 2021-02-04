@@ -3982,8 +3982,8 @@ class BooleanCondition {
   /// when it contains that value and unchecked when it is blank. Two values
   /// indicate that the cell will render as checked when it contains the first
   /// value and unchecked when it contains the second value. For example,
-  /// ["Yes","No"] indicates that the cell will render a checked box when it has
-  /// the value "Yes" and an unchecked box when it has the value "No".
+  /// \["Yes","No"\] indicates that the cell will render a checked box when it
+  /// has the value "Yes" and an unchecked box when it has the value "No".
   /// - "TEXT_NOT_EQ" : The cell's value must be exactly not the condition's
   /// value. Supported by filters on data source objects. Requires at least one
   /// ConditionValue.
@@ -6014,7 +6014,7 @@ class DataExecutionStatus {
   /// - "TOO_MANY_CHARS_PER_CELL" : The data execution returns values that
   /// exceed the maximum characters allowed in a single cell.
   /// - "DATA_NOT_FOUND" : The database referenced by the data source is not
-  /// found.  * /
+  /// found. * /
   /// - "PERMISSION_DENIED" : The user does not have access to the database
   /// referenced by the data source.
   /// - "MISSING_COLUMN_ALIAS" : The data execution returns columns with missing
@@ -6460,8 +6460,8 @@ class DataSourceParameter {
   /// Named parameter.
   ///
   /// Must be a legitimate identifier for the DataSource that supports it. For
-  /// example, [BigQuery
-  /// identifier](https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#identifiers).
+  /// example,
+  /// [BigQuery identifier](https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#identifiers).
   core.String name;
 
   /// ID of a NamedRange.

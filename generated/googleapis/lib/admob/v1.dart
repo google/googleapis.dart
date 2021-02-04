@@ -796,8 +796,9 @@ class MediationReportSpecDimensionFilter {
   /// - "WEEK" : The date of the first day of a week in the YYYY-MM-DD format
   /// (for example, "2018-12-21"). Requests can specify at most one time
   /// dimension.
-  /// - "AD_SOURCE" : The [unique ID of the ad source](/admob/api/v1/ad_sources)
-  /// (for example, "5450213213286189855" and "AdMob Network" as label value).
+  /// - "AD_SOURCE" : The \[unique ID of the ad
+  /// source\](/admob/api/v1/ad_sources) (for example, "5450213213286189855" and
+  /// "AdMob Network" as label value).
   /// - "AD_SOURCE_INSTANCE" : The unique ID of the ad source instance (for
   /// example, "ca-app-pub-1234#5678" and "AdMob (default)" as label value).
   /// - "AD_UNIT" : The unique ID of the ad unit (for example,
@@ -855,8 +856,9 @@ class MediationReportSpecSortCondition {
   /// - "WEEK" : The date of the first day of a week in the YYYY-MM-DD format
   /// (for example, "2018-12-21"). Requests can specify at most one time
   /// dimension.
-  /// - "AD_SOURCE" : The [unique ID of the ad source](/admob/api/v1/ad_sources)
-  /// (for example, "5450213213286189855" and "AdMob Network" as label value).
+  /// - "AD_SOURCE" : The \[unique ID of the ad
+  /// source\](/admob/api/v1/ad_sources) (for example, "5450213213286189855" and
+  /// "AdMob Network" as label value).
   /// - "AD_SOURCE_INSTANCE" : The unique ID of the ad source instance (for
   /// example, "ca-app-pub-1234#5678" and "AdMob (default)" as label value).
   /// - "AD_UNIT" : The unique ID of the ad unit (for example,
@@ -1094,9 +1096,9 @@ class NetworkReportSpecDimensionFilter {
   /// "ca-app-pub-1234~1234").
   /// - "AD_TYPE" : Type of the ad (for example, "text" or "image"), an ad
   /// delivery dimension. **Warning:** The dimension is incompatible with
-  /// [AD_REQUESTS](#Metric.ENUM_VALUES.AD_REQUESTS),
-  /// [MATCH_RATE](#Metric.ENUM_VALUES.MATCH_RATE) and
-  /// [IMPRESSION_RPM](#Metric.ENUM_VALUES.IMPRESSION_RPM) metrics.
+  /// \[AD_REQUESTS\](#Metric.ENUM_VALUES.AD_REQUESTS),
+  /// \[MATCH_RATE\](#Metric.ENUM_VALUES.MATCH_RATE) and
+  /// \[IMPRESSION_RPM\](#Metric.ENUM_VALUES.IMPRESSION_RPM) metrics.
   /// - "COUNTRY" : CLDR country code of the place where the ad views/clicks
   /// occur (for example, "US" or "FR"). This is a geography dimension.
   /// - "FORMAT" : Format of the ad unit (for example, "banner", "native"), an
@@ -1152,9 +1154,9 @@ class NetworkReportSpecSortCondition {
   /// "ca-app-pub-1234~1234").
   /// - "AD_TYPE" : Type of the ad (for example, "text" or "image"), an ad
   /// delivery dimension. **Warning:** The dimension is incompatible with
-  /// [AD_REQUESTS](#Metric.ENUM_VALUES.AD_REQUESTS),
-  /// [MATCH_RATE](#Metric.ENUM_VALUES.MATCH_RATE) and
-  /// [IMPRESSION_RPM](#Metric.ENUM_VALUES.IMPRESSION_RPM) metrics.
+  /// \[AD_REQUESTS\](#Metric.ENUM_VALUES.AD_REQUESTS),
+  /// \[MATCH_RATE\](#Metric.ENUM_VALUES.MATCH_RATE) and
+  /// \[IMPRESSION_RPM\](#Metric.ENUM_VALUES.IMPRESSION_RPM) metrics.
   /// - "COUNTRY" : CLDR country code of the place where the ad views/clicks
   /// occur (for example, "US" or "FR"). This is a geography dimension.
   /// - "FORMAT" : Format of the ad unit (for example, "banner", "native"), an
@@ -1168,7 +1170,7 @@ class NetworkReportSpecSortCondition {
   /// - "METRIC_UNSPECIFIED" : Default value for an unset field. Do not use.
   /// - "AD_REQUESTS" : The number of ad requests. The value is an integer.
   /// **Warning:** The metric is incompatible with
-  /// [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.
+  /// \[AD_TYPE\](#Dimension.ENUM_VALUES.AD_TYPE) dimension.
   /// - "CLICKS" : The number of times a user clicks an ad. The value is an
   /// integer.
   /// - "ESTIMATED_EARNINGS" : The estimated earnings of the AdMob publisher.
@@ -1182,13 +1184,13 @@ class NetworkReportSpecSortCondition {
   /// - "IMPRESSION_RPM" : The estimated earnings per thousand ad impressions.
   /// The value is in micros. For example, $1.03 would be represented as
   /// 1030000. **Warning:** The metric is incompatible with
-  /// [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.
+  /// \[AD_TYPE\](#Dimension.ENUM_VALUES.AD_TYPE) dimension.
   /// - "MATCHED_REQUESTS" : The number of times ads are returned in response to
   /// a request. The value is an integer.
   /// - "MATCH_RATE" : The ratio of matched ad requests over the total ad
   /// requests. The value is a double precision (approximate) decimal value.
   /// **Warning:** The metric is incompatible with
-  /// [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.
+  /// \[AD_TYPE\](#Dimension.ENUM_VALUES.AD_TYPE) dimension.
   /// - "SHOW_RATE" : The ratio of ads that are displayed over ads that are
   /// returned, defined as impressions / matched requests. The value is a double
   /// precision (approximate) decimal value.

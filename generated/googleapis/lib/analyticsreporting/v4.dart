@@ -465,8 +465,8 @@ class CohortGroup {
   /// Enable Life Time Value (LTV).
   ///
   /// LTV measures lifetime value for users acquired through different channels.
-  /// Please see: [Cohort
-  /// Analysis](https://support.google.com/analytics/answer/6074676) and
+  /// Please see:
+  /// [Cohort Analysis](https://support.google.com/analytics/answer/6074676) and
   /// [Lifetime Value](https://support.google.com/analytics/answer/6182550) If
   /// the value of lifetimeValue is false: - The metric values are similar to
   /// the values in the web interface cohort report. - The cohort definition
@@ -481,8 +481,8 @@ class CohortGroup {
   /// and Session Duration) grow during the 90 days after a user is acquired. -
   /// The metrics are calculated as a cumulative average per user per the time
   /// increment. - The cohort definition date ranges need not be aligned to the
-  /// calendar week and month boundaries. - The `viewId` must be an [app view
-  /// ID](https://support.google.com/analytics/answer/2649553#WebVersusAppViews)
+  /// calendar week and month boundaries. - The `viewId` must be an
+  /// [app view ID](https://support.google.com/analytics/answer/2649553#WebVersusAppViews)
   core.bool lifetimeValue;
 
   CohortGroup();
@@ -761,7 +761,7 @@ class DimensionFilter {
   /// - "IN_LIST" : This option is used to specify a dimension filter whose
   /// expression can take any value from a selected list of values. This helps
   /// avoiding evaluating multiple exact match dimension filters which are OR'ed
-  /// for every single response row. For example: expressions: ["A", "B", "C"]
+  /// for every single response row. For example: expressions: \["A", "B", "C"\]
   /// Any response row whose dimension has it is value as A, B or C, matches
   /// this DimensionFilter.
   core.String operator;
@@ -2097,8 +2097,8 @@ class ReportRequest {
   /// filter, followed by the filter expression. For example, the following
   /// expression selects `ga:browser` dimension which starts with Firefox;
   /// `ga:browser=~^Firefox`. For more information on dimensions and metric
-  /// filters, see [Filters
-  /// reference](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#filters).
+  /// filters, see
+  /// [Filters reference](https://developers.google.com/analytics/devguides/reporting/core/v3/reference#filters).
   core.String filtersExpression;
 
   /// If set to true, hides the total of all metrics for all the matching rows,
@@ -2188,9 +2188,9 @@ class ReportRequest {
   /// `ga:segment` dimension.
   core.List<Segment> segments;
 
-  /// The Analytics [view
-  /// ID](https://support.google.com/analytics/answer/1009618) from which to
-  /// retrieve data.
+  /// The Analytics
+  /// [view ID](https://support.google.com/analytics/answer/1009618) from which
+  /// to retrieve data.
   ///
   /// Every \[ReportRequest\](#ReportRequest) within a `batchGet` method must
   /// contain the same `viewId`.
@@ -2494,9 +2494,9 @@ class SearchUserActivityRequest {
   /// Required.
   User user;
 
-  /// The Analytics [view
-  /// ID](https://support.google.com/analytics/answer/1009618) from which to
-  /// retrieve data.
+  /// The Analytics
+  /// [view ID](https://support.google.com/analytics/answer/1009618) from which
+  /// to retrieve data.
   ///
   /// Every \[SearchUserActivityRequest\](#SearchUserActivityRequest) must
   /// contain the `viewId`.
@@ -2562,9 +2562,9 @@ class SearchUserActivityResponse {
   /// next page.
   core.String nextPageToken;
 
-  /// This field represents the [sampling
-  /// rate](https://support.google.com/analytics/answer/2637192) for the given
-  /// request and is a number between 0.0 to 1.0.
+  /// This field represents the
+  /// [sampling rate](https://support.google.com/analytics/answer/2637192) for
+  /// the given request and is a number between 0.0 to 1.0.
   ///
   /// See \[developer
   /// guide\](/analytics/devguides/reporting/core/v4/basics#sampling) for
@@ -2710,7 +2710,7 @@ class SegmentDimensionFilter {
   /// - "IN_LIST" : This option is used to specify a dimension filter whose
   /// expression can take any value from a selected list of values. This helps
   /// avoiding evaluating multiple exact match dimension filters which are OR'ed
-  /// for every single response row. For example: expressions: ["A", "B", "C"]
+  /// for every single response row. For example: expressions: \["A", "B", "C"\]
   /// Any response row whose dimension has it is value as A, B or C, matches
   /// this DimensionFilter.
   /// - "NUMERIC_LESS_THAN" : Integer comparison filters. case sensitivity is

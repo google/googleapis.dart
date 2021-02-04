@@ -715,7 +715,7 @@ class SearchAnalyticsQueryRequest {
   /// if aggregated by page, all data is aggregated by canonical URI. If you
   /// filter or group by page, choose AUTO; otherwise you can aggregate either
   /// by property or by page, depending on how you want your data calculated;
-  /// see  the help documentation to learn how data is calculated differently by
+  /// see the help documentation to learn how data is calculated differently by
   /// site versus by page.
   ///
   /// Note: If you group or filter by page, you cannot aggregate by property.

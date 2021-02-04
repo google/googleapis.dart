@@ -1097,8 +1097,6 @@ DartSchemaTypeDB parseSchemas(
             final propertyType =
                 parse(propertyClass, propertyClassScope, value);
 
-            // TODO: use Comment.header here – but we need to handle things like
-            //  'Required.' 'Optional.' etc as a prefix!
             var comment = Comment.header(value.description, true);
             comment = extendEnumComment(comment, propertyType);
             comment = extendAnyTypeComment(comment, propertyType);
@@ -1238,7 +1236,7 @@ Comment extendEnumComment(Comment baseComment, DartSchemaType type) {
         s.writeln('- "${type.enumValues[i]}"');
       }
     }
-    return Comment('$s');
+    return Comment(bracketClean(s.toString()));
   }
   return baseComment;
 }

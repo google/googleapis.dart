@@ -779,7 +779,7 @@ class SubscriptionsResource {
   /// Possible string values are:
   /// - "cancel" : Cancels the subscription immediately. This does not apply to
   /// a G Suite subscription.
-  /// - "transfer_to_direct" : Transfers a subscription directly to Google.  The
+  /// - "transfer_to_direct" : Transfers a subscription directly to Google. The
   /// customer is immediately transferred to a direct billing relationship with
   /// Google and is given a short amount of time with no service interruption.
   /// The customer can then choose to set up billing directly with Google by
@@ -1952,14 +1952,14 @@ class Subscription {
   ///
   /// The skuId is a unique system identifier for a product's SKU assigned to a
   /// customer in the subscription. For products and SKUs available in this
-  /// version of the API, see  Product and SKU IDs.
+  /// version of the API, see Product and SKU IDs.
   core.String skuId;
 
   /// Read-only external display name for a product's SKU assigned to a customer
   /// in the subscription.
   ///
   /// SKU names are subject to change at Google's discretion. For products and
-  /// SKUs available in this version of the API, see  Product and SKU IDs.
+  /// SKUs available in this version of the API, see Product and SKU IDs.
   core.String skuName;
 
   /// This is an optional property.
