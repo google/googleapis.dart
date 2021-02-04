@@ -154,8 +154,6 @@ Official API documentation: https://cloud.google.com/document-ai/docs/
 
 #### Fact Check Tools API - factchecktools v1alpha1
 
-
-
 Official API documentation: https://developers.google.com/fact-check/tools/api/
 
 #### Firebase Management API - firebase v1beta1
@@ -220,8 +218,6 @@ Official API documentation: https://cloud.google.com/compute/docs/oslogin/
 
 #### SAS Portal API (Testing) - prod_tt_sasportal v1alpha1
 
-
-
 Official API documentation: https://developers.google.com/spectrum-access-system/
 
 #### Cloud Pub/Sub API - pubsub v1beta2
@@ -237,8 +233,6 @@ The Runtime Configurator allows you to dynamically configure and expose variable
 Official API documentation: https://cloud.google.com/deployment-manager/runtime-configurator/
 
 #### SAS Portal API - sasportal v1alpha1
-
-
 
 Official API documentation: https://developers.google.com/spectrum-access-system/
 

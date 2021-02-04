@@ -240,7 +240,9 @@ class DiscoveryPackagesConfiguration {
   static List _listFromYaml(List value) => value ?? [];
 
   static String _generateReadme(
-      String readmeFile, List<RestDescription> items) {
+    String readmeFile,
+    List<RestDescription> items,
+  ) {
     final sb = StringBuffer();
     if (readmeFile != null) {
       sb.write(File(readmeFile).readAsStringSync());
@@ -259,11 +261,11 @@ package.
           item.icons.x16.startsWith('https://')) {
         sb.write('![Logo](${item.icons.x16}) ');
       }
-      sb
-        ..writeln('${item.title} - ${item.name} ${item.version}')
-        ..writeln()
-        ..writeln(item.description)
-        ..writeln();
+      sb..writeln('${item.title} - ${item.name} ${item.version}')..writeln();
+
+      if (item.description != null && item.description.isNotEmpty) {
+        sb..writeln(item.description)..writeln();
+      }
       if (item.documentationLink != null) {
         sb
           ..writeln('Official API documentation: ${item.documentationLink}')

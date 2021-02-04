@@ -442,8 +442,6 @@ Official API documentation: https://cloud.google.com/dlp/docs/
 
 #### Cloud DNS API - dns v1
 
-
-
 Official API documentation: http://developers.google.com/cloud-dns
 
 #### Google Docs API - docs v1
@@ -573,8 +571,6 @@ Manage, store, and access healthcare data in Google Cloud Platform.
 Official API documentation: https://cloud.google.com/healthcare
 
 #### HomeGraph API - homegraph v1
-
-
 
 Official API documentation: https://developers.google.com/actions/smarthome/create-app#request-sync
 
@@ -718,8 +714,6 @@ Official API documentation: https://developers.google.com/android/work/play/cust
 
 #### Policy Troubleshooter API - policytroubleshooter v1
 
-
-
 Official API documentation: https://cloud.google.com/iam/
 
 #### Poly API - poly v1
@@ -736,8 +730,6 @@ Provides reliable, many-to-many, asynchronous messaging between applications.
 Official API documentation: https://cloud.google.com/pubsub/docs
 
 #### Recommender API - recommender v1
-
-
 
 Official API documentation: https://cloud.google.com/recommender/docs/
 
