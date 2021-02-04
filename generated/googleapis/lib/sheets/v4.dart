@@ -3982,8 +3982,8 @@ class BooleanCondition {
   /// when it contains that value and unchecked when it is blank. Two values
   /// indicate that the cell will render as checked when it contains the first
   /// value and unchecked when it contains the second value. For example,
-  /// ["Yes","No"] indicates that the cell will render a checked box when it has
-  /// the value "Yes" and an unchecked box when it has the value "No".
+  /// \["Yes","No"\] indicates that the cell will render a checked box when it
+  /// has the value "Yes" and an unchecked box when it has the value "No".
   /// - "TEXT_NOT_EQ" : The cell's value must be exactly not the condition's
   /// value. Supported by filters on data source objects. Requires at least one
   /// ConditionValue.

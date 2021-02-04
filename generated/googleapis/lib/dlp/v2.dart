@@ -8085,8 +8085,9 @@ class GooglePrivacyDlpV2CharsToIgnore {
   /// - "NUMERIC" : 0-9
   /// - "ALPHA_UPPER_CASE" : A-Z
   /// - "ALPHA_LOWER_CASE" : a-z
-  /// - "PUNCTUATION" : US Punctuation, one of !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
-  /// - "WHITESPACE" : Whitespace character, one of [ \t\n\x0B\f\r]
+  /// - "PUNCTUATION" : US Punctuation, one of
+  /// !"#$%&'()*+,-./:;<=>?@\[\]^_\`{|}~
+  /// - "WHITESPACE" : Whitespace character, one of \[ \t\n\x0B\f\r\]
   core.String commonCharactersToIgnore;
 
   GooglePrivacyDlpV2CharsToIgnore();
@@ -15617,12 +15618,12 @@ class GooglePrivacyDlpV2TimePartConfig {
   /// The part of the time to keep.
   /// Possible string values are:
   /// - "TIME_PART_UNSPECIFIED" : Unused
-  /// - "YEAR" : [0-9999]
-  /// - "MONTH" : [1-12]
-  /// - "DAY_OF_MONTH" : [1-31]
-  /// - "DAY_OF_WEEK" : [1-7]
-  /// - "WEEK_OF_YEAR" : [1-53]
-  /// - "HOUR_OF_DAY" : [0-23]
+  /// - "YEAR" : \[0-9999\]
+  /// - "MONTH" : \[1-12\]
+  /// - "DAY_OF_MONTH" : \[1-31\]
+  /// - "DAY_OF_WEEK" : \[1-7\]
+  /// - "WEEK_OF_YEAR" : \[1-53\]
+  /// - "HOUR_OF_DAY" : \[0-23\]
   core.String partToExtract;
 
   GooglePrivacyDlpV2TimePartConfig();

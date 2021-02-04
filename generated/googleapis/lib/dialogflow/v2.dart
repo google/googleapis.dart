@@ -6931,7 +6931,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   /// - "AUDIO_ENCODING_LINEAR_16" : Uncompressed 16-bit signed little-endian
   /// samples (Linear PCM).
   /// - "AUDIO_ENCODING_FLAC" :
-  /// [`FLAC`](https://xiph.org/flac/documentation.html) (Free Lossless Audio
+  /// \[`FLAC`\](https://xiph.org/flac/documentation.html) (Free Lossless Audio
   /// Codec) is the recommended encoding because it is lossless (therefore
   /// recognition is not compromised) and requires only about half the bandwidth
   /// of `LINEAR16`. `FLAC` stream encoding supports 16-bit and 24-bit samples,

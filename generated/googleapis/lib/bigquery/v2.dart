@@ -8891,14 +8891,14 @@ class Model {
   /// - "LOGISTIC_REGRESSION" : Logistic regression based classification model.
   /// - "KMEANS" : K-means clustering model.
   /// - "MATRIX_FACTORIZATION" : Matrix factorization model.
-  /// - "DNN_CLASSIFIER" : [Beta] DNN classifier model.
-  /// - "TENSORFLOW" : [Beta] An imported TensorFlow model.
-  /// - "DNN_REGRESSOR" : [Beta] DNN regressor model.
-  /// - "BOOSTED_TREE_REGRESSOR" : [Beta] Boosted tree regressor model.
-  /// - "BOOSTED_TREE_CLASSIFIER" : [Beta] Boosted tree classifier model.
-  /// - "ARIMA" : [Beta] ARIMA model.
-  /// - "AUTOML_REGRESSOR" : [Beta] AutoML Tables regression model.
-  /// - "AUTOML_CLASSIFIER" : [Beta] AutoML Tables classification model.
+  /// - "DNN_CLASSIFIER" : \[Beta\] DNN classifier model.
+  /// - "TENSORFLOW" : \[Beta\] An imported TensorFlow model.
+  /// - "DNN_REGRESSOR" : \[Beta\] DNN regressor model.
+  /// - "BOOSTED_TREE_REGRESSOR" : \[Beta\] Boosted tree regressor model.
+  /// - "BOOSTED_TREE_CLASSIFIER" : \[Beta\] Boosted tree classifier model.
+  /// - "ARIMA" : \[Beta\] ARIMA model.
+  /// - "AUTOML_REGRESSOR" : \[Beta\] AutoML Tables regression model.
+  /// - "AUTOML_CLASSIFIER" : \[Beta\] AutoML Tables classification model.
   core.String modelType;
 
   /// Information for all training runs in increasing order of start_time.
@@ -10879,7 +10879,7 @@ class StandardSqlDataType {
   /// - "NUMERIC" : Encoded as a decimal string.
   /// - "BIGNUMERIC" : Encoded as a decimal string.
   /// - "ARRAY" : Encoded as a list with types matching Type.array_type.
-  /// - "STRUCT" : Encoded as a list with fields of type Type.struct_type[i].
+  /// - "STRUCT" : Encoded as a list with fields of type Type.struct_type\[i\].
   /// List is used because a JSON object cannot have duplicate field names.
   core.String typeKind;
 

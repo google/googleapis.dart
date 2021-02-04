@@ -1774,7 +1774,7 @@ class File {
   /// - "HTML" : A file containing client-side HTML.
   /// - "JSON" : A file in JSON format. This type is only used for the script
   /// project's manifest. The manifest file content must match the structure of
-  /// a valid [ScriptManifest](/apps-script/concepts/manifests)
+  /// a valid \[ScriptManifest\](/apps-script/concepts/manifests)
   core.String type;
 
   /// Last modified date timestamp.

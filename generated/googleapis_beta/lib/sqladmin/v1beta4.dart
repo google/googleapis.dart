@@ -5041,7 +5041,7 @@ class Flag {
   /// - "INTEGER" : Integer type flag.
   /// - "NONE" : Flag type used for a server startup option.
   /// - "MYSQL_TIMEZONE_OFFSET" : Type introduced specically for MySQL TimeZone
-  /// offset. Accept a string value with the format [-12:59, 13:00].
+  /// offset. Accept a string value with the format \[-12:59, 13:00\].
   /// - "FLOAT" : Float type flag.
   /// - "REPEATED_STRING" : Comma-separated list of the strings in a SqlFlagType
   /// enum.

@@ -2008,8 +2008,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
   ///
   /// See
   /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
-  /// For details on the implementation of RetrieveStudy, see \[DICOM
-  /// study/series/instances\](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
+  /// For details on the implementation of RetrieveStudy, see
+  /// [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveStudy, see
   /// [Retrieving DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
@@ -2469,8 +2469,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
   ///
   /// See
   /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
-  /// For details on the implementation of RetrieveSeries, see \[DICOM
-  /// study/series/instances\](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
+  /// For details on the implementation of RetrieveSeries, see
+  /// [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
   /// how to call RetrieveSeries, see
   /// [Retrieving DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieving_dicom_data).
@@ -2703,8 +2703,8 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
   ///
   /// See
   /// [RetrieveTransaction](http://dicom.nema.org/medical/dicom/current/output/html/part18.html#sect_10.4).
-  /// For details on the implementation of RetrieveInstance, see \[DICOM
-  /// study/series/instances\](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
+  /// For details on the implementation of RetrieveInstance, see
+  /// [DICOM study/series/instances](https://cloud.google.com/healthcare/docs/dicom#dicom_studyseriesinstances)
   /// and
   /// [DICOM instances](https://cloud.google.com/healthcare/docs/dicom#dicom_instances)
   /// in the Cloud Healthcare API conformance statement. For samples that show
@@ -7563,7 +7563,7 @@ class Hl7V2NotificationConfig {
   /// existence of a label. For example, `labels."priority":*`.
   core.String filter;
 
-  /// The \[Cloud Pub/Sub\](https://cloud.google.com/pubsub/docs/) topic that
+  /// The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
   /// notifications of changes are published on.
   ///
   /// Supplied by the client. The notification is a `PubsubMessage` with the
@@ -8536,7 +8536,7 @@ class Message {
 
 /// Specifies where to send notifications upon changes to a data store.
 class NotificationConfig {
-  /// The \[Cloud Pub/Sub\](https://cloud.google.com/pubsub/docs/) topic that
+  /// The [Cloud Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
   /// notifications of changes are published on.
   ///
   /// Supplied by the client. PubsubMessage.Data contains the resource name.
@@ -8551,8 +8551,8 @@ class NotificationConfig {
   /// a notification can't be published to Cloud Pub/Sub, errors are logged to
   /// Cloud Logging (see \[Viewing logs\](/healthcare/docs/how-tos/logging)). If
   /// the number of errors exceeds a certain rate, some aren't submitted. Note
-  /// that not all operations trigger notifications, see \[Configuring Pub/Sub
-  /// notifications\](https://cloud.google.com/healthcare/docs/how-tos/pubsub)
+  /// that not all operations trigger notifications, see
+  /// [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub)
   /// for specific details.
   core.String pubsubTopic;
 
@@ -9149,7 +9149,7 @@ class Segment {
   /// The key string uses zero-based indexes separated by dots to identify
   /// Fields, components and sub-components. A bracket notation is also used to
   /// identify different instances of a repeated field. Regex for key:
-  /// (\d+)(\\[\d+\\])?(.\d+)?(.\d+)? Examples of (key, value) pairs: * (0.1,
+  /// (\d+)(\[\d+\])?(.\d+)?(.\d+)? Examples of (key, value) pairs: * (0.1,
   /// "hemoglobin") denotes that the first component of Field 0 has the value
   /// "hemoglobin". * (1.1.2, "CBC") denotes that the second sub-component of
   /// the first component of Field 1 has the value "CBC". * (1\[0\].1, "HbA1c")

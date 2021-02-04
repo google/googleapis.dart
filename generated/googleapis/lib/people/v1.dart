@@ -5101,16 +5101,16 @@ class Source {
   /// - "ACCOUNT" : [Google Account](https://accounts.google.com).
   /// - "PROFILE" : [Google profile](https://profiles.google.com). You can view
   /// the profile at
-  /// [https://profiles.google.com/](https://profiles.google.com/){id}, where
+  /// \[https://profiles.google.com/\](https://profiles.google.com/){id}, where
   /// {id} is the source id.
   /// - "DOMAIN_PROFILE" :
   /// [G Suite domain profile](https://support.google.com/a/answer/1628008).
   /// - "CONTACT" : [Google contact](https://contacts.google.com). You can view
   /// the contact at
-  /// [https://contact.google.com/](https://contact.google.com/){id}, where {id}
-  /// is the source id.
-  /// - "OTHER_CONTACT" : [Google "Other
-  /// contact"](https://contacts.google.com/other).
+  /// \[https://contact.google.com/\](https://contact.google.com/){id}, where
+  /// {id} is the source id.
+  /// - "OTHER_CONTACT" : \[Google "Other
+  /// contact"\](https://contacts.google.com/other).
   /// - "DOMAIN_CONTACT" :
   /// [G Suite domain shared contact](https://support.google.com/a/answer/9281635).
   core.String type;

@@ -3145,11 +3145,12 @@ class PublicKeyCredential {
   /// This is an invalid default value and must not be used.
   /// - "RSA_PEM" : An RSA public key encoded in base64, and wrapped by
   /// `-----BEGIN PUBLIC KEY-----` and `-----END PUBLIC KEY-----`. This can be
-  /// used to verify `RS256` signatures in JWT tokens ([RFC7518](
+  /// used to verify `RS256` signatures in JWT tokens (\[RFC7518\](
   /// https://www.ietf.org/rfc/rfc7518.txt)).
   /// - "RSA_X509_PEM" : As RSA_PEM, but wrapped in an X.509v3 certificate
-  /// ([RFC5280]( https://www.ietf.org/rfc/rfc5280.txt)), encoded in base64, and
-  /// wrapped by `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
+  /// (\[RFC5280\]( https://www.ietf.org/rfc/rfc5280.txt)), encoded in base64,
+  /// and wrapped by `-----BEGIN CERTIFICATE-----` and `-----END
+  /// CERTIFICATE-----`.
   /// - "ES256_PEM" : Public key for the ECDSA algorithm using P-256 and
   /// SHA-256, encoded in base64, and wrapped by `-----BEGIN PUBLIC KEY-----`
   /// and `-----END PUBLIC KEY-----`. This can be used to verify JWT tokens with
@@ -3157,8 +3158,9 @@ class PublicKeyCredential {
   /// This curve is defined in [OpenSSL](https://www.openssl.org/) as the
   /// `prime256v1` curve.
   /// - "ES256_X509_PEM" : As ES256_PEM, but wrapped in an X.509v3 certificate
-  /// ([RFC5280]( https://www.ietf.org/rfc/rfc5280.txt)), encoded in base64, and
-  /// wrapped by `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
+  /// (\[RFC5280\]( https://www.ietf.org/rfc/rfc5280.txt)), encoded in base64,
+  /// and wrapped by `-----BEGIN CERTIFICATE-----` and `-----END
+  /// CERTIFICATE-----`.
   core.String format;
 
   /// The key data.

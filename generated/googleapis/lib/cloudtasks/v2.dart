@@ -2612,7 +2612,7 @@ class Queue {
   ///
   /// `state` can only be changed by called PauseQueue, ResumeQueue, or
   /// uploading
-  /// \[queue.yaml/xml\](https://cloud.google.com/appengine/docs/python/config/queueref).
+  /// [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref).
   /// UpdateQueue cannot be used to change `state`.
   ///
   /// Output only.
@@ -2734,16 +2734,15 @@ class RateLimits {
   /// until the number of concurrent requests decreases. If unspecified when the
   /// queue is created, Cloud Tasks will pick the default. The maximum allowed
   /// value is 5,000. This field has the same meaning as
-  /// \[max_concurrent_requests in
-  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests).
+  /// [max_concurrent_requests in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests).
   core.int maxConcurrentDispatches;
 
   /// The maximum rate at which tasks are dispatched from this queue.
   ///
   /// If unspecified when the queue is created, Cloud Tasks will pick the
   /// default. * The maximum allowed value is 500. This field has the same
-  /// meaning as \[rate in
-  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).
+  /// meaning as
+  /// [rate in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#rate).
   core.double maxDispatchesPerSecond;
 
   RateLimits();
@@ -2800,8 +2799,8 @@ class RetryConfig {
   /// first attempt fails, then there will be `max_attempts - 1` retries). Must
   /// be >= -1. If unspecified when the queue is created, Cloud Tasks will pick
   /// the default. -1 indicates unlimited attempts. This field has the same
-  /// meaning as \[task_retry_limit in
-  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+  /// meaning as
+  /// [task_retry_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.int maxAttempts;
 
   /// A task will be scheduled for retry between min_backoff and max_backoff
@@ -2810,8 +2809,8 @@ class RetryConfig {
   ///
   /// If unspecified when the queue is created, Cloud Tasks will pick the
   /// default. `max_backoff` will be truncated to the nearest second. This field
-  /// has the same meaning as \[max_backoff_seconds in
-  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+  /// has the same meaning as
+  /// [max_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.String maxBackoff;
 
   /// The time between retries will double `max_doublings` times.
@@ -2826,8 +2825,7 @@ class RetryConfig {
   /// max_attempts times. Thus, the requests will retry at 10s, 20s, 40s, 80s,
   /// 160s, 240s, 300s, 300s, .... If unspecified when the queue is created,
   /// Cloud Tasks will pick the default. This field has the same meaning as
-  /// \[max_doublings in
-  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+  /// [max_doublings in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.int maxDoublings;
 
   /// If positive, `max_retry_duration` specifies the time limit for retrying a
@@ -2838,8 +2836,8 @@ class RetryConfig {
   /// task will be deleted. If zero, then the task age is unlimited. If
   /// unspecified when the queue is created, Cloud Tasks will pick the default.
   /// `max_retry_duration` will be truncated to the nearest second. This field
-  /// has the same meaning as \[task_age_limit in
-  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+  /// has the same meaning as
+  /// [task_age_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.String maxRetryDuration;
 
   /// A task will be scheduled for retry between min_backoff and max_backoff
@@ -2848,8 +2846,8 @@ class RetryConfig {
   ///
   /// If unspecified when the queue is created, Cloud Tasks will pick the
   /// default. `min_backoff` will be truncated to the nearest second. This field
-  /// has the same meaning as \[min_backoff_seconds in
-  /// queue.yaml/xml\](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
+  /// has the same meaning as
+  /// [min_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
   core.String minBackoff;
 
   RetryConfig();

@@ -6,11 +6,20 @@ library discoveryapis_generator.dart_comments;
 
 import 'utils.dart';
 
-const _markdownToEscape = {'[', ']', '`'};
+final _markdownToEscape =
+    {'[', ']', '`'}.map((e) => RegExp('([\\\\]*)(\\$e)')).toSet();
 
 String markdownEscape(String input) {
-  for (var char in _markdownToEscape) {
-    input = input.replaceAll(char, '\\$char');
+  for (var pattern in _markdownToEscape) {
+    input = input.replaceAllMapped(
+      pattern,
+      (match) {
+        final slashes = match[1];
+        final char = match[2];
+
+        return '$slashes${slashes.length.isEven ? '\\' : ''}$char';
+      },
+    );
   }
   return input;
 }
@@ -26,7 +35,7 @@ const _docPrefixes = {
 
 final _notEndOfSentence = RegExp(r'\.[a-zA-Z]\. ');
 final _validLinkRegexp = RegExp(
-  r"([^ )]*\[[\w ,'\.]+\])" // leading non-space, then the bit in brackets
+  r"([^ )]*\[[\w ,'\.\/]+\])" // leading non-space, then the bit in brackets
   r'[ ]?' // optional one space between, because discovery docs can be weird
   r'(\(http[s]?://[^\)\s]+\)[^ ]*)' // the bit in parens,
   // plus an optional trailing non-space

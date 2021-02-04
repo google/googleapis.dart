@@ -7420,7 +7420,7 @@ class SearchJobsRequest {
   /// the search results: Job.name, Job.requisition_id, Job.job_title,
   /// Job.company_name, Job.job_locations.
   /// - "FULL" : All available attributes are included in the search results.
-  /// Note: [Job.description, Job.responsibilities, Job.qualifications and
+  /// Note: \[Job.description, Job.responsibilities, Job.qualifications and
   /// Job.incentives are deprecated. These fields are scheduled to be removed
   /// from MatchingJob.Job objects in the SearchJobsResponse results on
   /// 12/31/2018. See the alternative MatchingJob.search_text_snippet and
@@ -7680,7 +7680,7 @@ class SearchJobsResponse {
   /// the search results: Job.name, Job.requisition_id, Job.job_title,
   /// Job.company_name, Job.job_locations.
   /// - "FULL" : All available attributes are included in the search results.
-  /// Note: [Job.description, Job.responsibilities, Job.qualifications and
+  /// Note: \[Job.description, Job.responsibilities, Job.qualifications and
   /// Job.incentives are deprecated. These fields are scheduled to be removed
   /// from MatchingJob.Job objects in the SearchJobsResponse results on
   /// 12/31/2018. See the alternative MatchingJob.search_text_snippet and

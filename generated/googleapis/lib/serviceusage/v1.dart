@@ -5777,11 +5777,11 @@ class Usage {
   /// The full resource name of a channel used for sending notifications to the
   /// service producer.
   ///
-  /// Google Service Management currently only supports \[Google Cloud
-  /// Pub/Sub\](https://cloud.google.com/pubsub) as a notification channel. To
-  /// use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud
-  /// Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in
-  /// https://cloud.google.com/pubsub/docs/overview.
+  /// Google Service Management currently only supports
+  /// [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification
+  /// channel. To use Google Cloud Pub/Sub as the channel, this must be the name
+  /// of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format
+  /// documented in https://cloud.google.com/pubsub/docs/overview.
   core.String producerNotificationChannel;
 
   /// Requirements that must be satisfied before a consumer project can use the

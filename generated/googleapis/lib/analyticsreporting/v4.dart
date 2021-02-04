@@ -761,7 +761,7 @@ class DimensionFilter {
   /// - "IN_LIST" : This option is used to specify a dimension filter whose
   /// expression can take any value from a selected list of values. This helps
   /// avoiding evaluating multiple exact match dimension filters which are OR'ed
-  /// for every single response row. For example: expressions: ["A", "B", "C"]
+  /// for every single response row. For example: expressions: \["A", "B", "C"\]
   /// Any response row whose dimension has it is value as A, B or C, matches
   /// this DimensionFilter.
   core.String operator;
@@ -2710,7 +2710,7 @@ class SegmentDimensionFilter {
   /// - "IN_LIST" : This option is used to specify a dimension filter whose
   /// expression can take any value from a selected list of values. This helps
   /// avoiding evaluating multiple exact match dimension filters which are OR'ed
-  /// for every single response row. For example: expressions: ["A", "B", "C"]
+  /// for every single response row. For example: expressions: \["A", "B", "C"\]
   /// Any response row whose dimension has it is value as A, B or C, matches
   /// this DimensionFilter.
   /// - "NUMERIC_LESS_THAN" : Integer comparison filters. case sensitivity is

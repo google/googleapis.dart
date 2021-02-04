@@ -1910,12 +1910,12 @@ class Suffix {
   /// Possible string values are:
   /// - "OPTION_UNSPECIFIED" : The suffix option is not specified, performs as
   /// UNGUESSABLE .
-  /// - "UNGUESSABLE" : Short Dynamic Link suffix is a base62 [0-9A-Za-z]
+  /// - "UNGUESSABLE" : Short Dynamic Link suffix is a base62 \[0-9A-Za-z\]
   /// encoded string of a random generated 96 bit random number, which has a
   /// length of 17 chars. For example, "nlAR8U4SlKRZw1cb2". It prevents other
   /// people from guessing and crawling short Dynamic Links that contain
   /// personal identifiable information.
-  /// - "SHORT" : Short Dynamic Link suffix is a base62 [0-9A-Za-z] string
+  /// - "SHORT" : Short Dynamic Link suffix is a base62 \[0-9A-Za-z\] string
   /// starting with a length of 4 chars. the length will increase when all the
   /// space is occupied.
   /// - "CUSTOM" : Custom DDL suffix is a client specified string, for example,

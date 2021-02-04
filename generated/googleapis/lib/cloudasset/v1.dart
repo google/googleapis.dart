@@ -3060,7 +3060,7 @@ class PartitionSpec {
   /// means using non-partitioned table.
   /// - "READ_TIME" : The time when the snapshot is taken. If specified as
   /// partition key, the result table(s) is partitoned by the additional
-  /// timestamp column, readTime. If [read_time] in ExportAssetsRequest is
+  /// timestamp column, readTime. If \[read_time\] in ExportAssetsRequest is
   /// specified, the readTime column's value will be the same as it. Otherwise,
   /// its value will be the current time that is used to take the snapshot.
   /// - "REQUEST_TIME" : The time when the request is received and started to be

@@ -99,6 +99,8 @@ Bob is kind (e.g. Kritis implementations).''',
 [this is](https://a.com/link).
 
 This https://example.com/\[this_is_not\]/''',
+      r'uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref).':
+          r'uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref).',
     }.entries) {
       test('`${entry.key}`', () {
         final commentRaw = Comment.header(entry.key, true).rawComment;
@@ -106,6 +108,19 @@ This https://example.com/\[this_is_not\]/''',
           commentRaw,
           entry.value,
         );
+      });
+    }
+  });
+
+  group('markdown escape skips already escaped characters', () {
+    for (var input in const {
+      r'[': r'\[',
+      r'\]': r'\]',
+      r'\\`': r'\\\`',
+      r'productPolicy\[\]': r'productPolicy\[\]',
+    }.entries) {
+      test('`${input.key}`', () {
+        expect(markdownEscape(input.key), input.value);
       });
     }
   });

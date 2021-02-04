@@ -6699,10 +6699,10 @@ class GoogleCloudMlV1TrainingInput {
   /// datasets.
   /// - "STANDARD_1" : Many workers and a few parameter servers.
   /// - "PREMIUM_1" : A large number of workers with many parameter servers.
-  /// - "BASIC_GPU" : A single worker instance [with a
-  /// GPU](/ai-platform/training/docs/using-gpus).
-  /// - "BASIC_TPU" : A single worker instance with a [Cloud
-  /// TPU](/ml-engine/docs/tensorflow/using-tpus).
+  /// - "BASIC_GPU" : A single worker instance \[with a
+  /// GPU\](/ai-platform/training/docs/using-gpus).
+  /// - "BASIC_TPU" : A single worker instance with a \[Cloud
+  /// TPU\](/ml-engine/docs/tensorflow/using-tpus).
   /// - "CUSTOM" : The CUSTOM tier is not a set tier, but rather enables you to
   /// use your own cluster specification. When you use this tier, set values to
   /// configure your processing cluster according to these guidelines: * You

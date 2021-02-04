@@ -1597,8 +1597,9 @@ class DropInfo {
   /// enabled.
   /// - "NO_EXTERNAL_ADDRESS" : Instance with only internal IP tries to access
   /// external hosts, but Cloud NAT is not enabled in the subnet, unless special
-  /// configurations on a VM allows this connection. See [Special Configurations
-  /// for VM instances](/vpc/docs/special-configurations) for details.
+  /// configurations on a VM allows this connection. See \[Special
+  /// Configurations for VM instances\](/vpc/docs/special-configurations) for
+  /// details.
   /// - "UNKNOWN_INTERNAL_ADDRESS" : Destination internal address cannot be
   /// resolved to a known target.
   /// - "FORWARDING_RULE_MISMATCH" : Forwarding rule's protocol and ports do not
@@ -1607,17 +1608,17 @@ class DropInfo {
   /// configured.
   /// - "FIREWALL_BLOCKING_LOAD_BALANCER_BACKEND_HEALTH_CHECK" : Firewalls block
   /// the health check probes to the backends and cause the backends to be
-  /// unavailable for traffic from the load balancer. See [Health check firewall
-  /// rules](/load-balancing/docs/ health-checks#firewall_rules) for more
-  /// details.
+  /// unavailable for traffic from the load balancer. See \[Health check
+  /// firewall rules\](/load-balancing/docs/ health-checks#firewall_rules) for
+  /// more details.
   /// - "INSTANCE_NOT_RUNNING" : Packet is sent from or to a Compute Engine
   /// instance that is not in a running state.
   /// - "TRAFFIC_TYPE_BLOCKED" : The type of traffic is blocked and the user
-  /// cannot configure a firewall rule to enable it. See [Always blocked
-  /// traffic](/vpc/docs/firewalls# blockedtraffic) for more details.
+  /// cannot configure a firewall rule to enable it. See \[Always blocked
+  /// traffic\](/vpc/docs/firewalls# blockedtraffic) for more details.
   /// - "GKE_MASTER_UNAUTHORIZED_ACCESS" : Access to GKE master's endpoint is
-  /// not authorized. See [Access to the cluster
-  /// endpoints](/kubernetes-engine/docs/how-to/
+  /// not authorized. See \[Access to the cluster
+  /// endpoints\](/kubernetes-engine/docs/how-to/
   /// private-clusters#access_to_the_cluster_endpoints) for more details.
   core.String cause;
 

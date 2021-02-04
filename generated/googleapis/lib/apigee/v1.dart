@@ -9053,7 +9053,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
   /// Value must have pattern `^organizations/\[^/\]+/environments/\[^/\]+$`.
   ///
   /// [name] - Required. Name of the resource file. Must match the regular
-  /// expression: \[a-zA-Z0-9:/\\!@#$%^&{}\\[\\]()+\-=,.~'\` \]{1,255}
+  /// expression: \[a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'\` \]{1,255}
   ///
   /// [type] - Required. Resource file type. {{ resource_file_type }}
   ///
@@ -9130,7 +9130,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
   /// [type] - Required. Resource file type. {{ resource_file_type }}
   ///
   /// [name] - Required. ID of the resource file to delete. Must match the
-  /// regular expression: \[a-zA-Z0-9:/\\!@#$%^&{}\\[\\]()+\-=,.~'\` \]{1,255}
+  /// regular expression: \[a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'\` \]{1,255}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9204,7 +9204,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
   /// [type] - Required. Resource file type. {{ resource_file_type }}
   ///
   /// [name] - Required. ID of the resource file. Must match the regular
-  /// expression: \[a-zA-Z0-9:/\\!@#$%^&{}\\[\\]()+\-=,.~'\` \]{1,255}
+  /// expression: \[a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'\` \]{1,255}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9413,7 +9413,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
   /// [type] - Required. Resource file type. {{ resource_file_type }}
   ///
   /// [name] - Required. ID of the resource file to update. Must match the
-  /// regular expression: \[a-zA-Z0-9:/\\!@#$%^&{}\\[\\]()+\-=,.~'\` \]{1,255}
+  /// regular expression: \[a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'\` \]{1,255}
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -20962,7 +20962,7 @@ class GoogleCloudApigeeV1UpdateError {
   /// seeking or reading past end-of-file. Unlike `INVALID_ARGUMENT`, this error
   /// indicates a problem that may be fixed if the system state changes. For
   /// example, a 32-bit file system will generate `INVALID_ARGUMENT` if asked to
-  /// read at an offset that is not in the range [0,2^32-1], but it will
+  /// read at an offset that is not in the range \[0,2^32-1\], but it will
   /// generate `OUT_OF_RANGE` if asked to read from an offset past the current
   /// file size. There is a fair bit of overlap between `FAILED_PRECONDITION`
   /// and `OUT_OF_RANGE`. We recommend using `OUT_OF_RANGE` (the more specific
