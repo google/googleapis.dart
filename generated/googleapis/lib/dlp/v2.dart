@@ -33,7 +33,9 @@
 ///   - [OrganizationsInspectTemplatesResource]
 ///   - [OrganizationsLocationsResource]
 ///     - [OrganizationsLocationsDeidentifyTemplatesResource]
+///     - [OrganizationsLocationsDlpJobsResource]
 ///     - [OrganizationsLocationsInspectTemplatesResource]
+///     - [OrganizationsLocationsJobTriggersResource]
 ///     - [OrganizationsLocationsStoredInfoTypesResource]
 ///   - [OrganizationsStoredInfoTypesResource]
 /// - [ProjectsResource]
@@ -1015,8 +1017,12 @@ class OrganizationsLocationsResource {
 
   OrganizationsLocationsDeidentifyTemplatesResource get deidentifyTemplates =>
       OrganizationsLocationsDeidentifyTemplatesResource(_requester);
+  OrganizationsLocationsDlpJobsResource get dlpJobs =>
+      OrganizationsLocationsDlpJobsResource(_requester);
   OrganizationsLocationsInspectTemplatesResource get inspectTemplates =>
       OrganizationsLocationsInspectTemplatesResource(_requester);
+  OrganizationsLocationsJobTriggersResource get jobTriggers =>
+      OrganizationsLocationsJobTriggersResource(_requester);
   OrganizationsLocationsStoredInfoTypesResource get storedInfoTypes =>
       OrganizationsLocationsStoredInfoTypesResource(_requester);
 
@@ -1393,6 +1399,141 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   }
 }
 
+class OrganizationsLocationsDlpJobsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsDlpJobsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Lists DlpJobs that match the specified filter in the request.
+  ///
+  /// See https://cloud.google.com/dlp/docs/inspecting-storage and
+  /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource name. The format of this value varies
+  /// depending on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
+  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// following example `parent` string specifies a parent project with the
+  /// identifier `example-project`, and specifies the `europe-west3` location
+  /// for processing data:
+  /// parent=projects/example-project/locations/europe-west3
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Allows filtering. Supported syntax: * Filter expressions are
+  /// made up of one or more restrictions. * Restrictions can be combined by
+  /// `AND` or `OR` logical operators. A sequence of restrictions implicitly
+  /// uses `AND`. * A restriction has the form of `{field} {operator} {value}`.
+  /// * Supported fields/values for inspect jobs: - `state` -
+  /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` -
+  /// DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The resource name of
+  /// the trigger that created job. - 'end_time` - Corresponds to time the job
+  /// finished. - 'start_time` - Corresponds to time the job finished. *
+  /// Supported fields for risk analysis jobs: - `state` -
+  /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to time the
+  /// job finished. - 'start_time` - Corresponds to time the job finished. * The
+  /// operator must be `=` or `!=`. Examples: * inspected_storage =
+  /// cloud_storage AND state = done * inspected_storage = cloud_storage OR
+  /// inspected_storage = bigquery * inspected_storage = cloud_storage AND
+  /// (state = done OR state = canceled) * end_time >
+  /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
+  /// than 500 characters.
+  ///
+  /// [locationId] - Deprecated. This field has no effect.
+  ///
+  /// [orderBy] - Comma separated list of fields to order by, followed by `asc`
+  /// or `desc` postfix. This list is case-insensitive, default sorting order is
+  /// ascending, redundant space characters are insignificant. Example: `name
+  /// asc, end_time asc, create_time desc` Supported fields are: -
+  /// `create_time`: corresponds to time the job was created. - `end_time`:
+  /// corresponds to time the job ended. - `name`: corresponds to job's name. -
+  /// `state`: corresponds to `state`
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [type] - The type of job. Defaults to `DlpJobType.INSPECT`
+  /// Possible string values are:
+  /// - "DLP_JOB_TYPE_UNSPECIFIED" : Unused
+  /// - "INSPECT_JOB" : The job inspected Google Cloud for sensitive data.
+  /// - "RISK_ANALYSIS_JOB" : The job executed a Risk Analysis computation.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListDlpJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListDlpJobsResponse> list(
+    core.String parent, {
+    core.String filter,
+    core.String locationId,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
+    core.String type,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (locationId != null) {
+      _queryParams['locationId'] = [locationId];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (type != null) {
+      _queryParams['type'] = [type];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/dlpJobs';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
 class OrganizationsLocationsInspectTemplatesResource {
   final commons.ApiRequester _requester;
 
@@ -1751,6 +1892,378 @@ class OrganizationsLocationsInspectTemplatesResource {
     );
     return _response.then(
       (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class OrganizationsLocationsJobTriggersResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsJobTriggersResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a job trigger to run DLP actions such as scanning storage for
+  /// sensitive information on a set schedule.
+  ///
+  /// See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource name. The format of this value varies
+  /// depending on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
+  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// following example `parent` string specifies a parent project with the
+  /// identifier `example-project`, and specifies the `europe-west3` location
+  /// for processing data:
+  /// parent=projects/example-project/locations/europe-west3
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2JobTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2JobTrigger> create(
+    GooglePrivacyDlpV2CreateJobTriggerRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/jobTriggers';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Deletes a job trigger.
+  ///
+  /// See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the project and the triggeredJob, for
+  /// example `projects/dlp-test-project/jobTriggers/53234423`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/jobTriggers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'DELETE',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Gets a job trigger.
+  ///
+  /// See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the project and the triggeredJob, for
+  /// example `projects/dlp-test-project/jobTriggers/53234423`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/jobTriggers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2JobTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2JobTrigger> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Lists job triggers.
+  ///
+  /// See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource name. The format of this value varies
+  /// depending on whether you have
+  /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location):
+  /// + Projects scope, location specified:
+  /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+  /// location specified (defaults to global): `projects/`PROJECT_ID The
+  /// following example `parent` string specifies a parent project with the
+  /// identifier `example-project`, and specifies the `europe-west3` location
+  /// for processing data:
+  /// parent=projects/example-project/locations/europe-west3
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Allows filtering. Supported syntax: * Filter expressions are
+  /// made up of one or more restrictions. * Restrictions can be combined by
+  /// \`AND\` or \`OR\` logical operators. A sequence of restrictions implicitly
+  /// uses \`AND\`. * A restriction has the form of \`{field} {operator}
+  /// {value}\`. * Supported fields/values for inspect triggers: - \`status\` -
+  /// HEALTHY|PAUSED|CANCELLED - \`inspected_storage\` -
+  /// DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time\` - RFC 3339 formatted
+  /// timestamp, surrounded by quotation marks. Nanoseconds are ignored. -
+  /// 'error_count' - Number of errors that have occurred while running. * The
+  /// operator must be \`=\` or \`!=\` for status and inspected_storage.
+  /// Examples: * inspected_storage = cloud_storage AND status = HEALTHY *
+  /// inspected_storage = cloud_storage OR inspected_storage = bigquery *
+  /// inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY)
+  /// * last_run_time > \"2017-12-12T00:00:00+00:00\" The length of this field
+  /// should be no more than 500 characters.
+  ///
+  /// [locationId] - Deprecated. This field has no effect.
+  ///
+  /// [orderBy] - Comma separated list of triggeredJob fields to order by,
+  /// followed by `asc` or `desc` postfix. This list is case-insensitive,
+  /// default sorting order is ascending, redundant space characters are
+  /// insignificant. Example: `name asc,update_time, create_time desc` Supported
+  /// fields are: - `create_time`: corresponds to time the JobTrigger was
+  /// created. - `update_time`: corresponds to time the JobTrigger was last
+  /// updated. - `last_run_time`: corresponds to the last time the JobTrigger
+  /// ran. - `name`: corresponds to JobTrigger's name. - `display_name`:
+  /// corresponds to JobTrigger's display name. - `status`: corresponds to
+  /// JobTrigger's status.
+  ///
+  /// [pageSize] - Size of the page, can be limited by a server.
+  ///
+  /// [pageToken] - Page token to continue retrieval. Comes from previous call
+  /// to ListJobTriggers. `order_by` field must not change for subsequent calls.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2ListJobTriggersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2ListJobTriggersResponse> list(
+    core.String parent, {
+    core.String filter,
+    core.String locationId,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (locationId != null) {
+      _queryParams['locationId'] = [locationId];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v2/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/jobTriggers';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Updates a job trigger.
+  ///
+  /// See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the project and the triggeredJob, for
+  /// example `projects/dlp-test-project/jobTriggers/53234423`.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/jobTriggers/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GooglePrivacyDlpV2JobTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GooglePrivacyDlpV2JobTrigger> patch(
+    GooglePrivacyDlpV2UpdateJobTriggerRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
           data as core.Map<core.String, core.dynamic>),
     );
   }
@@ -4201,7 +4714,7 @@ class ProjectsJobTriggersResource {
   /// made up of one or more restrictions. * Restrictions can be combined by
   /// \`AND\` or \`OR\` logical operators. A sequence of restrictions implicitly
   /// uses \`AND\`. * A restriction has the form of \`{field} {operator}
-  /// {value}\`. * Supported fields/values for inspect jobs: - \`status\` -
+  /// {value}\`. * Supported fields/values for inspect triggers: - \`status\` -
   /// HEALTHY|PAUSED|CANCELLED - \`inspected_storage\` -
   /// DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time\` - RFC 3339 formatted
   /// timestamp, surrounded by quotation marks. Nanoseconds are ignored. -
@@ -5185,9 +5698,7 @@ class ProjectsLocationsDlpJobsResource {
   /// Finish a running hybrid DlpJob.
   ///
   /// Triggers the finalization steps and running of any enabled actions that
-  /// have not yet run. Early access feature is in a pre-release state and might
-  /// change or have limited support. For more information, see
-  /// https://cloud.google.com/products#product-launch-stages.
+  /// have not yet run.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5304,10 +5815,8 @@ class ProjectsLocationsDlpJobsResource {
 
   /// Inspect hybrid content and store findings to a job.
   ///
-  /// To review the findings inspect the job. Inspection will occur
-  /// asynchronously. Early access feature is in a pre-release state and might
-  /// change or have limited support. For more information, see
-  /// https://cloud.google.com/products#product-launch-stages.
+  /// To review the findings, inspect the job. Inspection will occur
+  /// asynchronously.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6200,9 +6709,7 @@ class ProjectsLocationsJobTriggersResource {
   /// Inspect hybrid content and store findings to a trigger.
   ///
   /// The inspection will be processed asynchronously. To review the findings
-  /// monitor the jobs within the trigger. Early access feature is in a
-  /// pre-release state and might change or have limited support. For more
-  /// information, see https://cloud.google.com/products#product-launch-stages.
+  /// monitor the jobs within the trigger.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6286,7 +6793,7 @@ class ProjectsLocationsJobTriggersResource {
   /// made up of one or more restrictions. * Restrictions can be combined by
   /// \`AND\` or \`OR\` logical operators. A sequence of restrictions implicitly
   /// uses \`AND\`. * A restriction has the form of \`{field} {operator}
-  /// {value}\`. * Supported fields/values for inspect jobs: - \`status\` -
+  /// {value}\`. * Supported fields/values for inspect triggers: - \`status\` -
   /// HEALTHY|PAUSED|CANCELLED - \`inspected_storage\` -
   /// DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time\` - RFC 3339 formatted
   /// timestamp, surrounded by quotation marks. Nanoseconds are ignored. -
@@ -8764,7 +9271,7 @@ class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest {
 /// Used to initiate long running jobs such as calculating risk metrics or
 /// inspecting Google Cloud Storage.
 class GooglePrivacyDlpV2CreateDlpJobRequest {
-  /// Set to control what and how to inspect.
+  /// An inspection job scans a storage repository for InfoTypes.
   GooglePrivacyDlpV2InspectJobConfig inspectJob;
 
   /// The job id can contain uppercase and lowercase letters, numbers, and
@@ -8779,7 +9286,8 @@ class GooglePrivacyDlpV2CreateDlpJobRequest {
   /// Deprecated.
   core.String locationId;
 
-  /// Set to choose what metric to calculate.
+  /// A risk analysis job calculates re-identification risk metrics for a
+  /// BigQuery table.
   GooglePrivacyDlpV2RiskAnalysisJobConfig riskJob;
 
   GooglePrivacyDlpV2CreateDlpJobRequest();
@@ -10634,6 +11142,9 @@ class GooglePrivacyDlpV2Finding {
   /// Timestamp when finding was detected.
   core.String createTime;
 
+  /// The unique finding id.
+  core.String findingId;
+
   /// The type of content that might have been found.
   ///
   /// Provided if `excluded_types` is false.
@@ -10700,6 +11211,9 @@ class GooglePrivacyDlpV2Finding {
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
     }
+    if (_json.containsKey('findingId')) {
+      findingId = _json['findingId'] as core.String;
+    }
     if (_json.containsKey('infoType')) {
       infoType = GooglePrivacyDlpV2InfoType.fromJson(
           _json['infoType'] as core.Map<core.String, core.dynamic>);
@@ -10748,6 +11262,9 @@ class GooglePrivacyDlpV2Finding {
     final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
+    }
+    if (findingId != null) {
+      _json['findingId'] = findingId;
     }
     if (infoType != null) {
       _json['infoType'] = infoType.toJson();
@@ -11807,7 +12324,7 @@ class GooglePrivacyDlpV2InspectDataSourceDetails {
   /// The configuration used for this job.
   GooglePrivacyDlpV2RequestedOptions requestedOptions;
 
-  /// A summary of the outcome of this inspect job.
+  /// A summary of the outcome of this inspection job.
   GooglePrivacyDlpV2Result result;
 
   GooglePrivacyDlpV2InspectDataSourceDetails();
@@ -14765,10 +15282,6 @@ class GooglePrivacyDlpV2RequestedRiskAnalysisOptions {
 /// All result fields mentioned below are updated while the job is processing.
 class GooglePrivacyDlpV2Result {
   /// Statistics related to the processing of hybrid inspect.
-  ///
-  /// Early access feature is in a pre-release state and might change or have
-  /// limited support. For more information, see
-  /// https://cloud.google.com/products#product-launch-stages.
   GooglePrivacyDlpV2HybridInspectStatistics hybridStats;
 
   /// Statistics of how many instances of each info type were found during
@@ -15027,10 +15540,6 @@ class GooglePrivacyDlpV2StorageConfig {
   GooglePrivacyDlpV2DatastoreOptions datastoreOptions;
 
   /// Hybrid inspection options.
-  ///
-  /// Early access feature is in a pre-release state and might change or have
-  /// limited support. For more information, see
-  /// https://cloud.google.com/products#product-launch-stages.
   GooglePrivacyDlpV2HybridOptions hybridOptions;
   GooglePrivacyDlpV2TimespanConfig timespanConfig;
 
@@ -15679,24 +16188,29 @@ class GooglePrivacyDlpV2TimespanConfig {
   /// JobTrigger.
   core.bool enableAutoPopulationOfTimespanConfig;
 
-  /// Exclude files or rows newer than this value.
+  /// Exclude files, tables, or rows newer than this value.
   ///
-  /// If set to zero, no upper time limit is applied.
+  /// If not set, no upper time limit is applied.
   core.String endTime;
 
-  /// Exclude files or rows older than this value.
+  /// Exclude files, tables, or rows older than this value.
+  ///
+  /// If not set, no lower time limit is applied.
   core.String startTime;
 
   /// Specification of the field containing the timestamp of scanned items.
   ///
-  /// Used for data sources like Datastore and BigQuery. For BigQuery: Required
-  /// to filter out rows based on the given start and end times. If not
-  /// specified and the table was modified between the given start and end
-  /// times, the entire table will be scanned. The valid data types of the
-  /// timestamp field are: `INTEGER`, `DATE`, `TIMESTAMP`, or `DATETIME`
-  /// BigQuery column. For Datastore. Valid data types of the timestamp field
-  /// are: `TIMESTAMP`. Datastore entity will be scanned if the timestamp
-  /// property does not exist or its value is empty or invalid.
+  /// Used for data sources like Datastore and BigQuery. For BigQuery: If this
+  /// value is not specified and the table was modified between the given start
+  /// and end times, the entire table will be scanned. If this value is
+  /// specified, then rows are filtered based on the given start and end times.
+  /// Rows with a `NULL` value in the provided BigQuery column are skipped.
+  /// Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`,
+  /// `TIMESTAMP`, and `DATETIME`. For Datastore: If this value is specified,
+  /// then entities are filtered based on the given start and end times. If an
+  /// entity does not contain the provided timestamp property or contains empty
+  /// or invalid values, then it is included. Valid data types of the provided
+  /// timestamp property are: `TIMESTAMP`.
   GooglePrivacyDlpV2FieldId timestampField;
 
   GooglePrivacyDlpV2TimespanConfig();
@@ -15944,9 +16458,7 @@ class GooglePrivacyDlpV2TransientCryptoKey {
 class GooglePrivacyDlpV2Trigger {
   /// For use with hybrid jobs.
   ///
-  /// Jobs must be manually created and finished. Early access feature is in a
-  /// pre-release state and might change or have limited support. For more
-  /// information, see https://cloud.google.com/products#product-launch-stages.
+  /// Jobs must be manually created and finished.
   GooglePrivacyDlpV2Manual manual;
 
   /// Create a job on a repeating basis based on the elapse of time.
@@ -16384,30 +16896,30 @@ class GoogleRpcStatus {
   }
 }
 
-/// Represents a whole or partial calendar date, e.g. a birthday.
+/// Represents a whole or partial calendar date, such as a birthday.
 ///
-/// The time of day and time zone are either specified elsewhere or are not
-/// significant. The date is relative to the Proleptic Gregorian Calendar. This
-/// can represent: * A full date, with non-zero year, month and day values * A
-/// month and day value, with a zero year, e.g. an anniversary * A year on its
-/// own, with zero month and day values * A year and month value, with a zero
-/// day, e.g. a credit card expiration date Related types are
-/// google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values * A month and day value, with a zero year, such as an
+/// anniversary * A year on its own, with zero month and day values * A year and
+/// month value, with a zero day, such as a credit card expiration date Related
+/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class GoogleTypeDate {
-  /// Day of month.
+  /// Day of a month.
   ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 if specifying
-  /// a year by itself or a year and month where the day is not significant.
+  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
+  /// year by itself or a year and month where the day isn't significant.
   core.int day;
 
-  /// Month of year.
+  /// Month of a year.
   ///
-  /// Must be from 1 to 12, or 0 if specifying a year without a month and day.
+  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
   core.int month;
 
-  /// Year of date.
+  /// Year of the date.
   ///
-  /// Must be from 1 to 9999, or 0 if specifying a date without a year.
+  /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int year;
 
   GoogleTypeDate();

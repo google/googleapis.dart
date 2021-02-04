@@ -559,6 +559,69 @@ class AutoText {
   }
 }
 
+/// The autofit properties of a Shape.
+class Autofit {
+  /// The autofit type of the shape.
+  ///
+  /// If unspecified, the autofit type is inherited from a parent placeholder if
+  /// it exists. The field will be automatically set to NONE if a request is
+  /// made that may affect text fitting within its bounding text box. In this
+  /// case the font_scale will be applied to the font_size and the
+  /// line_spacing_reduction will be applied to the line_spacing. Both
+  /// properties would also be reset to default values.
+  /// Possible string values are:
+  /// - "AUTOFIT_TYPE_UNSPECIFIED" : The autofit type is unspecified.
+  /// - "NONE" : Do not autofit.
+  /// - "TEXT_AUTOFIT" : Shrink text on overflow to fit shape.
+  /// - "SHAPE_AUTOFIT" : Resize shape to fit text.
+  core.String autofitType;
+
+  /// The font scale applied to the shape.
+  ///
+  /// For shapes with autofit_type NONE or SHAPE_AUTOFIT, this value will be the
+  /// default value of 1. For TEXT_AUTOFIT, this value multiplied by the
+  /// font_size will give the font size that is rendered in the editor. This
+  /// property is read-only.
+  core.double fontScale;
+
+  /// The line spacing reduction applied to the shape.
+  ///
+  /// For shapes with autofit_type NONE or SHAPE_AUTOFIT, this value will be the
+  /// default value of 0. For TEXT_AUTOFIT, this value subtracted from the
+  /// line_spacing will give the line spacing that is rendered in the editor.
+  /// This property is read-only.
+  core.double lineSpacingReduction;
+
+  Autofit();
+
+  Autofit.fromJson(core.Map _json) {
+    if (_json.containsKey('autofitType')) {
+      autofitType = _json['autofitType'] as core.String;
+    }
+    if (_json.containsKey('fontScale')) {
+      fontScale = (_json['fontScale'] as core.num).toDouble();
+    }
+    if (_json.containsKey('lineSpacingReduction')) {
+      lineSpacingReduction =
+          (_json['lineSpacingReduction'] as core.num).toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (autofitType != null) {
+      _json['autofitType'] = autofitType;
+    }
+    if (fontScale != null) {
+      _json['fontScale'] = fontScale;
+    }
+    if (lineSpacingReduction != null) {
+      _json['lineSpacingReduction'] = lineSpacingReduction;
+    }
+    return _json;
+  }
+}
+
 /// Request message for PresentationsService.BatchUpdatePresentation.
 class BatchUpdatePresentationRequest {
   /// A list of updates to apply to the presentation.
@@ -4177,7 +4240,7 @@ class Presentation {
   /// slide thumbnail, and a `BODY` placeholder shape contains the speaker
   /// notes. - The notes master page properties define the common page
   /// properties inherited by all notes pages. - Any other shapes on the notes
-  /// master appears on all notes pages. The notes master is read-only.
+  /// master appear on all notes pages. The notes master is read-only.
   Page notesMaster;
 
   /// The size of pages in the presentation.
@@ -5997,8 +6060,15 @@ class ShapeBackgroundFill {
 /// If the shape is a placeholder shape as determined by the placeholder field,
 /// then these properties may be inherited from a parent placeholder shape.
 /// Determining the rendered value of the property depends on the corresponding
-/// property_state field value.
+/// property_state field value. Any text autofit settings on the shape are
+/// automatically deactivated by requests that can impact how text fits in the
+/// shape.
 class ShapeProperties {
+  /// The autofit properties of the shape.
+  ///
+  /// This property is only set for shapes that allow text.
+  Autofit autofit;
+
   /// The alignment of the content in the shape.
   ///
   /// If unspecified, the alignment is inherited from a parent placeholder if it
@@ -6047,6 +6117,10 @@ class ShapeProperties {
   ShapeProperties();
 
   ShapeProperties.fromJson(core.Map _json) {
+    if (_json.containsKey('autofit')) {
+      autofit = Autofit.fromJson(
+          _json['autofit'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('contentAlignment')) {
       contentAlignment = _json['contentAlignment'] as core.String;
     }
@@ -6070,6 +6144,9 @@ class ShapeProperties {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (autofit != null) {
+      _json['autofit'] = autofit.toJson();
+    }
     if (contentAlignment != null) {
       _json['contentAlignment'] = contentAlignment;
     }

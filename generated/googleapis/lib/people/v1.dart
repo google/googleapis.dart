@@ -63,7 +63,7 @@ class PeopleServiceApi {
   static const userAddressesReadScope =
       'https://www.googleapis.com/auth/user.addresses.read';
 
-  /// View your complete date of birth
+  /// See and download your exact date of birth
   static const userBirthdayReadScope =
       'https://www.googleapis.com/auth/user.birthday.read';
 
@@ -79,7 +79,7 @@ class PeopleServiceApi {
   static const userOrganizationReadScope =
       'https://www.googleapis.com/auth/user.organization.read';
 
-  /// View your phone numbers
+  /// See and download your personal phone numbers
   static const userPhonenumbersReadScope =
       'https://www.googleapis.com/auth/user.phonenumbers.read';
 
@@ -118,6 +118,11 @@ class ContactGroupsResource {
   ///
   /// Request parameters:
   ///
+  /// [groupFields] - Optional. A field mask to restrict which fields on the
+  /// group are returned. Defaults to `metadata`, `groupType`, `memberCount`,
+  /// and `name` if not set or set to empty. Valid fields are: * clientData *
+  /// groupType * memberCount * metadata * name
+  ///
   /// [maxMembers] - Optional. Specifies the maximum number of members to return
   /// for each group. Defaults to 0 if not set, which will return zero members.
   ///
@@ -135,6 +140,7 @@ class ContactGroupsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<BatchGetContactGroupsResponse> batchGet({
+    core.String groupFields,
     core.int maxMembers,
     core.List<core.String> resourceNames,
     core.String $fields,
@@ -146,6 +152,9 @@ class ContactGroupsResource {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
+    if (groupFields != null) {
+      _queryParams['groupFields'] = [groupFields];
+    }
     if (maxMembers != null) {
       _queryParams['maxMembers'] = ['${maxMembers}'];
     }
@@ -292,6 +301,11 @@ class ContactGroupsResource {
   /// [resourceName] - Required. The resource name of the contact group to get.
   /// Value must have pattern `^contactGroups/\[^/\]+$`.
   ///
+  /// [groupFields] - Optional. A field mask to restrict which fields on the
+  /// group are returned. Defaults to `metadata`, `groupType`, `memberCount`,
+  /// and `name` if not set or set to empty. Valid fields are: * clientData *
+  /// groupType * memberCount * metadata * name
+  ///
   /// [maxMembers] - Optional. Specifies the maximum number of members to
   /// return. Defaults to 0 if not set, which will return zero members.
   ///
@@ -307,6 +321,7 @@ class ContactGroupsResource {
   /// this method will complete with the same error.
   async.Future<ContactGroup> get(
     core.String resourceName, {
+    core.String groupFields,
     core.int maxMembers,
     core.String $fields,
   }) {
@@ -319,6 +334,9 @@ class ContactGroupsResource {
 
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
+    }
+    if (groupFields != null) {
+      _queryParams['groupFields'] = [groupFields];
     }
     if (maxMembers != null) {
       _queryParams['maxMembers'] = ['${maxMembers}'];
@@ -350,6 +368,11 @@ class ContactGroupsResource {
   ///
   /// Request parameters:
   ///
+  /// [groupFields] - Optional. A field mask to restrict which fields on the
+  /// group are returned. Defaults to `metadata`, `groupType`, `memberCount`,
+  /// and `name` if not set or set to empty. Valid fields are: * clientData *
+  /// groupType * memberCount * metadata * name
+  ///
   /// [pageSize] - Optional. The maximum number of resources to return. Valid
   /// values are between 1 and 1000, inclusive. Defaults to 30 if not set or set
   /// to 0.
@@ -373,6 +396,7 @@ class ContactGroupsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListContactGroupsResponse> list({
+    core.String groupFields,
     core.int pageSize,
     core.String pageToken,
     core.String syncToken,
@@ -385,6 +409,9 @@ class ContactGroupsResource {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
+    if (groupFields != null) {
+      _queryParams['groupFields'] = [groupFields];
+    }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -719,7 +746,7 @@ class PeopleResource {
 
   /// Create a new contact and return the person resource for that contact.
   ///
-  /// The request throws a 400 error if more than one field is specified on a
+  /// The request returns a 400 error if more than one field is specified on a
   /// field that is a singleton for contact sources: * biographies * birthdays *
   /// genders * names
   ///
@@ -738,7 +765,7 @@ class PeopleResource {
   /// userDefined
   ///
   /// [sources] - Optional. A mask of what source types to return. Defaults to
-  /// ReadSourceType.CONTACT and ReadSourceType.PROFILE if not set.
+  /// READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -866,7 +893,7 @@ class PeopleResource {
   /// * urls * userDefined
   ///
   /// [sources] - Optional. A mask of what source types to return. Defaults to
-  /// ReadSourceType.CONTACT and ReadSourceType.PROFILE if not set.
+  /// READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -925,7 +952,7 @@ class PeopleResource {
 
   /// Provides information about a person by specifying a resource name.
   ///
-  /// Use `people/me` to indicate the authenticated user. The request throws a
+  /// Use `people/me` to indicate the authenticated user. The request returns a
   /// 400 error if 'personFields' is not specified.
   ///
   /// Request parameters:
@@ -952,7 +979,7 @@ class PeopleResource {
   /// `person.`: for example, `person.names` or `person.photos`.
   ///
   /// [sources] - Optional. A mask of what source types to return. Defaults to
-  /// ReadSourceType.PROFILE and ReadSourceType.CONTACT if not set.
+  /// READ_SOURCE_TYPE_PROFILE and READ_SOURCE_TYPE_CONTACT if not set.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1013,7 +1040,7 @@ class PeopleResource {
   /// Provides information about a list of specific people by specifying a list
   /// of requested resource names.
   ///
-  /// Use `people/me` to indicate the authenticated user. The request throws a
+  /// Use `people/me` to indicate the authenticated user. The request returns a
   /// 400 error if 'personFields' is not specified.
   ///
   /// Request parameters:
@@ -1042,7 +1069,7 @@ class PeopleResource {
   /// You can include up to 50 resource names in one request.
   ///
   /// [sources] - Optional. A mask of what source types to return. Defaults to
-  /// ReadSourceType.CONTACT and ReadSourceType.PROFILE if not set.
+  /// READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1342,7 +1369,7 @@ class PeopleResource {
   /// userDefined
   ///
   /// [sources] - Optional. A mask of what source types to return. Defaults to
-  /// ReadSourceType.CONTACT and ReadSourceType.PROFILE if not set.
+  /// READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
   ///
   /// [updatePersonFields] - Required. A field mask to restrict which fields on
   /// the person are updated. Multiple fields can be specified by separating
@@ -1483,7 +1510,11 @@ class PeopleConnectionsResource {
 
   /// Provides a list of the authenticated user's contacts.
   ///
-  /// The request throws a 400 error if 'personFields' is not specified.
+  /// The request returns a 400 error if `personFields` is not specified. The
+  /// request returns a 410 error if `sync_token` is specified and is expired.
+  /// Sync tokens expire after 7 days to prevent data drift between clients and
+  /// the server. To handle a sync token expired error, a request should be sent
+  /// without `sync_token` to get all contacts.
   ///
   /// Request parameters:
   ///
@@ -1516,8 +1547,10 @@ class PeopleConnectionsResource {
   /// [requestSyncToken] - Optional. Whether the response should include
   /// `next_sync_token` on the last page, which can be used to get all changes
   /// since the last request. For subsequent sync requests use the `sync_token`
-  /// param instead. Initial sync requests that specify `request_sync_token`
-  /// have an additional rate limit.
+  /// param instead. Initial full sync requests that specify
+  /// `request_sync_token` and do not specify `sync_token` have an additional
+  /// rate limit per user. Each client should generally only be doing a full
+  /// sync once every few days per user and so should not hit this limit.
   ///
   /// [sortOrder] - Optional. The order in which the connections should be
   /// sorted. Defaults to `LAST_MODIFIED_ASCENDING`.
@@ -1530,13 +1563,15 @@ class PeopleConnectionsResource {
   /// - "LAST_NAME_ASCENDING" : Sort people by last name.
   ///
   /// [sources] - Optional. A mask of what source types to return. Defaults to
-  /// ReadSourceType.CONTACT and ReadSourceType.PROFILE if not set.
+  /// READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
   ///
   /// [syncToken] - Optional. A sync token, received from a previous
   /// `ListConnections` call. Provide this to retrieve only the resources
-  /// changed since the last request. Sync requests that specify `sync_token`
-  /// have an additional rate limit. When syncing, all other parameters provided
-  /// to `ListConnections` must match the call that provided the sync token.
+  /// changed since the last request. When syncing, all other parameters
+  /// provided to `ListConnections` except `page_size` and `page_token` must
+  /// match the initial call that provided the sync token. Sync tokens expire
+  /// after seven days, after which a full sync request without a `sync_token`
+  /// should be made.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2037,6 +2072,9 @@ class ClientData {
 
 /// A contact group.
 class ContactGroup {
+  /// The group's client data.
+  core.List<GroupClientData> clientData;
+
   /// The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the
   /// resource.
   ///
@@ -2069,9 +2107,8 @@ class ContactGroup {
   /// The list of contact person resource names that are members of the contact
   /// group.
   ///
-  /// The field is not populated for LIST requests and can only be updated
-  /// through the
-  /// \[ModifyContactGroupMembers\](/people/api/rest/v1/contactgroups/members/modify).
+  /// The field is only populated for GET requests and will only return as many
+  /// members as `maxMembers` in the get request.
   ///
   /// Output only.
   core.List<core.String> memberResourceNames;
@@ -2093,6 +2130,12 @@ class ContactGroup {
   ContactGroup();
 
   ContactGroup.fromJson(core.Map _json) {
+    if (_json.containsKey('clientData')) {
+      clientData = (_json['clientData'] as core.List)
+          .map<GroupClientData>((value) => GroupClientData.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('etag')) {
       etag = _json['etag'] as core.String;
     }
@@ -2124,6 +2167,9 @@ class ContactGroup {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (clientData != null) {
+      _json['clientData'] = clientData.map((value) => value.toJson()).toList();
+    }
     if (etag != null) {
       _json['etag'] = etag;
     }
@@ -2298,7 +2344,8 @@ class CopyOtherContactToMyContactsGroupRequest {
 
   /// A mask of what source types to return.
   ///
-  /// Defaults to ReadSourceType.CONTACT and ReadSourceType.PROFILE if not set.
+  /// Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not
+  /// set.
   ///
   /// Optional.
   core.List<core.String> sources;
@@ -2386,12 +2433,23 @@ class CreateContactGroupRequest {
   /// Required.
   ContactGroup contactGroup;
 
+  /// A field mask to restrict which fields on the group are returned.
+  ///
+  /// Defaults to `metadata`, `groupType`, and `name` if not set or set to
+  /// empty. Valid fields are: * clientData * groupType * metadata * name
+  ///
+  /// Optional.
+  core.String readGroupFields;
+
   CreateContactGroupRequest();
 
   CreateContactGroupRequest.fromJson(core.Map _json) {
     if (_json.containsKey('contactGroup')) {
       contactGroup = ContactGroup.fromJson(
           _json['contactGroup'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('readGroupFields')) {
+      readGroupFields = _json['readGroupFields'] as core.String;
     }
   }
 
@@ -2400,34 +2458,37 @@ class CreateContactGroupRequest {
     if (contactGroup != null) {
       _json['contactGroup'] = contactGroup.toJson();
     }
+    if (readGroupFields != null) {
+      _json['readGroupFields'] = readGroupFields;
+    }
     return _json;
   }
 }
 
-/// Represents a whole or partial calendar date, e.g. a birthday.
+/// Represents a whole or partial calendar date, such as a birthday.
 ///
-/// The time of day and time zone are either specified elsewhere or are not
-/// significant. The date is relative to the Proleptic Gregorian Calendar. This
-/// can represent: * A full date, with non-zero year, month and day values * A
-/// month and day value, with a zero year, e.g. an anniversary * A year on its
-/// own, with zero month and day values * A year and month value, with a zero
-/// day, e.g. a credit card expiration date Related types are
-/// google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values * A month and day value, with a zero year, such as an
+/// anniversary * A year on its own, with zero month and day values * A year and
+/// month value, with a zero day, such as a credit card expiration date Related
+/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class Date {
-  /// Day of month.
+  /// Day of a month.
   ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 if specifying
-  /// a year by itself or a year and month where the day is not significant.
+  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
+  /// year by itself or a year and month where the day isn't significant.
   core.int day;
 
-  /// Month of year.
+  /// Month of a year.
   ///
-  /// Must be from 1 to 12, or 0 if specifying a year without a month and day.
+  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
   core.int month;
 
-  /// Year of date.
+  /// Year of the date.
   ///
-  /// Must be from 1 to 9999, or 0 if specifying a date without a year.
+  /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int year;
 
   Date();
@@ -2863,6 +2924,39 @@ class GetPeopleResponse {
     final _json = <core.String, core.Object>{};
     if (responses != null) {
       _json['responses'] = responses.map((value) => value.toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Arbitrary client data that is populated by clients.
+///
+/// Duplicate keys and values are allowed. LINT.IfChange(GroupClientData)
+class GroupClientData {
+  /// The client specified key of the client data.
+  core.String key;
+
+  /// The client specified value of the client data.
+  core.String value;
+
+  GroupClientData();
+
+  GroupClientData.fromJson(core.Map _json) {
+    if (_json.containsKey('key')) {
+      key = _json['key'] as core.String;
+    }
+    if (_json.containsKey('value')) {
+      value = _json['value'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (key != null) {
+      _json['key'] = key;
+    }
+    if (value != null) {
+      _json['value'] = value;
     }
     return _json;
   }
@@ -3449,11 +3543,17 @@ class ModifyContactGroupMembersRequest {
   /// The resource names of the contact people to add in the form of
   /// `people/{person_id}`.
   ///
+  /// The total number of resource names in `resource_names_to_add` and
+  /// `resource_names_to_remove` must be less than or equal to 1000.
+  ///
   /// Optional.
   core.List<core.String> resourceNamesToAdd;
 
   /// The resource names of the contact people to remove in the form of
   /// `people/{person_id}`.
+  ///
+  /// The total number of resource names in `resource_names_to_add` and
+  /// `resource_names_to_remove` must be less than or equal to 1000.
   ///
   /// Optional.
   core.List<core.String> resourceNamesToRemove;
@@ -5267,6 +5367,24 @@ class UpdateContactGroupRequest {
   /// Required.
   ContactGroup contactGroup;
 
+  /// A field mask to restrict which fields on the group are returned.
+  ///
+  /// Defaults to `metadata`, `groupType`, and `name` if not set or set to
+  /// empty. Valid fields are: * clientData * groupType * memberCount * metadata
+  /// * name
+  ///
+  /// Optional.
+  core.String readGroupFields;
+
+  /// A field mask to restrict which fields on the group are updated.
+  ///
+  /// Multiple fields can be specified by separating them with commas. Defaults
+  /// to `name` if not set or set to empty. Updated fields are replaced. Valid
+  /// values are: * clientData * name
+  ///
+  /// Optional.
+  core.String updateGroupFields;
+
   UpdateContactGroupRequest();
 
   UpdateContactGroupRequest.fromJson(core.Map _json) {
@@ -5274,12 +5392,24 @@ class UpdateContactGroupRequest {
       contactGroup = ContactGroup.fromJson(
           _json['contactGroup'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('readGroupFields')) {
+      readGroupFields = _json['readGroupFields'] as core.String;
+    }
+    if (_json.containsKey('updateGroupFields')) {
+      updateGroupFields = _json['updateGroupFields'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (contactGroup != null) {
       _json['contactGroup'] = contactGroup.toJson();
+    }
+    if (readGroupFields != null) {
+      _json['readGroupFields'] = readGroupFields;
+    }
+    if (updateGroupFields != null) {
+      _json['updateGroupFields'] = updateGroupFields;
     }
     return _json;
   }
@@ -5317,7 +5447,8 @@ class UpdateContactPhotoRequest {
 
   /// A mask of what source types to return.
   ///
-  /// Defaults to ReadSourceType.CONTACT and ReadSourceType.PROFILE if not set.
+  /// Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not
+  /// set.
   ///
   /// Optional.
   core.List<core.String> sources;

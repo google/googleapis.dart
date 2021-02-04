@@ -60,7 +60,7 @@ class CalendarApi {
   static const calendarEventsReadonlyScope =
       'https://www.googleapis.com/auth/calendar.events.readonly';
 
-  /// View your calendars
+  /// See and download any calendar you can access using your Google Calendar
   static const calendarReadonlyScope =
       'https://www.googleapis.com/auth/calendar.readonly';
 
@@ -4372,7 +4372,7 @@ class ConferenceSolutionKey {
   /// However, it should disallow modifications.
   /// The possible values are:
   /// - "eventHangout" for Hangouts for consumers (http://hangouts.google.com)
-  /// - "eventNamedHangout" for classic Hangouts for G Suite users
+  /// - "eventNamedHangout" for classic Hangouts for Google Workspace users
   /// (http://hangouts.google.com)
   /// - "hangoutsMeet" for Google Meet (http://meet.google.com)
   /// - "addOn" for 3P conference providers
@@ -5075,6 +5075,13 @@ class Event {
   /// ETag of the resource.
   core.String etag;
 
+  /// Specific type of the event.
+  ///
+  /// Read-only. Possible values are:
+  /// - "default" - A regular event or not further specified.
+  /// - "outOfOffice" - An out-of-office event.
+  core.String eventType;
+
   /// Extended properties of the event.
   EventExtendedProperties extendedProperties;
 
@@ -5318,6 +5325,9 @@ class Event {
     if (_json.containsKey('etag')) {
       etag = _json['etag'] as core.String;
     }
+    if (_json.containsKey('eventType')) {
+      eventType = _json['eventType'] as core.String;
+    }
     if (_json.containsKey('extendedProperties')) {
       extendedProperties = EventExtendedProperties.fromJson(
           _json['extendedProperties'] as core.Map<core.String, core.dynamic>);
@@ -5445,6 +5455,9 @@ class Event {
     }
     if (etag != null) {
       _json['etag'] = etag;
+    }
+    if (eventType != null) {
+      _json['eventType'] = eventType;
     }
     if (extendedProperties != null) {
       _json['extendedProperties'] = extendedProperties.toJson();

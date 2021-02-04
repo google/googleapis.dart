@@ -1045,6 +1045,632 @@ class GooSettings {
   }
 }
 
+/// The inventory details of a VM.
+class Inventory {
+  /// Inventory items related to the VM keyed by an opaque unique identifier for
+  /// each inventory item.
+  ///
+  /// The identifier is unique to each distinct and addressable inventory item
+  /// and will change, when there is a new package version.
+  core.Map<core.String, InventoryItem> items;
+
+  /// Base level operating system information for the VM.
+  InventoryOsInfo osInfo;
+
+  Inventory();
+
+  Inventory.fromJson(core.Map _json) {
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              InventoryItem.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
+    }
+    if (_json.containsKey('osInfo')) {
+      osInfo = InventoryOsInfo.fromJson(
+          _json['osInfo'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (items != null) {
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
+    }
+    if (osInfo != null) {
+      _json['osInfo'] = osInfo.toJson();
+    }
+    return _json;
+  }
+}
+
+/// A single piece of inventory on a VM.
+class InventoryItem {
+  /// Software package available to be installed on the VM instance.
+  InventorySoftwarePackage availablePackage;
+
+  /// When this inventory item was first detected.
+  core.String createTime;
+
+  /// Identifier for this item, unique across items for this VM.
+  core.String id;
+
+  /// Software package present on the VM instance.
+  InventorySoftwarePackage installedPackage;
+
+  /// The origin of this inventory item.
+  /// Possible string values are:
+  /// - "ORIGIN_TYPE_UNSPECIFIED" : Invalid. An origin type must be specified.
+  /// - "INVENTORY_REPORT" : This inventory item was discovered as the result of
+  /// the agent reporting inventory via the reporting API.
+  core.String originType;
+
+  /// The specific type of inventory, correlating to its specific details.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Invalid. An type must be specified.
+  /// - "INSTALLED_PACKAGE" : This represents a package that is installed on the
+  /// VM.
+  /// - "AVAILABLE_PACKAGE" : This represents an update that is available for a
+  /// package.
+  core.String type;
+
+  /// When this inventory item was last modified.
+  core.String updateTime;
+
+  InventoryItem();
+
+  InventoryItem.fromJson(core.Map _json) {
+    if (_json.containsKey('availablePackage')) {
+      availablePackage = InventorySoftwarePackage.fromJson(
+          _json['availablePackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('id')) {
+      id = _json['id'] as core.String;
+    }
+    if (_json.containsKey('installedPackage')) {
+      installedPackage = InventorySoftwarePackage.fromJson(
+          _json['installedPackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('originType')) {
+      originType = _json['originType'] as core.String;
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (availablePackage != null) {
+      _json['availablePackage'] = availablePackage.toJson();
+    }
+    if (createTime != null) {
+      _json['createTime'] = createTime;
+    }
+    if (id != null) {
+      _json['id'] = id;
+    }
+    if (installedPackage != null) {
+      _json['installedPackage'] = installedPackage.toJson();
+    }
+    if (originType != null) {
+      _json['originType'] = originType;
+    }
+    if (type != null) {
+      _json['type'] = type;
+    }
+    if (updateTime != null) {
+      _json['updateTime'] = updateTime;
+    }
+    return _json;
+  }
+}
+
+/// Operating system information for the VM.
+class InventoryOsInfo {
+  /// The system architecture of the operating system.
+  core.String architecture;
+
+  /// The VM hostname.
+  core.String hostname;
+
+  /// The kernel release of the operating system.
+  core.String kernelRelease;
+
+  /// The kernel version of the operating system.
+  core.String kernelVersion;
+
+  /// The operating system long name.
+  ///
+  /// For example 'Debian GNU/Linux 9' or 'Microsoft Window Server 2019
+  /// Datacenter'.
+  core.String longName;
+
+  /// The current version of the OS Config agent running on the VM.
+  core.String osconfigAgentVersion;
+
+  /// The operating system short name.
+  ///
+  /// For example, 'windows' or 'debian'.
+  core.String shortName;
+
+  /// The version of the operating system.
+  core.String version;
+
+  InventoryOsInfo();
+
+  InventoryOsInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('architecture')) {
+      architecture = _json['architecture'] as core.String;
+    }
+    if (_json.containsKey('hostname')) {
+      hostname = _json['hostname'] as core.String;
+    }
+    if (_json.containsKey('kernelRelease')) {
+      kernelRelease = _json['kernelRelease'] as core.String;
+    }
+    if (_json.containsKey('kernelVersion')) {
+      kernelVersion = _json['kernelVersion'] as core.String;
+    }
+    if (_json.containsKey('longName')) {
+      longName = _json['longName'] as core.String;
+    }
+    if (_json.containsKey('osconfigAgentVersion')) {
+      osconfigAgentVersion = _json['osconfigAgentVersion'] as core.String;
+    }
+    if (_json.containsKey('shortName')) {
+      shortName = _json['shortName'] as core.String;
+    }
+    if (_json.containsKey('version')) {
+      version = _json['version'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (architecture != null) {
+      _json['architecture'] = architecture;
+    }
+    if (hostname != null) {
+      _json['hostname'] = hostname;
+    }
+    if (kernelRelease != null) {
+      _json['kernelRelease'] = kernelRelease;
+    }
+    if (kernelVersion != null) {
+      _json['kernelVersion'] = kernelVersion;
+    }
+    if (longName != null) {
+      _json['longName'] = longName;
+    }
+    if (osconfigAgentVersion != null) {
+      _json['osconfigAgentVersion'] = osconfigAgentVersion;
+    }
+    if (shortName != null) {
+      _json['shortName'] = shortName;
+    }
+    if (version != null) {
+      _json['version'] = version;
+    }
+    return _json;
+  }
+}
+
+/// Software package information of the operating system.
+class InventorySoftwarePackage {
+  /// Details of an APT package.
+  ///
+  /// For details about the apt package manager, see
+  /// https://wiki.debian.org/Apt.
+  InventoryVersionedPackage aptPackage;
+
+  /// Details of a COS package.
+  InventoryVersionedPackage cosPackage;
+
+  /// Details of a Googet package.
+  ///
+  /// For details about the googet package manager, see
+  /// https://github.com/google/googet.
+  InventoryVersionedPackage googetPackage;
+
+  /// Details of a Windows Quick Fix engineering package.
+  ///
+  /// See
+  /// https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering
+  /// for info in Windows Quick Fix Engineering.
+  InventoryWindowsQuickFixEngineeringPackage qfePackage;
+
+  /// Details of a Windows Update package.
+  ///
+  /// See https://docs.microsoft.com/en-us/windows/win32/api/_wua/ for
+  /// information about Windows Update.
+  InventoryWindowsUpdatePackage wuaPackage;
+
+  /// Yum package info.
+  ///
+  /// For details about the yum package manager, see
+  /// https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/ch-yum.
+  InventoryVersionedPackage yumPackage;
+
+  /// Details of a Zypper package.
+  ///
+  /// For details about the Zypper package manager, see
+  /// https://en.opensuse.org/SDB:Zypper_manual.
+  InventoryVersionedPackage zypperPackage;
+
+  /// Details of a Zypper patch.
+  ///
+  /// For details about the Zypper package manager, see
+  /// https://en.opensuse.org/SDB:Zypper_manual.
+  InventoryZypperPatch zypperPatch;
+
+  InventorySoftwarePackage();
+
+  InventorySoftwarePackage.fromJson(core.Map _json) {
+    if (_json.containsKey('aptPackage')) {
+      aptPackage = InventoryVersionedPackage.fromJson(
+          _json['aptPackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('cosPackage')) {
+      cosPackage = InventoryVersionedPackage.fromJson(
+          _json['cosPackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('googetPackage')) {
+      googetPackage = InventoryVersionedPackage.fromJson(
+          _json['googetPackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('qfePackage')) {
+      qfePackage = InventoryWindowsQuickFixEngineeringPackage.fromJson(
+          _json['qfePackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('wuaPackage')) {
+      wuaPackage = InventoryWindowsUpdatePackage.fromJson(
+          _json['wuaPackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('yumPackage')) {
+      yumPackage = InventoryVersionedPackage.fromJson(
+          _json['yumPackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('zypperPackage')) {
+      zypperPackage = InventoryVersionedPackage.fromJson(
+          _json['zypperPackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('zypperPatch')) {
+      zypperPatch = InventoryZypperPatch.fromJson(
+          _json['zypperPatch'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (aptPackage != null) {
+      _json['aptPackage'] = aptPackage.toJson();
+    }
+    if (cosPackage != null) {
+      _json['cosPackage'] = cosPackage.toJson();
+    }
+    if (googetPackage != null) {
+      _json['googetPackage'] = googetPackage.toJson();
+    }
+    if (qfePackage != null) {
+      _json['qfePackage'] = qfePackage.toJson();
+    }
+    if (wuaPackage != null) {
+      _json['wuaPackage'] = wuaPackage.toJson();
+    }
+    if (yumPackage != null) {
+      _json['yumPackage'] = yumPackage.toJson();
+    }
+    if (zypperPackage != null) {
+      _json['zypperPackage'] = zypperPackage.toJson();
+    }
+    if (zypperPatch != null) {
+      _json['zypperPatch'] = zypperPatch.toJson();
+    }
+    return _json;
+  }
+}
+
+/// Information related to the a standard versioned package.
+///
+/// This includes package info for APT, Yum, Zypper, and Googet package
+/// managers.
+class InventoryVersionedPackage {
+  /// The system architecture this package is intended for.
+  core.String architecture;
+
+  /// The name of the package.
+  core.String packageName;
+
+  /// The version of the package.
+  core.String version;
+
+  InventoryVersionedPackage();
+
+  InventoryVersionedPackage.fromJson(core.Map _json) {
+    if (_json.containsKey('architecture')) {
+      architecture = _json['architecture'] as core.String;
+    }
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'] as core.String;
+    }
+    if (_json.containsKey('version')) {
+      version = _json['version'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (architecture != null) {
+      _json['architecture'] = architecture;
+    }
+    if (packageName != null) {
+      _json['packageName'] = packageName;
+    }
+    if (version != null) {
+      _json['version'] = version;
+    }
+    return _json;
+  }
+}
+
+/// Information related to a Quick Fix Engineering package.
+///
+/// Fields are taken from Windows QuickFixEngineering Interface and match the
+/// source names:
+/// https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering
+class InventoryWindowsQuickFixEngineeringPackage {
+  /// A short textual description of the QFE update.
+  core.String caption;
+
+  /// A textual description of the QFE update.
+  core.String description;
+
+  /// Unique identifier associated with a particular QFE update.
+  core.String hotFixId;
+
+  /// Date that the QFE update was installed.
+  ///
+  /// Mapped from installed_on field.
+  core.String installTime;
+
+  InventoryWindowsQuickFixEngineeringPackage();
+
+  InventoryWindowsQuickFixEngineeringPackage.fromJson(core.Map _json) {
+    if (_json.containsKey('caption')) {
+      caption = _json['caption'] as core.String;
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('hotFixId')) {
+      hotFixId = _json['hotFixId'] as core.String;
+    }
+    if (_json.containsKey('installTime')) {
+      installTime = _json['installTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (caption != null) {
+      _json['caption'] = caption;
+    }
+    if (description != null) {
+      _json['description'] = description;
+    }
+    if (hotFixId != null) {
+      _json['hotFixId'] = hotFixId;
+    }
+    if (installTime != null) {
+      _json['installTime'] = installTime;
+    }
+    return _json;
+  }
+}
+
+/// Details related to a Windows Update package.
+///
+/// Field data and names are taken from Windows Update API IUpdate Interface:
+/// https://docs.microsoft.com/en-us/windows/win32/api/_wua/ Descriptive fields
+/// like title, and description are localized based on the locale of the VM
+/// being updated.
+class InventoryWindowsUpdatePackage {
+  /// The categories that are associated with this update package.
+  core.List<InventoryWindowsUpdatePackageWindowsUpdateCategory> categories;
+
+  /// The localized description of the update package.
+  core.String description;
+
+  /// A collection of Microsoft Knowledge Base article IDs that are associated
+  /// with the update package.
+  core.List<core.String> kbArticleIds;
+
+  /// The last published date of the update, in (UTC) date and time.
+  core.String lastDeploymentChangeTime;
+
+  /// A collection of URLs that provide more information about the update
+  /// package.
+  core.List<core.String> moreInfoUrls;
+
+  /// The revision number of this update package.
+  core.int revisionNumber;
+
+  /// A hyperlink to the language-specific support information for the update.
+  core.String supportUrl;
+
+  /// The localized title of the update package.
+  core.String title;
+
+  /// Gets the identifier of an update package.
+  ///
+  /// Stays the same across revisions.
+  core.String updateId;
+
+  InventoryWindowsUpdatePackage();
+
+  InventoryWindowsUpdatePackage.fromJson(core.Map _json) {
+    if (_json.containsKey('categories')) {
+      categories = (_json['categories'] as core.List)
+          .map<InventoryWindowsUpdatePackageWindowsUpdateCategory>((value) =>
+              InventoryWindowsUpdatePackageWindowsUpdateCategory.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('kbArticleIds')) {
+      kbArticleIds = (_json['kbArticleIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('lastDeploymentChangeTime')) {
+      lastDeploymentChangeTime =
+          _json['lastDeploymentChangeTime'] as core.String;
+    }
+    if (_json.containsKey('moreInfoUrls')) {
+      moreInfoUrls = (_json['moreInfoUrls'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('revisionNumber')) {
+      revisionNumber = _json['revisionNumber'] as core.int;
+    }
+    if (_json.containsKey('supportUrl')) {
+      supportUrl = _json['supportUrl'] as core.String;
+    }
+    if (_json.containsKey('title')) {
+      title = _json['title'] as core.String;
+    }
+    if (_json.containsKey('updateId')) {
+      updateId = _json['updateId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (categories != null) {
+      _json['categories'] = categories.map((value) => value.toJson()).toList();
+    }
+    if (description != null) {
+      _json['description'] = description;
+    }
+    if (kbArticleIds != null) {
+      _json['kbArticleIds'] = kbArticleIds;
+    }
+    if (lastDeploymentChangeTime != null) {
+      _json['lastDeploymentChangeTime'] = lastDeploymentChangeTime;
+    }
+    if (moreInfoUrls != null) {
+      _json['moreInfoUrls'] = moreInfoUrls;
+    }
+    if (revisionNumber != null) {
+      _json['revisionNumber'] = revisionNumber;
+    }
+    if (supportUrl != null) {
+      _json['supportUrl'] = supportUrl;
+    }
+    if (title != null) {
+      _json['title'] = title;
+    }
+    if (updateId != null) {
+      _json['updateId'] = updateId;
+    }
+    return _json;
+  }
+}
+
+/// Categories specified by the Windows Update.
+class InventoryWindowsUpdatePackageWindowsUpdateCategory {
+  /// The identifier of the windows update category.
+  core.String id;
+
+  /// The name of the windows update category.
+  core.String name;
+
+  InventoryWindowsUpdatePackageWindowsUpdateCategory();
+
+  InventoryWindowsUpdatePackageWindowsUpdateCategory.fromJson(core.Map _json) {
+    if (_json.containsKey('id')) {
+      id = _json['id'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (id != null) {
+      _json['id'] = id;
+    }
+    if (name != null) {
+      _json['name'] = name;
+    }
+    return _json;
+  }
+}
+
+/// Details related to a Zypper Patch.
+class InventoryZypperPatch {
+  /// The category of the patch.
+  core.String category;
+
+  /// The name of the patch.
+  core.String patchName;
+
+  /// The severity specified for this patch
+  core.String severity;
+
+  /// Any summary information provided about this patch.
+  core.String summary;
+
+  InventoryZypperPatch();
+
+  InventoryZypperPatch.fromJson(core.Map _json) {
+    if (_json.containsKey('category')) {
+      category = _json['category'] as core.String;
+    }
+    if (_json.containsKey('patchName')) {
+      patchName = _json['patchName'] as core.String;
+    }
+    if (_json.containsKey('severity')) {
+      severity = _json['severity'] as core.String;
+    }
+    if (_json.containsKey('summary')) {
+      summary = _json['summary'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (category != null) {
+      _json['category'] = category;
+    }
+    if (patchName != null) {
+      _json['patchName'] = patchName;
+    }
+    if (severity != null) {
+      _json['severity'] = severity;
+    }
+    if (summary != null) {
+      _json['summary'] = summary;
+    }
+    return _json;
+  }
+}
+
 /// A response message for listing patch deployments.
 class ListPatchDeploymentsResponse {
   /// A pagination token that can be used to get the next page of patch

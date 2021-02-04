@@ -1179,6 +1179,8 @@ class FilterPair {
   /// - "FILTER_PATH_EVENT_INDEX"
   /// - "FILTER_EVENT_TYPE"
   /// - "FILTER_CHANNEL_GROUPING"
+  /// - "FILTER_OM_SDK_AVAILABLE"
+  /// - "FILTER_DATA_SOURCE"
   core.String type;
 
   /// Filter value.
@@ -1792,6 +1794,8 @@ class PathQueryOptionsFilter {
   /// - "FILTER_PATH_EVENT_INDEX"
   /// - "FILTER_EVENT_TYPE"
   /// - "FILTER_CHANNEL_GROUPING"
+  /// - "FILTER_OM_SDK_AVAILABLE"
+  /// - "FILTER_DATA_SOURCE"
   core.String filter;
 
   /// Indicates how the filter should be matched to the value.
@@ -2105,9 +2109,10 @@ class QuerySchedule {
   /// - "QUARTERLY"
   core.String frequency;
 
-  /// This field has no effect.
+  /// Time of day at which a new report will be generated, represented as
+  /// minutes past midnight.
   ///
-  /// Deprecated.
+  /// Range is 0 to 1439. Only applies to scheduled reports.
   core.int nextRunMinuteOfDay;
 
   /// Canonical timezone code for report generation time.

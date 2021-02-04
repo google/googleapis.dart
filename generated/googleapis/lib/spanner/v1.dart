@@ -510,6 +510,10 @@ class ProjectsInstancesResource {
   /// instance's name contains "howl" and it has the label "env" with its value
   /// containing "dev".
   ///
+  /// [instanceDeadline] - Deadline used while retrieving metadata for
+  /// instances. Instances whose metadata cannot be retrieved within this
+  /// deadline will be added to unreachable in ListInstancesResponse.
+  ///
   /// [pageSize] - Number of instances to be returned in the response. If 0 or
   /// less, defaults to the server's maximum allowed page size.
   ///
@@ -529,6 +533,7 @@ class ProjectsInstancesResource {
   async.Future<ListInstancesResponse> list(
     core.String parent, {
     core.String filter,
+    core.String instanceDeadline,
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
@@ -545,6 +550,9 @@ class ProjectsInstancesResource {
     }
     if (filter != null) {
       _queryParams['filter'] = [filter];
+    }
+    if (instanceDeadline != null) {
+      _queryParams['instanceDeadline'] = [instanceDeadline];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -4040,11 +4048,10 @@ class ProjectsInstancesOperationsResource {
 
 /// A backup of a Cloud Spanner database.
 class Backup {
-  /// The backup will contain an externally consistent copy of the database at
-  /// the timestamp specified by `create_time`.
+  /// The time the CreateBackup request is received.
   ///
-  /// `create_time` is approximately the time the CreateBackup request is
-  /// received.
+  /// If the request does not specify `version_time`, the `version_time` of the
+  /// backup will be equivalent to the `create_time`.
   ///
   /// Output only.
   core.String createTime;
@@ -4102,6 +4109,13 @@ class Backup {
   /// - "READY" : The backup is complete and ready for use.
   core.String state;
 
+  /// The backup will contain an externally consistent copy of the database at
+  /// the timestamp specified by `version_time`.
+  ///
+  /// If `version_time` is not specified, the system will set `version_time` to
+  /// the `create_time` of the backup.
+  core.String versionTime;
+
   Backup();
 
   Backup.fromJson(core.Map _json) {
@@ -4128,6 +4142,9 @@ class Backup {
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
     }
+    if (_json.containsKey('versionTime')) {
+      versionTime = _json['versionTime'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -4153,6 +4170,9 @@ class Backup {
     if (state != null) {
       _json['state'] = state;
     }
+    if (versionTime != null) {
+      _json['versionTime'] = versionTime;
+    }
     return _json;
   }
 }
@@ -4162,12 +4182,18 @@ class BackupInfo {
   /// Name of the backup.
   core.String backup;
 
-  /// The backup contains an externally consistent copy of `source_database` at
-  /// the timestamp specified by `create_time`.
+  /// The time the CreateBackup request was received.
   core.String createTime;
 
   /// Name of the database the backup was created from.
   core.String sourceDatabase;
+
+  /// The backup contains an externally consistent copy of `source_database` at
+  /// the timestamp specified by `version_time`.
+  ///
+  /// If the CreateBackup request did not specify `version_time`, the
+  /// `version_time` of the backup is equivalent to the `create_time`.
+  core.String versionTime;
 
   BackupInfo();
 
@@ -4181,6 +4207,9 @@ class BackupInfo {
     if (_json.containsKey('sourceDatabase')) {
       sourceDatabase = _json['sourceDatabase'] as core.String;
     }
+    if (_json.containsKey('versionTime')) {
+      versionTime = _json['versionTime'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -4193,6 +4222,9 @@ class BackupInfo {
     }
     if (sourceDatabase != null) {
       _json['sourceDatabase'] = sourceDatabase;
+    }
+    if (versionTime != null) {
+      _json['versionTime'] = versionTime;
     }
     return _json;
   }
@@ -4288,11 +4320,6 @@ class BeginTransactionRequest {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding.
-  ///
-  /// Expected to be globally unique to support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
@@ -4343,9 +4370,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'] as core.String;
-    }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(
           _json['condition'] as core.Map<core.String, core.dynamic>);
@@ -4362,9 +4386,6 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
-    if (bindingId != null) {
-      _json['bindingId'] = bindingId;
-    }
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }
@@ -4438,6 +4459,12 @@ class CommitRequest {
   /// list.
   core.List<Mutation> mutations;
 
+  /// If `true`, then statistics related to the transaction will be included in
+  /// the CommitResponse.
+  ///
+  /// Default value is `false`.
+  core.bool returnCommitStats;
+
   /// Execute mutations in a temporary transaction.
   ///
   /// Note that unlike commit of a previously-started transaction, commit with a
@@ -4467,6 +4494,9 @@ class CommitRequest {
               Mutation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('returnCommitStats')) {
+      returnCommitStats = _json['returnCommitStats'] as core.bool;
+    }
     if (_json.containsKey('singleUseTransaction')) {
       singleUseTransaction = TransactionOptions.fromJson(
           _json['singleUseTransaction'] as core.Map<core.String, core.dynamic>);
@@ -4481,6 +4511,9 @@ class CommitRequest {
     if (mutations != null) {
       _json['mutations'] = mutations.map((value) => value.toJson()).toList();
     }
+    if (returnCommitStats != null) {
+      _json['returnCommitStats'] = returnCommitStats;
+    }
     if (singleUseTransaction != null) {
       _json['singleUseTransaction'] = singleUseTransaction.toJson();
     }
@@ -4493,12 +4526,22 @@ class CommitRequest {
 
 /// The response for Commit.
 class CommitResponse {
+  /// The statistics about this Commit.
+  ///
+  /// Not returned by default. For more information, see
+  /// CommitRequest.return_commit_stats.
+  CommitStats commitStats;
+
   /// The Cloud Spanner timestamp at which the transaction committed.
   core.String commitTimestamp;
 
   CommitResponse();
 
   CommitResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('commitStats')) {
+      commitStats = CommitStats.fromJson(
+          _json['commitStats'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('commitTimestamp')) {
       commitTimestamp = _json['commitTimestamp'] as core.String;
     }
@@ -4506,8 +4549,41 @@ class CommitResponse {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (commitStats != null) {
+      _json['commitStats'] = commitStats.toJson();
+    }
     if (commitTimestamp != null) {
       _json['commitTimestamp'] = commitTimestamp;
+    }
+    return _json;
+  }
+}
+
+/// Additional statistics about a commit.
+class CommitStats {
+  /// The total number of mutations for the transaction.
+  ///
+  /// Knowing the `mutation_count` value can help you maximize the number of
+  /// mutations in a transaction and minimize the number of API round trips. You
+  /// can also monitor this value to prevent transactions from exceeding the
+  /// system
+  /// [limit](http://cloud.google.com/spanner/quotas#limits_for_creating_reading_updating_and_deleting_data).
+  /// If the number of mutations exceeds the limit, the server returns
+  /// [INVALID_ARGUMENT](http://cloud.google.com/spanner/docs/reference/rest/v1/Code#ENUM_VALUES.INVALID_ARGUMENT).
+  core.String mutationCount;
+
+  CommitStats();
+
+  CommitStats.fromJson(core.Map _json) {
+    if (_json.containsKey('mutationCount')) {
+      mutationCount = _json['mutationCount'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (mutationCount != null) {
+      _json['mutationCount'] = mutationCount;
     }
     return _json;
   }
@@ -4767,6 +4843,11 @@ class Database {
   /// Output only.
   core.String createTime;
 
+  /// Earliest timestamp at which older versions of the data can be read.
+  ///
+  /// Output only.
+  core.String earliestVersionTime;
+
   /// The name of the database.
   ///
   /// Values are of the form `projects//instances//databases/`, where `` is as
@@ -4799,11 +4880,23 @@ class Database {
   /// database will transition to `READY` state.
   core.String state;
 
+  /// The period in which Cloud Spanner retains all versions of data for the
+  /// database.
+  ///
+  /// This is same as the value of version_retention_period database option set
+  /// using UpdateDatabaseDdl. Defaults to 1 hour, if not set.
+  ///
+  /// Output only.
+  core.String versionRetentionPeriod;
+
   Database();
 
   Database.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('earliestVersionTime')) {
+      earliestVersionTime = _json['earliestVersionTime'] as core.String;
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -4815,12 +4908,18 @@ class Database {
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
     }
+    if (_json.containsKey('versionRetentionPeriod')) {
+      versionRetentionPeriod = _json['versionRetentionPeriod'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
+    }
+    if (earliestVersionTime != null) {
+      _json['earliestVersionTime'] = earliestVersionTime;
     }
     if (name != null) {
       _json['name'] = name;
@@ -4830,6 +4929,9 @@ class Database {
     }
     if (state != null) {
       _json['state'] = state;
+    }
+    if (versionRetentionPeriod != null) {
+      _json['versionRetentionPeriod'] = versionRetentionPeriod;
     }
     return _json;
   }
@@ -5283,10 +5385,10 @@ class Field {
   /// The name of the field.
   ///
   /// For reads, this is the column name. For SQL queries, it is the column
-  /// alias (e.g., \`"Word"\` in the query \`"SELECT 'hello' AS Word"\`), or the
-  /// column name (e.g., \`"ColName"\` in the query \`"SELECT ColName FROM
-  /// Table"\`). Some columns might have an empty name (e.g., !"SELECT
-  /// UPPER(ColName)"\`). Note that a query result can contain multiple fields
+  /// alias (e.g., `"Word"` in the query `"SELECT 'hello' AS Word"`), or the
+  /// column name (e.g., `"ColName"` in the query `"SELECT ColName FROM
+  /// Table"`). Some columns might have an empty name (e.g., `"SELECT
+  /// UPPER(ColName)"`). Note that a query result can contain multiple fields
   /// with the same name.
   core.String name;
 
@@ -5952,6 +6054,12 @@ class ListInstancesResponse {
   /// more of the matching instances.
   core.String nextPageToken;
 
+  /// The list of unreachable instances.
+  ///
+  /// It includes the names of instances whose metadata could not be retrieved
+  /// within instance_deadline.
+  core.List<core.String> unreachable;
+
   ListInstancesResponse();
 
   ListInstancesResponse.fromJson(core.Map _json) {
@@ -5964,6 +6072,11 @@ class ListInstancesResponse {
     if (_json.containsKey('nextPageToken')) {
       nextPageToken = _json['nextPageToken'] as core.String;
     }
+    if (_json.containsKey('unreachable')) {
+      unreachable = (_json['unreachable'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -5973,6 +6086,9 @@ class ListInstancesResponse {
     }
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
+    }
+    if (unreachable != null) {
+      _json['unreachable'] = unreachable;
     }
     return _json;
   }
@@ -8487,6 +8603,15 @@ class UpdateDatabaseDdlMetadata {
   /// For an individual statement, this list contains only that statement.
   core.List<core.String> statements;
 
+  /// When true, indicates that the operation is throttled e.g due to resource
+  /// constraints.
+  ///
+  /// When resources become available the operation will resume and this field
+  /// will be false again.
+  ///
+  /// Output only.
+  core.bool throttled;
+
   UpdateDatabaseDdlMetadata();
 
   UpdateDatabaseDdlMetadata.fromJson(core.Map _json) {
@@ -8503,6 +8628,9 @@ class UpdateDatabaseDdlMetadata {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('throttled')) {
+      throttled = _json['throttled'] as core.bool;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -8515,6 +8643,9 @@ class UpdateDatabaseDdlMetadata {
     }
     if (statements != null) {
       _json['statements'] = statements;
+    }
+    if (throttled != null) {
+      _json['throttled'] = throttled;
     }
     return _json;
   }

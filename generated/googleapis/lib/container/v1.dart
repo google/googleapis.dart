@@ -1942,6 +1942,9 @@ class ProjectsLocationsClustersNodePoolsResource {
 
   /// Sets the size for a specific node pool.
   ///
+  /// The new size will be used for all replicas, including future replicas
+  /// created by modifying NodePool.locations.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -4426,6 +4429,9 @@ class ProjectsZonesClustersNodePoolsResource {
 
   /// Sets the size for a specific node pool.
   ///
+  /// The new size will be used for all replicas, including future replicas
+  /// created by modifying NodePool.locations.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -4893,6 +4899,9 @@ class AddonsConfig {
   /// Configuration for NodeLocalDNS, a dns cache running on cluster nodes
   DnsCacheConfig dnsCacheConfig;
 
+  /// Configuration for the Compute Engine Persistent Disk CSI driver.
+  GcePersistentDiskCsiDriverConfig gcePersistentDiskCsiDriverConfig;
+
   /// Configuration for the horizontal pod autoscaling feature, which increases
   /// or decreases the number of replica pods a replication controller has based
   /// on the resource usage of the existing pods.
@@ -4932,6 +4941,12 @@ class AddonsConfig {
       dnsCacheConfig = DnsCacheConfig.fromJson(
           _json['dnsCacheConfig'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('gcePersistentDiskCsiDriverConfig')) {
+      gcePersistentDiskCsiDriverConfig =
+          GcePersistentDiskCsiDriverConfig.fromJson(
+              _json['gcePersistentDiskCsiDriverConfig']
+                  as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('horizontalPodAutoscaling')) {
       horizontalPodAutoscaling = HorizontalPodAutoscaling.fromJson(
           _json['horizontalPodAutoscaling']
@@ -4961,6 +4976,10 @@ class AddonsConfig {
     }
     if (dnsCacheConfig != null) {
       _json['dnsCacheConfig'] = dnsCacheConfig.toJson();
+    }
+    if (gcePersistentDiskCsiDriverConfig != null) {
+      _json['gcePersistentDiskCsiDriverConfig'] =
+          gcePersistentDiskCsiDriverConfig.toJson();
     }
     if (horizontalPodAutoscaling != null) {
       _json['horizontalPodAutoscaling'] = horizontalPodAutoscaling.toJson();
@@ -5070,8 +5089,8 @@ class AutoprovisioningNodePoolDefaults {
   /// size is 100GB.
   core.int diskSizeGb;
 
-  /// Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd') If
-  /// unspecified, the default disk type is 'pd-standard'
+  /// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or
+  /// 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
   core.String diskType;
 
   /// Specifies the node management options for NAP created node-pools.
@@ -5517,6 +5536,13 @@ class Cluster {
   /// The list of Google Compute Engine
   /// [zones](https://cloud.google.com/compute/docs/zones#available) in which
   /// the cluster's nodes should be located.
+  ///
+  /// This field provides a default value if
+  /// [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations)
+  /// are not specified during node pool creation. Warning: changing cluster
+  /// locations will update the
+  /// [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations)
+  /// of all node pools and will result in nodes being added and/or removed.
   core.List<core.String> locations;
 
   /// The logging service the cluster should use to write logs.
@@ -5601,6 +5627,9 @@ class Cluster {
   /// specified.
   core.List<NodePool> nodePools;
 
+  /// Notification configuration of the cluster.
+  NotificationConfig notificationConfig;
+
   /// Configuration for private cluster.
   PrivateClusterConfig privateClusterConfig;
 
@@ -5654,10 +5683,12 @@ class Cluster {
   /// `statusMessage` field.
   core.String status;
 
+  /// Use conditions instead.
+  ///
   /// Additional information about the current status of this cluster, if
   /// available.
   ///
-  /// Output only.
+  /// Output only. Deprecated.
   core.String statusMessage;
 
   /// The name of the Google Compute Engine
@@ -5828,6 +5859,10 @@ class Cluster {
           .map<NodePool>((value) =>
               NodePool.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
+    }
+    if (_json.containsKey('notificationConfig')) {
+      notificationConfig = NotificationConfig.fromJson(
+          _json['notificationConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('privateClusterConfig')) {
       privateClusterConfig = PrivateClusterConfig.fromJson(
@@ -6003,6 +6038,9 @@ class Cluster {
     if (nodePools != null) {
       _json['nodePools'] = nodePools.map((value) => value.toJson()).toList();
     }
+    if (notificationConfig != null) {
+      _json['notificationConfig'] = notificationConfig.toJson();
+    }
     if (privateClusterConfig != null) {
       _json['privateClusterConfig'] = privateClusterConfig.toJson();
     }
@@ -6148,10 +6186,9 @@ class ClusterUpdate {
   /// [zones](https://cloud.google.com/compute/docs/zones#available) in which
   /// the cluster's nodes should be located.
   ///
-  /// Changing the locations a cluster is in will result in nodes being either
-  /// created or removed from the cluster, depending on whether locations are
-  /// being added or removed. This list must always include the cluster's
-  /// primary zone.
+  /// This list must always include the cluster's primary zone. Warning:
+  /// changing cluster locations will update the locations of all node pools and
+  /// will result in nodes being added and/or removed.
   core.List<core.String> desiredLocations;
 
   /// The logging service the cluster should use to write logs.
@@ -6213,8 +6250,23 @@ class ClusterUpdate {
   /// Kubernetes version - "-": picks the Kubernetes master version
   core.String desiredNodeVersion;
 
+  /// The desired notification configuration.
+  NotificationConfig desiredNotificationConfig;
+
   /// The desired private cluster configuration.
   PrivateClusterConfig desiredPrivateClusterConfig;
+
+  /// The desired state of IPv6 connectivity to Google Services.
+  /// Possible string values are:
+  /// - "PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED" : Default value. Same as
+  /// DISABLED
+  /// - "PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED" : No private access to or from
+  /// Google Services
+  /// - "PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE" : Enables private IPv6 access to
+  /// Google Services from GKE
+  /// - "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL" : Enables priate IPv6 access
+  /// to and from Google Services
+  core.String desiredPrivateIpv6GoogleAccess;
 
   /// The desired release channel configuration.
   ReleaseChannel desiredReleaseChannel;
@@ -6298,10 +6350,19 @@ class ClusterUpdate {
     if (_json.containsKey('desiredNodeVersion')) {
       desiredNodeVersion = _json['desiredNodeVersion'] as core.String;
     }
+    if (_json.containsKey('desiredNotificationConfig')) {
+      desiredNotificationConfig = NotificationConfig.fromJson(
+          _json['desiredNotificationConfig']
+              as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('desiredPrivateClusterConfig')) {
       desiredPrivateClusterConfig = PrivateClusterConfig.fromJson(
           _json['desiredPrivateClusterConfig']
               as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('desiredPrivateIpv6GoogleAccess')) {
+      desiredPrivateIpv6GoogleAccess =
+          _json['desiredPrivateIpv6GoogleAccess'] as core.String;
     }
     if (_json.containsKey('desiredReleaseChannel')) {
       desiredReleaseChannel = ReleaseChannel.fromJson(
@@ -6378,9 +6439,15 @@ class ClusterUpdate {
     if (desiredNodeVersion != null) {
       _json['desiredNodeVersion'] = desiredNodeVersion;
     }
+    if (desiredNotificationConfig != null) {
+      _json['desiredNotificationConfig'] = desiredNotificationConfig.toJson();
+    }
     if (desiredPrivateClusterConfig != null) {
       _json['desiredPrivateClusterConfig'] =
           desiredPrivateClusterConfig.toJson();
+    }
+    if (desiredPrivateIpv6GoogleAccess != null) {
+      _json['desiredPrivateIpv6GoogleAccess'] = desiredPrivateIpv6GoogleAccess;
     }
     if (desiredReleaseChannel != null) {
       _json['desiredReleaseChannel'] = desiredReleaseChannel.toJson();
@@ -6803,6 +6870,28 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    return _json;
+  }
+}
+
+/// Configuration for the Compute Engine PD CSI driver.
+class GcePersistentDiskCsiDriverConfig {
+  /// Whether the Compute Engine PD CSI driver is enabled for this cluster.
+  core.bool enabled;
+
+  GcePersistentDiskCsiDriverConfig();
+
+  GcePersistentDiskCsiDriverConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (enabled != null) {
+      _json['enabled'] = enabled;
+    }
     return _json;
   }
 }
@@ -7862,6 +7951,21 @@ class NetworkConfig {
   /// Output only.
   core.String network;
 
+  /// The desired state of IPv6 connectivity to Google Services.
+  ///
+  /// By default, no private IPv6 access to or from Google Services (all access
+  /// will be via IPv4)
+  /// Possible string values are:
+  /// - "PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED" : Default value. Same as
+  /// DISABLED
+  /// - "PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED" : No private access to or from
+  /// Google Services
+  /// - "PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE" : Enables private IPv6 access to
+  /// Google Services from GKE
+  /// - "PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL" : Enables priate IPv6 access
+  /// to and from Google Services
+  core.String privateIpv6GoogleAccess;
+
   /// The relative name of the Google Compute Engine
   /// [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the
   /// cluster is connected.
@@ -7885,6 +7989,9 @@ class NetworkConfig {
     if (_json.containsKey('network')) {
       network = _json['network'] as core.String;
     }
+    if (_json.containsKey('privateIpv6GoogleAccess')) {
+      privateIpv6GoogleAccess = _json['privateIpv6GoogleAccess'] as core.String;
+    }
     if (_json.containsKey('subnetwork')) {
       subnetwork = _json['subnetwork'] as core.String;
     }
@@ -7900,6 +8007,9 @@ class NetworkConfig {
     }
     if (network != null) {
       _json['network'] = network;
+    }
+    if (privateIpv6GoogleAccess != null) {
+      _json['privateIpv6GoogleAccess'] = privateIpv6GoogleAccess;
     }
     if (subnetwork != null) {
       _json['subnetwork'] = subnetwork;
@@ -7993,8 +8103,8 @@ class NodeConfig {
   /// size is 100GB.
   core.int diskSizeGb;
 
-  /// Type of the disk attached to each node (e.g. 'pd-standard' or 'pd-ssd') If
-  /// unspecified, the default disk type is 'pd-standard'
+  /// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or
+  /// 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
   core.String diskType;
 
   /// The image type to use for this node.
@@ -8036,11 +8146,12 @@ class NodeConfig {
   /// "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" -
   /// "kube-env" - "startup-script" - "user-data" - "disable-address-manager" -
   /// "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" -
-  /// "install-ssh-psm1" - "user-profile-psm1" - "serial-port-logging-enable"
-  /// Values are free-form strings, and only have meaning as interpreted by the
-  /// image running in the instance. The only restriction placed on them is that
-  /// each value's size must be less than or equal to 32 KB. The total size of
-  /// all keys and values must be less than 512 KB.
+  /// "install-ssh-psm1" - "user-profile-psm1" The following keys are reserved
+  /// for Windows nodes: - "serial-port-logging-enable" Values are free-form
+  /// strings, and only have meaning as interpreted by the image running in the
+  /// instance. The only restriction placed on them is that each value's size
+  /// must be less than or equal to 32 KB. The total size of all keys and values
+  /// must be less than 512 KB.
   core.Map<core.String, core.String> metadata;
 
   /// Minimum CPU platform to be used by this instance.
@@ -8361,6 +8472,11 @@ class NodePool {
   /// The list of Google Compute Engine
   /// [zones](https://cloud.google.com/compute/docs/zones#available) in which
   /// the NodePool's nodes should be located.
+  ///
+  /// If this value is unspecified during node pool creation, the
+  /// [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations)
+  /// value will be used, instead. Warning: changing node pool locations will
+  /// result in nodes being added and/or removed.
   core.List<core.String> locations;
 
   /// NodeManagement configuration for this NodePool.
@@ -8405,10 +8521,12 @@ class NodePool {
   /// Details can be found in the `statusMessage` field.
   core.String status;
 
+  /// Use conditions instead.
+  ///
   /// Additional information about the current status of this node pool
   /// instance, if available.
   ///
-  /// Output only.
+  /// Output only. Deprecated.
   core.String statusMessage;
 
   /// Upgrade settings control disruption and speed of the upgrade.
@@ -8630,6 +8748,29 @@ class NodeTaint {
     }
     if (value != null) {
       _json['value'] = value;
+    }
+    return _json;
+  }
+}
+
+/// NotificationConfig is the configuration of notifications.
+class NotificationConfig {
+  /// Notification config for Pub/Sub.
+  PubSub pubsub;
+
+  NotificationConfig();
+
+  NotificationConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('pubsub')) {
+      pubsub = PubSub.fromJson(
+          _json['pubsub'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (pubsub != null) {
+      _json['pubsub'] = pubsub.toJson();
     }
     return _json;
   }
@@ -9007,6 +9148,39 @@ class PrivateClusterMasterGlobalAccessConfig {
     final _json = <core.String, core.Object>{};
     if (enabled != null) {
       _json['enabled'] = enabled;
+    }
+    return _json;
+  }
+}
+
+/// Pub/Sub specific notification config.
+class PubSub {
+  /// Enable notifications for Pub/Sub.
+  core.bool enabled;
+
+  /// The desired Pub/Sub topic to which notifications will be sent by GKE.
+  ///
+  /// Format is `projects/{project}/topics/{topic}`.
+  core.String topic;
+
+  PubSub();
+
+  PubSub.fromJson(core.Map _json) {
+    if (_json.containsKey('enabled')) {
+      enabled = _json['enabled'] as core.bool;
+    }
+    if (_json.containsKey('topic')) {
+      topic = _json['topic'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (enabled != null) {
+      _json['enabled'] = enabled;
+    }
+    if (topic != null) {
+      _json['topic'] = topic;
     }
     return _json;
   }
@@ -10434,7 +10608,7 @@ class SetNodePoolManagementRequest {
   }
 }
 
-/// SetNodePoolSizeRequest sets the size a node pool.
+/// SetNodePoolSizeRequest sets the size of a node pool.
 class SetNodePoolSizeRequest {
   /// The name of the cluster to update.
   ///
@@ -11056,30 +11230,20 @@ class UpdateNodePoolRequest {
 /// a resource is upgrading.
 class UpgradeEvent {
   /// The current version before the upgrade.
-  ///
-  /// Required.
   core.String currentVersion;
 
   /// The operation associated with this upgrade.
-  ///
-  /// Required.
   core.String operation;
 
   /// The time when the operation was started.
-  ///
-  /// Required.
   core.String operationStartTime;
 
   /// Optional relative path to the resource.
   ///
   /// For example in node pool upgrades, the relative path of the node pool.
-  ///
-  /// Optional.
   core.String resource;
 
   /// The resource type that is upgrading.
-  ///
-  /// Required.
   /// Possible string values are:
   /// - "UPGRADE_RESOURCE_TYPE_UNSPECIFIED" : Default value. This shouldn't be
   /// used.
@@ -11088,8 +11252,6 @@ class UpgradeEvent {
   core.String resourceType;
 
   /// The target version for the upgrade.
-  ///
-  /// Required.
   core.String targetVersion;
 
   UpgradeEvent();

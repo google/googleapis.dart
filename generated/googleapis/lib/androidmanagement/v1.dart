@@ -92,6 +92,9 @@ class EnterprisesResource {
   ///
   /// Request parameters:
   ///
+  /// [agreementAccepted] - This feature is not generally available yet. Whether
+  /// the managed Google Play Agreement is presented and agreed.
+  ///
   /// [enterpriseToken] - The enterprise token appended to the callback URL.
   ///
   /// [projectId] - The ID of the Google Cloud Platform project which will own
@@ -112,6 +115,7 @@ class EnterprisesResource {
   /// this method will complete with the same error.
   async.Future<Enterprise> create(
     Enterprise request, {
+    core.bool agreementAccepted,
     core.String enterpriseToken,
     core.String projectId,
     core.String signupUrlName,
@@ -126,6 +130,9 @@ class EnterprisesResource {
 
     if (request != null) {
       _body = convert.json.encode(request.toJson());
+    }
+    if (agreementAccepted != null) {
+      _queryParams['agreementAccepted'] = ['${agreementAccepted}'];
     }
     if (enterpriseToken != null) {
       _queryParams['enterpriseToken'] = [enterpriseToken];
@@ -154,6 +161,60 @@ class EnterprisesResource {
     return _response.then(
       (data) =>
           Enterprise.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// This feature is not generally available yet.
+  ///
+  /// Deletes an enterprise.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - This feature is not generally available yet. The name of the
+  /// enterprise in the form enterprises/{enterpriseId}.
+  /// Value must have pattern `^enterprises/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'DELETE',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
     );
   }
 
@@ -207,6 +268,87 @@ class EnterprisesResource {
     return _response.then(
       (data) =>
           Enterprise.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// This feature is not generally available yet.
+  ///
+  /// Lists enterprises that are managed by an EMM. Only partial views are
+  /// returned.
+  ///
+  /// Request parameters:
+  ///
+  /// [pageSize] - This feature is not generally available yet. The requested
+  /// page size. The actual page size may be fixed to a min or max value.
+  ///
+  /// [pageToken] - This feature is not generally available yet. A token
+  /// identifying a page of results returned by the server.
+  ///
+  /// [projectId] - Required. This feature is not generally available yet. The
+  /// ID of the Cloud project of the EMM the enterprises belongs to.
+  ///
+  /// [view] - This feature is not generally available yet. View that specify
+  /// that partial response should be returned.
+  /// Possible string values are:
+  /// - "ENTERPRISE_VIEW_UNSPECIFIED" : This feature is not generally available
+  /// yet. The API will default to the BASIC view for the List method.
+  /// - "BASIC" : This feature is not generally available yet. Includes name and
+  /// enterprise_display_name fields.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListEnterprisesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListEnterprisesResponse> list({
+    core.int pageSize,
+    core.String pageToken,
+    core.String projectId,
+    core.String view,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (projectId != null) {
+      _queryParams['projectId'] = [projectId];
+    }
+    if (view != null) {
+      _queryParams['view'] = [view];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/enterprises';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => ListEnterprisesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
     );
   }
 
@@ -1740,6 +1882,24 @@ class SignupUrlsResource {
 /// To maintain the security posture of a device, we don't recommend overriding
 /// any of the default values.
 class AdvancedSecurityOverrides {
+  /// Controls Common Criteria Mode—security standards defined in the Common
+  /// Criteria for Information Technology Security Evaluation
+  /// (https://www.commoncriteriaportal.org/) (CC).
+  ///
+  /// Enabling Common Criteria Mode increases certain security components on a
+  /// device, including AES-GCM encryption of Bluetooth Long Term Keys, and
+  /// Wi-Fi configuration stores.Warning: Common Criteria Mode enforces a strict
+  /// security model typically only required for IT products used in national
+  /// security systems and other highly sensitive organizations. Standard device
+  /// use may be affected. Only enabled if required.
+  /// Possible string values are:
+  /// - "COMMON_CRITERIA_MODE_UNSPECIFIED" : Unspecified. Defaults to
+  /// COMMON_CRITERIA_MODE_DISABLED.
+  /// - "COMMON_CRITERIA_MODE_DISABLED" : Default. Disables Common Criteria
+  /// Mode.
+  /// - "COMMON_CRITERIA_MODE_ENABLED" : Enables Common Criteria Mode.
+  core.String commonCriteriaMode;
+
   /// The policy for untrusted apps (apps from unknown sources) enforced on the
   /// device.
   ///
@@ -1759,6 +1919,9 @@ class AdvancedSecurityOverrides {
   AdvancedSecurityOverrides();
 
   AdvancedSecurityOverrides.fromJson(core.Map _json) {
+    if (_json.containsKey('commonCriteriaMode')) {
+      commonCriteriaMode = _json['commonCriteriaMode'] as core.String;
+    }
     if (_json.containsKey('untrustedAppsPolicy')) {
       untrustedAppsPolicy = _json['untrustedAppsPolicy'] as core.String;
     }
@@ -1766,6 +1929,9 @@ class AdvancedSecurityOverrides {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (commonCriteriaMode != null) {
+      _json['commonCriteriaMode'] = commonCriteriaMode;
+    }
     if (untrustedAppsPolicy != null) {
       _json['untrustedAppsPolicy'] = untrustedAppsPolicy;
     }
@@ -2040,6 +2206,16 @@ class ApplicationPolicy {
   /// each track are available in AppTrackInfo.
   core.List<core.String> accessibleTrackIds;
 
+  /// This feature is not generally available yet.
+  /// Possible string values are:
+  /// - "AUTO_UPDATE_MODE_UNSPECIFIED" : This feature is not generally available
+  /// yet.
+  /// - "AUTO_UPDATE_DEFAULT" : This feature is not generally available yet.
+  /// - "AUTO_UPDATE_POSTPONED" : This feature is not generally available yet.
+  /// - "AUTO_UPDATE_HIGH_PRIORITY" : This feature is not generally available
+  /// yet.
+  core.String autoUpdateMode;
+
   /// Controls whether the app can communicate with itself across a device’s
   /// work and personal profiles, subject to user consent.
   /// Possible string values are:
@@ -2148,6 +2324,9 @@ class ApplicationPolicy {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('autoUpdateMode')) {
+      autoUpdateMode = _json['autoUpdateMode'] as core.String;
+    }
     if (_json.containsKey('connectedWorkAndPersonalApp')) {
       connectedWorkAndPersonalApp =
           _json['connectedWorkAndPersonalApp'] as core.String;
@@ -2202,6 +2381,9 @@ class ApplicationPolicy {
     final _json = <core.String, core.Object>{};
     if (accessibleTrackIds != null) {
       _json['accessibleTrackIds'] = accessibleTrackIds;
+    }
+    if (autoUpdateMode != null) {
+      _json['autoUpdateMode'] = autoUpdateMode;
     }
     if (connectedWorkAndPersonalApp != null) {
       _json['connectedWorkAndPersonalApp'] = connectedWorkAndPersonalApp;
@@ -2553,6 +2735,11 @@ class Command {
   /// - "RESET_PASSWORD" : Reset the user's password.
   /// - "REBOOT" : Reboot the device. Only supported on fully managed devices
   /// running Android 7.0 (API level 24) or higher.
+  /// - "RELINQUISH_OWNERSHIP" : Removes the work profile and all policies from
+  /// a company-owned Android 8.0+ device, relinquishing the device for personal
+  /// use. Apps and data associated with the personal profile(s) are preserved.
+  /// The device will be deleted from the server after it acknowledges the
+  /// command.
   core.String type;
 
   /// The resource name of the user that owns the device in the form
@@ -2612,6 +2799,39 @@ class Command {
     }
     if (userName != null) {
       _json['userName'] = userName;
+    }
+    return _json;
+  }
+}
+
+/// Information about Common Criteria Mode—security standards defined in the
+/// Common Criteria for Information Technology Security Evaluation
+/// (https://www.commoncriteriaportal.org/) (CC).This information is only
+/// available if statusReportingSettings.commonCriteriaModeEnabled is true in
+/// the device's policy.
+class CommonCriteriaModeInfo {
+  /// Whether Common Criteria Mode is enabled.
+  /// Possible string values are:
+  /// - "COMMON_CRITERIA_MODE_STATUS_UNKNOWN" : Unknown status.
+  /// - "COMMON_CRITERIA_MODE_DISABLED" : Common Criteria Mode is currently
+  /// disabled.
+  /// - "COMMON_CRITERIA_MODE_ENABLED" : Common Criteria Mode is currently
+  /// enabled.
+  core.String commonCriteriaModeStatus;
+
+  CommonCriteriaModeInfo();
+
+  CommonCriteriaModeInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('commonCriteriaModeStatus')) {
+      commonCriteriaModeStatus =
+          _json['commonCriteriaModeStatus'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (commonCriteriaModeStatus != null) {
+      _json['commonCriteriaModeStatus'] = commonCriteriaModeStatus;
     }
     return _json;
   }
@@ -2686,30 +2906,117 @@ class ComplianceRule {
   }
 }
 
-/// Represents a whole or partial calendar date, e.g. a birthday.
-///
-/// The time of day and time zone are either specified elsewhere or are not
-/// significant. The date is relative to the Proleptic Gregorian Calendar. This
-/// can represent: A full date, with non-zero year, month and day values A month
-/// and day value, with a zero year, e.g. an anniversary A year on its own, with
-/// zero month and day values A year and month value, with a zero day, e.g. a
-/// credit card expiration dateRelated types are google.type.TimeOfDay and
-/// google.protobuf.Timestamp.
-class Date {
-  /// Day of month.
+/// Contact details for LaForge enterprises.
+class ContactInfo {
+  /// Email address for a point of contact, which will be used to send important
+  /// announcements related to managed Google Play.
+  core.String contactEmail;
+
+  /// The email of the data protection officer.
   ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 if specifying
-  /// a year by itself or a year and month where the day is not significant.
+  /// The email is validated but not verified.
+  core.String dataProtectionOfficerEmail;
+
+  /// The name of the data protection officer.
+  core.String dataProtectionOfficerName;
+
+  /// The phone number of the data protection officer The phone number is
+  /// validated but not verified.
+  core.String dataProtectionOfficerPhone;
+
+  /// The email of the EU representative.
+  ///
+  /// The email is validated but not verified.
+  core.String euRepresentativeEmail;
+
+  /// The name of the EU representative.
+  core.String euRepresentativeName;
+
+  /// The phone number of the EU representative.
+  ///
+  /// The phone number is validated but not verified.
+  core.String euRepresentativePhone;
+
+  ContactInfo();
+
+  ContactInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('contactEmail')) {
+      contactEmail = _json['contactEmail'] as core.String;
+    }
+    if (_json.containsKey('dataProtectionOfficerEmail')) {
+      dataProtectionOfficerEmail =
+          _json['dataProtectionOfficerEmail'] as core.String;
+    }
+    if (_json.containsKey('dataProtectionOfficerName')) {
+      dataProtectionOfficerName =
+          _json['dataProtectionOfficerName'] as core.String;
+    }
+    if (_json.containsKey('dataProtectionOfficerPhone')) {
+      dataProtectionOfficerPhone =
+          _json['dataProtectionOfficerPhone'] as core.String;
+    }
+    if (_json.containsKey('euRepresentativeEmail')) {
+      euRepresentativeEmail = _json['euRepresentativeEmail'] as core.String;
+    }
+    if (_json.containsKey('euRepresentativeName')) {
+      euRepresentativeName = _json['euRepresentativeName'] as core.String;
+    }
+    if (_json.containsKey('euRepresentativePhone')) {
+      euRepresentativePhone = _json['euRepresentativePhone'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (contactEmail != null) {
+      _json['contactEmail'] = contactEmail;
+    }
+    if (dataProtectionOfficerEmail != null) {
+      _json['dataProtectionOfficerEmail'] = dataProtectionOfficerEmail;
+    }
+    if (dataProtectionOfficerName != null) {
+      _json['dataProtectionOfficerName'] = dataProtectionOfficerName;
+    }
+    if (dataProtectionOfficerPhone != null) {
+      _json['dataProtectionOfficerPhone'] = dataProtectionOfficerPhone;
+    }
+    if (euRepresentativeEmail != null) {
+      _json['euRepresentativeEmail'] = euRepresentativeEmail;
+    }
+    if (euRepresentativeName != null) {
+      _json['euRepresentativeName'] = euRepresentativeName;
+    }
+    if (euRepresentativePhone != null) {
+      _json['euRepresentativePhone'] = euRepresentativePhone;
+    }
+    return _json;
+  }
+}
+
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: A full date, with non-zero year, month, and
+/// day values A month and day value, with a zero year, such as an anniversary A
+/// year on its own, with zero month and day values A year and month value, with
+/// a zero day, such as a credit card expiration dateRelated types are
+/// google.type.TimeOfDay and google.protobuf.Timestamp.
+class Date {
+  /// Day of a month.
+  ///
+  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
+  /// year by itself or a year and month where the day isn't significant.
   core.int day;
 
-  /// Month of year.
+  /// Month of a year.
   ///
-  /// Must be from 1 to 12, or 0 if specifying a year without a month and day.
+  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
   core.int month;
 
-  /// Year of date.
+  /// Year of the date.
   ///
-  /// Must be from 1 to 9999, or 0 if specifying a date without a year.
+  /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int year;
 
   Date();
@@ -2772,6 +3079,13 @@ class Device {
   /// - "PROVISIONING" : The device is being provisioned. Newly enrolled devices
   /// are in this state until they have a policy applied.
   core.String appliedState;
+
+  /// Information about Common Criteria Mode—security standards defined in the
+  /// Common Criteria for Information Technology Security Evaluation
+  /// (https://www.commoncriteriaportal.org/) (CC).This information is only
+  /// available if statusReportingSettings.commonCriteriaModeEnabled is true in
+  /// the device's policy.
+  CommonCriteriaModeInfo commonCriteriaModeInfo;
 
   /// Device settings information.
   ///
@@ -2949,6 +3263,11 @@ class Device {
     if (_json.containsKey('appliedState')) {
       appliedState = _json['appliedState'] as core.String;
     }
+    if (_json.containsKey('commonCriteriaModeInfo')) {
+      commonCriteriaModeInfo = CommonCriteriaModeInfo.fromJson(
+          _json['commonCriteriaModeInfo']
+              as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('deviceSettings')) {
       deviceSettings = DeviceSettings.fromJson(
           _json['deviceSettings'] as core.Map<core.String, core.dynamic>);
@@ -3085,6 +3404,9 @@ class Device {
     }
     if (appliedState != null) {
       _json['appliedState'] = appliedState;
+    }
+    if (commonCriteriaModeInfo != null) {
+      _json['commonCriteriaModeInfo'] = commonCriteriaModeInfo.toJson();
     }
     if (deviceSettings != null) {
       _json['deviceSettings'] = deviceSettings.toJson();
@@ -3401,7 +3723,7 @@ class EnrollmentToken {
   core.String allowPersonalUsage;
 
   /// The length of time the enrollment token is valid, ranging from 1 minute to
-  /// 30 days.
+  /// 90 days.
   ///
   /// If not specified, the default duration is 1 hour.
   core.String duration;
@@ -3530,6 +3852,11 @@ class Enterprise {
   /// Deprecated and unused.
   core.bool appAutoApprovalEnabled;
 
+  /// This feature is not generally available yet.
+  ///
+  /// The enterprise contact info of an EMM owned enterprise
+  ContactInfo contactInfo;
+
   /// The types of Google Pub/Sub notifications enabled for the enterprise.
   core.List<core.String> enabledNotificationTypes;
 
@@ -3574,6 +3901,10 @@ class Enterprise {
     if (_json.containsKey('appAutoApprovalEnabled')) {
       appAutoApprovalEnabled = _json['appAutoApprovalEnabled'] as core.bool;
     }
+    if (_json.containsKey('contactInfo')) {
+      contactInfo = ContactInfo.fromJson(
+          _json['contactInfo'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('enabledNotificationTypes')) {
       enabledNotificationTypes =
           (_json['enabledNotificationTypes'] as core.List)
@@ -3614,6 +3945,9 @@ class Enterprise {
     final _json = <core.String, core.Object>{};
     if (appAutoApprovalEnabled != null) {
       _json['appAutoApprovalEnabled'] = appAutoApprovalEnabled;
+    }
+    if (contactInfo != null) {
+      _json['contactInfo'] = contactInfo.toJson();
     }
     if (enabledNotificationTypes != null) {
       _json['enabledNotificationTypes'] = enabledNotificationTypes;
@@ -4259,6 +4593,47 @@ class ListDevicesResponse {
   }
 }
 
+/// This feature is not generally available yet.
+///
+/// Response to a request to list enterprises.
+class ListEnterprisesResponse {
+  /// This feature is not generally available yet.
+  ///
+  /// The list of enterprises.
+  core.List<Enterprise> enterprises;
+
+  /// This feature is not generally available yet.
+  ///
+  /// If there are more results, a token to retrieve next page of results.
+  core.String nextPageToken;
+
+  ListEnterprisesResponse();
+
+  ListEnterprisesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('enterprises')) {
+      enterprises = (_json['enterprises'] as core.List)
+          .map<Enterprise>((value) =>
+              Enterprise.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (enterprises != null) {
+      _json['enterprises'] =
+          enterprises.map((value) => value.toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json['nextPageToken'] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
@@ -4646,6 +5021,13 @@ class NetworkInfo {
   /// For example, Vodafone.
   core.String networkOperatorName;
 
+  /// Provides telephony information associated with each SIM card on the
+  /// device.
+  ///
+  /// Only supported on fully managed devices starting from Android API level 23
+  /// and above.
+  core.List<TelephonyInfo> telephonyInfos;
+
   /// Wi-Fi MAC address of the device.
   ///
   /// For example, 7c:11:11:11:11:11.
@@ -4663,6 +5045,12 @@ class NetworkInfo {
     if (_json.containsKey('networkOperatorName')) {
       networkOperatorName = _json['networkOperatorName'] as core.String;
     }
+    if (_json.containsKey('telephonyInfos')) {
+      telephonyInfos = (_json['telephonyInfos'] as core.List)
+          .map<TelephonyInfo>((value) => TelephonyInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('wifiMacAddress')) {
       wifiMacAddress = _json['wifiMacAddress'] as core.String;
     }
@@ -4678,6 +5066,10 @@ class NetworkInfo {
     }
     if (networkOperatorName != null) {
       _json['networkOperatorName'] = networkOperatorName;
+    }
+    if (telephonyInfos != null) {
+      _json['telephonyInfos'] =
+          telephonyInfos.map((value) => value.toJson()).toList();
     }
     if (wifiMacAddress != null) {
       _json['wifiMacAddress'] = wifiMacAddress;
@@ -5309,10 +5701,10 @@ class PersistentPreferredActivity {
 class PersonalApplicationPolicy {
   /// The type of installation to perform.
   /// Possible string values are:
-  /// - "INSTALL_TYPE_UNSPECIFIED" : Unspecified. The default behavior is that
-  /// all installs are allowed.
+  /// - "INSTALL_TYPE_UNSPECIFIED" : Unspecified. Defaults to AVAILABLE.
   /// - "BLOCKED" : The app is blocked and can't be installed in the personal
   /// profile.
+  /// - "AVAILABLE" : The app is available to install in the personal profile.
   core.String installType;
 
   /// The package name of the application.
@@ -5356,13 +5748,19 @@ class PersonalUsagePolicies {
   /// Policy applied to applications in the personal profile.
   core.List<PersonalApplicationPolicy> personalApplications;
 
-  /// Used together with personal_applications to control how apps in the
+  /// Used together with personalApplications to control how apps in the
   /// personal profile are allowed or blocked.
   /// Possible string values are:
-  /// - "PLAY_STORE_MODE_UNSPECIFIED" : Unspecified. Default behavior is to
-  /// allow all installs.
-  /// - "BLACKLIST" : All Play Store apps are available, except those whose
-  /// install_type is BLOCKED in personal_applications.
+  /// - "PLAY_STORE_MODE_UNSPECIFIED" : Unspecified. Defaults to BLOCKLIST.
+  /// - "BLACKLIST" : All Play Store apps are available for installation in the
+  /// personal profile, except those whose installType is BLOCKED in
+  /// personalApplications.
+  /// - "BLOCKLIST" : All Play Store apps are available for installation in the
+  /// personal profile, except those whose installType is BLOCKED in
+  /// personalApplications.
+  /// - "ALLOWLIST" : Only apps explicitly specified in personalApplications
+  /// with installType set to AVAILABLE are allowed to be installed in the
+  /// personal profile.
   core.String personalPlayStoreMode;
 
   /// Whether screen capture is disabled.
@@ -5467,8 +5865,23 @@ class Policy {
   /// Policy applied to apps.
   core.List<ApplicationPolicy> applications;
 
+  /// Whether auto date, time, and time zone are enabled on a company-owned
+  /// device.
+  ///
+  /// If this is set, then autoTimeRequired is ignored.
+  /// Possible string values are:
+  /// - "AUTO_DATE_AND_TIME_ZONE_UNSPECIFIED" : Unspecified. Defaults to
+  /// AUTO_DATE_AND_TIME_ZONE_USER_CHOICE.
+  /// - "AUTO_DATE_AND_TIME_ZONE_USER_CHOICE" : Auto date, time, and time zone
+  /// are left to user's choice.
+  /// - "AUTO_DATE_AND_TIME_ZONE_ENFORCED" : Enforce auto date, time, and time
+  /// zone on the device.
+  core.String autoDateAndTimeZone;
+
   /// Whether auto time is required, which prevents the user from manually
   /// setting the date and time.
+  ///
+  /// If autoDateAndTimeZone is set, this field is ignored.
   core.bool autoTimeRequired;
 
   /// Whether applications other than the ones configured in applications are
@@ -5594,16 +6007,22 @@ class Policy {
   KioskCustomization kioskCustomization;
 
   /// The degree of location detection enabled.
-  ///
-  /// The user may change the value unless the user is otherwise blocked from
-  /// accessing device settings.
   /// Possible string values are:
-  /// - "LOCATION_MODE_UNSPECIFIED" : The current device value is not modified.
-  /// - "HIGH_ACCURACY" : All location detection methods are enabled, including
-  /// GPS, networks, and other sensors.
-  /// - "SENSORS_ONLY" : Only GPS and other sensors are enabled.
-  /// - "BATTERY_SAVING" : Only the network location provider is enabled.
-  /// - "OFF" : Location detection is disabled.
+  /// - "LOCATION_MODE_UNSPECIFIED" : Defaults to LOCATION_USER_CHOICE.
+  /// - "HIGH_ACCURACY" : On Android 8 and below, all location detection methods
+  /// are enabled, including GPS, networks, and other sensors. On Android 9 and
+  /// above, this is equivalent to LOCATION_ENFORCED.
+  /// - "SENSORS_ONLY" : On Android 8 and below, only GPS and other sensors are
+  /// enabled. On Android 9 and above, this is equivalent to LOCATION_ENFORCED.
+  /// - "BATTERY_SAVING" : On Android 8 and below, only the network location
+  /// provider is enabled. On Android 9 and above, this is equivalent to
+  /// LOCATION_ENFORCED.
+  /// - "OFF" : On Android 8 and below, location setting and accuracy are
+  /// disabled. On Android 9 and above, this is equivalent to LOCATION_DISABLED.
+  /// - "LOCATION_USER_CHOICE" : Location setting is not restricted on the
+  /// device. No specific behavior is set or enforced.
+  /// - "LOCATION_ENFORCED" : Enable location setting on the device.
+  /// - "LOCATION_DISABLED" : Disable location setting on the device.
   core.String locationMode;
 
   /// A message displayed to the user in the device administators settings
@@ -5859,6 +6278,9 @@ class Policy {
           .map<ApplicationPolicy>((value) => ApplicationPolicy.fromJson(
               value as core.Map<core.String, core.dynamic>))
           .toList();
+    }
+    if (_json.containsKey('autoDateAndTimeZone')) {
+      autoDateAndTimeZone = _json['autoDateAndTimeZone'] as core.String;
     }
     if (_json.containsKey('autoTimeRequired')) {
       autoTimeRequired = _json['autoTimeRequired'] as core.bool;
@@ -6172,6 +6594,9 @@ class Policy {
     if (applications != null) {
       _json['applications'] =
           applications.map((value) => value.toJson()).toList();
+    }
+    if (autoDateAndTimeZone != null) {
+      _json['autoDateAndTimeZone'] = autoDateAndTimeZone;
     }
     if (autoTimeRequired != null) {
       _json['autoTimeRequired'] = autoTimeRequired;
@@ -6997,6 +7422,9 @@ class StatusReportingSettings {
   /// Whether app reports are enabled.
   core.bool applicationReportsEnabled;
 
+  /// Whether Common Criteria Mode reporting is enabled.
+  core.bool commonCriteriaModeEnabled;
+
   /// Whether device settings reporting is enabled.
   core.bool deviceSettingsEnabled;
 
@@ -7042,6 +7470,10 @@ class StatusReportingSettings {
       applicationReportsEnabled =
           _json['applicationReportsEnabled'] as core.bool;
     }
+    if (_json.containsKey('commonCriteriaModeEnabled')) {
+      commonCriteriaModeEnabled =
+          _json['commonCriteriaModeEnabled'] as core.bool;
+    }
     if (_json.containsKey('deviceSettingsEnabled')) {
       deviceSettingsEnabled = _json['deviceSettingsEnabled'] as core.bool;
     }
@@ -7077,6 +7509,9 @@ class StatusReportingSettings {
     }
     if (applicationReportsEnabled != null) {
       _json['applicationReportsEnabled'] = applicationReportsEnabled;
+    }
+    if (commonCriteriaModeEnabled != null) {
+      _json['commonCriteriaModeEnabled'] = commonCriteriaModeEnabled;
     }
     if (deviceSettingsEnabled != null) {
       _json['deviceSettingsEnabled'] = deviceSettingsEnabled;
@@ -7223,6 +7658,40 @@ class SystemUpdateInfo {
     }
     if (updateStatus != null) {
       _json['updateStatus'] = updateStatus;
+    }
+    return _json;
+  }
+}
+
+/// Telephony information associated with a given SIM card on the device.
+///
+/// Only supported on fully managed devices starting from Android API level 23
+/// and above.
+class TelephonyInfo {
+  /// The carrier name associated with this SIM card.
+  core.String carrierName;
+
+  /// The phone number associated with this SIM card.
+  core.String phoneNumber;
+
+  TelephonyInfo();
+
+  TelephonyInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('carrierName')) {
+      carrierName = _json['carrierName'] as core.String;
+    }
+    if (_json.containsKey('phoneNumber')) {
+      phoneNumber = _json['phoneNumber'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (carrierName != null) {
+      _json['carrierName'] = carrierName;
+    }
+    if (phoneNumber != null) {
+      _json['phoneNumber'] = phoneNumber;
     }
     return _json;
   }

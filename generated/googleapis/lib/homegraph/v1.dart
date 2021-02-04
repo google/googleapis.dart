@@ -415,6 +415,8 @@ class AgentOtherDeviceId {
 }
 
 /// Third-party device definition.
+///
+/// Next ID = 14
 class Device {
   /// Attributes for the traits supported by the device.
   ///
@@ -429,6 +431,9 @@ class Device {
   /// [EXECUTE](https://developers.google.com/assistant/smarthome/reference/intent/execute)
   /// intent.
   ///
+  /// Data in this object has a few constraints: No sensitive information,
+  /// including but not limited to Personally Identifiable Information.
+  ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> customData;
@@ -441,6 +446,14 @@ class Device {
 
   /// Names given to this device by your smart home Action.
   DeviceNames name;
+
+  /// See description for "traits".
+  ///
+  /// For Smart Home Entertainment Devices (SHED) devices, some traits can only
+  /// be executed on 3P cloud, e.g. "non_local_traits": \[ { "trait":
+  /// "action.devices.traits.MediaInitiation" }, { "trait":
+  /// "action.devices.traits.Channel" } \] go/shed-per-trait-routing.
+  core.List<NonLocalTrait> nonLocalTraits;
 
   /// Indicates whether your smart home Action will report notifications to
   /// Google for this device via ReportStateAndNotification.
@@ -515,6 +528,12 @@ class Device {
       name = DeviceNames.fromJson(
           _json['name'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('nonLocalTraits')) {
+      nonLocalTraits = (_json['nonLocalTraits'] as core.List)
+          .map<NonLocalTrait>((value) => NonLocalTrait.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('notificationSupportedByAgent')) {
       notificationSupportedByAgent =
           _json['notificationSupportedByAgent'] as core.bool;
@@ -560,6 +579,10 @@ class Device {
     }
     if (name != null) {
       _json['name'] = name.toJson();
+    }
+    if (nonLocalTraits != null) {
+      _json['nonLocalTraits'] =
+          nonLocalTraits.map((value) => value.toJson()).toList();
     }
     if (notificationSupportedByAgent != null) {
       _json['notificationSupportedByAgent'] = notificationSupportedByAgent;
@@ -697,6 +720,34 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    return _json;
+  }
+}
+
+/// LINT.IfChange go/shed-per-trait-routing.
+///
+/// Making it object to allow for extendible design, where we can add attributes
+/// in future.
+class NonLocalTrait {
+  /// Trait name, e.g., "action.devices.traits.MediaInitiation".
+  ///
+  /// See
+  /// [device traits](https://developers.google.com/assistant/smarthome/traits).
+  core.String trait;
+
+  NonLocalTrait();
+
+  NonLocalTrait.fromJson(core.Map _json) {
+    if (_json.containsKey('trait')) {
+      trait = _json['trait'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (trait != null) {
+      _json['trait'] = trait;
+    }
     return _json;
   }
 }

@@ -19,10 +19,7 @@
 ///
 /// Manages identity and access control for Google Cloud Platform resources,
 /// including the creation of service accounts, which you can use to
-/// authenticate to Google and make API calls. *Note:* This API is tied to the
-/// IAM service account credentials API ( iamcredentials.googleapis.com).
-/// Enabling or disabling this API will also enable or disable the IAM service
-/// account credentials API.
+/// authenticate to Google and make API calls.
 ///
 /// For more information, see <https://cloud.google.com/iam/>
 ///
@@ -33,6 +30,11 @@
 ///   - [OrganizationsRolesResource]
 /// - [PermissionsResource]
 /// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsWorkloadIdentityPoolsResource]
+///       - [ProjectsLocationsWorkloadIdentityPoolsOperationsResource]
+///       - [ProjectsLocationsWorkloadIdentityPoolsProvidersResource]
+/// - [ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource]
 ///   - [ProjectsRolesResource]
 ///   - [ProjectsServiceAccountsResource]
 ///     - [ProjectsServiceAccountsKeysResource]
@@ -54,10 +56,6 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Manages identity and access control for Google Cloud Platform resources,
 /// including the creation of service accounts, which you can use to
 /// authenticate to Google and make API calls.
-///
-/// *Note:* This API is tied to the IAM service account credentials API (
-/// iamcredentials.googleapis.com). Enabling or disabling this API will also
-/// enable or disable the IAM service account credentials API.
 class IamApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
@@ -755,11 +753,173 @@ class PermissionsResource {
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
   ProjectsRolesResource get roles => ProjectsRolesResource(_requester);
   ProjectsServiceAccountsResource get serviceAccounts =>
       ProjectsServiceAccountsResource(_requester);
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsResource get workloadIdentityPools =>
+      ProjectsLocationsWorkloadIdentityPoolsResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsOperationsResource get operations =>
+      ProjectsLocationsWorkloadIdentityPoolsOperationsResource(_requester);
+  ProjectsLocationsWorkloadIdentityPoolsProvidersResource get providers =>
+      ProjectsLocationsWorkloadIdentityPoolsProvidersResource(_requester);
+
+  ProjectsLocationsWorkloadIdentityPoolsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource
+      get operations =>
+          ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource(
+              _requester);
+
+  ProjectsLocationsWorkloadIdentityPoolsProvidersResource(
+      commons.ApiRequester client)
+      : _requester = client;
+}
+
+class ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/providers/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
 }
 
 class ProjectsRolesResource {
@@ -2955,11 +3115,6 @@ class AuditableService {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding.
-  ///
-  /// Expected to be globally unique to support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
@@ -3010,9 +3165,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'] as core.String;
-    }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(
           _json['condition'] as core.Map<core.String, core.dynamic>);
@@ -3029,9 +3181,6 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
-    if (bindingId != null) {
-      _json['bindingId'] = bindingId;
-    }
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }
@@ -3620,6 +3769,103 @@ class ListServiceAccountsResponse {
     }
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class Operation {
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  Status error;
+
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
+  core.String name;
+
+  /// The normal response of the operation in case of success.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object> response;
+
+  Operation();
+
+  Operation.fromJson(core.Map _json) {
+    if (_json.containsKey('done')) {
+      done = _json['done'] as core.bool;
+    }
+    if (_json.containsKey('error')) {
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('metadata')) {
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('response')) {
+      response =
+          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (done != null) {
+      _json['done'] = done;
+    }
+    if (error != null) {
+      _json['error'] = error.toJson();
+    }
+    if (metadata != null) {
+      _json['metadata'] = metadata;
+    }
+    if (name != null) {
+      _json['name'] = name;
+    }
+    if (response != null) {
+      _json['response'] = response;
     }
     return _json;
   }
@@ -4443,10 +4689,14 @@ class ServiceAccount {
 /// key-pairs, and Google retains ONLY the public key. System-managed keys are
 /// automatically rotated by Google, and are used for signing for a maximum of
 /// two weeks. The rotation process is probabilistic, and usage of the new key
-/// will gradually ramp up and down over the key's lifetime. We recommend
-/// caching the public key set for a service account for no more than 24 hours
-/// to ensure you have access to the latest keys. Public keys for all service
-/// accounts are also published at the OAuth2 Service Account API.
+/// will gradually ramp up and down over the key's lifetime. If you cache the
+/// public key set for a service account, we recommend that you update the cache
+/// every 15 minutes. User-managed keys can be added and removed at any time, so
+/// it is important to update the cache frequently. For Google-managed keys,
+/// Google will publish a key at least 6 hours before it is first used for
+/// signing and will keep publishing it for at least 6 hours after it was last
+/// used for signing. Public keys for all service accounts are also published at
+/// the OAuth2 Service Account API.
 class ServiceAccountKey {
   /// Specifies the algorithm (and possibly key size) for the key.
   /// Possible string values are:
@@ -4791,6 +5041,68 @@ class SignJwtResponse {
     }
     if (signedJwt != null) {
       _json['signedJwt'] = signedJwt;
+    }
+    return _json;
+  }
+}
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+class Status {
+  /// The status code, which should be an enum value of google.rpc.Code.
+  core.int code;
+
+  /// A list of messages that carry the error details.
+  ///
+  /// There is a common set of message types for APIs to use.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Map<core.String, core.Object>> details;
+
+  /// A developer-facing error message, which should be in English.
+  ///
+  /// Any user-facing error message should be localized and sent in the
+  /// google.rpc.Status.details field, or localized by the client.
+  core.String message;
+
+  Status();
+
+  Status.fromJson(core.Map _json) {
+    if (_json.containsKey('code')) {
+      code = _json['code'] as core.int;
+    }
+    if (_json.containsKey('details')) {
+      details = (_json['details'] as core.List)
+          .map<core.Map<core.String, core.Object>>((value) =>
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
+          .toList();
+    }
+    if (_json.containsKey('message')) {
+      message = _json['message'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (code != null) {
+      _json['code'] = code;
+    }
+    if (details != null) {
+      _json['details'] = details;
+    }
+    if (message != null) {
+      _json['message'] = message;
     }
     return _json;
   }

@@ -169,27 +169,27 @@ void checkButton(api.Button o) {
   buildCounterButton--;
 }
 
-core.List<api.CardAction> buildUnnamed2960() {
+core.List<api.CardAction> buildUnnamed3285() {
   var o = <api.CardAction>[];
   o.add(buildCardAction());
   o.add(buildCardAction());
   return o;
 }
 
-void checkUnnamed2960(core.List<api.CardAction> o) {
+void checkUnnamed3285(core.List<api.CardAction> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCardAction(o[0] as api.CardAction);
   checkCardAction(o[1] as api.CardAction);
 }
 
-core.List<api.Section> buildUnnamed2961() {
+core.List<api.Section> buildUnnamed3286() {
   var o = <api.Section>[];
   o.add(buildSection());
   o.add(buildSection());
   return o;
 }
 
-void checkUnnamed2961(core.List<api.Section> o) {
+void checkUnnamed3286(core.List<api.Section> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSection(o[0] as api.Section);
   checkSection(o[1] as api.Section);
@@ -200,10 +200,10 @@ api.Card buildCard() {
   var o = api.Card();
   buildCounterCard++;
   if (buildCounterCard < 3) {
-    o.cardActions = buildUnnamed2960();
+    o.cardActions = buildUnnamed3285();
     o.header = buildCardHeader();
     o.name = 'foo';
-    o.sections = buildUnnamed2961();
+    o.sections = buildUnnamed3286();
   }
   buildCounterCard--;
   return o;
@@ -212,10 +212,10 @@ api.Card buildCard() {
 void checkCard(api.Card o) {
   buildCounterCard++;
   if (buildCounterCard < 3) {
-    checkUnnamed2960(o.cardActions);
+    checkUnnamed3285(o.cardActions);
     checkCardHeader(o.header as api.CardHeader);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed2961(o.sections);
+    checkUnnamed3286(o.sections);
   }
   buildCounterCard--;
 }
@@ -335,14 +335,14 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.ActionParameter> buildUnnamed2962() {
+core.List<api.ActionParameter> buildUnnamed3287() {
   var o = <api.ActionParameter>[];
   o.add(buildActionParameter());
   o.add(buildActionParameter());
   return o;
 }
 
-void checkUnnamed2962(core.List<api.ActionParameter> o) {
+void checkUnnamed3287(core.List<api.ActionParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkActionParameter(o[0] as api.ActionParameter);
   checkActionParameter(o[1] as api.ActionParameter);
@@ -354,7 +354,7 @@ api.FormAction buildFormAction() {
   buildCounterFormAction++;
   if (buildCounterFormAction < 3) {
     o.actionMethodName = 'foo';
-    o.parameters = buildUnnamed2962();
+    o.parameters = buildUnnamed3287();
   }
   buildCounterFormAction--;
   return o;
@@ -364,7 +364,7 @@ void checkFormAction(api.FormAction o) {
   buildCounterFormAction++;
   if (buildCounterFormAction < 3) {
     unittest.expect(o.actionMethodName, unittest.equals('foo'));
-    checkUnnamed2962(o.parameters);
+    checkUnnamed3287(o.parameters);
   }
   buildCounterFormAction--;
 }
@@ -450,14 +450,14 @@ void checkKeyValue(api.KeyValue o) {
   buildCounterKeyValue--;
 }
 
-core.List<api.Membership> buildUnnamed2963() {
+core.List<api.Membership> buildUnnamed3288() {
   var o = <api.Membership>[];
   o.add(buildMembership());
   o.add(buildMembership());
   return o;
 }
 
-void checkUnnamed2963(core.List<api.Membership> o) {
+void checkUnnamed3288(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMembership(o[0] as api.Membership);
   checkMembership(o[1] as api.Membership);
@@ -468,7 +468,7 @@ api.ListMembershipsResponse buildListMembershipsResponse() {
   var o = api.ListMembershipsResponse();
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    o.memberships = buildUnnamed2963();
+    o.memberships = buildUnnamed3288();
     o.nextPageToken = 'foo';
   }
   buildCounterListMembershipsResponse--;
@@ -478,20 +478,20 @@ api.ListMembershipsResponse buildListMembershipsResponse() {
 void checkListMembershipsResponse(api.ListMembershipsResponse o) {
   buildCounterListMembershipsResponse++;
   if (buildCounterListMembershipsResponse < 3) {
-    checkUnnamed2963(o.memberships);
+    checkUnnamed3288(o.memberships);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListMembershipsResponse--;
 }
 
-core.List<api.Space> buildUnnamed2964() {
+core.List<api.Space> buildUnnamed3289() {
   var o = <api.Space>[];
   o.add(buildSpace());
   o.add(buildSpace());
   return o;
 }
 
-void checkUnnamed2964(core.List<api.Space> o) {
+void checkUnnamed3289(core.List<api.Space> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSpace(o[0] as api.Space);
   checkSpace(o[1] as api.Space);
@@ -503,7 +503,7 @@ api.ListSpacesResponse buildListSpacesResponse() {
   buildCounterListSpacesResponse++;
   if (buildCounterListSpacesResponse < 3) {
     o.nextPageToken = 'foo';
-    o.spaces = buildUnnamed2964();
+    o.spaces = buildUnnamed3289();
   }
   buildCounterListSpacesResponse--;
   return o;
@@ -513,7 +513,7 @@ void checkListSpacesResponse(api.ListSpacesResponse o) {
   buildCounterListSpacesResponse++;
   if (buildCounterListSpacesResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2964(o.spaces);
+    checkUnnamed3289(o.spaces);
   }
   buildCounterListSpacesResponse--;
 }
@@ -562,40 +562,40 @@ void checkMembership(api.Membership o) {
   buildCounterMembership--;
 }
 
-core.List<api.Annotation> buildUnnamed2965() {
+core.List<api.Annotation> buildUnnamed3290() {
   var o = <api.Annotation>[];
   o.add(buildAnnotation());
   o.add(buildAnnotation());
   return o;
 }
 
-void checkUnnamed2965(core.List<api.Annotation> o) {
+void checkUnnamed3290(core.List<api.Annotation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAnnotation(o[0] as api.Annotation);
   checkAnnotation(o[1] as api.Annotation);
 }
 
-core.List<api.Attachment> buildUnnamed2966() {
+core.List<api.Attachment> buildUnnamed3291() {
   var o = <api.Attachment>[];
   o.add(buildAttachment());
   o.add(buildAttachment());
   return o;
 }
 
-void checkUnnamed2966(core.List<api.Attachment> o) {
+void checkUnnamed3291(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAttachment(o[0] as api.Attachment);
   checkAttachment(o[1] as api.Attachment);
 }
 
-core.List<api.Card> buildUnnamed2967() {
+core.List<api.Card> buildUnnamed3292() {
   var o = <api.Card>[];
   o.add(buildCard());
   o.add(buildCard());
   return o;
 }
 
-void checkUnnamed2967(core.List<api.Card> o) {
+void checkUnnamed3292(core.List<api.Card> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCard(o[0] as api.Card);
   checkCard(o[1] as api.Card);
@@ -607,10 +607,10 @@ api.Message buildMessage() {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
     o.actionResponse = buildActionResponse();
-    o.annotations = buildUnnamed2965();
+    o.annotations = buildUnnamed3290();
     o.argumentText = 'foo';
-    o.attachment = buildUnnamed2966();
-    o.cards = buildUnnamed2967();
+    o.attachment = buildUnnamed3291();
+    o.cards = buildUnnamed3292();
     o.createTime = 'foo';
     o.fallbackText = 'foo';
     o.name = 'foo';
@@ -629,10 +629,10 @@ void checkMessage(api.Message o) {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
     checkActionResponse(o.actionResponse as api.ActionResponse);
-    checkUnnamed2965(o.annotations);
+    checkUnnamed3290(o.annotations);
     unittest.expect(o.argumentText, unittest.equals('foo'));
-    checkUnnamed2966(o.attachment);
-    checkUnnamed2967(o.cards);
+    checkUnnamed3291(o.attachment);
+    checkUnnamed3292(o.cards);
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.fallbackText, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -686,14 +686,14 @@ void checkOpenLink(api.OpenLink o) {
   buildCounterOpenLink--;
 }
 
-core.List<api.WidgetMarkup> buildUnnamed2968() {
+core.List<api.WidgetMarkup> buildUnnamed3293() {
   var o = <api.WidgetMarkup>[];
   o.add(buildWidgetMarkup());
   o.add(buildWidgetMarkup());
   return o;
 }
 
-void checkUnnamed2968(core.List<api.WidgetMarkup> o) {
+void checkUnnamed3293(core.List<api.WidgetMarkup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkWidgetMarkup(o[0] as api.WidgetMarkup);
   checkWidgetMarkup(o[1] as api.WidgetMarkup);
@@ -705,7 +705,7 @@ api.Section buildSection() {
   buildCounterSection++;
   if (buildCounterSection < 3) {
     o.header = 'foo';
-    o.widgets = buildUnnamed2968();
+    o.widgets = buildUnnamed3293();
   }
   buildCounterSection--;
   return o;
@@ -715,7 +715,7 @@ void checkSection(api.Section o) {
   buildCounterSection++;
   if (buildCounterSection < 3) {
     unittest.expect(o.header, unittest.equals('foo'));
-    checkUnnamed2968(o.widgets);
+    checkUnnamed3293(o.widgets);
   }
   buildCounterSection--;
 }
@@ -859,6 +859,7 @@ api.User buildUser() {
   if (buildCounterUser < 3) {
     o.displayName = 'foo';
     o.domainId = 'foo';
+    o.isAnonymous = true;
     o.name = 'foo';
     o.type = 'foo';
   }
@@ -871,6 +872,7 @@ void checkUser(api.User o) {
   if (buildCounterUser < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.domainId, unittest.equals('foo'));
+    unittest.expect(o.isAnonymous, unittest.isTrue);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -898,14 +900,14 @@ void checkUserMentionMetadata(api.UserMentionMetadata o) {
   buildCounterUserMentionMetadata--;
 }
 
-core.List<api.Button> buildUnnamed2969() {
+core.List<api.Button> buildUnnamed3294() {
   var o = <api.Button>[];
   o.add(buildButton());
   o.add(buildButton());
   return o;
 }
 
-void checkUnnamed2969(core.List<api.Button> o) {
+void checkUnnamed3294(core.List<api.Button> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkButton(o[0] as api.Button);
   checkButton(o[1] as api.Button);
@@ -916,7 +918,7 @@ api.WidgetMarkup buildWidgetMarkup() {
   var o = api.WidgetMarkup();
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    o.buttons = buildUnnamed2969();
+    o.buttons = buildUnnamed3294();
     o.image = buildImage();
     o.keyValue = buildKeyValue();
     o.textParagraph = buildTextParagraph();
@@ -928,7 +930,7 @@ api.WidgetMarkup buildWidgetMarkup() {
 void checkWidgetMarkup(api.WidgetMarkup o) {
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
-    checkUnnamed2969(o.buttons);
+    checkUnnamed3294(o.buttons);
     checkImage(o.image as api.Image);
     checkKeyValue(o.keyValue as api.KeyValue);
     checkTextParagraph(o.textParagraph as api.TextParagraph);
@@ -1201,6 +1203,181 @@ void main() {
     });
   });
 
+  unittest.group('resource-DmsResource', () {
+    unittest.test('method--messages', () {
+      var mock = HttpServerMock();
+      var res = api.HangoutsChatApi(mock).dms;
+      var arg_request = buildMessage();
+      var arg_parent = 'foo';
+      var arg_threadKey = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkMessage(obj as api.Message);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+            queryMap["threadKey"].first, unittest.equals(arg_threadKey));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildMessage());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .messages(arg_request, arg_parent,
+              threadKey: arg_threadKey, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkMessage(response as api.Message);
+      })));
+    });
+
+    unittest.test('method--webhooks', () {
+      var mock = HttpServerMock();
+      var res = api.HangoutsChatApi(mock).dms;
+      var arg_request = buildMessage();
+      var arg_parent = 'foo';
+      var arg_threadKey = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkMessage(obj as api.Message);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+            queryMap["threadKey"].first, unittest.equals(arg_threadKey));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildMessage());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .webhooks(arg_request, arg_parent,
+              threadKey: arg_threadKey, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkMessage(response as api.Message);
+      })));
+    });
+  });
+
+  unittest.group('resource-DmsConversationsResource', () {
+    unittest.test('method--messages', () {
+      var mock = HttpServerMock();
+      var res = api.HangoutsChatApi(mock).dms.conversations;
+      var arg_request = buildMessage();
+      var arg_parent = 'foo';
+      var arg_threadKey = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkMessage(obj as api.Message);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+            queryMap["threadKey"].first, unittest.equals(arg_threadKey));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildMessage());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .messages(arg_request, arg_parent,
+              threadKey: arg_threadKey, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkMessage(response as api.Message);
+      })));
+    });
+  });
+
   unittest.group('resource-MediaResource', () {
     unittest.test('method--download', () {
       // TODO: Implement tests for media upload;
@@ -1250,6 +1427,181 @@ void main() {
           .download(arg_resourceName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkMedia(response as api.Media);
+      })));
+    });
+  });
+
+  unittest.group('resource-RoomsResource', () {
+    unittest.test('method--messages', () {
+      var mock = HttpServerMock();
+      var res = api.HangoutsChatApi(mock).rooms;
+      var arg_request = buildMessage();
+      var arg_parent = 'foo';
+      var arg_threadKey = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkMessage(obj as api.Message);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+            queryMap["threadKey"].first, unittest.equals(arg_threadKey));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildMessage());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .messages(arg_request, arg_parent,
+              threadKey: arg_threadKey, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkMessage(response as api.Message);
+      })));
+    });
+
+    unittest.test('method--webhooks', () {
+      var mock = HttpServerMock();
+      var res = api.HangoutsChatApi(mock).rooms;
+      var arg_request = buildMessage();
+      var arg_parent = 'foo';
+      var arg_threadKey = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkMessage(obj as api.Message);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+            queryMap["threadKey"].first, unittest.equals(arg_threadKey));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildMessage());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .webhooks(arg_request, arg_parent,
+              threadKey: arg_threadKey, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkMessage(response as api.Message);
+      })));
+    });
+  });
+
+  unittest.group('resource-RoomsConversationsResource', () {
+    unittest.test('method--messages', () {
+      var mock = HttpServerMock();
+      var res = api.HangoutsChatApi(mock).rooms.conversations;
+      var arg_request = buildMessage();
+      var arg_parent = 'foo';
+      var arg_threadKey = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkMessage(obj as api.Message);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+            queryMap["threadKey"].first, unittest.equals(arg_threadKey));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildMessage());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .messages(arg_request, arg_parent,
+              threadKey: arg_threadKey, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkMessage(response as api.Message);
       })));
     });
   });
@@ -1355,6 +1707,63 @@ void main() {
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkListSpacesResponse(response as api.ListSpacesResponse);
+      })));
+    });
+
+    unittest.test('method--webhooks', () {
+      var mock = HttpServerMock();
+      var res = api.HangoutsChatApi(mock).spaces;
+      var arg_request = buildMessage();
+      var arg_parent = 'foo';
+      var arg_threadKey = 'foo';
+      var arg_$fields = 'foo';
+      mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
+        var obj =
+            api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkMessage(obj as api.Message);
+
+        var path = (req.url).path;
+        var pathOffset = 0;
+        core.int index;
+        core.String subPart;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
+        pathOffset += 1;
+        unittest.expect(
+            path.substring(pathOffset, pathOffset + 3), unittest.equals("v1/"));
+        pathOffset += 3;
+        // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+        var query = (req.url).query;
+        var queryOffset = 0;
+        var queryMap = <core.String, core.List<core.String>>{};
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
+
+        if (query.isNotEmpty) {
+          for (var part in query.split('&')) {
+            var keyValue = part.split('=');
+            addQueryParam(
+              core.Uri.decodeQueryComponent(keyValue[0]),
+              core.Uri.decodeQueryComponent(keyValue[1]),
+            );
+          }
+        }
+        unittest.expect(
+            queryMap["threadKey"].first, unittest.equals(arg_threadKey));
+        unittest.expect(queryMap["fields"].first, unittest.equals(arg_$fields));
+
+        var h = {
+          'content-type': 'application/json; charset=utf-8',
+        };
+        var resp = convert.json.encode(buildMessage());
+        return async.Future.value(stringResponse(200, h, resp));
+      }), true);
+      res
+          .webhooks(arg_request, arg_parent,
+              threadKey: arg_threadKey, $fields: arg_$fields)
+          .then(unittest.expectAsync1(((response) {
+        checkMessage(response as api.Message);
       })));
     });
   });

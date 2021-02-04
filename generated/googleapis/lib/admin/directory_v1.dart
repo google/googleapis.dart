@@ -15,7 +15,7 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Admin SDK - directory_v1
+/// Admin SDK API - directory_v1
 ///
 /// Admin SDK lets administrators of enterprise domains to view and manage
 /// resources like user, groups etc. It also provides audit and usage reports of
@@ -28,6 +28,10 @@
 /// - [AspsResource]
 /// - [ChannelsResource]
 /// - [ChromeosdevicesResource]
+/// - [CustomerResource]
+///   - [CustomerDevicesResource]
+///     - [CustomerDevicesChromeosResource]
+///       - [CustomerDevicesChromeosCommandsResource]
 /// - [CustomersResource]
 /// - [DomainAliasesResource]
 /// - [DomainsResource]
@@ -184,6 +188,7 @@ class DirectoryApi {
   ChannelsResource get channels => ChannelsResource(_requester);
   ChromeosdevicesResource get chromeosdevices =>
       ChromeosdevicesResource(_requester);
+  CustomerResource get customer => CustomerResource(_requester);
   CustomersResource get customers => CustomersResource(_requester);
   DomainAliasesResource get domainAliases => DomainAliasesResource(_requester);
   DomainsResource get domains => DomainsResource(_requester);
@@ -205,7 +210,7 @@ class DirectoryApi {
       VerificationCodesResource(_requester);
 
   DirectoryApi(http.Client client,
-      {core.String rootUrl = 'https://www.googleapis.com/',
+      {core.String rootUrl = 'https://admin.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
@@ -451,15 +456,32 @@ class ChromeosdevicesResource {
 
   ChromeosdevicesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Take action on Chrome OS Device
+  /// Takes an action that affects a Chrome OS Device.
+  ///
+  /// This includes deprovisioning, disabling, and re-enabling devices.
+  /// *Warning:* * Deprovisioning a device will stop device policy syncing and
+  /// remove device-level printers. After a device is deprovisioned, it must be
+  /// wiped before it can be re-enrolled. * Lost or stolen devices should use
+  /// the disable action. * Re-enabling a disabled device will consume a device
+  /// license. If you do not have sufficient licenses available when completing
+  /// the re-enable action, you will receive an error. For more information
+  /// about deprovisioning and disabling devices, visit the
+  /// [help center](https://support.google.com/chrome/a/answer/3523633).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - The unique ID for the customer's Google Workspace account.
+  /// As an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's `customerId`. The `customerId` is also returned
+  /// as part of the \[Users
+  /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
-  /// [resourceId] - Immutable ID of Chrome OS Device
+  /// [resourceId] - The unique ID of the device. The `resourceId`s are returned
+  /// in the response from the
+  /// \[chromeosdevices.list\](/admin-sdk/directory/v1/reference/chromeosdevices/list)
+  /// method.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -517,15 +539,23 @@ class ChromeosdevicesResource {
     );
   }
 
-  /// Retrieve Chrome OS Device
+  /// Retrieves a Chrome OS device's properties.
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - The unique ID for the customer's Google Workspace account.
+  /// As an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's `customerId`. The `customerId` is also returned
+  /// as part of the \[Users
+  /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
-  /// [deviceId] - Immutable ID of Chrome OS Device
+  /// [deviceId] - The unique ID of the device. The `deviceId`s are returned in
+  /// the response from the
+  /// \[chromeosdevices.list\](/admin-sdk/directory/v1/reference/chromeosdevices/list)
+  /// method.
   ///
-  /// [projection] - Restrict information returned to a set of selected fields.
+  /// [projection] - Determines whether the response contains the full list of
+  /// properties or only a subset.
   /// Possible string values are:
   /// - "PROJECTION_UNDEFINED"
   /// - "BASIC" : Includes only the basic metadata fields (e.g., deviceId,
@@ -588,29 +618,39 @@ class ChromeosdevicesResource {
     );
   }
 
-  /// Retrieve all Chrome OS Devices of a customer (paginated)
+  /// Retrieves a paginated list of Chrome OS devices within an account.
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - The unique ID for the customer's Google Workspace account.
+  /// As an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's `customerId`. The `customerId` is also returned
+  /// as part of the \[Users
+  /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
   /// [maxResults] - Maximum number of results to return.
   ///
-  /// [orderBy] - Column to use for sorting results
+  /// [orderBy] - Device property to use for sorting results.
   /// Possible string values are:
   /// - "orderByUndefined"
-  /// - "annotatedLocation" : Chromebook location as annotated by the
+  /// - "annotatedLocation" : Chrome device location as annotated by the
   /// administrator.
   /// - "annotatedUser" : Chromebook user as annotated by administrator.
-  /// - "lastSync" : Chromebook last sync.
-  /// - "notes" : Chromebook notes as annotated by the administrator.
-  /// - "serialNumber" : Chromebook Serial Number.
-  /// - "status" : Chromebook status.
-  /// - "supportEndDate" : Chromebook support end date.
+  /// - "lastSync" : The date and time the Chrome device was last synchronized
+  /// with the policy settings in the Admin console.
+  /// - "notes" : Chrome device notes as annotated by the administrator.
+  /// - "serialNumber" : The Chrome device serial number entered when the device
+  /// was enabled.
+  /// - "status" : Chrome device status. For more information, see the <a
+  /// \[chromeosdevices\](/admin-sdk/directory/v1/reference/chromeosdevices.html).
+  /// - "supportEndDate" : Chrome device support end date. This is applicable
+  /// only for devices purchased directly from Google.
   ///
-  /// [orgUnitPath] - Full path of the organizational unit or its ID
+  /// [orgUnitPath] - The full path of the organizational unit or its unique ID.
   ///
-  /// [pageToken] - Token to specify next page in the list
+  /// [pageToken] - The `pageToken` query parameter is used to request the next
+  /// page of query results. The follow-on request's `pageToken` query parameter
+  /// is the `nextPageToken` from your previous response.
   ///
   /// [projection] - Restrict information returned to a set of selected fields.
   /// Possible string values are:
@@ -623,7 +663,7 @@ class ChromeosdevicesResource {
   /// http://support.google.com/chromeos/a/bin/answer.py?answer=1698333
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
-  /// Only of use when orderBy is also used
+  /// Must be used with the `orderBy` parameter.
   /// Possible string values are:
   /// - "SORT_ORDER_UNDEFINED"
   /// - "ASCENDING" : Ascending order.
@@ -704,13 +744,15 @@ class ChromeosdevicesResource {
     );
   }
 
-  /// Move or insert multiple Chrome OS Devices to organizational unit
+  /// Move or insert multiple Chrome OS devices to an organizational unit.
+  ///
+  /// You can move up to 50 devices at once.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - Immutable ID of the Google Workspace account
   ///
   /// [orgUnitPath] - Full path of the target organizational unit or its ID
   ///
@@ -769,15 +811,26 @@ class ChromeosdevicesResource {
     );
   }
 
-  /// Patch Chrome OS Device
+  /// Updates a device's updatable properties, such as `annotatedUser`,
+  /// `annotatedLocation`, `notes`, `orgUnitPath`, or `annotatedAssetId`.
+  ///
+  /// This method supports \[patch
+  /// semantics\](/admin-sdk/directory/v1/guides/performance#patch).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - The unique ID for the customer's Google Workspace account.
+  /// As an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's `customerId`. The `customerId` is also returned
+  /// as part of the \[Users
+  /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
-  /// [deviceId] - Immutable ID of Chrome OS Device
+  /// [deviceId] - The unique ID of the device. The `deviceId`s are returned in
+  /// the response from the
+  /// \[chromeosdevices.list\](/admin-sdk/v1/reference/chromeosdevices/list)
+  /// method.
   ///
   /// [projection] - Restrict information returned to a set of selected fields.
   /// Possible string values are:
@@ -846,15 +899,23 @@ class ChromeosdevicesResource {
     );
   }
 
-  /// Update Chrome OS Device
+  /// Updates a device's updatable properties, such as `annotatedUser`,
+  /// `annotatedLocation`, `notes`, `orgUnitPath`, or `annotatedAssetId`.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - The unique ID for the customer's Google Workspace account.
+  /// As an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's `customerId`. The `customerId` is also returned
+  /// as part of the \[Users
+  /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
-  /// [deviceId] - Immutable ID of Chrome OS Device
+  /// [deviceId] - The unique ID of the device. The `deviceId`s are returned in
+  /// the response from the
+  /// \[chromeosdevices.list\](/admin-sdk/v1/reference/chromeosdevices/list)
+  /// method.
   ///
   /// [projection] - Restrict information returned to a set of selected fields.
   /// Possible string values are:
@@ -920,6 +981,175 @@ class ChromeosdevicesResource {
     return _response.then(
       (data) =>
           ChromeOsDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class CustomerResource {
+  final commons.ApiRequester _requester;
+
+  CustomerDevicesResource get devices => CustomerDevicesResource(_requester);
+
+  CustomerResource(commons.ApiRequester client) : _requester = client;
+}
+
+class CustomerDevicesResource {
+  final commons.ApiRequester _requester;
+
+  CustomerDevicesChromeosResource get chromeos =>
+      CustomerDevicesChromeosResource(_requester);
+
+  CustomerDevicesResource(commons.ApiRequester client) : _requester = client;
+}
+
+class CustomerDevicesChromeosResource {
+  final commons.ApiRequester _requester;
+
+  CustomerDevicesChromeosCommandsResource get commands =>
+      CustomerDevicesChromeosCommandsResource(_requester);
+
+  CustomerDevicesChromeosResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Issues a command for the device to execute.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [customerId] - Immutable. Immutable ID of the Google Workspace account.
+  ///
+  /// [deviceId] - Immutable. Immutable ID of Chrome OS Device.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DirectoryChromeosdevicesIssueCommandResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DirectoryChromeosdevicesIssueCommandResponse> issueCommand(
+    DirectoryChromeosdevicesIssueCommandRequest request,
+    core.String customerId,
+    core.String deviceId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (customerId == null) {
+      throw core.ArgumentError('Parameter customerId is required.');
+    }
+    if (deviceId == null) {
+      throw core.ArgumentError('Parameter deviceId is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'admin/directory/v1/customer/' +
+        commons.Escaper.ecapeVariable('$customerId') +
+        '/devices/chromeos/' +
+        commons.Escaper.ecapeVariable('$deviceId') +
+        ':issueCommand';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => DirectoryChromeosdevicesIssueCommandResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class CustomerDevicesChromeosCommandsResource {
+  final commons.ApiRequester _requester;
+
+  CustomerDevicesChromeosCommandsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets command data a specific command issued to the device.
+  ///
+  /// Request parameters:
+  ///
+  /// [customerId] - Immutable. Immutable ID of the Google Workspace account.
+  ///
+  /// [deviceId] - Immutable. Immutable ID of Chrome OS Device.
+  ///
+  /// [commandId] - Immutable. Immutable ID of Chrome OS Device Command.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DirectoryChromeosdevicesCommand].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DirectoryChromeosdevicesCommand> get(
+    core.String customerId,
+    core.String deviceId,
+    core.String commandId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (customerId == null) {
+      throw core.ArgumentError('Parameter customerId is required.');
+    }
+    if (deviceId == null) {
+      throw core.ArgumentError('Parameter deviceId is required.');
+    }
+    if (commandId == null) {
+      throw core.ArgumentError('Parameter commandId is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'admin/directory/v1/customer/' +
+        commons.Escaper.ecapeVariable('$customerId') +
+        '/devices/chromeos/' +
+        commons.Escaper.ecapeVariable('$deviceId') +
+        '/commands/' +
+        commons.Escaper.ecapeVariable('$commandId');
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => DirectoryChromeosdevicesCommand.fromJson(
+          data as core.Map<core.String, core.dynamic>),
     );
   }
 }
@@ -1104,7 +1334,7 @@ class DomainAliasesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [domainAliasName] - Name of domain alias to be retrieved.
   ///
@@ -1163,7 +1393,7 @@ class DomainAliasesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [domainAliasName] - Name of domain alias to be retrieved.
   ///
@@ -1225,7 +1455,7 @@ class DomainAliasesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1282,7 +1512,7 @@ class DomainAliasesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [parentDomainName] - Name of the parent domain for which domain aliases
   /// are to be fetched.
@@ -1348,7 +1578,7 @@ class DomainsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [domainName] - Name of domain to be deleted
   ///
@@ -1407,7 +1637,7 @@ class DomainsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [domainName] - Name of domain to be retrieved
   ///
@@ -1468,7 +1698,7 @@ class DomainsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1524,7 +1754,7 @@ class DomainsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1580,11 +1810,12 @@ class GroupsResource {
 
   GroupsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Delete Group
+  /// Deletes a group.
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable ID of the group
+  /// [groupKey] - Identifies the group in the API request. The value can be the
+  /// group's email address, group alias, or the unique group ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1631,11 +1862,12 @@ class GroupsResource {
     );
   }
 
-  /// Retrieve Group
+  /// Retrieves a group's properties.
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable ID of the group
+  /// [groupKey] - Identifies the group in the API request. The value can be the
+  /// group's email address, group alias, or the unique group ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1682,7 +1914,7 @@ class GroupsResource {
     );
   }
 
-  /// Create Group
+  /// Creates a group.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1736,12 +1968,16 @@ class GroupsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account. In case of multi-domain,
-  /// to fetch all groups for a customer, fill this field instead of domain.
+  /// [customer] - The unique ID for the customer's Google Workspace account. In
+  /// case of a multi-domain account, to fetch all groups for a customer, fill
+  /// this field instead of domain. As an account administrator, you can also
+  /// use the `my_customer` alias to represent your account's `customerId`. The
+  /// `customerId` is also returned as part of the
+  /// \[Users\](/admin-sdk/directory/v1/reference/users)
   ///
-  /// [domain] - Name of the domain. Fill this field to get groups from only
-  /// this domain. To return all groups in a multi-domain fill customer field
-  /// instead.
+  /// [domain] - The domain name. Use this field to get fields from only one
+  /// domain. To return all domains for a customer account, use the `customer`
+  /// query parameter instead.
   ///
   /// [maxResults] - Maximum number of results to return. Max allowed value is
   /// 200.
@@ -1840,14 +2076,17 @@ class GroupsResource {
     );
   }
 
-  /// Patch Groups via Apiary Patch Orchestration
+  /// Updates a group's properties.
+  ///
+  /// This method supports \[patch
+  /// semantics\](/admin-sdk/directory/v1/guides/performance#patch).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable ID of the group. If ID, it should match
-  /// with id of group object
+  /// [groupKey] - Identifies the group in the API request. The value can be the
+  /// group's email address, group alias, or the unique group ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1898,14 +2137,14 @@ class GroupsResource {
     );
   }
 
-  /// Update Group
+  /// Updates a group's properties.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable ID of the group. If ID, it should match
-  /// with id of group object
+  /// [groupKey] - Identifies the group in the API request. The value can be the
+  /// group's email address, group alias, or the unique group ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1962,11 +2201,12 @@ class GroupsAliasesResource {
 
   GroupsAliasesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Remove a alias for the group
+  /// Removes an alias.
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable ID of the group
+  /// [groupKey] - Identifies the group in the API request. The value can be the
+  /// group's email address, group alias, or the unique group ID.
   ///
   /// [alias] - The alias to be removed
   ///
@@ -2021,13 +2261,14 @@ class GroupsAliasesResource {
     );
   }
 
-  /// Add a alias for the group
+  /// Adds an alias for the group.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable ID of the group
+  /// [groupKey] - Identifies the group in the API request. The value can be the
+  /// group's email address, group alias, or the unique group ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2079,11 +2320,12 @@ class GroupsAliasesResource {
     );
   }
 
-  /// List all aliases for a group
+  /// Lists all aliases for a group.
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable ID of the group
+  /// [groupKey] - Identifies the group in the API request. The value can be the
+  /// group's email address, group alias, or the unique group ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2137,13 +2379,16 @@ class MembersResource {
 
   MembersResource(commons.ApiRequester client) : _requester = client;
 
-  /// Remove membership.
+  /// Removes a member from a group.
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable ID of the group
+  /// [groupKey] - Identifies the group in the API request. The value can be the
+  /// group's email address, group alias, or the unique group ID.
   ///
-  /// [memberKey] - Email or immutable ID of the member
+  /// [memberKey] - Identifies the group member in the API request. A group
+  /// member can be a user or another group. The value can be the member's
+  /// (group or user) primary email address, alias, or unique ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2196,13 +2441,16 @@ class MembersResource {
     );
   }
 
-  /// Retrieve Group Member
+  /// Retrieves a group member's properties.
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable ID of the group
+  /// [groupKey] - Identifies the group in the API request. The value can be the
+  /// group's email address, group alias, or the unique group ID.
   ///
-  /// [memberKey] - Email or immutable ID of the member
+  /// [memberKey] - Identifies the group member in the API request. A group
+  /// member can be a user or another group. The value can be the member's
+  /// (group or user) primary email address, alias, or unique ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2319,13 +2567,14 @@ class MembersResource {
     );
   }
 
-  /// Add user to the specified group.
+  /// Adds a user to the specified group.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable ID of the group
+  /// [groupKey] - Identifies the group in the API request. The value can be the
+  /// group's email address, group alias, or the unique group ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2377,11 +2626,12 @@ class MembersResource {
     );
   }
 
-  /// Retrieve all members in a group (paginated)
+  /// Retrieves a paginated list of all members in a group.
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable ID of the group
+  /// [groupKey] - Identifies the group in the API request. The value can be the
+  /// group's email address, group alias, or the unique group ID.
   ///
   /// [includeDerivedMembership] - Whether to list indirect memberships.
   /// Default: false.
@@ -2389,9 +2639,10 @@ class MembersResource {
   /// [maxResults] - Maximum number of results to return. Max allowed value is
   /// 200.
   ///
-  /// [pageToken] - Token to specify next page in the list
+  /// [pageToken] - Token to specify next page in the list.
   ///
-  /// [roles] - Comma separated role values to filter list results on.
+  /// [roles] - The `roles` query parameter allows you to retrieve group members
+  /// by role. Allowed values are `OWNER`, `MANAGER`, and `MEMBER`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2457,17 +2708,21 @@ class MembersResource {
     );
   }
 
-  /// Patch Member via Apiary Patch Orchestration
+  /// Updates the membership properties of a user in the specified group.
+  ///
+  /// This method supports \[patch
+  /// semantics\](/admin-sdk/directory/v1/guides/performance#patch).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable ID of the group. If ID, it should match
-  /// with id of group object
+  /// [groupKey] - Identifies the group in the API request. The value can be the
+  /// group's email address, group alias, or the unique group ID.
   ///
-  /// [memberKey] - Email or immutable ID of the user. If ID, it should match
-  /// with id of member object
+  /// [memberKey] - Identifies the group member in the API request. A group
+  /// member can be a user or another group. The value can be the member's
+  /// (group or user) primary email address, alias, or unique ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2524,17 +2779,18 @@ class MembersResource {
     );
   }
 
-  /// Update membership of a user in the specified group.
+  /// Updates the membership of a user in the specified group.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [groupKey] - Email or immutable ID of the group. If ID, it should match
-  /// with id of group object
+  /// [groupKey] - Identifies the group in the API request. The value can be the
+  /// group's email address, group alias, or the unique group ID.
   ///
-  /// [memberKey] - Email or immutable ID of the user. If ID, it should match
-  /// with id of member object
+  /// [memberKey] - Identifies the group member in the API request. A group
+  /// member can be a user or another group. The value can be the member's
+  /// (group or user) primary email address, alias, or unique ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2597,15 +2853,22 @@ class MobiledevicesResource {
 
   MobiledevicesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Take action on Mobile Device
+  /// Takes an action that affects a mobile device.
+  ///
+  /// For example, remotely wiping a device.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - The unique ID for the customer's Google Workspace account.
+  /// As an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's `customerId`. The `customerId` is also returned
+  /// as part of the \[Users
+  /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
-  /// [resourceId] - Immutable ID of Mobile Device
+  /// [resourceId] - The unique ID the API service uses to identify the mobile
+  /// device.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2663,13 +2926,18 @@ class MobiledevicesResource {
     );
   }
 
-  /// Delete Mobile Device
+  /// Removes a mobile device.
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - The unique ID for the customer's Google Workspace account.
+  /// As an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's `customerId`. The `customerId` is also returned
+  /// as part of the \[Users
+  /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
-  /// [resourceId] - Immutable ID of Mobile Device
+  /// [resourceId] - The unique ID the API service uses to identify the mobile
+  /// device.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2722,13 +2990,18 @@ class MobiledevicesResource {
     );
   }
 
-  /// Retrieve Mobile Device
+  /// Retrieves a mobile device's properties.
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - The unique ID for the customer's Google Workspace account.
+  /// As an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's `customerId`. The `customerId` is also returned
+  /// as part of the \[Users
+  /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
-  /// [resourceId] - Immutable ID of Mobile Device
+  /// [resourceId] - The unique ID the API service uses to identify the mobile
+  /// device.
   ///
   /// [projection] - Restrict information returned to a set of selected fields.
   /// Possible string values are:
@@ -2793,26 +3066,31 @@ class MobiledevicesResource {
     );
   }
 
-  /// Retrieve all Mobile Devices of a customer (paginated)
+  /// Retrieves a paginated list of all mobile devices for an account.
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - The unique ID for the customer's Google Workspace account.
+  /// As an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's `customerId`. The `customerId` is also returned
+  /// as part of the \[Users
+  /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
   /// [maxResults] - Maximum number of results to return. Max allowed value is
   /// 100.
   /// Value must be between "1" and "100".
   ///
-  /// [orderBy] - Column to use for sorting results
+  /// [orderBy] - Device property to use for sorting results.
   /// Possible string values are:
   /// - "orderByUndefined"
-  /// - "deviceId" : Mobile Device serial number.
-  /// - "email" : Owner user email.
+  /// - "deviceId" : The serial number for a Google Sync mobile device. For
+  /// Android devices, this is a software generated unique identifier.
+  /// - "email" : The device owner's email address.
   /// - "lastSync" : Last policy settings sync date time of the device.
-  /// - "model" : Mobile Device model.
-  /// - "name" : Owner user name.
-  /// - "os" : Mobile operating system.
-  /// - "status" : Status of the device.
+  /// - "model" : The mobile device's model.
+  /// - "name" : The device owner's user name.
+  /// - "os" : The device's operating system.
+  /// - "status" : The device status.
   /// - "type" : Type of the device.
   ///
   /// [pageToken] - Token to specify next page in the list
@@ -2825,10 +3103,10 @@ class MobiledevicesResource {
   /// - "FULL" : Includes all metadata fields
   ///
   /// [query] - Search string in the format given at
-  /// http://support.google.com/a/bin/answer.py?answer=1408863#search
+  /// https://developers.google.com/admin-sdk/directory/v1/search-operators
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
-  /// Only of use when orderBy is also used
+  /// Must be used with the `orderBy` parameter.
   /// Possible string values are:
   /// - "SORT_ORDER_UNDEFINED"
   /// - "ASCENDING" : Ascending order.
@@ -2911,13 +3189,17 @@ class OrgunitsResource {
 
   OrgunitsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Remove organizational unit
+  /// Removes an organizational unit.
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - The unique ID for the customer's Google Workspace account.
+  /// As an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's `customerId`. The `customerId` is also returned
+  /// as part of the \[Users
+  /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
-  /// [orgUnitPath] - Full path of the organizational unit or its ID
+  /// [orgUnitPath] - The full path of the organizational unit or its unique ID.
   /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2971,13 +3253,17 @@ class OrgunitsResource {
     );
   }
 
-  /// Retrieve organizational unit
+  /// Retrieves an organizational unit.
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - The unique ID for the customer's Google Workspace account.
+  /// As an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's `customerId`. The `customerId` is also returned
+  /// as part of the \[Users
+  /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
-  /// [orgUnitPath] - Full path of the organizational unit or its ID
+  /// [orgUnitPath] - The full path of the organizational unit or its unique ID.
   /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3031,13 +3317,17 @@ class OrgunitsResource {
     );
   }
 
-  /// Add organizational unit
+  /// Adds an organizational unit.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - The unique ID for the customer's Google Workspace account.
+  /// As an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's `customerId`. The `customerId` is also returned
+  /// as part of the \[Users
+  /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3089,16 +3379,21 @@ class OrgunitsResource {
     );
   }
 
-  /// Retrieve all organizational units
+  /// Retrieves a list of all organizational units for an account.
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - The unique ID for the customer's Google Workspace account.
+  /// As an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's `customerId`. The `customerId` is also returned
+  /// as part of the \[Users
+  /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
-  /// [orgUnitPath] - the URL-encoded organizational unit's path or its ID
+  /// [orgUnitPath] - The full path to the organizational unit or its unique ID.
+  /// Returns the children of the specified organizational unit.
   ///
   /// [type] - Whether to return all sub-organizations or just immediate
-  /// children
+  /// children.
   /// Possible string values are:
   /// - "typeUndefined"
   /// - "all" : All sub-organizational units.
@@ -3158,15 +3453,22 @@ class OrgunitsResource {
     );
   }
 
-  /// Patch organization unit via Apiary Patch Orchestration
+  /// Updates an organizational unit.
+  ///
+  /// This method supports \[patch
+  /// semantics\](/admin-sdk/directory/v1/guides/performance#patch)
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - The unique ID for the customer's Google Workspace account.
+  /// As an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's `customerId`. The `customerId` is also returned
+  /// as part of the \[Users
+  /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
-  /// [orgUnitPath] - Full path of the organizational unit or its ID
+  /// [orgUnitPath] - The full path of the organizational unit or its unique ID.
   /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3224,15 +3526,19 @@ class OrgunitsResource {
     );
   }
 
-  /// Update organizational unit
+  /// Updates an organizational unit.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - The unique ID for the customer's Google Workspace account.
+  /// As an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's `customerId`. The `customerId` is also returned
+  /// as part of the \[Users
+  /// resource\](/admin-sdk/directory/v1/reference/users).
   ///
-  /// [orgUnitPath] - Full path of the organizational unit or its ID
+  /// [orgUnitPath] - The full path of the organizational unit or its unique ID.
   /// Value must have pattern `^.*$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3300,7 +3606,7 @@ class PrivilegesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3372,9 +3678,9 @@ class ResourcesBuildingsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [buildingId] - The id of the building to delete.
   ///
@@ -3433,9 +3739,9 @@ class ResourcesBuildingsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [buildingId] - The unique ID of the building to retrieve.
   ///
@@ -3496,9 +3802,9 @@ class ResourcesBuildingsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [coordinatesSource] - Source from which Building.coordinates are derived.
   /// Possible string values are:
@@ -3507,8 +3813,8 @@ class ResourcesBuildingsResource {
   /// included in the request.
   /// - "RESOLVED_FROM_ADDRESS" : Building.coordinates are automatically
   /// populated based on the postal address.
-  /// - "SOURCE_UNSPECIFIED" : Defaults to RESOLVED_FROM_ADDRESS if postal
-  /// address is provided. Otherwise, defaults to CLIENT_SPECIFIED if
+  /// - "SOURCE_UNSPECIFIED" : Defaults to `RESOLVED_FROM_ADDRESS` if postal
+  /// address is provided. Otherwise, defaults to `CLIENT_SPECIFIED` if
   /// coordinates are provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3569,9 +3875,9 @@ class ResourcesBuildingsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "1" and "500".
@@ -3638,9 +3944,9 @@ class ResourcesBuildingsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [buildingId] - The id of the building to update.
   ///
@@ -3651,8 +3957,8 @@ class ResourcesBuildingsResource {
   /// included in the request.
   /// - "RESOLVED_FROM_ADDRESS" : Building.coordinates are automatically
   /// populated based on the postal address.
-  /// - "SOURCE_UNSPECIFIED" : Defaults to RESOLVED_FROM_ADDRESS if postal
-  /// address is provided. Otherwise, defaults to CLIENT_SPECIFIED if
+  /// - "SOURCE_UNSPECIFIED" : Defaults to `RESOLVED_FROM_ADDRESS` if postal
+  /// address is provided. Otherwise, defaults to `CLIENT_SPECIFIED` if
   /// coordinates are provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3720,9 +4026,9 @@ class ResourcesBuildingsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [buildingId] - The id of the building to update.
   ///
@@ -3733,8 +4039,8 @@ class ResourcesBuildingsResource {
   /// included in the request.
   /// - "RESOLVED_FROM_ADDRESS" : Building.coordinates are automatically
   /// populated based on the postal address.
-  /// - "SOURCE_UNSPECIFIED" : Defaults to RESOLVED_FROM_ADDRESS if postal
-  /// address is provided. Otherwise, defaults to CLIENT_SPECIFIED if
+  /// - "SOURCE_UNSPECIFIED" : Defaults to `RESOLVED_FROM_ADDRESS` if postal
+  /// address is provided. Otherwise, defaults to `CLIENT_SPECIFIED` if
   /// coordinates are provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3806,9 +4112,9 @@ class ResourcesCalendarsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [calendarResourceId] - The unique ID of the calendar resource to delete.
   ///
@@ -3867,9 +4173,9 @@ class ResourcesCalendarsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [calendarResourceId] - The unique ID of the calendar resource to retrieve.
   ///
@@ -3931,9 +4237,9 @@ class ResourcesCalendarsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3990,19 +4296,19 @@ class ResourcesCalendarsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "1" and "500".
   ///
   /// [orderBy] - Field(s) to sort results by in either ascending or descending
-  /// order. Supported fields include resourceId, resourceName, capacity,
-  /// buildingId, and floorName. If no order is specified, defaults to
+  /// order. Supported fields include `resourceId`, `resourceName`, `capacity`,
+  /// `buildingId`, and `floorName`. If no order is specified, defaults to
   /// ascending. Should be of the form "field \[asc|desc\], field \[asc|desc\],
-  /// ...". For example buildingId, capacity desc would return results sorted
-  /// first by buildingId in ascending order then by capacity in descending
+  /// ...". For example `buildingId, capacity desc` would return results sorted
+  /// first by `buildingId` in ascending order then by `capacity` in descending
   /// order.
   ///
   /// [pageToken] - Token to specify the next page in the list.
@@ -4013,9 +4319,10 @@ class ResourcesCalendarsResource {
   /// exact match, '!=' for mismatch and ':' for prefix match or HAS match where
   /// applicable. For prefix match, the value should always be followed by a *.
   /// Logical operators NOT and AND are supported (in this order of precedence).
-  /// Supported fields include generatedResourceName, name, buildingId,
-  /// floor_name, capacity, featureInstances.feature.name. For example
-  /// buildingId=US-NYC-9TH AND featureInstances.feature.name:Phone.
+  /// Supported fields include `generatedResourceName`, `name`, `buildingId`,
+  /// `floor_name`, `capacity`, `featureInstances.feature.name`,
+  /// `resourceEmail`, `resourceCategory`. For example `buildingId=US-NYC-9TH
+  /// AND featureInstances.feature.name:Phone`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4086,9 +4393,9 @@ class ResourcesCalendarsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [calendarResourceId] - The unique ID of the calendar resource to update.
   ///
@@ -4158,9 +4465,9 @@ class ResourcesCalendarsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [calendarResourceId] - The unique ID of the calendar resource to update.
   ///
@@ -4230,9 +4537,9 @@ class ResourcesFeaturesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [featureKey] - The unique ID of the feature to delete.
   ///
@@ -4291,9 +4598,9 @@ class ResourcesFeaturesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [featureKey] - The unique ID of the feature to retrieve.
   ///
@@ -4354,9 +4661,9 @@ class ResourcesFeaturesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4412,9 +4719,9 @@ class ResourcesFeaturesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "1" and "500".
@@ -4481,9 +4788,9 @@ class ResourcesFeaturesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [featureKey] - The unique ID of the feature to update.
   ///
@@ -4548,9 +4855,9 @@ class ResourcesFeaturesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [oldName] - The unique ID of the feature to rename.
   ///
@@ -4616,9 +4923,9 @@ class ResourcesFeaturesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - The unique ID for the customer's G Suite account. As an
-  /// account administrator, you can also use the my_customer alias to represent
-  /// your account's customer ID.
+  /// [customer] - The unique ID for the customer's Google Workspace account. As
+  /// an account administrator, you can also use the `my_customer` alias to
+  /// represent your account's customer ID.
   ///
   /// [featureKey] - The unique ID of the feature to update.
   ///
@@ -4687,7 +4994,7 @@ class RoleAssignmentsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [roleAssignmentId] - Immutable ID of the role assignment.
   ///
@@ -4746,7 +5053,7 @@ class RoleAssignmentsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [roleAssignmentId] - Immutable ID of the role assignment.
   ///
@@ -4808,7 +5115,7 @@ class RoleAssignmentsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4865,7 +5172,7 @@ class RoleAssignmentsResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "1" and "200".
@@ -4952,7 +5259,7 @@ class RolesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [roleId] - Immutable ID of the role.
   ///
@@ -5011,7 +5318,7 @@ class RolesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [roleId] - Immutable ID of the role.
   ///
@@ -5072,7 +5379,7 @@ class RolesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5128,7 +5435,7 @@ class RolesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "1" and "100".
@@ -5195,7 +5502,7 @@ class RolesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [roleId] - Immutable ID of the role.
   ///
@@ -5260,7 +5567,7 @@ class RolesResource {
   ///
   /// Request parameters:
   ///
-  /// [customer] - Immutable ID of the G Suite account.
+  /// [customer] - Immutable ID of the Google Workspace account.
   ///
   /// [roleId] - Immutable ID of the role.
   ///
@@ -5329,9 +5636,9 @@ class SchemasResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - Immutable ID of the Google Workspace account.
   ///
-  /// [schemaKey] - Name or immutable ID of the schema
+  /// [schemaKey] - Name or immutable ID of the schema.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5388,9 +5695,9 @@ class SchemasResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - Immutable ID of the Google Workspace account.
   ///
-  /// [schemaKey] - Name or immutable ID of the schema
+  /// [schemaKey] - Name or immutable ID of the schema.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5449,7 +5756,7 @@ class SchemasResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - Immutable ID of the Google Workspace account.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5505,7 +5812,7 @@ class SchemasResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - Immutable ID of the Google Workspace account.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5559,7 +5866,7 @@ class SchemasResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - Immutable ID of the Google Workspace account.
   ///
   /// [schemaKey] - Name or immutable ID of the schema.
   ///
@@ -5624,7 +5931,7 @@ class SchemasResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the G Suite account
+  /// [customerId] - Immutable ID of the Google Workspace account.
   ///
   /// [schemaKey] - Name or immutable ID of the schema.
   ///
@@ -5932,11 +6239,12 @@ class UsersResource {
 
   UsersResource(commons.ApiRequester client) : _requester = client;
 
-  /// Delete user
+  /// Deletes a user.
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable ID of the user
+  /// [userKey] - Identifies the user in the API request. The value can be the
+  /// user's primary email address, alias email address, or unique user ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5983,29 +6291,34 @@ class UsersResource {
     );
   }
 
-  /// retrieve user
+  /// Retrieves a user.
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable ID of the user
+  /// [userKey] - Identifies the user in the API request. The value can be the
+  /// user's primary email address, alias email address, or unique user ID.
   ///
-  /// [customFieldMask] - Comma-separated list of schema names. All fields from
-  /// these schemas are fetched. This should only be set when projection=custom.
+  /// [customFieldMask] - A comma-separated list of schema names. All fields
+  /// from these schemas are fetched. This should only be set when
+  /// `projection=custom`.
   ///
   /// [projection] - What subset of fields to fetch for this user.
   /// Possible string values are:
   /// - "projectionUndefined"
   /// - "basic" : Do not include any custom fields for the user.
-  /// - "custom" : Include custom fields from schemas mentioned in
-  /// customFieldMask.
+  /// - "custom" : Include custom fields from schemas requested in
+  /// `customFieldMask`.
   /// - "full" : Include all fields associated with this user.
   ///
-  /// [viewType] - Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the
-  /// user.
+  /// [viewType] - Whether to fetch the administrator-only or domain-wide public
+  /// view of the user. For more information, see \[Retrieve a user as a
+  /// non-administrator\](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin).
   /// Possible string values are:
   /// - "view_type_undefined"
-  /// - "admin_view" : Fetches the ADMIN_VIEW of the user.
-  /// - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
+  /// - "admin_view" : Results include both administrator-only and domain-public
+  /// fields for the user.
+  /// - "domain_public" : Results only include fields for the user that are
+  /// publicly visible to other users in the domain.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6064,7 +6377,7 @@ class UsersResource {
     );
   }
 
-  /// create user.
+  /// Creates a user.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6114,23 +6427,32 @@ class UsersResource {
     );
   }
 
-  /// Retrieve either deleted users or all users in a domain (paginated)
+  /// Retrieves a paginated list of either deleted users or all users in a
+  /// domain.
   ///
   /// Request parameters:
   ///
-  /// [customFieldMask] - Comma-separated list of schema names. All fields from
-  /// these schemas are fetched. This should only be set when projection=custom.
+  /// [customFieldMask] - A comma-separated list of schema names. All fields
+  /// from these schemas are fetched. This should only be set when
+  /// `projection=custom`.
   ///
-  /// [customer] - Immutable ID of the G Suite account. In case of multi-domain,
-  /// to fetch all users for a customer, fill this field instead of domain.
+  /// [customer] - The unique ID for the customer's Google Workspace account. In
+  /// case of a multi-domain account, to fetch all groups for a customer, fill
+  /// this field instead of domain. You can also use the `my_customer` alias to
+  /// represent your account's `customerId`. The `customerId` is also returned
+  /// as part of the \[Users
+  /// resource\](/admin-sdk/directory/v1/reference/users). Either the `customer`
+  /// or the `domain` parameter must be provided.
   ///
-  /// [domain] - Name of the domain. Fill this field to get users from only this
-  /// domain. To return all users in a multi-domain fill customer field instead.
+  /// [domain] - The domain name. Use this field to get fields from only one
+  /// domain. To return all domains for a customer account, use the `customer`
+  /// query parameter instead. Either the `customer` or the `domain` parameter
+  /// must be provided.
   ///
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "1" and "500".
   ///
-  /// [orderBy] - Column to use for sorting results
+  /// [orderBy] - Property to use for sorting results.
   /// Possible string values are:
   /// - "orderByUndefined"
   /// - "email" : Primary email of the user.
@@ -6143,16 +6465,16 @@ class UsersResource {
   /// Possible string values are:
   /// - "projectionUndefined"
   /// - "basic" : Do not include any custom fields for the user.
-  /// - "custom" : Include custom fields from schemas mentioned in
-  /// customFieldMask.
+  /// - "custom" : Include custom fields from schemas requested in
+  /// `customFieldMask`.
   /// - "full" : Include all fields associated with this user.
   ///
-  /// [query] - Query string search. Should be of the form "". Complete
-  /// documentation is at https:
-  /// //developers.google.com/admin-sdk/directory/v1/guides/search-users
+  /// [query] - Query string for searching user fields. For more information on
+  /// constructing user queries, see \[Search for
+  /// Users\](/admin-sdk/directory/v1/guides/search-users).
   ///
-  /// [showDeleted] - If set to true, retrieves the list of deleted users.
-  /// (Default: false)
+  /// [showDeleted] - If set to `true`, retrieves the list of deleted users.
+  /// (Default: `false`)
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Possible string values are:
@@ -6160,12 +6482,15 @@ class UsersResource {
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
   ///
-  /// [viewType] - Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the
-  /// user.
+  /// [viewType] - Whether to fetch the administrator-only or domain-wide public
+  /// view of the user. For more information, see \[Retrieve a user as a
+  /// non-administrator\](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin).
   /// Possible string values are:
   /// - "view_type_undefined"
-  /// - "admin_view" : Fetches the ADMIN_VIEW of the user.
-  /// - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
+  /// - "admin_view" : Results include both administrator-only and domain-public
+  /// fields for the user.
+  /// - "domain_public" : Results only include fields for the user that are
+  /// publicly visible to other users in the domain.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6251,13 +6576,14 @@ class UsersResource {
     );
   }
 
-  /// change admin status of a user
+  /// Makes a user a super administrator.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable ID of the user as admin
+  /// [userKey] - Identifies the user in the API request. The value can be the
+  /// user's primary email address, alias email address, or unique user ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6309,14 +6635,19 @@ class UsersResource {
     );
   }
 
-  /// Patch Users via Apiary Patch Orchestration
+  /// Updates a user using patch semantics.
+  ///
+  /// The update method should be used instead, since it also supports patch
+  /// semantics and has better performance. This method is unable to clear
+  /// fields that contain repeated objects (`addresses`, `phones`, etc). Use the
+  /// update method instead.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable ID of the user. If ID, it should match with
-  /// id of user object
+  /// [userKey] - Identifies the user in the API request. The value can be the
+  /// user's primary email address, alias email address, or unique user ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6424,7 +6755,7 @@ class UsersResource {
     );
   }
 
-  /// Undelete a deleted user
+  /// Undeletes a deleted user.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6482,14 +6813,18 @@ class UsersResource {
     );
   }
 
-  /// update user
+  /// Updates a user.
+  ///
+  /// This method supports patch semantics, meaning you only need to include the
+  /// fields you wish to update. Fields that are not present in the request will
+  /// be preserved, and fields set to `null` will be cleared.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable ID of the user. If ID, it should match with
-  /// id of user object
+  /// [userKey] - Identifies the user in the API request. The value can be the
+  /// user's primary email address, alias email address, or unique user ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6549,14 +6884,15 @@ class UsersResource {
   /// [customFieldMask] - Comma-separated list of schema names. All fields from
   /// these schemas are fetched. This should only be set when projection=custom.
   ///
-  /// [customer] - Immutable ID of the G Suite account. In case of multi-domain,
-  /// to fetch all users for a customer, fill this field instead of domain.
+  /// [customer] - Immutable ID of the Google Workspace account. In case of
+  /// multi-domain, to fetch all users for a customer, fill this field instead
+  /// of domain.
   ///
   /// [domain] - Name of the domain. Fill this field to get users from only this
   /// domain. To return all users in a multi-domain fill customer field
   /// instead."
   ///
-  /// [event] - Event on which subscription is intended
+  /// [event] - Events to watch for.
   /// Possible string values are:
   /// - "eventTypeUnspecified"
   /// - "add" : User Created Event
@@ -6598,11 +6934,14 @@ class UsersResource {
   /// - "ASCENDING" : Ascending order.
   /// - "DESCENDING" : Descending order.
   ///
-  /// [viewType] - Whether to fetch the ADMIN_VIEW or DOMAIN_PUBLIC view of the
-  /// user.
+  /// [viewType] - Whether to fetch the administrator-only or domain-wide public
+  /// view of the user. For more information, see \[Retrieve a user as a
+  /// non-administrator\](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin).
   /// Possible string values are:
-  /// - "admin_view" : Fetches the ADMIN_VIEW of the user.
-  /// - "domain_public" : Fetches the DOMAIN_PUBLIC view of the user.
+  /// - "admin_view" : Results include both administrator-only and domain-public
+  /// fields.
+  /// - "domain_public" : Results only include fields for the user that are
+  /// publicly visible to other users in the domain.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6702,13 +7041,14 @@ class UsersAliasesResource {
 
   UsersAliasesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Remove a alias for the user
+  /// Removes an alias.
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable ID of the user
+  /// [userKey] - Identifies the user in the API request. The value can be the
+  /// user's primary email address, alias email address, or unique user ID.
   ///
-  /// [alias] - The alias to be removed
+  /// [alias] - The alias to be removed.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6761,13 +7101,14 @@ class UsersAliasesResource {
     );
   }
 
-  /// Add a alias for the user
+  /// Adds an alias.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable ID of the user
+  /// [userKey] - Identifies the user in the API request. The value can be the
+  /// user's primary email address, alias email address, or unique user ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6819,11 +7160,12 @@ class UsersAliasesResource {
     );
   }
 
-  /// List all aliases for a user
+  /// Lists all aliases for a user.
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable ID of the user
+  /// [userKey] - Identifies the user in the API request. The value can be the
+  /// user's primary email address, alias email address, or unique user ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6871,7 +7213,7 @@ class UsersAliasesResource {
     );
   }
 
-  /// Watch for changes in users list
+  /// Watch for changes in users list.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6879,7 +7221,7 @@ class UsersAliasesResource {
   ///
   /// [userKey] - Email or immutable ID of the user
   ///
-  /// [event] - Event on which subscription is intended (if subscribing)
+  /// [event] - Events to watch for.
   /// Possible string values are:
   /// - "eventUndefined"
   /// - "add" : Alias Created Event
@@ -6945,11 +7287,12 @@ class UsersPhotosResource {
 
   UsersPhotosResource(commons.ApiRequester client) : _requester = client;
 
-  /// Remove photos for the user
+  /// Removes the user's photo.
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable ID of the user
+  /// [userKey] - Identifies the user in the API request. The value can be the
+  /// user's primary email address, alias email address, or unique user ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6997,11 +7340,12 @@ class UsersPhotosResource {
     );
   }
 
-  /// Retrieve photo of a user
+  /// Retrieves the user's photo.
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable ID of the user
+  /// [userKey] - Identifies the user in the API request. The value can be the
+  /// user's primary email address, alias email address, or unique user ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7049,13 +7393,17 @@ class UsersPhotosResource {
     );
   }
 
-  /// Patch Photo via Apiary Patch Orchestration
+  /// Adds a photo for the user.
+  ///
+  /// This method supports \[patch
+  /// semantics\](/admin-sdk/directory/v1/guides/performance#patch).
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable ID of the user
+  /// [userKey] - Identifies the user in the API request. The value can be the
+  /// user's primary email address, alias email address, or unique user ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7107,13 +7455,14 @@ class UsersPhotosResource {
     );
   }
 
-  /// Add a photo for the user
+  /// Adds a photo for the user.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [userKey] - Email or immutable ID of the user
+  /// [userKey] - Identifies the user in the API request. The value can be the
+  /// user's primary email address, alias email address, or unique user ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7421,18 +7770,21 @@ class Aliases {
   }
 }
 
-/// The template that returns individual ASP (Access Code) data.
+/// An application-specific password (ASP) is used with applications that do not
+/// accept a verification code when logging into the application on certain
+/// devices.
 ///
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// The ASP access code is used instead of the login and password you commonly
+/// use when accessing an application through a browser. For more information
+/// about ASPs and how to create one, see the \[help
+/// center\](//http://support.google.com/a/bin/answer.py?amp;answer=1032419).
 class Asp {
   /// The unique ID of the ASP.
   core.int codeId;
 
   /// The time when the ASP was created.
   ///
-  /// Expressed in Unix time format.
+  /// Expressed in [Unix time](http://en.wikipedia.org/wiki/Epoch_time) format.
   core.String creationTime;
 
   /// ETag of the ASP.
@@ -7440,15 +7792,15 @@ class Asp {
 
   /// The type of the API resource.
   ///
-  /// This is always admin#directory#asp.
+  /// This is always `admin#directory#asp`.
   core.String kind;
 
   /// The time when the ASP was last used.
   ///
-  /// Expressed in Unix time format.
+  /// Expressed in [Unix time](http://en.wikipedia.org/wiki/Epoch_time) format.
   core.String lastTimeUsed;
 
-  /// The name of the application that the user, represented by their userId,
+  /// The name of the application that the user, represented by their `userId`,
   /// entered when the ASP was created.
   core.String name;
 
@@ -7508,10 +7860,6 @@ class Asp {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'.
-///
-/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
-/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Asps {
   /// ETag of the resource.
   core.String etag;
@@ -7521,7 +7869,7 @@ class Asps {
 
   /// The type of the API resource.
   ///
-  /// This is always admin#directory#aspList.
+  /// This is always `admin#directory#aspList`.
   core.String kind;
 
   Asps();
@@ -7560,8 +7908,9 @@ class Asps {
 class Building {
   /// The postal address of the building.
   ///
-  /// See PostalAddress for details. Note that only a single address line and
-  /// region code are required.
+  /// See \[`PostalAddress`\](/my-business/reference/rest/v4/PostalAddress) for
+  /// details. Note that only a single address line and region code are
+  /// required.
   BuildingAddress address;
 
   /// Unique identifier for the building.
@@ -7873,7 +8222,7 @@ class CalendarResource {
   /// The type of the resource.
   ///
   /// For calendar resources, the value is
-  /// admin#directory#resources#calendars#CalendarResource.
+  /// `admin#directory#resources#calendars#CalendarResource`.
   core.String kind;
 
   /// The category of the calendar resource.
@@ -8014,7 +8363,8 @@ class CalendarResources {
 
   /// Identifies this as a collection of CalendarResources.
   ///
-  /// This is always admin#directory#resources#calendars#calendarResourcesList.
+  /// This is always
+  /// `admin#directory#resources#calendars#calendarResourcesList`.
   core.String kind;
 
   /// The continuation token, used to page through large result sets.
@@ -8076,7 +8426,7 @@ class Channel {
   core.String id;
 
   /// Identifies this as a notification channel used to watch for changes to a
-  /// resource, which is "api#channel".
+  /// resource, which is `api#channel`.
   core.String kind;
 
   /// Additional parameters controlling delivery channel behavior.
@@ -8184,7 +8534,7 @@ class Channel {
 }
 
 class ChromeOsDeviceActiveTimeRanges {
-  /// Duration in milliseconds
+  /// Duration of usage in milliseconds.
   core.int activeTime;
 
   /// Date of usage
@@ -8433,38 +8783,6 @@ class ChromeOsDeviceLastKnownNetwork {
   }
 }
 
-class ChromeOsDeviceRecentUsers {
-  /// Email address of the user.
-  ///
-  /// Present only if the user type is managed
-  core.String email;
-
-  /// The type of the user
-  core.String type;
-
-  ChromeOsDeviceRecentUsers();
-
-  ChromeOsDeviceRecentUsers.fromJson(core.Map _json) {
-    if (_json.containsKey('email')) {
-      email = _json['email'] as core.String;
-    }
-    if (_json.containsKey('type')) {
-      type = _json['type'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (email != null) {
-      _json['email'] = email;
-    }
-    if (type != null) {
-      _json['type'] = type;
-    }
-    return _json;
-  }
-}
-
 class ChromeOsDeviceSystemRamFreeReports {
   /// Date and time the report was received.
   core.DateTime reportTime;
@@ -8498,6 +8816,9 @@ class ChromeOsDeviceSystemRamFreeReports {
 /// Trusted Platform Module (TPM) (Read-only)
 class ChromeOsDeviceTpmVersionInfo {
   /// TPM family.
+  ///
+  /// We use the TPM 2.0 style encoding, e.g.: TPM 1.2: "1.2" -> 312e3200 TPM
+  /// 2.0: "2.0" -> 322e3000
   core.String family;
 
   /// TPM firmware version.
@@ -8507,6 +8828,8 @@ class ChromeOsDeviceTpmVersionInfo {
   core.String manufacturer;
 
   /// TPM specification level.
+  ///
+  /// See Library Specification for TPM 2.0 and Main Specification for TPM 1.2.
   core.String specLevel;
 
   /// TPM model number.
@@ -8562,28 +8885,40 @@ class ChromeOsDeviceTpmVersionInfo {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'.
+/// Google Chrome devices run on the
+/// [Chrome OS](http://support.google.com/chromeos).
 ///
-/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
-/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// For more information about common API tasks, see the \[Developer's
+/// Guide\](/admin-sdk/directory/v1/guides/manage-chrome-devices).
 class ChromeOsDevice {
-  /// List of active time ranges (Read-only)
+  /// List of active time ranges (Read-only).
   core.List<ChromeOsDeviceActiveTimeRanges> activeTimeRanges;
 
-  /// AssetId specified during enrollment or through later annotation
+  /// The asset identifier as noted by an administrator or specified during
+  /// enrollment.
   core.String annotatedAssetId;
 
-  /// Address or location of the device as noted by the administrator
+  /// The address or location of the device as noted by the administrator.
+  ///
+  /// Maximum length is `200` characters. Empty values are allowed.
   core.String annotatedLocation;
 
-  /// User of the device
+  /// The user of the device as noted by the administrator.
+  ///
+  /// Maximum length is 100 characters. Empty values are allowed.
   core.String annotatedUser;
 
   /// (Read-only) The timestamp after which the device will stop receiving
   /// Chrome updates or support
   core.String autoUpdateExpiration;
 
-  /// Chromebook boot mode (Read-only)
+  /// The boot mode for the device.
+  ///
+  /// The possible values are: * `Verified`: The device is running a valid
+  /// version of the Chrome OS. * `Dev`: The devices's developer hardware switch
+  /// is enabled. When booted, the device has a command line shell. For an
+  /// example of a developer switch, see the
+  /// [Chromebook developer information](http://www.chromium.org/chromium-os/developer-information-for-chrome-os-devices/samsung-series-5-chromebook#TOC-Developer-switch).
   core.String bootMode;
 
   /// Reports of CPU utilization and temperature (Read-only)
@@ -8592,7 +8927,7 @@ class ChromeOsDevice {
   /// List of device files to download (Read-only)
   core.List<ChromeOsDeviceDeviceFiles> deviceFiles;
 
-  /// Unique identifier of Chrome OS Device (Read-only)
+  /// The unique ID of the Chrome device.
   core.String deviceId;
 
   /// Reports of disk space and other info about mounted/connected volumes.
@@ -8610,7 +8945,7 @@ class ChromeOsDevice {
   /// ETag of the resource.
   core.String etag;
 
-  /// Chromebook Mac Address on ethernet network interface (Read-only)
+  /// The device's MAC address on the ethernet network interface.
   core.String ethernetMacAddress;
 
   /// (Read-only) MAC address used by the Chromebook’s internal ethernet port,
@@ -8620,10 +8955,13 @@ class ChromeOsDevice {
   /// (uppercase letters). This is only relevant for some devices.
   core.String ethernetMacAddress0;
 
-  /// Chromebook firmware version (Read-only)
+  /// The Chrome device's firmware version.
   core.String firmwareVersion;
 
-  /// Kind of resource this is.
+  /// The type of resource.
+  ///
+  /// For the Chromeosdevices resource, the value is
+  /// `admin#directory#chromeosdevice`.
   core.String kind;
 
   /// Date and time the device was last enrolled (Read-only)
@@ -8636,43 +8974,73 @@ class ChromeOsDevice {
   /// the G Suite administrator control panel (Read-only)
   core.DateTime lastSync;
 
-  /// Chromebook Mac Address on wifi network interface (Read-only)
+  /// The device's wireless MAC address.
+  ///
+  /// If the device does not have this information, it is not included in the
+  /// response.
   core.String macAddress;
 
   /// (Read-only) The date the device was manufactured in yyyy-mm-dd format.
   core.String manufactureDate;
 
-  /// Contains either the Mobile Equipment identifier (MEID) or the
-  /// International Mobile Equipment Identity (IMEI) for the 3G mobile card in
-  /// the Chromebook (Read-only)
+  /// The Mobile Equipment Identifier (MEID) or the International Mobile
+  /// Equipment Identity (IMEI) for the 3G mobile card in a mobile device.
+  ///
+  /// A MEID/IMEI is typically used when adding a device to a wireless carrier's
+  /// post-pay service plan. If the device does not have this information, this
+  /// property is not included in the response. For more information on how to
+  /// export a MEID/IMEI list, see the \[Developer's
+  /// Guide\](/admin-sdk/directory/v1/guides/manage-chrome-devices.html#export_meid).
   core.String meid;
 
-  /// Chromebook Model (Read-only)
+  /// The device's model information.
+  ///
+  /// If the device does not have this information, this property is not
+  /// included in the response.
   core.String model;
 
-  /// Notes added by the administrator
+  /// Notes about this device added by the administrator.
+  ///
+  /// This property can be
+  /// [searched](http://support.google.com/chromeos/a/bin/answer.py?answer=1698333)
+  /// with the \[list\](/admin-sdk/directory/v1/reference/chromeosdevices/list)
+  /// method's `query` parameter. Maximum length is 500 characters. Empty values
+  /// are allowed.
   core.String notes;
 
-  /// Chromebook order number (Read-only)
+  /// The device's order number.
+  ///
+  /// Only devices directly purchased from Google have an order number.
   core.String orderNumber;
 
-  /// OrgUnit of the device
+  /// The full parent path with the organizational unit's name associated with
+  /// the device.
+  ///
+  /// Path names are case insensitive. If the parent organizational unit is the
+  /// top-level organization, it is represented as a forward slash, `/`. This
+  /// property can be
+  /// \[updated\](/admin-sdk/directory/v1/guides/manage-chrome-devices#update_chrome_device)
+  /// using the API. For more information about how to create an organizational
+  /// structure for your device, see the
+  /// [administration help center](http://support.google.com/a/bin/answer.py?answer=182433).
   core.String orgUnitPath;
 
-  /// Chromebook Os Version (Read-only)
+  /// The Chrome device's operating system version.
   core.String osVersion;
 
-  /// Chromebook platform version (Read-only)
+  /// The Chrome device's platform version.
   core.String platformVersion;
 
-  /// List of recent device users, in descending order by last login time
-  /// (Read-only)
-  core.List<ChromeOsDeviceRecentUsers> recentUsers;
+  /// List of recent device users, in descending order, by last login time.
+  core.List<RecentUsers> recentUsers;
 
-  /// Chromebook serial number (Read-only)
+  /// The Chrome device serial number entered when the device was enabled.
+  ///
+  /// This value is the same as the Admin console's *Serial Number* in the
+  /// *Chrome OS Devices* tab.
   core.String serialNumber;
 
-  /// status of the device (Read-only)
+  /// The status of the device.
   core.String status;
 
   /// Final date the device will be supported (Read-only)
@@ -8687,7 +9055,10 @@ class ChromeOsDevice {
   /// Trusted Platform Module (TPM) (Read-only)
   ChromeOsDeviceTpmVersionInfo tpmVersionInfo;
 
-  /// Will Chromebook auto renew after support end date (Read-only)
+  /// Determines if the device will auto renew its support after the support end
+  /// date.
+  ///
+  /// This is a read-only property.
   core.bool willAutoRenew;
 
   ChromeOsDevice();
@@ -8800,9 +9171,8 @@ class ChromeOsDevice {
     }
     if (_json.containsKey('recentUsers')) {
       recentUsers = (_json['recentUsers'] as core.List)
-          .map<ChromeOsDeviceRecentUsers>((value) =>
-              ChromeOsDeviceRecentUsers.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
+          .map<RecentUsers>((value) => RecentUsers.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('serialNumber')) {
@@ -8956,8 +9326,14 @@ class ChromeOsDevice {
 }
 
 class ChromeOsDeviceAction {
-  /// Action to be taken on the ChromeOs Device
+  /// Action to be taken on the Chrome OS device.
   core.String action;
+
+  /// Only used when the action is `deprovision`.
+  ///
+  /// With the `deprovision` action, this field is required. *Note*: The
+  /// deprovision reason is audited because it might have implications on
+  /// licenses for perpetual subscription customers.
   core.String deprovisionReason;
 
   ChromeOsDeviceAction();
@@ -8983,10 +9359,6 @@ class ChromeOsDeviceAction {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'.
-///
-/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
-/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class ChromeOsDevices {
   /// List of Chrome OS Device objects.
   core.List<ChromeOsDevice> chromeosdevices;
@@ -8997,7 +9369,10 @@ class ChromeOsDevices {
   /// Kind of resource this is.
   core.String kind;
 
-  /// Token used to access next page of this result.
+  /// Token used to access the next page of this result.
+  ///
+  /// To access the next page, use this token's value in the `pageToken` query
+  /// string of this request.
   core.String nextPageToken;
 
   ChromeOsDevices();
@@ -9040,7 +9415,7 @@ class ChromeOsDevices {
 }
 
 class ChromeOsMoveDevicesToOu {
-  /// ChromeOs Devices to be moved to OU
+  /// Chrome OS devices to be moved to OU
   core.List<core.String> deviceIds;
 
   ChromeOsMoveDevicesToOu();
@@ -9062,14 +9437,10 @@ class ChromeOsMoveDevicesToOu {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'.
-///
-/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
-/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Customer {
   /// The customer's secondary contact email address.
   ///
-  /// This email address cannot be on the same domain as the customerDomain
+  /// This email address cannot be on the same domain as the `customerDomain`
   core.String alternateEmail;
 
   /// The customer's creation time (Readonly)
@@ -9077,28 +9448,32 @@ class Customer {
 
   /// The customer's primary domain name string.
   ///
-  /// Do not include the www prefix when creating a new customer.
+  /// Do not include the `www` prefix when creating a new customer.
   core.String customerDomain;
 
   /// ETag of the resource.
   core.String etag;
 
-  /// The unique ID for the customer's G Suite account.
+  /// The unique ID for the customer's Google Workspace account.
   ///
   /// (Readonly)
   core.String id;
 
   /// Identifies the resource as a customer.
   ///
-  /// Value: admin#directory#customer
+  /// Value: `admin#directory#customer`
   core.String kind;
 
   /// The customer's ISO 639-2 language code.
   ///
-  /// The default value is en-US
+  /// See the \[Language Codes\](/admin-sdk/directory/v1/languages) page for the
+  /// list of supported codes. Valid language codes outside the supported set
+  /// will be accepted by the API but may lead to unexpected behavior. The
+  /// default value is `en`.
   core.String language;
 
-  /// The customer's contact phone number in E.164 format.
+  /// The customer's contact phone number in
+  /// [E.164](http://en.wikipedia.org/wiki/E.164) format.
   core.String phoneNumber;
 
   /// The customer's postal address information.
@@ -9171,12 +9546,6 @@ class Customer {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'address_line2' to
-/// avoid collision.
-///
-/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
-/// field number for field 'address_line3' to avoid collision. (See
-/// http://go/stepladder-help#fieldNumber)
 class CustomerPostalAddress {
   /// A customer's physical address.
   ///
@@ -9194,12 +9563,13 @@ class CustomerPostalAddress {
 
   /// This is a required property.
   ///
-  /// For countryCode information see the ISO 3166 country code elements.
+  /// For `countryCode` information see the
+  /// [ISO 3166 country code elements](http://www.iso.org/iso/country_codes.htm).
   core.String countryCode;
 
   /// Name of the locality.
   ///
-  /// An example of a locality value is the city of San Francisco.
+  /// An example of a locality value is the city of `San Francisco`.
   core.String locality;
 
   /// The company or company division name.
@@ -9207,14 +9577,14 @@ class CustomerPostalAddress {
 
   /// The postal code.
   ///
-  /// A postalCode example is a postal zip code such as 10009. This is in
+  /// A postalCode example is a postal zip code such as `10009`. This is in
   /// accordance with - http:
   /// //portablecontacts.net/draft-spec.html#address_element.
   core.String postalCode;
 
   /// Name of the region.
   ///
-  /// An example of a region value is NY for the state of New York.
+  /// An example of a region value is `NY` for the state of New York.
   core.String region;
 
   CustomerPostalAddress();
@@ -9277,6 +9647,235 @@ class CustomerPostalAddress {
     }
     if (region != null) {
       _json['region'] = region;
+    }
+    return _json;
+  }
+}
+
+/// Information regarding a command that was issued to a device.
+class DirectoryChromeosdevicesCommand {
+  /// The time at which the command will expire.
+  ///
+  /// If the device doesn't execute the command within this time the command
+  /// will become expired.
+  core.String commandExpireTime;
+
+  /// Unique ID of a device command.
+  core.String commandId;
+
+  /// The result of the command execution.
+  DirectoryChromeosdevicesCommandResult commandResult;
+
+  /// The timestamp when the command was issued by the admin.
+  core.String issueTime;
+
+  /// The payload that the command specified, if any.
+  core.String payload;
+
+  /// Indicates the command state.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The command status was unspecified.
+  /// - "PENDING" : An unexpired command not yet sent to the client.
+  /// - "EXPIRED" : The command didn't get executed by the client within the
+  /// expected time.
+  /// - "CANCELLED" : The command is cancelled by admin while in PENDING.
+  /// - "SENT_TO_CLIENT" : The command has been sent to the client.
+  /// - "ACKED_BY_CLIENT" : The client has responded that it received the
+  /// command.
+  /// - "EXECUTED_BY_CLIENT" : The client has (un)successfully executed the
+  /// command.
+  core.String state;
+
+  /// The type of the command.
+  /// Possible string values are:
+  /// - "COMMAND_TYPE_UNSPECIFIED" : The command type was unspecified.
+  /// - "REBOOT" : Reboot the device. Can only be issued to Kiosk and managed
+  /// guest session devices.
+  /// - "TAKE_A_SCREENSHOT" : Take a screenshot of the device. Only available if
+  /// the device is in Kiosk Mode.
+  /// - "SET_VOLUME" : Set the volume of the device. Can only be issued to Kiosk
+  /// and managed guest session devices.
+  /// - "WIPE_USERS" : Wipe all the users off of the device. Executing this
+  /// command in the device will remove all user profile data, but it will keep
+  /// device policy and enrollment.
+  /// - "REMOTE_POWERWASH" : Wipes the device by performing a power wash.
+  /// Executing this command in the device will remove all data including user
+  /// policies, device policies and enrollment policies. Warning: This will
+  /// revert the device back to a factory state with no enrollment unless the
+  /// device is subject to forced or auto enrollment. Use with caution, as this
+  /// is an irreversible action!
+  core.String type;
+
+  DirectoryChromeosdevicesCommand();
+
+  DirectoryChromeosdevicesCommand.fromJson(core.Map _json) {
+    if (_json.containsKey('commandExpireTime')) {
+      commandExpireTime = _json['commandExpireTime'] as core.String;
+    }
+    if (_json.containsKey('commandId')) {
+      commandId = _json['commandId'] as core.String;
+    }
+    if (_json.containsKey('commandResult')) {
+      commandResult = DirectoryChromeosdevicesCommandResult.fromJson(
+          _json['commandResult'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('issueTime')) {
+      issueTime = _json['issueTime'] as core.String;
+    }
+    if (_json.containsKey('payload')) {
+      payload = _json['payload'] as core.String;
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (commandExpireTime != null) {
+      _json['commandExpireTime'] = commandExpireTime;
+    }
+    if (commandId != null) {
+      _json['commandId'] = commandId;
+    }
+    if (commandResult != null) {
+      _json['commandResult'] = commandResult.toJson();
+    }
+    if (issueTime != null) {
+      _json['issueTime'] = issueTime;
+    }
+    if (payload != null) {
+      _json['payload'] = payload;
+    }
+    if (state != null) {
+      _json['state'] = state;
+    }
+    if (type != null) {
+      _json['type'] = type;
+    }
+    return _json;
+  }
+}
+
+/// The result of executing a command.
+class DirectoryChromeosdevicesCommandResult {
+  /// The error message with a short explanation as to why the command failed.
+  ///
+  /// Only present if the command failed.
+  core.String errorMessage;
+
+  /// The time at which the command was executed or failed to execute.
+  core.String executeTime;
+
+  /// The result of the command.
+  /// Possible string values are:
+  /// - "COMMAND_RESULT_TYPE_UNSPECIFIED" : The command result was unspecified.
+  /// - "IGNORED" : The command was ignored as obsolete.
+  /// - "FAILURE" : The command could not be executed successfully.
+  /// - "SUCCESS" : The command was successfully executed.
+  core.String result;
+
+  DirectoryChromeosdevicesCommandResult();
+
+  DirectoryChromeosdevicesCommandResult.fromJson(core.Map _json) {
+    if (_json.containsKey('errorMessage')) {
+      errorMessage = _json['errorMessage'] as core.String;
+    }
+    if (_json.containsKey('executeTime')) {
+      executeTime = _json['executeTime'] as core.String;
+    }
+    if (_json.containsKey('result')) {
+      result = _json['result'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (errorMessage != null) {
+      _json['errorMessage'] = errorMessage;
+    }
+    if (executeTime != null) {
+      _json['executeTime'] = executeTime;
+    }
+    if (result != null) {
+      _json['result'] = result;
+    }
+    return _json;
+  }
+}
+
+/// A request for issuing a command.
+class DirectoryChromeosdevicesIssueCommandRequest {
+  /// The type of command.
+  /// Possible string values are:
+  /// - "COMMAND_TYPE_UNSPECIFIED" : The command type was unspecified.
+  /// - "REBOOT" : Reboot the device. Can only be issued to Kiosk and managed
+  /// guest session devices.
+  /// - "TAKE_A_SCREENSHOT" : Take a screenshot of the device. Only available if
+  /// the device is in Kiosk Mode.
+  /// - "SET_VOLUME" : Set the volume of the device. Can only be issued to Kiosk
+  /// and managed guest session devices.
+  /// - "WIPE_USERS" : Wipe all the users off of the device. Executing this
+  /// command in the device will remove all user profile data, but it will keep
+  /// device policy and enrollment.
+  /// - "REMOTE_POWERWASH" : Wipes the device by performing a power wash.
+  /// Executing this command in the device will remove all data including user
+  /// policies, device policies and enrollment policies. Warning: This will
+  /// revert the device back to a factory state with no enrollment unless the
+  /// device is subject to forced or auto enrollment. Use with caution, as this
+  /// is an irreversible action!
+  core.String commandType;
+
+  /// The payload for the command, provide it only if command supports it.
+  ///
+  /// The following commands support adding payload: - SET_VOLUME: Payload is a
+  /// stringified JSON object in the form: { "volume": 50 }. The volume has to
+  /// be an integer in the range \[0,100\].
+  core.String payload;
+
+  DirectoryChromeosdevicesIssueCommandRequest();
+
+  DirectoryChromeosdevicesIssueCommandRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('commandType')) {
+      commandType = _json['commandType'] as core.String;
+    }
+    if (_json.containsKey('payload')) {
+      payload = _json['payload'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (commandType != null) {
+      _json['commandType'] = commandType;
+    }
+    if (payload != null) {
+      _json['payload'] = payload;
+    }
+    return _json;
+  }
+}
+
+/// A response for issuing a command.
+class DirectoryChromeosdevicesIssueCommandResponse {
+  /// The unique ID of the issued command, used to retrieve the command status.
+  core.String commandId;
+
+  DirectoryChromeosdevicesIssueCommandResponse();
+
+  DirectoryChromeosdevicesIssueCommandResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('commandId')) {
+      commandId = _json['commandId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (commandId != null) {
+      _json['commandId'] = commandId;
     }
     return _json;
   }
@@ -9400,6 +9999,7 @@ class DomainAliases {
 class Domains {
   /// Creation time of the domain.
   ///
+  /// Expressed in [Unix time](http://en.wikipedia.org/wiki/Epoch_time) format.
   /// (Read-only).
   core.String creationTime;
 
@@ -9665,39 +10265,65 @@ class Features {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'.
+/// Google Groups provide your users the ability to send messages to groups of
+/// people using the group's email address.
 ///
-/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
-/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// For more information about common tasks, see the \[Developer's
+/// Guide\](/admin-sdk/directory/v1/guides/manage-groups).
 class Group {
-  /// Is the group created by admin (Read-only) *
+  /// Value is `true` if this group was created by an administrator rather than
+  /// a user.
   core.bool adminCreated;
 
-  /// List of aliases (Read-only)
+  /// List of a group's alias email addresses.
   core.List<core.String> aliases;
 
-  /// Description of the group
+  /// An extended description to help users determine the purpose of a group.
+  ///
+  /// For example, you can include information about who should join the group,
+  /// the types of messages to send to the group, links to FAQs about the group,
+  /// or related groups. Maximum length is `4,096` characters.
   core.String description;
 
-  /// Group direct members count
+  /// The number of users that are direct members of the group.
+  ///
+  /// If a group is a member (child) of this group (the parent), members of the
+  /// child group are not counted in the `directMembersCount` property of the
+  /// parent group.
   core.String directMembersCount;
 
-  /// Email of Group
+  /// The group's email address.
+  ///
+  /// If your account has multiple domains, select the appropriate domain for
+  /// the email address. The `email` must be unique. This property is required
+  /// when creating a group. Group email addresses are subject to the same
+  /// character usage rules as usernames, see the
+  /// [administration help center](http://support.google.com/a/bin/answer.py?answer=33386)
+  /// for the details.
   core.String email;
 
   /// ETag of the resource.
   core.String etag;
 
-  /// Unique identifier of Group (Read-only)
+  /// The unique ID of a group.
+  ///
+  /// A group `id` can be used as a group request URI's `groupKey`.
   core.String id;
 
-  /// Kind of resource this is.
+  /// The type of the API resource.
+  ///
+  /// For Groups resources, the value is `admin#directory#group`.
   core.String kind;
 
-  /// Group name
+  /// The group's display name.
   core.String name;
 
-  /// List of non editable aliases (Read-only)
+  /// List of the group's non-editable alias email addresses that are outside of
+  /// the account's primary domain or subdomains.
+  ///
+  /// These are functioning email addresses used by the group. This is a
+  /// read-only property returned in the API's response for a group. If edited
+  /// in a group's POST or PUT request, the edit is ignored by the API service.
   core.List<core.String> nonEditableAliases;
 
   Group();
@@ -9775,10 +10401,6 @@ class Group {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'.
-///
-/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
-/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Groups {
   /// ETag of the resource.
   core.String etag;
@@ -9830,32 +10452,50 @@ class Groups {
   }
 }
 
+/// A Google Groups member can be a user or another group.
+///
+/// This member can be inside or outside of your account's domains. For more
+/// information about common group member tasks, see the \[Developer's
+/// Guide\](/admin-sdk/directory/v1/guides/manage-group-members).
 class Member {
-  /// Delivery settings of member
+  /// Defines mail delivery preferences of member.
+  ///
+  /// This is only supported by create/update/get.
   core.String deliverySettings;
 
-  /// Email of member (Read-only)
+  /// The member's email address.
+  ///
+  /// A member can be a user or another group. This property is required when
+  /// adding a member to a group. The `email` must be unique and cannot be an
+  /// alias of another group. If the email address is changed, the API
+  /// automatically reflects the email address changes.
   core.String email;
 
   /// ETag of the resource.
   core.String etag;
 
-  /// Unique identifier of group (Read-only) Unique identifier of member
-  /// (Read-only) The unique ID of the group member.
+  /// The unique ID of the group member.
   ///
-  /// A member id can be used as a member request URI's memberKey.
+  /// A member `id` can be used as a member request URI's `memberKey`.
   core.String id;
 
-  /// Kind of resource this is.
+  /// The type of the API resource.
+  ///
+  /// For Members resources, the value is `admin#directory#member`.
   core.String kind;
 
-  /// Role of member
+  /// The member's role in a group.
+  ///
+  /// The API returns an error for cycles in group memberships. For example, if
+  /// `group1` is a member of `group2`, `group2` cannot be a member of `group1`.
+  /// For more information about a member's role, see the
+  /// [administration help center](http://support.google.com/a/bin/answer.py?answer=167094).
   core.String role;
 
   /// Status of member (Immutable)
   core.String status;
 
-  /// Type of member (Immutable)
+  /// The type of group member.
   core.String type;
 
   Member();
@@ -9995,19 +10635,33 @@ class MembersHasMember {
 }
 
 class MobileDeviceApplications {
-  /// Display name of application
+  /// The application's display name.
+  ///
+  /// An example is `Browser`.
   core.String displayName;
 
-  /// Package name of application
+  /// The application's package name.
+  ///
+  /// An example is `com.android.browser`.
   core.String packageName;
 
-  /// List of Permissions for application
+  /// The list of permissions of this application.
+  ///
+  /// These can be either a standard Android permission or one defined by the
+  /// application, and are found in an application's
+  /// [Android manifest](http://developer.android.com/guide/topics/manifest/uses-permission-element.html).
+  /// Examples of a Calendar application's permissions are `READ_CALENDAR`, or
+  /// `MANAGE_ACCOUNTS`.
   core.List<core.String> permission;
 
-  /// Version code of application
+  /// The application's version code.
+  ///
+  /// An example is `13`.
   core.int versionCode;
 
-  /// Version name of application
+  /// The application's version name.
+  ///
+  /// An example is `3.2-140714`.
   core.String versionName;
 
   MobileDeviceApplications();
@@ -10053,14 +10707,28 @@ class MobileDeviceApplications {
   }
 }
 
+/// Google Workspace Mobile Management includes Android,
+/// [Google Sync](http://support.google.com/a/bin/answer.py?answer=135937), and
+/// iOS devices.
+///
+/// For more information about common group mobile device API tasks, see the
+/// \[Developer's
+/// Guide\](/admin-sdk/directory/v1/guides/manage-mobile-devices.html).
 class MobileDevice {
   /// Adb (USB debugging) enabled or disabled on device (Read-only)
   core.bool adbStatus;
 
-  /// List of applications installed on Mobile Device
+  /// The list of applications installed on an Android mobile device.
+  ///
+  /// It is not applicable to Google Sync and iOS devices. The list includes any
+  /// Android applications that access Google Workspace data. When updating an
+  /// applications list, it is important to note that updates replace the
+  /// existing list. If the Android device has two existing applications and the
+  /// API updates the list with five applications, the is now the updated list
+  /// of five applications.
   core.List<MobileDeviceApplications> applications;
 
-  /// Mobile Device Baseband version (Read-only)
+  /// The device's baseband version.
   core.String basebandVersion;
 
   /// Mobile Device Bootloader version (Read-only)
@@ -10069,25 +10737,33 @@ class MobileDevice {
   /// Mobile Device Brand (Read-only)
   core.String brand;
 
-  /// Mobile Device Build number (Read-only)
+  /// The device's operating system build number.
   core.String buildNumber;
 
-  /// The default locale used on the Mobile Device (Read-only)
+  /// The default locale used on the device.
   core.String defaultLanguage;
 
   /// Developer options enabled or disabled on device (Read-only)
   core.bool developerOptionsStatus;
 
-  /// Mobile Device compromised status (Read-only)
+  /// The compromised device status.
   core.String deviceCompromisedStatus;
 
-  /// Mobile Device serial number (Read-only)
+  /// The serial number for a Google Sync mobile device.
+  ///
+  /// For Android and iOS devices, this is a software generated unique
+  /// identifier.
   core.String deviceId;
 
   /// DevicePasswordStatus (Read-only)
   core.String devicePasswordStatus;
 
-  /// List of owner user's email addresses (Read-only)
+  /// List of owner's email addresses.
+  ///
+  /// If your application needs the current list of user emails, use the
+  /// \[get\](/admin-sdk/directory/v1/reference/mobiledevices/get.html) method.
+  /// For additional information, see the \[retrieve a
+  /// user\](/admin-sdk/directory/v1/guides/manage-users#get_user) method.
   core.List<core.String> email;
 
   /// Mobile Device Encryption Status (Read-only)
@@ -10103,42 +10779,64 @@ class MobileDevice {
   /// Mobile Device Hardware (Read-only)
   core.String hardware;
 
-  /// Mobile Device Hardware Id (Read-only)
+  /// The IMEI/MEID unique identifier for Android hardware.
+  ///
+  /// It is not applicable to Google Sync devices. When adding an Android mobile
+  /// device, this is an optional property. When updating one of these devices,
+  /// this is a read-only property.
   core.String hardwareId;
 
-  /// Mobile Device IMEI number (Read-only)
+  /// The device's IMEI number.
   core.String imei;
 
-  /// Mobile Device Kernel version (Read-only)
+  /// The device's kernel version.
   core.String kernelVersion;
 
-  /// Kind of resource this is.
+  /// The type of the API resource.
+  ///
+  /// For Mobiledevices resources, the value is `admin#directory#mobiledevice`.
   core.String kind;
 
   /// Date and time the device was last synchronized with the policy settings in
   /// the G Suite administrator control panel (Read-only)
   core.DateTime lastSync;
 
-  /// Boolean indicating if this account is on owner/primary profile or not
-  /// (Read-only)
+  /// Boolean indicating if this account is on owner/primary profile or not.
   core.bool managedAccountIsOnOwnerProfile;
 
   /// Mobile Device manufacturer (Read-only)
   core.String manufacturer;
 
-  /// Mobile Device MEID number (Read-only)
+  /// The device's MEID number.
   core.String meid;
 
-  /// Name of the model of the device
+  /// The mobile device's model name, for example Nexus S.
+  ///
+  /// This property can be
+  /// \[updated\](/admin-sdk/directory/v1/reference/mobiledevices/update.html).
+  /// For more information, see the \[Developer's
+  /// Guide\](/admin-sdk/directory/v1/guides/manage-mobile=devices#update_mobile_device).
   core.String model;
 
-  /// List of owner user's names (Read-only)
+  /// List of the owner's user names.
+  ///
+  /// If your application needs the current list of device owner names, use the
+  /// \[get\](/admin-sdk/directory/v1/reference/mobiledevices/get.html) method.
+  /// For more information about retrieving mobile device user information, see
+  /// the \[Developer's
+  /// Guide\](/admin-sdk/directory/v1/guides/manage-users#get_user).
   core.List<core.String> name;
 
   /// Mobile Device mobile or network operator (if available) (Read-only)
   core.String networkOperator;
 
-  /// Name of the mobile operating system
+  /// The mobile device's operating system, for example IOS 4.3 or Android
+  /// 2.3.5.
+  ///
+  /// This property can be
+  /// \[updated\](/admin-sdk/directory/v1/reference/mobiledevices/update.html).
+  /// For more information, see the \[Developer's
+  /// Guide\](/admin-sdk/directory/v1/guides/manage-mobile-devices#update_mobile_device).
   core.String os;
 
   /// List of accounts added on device (Read-only)
@@ -10150,31 +10848,36 @@ class MobileDevice {
   /// Mobile Device release version version (Read-only)
   core.String releaseVersion;
 
-  /// Unique identifier of Mobile Device (Read-only)
+  /// The unique ID the API service uses to identify the mobile device.
   core.String resourceId;
 
   /// Mobile Device Security patch level (Read-only)
   core.String securityPatchLevel;
 
-  /// Mobile Device SSN or Serial Number (Read-only)
+  /// The device's serial number.
   core.String serialNumber;
 
-  /// Status of the device (Read-only)
+  /// The device's status.
   core.String status;
 
   /// Work profile supported on device (Read-only)
   core.bool supportsWorkProfile;
 
-  /// The type of device (Read-only)
+  /// The type of mobile device.
   core.String type;
 
   /// Unknown sources enabled or disabled on device (Read-only)
   core.bool unknownSourcesStatus;
 
-  /// Mobile Device user agent
+  /// Gives information about the device such as `os` version.
+  ///
+  /// This property can be
+  /// \[updated\](/admin-sdk/directory/v1/reference/mobiledevices/update.html).
+  /// For more information, see the \[Developer's
+  /// Guide\](/admin-sdk/directory/v1/guides/manage-mobile-devices#update_mobile_device).
   core.String userAgent;
 
-  /// Mobile Device WiFi MAC address (Read-only)
+  /// The device's MAC address on Wi-Fi networks.
   core.String wifiMacAddress;
 
   MobileDevice();
@@ -10441,7 +11144,7 @@ class MobileDevice {
 }
 
 class MobileDeviceAction {
-  /// Action to be taken on the Mobile Device
+  /// The action to be performed on the device.
   core.String action;
 
   MobileDeviceAction();
@@ -10513,37 +11216,67 @@ class MobileDevices {
   }
 }
 
-/// JSON template for Org Unit resource in Directory API.
+/// Managing your account's organizational units allows you to configure your
+/// users' access to services and custom settings.
 ///
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// For more information about common organizational unit tasks, see the
+/// \[Developer's Guide\](/admin-sdk/directory/v1/guides/manage-org-units.html).
 class OrgUnit {
-  /// Should block inheritance
+  /// Determines if a sub-organizational unit can inherit the settings of the
+  /// parent organization.
+  ///
+  /// The default value is `false`, meaning a sub-organizational unit inherits
+  /// the settings of the nearest parent organizational unit. For more
+  /// information on inheritance and users in an organization structure, see the
+  /// [administration help center](http://support.google.com/a/bin/answer.py?answer=182442&topic=1227584&ctx=topic).
   core.bool blockInheritance;
 
-  /// Description of OrgUnit
+  /// Description of the organizational unit.
   core.String description;
 
   /// ETag of the resource.
   core.String etag;
 
-  /// Kind of resource this is.
+  /// The type of the API resource.
+  ///
+  /// For Orgunits resources, the value is `admin#directory#orgUnit`.
   core.String kind;
 
-  /// Name of OrgUnit
+  /// The organizational unit's path name.
+  ///
+  /// For example, an organizational unit's name within the
+  /// /corp/support/sales_support parent path is sales_support. Required.
   core.String name;
 
-  /// Id of OrgUnit
+  /// The unique ID of the organizational unit.
   core.String orgUnitId;
 
-  /// Path of OrgUnit
+  /// The full path to the organizational unit.
+  ///
+  /// The `orgUnitPath` is a derived property. When listed, it is derived from
+  /// `parentOrgunitPath` and organizational unit's `name`. For example, for an
+  /// organizational unit named 'apps' under parent organization '/engineering',
+  /// the orgUnitPath is '/engineering/apps'. In order to edit an `orgUnitPath`,
+  /// either update the name of the organization or the `parentOrgunitPath`. A
+  /// user's organizational unit determines which Google Workspace services the
+  /// user has access to. If the user is moved to a new organization, the user's
+  /// access changes. For more information about organization structures, see
+  /// the
+  /// [administration help center](http://support.google.com/a/bin/answer.py?answer=182433&topic=1227584&ctx=topic).
+  /// For more information about moving a user to a different organization, see
+  /// \[Update a
+  /// user\](/admin-sdk/directory/v1/guides/manage-users.html#update_user).
   core.String orgUnitPath;
 
-  /// Id of parent OrgUnit
+  /// The unique ID of the parent organizational unit.
+  ///
+  /// Required, unless `parentOrgUnitPath` is set.
   core.String parentOrgUnitId;
 
-  /// Path of parent OrgUnit
+  /// The organizational unit's parent path.
+  ///
+  /// For example, /corp/sales is the parent path for /corp/sales/sales_support
+  /// organizational unit. Required, unless `parentOrgUnitId` is set.
   core.String parentOrgUnitPath;
 
   OrgUnit();
@@ -10611,20 +11344,16 @@ class OrgUnit {
   }
 }
 
-/// JSON response template for List Organization Units operation in Directory
-/// API.
-///
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class OrgUnits {
   /// ETag of the resource.
   core.String etag;
 
-  /// Kind of resource this is.
+  /// The type of the API resource.
+  ///
+  /// For Org Unit resources, the type is `admin#directory#orgUnits`.
   core.String kind;
 
-  /// List of user objects.
+  /// List of organizational unit objects.
   core.List<OrgUnit> organizationUnits;
 
   OrgUnits();
@@ -10675,7 +11404,7 @@ class Privilege {
 
   /// The type of the API resource.
   ///
-  /// This is always admin#directory#privilege.
+  /// This is always `admin#directory#privilege`.
   core.String kind;
 
   /// The name of the privilege.
@@ -10683,7 +11412,8 @@ class Privilege {
 
   /// The obfuscated ID of the service this privilege is for.
   ///
-  /// This value is returned with Privileges.list().
+  /// This value is returned with
+  /// \[`Privileges.list()`\](/admin-sdk/directory/v1/reference/privileges/list).
   core.String serviceId;
 
   /// The name of the service this privilege is for.
@@ -10755,7 +11485,7 @@ class Privileges {
 
   /// The type of the API resource.
   ///
-  /// This is always admin#directory#privileges.
+  /// This is always `admin#directory#privileges`.
   core.String kind;
 
   Privileges();
@@ -10790,13 +11520,47 @@ class Privileges {
   }
 }
 
+/// List of recent device users, in descending order, by last login time.
+class RecentUsers {
+  /// The user's email address.
+  ///
+  /// This is only present if the user type is `USER_TYPE_MANAGED`.
+  core.String email;
+
+  /// The type of the user.
+  core.String type;
+
+  RecentUsers();
+
+  RecentUsers.fromJson(core.Map _json) {
+    if (_json.containsKey('email')) {
+      email = _json['email'] as core.String;
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (email != null) {
+      _json['email'] = email;
+    }
+    if (type != null) {
+      _json['type'] = type;
+    }
+    return _json;
+  }
+}
+
 class RoleRolePrivileges {
   /// The name of the privilege.
   core.String privilegeName;
 
   /// The obfuscated ID of the service this privilege is for.
   ///
-  /// This value is returned with Privileges.list().
+  /// This value is returned with
+  /// \[`Privileges.list()`\](/admin-sdk/directory/v1/reference/privileges/list).
   core.String serviceId;
 
   RoleRolePrivileges();
@@ -10826,15 +11590,15 @@ class Role {
   /// ETag of the resource.
   core.String etag;
 
-  /// Returns true if the role is a super admin role.
+  /// Returns `true` if the role is a super admin role.
   core.bool isSuperAdminRole;
 
-  /// Returns true if this is a pre-defined system role.
+  /// Returns `true` if this is a pre-defined system role.
   core.bool isSystemRole;
 
   /// The type of the API resource.
   ///
-  /// This is always admin#directory#role.
+  /// This is always `admin#directory#role`.
   core.String kind;
 
   /// A short description of the role.
@@ -10921,7 +11685,7 @@ class RoleAssignment {
 
   /// The type of the API resource.
   ///
-  /// This is always admin#directory#roleAssignment.
+  /// This is always `admin#directory#roleAssignment`.
   core.String kind;
 
   /// If the role is restricted to an organization unit, this contains the ID
@@ -10935,8 +11699,6 @@ class RoleAssignment {
   core.String roleId;
 
   /// The scope in which this role is assigned.
-  ///
-  /// Possible values are: - CUSTOMER - ORG_UNIT
   core.String scopeType;
 
   RoleAssignment();
@@ -11001,7 +11763,7 @@ class RoleAssignments {
 
   /// The type of the API resource.
   ///
-  /// This is always admin#directory#roleAssignments .
+  /// This is always `admin#directory#roleAssignments`.
   core.String kind;
   core.String nextPageToken;
 
@@ -11052,7 +11814,7 @@ class Roles {
 
   /// The type of the API resource.
   ///
-  /// This is always admin#directory#roles.
+  /// This is always `admin#directory#roles`.
   core.String kind;
   core.String nextPageToken;
 
@@ -11094,28 +11856,26 @@ class Roles {
   }
 }
 
-/// JSON template for Schema resource in Directory API.
+/// The type of API resource.
 ///
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// For Schema resources, this is always `admin#directory#schema`.
 class Schema {
   /// Display name for the schema.
   core.String displayName;
 
-  /// ETag of the resource.
+  /// The ETag of the resource.
   core.String etag;
 
-  /// Fields of Schema
+  /// A list of fields in the schema.
   core.List<SchemaFieldSpec> fields;
 
   /// Kind of resource this is.
   core.String kind;
 
-  /// Unique identifier of Schema (Read-only)
+  /// The unique identifier of the schema (Read-only)
   core.String schemaId;
 
-  /// Schema name
+  /// The schema's name.
   core.String schemaName;
 
   Schema();
@@ -11171,7 +11931,7 @@ class Schema {
 /// Indexing spec for a numeric field.
 ///
 /// By default, only exact match queries will be supported for numeric fields.
-/// Setting the numericIndexingSpec allows range queries to be supported.
+/// Setting the `numericIndexingSpec` allows range queries to be supported.
 class SchemaFieldSpecNumericIndexingSpec {
   /// Maximum value of this field.
   ///
@@ -11208,45 +11968,55 @@ class SchemaFieldSpecNumericIndexingSpec {
   }
 }
 
-/// JSON template for FieldSpec resource for Schemas in Directory API.
+/// You can use schemas to add custom fields to user profiles.
 ///
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// You can use these fields to store information such as the projects your
+/// users work on, their physical locations, their hire dates, or whatever else
+/// fits your business needs. For more information, see \[Custom User
+/// Fields\](/admin-sdk/directory/v1/guides/manage-schemas).
 class SchemaFieldSpec {
   /// Display Name of the field.
   core.String displayName;
 
-  /// ETag of the resource.
+  /// The ETag of the field.
   core.String etag;
 
-  /// Unique identifier of Field (Read-only)
+  /// The unique identifier of the field (Read-only)
   core.String fieldId;
 
-  /// Name of the field.
+  /// The name of the field.
   core.String fieldName;
 
-  /// Type of the field.
+  /// The type of the field.
   core.String fieldType;
 
   /// Boolean specifying whether the field is indexed or not.
+  ///
+  /// Default: `true`.
   core.bool indexed;
 
-  /// Kind of resource this is.
+  /// The kind of resource this is.
+  ///
+  /// For schema fields this is always `admin#directory#schema#fieldspec`.
   core.String kind;
 
-  /// Boolean specifying whether this is a multi-valued field or not.
+  /// A boolean specifying whether this is a multi-valued field or not.
+  ///
+  /// Default: `false`.
   core.bool multiValued;
 
   /// Indexing spec for a numeric field.
   ///
   /// By default, only exact match queries will be supported for numeric fields.
-  /// Setting the numericIndexingSpec allows range queries to be supported.
+  /// Setting the `numericIndexingSpec` allows range queries to be supported.
   SchemaFieldSpecNumericIndexingSpec numericIndexingSpec;
 
-  /// Read ACLs on the field specifying who can view values of this field.
+  /// Specifies who can view values of this field.
   ///
-  /// Valid values are "ALL_DOMAIN_USERS" and "ADMINS_AND_SELF".
+  /// See \[Retrieve users as a
+  /// non-administrator\](/admin-sdk/directory/v1/guides/manage-users#retrieve_users_non_admin)
+  /// for more information. Note: It may take up to 24 hours for changes to this
+  /// field to be reflected.
   core.String readAccessType;
 
   SchemaFieldSpec();
@@ -11322,10 +12092,6 @@ class SchemaFieldSpec {
 }
 
 /// JSON response template for List Schema operation in Directory API.
-///
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Schemas {
   /// ETag of the resource.
   core.String etag;
@@ -11369,14 +12135,10 @@ class Schemas {
 }
 
 /// JSON template for token resource in Directory API.
-///
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Token {
   /// Whether the application is registered with Google.
   ///
-  /// The value is true if the application has an anonymous Client ID.
+  /// The value is `true` if the application has an anonymous Client ID.
   core.bool anonymous;
 
   /// The Client ID of the application the token is issued to.
@@ -11390,12 +12152,12 @@ class Token {
 
   /// The type of the API resource.
   ///
-  /// This is always admin#directory#token.
+  /// This is always `admin#directory#token`.
   core.String kind;
 
   /// Whether the token is issued to an installed application.
   ///
-  /// The value is true if the application is installed to a desktop or mobile
+  /// The value is `true` if the application is installed to a desktop or mobile
   /// device.
   core.bool nativeApp;
 
@@ -11467,10 +12229,6 @@ class Token {
 }
 
 /// JSON response template for List tokens operation in Directory API.
-///
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Tokens {
   /// ETag of the resource.
   core.String etag;
@@ -11480,7 +12238,7 @@ class Tokens {
 
   /// The type of the API resource.
   ///
-  /// This is always admin#directory#tokenList.
+  /// This is always `admin#directory#tokenList`.
   core.String kind;
 
   Tokens();
@@ -11515,51 +12273,29 @@ class Tokens {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'.
+/// The Directory API allows you to create and manage your account's users, user
+/// aliases, and user Gmail chat profile photos.
 ///
-/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
-/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
-/// STEPLADDER: Generated unstable field number for field 'external_ids' to
-/// avoid collision. (See http://go/stepladder-help#fieldNumber) STEPLADDER:
-/// Generated unstable field number for field 'relations' to avoid collision.
-/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
-/// field number for field 'addresses' to avoid collision. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'organizations' to avoid collision. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'phones' to avoid collision. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'languages' to avoid collision. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'posix_accounts' to avoid collision. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'ssh_public_keys' to avoid collision. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'notes' to avoid collision. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'websites' to avoid collision. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'locations' to avoid collision. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'keywords' to avoid collision. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'gender' to avoid collision. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'thumbnail_photo_etag' to avoid collision. (See
-/// http://go/stepladder-help#fieldNumber)
+/// For more information about common tasks, see the \[User Accounts Developer's
+/// Guide\](/admin-sdk/directory/v1/guides/manage-users.html) and the \[User
+/// Aliases Developer's
+/// Guide\](/admin-sdk/directory/v1/guides/manage-user-aliases.html).
 class User {
-  /// Addresses of User
+  /// A list of the user's addresses.
+  ///
+  /// The maximum allowed data size for this field is 10Kb.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object addresses;
 
-  /// Indicates if user has agreed to terms (Read-only)
+  /// This property is `true` if the user has completed an initial login and
+  /// accepted the Terms of Service agreement.
   ///
   /// Output only.
   core.bool agreedToTerms;
 
-  /// List of aliases (Read-only)
+  /// List of the user's alias email addresses.
   ///
   /// Output only.
   core.List<core.String> aliases;
@@ -11567,7 +12303,10 @@ class User {
   /// Indicates if user is archived.
   core.bool archived;
 
-  /// Boolean indicating if the user should change password in next login
+  /// Indicates if the user is forced to change their password at next login.
+  ///
+  /// This setting doesn't apply when \[the user signs in via a third-party
+  /// identity provider\](https://support.google.com/a/answer/60224).
   core.bool changePasswordAtNextLogin;
 
   /// User's G Suite account creation time.
@@ -11578,13 +12317,22 @@ class User {
   /// Custom fields of the user.
   core.Map<core.String, UserCustomProperties> customSchemas;
 
-  /// CustomerId of User (Read-only)
+  /// The customer ID to \[retrieve all account
+  /// users\](/admin-sdk/directory/v1/guides/manage-users.html#get_all_users).
+  ///
+  /// You can use the alias `my_customer` to represent your account's
+  /// `customerId`. As a reseller administrator, you can use the resold customer
+  /// account's `customerId`. To get a `customerId`, use the account's primary
+  /// domain in the `domain` parameter of a
+  /// \[users.list\](/admin-sdk/directory/v1/reference/users/list) request.
   ///
   /// Output only.
   core.String customerId;
   core.DateTime deletionTime;
 
-  /// Emails of User
+  /// A list of the user's email addresses.
+  ///
+  /// The maximum allowed data size for this field is 10Kb.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -11595,44 +12343,78 @@ class User {
   /// Output only.
   core.String etag;
 
-  /// The external Ids of User *
+  /// A list of external IDs for the user, such as an employee or network ID.
+  ///
+  /// The maximum allowed data size for this field is 2Kb.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object externalIds;
 
-  /// Gender of User
+  /// The user's gender.
+  ///
+  /// The maximum allowed data size for this field is 1Kb.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object gender;
 
-  /// Hash function name for password.
+  /// Stores the hash format of the password property.
   ///
-  /// Supported are MD5, SHA-1 and crypt
+  /// We recommend sending the `password` property value as a base 16 bit
+  /// hexadecimal-encoded hash value. Set the `hashFunction` values as either
+  /// the \[SHA-1\](http://wikipedia.org/wiki/SHA-1),
+  /// [MD5](http://wikipedia.org/wiki/MD5), or
+  /// [crypt](https://en.wikipedia.org/wiki/Crypt_(C)) hash format.
   core.String hashFunction;
 
-  /// Unique identifier of User (Read-only)
+  /// The unique ID for the user.
+  ///
+  /// A user `id` can be used as a user request URI's `userKey`.
   core.String id;
 
-  /// User's Instant Messenger
+  /// The user's Instant Messenger (IM) accounts.
+  ///
+  /// A user account can have multiple ims properties. But, only one of these
+  /// ims properties can be the primary IM contact. The maximum allowed data
+  /// size for this field is 2Kb.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object ims;
 
-  /// Boolean indicating if user is included in Global Address List
+  /// Indicates if the user's profile is visible in the Google Workspace global
+  /// address list when the contact sharing feature is enabled for the domain.
+  ///
+  /// For more information about excluding user profiles, see the
+  /// [administration help center](http://support.google.com/a/bin/answer.py?answer=1285988).
   core.bool includeInGlobalAddressList;
 
-  /// Boolean indicating if ip is whitelisted
+  /// If `true`, the user's IP address is
+  /// [white listed](http://support.google.com/a/bin/answer.py?answer=60752).
   core.bool ipWhitelisted;
 
-  /// Boolean indicating if the user is admin (Read-only)
+  /// Indicates a user with super admininistrator privileges.
+  ///
+  /// The `isAdmin` property can only be edited in the \[Make a user an
+  /// administrator\](/admin-sdk/directory/v1/guides/manage-users.html#make_admin)
+  /// operation (
+  /// \[makeAdmin\](/admin-sdk/directory/v1/reference/users/makeAdmin.html)
+  /// method). If edited in the user
+  /// \[insert\](/admin-sdk/directory/v1/reference/users/insert.html) or
+  /// \[update\](/admin-sdk/directory/v1/reference/users/update.html) methods,
+  /// the edit is ignored by the API service.
   ///
   /// Output only.
   core.bool isAdmin;
 
-  /// Boolean indicating if the user is delegated admin (Read-only)
+  /// Indicates if the user is a delegated administrator.
+  ///
+  /// Delegated administrators are supported by the API but cannot create or
+  /// undelete users, or make users administrators. These requests are ignored
+  /// by the API service. Roles and privileges for administrators are assigned
+  /// using the
+  /// [Admin console](http://support.google.com/a/bin/answer.py?answer=33325).
   ///
   /// Output only.
   core.bool isDelegatedAdmin;
@@ -11647,23 +12429,32 @@ class User {
   /// Output only.
   core.bool isEnrolledIn2Sv;
 
-  /// Is mailbox setup (Read-only)
+  /// Indicates if the user's Google mailbox is created.
+  ///
+  /// This property is only applicable if the user has been assigned a Gmail
+  /// license.
   ///
   /// Output only.
   core.bool isMailboxSetup;
 
-  /// Keywords of User
+  /// The user's keywords.
+  ///
+  /// The maximum allowed data size for this field is 1Kb.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object keywords;
 
-  /// Kind of resource this is.
+  /// The type of the API resource.
+  ///
+  /// For Users resources, the value is `admin#directory#user`.
   ///
   /// Output only.
   core.String kind;
 
-  /// Languages of User
+  /// The user's languages.
+  ///
+  /// The maximum allowed data size for this field is 1Kb.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -11674,30 +12465,48 @@ class User {
   /// (Read-only)
   core.DateTime lastLoginTime;
 
-  /// Locations of User
+  /// The user's locations.
+  ///
+  /// The maximum allowed data size for this field is 10Kb.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object locations;
 
-  /// User's name
+  /// Holds the given and family names of the user, and the read-only `fullName`
+  /// value.
+  ///
+  /// The maximum number of characters in the `givenName` and in the
+  /// `familyName` values is 60. In addition, name values support unicode/UTF-8
+  /// characters, and can contain spaces, letters (a-z), numbers (0-9), dashes
+  /// (-), forward slashes (/), and periods (.). For more information about
+  /// character usage rules, see the
+  /// [administration help center](http://support.google.com/a/bin/answer.py?answer=33386).
+  /// Maximum allowed data size for this field is 1Kb.
   UserName name;
 
-  /// List of non editable aliases (Read-only)
+  /// List of the user's non-editable alias email addresses.
+  ///
+  /// These are typically outside the account's primary domain or sub-domain.
   ///
   /// Output only.
   core.List<core.String> nonEditableAliases;
 
-  /// Notes of User
+  /// Notes for the user.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object notes;
 
-  /// OrgUnit of User
+  /// The full path of the parent organization associated with the user.
+  ///
+  /// If the parent organization is the top-level, it is represented as a
+  /// forward slash (`/`).
   core.String orgUnitPath;
 
-  /// Organizations of User
+  /// A list of organizations the user belongs to.
+  ///
+  /// The maximum allowed data size for this field is 10Kb.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -11706,19 +12515,25 @@ class User {
   /// User's password
   core.String password;
 
-  /// Phone numbers of User
+  /// A list of the user's phone numbers.
+  ///
+  /// The maximum allowed data size for this field is 1Kb.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object phones;
 
-  /// The POSIX accounts of User
+  /// A list of [POSIX](http://www.opengroup.org/austin/papers/posix_faq.html)
+  /// account information for the user.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object posixAccounts;
 
-  /// username of User
+  /// The user's primary email address.
+  ///
+  /// This property is required in a request to create a user account. The
+  /// `primaryEmail` must be unique and cannot be an alias of another user.
   core.String primaryEmail;
 
   /// Recovery email of the user.
@@ -11730,13 +12545,15 @@ class User {
   /// (+). Example: *+16506661212*.
   core.String recoveryPhone;
 
-  /// The Relations of User *
+  /// A list of the user's relationships to other users.
+  ///
+  /// The maximum allowed data size for this field is 2Kb.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object relations;
 
-  /// The SSH public keys of User
+  /// A list of SSH public keys.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -11745,7 +12562,10 @@ class User {
   /// Indicates if user is suspended.
   core.bool suspended;
 
-  /// Suspension reason if user is suspended (Read-only)
+  /// Has the reason a user account is suspended either by the administrator or
+  /// by Google at the time of suspension.
+  ///
+  /// The property is returned only if the `suspended` property is `true`.
   ///
   /// Output only.
   core.String suspensionReason;
@@ -11760,7 +12580,9 @@ class User {
   /// Output only.
   core.String thumbnailPhotoUrl;
 
-  /// Websites of User
+  /// The user's websites.
+  ///
+  /// The maximum allowed data size for this field is 2Kb.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -12665,7 +13487,7 @@ class UserLocation {
 }
 
 class UserMakeAdmin {
-  /// Boolean indicating new admin status of the user
+  /// Indicates the administrator status of the user.
   core.bool status;
 
   UserMakeAdmin();
@@ -12686,13 +13508,18 @@ class UserMakeAdmin {
 }
 
 class UserName {
-  /// Last Name
+  /// The user's last name.
+  ///
+  /// Required when creating a user account.
   core.String familyName;
 
-  /// Full Name
+  /// The user's full name formed by concatenating the first and last name
+  /// values.
   core.String fullName;
 
-  /// First Name
+  /// The user's first name.
+  ///
+  /// Required when creating a user account.
   core.String givenName;
 
   UserName();
@@ -12907,27 +13734,38 @@ class UserPhone {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'.
-///
-/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
-/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class UserPhoto {
   /// ETag of the resource.
   core.String etag;
 
-  /// Height in pixels of the photo
+  /// Height of the photo in pixels.
   core.int height;
 
-  /// Unique identifier of User (Read-only)
+  /// The ID the API uses to uniquely identify the user.
   core.String id;
 
-  /// Kind of resource this is.
+  /// The type of the API resource.
+  ///
+  /// For Photo resources, this is `admin#directory#user#photo`.
   core.String kind;
 
-  /// Mime Type of the photo
+  /// The MIME type of the photo.
+  ///
+  /// Allowed values are `JPEG`, `PNG`, `GIF`, `BMP`, `TIFF`, and web-safe
+  /// base64 encoding.
   core.String mimeType;
 
-  /// Base64 encoded photo data
+  /// The user photo's upload data in \[web-safe
+  /// Base64\](https://code.google.com/p/stringencoders/wiki/WebSafeBase64)
+  /// format in bytes.
+  ///
+  /// This means: * The slash (/) character is replaced with the underscore (_)
+  /// character. * The plus sign (+) character is replaced with the hyphen (-)
+  /// character. * The equals sign (=) character is replaced with the asterisk
+  /// (*). * For padding, the period (.) character is used instead of the
+  /// RFC-4648 baseURL definition which uses the equals sign (=) for padding.
+  /// This is done to simplify URL-parsing. * Whatever the size of the photo
+  /// being uploaded, the API downsizes it to 96x96 pixels.
   core.String photoData;
   core.List<core.int> get photoDataAsBytes => convert.base64.decode(photoData);
 
@@ -12936,10 +13774,10 @@ class UserPhoto {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  /// Primary email of User (Read-only)
+  /// The user's primary email address.
   core.String primaryEmail;
 
-  /// Width in pixels of the photo
+  /// Width of the photo in pixels.
   core.int width;
 
   UserPhoto();
@@ -13002,8 +13840,6 @@ class UserPhoto {
 }
 
 /// JSON template for a POSIX account entry.
-///
-/// Description of the field family: go/fbs-posix.
 class UserPosixAccount {
   /// A POSIX account field identifier.
   core.String accountId;
@@ -13266,10 +14102,6 @@ class UserWebsite {
   }
 }
 
-/// STEPLADDER: Generated unstable field number for field 'kind'.
-///
-/// (See http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable
-/// field number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class Users {
   /// ETag of the resource.
   core.String etag;
@@ -13330,18 +14162,15 @@ class Users {
   }
 }
 
-/// JSON template for verification codes in Directory API.
-///
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// The Directory API allows you to view, generate, and invalidate backup
+/// verification codes for a user.
 class VerificationCode {
   /// ETag of the resource.
   core.String etag;
 
   /// The type of the resource.
   ///
-  /// This is always admin#directory#verificationCode.
+  /// This is always `admin#directory#verificationCode`.
   core.String kind;
 
   /// The obfuscated unique ID of the user.
@@ -13390,10 +14219,6 @@ class VerificationCode {
 
 /// JSON response template for List verification codes operation in Directory
 /// API.
-///
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class VerificationCodes {
   /// ETag of the resource.
   core.String etag;
@@ -13403,7 +14228,7 @@ class VerificationCodes {
 
   /// The type of the resource.
   ///
-  /// This is always admin#directory#verificationCodesList.
+  /// This is always `admin#directory#verificationCodesList`.
   core.String kind;
 
   VerificationCodes();

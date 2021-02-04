@@ -1021,7 +1021,6 @@ class TaskLinks {
   }
 }
 
-/// LINT.IfChange
 class Task {
   /// Completion date of the task (as a RFC 3339 timestamp).
   ///

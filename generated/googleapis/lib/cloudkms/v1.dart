@@ -2513,6 +2513,14 @@ class AsymmetricDecryptResponse {
   /// Beta.
   core.String plaintextCrc32c;
 
+  /// The ProtectionLevel of the CryptoKeyVersion used in decryption.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  core.String protectionLevel;
+
   /// Integrity verification field.
   ///
   /// A flag indicating whether AsymmetricDecryptRequest.ciphertext_crc32c was
@@ -2534,6 +2542,9 @@ class AsymmetricDecryptResponse {
     if (_json.containsKey('plaintextCrc32c')) {
       plaintextCrc32c = _json['plaintextCrc32c'] as core.String;
     }
+    if (_json.containsKey('protectionLevel')) {
+      protectionLevel = _json['protectionLevel'] as core.String;
+    }
     if (_json.containsKey('verifiedCiphertextCrc32c')) {
       verifiedCiphertextCrc32c = _json['verifiedCiphertextCrc32c'] as core.bool;
     }
@@ -2546,6 +2557,9 @@ class AsymmetricDecryptResponse {
     }
     if (plaintextCrc32c != null) {
       _json['plaintextCrc32c'] = plaintextCrc32c;
+    }
+    if (protectionLevel != null) {
+      _json['protectionLevel'] = protectionLevel;
     }
     if (verifiedCiphertextCrc32c != null) {
       _json['verifiedCiphertextCrc32c'] = verifiedCiphertextCrc32c;
@@ -2561,7 +2575,7 @@ class AsymmetricSignRequest {
   /// The digest must be produced with the same digest algorithm as specified by
   /// the key version's algorithm.
   ///
-  /// Required.
+  /// Optional.
   Digest digest;
 
   /// An optional CRC32C checksum of the AsymmetricSignRequest.digest.
@@ -2614,6 +2628,14 @@ class AsymmetricSignResponse {
   /// signing. NOTE: This field is in Beta.
   core.String name;
 
+  /// The ProtectionLevel of the CryptoKeyVersion used for signing.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  core.String protectionLevel;
+
   /// The created signature.
   core.String signature;
   core.List<core.int> get signatureAsBytes => convert.base64.decode(signature);
@@ -2656,6 +2678,9 @@ class AsymmetricSignResponse {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('protectionLevel')) {
+      protectionLevel = _json['protectionLevel'] as core.String;
+    }
     if (_json.containsKey('signature')) {
       signature = _json['signature'] as core.String;
     }
@@ -2671,6 +2696,9 @@ class AsymmetricSignResponse {
     final _json = <core.String, core.Object>{};
     if (name != null) {
       _json['name'] = name;
+    }
+    if (protectionLevel != null) {
+      _json['protectionLevel'] = protectionLevel;
     }
     if (signature != null) {
       _json['signature'] = signature;
@@ -2787,11 +2815,6 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding.
-  ///
-  /// Expected to be globally unique to support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
@@ -2842,9 +2865,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'] as core.String;
-    }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(
           _json['condition'] as core.Map<core.String, core.dynamic>);
@@ -2861,9 +2881,6 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
-    if (bindingId != null) {
-      _json['bindingId'] = bindingId;
-    }
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }
@@ -3509,6 +3526,17 @@ class DecryptResponse {
   /// This field is in Beta.
   core.String plaintextCrc32c;
 
+  /// The ProtectionLevel of the CryptoKeyVersion used in decryption.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  core.String protectionLevel;
+
+  /// Whether the Decryption was performed using the primary key version.
+  core.bool usedPrimary;
+
   DecryptResponse();
 
   DecryptResponse.fromJson(core.Map _json) {
@@ -3517,6 +3545,12 @@ class DecryptResponse {
     }
     if (_json.containsKey('plaintextCrc32c')) {
       plaintextCrc32c = _json['plaintextCrc32c'] as core.String;
+    }
+    if (_json.containsKey('protectionLevel')) {
+      protectionLevel = _json['protectionLevel'] as core.String;
+    }
+    if (_json.containsKey('usedPrimary')) {
+      usedPrimary = _json['usedPrimary'] as core.bool;
     }
   }
 
@@ -3527,6 +3561,12 @@ class DecryptResponse {
     }
     if (plaintextCrc32c != null) {
       _json['plaintextCrc32c'] = plaintextCrc32c;
+    }
+    if (protectionLevel != null) {
+      _json['protectionLevel'] = protectionLevel;
+    }
+    if (usedPrimary != null) {
+      _json['usedPrimary'] = usedPrimary;
     }
     return _json;
   }
@@ -3747,6 +3787,14 @@ class EncryptResponse {
   /// encryption.
   core.String name;
 
+  /// The ProtectionLevel of the CryptoKeyVersion used in encryption.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  core.String protectionLevel;
+
   /// Integrity verification field.
   ///
   /// A flag indicating whether
@@ -3784,6 +3832,9 @@ class EncryptResponse {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('protectionLevel')) {
+      protectionLevel = _json['protectionLevel'] as core.String;
+    }
     if (_json.containsKey('verifiedAdditionalAuthenticatedDataCrc32c')) {
       verifiedAdditionalAuthenticatedDataCrc32c =
           _json['verifiedAdditionalAuthenticatedDataCrc32c'] as core.bool;
@@ -3803,6 +3854,9 @@ class EncryptResponse {
     }
     if (name != null) {
       _json['name'] = name;
+    }
+    if (protectionLevel != null) {
+      _json['protectionLevel'] = protectionLevel;
     }
     if (verifiedAdditionalAuthenticatedDataCrc32c != null) {
       _json['verifiedAdditionalAuthenticatedDataCrc32c'] =
@@ -4827,6 +4881,14 @@ class PublicKey {
   /// field is in Beta.
   core.String pemCrc32c;
 
+  /// The ProtectionLevel of the CryptoKeyVersion public key.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  core.String protectionLevel;
+
   PublicKey();
 
   PublicKey.fromJson(core.Map _json) {
@@ -4841,6 +4903,9 @@ class PublicKey {
     }
     if (_json.containsKey('pemCrc32c')) {
       pemCrc32c = _json['pemCrc32c'] as core.String;
+    }
+    if (_json.containsKey('protectionLevel')) {
+      protectionLevel = _json['protectionLevel'] as core.String;
     }
   }
 
@@ -4857,6 +4922,9 @@ class PublicKey {
     }
     if (pemCrc32c != null) {
       _json['pemCrc32c'] = pemCrc32c;
+    }
+    if (protectionLevel != null) {
+      _json['protectionLevel'] = protectionLevel;
     }
     return _json;
   }

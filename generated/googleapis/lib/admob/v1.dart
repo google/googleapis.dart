@@ -45,6 +45,10 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// their AdMob account.
 class AdMobApi {
   /// See your AdMob data
+  static const admobReadonlyScope =
+      'https://www.googleapis.com/auth/admob.readonly';
+
+  /// See your AdMob data
   static const admobReportScope =
       'https://www.googleapis.com/auth/admob.report';
 
@@ -122,7 +126,7 @@ class AccountsResource {
     );
   }
 
-  /// Lists the AdMob publisher account accessible with the client credential.
+  /// List the AdMob publisher account accessible with the client credential.
   ///
   /// Currently, all credentials have access to at most one AdMob account.
   ///
@@ -194,6 +198,9 @@ class AccountsMediationReportResource {
   /// Generates an AdMob Mediation report based on the provided report
   /// specification.
   ///
+  /// Returns result of a server-side streaming RPC. The result is returned in a
+  /// sequence of responses.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -263,6 +270,9 @@ class AccountsNetworkReportResource {
   /// Generates an AdMob Network report based on the provided report
   /// specification.
   ///
+  /// Returns result of a server-side streaming RPC. The result is returned in a
+  /// sequence of responses.
+  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
@@ -323,30 +333,30 @@ class AccountsNetworkReportResource {
   }
 }
 
-/// Represents a whole or partial calendar date, e.g. a birthday.
+/// Represents a whole or partial calendar date, such as a birthday.
 ///
-/// The time of day and time zone are either specified elsewhere or are not
-/// significant. The date is relative to the Proleptic Gregorian Calendar. This
-/// can represent: * A full date, with non-zero year, month and day values * A
-/// month and day value, with a zero year, e.g. an anniversary * A year on its
-/// own, with zero month and day values * A year and month value, with a zero
-/// day, e.g. a credit card expiration date Related types are
-/// google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values * A month and day value, with a zero year, such as an
+/// anniversary * A year on its own, with zero month and day values * A year and
+/// month value, with a zero day, such as a credit card expiration date Related
+/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class Date {
-  /// Day of month.
+  /// Day of a month.
   ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 if specifying
-  /// a year by itself or a year and month where the day is not significant.
+  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
+  /// year by itself or a year and month where the day isn't significant.
   core.int day;
 
-  /// Month of year.
+  /// Month of a year.
   ///
-  /// Must be from 1 to 12, or 0 if specifying a year without a month and day.
+  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
   core.int month;
 
-  /// Year of date.
+  /// Year of the date.
   ///
-  /// Must be from 1 to 9999, or 0 if specifying a date without a year.
+  /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int year;
 
   Date();
@@ -1183,8 +1193,8 @@ class NetworkReportSpecSortCondition {
   /// double precision (approximate) decimal value.
   /// - "IMPRESSION_RPM" : The estimated earnings per thousand ad impressions.
   /// The value is in micros. For example, $1.03 would be represented as
-  /// 1030000. **Warning:** The metric is incompatible with
-  /// \[AD_TYPE\](#Dimension.ENUM_VALUES.AD_TYPE) dimension.
+  /// 1030000. Equivalent to eCPM in the AdMob UI. **Warning:** The metric is
+  /// incompatible with \[AD_TYPE\](#Dimension.ENUM_VALUES.AD_TYPE) dimension.
   /// - "MATCHED_REQUESTS" : The number of times ads are returned in response to
   /// a request. The value is an integer.
   /// - "MATCH_RATE" : The ratio of matched ad requests over the total ad

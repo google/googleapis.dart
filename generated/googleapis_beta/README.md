@@ -74,23 +74,25 @@ Accesses the latest features for managing Authorized Buyers accounts, Real-Time 
 
 Official API documentation: https://developers.google.com/authorized-buyers/apis/reference/rest/
 
-#### G Suite Alert Center API - alertcenter v1beta1
+#### Google Workspace Alert Center API - alertcenter v1beta1
 
 Manages alerts on issues affecting your domain.
 
 Official API documentation: https://developers.google.com/admin-sdk/alertcenter/
 
-#### App Engine Admin API - appengine v1beta
+#### Google Analytics Admin API - analyticsadmin v1alpha
 
-Provisions and manages developers' App Engine applications.
+Official API documentation: http://code.google.com/apis/analytics/docs/mgmt/home.html
 
-Official API documentation: https://cloud.google.com/appengine/docs/admin-api/
+#### Google Analytics Data API - analyticsdata v1alpha
 
-#### Artifact Registry API - artifactregistry v1beta1
+Accesses report data in Google Analytics.
 
-Store and manage build artifacts in a scalable and integrated service built on Google infrastructure.
+Official API documentation: https://developers.google.com/analytics/devguides/reporting/data/v1/
 
-Official API documentation: https://cloud.google.com/artifacts/docs/
+#### Area120 Tables API - area120tables v1alpha1
+
+Official API documentation: https://support.google.com/area120-tables/answer/10011390
 
 #### BigQuery Connection API - bigqueryconnection v1beta1
 
@@ -98,23 +100,11 @@ Allows users to manage BigQuery connections to external data sources.
 
 Official API documentation: https://cloud.google.com/bigquery/
 
-#### Cloud Billing Budget API - billingbudgets v1beta1
-
-The Cloud Billing Budget API stores Cloud Billing budgets, which define a budget plan and the rules to execute as spend is tracked against that plan.
-
-Official API documentation: https://cloud.google.com/billing/docs/how-to/budget-api-overview
-
 #### Error Reporting API - clouderrorreporting v1beta1
 
 Groups and counts similar errors from cloud services and applications, reports new errors, and provides access to error groups and their associated errors. 
 
 Official API documentation: https://cloud.google.com/error-reporting/
-
-#### Cloud Resource Manager API - cloudresourcemanager v1beta1
-
-Creates, reads, and updates metadata for Google Cloud Platform resource containers.
-
-Official API documentation: https://cloud.google.com/resource-manager
 
 #### Container Analysis API - containeranalysis v1beta1
 
@@ -134,23 +124,29 @@ Manages Google Cloud Dataflow projects on Google Cloud Platform.
 
 Official API documentation: https://cloud.google.com/dataflow
 
-#### Cloud Data Fusion API - datafusion v1beta1
+#### Data Labeling API - datalabeling v1beta1
 
-Cloud Data Fusion is a fully-managed, cloud native, enterprise data integration service for quickly building and managing data pipelines. It provides a graphical interface to increase time efficiency and reduce complexity, and allows business users, developers, and data scientists to easily and reliably build scalable data integration solutions to cleanse, prepare, blend, transfer and transform data without having to wrestle with infrastructure.
+Public API for Google Cloud AI Data Labeling Service.
 
-Official API documentation: https://cloud.google.com/data-fusion/docs
+Official API documentation: https://cloud.google.com/data-labeling/docs/
 
-#### Dialogflow API - dialogflow v2beta1
+#### Database Migration API - datamigration v1beta1
 
-Builds conversational interfaces (for example, chatbots, and voice-powered apps and devices).
+Manage Cloud Database Migration Service resources on Google Cloud Platform.
 
-Official API documentation: https://cloud.google.com/dialogflow/
+Official API documentation: https://cloud.google.com/database-migration/
 
-#### Cloud Document AI API - documentai v1beta2
+#### Cloud Document AI API - documentai v1beta3
 
 Service to parse structured information from unstructured or semi-structured documents using state-of-the-art Google AI such as natural language, computer vision, translation, and AutoML.
 
 Official API documentation: https://cloud.google.com/document-ai/docs/
+
+#### Cloud Domains API - domains v1beta1
+
+Enables management and configuration of domain names.
+
+Official API documentation: https://cloud.google.com/domains/
 
 #### Fact Check Tools API - factchecktools v1alpha1
 
@@ -162,35 +158,11 @@ The Firebase Management API enables programmatic setup and management of Firebas
 
 Official API documentation: https://firebase.google.com
 
-#### Firebase Hosting API - firebasehosting v1beta1
+#### Firebase Realtime Database Management API - firebasedatabase v1beta
 
-The Firebase Hosting REST API enables programmatic and customizable deployments to your Firebase-hosted sites. Use this REST API to deploy new or updated hosting configurations and content files.
+The Firebase Realtime Database Management API enables programmatic provisioning and management of Realtime Database instances.
 
-Official API documentation: https://firebase.google.com/docs/hosting/
-
-#### Firebase ML API - firebaseml v1beta2
-
-Access custom machine learning models hosted via Firebase ML.
-
-Official API documentation: https://firebase.google.com
-
-#### Game Services API - gameservices v1beta
-
-Deploy and manage infrastructure for global multiplayer gaming experiences.
-
-Official API documentation: https://cloud.google.com/solutions/gaming/
-
-#### Cloud Natural Language API - language v1beta1
-
-Provides natural language understanding technologies, such as sentiment analysis, entity recognition, entity sentiment analysis, and other text annotations, to developers.
-
-Official API documentation: https://cloud.google.com/natural-language/
-
-#### Cloud Natural Language API - language v1beta2
-
-Provides natural language understanding technologies, such as sentiment analysis, entity recognition, entity sentiment analysis, and other text annotations, to developers.
-
-Official API documentation: https://cloud.google.com/natural-language/
+Official API documentation: https://firebase.google.com/docs/reference/rest/database/database-management/rest/
 
 #### Cloud Life Sciences API - lifesciences v2beta
 
@@ -198,55 +170,37 @@ Cloud Life Sciences is a suite of services and tools for managing, processing, a
 
 Official API documentation: https://cloud.google.com/life-sciences
 
-#### Cloud Memorystore for Memcached API - memcache v1beta2
+#### Dataproc Metastore API - metastore v1beta
 
-Google Cloud Memorystore for Memcached API is used for creating and managing Memcached instances in GCP.
+The Dataproc Metastore API is used to manage the lifecycle and configuration of metastore services.
 
-Official API documentation: https://cloud.google.com/memorystore/
+Official API documentation: https://cloud.google.com/dataproc-metastore/docs
 
-#### Cloud OS Login API - oslogin v1alpha
+#### Network Connectivity API - networkconnectivity v1alpha1
 
-You can use OS Login to manage access to your VM instances using IAM roles.
+The Network Connectivity API will be home to various services which provide information pertaining to network connectivity.
 
-Official API documentation: https://cloud.google.com/compute/docs/oslogin/
+Official API documentation: https://cloud.google.com/
 
-#### Cloud OS Login API - oslogin v1beta
+#### Certificate Authority API - privateca v1beta1
 
-You can use OS Login to manage access to your VM instances using IAM roles.
+The Certificate Authority Service API is a highly-available, scalable service that enables you to simplify and automate the management of private certificate authorities (CAs) while staying in control of your private keys." 
 
-Official API documentation: https://cloud.google.com/compute/docs/oslogin/
+Official API documentation: https://cloud.google.com/
 
 #### SAS Portal API (Testing) - prod_tt_sasportal v1alpha1
 
 Official API documentation: https://developers.google.com/spectrum-access-system/
 
-#### Cloud Pub/Sub API - pubsub v1beta2
+#### Recommendations AI (Beta) - recommendationengine v1beta1
 
-Provides reliable, many-to-many, asynchronous messaging between applications. 
+Note that we now highly recommend new customers to use Retail API, which incorporates the GA version of the Recommendations AI funtionalities. To enable Retail API, please visit https://console.cloud.google.com/apis/library/retail.googleapis.com. The Recommendations AI service enables customers to build end-to-end personalized recommendation systems without requiring a high level of expertise in machine learning, recommendation system, or Google Cloud.
 
-Official API documentation: https://cloud.google.com/pubsub/docs
-
-#### Cloud Runtime Configuration API - runtimeconfig v1beta1
-
-The Runtime Configurator allows you to dynamically configure and expose variables through Google Cloud Platform. In addition, you can also set Watchers and Waiters that will watch for changes to your data and return based on certain conditions.
-
-Official API documentation: https://cloud.google.com/deployment-manager/runtime-configurator/
+Official API documentation: https://cloud.google.com/recommendations-ai/docs
 
 #### SAS Portal API - sasportal v1alpha1
 
 Official API documentation: https://developers.google.com/spectrum-access-system/
-
-#### Service Directory API - servicedirectory v1beta1
-
-Service Directory is a platform for discovering, publishing, and connecting services. 
-
-Official API documentation: https://cloud.google.com/service-directory
-
-#### Cloud Speech-to-Text API - speech v2beta1
-
-Converts audio to text by applying powerful neural network models.
-
-Official API documentation: https://cloud.google.com/speech-to-text/docs/quickstart-protocol
 
 #### Cloud SQL Admin API - sqladmin v1beta4
 
@@ -260,9 +214,21 @@ API to publish and access results from developer tools.
 
 Official API documentation: https://firebase.google.com/docs/test-lab/
 
-#### Cloud TPU API - tpu v1alpha1
+#### Transcoder API - transcoder v1beta1
 
-TPU API provides customers with access to Google TPU technology.
+This API converts video files into formats suitable for consumer distribution. 
 
-Official API documentation: https://cloud.google.com/tpu/
+Official API documentation: https://cloud.google.com/transcoder/docs/
+
+#### Workflow Executions API - workflowexecutions v1beta
+
+Execute workflows created with Workflows API.
+
+Official API documentation: https://cloud.google.com/workflows
+
+#### Workflows API - workflows v1beta
+
+Orchestrate Workflows consisting of Google Cloud APIs, SaaS APIs or private API endpoints.
+
+Official API documentation: https://cloud.google.com/workflows
 

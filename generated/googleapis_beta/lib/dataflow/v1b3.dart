@@ -657,8 +657,8 @@ class ProjectsJobsResource {
   /// [pageToken] - Set this to the 'next_page_token' field of a previous
   /// response to request additional results in a long list.
   ///
-  /// [view] - Level of information requested in response. Default is
-  /// `JOB_VIEW_SUMMARY`.
+  /// [view] - Deprecated. ListJobs always returns summaries now. Use GetJob for
+  /// other JobViews.
   /// Possible string values are:
   /// - "JOB_VIEW_UNKNOWN" : The job view to return isn't specified, or is
   /// unknown. Responses will contain at least the `JOB_VIEW_SUMMARY`
@@ -1040,8 +1040,8 @@ class ProjectsJobsResource {
   /// [pageToken] - Set this to the 'next_page_token' field of a previous
   /// response to request additional results in a long list.
   ///
-  /// [view] - Level of information requested in response. Default is
-  /// `JOB_VIEW_SUMMARY`.
+  /// [view] - Deprecated. ListJobs always returns summaries now. Use GetJob for
+  /// other JobViews.
   /// Possible string values are:
   /// - "JOB_VIEW_UNKNOWN" : The job view to return isn't specified, or is
   /// unknown. Responses will contain at least the `JOB_VIEW_SUMMARY`
@@ -2271,8 +2271,8 @@ class ProjectsLocationsJobsResource {
   /// [pageToken] - Set this to the 'next_page_token' field of a previous
   /// response to request additional results in a long list.
   ///
-  /// [view] - Level of information requested in response. Default is
-  /// `JOB_VIEW_SUMMARY`.
+  /// [view] - Deprecated. ListJobs always returns summaries now. Use GetJob for
+  /// other JobViews.
   /// Possible string values are:
   /// - "JOB_VIEW_UNKNOWN" : The job view to return isn't specified, or is
   /// unknown. Responses will contain at least the `JOB_VIEW_SUMMARY`
@@ -4867,6 +4867,9 @@ class ConcatPosition {
 
 /// Container Spec.
 class ContainerSpec {
+  /// Default runtime environment for the job.
+  FlexTemplateRuntimeEnvironment defaultEnvironment;
+
   /// Name of the docker container image.
   ///
   /// E.g., gcr.io/project/some-image
@@ -4883,6 +4886,10 @@ class ContainerSpec {
   ContainerSpec();
 
   ContainerSpec.fromJson(core.Map _json) {
+    if (_json.containsKey('defaultEnvironment')) {
+      defaultEnvironment = FlexTemplateRuntimeEnvironment.fromJson(
+          _json['defaultEnvironment'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('image')) {
       image = _json['image'] as core.String;
     }
@@ -4898,6 +4905,9 @@ class ContainerSpec {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (defaultEnvironment != null) {
+      _json['defaultEnvironment'] = defaultEnvironment.toJson();
+    }
     if (image != null) {
       _json['image'] = image;
     }
@@ -6169,6 +6179,10 @@ class ExecutionStageState {
   /// - "JOB_STATE_QUEUED" : `JOB_STATE_QUEUED` indicates that the job has been
   /// created but is being delayed until launch. Jobs that are queued may only
   /// transition to `JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`.
+  /// - "JOB_STATE_RESOURCE_CLEANING_UP" : `JOB_STATE_RESOURCE_CLEANING_UP`
+  /// indicates that the batch job's associated resources are currently being
+  /// cleaned up after a successful run. Currently, this is an opt-in feature,
+  /// please reach out to Cloud support team if you are intersted.
   core.String executionStageState;
 
   ExecutionStageState();
@@ -6239,6 +6253,9 @@ class ExecutionStageSummary {
   /// Output sources for this stage.
   core.List<StageSource> outputSource;
 
+  /// Other stages that must complete before this stage can run.
+  core.List<core.String> prerequisiteStage;
+
   ExecutionStageSummary();
 
   ExecutionStageSummary.fromJson(core.Map _json) {
@@ -6275,6 +6292,11 @@ class ExecutionStageSummary {
               value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('prerequisiteStage')) {
+      prerequisiteStage = (_json['prerequisiteStage'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -6303,6 +6325,9 @@ class ExecutionStageSummary {
     if (outputSource != null) {
       _json['outputSource'] =
           outputSource.map((value) => value.toJson()).toList();
+    }
+    if (prerequisiteStage != null) {
+      _json['prerequisiteStage'] = prerequisiteStage;
     }
     return _json;
   }
@@ -6397,6 +6422,15 @@ class FlexTemplateRuntimeEnvironment {
   /// Whether to enable Streaming Engine for the job.
   core.bool enableStreamingEngine;
 
+  /// Set FlexRS goal for the job.
+  ///
+  /// https://cloud.google.com/dataflow/docs/guides/flexrs
+  /// Possible string values are:
+  /// - "FLEXRS_UNSPECIFIED" : Run in the default mode.
+  /// - "FLEXRS_SPEED_OPTIMIZED" : Optimize for lower execution time.
+  /// - "FLEXRS_COST_OPTIMIZED" : Optimize for lower cost.
+  core.String flexrsGoal;
+
   /// Configuration for VM IPs.
   /// Possible string values are:
   /// - "WORKER_IP_UNSPECIFIED" : The configuration is unknown, or unspecified.
@@ -6489,6 +6523,9 @@ class FlexTemplateRuntimeEnvironment {
     if (_json.containsKey('enableStreamingEngine')) {
       enableStreamingEngine = _json['enableStreamingEngine'] as core.bool;
     }
+    if (_json.containsKey('flexrsGoal')) {
+      flexrsGoal = _json['flexrsGoal'] as core.String;
+    }
     if (_json.containsKey('ipConfiguration')) {
       ipConfiguration = _json['ipConfiguration'] as core.String;
     }
@@ -6537,6 +6574,9 @@ class FlexTemplateRuntimeEnvironment {
     }
     if (enableStreamingEngine != null) {
       _json['enableStreamingEngine'] = enableStreamingEngine;
+    }
+    if (flexrsGoal != null) {
+      _json['flexrsGoal'] = flexrsGoal;
     }
     if (ipConfiguration != null) {
       _json['ipConfiguration'] = ipConfiguration;
@@ -7055,6 +7095,8 @@ class IntegerMean {
 }
 
 /// Defines a job to be run by the Cloud Dataflow service.
+///
+/// nextID: 26
 class Job {
   /// The client's unique identifier of the job, re-used across retried
   /// attempts.
@@ -7127,6 +7169,10 @@ class Job {
   /// - "JOB_STATE_QUEUED" : `JOB_STATE_QUEUED` indicates that the job has been
   /// created but is being delayed until launch. Jobs that are queued may only
   /// transition to `JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`.
+  /// - "JOB_STATE_RESOURCE_CLEANING_UP" : `JOB_STATE_RESOURCE_CLEANING_UP`
+  /// indicates that the batch job's associated resources are currently being
+  /// cleaned up after a successful run. Currently, this is an opt-in feature,
+  /// please reach out to Cloud support team if you are intersted.
   core.String currentState;
 
   /// The timestamp associated with the current state.
@@ -7245,7 +7291,17 @@ class Job {
   /// - "JOB_STATE_QUEUED" : `JOB_STATE_QUEUED` indicates that the job has been
   /// created but is being delayed until launch. Jobs that are queued may only
   /// transition to `JOB_STATE_PENDING` or `JOB_STATE_CANCELLED`.
+  /// - "JOB_STATE_RESOURCE_CLEANING_UP" : `JOB_STATE_RESOURCE_CLEANING_UP`
+  /// indicates that the batch job's associated resources are currently being
+  /// cleaned up after a successful run. Currently, this is an opt-in feature,
+  /// please reach out to Cloud support team if you are intersted.
   core.String requestedState;
+
+  /// Reserved for future use.
+  ///
+  /// This field is set only in responses from the server; it is ignored if it
+  /// is set in any requests.
+  core.bool satisfiesPzs;
 
   /// This field may be mutated by the Cloud Dataflow service; callers cannot
   /// mutate it.
@@ -7356,6 +7412,9 @@ class Job {
     if (_json.containsKey('requestedState')) {
       requestedState = _json['requestedState'] as core.String;
     }
+    if (_json.containsKey('satisfiesPzs')) {
+      satisfiesPzs = _json['satisfiesPzs'] as core.bool;
+    }
     if (_json.containsKey('stageStates')) {
       stageStates = (_json['stageStates'] as core.List)
           .map<ExecutionStageState>((value) => ExecutionStageState.fromJson(
@@ -7446,6 +7505,9 @@ class Job {
     }
     if (requestedState != null) {
       _json['requestedState'] = requestedState;
+    }
+    if (satisfiesPzs != null) {
+      _json['satisfiesPzs'] = satisfiesPzs;
     }
     if (stageStates != null) {
       _json['stageStates'] =
@@ -7915,6 +7977,9 @@ class LaunchFlexTemplateParameter {
 
   /// The job name to use for the created job.
   ///
+  /// For update job request, job name should be same as the existing running
+  /// job.
+  ///
   /// Required.
   core.String jobName;
 
@@ -7928,6 +7993,17 @@ class LaunchFlexTemplateParameter {
   ///
   /// Ex. {"num_workers":"5"}
   core.Map<core.String, core.String> parameters;
+
+  /// Use this to pass transform_name_mappings for streaming update jobs.
+  ///
+  /// Ex:{"oldTransformName":"newTransformName",...}'
+  core.Map<core.String, core.String> transformNameMappings;
+
+  /// Set this to true if you are sending a request to update a running
+  /// streaming job.
+  ///
+  /// When set, the job name should be the same as the running job.
+  core.bool update;
 
   LaunchFlexTemplateParameter();
 
@@ -7966,6 +8042,19 @@ class LaunchFlexTemplateParameter {
             ),
           );
     }
+    if (_json.containsKey('transformNameMappings')) {
+      transformNameMappings = (_json['transformNameMappings'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
+    }
+    if (_json.containsKey('update')) {
+      update = _json['update'] as core.bool;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -7987,6 +8076,12 @@ class LaunchFlexTemplateParameter {
     }
     if (parameters != null) {
       _json['parameters'] = parameters;
+    }
+    if (transformNameMappings != null) {
+      _json['transformNameMappings'] = transformNameMappings;
+    }
+    if (update != null) {
+      _json['update'] = update;
     }
     return _json;
   }

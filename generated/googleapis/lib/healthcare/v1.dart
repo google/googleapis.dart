@@ -26,6 +26,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsDatasetsResource]
+///       - [ProjectsLocationsDatasetsConsentStoresResource]
 ///       - [ProjectsLocationsDatasetsDicomStoresResource]
 ///         - [ProjectsLocationsDatasetsDicomStoresStudiesResource]
 ///           - [ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource]
@@ -210,6 +211,8 @@ class ProjectsLocationsResource {
 class ProjectsLocationsDatasetsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsDatasetsConsentStoresResource get consentStores =>
+      ProjectsLocationsDatasetsConsentStoresResource(_requester);
   ProjectsLocationsDatasetsDicomStoresResource get dicomStores =>
       ProjectsLocationsDatasetsDicomStoresResource(_requester);
   ProjectsLocationsDatasetsFhirStoresResource get fhirStores =>
@@ -553,8 +556,8 @@ class ProjectsLocationsDatasetsResource {
   /// example, `projects/{project_id}/locations/{location_id}`.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of items to return. Capped to 100 if not
-  /// specified. May not be larger than 1000.
+  /// [pageSize] - The maximum number of items to return. If not specified, 100
+  /// is used. May not be larger than 1000.
   ///
   /// [pageToken] - The next_page_token value returned from a previous List
   /// request, if any.
@@ -761,6 +764,219 @@ class ProjectsLocationsDatasetsResource {
   /// this field.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (resource == null) {
+      throw core.ArgumentError('Parameter resource is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':testIamPermissions';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class ProjectsLocationsDatasetsConsentStoresResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDatasetsConsentStoresResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/consentStores/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The policy format version to
+  /// be returned. Valid values are 0, 1, and 3. Requests specifying an invalid
+  /// value will be rejected. Requests for policies with any conditional
+  /// bindings must specify version 3. Policies without any conditional bindings
+  /// may specify any valid value or leave the field unset. To learn which
+  /// resources support conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int options_requestedPolicyVersion,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (resource == null) {
+      throw core.ArgumentError('Parameter resource is required.');
+    }
+    if (options_requestedPolicyVersion != null) {
+      _queryParams['options.requestedPolicyVersion'] = [
+        '${options_requestedPolicyVersion}'
+      ];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':getIamPolicy';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/consentStores/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (resource == null) {
+      throw core.ArgumentError('Parameter resource is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$resource') +
+        ':setIamPolicy';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/consentStores/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1282,7 +1498,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
   /// Only filtering on labels is supported. For example, `labels.key=value`.
   ///
   /// [pageSize] - Limit on the number of DICOM stores to return in a single
-  /// response. If zero the default page size of 100 is used.
+  /// response. If not specified, 100 is used. May not be larger than 1000.
   ///
   /// [pageToken] - The next_page_token value returned from the previous List
   /// request, if any.
@@ -3489,8 +3705,12 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// this method is not appropriate, consider using ExecuteBundle to load data.
   /// Every resource in the input must contain a client-supplied ID. Each
   /// resource is stored using the supplied ID regardless of the
-  /// enable_update_create setting on the FHIR store. The import process does
-  /// not enforce referential integrity, regardless of the
+  /// enable_update_create setting on the FHIR store. It is strongly advised not
+  /// to include or encode any sensitive data such as patient identifiers in
+  /// client-specified resource IDs. Those IDs are part of the FHIR resource
+  /// path recorded in Cloud audit logs and Cloud Pub/Sub notifications. Those
+  /// IDs can also be contained in reference fields within other resources. The
+  /// import process does not enforce referential integrity, regardless of the
   /// disable_referential_integrity setting on the FHIR store. This allows the
   /// import of resources with arbitrary interdependencies without considering
   /// grouping or ordering, but if the input data contains invalid references or
@@ -3604,7 +3824,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
   /// Only filtering on labels is supported, for example `labels.key=value`.
   ///
   /// [pageSize] - Limit on the number of FHIR stores to return in a single
-  /// response. If zero the default page size of 100 is used.
+  /// response. If not specified, 100 is used. May not be larger than 1000.
   ///
   /// [pageToken] - The next_page_token value returned from the previous List
   /// request, if any.
@@ -3906,7 +4126,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+/fhir/Patient/\[^/\]+$`.
   ///
-  /// [P_count] - Maximum number of resources in a page. Defaults to 100.
+  /// [P_count] - Maximum number of resources in a page. If not specified, 100
+  /// is used. May not be larger than 1000.
   ///
   /// [P_pageToken] - Used to retrieve the next or previous page of results when
   /// using pagination. Set `_page_token` to the value of _page_token set in
@@ -4391,8 +4612,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// month: `_at=2019-01` * A specific day: `_at=2019-01-20` * A specific
   /// second: `_at=2018-12-31T23:59:58Z`
   ///
-  /// [P_count] - The maximum number of search results on a page. Defaults to
-  /// 1000.
+  /// [P_count] - The maximum number of search results on a page. If not
+  /// specified, 100 is used. May not be larger than 1000.
   ///
   /// [P_pageToken] - Used to retrieve the first, previous, next, or last page
   /// of resource versions when using pagination. Value should be set to the
@@ -4622,14 +4843,16 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/search.html),
   /// [STU3](http://hl7.org/implement/standards/fhir/STU3/search.html),
   /// [R4](http://hl7.org/implement/standards/fhir/R4/search.html)). Supports
-  /// three methods of search defined by the specification: * `GET
+  /// four methods of search defined by the specification: * `GET
   /// [base]?[parameters]` to search across all resources. * `GET
   /// [base]/[type]?[parameters]` to search resources of a specified type. *
-  /// `POST [base]/[type]/_search?[parameters]` as an alternate form having the
-  /// same semantics as the `GET` method. The `GET` methods do not support
-  /// compartment searches. The `POST` method does not support
-  /// `application/x-www-form-urlencoded` search parameters. On success, the
-  /// response body will contain a JSON-encoded representation of a `Bundle`
+  /// `POST [base]/_search?[parameters]` as an alternate form having the same
+  /// semantics as the `GET` method across all resources. * `POST
+  /// [base]/[type]/_search?[parameters]` as an alternate form having the same
+  /// semantics as the `GET` method for the specified type. The `GET` and `POST`
+  /// methods do not support compartment searches. The `POST` method does not
+  /// support `application/x-www-form-urlencoded` search parameters. On success,
+  /// the response body will contain a JSON-encoded representation of a `Bundle`
   /// resource of type `searchset`, containing the results of the search. Errors
   /// generated by the FHIR store will contain a JSON-encoded `OperationOutcome`
   /// resource describing the reason for the error. If the request cannot be
@@ -4715,6 +4938,124 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     );
   }
 
+  /// Searches for resources in the given FHIR store according to criteria
+  /// specified as query parameters.
+  ///
+  /// Implements the FHIR standard search interaction
+  /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#search),
+  /// [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#search),
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#search)) using
+  /// the search semantics described in the FHIR Search specification
+  /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/search.html),
+  /// [STU3](http://hl7.org/implement/standards/fhir/STU3/search.html),
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/search.html)). Supports
+  /// four methods of search defined by the specification: * `GET
+  /// [base]?[parameters]` to search across all resources. * `GET
+  /// [base]/[type]?[parameters]` to search resources of a specified type. *
+  /// `POST [base]/_search?[parameters]` as an alternate form having the same
+  /// semantics as the `GET` method across all resources. * `POST
+  /// [base]/[type]/_search?[parameters]` as an alternate form having the same
+  /// semantics as the `GET` method for the specified type. The `GET` and `POST`
+  /// methods do not support compartment searches. The `POST` method does not
+  /// support `application/x-www-form-urlencoded` search parameters. On success,
+  /// the response body will contain a JSON-encoded representation of a `Bundle`
+  /// resource of type `searchset`, containing the results of the search. Errors
+  /// generated by the FHIR store will contain a JSON-encoded `OperationOutcome`
+  /// resource describing the reason for the error. If the request cannot be
+  /// mapped to a valid API method on a FHIR store, a generic GCP error might be
+  /// returned instead. The server's capability statement, retrieved through
+  /// capabilities, indicates what search parameters are supported on each FHIR
+  /// resource. A list of all search parameters defined by the specification can
+  /// be found in the FHIR Search Parameter Registry
+  /// ([STU3](http://hl7.org/implement/standards/fhir/STU3/searchparameter-registry.html),
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/searchparameter-registry.html)).
+  /// FHIR search parameters for DSTU2 can be found on each resource's
+  /// definition page. Supported search modifiers: `:missing`, `:exact`,
+  /// `:contains`, `:text`, `:in`, `:not-in`, `:above`, `:below`, `:[type]`,
+  /// `:not`, and `:recurse`. Supported search result parameters: `_sort`,
+  /// `_count`, `_include`, `_revinclude`, `_summary=text`, `_summary=data`, and
+  /// `_elements`. The maximum number of search results returned defaults to
+  /// 100, which can be overridden by the `_count` parameter up to a maximum
+  /// limit of 1000. If there are additional results, the returned `Bundle` will
+  /// contain pagination links. Resources with a total size larger than 5MB or a
+  /// field count larger than 50,000 might not be fully searchable as the server
+  /// might trim its generated search index in those cases. Note: FHIR resources
+  /// are indexed asynchronously, so there might be a slight delay between the
+  /// time a resource is created or changes and when the change is reflected in
+  /// search results. For samples and detailed information, see \[Searching for
+  /// FHIR resources\](/healthcare/docs/how-tos/fhir-search) and \[Advanced FHIR
+  /// search features\](/healthcare/docs/how-tos/fhir-advanced-search).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Name of the FHIR store to retrieve resources from.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+/fhirStores/\[^/\]+$`.
+  ///
+  /// [resourceType] - The FHIR resource type to search, such as Patient or
+  /// Observation. For a complete list, see the FHIR Resource Index
+  /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+  /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
+  /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HttpBody].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HttpBody> searchType(
+    SearchResourcesRequest request,
+    core.String parent,
+    core.String resourceType, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (resourceType == null) {
+      throw core.ArgumentError('Parameter resourceType is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/fhir/' +
+        commons.Escaper.ecapeVariable('$resourceType') +
+        '/_search';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
   /// Updates the entire contents of a resource.
   ///
   /// Implements the FHIR standard update interaction
@@ -4723,16 +5064,21 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// [R4](http://hl7.org/implement/standards/fhir/R4/http.html#update)). If the
   /// specified resource does not exist and the FHIR store has
   /// enable_update_create set, creates the resource with the client-specified
-  /// ID. The request body must contain a JSON-encoded FHIR resource, and the
-  /// request headers must contain `Content-Type: application/fhir+json`. The
-  /// resource must contain an `id` element having an identical value to the ID
-  /// in the REST path of the request. On success, the response body will
-  /// contain a JSON-encoded representation of the updated resource, including
-  /// the server-assigned version ID. Errors generated by the FHIR store will
-  /// contain a JSON-encoded `OperationOutcome` resource describing the reason
-  /// for the error. If the request cannot be mapped to a valid API method on a
-  /// FHIR store, a generic GCP error might be returned instead. For samples
-  /// that show how to call `update`, see \[Updating a FHIR
+  /// ID. It is strongly advised not to include or encode any sensitive data
+  /// such as patient identifiers in client-specified resource IDs. Those IDs
+  /// are part of the FHIR resource path recorded in Cloud audit logs and Cloud
+  /// Pub/Sub notifications. Those IDs can also be contained in reference fields
+  /// within other resources. The request body must contain a JSON-encoded FHIR
+  /// resource, and the request headers must contain `Content-Type:
+  /// application/fhir+json`. The resource must contain an `id` element having
+  /// an identical value to the ID in the REST path of the request. On success,
+  /// the response body will contain a JSON-encoded representation of the
+  /// updated resource, including the server-assigned version ID. Errors
+  /// generated by the FHIR store will contain a JSON-encoded `OperationOutcome`
+  /// resource describing the reason for the error. If the request cannot be
+  /// mapped to a valid API method on a FHIR store, a generic GCP error might be
+  /// returned instead. For samples that show how to call `update`, see
+  /// \[Updating a FHIR
   /// resource\](/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
   ///
   /// [request] - The metadata request object.
@@ -5126,7 +5472,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
   /// Only filtering on labels is supported. For example, `labels.key=value`.
   ///
   /// [pageSize] - Limit on the number of HL7v2 stores to return in a single
-  /// response. If zero the default page size of 100 is used.
+  /// response. If not specified, 100 is used. May not be larger than 1000.
   ///
   /// [pageToken] - The next_page_token value returned from the previous List
   /// request, if any.
@@ -5691,7 +6037,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
   /// Fields available for ordering are: * `send_time`
   ///
   /// [pageSize] - Limit on the number of messages to return in a single
-  /// response. If zero the default page size of 100 is used.
+  /// response. If not specified, 100 is used. May not be larger than 1000.
   ///
   /// [pageToken] - The next_page_token value returned from the previous List
   /// request, if any.
@@ -6817,14 +7163,15 @@ class ExportDicomDataRequest {
   /// The BigQuery output destination.
   ///
   /// You can only export to a BigQuery dataset that's in the same project as
-  /// the DICOM store you're exporting from. The BigQuery location requires two
-  /// IAM roles: `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`.
+  /// the DICOM store you're exporting from. The Cloud Healthcare Service Agent
+  /// requires two IAM roles on the BigQuery location:
+  /// `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`.
   GoogleCloudHealthcareV1DicomBigQueryDestination bigqueryDestination;
 
   /// The Cloud Storage output destination.
   ///
-  /// The Cloud Storage location requires the `roles/storage.objectAdmin` Cloud
-  /// IAM role.
+  /// The Cloud Healthcare Service Agent requires the
+  /// `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage location.
   GoogleCloudHealthcareV1DicomGcsDestination gcsDestination;
 
   ExportDicomDataRequest();
@@ -6872,9 +7219,9 @@ class ExportDicomDataResponse {
 class ExportResourcesRequest {
   /// The BigQuery output destination.
   ///
-  /// The BigQuery location requires two IAM roles: `roles/bigquery.dataEditor`
-  /// and `roles/bigquery.jobUser`. The output is one BigQuery table per
-  /// resource type.
+  /// The Cloud Healthcare Service Agent requires two IAM roles on the BigQuery
+  /// location: `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`. The
+  /// output is one BigQuery table per resource type.
   GoogleCloudHealthcareV1FhirBigQueryDestination bigqueryDestination;
 
   /// The Cloud Storage output destination.
@@ -7075,6 +7422,8 @@ class FhirStore {
   /// Consequently, operations that rely on references, such as
   /// GetPatientEverything, do not return all the results if broken references
   /// exist.
+  ///
+  /// Immutable.
   core.bool disableReferentialIntegrity;
 
   /// Whether to disable resource versioning for this FHIR store.
@@ -7085,6 +7434,8 @@ class FhirStore {
   /// can be fetched through the history APIs, but cannot be updated. If set to
   /// true, no historical versions are kept. The server sends errors for
   /// attempts to read the historical versions.
+  ///
+  /// Immutable.
   core.bool disableResourceVersioning;
 
   /// Whether this FHIR store has the
@@ -7093,10 +7444,11 @@ class FhirStore {
   /// This determines if the client can use an Update operation to create a new
   /// resource with a client-specified ID. If false, all IDs are server-assigned
   /// through the Create operation and attempts to update a non-existent
-  /// resource return errors. Please treat the audit logs with appropriate
-  /// levels of care if client-specified resource IDs contain sensitive data
-  /// such as patient identifiers, those IDs are part of the FHIR resource path
-  /// recorded in Cloud audit logs and Cloud Pub/Sub notifications.
+  /// resource return errors. It is strongly advised not to include or encode
+  /// any sensitive data such as patient identifiers in client-specified
+  /// resource IDs. Those IDs are part of the FHIR resource path recorded in
+  /// Cloud audit logs and Cloud Pub/Sub notifications. Those IDs can also be
+  /// contained in reference fields within other resources.
   core.bool enableUpdateCreate;
 
   /// User-supplied key-value pairs used to organize FHIR stores.
@@ -7144,6 +7496,8 @@ class FhirStore {
   /// This field is immutable after store creation. Requests are rejected if
   /// they contain FHIR resources of a different version. Version is required
   /// for every FHIR store.
+  ///
+  /// Immutable.
   /// Possible string values are:
   /// - "VERSION_UNSPECIFIED" : Users must specify a version on store creation
   /// or an error is returned.
@@ -7442,11 +7796,27 @@ class GoogleCloudHealthcareV1FhirBigQueryDestination {
   /// new exported tables are written.
   ///
   /// If the flag is not set and the destination dataset contains tables, the
-  /// export call returns an error.
+  /// export call returns an error. If `write_disposition` is specified, this
+  /// parameter is ignored. force=false is equivalent to
+  /// write_disposition=WRITE_EMPTY and force=true is equivalent to
+  /// write_disposition=WRITE_TRUNCATE.
   core.bool force;
 
   /// The configuration for the exported BigQuery schema.
   SchemaConfig schemaConfig;
+
+  /// Determines whether existing tables in the destination dataset are
+  /// overwritten or appended to.
+  ///
+  /// If a write_disposition is specified, the `force` parameter is ignored.
+  /// Possible string values are:
+  /// - "WRITE_DISPOSITION_UNSPECIFIED" : Default behavior is the same as
+  /// WRITE_EMPTY.
+  /// - "WRITE_EMPTY" : Only export data if the destination tables are empty.
+  /// - "WRITE_TRUNCATE" : Erase all existing data in a tables before writing
+  /// the instances.
+  /// - "WRITE_APPEND" : Append data to the existing tables.
+  core.String writeDisposition;
 
   GoogleCloudHealthcareV1FhirBigQueryDestination();
 
@@ -7461,6 +7831,9 @@ class GoogleCloudHealthcareV1FhirBigQueryDestination {
       schemaConfig = SchemaConfig.fromJson(
           _json['schemaConfig'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('writeDisposition')) {
+      writeDisposition = _json['writeDisposition'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -7473,6 +7846,9 @@ class GoogleCloudHealthcareV1FhirBigQueryDestination {
     }
     if (schemaConfig != null) {
       _json['schemaConfig'] = schemaConfig.toJson();
+    }
+    if (writeDisposition != null) {
+      _json['writeDisposition'] = writeDisposition;
     }
     return _json;
   }
@@ -7813,8 +8189,9 @@ class ImageConfig {
 class ImportDicomDataRequest {
   /// Cloud Storage source data location and import configuration.
   ///
-  /// The Cloud Storage location requires the `roles/storage.objectViewer` Cloud
-  /// IAM role.
+  /// The Cloud Healthcare Service Agent requires the
+  /// `roles/storage.objectViewer` Cloud IAM roles on the Cloud Storage
+  /// location.
   GoogleCloudHealthcareV1DicomGcsSource gcsSource;
 
   ImportDicomDataRequest();
@@ -7859,8 +8236,7 @@ class ImportResourcesRequest {
   /// specified, the default value `BUNDLE` is used.
   /// - "BUNDLE" : The source file contains one or more lines of
   /// newline-delimited JSON (ndjson). Each line is a bundle that contains one
-  /// or more resources. Set the bundle type to `history` to import resource
-  /// versions.
+  /// or more resources.
   /// - "RESOURCE" : The source file contains one or more lines of
   /// newline-delimited JSON (ndjson). Each line is a single resource.
   /// - "BUNDLE_PRETTY" : The entire file is one JSON bundle. The JSON can span

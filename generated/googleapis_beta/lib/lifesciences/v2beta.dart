@@ -546,6 +546,9 @@ class Action {
   /// prefetching fails.
   core.bool alwaysRun;
 
+  /// Prevents the container from accessing the external network.
+  core.bool blockExternalNetwork;
+
   /// If specified, overrides the `CMD` specified in the container.
   ///
   /// If the container also has an `ENTRYPOINT` the values are used as
@@ -695,6 +698,9 @@ class Action {
     if (_json.containsKey('alwaysRun')) {
       alwaysRun = _json['alwaysRun'] as core.bool;
     }
+    if (_json.containsKey('blockExternalNetwork')) {
+      blockExternalNetwork = _json['blockExternalNetwork'] as core.bool;
+    }
     if (_json.containsKey('commands')) {
       commands = (_json['commands'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -778,6 +784,9 @@ class Action {
     final _json = <core.String, core.Object>{};
     if (alwaysRun != null) {
       _json['alwaysRun'] = alwaysRun;
+    }
+    if (blockExternalNetwork != null) {
+      _json['blockExternalNetwork'] = blockExternalNetwork;
     }
     if (commands != null) {
       _json['commands'] = commands;
@@ -1018,7 +1027,8 @@ class DelayedEvent {
 /// Carries information about a disk that can be attached to a VM.
 ///
 /// See https://cloud.google.com/compute/docs/disks/performance for more
-/// information about disk type, size, and performance considerations.
+/// information about disk type, size, and performance considerations. Specify
+/// either `Volume` or `Disk`, but not both.
 class Disk {
   /// A user-supplied name for the disk.
   ///
@@ -1228,6 +1238,37 @@ class Event {
     }
     if (workerReleased != null) {
       _json['workerReleased'] = workerReleased.toJson();
+    }
+    return _json;
+  }
+}
+
+/// Configuration for an existing disk to be attached to the VM.
+class ExistingDisk {
+  /// If `disk` contains slashes, the Cloud Life Sciences API assumes that it is
+  /// a complete URL for the disk.
+  ///
+  /// If `disk` does not contain slashes, the Cloud Life Sciences API assumes
+  /// that the disk is a zonal disk and a URL will be generated of the form
+  /// `zones//disks/`, where `` is the zone in which the instance is allocated.
+  /// The disk must be ext4 formatted. If all `Mount` references to this disk
+  /// have the `read_only` flag set to true, the disk will be attached in
+  /// `read-only` mode and can be shared with other instances. Otherwise, the
+  /// disk will be available for writing but cannot be shared.
+  core.String disk;
+
+  ExistingDisk();
+
+  ExistingDisk.fromJson(core.Map _json) {
+    if (_json.containsKey('disk')) {
+      disk = _json['disk'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (disk != null) {
+      _json['disk'] = disk;
     }
     return _json;
   }
@@ -1616,6 +1657,30 @@ class Mount {
   }
 }
 
+/// Configuration for an `NFSMount` to be attached to the VM.
+class NFSMount {
+  /// A target NFS mount.
+  ///
+  /// The target must be specified as \`address:/mount".
+  core.String target;
+
+  NFSMount();
+
+  NFSMount.fromJson(core.Map _json) {
+    if (_json.containsKey('target')) {
+      target = _json['target'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (target != null) {
+      _json['target'] = target;
+    }
+    return _json;
+  }
+}
+
 /// VM networking options.
 class Network {
   /// The network name to attach the VM's network interface to.
@@ -1752,6 +1817,57 @@ class Operation {
     }
     if (response != null) {
       _json['response'] = response;
+    }
+    return _json;
+  }
+}
+
+/// Configuration for a persistent disk to be attached to the VM.
+///
+/// See https://cloud.google.com/compute/docs/disks/performance for more
+/// information about disk type, size, and performance considerations.
+class PersistentDisk {
+  /// The size, in GB, of the disk to attach.
+  ///
+  /// If the size is not specified, a default is chosen to ensure reasonable I/O
+  /// performance. If the disk type is specified as `local-ssd`, multiple local
+  /// drives are automatically combined to provide the requested size. Note,
+  /// however, that each physical SSD is 375GB in size, and no more than 8
+  /// drives can be attached to a single instance.
+  core.int sizeGb;
+
+  /// An image to put on the disk before attaching it to the VM.
+  core.String sourceImage;
+
+  /// The Compute Engine disk type.
+  ///
+  /// If unspecified, `pd-standard` is used.
+  core.String type;
+
+  PersistentDisk();
+
+  PersistentDisk.fromJson(core.Map _json) {
+    if (_json.containsKey('sizeGb')) {
+      sizeGb = _json['sizeGb'] as core.int;
+    }
+    if (_json.containsKey('sourceImage')) {
+      sourceImage = _json['sourceImage'] as core.String;
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (sizeGb != null) {
+      _json['sizeGb'] = sizeGb;
+    }
+    if (sourceImage != null) {
+      _json['sourceImage'] = sourceImage;
+    }
+    if (type != null) {
+      _json['type'] = type;
     }
     return _json;
   }
@@ -2192,6 +2308,8 @@ class VirtualMachine {
   core.String cpuPlatform;
 
   /// The list of disks to create and attach to the VM.
+  ///
+  /// Specify either the `volumes[]` field or the `disks[]` field, but not both.
   core.List<Disk> disks;
 
   /// The Compute Engine Disk Images to use as a Docker cache.
@@ -2201,8 +2319,9 @@ class VirtualMachine {
   /// images must match those of the tags used or the latest version will still
   /// be pulled. The root directory of the ext4 image must contain `image` and
   /// `overlay2` directories copied from the Docker directory of a VM where the
-  /// desired Docker images have already been pulled. Only a single image is
-  /// supported.
+  /// desired Docker images have already been pulled. Any images pulled that are
+  /// not cached will be stored on the first cache disk instead of the boot
+  /// disk. Only a single image is supported.
   core.List<core.String> dockerCacheImages;
 
   /// Whether Stackdriver monitoring should be enabled on the VM.
@@ -2248,6 +2367,11 @@ class VirtualMachine {
   /// This account does not need any permissions other than those required by
   /// the pipeline.
   ServiceAccount serviceAccount;
+
+  /// The list of disks and other storage to create or attach to the VM.
+  ///
+  /// Specify either the `volumes[]` field or the `disks[]` field, but not both.
+  core.List<Volume> volumes;
 
   VirtualMachine();
 
@@ -2308,6 +2432,12 @@ class VirtualMachine {
       serviceAccount = ServiceAccount.fromJson(
           _json['serviceAccount'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('volumes')) {
+      volumes = (_json['volumes'] as core.List)
+          .map<Volume>((value) =>
+              Volume.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -2351,6 +2481,67 @@ class VirtualMachine {
     }
     if (serviceAccount != null) {
       _json['serviceAccount'] = serviceAccount.toJson();
+    }
+    if (volumes != null) {
+      _json['volumes'] = volumes.map((value) => value.toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Carries information about storage that can be attached to a VM.
+///
+/// Specify either `Volume` or `Disk`, but not both.
+class Volume {
+  /// Configuration for a existing disk.
+  ExistingDisk existingDisk;
+
+  /// Configuration for an NFS mount.
+  NFSMount nfsMount;
+
+  /// Configuration for a persistent disk.
+  PersistentDisk persistentDisk;
+
+  /// A user-supplied name for the volume.
+  ///
+  /// Used when mounting the volume into `Actions`. The name must contain only
+  /// upper and lowercase alphanumeric characters and hyphens and cannot start
+  /// with a hyphen.
+  core.String volume;
+
+  Volume();
+
+  Volume.fromJson(core.Map _json) {
+    if (_json.containsKey('existingDisk')) {
+      existingDisk = ExistingDisk.fromJson(
+          _json['existingDisk'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('nfsMount')) {
+      nfsMount = NFSMount.fromJson(
+          _json['nfsMount'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('persistentDisk')) {
+      persistentDisk = PersistentDisk.fromJson(
+          _json['persistentDisk'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('volume')) {
+      volume = _json['volume'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (existingDisk != null) {
+      _json['existingDisk'] = existingDisk.toJson();
+    }
+    if (nfsMount != null) {
+      _json['nfsMount'] = nfsMount.toJson();
+    }
+    if (persistentDisk != null) {
+      _json['persistentDisk'] = persistentDisk.toJson();
+    }
+    if (volume != null) {
+      _json['volume'] = volume;
     }
     return _json;
   }

@@ -380,15 +380,18 @@ class ProjectsLocationsEnvironmentsResource {
   /// It is an error to provide both a mask of this form and the "labels" mask.
   /// config.nodeCount Horizontally scale the number of nodes in the
   /// environment. An integer greater than or equal to 3 must be provided in the
-  /// `config.nodeCount` field. config.softwareConfig.airflowConfigOverrides
-  /// Replace all Apache Airflow config overrides. If a replacement config
-  /// overrides map is not included in `environment`, all config overrides are
-  /// cleared. It is an error to provide both this mask and a mask specifying
-  /// one or more individual config overrides.
-  /// config.softwareConfig.airflowConfigOverrides.section-name Override the
-  /// Apache Airflow config property name in the section named section,
-  /// preserving other properties. To delete the property override, include it
-  /// in `updateMask` and omit its mapping in
+  /// `config.nodeCount` field. config.webServerNetworkAccessControl Replace the
+  /// environment's current WebServerNetworkAccessControl. config.databaseConfig
+  /// Replace the environment's current DatabaseConfig. config.webServerConfig
+  /// Replace the environment's current WebServerConfig.
+  /// config.softwareConfig.airflowConfigOverrides Replace all Apache Airflow
+  /// config overrides. If a replacement config overrides map is not included in
+  /// `environment`, all config overrides are cleared. It is an error to provide
+  /// both this mask and a mask specifying one or more individual config
+  /// overrides. config.softwareConfig.airflowConfigOverrides.section-name
+  /// Override the Apache Airflow config property name in the section named
+  /// section, preserving other properties. To delete the property override,
+  /// include it in `updateMask` and omit its mapping in
   /// `environment.config.softwareConfig.airflowConfigOverrides`. It is an error
   /// to provide both a mask of this form and the
   /// "config.softwareConfig.airflowConfigOverrides" mask.
@@ -465,6 +468,9 @@ class ProjectsLocationsImageVersionsResource {
   /// form: "projects/{projectId}/locations/{locationId}"
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [includePastReleases] - Whether or not image versions from old releases
+  /// should be included.
+  ///
   /// [pageSize] - The maximum number of image_versions to return.
   ///
   /// [pageToken] - The next_page_token value returned from a previous List
@@ -482,6 +488,7 @@ class ProjectsLocationsImageVersionsResource {
   /// this method will complete with the same error.
   async.Future<ListImageVersionsResponse> list(
     core.String parent, {
+    core.bool includePastReleases,
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
@@ -495,6 +502,9 @@ class ProjectsLocationsImageVersionsResource {
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (includePastReleases != null) {
+      _queryParams['includePastReleases'] = ['${includePastReleases}'];
     }
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -724,6 +734,131 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+/// Allowed IP range with user-provided description.
+class AllowedIpRange {
+  /// User-provided description.
+  ///
+  /// It must contain at most 300 characters.
+  ///
+  /// Optional.
+  core.String description;
+
+  /// IP address or range, defined using CIDR notation, of requests that this
+  /// rule applies to.
+  ///
+  /// Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or
+  /// `2001:0db8:0000:0042:0000:8a2e:0370:7334`. IP range prefixes should be
+  /// properly truncated. For example, `1.2.3.4/24` should be truncated to
+  /// `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to
+  /// `2001:db8::/32`.
+  core.String value;
+
+  AllowedIpRange();
+
+  AllowedIpRange.fromJson(core.Map _json) {
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('value')) {
+      value = _json['value'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (description != null) {
+      _json['description'] = description;
+    }
+    if (value != null) {
+      _json['value'] = value;
+    }
+    return _json;
+  }
+}
+
+/// The configuration of Cloud SQL instance that is used by the Apache Airflow
+/// software.
+class DatabaseConfig {
+  /// Cloud SQL machine type used by Airflow database.
+  ///
+  /// It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8
+  /// or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
+  ///
+  /// Optional.
+  core.String machineType;
+
+  DatabaseConfig();
+
+  DatabaseConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('machineType')) {
+      machineType = _json['machineType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (machineType != null) {
+      _json['machineType'] = machineType;
+    }
+    return _json;
+  }
+}
+
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values * A month and day value, with a zero year, such as an
+/// anniversary * A year on its own, with zero month and day values * A year and
+/// month value, with a zero day, such as a credit card expiration date Related
+/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+class Date {
+  /// Day of a month.
+  ///
+  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
+  /// year by itself or a year and month where the day isn't significant.
+  core.int day;
+
+  /// Month of a year.
+  ///
+  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
+  core.int month;
+
+  /// Year of the date.
+  ///
+  /// Must be from 1 to 9999, or 0 to specify a date without a year.
+  core.int year;
+
+  Date();
+
+  Date.fromJson(core.Map _json) {
+    if (_json.containsKey('day')) {
+      day = _json['day'] as core.int;
+    }
+    if (_json.containsKey('month')) {
+      month = _json['month'] as core.int;
+    }
+    if (_json.containsKey('year')) {
+      year = _json['year'] as core.int;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (day != null) {
+      _json['day'] = day;
+    }
+    if (month != null) {
+      _json['month'] = month;
+    }
+    if (year != null) {
+      _json['year'] = year;
+    }
+    return _json;
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -740,6 +875,34 @@ class Empty {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    return _json;
+  }
+}
+
+/// The encryption options for the Cloud Composer environment and its
+/// dependencies.
+class EncryptionConfig {
+  /// Customer-managed Encryption Key available through Google's Key Management
+  /// Service.
+  ///
+  /// Cannot be updated. If not specified, Google-managed key will be used.
+  ///
+  /// Optional.
+  core.String kmsKeyName;
+
+  EncryptionConfig();
+
+  EncryptionConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('kmsKeyName')) {
+      kmsKeyName = _json['kmsKeyName'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (kmsKeyName != null) {
+      _json['kmsKeyName'] = kmsKeyName;
+    }
     return _json;
   }
 }
@@ -874,6 +1037,20 @@ class EnvironmentConfig {
   /// Output only.
   core.String dagGcsPrefix;
 
+  /// The configuration settings for Cloud SQL instance used internally by
+  /// Apache Airflow software.
+  ///
+  /// Optional.
+  DatabaseConfig databaseConfig;
+
+  /// The encryption options for the Cloud Composer environment and its
+  /// dependencies.
+  ///
+  /// Cannot be updated.
+  ///
+  /// Optional.
+  EncryptionConfig encryptionConfig;
+
   /// The Kubernetes Engine cluster used to run this environment.
   ///
   /// Output only.
@@ -892,6 +1069,18 @@ class EnvironmentConfig {
   /// The configuration settings for software inside the environment.
   SoftwareConfig softwareConfig;
 
+  /// The configuration settings for the Airflow web server App Engine instance.
+  ///
+  /// Optional.
+  WebServerConfig webServerConfig;
+
+  /// The network-level access control policy for the Airflow web server.
+  ///
+  /// If unspecified, no network-level access restrictions will be applied.
+  ///
+  /// Optional.
+  WebServerNetworkAccessControl webServerNetworkAccessControl;
+
   EnvironmentConfig();
 
   EnvironmentConfig.fromJson(core.Map _json) {
@@ -900,6 +1089,14 @@ class EnvironmentConfig {
     }
     if (_json.containsKey('dagGcsPrefix')) {
       dagGcsPrefix = _json['dagGcsPrefix'] as core.String;
+    }
+    if (_json.containsKey('databaseConfig')) {
+      databaseConfig = DatabaseConfig.fromJson(
+          _json['databaseConfig'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('encryptionConfig')) {
+      encryptionConfig = EncryptionConfig.fromJson(
+          _json['encryptionConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gkeCluster')) {
       gkeCluster = _json['gkeCluster'] as core.String;
@@ -920,6 +1117,15 @@ class EnvironmentConfig {
       softwareConfig = SoftwareConfig.fromJson(
           _json['softwareConfig'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('webServerConfig')) {
+      webServerConfig = WebServerConfig.fromJson(
+          _json['webServerConfig'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('webServerNetworkAccessControl')) {
+      webServerNetworkAccessControl = WebServerNetworkAccessControl.fromJson(
+          _json['webServerNetworkAccessControl']
+              as core.Map<core.String, core.dynamic>);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -929,6 +1135,12 @@ class EnvironmentConfig {
     }
     if (dagGcsPrefix != null) {
       _json['dagGcsPrefix'] = dagGcsPrefix;
+    }
+    if (databaseConfig != null) {
+      _json['databaseConfig'] = databaseConfig.toJson();
+    }
+    if (encryptionConfig != null) {
+      _json['encryptionConfig'] = encryptionConfig.toJson();
     }
     if (gkeCluster != null) {
       _json['gkeCluster'] = gkeCluster;
@@ -944,6 +1156,13 @@ class EnvironmentConfig {
     }
     if (softwareConfig != null) {
       _json['softwareConfig'] = softwareConfig.toJson();
+    }
+    if (webServerConfig != null) {
+      _json['webServerConfig'] = webServerConfig.toJson();
+    }
+    if (webServerNetworkAccessControl != null) {
+      _json['webServerNetworkAccessControl'] =
+          webServerNetworkAccessControl.toJson();
     }
     return _json;
   }
@@ -1047,6 +1266,9 @@ class IPAllocationPolicy {
 
 /// ImageVersion information
 class ImageVersion {
+  /// Whether it is impossible to create an environment with the image version.
+  core.bool creationDisabled;
+
   /// The string identifier of the ImageVersion, in the form:
   /// "composer-x.y.z-airflow-a.b(.c)"
   core.String imageVersionId;
@@ -1055,35 +1277,61 @@ class ImageVersion {
   /// environment creation if no input ImageVersion is specified.
   core.bool isDefault;
 
+  /// The date of the version release.
+  Date releaseDate;
+
   /// supported python versions
   core.List<core.String> supportedPythonVersions;
+
+  /// Whether it is impossible to upgrade an environment running with the image
+  /// version.
+  core.bool upgradeDisabled;
 
   ImageVersion();
 
   ImageVersion.fromJson(core.Map _json) {
+    if (_json.containsKey('creationDisabled')) {
+      creationDisabled = _json['creationDisabled'] as core.bool;
+    }
     if (_json.containsKey('imageVersionId')) {
       imageVersionId = _json['imageVersionId'] as core.String;
     }
     if (_json.containsKey('isDefault')) {
       isDefault = _json['isDefault'] as core.bool;
     }
+    if (_json.containsKey('releaseDate')) {
+      releaseDate = Date.fromJson(
+          _json['releaseDate'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('supportedPythonVersions')) {
       supportedPythonVersions = (_json['supportedPythonVersions'] as core.List)
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('upgradeDisabled')) {
+      upgradeDisabled = _json['upgradeDisabled'] as core.bool;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (creationDisabled != null) {
+      _json['creationDisabled'] = creationDisabled;
+    }
     if (imageVersionId != null) {
       _json['imageVersionId'] = imageVersionId;
     }
     if (isDefault != null) {
       _json['isDefault'] = isDefault;
     }
+    if (releaseDate != null) {
+      _json['releaseDate'] = releaseDate.toJson();
+    }
     if (supportedPythonVersions != null) {
       _json['supportedPythonVersions'] = supportedPythonVersions;
+    }
+    if (upgradeDisabled != null) {
+      _json['upgradeDisabled'] = upgradeDisabled;
     }
     return _json;
   }
@@ -1253,12 +1501,13 @@ class NodeConfig {
   /// specified as a \[relative resource
   /// name\](/apis/design/resource_names#relative_resource_name).
   ///
-  /// For example: "projects/{projectId}/global/networks/{networkId}". \[Shared
-  /// VPC\](/vpc/docs/shared-vpc) is not currently supported. The network must
-  /// belong to the environment's project. If unspecified, the "default" network
-  /// ID in the environment's project is used. If a \[Custom Subnet
+  /// For example: "projects/{projectId}/global/networks/{networkId}". If
+  /// unspecified, the "default" network ID in the environment's project is
+  /// used. If a \[Custom Subnet
   /// Network\](/vpc/docs/vpc#vpc_networks_and_subnets) is provided,
-  /// `nodeConfig.subnetwork` must also be provided.
+  /// `nodeConfig.subnetwork` must also be provided. For \[Shared
+  /// VPC\](/vpc/docs/shared-vpc) subnetwork requirements, see
+  /// `nodeConfig.subnetwork`.
   ///
   /// Optional.
   core.String network;
@@ -1892,6 +2141,61 @@ class Status {
     }
     if (message != null) {
       _json['message'] = message;
+    }
+    return _json;
+  }
+}
+
+/// The configuration settings for the Airflow web server App Engine instance.
+class WebServerConfig {
+  /// Machine type on which Airflow web server is running.
+  ///
+  /// It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or
+  /// composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be
+  /// used. Value custom is returned only in response, if Airflow web server
+  /// parameters were manually changed to a non-standard values.
+  ///
+  /// Optional.
+  core.String machineType;
+
+  WebServerConfig();
+
+  WebServerConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('machineType')) {
+      machineType = _json['machineType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (machineType != null) {
+      _json['machineType'] = machineType;
+    }
+    return _json;
+  }
+}
+
+/// Network-level access control policy for the Airflow web server.
+class WebServerNetworkAccessControl {
+  /// A collection of allowed IP ranges with descriptions.
+  core.List<AllowedIpRange> allowedIpRanges;
+
+  WebServerNetworkAccessControl();
+
+  WebServerNetworkAccessControl.fromJson(core.Map _json) {
+    if (_json.containsKey('allowedIpRanges')) {
+      allowedIpRanges = (_json['allowedIpRanges'] as core.List)
+          .map<AllowedIpRange>((value) => AllowedIpRange.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (allowedIpRanges != null) {
+      _json['allowedIpRanges'] =
+          allowedIpRanges.map((value) => value.toJson()).toList();
     }
     return _json;
   }

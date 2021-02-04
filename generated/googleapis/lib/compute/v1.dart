@@ -32,12 +32,14 @@
 /// - [DiskTypesResource]
 /// - [DisksResource]
 /// - [ExternalVpnGatewaysResource]
+/// - [FirewallPoliciesResource]
 /// - [FirewallsResource]
 /// - [ForwardingRulesResource]
 /// - [GlobalAddressesResource]
 /// - [GlobalForwardingRulesResource]
 /// - [GlobalNetworkEndpointGroupsResource]
 /// - [GlobalOperationsResource]
+/// - [GlobalOrganizationOperationsResource]
 /// - [HealthChecksResource]
 /// - [HttpHealthChecksResource]
 /// - [HttpsHealthChecksResource]
@@ -151,6 +153,8 @@ class ComputeApi {
   DisksResource get disks => DisksResource(_requester);
   ExternalVpnGatewaysResource get externalVpnGateways =>
       ExternalVpnGatewaysResource(_requester);
+  FirewallPoliciesResource get firewallPolicies =>
+      FirewallPoliciesResource(_requester);
   FirewallsResource get firewalls => FirewallsResource(_requester);
   ForwardingRulesResource get forwardingRules =>
       ForwardingRulesResource(_requester);
@@ -162,6 +166,8 @@ class ComputeApi {
       GlobalNetworkEndpointGroupsResource(_requester);
   GlobalOperationsResource get globalOperations =>
       GlobalOperationsResource(_requester);
+  GlobalOrganizationOperationsResource get globalOrganizationOperations =>
+      GlobalOrganizationOperationsResource(_requester);
   HealthChecksResource get healthChecks => HealthChecksResource(_requester);
   HttpHealthChecksResource get httpHealthChecks =>
       HttpHealthChecksResource(_requester);
@@ -259,7 +265,7 @@ class ComputeApi {
 
   ComputeApi(http.Client client,
       {core.String rootUrl = 'https://compute.googleapis.com/',
-      core.String servicePath = 'compute/v1/projects/'})
+      core.String servicePath = 'compute/v1/'})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
@@ -386,7 +392,8 @@ class AcceleratorTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/acceleratorTypes';
 
     final _response = _requester.request(
@@ -455,7 +462,8 @@ class AcceleratorTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/acceleratorTypes/' +
@@ -589,7 +597,8 @@ class AcceleratorTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/acceleratorTypes';
@@ -732,7 +741,9 @@ class AddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/addresses';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/addresses';
 
     final _response = _requester.request(
       _url,
@@ -817,7 +828,8 @@ class AddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/addresses/' +
@@ -888,7 +900,8 @@ class AddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/addresses/' +
@@ -975,7 +988,8 @@ class AddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/addresses';
@@ -1106,7 +1120,8 @@ class AddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/addresses';
@@ -1249,8 +1264,9 @@ class AutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/autoscalers';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/autoscalers';
 
     final _response = _requester.request(
       _url,
@@ -1335,7 +1351,8 @@ class AutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/autoscalers/' +
@@ -1408,7 +1425,8 @@ class AutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/autoscalers/' +
@@ -1496,7 +1514,8 @@ class AutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/autoscalers';
@@ -1627,7 +1646,8 @@ class AutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/autoscalers';
@@ -1725,7 +1745,8 @@ class AutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/autoscalers';
@@ -1819,7 +1840,8 @@ class AutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/autoscalers';
@@ -1911,7 +1933,8 @@ class BackendBucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket') +
         '/addSignedUrlKey';
@@ -1991,7 +2014,8 @@ class BackendBucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket');
 
@@ -2077,7 +2101,8 @@ class BackendBucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket') +
         '/deleteSignedUrlKey';
@@ -2142,7 +2167,8 @@ class BackendBucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket');
 
@@ -2221,7 +2247,9 @@ class BackendBucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/backendBuckets';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/backendBuckets';
 
     final _response = _requester.request(
       _url,
@@ -2343,7 +2371,9 @@ class BackendBucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/backendBuckets';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/backendBuckets';
 
     final _response = _requester.request(
       _url,
@@ -2431,7 +2461,8 @@ class BackendBucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket');
 
@@ -2517,7 +2548,8 @@ class BackendBucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket');
 
@@ -2608,7 +2640,8 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService') +
         '/addSignedUrlKey';
@@ -2745,7 +2778,8 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/backendServices';
 
     final _response = _requester.request(
@@ -2824,7 +2858,8 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService');
 
@@ -2910,7 +2945,8 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService') +
         '/deleteSignedUrlKey';
@@ -2975,7 +3011,8 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService');
 
@@ -3049,7 +3086,8 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService') +
         '/getHealth';
@@ -3131,8 +3169,9 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/backendServices';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/backendServices';
 
     final _response = _requester.request(
       _url,
@@ -3254,8 +3293,9 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/backendServices';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/backendServices';
 
     final _response = _requester.request(
       _url,
@@ -3343,7 +3383,8 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService');
 
@@ -3427,7 +3468,8 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService') +
         '/setSecurityPolicy';
@@ -3516,7 +3558,8 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService');
 
@@ -3657,7 +3700,9 @@ class DiskTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/diskTypes';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/diskTypes';
 
     final _response = _requester.request(
       _url,
@@ -3727,7 +3772,8 @@ class DiskTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/diskTypes/' +
@@ -3859,7 +3905,8 @@ class DiskTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/diskTypes';
@@ -3962,7 +4009,8 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -4100,7 +4148,9 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/disks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/disks';
 
     final _response = _requester.request(
       _url,
@@ -4200,7 +4250,8 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -4291,7 +4342,8 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -4364,7 +4416,8 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -4445,7 +4498,8 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -4498,7 +4552,8 @@ class DisksResource {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
-  /// [sourceImage] - Optional. Source image to restore onto a disk.
+  /// [sourceImage] - Source image to restore onto a disk. This field is
+  /// optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4544,7 +4599,8 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks';
@@ -4675,7 +4731,8 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks';
@@ -4768,7 +4825,8 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -4865,7 +4923,8 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -4945,7 +5004,8 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -5042,7 +5102,8 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -5120,7 +5181,8 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/disks/' +
@@ -5209,7 +5271,8 @@ class ExternalVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways/' +
         commons.Escaper.ecapeVariable('$externalVpnGateway');
 
@@ -5272,7 +5335,8 @@ class ExternalVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways/' +
         commons.Escaper.ecapeVariable('$externalVpnGateway');
 
@@ -5351,7 +5415,8 @@ class ExternalVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways';
 
     final _response = _requester.request(
@@ -5474,7 +5539,8 @@ class ExternalVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways';
 
     final _response = _requester.request(
@@ -5544,7 +5610,8 @@ class ExternalVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/setLabels';
@@ -5613,8 +5680,1315 @@ class ExternalVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/testIamPermissions';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class FirewallPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  FirewallPoliciesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Inserts an association for the specified firewall policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [firewallPolicy] - Name of the firewall policy to update.
+  /// Value must have pattern `(firewallPolicies/)?\[0-9\]{0,20}`.
+  ///
+  /// [replaceExistingAssociation] - Indicates whether or not to replace it if
+  /// an association of the attachment already exists. This is false by default,
+  /// in which case an error will be returned if an association already exists.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> addAssociation(
+    FirewallPolicyAssociation request,
+    core.String firewallPolicy, {
+    core.bool replaceExistingAssociation,
+    core.String requestId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (firewallPolicy == null) {
+      throw core.ArgumentError('Parameter firewallPolicy is required.');
+    }
+    if (replaceExistingAssociation != null) {
+      _queryParams['replaceExistingAssociation'] = [
+        '${replaceExistingAssociation}'
+      ];
+    }
+    if (requestId != null) {
+      _queryParams['requestId'] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies/' +
+        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        '/addAssociation';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Inserts a rule into a firewall policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [firewallPolicy] - Name of the firewall policy to update.
+  /// Value must have pattern `(firewallPolicies/)?\[0-9\]{0,20}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> addRule(
+    FirewallPolicyRule request,
+    core.String firewallPolicy, {
+    core.String requestId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (firewallPolicy == null) {
+      throw core.ArgumentError('Parameter firewallPolicy is required.');
+    }
+    if (requestId != null) {
+      _queryParams['requestId'] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies/' +
+        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        '/addRule';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Copies rules to the specified firewall policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [firewallPolicy] - Name of the firewall policy to update.
+  /// Value must have pattern `(firewallPolicies/)?\[0-9\]{0,20}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [sourceFirewallPolicy] - The firewall policy from which to copy rules.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> cloneRules(
+    core.String firewallPolicy, {
+    core.String requestId,
+    core.String sourceFirewallPolicy,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (firewallPolicy == null) {
+      throw core.ArgumentError('Parameter firewallPolicy is required.');
+    }
+    if (requestId != null) {
+      _queryParams['requestId'] = [requestId];
+    }
+    if (sourceFirewallPolicy != null) {
+      _queryParams['sourceFirewallPolicy'] = [sourceFirewallPolicy];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies/' +
+        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        '/cloneRules';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Deletes the specified policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [firewallPolicy] - Name of the firewall policy to delete.
+  /// Value must have pattern `(firewallPolicies/)?\[0-9\]{0,20}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String firewallPolicy, {
+    core.String requestId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (firewallPolicy == null) {
+      throw core.ArgumentError('Parameter firewallPolicy is required.');
+    }
+    if (requestId != null) {
+      _queryParams['requestId'] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies/' +
+        commons.Escaper.ecapeVariable('$firewallPolicy');
+
+    final _response = _requester.request(
+      _url,
+      'DELETE',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Returns the specified firewall policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [firewallPolicy] - Name of the firewall policy to get.
+  /// Value must have pattern `(firewallPolicies/)?\[0-9\]{0,20}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FirewallPolicy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FirewallPolicy> get(
+    core.String firewallPolicy, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (firewallPolicy == null) {
+      throw core.ArgumentError('Parameter firewallPolicy is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies/' +
+        commons.Escaper.ecapeVariable('$firewallPolicy');
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) =>
+          FirewallPolicy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Gets an association with the specified name.
+  ///
+  /// Request parameters:
+  ///
+  /// [firewallPolicy] - Name of the firewall policy to which the queried rule
+  /// belongs.
+  /// Value must have pattern `(firewallPolicies/)?\[0-9\]{0,20}`.
+  ///
+  /// [name] - The name of the association to get from the firewall policy.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FirewallPolicyAssociation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FirewallPolicyAssociation> getAssociation(
+    core.String firewallPolicy, {
+    core.String name,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (firewallPolicy == null) {
+      throw core.ArgumentError('Parameter firewallPolicy is required.');
+    }
+    if (name != null) {
+      _queryParams['name'] = [name];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies/' +
+        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        '/getAssociation';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => FirewallPolicyAssociation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// May be empty if no such policy or resource exists.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern `(firewallPolicies/)?\[0-9\]{0,20}`.
+  ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int optionsRequestedPolicyVersion,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (resource == null) {
+      throw core.ArgumentError('Parameter resource is required.');
+    }
+    if (optionsRequestedPolicyVersion != null) {
+      _queryParams['optionsRequestedPolicyVersion'] = [
+        '${optionsRequestedPolicyVersion}'
+      ];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/getIamPolicy';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Gets a rule of the specified priority.
+  ///
+  /// Request parameters:
+  ///
+  /// [firewallPolicy] - Name of the firewall policy to which the queried rule
+  /// belongs.
+  /// Value must have pattern `(firewallPolicies/)?\[0-9\]{0,20}`.
+  ///
+  /// [priority] - The priority of the rule to get from the firewall policy.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FirewallPolicyRule].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FirewallPolicyRule> getRule(
+    core.String firewallPolicy, {
+    core.int priority,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (firewallPolicy == null) {
+      throw core.ArgumentError('Parameter firewallPolicy is required.');
+    }
+    if (priority != null) {
+      _queryParams['priority'] = ['${priority}'];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies/' +
+        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        '/getRule';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => FirewallPolicyRule.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Creates a new policy in the specified project using the data included in
+  /// the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parentId] - Parent ID for this request. The ID can be either be
+  /// "folders/\[FOLDER_ID\]" if the parent is a folder or
+  /// "organizations/\[ORGANIZATION_ID\]" if the parent is an organization.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> insert(
+    FirewallPolicy request, {
+    core.String parentId,
+    core.String requestId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (parentId != null) {
+      _queryParams['parentId'] = [parentId];
+    }
+    if (requestId != null) {
+      _queryParams['requestId'] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Lists all the policies that have been configured for the specified
+  /// project.
+  ///
+  /// Request parameters:
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either `=`, `!=`, `>`, or `<`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
+  /// [parentId] - Parent ID for this request.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FirewallPolicyList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FirewallPolicyList> list({
+    core.String filter,
+    core.int maxResults,
+    core.String orderBy,
+    core.String pageToken,
+    core.String parentId,
+    core.bool returnPartialSuccess,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams['maxResults'] = ['${maxResults}'];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (parentId != null) {
+      _queryParams['parentId'] = [parentId];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => FirewallPolicyList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Lists associations of a specified target, i.e., organization or folder.
+  ///
+  /// Request parameters:
+  ///
+  /// [targetResource] - The target resource to list associations. It is an
+  /// organization, or a folder.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FirewallPoliciesListAssociationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FirewallPoliciesListAssociationsResponse> listAssociations({
+    core.String targetResource,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (targetResource != null) {
+      _queryParams['targetResource'] = [targetResource];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies/listAssociations';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => FirewallPoliciesListAssociationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Moves the specified firewall policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [firewallPolicy] - Name of the firewall policy to update.
+  /// Value must have pattern `(firewallPolicies/)?\[0-9\]{0,20}`.
+  ///
+  /// [parentId] - The new parent of the firewall policy.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> move(
+    core.String firewallPolicy, {
+    core.String parentId,
+    core.String requestId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (firewallPolicy == null) {
+      throw core.ArgumentError('Parameter firewallPolicy is required.');
+    }
+    if (parentId != null) {
+      _queryParams['parentId'] = [parentId];
+    }
+    if (requestId != null) {
+      _queryParams['requestId'] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies/' +
+        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        '/move';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Patches the specified policy with the data included in the request.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [firewallPolicy] - Name of the firewall policy to update.
+  /// Value must have pattern `(firewallPolicies/)?\[0-9\]{0,20}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    FirewallPolicy request,
+    core.String firewallPolicy, {
+    core.String requestId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (firewallPolicy == null) {
+      throw core.ArgumentError('Parameter firewallPolicy is required.');
+    }
+    if (requestId != null) {
+      _queryParams['requestId'] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies/' +
+        commons.Escaper.ecapeVariable('$firewallPolicy');
+
+    final _response = _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Patches a rule of the specified priority.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [firewallPolicy] - Name of the firewall policy to update.
+  /// Value must have pattern `(firewallPolicies/)?\[0-9\]{0,20}`.
+  ///
+  /// [priority] - The priority of the rule to patch.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patchRule(
+    FirewallPolicyRule request,
+    core.String firewallPolicy, {
+    core.int priority,
+    core.String requestId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (firewallPolicy == null) {
+      throw core.ArgumentError('Parameter firewallPolicy is required.');
+    }
+    if (priority != null) {
+      _queryParams['priority'] = ['${priority}'];
+    }
+    if (requestId != null) {
+      _queryParams['requestId'] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies/' +
+        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        '/patchRule';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Removes an association for the specified firewall policy.
+  ///
+  /// Request parameters:
+  ///
+  /// [firewallPolicy] - Name of the firewall policy to update.
+  /// Value must have pattern `(firewallPolicies/)?\[0-9\]{0,20}`.
+  ///
+  /// [name] - Name for the attachment that will be removed.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> removeAssociation(
+    core.String firewallPolicy, {
+    core.String name,
+    core.String requestId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (firewallPolicy == null) {
+      throw core.ArgumentError('Parameter firewallPolicy is required.');
+    }
+    if (name != null) {
+      _queryParams['name'] = [name];
+    }
+    if (requestId != null) {
+      _queryParams['requestId'] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies/' +
+        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        '/removeAssociation';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Deletes a rule of the specified priority.
+  ///
+  /// Request parameters:
+  ///
+  /// [firewallPolicy] - Name of the firewall policy to update.
+  /// Value must have pattern `(firewallPolicies/)?\[0-9\]{0,20}`.
+  ///
+  /// [priority] - The priority of the rule to remove from the firewall policy.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> removeRule(
+    core.String firewallPolicy, {
+    core.int priority,
+    core.String requestId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (firewallPolicy == null) {
+      throw core.ArgumentError('Parameter firewallPolicy is required.');
+    }
+    if (priority != null) {
+      _queryParams['priority'] = ['${priority}'];
+    }
+    if (requestId != null) {
+      _queryParams['requestId'] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies/' +
+        commons.Escaper.ecapeVariable('$firewallPolicy') +
+        '/removeRule';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern `(firewallPolicies/)?\[0-9\]{0,20}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    GlobalOrganizationSetPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (resource == null) {
+      throw core.ArgumentError('Parameter resource is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/setIamPolicy';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern `(firewallPolicies/)?\[0-9\]{0,20}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestPermissionsResponse> testIamPermissions(
+    TestPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (resource == null) {
+      throw core.ArgumentError('Parameter resource is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/testIamPermissions';
 
@@ -5700,7 +7074,8 @@ class FirewallsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/firewalls/' +
         commons.Escaper.ecapeVariable('$firewall');
 
@@ -5762,7 +7137,8 @@ class FirewallsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/firewalls/' +
         commons.Escaper.ecapeVariable('$firewall');
 
@@ -5840,7 +7216,9 @@ class FirewallsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/firewalls';
 
     final _response = _requester.request(
       _url,
@@ -5961,7 +7339,9 @@ class FirewallsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/firewalls';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/firewalls';
 
     final _response = _requester.request(
       _url,
@@ -6048,7 +7428,8 @@ class FirewallsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/firewalls/' +
         commons.Escaper.ecapeVariable('$firewall');
 
@@ -6136,7 +7517,8 @@ class FirewallsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/firewalls/' +
         commons.Escaper.ecapeVariable('$firewall');
 
@@ -6277,7 +7659,8 @@ class ForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/forwardingRules';
 
     final _response = _requester.request(
@@ -6363,7 +7746,8 @@ class ForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/forwardingRules/' +
@@ -6434,7 +7818,8 @@ class ForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/forwardingRules/' +
@@ -6522,7 +7907,8 @@ class ForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/forwardingRules';
@@ -6654,7 +8040,8 @@ class ForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/forwardingRules';
@@ -6753,7 +8140,8 @@ class ForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/forwardingRules/' +
@@ -6762,6 +8150,104 @@ class ForwardingRulesResource {
     final _response = _requester.request(
       _url,
       'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Sets the labels on the specified resource.
+  ///
+  /// To learn more about labels, read the Labeling Resources documentation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [region] - The region for this request.
+  /// Value must have pattern `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setLabels(
+    RegionSetLabelsRequest request,
+    core.String project,
+    core.String region,
+    core.String resource, {
+    core.String requestId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (project == null) {
+      throw core.ArgumentError('Parameter project is required.');
+    }
+    if (region == null) {
+      throw core.ArgumentError('Parameter region is required.');
+    }
+    if (resource == null) {
+      throw core.ArgumentError('Parameter resource is required.');
+    }
+    if (requestId != null) {
+      _queryParams['requestId'] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/regions/' +
+        commons.Escaper.ecapeVariable('$region') +
+        '/forwardingRules/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/setLabels';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -6850,7 +8336,8 @@ class ForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/forwardingRules/' +
@@ -6938,7 +8425,8 @@ class GlobalAddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/addresses/' +
         commons.Escaper.ecapeVariable('$address');
 
@@ -7002,7 +8490,8 @@ class GlobalAddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/addresses/' +
         commons.Escaper.ecapeVariable('$address');
 
@@ -7080,7 +8569,9 @@ class GlobalAddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/addresses';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/addresses';
 
     final _response = _requester.request(
       _url,
@@ -7201,7 +8692,9 @@ class GlobalAddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/addresses';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/addresses';
 
     final _response = _requester.request(
       _url,
@@ -7286,7 +8779,8 @@ class GlobalForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/forwardingRules/' +
         commons.Escaper.ecapeVariable('$forwardingRule');
 
@@ -7350,7 +8844,8 @@ class GlobalForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/forwardingRules/' +
         commons.Escaper.ecapeVariable('$forwardingRule');
 
@@ -7429,8 +8924,9 @@ class GlobalForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/forwardingRules';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/forwardingRules';
 
     final _response = _requester.request(
       _url,
@@ -7552,8 +9048,9 @@ class GlobalForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/forwardingRules';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/forwardingRules';
 
     final _response = _requester.request(
       _url,
@@ -7642,13 +9139,86 @@ class GlobalForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/forwardingRules/' +
         commons.Escaper.ecapeVariable('$forwardingRule');
 
     final _response = _requester.request(
       _url,
       'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Sets the labels on the specified resource.
+  ///
+  /// To learn more about labels, read the Labeling Resources documentation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [resource] - Name or id of the resource for this request.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> setLabels(
+    GlobalSetLabelsRequest request,
+    core.String project,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (project == null) {
+      throw core.ArgumentError('Parameter project is required.');
+    }
+    if (resource == null) {
+      throw core.ArgumentError('Parameter resource is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/forwardingRules/' +
+        commons.Escaper.ecapeVariable('$resource') +
+        '/setLabels';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
       body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
@@ -7730,7 +9300,8 @@ class GlobalForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/forwardingRules/' +
         commons.Escaper.ecapeVariable('$forwardingRule') +
         '/setTarget';
@@ -7822,7 +9393,8 @@ class GlobalNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups/' +
         commons.Escaper.ecapeVariable('$networkEndpointGroup') +
         '/attachNetworkEndpoints';
@@ -7902,7 +9474,8 @@ class GlobalNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups/' +
         commons.Escaper.ecapeVariable('$networkEndpointGroup');
 
@@ -7986,7 +9559,8 @@ class GlobalNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups/' +
         commons.Escaper.ecapeVariable('$networkEndpointGroup') +
         '/detachNetworkEndpoints';
@@ -8051,7 +9625,8 @@ class GlobalNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups/' +
         commons.Escaper.ecapeVariable('$networkEndpointGroup');
 
@@ -8130,7 +9705,8 @@ class GlobalNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups';
 
     final _response = _requester.request(
@@ -8253,7 +9829,8 @@ class GlobalNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups';
 
     final _response = _requester.request(
@@ -8384,7 +9961,8 @@ class GlobalNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups/' +
         commons.Escaper.ecapeVariable('$networkEndpointGroup') +
         '/listNetworkEndpoints';
@@ -8527,7 +10105,9 @@ class GlobalOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/operations';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/operations';
 
     final _response = _requester.request(
       _url,
@@ -8588,7 +10168,8 @@ class GlobalOperationsResource {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/operations/' +
         commons.Escaper.ecapeVariable('$operation');
 
@@ -8652,7 +10233,8 @@ class GlobalOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/operations/' +
         commons.Escaper.ecapeVariable('$operation');
 
@@ -8776,7 +10358,9 @@ class GlobalOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/operations';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/operations';
 
     final _response = _requester.request(
       _url,
@@ -8851,7 +10435,8 @@ class GlobalOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/operations/' +
         commons.Escaper.ecapeVariable('$operation') +
         '/wait';
@@ -8867,6 +10452,254 @@ class GlobalOperationsResource {
     );
     return _response.then(
       (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class GlobalOrganizationOperationsResource {
+  final commons.ApiRequester _requester;
+
+  GlobalOrganizationOperationsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Deletes the specified Operations resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [operation] - Name of the Operations resource to delete.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [parentId] - Parent ID for this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future delete(
+    core.String operation, {
+    core.String parentId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (operation == null) {
+      throw core.ArgumentError('Parameter operation is required.');
+    }
+    if (parentId != null) {
+      _queryParams['parentId'] = [parentId];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _downloadOptions = null;
+
+    _url = 'locations/global/operations/' +
+        commons.Escaper.ecapeVariable('$operation');
+
+    final _response = _requester.request(
+      _url,
+      'DELETE',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => null,
+    );
+  }
+
+  /// Retrieves the specified Operations resource.
+  ///
+  /// Gets a list of operations by making a `list()` request.
+  ///
+  /// Request parameters:
+  ///
+  /// [operation] - Name of the Operations resource to return.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [parentId] - Parent ID for this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(
+    core.String operation, {
+    core.String parentId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (operation == null) {
+      throw core.ArgumentError('Parameter operation is required.');
+    }
+    if (parentId != null) {
+      _queryParams['parentId'] = [parentId];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/operations/' +
+        commons.Escaper.ecapeVariable('$operation');
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Retrieves a list of Operation resources contained within the specified
+  /// organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [filter] - A filter expression that filters resources listed in the
+  /// response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be
+  /// either `=`, `!=`, `>`, or `<`.
+  ///
+  /// For example, if you are filtering Compute Engine instances, you can
+  /// exclude instances named `example-instance` by specifying `name !=
+  /// example-instance`.
+  ///
+  /// You can also filter nested fields. For example, you could specify
+  /// `scheduling.automaticRestart = false` to include instances only if they
+  /// are not scheduled for automatic restarts. You can use filtering on nested
+  /// fields to filter based on resource labels.
+  ///
+  /// To filter on multiple expressions, provide each separate expression within
+  /// parentheses. For example: ``` (scheduling.automaticRestart = true)
+  /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
+  /// `AND` expression. However, you can include `AND` and `OR` expressions
+  /// explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR
+  /// (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true)
+  /// ```
+  ///
+  /// [maxResults] - The maximum number of results per page that should be
+  /// returned. If the number of available results is larger than `maxResults`,
+  /// Compute Engine returns a `nextPageToken` that can be used to get the next
+  /// page of results in subsequent list requests. Acceptable values are `0` to
+  /// `500`, inclusive. (Default: `500`)
+  ///
+  /// [orderBy] - Sorts list results by a certain order. By default, results are
+  /// returned in alphanumerical order based on the resource name.
+  ///
+  /// You can also sort results in descending order based on the creation
+  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
+  /// based on the `creationTimestamp` field in reverse chronological order
+  /// (newest result first). Use this to sort resources like operations so that
+  /// the newest operation is returned first.
+  ///
+  /// Currently, only sorting by `name` or `creationTimestamp desc` is
+  /// supported.
+  ///
+  /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
+  /// `nextPageToken` returned by a previous list request to get the next page
+  /// of results.
+  ///
+  /// [parentId] - Parent ID for this request.
+  ///
+  /// [returnPartialSuccess] - Opt-in for partial success behavior which
+  /// provides partial results in case of failure. The default value is false
+  /// and the logic is the same as today.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [OperationList].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<OperationList> list({
+    core.String filter,
+    core.int maxResults,
+    core.String orderBy,
+    core.String pageToken,
+    core.String parentId,
+    core.bool returnPartialSuccess,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (maxResults != null) {
+      _queryParams['maxResults'] = ['${maxResults}'];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (parentId != null) {
+      _queryParams['parentId'] = [parentId];
+    }
+    if (returnPartialSuccess != null) {
+      _queryParams['returnPartialSuccess'] = ['${returnPartialSuccess}'];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'locations/global/operations';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) =>
+          OperationList.fromJson(data as core.Map<core.String, core.dynamic>),
     );
   }
 }
@@ -8994,8 +10827,9 @@ class HealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/healthChecks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/healthChecks';
 
     final _response = _requester.request(
       _url,
@@ -9073,7 +10907,8 @@ class HealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/healthChecks/' +
         commons.Escaper.ecapeVariable('$healthCheck');
 
@@ -9137,7 +10972,8 @@ class HealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/healthChecks/' +
         commons.Escaper.ecapeVariable('$healthCheck');
 
@@ -9216,7 +11052,9 @@ class HealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/healthChecks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/healthChecks';
 
     final _response = _requester.request(
       _url,
@@ -9338,7 +11176,9 @@ class HealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/healthChecks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/healthChecks';
 
     final _response = _requester.request(
       _url,
@@ -9426,7 +11266,8 @@ class HealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/healthChecks/' +
         commons.Escaper.ecapeVariable('$healthCheck');
 
@@ -9512,7 +11353,8 @@ class HealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/healthChecks/' +
         commons.Escaper.ecapeVariable('$healthCheck');
 
@@ -9597,7 +11439,8 @@ class HttpHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/httpHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpHealthCheck');
 
@@ -9661,7 +11504,8 @@ class HttpHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/httpHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpHealthCheck');
 
@@ -9740,8 +11584,9 @@ class HttpHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/httpHealthChecks';
 
     final _response = _requester.request(
       _url,
@@ -9863,8 +11708,9 @@ class HttpHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/httpHealthChecks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/httpHealthChecks';
 
     final _response = _requester.request(
       _url,
@@ -9952,7 +11798,8 @@ class HttpHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/httpHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpHealthCheck');
 
@@ -10038,7 +11885,8 @@ class HttpHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/httpHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpHealthCheck');
 
@@ -10123,7 +11971,8 @@ class HttpsHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/httpsHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpsHealthCheck');
 
@@ -10187,7 +12036,8 @@ class HttpsHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/httpsHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpsHealthCheck');
 
@@ -10266,8 +12116,9 @@ class HttpsHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/httpsHealthChecks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/httpsHealthChecks';
 
     final _response = _requester.request(
       _url,
@@ -10389,8 +12240,9 @@ class HttpsHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/httpsHealthChecks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/httpsHealthChecks';
 
     final _response = _requester.request(
       _url,
@@ -10478,7 +12330,8 @@ class HttpsHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/httpsHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpsHealthCheck');
 
@@ -10564,7 +12417,8 @@ class HttpsHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/httpsHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpsHealthCheck');
 
@@ -10649,7 +12503,8 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$image');
 
@@ -10736,7 +12591,8 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$image') +
         '/deprecate';
@@ -10801,7 +12657,8 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$image');
 
@@ -10864,7 +12721,8 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/family/' +
         commons.Escaper.ecapeVariable('$family');
 
@@ -10936,7 +12794,8 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/getIamPolicy';
@@ -11021,7 +12880,9 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/images';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/images';
 
     final _response = _requester.request(
       _url,
@@ -11148,7 +13009,9 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/images';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/images';
 
     final _response = _requester.request(
       _url,
@@ -11234,7 +13097,8 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$image');
 
@@ -11304,7 +13168,8 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/setIamPolicy';
@@ -11375,7 +13240,8 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/setLabels';
@@ -11444,7 +13310,8 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/testIamPermissions';
@@ -11557,7 +13424,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -11695,7 +13563,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/instanceGroupManagers';
 
     final _response = _requester.request(
@@ -11771,7 +13640,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -11871,7 +13741,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -11961,7 +13832,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -12066,7 +13938,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -12143,7 +14016,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -12215,7 +14089,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -12312,7 +14187,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers';
@@ -12443,7 +14319,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers';
@@ -12587,7 +14464,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -12733,7 +14611,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -12878,7 +14757,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -12979,7 +14859,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -13075,7 +14956,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -13180,7 +15062,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -13296,7 +15179,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -13321,7 +15205,8 @@ class InstanceGroupManagersResource {
   /// group.
   ///
   /// The templates for existing instances in the group do not change unless you
-  /// recreate them.
+  /// run recreateInstances, run applyUpdatesToInstances, or set the group's
+  /// updatePolicy.type to PROACTIVE.
   ///
   /// [request] - The metadata request object.
   ///
@@ -13392,7 +15277,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -13491,7 +15377,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -13588,7 +15475,8 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroupManagers/' +
@@ -13690,7 +15578,8 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroups/' +
@@ -13828,7 +15717,8 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/instanceGroups';
 
     final _response = _requester.request(
@@ -13915,7 +15805,8 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroups/' +
@@ -13988,7 +15879,8 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroups/' +
@@ -14075,7 +15967,8 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroups';
@@ -14209,7 +16102,8 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroups';
@@ -14355,7 +16249,8 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroups/' +
@@ -14454,7 +16349,8 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroups/' +
@@ -14547,7 +16443,8 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instanceGroups/' +
@@ -14639,7 +16536,8 @@ class InstanceTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/instanceTemplates/' +
         commons.Escaper.ecapeVariable('$instanceTemplate');
 
@@ -14703,7 +16601,8 @@ class InstanceTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/instanceTemplates/' +
         commons.Escaper.ecapeVariable('$instanceTemplate');
 
@@ -14776,7 +16675,8 @@ class InstanceTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/instanceTemplates/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/getIamPolicy';
@@ -14859,8 +16759,9 @@ class InstanceTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/instanceTemplates';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/instanceTemplates';
 
     final _response = _requester.request(
       _url,
@@ -14982,8 +16883,9 @@ class InstanceTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/instanceTemplates';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/instanceTemplates';
 
     final _response = _requester.request(
       _url,
@@ -15052,7 +16954,8 @@ class InstanceTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/instanceTemplates/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/setIamPolicy';
@@ -15121,7 +17024,8 @@ class InstanceTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/instanceTemplates/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/testIamPermissions';
@@ -15229,7 +17133,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -15327,7 +17232,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -15466,7 +17372,9 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/instances';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/instances';
 
     final _response = _requester.request(
       _url,
@@ -15569,7 +17477,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -15660,7 +17569,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -15762,7 +17672,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -15859,7 +17770,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -15933,7 +17845,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16016,7 +17929,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16099,7 +18013,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16171,7 +18086,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16271,7 +18187,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16344,7 +18261,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16447,7 +18365,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances';
@@ -16578,7 +18497,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances';
@@ -16601,9 +18521,9 @@ class InstancesResource {
   /// Retrieves a list of resources that refer to the VM instance specified in
   /// the request.
   ///
-  /// For example, if the VM instance is part of a managed instance group, the
-  /// referrers list includes the managed instance group. For more information,
-  /// read Viewing Referrers to VM Instances.
+  /// For example, if the VM instance is part of a managed or unmanaged instance
+  /// group, the referrers list includes the instance group. For more
+  /// information, read Viewing referrers to VM instances.
   ///
   /// Request parameters:
   ///
@@ -16724,7 +18644,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16820,7 +18741,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -16912,7 +18834,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -17008,7 +18931,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -17114,7 +19038,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -17194,7 +19119,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -17291,7 +19217,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -17387,7 +19314,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -17483,7 +19411,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -17579,7 +19508,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -17677,7 +19607,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -17776,7 +19707,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -17874,7 +19806,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -17972,7 +19905,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -18068,7 +20002,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -18140,7 +20075,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -18231,7 +20167,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -18328,7 +20265,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -18423,7 +20361,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -18501,7 +20440,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -18631,7 +20571,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -18737,7 +20678,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -18835,7 +20777,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -18858,7 +20801,11 @@ class InstancesResource {
 
   /// Updates an instance's network interface.
   ///
-  /// This method follows PATCH semantics.
+  /// This method can only update an interface's alias IP range and attached
+  /// network. See Modifying alias IP ranges for an existing instance for
+  /// instructions on changing alias IP ranges. See Migrating a VM between
+  /// networks for instructions on migrating an interface. This method follows
+  /// PATCH semantics.
   ///
   /// [request] - The metadata request object.
   ///
@@ -18939,7 +20886,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -19037,7 +20985,8 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/instances/' +
@@ -19182,7 +21131,8 @@ class InterconnectAttachmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/interconnectAttachments';
 
     final _response = _requester.request(
@@ -19268,7 +21218,8 @@ class InterconnectAttachmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/interconnectAttachments/' +
@@ -19339,7 +21290,8 @@ class InterconnectAttachmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/interconnectAttachments/' +
@@ -19433,7 +21385,8 @@ class InterconnectAttachmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/interconnectAttachments';
@@ -19565,7 +21518,8 @@ class InterconnectAttachmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/interconnectAttachments';
@@ -19663,7 +21617,8 @@ class InterconnectAttachmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/interconnectAttachments/' +
@@ -19737,7 +21692,8 @@ class InterconnectLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/interconnectLocations/' +
         commons.Escaper.ecapeVariable('$interconnectLocation');
 
@@ -19862,7 +21818,8 @@ class InterconnectLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/interconnectLocations';
 
     final _response = _requester.request(
@@ -19947,7 +21904,8 @@ class InterconnectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/interconnects/' +
         commons.Escaper.ecapeVariable('$interconnect');
 
@@ -20011,7 +21969,8 @@ class InterconnectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/interconnects/' +
         commons.Escaper.ecapeVariable('$interconnect');
 
@@ -20074,7 +22033,8 @@ class InterconnectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/interconnects/' +
         commons.Escaper.ecapeVariable('$interconnect') +
         '/getDiagnostics';
@@ -20154,7 +22114,9 @@ class InterconnectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/interconnects';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/interconnects';
 
     final _response = _requester.request(
       _url,
@@ -20275,7 +22237,9 @@ class InterconnectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/interconnects';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/interconnects';
 
     final _response = _requester.request(
       _url,
@@ -20362,7 +22326,8 @@ class InterconnectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/interconnects/' +
         commons.Escaper.ecapeVariable('$interconnect');
 
@@ -20434,7 +22399,8 @@ class LicenseCodesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/licenseCodes/' +
         commons.Escaper.ecapeVariable('$licenseCode');
 
@@ -20506,7 +22472,8 @@ class LicenseCodesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/licenseCodes/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/testIamPermissions';
@@ -20596,7 +22563,8 @@ class LicensesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/licenses/' +
         commons.Escaper.ecapeVariable('$license');
 
@@ -20661,7 +22629,8 @@ class LicensesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/licenses/' +
         commons.Escaper.ecapeVariable('$license');
 
@@ -20735,7 +22704,8 @@ class LicensesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/licenses/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/getIamPolicy';
@@ -20816,7 +22786,9 @@ class LicensesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/licenses';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/licenses';
 
     final _response = _requester.request(
       _url,
@@ -20944,7 +22916,9 @@ class LicensesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/licenses';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/licenses';
 
     final _response = _requester.request(
       _url,
@@ -21014,7 +22988,8 @@ class LicensesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/licenses/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/setIamPolicy';
@@ -21086,7 +23061,8 @@ class LicensesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/licenses/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/testIamPermissions';
@@ -21229,8 +23205,9 @@ class MachineTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/machineTypes';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/machineTypes';
 
     final _response = _requester.request(
       _url,
@@ -21300,7 +23277,8 @@ class MachineTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/machineTypes/' +
@@ -21433,7 +23411,8 @@ class MachineTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/machineTypes';
@@ -21577,7 +23556,8 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/networkEndpointGroups';
 
     final _response = _requester.request(
@@ -21669,7 +23649,8 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/networkEndpointGroups/' +
@@ -21761,7 +23742,8 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/networkEndpointGroups/' +
@@ -21855,7 +23837,8 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/networkEndpointGroups/' +
@@ -21929,7 +23912,8 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/networkEndpointGroups/' +
@@ -22017,7 +24001,8 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/networkEndpointGroups';
@@ -22149,7 +24134,8 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/networkEndpointGroups';
@@ -22295,7 +24281,8 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/networkEndpointGroups/' +
@@ -22374,7 +24361,8 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/networkEndpointGroups/' +
@@ -22469,7 +24457,8 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network') +
         '/addPeering';
@@ -22549,7 +24538,8 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network');
 
@@ -22613,7 +24603,8 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network');
 
@@ -22691,7 +24682,9 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/networks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/networks';
 
     final _response = _requester.request(
       _url,
@@ -22812,7 +24805,9 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/networks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/networks';
 
     final _response = _requester.request(
       _url,
@@ -22964,7 +24959,8 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network') +
         '/listPeeringRoutes';
@@ -23053,7 +25049,8 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network');
 
@@ -23138,7 +25135,8 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network') +
         '/removePeering';
@@ -23218,7 +25216,8 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network') +
         '/switchToCustomMode';
@@ -23308,7 +25307,8 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network') +
         '/updatePeering';
@@ -23407,7 +25407,8 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -23547,7 +25548,9 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/nodeGroups';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/nodeGroups';
 
     final _response = _requester.request(
       _url,
@@ -23632,7 +25635,8 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -23726,7 +25730,8 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -23801,7 +25806,8 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -23882,7 +25888,8 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -23977,7 +25984,8 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups';
@@ -24110,7 +26118,8 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups';
@@ -24250,7 +26259,8 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -24346,7 +26356,8 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -24425,7 +26436,8 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -24520,7 +26532,8 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -24598,7 +26611,8 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeGroups/' +
@@ -24743,8 +26757,9 @@ class NodeTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/nodeTemplates';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/nodeTemplates';
 
     final _response = _requester.request(
       _url,
@@ -24829,7 +26844,8 @@ class NodeTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/nodeTemplates/' +
@@ -24902,7 +26918,8 @@ class NodeTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/nodeTemplates/' +
@@ -24984,7 +27001,8 @@ class NodeTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/nodeTemplates/' +
@@ -25072,7 +27090,8 @@ class NodeTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/nodeTemplates';
@@ -25203,7 +27222,8 @@ class NodeTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/nodeTemplates';
@@ -25282,7 +27302,8 @@ class NodeTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/nodeTemplates/' +
@@ -25360,7 +27381,8 @@ class NodeTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/nodeTemplates/' +
@@ -25505,7 +27527,9 @@ class NodeTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/nodeTypes';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/nodeTypes';
 
     final _response = _requester.request(
       _url,
@@ -25575,7 +27599,8 @@ class NodeTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeTypes/' +
@@ -25707,7 +27732,8 @@ class NodeTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/nodeTypes';
@@ -25850,7 +27876,8 @@ class PacketMirroringsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/packetMirrorings';
 
     final _response = _requester.request(
@@ -25936,7 +27963,8 @@ class PacketMirroringsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/packetMirrorings/' +
@@ -26007,7 +28035,8 @@ class PacketMirroringsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/packetMirrorings/' +
@@ -26095,7 +28124,8 @@ class PacketMirroringsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/packetMirrorings';
@@ -26227,7 +28257,8 @@ class PacketMirroringsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/packetMirrorings';
@@ -26325,7 +28356,8 @@ class PacketMirroringsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/packetMirrorings/' +
@@ -26402,7 +28434,8 @@ class PacketMirroringsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/packetMirrorings/' +
@@ -26483,7 +28516,9 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/disableXpnHost';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/disableXpnHost';
 
     final _response = _requester.request(
       _url,
@@ -26559,7 +28594,9 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/disableXpnResource';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/disableXpnResource';
 
     final _response = _requester.request(
       _url,
@@ -26628,7 +28665,9 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/enableXpnHost';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/enableXpnHost';
 
     final _response = _requester.request(
       _url,
@@ -26705,7 +28744,9 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/enableXpnResource';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/enableXpnResource';
 
     final _response = _requester.request(
       _url,
@@ -26757,7 +28798,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project');
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project');
 
     final _response = _requester.request(
       _url,
@@ -26811,7 +28852,8 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/getXpnHost';
+    _url =
+        'projects/' + commons.Escaper.ecapeVariable('$project') + '/getXpnHost';
 
     final _response = _requester.request(
       _url,
@@ -26933,7 +28975,9 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/getXpnResources';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/getXpnResources';
 
     final _response = _requester.request(
       _url,
@@ -27061,7 +29105,9 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/listXpnHosts';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/listXpnHosts';
 
     final _response = _requester.request(
       _url,
@@ -27137,7 +29183,8 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/moveDisk';
+    _url =
+        'projects/' + commons.Escaper.ecapeVariable('$project') + '/moveDisk';
 
     final _response = _requester.request(
       _url,
@@ -27213,7 +29260,9 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/moveInstance';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/moveInstance';
 
     final _response = _requester.request(
       _url,
@@ -27289,7 +29338,8 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/setCommonInstanceMetadata';
 
     final _response = _requester.request(
@@ -27368,7 +29418,9 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/setDefaultNetworkTier';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/setDefaultNetworkTier';
 
     final _response = _requester.request(
       _url,
@@ -27447,7 +29499,9 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/setUsageExportBucket';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/setUsageExportBucket';
 
     final _response = _requester.request(
       _url,
@@ -27537,7 +29591,8 @@ class RegionAutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/autoscalers/' +
@@ -27608,7 +29663,8 @@ class RegionAutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/autoscalers/' +
@@ -27696,7 +29752,8 @@ class RegionAutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/autoscalers';
@@ -27827,7 +29884,8 @@ class RegionAutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/autoscalers';
@@ -27925,7 +29983,8 @@ class RegionAutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/autoscalers';
@@ -28019,7 +30078,8 @@ class RegionAutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/autoscalers';
@@ -28113,7 +30173,8 @@ class RegionBackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/backendServices/' +
@@ -28184,7 +30245,8 @@ class RegionBackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/backendServices/' +
@@ -28264,7 +30326,8 @@ class RegionBackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/backendServices/' +
@@ -28355,7 +30418,8 @@ class RegionBackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/backendServices';
@@ -28487,7 +30551,8 @@ class RegionBackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/backendServices';
@@ -28586,7 +30651,8 @@ class RegionBackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/backendServices/' +
@@ -28683,7 +30749,8 @@ class RegionBackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/backendServices/' +
@@ -28826,8 +30893,9 @@ class RegionCommitmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/commitments';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/commitments';
 
     final _response = _requester.request(
       _url,
@@ -28897,7 +30965,8 @@ class RegionCommitmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/commitments/' +
@@ -28985,7 +31054,8 @@ class RegionCommitmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/commitments';
@@ -29116,7 +31186,8 @@ class RegionCommitmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/commitments';
@@ -29195,7 +31266,8 @@ class RegionDiskTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/diskTypes/' +
@@ -29328,7 +31400,8 @@ class RegionDiskTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/diskTypes';
@@ -29431,7 +31504,8 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -29526,7 +31600,8 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -29618,7 +31693,8 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -29689,7 +31765,8 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -29770,7 +31847,8 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -29818,7 +31896,8 @@ class RegionDisksResource {
   /// The request ID must be a valid UUID with the exception that zero UUID is
   /// not supported (00000000-0000-0000-0000-000000000000).
   ///
-  /// [sourceImage] - Optional. Source image to restore onto a disk.
+  /// [sourceImage] - Source image to restore onto a disk. This field is
+  /// optional.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -29864,7 +31943,8 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks';
@@ -29996,7 +32076,8 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks';
@@ -30089,7 +32170,8 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -30184,7 +32266,8 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -30264,7 +32347,8 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -30359,7 +32443,8 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -30437,7 +32522,8 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/disks/' +
@@ -30533,7 +32619,8 @@ class RegionHealthCheckServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthCheckServices/' +
@@ -30603,7 +32690,8 @@ class RegionHealthCheckServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthCheckServices/' +
@@ -30691,7 +32779,8 @@ class RegionHealthCheckServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthCheckServices';
@@ -30823,7 +32912,8 @@ class RegionHealthCheckServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthCheckServices';
@@ -30920,7 +33010,8 @@ class RegionHealthCheckServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthCheckServices/' +
@@ -31014,7 +33105,8 @@ class RegionHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthChecks/' +
@@ -31087,7 +33179,8 @@ class RegionHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthChecks/' +
@@ -31175,7 +33268,8 @@ class RegionHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthChecks';
@@ -31307,7 +33401,8 @@ class RegionHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthChecks';
@@ -31405,7 +33500,8 @@ class RegionHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthChecks/' +
@@ -31500,7 +33596,8 @@ class RegionHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/healthChecks/' +
@@ -31613,7 +33710,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -31690,7 +33788,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -31790,7 +33889,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -31877,7 +33977,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -31982,7 +34083,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -32059,7 +34161,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -32128,7 +34231,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -32223,7 +34327,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers';
@@ -32354,7 +34459,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers';
@@ -32498,7 +34604,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -32642,7 +34749,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -32787,7 +34895,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -32887,7 +34996,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -32907,10 +35017,9 @@ class RegionInstanceGroupManagersResource {
     );
   }
 
-  /// Insert or patch (for the ones that already exist) per-instance configs for
-  /// the managed instance group.
+  /// Inserts or patches per-instance configs for the managed instance group.
   ///
-  /// perInstanceConfig.instance serves as a key used to distinguish whether to
+  /// perInstanceConfig.name serves as a key used to distinguish whether to
   /// perform insert or patch.
   ///
   /// [request] - The metadata request object.
@@ -32984,7 +35093,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -33089,7 +35199,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -33196,7 +35307,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -33291,7 +35403,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -33386,7 +35499,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -33407,10 +35521,9 @@ class RegionInstanceGroupManagersResource {
     );
   }
 
-  /// Insert or update (for the ones that already exist) per-instance configs
-  /// for the managed instance group.
+  /// Inserts or updates per-instance configs for the managed instance group.
   ///
-  /// perInstanceConfig.instance serves as a key used to distinguish whether to
+  /// perInstanceConfig.name serves as a key used to distinguish whether to
   /// perform insert or patch.
   ///
   /// [request] - The metadata request object.
@@ -33484,7 +35597,8 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroupManagers/' +
@@ -33560,7 +35674,8 @@ class RegionInstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroups/' +
@@ -33693,7 +35808,8 @@ class RegionInstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroups';
@@ -33842,7 +35958,8 @@ class RegionInstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroups/' +
@@ -33936,7 +36053,8 @@ class RegionInstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/instanceGroups/' +
@@ -34034,7 +36152,8 @@ class RegionNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/networkEndpointGroups/' +
@@ -34107,7 +36226,8 @@ class RegionNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/networkEndpointGroups/' +
@@ -34195,7 +36315,8 @@ class RegionNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/networkEndpointGroups';
@@ -34327,7 +36448,8 @@ class RegionNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/networkEndpointGroups';
@@ -34423,7 +36545,8 @@ class RegionNotificationEndpointsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/notificationEndpoints/' +
@@ -34495,7 +36618,8 @@ class RegionNotificationEndpointsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/notificationEndpoints/' +
@@ -34583,7 +36707,8 @@ class RegionNotificationEndpointsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/notificationEndpoints';
@@ -34714,7 +36839,8 @@ class RegionNotificationEndpointsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/notificationEndpoints';
@@ -34791,7 +36917,8 @@ class RegionOperationsResource {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/operations/' +
@@ -34862,7 +36989,8 @@ class RegionOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/operations/' +
@@ -34995,7 +37123,8 @@ class RegionOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/operations';
@@ -35080,7 +37209,8 @@ class RegionOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/operations/' +
@@ -35176,7 +37306,8 @@ class RegionSslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/sslCertificates/' +
@@ -35249,7 +37380,8 @@ class RegionSslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/sslCertificates/' +
@@ -35337,7 +37469,8 @@ class RegionSslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/sslCertificates';
@@ -35469,7 +37602,8 @@ class RegionSslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/sslCertificates';
@@ -35564,7 +37698,8 @@ class RegionTargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpProxies/' +
@@ -35637,7 +37772,8 @@ class RegionTargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpProxies/' +
@@ -35725,7 +37861,8 @@ class RegionTargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpProxies';
@@ -35857,7 +37994,8 @@ class RegionTargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpProxies';
@@ -35951,7 +38089,8 @@ class RegionTargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpProxies/' +
@@ -36047,7 +38186,8 @@ class RegionTargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpsProxies/' +
@@ -36120,7 +38260,8 @@ class RegionTargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpsProxies/' +
@@ -36208,7 +38349,8 @@ class RegionTargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpsProxies';
@@ -36340,7 +38482,8 @@ class RegionTargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpsProxies';
@@ -36435,7 +38578,8 @@ class RegionTargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpsProxies/' +
@@ -36530,7 +38674,8 @@ class RegionTargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetHttpsProxies/' +
@@ -36615,7 +38760,8 @@ class RegionUrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/urlMaps/' +
@@ -36688,7 +38834,8 @@ class RegionUrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/urlMaps/' +
@@ -36765,7 +38912,8 @@ class RegionUrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/urlMaps';
@@ -36897,7 +39045,8 @@ class RegionUrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/urlMaps';
@@ -36985,7 +39134,8 @@ class RegionUrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/urlMaps/' +
@@ -37070,7 +39220,8 @@ class RegionUrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/urlMaps/' +
@@ -37150,7 +39301,8 @@ class RegionUrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/urlMaps/' +
@@ -37224,7 +39376,8 @@ class RegionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region');
 
@@ -37347,7 +39500,7 @@ class RegionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/regions';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/regions';
 
     final _response = _requester.request(
       _url,
@@ -37487,8 +39640,9 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/reservations';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/reservations';
 
     final _response = _requester.request(
       _url,
@@ -37573,7 +39727,8 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/reservations/' +
@@ -37644,7 +39799,8 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/reservations/' +
@@ -37726,7 +39882,8 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/reservations/' +
@@ -37815,7 +39972,8 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/reservations';
@@ -37947,7 +40105,8 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/reservations';
@@ -38042,7 +40201,8 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/reservations/' +
@@ -38122,7 +40282,8 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/reservations/' +
@@ -38200,7 +40361,8 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/reservations/' +
@@ -38345,7 +40507,8 @@ class ResourcePoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/resourcePolicies';
 
     final _response = _requester.request(
@@ -38431,7 +40594,8 @@ class ResourcePoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/resourcePolicies/' +
@@ -38502,7 +40666,8 @@ class ResourcePoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/resourcePolicies/' +
@@ -38584,7 +40749,8 @@ class ResourcePoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/resourcePolicies/' +
@@ -38671,7 +40837,8 @@ class ResourcePoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/resourcePolicies';
@@ -38803,7 +40970,8 @@ class ResourcePoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/resourcePolicies';
@@ -38882,7 +41050,8 @@ class ResourcePoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/resourcePolicies/' +
@@ -38960,7 +41129,8 @@ class ResourcePoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/resourcePolicies/' +
@@ -39105,7 +41275,9 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/routers';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/routers';
 
     final _response = _requester.request(
       _url,
@@ -39190,7 +41362,8 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers/' +
@@ -39263,7 +41436,8 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers/' +
@@ -39404,7 +41578,8 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers/' +
@@ -39477,7 +41652,8 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers/' +
@@ -39566,7 +41742,8 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers';
@@ -39697,7 +41874,8 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers';
@@ -39795,7 +41973,8 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers/' +
@@ -39874,7 +42053,8 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers/' +
@@ -39975,7 +42155,8 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/routers/' +
@@ -40062,7 +42243,8 @@ class RoutesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/routes/' +
         commons.Escaper.ecapeVariable('$route');
 
@@ -40126,7 +42308,8 @@ class RoutesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/routes/' +
         commons.Escaper.ecapeVariable('$route');
 
@@ -40204,7 +42387,9 @@ class RoutesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/routes';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/routes';
 
     final _response = _requester.request(
       _url,
@@ -40325,7 +42510,9 @@ class RoutesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/routes';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/routes';
 
     final _response = _requester.request(
       _url,
@@ -40397,7 +42584,8 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy') +
         '/addRule';
@@ -40477,7 +42665,8 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy');
 
@@ -40539,7 +42728,8 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy');
 
@@ -40609,7 +42799,8 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy') +
         '/getRule';
@@ -40689,8 +42880,9 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/securityPolicies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/securityPolicies';
 
     final _response = _requester.request(
       _url,
@@ -40811,8 +43003,9 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/securityPolicies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/securityPolicies';
 
     final _response = _requester.request(
       _url,
@@ -40937,7 +43130,8 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/listPreconfiguredExpressionSets';
 
     final _response = _requester.request(
@@ -40957,6 +43151,9 @@ class SecurityPoliciesResource {
   }
 
   /// Patches the specified policy with the data included in the request.
+  ///
+  /// This cannot be used to be update the rules in the policy. Please use the
+  /// per rule methods like addRule, patchRule, and removeRule instead.
   ///
   /// [request] - The metadata request object.
   ///
@@ -41023,7 +43220,8 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy');
 
@@ -41097,7 +43295,8 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy') +
         '/patchRule';
@@ -41166,7 +43365,8 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy') +
         '/removeRule';
@@ -41259,7 +43459,8 @@ class SnapshotsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$snapshot');
 
@@ -41323,7 +43524,8 @@ class SnapshotsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$snapshot');
 
@@ -41395,7 +43597,8 @@ class SnapshotsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/getIamPolicy';
@@ -41520,7 +43723,9 @@ class SnapshotsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/snapshots';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/snapshots';
 
     final _response = _requester.request(
       _url,
@@ -41589,7 +43794,8 @@ class SnapshotsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/setIamPolicy';
@@ -41660,7 +43866,8 @@ class SnapshotsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/setLabels';
@@ -41729,7 +43936,8 @@ class SnapshotsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/testIamPermissions';
@@ -41873,7 +44081,8 @@ class SslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/sslCertificates';
 
     final _response = _requester.request(
@@ -41952,7 +44161,8 @@ class SslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/sslCertificates/' +
         commons.Escaper.ecapeVariable('$sslCertificate');
 
@@ -42016,7 +44226,8 @@ class SslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/sslCertificates/' +
         commons.Escaper.ecapeVariable('$sslCertificate');
 
@@ -42095,8 +44306,9 @@ class SslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/sslCertificates';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/sslCertificates';
 
     final _response = _requester.request(
       _url,
@@ -42218,8 +44430,9 @@ class SslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/sslCertificates';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/sslCertificates';
 
     final _response = _requester.request(
       _url,
@@ -42305,7 +44518,8 @@ class SslPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/sslPolicies/' +
         commons.Escaper.ecapeVariable('$sslPolicy');
 
@@ -42366,7 +44580,8 @@ class SslPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/sslPolicies/' +
         commons.Escaper.ecapeVariable('$sslPolicy');
 
@@ -42445,7 +44660,9 @@ class SslPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/sslPolicies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/sslPolicies';
 
     final _response = _requester.request(
       _url,
@@ -42567,7 +44784,9 @@ class SslPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/sslPolicies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/sslPolicies';
 
     final _response = _requester.request(
       _url,
@@ -42690,7 +44909,8 @@ class SslPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/sslPolicies/listAvailableFeatures';
 
     final _response = _requester.request(
@@ -42774,7 +44994,8 @@ class SslPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/sslPolicies/' +
         commons.Escaper.ecapeVariable('$sslPolicy');
 
@@ -42915,8 +45136,9 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/subnetworks';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/subnetworks';
 
     final _response = _requester.request(
       _url,
@@ -43001,7 +45223,8 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks/' +
@@ -43095,7 +45318,8 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks/' +
@@ -43169,7 +45393,8 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks/' +
@@ -43251,7 +45476,8 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks/' +
@@ -43339,7 +45565,8 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks';
@@ -43470,7 +45697,8 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks';
@@ -43595,7 +45823,8 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/subnetworks/listUsable';
 
     final _response = _requester.request(
@@ -43615,7 +45844,7 @@ class SubnetworksResource {
 
   /// Patches the specified subnetwork with the data included in the request.
   ///
-  /// Only certain fields can up updated with a patch request as indicated in
+  /// Only certain fields can be updated with a patch request as indicated in
   /// the field descriptions. You must specify the current fingerprint of the
   /// subnetwork resource being patched.
   ///
@@ -43704,7 +45933,8 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks/' +
@@ -43783,7 +46013,8 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks/' +
@@ -43879,7 +46110,8 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks/' +
@@ -43957,7 +46189,8 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/subnetworks/' +
@@ -44046,7 +46279,8 @@ class TargetGrpcProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetGrpcProxies/' +
         commons.Escaper.ecapeVariable('$targetGrpcProxy');
 
@@ -44108,7 +46342,8 @@ class TargetGrpcProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetGrpcProxies/' +
         commons.Escaper.ecapeVariable('$targetGrpcProxy');
 
@@ -44187,8 +46422,9 @@ class TargetGrpcProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/targetGrpcProxies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/targetGrpcProxies';
 
     final _response = _requester.request(
       _url,
@@ -44309,8 +46545,9 @@ class TargetGrpcProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/targetGrpcProxies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/targetGrpcProxies';
 
     final _response = _requester.request(
       _url,
@@ -44398,7 +46635,8 @@ class TargetGrpcProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetGrpcProxies/' +
         commons.Escaper.ecapeVariable('$targetGrpcProxy');
 
@@ -44540,7 +46778,8 @@ class TargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/targetHttpProxies';
 
     final _response = _requester.request(
@@ -44619,7 +46858,8 @@ class TargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpProxy');
 
@@ -44683,7 +46923,8 @@ class TargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpProxy');
 
@@ -44762,8 +47003,9 @@ class TargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/targetHttpProxies';
 
     final _response = _requester.request(
       _url,
@@ -44885,8 +47127,9 @@ class TargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/targetHttpProxies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/targetHttpProxies';
 
     final _response = _requester.request(
       _url,
@@ -44974,7 +47217,8 @@ class TargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpProxy');
 
@@ -45059,7 +47303,8 @@ class TargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/targetHttpProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpProxy') +
         '/setUrlMap';
@@ -45202,7 +47447,8 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/targetHttpsProxies';
 
     final _response = _requester.request(
@@ -45281,7 +47527,8 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy');
 
@@ -45345,7 +47592,8 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy');
 
@@ -45424,7 +47672,8 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies';
 
     final _response = _requester.request(
@@ -45547,7 +47796,8 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies';
 
     final _response = _requester.request(
@@ -45562,6 +47812,96 @@ class TargetHttpsProxiesResource {
     return _response.then(
       (data) => TargetHttpsProxyList.fromJson(
           data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Patches the specified TargetHttpsProxy resource with the data included in
+  /// the request.
+  ///
+  /// This method supports PATCH semantics and uses JSON merge patch format and
+  /// processing rules. (== suppress_warning http-rest-shadowed ==)
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Project ID for this request.
+  /// Value must have pattern
+  /// `(?:(?:\[-a-z0-9\]{1,63}\.)*(?:\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?):)?(?:\[0-9\]{1,19}|(?:\[a-z0-9\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?))`.
+  ///
+  /// [targetHttpsProxy] - Name of the TargetHttpsProxy resource to patch.
+  /// Value must have pattern
+  /// `\[a-z\](?:\[-a-z0-9\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
+  ///
+  /// [requestId] - An optional request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed.
+  ///
+  /// For example, consider a situation where you make an initial request and
+  /// the request times out. If you make the request again with the same request
+  /// ID, the server can check if original operation with the same request ID
+  /// was received, and if so, will ignore the second request. This prevents
+  /// clients from accidentally creating duplicate commitments.
+  ///
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    TargetHttpsProxy request,
+    core.String project,
+    core.String targetHttpsProxy, {
+    core.String requestId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (project == null) {
+      throw core.ArgumentError('Parameter project is required.');
+    }
+    if (targetHttpsProxy == null) {
+      throw core.ArgumentError('Parameter targetHttpsProxy is required.');
+    }
+    if (requestId != null) {
+      _queryParams['requestId'] = [requestId];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/targetHttpsProxies/' +
+        commons.Escaper.ecapeVariable('$targetHttpsProxy');
+
+    final _response = _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
     );
   }
 
@@ -45631,7 +47971,8 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy') +
         '/setQuicOverride';
@@ -45718,7 +48059,8 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy') +
         '/setSslCertificates';
@@ -45809,7 +48151,8 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy') +
         '/setSslPolicy';
@@ -45896,7 +48239,8 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy') +
         '/setUrlMap';
@@ -46038,7 +48382,8 @@ class TargetInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/targetInstances';
 
     final _response = _requester.request(
@@ -46124,7 +48469,8 @@ class TargetInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/targetInstances/' +
@@ -46197,7 +48543,8 @@ class TargetInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/targetInstances/' +
@@ -46285,7 +48632,8 @@ class TargetInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/targetInstances';
@@ -46417,7 +48765,8 @@ class TargetInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/targetInstances';
@@ -46517,7 +48866,8 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools/' +
@@ -46612,7 +48962,8 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools/' +
@@ -46750,8 +49101,9 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/targetPools';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/targetPools';
 
     final _response = _requester.request(
       _url,
@@ -46836,7 +49188,8 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools/' +
@@ -46909,7 +49262,8 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools/' +
@@ -46989,7 +49343,8 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools/' +
@@ -47078,7 +49433,8 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools';
@@ -47210,7 +49566,8 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools';
@@ -47304,7 +49661,8 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools/' +
@@ -47399,7 +49757,8 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools/' +
@@ -47500,7 +49859,8 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetPools/' +
@@ -47588,7 +49948,8 @@ class TargetSslProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy');
 
@@ -47652,7 +50013,8 @@ class TargetSslProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy');
 
@@ -47731,8 +50093,9 @@ class TargetSslProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/targetSslProxies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/targetSslProxies';
 
     final _response = _requester.request(
       _url,
@@ -47854,8 +50217,9 @@ class TargetSslProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/targetSslProxies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/targetSslProxies';
 
     final _response = _requester.request(
       _url,
@@ -47940,7 +50304,8 @@ class TargetSslProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy') +
         '/setBackendService';
@@ -48027,7 +50392,8 @@ class TargetSslProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy') +
         '/setProxyHeader';
@@ -48114,7 +50480,8 @@ class TargetSslProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy') +
         '/setSslCertificates';
@@ -48203,7 +50570,8 @@ class TargetSslProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy') +
         '/setSslPolicy';
@@ -48289,7 +50657,8 @@ class TargetTcpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetTcpProxies/' +
         commons.Escaper.ecapeVariable('$targetTcpProxy');
 
@@ -48353,7 +50722,8 @@ class TargetTcpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetTcpProxies/' +
         commons.Escaper.ecapeVariable('$targetTcpProxy');
 
@@ -48432,8 +50802,9 @@ class TargetTcpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/targetTcpProxies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/targetTcpProxies';
 
     final _response = _requester.request(
       _url,
@@ -48555,8 +50926,9 @@ class TargetTcpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/global/targetTcpProxies';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/targetTcpProxies';
 
     final _response = _requester.request(
       _url,
@@ -48641,7 +51013,8 @@ class TargetTcpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetTcpProxies/' +
         commons.Escaper.ecapeVariable('$targetTcpProxy') +
         '/setBackendService';
@@ -48728,7 +51101,8 @@ class TargetTcpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/targetTcpProxies/' +
         commons.Escaper.ecapeVariable('$targetTcpProxy') +
         '/setProxyHeader';
@@ -48870,7 +51244,8 @@ class TargetVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/aggregated/targetVpnGateways';
 
     final _response = _requester.request(
@@ -48956,7 +51331,8 @@ class TargetVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetVpnGateways/' +
@@ -49029,7 +51405,8 @@ class TargetVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetVpnGateways/' +
@@ -49117,7 +51494,8 @@ class TargetVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetVpnGateways';
@@ -49249,7 +51627,8 @@ class TargetVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/targetVpnGateways';
@@ -49393,7 +51772,9 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/urlMaps';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/urlMaps';
 
     final _response = _requester.request(
       _url,
@@ -49471,7 +51852,8 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap');
 
@@ -49535,7 +51917,8 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap');
 
@@ -49613,7 +51996,9 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/urlMaps';
 
     final _response = _requester.request(
       _url,
@@ -49631,6 +52016,9 @@ class UrlMapsResource {
 
   /// Initiates a cache invalidation operation, invalidating the specified path,
   /// scoped to the specified UrlMap.
+  ///
+  /// For more information, see \[Invalidating cached
+  /// content\](/cdn/docs/invalidating-cached-content).
   ///
   /// [request] - The metadata request object.
   ///
@@ -49697,7 +52085,8 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap') +
         '/invalidateCache';
@@ -49821,7 +52210,9 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/urlMaps';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/urlMaps';
 
     final _response = _requester.request(
       _url,
@@ -49909,7 +52300,8 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap');
 
@@ -49995,7 +52387,8 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap');
 
@@ -50066,7 +52459,8 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap') +
         '/validate';
@@ -50209,8 +52603,9 @@ class VpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
-        commons.Escaper.ecapeVariable('$project') + '/aggregated/vpnGateways';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/vpnGateways';
 
     final _response = _requester.request(
       _url,
@@ -50295,7 +52690,8 @@ class VpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnGateways/' +
@@ -50368,7 +52764,8 @@ class VpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnGateways/' +
@@ -50440,7 +52837,8 @@ class VpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnGateways/' +
@@ -50529,7 +52927,8 @@ class VpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnGateways';
@@ -50661,7 +53060,8 @@ class VpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnGateways';
@@ -50757,7 +53157,8 @@ class VpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnGateways/' +
@@ -50835,7 +53236,8 @@ class VpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnGateways/' +
@@ -50980,7 +53382,9 @@ class VpnTunnelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/aggregated/vpnTunnels';
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/aggregated/vpnTunnels';
 
     final _response = _requester.request(
       _url,
@@ -51065,7 +53469,8 @@ class VpnTunnelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnTunnels/' +
@@ -51138,7 +53543,8 @@ class VpnTunnelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnTunnels/' +
@@ -51225,7 +53631,8 @@ class VpnTunnelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnTunnels';
@@ -51357,7 +53764,8 @@ class VpnTunnelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
         '/vpnTunnels';
@@ -51434,7 +53842,8 @@ class ZoneOperationsResource {
 
     _downloadOptions = null;
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/operations/' +
@@ -51505,7 +53914,8 @@ class ZoneOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/operations/' +
@@ -51638,7 +54048,8 @@ class ZoneOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/operations';
@@ -51723,7 +54134,8 @@ class ZoneOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
         '/operations/' +
@@ -51796,7 +54208,8 @@ class ZonesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone');
 
@@ -51919,7 +54332,7 @@ class ZonesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/zones';
+    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones';
 
     final _response = _requester.request(
       _url,
@@ -52162,6 +54575,7 @@ class AcceleratorTypeAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -52391,6 +54805,7 @@ class AcceleratorTypeListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -52604,6 +55019,7 @@ class AcceleratorTypesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -52933,6 +55349,9 @@ class Address {
   /// - `VPC_PEERING` for addresses that are reserved for VPC peer networks.
   /// - `NAT_AUTO` for addresses that are external IP addresses automatically
   /// reserved for Cloud NAT.
+  /// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that
+  /// are reserved for a VLAN attachment in an IPsec encrypted Interconnect
+  /// configuration. These addresses are regional resources.
   /// Possible string values are:
   /// - "DNS_RESOLVER"
   /// - "GCE_ENDPOINT"
@@ -53156,6 +55575,7 @@ class AddressAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -53384,6 +55804,7 @@ class AddressListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -53597,6 +56018,7 @@ class AddressesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -53695,6 +56117,34 @@ class AddressesScopedList {
     }
     if (warning != null) {
       _json['warning'] = warning.toJson();
+    }
+    return _json;
+  }
+}
+
+/// Specifies options for controlling advanced machine features.
+///
+/// Options that would traditionally be configured in a BIOS belong here.
+/// Features that require operating system support may have corresponding
+/// entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in
+/// the Image supports nested virtualization being enabled or disabled).
+class AdvancedMachineFeatures {
+  /// Whether to enable nested virtualization or not (default is false).
+  core.bool enableNestedVirtualization;
+
+  AdvancedMachineFeatures();
+
+  AdvancedMachineFeatures.fromJson(core.Map _json) {
+    if (_json.containsKey('enableNestedVirtualization')) {
+      enableNestedVirtualization =
+          _json['enableNestedVirtualization'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (enableNestedVirtualization != null) {
+      _json['enableNestedVirtualization'] = enableNestedVirtualization;
     }
     return _json;
   }
@@ -54505,7 +56955,7 @@ class AuthorizationLoggingOptions {
 ///
 /// Google Compute Engine has two Autoscaler resources:
 ///
-/// * \[Global\](/compute/docs/reference/rest/{$api_version}/autoscalers) *
+/// * \[Zonal\](/compute/docs/reference/rest/{$api_version}/autoscalers) *
 /// \[Regional\](/compute/docs/reference/rest/{$api_version}/regionAutoscalers)
 ///
 /// Use autoscalers to automatically add or delete instances from a managed
@@ -54564,9 +57014,9 @@ class Autoscaler {
 
   /// Target recommended MIG size (number of instances) computed by autoscaler.
   ///
-  /// Autoscaler calculates recommended MIG size even when autoscaling policy
-  /// mode is different from ON. This field is empty when autoscaler is not
-  /// connected to the existing managed instance group or autoscaler did not
+  /// Autoscaler calculates the recommended MIG size even when the autoscaling
+  /// policy mode is different from ON. This field is empty when autoscaler is
+  /// not connected to an existing managed instance group or autoscaler did not
   /// generate its prediction.
   ///
   /// Output only.
@@ -54611,6 +57061,8 @@ class Autoscaler {
   core.List<AutoscalerStatusDetails> statusDetails;
 
   /// URL of the managed instance group that this autoscaler will scale.
+  ///
+  /// This field is required when creating an autoscaler.
   core.String target;
 
   /// URL of the zone where the instance group resides (for autoscalers living
@@ -54774,6 +57226,7 @@ class AutoscalerAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -55003,6 +57456,7 @@ class AutoscalerListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -55184,7 +57638,7 @@ class AutoscalerStatusDetails {
   /// - MODE_OFF (WARNING): Autoscaling is turned off. The number of instances
   /// in the group won't change automatically. The autoscaling configuration is
   /// preserved.
-  /// - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only up" mode.
+  /// - MODE_ONLY_UP (WARNING): Autoscaling is in the "Autoscale only out" mode.
   /// The autoscaler can add instances but not remove any.
   /// - MORE_THAN_ONE_BACKEND_SERVICE (ERROR): The instance group cannot be
   /// autoscaled because it has more than one backend service attached to it.
@@ -55307,6 +57761,7 @@ class AutoscalersScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -55413,7 +57868,7 @@ class AutoscalersScopedList {
 
 /// Cloud Autoscaler policy.
 class AutoscalingPolicy {
-  /// The number of seconds that the autoscaler should wait before it starts
+  /// The number of seconds that the autoscaler waits before it starts
   /// collecting information from a new instance.
   ///
   /// This prevents the autoscaler from collecting information when the instance
@@ -55435,16 +57890,16 @@ class AutoscalingPolicy {
   /// Configuration parameters of autoscaling based on load balancer.
   AutoscalingPolicyLoadBalancingUtilization loadBalancingUtilization;
 
-  /// The maximum number of instances that the autoscaler can scale up to.
+  /// The maximum number of instances that the autoscaler can scale out to.
   ///
   /// This is required when creating or updating an autoscaler. The maximum
-  /// number of replicas should not be lower than minimal number of replicas.
+  /// number of replicas must not be lower than minimal number of replicas.
   core.int maxNumReplicas;
 
-  /// The minimum number of replicas that the autoscaler can scale down to.
+  /// The minimum number of replicas that the autoscaler can scale in to.
   ///
-  /// This cannot be less than 0. If not provided, autoscaler will choose a
-  /// default value depending on maximum number of instances allowed.
+  /// This cannot be less than 0. If not provided, autoscaler chooses a default
+  /// value depending on maximum number of instances allowed.
   core.int minNumReplicas;
 
   /// Defines operating mode for this policy.
@@ -55528,19 +57983,19 @@ class AutoscalingPolicy {
 
 /// CPU utilization policy.
 class AutoscalingPolicyCpuUtilization {
-  /// The target CPU utilization that the autoscaler should maintain.
+  /// The target CPU utilization that the autoscaler maintains.
   ///
   /// Must be a float value in the range (0, 1\]. If not specified, the default
   /// is 0.6.
   ///
-  /// If the CPU level is below the target utilization, the autoscaler scales
-  /// down the number of instances until it reaches the minimum number of
-  /// instances you specified or until the average CPU of your instances reaches
-  /// the target utilization.
+  /// If the CPU level is below the target utilization, the autoscaler scales in
+  /// the number of instances until it reaches the minimum number of instances
+  /// you specified or until the average CPU of your instances reaches the
+  /// target utilization.
   ///
   /// If the average CPU is above the target utilization, the autoscaler scales
-  /// up until it reaches the maximum number of instances you specified or until
-  /// the average utilization reaches the target utilization.
+  /// out until it reaches the maximum number of instances you specified or
+  /// until the average utilization reaches the target utilization.
   core.double utilizationTarget;
 
   AutoscalingPolicyCpuUtilization();
@@ -55562,6 +58017,39 @@ class AutoscalingPolicyCpuUtilization {
 
 /// Custom utilization metric policy.
 class AutoscalingPolicyCustomMetricUtilization {
+  /// A filter string, compatible with a Stackdriver Monitoring filter string
+  /// for TimeSeries.list API call.
+  ///
+  /// This filter is used to select a specific TimeSeries for the purpose of
+  /// autoscaling and to determine whether the metric is exporting per-instance
+  /// or per-group data.
+  ///
+  /// For the filter to be valid for autoscaling purposes, the following rules
+  /// apply:
+  /// - You can only use the AND operator for joining selectors.
+  /// - You can only use direct equality comparison operator (=) without any
+  /// functions for each selector.
+  /// - You can specify the metric in both the filter string and in the metric
+  /// field. However, if specified in both places, the metric must be identical.
+  /// - The monitored resource type determines what kind of values are expected
+  /// for the metric. If it is a gce_instance, the autoscaler expects the metric
+  /// to include a separate TimeSeries for each instance in a group. In such a
+  /// case, you cannot filter on resource labels.
+  /// If the resource type is any other value, the autoscaler expects this
+  /// metric to contain values that apply to the entire autoscaled instance
+  /// group and resource label filtering can be performed to point autoscaler at
+  /// the correct TimeSeries to scale upon. This is called a per-group metric
+  /// for the purpose of autoscaling.
+  ///
+  /// If not specified, the type defaults to gce_instance.
+  ///
+  /// Try to provide a filter that is selective enough to pick just one
+  /// TimeSeries for the autoscaled group or for each of the instances (if you
+  /// are using gce_instance resource type). If multiple TimeSeries are returned
+  /// upon the query execution, the autoscaler will sum their respective values
+  /// to obtain its scaling value.
+  core.String filter;
+
   /// The identifier (type) of the Stackdriver Monitoring metric.
   ///
   /// The metric cannot have negative values.
@@ -55569,15 +58057,31 @@ class AutoscalingPolicyCustomMetricUtilization {
   /// The metric must have a value type of INT64 or DOUBLE.
   core.String metric;
 
-  /// The target value of the metric that autoscaler should maintain.
+  /// If scaling is based on a per-group metric value that represents the total
+  /// amount of work to be done or resource usage, set this value to an amount
+  /// assigned for a single instance of the scaled group.
+  ///
+  /// Autoscaler keeps the number of instances proportional to the value of this
+  /// metric. The metric itself does not change value due to group resizing.
+  ///
+  /// A good metric to use with the target is for example
+  /// pubsub.googleapis.com/subscription/num_undelivered_messages or a custom
+  /// metric exporting the total number of requests coming to your instances.
+  ///
+  /// A bad example would be a metric exporting an average or median latency,
+  /// since this value can't include a chunk assignable to a single instance, it
+  /// could be better used with utilization_target instead.
+  core.double singleInstanceAssignment;
+
+  /// The target value of the metric that autoscaler maintains.
   ///
   /// This must be a positive value. A utilization metric scales number of
   /// virtual machines handling requests to increase or decrease proportionally
   /// to the metric.
   ///
   /// For example, a good metric to use as a utilization_target is
-  /// compute.googleapis.com/instance/network/received_bytes_count. The
-  /// autoscaler will work to keep this value constant for each of the
+  /// https://www.googleapis.com/compute/v1/instance/network/received_bytes_count.
+  /// The autoscaler works to keep this value constant for each of the
   /// instances.
   core.double utilizationTarget;
 
@@ -55594,8 +58098,15 @@ class AutoscalingPolicyCustomMetricUtilization {
   AutoscalingPolicyCustomMetricUtilization();
 
   AutoscalingPolicyCustomMetricUtilization.fromJson(core.Map _json) {
+    if (_json.containsKey('filter')) {
+      filter = _json['filter'] as core.String;
+    }
     if (_json.containsKey('metric')) {
       metric = _json['metric'] as core.String;
+    }
+    if (_json.containsKey('singleInstanceAssignment')) {
+      singleInstanceAssignment =
+          (_json['singleInstanceAssignment'] as core.num).toDouble();
     }
     if (_json.containsKey('utilizationTarget')) {
       utilizationTarget = (_json['utilizationTarget'] as core.num).toDouble();
@@ -55607,8 +58118,14 @@ class AutoscalingPolicyCustomMetricUtilization {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (filter != null) {
+      _json['filter'] = filter;
+    }
     if (metric != null) {
       _json['metric'] = metric;
+    }
+    if (singleInstanceAssignment != null) {
+      _json['singleInstanceAssignment'] = singleInstanceAssignment;
     }
     if (utilizationTarget != null) {
       _json['utilizationTarget'] = utilizationTarget;
@@ -55623,7 +58140,7 @@ class AutoscalingPolicyCustomMetricUtilization {
 /// Configuration parameters of autoscaling based on load balancing.
 class AutoscalingPolicyLoadBalancingUtilization {
   /// Fraction of backend capacity utilization (set in HTTP(S) load balancing
-  /// configuration) that autoscaler should maintain.
+  /// configuration) that the autoscaler maintains.
   ///
   /// Must be a positive float value. If not defined, the default is 0.8.
   core.double utilizationTarget;
@@ -55657,8 +58174,8 @@ class AutoscalingPolicyScaleInControl {
   /// prepared to lose that many VMs in one step.
   FixedOrPercent maxScaledInReplicas;
 
-  /// How long back autoscaling should look when computing recommendations to
-  /// include directives regarding slower scale in, as described above.
+  /// How far back autoscaling looks when computing recommendations to include
+  /// directives regarding slower scale in, as described above.
   core.int timeWindowSec;
 
   AutoscalingPolicyScaleInControl();
@@ -55687,58 +58204,29 @@ class AutoscalingPolicyScaleInControl {
 
 /// Message containing information of one individual backend.
 class Backend {
-  /// Specifies the balancing mode for the backend.
+  /// Specifies how to determine whether the backend of a load balancer can
+  /// handle additional traffic or is fully loaded.
   ///
-  /// When choosing a balancing mode, you need to consider the
-  /// loadBalancingScheme, and protocol for the backend service, as well as the
-  /// type of backend (instance group or NEG).
-  ///
-  ///
-  /// - If the load balancing mode is CONNECTION, then the load is spread based
-  /// on how many concurrent connections the backend can handle.
-  /// You can use the CONNECTION balancing mode if the protocol for the backend
-  /// service is SSL, TCP, or UDP.
-  ///
-  /// If the loadBalancingScheme for the backend service is EXTERNAL (SSL Proxy
-  /// and TCP Proxy load balancers), you must also specify exactly one of the
-  /// following parameters: maxConnections (except for regional managed instance
-  /// groups), maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
-  ///
-  /// If the loadBalancingScheme for the backend service is INTERNAL (internal
-  /// TCP/UDP load balancers), you cannot specify any additional parameters.
-  ///
-  /// - If the load balancing mode is RATE, the load is spread based on the rate
-  /// of HTTP requests per second (RPS).
-  /// You can use the RATE balancing mode if the protocol for the backend
-  /// service is HTTP or HTTPS.
-  ///
-  /// You must specify exactly one of the following parameters: maxRate (except
-  /// for regional managed instance groups), maxRatePerInstance, or
-  /// maxRatePerEndpoint.
-  ///
-  /// - If the load balancing mode is UTILIZATION, the load is spread based on
-  /// the backend utilization of instances in an instance group.
-  /// You can use the UTILIZATION balancing mode if the loadBalancingScheme of
-  /// the backend service is EXTERNAL, INTERNAL_SELF_MANAGED, or
-  /// INTERNAL_MANAGED and the backends are instance groups. There are no
-  /// restrictions on the backend service protocol.
+  /// For usage guidelines, see  Connection balancing mode.
   /// Possible string values are:
   /// - "CONNECTION"
   /// - "RATE"
   /// - "UTILIZATION"
   core.String balancingMode;
 
-  /// A multiplier applied to the group's maximum servicing capacity (based on
-  /// UTILIZATION, RATE or CONNECTION).
+  /// A multiplier applied to the backend's target capacity of its balancing
+  /// mode.
   ///
-  /// Default value is 1, which means the group will serve up to 100% of its
+  /// The default value is 1, which means the group serves up to 100% of its
   /// configured capacity (depending on balancingMode). A setting of 0 means the
-  /// group is completely drained, offering 0% of its available capacity. Valid
-  /// range is 0.0 and \[0.1,1.0\]. You cannot configure a setting larger than 0
-  /// and smaller than 0.1. You cannot configure a setting of 0 when there is
-  /// only one backend attached to the backend service.
+  /// group is completely drained, offering 0% of its available capacity. The
+  /// valid ranges are 0.0 and \[0.1,1.0\]. You cannot configure a setting
+  /// larger than 0 and smaller than 0.1. You cannot configure a setting of 0
+  /// when there is only one backend attached to the backend service.
   ///
-  /// This cannot be used for internal load balancing.
+  /// Not supported by:
+  ///
+  /// - Internal TCP/UDP Load Balancing - Network Load Balancing
   core.double capacityScaler;
 
   /// An optional description of this resource.
@@ -55759,118 +58247,77 @@ class Backend {
   /// service's loadBalancingScheme.
   ///
   ///
-  /// - When the loadBalancingScheme for the backend service is EXTERNAL,
-  /// INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, the backend can be either an
-  /// instance group or a NEG. The backends on the backend service must be
-  /// either all instance groups or all NEGs. You cannot mix instance group and
-  /// NEG backends on the same backend service.
+  /// - When the loadBalancingScheme for the backend service is EXTERNAL (except
+  /// Network Load Balancing), INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED , the
+  /// backend can be either an instance group or a NEG. The backends on the
+  /// backend service must be either all instance groups or all NEGs. You cannot
+  /// mix instance group and NEG backends on the same backend service.
   ///
   ///
-  /// - When the loadBalancingScheme for the backend service is INTERNAL, the
-  /// backend must be an instance group in the same region as the backend
-  /// service. NEGs are not supported.
+  /// - When the loadBalancingScheme for the backend service is EXTERNAL for
+  /// Network Load Balancing or INTERNAL for Internal TCP/UDP Load Balancing,
+  /// the backend must be an instance group. NEGs are not supported.
+  ///
+  /// For regional services, the backend must be in the same region as the
+  /// backend service.
   ///
   /// You must use the fully-qualified URL (starting with
   /// https://www.googleapis.com/) to specify the instance group or NEG. Partial
   /// URLs are not supported.
   core.String group;
 
-  /// Defines a target maximum number of simultaneous connections that the
-  /// backend can handle.
+  /// Defines a target maximum number of simultaneous connections.
   ///
-  /// Valid for network endpoint group and instance group backends (except for
-  /// regional managed instance groups). If the backend's balancingMode is
-  /// UTILIZATION, this is an optional parameter. If the backend's balancingMode
-  /// is CONNECTION, and backend is attached to a backend service whose
-  /// loadBalancingScheme is EXTERNAL, you must specify either this parameter,
-  /// maxConnectionsPerInstance, or maxConnectionsPerEndpoint.
+  /// For usage guidelines, see Connection balancing mode and Utilization
+  /// balancing mode. Not available if the backend's balancingMode is RATE. Not
+  /// supported by:
   ///
-  /// Not available if the backend's balancingMode is RATE. If the
-  /// loadBalancingScheme is INTERNAL, then maxConnections is not supported,
-  /// even though the backend requires a balancing mode of CONNECTION.
+  /// - Internal TCP/UDP Load Balancing - Network Load Balancing
   core.int maxConnections;
 
-  /// Defines a target maximum number of simultaneous connections for an
-  /// endpoint of a NEG.
+  /// Defines a target maximum number of simultaneous connections.
   ///
-  /// This is multiplied by the number of endpoints in the NEG to implicitly
-  /// calculate a maximum number of target maximum simultaneous connections for
-  /// the NEG. If the backend's balancingMode is CONNECTION, and the backend is
-  /// attached to a backend service whose loadBalancingScheme is EXTERNAL, you
-  /// must specify either this parameter, maxConnections, or
-  /// maxConnectionsPerInstance.
+  /// For usage guidelines, see Connection balancing mode and Utilization
+  /// balancing mode.
   ///
-  /// Not available if the backend's balancingMode is RATE. Internal TCP/UDP
-  /// load balancing does not support setting maxConnectionsPerEndpoint even
-  /// though its backends require a balancing mode of CONNECTION.
+  /// Not available if the backend's balancingMode is RATE. Not supported by:
+  ///
+  /// - Internal TCP/UDP Load Balancing - Network Load Balancing.
   core.int maxConnectionsPerEndpoint;
 
-  /// Defines a target maximum number of simultaneous connections for a single
-  /// VM in a backend instance group.
+  /// Defines a target maximum number of simultaneous connections.
   ///
-  /// This is multiplied by the number of instances in the instance group to
-  /// implicitly calculate a target maximum number of simultaneous connections
-  /// for the whole instance group. If the backend's balancingMode is
-  /// UTILIZATION, this is an optional parameter. If the backend's balancingMode
-  /// is CONNECTION, and backend is attached to a backend service whose
-  /// loadBalancingScheme is EXTERNAL, you must specify either this parameter,
-  /// maxConnections, or maxConnectionsPerEndpoint.
+  /// For usage guidelines, see Connection balancing mode and Utilization
+  /// balancing mode.
   ///
-  /// Not available if the backend's balancingMode is RATE. Internal TCP/UDP
-  /// load balancing does not support setting maxConnectionsPerInstance even
-  /// though its backends require a balancing mode of CONNECTION.
+  /// Not available if the backend's balancingMode is RATE. Not supported by:
+  ///
+  /// - Internal TCP/UDP Load Balancing - Network Load Balancing.
   core.int maxConnectionsPerInstance;
 
-  /// Defines a maximum number of HTTP requests per second (RPS) that the
-  /// backend can handle.
+  /// Defines a maximum number of HTTP requests per second (RPS).
   ///
-  /// Valid for network endpoint group and instance group backends (except for
-  /// regional managed instance groups). Must not be defined if the backend is a
-  /// managed instance group that uses autoscaling based on load balancing.
-  ///
-  /// If the backend's balancingMode is UTILIZATION, this is an optional
-  /// parameter. If the backend's balancingMode is RATE, you must specify
-  /// maxRate, maxRatePerInstance, or maxRatePerEndpoint.
+  /// For usage guidelines, see Rate balancing mode and Utilization balancing
+  /// mode.
   ///
   /// Not available if the backend's balancingMode is CONNECTION.
   core.int maxRate;
 
-  /// Defines a maximum target for requests per second (RPS) for an endpoint of
-  /// a NEG.
+  /// Defines a maximum target for requests per second (RPS).
   ///
-  /// This is multiplied by the number of endpoints in the NEG to implicitly
-  /// calculate a target maximum rate for the NEG.
-  ///
-  /// If the backend's balancingMode is RATE, you must specify either this
-  /// parameter, maxRate (except for regional managed instance groups), or
-  /// maxRatePerInstance.
+  /// For usage guidelines, see Rate balancing mode and Utilization balancing
+  /// mode.
   ///
   /// Not available if the backend's balancingMode is CONNECTION.
   core.double maxRatePerEndpoint;
 
-  /// Defines a maximum target for requests per second (RPS) for a single VM in
-  /// a backend instance group.
+  /// Defines a maximum target for requests per second (RPS).
   ///
-  /// This is multiplied by the number of instances in the instance group to
-  /// implicitly calculate a target maximum rate for the whole instance group.
-  ///
-  /// If the backend's balancingMode is UTILIZATION, this is an optional
-  /// parameter. If the backend's balancingMode is RATE, you must specify either
-  /// this parameter, maxRate (except for regional managed instance groups), or
-  /// maxRatePerEndpoint.
+  /// For usage guidelines, see Rate balancing mode and Utilization balancing
+  /// mode.
   ///
   /// Not available if the backend's balancingMode is CONNECTION.
   core.double maxRatePerInstance;
-
-  /// Defines the maximum average backend utilization of a backend VM in an
-  /// instance group.
-  ///
-  /// The valid range is \[0.0, 1.0\]. This is an optional parameter if the
-  /// backend's balancingMode is UTILIZATION.
-  ///
-  /// This parameter can be used in conjunction with maxRate,
-  /// maxRatePerInstance, maxConnections (except for regional managed instance
-  /// groups), or maxConnectionsPerInstance.
   core.double maxUtilization;
 
   Backend();
@@ -55976,6 +58423,9 @@ class BackendBucket {
   /// Output only.
   core.String creationTimestamp;
 
+  /// Headers that the HTTP/S load balancer should add to proxied responses.
+  core.List<core.String> customResponseHeaders;
+
   /// An optional textual description of the resource; provided by the client
   /// when the resource is created.
   core.String description;
@@ -56019,6 +58469,11 @@ class BackendBucket {
     if (_json.containsKey('creationTimestamp')) {
       creationTimestamp = _json['creationTimestamp'] as core.String;
     }
+    if (_json.containsKey('customResponseHeaders')) {
+      customResponseHeaders = (_json['customResponseHeaders'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
@@ -56050,6 +58505,9 @@ class BackendBucket {
     if (creationTimestamp != null) {
       _json['creationTimestamp'] = creationTimestamp;
     }
+    if (customResponseHeaders != null) {
+      _json['customResponseHeaders'] = customResponseHeaders;
+    }
     if (description != null) {
       _json['description'] = description;
     }
@@ -56074,6 +58532,61 @@ class BackendBucket {
 
 /// Message containing Cloud CDN configuration for a backend bucket.
 class BackendBucketCdnPolicy {
+  /// Specifies the cache setting for all responses from this backend.
+  ///
+  /// The possible values are:
+  ///
+  /// USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to
+  /// cache content. Responses without these headers will not be cached at
+  /// Google's edge, and will require a full trip to the origin on every
+  /// request, potentially impacting performance and increasing load on the
+  /// origin server.
+  ///
+  /// FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or
+  /// "no-cache" directives in Cache-Control response headers. Warning: this may
+  /// result in Cloud CDN caching private, per-user (user identifiable) content.
+  ///
+  /// CACHE_ALL_STATIC Automatically cache static content, including common
+  /// image formats, media (video and audio), and web assets (JavaScript and
+  /// CSS). Requests and responses that are marked as uncacheable, as well as
+  /// dynamic content (including HTML), will not be cached.
+  /// Possible string values are:
+  /// - "CACHE_ALL_STATIC"
+  /// - "FORCE_CACHE_ALL"
+  /// - "INVALID_CACHE_MODE"
+  /// - "USE_ORIGIN_HEADERS"
+  core.String cacheMode;
+
+  /// Specifies a separate client (e.g. browser client) TTL, separate from the
+  /// TTL for Cloud CDN's edge caches.
+  ///
+  /// Leaving this empty will use the same cache TTL for both Cloud CDN and the
+  /// client-facing response. The maximum allowed value is 86400s (1 day).
+  core.int clientTtl;
+
+  /// Specifies the default TTL for cached content served by this origin for
+  /// responses that do not have an existing valid TTL (max-age or s-max-age).
+  ///
+  /// Setting a TTL of "0" means "always revalidate". The value of defaultTTL
+  /// cannot be set to a value greater than that of maxTTL, but can be equal.
+  /// When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will
+  /// overwrite the TTL set in all responses. The maximum allowed value is
+  /// 31,622,400s (1 year), noting that infrequently accessed objects may be
+  /// evicted from the cache before the defined TTL.
+  core.int defaultTtl;
+
+  /// Specifies the maximum allowed TTL for cached content served by this
+  /// origin.
+  ///
+  /// Cache directives that attempt to set a max-age or s-maxage higher than
+  /// this, or an Expires header more than maxTTL seconds in the future will be
+  /// capped at the value of maxTTL, as if it were the value of an s-maxage
+  /// Cache-Control directive. Headers sent to the client will not be modified.
+  /// Setting a TTL of "0" means "always revalidate". The maximum allowed value
+  /// is 31,622,400s (1 year), noting that infrequently accessed objects may be
+  /// evicted from the cache before the defined TTL.
+  core.int maxTtl;
+
   /// Maximum number of seconds the response to a signed URL request will be
   /// considered fresh.
   ///
@@ -56093,6 +58606,18 @@ class BackendBucketCdnPolicy {
   BackendBucketCdnPolicy();
 
   BackendBucketCdnPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('cacheMode')) {
+      cacheMode = _json['cacheMode'] as core.String;
+    }
+    if (_json.containsKey('clientTtl')) {
+      clientTtl = _json['clientTtl'] as core.int;
+    }
+    if (_json.containsKey('defaultTtl')) {
+      defaultTtl = _json['defaultTtl'] as core.int;
+    }
+    if (_json.containsKey('maxTtl')) {
+      maxTtl = _json['maxTtl'] as core.int;
+    }
     if (_json.containsKey('signedUrlCacheMaxAgeSec')) {
       signedUrlCacheMaxAgeSec = _json['signedUrlCacheMaxAgeSec'] as core.String;
     }
@@ -56105,6 +58630,18 @@ class BackendBucketCdnPolicy {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (cacheMode != null) {
+      _json['cacheMode'] = cacheMode;
+    }
+    if (clientTtl != null) {
+      _json['clientTtl'] = clientTtl;
+    }
+    if (defaultTtl != null) {
+      _json['defaultTtl'] = defaultTtl;
+    }
+    if (maxTtl != null) {
+      _json['maxTtl'] = maxTtl;
+    }
     if (signedUrlCacheMaxAgeSec != null) {
       _json['signedUrlCacheMaxAgeSec'] = signedUrlCacheMaxAgeSec;
     }
@@ -56175,6 +58712,7 @@ class BackendBucketListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -56364,6 +58902,9 @@ class BackendService {
   core.List<Backend> backends;
 
   /// Cloud CDN configuration for this BackendService.
+  ///
+  /// Not available for Internal TCP/UDP Load Balancing and Network Load
+  /// Balancing.
   BackendServiceCdnPolicy cdnPolicy;
 
   /// Settings controlling the volume of connections to a backend service.
@@ -56410,6 +58951,9 @@ class BackendService {
   /// Headers that the HTTP/S load balancer should add to proxied requests.
   core.List<core.String> customRequestHeaders;
 
+  /// Headers that the HTTP/S load balancer should add to proxied responses.
+  core.List<core.String> customResponseHeaders;
+
   /// An optional description of this resource.
   ///
   /// Provide this property when you create the resource.
@@ -56421,7 +58965,8 @@ class BackendService {
   /// HTTP or HTTPS.
   core.bool enableCDN;
 
-  /// Applicable only to Failover for Internal TCP/UDP Load Balancing.
+  /// Applicable only to Failover for Internal TCP/UDP Load Balancing and
+  /// Network Load Balancing.
   ///
   /// Requires at least one backend instance group to be defined as a backup
   /// (failover) backend.
@@ -56458,6 +59003,9 @@ class BackendService {
   core.List<core.String> healthChecks;
 
   /// The configurations for Identity-Aware Proxy on this resource.
+  ///
+  /// Not available for Internal TCP/UDP Load Balancing and Network Load
+  /// Balancing.
   BackendServiceIAP iap;
 
   /// The unique identifier for the resource.
@@ -56476,11 +59024,11 @@ class BackendService {
 
   /// Specifies the load balancer type.
   ///
-  /// Choose EXTERNAL for load balancers that receive traffic from external
-  /// clients. Choose INTERNAL for Internal TCP/UDP Load Balancing. Choose
-  /// INTERNAL_MANAGED for Internal HTTP(S) Load Balancing. Choose
+  /// Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network
+  /// Load Balancing. Choose INTERNAL for Internal TCP/UDP Load Balancing.
+  /// Choose INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.
   /// INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for
-  /// one type of load balancing cannot be used with another. For more
+  /// one type of load balancer cannot be used with another. For more
   /// information, refer to Choosing a load balancer.
   /// Possible string values are:
   /// - "EXTERNAL"
@@ -56551,7 +59099,7 @@ class BackendService {
 
   /// The URL of the network to which this backend service belongs.
   ///
-  /// This field can only be spcified when the load balancing scheme is set to
+  /// This field can only be specified when the load balancing scheme is set to
   /// INTERNAL.
   core.String network;
 
@@ -56582,15 +59130,15 @@ class BackendService {
   /// A named port on a backend instance group representing the port for
   /// communication to the backend VMs in that group.
   ///
-  /// Required when the loadBalancingScheme is EXTERNAL, INTERNAL_MANAGED, or
-  /// INTERNAL_SELF_MANAGED and the backends are instance groups. The named port
-  /// must be defined on each backend instance group. This parameter has no
-  /// meaning if the backends are NEGs.
+  /// Required when the loadBalancingScheme is EXTERNAL (except Network Load
+  /// Balancing), INTERNAL_MANAGED, or INTERNAL_SELF_MANAGED and the backends
+  /// are instance groups. The named port must be defined on each backend
+  /// instance group. This parameter has no meaning if the backends are NEGs.
   ///
   ///
   ///
-  /// Must be omitted when the loadBalancingScheme is INTERNAL (Internal TCP/UDP
-  /// Load Balancing).
+  /// Backend services for Internal TCP/UDP Load Balancing and Network Load
+  /// Balancing require you omit port_name.
   core.String portName;
 
   /// The protocol this BackendService uses to communicate with backends.
@@ -56628,6 +59176,16 @@ class BackendService {
   /// Output only.
   core.String securityPolicy;
 
+  /// This field specifies the security policy that applies to this backend
+  /// service.
+  ///
+  /// This field is applicable to either:
+  /// - A regional backend service with the service_protocol set to HTTP, HTTPS,
+  /// or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED.
+  /// - A global backend service with the load_balancing_scheme set to
+  /// INTERNAL_SELF_MANAGED.
+  SecuritySettings securitySettings;
+
   /// Server-defined URL for the resource.
   ///
   /// Output only.
@@ -56635,12 +59193,14 @@ class BackendService {
 
   /// Type of session affinity to use.
   ///
-  /// The default is NONE. Session affinity is not applicable if the --protocol
-  /// is UDP.
+  /// The default is NONE.
   ///
-  /// When the loadBalancingScheme is EXTERNAL, possible values are NONE,
-  /// CLIENT_IP, or GENERATED_COOKIE. You can use GENERATED_COOKIE if the
-  /// protocol is HTTP or HTTPS.
+  /// When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing,
+  /// the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or
+  /// CLIENT_IP_PORT_PROTO. * For all other load balancers that use
+  /// loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or
+  /// GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP,
+  /// HTTP2, or HTTPS.
   ///
   /// When the loadBalancingScheme is INTERNAL, possible values are NONE,
   /// CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
@@ -56666,6 +59226,7 @@ class BackendService {
   /// of load balancer.
   ///
   /// For more information see, Backend service settings The default is 30
+  /// seconds. The full range of timeout values allowed is 1 - 2,147,483,647
   /// seconds.
   core.int timeoutSec;
 
@@ -56702,6 +59263,11 @@ class BackendService {
     }
     if (_json.containsKey('customRequestHeaders')) {
       customRequestHeaders = (_json['customRequestHeaders'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('customResponseHeaders')) {
+      customResponseHeaders = (_json['customResponseHeaders'] as core.List)
           .map<core.String>((value) => value as core.String)
           .toList();
     }
@@ -56768,6 +59334,10 @@ class BackendService {
     if (_json.containsKey('securityPolicy')) {
       securityPolicy = _json['securityPolicy'] as core.String;
     }
+    if (_json.containsKey('securitySettings')) {
+      securitySettings = SecuritySettings.fromJson(
+          _json['securitySettings'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
     }
@@ -56804,6 +59374,9 @@ class BackendService {
     }
     if (customRequestHeaders != null) {
       _json['customRequestHeaders'] = customRequestHeaders;
+    }
+    if (customResponseHeaders != null) {
+      _json['customResponseHeaders'] = customResponseHeaders;
     }
     if (description != null) {
       _json['description'] = description;
@@ -56861,6 +59434,9 @@ class BackendService {
     }
     if (securityPolicy != null) {
       _json['securityPolicy'] = securityPolicy;
+    }
+    if (securitySettings != null) {
+      _json['securitySettings'] = securitySettings.toJson();
     }
     if (selfLink != null) {
       _json['selfLink'] = selfLink;
@@ -56935,6 +59511,7 @@ class BackendServiceAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -57105,6 +59682,61 @@ class BackendServiceCdnPolicy {
   /// The CacheKeyPolicy for this CdnPolicy.
   CacheKeyPolicy cacheKeyPolicy;
 
+  /// Specifies the cache setting for all responses from this backend.
+  ///
+  /// The possible values are:
+  ///
+  /// USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to
+  /// cache content. Responses without these headers will not be cached at
+  /// Google's edge, and will require a full trip to the origin on every
+  /// request, potentially impacting performance and increasing load on the
+  /// origin server.
+  ///
+  /// FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or
+  /// "no-cache" directives in Cache-Control response headers. Warning: this may
+  /// result in Cloud CDN caching private, per-user (user identifiable) content.
+  ///
+  /// CACHE_ALL_STATIC Automatically cache static content, including common
+  /// image formats, media (video and audio), and web assets (JavaScript and
+  /// CSS). Requests and responses that are marked as uncacheable, as well as
+  /// dynamic content (including HTML), will not be cached.
+  /// Possible string values are:
+  /// - "CACHE_ALL_STATIC"
+  /// - "FORCE_CACHE_ALL"
+  /// - "INVALID_CACHE_MODE"
+  /// - "USE_ORIGIN_HEADERS"
+  core.String cacheMode;
+
+  /// Specifies a separate client (e.g. browser client) TTL, separate from the
+  /// TTL for Cloud CDN's edge caches.
+  ///
+  /// Leaving this empty will use the same cache TTL for both Cloud CDN and the
+  /// client-facing response. The maximum allowed value is 86400s (1 day).
+  core.int clientTtl;
+
+  /// Specifies the default TTL for cached content served by this origin for
+  /// responses that do not have an existing valid TTL (max-age or s-max-age).
+  ///
+  /// Setting a TTL of "0" means "always revalidate". The value of defaultTTL
+  /// cannot be set to a value greater than that of maxTTL, but can be equal.
+  /// When the cacheMode is set to FORCE_CACHE_ALL, the defaultTTL will
+  /// overwrite the TTL set in all responses. The maximum allowed value is
+  /// 31,622,400s (1 year), noting that infrequently accessed objects may be
+  /// evicted from the cache before the defined TTL.
+  core.int defaultTtl;
+
+  /// Specifies the maximum allowed TTL for cached content served by this
+  /// origin.
+  ///
+  /// Cache directives that attempt to set a max-age or s-maxage higher than
+  /// this, or an Expires header more than maxTTL seconds in the future will be
+  /// capped at the value of maxTTL, as if it were the value of an s-maxage
+  /// Cache-Control directive. Headers sent to the client will not be modified.
+  /// Setting a TTL of "0" means "always revalidate". The maximum allowed value
+  /// is 31,622,400s (1 year), noting that infrequently accessed objects may be
+  /// evicted from the cache before the defined TTL.
+  core.int maxTtl;
+
   /// Maximum number of seconds the response to a signed URL request will be
   /// considered fresh.
   ///
@@ -57128,6 +59760,18 @@ class BackendServiceCdnPolicy {
       cacheKeyPolicy = CacheKeyPolicy.fromJson(
           _json['cacheKeyPolicy'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('cacheMode')) {
+      cacheMode = _json['cacheMode'] as core.String;
+    }
+    if (_json.containsKey('clientTtl')) {
+      clientTtl = _json['clientTtl'] as core.int;
+    }
+    if (_json.containsKey('defaultTtl')) {
+      defaultTtl = _json['defaultTtl'] as core.int;
+    }
+    if (_json.containsKey('maxTtl')) {
+      maxTtl = _json['maxTtl'] as core.int;
+    }
     if (_json.containsKey('signedUrlCacheMaxAgeSec')) {
       signedUrlCacheMaxAgeSec = _json['signedUrlCacheMaxAgeSec'] as core.String;
     }
@@ -57143,6 +59787,18 @@ class BackendServiceCdnPolicy {
     if (cacheKeyPolicy != null) {
       _json['cacheKeyPolicy'] = cacheKeyPolicy.toJson();
     }
+    if (cacheMode != null) {
+      _json['cacheMode'] = cacheMode;
+    }
+    if (clientTtl != null) {
+      _json['clientTtl'] = clientTtl;
+    }
+    if (defaultTtl != null) {
+      _json['defaultTtl'] = defaultTtl;
+    }
+    if (maxTtl != null) {
+      _json['maxTtl'] = maxTtl;
+    }
     if (signedUrlCacheMaxAgeSec != null) {
       _json['signedUrlCacheMaxAgeSec'] = signedUrlCacheMaxAgeSec;
     }
@@ -57153,7 +59809,8 @@ class BackendServiceCdnPolicy {
   }
 }
 
-/// Applicable only to Failover for Internal TCP/UDP Load Balancing.
+/// Applicable only to Failover for Internal TCP/UDP Load Balancing and Network
+/// Load Balancing.
 ///
 /// On failover or failback, this field indicates whether connection draining
 /// will be honored. GCP has a fixed connection draining timeout of 10 minutes.
@@ -57168,17 +59825,17 @@ class BackendServiceFailoverPolicy {
   /// The default is false.
   core.bool disableConnectionDrainOnFailover;
 
-  /// Applicable only to Failover for Internal TCP/UDP Load Balancing.
-  ///
-  /// If set to true, connections to the load balancer are dropped when all
-  /// primary and all backup backend VMs are unhealthy. If set to false,
-  /// connections are distributed among all primary VMs when all primary and all
-  /// backup backend VMs are unhealthy.
+  /// Applicable only to Failover for Internal TCP/UDP Load Balancing and
+  /// Network Load Balancing, If set to true, connections to the load balancer
+  /// are dropped when all primary and all backup backend VMs are unhealthy.If
+  /// set to false, connections are distributed among all primary VMs when all
+  /// primary and all backup backend VMs are unhealthy.
   ///
   /// The default is false.
   core.bool dropTrafficIfUnhealthy;
 
-  /// Applicable only to Failover for Internal TCP/UDP Load Balancing.
+  /// Applicable only to Failover for Internal TCP/UDP Load Balancing and
+  /// Network Load Balancing.
   ///
   /// The value of the field must be in the range \[0, 1\]. If the value is 0,
   /// the load balancer performs a failover when the number of healthy primary
@@ -57394,6 +60051,7 @@ class BackendServiceListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -57664,6 +60322,7 @@ class BackendServicesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -57766,9 +60425,6 @@ class BackendServicesScopedList {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding.
-  ///
-  /// Expected to be globally unique to support the internal bindings-by-ID API.
   core.String bindingId;
 
   /// The condition that is associated with this binding.
@@ -58340,6 +60996,7 @@ class CommitmentAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -58569,6 +61226,7 @@ class CommitmentListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -58782,6 +61440,7 @@ class CommitmentsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -58994,11 +61653,11 @@ class ConfidentialInstanceConfig {
 
 /// Message containing connection draining configuration.
 class ConnectionDraining {
-  /// The amount of time in seconds to allow existing connections to persist
-  /// while on unhealthy backend VMs.
+  /// Configures a duration timeout for existing requests on a removed backend
+  /// instance.
   ///
-  /// Only applicable if the protocol is not UDP. The valid range is \[0,
-  /// 3600\].
+  /// For supported load balancers and protocols, as described in Enabling
+  /// connection draining.
   core.int drainingTimeoutSec;
 
   ConnectionDraining();
@@ -59132,7 +61791,7 @@ class CorsPolicy {
   /// Specifies the regualar expression patterns that match allowed origins.
   ///
   /// For regular expression grammar please see
-  /// en.cppreference.com/w/cpp/regex/ecmascript
+  /// github.com/google/re2/wiki/Syntax
   /// An origin is allowed if it matches either an item in allowOrigins or an
   /// item in allowOriginRegexes.
   core.List<core.String> allowOriginRegexes;
@@ -59506,6 +62165,11 @@ class Disk {
   /// Reserved for Google's use.
   core.List<core.String> licenses;
 
+  /// An opaque location hint used to place the disk close to other resources.
+  ///
+  /// This field is for use by internal tools that use the public API.
+  core.String locationHint;
+
   /// Name of the resource.
   ///
   /// Provided by the client when the resource is created. The name must be 1-63
@@ -59543,6 +62207,11 @@ class Disk {
 
   /// Resource policies applied to this disk for automatic snapshot creations.
   core.List<core.String> resourcePolicies;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool satisfiesPzs;
 
   /// Server-defined fully-qualified URL for this resource.
   ///
@@ -59648,11 +62317,23 @@ class Disk {
   /// Output only.
   core.String sourceSnapshotId;
 
+  /// The full Google Cloud Storage URI where the disk image is stored.
+  ///
+  /// This file must be a gzip-compressed tarball whose name ends in .tar.gz or
+  /// virtual machine disk whose name ends in vmdk. Valid URIs may start with
+  /// gs:// or https://storage.googleapis.com/. This flag is not optimized for
+  /// creating multiple disks from a source storage object. To create many disks
+  /// from a source storage object, use gcloud compute images import instead.
+  core.String sourceStorageObject;
+
   /// The status of disk creation.
   ///
-  /// CREATING: Disk is provisioning. RESTORING: Source data is being copied
-  /// into the disk. FAILED: Disk creation failed. READY: Disk is ready for use.
-  /// DELETING: Disk is deleting.
+  ///
+  /// - CREATING: Disk is provisioning.
+  /// - RESTORING: Source data is being copied into the disk.
+  /// - FAILED: Disk creation failed.
+  /// - READY: Disk is ready for use.
+  /// - DELETING: Disk is deleting.
   ///
   /// Output only.
   /// Possible string values are:
@@ -59737,6 +62418,9 @@ class Disk {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('locationHint')) {
+      locationHint = _json['locationHint'] as core.String;
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -59758,6 +62442,9 @@ class Disk {
       resourcePolicies = (_json['resourcePolicies'] as core.List)
           .map<core.String>((value) => value as core.String)
           .toList();
+    }
+    if (_json.containsKey('satisfiesPzs')) {
+      satisfiesPzs = _json['satisfiesPzs'] as core.bool;
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
@@ -59792,6 +62479,9 @@ class Disk {
     }
     if (_json.containsKey('sourceSnapshotId')) {
       sourceSnapshotId = _json['sourceSnapshotId'] as core.String;
+    }
+    if (_json.containsKey('sourceStorageObject')) {
+      sourceStorageObject = _json['sourceStorageObject'] as core.String;
     }
     if (_json.containsKey('status')) {
       status = _json['status'] as core.String;
@@ -59848,6 +62538,9 @@ class Disk {
     if (licenses != null) {
       _json['licenses'] = licenses;
     }
+    if (locationHint != null) {
+      _json['locationHint'] = locationHint;
+    }
     if (name != null) {
       _json['name'] = name;
     }
@@ -59865,6 +62558,9 @@ class Disk {
     }
     if (resourcePolicies != null) {
       _json['resourcePolicies'] = resourcePolicies;
+    }
+    if (satisfiesPzs != null) {
+      _json['satisfiesPzs'] = satisfiesPzs;
     }
     if (selfLink != null) {
       _json['selfLink'] = selfLink;
@@ -59896,6 +62592,9 @@ class Disk {
     }
     if (sourceSnapshotId != null) {
       _json['sourceSnapshotId'] = sourceSnapshotId;
+    }
+    if (sourceStorageObject != null) {
+      _json['sourceStorageObject'] = sourceStorageObject;
     }
     if (status != null) {
       _json['status'] = status;
@@ -59973,6 +62672,7 @@ class DiskAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -60277,6 +62977,7 @@ class DiskListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -60695,6 +63396,7 @@ class DiskTypeAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -60923,6 +63625,7 @@ class DiskTypeListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -61136,6 +63839,7 @@ class DiskTypesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -61369,6 +64073,7 @@ class DisksScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -61495,7 +64200,7 @@ class DisplayDevice {
 }
 
 class DistributionPolicy {
-  /// Zones where the regional managed instance group will create and manage
+  /// Zones where the regional managed instance group will create and manage its
   /// instances.
   core.List<DistributionPolicyZoneConfiguration> zones;
 
@@ -61711,6 +64416,7 @@ class ExchangedPeeringRoutesListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -62223,6 +64929,7 @@ class ExternalVpnGatewayListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -62878,6 +65585,7 @@ class FirewallListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -63069,6 +65777,775 @@ class FirewallLogConfig {
   }
 }
 
+class FirewallPoliciesListAssociationsResponse {
+  /// A list of associations.
+  core.List<FirewallPolicyAssociation> associations;
+
+  /// Type of firewallPolicy associations.
+  ///
+  /// Always compute#FirewallPoliciesListAssociations for lists of
+  /// firewallPolicy associations.
+  ///
+  /// Output only.
+  core.String kind;
+
+  FirewallPoliciesListAssociationsResponse();
+
+  FirewallPoliciesListAssociationsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('associations')) {
+      associations = (_json['associations'] as core.List)
+          .map<FirewallPolicyAssociation>((value) =>
+              FirewallPolicyAssociation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (associations != null) {
+      _json['associations'] =
+          associations.map((value) => value.toJson()).toList();
+    }
+    if (kind != null) {
+      _json['kind'] = kind;
+    }
+    return _json;
+  }
+}
+
+/// Represents a Firewall Policy resource.
+///
+/// (== resource_for {$api_version}.firewallPolicies ==)
+class FirewallPolicy {
+  /// A list of associations that belong to this firewall policy.
+  core.List<FirewallPolicyAssociation> associations;
+
+  /// Creation timestamp in RFC3339 text format.
+  ///
+  /// Output only.
+  core.String creationTimestamp;
+
+  /// An optional description of this resource.
+  ///
+  /// Provide this property when you create the resource.
+  core.String description;
+
+  /// User-provided name of the Organization firewall plicy.
+  ///
+  /// The name should be unique in the organization in which the firewall policy
+  /// is created. The name must be 1-63 characters long, and comply with
+  /// RFC1035. Specifically, the name must be 1-63 characters long and match the
+  /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+  /// character must be a lowercase letter, and all following characters must be
+  /// a dash, lowercase letter, or digit, except the last character, which
+  /// cannot be a dash.
+  core.String displayName;
+
+  /// Specifies a fingerprint for this resource, which is essentially a hash of
+  /// the metadata's contents and used for optimistic locking.
+  ///
+  /// The fingerprint is initially generated by Compute Engine and changes after
+  /// every request to modify or update metadata. You must always provide an
+  /// up-to-date fingerprint hash in order to update or change metadata,
+  /// otherwise the request will fail with error 412 conditionNotMet.
+  ///
+  /// To see the latest fingerprint, make get() request to the firewall policy.
+  core.String fingerprint;
+  core.List<core.int> get fingerprintAsBytes =>
+      convert.base64.decode(fingerprint);
+
+  set fingerprintAsBytes(core.List<core.int> _bytes) {
+    fingerprint =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// The unique identifier for the resource.
+  ///
+  /// This identifier is defined by the server.
+  ///
+  /// Output only.
+  core.String id;
+
+  /// Type of the resource.
+  ///
+  /// Always compute#firewallPolicyfor firewall policies
+  ///
+  /// Output only.
+  core.String kind;
+
+  /// Name of the resource.
+  ///
+  /// It is a numeric ID allocated by GCP which uniquely identifies the Firewall
+  /// Policy.
+  ///
+  /// Output only.
+  core.String name;
+
+  /// The parent of the firewall policy.
+  ///
+  /// Output only.
+  core.String parent;
+
+  /// Total count of all firewall policy rule tuples.
+  ///
+  /// A firewall policy can not exceed a set number of tuples.
+  ///
+  /// Output only.
+  core.int ruleTupleCount;
+
+  /// A list of rules that belong to this policy.
+  ///
+  /// There must always be a default rule (rule with priority 2147483647 and
+  /// match "*"). If no rules are provided when creating a firewall policy, a
+  /// default rule with action "allow" will be added.
+  core.List<FirewallPolicyRule> rules;
+
+  /// Server-defined URL for the resource.
+  ///
+  /// Output only.
+  core.String selfLink;
+
+  /// Server-defined URL for this resource with the resource id.
+  ///
+  /// Output only.
+  core.String selfLinkWithId;
+
+  FirewallPolicy();
+
+  FirewallPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('associations')) {
+      associations = (_json['associations'] as core.List)
+          .map<FirewallPolicyAssociation>((value) =>
+              FirewallPolicyAssociation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('creationTimestamp')) {
+      creationTimestamp = _json['creationTimestamp'] as core.String;
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('fingerprint')) {
+      fingerprint = _json['fingerprint'] as core.String;
+    }
+    if (_json.containsKey('id')) {
+      id = _json['id'] as core.String;
+    }
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('parent')) {
+      parent = _json['parent'] as core.String;
+    }
+    if (_json.containsKey('ruleTupleCount')) {
+      ruleTupleCount = _json['ruleTupleCount'] as core.int;
+    }
+    if (_json.containsKey('rules')) {
+      rules = (_json['rules'] as core.List)
+          .map<FirewallPolicyRule>((value) => FirewallPolicyRule.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('selfLink')) {
+      selfLink = _json['selfLink'] as core.String;
+    }
+    if (_json.containsKey('selfLinkWithId')) {
+      selfLinkWithId = _json['selfLinkWithId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (associations != null) {
+      _json['associations'] =
+          associations.map((value) => value.toJson()).toList();
+    }
+    if (creationTimestamp != null) {
+      _json['creationTimestamp'] = creationTimestamp;
+    }
+    if (description != null) {
+      _json['description'] = description;
+    }
+    if (displayName != null) {
+      _json['displayName'] = displayName;
+    }
+    if (fingerprint != null) {
+      _json['fingerprint'] = fingerprint;
+    }
+    if (id != null) {
+      _json['id'] = id;
+    }
+    if (kind != null) {
+      _json['kind'] = kind;
+    }
+    if (name != null) {
+      _json['name'] = name;
+    }
+    if (parent != null) {
+      _json['parent'] = parent;
+    }
+    if (ruleTupleCount != null) {
+      _json['ruleTupleCount'] = ruleTupleCount;
+    }
+    if (rules != null) {
+      _json['rules'] = rules.map((value) => value.toJson()).toList();
+    }
+    if (selfLink != null) {
+      _json['selfLink'] = selfLink;
+    }
+    if (selfLinkWithId != null) {
+      _json['selfLinkWithId'] = selfLinkWithId;
+    }
+    return _json;
+  }
+}
+
+class FirewallPolicyAssociation {
+  /// The target that the firewall policy is attached to.
+  core.String attachmentTarget;
+
+  /// The display name of the firewall policy of the association.
+  ///
+  /// Output only.
+  core.String displayName;
+
+  /// The firewall policy ID of the association.
+  ///
+  /// Output only.
+  core.String firewallPolicyId;
+
+  /// The name for an association.
+  core.String name;
+
+  FirewallPolicyAssociation();
+
+  FirewallPolicyAssociation.fromJson(core.Map _json) {
+    if (_json.containsKey('attachmentTarget')) {
+      attachmentTarget = _json['attachmentTarget'] as core.String;
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('firewallPolicyId')) {
+      firewallPolicyId = _json['firewallPolicyId'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (attachmentTarget != null) {
+      _json['attachmentTarget'] = attachmentTarget;
+    }
+    if (displayName != null) {
+      _json['displayName'] = displayName;
+    }
+    if (firewallPolicyId != null) {
+      _json['firewallPolicyId'] = firewallPolicyId;
+    }
+    if (name != null) {
+      _json['name'] = name;
+    }
+    return _json;
+  }
+}
+
+class FirewallPolicyListWarningData {
+  /// A key that provides more detail on the warning being returned.
+  ///
+  /// For example, for warnings where there are no results in a list request for
+  /// a particular zone, this key might be scope and the key value might be the
+  /// zone name. Other examples might be a key indicating a deprecated resource
+  /// and a suggested replacement, or a warning about invalid network settings
+  /// (for example, if an instance attempts to perform IP forwarding but is not
+  /// enabled for IP forwarding).
+  ///
+  /// Output only.
+  core.String key;
+
+  /// A warning data value corresponding to the key.
+  ///
+  /// Output only.
+  core.String value;
+
+  FirewallPolicyListWarningData();
+
+  FirewallPolicyListWarningData.fromJson(core.Map _json) {
+    if (_json.containsKey('key')) {
+      key = _json['key'] as core.String;
+    }
+    if (_json.containsKey('value')) {
+      value = _json['value'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (key != null) {
+      _json['key'] = key;
+    }
+    if (value != null) {
+      _json['value'] = value;
+    }
+    return _json;
+  }
+}
+
+/// Informational warning message.
+///
+/// Output only.
+class FirewallPolicyListWarning {
+  /// A warning code, if applicable.
+  ///
+  /// For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no
+  /// results in the response.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CLEANUP_FAILED"
+  /// - "DEPRECATED_RESOURCE_USED"
+  /// - "DEPRECATED_TYPE_USED"
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE"
+  /// - "EXPERIMENTAL_TYPE_USED"
+  /// - "EXTERNAL_API_WARNING"
+  /// - "FIELD_VALUE_OVERRIDEN"
+  /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
+  /// - "MISSING_TYPE_DEPENDENCY"
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD"
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND"
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK"
+  /// - "NEXT_HOP_NOT_RUNNING"
+  /// - "NOT_CRITICAL_ERROR"
+  /// - "NO_RESULTS_ON_PAGE"
+  /// - "PARTIAL_SUCCESS"
+  /// - "REQUIRED_TOS_AGREEMENT"
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING"
+  /// - "RESOURCE_NOT_DELETED"
+  /// - "SCHEMA_VALIDATION_IGNORED"
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE"
+  /// - "UNDECLARED_PROPERTIES"
+  /// - "UNREACHABLE"
+  core.String code;
+
+  /// Metadata about this warning in key: value format.
+  ///
+  /// For example:
+  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
+  ///
+  /// Output only.
+  core.List<FirewallPolicyListWarningData> data;
+
+  /// A human-readable description of the warning code.
+  ///
+  /// Output only.
+  core.String message;
+
+  FirewallPolicyListWarning();
+
+  FirewallPolicyListWarning.fromJson(core.Map _json) {
+    if (_json.containsKey('code')) {
+      code = _json['code'] as core.String;
+    }
+    if (_json.containsKey('data')) {
+      data = (_json['data'] as core.List)
+          .map<FirewallPolicyListWarningData>((value) =>
+              FirewallPolicyListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('message')) {
+      message = _json['message'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (code != null) {
+      _json['code'] = code;
+    }
+    if (data != null) {
+      _json['data'] = data.map((value) => value.toJson()).toList();
+    }
+    if (message != null) {
+      _json['message'] = message;
+    }
+    return _json;
+  }
+}
+
+class FirewallPolicyList {
+  /// Unique identifier for the resource; defined by the server.
+  ///
+  /// Output only.
+  core.String id;
+
+  /// A list of FirewallPolicy resources.
+  core.List<FirewallPolicy> items;
+
+  /// Type of resource.
+  ///
+  /// Always compute#firewallPolicyList for listsof FirewallPolicies
+  ///
+  /// Output only.
+  core.String kind;
+
+  /// This token allows you to get the next page of results for list requests.
+  ///
+  /// If the number of results is larger than maxResults, use the nextPageToken
+  /// as a value for the query parameter pageToken in the next list request.
+  /// Subsequent list requests will have their own nextPageToken to continue
+  /// paging through the results.
+  ///
+  /// Output only.
+  core.String nextPageToken;
+
+  /// Informational warning message.
+  ///
+  /// Output only.
+  FirewallPolicyListWarning warning;
+
+  FirewallPolicyList();
+
+  FirewallPolicyList.fromJson(core.Map _json) {
+    if (_json.containsKey('id')) {
+      id = _json['id'] as core.String;
+    }
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.List)
+          .map<FirewallPolicy>((value) => FirewallPolicy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'] as core.String;
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('warning')) {
+      warning = FirewallPolicyListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (id != null) {
+      _json['id'] = id;
+    }
+    if (items != null) {
+      _json['items'] = items.map((value) => value.toJson()).toList();
+    }
+    if (kind != null) {
+      _json['kind'] = kind;
+    }
+    if (nextPageToken != null) {
+      _json['nextPageToken'] = nextPageToken;
+    }
+    if (warning != null) {
+      _json['warning'] = warning.toJson();
+    }
+    return _json;
+  }
+}
+
+/// Represents a rule that describes one or more match conditions along with the
+/// action to be taken when traffic matches this condition (allow or deny).
+class FirewallPolicyRule {
+  /// The Action to perform when the client connection triggers the rule.
+  ///
+  /// Can currently be either "allow" or "deny()" where valid values for status
+  /// are 403, 404, and 502.
+  core.String action;
+
+  /// An optional description of this resource.
+  ///
+  /// Provide this property when you create the resource.
+  core.String description;
+
+  /// The direction in which this rule applies.
+  /// Possible string values are:
+  /// - "EGRESS"
+  /// - "INGRESS"
+  core.String direction;
+
+  /// Denotes whether the firewall policy rule is disabled.
+  ///
+  /// When set to true, the firewall policy rule is not enforced and traffic
+  /// behaves as if it did not exist. If this is unspecified, the firewall
+  /// policy rule will be enabled.
+  core.bool disabled;
+
+  /// Denotes whether to enable logging for a particular rule.
+  ///
+  /// If logging is enabled, logs will be exported to the configured export
+  /// destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub.
+  /// Note: you cannot enable logging on "goto_next" rules.
+  core.bool enableLogging;
+
+  /// Type of the resource.
+  ///
+  /// Always compute#firewallPolicyRule for firewall policy rules
+  ///
+  /// Output only.
+  core.String kind;
+
+  /// A match condition that incoming traffic is evaluated against.
+  ///
+  /// If it evaluates to true, the corresponding 'action' is enforced.
+  FirewallPolicyRuleMatcher match;
+
+  /// An integer indicating the priority of a rule in the list.
+  ///
+  /// The priority must be a positive value between 0 and 2147483647. Rules are
+  /// evaluated from highest to lowest priority where 0 is the highest priority
+  /// and 2147483647 is the lowest prority.
+  core.int priority;
+
+  /// Calculation of the complexity of a single firewall policy rule.
+  ///
+  /// Output only.
+  core.int ruleTupleCount;
+
+  /// A list of network resource URLs to which this rule applies.
+  ///
+  /// This field allows you to control which network's VMs get this rule. If
+  /// this field is left blank, all VMs within the organization will receive the
+  /// rule.
+  core.List<core.String> targetResources;
+
+  /// A list of secure labels that controls which instances the firewall rule
+  /// applies to.
+  ///
+  /// If targetSecureLabel are specified, then the firewall rule applies only to
+  /// instances in the VPC network that have one of those secure labels.
+  /// targetSecureLabel may not be set at the same time as
+  /// targetServiceAccounts. If neither targetServiceAccounts nor
+  /// targetSecureLabel are specified, the firewall rule applies to all
+  /// instances on the specified network. Maximum number of target label values
+  /// allowed is 256.
+  core.List<core.String> targetSecureLabels;
+
+  /// A list of service accounts indicating the sets of instances that are
+  /// applied with this rule.
+  core.List<core.String> targetServiceAccounts;
+
+  FirewallPolicyRule();
+
+  FirewallPolicyRule.fromJson(core.Map _json) {
+    if (_json.containsKey('action')) {
+      action = _json['action'] as core.String;
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('direction')) {
+      direction = _json['direction'] as core.String;
+    }
+    if (_json.containsKey('disabled')) {
+      disabled = _json['disabled'] as core.bool;
+    }
+    if (_json.containsKey('enableLogging')) {
+      enableLogging = _json['enableLogging'] as core.bool;
+    }
+    if (_json.containsKey('kind')) {
+      kind = _json['kind'] as core.String;
+    }
+    if (_json.containsKey('match')) {
+      match = FirewallPolicyRuleMatcher.fromJson(
+          _json['match'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('priority')) {
+      priority = _json['priority'] as core.int;
+    }
+    if (_json.containsKey('ruleTupleCount')) {
+      ruleTupleCount = _json['ruleTupleCount'] as core.int;
+    }
+    if (_json.containsKey('targetResources')) {
+      targetResources = (_json['targetResources'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('targetSecureLabels')) {
+      targetSecureLabels = (_json['targetSecureLabels'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('targetServiceAccounts')) {
+      targetServiceAccounts = (_json['targetServiceAccounts'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (action != null) {
+      _json['action'] = action;
+    }
+    if (description != null) {
+      _json['description'] = description;
+    }
+    if (direction != null) {
+      _json['direction'] = direction;
+    }
+    if (disabled != null) {
+      _json['disabled'] = disabled;
+    }
+    if (enableLogging != null) {
+      _json['enableLogging'] = enableLogging;
+    }
+    if (kind != null) {
+      _json['kind'] = kind;
+    }
+    if (match != null) {
+      _json['match'] = match.toJson();
+    }
+    if (priority != null) {
+      _json['priority'] = priority;
+    }
+    if (ruleTupleCount != null) {
+      _json['ruleTupleCount'] = ruleTupleCount;
+    }
+    if (targetResources != null) {
+      _json['targetResources'] = targetResources;
+    }
+    if (targetSecureLabels != null) {
+      _json['targetSecureLabels'] = targetSecureLabels;
+    }
+    if (targetServiceAccounts != null) {
+      _json['targetServiceAccounts'] = targetServiceAccounts;
+    }
+    return _json;
+  }
+}
+
+/// Represents a match condition that incoming traffic is evaluated against.
+///
+/// Exactly one field must be specified.
+class FirewallPolicyRuleMatcher {
+  /// CIDR IP address range.
+  ///
+  /// Maximum number of destination CIDR IP ranges allowed is 256.
+  core.List<core.String> destIpRanges;
+
+  /// Pairs of IP protocols and ports that the rule should match.
+  core.List<FirewallPolicyRuleMatcherLayer4Config> layer4Configs;
+
+  /// CIDR IP address range.
+  ///
+  /// Maximum number of source CIDR IP ranges allowed is 256.
+  core.List<core.String> srcIpRanges;
+
+  /// List of firewall label values, which should be matched at the source of
+  /// the traffic.
+  ///
+  /// Maximum number of source label values allowed is 256.
+  core.List<core.String> srcSecureLabels;
+
+  FirewallPolicyRuleMatcher();
+
+  FirewallPolicyRuleMatcher.fromJson(core.Map _json) {
+    if (_json.containsKey('destIpRanges')) {
+      destIpRanges = (_json['destIpRanges'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('layer4Configs')) {
+      layer4Configs = (_json['layer4Configs'] as core.List)
+          .map<FirewallPolicyRuleMatcherLayer4Config>((value) =>
+              FirewallPolicyRuleMatcherLayer4Config.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('srcIpRanges')) {
+      srcIpRanges = (_json['srcIpRanges'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('srcSecureLabels')) {
+      srcSecureLabels = (_json['srcSecureLabels'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (destIpRanges != null) {
+      _json['destIpRanges'] = destIpRanges;
+    }
+    if (layer4Configs != null) {
+      _json['layer4Configs'] =
+          layer4Configs.map((value) => value.toJson()).toList();
+    }
+    if (srcIpRanges != null) {
+      _json['srcIpRanges'] = srcIpRanges;
+    }
+    if (srcSecureLabels != null) {
+      _json['srcSecureLabels'] = srcSecureLabels;
+    }
+    return _json;
+  }
+}
+
+class FirewallPolicyRuleMatcherLayer4Config {
+  /// The IP protocol to which this rule applies.
+  ///
+  /// The protocol type is required when creating a firewall rule. This value
+  /// can either be one of the following well known protocol strings (tcp, udp,
+  /// icmp, esp, ah, ipip, sctp), or the IP protocol number.
+  core.String ipProtocol;
+
+  /// An optional list of ports to which this rule applies.
+  ///
+  /// This field is only applicable for UDP or TCP protocol. Each entry must be
+  /// either an integer or a range. If not specified, this rule applies to
+  /// connections through any port.
+  ///
+  /// Example inputs include: \["22"\], \["80","443"\], and \["12345-12349"\].
+  core.List<core.String> ports;
+
+  FirewallPolicyRuleMatcherLayer4Config();
+
+  FirewallPolicyRuleMatcherLayer4Config.fromJson(core.Map _json) {
+    if (_json.containsKey('ipProtocol')) {
+      ipProtocol = _json['ipProtocol'] as core.String;
+    }
+    if (_json.containsKey('ports')) {
+      ports = (_json['ports'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (ipProtocol != null) {
+      _json['ipProtocol'] = ipProtocol;
+    }
+    if (ports != null) {
+      _json['ports'] = ports;
+    }
+    return _json;
+  }
+}
+
 /// Encapsulates numeric value that can be either absolute or relative.
 class FixedOrPercent {
   /// Absolute value of VM instances calculated based on the specific mode.
@@ -63156,10 +66633,11 @@ class ForwardingRule {
   ///
   /// * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in
   /// https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name
-  /// * Partial URL or by name, as in: *
-  /// projects/project_id/regions/region/addresses/address-name *
-  /// regions/region/addresses/address-name * global/addresses/address-name *
-  /// address-name
+  /// * Partial URL or by name, as in:
+  /// - projects/project_id/regions/region/addresses/address-name
+  /// - regions/region/addresses/address-name
+  /// - global/addresses/address-name
+  /// - address-name
   ///
   /// The loadBalancingScheme and the forwarding rule's target determine the
   /// type of IP address that you can use. For detailed information, refer to
@@ -63172,17 +66650,23 @@ class ForwardingRule {
 
   /// The IP protocol to which this rule applies.
   ///
-  /// For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP or
+  /// For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and
   /// ICMP.
   ///
-  /// For Internal TCP/UDP Load Balancing, the load balancing scheme is
-  /// INTERNAL, and one of TCP or UDP are valid. For Traffic Director, the load
-  /// balancing scheme is INTERNAL_SELF_MANAGED, and only TCPis valid. For
-  /// Internal HTTP(S) Load Balancing, the load balancing scheme is
-  /// INTERNAL_MANAGED, and only TCP is valid. For HTTP(S), SSL Proxy, and TCP
-  /// Proxy Load Balancing, the load balancing scheme is EXTERNAL and only TCP
-  /// is valid. For Network TCP/UDP Load Balancing, the load balancing scheme is
-  /// EXTERNAL, and one of TCP or UDP is valid.
+  /// The valid IP protocols are different for different load balancing
+  /// products:
+  /// - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL,
+  /// and one of TCP, UDP or ALL is valid.
+  ///
+  ///
+  /// - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED,
+  /// and only TCP is valid.
+  /// - Internal HTTP(S) Load Balancing: The load balancing scheme is
+  /// INTERNAL_MANAGED, and only TCP is valid.
+  /// - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing
+  /// scheme is EXTERNAL and only TCP is valid.
+  /// - Network Load Balancing: The load balancing scheme is EXTERNAL, and one
+  /// of TCP or UDP is valid.
   /// Possible string values are:
   /// - "AH"
   /// - "ESP"
@@ -63210,10 +66694,10 @@ class ForwardingRule {
   /// internal load balancer.
   core.bool allowGlobalAccess;
 
-  /// This field is only used for INTERNAL load balancing.
+  /// Identifies the backend service to which the forwarding rule sends traffic.
   ///
-  /// For internal load balancing, this field identifies the BackendService
-  /// resource to receive the matched traffic.
+  /// Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
+  /// must be omitted for all other load balancer types.
   core.String backendService;
 
   /// Creation timestamp in RFC3339 text format.
@@ -63278,19 +66762,43 @@ class ForwardingRule {
   /// Output only.
   core.String kind;
 
+  /// A fingerprint for the labels being applied to this resource, which is
+  /// essentially a hash of the labels set used for optimistic locking.
+  ///
+  /// The fingerprint is initially generated by Compute Engine and changes after
+  /// every request to modify or update labels. You must always provide an
+  /// up-to-date fingerprint hash in order to update or change labels, otherwise
+  /// the request will fail with error 412 conditionNotMet.
+  ///
+  /// To see the latest fingerprint, make a get() request to retrieve a
+  /// ForwardingRule.
+  core.String labelFingerprint;
+  core.List<core.int> get labelFingerprintAsBytes =>
+      convert.base64.decode(labelFingerprint);
+
+  set labelFingerprintAsBytes(core.List<core.int> _bytes) {
+    labelFingerprint =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// Labels for this resource.
+  ///
+  /// These can only be added or modified by the setLabels method. Each label
+  /// key/value pair must comply with RFC1035. Label values may be empty.
+  core.Map<core.String, core.String> labels;
+
   /// Specifies the forwarding rule type.
   ///
   ///
   /// - EXTERNAL is used for:
   /// - Classic Cloud VPN gateways
   /// - Protocol forwarding to VMs from an external IP address
-  /// - The following load balancers: HTTP(S), SSL Proxy, TCP Proxy, and Network
-  /// TCP/UDP
+  /// - HTTP(S), SSL Proxy, TCP Proxy, and Network Load Balancing
   /// - INTERNAL is used for:
   /// - Protocol forwarding to VMs from an internal IP address
-  /// - Internal TCP/UDP load balancers
+  /// - Internal TCP/UDP Load Balancing
   /// - INTERNAL_MANAGED is used for:
-  /// - Internal HTTP(S) load balancers
+  /// - Internal HTTP(S) Load Balancing
   /// - INTERNAL_SELF_MANAGED is used for:
   /// - Traffic Director
   ///
@@ -63336,8 +66844,8 @@ class ForwardingRule {
 
   /// This field is not used for external load balancing.
   ///
-  /// For internal load balancing, this field identifies the network that the
-  /// load balanced IP should belong to for this Forwarding Rule.
+  /// For Internal TCP/UDP Load Balancing, this field identifies the network
+  /// that the load balanced IP should belong to for this Forwarding Rule.
   ///
   /// If this field is not specified, the default network will be used.
   core.String network;
@@ -63356,24 +66864,21 @@ class ForwardingRule {
   /// - "STANDARD"
   core.String networkTier;
 
-  /// When the load balancing scheme is EXTERNAL, INTERNAL_SELF_MANAGED and
-  /// INTERNAL_MANAGED, you can specify a port_range.
+  /// This field can be used only if: * Load balancing scheme is one of
+  /// EXTERNAL, INTERNAL_SELF_MANAGED or INTERNAL_MANAGED, and * IPProtocol is
+  /// one of TCP, UDP, or SCTP.
   ///
-  /// Use with a forwarding rule that points to a target proxy or a target pool.
-  /// Do not use with a forwarding rule that points to a backend service. This
-  /// field is used along with the target field for TargetHttpProxy,
-  /// TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetGrpcProxy,
-  /// TargetVpnGateway, TargetPool, TargetInstance.
+  /// Packets addressed to ports in the specified range will be forwarded to
+  /// target or backend_service.
   ///
-  /// Applicable only when IPProtocol is TCP, UDP, or SCTP, only packets
-  /// addressed to ports in the specified range will be forwarded to target.
-  /// Forwarding rules with the same \[IPAddress, IPProtocol\] pair must have
-  /// disjoint port ranges.
+  /// You can only use one of ports, port_range, or allPorts. The three are
+  /// mutually exclusive. Forwarding rules with the same \[IPAddress,
+  /// IPProtocol\] pair must have disjoint port ranges.
   ///
   /// Some types of forwarding target have constraints on the acceptable ports:
   /// - TargetHttpProxy: 80, 8080
   /// - TargetHttpsProxy: 443
-  /// - TargetGrpcProxy: Any ports
+  /// - TargetGrpcProxy: no constraints
   /// - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
   /// 1688, 1883, 5222
   /// - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995,
@@ -63381,21 +66886,23 @@ class ForwardingRule {
   /// - TargetVpnGateway: 500, 4500
   core.String portRange;
 
-  /// This field is used along with the backend_service field for internal load
-  /// balancing.
+  /// The ports field is only supported when the forwarding rule references a
+  /// backend_service directly.
   ///
-  /// When the load balancing scheme is INTERNAL, a list of ports can be
-  /// configured, for example, \['80'\], \['8000','9000'\].
+  /// Supported load balancing products are Internal TCP/UDP Load Balancing and
+  /// Network Load Balancing. Only packets addressed to the specified list of
+  /// ports are forwarded to backends.
   ///
-  /// Only packets addressed to these ports are forwarded to the backends
-  /// configured with the forwarding rule.
+  /// You can only use one of ports and port_range, or allPorts. The three are
+  /// mutually exclusive.
   ///
-  /// If the forwarding rule's loadBalancingScheme is INTERNAL, you can specify
-  /// ports in one of the following ways:
+  /// You can specify a list of up to five ports, which can be non-contiguous.
   ///
-  /// * A list of up to five ports, which can be non-contiguous * Keyword ALL,
-  /// which causes the forwarding rule to forward traffic on any port of the
-  /// forwarding rule's protocol.
+  /// For Internal TCP/UDP Load Balancing, if you specify allPorts, you should
+  /// not specify ports.
+  ///
+  /// For more information, see \[Port
+  /// specifications\](/load-balancing/docs/forwarding-rule-concepts#port_specifications).
   core.List<core.String> ports;
 
   /// URL of the region where the regional forwarding rule resides.
@@ -63447,12 +66954,12 @@ class ForwardingRule {
 
   /// The URL of the target resource to receive the matched traffic.
   ///
-  /// For regional forwarding rules, this target must live in the same region as
+  /// For regional forwarding rules, this target must be in the same region as
   /// the forwarding rule. For global forwarding rules, this target must be a
   /// global load balancing resource. The forwarded traffic must be of a type
-  /// appropriate to the target object. For INTERNAL_SELF_MANAGED load
-  /// balancing, only targetHttpProxy and targetGrpcProxy are valid, not
-  /// targetHttpsProxy.
+  /// appropriate to the target object. For more information, see the "Target"
+  /// column in \[Port
+  /// specifications\](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
   core.String target;
 
   ForwardingRule();
@@ -63493,6 +67000,18 @@ class ForwardingRule {
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
+    }
+    if (_json.containsKey('labelFingerprint')) {
+      labelFingerprint = _json['labelFingerprint'] as core.String;
+    }
+    if (_json.containsKey('labels')) {
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('loadBalancingScheme')) {
       loadBalancingScheme = _json['loadBalancingScheme'] as core.String;
@@ -63577,6 +67096,12 @@ class ForwardingRule {
     }
     if (kind != null) {
       _json['kind'] = kind;
+    }
+    if (labelFingerprint != null) {
+      _json['labelFingerprint'] = labelFingerprint;
+    }
+    if (labels != null) {
+      _json['labels'] = labels;
     }
     if (loadBalancingScheme != null) {
       _json['loadBalancingScheme'] = loadBalancingScheme;
@@ -63682,6 +67207,7 @@ class ForwardingRuleAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -63910,6 +67436,7 @@ class ForwardingRuleListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -64137,6 +67664,7 @@ class ForwardingRulesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -64360,6 +67888,63 @@ class GlobalNetworkEndpointGroupsDetachEndpointsRequest {
     if (networkEndpoints != null) {
       _json['networkEndpoints'] =
           networkEndpoints.map((value) => value.toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+class GlobalOrganizationSetPolicyRequest {
+  /// Flatten Policy to create a backward compatible wire-format.
+  ///
+  /// Deprecated. Use 'policy' to specify bindings.
+  core.List<Binding> bindings;
+
+  /// Flatten Policy to create a backward compatible wire-format.
+  ///
+  /// Deprecated. Use 'policy' to specify the etag.
+  core.String etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
+
+  set etagAsBytes(core.List<core.int> _bytes) {
+    etag =
+        convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
+  }
+
+  /// REQUIRED: The complete policy to be applied to the 'resource'.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is
+  /// in general a valid policy but certain services (like Projects) might
+  /// reject them.
+  Policy policy;
+
+  GlobalOrganizationSetPolicyRequest();
+
+  GlobalOrganizationSetPolicyRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('bindings')) {
+      bindings = (_json['bindings'] as core.List)
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'] as core.String;
+    }
+    if (_json.containsKey('policy')) {
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (bindings != null) {
+      _json['bindings'] = bindings.map((value) => value.toJson()).toList();
+    }
+    if (etag != null) {
+      _json['etag'] = etag;
+    }
+    if (policy != null) {
+      _json['policy'] = policy.toJson();
     }
     return _json;
   }
@@ -64633,6 +68218,7 @@ class GuestOsFeature {
   /// options.
   /// Possible string values are:
   /// - "FEATURE_TYPE_UNSPECIFIED"
+  /// - "GVNIC"
   /// - "MULTI_IP_SUBNET"
   /// - "SECURE_BOOT"
   /// - "SEV_CAPABLE"
@@ -64992,15 +68578,22 @@ class HTTPSHealthCheck {
 /// * \[Global\](/compute/docs/reference/rest/{$api_version}/healthChecks) *
 /// \[Regional\](/compute/docs/reference/rest/{$api_version}/regionHealthChecks)
 ///
-/// Internal HTTP(S) load balancers must use regional health checks.
+/// Internal HTTP(S) load balancers must use regional health checks
+/// (`compute.v1.regionHealthChecks`).
+///
+/// Traffic Director must use global health checks (`compute.v1.HealthChecks`).
 ///
 /// Internal TCP/UDP load balancers can use either regional or global health
-/// checks. All other types of GCP load balancers and managed instance group
-/// auto-healing must use global health checks. For more information, read
-/// Health Check Concepts.
+/// checks (`compute.v1.regionHealthChecks` or `compute.v1.HealthChecks`).
 ///
-/// To perform health checks on network load balancers, you must use either
-/// httpHealthChecks or httpsHealthChecks.
+/// External HTTP(S), TCP proxy, and SSL proxy load balancers as well as managed
+/// instance group auto-healing must use global health checks
+/// (`compute.v1.HealthChecks`).
+///
+/// Network load balancers must use legacy HTTP health checks
+/// (httpHealthChecks).
+///
+/// For more information, see Health checks overview.
 class HealthCheck {
   /// How often (in seconds) to send a health check.
   ///
@@ -65036,6 +68629,9 @@ class HealthCheck {
 
   /// Type of the resource.
   core.String kind;
+
+  /// Configure logging on this health check.
+  HealthCheckLogConfig logConfig;
 
   /// Name of the resource.
   ///
@@ -65125,6 +68721,10 @@ class HealthCheck {
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
+    if (_json.containsKey('logConfig')) {
+      logConfig = HealthCheckLogConfig.fromJson(
+          _json['logConfig'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -65184,6 +68784,9 @@ class HealthCheck {
     }
     if (kind != null) {
       _json['kind'] = kind;
+    }
+    if (logConfig != null) {
+      _json['logConfig'] = logConfig.toJson();
     }
     if (name != null) {
       _json['name'] = name;
@@ -65273,6 +68876,7 @@ class HealthCheckListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -65416,6 +69020,33 @@ class HealthCheckList {
     }
     if (warning != null) {
       _json['warning'] = warning.toJson();
+    }
+    return _json;
+  }
+}
+
+/// Configuration of logging on a health check.
+///
+/// If logging is enabled, logs will be exported to Stackdriver.
+class HealthCheckLogConfig {
+  /// Indicates whether or not to export logs.
+  ///
+  /// This is false by default, which means no health check logging will be
+  /// done.
+  core.bool enable;
+
+  HealthCheckLogConfig();
+
+  HealthCheckLogConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('enable')) {
+      enable = _json['enable'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (enable != null) {
+      _json['enable'] = enable;
     }
     return _json;
   }
@@ -65736,6 +69367,7 @@ class HealthCheckServicesListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -65947,6 +69579,7 @@ class HealthChecksAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -66170,6 +69803,7 @@ class HealthChecksScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -66289,6 +69923,15 @@ class HealthStatus {
   /// The named port of the instance group, not necessarily the port that is
   /// health-checked.
   core.int port;
+  core.String weight;
+
+  ///
+  /// Possible string values are:
+  /// - "INVALID_WEIGHT"
+  /// - "MISSING_WEIGHT"
+  /// - "UNAVAILABLE_WEIGHT"
+  /// - "WEIGHT_NONE"
+  core.String weightError;
 
   HealthStatus();
 
@@ -66315,6 +69958,12 @@ class HealthStatus {
     if (_json.containsKey('port')) {
       port = _json['port'] as core.int;
     }
+    if (_json.containsKey('weight')) {
+      weight = _json['weight'] as core.String;
+    }
+    if (_json.containsKey('weightError')) {
+      weightError = _json['weightError'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -66333,6 +69982,12 @@ class HealthStatus {
     }
     if (port != null) {
       _json['port'] = port;
+    }
+    if (weight != null) {
+      _json['weight'] = weight;
+    }
+    if (weightError != null) {
+      _json['weightError'] = weightError;
     }
     return _json;
   }
@@ -66702,7 +70357,7 @@ class HttpHeaderMatch {
   /// regexMatch.
   ///
   /// For regular expression grammar, please see:
-  /// en.cppreference.com/w/cpp/regex/ecmascript
+  /// github.com/google/re2/wiki/Syntax
   /// For matching against a port specified in the HTTP request, use a
   /// headerMatch with headerName set to PORT and a regular expression that
   /// satisfies the RFC2616 Host header's port specifier.
@@ -67055,6 +70710,7 @@ class HttpHealthCheckListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -67225,7 +70881,7 @@ class HttpQueryParameterMatch {
   /// regular expression specified by regexMatch.
   ///
   /// For the regular expression grammar, please see
-  /// en.cppreference.com/w/cpp/regex/ecmascript
+  /// github.com/google/re2/wiki/Syntax
   /// Only one of presentMatch, exactMatch or regexMatch must be set.
   /// Note that regexMatch only applies when the loadBalancingScheme is set to
   /// INTERNAL_SELF_MANAGED.
@@ -67774,7 +71430,7 @@ class HttpRouteRuleMatch {
   /// query parameters and anchor supplied with the original URL.
   ///
   /// For regular expression grammar please see
-  /// en.cppreference.com/w/cpp/regex/ecmascript
+  /// github.com/google/re2/wiki/Syntax
   /// Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
   /// Note that regexMatch only applies to Loadbalancers that have their
   /// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
@@ -68075,6 +71731,7 @@ class HttpsHealthCheckListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -68775,6 +72432,7 @@ class ImageListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -68989,6 +72647,9 @@ class InitialStateConfig {
 /// For more information, read Virtual Machine Instances. (== resource_for
 /// {$api_version}.instances ==)
 class Instance {
+  /// Controls for advanced machine-related behavior features.
+  AdvancedMachineFeatures advancedMachineFeatures;
+
   /// Allows this instance to send and receive packets with non-matching
   /// destination or source IPs.
   ///
@@ -69088,6 +72749,21 @@ class Instance {
   /// These can be later modified by the setLabels method.
   core.Map<core.String, core.String> labels;
 
+  /// Last start timestamp in RFC3339 text format.
+  ///
+  /// Output only.
+  core.String lastStartTimestamp;
+
+  /// Last stop timestamp in RFC3339 text format.
+  ///
+  /// Output only.
+  core.String lastStopTimestamp;
+
+  /// Last suspended timestamp in RFC3339 text format.
+  ///
+  /// Output only.
+  core.String lastSuspendedTimestamp;
+
   /// Full or partial URL of the machine type resource to use for this instance,
   /// in the format: zones/zone/machineTypes/machine-type.
   ///
@@ -69154,6 +72830,11 @@ class Instance {
   /// Resource policies applied to this instance.
   core.List<core.String> resourcePolicies;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool satisfiesPzs;
+
   /// Sets the scheduling options for this instance.
   Scheduling scheduling;
 
@@ -69183,7 +72864,8 @@ class Instance {
   /// The status of the instance.
   ///
   /// One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING,
-  /// SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED.
+  /// SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information
+  /// about the status of the instance, see Instance life cycle.
   ///
   /// Output only.
   /// Possible string values are:
@@ -69223,6 +72905,11 @@ class Instance {
   Instance();
 
   Instance.fromJson(core.Map _json) {
+    if (_json.containsKey('advancedMachineFeatures')) {
+      advancedMachineFeatures = AdvancedMachineFeatures.fromJson(
+          _json['advancedMachineFeatures']
+              as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('canIpForward')) {
       canIpForward = _json['canIpForward'] as core.bool;
     }
@@ -69283,6 +72970,15 @@ class Instance {
                 ),
               );
     }
+    if (_json.containsKey('lastStartTimestamp')) {
+      lastStartTimestamp = _json['lastStartTimestamp'] as core.String;
+    }
+    if (_json.containsKey('lastStopTimestamp')) {
+      lastStopTimestamp = _json['lastStopTimestamp'] as core.String;
+    }
+    if (_json.containsKey('lastSuspendedTimestamp')) {
+      lastSuspendedTimestamp = _json['lastSuspendedTimestamp'] as core.String;
+    }
     if (_json.containsKey('machineType')) {
       machineType = _json['machineType'] as core.String;
     }
@@ -69313,6 +73009,9 @@ class Instance {
       resourcePolicies = (_json['resourcePolicies'] as core.List)
           .map<core.String>((value) => value as core.String)
           .toList();
+    }
+    if (_json.containsKey('satisfiesPzs')) {
+      satisfiesPzs = _json['satisfiesPzs'] as core.bool;
     }
     if (_json.containsKey('scheduling')) {
       scheduling = Scheduling.fromJson(
@@ -69358,6 +73057,9 @@ class Instance {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (advancedMachineFeatures != null) {
+      _json['advancedMachineFeatures'] = advancedMachineFeatures.toJson();
+    }
     if (canIpForward != null) {
       _json['canIpForward'] = canIpForward;
     }
@@ -69404,6 +73106,15 @@ class Instance {
     if (labels != null) {
       _json['labels'] = labels;
     }
+    if (lastStartTimestamp != null) {
+      _json['lastStartTimestamp'] = lastStartTimestamp;
+    }
+    if (lastStopTimestamp != null) {
+      _json['lastStopTimestamp'] = lastStopTimestamp;
+    }
+    if (lastSuspendedTimestamp != null) {
+      _json['lastSuspendedTimestamp'] = lastSuspendedTimestamp;
+    }
     if (machineType != null) {
       _json['machineType'] = machineType;
     }
@@ -69428,6 +73139,9 @@ class Instance {
     }
     if (resourcePolicies != null) {
       _json['resourcePolicies'] = resourcePolicies;
+    }
+    if (satisfiesPzs != null) {
+      _json['satisfiesPzs'] = satisfiesPzs;
     }
     if (scheduling != null) {
       _json['scheduling'] = scheduling.toJson();
@@ -69525,6 +73239,7 @@ class InstanceAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -69962,6 +73677,7 @@ class InstanceGroupAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -70189,6 +73905,7 @@ class InstanceGroupListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -70382,8 +74099,8 @@ class InstanceGroupManager {
   /// Provide this property when you create the resource.
   core.String description;
 
-  /// Policy specifying intended distribution of instances in regional managed
-  /// instance group.
+  /// Policy specifying the intended distribution of managed instances across
+  /// zones in a regional managed instance group.
   DistributionPolicy distributionPolicy;
 
   /// Fingerprint of this resource.
@@ -70420,7 +74137,9 @@ class InstanceGroupManager {
   /// instance group.
   ///
   /// The group uses this template to create all new instances in the managed
-  /// instance group.
+  /// instance group. The templates for existing instances in the group do not
+  /// change unless you run recreateInstances, run applyUpdatesToInstances, or
+  /// set the group's updatePolicy.type to PROACTIVE.
   core.String instanceTemplate;
 
   /// The resource type, which is always compute#instanceGroupManager for
@@ -70488,7 +74207,7 @@ class InstanceGroupManager {
   /// instances. For more information, read about canary updates.
   core.List<InstanceGroupManagerVersion> versions;
 
-  /// The URL of the zone where the managed instance group is located (for zonal
+  /// The URL of a zone where the managed instance group is located (for zonal
   /// resources).
   ///
   /// Output only.
@@ -70859,6 +74578,7 @@ class InstanceGroupManagerAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -71124,6 +74844,7 @@ class InstanceGroupManagerListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -71451,10 +75172,11 @@ class InstanceGroupManagerUpdatePolicy {
   /// The maximum number of instances that can be created above the specified
   /// targetSize during the update process.
   ///
-  /// By default, a fixed value of 1 is used. This value can be either a fixed
-  /// number or a percentage if the instance group has 10 or more instances. If
-  /// you set a percentage, the number of instances will be rounded up if
-  /// necessary.
+  /// This value can be either a fixed number or, if the group has 10 or more
+  /// instances, a percentage. If you set a percentage, the number of instances
+  /// is rounded up if necessary. The default value for maxSurge is a fixed
+  /// value equal to the number of zones in which the managed instance group
+  /// operates.
   ///
   /// At least one of either maxSurge or maxUnavailable must be greater than 0.
   /// Learn more about maxSurge.
@@ -71468,13 +75190,14 @@ class InstanceGroupManagerUpdatePolicy {
   ///
   ///
   /// - The instance's status is RUNNING.
-  /// - If there is a health check on the instance group, the instance's
-  /// liveness health check result must be HEALTHY at least once. If there is no
-  /// health check on the group, then the instance only needs to have a status
-  /// of RUNNING to be considered available. By default, a fixed value of 1 is
-  /// used. This value can be either a fixed number or a percentage if the
-  /// instance group has 10 or more instances. If you set a percentage, the
-  /// number of instances will be rounded up if necessary.
+  /// - If there is a health check on the instance group, the instance's health
+  /// check status must be HEALTHY at least once. If there is no health check on
+  /// the group, then the instance only needs to have a status of RUNNING to be
+  /// considered available. This value can be either a fixed number or, if the
+  /// group has 10 or more instances, a percentage. If you set a percentage, the
+  /// number of instances is rounded up if necessary. The default value for
+  /// maxUnavailable is a fixed value equal to the number of zones in which the
+  /// managed instance group operates.
   ///
   /// At least one of either maxSurge or maxUnavailable must be greater than 0.
   /// Learn more about maxUnavailable.
@@ -71569,7 +75292,11 @@ class InstanceGroupManagerVersion {
   /// instance group.
   ///
   /// The group uses this template to create new instances in the managed
-  /// instance group until the `targetSize` for this version is reached.
+  /// instance group until the `targetSize` for this version is reached. The
+  /// templates for existing instances in the group do not change unless you run
+  /// recreateInstances, run applyUpdatesToInstances, or set the group's
+  /// updatePolicy.type to PROACTIVE; in those cases, existing instances are
+  /// updated until the `targetSize` for this version is reached.
   core.String instanceTemplate;
 
   /// Name of the version.
@@ -71648,6 +75375,12 @@ class InstanceGroupManagersAbandonInstancesRequest {
 
 /// InstanceGroupManagers.applyUpdatesToInstances
 class InstanceGroupManagersApplyUpdatesRequest {
+  /// Flag to update all instances instead of specified list of ?instances?.
+  ///
+  /// If the flag is set to true then the instances may not be specified in the
+  /// request.
+  core.bool allInstances;
+
   /// The list of URLs of one or more instances for which you want to apply
   /// updates.
   ///
@@ -71693,6 +75426,9 @@ class InstanceGroupManagersApplyUpdatesRequest {
   InstanceGroupManagersApplyUpdatesRequest();
 
   InstanceGroupManagersApplyUpdatesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('allInstances')) {
+      allInstances = _json['allInstances'] as core.bool;
+    }
     if (_json.containsKey('instances')) {
       instances = (_json['instances'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -71709,6 +75445,9 @@ class InstanceGroupManagersApplyUpdatesRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (allInstances != null) {
+      _json['allInstances'] = allInstances;
+    }
     if (instances != null) {
       _json['instances'] = instances;
     }
@@ -71947,6 +75686,7 @@ class InstanceGroupManagersListPerInstanceConfigsRespWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -72181,6 +75921,7 @@ class InstanceGroupManagersScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -72291,7 +76032,9 @@ class InstanceGroupManagersSetInstanceTemplateRequest {
   /// instance group.
   ///
   /// The group uses this template to create all new instances in the managed
-  /// instance group.
+  /// instance group. The templates for existing instances in the group do not
+  /// change unless you run recreateInstances, run applyUpdatesToInstances, or
+  /// set the group's updatePolicy.type to PROACTIVE.
   core.String instanceTemplate;
 
   InstanceGroupManagersSetInstanceTemplateRequest();
@@ -72472,6 +76215,7 @@ class InstanceGroupsListInstancesWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -72735,6 +76479,7 @@ class InstanceGroupsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -72946,6 +76691,7 @@ class InstanceListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -73158,6 +76904,7 @@ class InstanceListReferrersWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -73507,6 +77254,9 @@ class InstanceMoveRequest {
 }
 
 class InstanceProperties {
+  /// Controls for advanced machine-related behavior features.
+  AdvancedMachineFeatures advancedMachineFeatures;
+
   /// Enables instances created based on these properties to send packets with
   /// source IP addresses other than their own and receive packets with
   /// destination IP addresses other than their own.
@@ -73595,6 +77345,11 @@ class InstanceProperties {
   InstanceProperties();
 
   InstanceProperties.fromJson(core.Map _json) {
+    if (_json.containsKey('advancedMachineFeatures')) {
+      advancedMachineFeatures = AdvancedMachineFeatures.fromJson(
+          _json['advancedMachineFeatures']
+              as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('canIpForward')) {
       canIpForward = _json['canIpForward'] as core.bool;
     }
@@ -73678,6 +77433,9 @@ class InstanceProperties {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (advancedMachineFeatures != null) {
+      _json['advancedMachineFeatures'] = advancedMachineFeatures.toJson();
+    }
     if (canIpForward != null) {
       _json['canIpForward'] = canIpForward;
     }
@@ -73947,6 +77705,7 @@ class InstanceTemplateListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -74264,6 +78023,7 @@ class InstancesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -74984,6 +78744,11 @@ class InterconnectAttachment {
   /// Output only.
   core.String customerRouterIpAddress;
 
+  /// Dataplane version for this InterconnectAttachment.
+  ///
+  /// Output only.
+  core.int dataplaneVersion;
+
   /// An optional description of this resource.
   core.String description;
 
@@ -75029,6 +78794,13 @@ class InterconnectAttachment {
   ///
   /// Output only.
   core.String kind;
+
+  /// Maximum Transmission Unit (MTU), in bytes, of packets passing through this
+  /// interconnect attachment.
+  ///
+  /// Only 1440 and 1500 are allowed. If not specified, the value will default
+  /// to 1440.
+  core.int mtu;
 
   /// Name of the resource.
   ///
@@ -75178,6 +78950,9 @@ class InterconnectAttachment {
     if (_json.containsKey('customerRouterIpAddress')) {
       customerRouterIpAddress = _json['customerRouterIpAddress'] as core.String;
     }
+    if (_json.containsKey('dataplaneVersion')) {
+      dataplaneVersion = _json['dataplaneVersion'] as core.int;
+    }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
@@ -75195,6 +78970,9 @@ class InterconnectAttachment {
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
+    }
+    if (_json.containsKey('mtu')) {
+      mtu = _json['mtu'] as core.int;
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -75257,6 +79035,9 @@ class InterconnectAttachment {
     if (customerRouterIpAddress != null) {
       _json['customerRouterIpAddress'] = customerRouterIpAddress;
     }
+    if (dataplaneVersion != null) {
+      _json['dataplaneVersion'] = dataplaneVersion;
+    }
     if (description != null) {
       _json['description'] = description;
     }
@@ -75274,6 +79055,9 @@ class InterconnectAttachment {
     }
     if (kind != null) {
       _json['kind'] = kind;
+    }
+    if (mtu != null) {
+      _json['mtu'] = mtu;
     }
     if (name != null) {
       _json['name'] = name;
@@ -75375,6 +79159,7 @@ class InterconnectAttachmentAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -75604,6 +79389,7 @@ class InterconnectAttachmentListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -75898,6 +79684,7 @@ class InterconnectAttachmentsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -76365,6 +80152,7 @@ class InterconnectListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -76807,6 +80595,7 @@ class InterconnectLocationListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -77589,6 +81378,7 @@ class LicensesListResponseWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -77722,6 +81512,49 @@ class LicensesListResponse {
     }
     if (warning != null) {
       _json['warning'] = warning.toJson();
+    }
+    return _json;
+  }
+}
+
+class LocalDisk {
+  /// Specifies the number of such disks.
+  core.int diskCount;
+
+  /// Specifies the size of the disk in base-2 GB.
+  core.int diskSizeGb;
+
+  /// Specifies the desired disk type on the node.
+  ///
+  /// This disk type must be a local storage type (e.g.: local-ssd). Note that
+  /// for nodeTemplates, this should be the name of the disk type and not its
+  /// URL.
+  core.String diskType;
+
+  LocalDisk();
+
+  LocalDisk.fromJson(core.Map _json) {
+    if (_json.containsKey('diskCount')) {
+      diskCount = _json['diskCount'] as core.int;
+    }
+    if (_json.containsKey('diskSizeGb')) {
+      diskSizeGb = _json['diskSizeGb'] as core.int;
+    }
+    if (_json.containsKey('diskType')) {
+      diskType = _json['diskType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (diskCount != null) {
+      _json['diskCount'] = diskCount;
+    }
+    if (diskSizeGb != null) {
+      _json['diskSizeGb'] = diskSizeGb;
+    }
+    if (diskType != null) {
+      _json['diskType'] = diskType;
     }
     return _json;
   }
@@ -78264,6 +82097,7 @@ class MachineTypeAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -78493,6 +82327,7 @@ class MachineTypeListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -78705,6 +82540,7 @@ class MachineTypesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -79624,8 +83460,8 @@ class NetworkEndpoint {
 
   /// Optional port number of network endpoint.
   ///
-  /// If not specified and the NetworkEndpointGroup.network_endpoint_type is
-  /// GCE_IP_PORT, the defaultPort for the network endpoint group will be used.
+  /// If not specified, the defaultPort for the network endpoint group will be
+  /// used.
   core.int port;
 
   NetworkEndpoint();
@@ -79681,8 +83517,9 @@ class NetworkEndpoint {
 /// A network endpoint group (NEG) defines how a set of endpoints should be
 /// reached, whether they are reachable, and where they are located.
 ///
-/// For more information about using NEGs, see Setting up internet NEGs, Setting
-/// up zonal NEGs, or Setting up serverless NEGs. (== resource_for
+/// For more information about using NEGs, see Setting up external HTTP(S) Load
+/// Balancing with internet NEGs, Setting up zonal NEGs, or Setting up external
+/// HTTP(S) Load Balancing with serverless NEGs. (== resource_for
 /// {$api_version}.networkEndpointGroups ==) (== resource_for
 /// {$api_version}.globalNetworkEndpointGroups ==) (== resource_for
 /// {$api_version}.regionNetworkEndpointGroups ==)
@@ -79967,6 +83804,7 @@ class NetworkEndpointGroupAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -80146,7 +83984,7 @@ class NetworkEndpointGroupAggregatedList {
 class NetworkEndpointGroupAppEngine {
   /// Optional serving service.
   ///
-  /// The service name must be 1-63 characters long, and comply with RFC1035.
+  /// The service name is case-sensitive and must be 1-63 characters long.
   ///
   /// Example value: "default", "my-service".
   core.String service;
@@ -80165,7 +84003,7 @@ class NetworkEndpointGroupAppEngine {
 
   /// Optional serving version.
   ///
-  /// The version must be 1-63 characters long, and comply with RFC1035.
+  /// The version name is case-sensitive and must be 1-100 characters long.
   ///
   /// Example value: "v1", "v2".
   core.String version;
@@ -80371,6 +84209,7 @@ class NetworkEndpointGroupListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -80660,6 +84499,7 @@ class NetworkEndpointGroupsListNetworkEndpointsWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -80862,6 +84702,7 @@ class NetworkEndpointGroupsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -81075,6 +84916,15 @@ class NetworkInterface {
   /// system.
   core.String networkIP;
 
+  /// The type of vNIC to be used on this interface.
+  ///
+  /// This may be gVNIC or VirtioNet.
+  /// Possible string values are:
+  /// - "GVNIC"
+  /// - "UNSPECIFIED_NIC_TYPE"
+  /// - "VIRTIO_NET"
+  core.String nicType;
+
   /// The URL of the Subnetwork resource for this instance.
   ///
   /// If the network resource is in legacy mode, do not specify this field. If
@@ -81120,6 +84970,9 @@ class NetworkInterface {
     if (_json.containsKey('networkIP')) {
       networkIP = _json['networkIP'] as core.String;
     }
+    if (_json.containsKey('nicType')) {
+      nicType = _json['nicType'] as core.String;
+    }
     if (_json.containsKey('subnetwork')) {
       subnetwork = _json['subnetwork'] as core.String;
     }
@@ -81152,6 +85005,9 @@ class NetworkInterface {
     }
     if (networkIP != null) {
       _json['networkIP'] = networkIP;
+    }
+    if (nicType != null) {
+      _json['nicType'] = nicType;
     }
     if (subnetwork != null) {
       _json['subnetwork'] = subnetwork;
@@ -81220,6 +85076,7 @@ class NetworkListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -81728,6 +85585,7 @@ class NodeGroup {
   /// - "MIGRATE_WITHIN_NODE_GROUP"
   /// - "RESTART_IN_PLACE"
   core.String maintenancePolicy;
+  NodeGroupMaintenanceWindow maintenanceWindow;
 
   /// The name of the resource, provided by the client when initially creating
   /// the resource.
@@ -81791,6 +85649,10 @@ class NodeGroup {
     if (_json.containsKey('maintenancePolicy')) {
       maintenancePolicy = _json['maintenancePolicy'] as core.String;
     }
+    if (_json.containsKey('maintenanceWindow')) {
+      maintenanceWindow = NodeGroupMaintenanceWindow.fromJson(
+          _json['maintenanceWindow'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -81833,6 +85695,9 @@ class NodeGroup {
     }
     if (maintenancePolicy != null) {
       _json['maintenancePolicy'] = maintenancePolicy;
+    }
+    if (maintenanceWindow != null) {
+      _json['maintenanceWindow'] = maintenanceWindow.toJson();
     }
     if (name != null) {
       _json['name'] = name;
@@ -81916,6 +85781,7 @@ class NodeGroupAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -82085,6 +85951,8 @@ class NodeGroupAggregatedList {
 
 class NodeGroupAutoscalingPolicy {
   /// The maximum number of nodes that the group should have.
+  ///
+  /// Must be set if autoscaling is enabled. Maximum value allowed is 100.
   core.int maxNodes;
 
   /// The minimum number of nodes that the group should have.
@@ -82190,6 +86058,7 @@ class NodeGroupListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -82340,13 +86209,59 @@ class NodeGroupList {
   }
 }
 
+/// Time window specified for daily maintenance operations.
+///
+/// GCE's internal maintenance will be performed within this window.
+class NodeGroupMaintenanceWindow {
+  /// A predetermined duration for the window, automatically chosen to be the
+  /// smallest possible in the given scenario.
+  ///
+  /// Output only.
+  Duration maintenanceDuration;
+
+  /// Start time of the window.
+  ///
+  /// This must be in UTC format that resolves to one of 00:00, 04:00, 08:00,
+  /// 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
+  core.String startTime;
+
+  NodeGroupMaintenanceWindow();
+
+  NodeGroupMaintenanceWindow.fromJson(core.Map _json) {
+    if (_json.containsKey('maintenanceDuration')) {
+      maintenanceDuration = Duration.fromJson(
+          _json['maintenanceDuration'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('startTime')) {
+      startTime = _json['startTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (maintenanceDuration != null) {
+      _json['maintenanceDuration'] = maintenanceDuration.toJson();
+    }
+    if (startTime != null) {
+      _json['startTime'] = startTime;
+    }
+    return _json;
+  }
+}
+
 class NodeGroupNode {
+  /// Accelerators for this node.
+  core.List<AcceleratorConfig> accelerators;
+
   /// CPU overcommit.
   /// Possible string values are:
   /// - "CPU_OVERCOMMIT_TYPE_UNSPECIFIED"
   /// - "ENABLED"
   /// - "NONE"
   core.String cpuOvercommitType;
+
+  /// Local disk configurations.
+  core.List<LocalDisk> disks;
 
   /// Instances scheduled on this node.
   core.List<core.String> instances;
@@ -82375,8 +86290,20 @@ class NodeGroupNode {
   NodeGroupNode();
 
   NodeGroupNode.fromJson(core.Map _json) {
+    if (_json.containsKey('accelerators')) {
+      accelerators = (_json['accelerators'] as core.List)
+          .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('cpuOvercommitType')) {
       cpuOvercommitType = _json['cpuOvercommitType'] as core.String;
+    }
+    if (_json.containsKey('disks')) {
+      disks = (_json['disks'] as core.List)
+          .map<LocalDisk>((value) =>
+              LocalDisk.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
     }
     if (_json.containsKey('instances')) {
       instances = (_json['instances'] as core.List)
@@ -82403,8 +86330,15 @@ class NodeGroupNode {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (accelerators != null) {
+      _json['accelerators'] =
+          accelerators.map((value) => value.toJson()).toList();
+    }
     if (cpuOvercommitType != null) {
       _json['cpuOvercommitType'] = cpuOvercommitType;
+    }
+    if (disks != null) {
+      _json['disks'] = disks.map((value) => value.toJson()).toList();
     }
     if (instances != null) {
       _json['instances'] = instances;
@@ -82532,6 +86466,7 @@ class NodeGroupsListNodesWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -82742,6 +86677,7 @@ class NodeGroupsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -82873,6 +86809,8 @@ class NodeGroupsSetNodeTemplateRequest {
 /// For more information, read Creating node groups and instances. (==
 /// resource_for {$api_version}.nodeTemplates ==)
 class NodeTemplate {
+  core.List<AcceleratorConfig> accelerators;
+
   /// CPU overcommit.
   /// Possible string values are:
   /// - "CPU_OVERCOMMIT_TYPE_UNSPECIFIED"
@@ -82889,6 +86827,7 @@ class NodeTemplate {
   ///
   /// Provide this property when you create the resource.
   core.String description;
+  core.List<LocalDisk> disks;
 
   /// The unique identifier for the resource.
   ///
@@ -82973,6 +86912,12 @@ class NodeTemplate {
   NodeTemplate();
 
   NodeTemplate.fromJson(core.Map _json) {
+    if (_json.containsKey('accelerators')) {
+      accelerators = (_json['accelerators'] as core.List)
+          .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('cpuOvercommitType')) {
       cpuOvercommitType = _json['cpuOvercommitType'] as core.String;
     }
@@ -82981,6 +86926,12 @@ class NodeTemplate {
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('disks')) {
+      disks = (_json['disks'] as core.List)
+          .map<LocalDisk>((value) =>
+              LocalDisk.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -83028,6 +86979,10 @@ class NodeTemplate {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (accelerators != null) {
+      _json['accelerators'] =
+          accelerators.map((value) => value.toJson()).toList();
+    }
     if (cpuOvercommitType != null) {
       _json['cpuOvercommitType'] = cpuOvercommitType;
     }
@@ -83036,6 +86991,9 @@ class NodeTemplate {
     }
     if (description != null) {
       _json['description'] = description;
+    }
+    if (disks != null) {
+      _json['disks'] = disks.map((value) => value.toJson()).toList();
     }
     if (id != null) {
       _json['id'] = id;
@@ -83134,6 +87092,7 @@ class NodeTemplateAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -83361,6 +87320,7 @@ class NodeTemplateListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -83606,6 +87566,7 @@ class NodeTemplatesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -83927,6 +87888,7 @@ class NodeTypeAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -84154,6 +88116,7 @@ class NodeTypeListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -84364,6 +88327,7 @@ class NodeTypesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -84728,6 +88692,7 @@ class NotificationEndpointListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -85013,6 +88978,7 @@ class OperationWarnings {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -85463,6 +89429,7 @@ class OperationAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -85696,6 +89663,7 @@ class OperationListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -85913,6 +89881,7 @@ class OperationsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -86431,6 +90400,7 @@ class PacketMirroringAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -86612,6 +90582,15 @@ class PacketMirroringFilter {
   /// IPProtocols is specified, all traffic is mirrored.
   core.List<core.String> cidrRanges;
 
+  /// Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH.
+  ///
+  /// The default is BOTH.
+  /// Possible string values are:
+  /// - "BOTH"
+  /// - "EGRESS"
+  /// - "INGRESS"
+  core.String direction;
+
   PacketMirroringFilter();
 
   PacketMirroringFilter.fromJson(core.Map _json) {
@@ -86625,6 +90604,9 @@ class PacketMirroringFilter {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('direction')) {
+      direction = _json['direction'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -86634,6 +90616,9 @@ class PacketMirroringFilter {
     }
     if (cidrRanges != null) {
       _json['cidrRanges'] = cidrRanges;
+    }
+    if (direction != null) {
+      _json['direction'] = direction;
     }
     return _json;
   }
@@ -86732,6 +90717,7 @@ class PacketMirroringListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -87106,6 +91092,7 @@ class PacketMirroringsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -88176,6 +92163,7 @@ class Quota {
   /// - "CPUS"
   /// - "CPUS_ALL_REGIONS"
   /// - "DISKS_TOTAL_GB"
+  /// - "E2_CPUS"
   /// - "EXTERNAL_NETWORK_LB_FORWARDING_RULES"
   /// - "EXTERNAL_PROTOCOL_FORWARDING_RULES"
   /// - "EXTERNAL_VPN_GATEWAYS"
@@ -88220,6 +92208,7 @@ class Quota {
   /// - "NVIDIA_T4_VWS_GPUS"
   /// - "NVIDIA_V100_GPUS"
   /// - "PACKET_MIRRORINGS"
+  /// - "PD_EXTREME_TOTAL_PROVISIONED_IOPS"
   /// - "PREEMPTIBLE_CPUS"
   /// - "PREEMPTIBLE_LOCAL_SSD_GB"
   /// - "PREEMPTIBLE_NVIDIA_A100_GPUS"
@@ -88231,6 +92220,7 @@ class Quota {
   /// - "PREEMPTIBLE_NVIDIA_T4_GPUS"
   /// - "PREEMPTIBLE_NVIDIA_T4_VWS_GPUS"
   /// - "PREEMPTIBLE_NVIDIA_V100_GPUS"
+  /// - "PSC_ILB_CONSUMER_FORWARDING_RULES_PER_PRODUCER_NETWORK"
   /// - "PUBLIC_ADVERTISED_PREFIXES"
   /// - "PUBLIC_DELEGATED_PREFIXES"
   /// - "REGIONAL_AUTOSCALERS"
@@ -88258,6 +92248,7 @@ class Quota {
   /// - "URL_MAPS"
   /// - "VPN_GATEWAYS"
   /// - "VPN_TUNNELS"
+  /// - "XPN_SERVICE_PROJECTS"
   core.String metric;
 
   /// Owning resource.
@@ -88422,6 +92413,11 @@ class Region {
   /// - "UP"
   core.String status;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool supportsPzs;
+
   /// A list of zones available in this region, in the form of resource URLs.
   ///
   /// Output only.
@@ -88461,6 +92457,9 @@ class Region {
     if (_json.containsKey('status')) {
       status = _json['status'] as core.String;
     }
+    if (_json.containsKey('supportsPzs')) {
+      supportsPzs = _json['supportsPzs'] as core.bool;
+    }
     if (_json.containsKey('zones')) {
       zones = (_json['zones'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -88496,6 +92495,9 @@ class Region {
     }
     if (status != null) {
       _json['status'] = status;
+    }
+    if (supportsPzs != null) {
+      _json['supportsPzs'] = supportsPzs;
     }
     if (zones != null) {
       _json['zones'] = zones;
@@ -88564,6 +92566,7 @@ class RegionAutoscalerListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -88772,6 +92775,7 @@ class RegionDiskTypeListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -89050,6 +93054,7 @@ class RegionInstanceGroupListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -89283,6 +93288,7 @@ class RegionInstanceGroupManagerListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -89516,6 +93522,12 @@ class RegionInstanceGroupManagersAbandonInstancesRequest {
 
 /// RegionInstanceGroupManagers.applyUpdatesToInstances
 class RegionInstanceGroupManagersApplyUpdatesRequest {
+  /// Flag to update all instances instead of specified list of ?instances?.
+  ///
+  /// If the flag is set to true then the instances may not be specified in the
+  /// request.
+  core.bool allInstances;
+
   /// The list of URLs of one or more instances for which you want to apply
   /// updates.
   ///
@@ -89561,6 +93573,9 @@ class RegionInstanceGroupManagersApplyUpdatesRequest {
   RegionInstanceGroupManagersApplyUpdatesRequest();
 
   RegionInstanceGroupManagersApplyUpdatesRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('allInstances')) {
+      allInstances = _json['allInstances'] as core.bool;
+    }
     if (_json.containsKey('instances')) {
       instances = (_json['instances'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -89577,6 +93592,9 @@ class RegionInstanceGroupManagersApplyUpdatesRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (allInstances != null) {
+      _json['allInstances'] = allInstances;
+    }
     if (instances != null) {
       _json['instances'] = instances;
     }
@@ -89747,6 +93765,7 @@ class RegionInstanceGroupManagersListInstanceConfigsRespWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -90064,6 +94083,7 @@ class RegionInstanceGroupsListInstancesWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -90357,6 +94377,7 @@ class RegionListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -90962,6 +94983,7 @@ class ReservationAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -91187,6 +95209,7 @@ class ReservationListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -91421,6 +95444,7 @@ class ReservationsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -91658,6 +95682,7 @@ class ResourcePoliciesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -91772,7 +95797,7 @@ class ResourcePolicy {
   core.String creationTimestamp;
   core.String description;
 
-  /// Resource policy for instacnes for placement configuration.
+  /// Resource policy for instances for placement configuration.
   ResourcePolicyGroupPlacementPolicy groupPlacementPolicy;
 
   /// The unique identifier for the resource.
@@ -91953,6 +95978,7 @@ class ResourcePolicyAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -92329,6 +96355,7 @@ class ResourcePolicyListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -92622,6 +96649,9 @@ class ResourcePolicySnapshotSchedulePolicySchedule {
 /// Specified snapshot properties for scheduled snapshots created by this
 /// policy.
 class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
+  /// Chain name that the snapshot is created in.
+  core.String chainName;
+
   /// Indication to perform a 'guest aware' snapshot.
   core.bool guestFlush;
 
@@ -92639,6 +96669,9 @@ class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
 
   ResourcePolicySnapshotSchedulePolicySnapshotProperties.fromJson(
       core.Map _json) {
+    if (_json.containsKey('chainName')) {
+      chainName = _json['chainName'] as core.String;
+    }
     if (_json.containsKey('guestFlush')) {
       guestFlush = _json['guestFlush'] as core.bool;
     }
@@ -92660,6 +96693,9 @@ class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (chainName != null) {
+      _json['chainName'] = chainName;
+    }
     if (guestFlush != null) {
       _json['guestFlush'] = guestFlush;
     }
@@ -92812,6 +96848,7 @@ class RouteWarnings {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -92896,7 +96933,7 @@ class Route {
 
   /// The destination range of outgoing packets that this route applies to.
   ///
-  /// Only IPv4 is supported.
+  /// Both IPv4 and IPv6 are supported.
   core.String destRange;
 
   /// The unique identifier for the resource.
@@ -92934,10 +96971,10 @@ class Route {
   core.String nextHopGateway;
 
   /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that
-  /// should handle matching packets.
+  /// should handle matching packets or the IP address of the forwarding Rule.
   ///
-  /// You can only specify the forwarding rule as a partial or full URL. For
-  /// example, the following are all valid URLs:
+  /// For example, the following are all valid URLs:
+  /// - 10.128.0.56
   /// -
   /// https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
   /// - regions/region/forwardingRules/forwardingRule
@@ -93173,6 +97210,7 @@ class RouteListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -93580,6 +97618,7 @@ class RouterAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -94128,6 +98167,7 @@ class RouterListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -94292,6 +98332,7 @@ class RouterNat {
   /// These IPs must be valid static external IPs that have been assigned to the
   /// NAT. These IPs should be used for updating/patching a NAT only.
   core.List<core.String> drainNatIps;
+  core.bool enableEndpointIndependentMapping;
 
   /// Timeout (in seconds) for ICMP connections.
   ///
@@ -94382,6 +98423,10 @@ class RouterNat {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('enableEndpointIndependentMapping')) {
+      enableEndpointIndependentMapping =
+          _json['enableEndpointIndependentMapping'] as core.bool;
+    }
     if (_json.containsKey('icmpIdleTimeoutSec')) {
       icmpIdleTimeoutSec = _json['icmpIdleTimeoutSec'] as core.int;
     }
@@ -94431,6 +98476,10 @@ class RouterNat {
     final _json = <core.String, core.Object>{};
     if (drainNatIps != null) {
       _json['drainNatIps'] = drainNatIps;
+    }
+    if (enableEndpointIndependentMapping != null) {
+      _json['enableEndpointIndependentMapping'] =
+          enableEndpointIndependentMapping;
     }
     if (icmpIdleTimeoutSec != null) {
       _json['icmpIdleTimeoutSec'] = icmpIdleTimeoutSec;
@@ -94971,6 +99020,7 @@ class RoutersScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -95286,6 +99336,12 @@ class Scheduling {
   /// if it is terminated by Compute Engine.
   core.bool automaticRestart;
 
+  /// An opaque location hint used to place the instance close to other
+  /// resources.
+  ///
+  /// This field is for use by internal tools that use the public API.
+  core.String locationHint;
+
   /// The minimum number of virtual CPUs this instance will consume when running
   /// on a sole-tenant node.
   core.int minNodeCpus;
@@ -95319,6 +99375,9 @@ class Scheduling {
     if (_json.containsKey('automaticRestart')) {
       automaticRestart = _json['automaticRestart'] as core.bool;
     }
+    if (_json.containsKey('locationHint')) {
+      locationHint = _json['locationHint'] as core.String;
+    }
     if (_json.containsKey('minNodeCpus')) {
       minNodeCpus = _json['minNodeCpus'] as core.int;
     }
@@ -95341,6 +99400,9 @@ class Scheduling {
     final _json = <core.String, core.Object>{};
     if (automaticRestart != null) {
       _json['automaticRestart'] = automaticRestart;
+    }
+    if (locationHint != null) {
+      _json['locationHint'] = locationHint;
     }
     if (minNodeCpus != null) {
       _json['minNodeCpus'] = minNodeCpus;
@@ -95490,12 +99552,12 @@ class SecurityPoliciesWafConfig {
   }
 }
 
-/// Represents a Cloud Armor Security Policy resource.
+/// Represents a Google Cloud Armor security policy resource.
 ///
 /// Only external backend services that use load balancers can reference a
-/// Security Policy.
+/// security policy.
 ///
-/// For more information, read Cloud Armor Security Policy Concepts. (==
+/// For more information, see Google Cloud Armor security policy overview. (==
 /// resource_for {$api_version}.securityPolicies ==)
 class SecurityPolicy {
   /// Creation timestamp in RFC3339 text format.
@@ -95684,6 +99746,7 @@ class SecurityPolicyListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -95877,7 +99940,7 @@ class SecurityPolicyRule {
   ///
   /// The priority must be a positive value between 0 and 2147483647. Rules are
   /// evaluated from highest to lowest priority where 0 is the highest priority
-  /// and 2147483647 is the lowest prority.
+  /// and 2147483647 is the lowest priority.
   core.int priority;
 
   SecurityPolicyRule();
@@ -96004,6 +100067,62 @@ class SecurityPolicyRuleMatcherConfig {
     final _json = <core.String, core.Object>{};
     if (srcIpRanges != null) {
       _json['srcIpRanges'] = srcIpRanges;
+    }
+    return _json;
+  }
+}
+
+/// The authentication and authorization settings for a BackendService.
+class SecuritySettings {
+  /// A URL referring to a networksecurity.ClientTlsPolicy resource that
+  /// describes how clients should authenticate with this service's backends.
+  /// clientTlsPolicy only applies to a global BackendService with the
+  /// loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+  /// If left blank, communications are not encrypted.
+  /// Note: This field currently has no impact.
+  ///
+  /// Optional.
+  core.String clientTlsPolicy;
+
+  /// A list of Subject Alternative Names (SANs) that the client verifies during
+  /// a mutual TLS handshake with an server/endpoint for this BackendService.
+  ///
+  /// When the server presents its X.509 certificate to the client, the client
+  /// inspects the certificate's subjectAltName field. If the field contains one
+  /// of the specified values, the communication continues. Otherwise, it fails.
+  /// This additional check enables the client to verify that the server is
+  /// authorized to run the requested service.
+  /// Note that the contents of the server certificate's subjectAltName field
+  /// are configured by the Public Key Infrastructure which provisions server
+  /// identities.
+  /// Only applies to a global BackendService with loadBalancingScheme set to
+  /// INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached
+  /// clientTlsPolicy with clientCertificate (mTLS mode).
+  /// Note: This field currently has no impact.
+  ///
+  /// Optional.
+  core.List<core.String> subjectAltNames;
+
+  SecuritySettings();
+
+  SecuritySettings.fromJson(core.Map _json) {
+    if (_json.containsKey('clientTlsPolicy')) {
+      clientTlsPolicy = _json['clientTlsPolicy'] as core.String;
+    }
+    if (_json.containsKey('subjectAltNames')) {
+      subjectAltNames = (_json['subjectAltNames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (clientTlsPolicy != null) {
+      _json['clientTlsPolicy'] = clientTlsPolicy;
+    }
+    if (subjectAltNames != null) {
+      _json['subjectAltNames'] = subjectAltNames;
     }
     return _json;
   }
@@ -96350,6 +100469,16 @@ class Snapshot {
   /// Output only.
   core.bool autoCreated;
 
+  /// Creates the new snapshot in the snapshot chain labeled with the specified
+  /// name.
+  ///
+  /// The chain name must be 1-63 characters long and comply with RFC1035. This
+  /// is an uncommon option only for advanced service owners who needs to create
+  /// separate snapshot chains, for example, for chargeback tracking. When you
+  /// describe your snapshot resource, this field is visible only if it has a
+  /// non-empty value.
+  core.String chainName;
+
   /// Creation timestamp in RFC3339 text format.
   ///
   /// Output only.
@@ -96423,6 +100552,12 @@ class Snapshot {
   /// Output only.
   core.List<core.String> licenses;
 
+  /// An opaque location hint used to place the snapshot close to other
+  /// resources.
+  ///
+  /// This field is for use by internal tools that use the public API.
+  core.String locationHint;
+
   /// Name of the resource; provided by the client when the resource is created.
   ///
   /// The name must be 1-63 characters long, and comply with RFC1035.
@@ -96432,6 +100567,11 @@ class Snapshot {
   /// lowercase letter, or digit, except the last character, which cannot be a
   /// dash.
   core.String name;
+
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool satisfiesPzs;
 
   /// Server-defined URL for the resource.
   ///
@@ -96515,6 +100655,9 @@ class Snapshot {
     if (_json.containsKey('autoCreated')) {
       autoCreated = _json['autoCreated'] as core.bool;
     }
+    if (_json.containsKey('chainName')) {
+      chainName = _json['chainName'] as core.String;
+    }
     if (_json.containsKey('creationTimestamp')) {
       creationTimestamp = _json['creationTimestamp'] as core.String;
     }
@@ -96555,8 +100698,14 @@ class Snapshot {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('locationHint')) {
+      locationHint = _json['locationHint'] as core.String;
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('satisfiesPzs')) {
+      satisfiesPzs = _json['satisfiesPzs'] as core.bool;
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
@@ -96598,6 +100747,9 @@ class Snapshot {
     if (autoCreated != null) {
       _json['autoCreated'] = autoCreated;
     }
+    if (chainName != null) {
+      _json['chainName'] = chainName;
+    }
     if (creationTimestamp != null) {
       _json['creationTimestamp'] = creationTimestamp;
     }
@@ -96628,8 +100780,14 @@ class Snapshot {
     if (licenses != null) {
       _json['licenses'] = licenses;
     }
+    if (locationHint != null) {
+      _json['locationHint'] = locationHint;
+    }
     if (name != null) {
       _json['name'] = name;
+    }
+    if (satisfiesPzs != null) {
+      _json['satisfiesPzs'] = satisfiesPzs;
     }
     if (selfLink != null) {
       _json['selfLink'] = selfLink;
@@ -96722,6 +100880,7 @@ class SnapshotListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -97175,6 +101334,7 @@ class SslCertificateAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -97403,6 +101563,7 @@ class SslCertificateListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -97561,7 +101722,9 @@ class SslCertificateManagedSslCertificate {
 
   /// The domains for which a managed SSL certificate will be generated.
   ///
-  /// Currently only single-domain certs are supported.
+  /// Each Google-managed SSL certificate supports up to the \[maximum number of
+  /// domains per Google-managed SSL
+  /// certificate\](/load-balancing/docs/quotas#ssl_certificates).
   core.List<core.String> domains;
 
   /// Status of the managed certificate resource.
@@ -97710,6 +101873,7 @@ class SslCertificatesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -97870,6 +102034,7 @@ class SslPoliciesListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -98100,6 +102265,7 @@ class SslPolicyWarnings {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -98163,13 +102329,13 @@ class SslPolicyWarnings {
   }
 }
 
-/// Represents a Cloud Armor Security Policy resource.
+/// Represents an SSL Policy resource.
 ///
-/// Only external backend services used by HTTP or HTTPS load balancers can
-/// reference a Security Policy.
+/// Use SSL policies to control the SSL features, such as versions and cipher
+/// suites, offered by an HTTPS or SSL Proxy load balancer.
 ///
-/// For more information, read read Cloud Armor Security Policy Concepts. (==
-/// resource_for {$api_version}.sslPolicies ==)
+/// For more information, read SSL Policy Concepts. (== resource_for
+/// {$api_version}.sslPolicies ==)
 class SslPolicy {
   /// Creation timestamp in RFC3339 text format.
   ///
@@ -98636,13 +102802,14 @@ class Subnetwork {
   /// Output only.
   core.String selfLink;
 
-  /// The state of the subnetwork, which can be one of READY or DRAINING.
+  /// The state of the subnetwork, which can be one of the following values:
+  /// READY: Subnetwork is created and ready to use DRAINING: only applicable to
+  /// subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and
+  /// indicates that connections to the load balancer are being drained.
   ///
-  /// A subnetwork that is READY is ready to be used. The state of DRAINING is
-  /// only applicable to subnetworks that have the purpose set to
-  /// INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load
-  /// balancer are being drained. A subnetwork that is draining cannot be used
-  /// or modified until it reaches a status of READY.
+  /// A subnetwork that is draining cannot be used or modified until it reaches
+  /// a status of READY CREATING: Subnetwork is provisioning DELETING:
+  /// Subnetwork is being deleted UPDATING: Subnetwork is being updated
   ///
   /// Output only.
   /// Possible string values are:
@@ -98847,6 +103014,7 @@ class SubnetworkAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -99076,6 +103244,7 @@ class SubnetworkListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -99450,6 +103619,7 @@ class SubnetworksScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -99722,9 +103892,10 @@ class Tags {
 /// A target gRPC proxy is a component of load balancers intended for load
 /// balancing gRPC traffic.
 ///
-/// Global forwarding rules reference a target gRPC proxy. The Target gRPC Proxy
-/// references a URL map which specifies how traffic routes to gRPC backend
-/// services. (== resource_for {$api_version}.targetGrpcProxies ==)
+/// Only global forwarding rules with load balancing scheme
+/// INTERNAL_SELF_MANAGED can reference a target gRPC proxy. The target gRPC
+/// Proxy references a URL map that specifies how traffic is routed to gRPC
+/// backend services. (== resource_for {$api_version}.targetGrpcProxies ==)
 class TargetGrpcProxy {
   /// Creation timestamp in RFC3339 text format.
   ///
@@ -99936,6 +104107,7 @@ class TargetGrpcProxyListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -100146,6 +104318,7 @@ class TargetHttpProxiesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -100317,6 +104490,21 @@ class TargetHttpProxy {
   /// letter, or digit, except the last character, which cannot be a dash.
   core.String name;
 
+  /// This field only applies when the forwarding rule that references this
+  /// target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+  ///
+  /// When this field is set to true, Envoy proxies set up inbound traffic
+  /// interception and bind to the IP address and port specified in the
+  /// forwarding rule.
+  ///
+  /// This is generally useful when using Traffic Director to configure Envoy as
+  /// a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy
+  /// proxy listens for inbound requests and handles requests when it receives
+  /// them.
+  ///
+  /// The default is false.
+  core.bool proxyBind;
+
   /// URL of the region where the regional Target HTTP Proxy resides.
   ///
   /// This field is not applicable to global Target HTTP Proxies.
@@ -100354,6 +104542,9 @@ class TargetHttpProxy {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('proxyBind')) {
+      proxyBind = _json['proxyBind'] as core.bool;
+    }
     if (_json.containsKey('region')) {
       region = _json['region'] as core.String;
     }
@@ -100384,6 +104575,9 @@ class TargetHttpProxy {
     }
     if (name != null) {
       _json['name'] = name;
+    }
+    if (proxyBind != null) {
+      _json['proxyBind'] = proxyBind;
     }
     if (region != null) {
       _json['region'] = region;
@@ -100551,6 +104745,7 @@ class TargetHttpProxyListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -100760,6 +104955,7 @@ class TargetHttpsProxiesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -100930,6 +105126,19 @@ class TargetHttpsProxiesSetSslCertificatesRequest {
 /// Forwarding rule concepts. (== resource_for {$api_version}.targetHttpsProxies
 /// ==) (== resource_for {$api_version}.regionTargetHttpsProxies ==)
 class TargetHttpsProxy {
+  /// A URL referring to a networksecurity.AuthorizationPolicy resource that
+  /// describes how the proxy should authorize inbound traffic.
+  ///
+  /// If left blank, access will not be restricted by an authorization policy.
+  /// Refer to the AuthorizationPolicy resource for additional details.
+  /// authorizationPolicy only applies to a global TargetHttpsProxy attached to
+  /// globalForwardingRules with the loadBalancingScheme set to
+  /// INTERNAL_SELF_MANAGED.
+  /// Note: This field currently has no impact.
+  ///
+  /// Optional.
+  core.String authorizationPolicy;
+
   /// Creation timestamp in RFC3339 text format.
   ///
   /// Output only.
@@ -100964,6 +105173,21 @@ class TargetHttpsProxy {
   /// letter, or digit, except the last character, which cannot be a dash.
   core.String name;
 
+  /// This field only applies when the forwarding rule that references this
+  /// target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+  ///
+  /// When this field is set to true, Envoy proxies set up inbound traffic
+  /// interception and bind to the IP address and port specified in the
+  /// forwarding rule.
+  ///
+  /// This is generally useful when using Traffic Director to configure Envoy as
+  /// a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy
+  /// proxy listens for inbound requests and handles requests when it receives
+  /// them.
+  ///
+  /// The default is false.
+  core.bool proxyBind;
+
   /// Specifies the QUIC override policy for this TargetHttpsProxy resource.
   ///
   /// This setting determines whether the load balancer attempts to negotiate
@@ -100974,7 +105198,6 @@ class TargetHttpsProxy {
   /// - When quic-override is set to DISABLE, the load balancer doesn't use
   /// QUIC.
   /// - If the quic-override flag is not specified, NONE is implied.
-  /// -
   /// Possible string values are:
   /// - "DISABLE"
   /// - "ENABLE"
@@ -100992,6 +105215,17 @@ class TargetHttpsProxy {
   ///
   /// Output only.
   core.String selfLink;
+
+  /// A URL referring to a networksecurity.ServerTlsPolicy resource that
+  /// describes how the proxy should authenticate inbound traffic.
+  /// serverTlsPolicy only applies to a global TargetHttpsProxy attached to
+  /// globalForwardingRules with the loadBalancingScheme set to
+  /// INTERNAL_SELF_MANAGED.
+  /// If left blank, communications are not encrypted.
+  /// Note: This field currently has no impact.
+  ///
+  /// Optional.
+  core.String serverTlsPolicy;
 
   /// URLs to SslCertificate resources that are used to authenticate connections
   /// between users and the load balancer.
@@ -101019,6 +105253,9 @@ class TargetHttpsProxy {
   TargetHttpsProxy();
 
   TargetHttpsProxy.fromJson(core.Map _json) {
+    if (_json.containsKey('authorizationPolicy')) {
+      authorizationPolicy = _json['authorizationPolicy'] as core.String;
+    }
     if (_json.containsKey('creationTimestamp')) {
       creationTimestamp = _json['creationTimestamp'] as core.String;
     }
@@ -101034,6 +105271,9 @@ class TargetHttpsProxy {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('proxyBind')) {
+      proxyBind = _json['proxyBind'] as core.bool;
+    }
     if (_json.containsKey('quicOverride')) {
       quicOverride = _json['quicOverride'] as core.String;
     }
@@ -101042,6 +105282,9 @@ class TargetHttpsProxy {
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
+    }
+    if (_json.containsKey('serverTlsPolicy')) {
+      serverTlsPolicy = _json['serverTlsPolicy'] as core.String;
     }
     if (_json.containsKey('sslCertificates')) {
       sslCertificates = (_json['sslCertificates'] as core.List)
@@ -101058,6 +105301,9 @@ class TargetHttpsProxy {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (authorizationPolicy != null) {
+      _json['authorizationPolicy'] = authorizationPolicy;
+    }
     if (creationTimestamp != null) {
       _json['creationTimestamp'] = creationTimestamp;
     }
@@ -101073,6 +105319,9 @@ class TargetHttpsProxy {
     if (name != null) {
       _json['name'] = name;
     }
+    if (proxyBind != null) {
+      _json['proxyBind'] = proxyBind;
+    }
     if (quicOverride != null) {
       _json['quicOverride'] = quicOverride;
     }
@@ -101081,6 +105330,9 @@ class TargetHttpsProxy {
     }
     if (selfLink != null) {
       _json['selfLink'] = selfLink;
+    }
+    if (serverTlsPolicy != null) {
+      _json['serverTlsPolicy'] = serverTlsPolicy;
     }
     if (sslCertificates != null) {
       _json['sslCertificates'] = sslCertificates;
@@ -101155,6 +105407,7 @@ class TargetHttpsProxyAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -101384,6 +105637,7 @@ class TargetHttpsProxyListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -101734,6 +105988,7 @@ class TargetInstanceAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -101958,6 +106213,7 @@ class TargetInstanceListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -102165,6 +106421,7 @@ class TargetInstancesScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -102274,6 +106531,8 @@ class TargetInstancesScopedList {
 /// information, read Using target pools. (== resource_for
 /// {$api_version}.targetPools ==)
 class TargetPool {
+  /// The server-defined URL for the resource.
+  ///
   /// This field is applicable only when the containing target pool is serving a
   /// forwarding rule as the primary pool, and its failoverRatio field is
   /// properly set to a value between \[0, 1\].
@@ -102320,9 +106579,8 @@ class TargetPool {
   /// The URL of the HttpHealthCheck resource.
   ///
   /// A member instance in this pool is considered healthy if and only if the
-  /// health checks pass. An empty list means all member instances will be
-  /// considered healthy at all times. Only legacy HttpHealthChecks are
-  /// supported. Only one health check may be specified.
+  /// health checks pass. Only legacy HttpHealthChecks are supported. Only one
+  /// health check may be specified.
   core.List<core.String> healthChecks;
 
   /// The unique identifier for the resource.
@@ -102530,6 +106788,7 @@ class TargetPoolAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -102797,6 +107056,7 @@ class TargetPoolListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -103120,6 +107380,7 @@ class TargetPoolsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -103519,6 +107780,7 @@ class TargetSslProxyListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -103893,6 +108155,7 @@ class TargetTcpProxyListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -104268,6 +108531,7 @@ class TargetVpnGatewayAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -104496,6 +108760,7 @@ class TargetVpnGatewayListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -104709,6 +108974,7 @@ class TargetVpnGatewaysScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -104814,12 +109080,31 @@ class TargetVpnGatewaysScopedList {
 }
 
 class TestFailure {
+  /// The actual output URL evaluated by load balancer containing the scheme,
+  /// host, path and query parameters.
+  core.String actualOutputUrl;
+
+  /// Actual HTTP status code for rule with `urlRedirect` calculated by load
+  /// balancer
+  core.int actualRedirectResponseCode;
+
   /// BackendService or BackendBucket returned by load balancer.
   core.String actualService;
+
+  /// The expected output URL evaluated by load balancer containing the scheme,
+  /// host, path and query parameters.
+  core.String expectedOutputUrl;
+
+  /// Expected HTTP status code for rule with `urlRedirect` calculated by load
+  /// balancer
+  core.int expectedRedirectResponseCode;
 
   /// Expected BackendService or BackendBucket resource the given URL should be
   /// mapped to.
   core.String expectedService;
+
+  /// HTTP headers of the request.
+  core.List<UrlMapTestHeader> headers;
 
   /// Host portion of the URL.
   core.String host;
@@ -104830,11 +109115,31 @@ class TestFailure {
   TestFailure();
 
   TestFailure.fromJson(core.Map _json) {
+    if (_json.containsKey('actualOutputUrl')) {
+      actualOutputUrl = _json['actualOutputUrl'] as core.String;
+    }
+    if (_json.containsKey('actualRedirectResponseCode')) {
+      actualRedirectResponseCode =
+          _json['actualRedirectResponseCode'] as core.int;
+    }
     if (_json.containsKey('actualService')) {
       actualService = _json['actualService'] as core.String;
     }
+    if (_json.containsKey('expectedOutputUrl')) {
+      expectedOutputUrl = _json['expectedOutputUrl'] as core.String;
+    }
+    if (_json.containsKey('expectedRedirectResponseCode')) {
+      expectedRedirectResponseCode =
+          _json['expectedRedirectResponseCode'] as core.int;
+    }
     if (_json.containsKey('expectedService')) {
       expectedService = _json['expectedService'] as core.String;
+    }
+    if (_json.containsKey('headers')) {
+      headers = (_json['headers'] as core.List)
+          .map<UrlMapTestHeader>((value) => UrlMapTestHeader.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
     }
     if (_json.containsKey('host')) {
       host = _json['host'] as core.String;
@@ -104846,11 +109151,26 @@ class TestFailure {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (actualOutputUrl != null) {
+      _json['actualOutputUrl'] = actualOutputUrl;
+    }
+    if (actualRedirectResponseCode != null) {
+      _json['actualRedirectResponseCode'] = actualRedirectResponseCode;
+    }
     if (actualService != null) {
       _json['actualService'] = actualService;
     }
+    if (expectedOutputUrl != null) {
+      _json['expectedOutputUrl'] = expectedOutputUrl;
+    }
+    if (expectedRedirectResponseCode != null) {
+      _json['expectedRedirectResponseCode'] = expectedRedirectResponseCode;
+    }
     if (expectedService != null) {
       _json['expectedService'] = expectedService;
+    }
+    if (headers != null) {
+      _json['headers'] = headers.map((value) => value.toJson()).toList();
     }
     if (host != null) {
       _json['host'] = host;
@@ -105238,6 +109558,7 @@ class UrlMapListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -105410,6 +109731,36 @@ class UrlMapTest {
   /// Description of this test case.
   core.String description;
 
+  /// The expected output URL evaluated by load balancer containing the scheme,
+  /// host, path and query parameters.
+  /// For rules that forward requests to backends, the test passes only when
+  /// expectedOutputUrl matches the request forwarded by load balancer to
+  /// backends.
+  ///
+  /// For rules with urlRewrite, the test verifies that the forwarded request
+  /// matches hostRewrite and pathPrefixRewrite in the urlRewrite action. When
+  /// service is specified, expectedOutputUrl\`s scheme is ignored.
+  /// For rules with urlRedirect, the test passes only if expectedOutputUrl
+  /// matches the URL in the load balancer's redirect response. If urlRedirect
+  /// specifies https_redirect, the test passes only if the scheme in
+  /// expectedOutputUrl is also set to https. If urlRedirect specifies
+  /// strip_query, the test passes only if expectedOutputUrl does not contain
+  /// any query parameters.
+  /// expectedOutputUrl is optional when service is specified.
+  core.String expectedOutputUrl;
+
+  /// For rules with urlRedirect, the test passes only if
+  /// expectedRedirectResponseCode matches the HTTP status code in load
+  /// balancer's redirect response.
+  /// expectedRedirectResponseCode cannot be set when service is set.
+  core.int expectedRedirectResponseCode;
+
+  /// HTTP headers for this request.
+  ///
+  /// If headers contains a host header, then host must also match the header
+  /// value.
+  core.List<UrlMapTestHeader> headers;
+
   /// Host portion of the URL.
   ///
   /// If headers contains a host header, then host must also match the header
@@ -105430,6 +109781,19 @@ class UrlMapTest {
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
+    if (_json.containsKey('expectedOutputUrl')) {
+      expectedOutputUrl = _json['expectedOutputUrl'] as core.String;
+    }
+    if (_json.containsKey('expectedRedirectResponseCode')) {
+      expectedRedirectResponseCode =
+          _json['expectedRedirectResponseCode'] as core.int;
+    }
+    if (_json.containsKey('headers')) {
+      headers = (_json['headers'] as core.List)
+          .map<UrlMapTestHeader>((value) => UrlMapTestHeader.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('host')) {
       host = _json['host'] as core.String;
     }
@@ -105446,6 +109810,15 @@ class UrlMapTest {
     if (description != null) {
       _json['description'] = description;
     }
+    if (expectedOutputUrl != null) {
+      _json['expectedOutputUrl'] = expectedOutputUrl;
+    }
+    if (expectedRedirectResponseCode != null) {
+      _json['expectedRedirectResponseCode'] = expectedRedirectResponseCode;
+    }
+    if (headers != null) {
+      _json['headers'] = headers.map((value) => value.toJson()).toList();
+    }
     if (host != null) {
       _json['host'] = host;
     }
@@ -105454,6 +109827,37 @@ class UrlMapTest {
     }
     if (service != null) {
       _json['service'] = service;
+    }
+    return _json;
+  }
+}
+
+/// HTTP headers used in UrlMapTests.
+class UrlMapTestHeader {
+  /// Header name.
+  core.String name;
+
+  /// Header value.
+  core.String value;
+
+  UrlMapTestHeader();
+
+  UrlMapTestHeader.fromJson(core.Map _json) {
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('value')) {
+      value = _json['value'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (name != null) {
+      _json['name'] = name;
+    }
+    if (value != null) {
+      _json['value'] = value;
     }
     return _json;
   }
@@ -105575,6 +109979,7 @@ class UrlMapsAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -105798,6 +110203,7 @@ class UrlMapsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -106125,6 +110531,7 @@ class UsableSubnetworksAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -106504,6 +110911,7 @@ class VmEndpointNatMappingsListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -106895,6 +111303,7 @@ class VpnGatewayAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -107123,6 +111532,7 @@ class VpnGatewayListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -107562,6 +111972,7 @@ class VpnGatewaysScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -108051,6 +112462,7 @@ class VpnTunnelAggregatedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -108279,6 +112691,7 @@ class VpnTunnelListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -108490,6 +112903,7 @@ class VpnTunnelsScopedListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -108791,6 +113205,7 @@ class XpnHostListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"
@@ -109046,6 +113461,11 @@ class Zone {
   /// - "UP"
   core.String status;
 
+  /// Reserved for future use.
+  ///
+  /// Output only.
+  core.bool supportsPzs;
+
   Zone();
 
   Zone.fromJson(core.Map _json) {
@@ -109082,6 +113502,9 @@ class Zone {
     if (_json.containsKey('status')) {
       status = _json['status'] as core.String;
     }
+    if (_json.containsKey('supportsPzs')) {
+      supportsPzs = _json['supportsPzs'] as core.bool;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -109115,6 +113538,9 @@ class Zone {
     }
     if (status != null) {
       _json['status'] = status;
+    }
+    if (supportsPzs != null) {
+      _json['supportsPzs'] = supportsPzs;
     }
     return _json;
   }
@@ -109180,6 +113606,7 @@ class ZoneListWarning {
   /// - "EXTERNAL_API_WARNING"
   /// - "FIELD_VALUE_OVERRIDEN"
   /// - "INJECTED_KERNELS_DEPRECATED"
+  /// - "LARGE_DEPLOYMENT_WARNING"
   /// - "MISSING_TYPE_DEPENDENCY"
   /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED"
   /// - "NEXT_HOP_CANNOT_IP_FORWARD"

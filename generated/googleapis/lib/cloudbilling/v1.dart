@@ -1587,7 +1587,7 @@ class ListSkusResponse {
 
 /// Represents an amount of money with its currency type.
 class Money {
-  /// The 3-letter currency code defined in ISO 4217.
+  /// The three-letter currency code defined in ISO 4217.
   core.String currencyCode;
 
   /// Number of nano (10^-9) units of the amount.

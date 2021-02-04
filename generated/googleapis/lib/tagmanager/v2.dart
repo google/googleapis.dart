@@ -5986,6 +5986,9 @@ class ContainerVersionHeader {
   /// Container version display name.
   core.String name;
 
+  /// Number of clients in the container version.
+  core.String numClients;
+
   /// Number of custom templates in the container version.
   core.String numCustomTemplates;
 
@@ -6027,6 +6030,9 @@ class ContainerVersionHeader {
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('numClients')) {
+      numClients = _json['numClients'] as core.String;
     }
     if (_json.containsKey('numCustomTemplates')) {
       numCustomTemplates = _json['numCustomTemplates'] as core.String;
@@ -6070,6 +6076,9 @@ class ContainerVersionHeader {
     }
     if (name != null) {
       _json['name'] = name;
+    }
+    if (numClients != null) {
+      _json['numClients'] = numClients;
     }
     if (numCustomTemplates != null) {
       _json['numCustomTemplates'] = numCustomTemplates;
@@ -6328,7 +6337,10 @@ class Entity {
   /// - "updated" : The entity has been updated in the workspace.
   core.String changeStatus;
 
-  /// The Folder being represented by the entity.
+  /// The client being represented by the entity.
+  Client client;
+
+  /// The folder being represented by the entity.
   Folder folder;
 
   /// The tag being represented by the entity.
@@ -6345,6 +6357,10 @@ class Entity {
   Entity.fromJson(core.Map _json) {
     if (_json.containsKey('changeStatus')) {
       changeStatus = _json['changeStatus'] as core.String;
+    }
+    if (_json.containsKey('client')) {
+      client = Client.fromJson(
+          _json['client'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('folder')) {
       folder = Folder.fromJson(
@@ -6367,6 +6383,9 @@ class Entity {
     final _json = <core.String, core.Object>{};
     if (changeStatus != null) {
       _json['changeStatus'] = changeStatus;
+    }
+    if (client != null) {
+      _json['client'] = client.toJson();
     }
     if (folder != null) {
       _json['folder'] = folder.toJson();

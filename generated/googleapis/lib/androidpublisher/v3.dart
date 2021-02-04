@@ -3738,6 +3738,9 @@ class PurchasesSubscriptionsResource {
   /// [packageName] - The package name of the application for which this
   /// subscription was purchased (for example, 'com.some.thing').
   ///
+  /// [subscriptionId] - The purchased subscription ID (for example,
+  /// 'monthly001').
+  ///
   /// [token] - The token provided to the user's device when the subscription
   /// was purchased.
   ///
@@ -3751,6 +3754,7 @@ class PurchasesSubscriptionsResource {
   /// this method will complete with the same error.
   async.Future cancel(
     core.String packageName,
+    core.String subscriptionId,
     core.String token, {
     core.String $fields,
   }) {
@@ -3764,6 +3768,9 @@ class PurchasesSubscriptionsResource {
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
+    if (subscriptionId == null) {
+      throw core.ArgumentError('Parameter subscriptionId is required.');
+    }
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
@@ -3775,7 +3782,9 @@ class PurchasesSubscriptionsResource {
 
     _url = 'androidpublisher/v3/applications/' +
         commons.Escaper.ecapeVariable('$packageName') +
-        '/purchases/subscriptions/tokens/' +
+        '/purchases/subscriptions/' +
+        commons.Escaper.ecapeVariable('$subscriptionId') +
+        '/tokens/' +
         commons.Escaper.ecapeVariable('$token') +
         ':cancel';
 
@@ -4445,7 +4454,7 @@ class SystemapksVariantsResource {
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier of the Android app.
+  /// [packageName] - Package name of the app.
   ///
   /// [versionCode] - The version code of the App Bundle.
   ///
@@ -4510,7 +4519,7 @@ class SystemapksVariantsResource {
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier of the Android app.
+  /// [packageName] - Package name of the app.
   ///
   /// [versionCode] - The version code of the App Bundle.
   ///
@@ -4588,7 +4597,7 @@ class SystemapksVariantsResource {
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier of the Android app.
+  /// [packageName] - Package name of the app.
   ///
   /// [versionCode] - The version code of the App Bundle.
   ///
@@ -4655,7 +4664,7 @@ class SystemapksVariantsResource {
   ///
   /// Request parameters:
   ///
-  /// [packageName] - Unique identifier of the Android app.
+  /// [packageName] - Package name of the app.
   ///
   /// [versionCode] - The version code of the App Bundle.
   ///
@@ -6851,7 +6860,8 @@ class SubscriptionPurchase {
   /// The payment state of the subscription.
   ///
   /// Possible values are: 0. Payment pending 1. Payment received 2. Free trial
-  /// 3. Pending deferred upgrade/downgrade
+  /// 3. Pending deferred upgrade/downgrade Not present for canceled, expired
+  /// subscriptions.
   core.int paymentState;
 
   /// Price of the subscription, not including tax.

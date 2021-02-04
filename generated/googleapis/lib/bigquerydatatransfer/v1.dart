@@ -20,7 +20,7 @@
 /// Schedule queries or transfer external data from SaaS applications to Google
 /// BigQuery on a regular basis.
 ///
-/// For more information, see <https://cloud.google.com/bigquery/>
+/// For more information, see <https://cloud.google.com/bigquery-transfer/>
 ///
 /// Create an instance of [BigQueryDataTransferApi] to access these resources:
 ///

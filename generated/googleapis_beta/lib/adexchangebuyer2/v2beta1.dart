@@ -1773,6 +1773,8 @@ class AccountsProposalsResource {
   /// If the number does not match the server's revision number an `ABORTED`
   /// error message will be returned. This call updates the proposal_state from
   /// `PROPOSED` to `BUYER_ACCEPTED`, or from `SELLER_ACCEPTED` to `FINALIZED`.
+  /// Upon calling this endpoint, the buyer implicitly agrees to the terms and
+  /// conditions optionally set within the proposal by the publisher.
   ///
   /// [request] - The metadata request object.
   ///
@@ -6573,30 +6575,30 @@ class CriteriaTargeting {
   }
 }
 
-/// Represents a whole or partial calendar date, e.g. a birthday.
+/// Represents a whole or partial calendar date, such as a birthday.
 ///
-/// The time of day and time zone are either specified elsewhere or are not
-/// significant. The date is relative to the Proleptic Gregorian Calendar. This
-/// can represent: * A full date, with non-zero year, month and day values * A
-/// month and day value, with a zero year, e.g. an anniversary * A year on its
-/// own, with zero month and day values * A year and month value, with a zero
-/// day, e.g. a credit card expiration date Related types are
-/// google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values * A month and day value, with a zero year, such as an
+/// anniversary * A year on its own, with zero month and day values * A year and
+/// month value, with a zero day, such as a credit card expiration date Related
+/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class Date {
-  /// Day of month.
+  /// Day of a month.
   ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 if specifying
-  /// a year by itself or a year and month where the day is not significant.
+  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
+  /// year by itself or a year and month where the day isn't significant.
   core.int day;
 
-  /// Month of year.
+  /// Month of a year.
   ///
-  /// Must be from 1 to 12, or 0 if specifying a year without a month and day.
+  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
   core.int month;
 
-  /// Year of date.
+  /// Year of the date.
   ///
-  /// Must be from 1 to 9999, or 0 if specifying a date without a year.
+  /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int year;
 
   Date();
@@ -6739,12 +6741,14 @@ class Deal {
   /// required for Private Auction deals or Preferred Deals.
   core.String availableEndTime;
 
-  /// Optional proposed flight start time of the deal.
+  /// Proposed flight start time of the deal.
   ///
   /// This will generally be stored in the granularity of one second since deal
   /// serving starts at seconds boundary. Any time specified with more
   /// granularity (e.g., in milliseconds) will be truncated towards the start of
   /// time in seconds.
+  ///
+  /// Optional.
   core.String availableStartTime;
 
   /// Buyer private data (hidden from seller).
@@ -6756,12 +6760,14 @@ class Deal {
   /// this field while updating the resource will result in an error.
   core.String createProductId;
 
-  /// Optional revision number of the product that the deal was created from.
+  /// Revision number of the product that the deal was created from.
   ///
-  /// If present on create, and the server `product_revision` has advanced
-  /// sinced the passed-in `create_product_revision`, an `ABORTED` error will be
+  /// If present on create, and the server `product_revision` has advanced since
+  /// the passed-in `create_product_revision`, an `ABORTED` error will be
   /// returned. Note: This field may be set only when creating the resource.
   /// Modifying this field while updating the resource will result in an error.
+  ///
+  /// Optional.
   core.String createProductRevision;
 
   /// The time of the deal creation.
@@ -8523,6 +8529,7 @@ class ListCreativeStatusBreakdownByDetailResponse {
   /// \[publisher-excludable-creative-attributes\](https://developers.google.com/authorized-buyers/rtb/downloads/publisher-excludable-creative-attributes).
   /// - "VENDOR" : Indicates that the detail ID refers to a vendor; see
   /// [vendors](https://developers.google.com/authorized-buyers/rtb/downloads/vendors).
+  /// This namespace is different from that of the `ATP_VENDOR` detail type.
   /// - "SENSITIVE_CATEGORY" : Indicates that the detail ID refers to a
   /// sensitive category; see
   /// \[ad-sensitive-categories\](https://developers.google.com/authorized-buyers/rtb/downloads/ad-sensitive-categories).
@@ -8533,6 +8540,14 @@ class ListCreativeStatusBreakdownByDetailResponse {
   /// disapproval reason; see DisapprovalReason enum in
   /// \[snippet-status-report-proto\](https://developers.google.com/authorized-buyers/rtb/downloads/snippet-status-report-proto).
   /// - "POLICY_TOPIC" : Indicates that the detail ID refers to a policy topic.
+  /// - "ATP_VENDOR" : Indicates that the detail ID refers to an ad technology
+  /// provider (ATP); see
+  /// [providers](https://storage.googleapis.com/adx-rtb-dictionaries/providers.csv).
+  /// This namespace is different from the `VENDOR` detail type; see
+  /// [ad technology providers](https://support.google.com/admanager/answer/9012903)
+  /// for more information.
+  /// - "VENDOR_DOMAIN" : Indicates that the detail string refers the domain of
+  /// an unknown vendor.
   core.String detailType;
 
   /// List of rows, with counts of bids with a given creative status aggregated
@@ -9167,7 +9182,7 @@ class MobileApplicationTargeting {
 
 /// Represents an amount of money with its currency type.
 class Money {
-  /// The 3-letter currency code defined in ISO 4217.
+  /// The three-letter currency code defined in ISO 4217.
   core.String currencyCode;
 
   /// Number of nano (10^-9) units of the amount.
@@ -10100,6 +10115,11 @@ class Proposal {
   /// Output only.
   core.List<ContactInformation> sellerContacts;
 
+  /// The terms and conditions set by the publisher for this proposal.
+  ///
+  /// Output only.
+  core.String termsAndConditions;
+
   /// The time when the proposal was last revised.
   ///
   /// Output only.
@@ -10176,6 +10196,9 @@ class Proposal {
               value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('termsAndConditions')) {
+      termsAndConditions = _json['termsAndConditions'] as core.String;
+    }
     if (_json.containsKey('updateTime')) {
       updateTime = _json['updateTime'] as core.String;
     }
@@ -10235,6 +10258,9 @@ class Proposal {
     if (sellerContacts != null) {
       _json['sellerContacts'] =
           sellerContacts.map((value) => value.toJson()).toList();
+    }
+    if (termsAndConditions != null) {
+      _json['termsAndConditions'] = termsAndConditions;
     }
     if (updateTime != null) {
       _json['updateTime'] = updateTime;
@@ -10296,6 +10322,11 @@ class PublisherProfile {
   /// URL to additional marketing and sales materials.
   core.String mediaKitUrl;
 
+  /// The list of apps represented in this publisher profile.
+  ///
+  /// Empty if this is a parent profile.
+  core.List<PublisherProfileMobileApplication> mobileApps;
+
   /// Overview of the publisher.
   core.String overview;
 
@@ -10355,6 +10386,13 @@ class PublisherProfile {
     if (_json.containsKey('mediaKitUrl')) {
       mediaKitUrl = _json['mediaKitUrl'] as core.String;
     }
+    if (_json.containsKey('mobileApps')) {
+      mobileApps = (_json['mobileApps'] as core.List)
+          .map<PublisherProfileMobileApplication>((value) =>
+              PublisherProfileMobileApplication.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('overview')) {
       overview = _json['overview'] as core.String;
     }
@@ -10411,6 +10449,9 @@ class PublisherProfile {
     if (mediaKitUrl != null) {
       _json['mediaKitUrl'] = mediaKitUrl;
     }
+    if (mobileApps != null) {
+      _json['mobileApps'] = mobileApps.map((value) => value.toJson()).toList();
+    }
     if (overview != null) {
       _json['overview'] = overview;
     }
@@ -10431,6 +10472,60 @@ class PublisherProfile {
     }
     if (topHeadlines != null) {
       _json['topHeadlines'] = topHeadlines;
+    }
+    return _json;
+  }
+}
+
+/// A mobile application that contains a external app ID, name, and app store.
+class PublisherProfileMobileApplication {
+  /// The app store the app belongs to.
+  /// Possible string values are:
+  /// - "APP_STORE_TYPE_UNSPECIFIED" : A placeholder for an unknown app store.
+  /// - "APPLE_ITUNES" : Apple iTunes
+  /// - "GOOGLE_PLAY" : Google Play
+  /// - "ROKU" : Roku
+  /// - "AMAZON_FIRETV" : Amazon Fire TV
+  /// - "PLAYSTATION" : Playstation
+  /// - "XBOX" : Xbox
+  /// - "SAMSUNG_TV" : Samsung TV
+  /// - "AMAZON" : Amazon Appstore
+  /// - "OPPO" : OPPO App Market
+  /// - "SAMSUNG" : Samsung Galaxy Store
+  /// - "VIVO" : VIVO App Store
+  /// - "XIAOMI" : Xiaomi GetApps
+  core.String appStore;
+
+  /// The external ID for the app from its app store.
+  core.String externalAppId;
+
+  /// The name of the app.
+  core.String name;
+
+  PublisherProfileMobileApplication();
+
+  PublisherProfileMobileApplication.fromJson(core.Map _json) {
+    if (_json.containsKey('appStore')) {
+      appStore = _json['appStore'] as core.String;
+    }
+    if (_json.containsKey('externalAppId')) {
+      externalAppId = _json['externalAppId'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (appStore != null) {
+      _json['appStore'] = appStore;
+    }
+    if (externalAppId != null) {
+      _json['externalAppId'] = externalAppId;
+    }
+    if (name != null) {
+      _json['name'] = name;
     }
     return _json;
   }

@@ -1320,9 +1320,8 @@ class BatchTranslateTextRequest {
 
   /// Input configurations.
   ///
-  /// The total number of files matched should be <= 1000. The total content
-  /// size should be <= 100M Unicode codepoints. The files must use UTF-8
-  /// encoding.
+  /// The total number of files matched should be <= 100. The total content size
+  /// should be <= 100M Unicode codepoints. The files must use UTF-8 encoding.
   ///
   /// Required.
   core.List<InputConfig> inputConfigs;
@@ -2236,8 +2235,12 @@ class OutputConfig {
   /// tsv. They could also be empty if we have no content to output. Once a row
   /// is present in index.csv, the input/output matching never changes. Callers
   /// should also expect all the content in input_file are processed and ready
-  /// to be consumed (that is, no partial output file is written). The format of
-  /// translations_file (for target language code 'trg') is:
+  /// to be consumed (that is, no partial output file is written). Since
+  /// index.csv will be keeping updated during the process, please make sure
+  /// there is no custom retention policy applied on the output bucket that may
+  /// avoid file updating.
+  /// (https://cloud.google.com/storage/docs/bucket-lock?hl=en#retention-policy)
+  /// The format of translations_file (for target language code 'trg') is:
   /// gs://translation_test/a_b_c_'trg'_translations.\[extension\] If the input
   /// file extension is tsv, the output has the following columns: Column 1: ID
   /// of the request provided in the input, if it's not provided in the input,
@@ -2470,8 +2473,8 @@ class TranslateTextGlossaryConfig {
 class TranslateTextRequest {
   /// The content of the input in string format.
   ///
-  /// We recommend the total content be less than 30k codepoints. Use
-  /// BatchTranslateText for larger text.
+  /// We recommend the total content be less than 30k codepoints. The max length
+  /// of this field is 1024. Use BatchTranslateText for larger text.
   ///
   /// Required.
   core.List<core.String> contents;

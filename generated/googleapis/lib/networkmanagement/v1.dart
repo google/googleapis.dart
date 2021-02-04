@@ -1271,6 +1271,8 @@ class AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class Binding {
+  core.String bindingId;
+
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
@@ -1321,6 +1323,9 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
+    if (_json.containsKey('bindingId')) {
+      bindingId = _json['bindingId'] as core.String;
+    }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(
           _json['condition'] as core.Map<core.String, core.dynamic>);
@@ -1337,6 +1342,9 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (bindingId != null) {
+      _json['bindingId'] = bindingId;
+    }
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }

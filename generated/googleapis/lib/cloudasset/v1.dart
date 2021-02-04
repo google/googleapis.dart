@@ -416,6 +416,293 @@ class V1Resource {
 
   V1Resource(commons.ApiRequester client) : _requester = client;
 
+  /// Analyzes IAM policies to answer which identities have what accesses on
+  /// which resources.
+  ///
+  /// Request parameters:
+  ///
+  /// [scope] - Required. The relative name of the root asset. Only resources
+  /// and IAM policies within the scope will be analyzed. This can only be an
+  /// organization number (such as "organizations/123"), a folder number (such
+  /// as "folders/123"), a project ID (such as "projects/my-project-id"), or a
+  /// project number (such as "projects/12345"). To know how to get organization
+  /// id, visit
+  /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).
+  /// To know how to get folder or project id, visit
+  /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
+  ///
+  /// [analysisQuery_accessSelector_permissions] - Optional. The permissions to
+  /// appear in result.
+  ///
+  /// [analysisQuery_accessSelector_roles] - Optional. The roles to appear in
+  /// result.
+  ///
+  /// [analysisQuery_identitySelector_identity] - Required. The identity appear
+  /// in the form of members in
+  /// [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding).
+  /// The examples of supported forms are: "user:mike@example.com",
+  /// "group:admins@example.com", "domain:google.com",
+  /// "serviceAccount:my-project-id@appspot.gserviceaccount.com". Notice that
+  /// wildcard characters (such as * and ?) are not supported. You must give a
+  /// specific identity.
+  ///
+  /// [analysisQuery_options_analyzeServiceAccountImpersonation] - Optional. If
+  /// true, the response will include access analysis from identities to
+  /// resources via service account impersonation. This is a very expensive
+  /// operation, because many derived queries will be executed. We highly
+  /// recommend you use AssetService.AnalyzeIamPolicyLongrunning rpc instead.
+  /// For example, if the request analyzes for which resources user A has
+  /// permission P, and there's an IAM policy states user A has
+  /// iam.serviceAccounts.getAccessToken permission to a service account SA, and
+  /// there's another IAM policy states service account SA has permission P to a
+  /// GCP folder F, then user A potentially has access to the GCP folder F. And
+  /// those advanced analysis results will be included in
+  /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Another
+  /// example, if the request analyzes for who has permission P to a GCP folder
+  /// F, and there's an IAM policy states user A has iam.serviceAccounts.actAs
+  /// permission to a service account SA, and there's another IAM policy states
+  /// service account SA has permission P to the GCP folder F, then user A
+  /// potentially has access to the GCP folder F. And those advanced analysis
+  /// results will be included in
+  /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Default
+  /// is false.
+  ///
+  /// [analysisQuery_options_expandGroups] - Optional. If true, the identities
+  /// section of the result will expand any Google groups appearing in an IAM
+  /// policy binding. If IamPolicyAnalysisQuery.identity_selector is specified,
+  /// the identity in the result will be determined by the selector, and this
+  /// flag is not allowed to set. Default is false.
+  ///
+  /// [analysisQuery_options_expandResources] - Optional. If true and
+  /// IamPolicyAnalysisQuery.resource_selector is not specified, the resource
+  /// section of the result will expand any resource attached to an IAM policy
+  /// to include resources lower in the resource hierarchy. For example, if the
+  /// request analyzes for which resources user A has permission P, and the
+  /// results include an IAM policy with P on a GCP folder, the results will
+  /// also include resources in that folder with permission P. If true and
+  /// IamPolicyAnalysisQuery.resource_selector is specified, the resource
+  /// section of the result will expand the specified resource to include
+  /// resources lower in the resource hierarchy. Only project or lower resources
+  /// are supported. Folder and organization resource cannot be used together
+  /// with this option. For example, if the request analyzes for which users
+  /// have permission P on a GCP project with this option enabled, the results
+  /// will include all users who have permission P on that project or any lower
+  /// resource. Default is false.
+  ///
+  /// [analysisQuery_options_expandRoles] - Optional. If true, the access
+  /// section of result will expand any roles appearing in IAM policy bindings
+  /// to include their permissions. If IamPolicyAnalysisQuery.access_selector is
+  /// specified, the access section of the result will be determined by the
+  /// selector, and this flag is not allowed to set. Default is false.
+  ///
+  /// [analysisQuery_options_outputGroupEdges] - Optional. If true, the result
+  /// will output group identity edges, starting from the binding's group
+  /// members, to any expanded identities. Default is false.
+  ///
+  /// [analysisQuery_options_outputResourceEdges] - Optional. If true, the
+  /// result will output resource edges, starting from the policy attached
+  /// resource, to any expanded resources. Default is false.
+  ///
+  /// [analysisQuery_resourceSelector_fullResourceName] - Required. The
+  /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// of a resource of
+  /// [supported resource types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#analyzable_asset_types).
+  ///
+  /// [executionTimeout] - Optional. Amount of time executable has to complete.
+  /// See JSON representation of
+  /// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json).
+  /// If this field is set with a value less than the RPC deadline, and the
+  /// execution of your query hasn't finished in the specified execution
+  /// timeout, you will get a response with partial result. Otherwise, your
+  /// query's execution will continue until the RPC deadline. If it's not
+  /// finished until then, you will get a DEADLINE_EXCEEDED error. Default is
+  /// empty.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AnalyzeIamPolicyResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AnalyzeIamPolicyResponse> analyzeIamPolicy(
+    core.String scope, {
+    core.List<core.String> analysisQuery_accessSelector_permissions,
+    core.List<core.String> analysisQuery_accessSelector_roles,
+    core.String analysisQuery_identitySelector_identity,
+    core.bool analysisQuery_options_analyzeServiceAccountImpersonation,
+    core.bool analysisQuery_options_expandGroups,
+    core.bool analysisQuery_options_expandResources,
+    core.bool analysisQuery_options_expandRoles,
+    core.bool analysisQuery_options_outputGroupEdges,
+    core.bool analysisQuery_options_outputResourceEdges,
+    core.String analysisQuery_resourceSelector_fullResourceName,
+    core.String executionTimeout,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (scope == null) {
+      throw core.ArgumentError('Parameter scope is required.');
+    }
+    if (analysisQuery_accessSelector_permissions != null) {
+      _queryParams['analysisQuery.accessSelector.permissions'] =
+          analysisQuery_accessSelector_permissions;
+    }
+    if (analysisQuery_accessSelector_roles != null) {
+      _queryParams['analysisQuery.accessSelector.roles'] =
+          analysisQuery_accessSelector_roles;
+    }
+    if (analysisQuery_identitySelector_identity != null) {
+      _queryParams['analysisQuery.identitySelector.identity'] = [
+        analysisQuery_identitySelector_identity
+      ];
+    }
+    if (analysisQuery_options_analyzeServiceAccountImpersonation != null) {
+      _queryParams['analysisQuery.options.analyzeServiceAccountImpersonation'] =
+          ['${analysisQuery_options_analyzeServiceAccountImpersonation}'];
+    }
+    if (analysisQuery_options_expandGroups != null) {
+      _queryParams['analysisQuery.options.expandGroups'] = [
+        '${analysisQuery_options_expandGroups}'
+      ];
+    }
+    if (analysisQuery_options_expandResources != null) {
+      _queryParams['analysisQuery.options.expandResources'] = [
+        '${analysisQuery_options_expandResources}'
+      ];
+    }
+    if (analysisQuery_options_expandRoles != null) {
+      _queryParams['analysisQuery.options.expandRoles'] = [
+        '${analysisQuery_options_expandRoles}'
+      ];
+    }
+    if (analysisQuery_options_outputGroupEdges != null) {
+      _queryParams['analysisQuery.options.outputGroupEdges'] = [
+        '${analysisQuery_options_outputGroupEdges}'
+      ];
+    }
+    if (analysisQuery_options_outputResourceEdges != null) {
+      _queryParams['analysisQuery.options.outputResourceEdges'] = [
+        '${analysisQuery_options_outputResourceEdges}'
+      ];
+    }
+    if (analysisQuery_resourceSelector_fullResourceName != null) {
+      _queryParams['analysisQuery.resourceSelector.fullResourceName'] = [
+        analysisQuery_resourceSelector_fullResourceName
+      ];
+    }
+    if (executionTimeout != null) {
+      _queryParams['executionTimeout'] = [executionTimeout];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$scope') +
+        ':analyzeIamPolicy';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => AnalyzeIamPolicyResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Analyzes IAM policies asynchronously to answer which identities have what
+  /// accesses on which resources, and writes the analysis results to a Google
+  /// Cloud Storage or a BigQuery destination.
+  ///
+  /// For Cloud Storage destination, the output format is the JSON format that
+  /// represents a AnalyzeIamPolicyResponse. This method implements the
+  /// google.longrunning.Operation, which allows you to track the operation
+  /// status. We recommend intervals of at least 2 seconds with exponential
+  /// backoff retry to poll the operation result. The metadata contains the
+  /// request to help callers to map responses to requests.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [scope] - Required. The relative name of the root asset. Only resources
+  /// and IAM policies within the scope will be analyzed. This can only be an
+  /// organization number (such as "organizations/123"), a folder number (such
+  /// as "folders/123"), a project ID (such as "projects/my-project-id"), or a
+  /// project number (such as "projects/12345"). To know how to get organization
+  /// id, visit
+  /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).
+  /// To know how to get folder or project id, visit
+  /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
+  /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> analyzeIamPolicyLongrunning(
+    AnalyzeIamPolicyLongrunningRequest request,
+    core.String scope, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (scope == null) {
+      throw core.ArgumentError('Parameter scope is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$scope') +
+        ':analyzeIamPolicyLongrunning';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
   /// Batch gets the update history of assets that overlap a time window.
   ///
   /// For IAM_POLICY content, this API outputs history when the asset and its
@@ -447,6 +734,7 @@ class V1Resource {
   /// - "ORG_POLICY" : The Cloud Organization Policy set on an asset.
   /// - "ACCESS_POLICY" : The Cloud Access context manager Policy set on an
   /// asset.
+  /// - "OS_INVENTORY" : The runtime OS Inventory information.
   ///
   /// [readTimeWindow_endTime] - End time of the time window (inclusive). If not
   /// specified, the current timestamp is used instead.
@@ -621,20 +909,31 @@ class V1Resource {
   /// [query] - Optional. The query statement. See
   /// [how to construct a query](https://cloud.google.com/asset-inventory/docs/searching-iam-policies#how_to_construct_a_query)
   /// for more information. If not specified or empty, it will search all the
-  /// IAM policies within the specified `scope`. Examples: *
-  /// `policy:amy@gmail.com` to find IAM policy bindings that specify user
-  /// "amy@gmail.com". * `policy:roles/compute.admin` to find IAM policy
-  /// bindings that specify the Compute Admin role. *
-  /// `policy.role.permissions:storage.buckets.update` to find IAM policy
-  /// bindings that specify a role containing "storage.buckets.update"
-  /// permission. Note that if callers don't have `iam.roles.get` access to a
-  /// role's included permissions, policy bindings that specify this role will
-  /// be dropped from the search results. * `resource:organizations/123456` to
-  /// find IAM policy bindings that are set on "organizations/123456". *
+  /// IAM policies within the specified `scope`. Note that the query string is
+  /// compared against each Cloud IAM policy binding, including its members,
+  /// roles, and Cloud IAM conditions. The returned Cloud IAM policies will only
+  /// contain the bindings that match your query. To learn more about the IAM
+  /// policy structure, see
+  /// [IAM policy doc](https://cloud.google.com/iam/docs/policies#structure).
+  /// Examples: * `policy:amy@gmail.com` to find IAM policy bindings that
+  /// specify user "amy@gmail.com". * `policy:roles/compute.admin` to find IAM
+  /// policy bindings that specify the Compute Admin role. * `policy:comp*` to
+  /// find IAM policy bindings that contain "comp" as a prefix of any word in
+  /// the binding. * `policy.role.permissions:storage.buckets.update` to find
+  /// IAM policy bindings that specify a role containing
+  /// "storage.buckets.update" permission. Note that if callers don't have
+  /// `iam.roles.get` access to a role's included permissions, policy bindings
+  /// that specify this role will be dropped from the search results. *
+  /// `policy.role.permissions:upd*` to find IAM policy bindings that specify a
+  /// role containing "upd" as a prefix of any word in the role permission. Note
+  /// that if callers don't have `iam.roles.get` access to a role's included
+  /// permissions, policy bindings that specify this role will be dropped from
+  /// the search results. * `resource:organizations/123456` to find IAM policy
+  /// bindings that are set on "organizations/123456". *
+  /// `resource=//cloudresourcemanager.googleapis.com/projects/myproject` to
+  /// find IAM policy bindings that are set on the project named "myproject". *
   /// `Important` to find IAM policy bindings that contain "Important" as a word
   /// in any of the searchable fields (except for the included permissions). *
-  /// `*por*` to find IAM policy bindings that contain "por" as a substring in
-  /// any of the searchable fields (except for the included permissions). *
   /// `resource:(instance1 OR instance2) policy:amy` to find IAM policy bindings
   /// that are set on resources "instance1" or "instance2" and also specify user
   /// "amy".
@@ -720,6 +1019,14 @@ class V1Resource {
   /// [assetTypes] - Optional. A list of asset types that this request searches
   /// for. If empty, it will search all the
   /// [searchable asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+  /// Regular expressions are also supported. For example: *
+  /// "compute.googleapis.com.*" snapshots resources whose asset type starts
+  /// with "compute.googleapis.com". * ".*Instance" snapshots resources whose
+  /// asset type ends with "Instance". * ".*Instance.*" snapshots resources
+  /// whose asset type contains "Instance". See
+  /// [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular
+  /// expression syntax. If the regular expression does not match any supported
+  /// asset type, an INVALID_ARGUMENT error will be returned.
   ///
   /// [orderBy] - Optional. A comma separated list of fields specifying the
   /// sorting order of the results. The default order is ascending. Add " DESC"
@@ -744,29 +1051,22 @@ class V1Resource {
   /// [query] - Optional. The query statement. See
   /// [how to construct a query](http://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query)
   /// for more information. If not specified or empty, it will search all the
-  /// resources within the specified `scope`. Note that the query string is
-  /// compared against each Cloud IAM policy binding, including its members,
-  /// roles, and Cloud IAM conditions. The returned Cloud IAM policies will only
-  /// contain the bindings that match your query. To learn more about the IAM
-  /// policy structure, see
-  /// [IAM policy doc](https://cloud.google.com/iam/docs/policies#structure).
-  /// Examples: * `name:Important` to find Cloud resources whose name contains
-  /// "Important" as a word. * `displayName:Impor*` to find Cloud resources
-  /// whose display name contains "Impor" as a prefix. * `description:*por*` to
-  /// find Cloud resources whose description contains "por" as a substring. *
-  /// `location:us-west*` to find Cloud resources whose location is prefixed
-  /// with "us-west". * `labels:prod` to find Cloud resources whose labels
-  /// contain "prod" as a key or value. * `labels.env:prod` to find Cloud
+  /// resources within the specified `scope`. Examples: * `name:Important` to
+  /// find Cloud resources whose name contains "Important" as a word. *
+  /// `name=Important` to find the Cloud resource whose name is exactly
+  /// "Important". * `displayName:Impor*` to find Cloud resources whose display
+  /// name contains "Impor" as a prefix of any word in the field. *
+  /// `location:us-west*` to find Cloud resources whose location contains both
+  /// "us" and "west" as prefixes. * `labels:prod` to find Cloud resources whose
+  /// labels contain "prod" as a key or value. * `labels.env:prod` to find Cloud
   /// resources that have a label "env" and its value is "prod". *
   /// `labels.env:*` to find Cloud resources that have a label "env". *
   /// `Important` to find Cloud resources that contain "Important" as a word in
   /// any of the searchable fields. * `Impor*` to find Cloud resources that
-  /// contain "Impor" as a prefix in any of the searchable fields. * `*por*` to
-  /// find Cloud resources that contain "por" as a substring in any of the
-  /// searchable fields. * `Important location:(us-west1 OR global)` to find
-  /// Cloud resources that contain "Important" as a word in any of the
-  /// searchable fields and are also located in the "us-west1" region or the
-  /// "global" location.
+  /// contain "Impor" as a prefix of any word in any of the searchable fields. *
+  /// `Important location:(us-west1 OR global)` to find Cloud resources that
+  /// contain "Important" as a word in any of the searchable fields and are also
+  /// located in the "us-west1" region or the "global" location.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -836,6 +1136,138 @@ class V1Resource {
   }
 }
 
+/// Specifies roles and/or permissions to analyze, to determine both the
+/// identities possessing them and the resources they control.
+///
+/// If multiple values are specified, results will include roles or permissions
+/// matching any of them. The total number of roles and permissions should be
+/// equal or less than 10.
+class AccessSelector {
+  /// The permissions to appear in result.
+  ///
+  /// Optional.
+  core.List<core.String> permissions;
+
+  /// The roles to appear in result.
+  ///
+  /// Optional.
+  core.List<core.String> roles;
+
+  AccessSelector();
+
+  AccessSelector.fromJson(core.Map _json) {
+    if (_json.containsKey('permissions')) {
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('roles')) {
+      roles = (_json['roles'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (permissions != null) {
+      _json['permissions'] = permissions;
+    }
+    if (roles != null) {
+      _json['roles'] = roles;
+    }
+    return _json;
+  }
+}
+
+/// A request message for AssetService.AnalyzeIamPolicyLongrunning.
+class AnalyzeIamPolicyLongrunningRequest {
+  /// The request query.
+  ///
+  /// Required.
+  IamPolicyAnalysisQuery analysisQuery;
+
+  /// Output configuration indicating where the results will be output to.
+  ///
+  /// Required.
+  IamPolicyAnalysisOutputConfig outputConfig;
+
+  AnalyzeIamPolicyLongrunningRequest();
+
+  AnalyzeIamPolicyLongrunningRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('analysisQuery')) {
+      analysisQuery = IamPolicyAnalysisQuery.fromJson(
+          _json['analysisQuery'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('outputConfig')) {
+      outputConfig = IamPolicyAnalysisOutputConfig.fromJson(
+          _json['outputConfig'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (analysisQuery != null) {
+      _json['analysisQuery'] = analysisQuery.toJson();
+    }
+    if (outputConfig != null) {
+      _json['outputConfig'] = outputConfig.toJson();
+    }
+    return _json;
+  }
+}
+
+/// A response message for AssetService.AnalyzeIamPolicy.
+class AnalyzeIamPolicyResponse {
+  /// Represents whether all entries in the main_analysis and
+  /// service_account_impersonation_analysis have been fully explored to answer
+  /// the query in the request.
+  core.bool fullyExplored;
+
+  /// The main analysis that matches the original request.
+  IamPolicyAnalysis mainAnalysis;
+
+  /// The service account impersonation analysis if
+  /// AnalyzeIamPolicyRequest.analyze_service_account_impersonation is enabled.
+  core.List<IamPolicyAnalysis> serviceAccountImpersonationAnalysis;
+
+  AnalyzeIamPolicyResponse();
+
+  AnalyzeIamPolicyResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('fullyExplored')) {
+      fullyExplored = _json['fullyExplored'] as core.bool;
+    }
+    if (_json.containsKey('mainAnalysis')) {
+      mainAnalysis = IamPolicyAnalysis.fromJson(
+          _json['mainAnalysis'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('serviceAccountImpersonationAnalysis')) {
+      serviceAccountImpersonationAnalysis =
+          (_json['serviceAccountImpersonationAnalysis'] as core.List)
+              .map<IamPolicyAnalysis>((value) => IamPolicyAnalysis.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (fullyExplored != null) {
+      _json['fullyExplored'] = fullyExplored;
+    }
+    if (mainAnalysis != null) {
+      _json['mainAnalysis'] = mainAnalysis.toJson();
+    }
+    if (serviceAccountImpersonationAnalysis != null) {
+      _json['serviceAccountImpersonationAnalysis'] =
+          serviceAccountImpersonationAnalysis
+              .map((value) => value.toJson())
+              .toList();
+    }
+    return _json;
+  }
+}
+
 /// An asset in Google Cloud.
 ///
 /// An asset can be any resource in the Google Cloud
@@ -899,6 +1331,13 @@ class Asset {
   /// set on a given resource.
   core.List<GoogleCloudOrgpolicyV1Policy> orgPolicy;
 
+  /// A representation of runtime OS Inventory information.
+  ///
+  /// See
+  /// [this topic](https://cloud.google.com/compute/docs/instances/os-inventory-management)
+  /// for more information.
+  Inventory osInventory;
+
   /// A representation of the resource.
   Resource resource;
 
@@ -944,6 +1383,10 @@ class Asset {
                   value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('osInventory')) {
+      osInventory = Inventory.fromJson(
+          _json['osInventory'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('resource')) {
       resource = Resource.fromJson(
           _json['resource'] as core.Map<core.String, core.dynamic>);
@@ -980,6 +1423,9 @@ class Asset {
     }
     if (orgPolicy != null) {
       _json['orgPolicy'] = orgPolicy.map((value) => value.toJson()).toList();
+    }
+    if (osInventory != null) {
+      _json['osInventory'] = osInventory.toJson();
     }
     if (resource != null) {
       _json['resource'] = resource.toJson();
@@ -1140,19 +1586,19 @@ class BigQueryDestination {
   /// \[partition_spec\] determines whether to export to partitioned table(s)
   /// and how to partition the data.
   ///
-  /// If \[partition_spec\] is unset or \[partition_spec.partion_key\] is unset
-  /// or `PARTITION_KEY_UNSPECIFIED`, the snapshot results will be exported to
-  /// non-partitioned table(s). \[force\] will decide whether to overwrite
-  /// existing table(s). If \[partition_spec\] is specified. First, the snapshot
-  /// results will be written to partitioned table(s) with two additional
-  /// timestamp columns, readTime and requestTime, one of which will be the
-  /// partition key. Secondly, in the case when any destination table already
-  /// exists, it will first try to update existing table's schema as necessary
-  /// by appending additional columns. Then, if \[force\] is `TRUE`, the
-  /// corresponding partition will be overwritten by the snapshot results (data
-  /// in different partitions will remain intact); if \[force\] is unset or
-  /// `FALSE`, it will append the data. An error will be returned if the schema
-  /// update or data appension fails.
+  /// If \[partition_spec\] is unset or \[partition_spec.partition_key\] is
+  /// unset or `PARTITION_KEY_UNSPECIFIED`, the snapshot results will be
+  /// exported to non-partitioned table(s). \[force\] will decide whether to
+  /// overwrite existing table(s). If \[partition_spec\] is specified. First,
+  /// the snapshot results will be written to partitioned table(s) with two
+  /// additional timestamp columns, readTime and requestTime, one of which will
+  /// be the partition key. Secondly, in the case when any destination table
+  /// already exists, it will first try to update existing table's schema as
+  /// necessary by appending additional columns. Then, if \[force\] is `TRUE`,
+  /// the corresponding partition will be overwritten by the snapshot results
+  /// (data in different partitions will remain intact); if \[force\] is unset
+  /// or `FALSE`, it will append the data. An error will be returned if the
+  /// schema update or data appension fails.
   PartitionSpec partitionSpec;
 
   /// If this flag is `TRUE`, the snapshot results will be written to one or
@@ -1439,6 +1885,7 @@ class ExportAssetsRequest {
   /// - "ORG_POLICY" : The Cloud Organization Policy set on an asset.
   /// - "ACCESS_POLICY" : The Cloud Access context manager Policy set on an
   /// asset.
+  /// - "OS_INVENTORY" : The runtime OS Inventory information.
   core.String contentType;
 
   /// Output configuration indicating where the results will be output to.
@@ -1620,6 +2067,7 @@ class Feed {
   /// - "ORG_POLICY" : The Cloud Organization Policy set on an asset.
   /// - "ACCESS_POLICY" : The Cloud Access context manager Policy set on an
   /// asset.
+  /// - "OS_INVENTORY" : The runtime OS Inventory information.
   core.String contentType;
 
   /// Feed output configuration defining where the asset updates are published
@@ -1753,6 +2201,386 @@ class GcsDestination {
     }
     if (uriPrefix != null) {
       _json['uriPrefix'] = uriPrefix;
+    }
+    return _json;
+  }
+}
+
+/// An IAM role or permission under analysis.
+class GoogleCloudAssetV1Access {
+  /// The analysis state of this access.
+  IamPolicyAnalysisState analysisState;
+
+  /// The permission.
+  core.String permission;
+
+  /// The role.
+  core.String role;
+
+  GoogleCloudAssetV1Access();
+
+  GoogleCloudAssetV1Access.fromJson(core.Map _json) {
+    if (_json.containsKey('analysisState')) {
+      analysisState = IamPolicyAnalysisState.fromJson(
+          _json['analysisState'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('permission')) {
+      permission = _json['permission'] as core.String;
+    }
+    if (_json.containsKey('role')) {
+      role = _json['role'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (analysisState != null) {
+      _json['analysisState'] = analysisState.toJson();
+    }
+    if (permission != null) {
+      _json['permission'] = permission;
+    }
+    if (role != null) {
+      _json['role'] = role;
+    }
+    return _json;
+  }
+}
+
+/// An access control list, derived from the above IAM policy binding, which
+/// contains a set of resources and accesses.
+///
+/// May include one item from each set to compose an access control entry.
+/// NOTICE that there could be multiple access control lists for one IAM policy
+/// binding. The access control lists are created based on resource and access
+/// combinations. For example, assume we have the following cases in one IAM
+/// policy binding: - Permission P1 and P2 apply to resource R1 and R2; -
+/// Permission P3 applies to resource R2 and R3; This will result in the
+/// following access control lists: - AccessControlList 1: \[R1, R2\], \[P1,
+/// P2\] - AccessControlList 2: \[R2, R3\], \[P3\]
+class GoogleCloudAssetV1AccessControlList {
+  /// The accesses that match one of the following conditions: - The
+  /// access_selector, if it is specified in request; - Otherwise, access
+  /// specifiers reachable from the policy binding's role.
+  core.List<GoogleCloudAssetV1Access> accesses;
+
+  /// Resource edges of the graph starting from the policy attached resource to
+  /// any descendant resources.
+  ///
+  /// The Edge.source_node contains the full resource name of a parent resource
+  /// and Edge.target_node contains the full resource name of a child resource.
+  /// This field is present only if the output_resource_edges option is enabled
+  /// in request.
+  core.List<GoogleCloudAssetV1Edge> resourceEdges;
+
+  /// The resources that match one of the following conditions: - The
+  /// resource_selector, if it is specified in request; - Otherwise, resources
+  /// reachable from the policy attached resource.
+  core.List<GoogleCloudAssetV1Resource> resources;
+
+  GoogleCloudAssetV1AccessControlList();
+
+  GoogleCloudAssetV1AccessControlList.fromJson(core.Map _json) {
+    if (_json.containsKey('accesses')) {
+      accesses = (_json['accesses'] as core.List)
+          .map<GoogleCloudAssetV1Access>((value) =>
+              GoogleCloudAssetV1Access.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('resourceEdges')) {
+      resourceEdges = (_json['resourceEdges'] as core.List)
+          .map<GoogleCloudAssetV1Edge>((value) =>
+              GoogleCloudAssetV1Edge.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('resources')) {
+      resources = (_json['resources'] as core.List)
+          .map<GoogleCloudAssetV1Resource>((value) =>
+              GoogleCloudAssetV1Resource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (accesses != null) {
+      _json['accesses'] = accesses.map((value) => value.toJson()).toList();
+    }
+    if (resourceEdges != null) {
+      _json['resourceEdges'] =
+          resourceEdges.map((value) => value.toJson()).toList();
+    }
+    if (resources != null) {
+      _json['resources'] = resources.map((value) => value.toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A BigQuery destination.
+class GoogleCloudAssetV1BigQueryDestination {
+  /// The BigQuery dataset in format "projects/projectId/datasets/datasetId", to
+  /// which the analysis results should be exported.
+  ///
+  /// If this dataset does not exist, the export call will return an
+  /// INVALID_ARGUMENT error.
+  ///
+  /// Required.
+  core.String dataset;
+
+  /// The partition key for BigQuery partitioned table.
+  /// Possible string values are:
+  /// - "PARTITION_KEY_UNSPECIFIED" : Unspecified partition key. Tables won't be
+  /// partitioned using this option.
+  /// - "REQUEST_TIME" : The time when the request is received. If specified as
+  /// partition key, the result table(s) is partitoned by the RequestTime
+  /// column, an additional timestamp column representing when the request was
+  /// received.
+  core.String partitionKey;
+
+  /// The prefix of the BigQuery tables to which the analysis results will be
+  /// written.
+  ///
+  /// Tables will be created based on this table_prefix if not exist: *
+  /// _analysis table will contain export operation's metadata. *
+  /// _analysis_result will contain all the IamPolicyAnalysisResult. When
+  /// \[partition_key\] is specified, both tables will be partitioned based on
+  /// the \[partition_key\].
+  ///
+  /// Required.
+  core.String tablePrefix;
+
+  /// Specifies the action that occurs if the destination table or partition
+  /// already exists.
+  ///
+  /// The following values are supported: * WRITE_TRUNCATE: If the table or
+  /// partition already exists, BigQuery overwrites the entire table or all the
+  /// partitions data. * WRITE_APPEND: If the table or partition already exists,
+  /// BigQuery appends the data to the table or the latest partition. *
+  /// WRITE_EMPTY: If the table already exists and contains data, an error is
+  /// returned. The default value is WRITE_APPEND. Each action is atomic and
+  /// only occurs if BigQuery is able to complete the job successfully. Details
+  /// are at
+  /// https://cloud.google.com/bigquery/docs/loading-data-local#appending_to_or_overwriting_a_table_using_a_local_file.
+  ///
+  /// Optional.
+  core.String writeDisposition;
+
+  GoogleCloudAssetV1BigQueryDestination();
+
+  GoogleCloudAssetV1BigQueryDestination.fromJson(core.Map _json) {
+    if (_json.containsKey('dataset')) {
+      dataset = _json['dataset'] as core.String;
+    }
+    if (_json.containsKey('partitionKey')) {
+      partitionKey = _json['partitionKey'] as core.String;
+    }
+    if (_json.containsKey('tablePrefix')) {
+      tablePrefix = _json['tablePrefix'] as core.String;
+    }
+    if (_json.containsKey('writeDisposition')) {
+      writeDisposition = _json['writeDisposition'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (dataset != null) {
+      _json['dataset'] = dataset;
+    }
+    if (partitionKey != null) {
+      _json['partitionKey'] = partitionKey;
+    }
+    if (tablePrefix != null) {
+      _json['tablePrefix'] = tablePrefix;
+    }
+    if (writeDisposition != null) {
+      _json['writeDisposition'] = writeDisposition;
+    }
+    return _json;
+  }
+}
+
+/// A directional edge.
+class GoogleCloudAssetV1Edge {
+  /// The source node of the edge.
+  ///
+  /// For example, it could be a full resource name for a resource node or an
+  /// email of an identity.
+  core.String sourceNode;
+
+  /// The target node of the edge.
+  ///
+  /// For example, it could be a full resource name for a resource node or an
+  /// email of an identity.
+  core.String targetNode;
+
+  GoogleCloudAssetV1Edge();
+
+  GoogleCloudAssetV1Edge.fromJson(core.Map _json) {
+    if (_json.containsKey('sourceNode')) {
+      sourceNode = _json['sourceNode'] as core.String;
+    }
+    if (_json.containsKey('targetNode')) {
+      targetNode = _json['targetNode'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (sourceNode != null) {
+      _json['sourceNode'] = sourceNode;
+    }
+    if (targetNode != null) {
+      _json['targetNode'] = targetNode;
+    }
+    return _json;
+  }
+}
+
+/// A Cloud Storage location.
+class GoogleCloudAssetV1GcsDestination {
+  /// The uri of the Cloud Storage object.
+  ///
+  /// It's the same uri that is used by gsutil. For example:
+  /// "gs://bucket_name/object_name". See \[Quickstart: Using the gsutil
+  /// tool\](https://cloud.google.com/storage/docs/quickstart-gsutil) for
+  /// examples.
+  ///
+  /// Required.
+  core.String uri;
+
+  GoogleCloudAssetV1GcsDestination();
+
+  GoogleCloudAssetV1GcsDestination.fromJson(core.Map _json) {
+    if (_json.containsKey('uri')) {
+      uri = _json['uri'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (uri != null) {
+      _json['uri'] = uri;
+    }
+    return _json;
+  }
+}
+
+/// An identity under analysis.
+class GoogleCloudAssetV1Identity {
+  /// The analysis state of this identity.
+  IamPolicyAnalysisState analysisState;
+
+  /// The identity name in any form of members appear in
+  /// [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding),
+  /// such as: - user:foo@google.com - group:group1@google.com -
+  /// serviceAccount:s1@prj1.iam.gserviceaccount.com -
+  /// projectOwner:some_project_id - domain:google.com - allUsers - etc.
+  core.String name;
+
+  GoogleCloudAssetV1Identity();
+
+  GoogleCloudAssetV1Identity.fromJson(core.Map _json) {
+    if (_json.containsKey('analysisState')) {
+      analysisState = IamPolicyAnalysisState.fromJson(
+          _json['analysisState'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (analysisState != null) {
+      _json['analysisState'] = analysisState.toJson();
+    }
+    if (name != null) {
+      _json['name'] = name;
+    }
+    return _json;
+  }
+}
+
+/// The identities and group edges.
+class GoogleCloudAssetV1IdentityList {
+  /// Group identity edges of the graph starting from the binding's group
+  /// members to any node of the identities.
+  ///
+  /// The Edge.source_node contains a group, such as `group:parent@google.com`.
+  /// The Edge.target_node contains a member of the group, such as
+  /// `group:child@google.com` or `user:foo@google.com`. This field is present
+  /// only if the output_group_edges option is enabled in request.
+  core.List<GoogleCloudAssetV1Edge> groupEdges;
+
+  /// Only the identities that match one of the following conditions will be
+  /// presented: - The identity_selector, if it is specified in request; -
+  /// Otherwise, identities reachable from the policy binding's members.
+  core.List<GoogleCloudAssetV1Identity> identities;
+
+  GoogleCloudAssetV1IdentityList();
+
+  GoogleCloudAssetV1IdentityList.fromJson(core.Map _json) {
+    if (_json.containsKey('groupEdges')) {
+      groupEdges = (_json['groupEdges'] as core.List)
+          .map<GoogleCloudAssetV1Edge>((value) =>
+              GoogleCloudAssetV1Edge.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('identities')) {
+      identities = (_json['identities'] as core.List)
+          .map<GoogleCloudAssetV1Identity>((value) =>
+              GoogleCloudAssetV1Identity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (groupEdges != null) {
+      _json['groupEdges'] = groupEdges.map((value) => value.toJson()).toList();
+    }
+    if (identities != null) {
+      _json['identities'] = identities.map((value) => value.toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A Google Cloud resource under analysis.
+class GoogleCloudAssetV1Resource {
+  /// The analysis state of this resource.
+  IamPolicyAnalysisState analysisState;
+
+  /// The
+  /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  core.String fullResourceName;
+
+  GoogleCloudAssetV1Resource();
+
+  GoogleCloudAssetV1Resource.fromJson(core.Map _json) {
+    if (_json.containsKey('analysisState')) {
+      analysisState = IamPolicyAnalysisState.fromJson(
+          _json['analysisState'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('fullResourceName')) {
+      fullResourceName = _json['fullResourceName'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (analysisState != null) {
+      _json['analysisState'] = analysisState.toJson();
+    }
+    if (fullResourceName != null) {
+      _json['fullResourceName'] = fullResourceName;
     }
     return _json;
   }
@@ -2240,6 +3068,51 @@ class GoogleIdentityAccesscontextmanagerV1AccessPolicy {
   }
 }
 
+/// Identification for an API Operation.
+class GoogleIdentityAccesscontextmanagerV1ApiOperation {
+  /// API methods or permissions to allow.
+  ///
+  /// Method or permission must belong to the service specified by
+  /// `service_name` field. A single MethodSelector entry with `*` specified for
+  /// the `method` field will allow all methods AND permissions for the service
+  /// specified in `service_name`.
+  core.List<GoogleIdentityAccesscontextmanagerV1MethodSelector> methodSelectors;
+
+  /// The name of the API whose methods or permissions the IngressPolicy or
+  /// EgressPolicy want to allow.
+  ///
+  /// A single ApiOperation with `service_name` field set to `*` will allow all
+  /// methods AND permissions for all services.
+  core.String serviceName;
+
+  GoogleIdentityAccesscontextmanagerV1ApiOperation();
+
+  GoogleIdentityAccesscontextmanagerV1ApiOperation.fromJson(core.Map _json) {
+    if (_json.containsKey('methodSelectors')) {
+      methodSelectors = (_json['methodSelectors'] as core.List)
+          .map<GoogleIdentityAccesscontextmanagerV1MethodSelector>((value) =>
+              GoogleIdentityAccesscontextmanagerV1MethodSelector.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('serviceName')) {
+      serviceName = _json['serviceName'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (methodSelectors != null) {
+      _json['methodSelectors'] =
+          methodSelectors.map((value) => value.toJson()).toList();
+    }
+    if (serviceName != null) {
+      _json['serviceName'] = serviceName;
+    }
+    return _json;
+  }
+}
+
 /// `BasicLevel` is an `AccessLevel` using a set of recommended features.
 class GoogleIdentityAccesscontextmanagerV1BasicLevel {
   /// How the `conditions` list should be combined to determine if a request is
@@ -2514,6 +3387,396 @@ class GoogleIdentityAccesscontextmanagerV1DevicePolicy {
   }
 }
 
+/// Defines the conditions under which an EgressPolicy matches a request.
+///
+/// Conditions based on information about the source of the request. Note that
+/// if the destination of the request is protected by a ServicePerimeter, then
+/// that ServicePerimeter must have an IngressPolicy which allows access in
+/// order for this request to succeed.
+class GoogleIdentityAccesscontextmanagerV1EgressFrom {
+  /// A list of identities that are allowed access through this
+  /// \[EgressPolicy\].
+  ///
+  /// Should be in the format of email address. The email address should
+  /// represent individual user or service account only.
+  core.List<core.String> identities;
+
+  /// Specifies the type of identities that are allowed access to outside the
+  /// perimeter.
+  ///
+  /// If left unspecified, then members of `identities` field will be allowed
+  /// access.
+  /// Possible string values are:
+  /// - "IDENTITY_TYPE_UNSPECIFIED" : No blanket identity group specified.
+  /// - "ANY_IDENTITY" : Authorize access from all identities outside the
+  /// perimeter.
+  /// - "ANY_USER_ACCOUNT" : Authorize access from all human users outside the
+  /// perimeter.
+  /// - "ANY_SERVICE_ACCOUNT" : Authorize access from all service accounts
+  /// outside the perimeter.
+  core.String identityType;
+
+  GoogleIdentityAccesscontextmanagerV1EgressFrom();
+
+  GoogleIdentityAccesscontextmanagerV1EgressFrom.fromJson(core.Map _json) {
+    if (_json.containsKey('identities')) {
+      identities = (_json['identities'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('identityType')) {
+      identityType = _json['identityType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (identities != null) {
+      _json['identities'] = identities;
+    }
+    if (identityType != null) {
+      _json['identityType'] = identityType;
+    }
+    return _json;
+  }
+}
+
+/// Policy for egress from perimeter.
+///
+/// EgressPolicies match requests based on `egress_from` and `egress_to`
+/// stanzas. For an EgressPolicy to match, both `egress_from` and `egress_to`
+/// stanzas must be matched. If an EgressPolicy matches a request, the request
+/// is allowed to span the ServicePerimeter boundary. For example, an
+/// EgressPolicy can be used to allow VMs on networks within the
+/// ServicePerimeter to access a defined set of projects outside the perimeter
+/// in certain contexts (e.g. to read data from a Cloud Storage bucket or query
+/// against a BigQuery dataset). EgressPolicies are concerned with the
+/// *resources* that a request relates as well as the API services and API
+/// actions being used. They do not related to the direction of data movement.
+/// More detailed documentation for this concept can be found in the
+/// descriptions of EgressFrom and EgressTo.
+class GoogleIdentityAccesscontextmanagerV1EgressPolicy {
+  /// Defines conditions on the source of a request causing this EgressPolicy to
+  /// apply.
+  GoogleIdentityAccesscontextmanagerV1EgressFrom egressFrom;
+
+  /// Defines the conditions on the ApiOperation and destination resources that
+  /// cause this EgressPolicy to apply.
+  GoogleIdentityAccesscontextmanagerV1EgressTo egressTo;
+
+  GoogleIdentityAccesscontextmanagerV1EgressPolicy();
+
+  GoogleIdentityAccesscontextmanagerV1EgressPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('egressFrom')) {
+      egressFrom = GoogleIdentityAccesscontextmanagerV1EgressFrom.fromJson(
+          _json['egressFrom'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('egressTo')) {
+      egressTo = GoogleIdentityAccesscontextmanagerV1EgressTo.fromJson(
+          _json['egressTo'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (egressFrom != null) {
+      _json['egressFrom'] = egressFrom.toJson();
+    }
+    if (egressTo != null) {
+      _json['egressTo'] = egressTo.toJson();
+    }
+    return _json;
+  }
+}
+
+/// Defines the conditions under which an EgressPolicy matches a request.
+///
+/// Conditions are based on information about the ApiOperation intended to be
+/// performed on the `resources` specified. Note that if the destination of the
+/// request is protected by a ServicePerimeter, then that ServicePerimeter must
+/// have an IngressPolicy which allows access in order for this request to
+/// succeed.
+class GoogleIdentityAccesscontextmanagerV1EgressTo {
+  /// A list of ApiOperations that this egress rule applies to.
+  ///
+  /// A request matches if it contains an operation/service in this list.
+  core.List<GoogleIdentityAccesscontextmanagerV1ApiOperation> operations;
+
+  /// A list of resources, currently only projects in the form `projects/`, that
+  /// match this to stanza.
+  ///
+  /// A request matches if it contains a resource in this list. If `*` is
+  /// specified for resources, then this EgressTo rule will authorize access to
+  /// all resources outside the perimeter.
+  core.List<core.String> resources;
+
+  GoogleIdentityAccesscontextmanagerV1EgressTo();
+
+  GoogleIdentityAccesscontextmanagerV1EgressTo.fromJson(core.Map _json) {
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
+          .map<GoogleIdentityAccesscontextmanagerV1ApiOperation>((value) =>
+              GoogleIdentityAccesscontextmanagerV1ApiOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('resources')) {
+      resources = (_json['resources'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (operations != null) {
+      _json['operations'] = operations.map((value) => value.toJson()).toList();
+    }
+    if (resources != null) {
+      _json['resources'] = resources;
+    }
+    return _json;
+  }
+}
+
+/// Defines the conditions under which an IngressPolicy matches a request.
+///
+/// Conditions are based on information about the source of the request.
+class GoogleIdentityAccesscontextmanagerV1IngressFrom {
+  /// A list of identities that are allowed access through this ingress policy.
+  ///
+  /// Should be in the format of email address. The email address should
+  /// represent individual user or service account only.
+  core.List<core.String> identities;
+
+  /// Specifies the type of identities that are allowed access from outside the
+  /// perimeter.
+  ///
+  /// If left unspecified, then members of `identities` field will be allowed
+  /// access.
+  /// Possible string values are:
+  /// - "IDENTITY_TYPE_UNSPECIFIED" : No blanket identity group specified.
+  /// - "ANY_IDENTITY" : Authorize access from all identities outside the
+  /// perimeter.
+  /// - "ANY_USER_ACCOUNT" : Authorize access from all human users outside the
+  /// perimeter.
+  /// - "ANY_SERVICE_ACCOUNT" : Authorize access from all service accounts
+  /// outside the perimeter.
+  core.String identityType;
+
+  /// Sources that this IngressPolicy authorizes access from.
+  core.List<GoogleIdentityAccesscontextmanagerV1IngressSource> sources;
+
+  GoogleIdentityAccesscontextmanagerV1IngressFrom();
+
+  GoogleIdentityAccesscontextmanagerV1IngressFrom.fromJson(core.Map _json) {
+    if (_json.containsKey('identities')) {
+      identities = (_json['identities'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('identityType')) {
+      identityType = _json['identityType'] as core.String;
+    }
+    if (_json.containsKey('sources')) {
+      sources = (_json['sources'] as core.List)
+          .map<GoogleIdentityAccesscontextmanagerV1IngressSource>((value) =>
+              GoogleIdentityAccesscontextmanagerV1IngressSource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (identities != null) {
+      _json['identities'] = identities;
+    }
+    if (identityType != null) {
+      _json['identityType'] = identityType;
+    }
+    if (sources != null) {
+      _json['sources'] = sources.map((value) => value.toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Policy for ingress into ServicePerimeter.
+///
+/// IngressPolicies match requests based on `ingress_from` and `ingress_to`
+/// stanzas. For an ingress policy to match, both the `ingress_from` and
+/// `ingress_to` stanzas must be matched. If an IngressPolicy matches a request,
+/// the request is allowed through the perimeter boundary from outside the
+/// perimeter. For example, access from the internet can be allowed either based
+/// on an AccessLevel or, for traffic hosted on Google Cloud, the project of the
+/// source network. For access from private networks, using the project of the
+/// hosting network is required. Individual ingress policies can be limited by
+/// restricting which services and/or actions they match using the `ingress_to`
+/// field.
+class GoogleIdentityAccesscontextmanagerV1IngressPolicy {
+  /// Defines the conditions on the source of a request causing this
+  /// IngressPolicy to apply.
+  GoogleIdentityAccesscontextmanagerV1IngressFrom ingressFrom;
+
+  /// Defines the conditions on the ApiOperation and request destination that
+  /// cause this IngressPolicy to apply.
+  GoogleIdentityAccesscontextmanagerV1IngressTo ingressTo;
+
+  GoogleIdentityAccesscontextmanagerV1IngressPolicy();
+
+  GoogleIdentityAccesscontextmanagerV1IngressPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('ingressFrom')) {
+      ingressFrom = GoogleIdentityAccesscontextmanagerV1IngressFrom.fromJson(
+          _json['ingressFrom'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('ingressTo')) {
+      ingressTo = GoogleIdentityAccesscontextmanagerV1IngressTo.fromJson(
+          _json['ingressTo'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (ingressFrom != null) {
+      _json['ingressFrom'] = ingressFrom.toJson();
+    }
+    if (ingressTo != null) {
+      _json['ingressTo'] = ingressTo.toJson();
+    }
+    return _json;
+  }
+}
+
+/// The source that IngressPolicy authorizes access from.
+class GoogleIdentityAccesscontextmanagerV1IngressSource {
+  /// An AccessLevel resource name that allow resources within the
+  /// ServicePerimeters to be accessed from the internet.
+  ///
+  /// AccessLevels listed must be in the same policy as this ServicePerimeter.
+  /// Referencing a nonexistent AccessLevel will cause an error. If no
+  /// AccessLevel names are listed, resources within the perimeter can only be
+  /// accessed via Google Cloud calls with request origins within the perimeter.
+  /// Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If `*` is
+  /// specified, then all IngressSources will be allowed.
+  core.String accessLevel;
+
+  /// A Google Cloud resource that is allowed to ingress the perimeter.
+  ///
+  /// Requests from these resources will be allowed to access perimeter data.
+  /// Currently only projects are allowed. Format: `projects/{project_number}`
+  /// The project may be in any Google Cloud organization, not just the
+  /// organization that the perimeter is defined in. `*` is not allowed, the
+  /// case of allowing all Google Cloud resources only is not supported.
+  core.String resource;
+
+  GoogleIdentityAccesscontextmanagerV1IngressSource();
+
+  GoogleIdentityAccesscontextmanagerV1IngressSource.fromJson(core.Map _json) {
+    if (_json.containsKey('accessLevel')) {
+      accessLevel = _json['accessLevel'] as core.String;
+    }
+    if (_json.containsKey('resource')) {
+      resource = _json['resource'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (accessLevel != null) {
+      _json['accessLevel'] = accessLevel;
+    }
+    if (resource != null) {
+      _json['resource'] = resource;
+    }
+    return _json;
+  }
+}
+
+/// Defines the conditions under which an IngressPolicy matches a request.
+///
+/// Conditions are based on information about the ApiOperation intended to be
+/// performed on the destination of the request.
+class GoogleIdentityAccesscontextmanagerV1IngressTo {
+  /// A list of ApiOperations the sources specified in corresponding IngressFrom
+  /// are allowed to perform in this ServicePerimeter.
+  core.List<GoogleIdentityAccesscontextmanagerV1ApiOperation> operations;
+
+  /// A list of resources, currently only projects in the form `projects/`,
+  /// protected by this ServicePerimeter that are allowed to be accessed by
+  /// sources defined in the corresponding IngressFrom.
+  ///
+  /// A request matches if it contains a resource in this list. If `*` is
+  /// specified for resources, then this IngressTo rule will authorize access to
+  /// all resources inside the perimeter, provided that the request also matches
+  /// the `operations` field.
+  core.List<core.String> resources;
+
+  GoogleIdentityAccesscontextmanagerV1IngressTo();
+
+  GoogleIdentityAccesscontextmanagerV1IngressTo.fromJson(core.Map _json) {
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
+          .map<GoogleIdentityAccesscontextmanagerV1ApiOperation>((value) =>
+              GoogleIdentityAccesscontextmanagerV1ApiOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('resources')) {
+      resources = (_json['resources'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (operations != null) {
+      _json['operations'] = operations.map((value) => value.toJson()).toList();
+    }
+    if (resources != null) {
+      _json['resources'] = resources;
+    }
+    return _json;
+  }
+}
+
+/// An allowed method or permission of a service specified in ApiOperation.
+class GoogleIdentityAccesscontextmanagerV1MethodSelector {
+  /// Value for `method` should be a valid method name for the corresponding
+  /// `service_name` in ApiOperation.
+  ///
+  /// If `*` used as value for `method`, then ALL methods and permissions are
+  /// allowed.
+  core.String method;
+
+  /// Value for `permission` should be a valid Cloud IAM permission for the
+  /// corresponding `service_name` in ApiOperation.
+  core.String permission;
+
+  GoogleIdentityAccesscontextmanagerV1MethodSelector();
+
+  GoogleIdentityAccesscontextmanagerV1MethodSelector.fromJson(core.Map _json) {
+    if (_json.containsKey('method')) {
+      method = _json['method'] as core.String;
+    }
+    if (_json.containsKey('permission')) {
+      permission = _json['permission'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (method != null) {
+      _json['method'] = method;
+    }
+    if (permission != null) {
+      _json['permission'] = permission;
+    }
+    return _json;
+  }
+}
+
 /// A restriction on the OS type and version of devices making requests.
 class GoogleIdentityAccesscontextmanagerV1OsConstraint {
   /// The minimum allowed OS version.
@@ -2716,6 +3979,20 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
   /// Bridge, must be empty.
   core.List<core.String> accessLevels;
 
+  /// List of EgressPolicies to apply to the perimeter.
+  ///
+  /// A perimeter may have multiple EgressPolicies, each of which is evaluated
+  /// separately. Access is granted if any EgressPolicy grants it. Must be empty
+  /// for a perimeter bridge.
+  core.List<GoogleIdentityAccesscontextmanagerV1EgressPolicy> egressPolicies;
+
+  /// List of IngressPolicies to apply to the perimeter.
+  ///
+  /// A perimeter may have multiple IngressPolicies, each of which is evaluated
+  /// separately. Access is granted if any Ingress Policy grants it. Must be
+  /// empty for a perimeter bridge.
+  core.List<GoogleIdentityAccesscontextmanagerV1IngressPolicy> ingressPolicies;
+
   /// A list of Google Cloud resources that are inside of the service perimeter.
   ///
   /// Currently only projects are allowed. Format: `projects/{project_number}`
@@ -2742,6 +4019,20 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('egressPolicies')) {
+      egressPolicies = (_json['egressPolicies'] as core.List)
+          .map<GoogleIdentityAccesscontextmanagerV1EgressPolicy>((value) =>
+              GoogleIdentityAccesscontextmanagerV1EgressPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('ingressPolicies')) {
+      ingressPolicies = (_json['ingressPolicies'] as core.List)
+          .map<GoogleIdentityAccesscontextmanagerV1IngressPolicy>((value) =>
+              GoogleIdentityAccesscontextmanagerV1IngressPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -2764,6 +4055,14 @@ class GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig {
     final _json = <core.String, core.Object>{};
     if (accessLevels != null) {
       _json['accessLevels'] = accessLevels;
+    }
+    if (egressPolicies != null) {
+      _json['egressPolicies'] =
+          egressPolicies.map((value) => value.toJson()).toList();
+    }
+    if (ingressPolicies != null) {
+      _json['ingressPolicies'] =
+          ingressPolicies.map((value) => value.toJson()).toList();
     }
     if (resources != null) {
       _json['resources'] = resources;
@@ -2818,12 +4117,383 @@ class GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices {
   }
 }
 
+/// An analysis message to group the query and results.
+class IamPolicyAnalysis {
+  /// The analysis query.
+  IamPolicyAnalysisQuery analysisQuery;
+
+  /// A list of IamPolicyAnalysisResult that matches the analysis query, or
+  /// empty if no result is found.
+  core.List<IamPolicyAnalysisResult> analysisResults;
+
+  /// Represents whether all entries in the analysis_results have been fully
+  /// explored to answer the query.
+  core.bool fullyExplored;
+
+  /// A list of non-critical errors happened during the query handling.
+  core.List<IamPolicyAnalysisState> nonCriticalErrors;
+
+  IamPolicyAnalysis();
+
+  IamPolicyAnalysis.fromJson(core.Map _json) {
+    if (_json.containsKey('analysisQuery')) {
+      analysisQuery = IamPolicyAnalysisQuery.fromJson(
+          _json['analysisQuery'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('analysisResults')) {
+      analysisResults = (_json['analysisResults'] as core.List)
+          .map<IamPolicyAnalysisResult>((value) =>
+              IamPolicyAnalysisResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('fullyExplored')) {
+      fullyExplored = _json['fullyExplored'] as core.bool;
+    }
+    if (_json.containsKey('nonCriticalErrors')) {
+      nonCriticalErrors = (_json['nonCriticalErrors'] as core.List)
+          .map<IamPolicyAnalysisState>((value) =>
+              IamPolicyAnalysisState.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (analysisQuery != null) {
+      _json['analysisQuery'] = analysisQuery.toJson();
+    }
+    if (analysisResults != null) {
+      _json['analysisResults'] =
+          analysisResults.map((value) => value.toJson()).toList();
+    }
+    if (fullyExplored != null) {
+      _json['fullyExplored'] = fullyExplored;
+    }
+    if (nonCriticalErrors != null) {
+      _json['nonCriticalErrors'] =
+          nonCriticalErrors.map((value) => value.toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Output configuration for export IAM policy analysis destination.
+class IamPolicyAnalysisOutputConfig {
+  /// Destination on BigQuery.
+  GoogleCloudAssetV1BigQueryDestination bigqueryDestination;
+
+  /// Destination on Cloud Storage.
+  GoogleCloudAssetV1GcsDestination gcsDestination;
+
+  IamPolicyAnalysisOutputConfig();
+
+  IamPolicyAnalysisOutputConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('bigqueryDestination')) {
+      bigqueryDestination = GoogleCloudAssetV1BigQueryDestination.fromJson(
+          _json['bigqueryDestination'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('gcsDestination')) {
+      gcsDestination = GoogleCloudAssetV1GcsDestination.fromJson(
+          _json['gcsDestination'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (bigqueryDestination != null) {
+      _json['bigqueryDestination'] = bigqueryDestination.toJson();
+    }
+    if (gcsDestination != null) {
+      _json['gcsDestination'] = gcsDestination.toJson();
+    }
+    return _json;
+  }
+}
+
+/// ## LINT.IfChange Keep in sync with ##
+/// logs/proto/cloud_asset_inventory/iam_policy_analyzer_log.proto IAM policy
+/// analysis query message.
+class IamPolicyAnalysisQuery {
+  /// Specifies roles or permissions for analysis.
+  ///
+  /// This is optional.
+  ///
+  /// Optional.
+  AccessSelector accessSelector;
+
+  /// Specifies an identity for analysis.
+  ///
+  /// Optional.
+  IdentitySelector identitySelector;
+
+  /// The query options.
+  ///
+  /// Optional.
+  Options options;
+
+  /// Specifies a resource for analysis.
+  ///
+  /// Optional.
+  ResourceSelector resourceSelector;
+
+  /// The relative name of the root asset.
+  ///
+  /// Only resources and IAM policies within the scope will be analyzed. This
+  /// can only be an organization number (such as "organizations/123"), a folder
+  /// number (such as "folders/123"), a project ID (such as
+  /// "projects/my-project-id"), or a project number (such as "projects/12345").
+  /// To know how to get organization id, visit
+  /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).
+  /// To know how to get folder or project id, visit
+  /// [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
+  ///
+  /// Required.
+  core.String scope;
+
+  IamPolicyAnalysisQuery();
+
+  IamPolicyAnalysisQuery.fromJson(core.Map _json) {
+    if (_json.containsKey('accessSelector')) {
+      accessSelector = AccessSelector.fromJson(
+          _json['accessSelector'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('identitySelector')) {
+      identitySelector = IdentitySelector.fromJson(
+          _json['identitySelector'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('options')) {
+      options = Options.fromJson(
+          _json['options'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('resourceSelector')) {
+      resourceSelector = ResourceSelector.fromJson(
+          _json['resourceSelector'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('scope')) {
+      scope = _json['scope'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (accessSelector != null) {
+      _json['accessSelector'] = accessSelector.toJson();
+    }
+    if (identitySelector != null) {
+      _json['identitySelector'] = identitySelector.toJson();
+    }
+    if (options != null) {
+      _json['options'] = options.toJson();
+    }
+    if (resourceSelector != null) {
+      _json['resourceSelector'] = resourceSelector.toJson();
+    }
+    if (scope != null) {
+      _json['scope'] = scope;
+    }
+    return _json;
+  }
+}
+
+/// IAM Policy analysis result, consisting of one IAM policy binding and derived
+/// access control lists.
+class IamPolicyAnalysisResult {
+  /// The access control lists derived from the iam_binding that match or
+  /// potentially match resource and access selectors specified in the request.
+  core.List<GoogleCloudAssetV1AccessControlList> accessControlLists;
+
+  /// The
+  /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// of the resource to which the iam_binding policy attaches.
+  core.String attachedResourceFullName;
+
+  /// Represents whether all analyses on the iam_binding have successfully
+  /// finished.
+  core.bool fullyExplored;
+
+  /// The Cloud IAM policy binding under analysis.
+  Binding iamBinding;
+
+  /// The identity list derived from members of the iam_binding that match or
+  /// potentially match identity selector specified in the request.
+  GoogleCloudAssetV1IdentityList identityList;
+
+  IamPolicyAnalysisResult();
+
+  IamPolicyAnalysisResult.fromJson(core.Map _json) {
+    if (_json.containsKey('accessControlLists')) {
+      accessControlLists = (_json['accessControlLists'] as core.List)
+          .map<GoogleCloudAssetV1AccessControlList>((value) =>
+              GoogleCloudAssetV1AccessControlList.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('attachedResourceFullName')) {
+      attachedResourceFullName =
+          _json['attachedResourceFullName'] as core.String;
+    }
+    if (_json.containsKey('fullyExplored')) {
+      fullyExplored = _json['fullyExplored'] as core.bool;
+    }
+    if (_json.containsKey('iamBinding')) {
+      iamBinding = Binding.fromJson(
+          _json['iamBinding'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('identityList')) {
+      identityList = GoogleCloudAssetV1IdentityList.fromJson(
+          _json['identityList'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (accessControlLists != null) {
+      _json['accessControlLists'] =
+          accessControlLists.map((value) => value.toJson()).toList();
+    }
+    if (attachedResourceFullName != null) {
+      _json['attachedResourceFullName'] = attachedResourceFullName;
+    }
+    if (fullyExplored != null) {
+      _json['fullyExplored'] = fullyExplored;
+    }
+    if (iamBinding != null) {
+      _json['iamBinding'] = iamBinding.toJson();
+    }
+    if (identityList != null) {
+      _json['identityList'] = identityList.toJson();
+    }
+    return _json;
+  }
+}
+
+/// Represents the detailed state of an entity under analysis, such as a
+/// resource, an identity or an access.
+class IamPolicyAnalysisState {
+  /// The human-readable description of the cause of failure.
+  core.String cause;
+
+  /// The Google standard error code that best describes the state.
+  ///
+  /// For example: - OK means the analysis on this entity has been successfully
+  /// finished; - PERMISSION_DENIED means an access denied error is encountered;
+  /// - DEADLINE_EXCEEDED means the analysis on this entity hasn't been started
+  /// in time;
+  /// Possible string values are:
+  /// - "OK" : Not an error; returned on success HTTP Mapping: 200 OK
+  /// - "CANCELLED" : The operation was cancelled, typically by the caller. HTTP
+  /// Mapping: 499 Client Closed Request
+  /// - "UNKNOWN" : Unknown error. For example, this error may be returned when
+  /// a `Status` value received from another address space belongs to an error
+  /// space that is not known in this address space. Also errors raised by APIs
+  /// that do not return enough error information may be converted to this
+  /// error. HTTP Mapping: 500 Internal Server Error
+  /// - "INVALID_ARGUMENT" : The client specified an invalid argument. Note that
+  /// this differs from `FAILED_PRECONDITION`. `INVALID_ARGUMENT` indicates
+  /// arguments that are problematic regardless of the state of the system
+  /// (e.g., a malformed file name). HTTP Mapping: 400 Bad Request
+  /// - "DEADLINE_EXCEEDED" : The deadline expired before the operation could
+  /// complete. For operations that change the state of the system, this error
+  /// may be returned even if the operation has completed successfully. For
+  /// example, a successful response from a server could have been delayed long
+  /// enough for the deadline to expire. HTTP Mapping: 504 Gateway Timeout
+  /// - "NOT_FOUND" : Some requested entity (e.g., file or directory) was not
+  /// found. Note to server developers: if a request is denied for an entire
+  /// class of users, such as gradual feature rollout or undocumented allowlist,
+  /// `NOT_FOUND` may be used. If a request is denied for some users within a
+  /// class of users, such as user-based access control, `PERMISSION_DENIED`
+  /// must be used. HTTP Mapping: 404 Not Found
+  /// - "ALREADY_EXISTS" : The entity that a client attempted to create (e.g.,
+  /// file or directory) already exists. HTTP Mapping: 409 Conflict
+  /// - "PERMISSION_DENIED" : The caller does not have permission to execute the
+  /// specified operation. `PERMISSION_DENIED` must not be used for rejections
+  /// caused by exhausting some resource (use `RESOURCE_EXHAUSTED` instead for
+  /// those errors). `PERMISSION_DENIED` must not be used if the caller can not
+  /// be identified (use `UNAUTHENTICATED` instead for those errors). This error
+  /// code does not imply the request is valid or the requested entity exists or
+  /// satisfies other pre-conditions. HTTP Mapping: 403 Forbidden
+  /// - "UNAUTHENTICATED" : The request does not have valid authentication
+  /// credentials for the operation. HTTP Mapping: 401 Unauthorized
+  /// - "RESOURCE_EXHAUSTED" : Some resource has been exhausted, perhaps a
+  /// per-user quota, or perhaps the entire file system is out of space. HTTP
+  /// Mapping: 429 Too Many Requests
+  /// - "FAILED_PRECONDITION" : The operation was rejected because the system is
+  /// not in a state required for the operation's execution. For example, the
+  /// directory to be deleted is non-empty, an rmdir operation is applied to a
+  /// non-directory, etc. Service implementors can use the following guidelines
+  /// to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a)
+  /// Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use
+  /// `ABORTED` if the client should retry at a higher level (e.g., when a
+  /// client-specified test-and-set fails, indicating the client should restart
+  /// a read-modify-write sequence). (c) Use `FAILED_PRECONDITION` if the client
+  /// should not retry until the system state has been explicitly fixed. E.g.,
+  /// if an "rmdir" fails because the directory is non-empty,
+  /// `FAILED_PRECONDITION` should be returned since the client should not retry
+  /// unless the files are deleted from the directory. HTTP Mapping: 400 Bad
+  /// Request
+  /// - "ABORTED" : The operation was aborted, typically due to a concurrency
+  /// issue such as a sequencer check failure or transaction abort. See the
+  /// guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`,
+  /// and `UNAVAILABLE`. HTTP Mapping: 409 Conflict
+  /// - "OUT_OF_RANGE" : The operation was attempted past the valid range. E.g.,
+  /// seeking or reading past end-of-file. Unlike `INVALID_ARGUMENT`, this error
+  /// indicates a problem that may be fixed if the system state changes. For
+  /// example, a 32-bit file system will generate `INVALID_ARGUMENT` if asked to
+  /// read at an offset that is not in the range \[0,2^32-1\], but it will
+  /// generate `OUT_OF_RANGE` if asked to read from an offset past the current
+  /// file size. There is a fair bit of overlap between `FAILED_PRECONDITION`
+  /// and `OUT_OF_RANGE`. We recommend using `OUT_OF_RANGE` (the more specific
+  /// error) when it applies so that callers who are iterating through a space
+  /// can easily look for an `OUT_OF_RANGE` error to detect when they are done.
+  /// HTTP Mapping: 400 Bad Request
+  /// - "UNIMPLEMENTED" : The operation is not implemented or is not
+  /// supported/enabled in this service. HTTP Mapping: 501 Not Implemented
+  /// - "INTERNAL" : Internal errors. This means that some invariants expected
+  /// by the underlying system have been broken. This error code is reserved for
+  /// serious errors. HTTP Mapping: 500 Internal Server Error
+  /// - "UNAVAILABLE" : The service is currently unavailable. This is most
+  /// likely a transient condition, which can be corrected by retrying with a
+  /// backoff. Note that it is not always safe to retry non-idempotent
+  /// operations. See the guidelines above for deciding between
+  /// `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 503
+  /// Service Unavailable
+  /// - "DATA_LOSS" : Unrecoverable data loss or corruption. HTTP Mapping: 500
+  /// Internal Server Error
+  core.String code;
+
+  IamPolicyAnalysisState();
+
+  IamPolicyAnalysisState.fromJson(core.Map _json) {
+    if (_json.containsKey('cause')) {
+      cause = _json['cause'] as core.String;
+    }
+    if (_json.containsKey('code')) {
+      code = _json['code'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (cause != null) {
+      _json['cause'] = cause;
+    }
+    if (code != null) {
+      _json['code'] = code;
+    }
+    return _json;
+  }
+}
+
 /// A result of IAM Policy search, containing information of an IAM policy.
 class IamPolicySearchResult {
   /// Explanation about the IAM policy search result.
   ///
   /// It contains additional information to explain why the search result
   /// matches the query.
+  ///
+  /// Optional.
   Explanation explanation;
 
   /// The IAM policy directly set on the given resource.
@@ -2837,6 +4507,8 @@ class IamPolicySearchResult {
   /// `policy:roles/compute.admin` - query by the policy contained roles'
   /// included permissions. Example:
   /// `policy.role.permissions:compute.instances.create`
+  ///
+  /// Required.
   Policy policy;
 
   /// The project that the associated GCP resource belongs to, in the form of
@@ -2847,6 +4519,8 @@ class IamPolicySearchResult {
   /// resource. If an IAM policy is set on a folder or orgnization, the project
   /// field will be empty. To search against the `project`: * specify the
   /// `scope` field as this project in your search request.
+  ///
+  /// Optional.
   core.String project;
 
   /// The full resource name of the resource associated with this IAM policy.
@@ -2857,6 +4531,8 @@ class IamPolicySearchResult {
   /// [Cloud Asset Inventory Resource Name Format](https://cloud.google.com/asset-inventory/docs/resource-name-format)
   /// for more information. To search against the `resource`: * use a field
   /// query. Example: `resource:organizations/123`
+  ///
+  /// Required.
   core.String resource;
 
   IamPolicySearchResult();
@@ -2891,6 +4567,169 @@ class IamPolicySearchResult {
     }
     if (resource != null) {
       _json['resource'] = resource;
+    }
+    return _json;
+  }
+}
+
+/// Specifies an identity for which to determine resource access, based on roles
+/// assigned either directly to them or to the groups they belong to, directly
+/// or indirectly.
+class IdentitySelector {
+  /// The identity appear in the form of members in
+  /// [IAM policy binding](https://cloud.google.com/iam/reference/rest/v1/Binding).
+  ///
+  /// The examples of supported forms are: "user:mike@example.com",
+  /// "group:admins@example.com", "domain:google.com",
+  /// "serviceAccount:my-project-id@appspot.gserviceaccount.com". Notice that
+  /// wildcard characters (such as * and ?) are not supported. You must give a
+  /// specific identity.
+  ///
+  /// Required.
+  core.String identity;
+
+  IdentitySelector();
+
+  IdentitySelector.fromJson(core.Map _json) {
+    if (_json.containsKey('identity')) {
+      identity = _json['identity'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (identity != null) {
+      _json['identity'] = identity;
+    }
+    return _json;
+  }
+}
+
+/// The inventory details of a VM.
+class Inventory {
+  /// Inventory items related to the VM keyed by an opaque unique identifier for
+  /// each inventory item.
+  ///
+  /// The identifier is unique to each distinct and addressable inventory item
+  /// and will change, when there is a new package version.
+  core.Map<core.String, Item> items;
+
+  /// Base level operating system information for the VM.
+  OsInfo osInfo;
+
+  Inventory();
+
+  Inventory.fromJson(core.Map _json) {
+    if (_json.containsKey('items')) {
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              Item.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
+    }
+    if (_json.containsKey('osInfo')) {
+      osInfo = OsInfo.fromJson(
+          _json['osInfo'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (items != null) {
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
+    }
+    if (osInfo != null) {
+      _json['osInfo'] = osInfo.toJson();
+    }
+    return _json;
+  }
+}
+
+/// A single piece of inventory on a VM.
+class Item {
+  /// Software package available to be installed on the VM instance.
+  SoftwarePackage availablePackage;
+
+  /// When this inventory item was first detected.
+  core.String createTime;
+
+  /// Identifier for this item, unique across items for this VM.
+  core.String id;
+
+  /// Software package present on the VM instance.
+  SoftwarePackage installedPackage;
+
+  /// The origin of this inventory item.
+  /// Possible string values are:
+  /// - "ORIGIN_TYPE_UNSPECIFIED" : Invalid. An origin type must be specified.
+  /// - "INVENTORY_REPORT" : This inventory item was discovered as the result of
+  /// the agent reporting inventory via the reporting API.
+  core.String originType;
+
+  /// The specific type of inventory, correlating to its specific details.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Invalid. An type must be specified.
+  /// - "INSTALLED_PACKAGE" : This represents a package that is installed on the
+  /// VM.
+  /// - "AVAILABLE_PACKAGE" : This represents an update that is available for a
+  /// package.
+  core.String type;
+
+  /// When this inventory item was last modified.
+  core.String updateTime;
+
+  Item();
+
+  Item.fromJson(core.Map _json) {
+    if (_json.containsKey('availablePackage')) {
+      availablePackage = SoftwarePackage.fromJson(
+          _json['availablePackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('id')) {
+      id = _json['id'] as core.String;
+    }
+    if (_json.containsKey('installedPackage')) {
+      installedPackage = SoftwarePackage.fromJson(
+          _json['installedPackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('originType')) {
+      originType = _json['originType'] as core.String;
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (availablePackage != null) {
+      _json['availablePackage'] = availablePackage.toJson();
+    }
+    if (createTime != null) {
+      _json['createTime'] = createTime;
+    }
+    if (id != null) {
+      _json['id'] = id;
+    }
+    if (installedPackage != null) {
+      _json['installedPackage'] = installedPackage.toJson();
+    }
+    if (originType != null) {
+      _json['originType'] = originType;
+    }
+    if (type != null) {
+      _json['type'] = type;
+    }
+    if (updateTime != null) {
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -3012,6 +4851,227 @@ class Operation {
     }
     if (response != null) {
       _json['response'] = response;
+    }
+    return _json;
+  }
+}
+
+/// Contains query options.
+class Options {
+  /// If true, the response will include access analysis from identities to
+  /// resources via service account impersonation.
+  ///
+  /// This is a very expensive operation, because many derived queries will be
+  /// executed. We highly recommend you use
+  /// AssetService.AnalyzeIamPolicyLongrunning rpc instead. For example, if the
+  /// request analyzes for which resources user A has permission P, and there's
+  /// an IAM policy states user A has iam.serviceAccounts.getAccessToken
+  /// permission to a service account SA, and there's another IAM policy states
+  /// service account SA has permission P to a GCP folder F, then user A
+  /// potentially has access to the GCP folder F. And those advanced analysis
+  /// results will be included in
+  /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Another
+  /// example, if the request analyzes for who has permission P to a GCP folder
+  /// F, and there's an IAM policy states user A has iam.serviceAccounts.actAs
+  /// permission to a service account SA, and there's another IAM policy states
+  /// service account SA has permission P to the GCP folder F, then user A
+  /// potentially has access to the GCP folder F. And those advanced analysis
+  /// results will be included in
+  /// AnalyzeIamPolicyResponse.service_account_impersonation_analysis. Default
+  /// is false.
+  ///
+  /// Optional.
+  core.bool analyzeServiceAccountImpersonation;
+
+  /// If true, the identities section of the result will expand any Google
+  /// groups appearing in an IAM policy binding.
+  ///
+  /// If IamPolicyAnalysisQuery.identity_selector is specified, the identity in
+  /// the result will be determined by the selector, and this flag is not
+  /// allowed to set. Default is false.
+  ///
+  /// Optional.
+  core.bool expandGroups;
+
+  /// If true and IamPolicyAnalysisQuery.resource_selector is not specified, the
+  /// resource section of the result will expand any resource attached to an IAM
+  /// policy to include resources lower in the resource hierarchy.
+  ///
+  /// For example, if the request analyzes for which resources user A has
+  /// permission P, and the results include an IAM policy with P on a GCP
+  /// folder, the results will also include resources in that folder with
+  /// permission P. If true and IamPolicyAnalysisQuery.resource_selector is
+  /// specified, the resource section of the result will expand the specified
+  /// resource to include resources lower in the resource hierarchy. Only
+  /// project or lower resources are supported. Folder and organization resource
+  /// cannot be used together with this option. For example, if the request
+  /// analyzes for which users have permission P on a GCP project with this
+  /// option enabled, the results will include all users who have permission P
+  /// on that project or any lower resource. Default is false.
+  ///
+  /// Optional.
+  core.bool expandResources;
+
+  /// If true, the access section of result will expand any roles appearing in
+  /// IAM policy bindings to include their permissions.
+  ///
+  /// If IamPolicyAnalysisQuery.access_selector is specified, the access section
+  /// of the result will be determined by the selector, and this flag is not
+  /// allowed to set. Default is false.
+  ///
+  /// Optional.
+  core.bool expandRoles;
+
+  /// If true, the result will output group identity edges, starting from the
+  /// binding's group members, to any expanded identities.
+  ///
+  /// Default is false.
+  ///
+  /// Optional.
+  core.bool outputGroupEdges;
+
+  /// If true, the result will output resource edges, starting from the policy
+  /// attached resource, to any expanded resources.
+  ///
+  /// Default is false.
+  ///
+  /// Optional.
+  core.bool outputResourceEdges;
+
+  Options();
+
+  Options.fromJson(core.Map _json) {
+    if (_json.containsKey('analyzeServiceAccountImpersonation')) {
+      analyzeServiceAccountImpersonation =
+          _json['analyzeServiceAccountImpersonation'] as core.bool;
+    }
+    if (_json.containsKey('expandGroups')) {
+      expandGroups = _json['expandGroups'] as core.bool;
+    }
+    if (_json.containsKey('expandResources')) {
+      expandResources = _json['expandResources'] as core.bool;
+    }
+    if (_json.containsKey('expandRoles')) {
+      expandRoles = _json['expandRoles'] as core.bool;
+    }
+    if (_json.containsKey('outputGroupEdges')) {
+      outputGroupEdges = _json['outputGroupEdges'] as core.bool;
+    }
+    if (_json.containsKey('outputResourceEdges')) {
+      outputResourceEdges = _json['outputResourceEdges'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (analyzeServiceAccountImpersonation != null) {
+      _json['analyzeServiceAccountImpersonation'] =
+          analyzeServiceAccountImpersonation;
+    }
+    if (expandGroups != null) {
+      _json['expandGroups'] = expandGroups;
+    }
+    if (expandResources != null) {
+      _json['expandResources'] = expandResources;
+    }
+    if (expandRoles != null) {
+      _json['expandRoles'] = expandRoles;
+    }
+    if (outputGroupEdges != null) {
+      _json['outputGroupEdges'] = outputGroupEdges;
+    }
+    if (outputResourceEdges != null) {
+      _json['outputResourceEdges'] = outputResourceEdges;
+    }
+    return _json;
+  }
+}
+
+/// Operating system information for the VM.
+class OsInfo {
+  /// The system architecture of the operating system.
+  core.String architecture;
+
+  /// The VM hostname.
+  core.String hostname;
+
+  /// The kernel release of the operating system.
+  core.String kernelRelease;
+
+  /// The kernel version of the operating system.
+  core.String kernelVersion;
+
+  /// The operating system long name.
+  ///
+  /// For example 'Debian GNU/Linux 9' or 'Microsoft Window Server 2019
+  /// Datacenter'.
+  core.String longName;
+
+  /// The current version of the OS Config agent running on the VM.
+  core.String osconfigAgentVersion;
+
+  /// The operating system short name.
+  ///
+  /// For example, 'windows' or 'debian'.
+  core.String shortName;
+
+  /// The version of the operating system.
+  core.String version;
+
+  OsInfo();
+
+  OsInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('architecture')) {
+      architecture = _json['architecture'] as core.String;
+    }
+    if (_json.containsKey('hostname')) {
+      hostname = _json['hostname'] as core.String;
+    }
+    if (_json.containsKey('kernelRelease')) {
+      kernelRelease = _json['kernelRelease'] as core.String;
+    }
+    if (_json.containsKey('kernelVersion')) {
+      kernelVersion = _json['kernelVersion'] as core.String;
+    }
+    if (_json.containsKey('longName')) {
+      longName = _json['longName'] as core.String;
+    }
+    if (_json.containsKey('osconfigAgentVersion')) {
+      osconfigAgentVersion = _json['osconfigAgentVersion'] as core.String;
+    }
+    if (_json.containsKey('shortName')) {
+      shortName = _json['shortName'] as core.String;
+    }
+    if (_json.containsKey('version')) {
+      version = _json['version'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (architecture != null) {
+      _json['architecture'] = architecture;
+    }
+    if (hostname != null) {
+      _json['hostname'] = hostname;
+    }
+    if (kernelRelease != null) {
+      _json['kernelRelease'] = kernelRelease;
+    }
+    if (kernelVersion != null) {
+      _json['kernelVersion'] = kernelVersion;
+    }
+    if (longName != null) {
+      _json['longName'] = longName;
+    }
+    if (osconfigAgentVersion != null) {
+      _json['osconfigAgentVersion'] = osconfigAgentVersion;
+    }
+    if (shortName != null) {
+      _json['shortName'] = shortName;
+    }
+    if (version != null) {
+      _json['version'] = version;
     }
     return _json;
   }
@@ -3385,6 +5445,8 @@ class ResourceSearchResult {
   /// `additional_attributes = { dnsName: "foobar" }`, you can issue a query
   /// `foobar`.
   ///
+  /// Optional.
+  ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> additionalAttributes;
@@ -3393,38 +5455,86 @@ class ResourceSearchResult {
   ///
   /// Example: `compute.googleapis.com/Disk`. To search against the
   /// `asset_type`: * specify the `asset_type` field in your search request.
+  ///
+  /// Required.
   core.String assetType;
+
+  /// The create timestamp of this resource, at which the resource was created.
+  ///
+  /// The granularity is in seconds. Timestamp.nanos will always be 0. This
+  /// field is available only when the resource's proto contains it. To search
+  /// against `create_time`: * use a field query (value in seconds). Example:
+  /// `createTime >= 1594294238`
+  ///
+  /// Optional.
+  core.String createTime;
 
   /// One or more paragraphs of text description of this resource.
   ///
-  /// Maximum length could be up to 1M bytes. To search against the
-  /// `description`: * use a field query. Example: `description:"*important
-  /// instance*"` * use a free text query. Example: `"*important instance*"`
+  /// Maximum length could be up to 1M bytes. This field is available only when
+  /// the resource's proto contains it. To search against the `description`: *
+  /// use a field query. Example: `description:"important instance"` * use a
+  /// free text query. Example: `"important instance"`
+  ///
+  /// Optional.
   core.String description;
 
   /// The display name of this resource.
   ///
-  /// To search against the `display_name`: * use a field query. Example:
+  /// This field is available only when the resource's proto contains it. To
+  /// search against the `display_name`: * use a field query. Example:
   /// `displayName:"My Instance"` * use a free text query. Example: `"My
   /// Instance"`
+  ///
+  /// Optional.
   core.String displayName;
+
+  /// The folder(s) that this resource belongs to, in the form of
+  /// folders/{FOLDER_NUMBER}.
+  ///
+  /// This field is available when the resource belongs to one or more folders.
+  /// To search against `folders`: * use a field query. Example: `folders:(123
+  /// OR 456)` * specify the `scope` field as this folder in your search
+  /// request.
+  ///
+  /// Optional.
+  core.List<core.String> folders;
+
+  /// The Cloud KMS
+  /// [CryptoKey](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys?hl=en)
+  /// name or
+  /// [CryptoKeyVersion](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions?hl=en)
+  /// name.
+  ///
+  /// This field is available only when the resource's proto contains it. To
+  /// search against the `kms_key`: * use a field query. Example: `kmsKey:key` *
+  /// use a free text query. Example: `key`
+  ///
+  /// Optional.
+  core.String kmsKey;
 
   /// Labels associated with this resource.
   ///
   /// See
   /// [Labelling and grouping GCP resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
-  /// for more information. To search against the `labels`: * use a field query:
-  /// - query on any label's key or value. Example: `labels:prod` - query by a
+  /// for more information. This field is available only when the resource's
+  /// proto contains it. To search against the `labels`: * use a field query: -
+  /// query on any label's key or value. Example: `labels:prod` - query by a
   /// given label. Example: `labels.env:prod` - query by a given label's
   /// existence. Example: `labels.env:*` * use a free text query. Example:
   /// `prod`
+  ///
+  /// Optional.
   core.Map<core.String, core.String> labels;
 
   /// Location can be `global`, regional like `us-east1`, or zonal like
   /// `us-west1-b`.
   ///
-  /// To search against the `location`: * use a field query. Example:
+  /// This field is available only when the resource's proto contains it. To
+  /// search against the `location`: * use a field query. Example:
   /// `location:us-west*` * use a free text query. Example: `us-west*`
+  ///
+  /// Optional.
   core.String location;
 
   /// The full resource name of this resource.
@@ -3435,6 +5545,8 @@ class ResourceSearchResult {
   /// [Cloud Asset Inventory Resource Name Format](https://cloud.google.com/asset-inventory/docs/resource-name-format)
   /// for more information. To search against the `name`: * use a field query.
   /// Example: `name:instance1` * use a free text query. Example: `instance1`
+  ///
+  /// Required.
   core.String name;
 
   /// Network tags associated with this resource.
@@ -3442,17 +5554,64 @@ class ResourceSearchResult {
   /// Like labels, network tags are a type of annotations used to group GCP
   /// resources. See
   /// [Labelling GCP resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
-  /// for more information. To search against the `network_tags`: * use a field
+  /// for more information. This field is available only when the resource's
+  /// proto contains it. To search against the `network_tags`: * use a field
   /// query. Example: `networkTags:internal` * use a free text query. Example:
   /// `internal`
+  ///
+  /// Optional.
   core.List<core.String> networkTags;
+
+  /// The organization that this resource belongs to, in the form of
+  /// organizations/{ORGANIZATION_NUMBER}.
+  ///
+  /// This field is available when the resource belongs to a organization. To
+  /// search against `organization`: * use a field query. Example:
+  /// `organization:123` * specify the `scope` field as this organization in
+  /// your search request.
+  ///
+  /// Optional.
+  core.String organization;
 
   /// The project that this resource belongs to, in the form of
   /// projects/{PROJECT_NUMBER}.
   ///
-  /// To search against the `project`: * specify the `scope` field as this
-  /// project in your search request.
+  /// This field is available when the resource belongs to a project. To search
+  /// against `project`: * use a field query. Example: `project:12345` * specify
+  /// the `scope` field as this project in your search request.
+  ///
+  /// Optional.
   core.String project;
+
+  /// The state of this resource.
+  ///
+  /// Different resources types have different state definitions that are mapped
+  /// from various fields of different resource types. This field is available
+  /// only when the resource's proto contains it. Example: If the resource is an
+  /// instance provided by Compute Engine, its state will include PROVISIONING,
+  /// STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and
+  /// TERMINATED. See `status` definition in
+  /// [API Reference](https://cloud.google.com/compute/docs/reference/rest/v1/instances).
+  /// If the resource is a project provided by Cloud Resource Manager, its state
+  /// will include LIFECYCLE_STATE_UNSPECIFIED, ACTIVE, DELETE_REQUESTED and
+  /// DELETE_IN_PROGRESS. See `lifecycleState` definition in
+  /// [API Reference](https://cloud.google.com/resource-manager/reference/rest/v1/projects).
+  /// To search against the `state`: * use a field query. Example:
+  /// `state:RUNNING` * use a free text query. Example: `RUNNING`
+  ///
+  /// Optional.
+  core.String state;
+
+  /// The last update timestamp of this resource, at which the resource was last
+  /// modified or deleted.
+  ///
+  /// The granularity is in seconds. Timestamp.nanos will always be 0. This
+  /// field is available only when the resource's proto contains it. To search
+  /// against `update_time`: * use a field query (value in seconds). Example:
+  /// `updateTime < 1594294238`
+  ///
+  /// Optional.
+  core.String updateTime;
 
   ResourceSearchResult();
 
@@ -3470,11 +5629,22 @@ class ResourceSearchResult {
     if (_json.containsKey('assetType')) {
       assetType = _json['assetType'] as core.String;
     }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('folders')) {
+      folders = (_json['folders'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('kmsKey')) {
+      kmsKey = _json['kmsKey'] as core.String;
     }
     if (_json.containsKey('labels')) {
       labels =
@@ -3496,8 +5666,17 @@ class ResourceSearchResult {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('organization')) {
+      organization = _json['organization'] as core.String;
+    }
     if (_json.containsKey('project')) {
       project = _json['project'] as core.String;
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -3509,11 +5688,20 @@ class ResourceSearchResult {
     if (assetType != null) {
       _json['assetType'] = assetType;
     }
+    if (createTime != null) {
+      _json['createTime'] = createTime;
+    }
     if (description != null) {
       _json['description'] = description;
     }
     if (displayName != null) {
       _json['displayName'] = displayName;
+    }
+    if (folders != null) {
+      _json['folders'] = folders;
+    }
+    if (kmsKey != null) {
+      _json['kmsKey'] = kmsKey;
     }
     if (labels != null) {
       _json['labels'] = labels;
@@ -3527,8 +5715,46 @@ class ResourceSearchResult {
     if (networkTags != null) {
       _json['networkTags'] = networkTags;
     }
+    if (organization != null) {
+      _json['organization'] = organization;
+    }
     if (project != null) {
       _json['project'] = project;
+    }
+    if (state != null) {
+      _json['state'] = state;
+    }
+    if (updateTime != null) {
+      _json['updateTime'] = updateTime;
+    }
+    return _json;
+  }
+}
+
+/// Specifies the resource to analyze for access policies, which may be set
+/// directly on the resource, or on ancestors such as organizations, folders or
+/// projects.
+class ResourceSelector {
+  /// The
+  /// [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
+  /// of a resource of
+  /// [supported resource types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#analyzable_asset_types).
+  ///
+  /// Required.
+  core.String fullResourceName;
+
+  ResourceSelector();
+
+  ResourceSelector.fromJson(core.Map _json) {
+    if (_json.containsKey('fullResourceName')) {
+      fullResourceName = _json['fullResourceName'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (fullResourceName != null) {
+      _json['fullResourceName'] = fullResourceName;
     }
     return _json;
   }
@@ -3608,6 +5834,121 @@ class SearchAllResourcesResponse {
     }
     if (results != null) {
       _json['results'] = results.map((value) => value.toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Software package information of the operating system.
+class SoftwarePackage {
+  /// Details of an APT package.
+  ///
+  /// For details about the apt package manager, see
+  /// https://wiki.debian.org/Apt.
+  VersionedPackage aptPackage;
+
+  /// Details of a COS package.
+  VersionedPackage cosPackage;
+
+  /// Details of a Googet package.
+  ///
+  /// For details about the googet package manager, see
+  /// https://github.com/google/googet.
+  VersionedPackage googetPackage;
+
+  /// Details of a Windows Quick Fix engineering package.
+  ///
+  /// See
+  /// https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering
+  /// for info in Windows Quick Fix Engineering.
+  WindowsQuickFixEngineeringPackage qfePackage;
+
+  /// Details of a Windows Update package.
+  ///
+  /// See https://docs.microsoft.com/en-us/windows/win32/api/_wua/ for
+  /// information about Windows Update.
+  WindowsUpdatePackage wuaPackage;
+
+  /// Yum package info.
+  ///
+  /// For details about the yum package manager, see
+  /// https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/ch-yum.
+  VersionedPackage yumPackage;
+
+  /// Details of a Zypper package.
+  ///
+  /// For details about the Zypper package manager, see
+  /// https://en.opensuse.org/SDB:Zypper_manual.
+  VersionedPackage zypperPackage;
+
+  /// Details of a Zypper patch.
+  ///
+  /// For details about the Zypper package manager, see
+  /// https://en.opensuse.org/SDB:Zypper_manual.
+  ZypperPatch zypperPatch;
+
+  SoftwarePackage();
+
+  SoftwarePackage.fromJson(core.Map _json) {
+    if (_json.containsKey('aptPackage')) {
+      aptPackage = VersionedPackage.fromJson(
+          _json['aptPackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('cosPackage')) {
+      cosPackage = VersionedPackage.fromJson(
+          _json['cosPackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('googetPackage')) {
+      googetPackage = VersionedPackage.fromJson(
+          _json['googetPackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('qfePackage')) {
+      qfePackage = WindowsQuickFixEngineeringPackage.fromJson(
+          _json['qfePackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('wuaPackage')) {
+      wuaPackage = WindowsUpdatePackage.fromJson(
+          _json['wuaPackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('yumPackage')) {
+      yumPackage = VersionedPackage.fromJson(
+          _json['yumPackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('zypperPackage')) {
+      zypperPackage = VersionedPackage.fromJson(
+          _json['zypperPackage'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('zypperPatch')) {
+      zypperPatch = ZypperPatch.fromJson(
+          _json['zypperPatch'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (aptPackage != null) {
+      _json['aptPackage'] = aptPackage.toJson();
+    }
+    if (cosPackage != null) {
+      _json['cosPackage'] = cosPackage.toJson();
+    }
+    if (googetPackage != null) {
+      _json['googetPackage'] = googetPackage.toJson();
+    }
+    if (qfePackage != null) {
+      _json['qfePackage'] = qfePackage.toJson();
+    }
+    if (wuaPackage != null) {
+      _json['wuaPackage'] = wuaPackage.toJson();
+    }
+    if (yumPackage != null) {
+      _json['yumPackage'] = yumPackage.toJson();
+    }
+    if (zypperPackage != null) {
+      _json['zypperPackage'] = zypperPackage.toJson();
+    }
+    if (zypperPatch != null) {
+      _json['zypperPatch'] = zypperPatch.toJson();
     }
     return _json;
   }
@@ -3819,6 +6160,295 @@ class UpdateFeedRequest {
     }
     if (updateMask != null) {
       _json['updateMask'] = updateMask;
+    }
+    return _json;
+  }
+}
+
+/// Information related to the a standard versioned package.
+///
+/// This includes package info for APT, Yum, Zypper, and Googet package
+/// managers.
+class VersionedPackage {
+  /// The system architecture this package is intended for.
+  core.String architecture;
+
+  /// The name of the package.
+  core.String packageName;
+
+  /// The version of the package.
+  core.String version;
+
+  VersionedPackage();
+
+  VersionedPackage.fromJson(core.Map _json) {
+    if (_json.containsKey('architecture')) {
+      architecture = _json['architecture'] as core.String;
+    }
+    if (_json.containsKey('packageName')) {
+      packageName = _json['packageName'] as core.String;
+    }
+    if (_json.containsKey('version')) {
+      version = _json['version'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (architecture != null) {
+      _json['architecture'] = architecture;
+    }
+    if (packageName != null) {
+      _json['packageName'] = packageName;
+    }
+    if (version != null) {
+      _json['version'] = version;
+    }
+    return _json;
+  }
+}
+
+/// Information related to a Quick Fix Engineering package.
+///
+/// Fields are taken from Windows QuickFixEngineering Interface and match the
+/// source names:
+/// https://docs.microsoft.com/en-us/windows/win32/cimwin32prov/win32-quickfixengineering
+class WindowsQuickFixEngineeringPackage {
+  /// A short textual description of the QFE update.
+  core.String caption;
+
+  /// A textual description of the QFE update.
+  core.String description;
+
+  /// Unique identifier associated with a particular QFE update.
+  core.String hotFixId;
+
+  /// Date that the QFE update was installed.
+  ///
+  /// Mapped from installed_on field.
+  core.String installTime;
+
+  WindowsQuickFixEngineeringPackage();
+
+  WindowsQuickFixEngineeringPackage.fromJson(core.Map _json) {
+    if (_json.containsKey('caption')) {
+      caption = _json['caption'] as core.String;
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('hotFixId')) {
+      hotFixId = _json['hotFixId'] as core.String;
+    }
+    if (_json.containsKey('installTime')) {
+      installTime = _json['installTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (caption != null) {
+      _json['caption'] = caption;
+    }
+    if (description != null) {
+      _json['description'] = description;
+    }
+    if (hotFixId != null) {
+      _json['hotFixId'] = hotFixId;
+    }
+    if (installTime != null) {
+      _json['installTime'] = installTime;
+    }
+    return _json;
+  }
+}
+
+/// Categories specified by the Windows Update.
+class WindowsUpdateCategory {
+  /// The identifier of the windows update category.
+  core.String id;
+
+  /// The name of the windows update category.
+  core.String name;
+
+  WindowsUpdateCategory();
+
+  WindowsUpdateCategory.fromJson(core.Map _json) {
+    if (_json.containsKey('id')) {
+      id = _json['id'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (id != null) {
+      _json['id'] = id;
+    }
+    if (name != null) {
+      _json['name'] = name;
+    }
+    return _json;
+  }
+}
+
+/// Details related to a Windows Update package.
+///
+/// Field data and names are taken from Windows Update API IUpdate Interface:
+/// https://docs.microsoft.com/en-us/windows/win32/api/_wua/ Descriptive fields
+/// like title, and description are localized based on the locale of the VM
+/// being updated.
+class WindowsUpdatePackage {
+  /// The categories that are associated with this update package.
+  core.List<WindowsUpdateCategory> categories;
+
+  /// The localized description of the update package.
+  core.String description;
+
+  /// A collection of Microsoft Knowledge Base article IDs that are associated
+  /// with the update package.
+  core.List<core.String> kbArticleIds;
+
+  /// The last published date of the update, in (UTC) date and time.
+  core.String lastDeploymentChangeTime;
+
+  /// A collection of URLs that provide more information about the update
+  /// package.
+  core.List<core.String> moreInfoUrls;
+
+  /// The revision number of this update package.
+  core.int revisionNumber;
+
+  /// A hyperlink to the language-specific support information for the update.
+  core.String supportUrl;
+
+  /// The localized title of the update package.
+  core.String title;
+
+  /// Gets the identifier of an update package.
+  ///
+  /// Stays the same across revisions.
+  core.String updateId;
+
+  WindowsUpdatePackage();
+
+  WindowsUpdatePackage.fromJson(core.Map _json) {
+    if (_json.containsKey('categories')) {
+      categories = (_json['categories'] as core.List)
+          .map<WindowsUpdateCategory>((value) => WindowsUpdateCategory.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('kbArticleIds')) {
+      kbArticleIds = (_json['kbArticleIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('lastDeploymentChangeTime')) {
+      lastDeploymentChangeTime =
+          _json['lastDeploymentChangeTime'] as core.String;
+    }
+    if (_json.containsKey('moreInfoUrls')) {
+      moreInfoUrls = (_json['moreInfoUrls'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('revisionNumber')) {
+      revisionNumber = _json['revisionNumber'] as core.int;
+    }
+    if (_json.containsKey('supportUrl')) {
+      supportUrl = _json['supportUrl'] as core.String;
+    }
+    if (_json.containsKey('title')) {
+      title = _json['title'] as core.String;
+    }
+    if (_json.containsKey('updateId')) {
+      updateId = _json['updateId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (categories != null) {
+      _json['categories'] = categories.map((value) => value.toJson()).toList();
+    }
+    if (description != null) {
+      _json['description'] = description;
+    }
+    if (kbArticleIds != null) {
+      _json['kbArticleIds'] = kbArticleIds;
+    }
+    if (lastDeploymentChangeTime != null) {
+      _json['lastDeploymentChangeTime'] = lastDeploymentChangeTime;
+    }
+    if (moreInfoUrls != null) {
+      _json['moreInfoUrls'] = moreInfoUrls;
+    }
+    if (revisionNumber != null) {
+      _json['revisionNumber'] = revisionNumber;
+    }
+    if (supportUrl != null) {
+      _json['supportUrl'] = supportUrl;
+    }
+    if (title != null) {
+      _json['title'] = title;
+    }
+    if (updateId != null) {
+      _json['updateId'] = updateId;
+    }
+    return _json;
+  }
+}
+
+/// Details related to a Zypper Patch.
+class ZypperPatch {
+  /// The category of the patch.
+  core.String category;
+
+  /// The name of the patch.
+  core.String patchName;
+
+  /// The severity specified for this patch
+  core.String severity;
+
+  /// Any summary information provided about this patch.
+  core.String summary;
+
+  ZypperPatch();
+
+  ZypperPatch.fromJson(core.Map _json) {
+    if (_json.containsKey('category')) {
+      category = _json['category'] as core.String;
+    }
+    if (_json.containsKey('patchName')) {
+      patchName = _json['patchName'] as core.String;
+    }
+    if (_json.containsKey('severity')) {
+      severity = _json['severity'] as core.String;
+    }
+    if (_json.containsKey('summary')) {
+      summary = _json['summary'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (category != null) {
+      _json['category'] = category;
+    }
+    if (patchName != null) {
+      _json['patchName'] = patchName;
+    }
+    if (severity != null) {
+      _json['severity'] = severity;
+    }
+    if (summary != null) {
+      _json['summary'] = summary;
     }
     return _json;
   }

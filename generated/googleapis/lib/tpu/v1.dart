@@ -216,7 +216,7 @@ class ProjectsLocationsAcceleratorTypesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name.
+  /// [name] - Required. The resource name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/acceleratorTypes/\[^/\]+$`.
   ///
@@ -269,7 +269,7 @@ class ProjectsLocationsAcceleratorTypesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name.
+  /// [parent] - Required. The parent resource name.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - List filter.
@@ -357,7 +357,7 @@ class ProjectsLocationsNodesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name.
+  /// [parent] - Required. The parent resource name.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [nodeId] - The unqualified resource name.
@@ -418,7 +418,7 @@ class ProjectsLocationsNodesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name.
+  /// [name] - Required. The resource name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/nodes/\[^/\]+$`.
   ///
@@ -470,7 +470,7 @@ class ProjectsLocationsNodesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name.
+  /// [name] - Required. The resource name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/nodes/\[^/\]+$`.
   ///
@@ -522,7 +522,7 @@ class ProjectsLocationsNodesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name.
+  /// [parent] - Required. The parent resource name.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of items to return.
@@ -1027,7 +1027,7 @@ class ProjectsLocationsTensorflowVersionsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - The resource name.
+  /// [name] - Required. The resource name.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/tensorflowVersions/\[^/\]+$`.
   ///
@@ -1080,7 +1080,7 @@ class ProjectsLocationsTensorflowVersionsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - The parent resource name.
+  /// [parent] - Required. The parent resource name.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - List filter.
@@ -1583,9 +1583,9 @@ class Node {
   /// Resource labels to represent user-provided metadata.
   core.Map<core.String, core.String> labels;
 
-  /// The immutable name of the TPU
+  /// The name of the TPU
   ///
-  /// Output only.
+  /// Output only. Immutable.
   core.String name;
 
   /// The name of a network they wish to peer the TPU node to.
@@ -1609,6 +1609,8 @@ class Node {
   ///
   /// Output only.
   core.String port;
+
+  /// The scheduling options for this node.
   SchedulingConfig schedulingConfig;
 
   /// The service account used to run the tensor flow services within the node.

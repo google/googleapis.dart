@@ -15,7 +15,7 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
-/// DCM/DFA Reporting And Trafficking API - v3.4
+/// Campaign Manager 360 API - v3.4
 ///
 /// Manage your DoubleClick Campaign Manager ad campaigns and reports.
 ///
@@ -6437,7 +6437,7 @@ class DimensionValuesResource {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "0" and "100".
@@ -7542,7 +7542,7 @@ class FilesResource {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "0" and "10".
@@ -12507,7 +12507,7 @@ class ReportsResource {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [reportId] - The ID of the report.
   ///
@@ -12566,7 +12566,7 @@ class ReportsResource {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [reportId] - The ID of the report.
   ///
@@ -12627,7 +12627,7 @@ class ReportsResource {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12683,7 +12683,7 @@ class ReportsResource {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [maxResults] - Maximum number of results to return.
   /// Value must be between "0" and "10".
@@ -12844,7 +12844,7 @@ class ReportsResource {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [reportId] - The ID of the report.
   ///
@@ -12912,7 +12912,7 @@ class ReportsResource {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [reportId] - The ID of the report.
   ///
@@ -12986,7 +12986,7 @@ class ReportsCompatibleFieldsResource {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13051,7 +13051,7 @@ class ReportsFilesResource {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA user profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [reportId] - The ID of the report.
   ///
@@ -13134,7 +13134,7 @@ class ReportsFilesResource {
   ///
   /// Request parameters:
   ///
-  /// [profileId] - The DFA profile ID.
+  /// [profileId] - The Campaign Manager 360 user profile ID.
   ///
   /// [reportId] - The ID of the parent report.
   ///
@@ -18945,7 +18945,7 @@ class CompanionSetting {
   /// Whether companions are disabled for this placement.
   core.bool companionsDisabled;
 
-  /// Whitelist of companion sizes to be served to this placement.
+  /// Allowlist of companion sizes to be served to this placement.
   ///
   /// Set this list to null or empty to serve all companion sizes.
   core.List<Size> enabledSizes;
@@ -19994,6 +19994,7 @@ class Creative {
   /// - "CREATIVE_AUTHORING_SOURCE_DCM"
   /// - "CREATIVE_AUTHORING_SOURCE_DBM"
   /// - "CREATIVE_AUTHORING_SOURCE_STUDIO"
+  /// - "CREATIVE_AUTHORING_SOURCE_GWD"
   core.String authoringSource;
 
   /// Authoring tool for HTML5 banner creatives.
@@ -29350,8 +29351,8 @@ class Placement {
   /// Lookback window settings for this placement.
   LookbackConfiguration lookbackConfiguration;
 
-  /// Name of this placement.This is a required field and must be less than 256
-  /// characters long.
+  /// Name of this placement.This is a required field and must be less than or
+  /// equal to 256 characters long.
   core.String name;
 
   /// Whether payment was approved for this placement.
@@ -33474,7 +33475,7 @@ class SiteCompanionSetting {
   /// Whether companions are disabled for this site template.
   core.bool companionsDisabled;
 
-  /// Whitelist of companion sizes to be served via this site template.
+  /// Allowlist of companion sizes to be served via this site template.
   ///
   /// Set this list to null or empty to serve all companion sizes.
   core.List<Size> enabledSizes;
@@ -33773,7 +33774,7 @@ class SiteSkippableSetting {
 
 /// Transcode Settings
 class SiteTranscodeSetting {
-  /// Whitelist of video formats to be served to this site template.
+  /// Allowlist of video formats to be served to this site template.
   ///
   /// Set this list to null or empty to serve all video formats.
   core.List<core.int> enabledVideoFormats;
@@ -35099,7 +35100,7 @@ class ThirdPartyTrackingUrl {
 
 /// Transcode Settings
 class TranscodeSetting {
-  /// Whitelist of video formats to be served to this placement.
+  /// Allowlist of video formats to be served to this placement.
   ///
   /// Set this list to null or empty to serve all video formats.
   core.List<core.int> enabledVideoFormats;

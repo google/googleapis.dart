@@ -3259,6 +3259,10 @@ class BuildBazelSemverSemVer {
 /// CommandDuration contains the various duration metrics tracked when a bot
 /// performs a command.
 class GoogleDevtoolsRemotebuildbotCommandDurations {
+  /// The time spent waiting for Container Manager to assign an asynchronous
+  /// container for execution.
+  core.String cmWaitForAssignment;
+
   /// The time spent preparing the command to be run in a Docker container
   /// (includes pulling the Docker image, if necessary).
   core.String dockerPrep;
@@ -3297,6 +3301,9 @@ class GoogleDevtoolsRemotebuildbotCommandDurations {
   GoogleDevtoolsRemotebuildbotCommandDurations();
 
   GoogleDevtoolsRemotebuildbotCommandDurations.fromJson(core.Map _json) {
+    if (_json.containsKey('cmWaitForAssignment')) {
+      cmWaitForAssignment = _json['cmWaitForAssignment'] as core.String;
+    }
     if (_json.containsKey('dockerPrep')) {
       dockerPrep = _json['dockerPrep'] as core.String;
     }
@@ -3334,6 +3341,9 @@ class GoogleDevtoolsRemotebuildbotCommandDurations {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (cmWaitForAssignment != null) {
+      _json['cmWaitForAssignment'] = cmWaitForAssignment;
+    }
     if (dockerPrep != null) {
       _json['dockerPrep'] = dockerPrep;
     }
@@ -3390,6 +3400,9 @@ class GoogleDevtoolsRemotebuildbotCommandEvents {
   /// The number of warnings reported.
   core.String numWarnings;
 
+  /// Indicates whether an asynchronous container was used for execution.
+  core.bool usedAsyncContainer;
+
   GoogleDevtoolsRemotebuildbotCommandEvents();
 
   GoogleDevtoolsRemotebuildbotCommandEvents.fromJson(core.Map _json) {
@@ -3407,6 +3420,9 @@ class GoogleDevtoolsRemotebuildbotCommandEvents {
     }
     if (_json.containsKey('numWarnings')) {
       numWarnings = _json['numWarnings'] as core.String;
+    }
+    if (_json.containsKey('usedAsyncContainer')) {
+      usedAsyncContainer = _json['usedAsyncContainer'] as core.bool;
     }
   }
 
@@ -3426,6 +3442,9 @@ class GoogleDevtoolsRemotebuildbotCommandEvents {
     }
     if (numWarnings != null) {
       _json['numWarnings'] = numWarnings;
+    }
+    if (usedAsyncContainer != null) {
+      _json['usedAsyncContainer'] = usedAsyncContainer;
     }
     return _json;
   }
@@ -3494,6 +3513,10 @@ class GoogleDevtoolsRemotebuildbotCommandStatus {
   /// to run containers with CreateComputeSystem error that involves an
   /// incorrect parameter (more specific version of
   /// DOCKER_CREATE_COMPUTE_SYSTEM_ERROR that is user-caused).
+  /// - "DOCKER_TOO_MANY_SYMBOLIC_LINK_LEVELS" : Docker failed to create an
+  /// overlay mount because of too many levels of symbolic links.
+  /// - "LOCAL_CONTAINER_MANAGER_NOT_RUNNING" : The local Container Manager is
+  /// not running.
   core.String code;
 
   /// The error message.
@@ -4209,8 +4232,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest {
   /// specify precedence. If neither operator is specified, `AND` is assumed.
   /// Examples: Include only pools with more than 100 reserved workers:
   /// `(worker_count > 100) (worker_config.reserved = true)` Include only pools
-  /// with a certain label or machines of the n1-standard family:
-  /// `worker_config.labels.key1 : * OR worker_config.machine_type: n1-standard`
+  /// with a certain label or machines of the e2-standard family:
+  /// `worker_config.labels.key1 : * OR worker_config.machine_type: e2-standard`
   ///
   /// Optional.
   core.String filter;
@@ -4268,38 +4291,6 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse {
     if (workerPools != null) {
       _json['workerPools'] =
           workerPools.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// SoleTenancyConfig specifies information required to host a pool on STNs.
-class GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig {
-  /// The sole-tenant node type to host the pool's workers on.
-  core.String nodeType;
-
-  /// Zone in which STNs are reserved.
-  core.String nodesZone;
-
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig();
-
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig.fromJson(
-      core.Map _json) {
-    if (_json.containsKey('nodeType')) {
-      nodeType = _json['nodeType'] as core.String;
-    }
-    if (_json.containsKey('nodesZone')) {
-      nodesZone = _json['nodesZone'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (nodeType != null) {
-      _json['nodeType'] = nodeType;
-    }
-    if (nodesZone != null) {
-      _json['nodesZone'] = nodesZone;
     }
     return _json;
   }
@@ -4441,7 +4432,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
   /// resource.
   core.Map<core.String, core.String> labels;
 
-  /// Machine type of the worker, such as `n1-standard-2`.
+  /// Machine type of the worker, such as `e2-standard-2`.
   ///
   /// See https://cloud.google.com/compute/docs/machine-types for a list of
   /// supported machine types. Note that `f1-micro` and `g1-small` are not yet
@@ -4473,8 +4464,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
   /// details.
   core.bool reserved;
 
-  /// Sole-tenant node information for pools hosted on STNs.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig soleTenancy;
+  /// The node type name to be used for sole-tenant nodes.
+  core.String soleTenantNodeType;
 
   /// The name of the image used by each VM.
   core.String vmImage;
@@ -4519,11 +4510,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
     if (_json.containsKey('reserved')) {
       reserved = _json['reserved'] as core.bool;
     }
-    if (_json.containsKey('soleTenancy')) {
-      soleTenancy =
-          GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig
-              .fromJson(
-                  _json['soleTenancy'] as core.Map<core.String, core.dynamic>);
+    if (_json.containsKey('soleTenantNodeType')) {
+      soleTenantNodeType = _json['soleTenantNodeType'] as core.String;
     }
     if (_json.containsKey('vmImage')) {
       vmImage = _json['vmImage'] as core.String;
@@ -4559,8 +4547,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
     if (reserved != null) {
       _json['reserved'] = reserved;
     }
-    if (soleTenancy != null) {
-      _json['soleTenancy'] = soleTenancy.toJson();
+    if (soleTenantNodeType != null) {
+      _json['soleTenantNodeType'] = soleTenantNodeType;
     }
     if (vmImage != null) {
       _json['vmImage'] = vmImage;

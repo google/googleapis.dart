@@ -27,6 +27,21 @@ import 'package:googleapis/licensing/v1.dart' as api;
 
 import '../test_shared.dart';
 
+core.int buildCounterEmpty = 0;
+api.Empty buildEmpty() {
+  var o = api.Empty();
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+  return o;
+}
+
+void checkEmpty(api.Empty o) {
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+}
+
 core.int buildCounterLicenseAssignment = 0;
 api.LicenseAssignment buildLicenseAssignment() {
   var o = api.LicenseAssignment();
@@ -79,14 +94,14 @@ void checkLicenseAssignmentInsert(api.LicenseAssignmentInsert o) {
   buildCounterLicenseAssignmentInsert--;
 }
 
-core.List<api.LicenseAssignment> buildUnnamed2876() {
+core.List<api.LicenseAssignment> buildUnnamed3201() {
   var o = <api.LicenseAssignment>[];
   o.add(buildLicenseAssignment());
   o.add(buildLicenseAssignment());
   return o;
 }
 
-void checkUnnamed2876(core.List<api.LicenseAssignment> o) {
+void checkUnnamed3201(core.List<api.LicenseAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLicenseAssignment(o[0] as api.LicenseAssignment);
   checkLicenseAssignment(o[1] as api.LicenseAssignment);
@@ -98,7 +113,7 @@ api.LicenseAssignmentList buildLicenseAssignmentList() {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed2876();
+    o.items = buildUnnamed3201();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -110,7 +125,7 @@ void checkLicenseAssignmentList(api.LicenseAssignmentList o) {
   buildCounterLicenseAssignmentList++;
   if (buildCounterLicenseAssignmentList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed2876(o.items);
+    checkUnnamed3201(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -118,6 +133,14 @@ void checkLicenseAssignmentList(api.LicenseAssignmentList o) {
 }
 
 void main() {
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () {
+      var o = buildEmpty();
+      var od = api.Empty.fromJson(o.toJson());
+      checkEmpty(od as api.Empty);
+    });
+  });
+
   unittest.group('obj-schema-LicenseAssignment', () {
     unittest.test('to-json--from-json', () {
       var o = buildLicenseAssignment();
@@ -203,12 +226,14 @@ void main() {
         var h = {
           'content-type': 'application/json; charset=utf-8',
         };
-        var resp = '';
+        var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
           .delete(arg_productId, arg_skuId, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+          .then(unittest.expectAsync1(((response) {
+        checkEmpty(response as api.Empty);
+      })));
     });
 
     unittest.test('method--get', () {

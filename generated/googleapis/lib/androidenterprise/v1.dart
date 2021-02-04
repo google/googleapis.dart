@@ -454,7 +454,12 @@ class DevicesResource {
     );
   }
 
-  /// Updates the device policy
+  /// Updates the device policy.
+  ///
+  /// To ensure the policy is properly enforced, you need to prevent unmanaged
+  /// accounts from accessing Google Play by setting the allowed_accounts in the
+  /// managed configuration for the Google Play package. See restrict accounts
+  /// in Google Play.
   ///
   /// [request] - The metadata request object.
   ///
@@ -8228,6 +8233,30 @@ class ProductPolicy {
   /// The auto-install policy for the product.
   AutoInstallPolicy autoInstallPolicy;
 
+  /// The auto-update mode for the product.
+  /// Possible string values are:
+  /// - "autoUpdateModeUnspecified" : Unspecified. Defaults to
+  /// AUTO_UPDATE_DEFAULT.
+  /// - "autoUpdateDefault" : The app is automatically updated with low priority
+  /// to minimize the impact on the user. The app is updated when the following
+  /// constraints are met: * The device is not actively used * The device is
+  /// connected to a Wi-Fi network. * The device is charging * If the system
+  /// update policy is set to `WINDOWED`: the local time of the device is within
+  /// the daily maintenance window The device is notified about a new update
+  /// within 24 hours after it is published by the developer, after which the
+  /// app is updated the next time the constraints above are met.
+  /// - "autoUpdatePostponed" : The app is not automatically updated for a
+  /// maximum of 90 days after the app becomes out of date. 90 days after the
+  /// app becomes out of date, the latest available version is installed
+  /// automatically with low priority (see AUTO_UPDATE_DEFAULT). After the app
+  /// is updated it is not automatically updated again until 90 days after it
+  /// becomes out of date again. The user can still manually update the app from
+  /// the Play Store at any time.
+  /// - "autoUpdateHighPriority" : The app is updated as soon as possible. No
+  /// constraints are applied. The device is notified immediately about a new
+  /// app update after it is published by the developer.
+  core.String autoUpdateMode;
+
   /// The managed configuration for the product.
   ManagedConfiguration managedConfiguration;
 
@@ -8255,6 +8284,9 @@ class ProductPolicy {
       autoInstallPolicy = AutoInstallPolicy.fromJson(
           _json['autoInstallPolicy'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('autoUpdateMode')) {
+      autoUpdateMode = _json['autoUpdateMode'] as core.String;
+    }
     if (_json.containsKey('managedConfiguration')) {
       managedConfiguration = ManagedConfiguration.fromJson(
           _json['managedConfiguration'] as core.Map<core.String, core.dynamic>);
@@ -8278,6 +8310,9 @@ class ProductPolicy {
     final _json = <core.String, core.Object>{};
     if (autoInstallPolicy != null) {
       _json['autoInstallPolicy'] = autoInstallPolicy.toJson();
+    }
+    if (autoUpdateMode != null) {
+      _json['autoUpdateMode'] = autoUpdateMode;
     }
     if (managedConfiguration != null) {
       _json['managedConfiguration'] = managedConfiguration.toJson();

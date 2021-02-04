@@ -505,6 +505,12 @@ class Attributes {
   /// https://support.google.com/manufacturers/answer/6124116#productdetail.
   core.List<ProductDetail> productDetail;
 
+  /// The product highlights.
+  ///
+  /// For more information, see
+  /// https://support.google.com/manufacturers/answer/10066942
+  core.List<core.String> productHighlight;
+
   /// The name of the group of products related to the product.
   ///
   /// For more information, see
@@ -678,6 +684,11 @@ class Attributes {
               value as core.Map<core.String, core.dynamic>))
           .toList();
     }
+    if (_json.containsKey('productHighlight')) {
+      productHighlight = (_json['productHighlight'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
     if (_json.containsKey('productLine')) {
       productLine = _json['productLine'] as core.String;
     }
@@ -799,6 +810,9 @@ class Attributes {
     if (productDetail != null) {
       _json['productDetail'] =
           productDetail.map((value) => value.toJson()).toList();
+    }
+    if (productHighlight != null) {
+      _json['productHighlight'] = productHighlight;
     }
     if (productLine != null) {
       _json['productLine'] = productLine;

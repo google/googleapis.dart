@@ -2282,6 +2282,87 @@ class ProjectsRegionsClustersResource {
     );
   }
 
+  /// Inject encrypted credentials into all of the VMs in a cluster.The target
+  /// cluster must be a personal auth cluster assigned to the user who is
+  /// issuing the RPC.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. The ID of the Google Cloud Platform project the
+  /// cluster belongs to, of the form projects/.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [region] - Required. The region containing the cluster, of the form
+  /// regions/.
+  /// Value must have pattern `^regions/\[^/\]+$`.
+  ///
+  /// [cluster] - Required. The cluster, in the form clusters/.
+  /// Value must have pattern `^clusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> injectCredentials(
+    InjectCredentialsRequest request,
+    core.String project,
+    core.String region,
+    core.String cluster, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (project == null) {
+      throw core.ArgumentError('Parameter project is required.');
+    }
+    if (region == null) {
+      throw core.ArgumentError('Parameter region is required.');
+    }
+    if (cluster == null) {
+      throw core.ArgumentError('Parameter cluster is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$project') +
+        '/' +
+        commons.Escaper.ecapeVariableReserved('$region') +
+        '/' +
+        commons.Escaper.ecapeVariableReserved('$cluster') +
+        ':injectCredentials';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
   /// Lists all regions/{region}/clusters in a project alphabetically.
   ///
   /// Request parameters:
@@ -4856,11 +4937,6 @@ class BasicYarnAutoscalingConfig {
 
 /// Associates members with a role.
 class Binding {
-  /// A client-specified ID for this binding.
-  ///
-  /// Expected to be globally unique to support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding.If the condition
   /// evaluates to true, then this binding applies to the current request.If the
   /// condition evaluates to false, then this binding does not apply to the
@@ -4912,9 +4988,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'] as core.String;
-    }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(
           _json['condition'] as core.Map<core.String, core.dynamic>);
@@ -4931,9 +5004,6 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
-    if (bindingId != null) {
-      _json['bindingId'] = bindingId;
-    }
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }
@@ -5111,6 +5181,8 @@ class ClusterConfig {
   /// then create and manage this project-level, per-location bucket (see
   /// Dataproc staging bucket
   /// (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+  /// This field requires a Cloud Storage bucket name, not a URI to a Cloud
+  /// Storage bucket.
   ///
   /// Optional.
   core.String configBucket;
@@ -5177,7 +5249,8 @@ class ClusterConfig {
   /// according to the Compute Engine zone where your cluster is deployed, and
   /// then create and manage this project-level, per-location bucket. The
   /// default bucket has a TTL of 90 days, but you can use any TTL (or none) if
-  /// you specify a bucket.
+  /// you specify a bucket. This field requires a Cloud Storage bucket name, not
+  /// a URI to a Cloud Storage bucket.
   ///
   /// Optional.
   core.String tempBucket;
@@ -5735,8 +5808,10 @@ class DiskConfig {
 
   /// Type of the boot disk (default is "pd-standard").
   ///
-  /// Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or
-  /// "pd-standard" (Persistent Disk Hard Disk Drive).
+  /// Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive),
+  /// "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent
+  /// Disk Hard Disk Drive). See Disk types
+  /// (https://cloud.google.com/compute/docs/disks#disk-types).
   ///
   /// Optional.
   core.String bootDiskType;
@@ -6037,6 +6112,12 @@ class GceClusterConfig {
   /// Optional.
   core.List<core.String> serviceAccountScopes;
 
+  /// Shielded Instance Config for clusters using Compute Engine Shielded VMs
+  /// (https://cloud.google.com/security/shielded-cloud/shielded-vm).
+  ///
+  /// Optional.
+  ShieldedInstanceConfig shieldedInstanceConfig;
+
   /// The Compute Engine subnetwork to be used for machine communications.
   ///
   /// Cannot be specified with network_uri.A full URL, partial URI, or short
@@ -6100,6 +6181,11 @@ class GceClusterConfig {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('shieldedInstanceConfig')) {
+      shieldedInstanceConfig = ShieldedInstanceConfig.fromJson(
+          _json['shieldedInstanceConfig']
+              as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('subnetworkUri')) {
       subnetworkUri = _json['subnetworkUri'] as core.String;
     }
@@ -6138,6 +6224,9 @@ class GceClusterConfig {
     }
     if (serviceAccountScopes != null) {
       _json['serviceAccountScopes'] = serviceAccountScopes;
+    }
+    if (shieldedInstanceConfig != null) {
+      _json['shieldedInstanceConfig'] = shieldedInstanceConfig.toJson();
     }
     if (subnetworkUri != null) {
       _json['subnetworkUri'] = subnetworkUri;
@@ -6449,6 +6538,44 @@ class HiveJob {
   }
 }
 
+/// A request to inject credentials into a cluster.
+class InjectCredentialsRequest {
+  /// The cluster UUID.
+  ///
+  /// Required.
+  core.String clusterUuid;
+
+  /// The encrypted credentials being injected in to the cluster.The client is
+  /// responsible for encrypting the credentials in a way that is supported by
+  /// the cluster.A wrapped value is used here so that the actual contents of
+  /// the encrypted credentials are not written to audit logs.
+  ///
+  /// Required.
+  core.String credentialsCiphertext;
+
+  InjectCredentialsRequest();
+
+  InjectCredentialsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('clusterUuid')) {
+      clusterUuid = _json['clusterUuid'] as core.String;
+    }
+    if (_json.containsKey('credentialsCiphertext')) {
+      credentialsCiphertext = _json['credentialsCiphertext'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (clusterUuid != null) {
+      _json['clusterUuid'] = clusterUuid;
+    }
+    if (credentialsCiphertext != null) {
+      _json['credentialsCiphertext'] = credentialsCiphertext;
+    }
+    return _json;
+  }
+}
+
 /// Configuration for the size bounds of an instance group, including its
 /// proportional size to other groups.
 class InstanceGroupAutoscalingPolicyConfig {
@@ -6717,6 +6844,9 @@ class InstanceReference {
   /// The user-friendly name of the Compute Engine instance.
   core.String instanceName;
 
+  /// The public key used for sharing data with this instance.
+  core.String publicKey;
+
   InstanceReference();
 
   InstanceReference.fromJson(core.Map _json) {
@@ -6725,6 +6855,9 @@ class InstanceReference {
     }
     if (_json.containsKey('instanceName')) {
       instanceName = _json['instanceName'] as core.String;
+    }
+    if (_json.containsKey('publicKey')) {
+      publicKey = _json['publicKey'] as core.String;
     }
   }
 
@@ -6735,6 +6868,9 @@ class InstanceReference {
     }
     if (instanceName != null) {
       _json['instanceName'] = instanceName;
+    }
+    if (publicKey != null) {
+      _json['publicKey'] = publicKey;
     }
     return _json;
   }
@@ -7227,11 +7363,22 @@ class JobScheduling {
   /// Optional.
   core.int maxFailuresPerHour;
 
+  /// Maximum number of times in total a driver may be restarted as a result of
+  /// driver exiting with non-zero code before job is reported failed.
+  ///
+  /// Maximum value is 240.
+  ///
+  /// Optional.
+  core.int maxFailuresTotal;
+
   JobScheduling();
 
   JobScheduling.fromJson(core.Map _json) {
     if (_json.containsKey('maxFailuresPerHour')) {
       maxFailuresPerHour = _json['maxFailuresPerHour'] as core.int;
+    }
+    if (_json.containsKey('maxFailuresTotal')) {
+      maxFailuresTotal = _json['maxFailuresTotal'] as core.int;
     }
   }
 
@@ -7239,6 +7386,9 @@ class JobScheduling {
     final _json = <core.String, core.Object>{};
     if (maxFailuresPerHour != null) {
       _json['maxFailuresPerHour'] = maxFailuresPerHour;
+    }
+    if (maxFailuresTotal != null) {
+      _json['maxFailuresTotal'] = maxFailuresTotal;
     }
     return _json;
   }
@@ -7393,7 +7543,7 @@ class KerberosConfig {
 
   /// The uri of the KMS key used to encrypt various sensitive files.
   ///
-  /// Required.
+  /// Optional.
   core.String kmsKeyUri;
 
   /// The name of the on-cluster Kerberos realm.
@@ -7406,7 +7556,7 @@ class KerberosConfig {
   /// The Cloud Storage URI of a KMS encrypted file containing the root
   /// principal password.
   ///
-  /// Required.
+  /// Optional.
   core.String rootPrincipalPasswordUri;
 
   /// The lifetime of the ticket granting ticket, in hours.
@@ -7559,9 +7709,9 @@ class LifecycleConfig {
   /// running).
   ///
   /// Passing this threshold will cause the cluster to be deleted. Minimum value
-  /// is 10 minutes; maximum value is 14 days (see JSON representation of
+  /// is 5 minutes; maximum value is 14 days (see JSON representation of
   /// Duration
-  /// (https://developers.google.com/protocol-buffers/docs/proto3#json).
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
   ///
   /// Optional.
   core.String idleDeleteTtl;
@@ -7937,9 +8087,15 @@ class ManagedGroupConfig {
 
 /// Node Group Affinity for clusters using sole-tenant node groups.
 class NodeGroupAffinity {
-  /// The name of a single node group
-  /// (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) a
-  /// cluster will be created on.
+  /// The URI of a sole-tenant node group resource
+  /// (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that
+  /// the cluster will be created on.A full URL, partial URI, or node group name
+  /// are valid.
+  ///
+  /// Examples:
+  /// https://www.googleapis.com/compute/v1/projects/\[project_id\]/zones/us-central1-a/nodeGroups/node-group-1
+  /// projects/\[project_id\]/zones/us-central1-a/nodeGroups/node-group-1
+  /// node-group-1
   ///
   /// Required.
   core.String nodeGroupUri;
@@ -8947,6 +9103,54 @@ class SetIamPolicyRequest {
   }
 }
 
+/// Shielded Instance Config for clusters using Compute Engine Shielded VMs
+/// (https://cloud.google.com/security/shielded-cloud/shielded-vm).
+class ShieldedInstanceConfig {
+  /// Defines whether instances have integrity monitoring enabled.
+  ///
+  /// Optional.
+  core.bool enableIntegrityMonitoring;
+
+  /// Defines whether instances have Secure Boot enabled.
+  ///
+  /// Optional.
+  core.bool enableSecureBoot;
+
+  /// Defines whether instances have the vTPM enabled.
+  ///
+  /// Optional.
+  core.bool enableVtpm;
+
+  ShieldedInstanceConfig();
+
+  ShieldedInstanceConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('enableIntegrityMonitoring')) {
+      enableIntegrityMonitoring =
+          _json['enableIntegrityMonitoring'] as core.bool;
+    }
+    if (_json.containsKey('enableSecureBoot')) {
+      enableSecureBoot = _json['enableSecureBoot'] as core.bool;
+    }
+    if (_json.containsKey('enableVtpm')) {
+      enableVtpm = _json['enableVtpm'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (enableIntegrityMonitoring != null) {
+      _json['enableIntegrityMonitoring'] = enableIntegrityMonitoring;
+    }
+    if (enableSecureBoot != null) {
+      _json['enableSecureBoot'] = enableSecureBoot;
+    }
+    if (enableVtpm != null) {
+      _json['enableVtpm'] = enableVtpm;
+    }
+    return _json;
+  }
+}
+
 /// Specifies the selection and config of software inside the cluster.
 class SoftwareConfig {
   /// The version of software inside the cluster.
@@ -9680,6 +9884,23 @@ class WorkflowMetadata {
   /// Output only.
   ClusterOperation createCluster;
 
+  /// DAG end time, only set for workflows with dag_timeout when DAG ends.
+  ///
+  /// Output only.
+  core.String dagEndTime;
+
+  /// DAG start time, only set for workflows with dag_timeout when DAG begins.
+  ///
+  /// Output only.
+  core.String dagStartTime;
+
+  /// The timeout duration for the DAG of jobs, expressed in seconds (see JSON
+  /// representation of duration
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+  ///
+  /// Output only.
+  core.String dagTimeout;
+
   /// The delete cluster operation metadata.
   ///
   /// Output only.
@@ -9744,6 +9965,15 @@ class WorkflowMetadata {
       createCluster = ClusterOperation.fromJson(
           _json['createCluster'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('dagEndTime')) {
+      dagEndTime = _json['dagEndTime'] as core.String;
+    }
+    if (_json.containsKey('dagStartTime')) {
+      dagStartTime = _json['dagStartTime'] as core.String;
+    }
+    if (_json.containsKey('dagTimeout')) {
+      dagTimeout = _json['dagTimeout'] as core.String;
+    }
     if (_json.containsKey('deleteCluster')) {
       deleteCluster = ClusterOperation.fromJson(
           _json['deleteCluster'] as core.Map<core.String, core.dynamic>);
@@ -9789,6 +10019,15 @@ class WorkflowMetadata {
     }
     if (createCluster != null) {
       _json['createCluster'] = createCluster.toJson();
+    }
+    if (dagEndTime != null) {
+      _json['dagEndTime'] = dagEndTime;
+    }
+    if (dagStartTime != null) {
+      _json['dagStartTime'] = dagStartTime;
+    }
+    if (dagTimeout != null) {
+      _json['dagTimeout'] = dagTimeout;
     }
     if (deleteCluster != null) {
       _json['deleteCluster'] = deleteCluster.toJson();
@@ -9902,6 +10141,19 @@ class WorkflowTemplate {
   ///
   /// Output only.
   core.String createTime;
+
+  /// Timeout duration for the DAG of jobs, expressed in seconds (see JSON
+  /// representation of duration
+  /// (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+  ///
+  /// The timeout duration must be from 10 minutes ("600s") to 24 hours
+  /// ("86400s"). The timer begins when the first job is submitted. If the
+  /// workflow is running at the end of the timeout period, any remaining jobs
+  /// are cancelled, the workflow is ended, and if the workflow was running on a
+  /// managed cluster, the cluster is deleted.
+  ///
+  /// Optional.
+  core.String dagTimeout;
   core.String id;
 
   /// The Directed Acyclic Graph of Jobs to submit.
@@ -9970,6 +10222,9 @@ class WorkflowTemplate {
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
     }
+    if (_json.containsKey('dagTimeout')) {
+      dagTimeout = _json['dagTimeout'] as core.String;
+    }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
     }
@@ -10013,6 +10268,9 @@ class WorkflowTemplate {
     final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
+    }
+    if (dagTimeout != null) {
+      _json['dagTimeout'] = dagTimeout;
     }
     if (id != null) {
       _json['id'] = id;

@@ -28,6 +28,7 @@
 /// - [ModelsResource]
 /// - [ProjectsResource]
 /// - [RoutinesResource]
+/// - [RowAccessPoliciesResource]
 /// - [TabledataResource]
 /// - [TablesResource]
 library bigquery.v2;
@@ -93,6 +94,8 @@ class BigqueryApi {
   ModelsResource get models => ModelsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
   RoutinesResource get routines => RoutinesResource(_requester);
+  RowAccessPoliciesResource get rowAccessPolicies =>
+      RowAccessPoliciesResource(_requester);
   TabledataResource get tabledata => TabledataResource(_requester);
   TablesResource get tables => TablesResource(_requester);
 
@@ -1826,6 +1829,291 @@ class RoutinesResource {
     );
     return _response.then(
       (data) => Routine.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class RowAccessPoliciesResource {
+  final commons.ApiRequester _requester;
+
+  RowAccessPoliciesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/datasets/\[^/\]+/tables/\[^/\]+/rowAccessPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    GetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (resource == null) {
+      throw core.ArgumentError('Parameter resource is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Lists all row access policies on the specified table.
+  ///
+  /// Request parameters:
+  ///
+  /// [projectId] - Required. Project ID of the row access policies to list.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [datasetId] - Required. Dataset ID of row access policies to list.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [tableId] - Required. Table ID of the table to list row access policies.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response
+  /// page. Leverage the page tokens to iterate through the entire collection.
+  ///
+  /// [pageToken] - Page token, returned by a previous call, to request the next
+  /// page of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRowAccessPoliciesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRowAccessPoliciesResponse> list(
+    core.String projectId,
+    core.String datasetId,
+    core.String tableId, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (projectId == null) {
+      throw core.ArgumentError('Parameter projectId is required.');
+    }
+    if (datasetId == null) {
+      throw core.ArgumentError('Parameter datasetId is required.');
+    }
+    if (tableId == null) {
+      throw core.ArgumentError('Parameter tableId is required.');
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'projects/' +
+        commons.Escaper.ecapeVariableReserved('$projectId') +
+        '/datasets/' +
+        commons.Escaper.ecapeVariableReserved('$datasetId') +
+        '/tables/' +
+        commons.Escaper.ecapeVariableReserved('$tableId') +
+        '/rowAccessPolicies';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => ListRowAccessPoliciesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/datasets/\[^/\]+/tables/\[^/\]+/rowAccessPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (resource == null) {
+      throw core.ArgumentError('Parameter resource is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See the operation documentation for the appropriate value for
+  /// this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/datasets/\[^/\]+/tables/\[^/\]+/rowAccessPolicies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (resource == null) {
+      throw core.ArgumentError('Parameter resource is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = commons.Escaper.ecapeVariableReserved('$resource') +
+        ':testIamPermissions';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
     );
   }
 }
@@ -4259,7 +4547,7 @@ class Clustering {
 
 /// Evaluation metrics for clustering models.
 class ClusteringMetrics {
-  /// \[Beta\] Information for all clusters.
+  /// Information for all clusters.
   core.List<Cluster> clusters;
 
   /// Davies-Bouldin index.
@@ -4551,6 +4839,15 @@ class DatasetAccess {
   /// Required.
   core.String role;
 
+  /// \[Pick one\] A routine from a different dataset to grant access to.
+  ///
+  /// Queries executed against that routine will have read access to
+  /// views/tables/routines in this dataset. Only UDF is supported for now. The
+  /// role field is not required when this field is set. If that routine is
+  /// updated by any user, access to the routine needs to be granted again via
+  /// an update operation.
+  RoutineReference routine;
+
   /// \[Pick one\] A special group to grant access to.
   ///
   /// Possible values include: projectOwners: Owners of the enclosing project.
@@ -4588,6 +4885,10 @@ class DatasetAccess {
     if (_json.containsKey('role')) {
       role = _json['role'] as core.String;
     }
+    if (_json.containsKey('routine')) {
+      routine = RoutineReference.fromJson(
+          _json['routine'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('specialGroup')) {
       specialGroup = _json['specialGroup'] as core.String;
     }
@@ -4613,6 +4914,9 @@ class DatasetAccess {
     }
     if (role != null) {
       _json['role'] = role;
+    }
+    if (routine != null) {
+      _json['routine'] = routine.toJson();
     }
     if (specialGroup != null) {
       _json['specialGroup'] = specialGroup;
@@ -5098,6 +5402,30 @@ class DestinationTableProperties {
   }
 }
 
+/// Model evaluation metrics for dimensionality reduction models.
+class DimensionalityReductionMetrics {
+  /// Total percentage of variance explained by the selected principal
+  /// components.
+  core.double totalExplainedVarianceRatio;
+
+  DimensionalityReductionMetrics();
+
+  DimensionalityReductionMetrics.fromJson(core.Map _json) {
+    if (_json.containsKey('totalExplainedVarianceRatio')) {
+      totalExplainedVarianceRatio =
+          (_json['totalExplainedVarianceRatio'] as core.num).toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (totalExplainedVarianceRatio != null) {
+      _json['totalExplainedVarianceRatio'] = totalExplainedVarianceRatio;
+    }
+    return _json;
+  }
+}
+
 class EncryptionConfiguration {
   /// Describes the Cloud KMS encryption key that will be used to protect
   /// destination BigQuery table.
@@ -5224,6 +5552,10 @@ class EvaluationMetrics {
   /// Populated for clustering models.
   ClusteringMetrics clusteringMetrics;
 
+  /// Evaluation metrics when the model is a dimensionality reduction model,
+  /// which currently includes PCA.
+  DimensionalityReductionMetrics dimensionalityReductionMetrics;
+
   /// Populated for multi-class classification/classifier models.
   MultiClassClassificationMetrics multiClassClassificationMetrics;
 
@@ -5250,6 +5582,11 @@ class EvaluationMetrics {
     if (_json.containsKey('clusteringMetrics')) {
       clusteringMetrics = ClusteringMetrics.fromJson(
           _json['clusteringMetrics'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('dimensionalityReductionMetrics')) {
+      dimensionalityReductionMetrics = DimensionalityReductionMetrics.fromJson(
+          _json['dimensionalityReductionMetrics']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('multiClassClassificationMetrics')) {
       multiClassClassificationMetrics =
@@ -5278,6 +5615,10 @@ class EvaluationMetrics {
     }
     if (clusteringMetrics != null) {
       _json['clusteringMetrics'] = clusteringMetrics.toJson();
+    }
+    if (dimensionalityReductionMetrics != null) {
+      _json['dimensionalityReductionMetrics'] =
+          dimensionalityReductionMetrics.toJson();
     }
     if (multiClassClassificationMetrics != null) {
       _json['multiClassClassificationMetrics'] =
@@ -5614,6 +5955,40 @@ class ExplainQueryStep {
   }
 }
 
+/// Explanation for a single feature.
+class Explanation {
+  /// Attribution of feature.
+  core.double attribution;
+
+  /// Full name of the feature.
+  ///
+  /// For non-numerical features, will be formatted like .. Overall size of
+  /// feature name will always be truncated to first 120 characters.
+  core.String featureName;
+
+  Explanation();
+
+  Explanation.fromJson(core.Map _json) {
+    if (_json.containsKey('attribution')) {
+      attribution = (_json['attribution'] as core.num).toDouble();
+    }
+    if (_json.containsKey('featureName')) {
+      featureName = _json['featureName'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (attribution != null) {
+      _json['attribution'] = attribution;
+    }
+    if (featureName != null) {
+      _json['featureName'] = featureName;
+    }
+    return _json;
+  }
+}
+
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
 ///
@@ -5724,8 +6099,9 @@ class ExternalDataConfiguration {
   /// Optional.
   GoogleSheetsOptions googleSheetsOptions;
 
-  /// \[Optional, Trusted Tester\] Options to configure hive partitioning
-  /// support.
+  /// Options to configure hive partitioning support.
+  ///
+  /// Optional.
   HivePartitioningOptions hivePartitioningOptions;
 
   /// Indicates if BigQuery should allow extra values that are not represented
@@ -6158,6 +6534,47 @@ class GetServiceAccountResponse {
   }
 }
 
+/// Global explanations containing the top most important features after
+/// training.
+class GlobalExplanation {
+  /// Class label for this set of global explanations.
+  ///
+  /// Will be empty/null for binary logistic and linear regression models.
+  /// Sorted alphabetically in descending order.
+  core.String classLabel;
+
+  /// A list of the top global explanations.
+  ///
+  /// Sorted by absolute value of attribution in descending order.
+  core.List<Explanation> explanations;
+
+  GlobalExplanation();
+
+  GlobalExplanation.fromJson(core.Map _json) {
+    if (_json.containsKey('classLabel')) {
+      classLabel = _json['classLabel'] as core.String;
+    }
+    if (_json.containsKey('explanations')) {
+      explanations = (_json['explanations'] as core.List)
+          .map<Explanation>((value) => Explanation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (classLabel != null) {
+      _json['classLabel'] = classLabel;
+    }
+    if (explanations != null) {
+      _json['explanations'] =
+          explanations.map((value) => value.toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 class GoogleSheetsOptions {
   /// Range of a sheet to query from.
   ///
@@ -6294,6 +6711,9 @@ class IterationResult {
   /// Learn rate used for this iteration.
   core.double learnRate;
 
+  /// The information of the principal components.
+  core.List<PrincipalComponentInfo> principalComponentInfos;
+
   /// Loss computed on the training data at the end of iteration.
   core.double trainingLoss;
 
@@ -6322,6 +6742,13 @@ class IterationResult {
     if (_json.containsKey('learnRate')) {
       learnRate = (_json['learnRate'] as core.num).toDouble();
     }
+    if (_json.containsKey('principalComponentInfos')) {
+      principalComponentInfos = (_json['principalComponentInfos'] as core.List)
+          .map<PrincipalComponentInfo>((value) =>
+              PrincipalComponentInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('trainingLoss')) {
       trainingLoss = (_json['trainingLoss'] as core.num).toDouble();
     }
@@ -6347,6 +6774,10 @@ class IterationResult {
     }
     if (learnRate != null) {
       _json['learnRate'] = learnRate;
+    }
+    if (principalComponentInfos != null) {
+      _json['principalComponentInfos'] =
+          principalComponentInfos.map((value) => value.toJson()).toList();
     }
     if (trainingLoss != null) {
       _json['trainingLoss'] = trainingLoss;
@@ -6772,26 +7203,27 @@ class JobConfigurationLoad {
   /// Optional.
   core.String createDisposition;
 
-  /// \[Trusted Tester\] Defines the list of possible SQL data types to which
-  /// the source decimal values are converted.
+  /// Defines the list of possible SQL data types to which the source decimal
+  /// values are converted.
   ///
   /// This list and the precision and the scale parameters of the decimal field
-  /// determine the target type. In the order of NUMERIC, BIGNUMERIC, and
-  /// STRING, a type is picked if it is in the specified list and if it supports
-  /// the precision and the scale. STRING supports all precision and scale
-  /// values. If none of the listed types supports the precision and the scale,
-  /// the type supporting the widest range in the specified list is picked, and
-  /// if a value exceeds the supported range when reading the data, an error
-  /// will be thrown. For example: suppose decimal_target_type = \["NUMERIC",
-  /// "BIGNUMERIC"\]. Then if (precision,scale) is: * (38,9) -> NUMERIC; *
-  /// (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) ->
-  /// BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) ->
-  /// BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported
-  /// range). For duplicated types in this field, only one will be considered
-  /// and the rest will be ignored. The order of the types in this field is
-  /// ignored. For example, \["BIGNUMERIC", "NUMERIC"\] is the same as
-  /// \["NUMERIC", "BIGNUMERIC"\] and NUMERIC always takes precedence over
-  /// BIGNUMERIC.
+  /// determine the target type. In the order of NUMERIC, BIGNUMERIC
+  /// (\[Preview\](/products/#product-launch-stages)), and STRING, a type is
+  /// picked if it is in the specified list and if it supports the precision and
+  /// the scale. STRING supports all precision and scale values. If none of the
+  /// listed types supports the precision and the scale, the type supporting the
+  /// widest range in the specified list is picked, and if a value exceeds the
+  /// supported range when reading the data, an error will be thrown. Example:
+  /// Suppose the value of this field is \["NUMERIC", "BIGNUMERIC"\]. If
+  /// (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC
+  /// cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot
+  /// hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) ->
+  /// BIGNUMERIC (error if value exeeds supported range). This field cannot
+  /// contain duplicate types. The order of the types in this field is ignored.
+  /// For example, \["BIGNUMERIC", "NUMERIC"\] is the same as \["NUMERIC",
+  /// "BIGNUMERIC"\] and NUMERIC always takes precedence over BIGNUMERIC.
+  /// Defaults to \["NUMERIC", "STRING"\] for ORC and \["NUMERIC"\] for the
+  /// other file formats.
   core.List<core.String> decimalTargetTypes;
 
   /// Custom encryption configuration (e.g., Cloud KMS keys).
@@ -6827,8 +7259,9 @@ class JobConfigurationLoad {
   /// Optional.
   core.String fieldDelimiter;
 
-  /// \[Optional, Trusted Tester\] Options to configure hive partitioning
-  /// support.
+  /// Options to configure hive partitioning support.
+  ///
+  /// Optional.
   HivePartitioningOptions hivePartitioningOptions;
 
   /// Indicates if BigQuery should allow extra values that are not represented
@@ -6843,6 +7276,16 @@ class JobConfigurationLoad {
   ///
   /// Optional.
   core.bool ignoreUnknownValues;
+
+  /// If sourceFormat is set to newline-delimited JSON, indicates whether it
+  /// should be processed as a JSON variant such as GeoJSON.
+  ///
+  /// For a sourceFormat other than JSON, omit this field. If the sourceFormat
+  /// is newline-delimited JSON: - for newline-delimited GeoJSON: set to
+  /// GEOJSON.
+  ///
+  /// Optional.
+  core.String jsonExtension;
 
   /// The maximum number of bad records that BigQuery can ignore when running
   /// the job.
@@ -7037,6 +7480,9 @@ class JobConfigurationLoad {
     if (_json.containsKey('ignoreUnknownValues')) {
       ignoreUnknownValues = _json['ignoreUnknownValues'] as core.bool;
     }
+    if (_json.containsKey('jsonExtension')) {
+      jsonExtension = _json['jsonExtension'] as core.String;
+    }
     if (_json.containsKey('maxBadRecords')) {
       maxBadRecords = _json['maxBadRecords'] as core.int;
     }
@@ -7134,6 +7580,9 @@ class JobConfigurationLoad {
     }
     if (ignoreUnknownValues != null) {
       _json['ignoreUnknownValues'] = ignoreUnknownValues;
+    }
+    if (jsonExtension != null) {
+      _json['jsonExtension'] = jsonExtension;
     }
     if (maxBadRecords != null) {
       _json['maxBadRecords'] = maxBadRecords;
@@ -8717,6 +9166,41 @@ class ListRoutinesResponse {
   }
 }
 
+/// Response message for the ListRowAccessPolicies method.
+class ListRowAccessPoliciesResponse {
+  /// A token to request the next page of results.
+  core.String nextPageToken;
+
+  /// Row access policies on the requested table.
+  core.List<RowAccessPolicy> rowAccessPolicies;
+
+  ListRowAccessPoliciesResponse();
+
+  ListRowAccessPoliciesResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('rowAccessPolicies')) {
+      rowAccessPolicies = (_json['rowAccessPolicies'] as core.List)
+          .map<RowAccessPolicy>((value) => RowAccessPolicy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (nextPageToken != null) {
+      _json['nextPageToken'] = nextPageToken;
+    }
+    if (rowAccessPolicies != null) {
+      _json['rowAccessPolicies'] =
+          rowAccessPolicies.map((value) => value.toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 /// BigQuery-specific metadata about a location.
 ///
 /// This will be set on google.cloud.location.Location.metadata in Cloud
@@ -8891,12 +9375,12 @@ class Model {
   /// - "LOGISTIC_REGRESSION" : Logistic regression based classification model.
   /// - "KMEANS" : K-means clustering model.
   /// - "MATRIX_FACTORIZATION" : Matrix factorization model.
-  /// - "DNN_CLASSIFIER" : \[Beta\] DNN classifier model.
-  /// - "TENSORFLOW" : \[Beta\] An imported TensorFlow model.
-  /// - "DNN_REGRESSOR" : \[Beta\] DNN regressor model.
-  /// - "BOOSTED_TREE_REGRESSOR" : \[Beta\] Boosted tree regressor model.
-  /// - "BOOSTED_TREE_CLASSIFIER" : \[Beta\] Boosted tree classifier model.
-  /// - "ARIMA" : \[Beta\] ARIMA model.
+  /// - "DNN_CLASSIFIER" : DNN classifier model.
+  /// - "TENSORFLOW" : An imported TensorFlow model.
+  /// - "DNN_REGRESSOR" : DNN regressor model.
+  /// - "BOOSTED_TREE_REGRESSOR" : Boosted tree regressor model.
+  /// - "BOOSTED_TREE_CLASSIFIER" : Boosted tree classifier model.
+  /// - "ARIMA" : ARIMA model.
   /// - "AUTOML_REGRESSOR" : \[Beta\] AutoML Tables regression model.
   /// - "AUTOML_CLASSIFIER" : \[Beta\] AutoML Tables classification model.
   core.String modelType;
@@ -9307,6 +9791,63 @@ class Policy {
     }
     if (version != null) {
       _json['version'] = version;
+    }
+    return _json;
+  }
+}
+
+/// Principal component infos, used only for eigen decomposition based models,
+/// e.g., PCA.
+///
+/// Ordered by explained_variance in the descending order.
+class PrincipalComponentInfo {
+  /// The explained_variance is pre-ordered in the descending order to compute
+  /// the cumulative explained variance ratio.
+  core.double cumulativeExplainedVarianceRatio;
+
+  /// Explained variance by this principal component, which is simply the
+  /// eigenvalue.
+  core.double explainedVariance;
+
+  /// Explained_variance over the total explained variance.
+  core.double explainedVarianceRatio;
+
+  /// Id of the principal component.
+  core.String principalComponentId;
+
+  PrincipalComponentInfo();
+
+  PrincipalComponentInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('cumulativeExplainedVarianceRatio')) {
+      cumulativeExplainedVarianceRatio =
+          (_json['cumulativeExplainedVarianceRatio'] as core.num).toDouble();
+    }
+    if (_json.containsKey('explainedVariance')) {
+      explainedVariance = (_json['explainedVariance'] as core.num).toDouble();
+    }
+    if (_json.containsKey('explainedVarianceRatio')) {
+      explainedVarianceRatio =
+          (_json['explainedVarianceRatio'] as core.num).toDouble();
+    }
+    if (_json.containsKey('principalComponentId')) {
+      principalComponentId = _json['principalComponentId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (cumulativeExplainedVarianceRatio != null) {
+      _json['cumulativeExplainedVarianceRatio'] =
+          cumulativeExplainedVarianceRatio;
+    }
+    if (explainedVariance != null) {
+      _json['explainedVariance'] = explainedVariance;
+    }
+    if (explainedVarianceRatio != null) {
+      _json['explainedVarianceRatio'] = explainedVarianceRatio;
+    }
+    if (principalComponentId != null) {
+      _json['principalComponentId'] = principalComponentId;
     }
     return _json;
   }
@@ -10267,6 +10808,8 @@ class RegressionMetrics {
   core.double medianAbsoluteError;
 
   /// R^2 score.
+  ///
+  /// This corresponds to r2_score in ML.EVALUATE.
   core.double rSquared;
 
   RegressionMetrics();
@@ -10579,6 +11122,87 @@ class Row {
     }
     if (entries != null) {
       _json['entries'] = entries.map((value) => value.toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Represents access on a subset of rows on the specified table, defined by its
+/// filter predicate.
+///
+/// Access to the subset of rows is controlled by its IAM policy.
+class RowAccessPolicy {
+  /// The time when this row access policy was created, in milliseconds since
+  /// the epoch.
+  ///
+  /// Output only.
+  core.String creationTime;
+
+  /// A hash of this resource.
+  ///
+  /// Output only.
+  core.String etag;
+
+  /// A SQL boolean expression that represents the rows defined by this row
+  /// access policy, similar to the boolean expression in a WHERE clause of a
+  /// SELECT query on a table.
+  ///
+  /// References to other tables, routines, and temporary functions are not
+  /// supported. Examples: region="EU" date_field = CAST('2019-9-27' as DATE)
+  /// nullable_field is not NULL numeric_field BETWEEN 1.0 AND 5.0
+  ///
+  /// Required.
+  core.String filterPredicate;
+
+  /// The time when this row access policy was last modified, in milliseconds
+  /// since the epoch.
+  ///
+  /// Output only.
+  core.String lastModifiedTime;
+
+  /// Reference describing the ID of this row access policy.
+  ///
+  /// Required.
+  RowAccessPolicyReference rowAccessPolicyReference;
+
+  RowAccessPolicy();
+
+  RowAccessPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('creationTime')) {
+      creationTime = _json['creationTime'] as core.String;
+    }
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'] as core.String;
+    }
+    if (_json.containsKey('filterPredicate')) {
+      filterPredicate = _json['filterPredicate'] as core.String;
+    }
+    if (_json.containsKey('lastModifiedTime')) {
+      lastModifiedTime = _json['lastModifiedTime'] as core.String;
+    }
+    if (_json.containsKey('rowAccessPolicyReference')) {
+      rowAccessPolicyReference = RowAccessPolicyReference.fromJson(
+          _json['rowAccessPolicyReference']
+              as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (creationTime != null) {
+      _json['creationTime'] = creationTime;
+    }
+    if (etag != null) {
+      _json['etag'] = etag;
+    }
+    if (filterPredicate != null) {
+      _json['filterPredicate'] = filterPredicate;
+    }
+    if (lastModifiedTime != null) {
+      _json['lastModifiedTime'] = lastModifiedTime;
+    }
+    if (rowAccessPolicyReference != null) {
+      _json['rowAccessPolicyReference'] = rowAccessPolicyReference.toJson();
     }
     return _json;
   }
@@ -11167,11 +11791,11 @@ class Table {
   /// \[Output-only\] Describes the table type.
   ///
   /// The following values are supported: TABLE: A normal BigQuery table. VIEW:
-  /// A virtual table defined by a SQL query. \[TrustedTester\] SNAPSHOT: An
-  /// immutable, read-only table that is a copy of another table.
-  /// \[TrustedTester\] MATERIALIZED_VIEW: SQL query whose result is persisted.
-  /// EXTERNAL: A table that references data stored in an external storage
-  /// system, such as Google Cloud Storage. The default value is TABLE.
+  /// A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only
+  /// table that is a copy of another table. \[TrustedTester\]
+  /// MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table
+  /// that references data stored in an external storage system, such as Google
+  /// Cloud Storage. The default value is TABLE.
   core.String type;
 
   /// The view definition.
@@ -11752,9 +12376,10 @@ class TableFieldSchema {
   /// The field data type.
   ///
   /// Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER),
-  /// FLOAT, FLOAT64 (same as FLOAT), BOOLEAN, BOOL (same as BOOLEAN),
-  /// TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD indicates that the
-  /// field contains a nested schema) or STRUCT (same as RECORD).
+  /// FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same
+  /// as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD
+  /// indicates that the field contains a nested schema) or STRUCT (same as
+  /// RECORD).
   ///
   /// Required.
   core.String type;
@@ -12252,6 +12877,7 @@ class TimePartitioning {
   }
 }
 
+/// Options used in model training.
 class TrainingOptions {
   /// Whether to enable auto ARIMA or not.
   core.bool autoArima;
@@ -12272,6 +12898,7 @@ class TrainingOptions {
   /// - "WEEKLY" : Weekly data.
   /// - "DAILY" : Daily data.
   /// - "HOURLY" : Hourly data.
+  /// - "PER_MINUTE" : Per-minute data.
   core.String dataFrequency;
 
   /// The column to split data with.
@@ -12429,7 +13056,8 @@ class TrainingOptions {
 
   /// The method used to initialize the centroids for kmeans algorithm.
   /// Possible string values are:
-  /// - "KMEANS_INITIALIZATION_METHOD_UNSPECIFIED"
+  /// - "KMEANS_INITIALIZATION_METHOD_UNSPECIFIED" : Unspecified initialization
+  /// method.
   /// - "RANDOM" : Initializes the centroids randomly.
   /// - "CUSTOM" : Initializes the centroids using data specified in
   /// kmeans_initialization_column.
@@ -12484,7 +13112,7 @@ class TrainingOptions {
   /// Minimum split loss for boosted tree models.
   core.double minSplitLoss;
 
-  /// \[Beta\] Google Cloud Storage URI from which the model was imported.
+  /// Google Cloud Storage URI from which the model was imported.
   ///
   /// Only applicable for imported models.
   core.String modelUri;
@@ -12836,6 +13464,12 @@ class TrainingRun {
   /// end of training.
   EvaluationMetrics evaluationMetrics;
 
+  /// Global explanations for important features of the model.
+  ///
+  /// For multi-class models, there is one entry for each label class. For other
+  /// models, there is only one entry in the list.
+  core.List<GlobalExplanation> globalExplanations;
+
   /// Output of each iteration run, results.size() <= max_iterations.
   core.List<IterationResult> results;
 
@@ -12856,6 +13490,12 @@ class TrainingRun {
     if (_json.containsKey('evaluationMetrics')) {
       evaluationMetrics = EvaluationMetrics.fromJson(
           _json['evaluationMetrics'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('globalExplanations')) {
+      globalExplanations = (_json['globalExplanations'] as core.List)
+          .map<GlobalExplanation>((value) => GlobalExplanation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
@@ -12879,6 +13519,10 @@ class TrainingRun {
     }
     if (evaluationMetrics != null) {
       _json['evaluationMetrics'] = evaluationMetrics.toJson();
+    }
+    if (globalExplanations != null) {
+      _json['globalExplanations'] =
+          globalExplanations.map((value) => value.toJson()).toList();
     }
     if (results != null) {
       _json['results'] = results.map((value) => value.toJson()).toList();

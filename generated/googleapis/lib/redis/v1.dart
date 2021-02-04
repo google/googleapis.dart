@@ -520,6 +520,65 @@ class ProjectsLocationsInstancesResource {
     );
   }
 
+  /// Gets the AUTH string for a Redis instance.
+  ///
+  /// If AUTH is not enabled for the instance the response will be empty. This
+  /// information is not included in the details returned to GetInstance.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Redis instance resource name using the form:
+  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`
+  /// where `location_id` refers to a GCP region.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InstanceAuthString].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InstanceAuthString> getAuthString(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/authString';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => InstanceAuthString.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
   /// Import a Redis RDB snapshot file from Cloud Storage into a Redis instance.
   ///
   /// Redis may stop serving during this operation. Instance state will be
@@ -1387,6 +1446,14 @@ class Instance {
   /// Optional.
   core.String alternativeLocationId;
 
+  /// Indicates whether OSS Redis AUTH is enabled for the instance.
+  ///
+  /// If set to "true" AUTH is enabled on the instance. Default value is "false"
+  /// meaning AUTH is disabled.
+  ///
+  /// Optional.
+  core.bool authEnabled;
+
   /// The full name of the Google Compute Engine
   /// [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is
   /// connected.
@@ -1509,6 +1576,11 @@ class Instance {
   /// Optional.
   core.String reservedIpRange;
 
+  /// List of server CA certificates for the instance.
+  ///
+  /// Output only.
+  core.List<TlsCertificate> serverCaCerts;
+
   /// The current state of this instance.
   ///
   /// Output only.
@@ -1544,11 +1616,26 @@ class Instance {
   /// instances
   core.String tier;
 
+  /// The TLS mode of the Redis instance.
+  ///
+  /// If not provided, TLS is disabled for the instance.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED" : Not set.
+  /// - "SERVER_AUTHENTICATION" : Client to Server traffic encryption enabled
+  /// with server authentication.
+  /// - "DISABLED" : TLS is disabled for the instance.
+  core.String transitEncryptionMode;
+
   Instance();
 
   Instance.fromJson(core.Map _json) {
     if (_json.containsKey('alternativeLocationId')) {
       alternativeLocationId = _json['alternativeLocationId'] as core.String;
+    }
+    if (_json.containsKey('authEnabled')) {
+      authEnabled = _json['authEnabled'] as core.bool;
     }
     if (_json.containsKey('authorizedNetwork')) {
       authorizedNetwork = _json['authorizedNetwork'] as core.String;
@@ -1608,6 +1695,12 @@ class Instance {
     if (_json.containsKey('reservedIpRange')) {
       reservedIpRange = _json['reservedIpRange'] as core.String;
     }
+    if (_json.containsKey('serverCaCerts')) {
+      serverCaCerts = (_json['serverCaCerts'] as core.List)
+          .map<TlsCertificate>((value) => TlsCertificate.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
     }
@@ -1617,12 +1710,18 @@ class Instance {
     if (_json.containsKey('tier')) {
       tier = _json['tier'] as core.String;
     }
+    if (_json.containsKey('transitEncryptionMode')) {
+      transitEncryptionMode = _json['transitEncryptionMode'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (alternativeLocationId != null) {
       _json['alternativeLocationId'] = alternativeLocationId;
+    }
+    if (authEnabled != null) {
+      _json['authEnabled'] = authEnabled;
     }
     if (authorizedNetwork != null) {
       _json['authorizedNetwork'] = authorizedNetwork;
@@ -1669,6 +1768,10 @@ class Instance {
     if (reservedIpRange != null) {
       _json['reservedIpRange'] = reservedIpRange;
     }
+    if (serverCaCerts != null) {
+      _json['serverCaCerts'] =
+          serverCaCerts.map((value) => value.toJson()).toList();
+    }
     if (state != null) {
       _json['state'] = state;
     }
@@ -1677,6 +1780,31 @@ class Instance {
     }
     if (tier != null) {
       _json['tier'] = tier;
+    }
+    if (transitEncryptionMode != null) {
+      _json['transitEncryptionMode'] = transitEncryptionMode;
+    }
+    return _json;
+  }
+}
+
+/// Instance AUTH string details.
+class InstanceAuthString {
+  /// AUTH string set on the instance.
+  core.String authString;
+
+  InstanceAuthString();
+
+  InstanceAuthString.fromJson(core.Map _json) {
+    if (_json.containsKey('authString')) {
+      authString = _json['authString'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (authString != null) {
+      _json['authString'] = authString;
     }
     return _json;
   }
@@ -2074,6 +2202,72 @@ class Status {
     }
     if (message != null) {
       _json['message'] = message;
+    }
+    return _json;
+  }
+}
+
+/// TlsCertificate Resource
+class TlsCertificate {
+  /// PEM representation.
+  core.String cert;
+
+  /// The time when the certificate was created in
+  /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
+  /// `2020-05-18T00:00:00.094Z`.
+  ///
+  /// Output only.
+  core.String createTime;
+
+  /// The time when the certificate expires in
+  /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
+  /// `2020-05-18T00:00:00.094Z`.
+  ///
+  /// Output only.
+  core.String expireTime;
+
+  /// Serial number, as extracted from the certificate.
+  core.String serialNumber;
+
+  /// Sha1 Fingerprint of the certificate.
+  core.String sha1Fingerprint;
+
+  TlsCertificate();
+
+  TlsCertificate.fromJson(core.Map _json) {
+    if (_json.containsKey('cert')) {
+      cert = _json['cert'] as core.String;
+    }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('expireTime')) {
+      expireTime = _json['expireTime'] as core.String;
+    }
+    if (_json.containsKey('serialNumber')) {
+      serialNumber = _json['serialNumber'] as core.String;
+    }
+    if (_json.containsKey('sha1Fingerprint')) {
+      sha1Fingerprint = _json['sha1Fingerprint'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (cert != null) {
+      _json['cert'] = cert;
+    }
+    if (createTime != null) {
+      _json['createTime'] = createTime;
+    }
+    if (expireTime != null) {
+      _json['expireTime'] = expireTime;
+    }
+    if (serialNumber != null) {
+      _json['serialNumber'] = serialNumber;
+    }
+    if (sha1Fingerprint != null) {
+      _json['sha1Fingerprint'] = sha1Fingerprint;
     }
     return _json;
   }

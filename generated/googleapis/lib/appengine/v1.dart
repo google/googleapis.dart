@@ -4554,6 +4554,29 @@ class Instance {
   /// Output only.
   core.String vmIp;
 
+  /// The liveness health check of this instance.
+  ///
+  /// Only applicable for instances in App Engine flexible environment.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "LIVENESS_STATE_UNSPECIFIED" : There is no liveness health check for the
+  /// instance. Only applicable for instances in App Engine standard
+  /// environment.
+  /// - "UNKNOWN" : The health checking system is aware of the instance but its
+  /// health is not known at the moment.
+  /// - "HEALTHY" : The instance is reachable i.e. a connection to the
+  /// application health checking endpoint can be established, and conforms to
+  /// the requirements defined by the health check.
+  /// - "UNHEALTHY" : The instance is reachable, but does not conform to the
+  /// requirements defined by the health check.
+  /// - "DRAINING" : The instance is being drained. The existing connections to
+  /// the instance have time to complete, but the new ones are being refused.
+  /// - "TIMEOUT" : The instance is unreachable i.e. a connection to the
+  /// application health checking endpoint cannot be established, or the server
+  /// does not respond within the specified timeout.
+  core.String vmLiveness;
+
   /// Name of the virtual machine where this instance lives.
   ///
   /// Only applicable for instances in App Engine flexible environment.
@@ -4617,6 +4640,9 @@ class Instance {
     if (_json.containsKey('vmIp')) {
       vmIp = _json['vmIp'] as core.String;
     }
+    if (_json.containsKey('vmLiveness')) {
+      vmLiveness = _json['vmLiveness'] as core.String;
+    }
     if (_json.containsKey('vmName')) {
       vmName = _json['vmName'] as core.String;
     }
@@ -4668,6 +4694,9 @@ class Instance {
     }
     if (vmIp != null) {
       _json['vmIp'] = vmIp;
+    }
+    if (vmLiveness != null) {
+      _json['vmLiveness'] = vmLiveness;
     }
     if (vmName != null) {
       _json['vmName'] = vmName;

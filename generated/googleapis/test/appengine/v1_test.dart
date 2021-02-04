@@ -827,6 +827,7 @@ api.Instance buildInstance() {
     o.vmDebugEnabled = true;
     o.vmId = 'foo';
     o.vmIp = 'foo';
+    o.vmLiveness = 'foo';
     o.vmName = 'foo';
     o.vmStatus = 'foo';
     o.vmZoneName = 'foo';
@@ -851,6 +852,7 @@ void checkInstance(api.Instance o) {
     unittest.expect(o.vmDebugEnabled, unittest.isTrue);
     unittest.expect(o.vmId, unittest.equals('foo'));
     unittest.expect(o.vmIp, unittest.equals('foo'));
+    unittest.expect(o.vmLiveness, unittest.equals('foo'));
     unittest.expect(o.vmName, unittest.equals('foo'));
     unittest.expect(o.vmStatus, unittest.equals('foo'));
     unittest.expect(o.vmZoneName, unittest.equals('foo'));

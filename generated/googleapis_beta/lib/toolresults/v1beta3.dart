@@ -3225,6 +3225,20 @@ class CrashDialogError {
   }
 }
 
+/// A warning that device ran out of memory
+class DeviceOutOfMemory {
+  DeviceOutOfMemory();
+
+  DeviceOutOfMemory.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    return _json;
+  }
+}
+
 /// A Duration represents a signed, fixed-length span of time represented as a
 /// count of seconds and fractions of seconds at nanosecond resolution.
 ///
@@ -4845,6 +4859,20 @@ class ListTestCasesResponse {
     if (testCases != null) {
       _json['testCases'] = testCases.map((value) => value.toJson()).toList();
     }
+    return _json;
+  }
+}
+
+/// A warning that there were issues in logcat collection.
+class LogcatCollectionError {
+  LogcatCollectionError();
+
+  LogcatCollectionError.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -7165,6 +7193,8 @@ class TestIssue {
   /// crawl
   /// - "unityException" : An uncaught Unity exception was detected (these don't
   /// crash apps).
+  /// - "deviceOutOfMemory" : Device running out of memory was detected
+  /// - "logcatCollectionError" : Problems detected while collecting logcat
   core.String type;
 
   /// Warning message with additional details of the issue.

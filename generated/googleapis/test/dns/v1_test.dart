@@ -27,27 +27,27 @@ import 'package:googleapis/dns/v1.dart' as api;
 
 import '../test_shared.dart';
 
-core.List<api.ResourceRecordSet> buildUnnamed1787() {
+core.List<api.ResourceRecordSet> buildUnnamed1981() {
   var o = <api.ResourceRecordSet>[];
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-void checkUnnamed1787(core.List<api.ResourceRecordSet> o) {
+void checkUnnamed1981(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0] as api.ResourceRecordSet);
   checkResourceRecordSet(o[1] as api.ResourceRecordSet);
 }
 
-core.List<api.ResourceRecordSet> buildUnnamed1788() {
+core.List<api.ResourceRecordSet> buildUnnamed1982() {
   var o = <api.ResourceRecordSet>[];
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-void checkUnnamed1788(core.List<api.ResourceRecordSet> o) {
+void checkUnnamed1982(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0] as api.ResourceRecordSet);
   checkResourceRecordSet(o[1] as api.ResourceRecordSet);
@@ -58,8 +58,8 @@ api.Change buildChange() {
   var o = api.Change();
   buildCounterChange++;
   if (buildCounterChange < 3) {
-    o.additions = buildUnnamed1787();
-    o.deletions = buildUnnamed1788();
+    o.additions = buildUnnamed1981();
+    o.deletions = buildUnnamed1982();
     o.id = 'foo';
     o.isServing = true;
     o.kind = 'foo';
@@ -73,8 +73,8 @@ api.Change buildChange() {
 void checkChange(api.Change o) {
   buildCounterChange++;
   if (buildCounterChange < 3) {
-    checkUnnamed1787(o.additions);
-    checkUnnamed1788(o.deletions);
+    checkUnnamed1981(o.additions);
+    checkUnnamed1982(o.deletions);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.isServing, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -84,14 +84,14 @@ void checkChange(api.Change o) {
   buildCounterChange--;
 }
 
-core.List<api.Change> buildUnnamed1789() {
+core.List<api.Change> buildUnnamed1983() {
   var o = <api.Change>[];
   o.add(buildChange());
   o.add(buildChange());
   return o;
 }
 
-void checkUnnamed1789(core.List<api.Change> o) {
+void checkUnnamed1983(core.List<api.Change> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkChange(o[0] as api.Change);
   checkChange(o[1] as api.Change);
@@ -102,7 +102,7 @@ api.ChangesListResponse buildChangesListResponse() {
   var o = api.ChangesListResponse();
   buildCounterChangesListResponse++;
   if (buildCounterChangesListResponse < 3) {
-    o.changes = buildUnnamed1789();
+    o.changes = buildUnnamed1983();
     o.header = buildResponseHeader();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
@@ -114,7 +114,7 @@ api.ChangesListResponse buildChangesListResponse() {
 void checkChangesListResponse(api.ChangesListResponse o) {
   buildCounterChangesListResponse++;
   if (buildCounterChangesListResponse < 3) {
-    checkUnnamed1789(o.changes);
+    checkUnnamed1983(o.changes);
     checkResponseHeader(o.header as api.ResponseHeader);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -122,14 +122,14 @@ void checkChangesListResponse(api.ChangesListResponse o) {
   buildCounterChangesListResponse--;
 }
 
-core.List<api.DnsKeyDigest> buildUnnamed1790() {
+core.List<api.DnsKeyDigest> buildUnnamed1984() {
   var o = <api.DnsKeyDigest>[];
   o.add(buildDnsKeyDigest());
   o.add(buildDnsKeyDigest());
   return o;
 }
 
-void checkUnnamed1790(core.List<api.DnsKeyDigest> o) {
+void checkUnnamed1984(core.List<api.DnsKeyDigest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDnsKeyDigest(o[0] as api.DnsKeyDigest);
   checkDnsKeyDigest(o[1] as api.DnsKeyDigest);
@@ -143,7 +143,7 @@ api.DnsKey buildDnsKey() {
     o.algorithm = 'foo';
     o.creationTime = 'foo';
     o.description = 'foo';
-    o.digests = buildUnnamed1790();
+    o.digests = buildUnnamed1984();
     o.id = 'foo';
     o.isActive = true;
     o.keyLength = 42;
@@ -162,7 +162,7 @@ void checkDnsKey(api.DnsKey o) {
     unittest.expect(o.algorithm, unittest.equals('foo'));
     unittest.expect(o.creationTime, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed1790(o.digests);
+    checkUnnamed1984(o.digests);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.isActive, unittest.isTrue);
     unittest.expect(o.keyLength, unittest.equals(42));
@@ -220,14 +220,14 @@ void checkDnsKeySpec(api.DnsKeySpec o) {
   buildCounterDnsKeySpec--;
 }
 
-core.List<api.DnsKey> buildUnnamed1791() {
+core.List<api.DnsKey> buildUnnamed1985() {
   var o = <api.DnsKey>[];
   o.add(buildDnsKey());
   o.add(buildDnsKey());
   return o;
 }
 
-void checkUnnamed1791(core.List<api.DnsKey> o) {
+void checkUnnamed1985(core.List<api.DnsKey> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDnsKey(o[0] as api.DnsKey);
   checkDnsKey(o[1] as api.DnsKey);
@@ -238,7 +238,7 @@ api.DnsKeysListResponse buildDnsKeysListResponse() {
   var o = api.DnsKeysListResponse();
   buildCounterDnsKeysListResponse++;
   if (buildCounterDnsKeysListResponse < 3) {
-    o.dnsKeys = buildUnnamed1791();
+    o.dnsKeys = buildUnnamed1985();
     o.header = buildResponseHeader();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
@@ -250,7 +250,7 @@ api.DnsKeysListResponse buildDnsKeysListResponse() {
 void checkDnsKeysListResponse(api.DnsKeysListResponse o) {
   buildCounterDnsKeysListResponse++;
   if (buildCounterDnsKeysListResponse < 3) {
-    checkUnnamed1791(o.dnsKeys);
+    checkUnnamed1985(o.dnsKeys);
     checkResponseHeader(o.header as api.ResponseHeader);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -258,27 +258,27 @@ void checkDnsKeysListResponse(api.DnsKeysListResponse o) {
   buildCounterDnsKeysListResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed1792() {
+core.Map<core.String, core.String> buildUnnamed1986() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed1792(core.Map<core.String, core.String> o) {
+void checkUnnamed1986(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x'], unittest.equals('foo'));
   unittest.expect(o['y'], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed1793() {
+core.List<core.String> buildUnnamed1987() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1793(core.List<core.String> o) {
+void checkUnnamed1987(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -296,13 +296,14 @@ api.ManagedZone buildManagedZone() {
     o.forwardingConfig = buildManagedZoneForwardingConfig();
     o.id = 'foo';
     o.kind = 'foo';
-    o.labels = buildUnnamed1792();
+    o.labels = buildUnnamed1986();
     o.name = 'foo';
     o.nameServerSet = 'foo';
-    o.nameServers = buildUnnamed1793();
+    o.nameServers = buildUnnamed1987();
     o.peeringConfig = buildManagedZonePeeringConfig();
     o.privateVisibilityConfig = buildManagedZonePrivateVisibilityConfig();
     o.reverseLookupConfig = buildManagedZoneReverseLookupConfig();
+    o.serviceDirectoryConfig = buildManagedZoneServiceDirectoryConfig();
     o.visibility = 'foo';
   }
   buildCounterManagedZone--;
@@ -320,29 +321,31 @@ void checkManagedZone(api.ManagedZone o) {
         o.forwardingConfig as api.ManagedZoneForwardingConfig);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1792(o.labels);
+    checkUnnamed1986(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.nameServerSet, unittest.equals('foo'));
-    checkUnnamed1793(o.nameServers);
+    checkUnnamed1987(o.nameServers);
     checkManagedZonePeeringConfig(
         o.peeringConfig as api.ManagedZonePeeringConfig);
     checkManagedZonePrivateVisibilityConfig(
         o.privateVisibilityConfig as api.ManagedZonePrivateVisibilityConfig);
     checkManagedZoneReverseLookupConfig(
         o.reverseLookupConfig as api.ManagedZoneReverseLookupConfig);
+    checkManagedZoneServiceDirectoryConfig(
+        o.serviceDirectoryConfig as api.ManagedZoneServiceDirectoryConfig);
     unittest.expect(o.visibility, unittest.equals('foo'));
   }
   buildCounterManagedZone--;
 }
 
-core.List<api.DnsKeySpec> buildUnnamed1794() {
+core.List<api.DnsKeySpec> buildUnnamed1988() {
   var o = <api.DnsKeySpec>[];
   o.add(buildDnsKeySpec());
   o.add(buildDnsKeySpec());
   return o;
 }
 
-void checkUnnamed1794(core.List<api.DnsKeySpec> o) {
+void checkUnnamed1988(core.List<api.DnsKeySpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDnsKeySpec(o[0] as api.DnsKeySpec);
   checkDnsKeySpec(o[1] as api.DnsKeySpec);
@@ -353,7 +356,7 @@ api.ManagedZoneDnsSecConfig buildManagedZoneDnsSecConfig() {
   var o = api.ManagedZoneDnsSecConfig();
   buildCounterManagedZoneDnsSecConfig++;
   if (buildCounterManagedZoneDnsSecConfig < 3) {
-    o.defaultKeySpecs = buildUnnamed1794();
+    o.defaultKeySpecs = buildUnnamed1988();
     o.kind = 'foo';
     o.nonExistence = 'foo';
     o.state = 'foo';
@@ -365,7 +368,7 @@ api.ManagedZoneDnsSecConfig buildManagedZoneDnsSecConfig() {
 void checkManagedZoneDnsSecConfig(api.ManagedZoneDnsSecConfig o) {
   buildCounterManagedZoneDnsSecConfig++;
   if (buildCounterManagedZoneDnsSecConfig < 3) {
-    checkUnnamed1794(o.defaultKeySpecs);
+    checkUnnamed1988(o.defaultKeySpecs);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nonExistence, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
@@ -373,14 +376,14 @@ void checkManagedZoneDnsSecConfig(api.ManagedZoneDnsSecConfig o) {
   buildCounterManagedZoneDnsSecConfig--;
 }
 
-core.List<api.ManagedZoneForwardingConfigNameServerTarget> buildUnnamed1795() {
+core.List<api.ManagedZoneForwardingConfigNameServerTarget> buildUnnamed1989() {
   var o = <api.ManagedZoneForwardingConfigNameServerTarget>[];
   o.add(buildManagedZoneForwardingConfigNameServerTarget());
   o.add(buildManagedZoneForwardingConfigNameServerTarget());
   return o;
 }
 
-void checkUnnamed1795(
+void checkUnnamed1989(
     core.List<api.ManagedZoneForwardingConfigNameServerTarget> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedZoneForwardingConfigNameServerTarget(
@@ -395,7 +398,7 @@ api.ManagedZoneForwardingConfig buildManagedZoneForwardingConfig() {
   buildCounterManagedZoneForwardingConfig++;
   if (buildCounterManagedZoneForwardingConfig < 3) {
     o.kind = 'foo';
-    o.targetNameServers = buildUnnamed1795();
+    o.targetNameServers = buildUnnamed1989();
   }
   buildCounterManagedZoneForwardingConfig--;
   return o;
@@ -405,7 +408,7 @@ void checkManagedZoneForwardingConfig(api.ManagedZoneForwardingConfig o) {
   buildCounterManagedZoneForwardingConfig++;
   if (buildCounterManagedZoneForwardingConfig < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1795(o.targetNameServers);
+    checkUnnamed1989(o.targetNameServers);
   }
   buildCounterManagedZoneForwardingConfig--;
 }
@@ -435,14 +438,14 @@ void checkManagedZoneForwardingConfigNameServerTarget(
   buildCounterManagedZoneForwardingConfigNameServerTarget--;
 }
 
-core.List<api.Operation> buildUnnamed1796() {
+core.List<api.Operation> buildUnnamed1990() {
   var o = <api.Operation>[];
   o.add(buildOperation());
   o.add(buildOperation());
   return o;
 }
 
-void checkUnnamed1796(core.List<api.Operation> o) {
+void checkUnnamed1990(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0] as api.Operation);
   checkOperation(o[1] as api.Operation);
@@ -456,7 +459,7 @@ api.ManagedZoneOperationsListResponse buildManagedZoneOperationsListResponse() {
     o.header = buildResponseHeader();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed1796();
+    o.operations = buildUnnamed1990();
   }
   buildCounterManagedZoneOperationsListResponse--;
   return o;
@@ -469,7 +472,7 @@ void checkManagedZoneOperationsListResponse(
     checkResponseHeader(o.header as api.ResponseHeader);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1796(o.operations);
+    checkUnnamed1990(o.operations);
   }
   buildCounterManagedZoneOperationsListResponse--;
 }
@@ -521,14 +524,14 @@ void checkManagedZonePeeringConfigTargetNetwork(
   buildCounterManagedZonePeeringConfigTargetNetwork--;
 }
 
-core.List<api.ManagedZonePrivateVisibilityConfigNetwork> buildUnnamed1797() {
+core.List<api.ManagedZonePrivateVisibilityConfigNetwork> buildUnnamed1991() {
   var o = <api.ManagedZonePrivateVisibilityConfigNetwork>[];
   o.add(buildManagedZonePrivateVisibilityConfigNetwork());
   o.add(buildManagedZonePrivateVisibilityConfigNetwork());
   return o;
 }
 
-void checkUnnamed1797(
+void checkUnnamed1991(
     core.List<api.ManagedZonePrivateVisibilityConfigNetwork> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedZonePrivateVisibilityConfigNetwork(
@@ -544,7 +547,7 @@ api.ManagedZonePrivateVisibilityConfig
   buildCounterManagedZonePrivateVisibilityConfig++;
   if (buildCounterManagedZonePrivateVisibilityConfig < 3) {
     o.kind = 'foo';
-    o.networks = buildUnnamed1797();
+    o.networks = buildUnnamed1991();
   }
   buildCounterManagedZonePrivateVisibilityConfig--;
   return o;
@@ -555,7 +558,7 @@ void checkManagedZonePrivateVisibilityConfig(
   buildCounterManagedZonePrivateVisibilityConfig++;
   if (buildCounterManagedZonePrivateVisibilityConfig < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1797(o.networks);
+    checkUnnamed1991(o.networks);
   }
   buildCounterManagedZonePrivateVisibilityConfig--;
 }
@@ -602,14 +605,62 @@ void checkManagedZoneReverseLookupConfig(api.ManagedZoneReverseLookupConfig o) {
   buildCounterManagedZoneReverseLookupConfig--;
 }
 
-core.List<api.ManagedZone> buildUnnamed1798() {
+core.int buildCounterManagedZoneServiceDirectoryConfig = 0;
+api.ManagedZoneServiceDirectoryConfig buildManagedZoneServiceDirectoryConfig() {
+  var o = api.ManagedZoneServiceDirectoryConfig();
+  buildCounterManagedZoneServiceDirectoryConfig++;
+  if (buildCounterManagedZoneServiceDirectoryConfig < 3) {
+    o.kind = 'foo';
+    o.namespace = buildManagedZoneServiceDirectoryConfigNamespace();
+  }
+  buildCounterManagedZoneServiceDirectoryConfig--;
+  return o;
+}
+
+void checkManagedZoneServiceDirectoryConfig(
+    api.ManagedZoneServiceDirectoryConfig o) {
+  buildCounterManagedZoneServiceDirectoryConfig++;
+  if (buildCounterManagedZoneServiceDirectoryConfig < 3) {
+    unittest.expect(o.kind, unittest.equals('foo'));
+    checkManagedZoneServiceDirectoryConfigNamespace(
+        o.namespace as api.ManagedZoneServiceDirectoryConfigNamespace);
+  }
+  buildCounterManagedZoneServiceDirectoryConfig--;
+}
+
+core.int buildCounterManagedZoneServiceDirectoryConfigNamespace = 0;
+api.ManagedZoneServiceDirectoryConfigNamespace
+    buildManagedZoneServiceDirectoryConfigNamespace() {
+  var o = api.ManagedZoneServiceDirectoryConfigNamespace();
+  buildCounterManagedZoneServiceDirectoryConfigNamespace++;
+  if (buildCounterManagedZoneServiceDirectoryConfigNamespace < 3) {
+    o.deletionTime = 'foo';
+    o.kind = 'foo';
+    o.namespaceUrl = 'foo';
+  }
+  buildCounterManagedZoneServiceDirectoryConfigNamespace--;
+  return o;
+}
+
+void checkManagedZoneServiceDirectoryConfigNamespace(
+    api.ManagedZoneServiceDirectoryConfigNamespace o) {
+  buildCounterManagedZoneServiceDirectoryConfigNamespace++;
+  if (buildCounterManagedZoneServiceDirectoryConfigNamespace < 3) {
+    unittest.expect(o.deletionTime, unittest.equals('foo'));
+    unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(o.namespaceUrl, unittest.equals('foo'));
+  }
+  buildCounterManagedZoneServiceDirectoryConfigNamespace--;
+}
+
+core.List<api.ManagedZone> buildUnnamed1992() {
   var o = <api.ManagedZone>[];
   o.add(buildManagedZone());
   o.add(buildManagedZone());
   return o;
 }
 
-void checkUnnamed1798(core.List<api.ManagedZone> o) {
+void checkUnnamed1992(core.List<api.ManagedZone> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkManagedZone(o[0] as api.ManagedZone);
   checkManagedZone(o[1] as api.ManagedZone);
@@ -622,7 +673,7 @@ api.ManagedZonesListResponse buildManagedZonesListResponse() {
   if (buildCounterManagedZonesListResponse < 3) {
     o.header = buildResponseHeader();
     o.kind = 'foo';
-    o.managedZones = buildUnnamed1798();
+    o.managedZones = buildUnnamed1992();
     o.nextPageToken = 'foo';
   }
   buildCounterManagedZonesListResponse--;
@@ -634,7 +685,7 @@ void checkManagedZonesListResponse(api.ManagedZonesListResponse o) {
   if (buildCounterManagedZonesListResponse < 3) {
     checkResponseHeader(o.header as api.ResponseHeader);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1798(o.managedZones);
+    checkUnnamed1992(o.managedZones);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterManagedZonesListResponse--;
@@ -716,14 +767,14 @@ void checkOperationManagedZoneContext(api.OperationManagedZoneContext o) {
   buildCounterOperationManagedZoneContext--;
 }
 
-core.List<api.Policy> buildUnnamed1799() {
+core.List<api.Policy> buildUnnamed1993() {
   var o = <api.Policy>[];
   o.add(buildPolicy());
   o.add(buildPolicy());
   return o;
 }
 
-void checkUnnamed1799(core.List<api.Policy> o) {
+void checkUnnamed1993(core.List<api.Policy> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPolicy(o[0] as api.Policy);
   checkPolicy(o[1] as api.Policy);
@@ -737,7 +788,7 @@ api.PoliciesListResponse buildPoliciesListResponse() {
     o.header = buildResponseHeader();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.policies = buildUnnamed1799();
+    o.policies = buildUnnamed1993();
   }
   buildCounterPoliciesListResponse--;
   return o;
@@ -749,7 +800,7 @@ void checkPoliciesListResponse(api.PoliciesListResponse o) {
     checkResponseHeader(o.header as api.ResponseHeader);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1799(o.policies);
+    checkUnnamed1993(o.policies);
   }
   buildCounterPoliciesListResponse--;
 }
@@ -796,14 +847,14 @@ void checkPoliciesUpdateResponse(api.PoliciesUpdateResponse o) {
   buildCounterPoliciesUpdateResponse--;
 }
 
-core.List<api.PolicyNetwork> buildUnnamed1800() {
+core.List<api.PolicyNetwork> buildUnnamed1994() {
   var o = <api.PolicyNetwork>[];
   o.add(buildPolicyNetwork());
   o.add(buildPolicyNetwork());
   return o;
 }
 
-void checkUnnamed1800(core.List<api.PolicyNetwork> o) {
+void checkUnnamed1994(core.List<api.PolicyNetwork> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPolicyNetwork(o[0] as api.PolicyNetwork);
   checkPolicyNetwork(o[1] as api.PolicyNetwork);
@@ -821,7 +872,7 @@ api.Policy buildPolicy() {
     o.id = 'foo';
     o.kind = 'foo';
     o.name = 'foo';
-    o.networks = buildUnnamed1800();
+    o.networks = buildUnnamed1994();
   }
   buildCounterPolicy--;
   return o;
@@ -838,20 +889,20 @@ void checkPolicy(api.Policy o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1800(o.networks);
+    checkUnnamed1994(o.networks);
   }
   buildCounterPolicy--;
 }
 
 core.List<api.PolicyAlternativeNameServerConfigTargetNameServer>
-    buildUnnamed1801() {
+    buildUnnamed1995() {
   var o = <api.PolicyAlternativeNameServerConfigTargetNameServer>[];
   o.add(buildPolicyAlternativeNameServerConfigTargetNameServer());
   o.add(buildPolicyAlternativeNameServerConfigTargetNameServer());
   return o;
 }
 
-void checkUnnamed1801(
+void checkUnnamed1995(
     core.List<api.PolicyAlternativeNameServerConfigTargetNameServer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPolicyAlternativeNameServerConfigTargetNameServer(
@@ -866,7 +917,7 @@ api.PolicyAlternativeNameServerConfig buildPolicyAlternativeNameServerConfig() {
   buildCounterPolicyAlternativeNameServerConfig++;
   if (buildCounterPolicyAlternativeNameServerConfig < 3) {
     o.kind = 'foo';
-    o.targetNameServers = buildUnnamed1801();
+    o.targetNameServers = buildUnnamed1995();
   }
   buildCounterPolicyAlternativeNameServerConfig--;
   return o;
@@ -877,7 +928,7 @@ void checkPolicyAlternativeNameServerConfig(
   buildCounterPolicyAlternativeNameServerConfig++;
   if (buildCounterPolicyAlternativeNameServerConfig < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed1801(o.targetNameServers);
+    checkUnnamed1995(o.targetNameServers);
   }
   buildCounterPolicyAlternativeNameServerConfig--;
 }
@@ -953,14 +1004,14 @@ void checkProject(api.Project o) {
   buildCounterProject--;
 }
 
-core.List<api.DnsKeySpec> buildUnnamed1802() {
+core.List<api.DnsKeySpec> buildUnnamed1996() {
   var o = <api.DnsKeySpec>[];
   o.add(buildDnsKeySpec());
   o.add(buildDnsKeySpec());
   return o;
 }
 
-void checkUnnamed1802(core.List<api.DnsKeySpec> o) {
+void checkUnnamed1996(core.List<api.DnsKeySpec> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDnsKeySpec(o[0] as api.DnsKeySpec);
   checkDnsKeySpec(o[1] as api.DnsKeySpec);
@@ -972,6 +1023,7 @@ api.Quota buildQuota() {
   buildCounterQuota++;
   if (buildCounterQuota < 3) {
     o.dnsKeysPerManagedZone = 42;
+    o.gkeClustersPerPolicy = 42;
     o.kind = 'foo';
     o.managedZones = 42;
     o.managedZonesPerNetwork = 42;
@@ -985,7 +1037,7 @@ api.Quota buildQuota() {
     o.targetNameServersPerManagedZone = 42;
     o.targetNameServersPerPolicy = 42;
     o.totalRrdataSizePerChange = 42;
-    o.whitelistedKeySpecs = buildUnnamed1802();
+    o.whitelistedKeySpecs = buildUnnamed1996();
   }
   buildCounterQuota--;
   return o;
@@ -995,6 +1047,7 @@ void checkQuota(api.Quota o) {
   buildCounterQuota++;
   if (buildCounterQuota < 3) {
     unittest.expect(o.dnsKeysPerManagedZone, unittest.equals(42));
+    unittest.expect(o.gkeClustersPerPolicy, unittest.equals(42));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.managedZones, unittest.equals(42));
     unittest.expect(o.managedZonesPerNetwork, unittest.equals(42));
@@ -1008,32 +1061,255 @@ void checkQuota(api.Quota o) {
     unittest.expect(o.targetNameServersPerManagedZone, unittest.equals(42));
     unittest.expect(o.targetNameServersPerPolicy, unittest.equals(42));
     unittest.expect(o.totalRrdataSizePerChange, unittest.equals(42));
-    checkUnnamed1802(o.whitelistedKeySpecs);
+    checkUnnamed1996(o.whitelistedKeySpecs);
   }
   buildCounterQuota--;
 }
 
-core.List<core.String> buildUnnamed1803() {
+core.int buildCounterRRSetRoutingPolicy = 0;
+api.RRSetRoutingPolicy buildRRSetRoutingPolicy() {
+  var o = api.RRSetRoutingPolicy();
+  buildCounterRRSetRoutingPolicy++;
+  if (buildCounterRRSetRoutingPolicy < 3) {
+    o.geoPolicy = buildRRSetRoutingPolicyGeoPolicy();
+    o.kind = 'foo';
+    o.wrrPolicy = buildRRSetRoutingPolicyWrrPolicy();
+  }
+  buildCounterRRSetRoutingPolicy--;
+  return o;
+}
+
+void checkRRSetRoutingPolicy(api.RRSetRoutingPolicy o) {
+  buildCounterRRSetRoutingPolicy++;
+  if (buildCounterRRSetRoutingPolicy < 3) {
+    checkRRSetRoutingPolicyGeoPolicy(
+        o.geoPolicy as api.RRSetRoutingPolicyGeoPolicy);
+    unittest.expect(o.kind, unittest.equals('foo'));
+    checkRRSetRoutingPolicyWrrPolicy(
+        o.wrrPolicy as api.RRSetRoutingPolicyWrrPolicy);
+  }
+  buildCounterRRSetRoutingPolicy--;
+}
+
+core.List<api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem> buildUnnamed1997() {
+  var o = <api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem>[];
+  o.add(buildRRSetRoutingPolicyGeoPolicyGeoPolicyItem());
+  o.add(buildRRSetRoutingPolicyGeoPolicyGeoPolicyItem());
+  return o;
+}
+
+void checkUnnamed1997(
+    core.List<api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRRSetRoutingPolicyGeoPolicyGeoPolicyItem(
+      o[0] as api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem);
+  checkRRSetRoutingPolicyGeoPolicyGeoPolicyItem(
+      o[1] as api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem);
+}
+
+core.List<api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem> buildUnnamed1998() {
+  var o = <api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem>[];
+  o.add(buildRRSetRoutingPolicyGeoPolicyGeoPolicyItem());
+  o.add(buildRRSetRoutingPolicyGeoPolicyGeoPolicyItem());
+  return o;
+}
+
+void checkUnnamed1998(
+    core.List<api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRRSetRoutingPolicyGeoPolicyGeoPolicyItem(
+      o[0] as api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem);
+  checkRRSetRoutingPolicyGeoPolicyGeoPolicyItem(
+      o[1] as api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem);
+}
+
+core.int buildCounterRRSetRoutingPolicyGeoPolicy = 0;
+api.RRSetRoutingPolicyGeoPolicy buildRRSetRoutingPolicyGeoPolicy() {
+  var o = api.RRSetRoutingPolicyGeoPolicy();
+  buildCounterRRSetRoutingPolicyGeoPolicy++;
+  if (buildCounterRRSetRoutingPolicyGeoPolicy < 3) {
+    o.failovers = buildUnnamed1997();
+    o.items = buildUnnamed1998();
+    o.kind = 'foo';
+  }
+  buildCounterRRSetRoutingPolicyGeoPolicy--;
+  return o;
+}
+
+void checkRRSetRoutingPolicyGeoPolicy(api.RRSetRoutingPolicyGeoPolicy o) {
+  buildCounterRRSetRoutingPolicyGeoPolicy++;
+  if (buildCounterRRSetRoutingPolicyGeoPolicy < 3) {
+    checkUnnamed1997(o.failovers);
+    checkUnnamed1998(o.items);
+    unittest.expect(o.kind, unittest.equals('foo'));
+  }
+  buildCounterRRSetRoutingPolicyGeoPolicy--;
+}
+
+core.List<core.String> buildUnnamed1999() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1803(core.List<core.String> o) {
+void checkUnnamed1999(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed1804() {
+core.List<core.String> buildUnnamed2000() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1804(core.List<core.String> o) {
+void checkUnnamed2000(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterRRSetRoutingPolicyGeoPolicyGeoPolicyItem = 0;
+api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem
+    buildRRSetRoutingPolicyGeoPolicyGeoPolicyItem() {
+  var o = api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem();
+  buildCounterRRSetRoutingPolicyGeoPolicyGeoPolicyItem++;
+  if (buildCounterRRSetRoutingPolicyGeoPolicyGeoPolicyItem < 3) {
+    o.kind = 'foo';
+    o.location = 'foo';
+    o.rrdatas = buildUnnamed1999();
+    o.signatureRrdatas = buildUnnamed2000();
+  }
+  buildCounterRRSetRoutingPolicyGeoPolicyGeoPolicyItem--;
+  return o;
+}
+
+void checkRRSetRoutingPolicyGeoPolicyGeoPolicyItem(
+    api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem o) {
+  buildCounterRRSetRoutingPolicyGeoPolicyGeoPolicyItem++;
+  if (buildCounterRRSetRoutingPolicyGeoPolicyGeoPolicyItem < 3) {
+    unittest.expect(o.kind, unittest.equals('foo'));
+    unittest.expect(o.location, unittest.equals('foo'));
+    checkUnnamed1999(o.rrdatas);
+    checkUnnamed2000(o.signatureRrdatas);
+  }
+  buildCounterRRSetRoutingPolicyGeoPolicyGeoPolicyItem--;
+}
+
+core.List<api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem> buildUnnamed2001() {
+  var o = <api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem>[];
+  o.add(buildRRSetRoutingPolicyWrrPolicyWrrPolicyItem());
+  o.add(buildRRSetRoutingPolicyWrrPolicyWrrPolicyItem());
+  return o;
+}
+
+void checkUnnamed2001(
+    core.List<api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRRSetRoutingPolicyWrrPolicyWrrPolicyItem(
+      o[0] as api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem);
+  checkRRSetRoutingPolicyWrrPolicyWrrPolicyItem(
+      o[1] as api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem);
+}
+
+core.int buildCounterRRSetRoutingPolicyWrrPolicy = 0;
+api.RRSetRoutingPolicyWrrPolicy buildRRSetRoutingPolicyWrrPolicy() {
+  var o = api.RRSetRoutingPolicyWrrPolicy();
+  buildCounterRRSetRoutingPolicyWrrPolicy++;
+  if (buildCounterRRSetRoutingPolicyWrrPolicy < 3) {
+    o.items = buildUnnamed2001();
+    o.kind = 'foo';
+  }
+  buildCounterRRSetRoutingPolicyWrrPolicy--;
+  return o;
+}
+
+void checkRRSetRoutingPolicyWrrPolicy(api.RRSetRoutingPolicyWrrPolicy o) {
+  buildCounterRRSetRoutingPolicyWrrPolicy++;
+  if (buildCounterRRSetRoutingPolicyWrrPolicy < 3) {
+    checkUnnamed2001(o.items);
+    unittest.expect(o.kind, unittest.equals('foo'));
+  }
+  buildCounterRRSetRoutingPolicyWrrPolicy--;
+}
+
+core.List<core.String> buildUnnamed2002() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed2002(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed2003() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed2003(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem = 0;
+api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem
+    buildRRSetRoutingPolicyWrrPolicyWrrPolicyItem() {
+  var o = api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem();
+  buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem++;
+  if (buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem < 3) {
+    o.kind = 'foo';
+    o.rrdatas = buildUnnamed2002();
+    o.signatureRrdatas = buildUnnamed2003();
+    o.weight = 42.0;
+  }
+  buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem--;
+  return o;
+}
+
+void checkRRSetRoutingPolicyWrrPolicyWrrPolicyItem(
+    api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem o) {
+  buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem++;
+  if (buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem < 3) {
+    unittest.expect(o.kind, unittest.equals('foo'));
+    checkUnnamed2002(o.rrdatas);
+    checkUnnamed2003(o.signatureRrdatas);
+    unittest.expect(o.weight, unittest.equals(42.0));
+  }
+  buildCounterRRSetRoutingPolicyWrrPolicyWrrPolicyItem--;
+}
+
+core.List<core.String> buildUnnamed2004() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed2004(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed2005() {
+  var o = <core.String>[];
+  o.add('foo');
+  o.add('foo');
+  return o;
+}
+
+void checkUnnamed2005(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1046,8 +1322,9 @@ api.ResourceRecordSet buildResourceRecordSet() {
   if (buildCounterResourceRecordSet < 3) {
     o.kind = 'foo';
     o.name = 'foo';
-    o.rrdatas = buildUnnamed1803();
-    o.signatureRrdatas = buildUnnamed1804();
+    o.routingPolicy = buildRRSetRoutingPolicy();
+    o.rrdatas = buildUnnamed2004();
+    o.signatureRrdatas = buildUnnamed2005();
     o.ttl = 42;
     o.type = 'foo';
   }
@@ -1060,22 +1337,23 @@ void checkResourceRecordSet(api.ResourceRecordSet o) {
   if (buildCounterResourceRecordSet < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1803(o.rrdatas);
-    checkUnnamed1804(o.signatureRrdatas);
+    checkRRSetRoutingPolicy(o.routingPolicy as api.RRSetRoutingPolicy);
+    checkUnnamed2004(o.rrdatas);
+    checkUnnamed2005(o.signatureRrdatas);
     unittest.expect(o.ttl, unittest.equals(42));
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterResourceRecordSet--;
 }
 
-core.List<api.ResourceRecordSet> buildUnnamed1805() {
+core.List<api.ResourceRecordSet> buildUnnamed2006() {
   var o = <api.ResourceRecordSet>[];
   o.add(buildResourceRecordSet());
   o.add(buildResourceRecordSet());
   return o;
 }
 
-void checkUnnamed1805(core.List<api.ResourceRecordSet> o) {
+void checkUnnamed2006(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResourceRecordSet(o[0] as api.ResourceRecordSet);
   checkResourceRecordSet(o[1] as api.ResourceRecordSet);
@@ -1089,7 +1367,7 @@ api.ResourceRecordSetsListResponse buildResourceRecordSetsListResponse() {
     o.header = buildResponseHeader();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.rrsets = buildUnnamed1805();
+    o.rrsets = buildUnnamed2006();
   }
   buildCounterResourceRecordSetsListResponse--;
   return o;
@@ -1101,7 +1379,7 @@ void checkResourceRecordSetsListResponse(api.ResourceRecordSetsListResponse o) {
     checkResponseHeader(o.header as api.ResponseHeader);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed1805(o.rrsets);
+    checkUnnamed2006(o.rrsets);
   }
   buildCounterResourceRecordSetsListResponse--;
 }
@@ -1262,6 +1540,25 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ManagedZoneServiceDirectoryConfig', () {
+    unittest.test('to-json--from-json', () {
+      var o = buildManagedZoneServiceDirectoryConfig();
+      var od = api.ManagedZoneServiceDirectoryConfig.fromJson(o.toJson());
+      checkManagedZoneServiceDirectoryConfig(
+          od as api.ManagedZoneServiceDirectoryConfig);
+    });
+  });
+
+  unittest.group('obj-schema-ManagedZoneServiceDirectoryConfigNamespace', () {
+    unittest.test('to-json--from-json', () {
+      var o = buildManagedZoneServiceDirectoryConfigNamespace();
+      var od =
+          api.ManagedZoneServiceDirectoryConfigNamespace.fromJson(o.toJson());
+      checkManagedZoneServiceDirectoryConfigNamespace(
+          od as api.ManagedZoneServiceDirectoryConfigNamespace);
+    });
+  });
+
   unittest.group('obj-schema-ManagedZonesListResponse', () {
     unittest.test('to-json--from-json', () {
       var o = buildManagedZonesListResponse();
@@ -1367,6 +1664,50 @@ void main() {
       var o = buildQuota();
       var od = api.Quota.fromJson(o.toJson());
       checkQuota(od as api.Quota);
+    });
+  });
+
+  unittest.group('obj-schema-RRSetRoutingPolicy', () {
+    unittest.test('to-json--from-json', () {
+      var o = buildRRSetRoutingPolicy();
+      var od = api.RRSetRoutingPolicy.fromJson(o.toJson());
+      checkRRSetRoutingPolicy(od as api.RRSetRoutingPolicy);
+    });
+  });
+
+  unittest.group('obj-schema-RRSetRoutingPolicyGeoPolicy', () {
+    unittest.test('to-json--from-json', () {
+      var o = buildRRSetRoutingPolicyGeoPolicy();
+      var od = api.RRSetRoutingPolicyGeoPolicy.fromJson(o.toJson());
+      checkRRSetRoutingPolicyGeoPolicy(od as api.RRSetRoutingPolicyGeoPolicy);
+    });
+  });
+
+  unittest.group('obj-schema-RRSetRoutingPolicyGeoPolicyGeoPolicyItem', () {
+    unittest.test('to-json--from-json', () {
+      var o = buildRRSetRoutingPolicyGeoPolicyGeoPolicyItem();
+      var od =
+          api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem.fromJson(o.toJson());
+      checkRRSetRoutingPolicyGeoPolicyGeoPolicyItem(
+          od as api.RRSetRoutingPolicyGeoPolicyGeoPolicyItem);
+    });
+  });
+
+  unittest.group('obj-schema-RRSetRoutingPolicyWrrPolicy', () {
+    unittest.test('to-json--from-json', () {
+      var o = buildRRSetRoutingPolicyWrrPolicy();
+      var od = api.RRSetRoutingPolicyWrrPolicy.fromJson(o.toJson());
+      checkRRSetRoutingPolicyWrrPolicy(od as api.RRSetRoutingPolicyWrrPolicy);
+    });
+  });
+
+  unittest.group('obj-schema-RRSetRoutingPolicyWrrPolicyWrrPolicyItem', () {
+    unittest.test('to-json--from-json', () {
+      var o = buildRRSetRoutingPolicyWrrPolicyWrrPolicyItem();
+      var od =
+          api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem.fromJson(o.toJson());
+      checkRRSetRoutingPolicyWrrPolicyWrrPolicyItem(
+          od as api.RRSetRoutingPolicyWrrPolicyWrrPolicyItem);
     });
   });
 

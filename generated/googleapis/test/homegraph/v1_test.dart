@@ -67,7 +67,7 @@ void checkAgentOtherDeviceId(api.AgentOtherDeviceId o) {
   buildCounterAgentOtherDeviceId--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed1162() {
+core.Map<core.String, core.Object> buildUnnamed1299() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -82,7 +82,7 @@ core.Map<core.String, core.Object> buildUnnamed1162() {
   return o;
 }
 
-void checkUnnamed1162(core.Map<core.String, core.Object> o) {
+void checkUnnamed1299(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -96,7 +96,7 @@ void checkUnnamed1162(core.Map<core.String, core.Object> o) {
   unittest.expect(casted2['string'], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object> buildUnnamed1163() {
+core.Map<core.String, core.Object> buildUnnamed1300() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -111,7 +111,7 @@ core.Map<core.String, core.Object> buildUnnamed1163() {
   return o;
 }
 
-void checkUnnamed1163(core.Map<core.String, core.Object> o) {
+void checkUnnamed1300(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -125,27 +125,40 @@ void checkUnnamed1163(core.Map<core.String, core.Object> o) {
   unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
-core.List<api.AgentOtherDeviceId> buildUnnamed1164() {
+core.List<api.NonLocalTrait> buildUnnamed1301() {
+  var o = <api.NonLocalTrait>[];
+  o.add(buildNonLocalTrait());
+  o.add(buildNonLocalTrait());
+  return o;
+}
+
+void checkUnnamed1301(core.List<api.NonLocalTrait> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkNonLocalTrait(o[0] as api.NonLocalTrait);
+  checkNonLocalTrait(o[1] as api.NonLocalTrait);
+}
+
+core.List<api.AgentOtherDeviceId> buildUnnamed1302() {
   var o = <api.AgentOtherDeviceId>[];
   o.add(buildAgentOtherDeviceId());
   o.add(buildAgentOtherDeviceId());
   return o;
 }
 
-void checkUnnamed1164(core.List<api.AgentOtherDeviceId> o) {
+void checkUnnamed1302(core.List<api.AgentOtherDeviceId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAgentOtherDeviceId(o[0] as api.AgentOtherDeviceId);
   checkAgentOtherDeviceId(o[1] as api.AgentOtherDeviceId);
 }
 
-core.List<core.String> buildUnnamed1165() {
+core.List<core.String> buildUnnamed1303() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1165(core.List<core.String> o) {
+void checkUnnamed1303(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -156,16 +169,17 @@ api.Device buildDevice() {
   var o = api.Device();
   buildCounterDevice++;
   if (buildCounterDevice < 3) {
-    o.attributes = buildUnnamed1162();
-    o.customData = buildUnnamed1163();
+    o.attributes = buildUnnamed1299();
+    o.customData = buildUnnamed1300();
     o.deviceInfo = buildDeviceInfo();
     o.id = 'foo';
     o.name = buildDeviceNames();
+    o.nonLocalTraits = buildUnnamed1301();
     o.notificationSupportedByAgent = true;
-    o.otherDeviceIds = buildUnnamed1164();
+    o.otherDeviceIds = buildUnnamed1302();
     o.roomHint = 'foo';
     o.structureHint = 'foo';
-    o.traits = buildUnnamed1165();
+    o.traits = buildUnnamed1303();
     o.type = 'foo';
     o.willReportState = true;
   }
@@ -176,16 +190,17 @@ api.Device buildDevice() {
 void checkDevice(api.Device o) {
   buildCounterDevice++;
   if (buildCounterDevice < 3) {
-    checkUnnamed1162(o.attributes);
-    checkUnnamed1163(o.customData);
+    checkUnnamed1299(o.attributes);
+    checkUnnamed1300(o.customData);
     checkDeviceInfo(o.deviceInfo as api.DeviceInfo);
     unittest.expect(o.id, unittest.equals('foo'));
     checkDeviceNames(o.name as api.DeviceNames);
+    checkUnnamed1301(o.nonLocalTraits);
     unittest.expect(o.notificationSupportedByAgent, unittest.isTrue);
-    checkUnnamed1164(o.otherDeviceIds);
+    checkUnnamed1302(o.otherDeviceIds);
     unittest.expect(o.roomHint, unittest.equals('foo'));
     unittest.expect(o.structureHint, unittest.equals('foo'));
-    checkUnnamed1165(o.traits);
+    checkUnnamed1303(o.traits);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.willReportState, unittest.isTrue);
   }
@@ -217,27 +232,27 @@ void checkDeviceInfo(api.DeviceInfo o) {
   buildCounterDeviceInfo--;
 }
 
-core.List<core.String> buildUnnamed1166() {
+core.List<core.String> buildUnnamed1304() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1166(core.List<core.String> o) {
+void checkUnnamed1304(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed1167() {
+core.List<core.String> buildUnnamed1305() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed1167(core.List<core.String> o) {
+void checkUnnamed1305(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -248,9 +263,9 @@ api.DeviceNames buildDeviceNames() {
   var o = api.DeviceNames();
   buildCounterDeviceNames++;
   if (buildCounterDeviceNames < 3) {
-    o.defaultNames = buildUnnamed1166();
+    o.defaultNames = buildUnnamed1304();
     o.name = 'foo';
-    o.nicknames = buildUnnamed1167();
+    o.nicknames = buildUnnamed1305();
   }
   buildCounterDeviceNames--;
   return o;
@@ -259,9 +274,9 @@ api.DeviceNames buildDeviceNames() {
 void checkDeviceNames(api.DeviceNames o) {
   buildCounterDeviceNames++;
   if (buildCounterDeviceNames < 3) {
-    checkUnnamed1166(o.defaultNames);
+    checkUnnamed1304(o.defaultNames);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed1167(o.nicknames);
+    checkUnnamed1305(o.nicknames);
   }
   buildCounterDeviceNames--;
 }
@@ -281,14 +296,33 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
-core.List<api.QueryRequestInput> buildUnnamed1168() {
+core.int buildCounterNonLocalTrait = 0;
+api.NonLocalTrait buildNonLocalTrait() {
+  var o = api.NonLocalTrait();
+  buildCounterNonLocalTrait++;
+  if (buildCounterNonLocalTrait < 3) {
+    o.trait = 'foo';
+  }
+  buildCounterNonLocalTrait--;
+  return o;
+}
+
+void checkNonLocalTrait(api.NonLocalTrait o) {
+  buildCounterNonLocalTrait++;
+  if (buildCounterNonLocalTrait < 3) {
+    unittest.expect(o.trait, unittest.equals('foo'));
+  }
+  buildCounterNonLocalTrait--;
+}
+
+core.List<api.QueryRequestInput> buildUnnamed1306() {
   var o = <api.QueryRequestInput>[];
   o.add(buildQueryRequestInput());
   o.add(buildQueryRequestInput());
   return o;
 }
 
-void checkUnnamed1168(core.List<api.QueryRequestInput> o) {
+void checkUnnamed1306(core.List<api.QueryRequestInput> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkQueryRequestInput(o[0] as api.QueryRequestInput);
   checkQueryRequestInput(o[1] as api.QueryRequestInput);
@@ -300,7 +334,7 @@ api.QueryRequest buildQueryRequest() {
   buildCounterQueryRequest++;
   if (buildCounterQueryRequest < 3) {
     o.agentUserId = 'foo';
-    o.inputs = buildUnnamed1168();
+    o.inputs = buildUnnamed1306();
     o.requestId = 'foo';
   }
   buildCounterQueryRequest--;
@@ -311,7 +345,7 @@ void checkQueryRequest(api.QueryRequest o) {
   buildCounterQueryRequest++;
   if (buildCounterQueryRequest < 3) {
     unittest.expect(o.agentUserId, unittest.equals('foo'));
-    checkUnnamed1168(o.inputs);
+    checkUnnamed1306(o.inputs);
     unittest.expect(o.requestId, unittest.equals('foo'));
   }
   buildCounterQueryRequest--;
@@ -336,14 +370,14 @@ void checkQueryRequestInput(api.QueryRequestInput o) {
   buildCounterQueryRequestInput--;
 }
 
-core.List<api.AgentDeviceId> buildUnnamed1169() {
+core.List<api.AgentDeviceId> buildUnnamed1307() {
   var o = <api.AgentDeviceId>[];
   o.add(buildAgentDeviceId());
   o.add(buildAgentDeviceId());
   return o;
 }
 
-void checkUnnamed1169(core.List<api.AgentDeviceId> o) {
+void checkUnnamed1307(core.List<api.AgentDeviceId> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAgentDeviceId(o[0] as api.AgentDeviceId);
   checkAgentDeviceId(o[1] as api.AgentDeviceId);
@@ -354,7 +388,7 @@ api.QueryRequestPayload buildQueryRequestPayload() {
   var o = api.QueryRequestPayload();
   buildCounterQueryRequestPayload++;
   if (buildCounterQueryRequestPayload < 3) {
-    o.devices = buildUnnamed1169();
+    o.devices = buildUnnamed1307();
   }
   buildCounterQueryRequestPayload--;
   return o;
@@ -363,7 +397,7 @@ api.QueryRequestPayload buildQueryRequestPayload() {
 void checkQueryRequestPayload(api.QueryRequestPayload o) {
   buildCounterQueryRequestPayload++;
   if (buildCounterQueryRequestPayload < 3) {
-    checkUnnamed1169(o.devices);
+    checkUnnamed1307(o.devices);
   }
   buildCounterQueryRequestPayload--;
 }
@@ -389,7 +423,7 @@ void checkQueryResponse(api.QueryResponse o) {
   buildCounterQueryResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed1170() {
+core.Map<core.String, core.Object> buildUnnamed1308() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -404,7 +438,7 @@ core.Map<core.String, core.Object> buildUnnamed1170() {
   return o;
 }
 
-void checkUnnamed1170(core.Map<core.String, core.Object> o) {
+void checkUnnamed1308(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -418,18 +452,18 @@ void checkUnnamed1170(core.Map<core.String, core.Object> o) {
   unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Map<core.String, core.Object>> buildUnnamed1171() {
+core.Map<core.String, core.Map<core.String, core.Object>> buildUnnamed1309() {
   var o = <core.String, core.Map<core.String, core.Object>>{};
-  o['x'] = buildUnnamed1170();
-  o['y'] = buildUnnamed1170();
+  o['x'] = buildUnnamed1308();
+  o['y'] = buildUnnamed1308();
   return o;
 }
 
-void checkUnnamed1171(
+void checkUnnamed1309(
     core.Map<core.String, core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed1170(o['x']);
-  checkUnnamed1170(o['y']);
+  checkUnnamed1308(o['x']);
+  checkUnnamed1308(o['y']);
 }
 
 core.int buildCounterQueryResponsePayload = 0;
@@ -437,7 +471,7 @@ api.QueryResponsePayload buildQueryResponsePayload() {
   var o = api.QueryResponsePayload();
   buildCounterQueryResponsePayload++;
   if (buildCounterQueryResponsePayload < 3) {
-    o.devices = buildUnnamed1171();
+    o.devices = buildUnnamed1309();
   }
   buildCounterQueryResponsePayload--;
   return o;
@@ -446,12 +480,12 @@ api.QueryResponsePayload buildQueryResponsePayload() {
 void checkQueryResponsePayload(api.QueryResponsePayload o) {
   buildCounterQueryResponsePayload++;
   if (buildCounterQueryResponsePayload < 3) {
-    checkUnnamed1171(o.devices);
+    checkUnnamed1309(o.devices);
   }
   buildCounterQueryResponsePayload--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed1172() {
+core.Map<core.String, core.Object> buildUnnamed1310() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -466,7 +500,7 @@ core.Map<core.String, core.Object> buildUnnamed1172() {
   return o;
 }
 
-void checkUnnamed1172(core.Map<core.String, core.Object> o) {
+void checkUnnamed1310(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -480,7 +514,7 @@ void checkUnnamed1172(core.Map<core.String, core.Object> o) {
   unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object> buildUnnamed1173() {
+core.Map<core.String, core.Object> buildUnnamed1311() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -495,7 +529,7 @@ core.Map<core.String, core.Object> buildUnnamed1173() {
   return o;
 }
 
-void checkUnnamed1173(core.Map<core.String, core.Object> o) {
+void checkUnnamed1311(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -514,8 +548,8 @@ api.ReportStateAndNotificationDevice buildReportStateAndNotificationDevice() {
   var o = api.ReportStateAndNotificationDevice();
   buildCounterReportStateAndNotificationDevice++;
   if (buildCounterReportStateAndNotificationDevice < 3) {
-    o.notifications = buildUnnamed1172();
-    o.states = buildUnnamed1173();
+    o.notifications = buildUnnamed1310();
+    o.states = buildUnnamed1311();
   }
   buildCounterReportStateAndNotificationDevice--;
   return o;
@@ -525,8 +559,8 @@ void checkReportStateAndNotificationDevice(
     api.ReportStateAndNotificationDevice o) {
   buildCounterReportStateAndNotificationDevice++;
   if (buildCounterReportStateAndNotificationDevice < 3) {
-    checkUnnamed1172(o.notifications);
-    checkUnnamed1173(o.states);
+    checkUnnamed1310(o.notifications);
+    checkUnnamed1311(o.states);
   }
   buildCounterReportStateAndNotificationDevice--;
 }
@@ -679,14 +713,14 @@ void checkSyncResponse(api.SyncResponse o) {
   buildCounterSyncResponse--;
 }
 
-core.List<api.Device> buildUnnamed1174() {
+core.List<api.Device> buildUnnamed1312() {
   var o = <api.Device>[];
   o.add(buildDevice());
   o.add(buildDevice());
   return o;
 }
 
-void checkUnnamed1174(core.List<api.Device> o) {
+void checkUnnamed1312(core.List<api.Device> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDevice(o[0] as api.Device);
   checkDevice(o[1] as api.Device);
@@ -698,7 +732,7 @@ api.SyncResponsePayload buildSyncResponsePayload() {
   buildCounterSyncResponsePayload++;
   if (buildCounterSyncResponsePayload < 3) {
     o.agentUserId = 'foo';
-    o.devices = buildUnnamed1174();
+    o.devices = buildUnnamed1312();
   }
   buildCounterSyncResponsePayload--;
   return o;
@@ -708,7 +742,7 @@ void checkSyncResponsePayload(api.SyncResponsePayload o) {
   buildCounterSyncResponsePayload++;
   if (buildCounterSyncResponsePayload < 3) {
     unittest.expect(o.agentUserId, unittest.equals('foo'));
-    checkUnnamed1174(o.devices);
+    checkUnnamed1312(o.devices);
   }
   buildCounterSyncResponsePayload--;
 }
@@ -759,6 +793,14 @@ void main() {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
+    });
+  });
+
+  unittest.group('obj-schema-NonLocalTrait', () {
+    unittest.test('to-json--from-json', () {
+      var o = buildNonLocalTrait();
+      var od = api.NonLocalTrait.fromJson(o.toJson());
+      checkNonLocalTrait(od as api.NonLocalTrait);
     });
   });
 

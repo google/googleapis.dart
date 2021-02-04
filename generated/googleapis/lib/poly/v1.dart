@@ -17,11 +17,8 @@
 
 /// Poly API - v1
 ///
-/// The Poly API provides read access to assets hosted on <a
-/// href="https://poly.google.com">poly.google.com</a> to all, and upload access
-/// to <a href="https://poly.google.com">poly.google.com</a> for whitelisted
-/// accounts.
-///
+/// The Poly API provides read access to assets hosted on poly.google.com to
+/// all, and upload access to poly.google.com for whitelisted accounts.
 ///
 /// For more information, see <https://developers.google.com/poly/>
 ///
@@ -44,10 +41,8 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// The Poly API provides read access to assets hosted on <a
-/// href="https://poly.google.com">poly.google.com</a> to all, and upload access
-/// to <a href="https://poly.google.com">poly.google.com</a> for whitelisted
-/// accounts.
+/// The Poly API provides read access to assets hosted on poly.google.com to
+/// all, and upload access to poly.google.com for whitelisted accounts.
 class PolyServiceApi {
   final commons.ApiRequester _requester;
 
@@ -67,9 +62,9 @@ class AssetsResource {
   AssetsResource(commons.ApiRequester client) : _requester = client;
 
   /// Returns detailed information about an asset given its name.
-  /// PRIVATE assets are returned only if
-  ///  the currently authenticated user (via OAuth token) is the author of the
-  ///  asset.
+  ///
+  /// PRIVATE assets are returned only if the currently authenticated user (via
+  /// OAuth token) is the author of the asset.
   ///
   /// Request parameters:
   ///
@@ -122,53 +117,44 @@ class AssetsResource {
 
   /// Lists all public, remixable assets.
   ///
-  /// These are assets with an access level
-  /// of PUBLIC and published under the
+  /// These are assets with an access level of PUBLIC and published under the
   /// CC-By license.
   ///
   /// Request parameters:
   ///
   /// [category] - Filter assets based on the specified category. Supported
-  /// values are:
-  /// `animals`, `architecture`, `art`, `food`, `nature`, `objects`, `people`,
-  /// `scenes`, `technology`, and `transport`.
+  /// values are: `animals`, `architecture`, `art`, `food`, `nature`, `objects`,
+  /// `people`, `scenes`, `technology`, and `transport`.
   ///
   /// [curated] - Return only assets that have been curated by the Poly team.
   ///
   /// [format] - Return only assets with the matching format. Acceptable values
-  /// are:
-  /// `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`.
+  /// are: `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`.
   ///
   /// [keywords] - One or more search terms to be matched against all text that
-  /// Poly has
-  /// indexed for assets, which includes display_name,
-  /// description, and tags. Multiple keywords should be
-  /// separated by spaces.
+  /// Poly has indexed for assets, which includes display_name, description, and
+  /// tags. Multiple keywords should be separated by spaces.
   ///
   /// [maxComplexity] - Returns assets that are of the specified complexity or
-  /// less. Defaults to
-  /// COMPLEX. For example, a request for
-  /// MEDIUM assets also includes
-  /// SIMPLE assets.
+  /// less. Defaults to COMPLEX. For example, a request for MEDIUM assets also
+  /// includes SIMPLE assets.
   /// Possible string values are:
-  /// - "COMPLEXITY_UNSPECIFIED" : A COMPLEXITY_UNSPECIFIED.
-  /// - "COMPLEX" : A COMPLEX.
-  /// - "MEDIUM" : A MEDIUM.
-  /// - "SIMPLE" : A SIMPLE.
+  /// - "COMPLEXITY_UNSPECIFIED" : No complexity specified. This is equivalent
+  /// to omitting the filter.
+  /// - "COMPLEX" : Highly-complex.
+  /// - "MEDIUM" : Averagely-complex.
+  /// - "SIMPLE" : Simple.
   ///
   /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
-  /// `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets
-  /// based on a combination of popularity and other features.
+  /// `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets based
+  /// on a combination of popularity and other features.
   ///
   /// [pageSize] - The maximum number of assets to be returned. This value must
-  /// be between `1`
-  /// and `100`. Defaults to `20`.
+  /// be between `1` and `100`. Defaults to `20`.
   ///
   /// [pageToken] - Specifies a continuation token from a previous search whose
-  /// results were
-  /// split into multiple pages. To get the next page, submit the same request
-  /// specifying the value from
-  /// next_page_token.
+  /// results were split into multiple pages. To get the next page, submit the
+  /// same request specifying the value from next_page_token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -261,47 +247,38 @@ class UsersAssetsResource {
 
   /// Lists assets authored by the given user.
   ///
-  /// Only the value 'me', representing
-  /// the currently-authenticated user, is supported. May include assets with an
-  /// access level of PRIVATE or
-  /// UNLISTED and assets which are
-  /// All Rights Reserved for the
-  /// currently-authenticated user.
+  /// Only the value 'me', representing the currently-authenticated user, is
+  /// supported. May include assets with an access level of PRIVATE or UNLISTED
+  /// and assets which are All Rights Reserved for the currently-authenticated
+  /// user.
   ///
   /// Request parameters:
   ///
   /// [name] - A valid user id. Currently, only the special value 'me',
-  /// representing the
-  /// currently-authenticated user is supported. To use 'me', you must pass
-  /// an OAuth token with the request.
+  /// representing the currently-authenticated user is supported. To use 'me',
+  /// you must pass an OAuth token with the request.
   /// Value must have pattern `^users/\[^/\]+$`.
   ///
   /// [format] - Return only assets with the matching format. Acceptable values
-  /// are:
-  /// `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`.
+  /// are: `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`.
   ///
   /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
-  /// `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets
-  /// based on a combination of popularity and other features.
+  /// `BEST`, `NEWEST`, `OLDEST`. Defaults to `BEST`, which ranks assets based
+  /// on a combination of popularity and other features.
   ///
   /// [pageSize] - The maximum number of assets to be returned. This value must
-  /// be between `1`
-  /// and `100`. Defaults to `20`.
+  /// be between `1` and `100`. Defaults to `20`.
   ///
   /// [pageToken] - Specifies a continuation token from a previous search whose
-  /// results were
-  /// split into multiple pages. To get the next page, submit the same request
-  /// specifying the value from
-  /// next_page_token.
+  /// results were split into multiple pages. To get the next page, submit the
+  /// same request specifying the value from next_page_token.
   ///
-  /// [visibility] - The visibility of the assets to be returned.
-  /// Defaults to
-  /// VISIBILITY_UNSPECIFIED
-  /// which returns all assets.
+  /// [visibility] - The visibility of the assets to be returned. Defaults to
+  /// VISIBILITY_UNSPECIFIED which returns all assets.
   /// Possible string values are:
-  /// - "VISIBILITY_UNSPECIFIED" : A VISIBILITY_UNSPECIFIED.
-  /// - "PUBLISHED" : A PUBLISHED.
-  /// - "PRIVATE" : A PRIVATE.
+  /// - "VISIBILITY_UNSPECIFIED" : No visibility specified. Returns all assets.
+  /// - "PUBLISHED" : Returns only published assets.
+  /// - "PRIVATE" : Returns only private assets.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -376,35 +353,29 @@ class UsersLikedassetsResource {
 
   /// Lists assets that the user has liked.
   ///
-  /// Only the value 'me', representing
-  /// the currently-authenticated user, is supported. May include assets with an
-  /// access level of UNLISTED.
+  /// Only the value 'me', representing the currently-authenticated user, is
+  /// supported. May include assets with an access level of UNLISTED.
   ///
   /// Request parameters:
   ///
   /// [name] - A valid user id. Currently, only the special value 'me',
-  /// representing the
-  /// currently-authenticated user is supported. To use 'me', you must pass
-  /// an OAuth token with the request.
+  /// representing the currently-authenticated user is supported. To use 'me',
+  /// you must pass an OAuth token with the request.
   /// Value must have pattern `^users/\[^/\]+$`.
   ///
   /// [format] - Return only assets with the matching format. Acceptable values
-  /// are:
-  /// `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`.
+  /// are: `BLOCKS`, `FBX`, `GLTF`, `GLTF2`, `OBJ`, `TILT`.
   ///
   /// [orderBy] - Specifies an ordering for assets. Acceptable values are:
   /// `BEST`, `NEWEST`, `OLDEST`, 'LIKED_TIME'. Defaults to `LIKED_TIME`, which
   /// ranks assets based on how recently they were liked.
   ///
   /// [pageSize] - The maximum number of assets to be returned. This value must
-  /// be between `1`
-  /// and `100`. Defaults to `20`.
+  /// be between `1` and `100`. Defaults to `20`.
   ///
   /// [pageToken] - Specifies a continuation token from a previous search whose
-  /// results were
-  /// split into multiple pages. To get the next page, submit the same request
-  /// specifying the value from
-  /// next_page_token.
+  /// results were split into multiple pages. To get the next page, submit the
+  /// same request specifying the value from next_page_token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -471,18 +442,18 @@ class UsersLikedassetsResource {
 
 /// Represents and describes an asset in the Poly library.
 ///
-/// An asset is a 3D model
-/// or scene created using \[Tilt Brush\](//www.tiltbrush.com),
-/// \[Blocks\](//vr.google.com/blocks/), or any 3D program that produces a file
-/// that can be upload to Poly.
+/// An asset is a 3D model or scene created using \[Tilt
+/// Brush\](//www.tiltbrush.com), \[Blocks\](//vr.google.com/blocks/), or any 3D
+/// program that produces a file that can be upload to Poly.
 class Asset {
   /// The author's publicly visible name.
   ///
-  /// Use this name when giving credit to the
-  /// author. For more information, see \[Licensing\](/poly/discover/licensing).
+  /// Use this name when giving credit to the author. For more information, see
+  /// \[Licensing\](/poly/discover/licensing).
   core.String authorName;
 
   /// For published assets, the time when the asset was published.
+  ///
   /// For unpublished assets, the time when the asset was created.
   core.String createTime;
 
@@ -492,40 +463,38 @@ class Asset {
   /// The human-readable name, set by the asset's author.
   core.String displayName;
 
-  /// A list of Formats where each
-  /// format describes one representation of the asset.
+  /// A list of Formats where each format describes one representation of the
+  /// asset.
   core.List<Format> formats;
 
   /// Whether this asset has been curated by the Poly team.
   core.bool isCurated;
 
-  /// The license under which the author has made the asset available
-  /// for use, if any.
+  /// The license under which the author has made the asset available for use,
+  /// if any.
   /// Possible string values are:
   /// - "UNKNOWN" : Unknown license value.
   /// - "CREATIVE_COMMONS_BY" : Creative Commons CC-BY 3.0.
   /// https://creativecommons.org/licenses/by/3.0/
   /// - "ALL_RIGHTS_RESERVED" : Unlicensed: All Rights Reserved by the author.
-  /// Unlicensed assets are
-  /// **not** returned by List Assets.
+  /// Unlicensed assets are **not** returned by List Assets.
   core.String license;
 
   /// Application-defined opaque metadata for this asset.
   ///
-  /// This field is only
-  /// returned when querying for the signed-in user's own assets, not for public
-  /// assets. This string is limited to 1K chars. It is up to the creator of
-  /// the asset to define the format for this string (for example, JSON).
+  /// This field is only returned when querying for the signed-in user's own
+  /// assets, not for public assets. This string is limited to 1K chars. It is
+  /// up to the creator of the asset to define the format for this string (for
+  /// example, JSON).
   core.String metadata;
 
-  /// The unique identifier for the asset in the form:
-  /// `assets/{ASSET_ID}`.
+  /// The unique identifier for the asset in the form: `assets/{ASSET_ID}`.
   core.String name;
 
   /// Hints for displaying the asset.
   ///
-  /// Note that these parameters are not
-  /// immutable; the author of an asset may change them post-publication.
+  /// Note that these parameters are not immutable; the author of an asset may
+  /// change them post-publication.
   PresentationParams presentationParams;
 
   /// The remix info for the asset.
@@ -536,26 +505,21 @@ class Asset {
 
   /// The time when the asset was last modified.
   ///
-  /// For published assets, whose
-  /// contents are immutable, the update time changes only when metadata
-  /// properties, such as visibility, are updated.
+  /// For published assets, whose contents are immutable, the update time
+  /// changes only when metadata properties, such as visibility, are updated.
   core.String updateTime;
 
   /// The visibility of the asset and who can access it.
   /// Possible string values are:
   /// - "VISIBILITY_UNSPECIFIED" : Unknown (and invalid) visibility.
   /// - "PRIVATE" : Access to the asset and its underlying files and resources
-  /// is restricted to
-  /// the author.
-  /// **Authentication:** You must supply an OAuth token that corresponds to the
-  /// author's account.
+  /// is restricted to the author. **Authentication:** You must supply an OAuth
+  /// token that corresponds to the author's account.
   /// - "UNLISTED" : Access to the asset and its underlying files and resources
-  /// is available to
-  /// anyone with the asset's name. Unlisted assets are **not**
+  /// is available to anyone with the asset's name. Unlisted assets are **not**
   /// returned by List Assets.
   /// - "PUBLIC" : Access to the asset and its underlying files and resources is
-  /// available
-  /// to anyone.
+  /// available to anyone.
   core.String visibility;
 
   Asset();
@@ -665,34 +629,28 @@ class AssetImportMessage {
   /// Possible string values are:
   /// - "CODE_UNSPECIFIED" : Unknown error code.
   /// - "NO_IMPORTABLE_FILE" : The asset import did not include any file that we
-  /// can import (i.e. an OBJ
-  /// file).
+  /// can import (i.e. an OBJ file).
   /// - "EMPTY_MODEL" : When generating the preview for the import, no geometry
   /// was found.
   /// - "OBJ_PARSE_ERROR" : A problem was encountered while parsing the OBJ
-  /// file. The converter makes
-  /// a 'best effort' attempt to continue when encountering such issues. In
-  /// some cases the resulting preview model may still be acceptable. The
-  /// details can be found in the parse error message.
+  /// file. The converter makes a 'best effort' attempt to continue when
+  /// encountering such issues. In some cases the resulting preview model may
+  /// still be acceptable. The details can be found in the parse error message.
   /// - "EXPIRED" : The importer was not able to import the model before the
   /// expiration time.
   /// - "IMAGE_ERROR" : The importer encountered a problem reading an image
   /// file.
   /// - "EXTRA_FILES_WITH_ARCHIVE" : Multiple files were encountered in addition
-  /// to a ZIP archive. When
-  /// uploading an archive only one file is permitted.
+  /// to a ZIP archive. When uploading an archive only one file is permitted.
   /// - "DEFAULT_MATERIALS" : Default materials are used in the model. This
-  /// means that one or more
-  /// faces is using default materials either because no usemtl statement was
-  /// specified or because the requested material was not found due to a
-  /// missing material file or bad material name. This does not cover the case
-  /// of missing textures.
+  /// means that one or more faces is using default materials either because no
+  /// usemtl statement was specified or because the requested material was not
+  /// found due to a missing material file or bad material name. This does not
+  /// cover the case of missing textures.
   /// - "FATAL_ERROR" : The importer encountered a fatal error and was unable to
-  /// import the
-  /// model.
+  /// import the model.
   /// - "INVALID_ELEMENT_TYPE" : The import includes a file of an unsupported
-  /// element type. The file path
-  /// is specified.
+  /// element type. The file path is specified.
   core.String code;
 
   /// An optional file path.
@@ -747,20 +705,17 @@ class AssetImportMessage {
   }
 }
 
-/// Represents a file in Poly, which can be a root,
-/// resource, or thumbnail file.
+/// Represents a file in Poly, which can be a root, resource, or thumbnail file.
 class File {
   /// The MIME content-type, such as `image/png`.
-  /// For more information, see
-  /// \[MIME
+  ///
+  /// For more information, see \[MIME
   /// types\](//developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).
   core.String contentType;
 
-  /// The path of the resource file relative to the
-  /// root file.
+  /// The path of the resource file relative to the root file.
   ///
-  /// For root or thumbnail files,
-  /// this is just the filename.
+  /// For root or thumbnail files, this is just the filename.
   core.String relativePath;
 
   /// The URL where the file data can be retrieved.
@@ -795,37 +750,34 @@ class File {
   }
 }
 
-/// The same asset can be represented in different formats, for example,
-/// a \[WaveFront .obj\](//en.wikipedia.org/wiki/Wavefront_.obj_file) file with
-/// its
-/// corresponding .mtl file or a \[Khronos glTF\](//www.khronos.org/gltf) file
-/// with its corresponding .glb binary data.
+/// The same asset can be represented in different formats, for example, a
+/// \[WaveFront .obj\](//en.wikipedia.org/wiki/Wavefront_.obj_file) file with
+/// its corresponding .mtl file or a \[Khronos glTF\](//www.khronos.org/gltf)
+/// file with its corresponding .glb binary data.
 ///
-/// A format refers to a specific
-/// representation of an asset and contains all information needed to
-/// retrieve and describe this representation.
+/// A format refers to a specific representation of an asset and contains all
+/// information needed to retrieve and describe this representation.
 class Format {
   /// Complexity stats about this representation of the asset.
   FormatComplexity formatComplexity;
 
   /// A short string that identifies the format type of this representation.
+  ///
   /// Possible values are: `FBX`, `GLTF`, `GLTF2`, `OBJ`, and `TILT`.
   core.String formatType;
 
   /// A list of dependencies of the root element.
   ///
-  /// May include, but is not
-  /// limited to, materials, textures, and shader programs.
+  /// May include, but is not limited to, materials, textures, and shader
+  /// programs.
   core.List<File> resources;
 
   /// The root of the file hierarchy.
   ///
-  /// This will always be populated.
-  /// For some format_types - such as `TILT`, which are
-  /// self-contained - this is all of the data.
-  ///
-  /// Other types - such as `OBJ` - often reference other data elements.
-  /// These are contained in the resources field.
+  /// This will always be populated. For some format_types - such as `TILT`,
+  /// which are self-contained - this is all of the data. Other types - such as
+  /// `OBJ` - often reference other data elements. These are contained in the
+  /// resources field.
   File root;
 
   Format();
@@ -873,6 +825,7 @@ class FormatComplexity {
   /// A non-negative integer that represents the level of detail (LOD) of this
   /// format relative to other formats of the same asset with the same
   /// format_type.
+  ///
   /// This hint allows you to sort formats from the most-detailed (0) to
   /// least-detailed (integers greater than 0).
   core.int lodHint;
@@ -949,10 +902,8 @@ class ListAssetsResponse {
 
   /// The continuation token for retrieving the next page.
   ///
-  /// If empty,
-  /// indicates that there are no more pages. To get the next page, submit the
-  /// same request specifying this value as the
-  /// page_token.
+  /// If empty, indicates that there are no more pages. To get the next page,
+  /// submit the same request specifying this value as the page_token.
   core.String nextPageToken;
 
   /// The total number of assets in the list, without pagination.
@@ -997,10 +948,8 @@ class ListLikedAssetsResponse {
 
   /// The continuation token for retrieving the next page.
   ///
-  /// If empty,
-  /// indicates that there are no more pages. To get the next page, submit the
-  /// same request specifying this value as the
-  /// page_token.
+  /// If empty, indicates that there are no more pages. To get the next page,
+  /// submit the same request specifying this value as the page_token.
   core.String nextPageToken;
 
   /// The total number of assets in the list, without pagination.
@@ -1042,10 +991,8 @@ class ListLikedAssetsResponse {
 class ListUserAssetsResponse {
   /// The continuation token for retrieving the next page.
   ///
-  /// If empty,
-  /// indicates that there are no more pages. To get the next page, submit the
-  /// same request specifying this value as the
-  /// page_token.
+  /// If empty, indicates that there are no more pages. To get the next page,
+  /// submit the same request specifying this value as the page_token.
   core.String nextPageToken;
 
   /// The total number of assets in the list, without pagination.
@@ -1092,8 +1039,8 @@ class ObjParseError {
   /// Possible string values are:
   /// - "CODE_UNSPECIFIED" : Unknown error code.
   /// - "INCONSISTENT_VERTEX_REFS" : Vertex references are specified in an
-  /// inconsistent style for a face (e.g.
-  /// some vertices specify texture vertices but some don't).
+  /// inconsistent style for a face (e.g. some vertices specify texture vertices
+  /// but some don't).
   /// - "INVALID_COMMAND" : The command is invalid.
   /// - "INVALID_NUMBER" : A invalid number was specified.
   /// - "INVALID_VERTEX_REF" : An invalid vertex reference was specified.
@@ -1106,8 +1053,8 @@ class ObjParseError {
   /// - "TOO_MANY_DIMENSIONS" : The vertex specified too many dimensions for its
   /// usage.
   /// - "UNSUPPORTED_COMMAND" : This command is a valid OBJ command but is not
-  /// supported. This error is
-  /// only generated for the first instance of such a command.
+  /// supported. This error is only generated for the first instance of such a
+  /// command.
   /// - "UNUSED_TOKENS" : This line ended with unparsed token characters.
   /// - "VERTEX_NOT_FOUND" : The specified vertex was not found.
   /// - "NUMBER_OUT_OF_RANGE" : The specified number was too large or small for
@@ -1115,13 +1062,11 @@ class ObjParseError {
   /// - "INVALID_VALUE" : The specified parameter value was not recognized.
   /// - "INVALID_TEXTURE_OPTION" : The specified texture option is not valid.
   /// - "TOO_MANY_PROBLEMS" : The maximum number of problems to report was
-  /// reached. Parsing continues,
-  /// but further problems will be ignored.
+  /// reached. Parsing continues, but further problems will be ignored.
   /// - "MISSING_FILE_NAME" : An expected file name was not specified.
   /// - "FILE_NOT_FOUND" : The specified file was not found in the import.
   /// - "UNKNOWN_MATERIAL" : The specified material was not found in any
-  /// material definition in the
-  /// import.
+  /// material definition in the import.
   /// - "NO_MATERIAL_DEFINED" : Material parameters were specified before the
   /// first material definition.
   /// - "INVALID_SMOOTHING_GROUP" : The smoothing group is not valid.
@@ -1142,8 +1087,8 @@ class ObjParseError {
 
   /// The text of the line.
   ///
-  /// Note that this may be truncated if the line was very
-  /// long. This may not include the error if it occurs after line truncation.
+  /// Note that this may be truncated if the line was very long. This may not
+  /// include the error if it occurs after line truncation.
   core.String line;
 
   /// Line number at which the problem was found.
@@ -1200,23 +1145,20 @@ class ObjParseError {
 }
 
 /// Hints for displaying the asset, based on information available when the
-/// asset
-/// was uploaded.
+/// asset was uploaded.
 class PresentationParams {
   /// A background color which could be used for displaying the 3D asset in a
   /// 'thumbnail' or 'palette' style view.
   ///
-  /// Authors have the option to set this
-  /// background color when publishing or editing their asset.
-  ///
-  /// This is represented as a six-digit hexademical triplet specifying the
-  /// RGB components of the background color, e.g. #FF0000 for Red.
+  /// Authors have the option to set this background color when publishing or
+  /// editing their asset. This is represented as a six-digit hexademical
+  /// triplet specifying the RGB components of the background color, e.g.
+  /// #FF0000 for Red.
   core.String backgroundColor;
 
   /// The materials' diffuse/albedo color.
   ///
-  /// This does not apply to vertex colors
-  /// or texture maps.
+  /// This does not apply to vertex colors or texture maps.
   /// Possible string values are:
   /// - "UNKNOWN" : Invalid color value.
   /// - "LINEAR" : Linear color values. Default.
@@ -1224,23 +1166,19 @@ class PresentationParams {
   core.String colorSpace;
 
   /// A rotation that should be applied to the object root to make it upright.
+  ///
   /// More precisely, this quaternion transforms from "object space" (the space
   /// in which the object is defined) to "presentation space", a coordinate
-  /// system where +Y is up, +X is right, -Z is forward.
-  ///
-  /// For example, if
-  /// the object is the Eiffel Tower, in its local coordinate system the
-  /// object might be laid out such that the base of the tower is on the
-  /// YZ plane and the tip of the tower is towards positive X. In this case
-  /// this quaternion would specify a rotation (of 90 degrees about the Z
-  /// axis) such that in the presentation space the base of the tower is
-  /// aligned with the XZ plane, and the tip of the tower lies towards +Y.
-  ///
-  /// This rotation is unrelated to the object's pose in the web preview,
-  /// which is just a camera position setting and is *not* reflected in this
-  /// rotation.
-  ///
-  /// Please note: this is applicable only to the gLTF.
+  /// system where +Y is up, +X is right, -Z is forward. For example, if the
+  /// object is the Eiffel Tower, in its local coordinate system the object
+  /// might be laid out such that the base of the tower is on the YZ plane and
+  /// the tip of the tower is towards positive X. In this case this quaternion
+  /// would specify a rotation (of 90 degrees about the Z axis) such that in the
+  /// presentation space the base of the tower is aligned with the XZ plane, and
+  /// the tip of the tower lies towards +Y. This rotation is unrelated to the
+  /// object's pose in the web preview, which is just a camera position setting
+  /// and is *not* reflected in this rotation. Please note: this is applicable
+  /// only to the gLTF.
   Quaternion orientingRotation;
 
   PresentationParams();
@@ -1275,9 +1213,8 @@ class PresentationParams {
 
 /// A \[Quaternion\](//en.wikipedia.org/wiki/Quaternion).
 ///
-/// Please note: if in the
-/// response you see "w: 1" and nothing else this is the default value of
-/// \[0, 0, 0, 1\] where x,y, and z are 0.
+/// Please note: if in the response you see "w: 1" and nothing else this is the
+/// default value of \[0, 0, 0, 1\] where x,y, and z are 0.
 class Quaternion {
   /// The scalar component.
   core.double w;
@@ -1352,17 +1289,15 @@ class RemixInfo {
   }
 }
 
-/// A response message from a request to
-/// startImport.
+/// A response message from a request to startImport.
 ///
-/// This is returned in the response
-/// field of the Operation.
+/// This is returned in the response field of the Operation.
 class StartAssetImportResponse {
   /// The id of newly created asset.
   ///
-  /// If this is empty when the operation is
-  /// complete it means the import failed. Please refer to the
-  /// assetImportMessages field to understand what went wrong.
+  /// If this is empty when the operation is complete it means the import
+  /// failed. Please refer to the assetImportMessages field to understand what
+  /// went wrong.
   core.String assetId;
 
   /// The id of the asset import.
@@ -1370,8 +1305,8 @@ class StartAssetImportResponse {
 
   /// The message from the asset import.
   ///
-  /// This will contain any warnings
-  /// (or - in the case of failure - errors) that occurred during import.
+  /// This will contain any warnings (or - in the case of failure - errors) that
+  /// occurred during import.
   core.List<AssetImportMessage> assetImportMessages;
 
   /// The publish URL for the asset.

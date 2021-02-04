@@ -409,8 +409,8 @@ class CloudloadingResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Empty> deleteBook({
-    core.String volumeId,
+  async.Future<Empty> deleteBook(
+    core.String volumeId, {
     core.String $fields,
   }) {
     core.String _url;
@@ -420,9 +420,10 @@ class CloudloadingResource {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (volumeId != null) {
-      _queryParams['volumeId'] = [volumeId];
+    if (volumeId == null) {
+      throw core.ArgumentError('Parameter volumeId is required.');
     }
+    _queryParams['volumeId'] = [volumeId];
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -516,8 +517,8 @@ class DictionaryResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Metadata> listOfflineMetadata({
-    core.String cpksver,
+  async.Future<Metadata> listOfflineMetadata(
+    core.String cpksver, {
     core.String $fields,
   }) {
     core.String _url;
@@ -527,9 +528,10 @@ class DictionaryResource {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (cpksver != null) {
-      _queryParams['cpksver'] = [cpksver];
+    if (cpksver == null) {
+      throw core.ArgumentError('Parameter cpksver is required.');
     }
+    _queryParams['cpksver'] = [cpksver];
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -828,6 +830,7 @@ class LayersResource {
   /// [contentVersion] - The content version for the requested volume.
   ///
   /// [maxResults] - Maximum number of results to return
+  /// Value must be between "0" and "200".
   ///
   /// [pageToken] - The value of the nextToken from the previous page.
   ///
@@ -913,11 +916,11 @@ class LayersAnnotationDataResource {
   ///
   /// [annotationDataId] - The ID of the annotation data to retrieve.
   ///
-  /// [allowWebDefinitions] - For the dictionary layer. Whether or not to allow
-  /// web definitions.
-  ///
   /// [contentVersion] - The content version for the volume you are trying to
   /// retrieve.
+  ///
+  /// [allowWebDefinitions] - For the dictionary layer. Whether or not to allow
+  /// web definitions.
   ///
   /// [h] - The requested pixel height for any images. If height is provided
   /// width must also be provided.
@@ -945,9 +948,9 @@ class LayersAnnotationDataResource {
   async.Future<DictionaryAnnotationdata> get(
     core.String volumeId,
     core.String layerId,
-    core.String annotationDataId, {
+    core.String annotationDataId,
+    core.String contentVersion, {
     core.bool allowWebDefinitions,
-    core.String contentVersion,
     core.int h,
     core.String locale,
     core.int scale,
@@ -971,11 +974,12 @@ class LayersAnnotationDataResource {
     if (annotationDataId == null) {
       throw core.ArgumentError('Parameter annotationDataId is required.');
     }
+    if (contentVersion == null) {
+      throw core.ArgumentError('Parameter contentVersion is required.');
+    }
+    _queryParams['contentVersion'] = [contentVersion];
     if (allowWebDefinitions != null) {
       _queryParams['allowWebDefinitions'] = ['${allowWebDefinitions}'];
-    }
-    if (contentVersion != null) {
-      _queryParams['contentVersion'] = [contentVersion];
     }
     if (h != null) {
       _queryParams['h'] = ['${h}'];
@@ -1026,10 +1030,10 @@ class LayersAnnotationDataResource {
   ///
   /// [layerId] - The ID for the layer to get the annotation data.
   ///
+  /// [contentVersion] - The content version for the requested volume.
+  ///
   /// [annotationDataId] - The list of Annotation Data Ids to retrieve.
   /// Pagination is ignored if this is set.
-  ///
-  /// [contentVersion] - The content version for the requested volume.
   ///
   /// [h] - The requested pixel height for any images. If height is provided
   /// width must also be provided.
@@ -1038,6 +1042,7 @@ class LayersAnnotationDataResource {
   /// ISO-3166-1 country code. Ex: 'en_US'.
   ///
   /// [maxResults] - Maximum number of results to return
+  /// Value must be between "0" and "200".
   ///
   /// [pageToken] - The value of the nextToken from the previous page.
   ///
@@ -1066,9 +1071,9 @@ class LayersAnnotationDataResource {
   /// this method will complete with the same error.
   async.Future<Annotationsdata> list(
     core.String volumeId,
-    core.String layerId, {
+    core.String layerId,
+    core.String contentVersion, {
     core.List<core.String> annotationDataId,
-    core.String contentVersion,
     core.int h,
     core.String locale,
     core.int maxResults,
@@ -1093,11 +1098,12 @@ class LayersAnnotationDataResource {
     if (layerId == null) {
       throw core.ArgumentError('Parameter layerId is required.');
     }
+    if (contentVersion == null) {
+      throw core.ArgumentError('Parameter contentVersion is required.');
+    }
+    _queryParams['contentVersion'] = [contentVersion];
     if (annotationDataId != null) {
       _queryParams['annotationDataId'] = annotationDataId;
-    }
-    if (contentVersion != null) {
-      _queryParams['contentVersion'] = [contentVersion];
     }
     if (h != null) {
       _queryParams['h'] = ['${h}'];
@@ -1257,6 +1263,7 @@ class LayersVolumeAnnotationsResource {
   /// ISO-3166-1 country code. Ex: 'en_US'.
   ///
   /// [maxResults] - Maximum number of results to return
+  /// Value must be between "0" and "200".
   ///
   /// [pageToken] - The value of the nextToken from the previous page.
   ///
@@ -1290,8 +1297,8 @@ class LayersVolumeAnnotationsResource {
   /// this method will complete with the same error.
   async.Future<Volumeannotations> list(
     core.String volumeId,
-    core.String layerId, {
-    core.String contentVersion,
+    core.String layerId,
+    core.String contentVersion, {
     core.String endOffset,
     core.String endPosition,
     core.String locale,
@@ -1319,9 +1326,10 @@ class LayersVolumeAnnotationsResource {
     if (layerId == null) {
       throw core.ArgumentError('Parameter layerId is required.');
     }
-    if (contentVersion != null) {
-      _queryParams['contentVersion'] = [contentVersion];
+    if (contentVersion == null) {
+      throw core.ArgumentError('Parameter contentVersion is required.');
     }
+    _queryParams['contentVersion'] = [contentVersion];
     if (endOffset != null) {
       _queryParams['endOffset'] = [endOffset];
     }
@@ -1446,12 +1454,12 @@ class MyconfigResource {
   ///
   /// [cpksver] - The device/version ID from which to release the restriction.
   ///
+  /// [volumeIds] - The volume(s) to release restrictions for.
+  ///
   /// [locale] - ISO-639-1, ISO-3166-1 codes for message localization, i.e.
   /// en_US.
   ///
   /// [source] - String to identify the originator of this request.
-  ///
-  /// [volumeIds] - The volume(s) to release restrictions for.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1463,11 +1471,11 @@ class MyconfigResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DownloadAccesses> releaseDownloadAccess({
+  async.Future<DownloadAccesses> releaseDownloadAccess(
     core.String cpksver,
+    core.List<core.String> volumeIds, {
     core.String locale,
     core.String source,
-    core.List<core.String> volumeIds,
     core.String $fields,
   }) {
     core.String _url;
@@ -1477,17 +1485,19 @@ class MyconfigResource {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (cpksver != null) {
-      _queryParams['cpksver'] = [cpksver];
+    if (cpksver == null) {
+      throw core.ArgumentError('Parameter cpksver is required.');
     }
+    _queryParams['cpksver'] = [cpksver];
+    if (volumeIds == null || volumeIds.isEmpty) {
+      throw core.ArgumentError('Parameter volumeIds is required.');
+    }
+    _queryParams['volumeIds'] = volumeIds;
     if (locale != null) {
       _queryParams['locale'] = [locale];
     }
     if (source != null) {
       _queryParams['source'] = [source];
-    }
-    if (volumeIds != null) {
-      _queryParams['volumeIds'] = volumeIds;
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1516,6 +1526,12 @@ class MyconfigResource {
   ///
   /// [cpksver] - The device/version ID from which to request the restrictions.
   ///
+  /// [nonce] - The client nonce value.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
+  /// [volumeId] - The volume to request concurrent/download restrictions for.
+  ///
   /// [licenseTypes] - The type of access license to request. If not specified,
   /// the default is BOTH.
   /// Possible string values are:
@@ -1527,12 +1543,6 @@ class MyconfigResource {
   /// [locale] - ISO-639-1, ISO-3166-1 codes for message localization, i.e.
   /// en_US.
   ///
-  /// [nonce] - The client nonce value.
-  ///
-  /// [source] - String to identify the originator of this request.
-  ///
-  /// [volumeId] - The volume to request concurrent/download restrictions for.
-  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1543,13 +1553,13 @@ class MyconfigResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<RequestAccessData> requestAccess({
+  async.Future<RequestAccessData> requestAccess(
     core.String cpksver,
-    core.String licenseTypes,
-    core.String locale,
     core.String nonce,
     core.String source,
-    core.String volumeId,
+    core.String volumeId, {
+    core.String licenseTypes,
+    core.String locale,
     core.String $fields,
   }) {
     core.String _url;
@@ -1559,23 +1569,27 @@ class MyconfigResource {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (cpksver != null) {
-      _queryParams['cpksver'] = [cpksver];
+    if (cpksver == null) {
+      throw core.ArgumentError('Parameter cpksver is required.');
     }
+    _queryParams['cpksver'] = [cpksver];
+    if (nonce == null) {
+      throw core.ArgumentError('Parameter nonce is required.');
+    }
+    _queryParams['nonce'] = [nonce];
+    if (source == null) {
+      throw core.ArgumentError('Parameter source is required.');
+    }
+    _queryParams['source'] = [source];
+    if (volumeId == null) {
+      throw core.ArgumentError('Parameter volumeId is required.');
+    }
+    _queryParams['volumeId'] = [volumeId];
     if (licenseTypes != null) {
       _queryParams['licenseTypes'] = [licenseTypes];
     }
     if (locale != null) {
       _queryParams['locale'] = [locale];
-    }
-    if (nonce != null) {
-      _queryParams['nonce'] = [nonce];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
-    }
-    if (volumeId != null) {
-      _queryParams['volumeId'] = [volumeId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -1605,6 +1619,10 @@ class MyconfigResource {
   ///
   /// [cpksver] - The device/version ID from which to release the restriction.
   ///
+  /// [nonce] - The client nonce value.
+  ///
+  /// [source] - String to identify the originator of this request.
+  ///
   /// [features] - List of features supported by the client, i.e., 'RENTALS'
   ///
   /// [includeNonComicsSeries] - Set to true to include non-comics series.
@@ -1613,12 +1631,8 @@ class MyconfigResource {
   /// [locale] - ISO-639-1, ISO-3166-1 codes for message localization, i.e.
   /// en_US.
   ///
-  /// [nonce] - The client nonce value.
-  ///
   /// [showPreorders] - Set to true to show pre-ordered books. Defaults to
   /// false.
-  ///
-  /// [source] - String to identify the originator of this request.
   ///
   /// [volumeIds] - The volume(s) to request download restrictions for.
   ///
@@ -1632,14 +1646,14 @@ class MyconfigResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Volumes> syncVolumeLicenses({
+  async.Future<Volumes> syncVolumeLicenses(
     core.String cpksver,
+    core.String nonce,
+    core.String source, {
     core.List<core.String> features,
     core.bool includeNonComicsSeries,
     core.String locale,
-    core.String nonce,
     core.bool showPreorders,
-    core.String source,
     core.List<core.String> volumeIds,
     core.String $fields,
   }) {
@@ -1650,9 +1664,18 @@ class MyconfigResource {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (cpksver != null) {
-      _queryParams['cpksver'] = [cpksver];
+    if (cpksver == null) {
+      throw core.ArgumentError('Parameter cpksver is required.');
     }
+    _queryParams['cpksver'] = [cpksver];
+    if (nonce == null) {
+      throw core.ArgumentError('Parameter nonce is required.');
+    }
+    _queryParams['nonce'] = [nonce];
+    if (source == null) {
+      throw core.ArgumentError('Parameter source is required.');
+    }
+    _queryParams['source'] = [source];
     if (features != null) {
       _queryParams['features'] = features;
     }
@@ -1662,14 +1685,8 @@ class MyconfigResource {
     if (locale != null) {
       _queryParams['locale'] = [locale];
     }
-    if (nonce != null) {
-      _queryParams['nonce'] = [nonce];
-    }
     if (showPreorders != null) {
       _queryParams['showPreorders'] = ['${showPreorders}'];
-    }
-    if (source != null) {
-      _queryParams['source'] = [source];
     }
     if (volumeIds != null) {
       _queryParams['volumeIds'] = volumeIds;
@@ -1915,6 +1932,7 @@ class MylibraryAnnotationsResource {
   /// [layerIds] - The layer ID(s) to limit annotation by.
   ///
   /// [maxResults] - Maximum number of results to return
+  /// Value must be between "0" and "40".
   ///
   /// [pageToken] - The value of the nextToken from the previous page.
   ///
@@ -2030,9 +2048,9 @@ class MylibraryAnnotationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AnnotationsSummary> summary({
+  async.Future<AnnotationsSummary> summary(
     core.List<core.String> layerIds,
-    core.String volumeId,
+    core.String volumeId, {
     core.String $fields,
   }) {
     core.String _url;
@@ -2042,12 +2060,14 @@ class MylibraryAnnotationsResource {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (layerIds != null) {
-      _queryParams['layerIds'] = layerIds;
+    if (layerIds == null || layerIds.isEmpty) {
+      throw core.ArgumentError('Parameter layerIds is required.');
     }
-    if (volumeId != null) {
-      _queryParams['volumeId'] = [volumeId];
+    _queryParams['layerIds'] = layerIds;
+    if (volumeId == null) {
+      throw core.ArgumentError('Parameter volumeId is required.');
     }
+    _queryParams['volumeId'] = [volumeId];
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2149,6 +2169,8 @@ class MylibraryBookshelvesResource {
   ///
   /// [shelf] - ID of bookshelf to which to add a volume.
   ///
+  /// [volumeId] - ID of volume to add.
+  ///
   /// [reason] - The reason for which the book is added to the library.
   /// Possible string values are:
   /// - "REASON_UNDEFINED"
@@ -2157,8 +2179,6 @@ class MylibraryBookshelvesResource {
   /// - "ONBOARDING" : Volumes added from the Onboarding flow.
   ///
   /// [source] - String to identify the originator of this request.
-  ///
-  /// [volumeId] - ID of volume to add.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2171,10 +2191,10 @@ class MylibraryBookshelvesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> addVolume(
-    core.String shelf, {
+    core.String shelf,
+    core.String volumeId, {
     core.String reason,
     core.String source,
-    core.String volumeId,
     core.String $fields,
   }) {
     core.String _url;
@@ -2187,14 +2207,15 @@ class MylibraryBookshelvesResource {
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
+    if (volumeId == null) {
+      throw core.ArgumentError('Parameter volumeId is required.');
+    }
+    _queryParams['volumeId'] = [volumeId];
     if (reason != null) {
       _queryParams['reason'] = [reason];
     }
     if (source != null) {
       _queryParams['source'] = [source];
-    }
-    if (volumeId != null) {
-      _queryParams['volumeId'] = [volumeId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2391,13 +2412,13 @@ class MylibraryBookshelvesResource {
   ///
   /// [shelf] - ID of bookshelf with the volume.
   ///
-  /// [source] - String to identify the originator of this request.
-  ///
   /// [volumeId] - ID of volume to move.
   ///
   /// [volumePosition] - Position on shelf to move the item (0 puts the item
   /// before the current first item, 1 puts it between the first and the second
   /// and so on.)
+  ///
+  /// [source] - String to identify the originator of this request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2410,10 +2431,10 @@ class MylibraryBookshelvesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> moveVolume(
-    core.String shelf, {
-    core.String source,
+    core.String shelf,
     core.String volumeId,
-    core.int volumePosition,
+    core.int volumePosition, {
+    core.String source,
     core.String $fields,
   }) {
     core.String _url;
@@ -2426,14 +2447,16 @@ class MylibraryBookshelvesResource {
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
+    if (volumeId == null) {
+      throw core.ArgumentError('Parameter volumeId is required.');
+    }
+    _queryParams['volumeId'] = [volumeId];
+    if (volumePosition == null) {
+      throw core.ArgumentError('Parameter volumePosition is required.');
+    }
+    _queryParams['volumePosition'] = ['${volumePosition}'];
     if (source != null) {
       _queryParams['source'] = [source];
-    }
-    if (volumeId != null) {
-      _queryParams['volumeId'] = [volumeId];
-    }
-    if (volumePosition != null) {
-      _queryParams['volumePosition'] = ['${volumePosition}'];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2463,14 +2486,14 @@ class MylibraryBookshelvesResource {
   ///
   /// [shelf] - ID of bookshelf from which to remove a volume.
   ///
+  /// [volumeId] - ID of volume to remove.
+  ///
   /// [reason] - The reason for which the book is removed from the library.
   /// Possible string values are:
   /// - "REASON_UNDEFINED"
   /// - "ONBOARDING" : Samples removed from the Onboarding flow.
   ///
   /// [source] - String to identify the originator of this request.
-  ///
-  /// [volumeId] - ID of volume to remove.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2483,10 +2506,10 @@ class MylibraryBookshelvesResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> removeVolume(
-    core.String shelf, {
+    core.String shelf,
+    core.String volumeId, {
     core.String reason,
     core.String source,
-    core.String volumeId,
     core.String $fields,
   }) {
     core.String _url;
@@ -2499,14 +2522,15 @@ class MylibraryBookshelvesResource {
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
+    if (volumeId == null) {
+      throw core.ArgumentError('Parameter volumeId is required.');
+    }
+    _queryParams['volumeId'] = [volumeId];
     if (reason != null) {
       _queryParams['reason'] = [reason];
     }
     if (source != null) {
       _queryParams['source'] = [source];
-    }
-    if (volumeId != null) {
-      _queryParams['volumeId'] = [volumeId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2714,6 +2738,11 @@ class MylibraryReadingpositionsResource {
   ///
   /// [volumeId] - ID of volume for which to update the reading position.
   ///
+  /// [position] - Position string for the new volume reading position.
+  ///
+  /// [timestamp] - RFC 3339 UTC format timestamp associated with this reading
+  /// position.
+  ///
   /// [action] - Action that caused this reading position to be set.
   /// Possible string values are:
   /// - "ACTION_UNDEFINED"
@@ -2729,12 +2758,7 @@ class MylibraryReadingpositionsResource {
   ///
   /// [deviceCookie] - Random persistent device cookie optional on set position.
   ///
-  /// [position] - Position string for the new volume reading position.
-  ///
   /// [source] - String to identify the originator of this request.
-  ///
-  /// [timestamp] - RFC 3339 UTC format timestamp associated with this reading
-  /// position.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2747,13 +2771,13 @@ class MylibraryReadingpositionsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<Empty> setPosition(
-    core.String volumeId, {
+    core.String volumeId,
+    core.String position,
+    core.String timestamp, {
     core.String action,
     core.String contentVersion,
     core.String deviceCookie,
-    core.String position,
     core.String source,
-    core.String timestamp,
     core.String $fields,
   }) {
     core.String _url;
@@ -2766,6 +2790,14 @@ class MylibraryReadingpositionsResource {
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
+    if (position == null) {
+      throw core.ArgumentError('Parameter position is required.');
+    }
+    _queryParams['position'] = [position];
+    if (timestamp == null) {
+      throw core.ArgumentError('Parameter timestamp is required.');
+    }
+    _queryParams['timestamp'] = [timestamp];
     if (action != null) {
       _queryParams['action'] = [action];
     }
@@ -2775,14 +2807,8 @@ class MylibraryReadingpositionsResource {
     if (deviceCookie != null) {
       _queryParams['deviceCookie'] = [deviceCookie];
     }
-    if (position != null) {
-      _queryParams['position'] = [position];
-    }
     if (source != null) {
       _queryParams['source'] = [source];
-    }
-    if (timestamp != null) {
-      _queryParams['timestamp'] = [timestamp];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -2816,10 +2842,10 @@ class NotificationResource {
   ///
   /// Request parameters:
   ///
+  /// [notificationId] - String to identify the notification.
+  ///
   /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
   /// Used for generating notification title and body.
-  ///
-  /// [notificationId] - String to identify the notification.
   ///
   /// [source] - String to identify the originator of this request.
   ///
@@ -2833,9 +2859,9 @@ class NotificationResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Notification> get({
+  async.Future<Notification> get(
+    core.String notificationId, {
     core.String locale,
-    core.String notificationId,
     core.String source,
     core.String $fields,
   }) {
@@ -2846,11 +2872,12 @@ class NotificationResource {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
+    if (notificationId == null) {
+      throw core.ArgumentError('Parameter notificationId is required.');
+    }
+    _queryParams['notification_id'] = [notificationId];
     if (locale != null) {
       _queryParams['locale'] = [locale];
-    }
-    if (notificationId != null) {
-      _queryParams['notification_id'] = [notificationId];
     }
     if (source != null) {
       _queryParams['source'] = [source];
@@ -3379,8 +3406,8 @@ class SeriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Series> get({
-    core.List<core.String> seriesId,
+  async.Future<Series> get(
+    core.List<core.String> seriesId, {
     core.String $fields,
   }) {
     core.String _url;
@@ -3390,9 +3417,10 @@ class SeriesResource {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (seriesId != null) {
-      _queryParams['series_id'] = seriesId;
+    if (seriesId == null || seriesId.isEmpty) {
+      throw core.ArgumentError('Parameter seriesId is required.');
     }
+    _queryParams['series_id'] = seriesId;
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3423,12 +3451,12 @@ class SeriesMembershipResource {
   ///
   /// Request parameters:
   ///
+  /// [seriesId] - String that identifies the series
+  ///
   /// [pageSize] - Number of maximum results per page to be included in the
   /// response.
   ///
   /// [pageToken] - The value of the nextToken from the previous page.
-  ///
-  /// [seriesId] - String that identifies the series
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3440,10 +3468,10 @@ class SeriesMembershipResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Seriesmembership> get({
+  async.Future<Seriesmembership> get(
+    core.String seriesId, {
     core.int pageSize,
     core.String pageToken,
-    core.String seriesId,
     core.String $fields,
   }) {
     core.String _url;
@@ -3453,14 +3481,15 @@ class SeriesMembershipResource {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
+    if (seriesId == null) {
+      throw core.ArgumentError('Parameter seriesId is required.');
+    }
+    _queryParams['series_id'] = [seriesId];
     if (pageSize != null) {
       _queryParams['page_size'] = ['${pageSize}'];
     }
     if (pageToken != null) {
       _queryParams['page_token'] = [pageToken];
-    }
-    if (seriesId != null) {
-      _queryParams['series_id'] = [seriesId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -3594,6 +3623,8 @@ class VolumesResource {
   ///
   /// Request parameters:
   ///
+  /// [q] - Full-text search query string.
+  ///
   /// [download] - Restrict to volumes by download availability.
   /// Possible string values are:
   /// - "DOWNLOAD_UNDEFINED"
@@ -3625,6 +3656,7 @@ class VolumesResource {
   /// - "not-mature" : Show books which are rated not mature.
   ///
   /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "40".
   ///
   /// [orderBy] - Sort search results.
   /// Possible string values are:
@@ -3647,8 +3679,6 @@ class VolumesResource {
   /// - "FULL" : Includes all volume data.
   /// - "LITE" : Includes a subset of fields in volumeInfo and accessInfo.
   ///
-  /// [q] - Full-text search query string.
-  ///
   /// [showPreorders] - Set to true to show books available for preorder.
   /// Defaults to false.
   ///
@@ -3666,7 +3696,8 @@ class VolumesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Volumes> list({
+  async.Future<Volumes> list(
+    core.String q, {
     core.String download,
     core.String filter,
     core.String langRestrict,
@@ -3677,7 +3708,6 @@ class VolumesResource {
     core.String partner,
     core.String printType,
     core.String projection,
-    core.String q,
     core.bool showPreorders,
     core.String source,
     core.int startIndex,
@@ -3690,6 +3720,10 @@ class VolumesResource {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
+    if (q == null) {
+      throw core.ArgumentError('Parameter q is required.');
+    }
+    _queryParams['q'] = [q];
     if (download != null) {
       _queryParams['download'] = [download];
     }
@@ -3719,9 +3753,6 @@ class VolumesResource {
     }
     if (projection != null) {
       _queryParams['projection'] = [projection];
-    }
-    if (q != null) {
-      _queryParams['q'] = [q];
     }
     if (showPreorders != null) {
       _queryParams['showPreorders'] = ['${showPreorders}'];
@@ -3864,6 +3895,7 @@ class VolumesMybooksResource {
   /// Used for generating recommendations.
   ///
   /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "100".
   ///
   /// [processingState] - The processing state of the user uploaded volumes to
   /// be returned. Applicable only if the UPLOADED is specified in the
@@ -4020,18 +4052,18 @@ class VolumesRecommendedResource {
   ///
   /// Request parameters:
   ///
-  /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
-  /// Used for generating recommendations.
-  ///
   /// [rating] - Rating to be given to the volume.
   /// Possible string values are:
   /// - "RATING_UNDEFINED"
   /// - "HAVE_IT" : Rating indicating a dismissal due to ownership.
   /// - "NOT_INTERESTED" : Rating indicating a negative dismissal of a volume.
   ///
-  /// [source] - String to identify the originator of this request.
-  ///
   /// [volumeId] - ID of the source volume.
+  ///
+  /// [locale] - ISO-639-1 language and ISO-3166-1 country code. Ex: 'en_US'.
+  /// Used for generating recommendations.
+  ///
+  /// [source] - String to identify the originator of this request.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4043,11 +4075,11 @@ class VolumesRecommendedResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<BooksVolumesRecommendedRateResponse> rate({
-    core.String locale,
+  async.Future<BooksVolumesRecommendedRateResponse> rate(
     core.String rating,
+    core.String volumeId, {
+    core.String locale,
     core.String source,
-    core.String volumeId,
     core.String $fields,
   }) {
     core.String _url;
@@ -4057,17 +4089,19 @@ class VolumesRecommendedResource {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
+    if (rating == null) {
+      throw core.ArgumentError('Parameter rating is required.');
+    }
+    _queryParams['rating'] = [rating];
+    if (volumeId == null) {
+      throw core.ArgumentError('Parameter volumeId is required.');
+    }
+    _queryParams['volumeId'] = [volumeId];
     if (locale != null) {
       _queryParams['locale'] = [locale];
     }
-    if (rating != null) {
-      _queryParams['rating'] = [rating];
-    }
     if (source != null) {
       _queryParams['source'] = [source];
-    }
-    if (volumeId != null) {
-      _queryParams['volumeId'] = [volumeId];
     }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -4105,6 +4139,7 @@ class VolumesUseruploadedResource {
   /// Used for generating recommendations.
   ///
   /// [maxResults] - Maximum number of results to return.
+  /// Value must be between "0" and "40".
   ///
   /// [processingState] - The processing state of the user uploaded volumes to
   /// be returned.

@@ -73,14 +73,14 @@ void checkAmpUrlError(api.AmpUrlError o) {
   buildCounterAmpUrlError--;
 }
 
-core.List<core.String> buildUnnamed3236() {
+core.List<core.String> buildUnnamed3591() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3236(core.List<core.String> o) {
+void checkUnnamed3591(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -92,7 +92,7 @@ api.BatchGetAmpUrlsRequest buildBatchGetAmpUrlsRequest() {
   buildCounterBatchGetAmpUrlsRequest++;
   if (buildCounterBatchGetAmpUrlsRequest < 3) {
     o.lookupStrategy = 'foo';
-    o.urls = buildUnnamed3236();
+    o.urls = buildUnnamed3591();
   }
   buildCounterBatchGetAmpUrlsRequest--;
   return o;
@@ -102,32 +102,32 @@ void checkBatchGetAmpUrlsRequest(api.BatchGetAmpUrlsRequest o) {
   buildCounterBatchGetAmpUrlsRequest++;
   if (buildCounterBatchGetAmpUrlsRequest < 3) {
     unittest.expect(o.lookupStrategy, unittest.equals('foo'));
-    checkUnnamed3236(o.urls);
+    checkUnnamed3591(o.urls);
   }
   buildCounterBatchGetAmpUrlsRequest--;
 }
 
-core.List<api.AmpUrl> buildUnnamed3237() {
+core.List<api.AmpUrl> buildUnnamed3592() {
   var o = <api.AmpUrl>[];
   o.add(buildAmpUrl());
   o.add(buildAmpUrl());
   return o;
 }
 
-void checkUnnamed3237(core.List<api.AmpUrl> o) {
+void checkUnnamed3592(core.List<api.AmpUrl> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAmpUrl(o[0] as api.AmpUrl);
   checkAmpUrl(o[1] as api.AmpUrl);
 }
 
-core.List<api.AmpUrlError> buildUnnamed3238() {
+core.List<api.AmpUrlError> buildUnnamed3593() {
   var o = <api.AmpUrlError>[];
   o.add(buildAmpUrlError());
   o.add(buildAmpUrlError());
   return o;
 }
 
-void checkUnnamed3238(core.List<api.AmpUrlError> o) {
+void checkUnnamed3593(core.List<api.AmpUrlError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAmpUrlError(o[0] as api.AmpUrlError);
   checkAmpUrlError(o[1] as api.AmpUrlError);
@@ -138,8 +138,8 @@ api.BatchGetAmpUrlsResponse buildBatchGetAmpUrlsResponse() {
   var o = api.BatchGetAmpUrlsResponse();
   buildCounterBatchGetAmpUrlsResponse++;
   if (buildCounterBatchGetAmpUrlsResponse < 3) {
-    o.ampUrls = buildUnnamed3237();
-    o.urlErrors = buildUnnamed3238();
+    o.ampUrls = buildUnnamed3592();
+    o.urlErrors = buildUnnamed3593();
   }
   buildCounterBatchGetAmpUrlsResponse--;
   return o;
@@ -148,8 +148,8 @@ api.BatchGetAmpUrlsResponse buildBatchGetAmpUrlsResponse() {
 void checkBatchGetAmpUrlsResponse(api.BatchGetAmpUrlsResponse o) {
   buildCounterBatchGetAmpUrlsResponse++;
   if (buildCounterBatchGetAmpUrlsResponse < 3) {
-    checkUnnamed3237(o.ampUrls);
-    checkUnnamed3238(o.urlErrors);
+    checkUnnamed3592(o.ampUrls);
+    checkUnnamed3593(o.urlErrors);
   }
   buildCounterBatchGetAmpUrlsResponse--;
 }

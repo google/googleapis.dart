@@ -92,6 +92,10 @@ class AccountsCustomAppsResource {
   ///
   /// [uploadMedia] - The media to upload.
   ///
+  /// [uploadOptions] - Options for the media upload. Streaming Media without
+  /// the length being known ahead of time is only supported via resumable
+  /// uploads.
+  ///
   /// Completes with a [CustomApp].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
@@ -103,6 +107,7 @@ class AccountsCustomAppsResource {
     CustomApp request,
     core.String account, {
     core.String $fields,
+    commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) {
     core.String _url;
@@ -123,10 +128,14 @@ class AccountsCustomAppsResource {
     }
 
     _uploadMedia = uploadMedia;
+    _uploadOptions = uploadOptions;
 
-    _uploadOptions = commons.UploadOptions.Default;
     if (_uploadMedia == null) {
       _url = 'playcustomapp/v1/accounts/' +
+          commons.Escaper.ecapeVariable('$account') +
+          '/customApps';
+    } else if (_uploadOptions is commons.ResumableUploadOptions) {
+      _url = '/resumable/upload/playcustomapp/v1/accounts/' +
           commons.Escaper.ecapeVariable('$account') +
           '/customApps';
     } else {

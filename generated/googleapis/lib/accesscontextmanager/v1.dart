@@ -2003,6 +2003,50 @@ class AccessPolicy {
   }
 }
 
+/// Identification for an API Operation.
+class ApiOperation {
+  /// API methods or permissions to allow.
+  ///
+  /// Method or permission must belong to the service specified by
+  /// `service_name` field. A single MethodSelector entry with `*` specified for
+  /// the `method` field will allow all methods AND permissions for the service
+  /// specified in `service_name`.
+  core.List<MethodSelector> methodSelectors;
+
+  /// The name of the API whose methods or permissions the IngressPolicy or
+  /// EgressPolicy want to allow.
+  ///
+  /// A single ApiOperation with `service_name` field set to `*` will allow all
+  /// methods AND permissions for all services.
+  core.String serviceName;
+
+  ApiOperation();
+
+  ApiOperation.fromJson(core.Map _json) {
+    if (_json.containsKey('methodSelectors')) {
+      methodSelectors = (_json['methodSelectors'] as core.List)
+          .map<MethodSelector>((value) => MethodSelector.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('serviceName')) {
+      serviceName = _json['serviceName'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (methodSelectors != null) {
+      _json['methodSelectors'] =
+          methodSelectors.map((value) => value.toJson()).toList();
+    }
+    if (serviceName != null) {
+      _json['serviceName'] = serviceName;
+    }
+    return _json;
+  }
+}
+
 /// `BasicLevel` is an `AccessLevel` using a set of recommended features.
 class BasicLevel {
   /// How the `conditions` list should be combined to determine if a request is
@@ -2349,6 +2393,157 @@ class DevicePolicy {
   }
 }
 
+/// Defines the conditions under which an EgressPolicy matches a request.
+///
+/// Conditions based on information about the source of the request. Note that
+/// if the destination of the request is protected by a ServicePerimeter, then
+/// that ServicePerimeter must have an IngressPolicy which allows access in
+/// order for this request to succeed.
+class EgressFrom {
+  /// A list of identities that are allowed access through this
+  /// \[EgressPolicy\].
+  ///
+  /// Should be in the format of email address. The email address should
+  /// represent individual user or service account only.
+  core.List<core.String> identities;
+
+  /// Specifies the type of identities that are allowed access to outside the
+  /// perimeter.
+  ///
+  /// If left unspecified, then members of `identities` field will be allowed
+  /// access.
+  /// Possible string values are:
+  /// - "IDENTITY_TYPE_UNSPECIFIED" : No blanket identity group specified.
+  /// - "ANY_IDENTITY" : Authorize access from all identities outside the
+  /// perimeter.
+  /// - "ANY_USER_ACCOUNT" : Authorize access from all human users outside the
+  /// perimeter.
+  /// - "ANY_SERVICE_ACCOUNT" : Authorize access from all service accounts
+  /// outside the perimeter.
+  core.String identityType;
+
+  EgressFrom();
+
+  EgressFrom.fromJson(core.Map _json) {
+    if (_json.containsKey('identities')) {
+      identities = (_json['identities'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('identityType')) {
+      identityType = _json['identityType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (identities != null) {
+      _json['identities'] = identities;
+    }
+    if (identityType != null) {
+      _json['identityType'] = identityType;
+    }
+    return _json;
+  }
+}
+
+/// Policy for egress from perimeter.
+///
+/// EgressPolicies match requests based on `egress_from` and `egress_to`
+/// stanzas. For an EgressPolicy to match, both `egress_from` and `egress_to`
+/// stanzas must be matched. If an EgressPolicy matches a request, the request
+/// is allowed to span the ServicePerimeter boundary. For example, an
+/// EgressPolicy can be used to allow VMs on networks within the
+/// ServicePerimeter to access a defined set of projects outside the perimeter
+/// in certain contexts (e.g. to read data from a Cloud Storage bucket or query
+/// against a BigQuery dataset). EgressPolicies are concerned with the
+/// *resources* that a request relates as well as the API services and API
+/// actions being used. They do not related to the direction of data movement.
+/// More detailed documentation for this concept can be found in the
+/// descriptions of EgressFrom and EgressTo.
+class EgressPolicy {
+  /// Defines conditions on the source of a request causing this EgressPolicy to
+  /// apply.
+  EgressFrom egressFrom;
+
+  /// Defines the conditions on the ApiOperation and destination resources that
+  /// cause this EgressPolicy to apply.
+  EgressTo egressTo;
+
+  EgressPolicy();
+
+  EgressPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('egressFrom')) {
+      egressFrom = EgressFrom.fromJson(
+          _json['egressFrom'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('egressTo')) {
+      egressTo = EgressTo.fromJson(
+          _json['egressTo'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (egressFrom != null) {
+      _json['egressFrom'] = egressFrom.toJson();
+    }
+    if (egressTo != null) {
+      _json['egressTo'] = egressTo.toJson();
+    }
+    return _json;
+  }
+}
+
+/// Defines the conditions under which an EgressPolicy matches a request.
+///
+/// Conditions are based on information about the ApiOperation intended to be
+/// performed on the `resources` specified. Note that if the destination of the
+/// request is protected by a ServicePerimeter, then that ServicePerimeter must
+/// have an IngressPolicy which allows access in order for this request to
+/// succeed.
+class EgressTo {
+  /// A list of ApiOperations that this egress rule applies to.
+  ///
+  /// A request matches if it contains an operation/service in this list.
+  core.List<ApiOperation> operations;
+
+  /// A list of resources, currently only projects in the form `projects/`, that
+  /// match this to stanza.
+  ///
+  /// A request matches if it contains a resource in this list. If `*` is
+  /// specified for resources, then this EgressTo rule will authorize access to
+  /// all resources outside the perimeter.
+  core.List<core.String> resources;
+
+  EgressTo();
+
+  EgressTo.fromJson(core.Map _json) {
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
+          .map<ApiOperation>((value) => ApiOperation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('resources')) {
+      resources = (_json['resources'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (operations != null) {
+      _json['operations'] = operations.map((value) => value.toJson()).toList();
+    }
+    if (resources != null) {
+      _json['resources'] = resources;
+    }
+    return _json;
+  }
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -2508,6 +2703,206 @@ class GcpUserAccessBinding {
     }
     if (name != null) {
       _json['name'] = name;
+    }
+    return _json;
+  }
+}
+
+/// Defines the conditions under which an IngressPolicy matches a request.
+///
+/// Conditions are based on information about the source of the request.
+class IngressFrom {
+  /// A list of identities that are allowed access through this ingress policy.
+  ///
+  /// Should be in the format of email address. The email address should
+  /// represent individual user or service account only.
+  core.List<core.String> identities;
+
+  /// Specifies the type of identities that are allowed access from outside the
+  /// perimeter.
+  ///
+  /// If left unspecified, then members of `identities` field will be allowed
+  /// access.
+  /// Possible string values are:
+  /// - "IDENTITY_TYPE_UNSPECIFIED" : No blanket identity group specified.
+  /// - "ANY_IDENTITY" : Authorize access from all identities outside the
+  /// perimeter.
+  /// - "ANY_USER_ACCOUNT" : Authorize access from all human users outside the
+  /// perimeter.
+  /// - "ANY_SERVICE_ACCOUNT" : Authorize access from all service accounts
+  /// outside the perimeter.
+  core.String identityType;
+
+  /// Sources that this IngressPolicy authorizes access from.
+  core.List<IngressSource> sources;
+
+  IngressFrom();
+
+  IngressFrom.fromJson(core.Map _json) {
+    if (_json.containsKey('identities')) {
+      identities = (_json['identities'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('identityType')) {
+      identityType = _json['identityType'] as core.String;
+    }
+    if (_json.containsKey('sources')) {
+      sources = (_json['sources'] as core.List)
+          .map<IngressSource>((value) => IngressSource.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (identities != null) {
+      _json['identities'] = identities;
+    }
+    if (identityType != null) {
+      _json['identityType'] = identityType;
+    }
+    if (sources != null) {
+      _json['sources'] = sources.map((value) => value.toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Policy for ingress into ServicePerimeter.
+///
+/// IngressPolicies match requests based on `ingress_from` and `ingress_to`
+/// stanzas. For an ingress policy to match, both the `ingress_from` and
+/// `ingress_to` stanzas must be matched. If an IngressPolicy matches a request,
+/// the request is allowed through the perimeter boundary from outside the
+/// perimeter. For example, access from the internet can be allowed either based
+/// on an AccessLevel or, for traffic hosted on Google Cloud, the project of the
+/// source network. For access from private networks, using the project of the
+/// hosting network is required. Individual ingress policies can be limited by
+/// restricting which services and/or actions they match using the `ingress_to`
+/// field.
+class IngressPolicy {
+  /// Defines the conditions on the source of a request causing this
+  /// IngressPolicy to apply.
+  IngressFrom ingressFrom;
+
+  /// Defines the conditions on the ApiOperation and request destination that
+  /// cause this IngressPolicy to apply.
+  IngressTo ingressTo;
+
+  IngressPolicy();
+
+  IngressPolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('ingressFrom')) {
+      ingressFrom = IngressFrom.fromJson(
+          _json['ingressFrom'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('ingressTo')) {
+      ingressTo = IngressTo.fromJson(
+          _json['ingressTo'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (ingressFrom != null) {
+      _json['ingressFrom'] = ingressFrom.toJson();
+    }
+    if (ingressTo != null) {
+      _json['ingressTo'] = ingressTo.toJson();
+    }
+    return _json;
+  }
+}
+
+/// The source that IngressPolicy authorizes access from.
+class IngressSource {
+  /// An AccessLevel resource name that allow resources within the
+  /// ServicePerimeters to be accessed from the internet.
+  ///
+  /// AccessLevels listed must be in the same policy as this ServicePerimeter.
+  /// Referencing a nonexistent AccessLevel will cause an error. If no
+  /// AccessLevel names are listed, resources within the perimeter can only be
+  /// accessed via Google Cloud calls with request origins within the perimeter.
+  /// Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If `*` is
+  /// specified, then all IngressSources will be allowed.
+  core.String accessLevel;
+
+  /// A Google Cloud resource that is allowed to ingress the perimeter.
+  ///
+  /// Requests from these resources will be allowed to access perimeter data.
+  /// Currently only projects are allowed. Format: `projects/{project_number}`
+  /// The project may be in any Google Cloud organization, not just the
+  /// organization that the perimeter is defined in. `*` is not allowed, the
+  /// case of allowing all Google Cloud resources only is not supported.
+  core.String resource;
+
+  IngressSource();
+
+  IngressSource.fromJson(core.Map _json) {
+    if (_json.containsKey('accessLevel')) {
+      accessLevel = _json['accessLevel'] as core.String;
+    }
+    if (_json.containsKey('resource')) {
+      resource = _json['resource'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (accessLevel != null) {
+      _json['accessLevel'] = accessLevel;
+    }
+    if (resource != null) {
+      _json['resource'] = resource;
+    }
+    return _json;
+  }
+}
+
+/// Defines the conditions under which an IngressPolicy matches a request.
+///
+/// Conditions are based on information about the ApiOperation intended to be
+/// performed on the destination of the request.
+class IngressTo {
+  /// A list of ApiOperations the sources specified in corresponding IngressFrom
+  /// are allowed to perform in this ServicePerimeter.
+  core.List<ApiOperation> operations;
+
+  /// A list of resources, currently only projects in the form `projects/`,
+  /// protected by this ServicePerimeter that are allowed to be accessed by
+  /// sources defined in the corresponding IngressFrom.
+  ///
+  /// A request matches if it contains a resource in this list. If `*` is
+  /// specified for resources, then this IngressTo rule will authorize access to
+  /// all resources inside the perimeter, provided that the request also matches
+  /// the `operations` field.
+  core.List<core.String> resources;
+
+  IngressTo();
+
+  IngressTo.fromJson(core.Map _json) {
+    if (_json.containsKey('operations')) {
+      operations = (_json['operations'] as core.List)
+          .map<ApiOperation>((value) => ApiOperation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('resources')) {
+      resources = (_json['resources'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (operations != null) {
+      _json['operations'] = operations.map((value) => value.toJson()).toList();
+    }
+    if (resources != null) {
+      _json['resources'] = resources;
     }
     return _json;
   }
@@ -2690,6 +3085,42 @@ class ListServicePerimetersResponse {
     if (servicePerimeters != null) {
       _json['servicePerimeters'] =
           servicePerimeters.map((value) => value.toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// An allowed method or permission of a service specified in ApiOperation.
+class MethodSelector {
+  /// Value for `method` should be a valid method name for the corresponding
+  /// `service_name` in ApiOperation.
+  ///
+  /// If `*` used as value for `method`, then ALL methods and permissions are
+  /// allowed.
+  core.String method;
+
+  /// Value for `permission` should be a valid Cloud IAM permission for the
+  /// corresponding `service_name` in ApiOperation.
+  core.String permission;
+
+  MethodSelector();
+
+  MethodSelector.fromJson(core.Map _json) {
+    if (_json.containsKey('method')) {
+      method = _json['method'] as core.String;
+    }
+    if (_json.containsKey('permission')) {
+      permission = _json['permission'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (method != null) {
+      _json['method'] = method;
+    }
+    if (permission != null) {
+      _json['permission'] = permission;
     }
     return _json;
   }
@@ -3147,6 +3578,20 @@ class ServicePerimeterConfig {
   /// Bridge, must be empty.
   core.List<core.String> accessLevels;
 
+  /// List of EgressPolicies to apply to the perimeter.
+  ///
+  /// A perimeter may have multiple EgressPolicies, each of which is evaluated
+  /// separately. Access is granted if any EgressPolicy grants it. Must be empty
+  /// for a perimeter bridge.
+  core.List<EgressPolicy> egressPolicies;
+
+  /// List of IngressPolicies to apply to the perimeter.
+  ///
+  /// A perimeter may have multiple IngressPolicies, each of which is evaluated
+  /// separately. Access is granted if any Ingress Policy grants it. Must be
+  /// empty for a perimeter bridge.
+  core.List<IngressPolicy> ingressPolicies;
+
   /// A list of Google Cloud resources that are inside of the service perimeter.
   ///
   /// Currently only projects are allowed. Format: `projects/{project_number}`
@@ -3171,6 +3616,18 @@ class ServicePerimeterConfig {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('egressPolicies')) {
+      egressPolicies = (_json['egressPolicies'] as core.List)
+          .map<EgressPolicy>((value) => EgressPolicy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('ingressPolicies')) {
+      ingressPolicies = (_json['ingressPolicies'] as core.List)
+          .map<IngressPolicy>((value) => IngressPolicy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -3192,6 +3649,14 @@ class ServicePerimeterConfig {
     final _json = <core.String, core.Object>{};
     if (accessLevels != null) {
       _json['accessLevels'] = accessLevels;
+    }
+    if (egressPolicies != null) {
+      _json['egressPolicies'] =
+          egressPolicies.map((value) => value.toJson()).toList();
+    }
+    if (ingressPolicies != null) {
+      _json['ingressPolicies'] =
+          ingressPolicies.map((value) => value.toJson()).toList();
     }
     if (resources != null) {
       _json['resources'] = resources;

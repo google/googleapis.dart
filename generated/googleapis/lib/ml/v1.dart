@@ -1709,6 +1709,72 @@ class ProjectsLocationsStudiesTrialsResource {
     );
   }
 
+  /// Lists the pareto-optimal trials for multi-objective study or the optimal
+  /// trials for single-objective study.
+  ///
+  /// The definition of pareto-optimal can be checked in wiki page.
+  /// https://en.wikipedia.org/wiki/Pareto_efficiency
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the study that the pareto-optimal trial
+  /// belongs to.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/studies/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudMlV1ListOptimalTrialsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudMlV1ListOptimalTrialsResponse> listOptimalTrials(
+    GoogleCloudMlV1ListOptimalTrialsRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/trials:listOptimalTrials';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudMlV1ListOptimalTrialsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
   /// Stops a trial.
   ///
   /// [request] - The metadata request object.
@@ -3666,6 +3732,7 @@ class GoogleCloudMlV1AcceleratorConfig {
   /// - "NVIDIA_TESLA_V100" : Nvidia Tesla V100 GPU.
   /// - "NVIDIA_TESLA_P4" : Nvidia Tesla P4 GPU.
   /// - "NVIDIA_TESLA_T4" : Nvidia Tesla T4 GPU.
+  /// - "NVIDIA_TESLA_A100" : Nvidia Tesla A100 GPU.
   /// - "TPU_V2" : TPU v2.
   /// - "TPU_V3" : TPU v3.
   core.String type;
@@ -3720,6 +3787,15 @@ class GoogleCloudMlV1AddTrialMeasurementRequest {
 
 /// Options for automatically scaling a model.
 class GoogleCloudMlV1AutoScaling {
+  /// The maximum number of nodes to scale this model under load.
+  ///
+  /// The actual value will depend on resource quota and availability.
+  core.int maxNodes;
+
+  /// MetricSpec contains the specifications to use to calculate the desired
+  /// nodes count.
+  core.List<GoogleCloudMlV1MetricSpec> metrics;
+
   /// The minimum number of nodes to allocate for this model.
   ///
   /// These nodes are always up, starting from the time the model is deployed.
@@ -3740,10 +3816,8 @@ class GoogleCloudMlV1AutoScaling {
   /// AutoScaling is used with a \[Compute Engine (N1) machine
   /// type\](/ml-engine/docs/machine-types-online-prediction), `min_nodes`
   /// defaults to 1. `min_nodes` must be at least 1 for use with a Compute
-  /// Engine machine type. Note that you cannot use AutoScaling if your version
-  /// uses \[GPUs\](#Version.FIELDS.accelerator_config). Instead, you must use
-  /// ManualScaling. You can set `min_nodes` when creating the model version,
-  /// and you can also update `min_nodes` for an existing version:
+  /// Engine machine type. You can set `min_nodes` when creating the model
+  /// version, and you can also update `min_nodes` for an existing version:
   /// update_body.json: { 'autoScaling': { 'minNodes': 5 } } HTTP request: PATCH
   /// https://ml.googleapis.com/v1/{name=projects / * /models / * /versions / *
   /// }?update_mask=autoScaling.minNodes -d @./update_body.json
@@ -3754,6 +3828,16 @@ class GoogleCloudMlV1AutoScaling {
   GoogleCloudMlV1AutoScaling();
 
   GoogleCloudMlV1AutoScaling.fromJson(core.Map _json) {
+    if (_json.containsKey('maxNodes')) {
+      maxNodes = _json['maxNodes'] as core.int;
+    }
+    if (_json.containsKey('metrics')) {
+      metrics = (_json['metrics'] as core.List)
+          .map<GoogleCloudMlV1MetricSpec>((value) =>
+              GoogleCloudMlV1MetricSpec.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('minNodes')) {
       minNodes = _json['minNodes'] as core.int;
     }
@@ -3761,6 +3845,12 @@ class GoogleCloudMlV1AutoScaling {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (maxNodes != null) {
+      _json['maxNodes'] = maxNodes;
+    }
+    if (metrics != null) {
+      _json['metrics'] = metrics.map((value) => value.toJson()).toList();
+    }
     if (minNodes != null) {
       _json['minNodes'] = minNodes;
     }
@@ -4083,11 +4173,14 @@ class GoogleCloudMlV1Config {
   }
 }
 
-/// ContainerPort represents a network port in a single container.
+/// Represents a network port in a single container.
+///
+/// This message is a subset of the
+/// [Kubernetes ContainerPort v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#containerport-v1-core).
 class GoogleCloudMlV1ContainerPort {
-  /// Number of port to expose on the pod's IP address.
+  /// Number of the port to expose on the container.
   ///
-  /// This must be a valid port number, 0 < x < 65536.
+  /// This must be a valid port number: 0 < PORT_NUMBER < 65536.
   core.int containerPort;
 
   GoogleCloudMlV1ContainerPort();
@@ -4107,54 +4200,133 @@ class GoogleCloudMlV1ContainerPort {
   }
 }
 
-/// Specify a custom container to deploy.
+/// Specification of a custom container for serving predictions.
 ///
-/// Our ContainerSpec is a subset of the Kubernetes Container specification.
-/// https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.10/#container-v1-core
+/// This message is a subset of the
+/// [Kubernetes Container v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
 class GoogleCloudMlV1ContainerSpec {
-  /// Arguments to the entrypoint.
+  /// Specifies arguments for the command that runs when the container starts.
   ///
-  /// The docker image's CMD is used if this is not provided. Variable
-  /// references $(VAR_NAME) are expanded using the container's environment. If
-  /// a variable cannot be resolved, the reference in the input string will be
-  /// unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
-  /// $$(VAR_NAME). Escaped references will never be expanded, regardless of
-  /// whether the variable exists or not. More info:
-  /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+  /// This overrides the container's
+  /// \[`CMD`\](https://docs.docker.com/engine/reference/builder/#cmd). Specify
+  /// this field as an array of executable and arguments, similar to a Docker
+  /// `CMD`'s "default parameters" form. If you don't specify this field but do
+  /// specify the command field, then the command from the `command` field runs
+  /// without any additional arguments. See the \[Kubernetes documentation about
+  /// how the `command` and `args` fields interact with a container's
+  /// `ENTRYPOINT` and
+  /// `CMD`\](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
+  /// If you don't specify this field and don't specify the `commmand` field,
+  /// then the container's
+  /// \[`ENTRYPOINT`\](https://docs.docker.com/engine/reference/builder/#cmd)
+  /// and `CMD` determine what runs based on their default behavior. See the
+  /// \[Docker documentation about how `CMD` and `ENTRYPOINT`
+  /// interact\](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
+  /// In this field, you can reference \[environment variables set by AI
+  /// Platform
+  /// Prediction\](/ai-platform/prediction/docs/custom-container-requirements#aip-variables)
+  /// and environment variables set in the env field. You cannot reference
+  /// environment variables set in the Docker image. In order for environment
+  /// variables to be expanded, reference them by using the following syntax: $(
+  /// VARIABLE_NAME) Note that this differs from Bash variable expansion, which
+  /// does not use parentheses. If a variable cannot be resolved, the reference
+  /// in the input string is used unchanged. To avoid variable expansion, you
+  /// can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This
+  /// field corresponds to the `args` field of the
+  /// [Kubernetes Containers v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
   ///
   /// Immutable.
   core.List<core.String> args;
 
-  /// Entrypoint array.
+  /// Specifies the command that runs when the container starts.
   ///
-  /// Not executed within a shell. The docker image's ENTRYPOINT is used if this
-  /// is not provided. Variable references $(VAR_NAME) are expanded using the
-  /// container's environment. If a variable cannot be resolved, the reference
-  /// in the input string will be unchanged. The $(VAR_NAME) syntax can be
-  /// escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never
-  /// be expanded, regardless of whether the variable exists or not. More info:
-  /// https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+  /// This overrides the container's
+  /// \[`ENTRYPOINT`\](https://docs.docker.com/engine/reference/builder/#entrypoint).
+  /// Specify this field as an array of executable and arguments, similar to a
+  /// Docker `ENTRYPOINT`'s "exec" form, not its "shell" form. If you do not
+  /// specify this field, then the container's `ENTRYPOINT` runs, in conjunction
+  /// with the args field or the container's
+  /// \[`CMD`\](https://docs.docker.com/engine/reference/builder/#cmd), if
+  /// either exists. If this field is not specified and the container does not
+  /// have an `ENTRYPOINT`, then refer to the \[Docker documentation about how
+  /// `CMD` and `ENTRYPOINT`
+  /// interact\](https://docs.docker.com/engine/reference/builder/#understand-how-cmd-and-entrypoint-interact).
+  /// If you specify this field, then you can also specify the `args` field to
+  /// provide additional arguments for this command. However, if you specify
+  /// this field, then the container's `CMD` is ignored. See the \[Kubernetes
+  /// documentation about how the `command` and `args` fields interact with a
+  /// container's `ENTRYPOINT` and
+  /// `CMD`\](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#notes).
+  /// In this field, you can reference \[environment variables set by AI
+  /// Platform
+  /// Prediction\](/ai-platform/prediction/docs/custom-container-requirements#aip-variables)
+  /// and environment variables set in the env field. You cannot reference
+  /// environment variables set in the Docker image. In order for environment
+  /// variables to be expanded, reference them by using the following syntax: $(
+  /// VARIABLE_NAME) Note that this differs from Bash variable expansion, which
+  /// does not use parentheses. If a variable cannot be resolved, the reference
+  /// in the input string is used unchanged. To avoid variable expansion, you
+  /// can escape this syntax with `$$`; for example: $$(VARIABLE_NAME) This
+  /// field corresponds to the `command` field of the
+  /// [Kubernetes Containers v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
   ///
   /// Immutable.
   core.List<core.String> command;
 
   /// List of environment variables to set in the container.
   ///
+  /// After the container starts running, code running in the container can read
+  /// these environment variables. Additionally, the command and args fields can
+  /// reference these variables. Later entries in this list can also reference
+  /// earlier entries. For example, the following example sets the variable
+  /// `VAR_2` to have the value `foo bar`: ```json [ { "name": "VAR_1", "value":
+  /// "foo" }, { "name": "VAR_2", "value": "$(VAR_1) bar" } ] ``` If you switch
+  /// the order of the variables in the example, then the expansion does not
+  /// occur. This field corresponds to the `env` field of the
+  /// [Kubernetes Containers v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
+  ///
   /// Immutable.
   core.List<GoogleCloudMlV1EnvVar> env;
 
-  /// Docker image name.
+  /// URI of the Docker image to be used as the custom container for serving
+  /// predictions.
   ///
-  /// More info: https://kubernetes.io/docs/concepts/containers/images
+  /// This URI must identify \[an image in Artifact
+  /// Registry\](/artifact-registry/docs/overview) and begin with the hostname
+  /// `{REGION}-docker.pkg.dev`, where `{REGION}` is replaced by the region that
+  /// matches AI Platform Prediction \[regional
+  /// endpoint\](/ai-platform/prediction/docs/regional-endpoints) that you are
+  /// using. For example, if you are using the `us-central1-ml.googleapis.com`
+  /// endpoint, then this URI must begin with `us-central1-docker.pkg.dev`. To
+  /// use a custom container, the \[AI Platform Google-managed service
+  /// account\](/ai-platform/prediction/docs/custom-service-account#default)
+  /// must have permission to pull (read) the Docker image at this URI. The AI
+  /// Platform Google-managed service account has the following format:
+  /// `service-{PROJECT_NUMBER}@cloud-ml.google.com.iam.gserviceaccount.com`
+  /// {PROJECT_NUMBER} is replaced by your Google Cloud project number. By
+  /// default, this service account has necessary permissions to pull an
+  /// Artifact Registry image in the same Google Cloud project where you are
+  /// using AI Platform Prediction. In this case, no configuration is necessary.
+  /// If you want to use an image from a different Google Cloud project, learn
+  /// how to \[grant the Artifact Registry Reader
+  /// (roles/artifactregistry.reader) role for a
+  /// repository\](/artifact-registry/docs/access-control#grant-repo) to your
+  /// projet's AI Platform Google-managed service account. To learn about the
+  /// requirements for the Docker image itself, read \[Custom container
+  /// requirements\](/ai-platform/prediction/docs/custom-container-requirements).
   core.String image;
 
   /// List of ports to expose from the container.
   ///
-  /// Exposing a port here gives the system additional information about the
-  /// network connections a container uses, but is primarily informational. Not
-  /// specifying a port here DOES NOT prevent that port from being exposed. Any
-  /// port which is listening on the default "0.0.0.0" address inside a
-  /// container will be accessible from the network.
+  /// AI Platform Prediction sends any prediction requests that it receives to
+  /// the first port on this list. AI Platform Prediction also sends \[liveness
+  /// and health
+  /// checks\](/ai-platform/prediction/docs/custom-container-requirements#health)
+  /// to this port. If you do not specify this field, it defaults to following
+  /// value: ```json [ { "containerPort": 8080 } ] ``` AI Platform Prediction
+  /// does not use ports other than the first one listed. This field corresponds
+  /// to the `ports` field of the
+  /// [Kubernetes Containers v1 core API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
   ///
   /// Immutable.
   core.List<GoogleCloudMlV1ContainerPort> ports;
@@ -4211,6 +4383,40 @@ class GoogleCloudMlV1ContainerSpec {
   }
 }
 
+/// Represents the config of disk options.
+class GoogleCloudMlV1DiskConfig {
+  /// Size in GB of the boot disk (default is 100GB).
+  core.int bootDiskSizeGb;
+
+  /// Type of the boot disk (default is "pd-standard").
+  ///
+  /// Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or
+  /// "pd-standard" (Persistent Disk Hard Disk Drive).
+  core.String bootDiskType;
+
+  GoogleCloudMlV1DiskConfig();
+
+  GoogleCloudMlV1DiskConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('bootDiskSizeGb')) {
+      bootDiskSizeGb = _json['bootDiskSizeGb'] as core.int;
+    }
+    if (_json.containsKey('bootDiskType')) {
+      bootDiskType = _json['bootDiskType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (bootDiskSizeGb != null) {
+      _json['bootDiskSizeGb'] = bootDiskSizeGb;
+    }
+    if (bootDiskType != null) {
+      _json['bootDiskType'] = bootDiskType;
+    }
+    return _json;
+  }
+}
+
 /// Represents a custom encryption key configuration that can be applied to a
 /// resource.
 class GoogleCloudMlV1EncryptionConfig {
@@ -4238,21 +4444,31 @@ class GoogleCloudMlV1EncryptionConfig {
   }
 }
 
-/// EnvVar represents an environment variable present in a Container.
+/// Represents an environment variable to be made available in a container.
+///
+/// This message is a subset of the
+/// [Kubernetes EnvVar v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#envvar-v1-core).
 class GoogleCloudMlV1EnvVar {
   /// Name of the environment variable.
   ///
-  /// Must be a C_IDENTIFIER.
+  /// Must be a
+  /// [valid C identifier](https://github.com/kubernetes/kubernetes/blob/v1.18.8/staging/src/k8s.io/apimachinery/pkg/util/validation/validation.go#L258)
+  /// and must not begin with the prefix `AIP_`.
   core.String name;
 
-  /// Variable references $(VAR_NAME) are expanded using the previous defined
-  /// environment variables in the container and any service environment
-  /// variables.
+  /// Value of the environment variable.
   ///
-  /// If a variable cannot be resolved, the reference in the input string will
-  /// be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie:
-  /// $$(VAR_NAME). Escaped references will never be expanded, regardless of
-  /// whether the variable exists or not. Defaults to "".
+  /// Defaults to an empty string. In this field, you can reference
+  /// \[environment variables set by AI Platform
+  /// Prediction\](/ai-platform/prediction/docs/custom-container-requirements#aip-variables)
+  /// and environment variables set earlier in the same env field as where this
+  /// message occurs. You cannot reference environment variables set in the
+  /// Docker image. In order for environment variables to be expanded, reference
+  /// them by using the following syntax: $(VARIABLE_NAME) Note that this
+  /// differs from Bash variable expansion, which does not use parentheses. If a
+  /// variable cannot be resolved, the reference in the input string is used
+  /// unchanged. To avoid variable expansion, you can escape this syntax with
+  /// `$$`; for example: $$(VARIABLE_NAME)
   core.String value;
 
   GoogleCloudMlV1EnvVar();
@@ -5013,6 +5229,49 @@ class GoogleCloudMlV1ListModelsResponse {
   }
 }
 
+/// The request message for the ListTrials service method.
+class GoogleCloudMlV1ListOptimalTrialsRequest {
+  GoogleCloudMlV1ListOptimalTrialsRequest();
+
+  GoogleCloudMlV1ListOptimalTrialsRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    return _json;
+  }
+}
+
+/// The response message for the ListOptimalTrials method.
+class GoogleCloudMlV1ListOptimalTrialsResponse {
+  /// The pareto-optimal trials for multiple objective study or the optimal
+  /// trial for single objective study.
+  ///
+  /// The definition of pareto-optimal can be checked in wiki page.
+  /// https://en.wikipedia.org/wiki/Pareto_efficiency
+  core.List<GoogleCloudMlV1Trial> trials;
+
+  GoogleCloudMlV1ListOptimalTrialsResponse();
+
+  GoogleCloudMlV1ListOptimalTrialsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('trials')) {
+      trials = (_json['trials'] as core.List)
+          .map<GoogleCloudMlV1Trial>((value) => GoogleCloudMlV1Trial.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (trials != null) {
+      _json['trials'] = trials.map((value) => value.toJson()).toList();
+    }
+    return _json;
+  }
+}
+
 class GoogleCloudMlV1ListStudiesResponse {
   /// The studies associated with the project.
   core.List<GoogleCloudMlV1Study> studies;
@@ -5208,6 +5467,44 @@ class GoogleCloudMlV1Measurement {
   }
 }
 
+/// MetricSpec contains the specifications to use to calculate the desired nodes
+/// count when autoscaling is enabled.
+class GoogleCloudMlV1MetricSpec {
+  /// metric name.
+  /// Possible string values are:
+  /// - "METRIC_NAME_UNSPECIFIED" : Unspecified MetricName.
+  /// - "CPU_USAGE" : CPU usage.
+  /// - "GPU_DUTY_CYCLE" : GPU duty cycle.
+  core.String name;
+
+  /// Target specifies the target value for the given metric; once real metric
+  /// deviates from the threshold by a certain percentage, the node count
+  /// changes.
+  core.int target;
+
+  GoogleCloudMlV1MetricSpec();
+
+  GoogleCloudMlV1MetricSpec.fromJson(core.Map _json) {
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('target')) {
+      target = _json['target'] as core.int;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (name != null) {
+      _json['name'] = name;
+    }
+    if (target != null) {
+      _json['target'] = target;
+    }
+    return _json;
+  }
+}
+
 /// Represents a machine learning solution.
 ///
 /// A model can have multiple versions, each of which is a deployed, trained
@@ -5261,11 +5558,11 @@ class GoogleCloudMlV1Model {
   core.String name;
 
   /// If true, online prediction nodes send `stderr` and `stdout` streams to
-  /// Stackdriver Logging.
+  /// Cloud Logging.
   ///
   /// These can be more verbose than the standard access logs (see
   /// `onlinePredictionLogging`) and can incur higher cost. However, they are
-  /// helpful for debugging. Note that \[Stackdriver logs may incur a
+  /// helpful for debugging. Note that \[logs may incur a
   /// cost\](/stackdriver/pricing), especially if your project receives
   /// prediction requests at a high QPS. Estimate your costs before enabling
   /// this option. Default is false.
@@ -5273,13 +5570,13 @@ class GoogleCloudMlV1Model {
   /// Optional.
   core.bool onlinePredictionConsoleLogging;
 
-  /// If true, online prediction access logs are sent to StackDriver Logging.
+  /// If true, online prediction access logs are sent to Cloud Logging.
   ///
   /// These logs are like standard server access logs, containing information
-  /// like timestamp and latency for each request. Note that \[Stackdriver logs
-  /// may incur a cost\](/stackdriver/pricing), especially if your project
-  /// receives prediction requests at a high queries per second rate (QPS).
-  /// Estimate your costs before enabling this option. Default is false.
+  /// like timestamp and latency for each request. Note that \[logs may incur a
+  /// cost\](/stackdriver/pricing), especially if your project receives
+  /// prediction requests at a high queries per second rate (QPS). Estimate your
+  /// costs before enabling this option. Default is false.
   ///
   /// Optional.
   core.bool onlinePredictionLogging;
@@ -5900,6 +6197,9 @@ class GoogleCloudMlV1ReplicaConfig {
   /// the same time.
   core.List<core.String> containerCommand;
 
+  /// Represents the configuration of disk options.
+  GoogleCloudMlV1DiskConfig diskConfig;
+
   /// The Docker image to run on the replica.
   ///
   /// This image must be in Container Registry. Learn more about \[configuring
@@ -5940,6 +6240,10 @@ class GoogleCloudMlV1ReplicaConfig {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('diskConfig')) {
+      diskConfig = GoogleCloudMlV1DiskConfig.fromJson(
+          _json['diskConfig'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('imageUri')) {
       imageUri = _json['imageUri'] as core.String;
     }
@@ -5958,6 +6262,9 @@ class GoogleCloudMlV1ReplicaConfig {
     }
     if (containerCommand != null) {
       _json['containerCommand'] = containerCommand;
+    }
+    if (diskConfig != null) {
+      _json['diskConfig'] = diskConfig.toJson();
     }
     if (imageUri != null) {
       _json['imageUri'] = imageUri;
@@ -6023,15 +6330,52 @@ class GoogleCloudMlV1RequestLoggingConfig {
   }
 }
 
-/// RouteMap is used to override HTTP paths sent to a Custom Container.
+/// Specifies HTTP paths served by a custom container.
 ///
-/// If specified, the HTTP server implemented in the ContainerSpec must support
-/// the route. If unspecified, standard HTTP paths will be used.
+/// AI Platform Prediction sends requests to these paths on the container; the
+/// custom container must run an HTTP server that responds to these requests
+/// with appropriate responses. Read \[Custom container
+/// requirements\](/ai-platform/prediction/docs/custom-container-requirements)
+/// for details on how to create your container image to meet these
+/// requirements.
 class GoogleCloudMlV1RouteMap {
-  /// HTTP path to send health check requests.
+  /// HTTP path on the container to send health checkss to.
+  ///
+  /// AI Platform Prediction intermittently sends GET requests to this path on
+  /// the container's IP address and port to check that the container is
+  /// healthy. Read more about \[health
+  /// checks\](/ai-platform/prediction/docs/custom-container-requirements#checks).
+  /// For example, if you set this field to `/bar`, then AI Platform Prediction
+  /// intermittently sends a GET request to the `/bar` path on the port of your
+  /// container specified by the first value of Version.container.ports. If you
+  /// don't specify this field, it defaults to the following value: /v1/models/
+  /// MODEL/versions/VERSION The placeholders in this value are replaced as
+  /// follows: * MODEL: The name of the parent Model. This does not include the
+  /// "projects/PROJECT_ID/models/" prefix that the API returns in output; it is
+  /// the bare model name, as provided to projects.models.create. * VERSION: The
+  /// name of the model version. This does not include the "projects/PROJECT_ID
+  /// /models/MODEL/versions/" prefix that the API returns in output; it is the
+  /// bare version name, as provided to projects.models.versions.create.
   core.String health;
 
-  /// HTTP path to send prediction requests.
+  /// HTTP path on the container to send prediction requests to.
+  ///
+  /// AI Platform Prediction forwards requests sent using projects.predict to
+  /// this path on the container's IP address and port. AI Platform Prediction
+  /// then returns the container's response in the API response. For example, if
+  /// you set this field to `/foo`, then when AI Platform Prediction receives a
+  /// prediction request, it forwards the request body in a POST request to the
+  /// `/foo` path on the port of your container specified by the first value of
+  /// Version.container.ports. If you don't specify this field, it defaults to
+  /// the following value: /v1/models/MODEL/versions/VERSION:predict The
+  /// placeholders in this value are replaced as follows: * MODEL: The name of
+  /// the parent Model. This does not include the "projects/PROJECT_ID/models/"
+  /// prefix that the API returns in output; it is the bare model name, as
+  /// provided to projects.models.create. * VERSION: The name of the model
+  /// version. This does not include the
+  /// "projects/PROJECT_ID/models/MODEL/versions/" prefix that the API returns
+  /// in output; it is the bare version name, as provided to
+  /// projects.models.versions.create.
   core.String predict;
 
   GoogleCloudMlV1RouteMap();
@@ -6261,7 +6605,7 @@ class GoogleCloudMlV1StudyConfig {
   /// The search algorithm specified for the study.
   /// Possible string values are:
   /// - "ALGORITHM_UNSPECIFIED" : The default algorithm used by the Cloud AI
-  /// Platform Optimization service.
+  /// Platform Vizier service.
   /// - "GAUSSIAN_PROCESS_BANDIT" : Gaussian Process Bandit.
   /// - "GRID_SEARCH" : Simple grid search within the feasible space. To use
   /// grid search, all parameters must be `INTEGER`, `CATEGORICAL`, or
@@ -7219,10 +7563,17 @@ class GoogleCloudMlV1Version {
   ///
   /// Care should be taken to ramp up traffic according to the model's ability
   /// to scale or you will start seeing increases in latency and 429 response
-  /// codes. Note that you cannot use AutoScaling if your version uses
-  /// \[GPUs\](#Version.FIELDS.accelerator_config). Instead, you must use
-  /// specify `manual_scaling`.
+  /// codes.
   GoogleCloudMlV1AutoScaling autoScaling;
+
+  /// Specifies a custom container to use for serving predictions.
+  ///
+  /// If you specify this field, then `machineType` is required. If you specify
+  /// this field, then `deploymentUri` is optional. If you specify this field,
+  /// then you must not specify `runtimeVersion`, `packageUris`, `framework`,
+  /// `pythonVersion`, or `predictionClass`.
+  ///
+  /// Optional.
   GoogleCloudMlV1ContainerSpec container;
 
   /// The time the version was created.
@@ -7230,18 +7581,20 @@ class GoogleCloudMlV1Version {
   /// Output only.
   core.String createTime;
 
-  /// The Cloud Storage location of the trained model used to create the
-  /// version.
+  /// The Cloud Storage URI of a directory containing trained model artifacts to
+  /// be used to create the model version.
   ///
-  /// See the \[guide to model
-  /// deployment\](/ml-engine/docs/tensorflow/deploying-models) for more
-  /// information. When passing Version to projects.models.versions.create the
-  /// model service uses the specified location as the source of the model. Once
-  /// deployed, the model version is hosted by the prediction service, so this
-  /// location is useful only as a historical record. The total number of model
-  /// files can't exceed 1000.
-  ///
-  /// Required.
+  /// See the \[guide to deploying
+  /// models\](/ai-platform/prediction/docs/deploying-models) for more
+  /// information. The total number of files under this directory must not
+  /// exceed 1000. During projects.models.versions.create, AI Platform
+  /// Prediction copies all files from the specified directory to a location
+  /// managed by the service. From then on, AI Platform Prediction uses these
+  /// copies of the model artifacts to serve predictions, not the original files
+  /// in Cloud Storage, so this location is useful only as a historical record.
+  /// If you specify container, then this field is optional. Otherwise, it is
+  /// required. Learn \[how to use this field with a custom
+  /// container\](/ai-platform/prediction/docs/custom-container-requirements#artifacts).
   core.String deploymentUri;
 
   /// The description specified for the version when it was created.
@@ -7286,10 +7639,9 @@ class GoogleCloudMlV1Version {
   /// to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you
   /// must also set the runtime version of the model to 1.4 or greater. Do
   /// **not** specify a framework if you're deploying a \[custom prediction
-  /// routine\](/ml-engine/docs/tensorflow/custom-prediction-routines). If you
-  /// specify a \[Compute Engine (N1) machine
-  /// type\](/ml-engine/docs/machine-types-online-prediction) in the
-  /// `machineType` field, you must specify `TENSORFLOW` for the framework.
+  /// routine\](/ai-platform/prediction/docs/custom-prediction-routines) or if
+  /// you're using a \[custom
+  /// container\](/ai-platform/prediction/docs/use-custom-container).
   ///
   /// Optional.
   /// Possible string values are:
@@ -7318,6 +7670,20 @@ class GoogleCloudMlV1Version {
   /// Optional.
   core.Map<core.String, core.String> labels;
 
+  /// The \[AI Platform (Unified)
+  /// `Model`\](https://cloud.google.com/ai-platform-unified/docs/reference/rest/v1beta1/projects.locations.models)
+  /// ID for the last
+  /// [model migration](https://cloud.google.com/ai-platform-unified/docs/start/migrating-to-ai-platform-unified).
+  ///
+  /// Output only.
+  core.String lastMigrationModelId;
+
+  /// The last time this version was successfully \[migrated to AI Platform
+  /// (Unified)\](https://cloud.google.com/ai-platform-unified/docs/start/migrating-to-ai-platform-unified).
+  ///
+  /// Output only.
+  core.String lastMigrationTime;
+
   /// The time the version was last used for prediction.
   ///
   /// Output only.
@@ -7325,16 +7691,14 @@ class GoogleCloudMlV1Version {
 
   /// The type of machine on which to serve the model.
   ///
-  /// Currently only applies to online prediction service. If this field is not
-  /// specified, it defaults to `mls1-c1-m2`. Online prediction supports the
-  /// following machine types: * `mls1-c1-m2` * `mls1-c4-m2` * `n1-standard-2` *
-  /// `n1-standard-4` * `n1-standard-8` * `n1-standard-16` * `n1-standard-32` *
-  /// `n1-highmem-2` * `n1-highmem-4` * `n1-highmem-8` * `n1-highmem-16` *
-  /// `n1-highmem-32` * `n1-highcpu-2` * `n1-highcpu-4` * `n1-highcpu-8` *
-  /// `n1-highcpu-16` * `n1-highcpu-32` `mls1-c1-m2` is generally available. All
-  /// other machine types are available in beta. Learn more about the
-  /// \[differences between machine
-  /// types\](/ml-engine/docs/machine-types-online-prediction).
+  /// Currently only applies to online prediction service. To learn about valid
+  /// values for this field, read \[Choosing a machine type for online
+  /// prediction\](/ai-platform/prediction/docs/machine-types-online-prediction).
+  /// If this field is not specified and you are using a \[regional
+  /// endpoint\](/ai-platform/prediction/docs/regional-endpoints), then the
+  /// machine type defaults to `n1-standard-2`. If this field is not specified
+  /// and you are using the global endpoint (`ml.googleapis.com`), then the
+  /// machine type defaults to `mls1-c1-m2`.
   ///
   /// Optional.
   core.String machineType;
@@ -7423,6 +7787,18 @@ class GoogleCloudMlV1Version {
   ///
   /// Optional.
   GoogleCloudMlV1RequestLoggingConfig requestLoggingConfig;
+
+  /// Specifies paths on a custom container's HTTP server where AI Platform
+  /// Prediction sends certain requests.
+  ///
+  /// If you specify this field, then you must also specify the `container`
+  /// field. If you specify the `container` field and do not specify this field,
+  /// it defaults to the following: ```json { "predict":
+  /// "/v1/models/MODEL/versions/VERSION:predict", "health":
+  /// "/v1/models/MODEL/versions/VERSION" } ``` See RouteMap for more details
+  /// about these default values.
+  ///
+  /// Optional.
   GoogleCloudMlV1RouteMap routes;
 
   /// The AI Platform runtime version to use for this deployment.
@@ -7435,6 +7811,11 @@ class GoogleCloudMlV1Version {
   core.String runtimeVersion;
 
   /// Specifies the service account for resource access control.
+  ///
+  /// If you specify this field, then you must also specify either the
+  /// `containerSpec` or the `predictionClass` field. Learn more about \[using a
+  /// custom service
+  /// account\](/ai-platform/prediction/docs/custom-service-account).
   ///
   /// Optional.
   core.String serviceAccount;
@@ -7503,6 +7884,12 @@ class GoogleCloudMlV1Version {
                   item as core.String,
                 ),
               );
+    }
+    if (_json.containsKey('lastMigrationModelId')) {
+      lastMigrationModelId = _json['lastMigrationModelId'] as core.String;
+    }
+    if (_json.containsKey('lastMigrationTime')) {
+      lastMigrationTime = _json['lastMigrationTime'] as core.String;
     }
     if (_json.containsKey('lastUseTime')) {
       lastUseTime = _json['lastUseTime'] as core.String;
@@ -7584,6 +7971,12 @@ class GoogleCloudMlV1Version {
     }
     if (labels != null) {
       _json['labels'] = labels;
+    }
+    if (lastMigrationModelId != null) {
+      _json['lastMigrationModelId'] = lastMigrationModelId;
+    }
+    if (lastMigrationTime != null) {
+      _json['lastMigrationTime'] = lastMigrationTime;
     }
     if (lastUseTime != null) {
       _json['lastUseTime'] = lastUseTime;
@@ -7757,11 +8150,6 @@ class GoogleIamV1AuditLogConfig {
 
 /// Associates `members` with a `role`.
 class GoogleIamV1Binding {
-  /// A client-specified ID for this binding.
-  ///
-  /// Expected to be globally unique to support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
@@ -7812,9 +8200,6 @@ class GoogleIamV1Binding {
   GoogleIamV1Binding();
 
   GoogleIamV1Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'] as core.String;
-    }
     if (_json.containsKey('condition')) {
       condition = GoogleTypeExpr.fromJson(
           _json['condition'] as core.Map<core.String, core.dynamic>);
@@ -7831,9 +8216,6 @@ class GoogleIamV1Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
-    if (bindingId != null) {
-      _json['bindingId'] = bindingId;
-    }
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }

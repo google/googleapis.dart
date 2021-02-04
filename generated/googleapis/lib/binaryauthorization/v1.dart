@@ -27,6 +27,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsAttestorsResource]
 ///   - [ProjectsPolicyResource]
+/// - [SystempolicyResource]
 library binaryauthorization.v1;
 
 import 'dart:async' as async;
@@ -51,6 +52,7 @@ class BinaryAuthorizationApi {
   final commons.ApiRequester _requester;
 
   ProjectsResource get projects => ProjectsResource(_requester);
+  SystempolicyResource get systempolicy => SystempolicyResource(_requester);
 
   BinaryAuthorizationApi(http.Client client,
       {core.String rootUrl = 'https://binaryauthorization.googleapis.com/',
@@ -978,6 +980,64 @@ class ProjectsPolicyResource {
   }
 }
 
+class SystempolicyResource {
+  final commons.ApiRequester _requester;
+
+  SystempolicyResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets the current system policy in the specified location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name, in the format `locations / *
+  /// /policy`. Note that the system policy is not associated with a project.
+  /// Value must have pattern `^locations/\[^/\]+/policy$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getPolicy(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
 /// An admission rule specifies either that all container images used in a pod
 /// creation request must be attested to by one or more attestors, that all pod
 /// creations will be allowed, or that all pod creations will be denied.
@@ -1055,7 +1115,7 @@ class AdmissionRule {
 /// An admission whitelist pattern exempts images from checks by admission
 /// rules.
 class AdmissionWhitelistPattern {
-  /// An image name pattern to whitelist, in the form `registry/path/to/image`.
+  /// An image name pattern to allowlist, in the form `registry/path/to/image`.
   ///
   /// This supports a trailing `*` as a wildcard, but this is allowed only in
   /// text after the `registry/` part.
@@ -1293,11 +1353,6 @@ class AttestorPublicKey {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding.
-  ///
-  /// Expected to be globally unique to support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
@@ -1348,9 +1403,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'] as core.String;
-    }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(
           _json['condition'] as core.Map<core.String, core.dynamic>);
@@ -1367,9 +1419,6 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
-    if (bindingId != null) {
-      _json['bindingId'] = bindingId;
-    }
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }
@@ -1723,7 +1772,7 @@ class PkixPublicKey {
 
 /// A policy for container image binary authorization.
 class Policy {
-  /// Admission policy whitelisting.
+  /// Admission policy allowlisting.
   ///
   /// A matching admission request will always be permitted. This feature is
   /// typically used to exclude Google or third-party infrastructure images from
@@ -1768,6 +1817,29 @@ class Policy {
   /// - "ENABLE" : Enables global policy evaluation.
   /// - "DISABLE" : Disables global policy evaluation.
   core.String globalPolicyEvaluationMode;
+
+  /// Per-istio-service-identity admission rules.
+  ///
+  /// Istio service identity spec format: spiffe:///ns//sa/ or /ns//sa/ e.g.
+  /// spiffe://example.com/ns/test-ns/sa/default
+  ///
+  /// Optional.
+  core.Map<core.String, AdmissionRule> istioServiceIdentityAdmissionRules;
+
+  /// Per-kubernetes-namespace admission rules.
+  ///
+  /// K8s namespace spec format: \[a-z.-\]+, e.g. 'some-namespace'
+  ///
+  /// Optional.
+  core.Map<core.String, AdmissionRule> kubernetesNamespaceAdmissionRules;
+
+  /// Per-kubernetes-service-account admission rules.
+  ///
+  /// Service account spec format: `namespace:serviceaccount`. e.g.
+  /// 'test-ns:default'
+  ///
+  /// Optional.
+  core.Map<core.String, AdmissionRule> kubernetesServiceAccountAdmissionRules;
 
   /// The resource name, in the format `projects / * /policy`.
   ///
@@ -1814,6 +1886,42 @@ class Policy {
       globalPolicyEvaluationMode =
           _json['globalPolicyEvaluationMode'] as core.String;
     }
+    if (_json.containsKey('istioServiceIdentityAdmissionRules')) {
+      istioServiceIdentityAdmissionRules =
+          (_json['istioServiceIdentityAdmissionRules'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  AdmissionRule.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
+    }
+    if (_json.containsKey('kubernetesNamespaceAdmissionRules')) {
+      kubernetesNamespaceAdmissionRules =
+          (_json['kubernetesNamespaceAdmissionRules'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  AdmissionRule.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
+    }
+    if (_json.containsKey('kubernetesServiceAccountAdmissionRules')) {
+      kubernetesServiceAccountAdmissionRules =
+          (_json['kubernetesServiceAccountAdmissionRules'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  AdmissionRule.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -1840,6 +1948,21 @@ class Policy {
     }
     if (globalPolicyEvaluationMode != null) {
       _json['globalPolicyEvaluationMode'] = globalPolicyEvaluationMode;
+    }
+    if (istioServiceIdentityAdmissionRules != null) {
+      _json['istioServiceIdentityAdmissionRules'] =
+          istioServiceIdentityAdmissionRules
+              .map((key, item) => core.MapEntry(key, item.toJson()));
+    }
+    if (kubernetesNamespaceAdmissionRules != null) {
+      _json['kubernetesNamespaceAdmissionRules'] =
+          kubernetesNamespaceAdmissionRules
+              .map((key, item) => core.MapEntry(key, item.toJson()));
+    }
+    if (kubernetesServiceAccountAdmissionRules != null) {
+      _json['kubernetesServiceAccountAdmissionRules'] =
+          kubernetesServiceAccountAdmissionRules
+              .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (name != null) {
       _json['name'] = name;

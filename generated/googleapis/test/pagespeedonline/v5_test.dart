@@ -128,6 +128,7 @@ api.ConfigSettings buildConfigSettings() {
   if (buildCounterConfigSettings < 3) {
     o.channel = 'foo';
     o.emulatedFormFactor = 'foo';
+    o.formFactor = 'foo';
     o.locale = 'foo';
     o.onlyCategories = {
       'list': [1, 2, 3],
@@ -144,6 +145,7 @@ void checkConfigSettings(api.ConfigSettings o) {
   if (buildCounterConfigSettings < 3) {
     unittest.expect(o.channel, unittest.equals('foo'));
     unittest.expect(o.emulatedFormFactor, unittest.equals('foo'));
+    unittest.expect(o.formFactor, unittest.equals('foo'));
     unittest.expect(o.locale, unittest.equals('foo'));
     var casted1 = (o.onlyCategories) as core.Map;
     unittest.expect(casted1, unittest.hasLength(3));
@@ -197,7 +199,7 @@ void checkI18n(api.I18n o) {
   buildCounterI18n--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2489() {
+core.Map<core.String, core.Object> buildUnnamed2758() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -212,7 +214,7 @@ core.Map<core.String, core.Object> buildUnnamed2489() {
   return o;
 }
 
-void checkUnnamed2489(core.Map<core.String, core.Object> o) {
+void checkUnnamed2758(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted2 = (o['x']) as core.Map;
   unittest.expect(casted2, unittest.hasLength(3));
@@ -232,7 +234,7 @@ api.LighthouseAuditResultV5 buildLighthouseAuditResultV5() {
   buildCounterLighthouseAuditResultV5++;
   if (buildCounterLighthouseAuditResultV5 < 3) {
     o.description = 'foo';
-    o.details = buildUnnamed2489();
+    o.details = buildUnnamed2758();
     o.displayValue = 'foo';
     o.errorMessage = 'foo';
     o.explanation = 'foo';
@@ -259,7 +261,7 @@ void checkLighthouseAuditResultV5(api.LighthouseAuditResultV5 o) {
   buildCounterLighthouseAuditResultV5++;
   if (buildCounterLighthouseAuditResultV5 < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
-    checkUnnamed2489(o.details);
+    checkUnnamed2758(o.details);
     unittest.expect(o.displayValue, unittest.equals('foo'));
     unittest.expect(o.errorMessage, unittest.equals('foo'));
     unittest.expect(o.explanation, unittest.equals('foo'));
@@ -281,14 +283,14 @@ void checkLighthouseAuditResultV5(api.LighthouseAuditResultV5 o) {
   buildCounterLighthouseAuditResultV5--;
 }
 
-core.List<api.AuditRefs> buildUnnamed2490() {
+core.List<api.AuditRefs> buildUnnamed2759() {
   var o = <api.AuditRefs>[];
   o.add(buildAuditRefs());
   o.add(buildAuditRefs());
   return o;
 }
 
-void checkUnnamed2490(core.List<api.AuditRefs> o) {
+void checkUnnamed2759(core.List<api.AuditRefs> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditRefs(o[0] as api.AuditRefs);
   checkAuditRefs(o[1] as api.AuditRefs);
@@ -299,7 +301,7 @@ api.LighthouseCategoryV5 buildLighthouseCategoryV5() {
   var o = api.LighthouseCategoryV5();
   buildCounterLighthouseCategoryV5++;
   if (buildCounterLighthouseCategoryV5 < 3) {
-    o.auditRefs = buildUnnamed2490();
+    o.auditRefs = buildUnnamed2759();
     o.description = 'foo';
     o.id = 'foo';
     o.manualDescription = 'foo';
@@ -317,7 +319,7 @@ api.LighthouseCategoryV5 buildLighthouseCategoryV5() {
 void checkLighthouseCategoryV5(api.LighthouseCategoryV5 o) {
   buildCounterLighthouseCategoryV5++;
   if (buildCounterLighthouseCategoryV5 < 3) {
-    checkUnnamed2490(o.auditRefs);
+    checkUnnamed2759(o.auditRefs);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.manualDescription, unittest.equals('foo'));
@@ -331,33 +333,33 @@ void checkLighthouseCategoryV5(api.LighthouseCategoryV5 o) {
   buildCounterLighthouseCategoryV5--;
 }
 
-core.Map<core.String, api.LighthouseAuditResultV5> buildUnnamed2491() {
+core.Map<core.String, api.LighthouseAuditResultV5> buildUnnamed2760() {
   var o = <core.String, api.LighthouseAuditResultV5>{};
   o['x'] = buildLighthouseAuditResultV5();
   o['y'] = buildLighthouseAuditResultV5();
   return o;
 }
 
-void checkUnnamed2491(core.Map<core.String, api.LighthouseAuditResultV5> o) {
+void checkUnnamed2760(core.Map<core.String, api.LighthouseAuditResultV5> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLighthouseAuditResultV5(o['x'] as api.LighthouseAuditResultV5);
   checkLighthouseAuditResultV5(o['y'] as api.LighthouseAuditResultV5);
 }
 
-core.Map<core.String, api.CategoryGroupV5> buildUnnamed2492() {
+core.Map<core.String, api.CategoryGroupV5> buildUnnamed2761() {
   var o = <core.String, api.CategoryGroupV5>{};
   o['x'] = buildCategoryGroupV5();
   o['y'] = buildCategoryGroupV5();
   return o;
 }
 
-void checkUnnamed2492(core.Map<core.String, api.CategoryGroupV5> o) {
+void checkUnnamed2761(core.Map<core.String, api.CategoryGroupV5> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCategoryGroupV5(o['x'] as api.CategoryGroupV5);
   checkCategoryGroupV5(o['y'] as api.CategoryGroupV5);
 }
 
-core.List<core.Object> buildUnnamed2493() {
+core.List<core.Object> buildUnnamed2762() {
   var o = <core.Object>[];
   o.add({
     'list': [1, 2, 3],
@@ -372,7 +374,7 @@ core.List<core.Object> buildUnnamed2493() {
   return o;
 }
 
-void checkUnnamed2493(core.List<core.Object> o) {
+void checkUnnamed2762(core.List<core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o[0]) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -386,14 +388,14 @@ void checkUnnamed2493(core.List<core.Object> o) {
   unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
-core.List<api.StackPack> buildUnnamed2494() {
+core.List<api.StackPack> buildUnnamed2763() {
   var o = <api.StackPack>[];
   o.add(buildStackPack());
   o.add(buildStackPack());
   return o;
 }
 
-void checkUnnamed2494(core.List<api.StackPack> o) {
+void checkUnnamed2763(core.List<api.StackPack> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStackPack(o[0] as api.StackPack);
   checkStackPack(o[1] as api.StackPack);
@@ -404,9 +406,9 @@ api.LighthouseResultV5 buildLighthouseResultV5() {
   var o = api.LighthouseResultV5();
   buildCounterLighthouseResultV5++;
   if (buildCounterLighthouseResultV5 < 3) {
-    o.audits = buildUnnamed2491();
+    o.audits = buildUnnamed2760();
     o.categories = buildCategories();
-    o.categoryGroups = buildUnnamed2492();
+    o.categoryGroups = buildUnnamed2761();
     o.configSettings = buildConfigSettings();
     o.environment = buildEnvironment();
     o.fetchTime = 'foo';
@@ -414,9 +416,9 @@ api.LighthouseResultV5 buildLighthouseResultV5() {
     o.i18n = buildI18n();
     o.lighthouseVersion = 'foo';
     o.requestedUrl = 'foo';
-    o.runWarnings = buildUnnamed2493();
+    o.runWarnings = buildUnnamed2762();
     o.runtimeError = buildRuntimeError();
-    o.stackPacks = buildUnnamed2494();
+    o.stackPacks = buildUnnamed2763();
     o.timing = buildTiming();
     o.userAgent = 'foo';
   }
@@ -427,9 +429,9 @@ api.LighthouseResultV5 buildLighthouseResultV5() {
 void checkLighthouseResultV5(api.LighthouseResultV5 o) {
   buildCounterLighthouseResultV5++;
   if (buildCounterLighthouseResultV5 < 3) {
-    checkUnnamed2491(o.audits);
+    checkUnnamed2760(o.audits);
     checkCategories(o.categories as api.Categories);
-    checkUnnamed2492(o.categoryGroups);
+    checkUnnamed2761(o.categoryGroups);
     checkConfigSettings(o.configSettings as api.ConfigSettings);
     checkEnvironment(o.environment as api.Environment);
     unittest.expect(o.fetchTime, unittest.equals('foo'));
@@ -437,23 +439,23 @@ void checkLighthouseResultV5(api.LighthouseResultV5 o) {
     checkI18n(o.i18n as api.I18n);
     unittest.expect(o.lighthouseVersion, unittest.equals('foo'));
     unittest.expect(o.requestedUrl, unittest.equals('foo'));
-    checkUnnamed2493(o.runWarnings);
+    checkUnnamed2762(o.runWarnings);
     checkRuntimeError(o.runtimeError as api.RuntimeError);
-    checkUnnamed2494(o.stackPacks);
+    checkUnnamed2763(o.stackPacks);
     checkTiming(o.timing as api.Timing);
     unittest.expect(o.userAgent, unittest.equals('foo'));
   }
   buildCounterLighthouseResultV5--;
 }
 
-core.Map<core.String, api.UserPageLoadMetricV5> buildUnnamed2495() {
+core.Map<core.String, api.UserPageLoadMetricV5> buildUnnamed2764() {
   var o = <core.String, api.UserPageLoadMetricV5>{};
   o['x'] = buildUserPageLoadMetricV5();
   o['y'] = buildUserPageLoadMetricV5();
   return o;
 }
 
-void checkUnnamed2495(core.Map<core.String, api.UserPageLoadMetricV5> o) {
+void checkUnnamed2764(core.Map<core.String, api.UserPageLoadMetricV5> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUserPageLoadMetricV5(o['x'] as api.UserPageLoadMetricV5);
   checkUserPageLoadMetricV5(o['y'] as api.UserPageLoadMetricV5);
@@ -466,7 +468,7 @@ api.PagespeedApiLoadingExperienceV5 buildPagespeedApiLoadingExperienceV5() {
   if (buildCounterPagespeedApiLoadingExperienceV5 < 3) {
     o.id = 'foo';
     o.initialUrl = 'foo';
-    o.metrics = buildUnnamed2495();
+    o.metrics = buildUnnamed2764();
     o.originFallback = true;
     o.overallCategory = 'foo';
   }
@@ -480,7 +482,7 @@ void checkPagespeedApiLoadingExperienceV5(
   if (buildCounterPagespeedApiLoadingExperienceV5 < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.initialUrl, unittest.equals('foo'));
-    checkUnnamed2495(o.metrics);
+    checkUnnamed2764(o.metrics);
     unittest.expect(o.originFallback, unittest.isTrue);
     unittest.expect(o.overallCategory, unittest.equals('foo'));
   }
@@ -614,14 +616,14 @@ void checkRuntimeError(api.RuntimeError o) {
   buildCounterRuntimeError--;
 }
 
-core.Map<core.String, core.String> buildUnnamed2496() {
+core.Map<core.String, core.String> buildUnnamed2765() {
   var o = <core.String, core.String>{};
   o['x'] = 'foo';
   o['y'] = 'foo';
   return o;
 }
 
-void checkUnnamed2496(core.Map<core.String, core.String> o) {
+void checkUnnamed2765(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x'], unittest.equals('foo'));
   unittest.expect(o['y'], unittest.equals('foo'));
@@ -632,7 +634,7 @@ api.StackPack buildStackPack() {
   var o = api.StackPack();
   buildCounterStackPack++;
   if (buildCounterStackPack < 3) {
-    o.descriptions = buildUnnamed2496();
+    o.descriptions = buildUnnamed2765();
     o.iconDataURL = 'foo';
     o.id = 'foo';
     o.title = 'foo';
@@ -644,7 +646,7 @@ api.StackPack buildStackPack() {
 void checkStackPack(api.StackPack o) {
   buildCounterStackPack++;
   if (buildCounterStackPack < 3) {
-    checkUnnamed2496(o.descriptions);
+    checkUnnamed2765(o.descriptions);
     unittest.expect(o.iconDataURL, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
@@ -671,14 +673,14 @@ void checkTiming(api.Timing o) {
   buildCounterTiming--;
 }
 
-core.List<api.Bucket> buildUnnamed2497() {
+core.List<api.Bucket> buildUnnamed2766() {
   var o = <api.Bucket>[];
   o.add(buildBucket());
   o.add(buildBucket());
   return o;
 }
 
-void checkUnnamed2497(core.List<api.Bucket> o) {
+void checkUnnamed2766(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBucket(o[0] as api.Bucket);
   checkBucket(o[1] as api.Bucket);
@@ -690,7 +692,7 @@ api.UserPageLoadMetricV5 buildUserPageLoadMetricV5() {
   buildCounterUserPageLoadMetricV5++;
   if (buildCounterUserPageLoadMetricV5 < 3) {
     o.category = 'foo';
-    o.distributions = buildUnnamed2497();
+    o.distributions = buildUnnamed2766();
     o.formFactor = 'foo';
     o.median = 42;
     o.metricId = 'foo';
@@ -704,7 +706,7 @@ void checkUserPageLoadMetricV5(api.UserPageLoadMetricV5 o) {
   buildCounterUserPageLoadMetricV5++;
   if (buildCounterUserPageLoadMetricV5 < 3) {
     unittest.expect(o.category, unittest.equals('foo'));
-    checkUnnamed2497(o.distributions);
+    checkUnnamed2766(o.distributions);
     unittest.expect(o.formFactor, unittest.equals('foo'));
     unittest.expect(o.median, unittest.equals(42));
     unittest.expect(o.metricId, unittest.equals('foo'));
@@ -713,14 +715,14 @@ void checkUserPageLoadMetricV5(api.UserPageLoadMetricV5 o) {
   buildCounterUserPageLoadMetricV5--;
 }
 
-core.List<core.String> buildUnnamed2498() {
+core.List<core.String> buildUnnamed2767() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed2498(core.List<core.String> o) {
+void checkUnnamed2767(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -877,11 +879,11 @@ void main() {
     unittest.test('method--runpagespeed', () {
       var mock = HttpServerMock();
       var res = api.PagespeedInsightsApi(mock).pagespeedapi;
+      var arg_url = 'foo';
       var arg_captchaToken = 'foo';
-      var arg_category = buildUnnamed2498();
+      var arg_category = buildUnnamed2767();
       var arg_locale = 'foo';
       var arg_strategy = 'foo';
-      var arg_url = 'foo';
       var arg_utmCampaign = 'foo';
       var arg_utmSource = 'foo';
       var arg_$fields = 'foo';
@@ -912,13 +914,13 @@ void main() {
             );
           }
         }
+        unittest.expect(queryMap["url"].first, unittest.equals(arg_url));
         unittest.expect(
             queryMap["captchaToken"].first, unittest.equals(arg_captchaToken));
         unittest.expect(queryMap["category"], unittest.equals(arg_category));
         unittest.expect(queryMap["locale"].first, unittest.equals(arg_locale));
         unittest.expect(
             queryMap["strategy"].first, unittest.equals(arg_strategy));
-        unittest.expect(queryMap["url"].first, unittest.equals(arg_url));
         unittest.expect(
             queryMap["utm_campaign"].first, unittest.equals(arg_utmCampaign));
         unittest.expect(
@@ -932,12 +934,11 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res
-          .runpagespeed(
+          .runpagespeed(arg_url,
               captchaToken: arg_captchaToken,
               category: arg_category,
               locale: arg_locale,
               strategy: arg_strategy,
-              url: arg_url,
               utmCampaign: arg_utmCampaign,
               utmSource: arg_utmSource,
               $fields: arg_$fields)

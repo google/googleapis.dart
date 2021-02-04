@@ -73,12 +73,16 @@ class PagespeedapiResource {
   ///
   /// Request parameters:
   ///
+  /// [url] - Required. The URL to fetch and analyze
+  /// Value must have pattern `(?i)(url:|origin:)?http(s)?://.*`.
+  ///
   /// [captchaToken] - The captcha token passed when filling out a captcha.
   ///
   /// [category] - A Lighthouse category to run; if none are given, only
   /// Performance category will be run
   ///
   /// [locale] - The locale used to localize formatted results
+  /// Value must have pattern `\[a-zA-Z\]+((_|-)\[a-zA-Z\]+)?`.
   ///
   /// [strategy] - The analysis strategy (desktop or mobile) to use, and desktop
   /// is the default
@@ -86,8 +90,6 @@ class PagespeedapiResource {
   /// - "STRATEGY_UNSPECIFIED" : UNDEFINED.
   /// - "DESKTOP" : Fetch and analyze the URL for desktop browsers.
   /// - "MOBILE" : Fetch and analyze the URL for mobile devices.
-  ///
-  /// [url] - Required. The URL to fetch and analyze
   ///
   /// [utmCampaign] - Campaign name for analytics.
   ///
@@ -103,12 +105,12 @@ class PagespeedapiResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<PagespeedApiPagespeedResponseV5> runpagespeed({
+  async.Future<PagespeedApiPagespeedResponseV5> runpagespeed(
+    core.String url, {
     core.String captchaToken,
     core.List<core.String> category,
     core.String locale,
     core.String strategy,
-    core.String url,
     core.String utmCampaign,
     core.String utmSource,
     core.String $fields,
@@ -120,6 +122,10 @@ class PagespeedapiResource {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
+    if (url == null) {
+      throw core.ArgumentError('Parameter url is required.');
+    }
+    _queryParams['url'] = [url];
     if (captchaToken != null) {
       _queryParams['captchaToken'] = [captchaToken];
     }
@@ -131,9 +137,6 @@ class PagespeedapiResource {
     }
     if (strategy != null) {
       _queryParams['strategy'] = [strategy];
-    }
-    if (url != null) {
-      _queryParams['url'] = [url];
     }
     if (utmCampaign != null) {
       _queryParams['utm_campaign'] = [utmCampaign];
@@ -349,7 +352,13 @@ class ConfigSettings {
   core.String channel;
 
   /// The form factor the emulation should use.
+  ///
+  /// This field is deprecated, form_factor should be used instead.
   core.String emulatedFormFactor;
+
+  /// How Lighthouse should interpret this run in regards to scoring performance
+  /// metrics and skipping mobile-only tests in desktop.
+  core.String formFactor;
 
   /// The locale setting.
   core.String locale;
@@ -369,6 +378,9 @@ class ConfigSettings {
     if (_json.containsKey('emulatedFormFactor')) {
       emulatedFormFactor = _json['emulatedFormFactor'] as core.String;
     }
+    if (_json.containsKey('formFactor')) {
+      formFactor = _json['formFactor'] as core.String;
+    }
     if (_json.containsKey('locale')) {
       locale = _json['locale'] as core.String;
     }
@@ -384,6 +396,9 @@ class ConfigSettings {
     }
     if (emulatedFormFactor != null) {
       _json['emulatedFormFactor'] = emulatedFormFactor;
+    }
+    if (formFactor != null) {
+      _json['formFactor'] = formFactor;
     }
     if (locale != null) {
       _json['locale'] = locale;

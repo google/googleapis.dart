@@ -1336,12 +1336,12 @@ class ProjectsSubscriptionsResource {
   /// Seeks an existing subscription to a point in time or to a given snapshot,
   /// whichever is provided in the request.
   ///
-  /// Snapshots are used in \[Seek\](
-  /// https://cloud.google.com/pubsub/docs/replay-overview) operations, which
-  /// allow you to manage message acknowledgments in bulk. That is, you can set
-  /// the acknowledgment state of messages in an existing subscription to the
-  /// state captured by a snapshot. Note that both the subscription and the
-  /// snapshot must be on the same topic.
+  /// Snapshots are used in
+  /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations,
+  /// which allow you to manage message acknowledgments in bulk. That is, you
+  /// can set the acknowledgment state of messages in an existing subscription
+  /// to the state captured by a snapshot. Note that both the subscription and
+  /// the snapshot must be on the same topic.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1545,8 +1545,8 @@ class ProjectsTopicsResource {
 
   /// Creates the given topic with the given name.
   ///
-  /// See the \[resource name rules\](
-  /// https://cloud.google.com/pubsub/docs/admin#resource_names).
+  /// See the
+  /// [resource name rules](https://cloud.google.com/pubsub/docs/admin#resource_names).
   ///
   /// [request] - The metadata request object.
   ///
@@ -2304,11 +2304,6 @@ class AcknowledgeRequest {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding.
-  ///
-  /// Expected to be globally unique to support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
@@ -2359,9 +2354,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'] as core.String;
-    }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(
           _json['condition'] as core.Map<core.String, core.dynamic>);
@@ -2378,9 +2370,6 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
-    if (bindingId != null) {
-      _json['bindingId'] = bindingId;
-    }
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }
@@ -3921,6 +3910,12 @@ class Topic {
   /// Required.
   core.String name;
 
+  /// Reserved for future use.
+  ///
+  /// This field is set only in responses from the server; it is ignored if it
+  /// is set in any requests.
+  core.bool satisfiesPzs;
+
   Topic();
 
   Topic.fromJson(core.Map _json) {
@@ -3943,6 +3938,9 @@ class Topic {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('satisfiesPzs')) {
+      satisfiesPzs = _json['satisfiesPzs'] as core.bool;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -3958,6 +3956,9 @@ class Topic {
     }
     if (name != null) {
       _json['name'] = name;
+    }
+    if (satisfiesPzs != null) {
+      _json['satisfiesPzs'] = satisfiesPzs;
     }
     return _json;
   }

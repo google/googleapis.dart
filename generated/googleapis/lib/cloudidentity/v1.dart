@@ -98,8 +98,7 @@ class DevicesResource {
   /// [name] - Required.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
   /// the Device in format: `devices/{device_id}`, where device_id is the unique
-  /// ID assigned to the Device, and device_user_id is the unique ID assigned to
-  /// the User.
+  /// ID assigned to the Device.
   /// Value must have pattern `^devices/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -153,7 +152,10 @@ class DevicesResource {
 
   /// Creates a device.
   ///
-  /// Only company-owned device may be created.
+  /// Only company-owned device may be created. **Note**: This method is
+  /// available only to customers who have one of the following SKUs: Enterprise
+  /// Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity
+  /// Premium
   ///
   /// [request] - The metadata request object.
   ///
@@ -359,8 +361,9 @@ class DevicesResource {
   /// customer_id is the customer to whom the device belongs.
   ///
   /// [filter] - Optional. Additional restrictions when fetching list of
-  /// devices.
-  /// [Help Center article link](https://support.google.com/a/answer/7549103)
+  /// devices. For a list of search fields, refer to
+  /// [Mobile device search fields](https://developers.google.com/admin-sdk/directory/v1/search-operators).
+  /// Multiple search fields are separated by the space character.
   ///
   /// [orderBy] - Optional. Order specification for devices in the response.
   /// Only one of the following field names may be used to specify the order:
@@ -862,7 +865,9 @@ class DevicesDeviceUsersResource {
   /// customer to whom the device belongs.
   ///
   /// [filter] - Optional. Additional restrictions when fetching list of
-  /// devices. [HC article](https://support.google.com/a/answer/7549103)
+  /// devices. For a list of search fields, refer to
+  /// [Mobile device search fields](https://developers.google.com/admin-sdk/directory/v1/search-operators).
+  /// Multiple search fields are separated by the space character.
   ///
   /// [orderBy] - Optional. Order specification for devices in the response.
   ///
@@ -1138,7 +1143,12 @@ class DevicesDeviceUsersClientStatesResource {
   /// `devices/{device_id}/deviceUsers/{device_user_id}/clientStates/{partner_id}`,
   /// where device_id is the unique ID assigned to the Device, device_user_id is
   /// the unique ID assigned to the User and partner_id identifies the partner
-  /// storing the data.
+  /// storing the data. To get the client state for devices belonging to your
+  /// own organization, the `partnerId` is in the format:
+  /// `customerId-*anystring*`. Where the `customerId` is your organization's
+  /// customer ID and `anystring` is any suffix. This suffix is used in setting
+  /// up Custom Access Levels in Context-Aware Access. You may use `my_customer`
+  /// instead of the customer ID for devices managed by your own organization.
   /// Value must have pattern
   /// `^devices/\[^/\]+/deviceUsers/\[^/\]+/clientStates/\[^/\]+$`.
   ///
@@ -1291,7 +1301,10 @@ class DevicesDeviceUsersClientStatesResource {
     );
   }
 
-  /// Updates the client state for the device user
+  /// Updates the client state for the device user **Note**: This method is
+  /// available only to customers who have one of the following SKUs: Enterprise
+  /// Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity
+  /// Premium
   ///
   /// [request] - The metadata request object.
   ///
@@ -1455,14 +1468,13 @@ class GroupsResource {
     );
   }
 
-  /// Deletes a Group.
+  /// Deletes a `Group`.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Group in the format: `groups/{group_id}`, where `group_id` is the
-  /// unique ID assigned to the Group.
+  /// [name] - Required. The
+  /// [resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the `Group` to retrieve. Must be of the form `groups/{group_id}`.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1509,14 +1521,13 @@ class GroupsResource {
     );
   }
 
-  /// Retrieves a Group.
+  /// Retrieves a `Group`.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Group in the format: `groups/{group_id}`, where `group_id` is the
-  /// unique ID assigned to the Group.
+  /// [name] - Required. The
+  /// [resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the `Group` to retrieve. Must be of the form `groups/{group_id}`.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1563,23 +1574,31 @@ class GroupsResource {
     );
   }
 
-  /// Lists groups within a customer or a domain.
+  /// Lists the `Group`s under a customer or namespace.
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The default page size is 200 (max 1000) for the BASIC view,
-  /// and 50 (max 500) for the FULL view.
+  /// [pageSize] - The maximum number of results to return. Note that the number
+  /// of results returned may be less than this value even if there are more
+  /// available results. To fetch all results, clients must continue calling
+  /// this method repeatedly until the response no longer contains a
+  /// `next_page_token`. If unspecified, defaults to 200 for `View.BASIC` and to
+  /// 50 for `View.FULL`. Must not be greater than 1000 for `View.BASIC` or 500
+  /// for `View.FULL`.
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
+  /// [pageToken] - The `next_page_token` value returned from a previous list
   /// request, if any.
   ///
-  /// [parent] - Required. Customer ID to list all groups from.
+  /// [parent] - Required. The parent resource under which to list all `Group`s.
+  /// Must be of the form `identitysources/{identity_source_id}` for external-
+  /// identity-mapped groups or `customers/{customer_id}` for Google Groups.
   ///
-  /// [view] - Group resource view to be returned. Defaults to \[View.BASIC\]().
+  /// [view] - The level of detail to be returned. If unspecified, defaults to
+  /// `View.BASIC`.
   /// Possible string values are:
   /// - "VIEW_UNSPECIFIED" : Default. Should not be used.
-  /// - "BASIC" : Server responses only include basic information.
-  /// - "FULL" : Full representation of the resource.
+  /// - "BASIC" : Only basic resource information is returned.
+  /// - "FULL" : All resource information is returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1638,20 +1657,23 @@ class GroupsResource {
     );
   }
 
-  /// Looks up
+  /// Looks up the
   /// [resource name](https://cloud.google.com/apis/design/resource_names) of a
-  /// Group by its EntityKey.
+  /// `Group` by its `EntityKey`.
   ///
   /// Request parameters:
   ///
-  /// [groupKey_id] - The ID of the entity within the given namespace. The ID
-  /// must be unique within its namespace.
+  /// [groupKey_id] - The ID of the entity. For Google-managed entities, the
+  /// `id` should be the email address of an existing group or user. For
+  /// external-identity-mapped entities, the `id` must be a string conforming to
+  /// the Identity Source's requirements. Must be unique within a `namespace`.
   ///
-  /// [groupKey_namespace] - Namespaces provide isolation for IDs, so an ID only
-  /// needs to be unique within its namespace. Namespaces are currently only
-  /// created as part of IdentitySource creation from Admin Console. A namespace
-  /// `"identitysources/{identity_source_id}"` is created corresponding to every
-  /// Identity Source `identity_source_id`.
+  /// [groupKey_namespace] - The namespace in which the entity exists. If not
+  /// specified, the \`EntityKey\` represents a Google-managed entity such as a
+  /// Google user or a Google Group. If specified, the \`EntityKey\` represents
+  /// an external-identity-mapped group. The namespace must correspond to an
+  /// identity source created in Admin Console and must be in the form of
+  /// \`identitysources/{identity_source_id}.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1702,19 +1724,19 @@ class GroupsResource {
     );
   }
 
-  /// Updates a Group.
+  /// Updates a `Group`.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only.
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Group in the format: `groups/{group_id}`, where group_id is the unique
-  /// ID assigned to the Group. Must be left blank while creating a Group.
+  /// [name] - Output only. The
+  /// [resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the `Group`. Shall be of the form `groups/{group_id}`.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. Editable fields: `display_name`, `description`
+  /// [updateMask] - Required. The fully-qualified names of fields to update.
+  /// May only contain the following fields: `display_name`, `description`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1768,26 +1790,33 @@ class GroupsResource {
     );
   }
 
-  /// Searches for Groups.
+  /// Searches for `Group`s matching a specified query.
   ///
   /// Request parameters:
   ///
-  /// [pageSize] - The default page size is 200 (max 1000) for the BASIC view,
-  /// and 50 (max 500) for the FULL view.
+  /// [pageSize] - The maximum number of results to return. Note that the number
+  /// of results returned may be less than this value even if there are more
+  /// available results. To fetch all results, clients must continue calling
+  /// this method repeatedly until the response no longer contains a
+  /// `next_page_token`. If unspecified, defaults to 200 for `GroupView.BASIC`
+  /// and 50 for `GroupView.FULL`. Must not be greater than 1000 for
+  /// `GroupView.BASIC` or 500 for `GroupView.FULL`.
   ///
-  /// [pageToken] - The next_page_token value returned from a previous search
+  /// [pageToken] - The `next_page_token` value returned from a previous search
   /// request, if any.
   ///
-  /// [query] - Required. `Required`. Query string for performing search on
-  /// groups. Users can search on parent and label attributes of groups. EXACT
-  /// match ('==') is supported on parent, and CONTAINS match ('in') is
-  /// supported on labels.
+  /// [query] - Required. The search query. Must be specified in
+  /// [Common Expression Language](https://opensource.google/projects/cel). May
+  /// only contain equality operators on the parent and inclusion operators on
+  /// labels (e.g., `parent == 'customers/{customer_id}' &&
+  /// 'cloudidentity.googleapis.com/groups.discussion_forum' in labels`).
   ///
-  /// [view] - Group resource view to be returned. Defaults to \[View.BASIC\]().
+  /// [view] - The level of detail to be returned. If unspecified, defaults to
+  /// `View.BASIC`.
   /// Possible string values are:
   /// - "VIEW_UNSPECIFIED" : Default. Should not be used.
-  /// - "BASIC" : Server responses only include basic information.
-  /// - "FULL" : Full representation of the resource.
+  /// - "BASIC" : Only basic resource information is returned.
+  /// - "FULL" : All resource information is returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1852,16 +1881,91 @@ class GroupsMembershipsResource {
 
   GroupsMembershipsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a Membership.
+  /// Check a potential member for membership in a group.
+  ///
+  /// **Note:** This feature is only available to Google Workspace Enterprise
+  /// Standard, Enterprise Plus, and Enterprise for Education; and Cloud
+  /// Identity Premium accounts. If the account of the member is not one of
+  /// these, a 403 (PERMISSION_DENIED) HTTP status code will be returned. A
+  /// member has membership to a group as long as there is a single viewable
+  /// transitive membership between the group and the member. The actor must
+  /// have view permissions to at least one transitive membership between the
+  /// member and group.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] -
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the group to check the transitive membership in. Format:
+  /// `groups/{group_id}`, where `group_id` is the unique id assigned to the
+  /// Group to which the Membership belongs to.
+  /// Value must have pattern `^groups/\[^/\]+$`.
+  ///
+  /// [query] - Required. A CEL expression that MUST include member
+  /// specification. This is a `required` field. Certain groups are uniquely
+  /// identified by both a 'member_key_id' and a 'member_key_namespace', which
+  /// requires an additional query input: 'member_key_namespace'. Example query:
+  /// `member_key_id == 'member_key_id_value'`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CheckTransitiveMembershipResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CheckTransitiveMembershipResponse> checkTransitiveMembership(
+    core.String parent, {
+    core.String query,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (query != null) {
+      _queryParams['query'] = [query];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/memberships:checkTransitiveMembership';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => CheckTransitiveMembershipResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Creates a `Membership`.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required.
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Group to create Membership within. Format: `groups/{group_id}`, where
-  /// `group_id` is the unique ID assigned to the Group.
+  /// [parent] - Required. The parent `Group` resource under which to create the
+  /// `Membership`. Must be of the form `groups/{group_id}`.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1914,16 +2018,14 @@ class GroupsMembershipsResource {
     );
   }
 
-  /// Deletes a Membership.
+  /// Deletes a `Membership`.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Membership to be deleted. Format:
-  /// `groups/{group_id}/memberships/{member_id}`, where `group_id` is the
-  /// unique ID assigned to the Group to which Membership belongs to, and
-  /// member_id is the unique ID assigned to the member.
+  /// [name] - Required. The
+  /// [resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the `Membership` to delete. Must be of the form
+  /// `groups/{group_id}/memberships/{membership_id}`
   /// Value must have pattern `^groups/\[^/\]+/memberships/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1970,16 +2072,14 @@ class GroupsMembershipsResource {
     );
   }
 
-  /// Retrieves a Membership.
+  /// Retrieves a `Membership`.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required.
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Membership to be retrieved. Format:
-  /// `groups/{group_id}/memberships/{member_id}`, where `group_id` is the
-  /// unique id assigned to the Group to which Membership belongs to, and
-  /// `member_id` is the unique ID assigned to the member.
+  /// [name] - Required. The
+  /// [resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the `Membership` to retrieve. Must be of the form
+  /// `groups/{group_id}/memberships/{membership_id}`.
   /// Value must have pattern `^groups/\[^/\]+/memberships/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2027,27 +2127,110 @@ class GroupsMembershipsResource {
     );
   }
 
-  /// Lists Memberships within a Group.
+  /// Get a membership graph of just a member or both a member and a group.
+  ///
+  /// **Note:** This feature is only available to Google Workspace Enterprise
+  /// Standard, Enterprise Plus, and Enterprise for Education; and Cloud
+  /// Identity Premium accounts. If the account of the member is not one of
+  /// these, a 403 (PERMISSION_DENIED) HTTP status code will be returned. Given
+  /// a member, the response will contain all membership paths from the member.
+  /// Given both a group and a member, the response will contain all membership
+  /// paths between the group and the member.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required.
   /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Group to list Memberships within. Format: `groups/{group_id}`, where
-  /// `group_id` is the unique ID assigned to the Group.
+  /// the group to search transitive memberships in. Format:
+  /// `groups/{group_id}`, where `group_id` is the unique ID assigned to the
+  /// Group to which the Membership belongs to. group_id can be a wildcard
+  /// collection id "-". When a group_id is specified, the membership graph will
+  /// be constrained to paths between the member (defined in the query) and the
+  /// parent. If a wildcard collection is provided, all membership paths
+  /// connected to the member will be returned.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
-  /// [pageSize] - The default page size is 200 (max 1000) for the BASIC view,
-  /// and 50 (max 500) for the FULL view.
+  /// [query] - Required. A CEL expression that MUST include member
+  /// specification AND label(s). Certain groups are uniquely identified by both
+  /// a 'member_key_id' and a 'member_key_namespace', which requires an
+  /// additional query input: 'member_key_namespace'. Example query:
+  /// `member_key_id == 'member_key_id_value' && in labels`
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> getMembershipGraph(
+    core.String parent, {
+    core.String query,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (query != null) {
+      _queryParams['query'] = [query];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/memberships:getMembershipGraph';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Lists the `Membership`s within a `Group`.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent `Group` resource under which to lookup the
+  /// `Membership` name. Must be of the form `groups/{group_id}`.
+  /// Value must have pattern `^groups/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of results to return. Note that the number
+  /// of results returned may be less than this value even if there are more
+  /// available results. To fetch all results, clients must continue calling
+  /// this method repeatedly until the response no longer contains a
+  /// `next_page_token`. If unspecified, defaults to 200 for `GroupView.BASIC`
+  /// and to 50 for `GroupView.FULL`. Must not be greater than 1000 for
+  /// `GroupView.BASIC` or 500 for `GroupView.FULL`.
+  ///
+  /// [pageToken] - The `next_page_token` value returned from a previous search
   /// request, if any.
   ///
-  /// [view] - Membership resource view to be returned. Defaults to View.BASIC.
+  /// [view] - The level of detail to be returned. If unspecified, defaults to
+  /// `View.BASIC`.
   /// Possible string values are:
   /// - "VIEW_UNSPECIFIED" : Default. Should not be used.
-  /// - "BASIC" : Server responses only include basic information.
-  /// - "FULL" : Full representation of the resource.
+  /// - "BASIC" : Only basic resource information is returned.
+  /// - "FULL" : All resource information is returned.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2108,26 +2291,27 @@ class GroupsMembershipsResource {
     );
   }
 
-  /// Looks up
+  /// Looks up the
   /// [resource name](https://cloud.google.com/apis/design/resource_names) of a
-  /// Membership within a Group by member's EntityKey.
+  /// `Membership` by its `EntityKey`.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required.
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Group to lookup Membership within. Format: `groups/{group_id}`, where
-  /// `group_id` is the unique ID assigned to the Group.
+  /// [parent] - Required. The parent `Group` resource under which to lookup the
+  /// `Membership` name. Must be of the form `groups/{group_id}`.
   /// Value must have pattern `^groups/\[^/\]+$`.
   ///
-  /// [memberKey_id] - The ID of the entity within the given namespace. The ID
-  /// must be unique within its namespace.
+  /// [memberKey_id] - The ID of the entity. For Google-managed entities, the
+  /// `id` should be the email address of an existing group or user. For
+  /// external-identity-mapped entities, the `id` must be a string conforming to
+  /// the Identity Source's requirements. Must be unique within a `namespace`.
   ///
-  /// [memberKey_namespace] - Namespaces provide isolation for IDs, so an ID
-  /// only needs to be unique within its namespace. Namespaces are currently
-  /// only created as part of IdentitySource creation from Admin Console. A
-  /// namespace `"identitysources/{identity_source_id}"` is created
-  /// corresponding to every Identity Source `identity_source_id`.
+  /// [memberKey_namespace] - The namespace in which the entity exists. If not
+  /// specified, the \`EntityKey\` represents a Google-managed entity such as a
+  /// Google user or a Google Group. If specified, the \`EntityKey\` represents
+  /// an external-identity-mapped group. The namespace must correspond to an
+  /// identity source created in Admin Console and must be in the form of
+  /// \`identitysources/{identity_source_id}.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2246,25 +2430,344 @@ class GroupsMembershipsResource {
           data as core.Map<core.String, core.dynamic>),
     );
   }
+
+  /// Search transitive groups of a member.
+  ///
+  /// **Note:** This feature is only available to Google Workspace Enterprise
+  /// Standard, Enterprise Plus, and Enterprise for Education; and Cloud
+  /// Identity Premium accounts. If the account of the member is not one of
+  /// these, a 403 (PERMISSION_DENIED) HTTP status code will be returned. A
+  /// transitive group is any group that has a direct or indirect membership to
+  /// the member. Actor must have view permissions all transitive groups.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] -
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the group to search transitive memberships in. Format:
+  /// `groups/{group_id}`, where `group_id` is always '-' as this API will
+  /// search across all groups for a given member.
+  /// Value must have pattern `^groups/\[^/\]+$`.
+  ///
+  /// [pageSize] - The default page size is 200 (max 1000).
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request, if any.
+  ///
+  /// [query] - Required. A CEL expression that MUST include member
+  /// specification AND label(s). This is a `required` field. Users can search
+  /// on label attributes of groups. CONTAINS match ('in') is supported on
+  /// labels. Certain groups are uniquely identified by both a 'member_key_id'
+  /// and a 'member_key_namespace', which requires an additional query input:
+  /// 'member_key_namespace'. Example query: `member_key_id ==
+  /// 'member_key_id_value' && in labels`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchTransitiveGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchTransitiveGroupsResponse> searchTransitiveGroups(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String query,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (query != null) {
+      _queryParams['query'] = [query];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/memberships:searchTransitiveGroups';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => SearchTransitiveGroupsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Search transitive memberships of a group.
+  ///
+  /// **Note:** This feature is only available to Google Workspace Enterprise
+  /// Standard, Enterprise Plus, and Enterprise for Education; and Cloud
+  /// Identity Premium accounts. If the account of the group is not one of
+  /// these, a 403 (PERMISSION_DENIED) HTTP status code will be returned. A
+  /// transitive membership is any direct or indirect membership of a group.
+  /// Actor must have view permissions to all transitive memberships.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] -
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the group to search transitive memberships in. Format:
+  /// `groups/{group_id}`, where `group_id` is the unique ID assigned to the
+  /// Group.
+  /// Value must have pattern `^groups/\[^/\]+$`.
+  ///
+  /// [pageSize] - The default page size is 200 (max 1000).
+  ///
+  /// [pageToken] - The next_page_token value returned from a previous list
+  /// request, if any.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchTransitiveMembershipsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchTransitiveMembershipsResponse> searchTransitiveMemberships(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/memberships:searchTransitiveMemberships';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => SearchTransitiveMembershipsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
 }
 
-/// An EntityKey uniquely identifies an Entity.
-///
-/// Namespaces are used to provide isolation for IDs. A single ID can be reused
-/// across namespaces but the combination of a namespace and an ID must be
-/// unique.
-class EntityKey {
-  /// The ID of the entity within the given namespace.
+/// The response message for MembershipsService.CheckTransitiveMembership.
+class CheckTransitiveMembershipResponse {
+  /// Response does not include the possible roles of a member since the
+  /// behavior of this rpc is not all-or-nothing unlike the other rpcs.
   ///
-  /// The ID must be unique within its namespace.
+  /// So, it may not be possible to list all the roles definitively, due to
+  /// possible lack of authorization in some of the paths.
+  core.bool hasMembership;
+
+  CheckTransitiveMembershipResponse();
+
+  CheckTransitiveMembershipResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('hasMembership')) {
+      hasMembership = _json['hasMembership'] as core.bool;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (hasMembership != null) {
+      _json['hasMembership'] = hasMembership;
+    }
+    return _json;
+  }
+}
+
+/// Dynamic group metadata like queries and status.
+class DynamicGroupMetadata {
+  /// Memberships will be the union of all queries.
+  ///
+  /// Only one entry with USER resource is currently supported. Customers can
+  /// create up to 100 dynamic groups.
+  core.List<DynamicGroupQuery> queries;
+
+  /// Status of the dynamic group.
+  ///
+  /// Output only.
+  DynamicGroupStatus status;
+
+  DynamicGroupMetadata();
+
+  DynamicGroupMetadata.fromJson(core.Map _json) {
+    if (_json.containsKey('queries')) {
+      queries = (_json['queries'] as core.List)
+          .map<DynamicGroupQuery>((value) => DynamicGroupQuery.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('status')) {
+      status = DynamicGroupStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (queries != null) {
+      _json['queries'] = queries.map((value) => value.toJson()).toList();
+    }
+    if (status != null) {
+      _json['status'] = status.toJson();
+    }
+    return _json;
+  }
+}
+
+/// Defines a query on a resource.
+class DynamicGroupQuery {
+  /// Query that determines the memberships of the dynamic group.
+  ///
+  /// Examples: All users with at least one `organizations.department` of
+  /// engineering. `user.organizations.exists(org,
+  /// org.department=='engineering')` All users with at least one location that
+  /// has `area` of `foo` and `building_id` of `bar`.
+  /// `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
+  core.String query;
+
+  /// Resource type for the Dynamic Group Query
+  /// Possible string values are:
+  /// - "RESOURCE_TYPE_UNSPECIFIED" : Default value (not valid)
+  /// - "USER" : For queries on User
+  core.String resourceType;
+
+  DynamicGroupQuery();
+
+  DynamicGroupQuery.fromJson(core.Map _json) {
+    if (_json.containsKey('query')) {
+      query = _json['query'] as core.String;
+    }
+    if (_json.containsKey('resourceType')) {
+      resourceType = _json['resourceType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (query != null) {
+      _json['query'] = query;
+    }
+    if (resourceType != null) {
+      _json['resourceType'] = resourceType;
+    }
+    return _json;
+  }
+}
+
+/// The current status of a dynamic group along with timestamp.
+class DynamicGroupStatus {
+  /// Status of the dynamic group.
+  /// Possible string values are:
+  /// - "STATUS_UNSPECIFIED" : Default.
+  /// - "UP_TO_DATE" : The dynamic group is up-to-date.
+  /// - "UPDATING_MEMBERSHIPS" : The dynamic group has just been created and
+  /// memberships are being updated.
+  core.String status;
+
+  /// The latest time at which the dynamic group is guaranteed to be in the
+  /// given status.
+  ///
+  /// If status is `UP_TO_DATE`, the latest time at which the dynamic group was
+  /// confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time
+  /// at which dynamic group was created.
+  core.String statusTime;
+
+  DynamicGroupStatus();
+
+  DynamicGroupStatus.fromJson(core.Map _json) {
+    if (_json.containsKey('status')) {
+      status = _json['status'] as core.String;
+    }
+    if (_json.containsKey('statusTime')) {
+      statusTime = _json['statusTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (status != null) {
+      _json['status'] = status;
+    }
+    if (statusTime != null) {
+      _json['statusTime'] = statusTime;
+    }
+    return _json;
+  }
+}
+
+/// A unique identifier for an entity in the Cloud Identity Groups API.
+///
+/// An entity can represent either a group with an optional `namespace` or a
+/// user without a `namespace`. The combination of `id` and `namespace` must be
+/// unique; however, the same `id` can be used with different `namespace`s.
+class EntityKey {
+  /// The ID of the entity.
+  ///
+  /// For Google-managed entities, the `id` should be the email address of an
+  /// existing group or user. For external-identity-mapped entities, the `id`
+  /// must be a string conforming to the Identity Source's requirements. Must be
+  /// unique within a `namespace`.
   core.String id;
 
-  /// Namespaces provide isolation for IDs, so an ID only needs to be unique
-  /// within its namespace.
+  /// The namespace in which the entity exists.
   ///
-  /// Namespaces are currently only created as part of IdentitySource creation
-  /// from Admin Console. A namespace `"identitysources/{identity_source_id}"`
-  /// is created corresponding to every Identity Source `identity_source_id`.
+  /// If not specified, the \`EntityKey\` represents a Google-managed entity
+  /// such as a Google user or a Google Group. If specified, the \`EntityKey\`
+  /// represents an external-identity-mapped group. The namespace must
+  /// correspond to an identity source created in Admin Console and must be in
+  /// the form of \`identitysources/{identity_source_id}.
   core.String namespace;
 
   EntityKey();
@@ -2285,6 +2788,70 @@ class EntityKey {
     }
     if (namespace != null) {
       _json['namespace'] = namespace;
+    }
+    return _json;
+  }
+}
+
+/// The `MembershipRole` expiry details.
+class ExpiryDetail {
+  /// The time at which the `MembershipRole` will expire.
+  core.String expireTime;
+
+  ExpiryDetail();
+
+  ExpiryDetail.fromJson(core.Map _json) {
+    if (_json.containsKey('expireTime')) {
+      expireTime = _json['expireTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (expireTime != null) {
+      _json['expireTime'] = expireTime;
+    }
+    return _json;
+  }
+}
+
+/// The response message for MembershipsService.GetMembershipGraph.
+class GetMembershipGraphResponse {
+  /// The membership graph's path information represented as an adjacency list.
+  core.List<MembershipAdjacencyList> adjacencyList;
+
+  /// The resources representing each group in the adjacency list.
+  ///
+  /// Each group in this list can be correlated to a 'group' of the
+  /// MembershipAdjacencyList using the 'name' of the Group resource.
+  core.List<Group> groups;
+
+  GetMembershipGraphResponse();
+
+  GetMembershipGraphResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('adjacencyList')) {
+      adjacencyList = (_json['adjacencyList'] as core.List)
+          .map<MembershipAdjacencyList>((value) =>
+              MembershipAdjacencyList.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('groups')) {
+      groups = (_json['groups'] as core.List)
+          .map<Group>((value) =>
+              Group.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (adjacencyList != null) {
+      _json['adjacencyList'] =
+          adjacencyList.map((value) => value.toJson()).toList();
+    }
+    if (groups != null) {
+      _json['groups'] = groups.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3602,61 +4169,70 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse {
   }
 }
 
-/// Resource representing a Group.
+/// A group within the Cloud Identity Groups API.
+///
+/// A `Group` is a collection of entities, where each entity is either a user,
+/// another group, or a service account.
 class Group {
-  /// The time when the Group was created.
-  ///
-  /// Output only.
+  /// The time when the `Group` was created.
   ///
   /// Output only.
   core.String createTime;
 
-  /// An extended description to help users determine the purpose of a Group.
+  /// An extended description to help users determine the purpose of a `Group`.
   ///
-  /// For example, you can include information about who should join the Group,
-  /// the types of messages to send to the Group, links to FAQs about the Group,
-  /// or related Groups. Maximum length is 4,096 characters.
+  /// Must not be longer than 4,096 characters.
   core.String description;
 
-  /// The Group's display name.
+  /// The display name of the `Group`.
   core.String displayName;
 
-  /// EntityKey of the Group.
+  /// Dynamic group metadata like queries and status.
   ///
-  /// Must be set when creating a Group, read-only afterwards.
+  /// Optional.
+  DynamicGroupMetadata dynamicGroupMetadata;
+
+  /// The `EntityKey` of the `Group`.
   ///
   /// Required. Immutable.
   EntityKey groupKey;
 
-  /// `Required`.
+  /// One or more label entries that apply to the Group.
   ///
-  /// Labels for Group resource. For creating Groups under a namespace, set
-  /// label key to 'labels/system/groups/external' and label value as empty.
+  /// Currently supported labels contain a key with an empty value. Google
+  /// Groups are the default type of group and have a label with a key of
+  /// `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value.
+  /// Existing Google Groups can have an additional label with a key of
+  /// `cloudidentity.googleapis.com/groups.security` and an empty value added to
+  /// them. **This is an immutable change and the security label cannot be
+  /// removed once added.** Dynamic groups have a label with a key of
+  /// `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for
+  /// Cloud Search have a label with a key of `system/groups/external` and an
+  /// empty value. Examples:
+  /// {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or
+  /// {"system/groups/external": ""}.
   ///
   /// Required.
   core.Map<core.String, core.String> labels;
 
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Group in the format: `groups/{group_id}`, where group_id is the unique
-  /// ID assigned to the Group.
+  /// The [resource name](https://cloud.google.com/apis/design/resource_names)
+  /// of the `Group`.
   ///
-  /// Must be left blank while creating a Group.
+  /// Shall be of the form `groups/{group_id}`.
   ///
   /// Output only.
   core.String name;
 
-  /// The entity under which this Group resides in Cloud Identity resource
-  /// hierarchy.
+  /// The resource name of the entity under which this `Group` resides in the
+  /// Cloud Identity resource hierarchy.
   ///
-  /// Must be set when creating a Group, read-only afterwards. Currently allowed
-  /// types: `identitysources`.
+  /// Must be of the form `identitysources/{identity_source_id}` for external-
+  /// identity-mapped groups or `customers/{customer_id}` for Google Groups.
   ///
   /// Required. Immutable.
   core.String parent;
 
-  /// The time when the Group was last updated.
-  ///
-  /// Output only.
+  /// The time when the `Group` was last updated.
   ///
   /// Output only.
   core.String updateTime;
@@ -3672,6 +4248,10 @@ class Group {
     }
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('dynamicGroupMetadata')) {
+      dynamicGroupMetadata = DynamicGroupMetadata.fromJson(
+          _json['dynamicGroupMetadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('groupKey')) {
       groupKey = EntityKey.fromJson(
@@ -3708,6 +4288,9 @@ class Group {
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
+    if (dynamicGroupMetadata != null) {
+      _json['dynamicGroupMetadata'] = dynamicGroupMetadata.toJson();
+    }
     if (groupKey != null) {
       _json['groupKey'] = groupKey.toJson();
     }
@@ -3722,6 +4305,96 @@ class Group {
     }
     if (updateTime != null) {
       _json['updateTime'] = updateTime;
+    }
+    return _json;
+  }
+}
+
+/// Message representing a transitive group of a user or a group.
+class GroupRelation {
+  /// Display name for this group.
+  core.String displayName;
+
+  /// Resource name for this group.
+  core.String group;
+
+  /// Entity key has an id and a namespace.
+  ///
+  /// In case of discussion forums, the id will be an email address without a
+  /// namespace.
+  EntityKey groupKey;
+
+  /// Labels for Group resource.
+  core.Map<core.String, core.String> labels;
+
+  /// The relation between the member and the transitive group.
+  /// Possible string values are:
+  /// - "RELATION_TYPE_UNSPECIFIED" : The relation type is undefined or
+  /// undetermined.
+  /// - "DIRECT" : The two entities have only a direct membership with each
+  /// other.
+  /// - "INDIRECT" : The two entities have only an indirect membership with each
+  /// other.
+  /// - "DIRECT_AND_INDIRECT" : The two entities have both a direct and an
+  /// indirect membership with each other.
+  core.String relationType;
+
+  /// Membership roles of the member for the group.
+  core.List<TransitiveMembershipRole> roles;
+
+  GroupRelation();
+
+  GroupRelation.fromJson(core.Map _json) {
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('group')) {
+      group = _json['group'] as core.String;
+    }
+    if (_json.containsKey('groupKey')) {
+      groupKey = EntityKey.fromJson(
+          _json['groupKey'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('labels')) {
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
+    }
+    if (_json.containsKey('relationType')) {
+      relationType = _json['relationType'] as core.String;
+    }
+    if (_json.containsKey('roles')) {
+      roles = (_json['roles'] as core.List)
+          .map<TransitiveMembershipRole>((value) =>
+              TransitiveMembershipRole.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (displayName != null) {
+      _json['displayName'] = displayName;
+    }
+    if (group != null) {
+      _json['group'] = group;
+    }
+    if (groupKey != null) {
+      _json['groupKey'] = groupKey.toJson();
+    }
+    if (labels != null) {
+      _json['labels'] = labels;
+    }
+    if (relationType != null) {
+      _json['relationType'] = relationType;
+    }
+    if (roles != null) {
+      _json['roles'] = roles.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -3764,12 +4437,13 @@ class ListGroupsResponse {
   }
 }
 
+/// The response message for MembershipsService.ListMemberships.
 class ListMembershipsResponse {
-  /// List of Memberships.
+  /// The `Membership`s under the specified `parent`.
   core.List<Membership> memberships;
 
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results available for listing.
+  /// A continuation token to retrieve the next page of results, or empty if
+  /// there are no more results available.
   core.String nextPageToken;
 
   ListMembershipsResponse();
@@ -3799,10 +4473,10 @@ class ListMembershipsResponse {
   }
 }
 
+/// The response message for GroupsService.LookupGroupName.
 class LookupGroupNameResponse {
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Group in the format: `groups/{group_id}`, where `group_id` is the
-  /// unique ID assigned to the Group.
+  /// The [resource name](https://cloud.google.com/apis/design/resource_names)
+  /// of the looked-up `Group`.
   core.String name;
 
   LookupGroupNameResponse();
@@ -3822,13 +4496,12 @@ class LookupGroupNameResponse {
   }
 }
 
+/// The response message for MembershipsService.LookupMembershipName.
 class LookupMembershipNameResponse {
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Membership being looked up.
+  /// The [resource name](https://cloud.google.com/apis/design/resource_names)
+  /// of the looked-up `Membership`.
   ///
-  /// Format: `groups/{group_id}/memberships/{member_id}`, where `group_id` is
-  /// the unique ID assigned to the Group to which Membership belongs to, and
-  /// `member_id` is the unique ID assigned to the member.
+  /// Must be of the form `groups/{group_id}/memberships/{membership_id}`.
   core.String name;
 
   LookupMembershipNameResponse();
@@ -3848,35 +4521,103 @@ class LookupMembershipNameResponse {
   }
 }
 
-/// Resource representing a Membership within a Group
-class Membership {
-  /// Creation timestamp of the Membership.
+/// Message representing a transitive membership of a group.
+class MemberRelation {
+  /// Resource name for this member if member is a GROUP, otherwise it is empty.
+  core.String member;
+
+  /// Entity key has an id and a namespace.
   ///
-  /// Output only.
+  /// In case of discussion forums, the id will be an email address without a
+  /// namespace.
+  core.List<EntityKey> preferredMemberKey;
+
+  /// The relation between the group and the transitive member.
+  /// Possible string values are:
+  /// - "RELATION_TYPE_UNSPECIFIED" : The relation type is undefined or
+  /// undetermined.
+  /// - "DIRECT" : The two entities have only a direct membership with each
+  /// other.
+  /// - "INDIRECT" : The two entities have only an indirect membership with each
+  /// other.
+  /// - "DIRECT_AND_INDIRECT" : The two entities have both a direct and an
+  /// indirect membership with each other.
+  core.String relationType;
+
+  /// The membership role details (i.e name of role and expiry time).
+  core.List<TransitiveMembershipRole> roles;
+
+  MemberRelation();
+
+  MemberRelation.fromJson(core.Map _json) {
+    if (_json.containsKey('member')) {
+      member = _json['member'] as core.String;
+    }
+    if (_json.containsKey('preferredMemberKey')) {
+      preferredMemberKey = (_json['preferredMemberKey'] as core.List)
+          .map<EntityKey>((value) =>
+              EntityKey.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('relationType')) {
+      relationType = _json['relationType'] as core.String;
+    }
+    if (_json.containsKey('roles')) {
+      roles = (_json['roles'] as core.List)
+          .map<TransitiveMembershipRole>((value) =>
+              TransitiveMembershipRole.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (member != null) {
+      _json['member'] = member;
+    }
+    if (preferredMemberKey != null) {
+      _json['preferredMemberKey'] =
+          preferredMemberKey.map((value) => value.toJson()).toList();
+    }
+    if (relationType != null) {
+      _json['relationType'] = relationType;
+    }
+    if (roles != null) {
+      _json['roles'] = roles.map((value) => value.toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// A membership within the Cloud Identity Groups API.
+///
+/// A `Membership` defines a relationship between a `Group` and an entity
+/// belonging to that `Group`, referred to as a "member".
+class Membership {
+  /// The time when the `Membership` was created.
   ///
   /// Output only.
   core.String createTime;
 
-  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
-  /// the Membership in the format: `groups/{group_id}/memberships/{member_id}`,
-  /// where group_id is the unique ID assigned to the Group to which Membership
-  /// belongs to, and member_id is the unique ID assigned to the member Must be
-  /// left blank while creating a Membership.
+  /// The [resource name](https://cloud.google.com/apis/design/resource_names)
+  /// of the `Membership`.
+  ///
+  /// Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
   ///
   /// Output only.
   core.String name;
 
-  /// EntityKey of the entity to be added as the member.
-  ///
-  /// Must be set while creating a Membership, read-only afterwards. Currently
-  /// allowed entity types: `Users`, `Groups`.
+  /// The `EntityKey` of the member.
   ///
   /// Required. Immutable.
   EntityKey preferredMemberKey;
 
-  /// Roles for a member within the Group.
+  /// The `MembershipRole`s that apply to the `Membership`.
   ///
-  /// Currently supported MembershipRoles: `"MEMBER"`.
+  /// If unspecified, defaults to a single `MembershipRole` with `name`
+  /// `MEMBER`. Must not contain duplicate `MembershipRole`s with the same
+  /// `name`.
   core.List<MembershipRole> roles;
 
   /// The type of the membership.
@@ -3890,9 +4631,7 @@ class Membership {
   /// - "OTHER" : Represents other type.
   core.String type;
 
-  /// Last updated timestamp of the Membership.
-  ///
-  /// Output only.
+  /// The time when the `Membership` was last updated.
   ///
   /// Output only.
   core.String updateTime;
@@ -3948,16 +4687,67 @@ class Membership {
   }
 }
 
-/// Resource representing a role within a Membership.
-class MembershipRole {
-  /// MembershipRole in string format.
+/// Membership graph's path information as an adjacency list.
+class MembershipAdjacencyList {
+  /// Each edge contains information about the member that belongs to this
+  /// group.
   ///
-  /// Currently supported MembershipRoles: `"MEMBER"`.
+  /// Note: Fields returned here will help identify the specific Membership
+  /// resource (e.g name, preferred_member_key and role), but may not be a
+  /// comprehensive list of all fields.
+  core.List<Membership> edges;
+
+  /// Resource name of the group that the members belong to.
+  core.String group;
+
+  MembershipAdjacencyList();
+
+  MembershipAdjacencyList.fromJson(core.Map _json) {
+    if (_json.containsKey('edges')) {
+      edges = (_json['edges'] as core.List)
+          .map<Membership>((value) =>
+              Membership.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('group')) {
+      group = _json['group'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (edges != null) {
+      _json['edges'] = edges.map((value) => value.toJson()).toList();
+    }
+    if (group != null) {
+      _json['group'] = group;
+    }
+    return _json;
+  }
+}
+
+/// A membership role within the Cloud Identity Groups API.
+///
+/// A `MembershipRole` defines the privileges granted to a `Membership`.
+class MembershipRole {
+  /// The expiry details of the `MembershipRole`.
+  ///
+  /// Expiry details are only supported for `MEMBER` `MembershipRoles`. May be
+  /// set if `name` is `MEMBER`. Must not be set if `name` is any other value.
+  ExpiryDetail expiryDetail;
+
+  /// The name of the `MembershipRole`.
+  ///
+  /// Must be one of `OWNER`, `MANAGER`, `MEMBER`.
   core.String name;
 
   MembershipRole();
 
   MembershipRole.fromJson(core.Map _json) {
+    if (_json.containsKey('expiryDetail')) {
+      expiryDetail = ExpiryDetail.fromJson(
+          _json['expiryDetail'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -3965,6 +4755,9 @@ class MembershipRole {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (expiryDetail != null) {
+      _json['expiryDetail'] = expiryDetail.toJson();
+    }
     if (name != null) {
       _json['name'] = name;
     }
@@ -3989,6 +4782,12 @@ class ModifyMembershipRolesRequest {
   /// Must not be set if `update_roles_params` is set.
   core.List<core.String> removeRoles;
 
+  /// The `MembershipRole`s to be updated.
+  ///
+  /// Updating roles in the same request as adding or removing roles is not
+  /// supported. Must not be set if either `add_roles` or `remove_roles` is set.
+  core.List<UpdateMembershipRolesParams> updateRolesParams;
+
   ModifyMembershipRolesRequest();
 
   ModifyMembershipRolesRequest.fromJson(core.Map _json) {
@@ -4003,6 +4802,13 @@ class ModifyMembershipRolesRequest {
           .map<core.String>((value) => value as core.String)
           .toList();
     }
+    if (_json.containsKey('updateRolesParams')) {
+      updateRolesParams = (_json['updateRolesParams'] as core.List)
+          .map<UpdateMembershipRolesParams>((value) =>
+              UpdateMembershipRolesParams.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -4012,6 +4818,10 @@ class ModifyMembershipRolesRequest {
     }
     if (removeRoles != null) {
       _json['removeRoles'] = removeRoles;
+    }
+    if (updateRolesParams != null) {
+      _json['updateRolesParams'] =
+          updateRolesParams.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -4137,12 +4947,13 @@ class Operation {
   }
 }
 
+/// The response message for GroupsService.SearchGroups.
 class SearchGroupsResponse {
-  /// List of Groups satisfying the search query.
+  /// The `Group`s that match the search query.
   core.List<Group> groups;
 
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results available for specified query.
+  /// A continuation token to retrieve the next page of results, or empty if
+  /// there are no more results available.
   core.String nextPageToken;
 
   SearchGroupsResponse();
@@ -4163,6 +4974,78 @@ class SearchGroupsResponse {
     final _json = <core.String, core.Object>{};
     if (groups != null) {
       _json['groups'] = groups.map((value) => value.toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json['nextPageToken'] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// The response message for MembershipsService.SearchTransitiveGroups.
+class SearchTransitiveGroupsResponse {
+  /// List of transitive groups satisfying the query.
+  core.List<GroupRelation> memberships;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results available for listing.
+  core.String nextPageToken;
+
+  SearchTransitiveGroupsResponse();
+
+  SearchTransitiveGroupsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('memberships')) {
+      memberships = (_json['memberships'] as core.List)
+          .map<GroupRelation>((value) => GroupRelation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (memberships != null) {
+      _json['memberships'] =
+          memberships.map((value) => value.toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json['nextPageToken'] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
+/// The response message for MembershipsService.SearchTransitiveMemberships.
+class SearchTransitiveMembershipsResponse {
+  /// List of transitive members satisfying the query.
+  core.List<MemberRelation> memberships;
+
+  /// Token to retrieve the next page of results, or empty if there are no more
+  /// results.
+  core.String nextPageToken;
+
+  SearchTransitiveMembershipsResponse();
+
+  SearchTransitiveMembershipsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('memberships')) {
+      memberships = (_json['memberships'] as core.List)
+          .map<MemberRelation>((value) => MemberRelation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (memberships != null) {
+      _json['memberships'] =
+          memberships.map((value) => value.toJson()).toList();
     }
     if (nextPageToken != null) {
       _json['nextPageToken'] = nextPageToken;
@@ -4228,6 +5111,126 @@ class Status {
     }
     if (message != null) {
       _json['message'] = message;
+    }
+    return _json;
+  }
+}
+
+/// Message representing the role of a TransitiveMembership.
+class TransitiveMembershipRole {
+  /// TransitiveMembershipRole in string format.
+  ///
+  /// Currently supported TransitiveMembershipRoles: `"MEMBER"`, `"OWNER"`, and
+  /// `"MANAGER"`.
+  core.String role;
+
+  TransitiveMembershipRole();
+
+  TransitiveMembershipRole.fromJson(core.Map _json) {
+    if (_json.containsKey('role')) {
+      role = _json['role'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (role != null) {
+      _json['role'] = role;
+    }
+    return _json;
+  }
+}
+
+/// The details of an update to a `MembershipRole`.
+class UpdateMembershipRolesParams {
+  /// The fully-qualified names of fields to update.
+  ///
+  /// May only contain the field `expiry_detail`.
+  core.String fieldMask;
+
+  /// The `MembershipRole`s to be updated.
+  ///
+  /// Only `MEMBER` `MembershipRole` can currently be updated.
+  MembershipRole membershipRole;
+
+  UpdateMembershipRolesParams();
+
+  UpdateMembershipRolesParams.fromJson(core.Map _json) {
+    if (_json.containsKey('fieldMask')) {
+      fieldMask = _json['fieldMask'] as core.String;
+    }
+    if (_json.containsKey('membershipRole')) {
+      membershipRole = MembershipRole.fromJson(
+          _json['membershipRole'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (fieldMask != null) {
+      _json['fieldMask'] = fieldMask;
+    }
+    if (membershipRole != null) {
+      _json['membershipRole'] = membershipRole.toJson();
+    }
+    return _json;
+  }
+}
+
+/// UserInvitation to join a Google Workspace organization.
+class UserInvitation {
+  /// Number of invitation emails sent to the user.
+  core.String mailsSentCount;
+
+  /// Shall be of the form
+  /// `customers/{customer}/userinvitations/{user_email_address}`
+  core.String name;
+
+  /// State of the `UserInvitation`.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value. This value is used if the state
+  /// is omitted.
+  /// - "NOT_YET_SENT" : The `UserInvitation` has been created and is ready for
+  /// sending as an email.
+  /// - "INVITED" : The user has been invited by email.
+  /// - "ACCEPTED" : The user has accepted the invitation and is part of the
+  /// organization.
+  /// - "DECLINED" : The user declined the invitation.
+  core.String state;
+
+  /// Time when the `UserInvitation` was last updated.
+  core.String updateTime;
+
+  UserInvitation();
+
+  UserInvitation.fromJson(core.Map _json) {
+    if (_json.containsKey('mailsSentCount')) {
+      mailsSentCount = _json['mailsSentCount'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (mailsSentCount != null) {
+      _json['mailsSentCount'] = mailsSentCount;
+    }
+    if (name != null) {
+      _json['name'] = name;
+    }
+    if (state != null) {
+      _json['state'] = state;
+    }
+    if (updateTime != null) {
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }

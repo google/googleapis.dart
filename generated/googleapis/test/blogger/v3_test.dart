@@ -71,14 +71,14 @@ void checkBlogPages(api.BlogPages o) {
   buildCounterBlogPages--;
 }
 
-core.List<api.Post> buildUnnamed148() {
+core.List<api.Post> buildUnnamed214() {
   var o = <api.Post>[];
   o.add(buildPost());
   o.add(buildPost());
   return o;
 }
 
-void checkUnnamed148(core.List<api.Post> o) {
+void checkUnnamed214(core.List<api.Post> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPost(o[0] as api.Post);
   checkPost(o[1] as api.Post);
@@ -89,7 +89,7 @@ api.BlogPosts buildBlogPosts() {
   var o = api.BlogPosts();
   buildCounterBlogPosts++;
   if (buildCounterBlogPosts < 3) {
-    o.items = buildUnnamed148();
+    o.items = buildUnnamed214();
     o.selfLink = 'foo';
     o.totalItems = 42;
   }
@@ -100,7 +100,7 @@ api.BlogPosts buildBlogPosts() {
 void checkBlogPosts(api.BlogPosts o) {
   buildCounterBlogPosts++;
   if (buildCounterBlogPosts < 3) {
-    checkUnnamed148(o.items);
+    checkUnnamed214(o.items);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals(42));
   }
@@ -150,27 +150,27 @@ void checkBlog(api.Blog o) {
   buildCounterBlog--;
 }
 
-core.List<api.BlogUserInfo> buildUnnamed149() {
+core.List<api.BlogUserInfo> buildUnnamed215() {
   var o = <api.BlogUserInfo>[];
   o.add(buildBlogUserInfo());
   o.add(buildBlogUserInfo());
   return o;
 }
 
-void checkUnnamed149(core.List<api.BlogUserInfo> o) {
+void checkUnnamed215(core.List<api.BlogUserInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBlogUserInfo(o[0] as api.BlogUserInfo);
   checkBlogUserInfo(o[1] as api.BlogUserInfo);
 }
 
-core.List<api.Blog> buildUnnamed150() {
+core.List<api.Blog> buildUnnamed216() {
   var o = <api.Blog>[];
   o.add(buildBlog());
   o.add(buildBlog());
   return o;
 }
 
-void checkUnnamed150(core.List<api.Blog> o) {
+void checkUnnamed216(core.List<api.Blog> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBlog(o[0] as api.Blog);
   checkBlog(o[1] as api.Blog);
@@ -181,8 +181,8 @@ api.BlogList buildBlogList() {
   var o = api.BlogList();
   buildCounterBlogList++;
   if (buildCounterBlogList < 3) {
-    o.blogUserInfos = buildUnnamed149();
-    o.items = buildUnnamed150();
+    o.blogUserInfos = buildUnnamed215();
+    o.items = buildUnnamed216();
     o.kind = 'foo';
   }
   buildCounterBlogList--;
@@ -192,8 +192,8 @@ api.BlogList buildBlogList() {
 void checkBlogList(api.BlogList o) {
   buildCounterBlogList++;
   if (buildCounterBlogList < 3) {
-    checkUnnamed149(o.blogUserInfos);
-    checkUnnamed150(o.items);
+    checkUnnamed215(o.blogUserInfos);
+    checkUnnamed216(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterBlogList--;
@@ -391,14 +391,14 @@ void checkComment(api.Comment o) {
   buildCounterComment--;
 }
 
-core.List<api.Comment> buildUnnamed151() {
+core.List<api.Comment> buildUnnamed217() {
   var o = <api.Comment>[];
   o.add(buildComment());
   o.add(buildComment());
   return o;
 }
 
-void checkUnnamed151(core.List<api.Comment> o) {
+void checkUnnamed217(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0] as api.Comment);
   checkComment(o[1] as api.Comment);
@@ -410,7 +410,7 @@ api.CommentList buildCommentList() {
   buildCounterCommentList++;
   if (buildCounterCommentList < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed151();
+    o.items = buildUnnamed217();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.prevPageToken = 'foo';
@@ -423,7 +423,7 @@ void checkCommentList(api.CommentList o) {
   buildCounterCommentList++;
   if (buildCounterCommentList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed151(o.items);
+    checkUnnamed217(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.prevPageToken, unittest.equals('foo'));
@@ -535,14 +535,14 @@ void checkPage(api.Page o) {
   buildCounterPage--;
 }
 
-core.List<api.Page> buildUnnamed152() {
+core.List<api.Page> buildUnnamed218() {
   var o = <api.Page>[];
   o.add(buildPage());
   o.add(buildPage());
   return o;
 }
 
-void checkUnnamed152(core.List<api.Page> o) {
+void checkUnnamed218(core.List<api.Page> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPage(o[0] as api.Page);
   checkPage(o[1] as api.Page);
@@ -554,7 +554,7 @@ api.PageList buildPageList() {
   buildCounterPageList++;
   if (buildCounterPageList < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed152();
+    o.items = buildUnnamed218();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -566,7 +566,7 @@ void checkPageList(api.PageList o) {
   buildCounterPageList++;
   if (buildCounterPageList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed152(o.items);
+    checkUnnamed218(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -594,14 +594,14 @@ void checkPageviewsCounts(api.PageviewsCounts o) {
   buildCounterPageviewsCounts--;
 }
 
-core.List<api.PageviewsCounts> buildUnnamed153() {
+core.List<api.PageviewsCounts> buildUnnamed219() {
   var o = <api.PageviewsCounts>[];
   o.add(buildPageviewsCounts());
   o.add(buildPageviewsCounts());
   return o;
 }
 
-void checkUnnamed153(core.List<api.PageviewsCounts> o) {
+void checkUnnamed219(core.List<api.PageviewsCounts> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPageviewsCounts(o[0] as api.PageviewsCounts);
   checkPageviewsCounts(o[1] as api.PageviewsCounts);
@@ -613,7 +613,7 @@ api.Pageviews buildPageviews() {
   buildCounterPageviews++;
   if (buildCounterPageviews < 3) {
     o.blogId = 'foo';
-    o.counts = buildUnnamed153();
+    o.counts = buildUnnamed219();
     o.kind = 'foo';
   }
   buildCounterPageviews--;
@@ -624,7 +624,7 @@ void checkPageviews(api.Pageviews o) {
   buildCounterPageviews++;
   if (buildCounterPageviews < 3) {
     unittest.expect(o.blogId, unittest.equals('foo'));
-    checkUnnamed153(o.counts);
+    checkUnnamed219(o.counts);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterPageviews--;
@@ -712,27 +712,27 @@ void checkPostImages(api.PostImages o) {
   buildCounterPostImages--;
 }
 
-core.List<api.PostImages> buildUnnamed154() {
+core.List<api.PostImages> buildUnnamed220() {
   var o = <api.PostImages>[];
   o.add(buildPostImages());
   o.add(buildPostImages());
   return o;
 }
 
-void checkUnnamed154(core.List<api.PostImages> o) {
+void checkUnnamed220(core.List<api.PostImages> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPostImages(o[0] as api.PostImages);
   checkPostImages(o[1] as api.PostImages);
 }
 
-core.List<core.String> buildUnnamed155() {
+core.List<core.String> buildUnnamed221() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed155(core.List<core.String> o) {
+void checkUnnamed221(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -763,14 +763,14 @@ void checkPostLocation(api.PostLocation o) {
   buildCounterPostLocation--;
 }
 
-core.List<api.Comment> buildUnnamed156() {
+core.List<api.Comment> buildUnnamed222() {
   var o = <api.Comment>[];
   o.add(buildComment());
   o.add(buildComment());
   return o;
 }
 
-void checkUnnamed156(core.List<api.Comment> o) {
+void checkUnnamed222(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkComment(o[0] as api.Comment);
   checkComment(o[1] as api.Comment);
@@ -781,7 +781,7 @@ api.PostReplies buildPostReplies() {
   var o = api.PostReplies();
   buildCounterPostReplies++;
   if (buildCounterPostReplies < 3) {
-    o.items = buildUnnamed156();
+    o.items = buildUnnamed222();
     o.selfLink = 'foo';
     o.totalItems = 'foo';
   }
@@ -792,7 +792,7 @@ api.PostReplies buildPostReplies() {
 void checkPostReplies(api.PostReplies o) {
   buildCounterPostReplies++;
   if (buildCounterPostReplies < 3) {
-    checkUnnamed156(o.items);
+    checkUnnamed222(o.items);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.totalItems, unittest.equals('foo'));
   }
@@ -810,9 +810,9 @@ api.Post buildPost() {
     o.customMetaData = 'foo';
     o.etag = 'foo';
     o.id = 'foo';
-    o.images = buildUnnamed154();
+    o.images = buildUnnamed220();
     o.kind = 'foo';
-    o.labels = buildUnnamed155();
+    o.labels = buildUnnamed221();
     o.location = buildPostLocation();
     o.published = 'foo';
     o.readerComments = 'foo';
@@ -837,9 +837,9 @@ void checkPost(api.Post o) {
     unittest.expect(o.customMetaData, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkUnnamed154(o.images);
+    checkUnnamed220(o.images);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUnnamed155(o.labels);
+    checkUnnamed221(o.labels);
     checkPostLocation(o.location as api.PostLocation);
     unittest.expect(o.published, unittest.equals('foo'));
     unittest.expect(o.readerComments, unittest.equals('foo'));
@@ -854,14 +854,14 @@ void checkPost(api.Post o) {
   buildCounterPost--;
 }
 
-core.List<api.Post> buildUnnamed157() {
+core.List<api.Post> buildUnnamed223() {
   var o = <api.Post>[];
   o.add(buildPost());
   o.add(buildPost());
   return o;
 }
 
-void checkUnnamed157(core.List<api.Post> o) {
+void checkUnnamed223(core.List<api.Post> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPost(o[0] as api.Post);
   checkPost(o[1] as api.Post);
@@ -873,7 +873,7 @@ api.PostList buildPostList() {
   buildCounterPostList++;
   if (buildCounterPostList < 3) {
     o.etag = 'foo';
-    o.items = buildUnnamed157();
+    o.items = buildUnnamed223();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
     o.prevPageToken = 'foo';
@@ -886,7 +886,7 @@ void checkPostList(api.PostList o) {
   buildCounterPostList++;
   if (buildCounterPostList < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkUnnamed157(o.items);
+    checkUnnamed223(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.prevPageToken, unittest.equals('foo'));
@@ -944,14 +944,14 @@ void checkPostUserInfo(api.PostUserInfo o) {
   buildCounterPostUserInfo--;
 }
 
-core.List<api.PostUserInfo> buildUnnamed158() {
+core.List<api.PostUserInfo> buildUnnamed224() {
   var o = <api.PostUserInfo>[];
   o.add(buildPostUserInfo());
   o.add(buildPostUserInfo());
   return o;
 }
 
-void checkUnnamed158(core.List<api.PostUserInfo> o) {
+void checkUnnamed224(core.List<api.PostUserInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPostUserInfo(o[0] as api.PostUserInfo);
   checkPostUserInfo(o[1] as api.PostUserInfo);
@@ -962,7 +962,7 @@ api.PostUserInfosList buildPostUserInfosList() {
   var o = api.PostUserInfosList();
   buildCounterPostUserInfosList++;
   if (buildCounterPostUserInfosList < 3) {
-    o.items = buildUnnamed158();
+    o.items = buildUnnamed224();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -973,7 +973,7 @@ api.PostUserInfosList buildPostUserInfosList() {
 void checkPostUserInfosList(api.PostUserInfosList o) {
   buildCounterPostUserInfosList++;
   if (buildCounterPostUserInfosList < 3) {
-    checkUnnamed158(o.items);
+    checkUnnamed224(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -1057,92 +1057,92 @@ void checkUser(api.User o) {
   buildCounterUser--;
 }
 
-core.List<core.String> buildUnnamed159() {
+core.List<core.String> buildUnnamed225() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed159(core.List<core.String> o) {
+void checkUnnamed225(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed160() {
+core.List<core.String> buildUnnamed226() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed160(core.List<core.String> o) {
+void checkUnnamed226(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed161() {
+core.List<core.String> buildUnnamed227() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed161(core.List<core.String> o) {
+void checkUnnamed227(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed162() {
+core.List<core.String> buildUnnamed228() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed162(core.List<core.String> o) {
+void checkUnnamed228(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed163() {
+core.List<core.String> buildUnnamed229() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed163(core.List<core.String> o) {
+void checkUnnamed229(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed164() {
+core.List<core.String> buildUnnamed230() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed164(core.List<core.String> o) {
+void checkUnnamed230(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed165() {
+core.List<core.String> buildUnnamed231() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed165(core.List<core.String> o) {
+void checkUnnamed231(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1607,8 +1607,8 @@ void main() {
       var res = api.BloggerApi(mock).blogs;
       var arg_userId = 'foo';
       var arg_fetchUserInfo = true;
-      var arg_role = buildUnnamed159();
-      var arg_status = buildUnnamed160();
+      var arg_role = buildUnnamed225();
+      var arg_status = buildUnnamed226();
       var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -1993,7 +1993,7 @@ void main() {
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
       var arg_startDate = 'foo';
-      var arg_status = buildUnnamed161();
+      var arg_status = buildUnnamed227();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2224,7 +2224,7 @@ void main() {
       var mock = HttpServerMock();
       var res = api.BloggerApi(mock).pageViews;
       var arg_blogId = 'foo';
-      var arg_range = buildUnnamed162();
+      var arg_range = buildUnnamed228();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var path = (req.url).path;
@@ -2472,7 +2472,7 @@ void main() {
       var arg_fetchBodies = true;
       var arg_maxResults = 42;
       var arg_pageToken = 'foo';
-      var arg_status = buildUnnamed163();
+      var arg_status = buildUnnamed229();
       var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -2908,7 +2908,7 @@ void main() {
       var arg_orderBy = 'foo';
       var arg_pageToken = 'foo';
       var arg_startDate = 'foo';
-      var arg_status = buildUnnamed164();
+      var arg_status = buildUnnamed230();
       var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
@@ -3284,7 +3284,7 @@ void main() {
       var arg_orderBy = 'foo';
       var arg_pageToken = 'foo';
       var arg_startDate = 'foo';
-      var arg_status = buildUnnamed165();
+      var arg_status = buildUnnamed231();
       var arg_view = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {

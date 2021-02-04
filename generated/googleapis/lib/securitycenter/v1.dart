@@ -20,17 +20,24 @@
 /// Security Command Center API provides access to temporal views of assets and
 /// findings within an organization.
 ///
-/// For more information, see
-/// <https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview>
+/// For more information, see <https://cloud.google.com/security-command-center>
 ///
 /// Create an instance of [SecurityCommandCenterApi] to access these resources:
 ///
+/// - [FoldersResource]
+///   - [FoldersAssetsResource]
+///   - [FoldersSourcesResource]
+///     - [FoldersSourcesFindingsResource]
 /// - [OrganizationsResource]
 ///   - [OrganizationsAssetsResource]
 ///   - [OrganizationsNotificationConfigsResource]
 ///   - [OrganizationsOperationsResource]
 ///   - [OrganizationsSourcesResource]
 ///     - [OrganizationsSourcesFindingsResource]
+/// - [ProjectsResource]
+///   - [ProjectsAssetsResource]
+///   - [ProjectsSourcesResource]
+///     - [ProjectsSourcesFindingsResource]
 library securitycenter.v1;
 
 import 'dart:async' as async;
@@ -54,13 +61,872 @@ class SecurityCommandCenterApi {
 
   final commons.ApiRequester _requester;
 
+  FoldersResource get folders => FoldersResource(_requester);
   OrganizationsResource get organizations => OrganizationsResource(_requester);
+  ProjectsResource get projects => ProjectsResource(_requester);
 
   SecurityCommandCenterApi(http.Client client,
       {core.String rootUrl = 'https://securitycenter.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+}
+
+class FoldersResource {
+  final commons.ApiRequester _requester;
+
+  FoldersAssetsResource get assets => FoldersAssetsResource(_requester);
+  FoldersSourcesResource get sources => FoldersSourcesResource(_requester);
+
+  FoldersResource(commons.ApiRequester client) : _requester = client;
+}
+
+class FoldersAssetsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersAssetsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Filters an organization's assets and groups them by their specified
+  /// properties.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the organization to groupBy. Its format is
+  /// "organizations/\[organization_id\], folders/\[folder_id\], or
+  /// projects/\[project_id\]".
+  /// Value must have pattern `^folders/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GroupAssetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GroupAssetsResponse> group(
+    GroupAssetsRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/assets:group';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GroupAssetsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Lists an organization's assets.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the organization assets should belong to. Its
+  /// format is "organizations/\[organization_id\], folders/\[folder_id\], or
+  /// projects/\[project_id\]".
+  /// Value must have pattern `^folders/\[^/\]+$`.
+  ///
+  /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
+  /// "state_change" attribute is updated to indicate whether the asset was
+  /// added, removed, or remained present during the compare_duration period of
+  /// time that precedes the read_time. This is the time between (read_time -
+  /// compare_duration) and read_time. The state_change value is derived based
+  /// on the presence of the asset at the two points in time. Intermediate state
+  /// changes between the two times don't affect the result. For example, the
+  /// results aren't affected if the asset is removed and re-created again.
+  /// Possible "state_change" values when compare_duration is specified: *
+  /// "ADDED": indicates that the asset was not present at the start of
+  /// compare_duration, but present at read_time. * "REMOVED": indicates that
+  /// the asset was present at the start of compare_duration, but not present at
+  /// read_time. * "ACTIVE": indicates that the asset was present at both the
+  /// start and the end of the time period defined by compare_duration and
+  /// read_time. If compare_duration is not specified, then the only possible
+  /// state_change is "UNUSED", which will be the state_change set for all
+  /// assets present at read_time.
+  ///
+  /// [fieldMask] - A field mask to specify the ListAssetsResult fields to be
+  /// listed in the response. An empty field mask will list all fields.
+  ///
+  /// [filter] - Expression that defines the filter to apply across assets. The
+  /// expression is a list of zero or more restrictions combined via logical
+  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
+  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
+  /// character in front of them to indicate negation. The fields map to those
+  /// defined in the Asset resource. Examples include: * name *
+  /// security_center_properties.resource_name * resource_properties.a_property
+  /// * security_marks.marks.marka The supported operators are: * `=` for all
+  /// value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning
+  /// substring matching, for strings. The supported value types are: * string
+  /// literals in quotes. * integer literals without quotes. * boolean literals
+  /// `true` and `false` without quotes. The following are the allowed field and
+  /// operator combinations: * name: `=` * update_time: `=`, `>`, `<`, `>=`,
+  /// `<=` Usage: This should be milliseconds since epoch or an RFC3339 string.
+  /// Examples: `update_time = "2019-06-10T16:07:18-07:00"` `update_time =
+  /// 1560208038000` * create_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should
+  /// be milliseconds since epoch or an RFC3339 string. Examples: `create_time =
+  /// "2019-06-10T16:07:18-07:00"` `create_time = 1560208038000` *
+  /// iam_policy.policy_blob: `=`, `:` * resource_properties: `=`, `:`, `>`,
+  /// `<`, `>=`, `<=` * security_marks.marks: `=`, `:` *
+  /// security_center_properties.resource_name: `=`, `:` *
+  /// security_center_properties.resource_display_name: `=`, `:` *
+  /// security_center_properties.resource_type: `=`, `:` *
+  /// security_center_properties.resource_parent: `=`, `:` *
+  /// security_center_properties.resource_parent_display_name: `=`, `:` *
+  /// security_center_properties.resource_project: `=`, `:` *
+  /// security_center_properties.resource_project_display_name: `=`, `:` *
+  /// security_center_properties.resource_owners: `=`, `:` For example,
+  /// `resource_properties.size = 100` is a valid filter string. Use a partial
+  /// match on the empty string to filter based on a property existing:
+  /// `resource_properties.my_property : ""` Use a negated partial match on the
+  /// empty string to filter based on a property not existing:
+  /// `-resource_properties.my_property : ""`
+  ///
+  /// [orderBy] - Expression that defines what fields and order to use for
+  /// sorting. The string value should follow SQL syntax: comma separated list
+  /// of fields. For example: "name,resource_properties.a_property". The default
+  /// sorting order is ascending. To specify descending order for a field, a
+  /// suffix " desc" should be appended to the field name. For example: "name
+  /// desc,resource_properties.a_property". Redundant space characters in the
+  /// syntax are insignificant. "name desc,resource_properties.a_property" and "
+  /// name desc , resource_properties.a_property " are equivalent. The following
+  /// fields are supported: name update_time resource_properties
+  /// security_marks.marks security_center_properties.resource_name
+  /// security_center_properties.resource_display_name
+  /// security_center_properties.resource_parent
+  /// security_center_properties.resource_parent_display_name
+  /// security_center_properties.resource_project
+  /// security_center_properties.resource_project_display_name
+  /// security_center_properties.resource_type
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last `ListAssetsResponse`;
+  /// indicates that this is a continuation of a prior `ListAssets` call, and
+  /// that the system should return the next page of data.
+  ///
+  /// [readTime] - Time used as a reference point when filtering assets. The
+  /// filter is limited to assets existing at the supplied time and their values
+  /// are those at that specific time. Absence of this field will default to the
+  /// API's version of NOW.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAssetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAssetsResponse> list(
+    core.String parent, {
+    core.String compareDuration,
+    core.String fieldMask,
+    core.String filter,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
+    core.String readTime,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (compareDuration != null) {
+      _queryParams['compareDuration'] = [compareDuration];
+    }
+    if (fieldMask != null) {
+      _queryParams['fieldMask'] = [fieldMask];
+    }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (readTime != null) {
+      _queryParams['readTime'] = [readTime];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/assets';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => ListAssetsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Updates security marks.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The relative resource name of the SecurityMarks. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// Examples:
+  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
+  /// Value must have pattern `^folders/\[^/\]+/assets/\[^/\]+/securityMarks$`.
+  ///
+  /// [startTime] - The time at which the updated SecurityMarks take effect. If
+  /// not set uses current server time. Updates will be applied to the
+  /// SecurityMarks that are active immediately preceding this time.
+  ///
+  /// [updateMask] - The FieldMask to use when updating the security marks
+  /// resource. The field mask must not contain duplicate fields. If empty or
+  /// set to "marks", all marks will be replaced. Individual marks can be
+  /// updated using "marks.".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecurityMarks].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecurityMarks> updateSecurityMarks(
+    SecurityMarks request,
+    core.String name, {
+    core.String startTime,
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if (startTime != null) {
+      _queryParams['startTime'] = [startTime];
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) =>
+          SecurityMarks.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class FoldersSourcesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersSourcesFindingsResource get findings =>
+      FoldersSourcesFindingsResource(_requester);
+
+  FoldersSourcesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Lists all sources belonging to an organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the parent of sources to list. Its
+  /// format should be "organizations/\[organization_id\],
+  /// folders/\[folder_id\], or projects/\[project_id\]".
+  /// Value must have pattern `^folders/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last `ListSourcesResponse`;
+  /// indicates that this is a continuation of a prior `ListSources` call, and
+  /// that the system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSourcesResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sources';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => ListSourcesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class FoldersSourcesFindingsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersSourcesFindingsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Filters an organization or source's findings and groups them by their
+  /// specified properties.
+  ///
+  /// To group across all sources provide a `-` as the source id. Example:
+  /// /v1/organizations/{organization_id}/sources/-/findings,
+  /// /v1/folders/{folder_id}/sources/-/findings,
+  /// /v1/projects/{project_id}/sources/-/findings
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the source to groupBy. Its format is
+  /// "organizations/\[organization_id\]/sources/\[source_id\]",
+  /// folders/\[folder_id\]/sources/\[source_id\], or
+  /// projects/\[project_id\]/sources/\[source_id\]. To groupBy across all
+  /// sources provide a source_id of `-`. For example:
+  /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-,
+  /// or projects/{project_id}/sources/-
+  /// Value must have pattern `^folders/\[^/\]+/sources/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GroupFindingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GroupFindingsResponse> group(
+    GroupFindingsRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/findings:group';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GroupFindingsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Lists an organization or source's findings.
+  ///
+  /// To list across all sources provide a `-` as the source id. Example:
+  /// /v1/organizations/{organization_id}/sources/-/findings
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the source the findings belong to. Its format
+  /// is "organizations/\[organization_id\]/sources/\[source_id\],
+  /// folders/\[folder_id\]/sources/\[source_id\], or
+  /// projects/\[project_id\]/sources/\[source_id\]". To list across all sources
+  /// provide a source_id of `-`. For example:
+  /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-
+  /// or projects/{projects_id}/sources/-
+  /// Value must have pattern `^folders/\[^/\]+/sources/\[^/\]+$`.
+  ///
+  /// [compareDuration] - When compare_duration is set, the ListFindingsResult's
+  /// "state_change" attribute is updated to indicate whether the finding had
+  /// its state changed, the finding's state remained unchanged, or if the
+  /// finding was added in any state during the compare_duration period of time
+  /// that precedes the read_time. This is the time between (read_time -
+  /// compare_duration) and read_time. The state_change value is derived based
+  /// on the presence and state of the finding at the two points in time.
+  /// Intermediate state changes between the two times don't affect the result.
+  /// For example, the results aren't affected if the finding is made inactive
+  /// and then active again. Possible "state_change" values when
+  /// compare_duration is specified: * "CHANGED": indicates that the finding was
+  /// present and matched the given filter at the start of compare_duration, but
+  /// changed its state at read_time. * "UNCHANGED": indicates that the finding
+  /// was present and matched the given filter at the start of compare_duration
+  /// and did not change state at read_time. * "ADDED": indicates that the
+  /// finding did not match the given filter or was not present at the start of
+  /// compare_duration, but was present at read_time. * "REMOVED": indicates
+  /// that the finding was present and matched the filter at the start of
+  /// compare_duration, but did not match the filter at read_time. If
+  /// compare_duration is not specified, then the only possible state_change is
+  /// "UNUSED", which will be the state_change set for all findings present at
+  /// read_time.
+  ///
+  /// [fieldMask] - A field mask to specify the Finding fields to be listed in
+  /// the response. An empty field mask will list all fields.
+  ///
+  /// [filter] - Expression that defines the filter to apply across findings.
+  /// The expression is a list of one or more restrictions combined via logical
+  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
+  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
+  /// character in front of them to indicate negation. Examples include: * name
+  /// * source_properties.a_property * security_marks.marks.marka The supported
+  /// operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for
+  /// integer values. * `:`, meaning substring matching, for strings. The
+  /// supported value types are: * string literals in quotes. * integer literals
+  /// without quotes. * boolean literals `true` and `false` without quotes. The
+  /// following field and operator combinations are supported: * name: `=` *
+  /// parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category:
+  /// `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=`
+  /// * severity: `=`, `:` Usage: This should be milliseconds since epoch or an
+  /// RFC3339 string. Examples: `event_time = "2019-06-10T16:07:18-07:00"`
+  /// `event_time = 1560208038000` security_marks.marks: `=`, `:`
+  /// source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example,
+  /// `source_properties.size = 100` is a valid filter string. Use a partial
+  /// match on the empty string to filter based on a property existing:
+  /// `source_properties.my_property : ""` Use a negated partial match on the
+  /// empty string to filter based on a property not existing:
+  /// `-source_properties.my_property : ""`
+  ///
+  /// [orderBy] - Expression that defines what fields and order to use for
+  /// sorting. The string value should follow SQL syntax: comma separated list
+  /// of fields. For example: "name,resource_properties.a_property". The default
+  /// sorting order is ascending. To specify descending order for a field, a
+  /// suffix " desc" should be appended to the field name. For example: "name
+  /// desc,source_properties.a_property". Redundant space characters in the
+  /// syntax are insignificant. "name desc,source_properties.a_property" and "
+  /// name desc , source_properties.a_property " are equivalent. The following
+  /// fields are supported: name parent state category resource_name event_time
+  /// source_properties security_marks.marks
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last `ListFindingsResponse`;
+  /// indicates that this is a continuation of a prior `ListFindings` call, and
+  /// that the system should return the next page of data.
+  ///
+  /// [readTime] - Time used as a reference point when filtering findings. The
+  /// filter is limited to findings existing at the supplied time and their
+  /// values are those at that specific time. Absence of this field will default
+  /// to the API's version of NOW.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFindingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFindingsResponse> list(
+    core.String parent, {
+    core.String compareDuration,
+    core.String fieldMask,
+    core.String filter,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
+    core.String readTime,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (compareDuration != null) {
+      _queryParams['compareDuration'] = [compareDuration];
+    }
+    if (fieldMask != null) {
+      _queryParams['fieldMask'] = [fieldMask];
+    }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (readTime != null) {
+      _queryParams['readTime'] = [readTime];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/findings';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => ListFindingsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Creates or updates a finding.
+  ///
+  /// The corresponding source must exist for a finding creation to succeed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The relative resource name of this finding. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// Example:
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
+  ///
+  /// [updateMask] - The FieldMask to use when updating the finding resource.
+  /// This field should not be specified when creating a finding. When updating
+  /// a finding, an empty mask is treated as updating all mutable fields and
+  /// replacing source_properties. Individual source_properties can be
+  /// added/updated by using "source_properties." in the field mask.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Finding].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Finding> patch(
+    Finding request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Finding.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Updates the state of a finding.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the finding. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// Example:
+  /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Finding].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Finding> setState(
+    SetFindingStateRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setState';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Finding.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Updates security marks.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The relative resource name of the SecurityMarks. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// Examples:
+  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+/securityMarks$`.
+  ///
+  /// [startTime] - The time at which the updated SecurityMarks take effect. If
+  /// not set uses current server time. Updates will be applied to the
+  /// SecurityMarks that are active immediately preceding this time.
+  ///
+  /// [updateMask] - The FieldMask to use when updating the security marks
+  /// resource. The field mask must not contain duplicate fields. If empty or
+  /// set to "marks", all marks will be replaced. Individual marks can be
+  /// updated using "marks.".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecurityMarks].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecurityMarks> updateSecurityMarks(
+    SecurityMarks request,
+    core.String name, {
+    core.String startTime,
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if (startTime != null) {
+      _queryParams['startTime'] = [startTime];
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) =>
+          SecurityMarks.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
 }
 
 class OrganizationsResource {
@@ -213,7 +1079,8 @@ class OrganizationsAssetsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the organization to groupBy. Its format is
-  /// "organizations/\[organization_id\]".
+  /// "organizations/\[organization_id\], folders/\[folder_id\], or
+  /// projects/\[project_id\]".
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -272,7 +1139,8 @@ class OrganizationsAssetsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the organization assets should belong to. Its
-  /// format is "organizations/\[organization_id\]".
+  /// format is "organizations/\[organization_id\], folders/\[folder_id\], or
+  /// projects/\[project_id\]".
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
@@ -1344,7 +2212,8 @@ class OrganizationsSourcesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Resource name of the parent of sources to list. Its
-  /// format should be "organizations/\[organization_id\]".
+  /// format should be "organizations/\[organization_id\],
+  /// folders/\[folder_id\], or projects/\[project_id\]".
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
   /// [pageSize] - The maximum number of results to return in a single response.
@@ -1677,16 +2546,21 @@ class OrganizationsSourcesFindingsResource {
   /// specified properties.
   ///
   /// To group across all sources provide a `-` as the source id. Example:
-  /// /v1/organizations/{organization_id}/sources/-/findings
+  /// /v1/organizations/{organization_id}/sources/-/findings,
+  /// /v1/folders/{folder_id}/sources/-/findings,
+  /// /v1/projects/{project_id}/sources/-/findings
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the source to groupBy. Its format is
-  /// "organizations/\[organization_id\]/sources/\[source_id\]". To groupBy
-  /// across all sources provide a source_id of `-`. For example:
-  /// organizations/{organization_id}/sources/-
+  /// "organizations/\[organization_id\]/sources/\[source_id\]",
+  /// folders/\[folder_id\]/sources/\[source_id\], or
+  /// projects/\[project_id\]/sources/\[source_id\]. To groupBy across all
+  /// sources provide a source_id of `-`. For example:
+  /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-,
+  /// or projects/{project_id}/sources/-
   /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1748,9 +2622,12 @@ class OrganizationsSourcesFindingsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. Name of the source the findings belong to. Its format
-  /// is "organizations/\[organization_id\]/sources/\[source_id\]". To list
-  /// across all sources provide a source_id of `-`. For example:
-  /// organizations/{organization_id}/sources/-
+  /// is "organizations/\[organization_id\]/sources/\[source_id\],
+  /// folders/\[folder_id\]/sources/\[source_id\], or
+  /// projects/\[project_id\]/sources/\[source_id\]". To list across all sources
+  /// provide a source_id of `-`. For example:
+  /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-
+  /// or projects/{projects_id}/sources/-
   /// Value must have pattern `^organizations/\[^/\]+/sources/\[^/\]+$`.
   ///
   /// [compareDuration] - When compare_duration is set, the ListFindingsResult's
@@ -1789,17 +2666,18 @@ class OrganizationsSourcesFindingsResource {
   /// integer values. * `:`, meaning substring matching, for strings. The
   /// supported value types are: * string literals in quotes. * integer literals
   /// without quotes. * boolean literals `true` and `false` without quotes. The
-  /// following field and operator combinations are supported: name: `=` parent:
-  /// `=`, `:` resource_name: `=`, `:` state: `=`, `:` category: `=`, `:`
-  /// external_uri: `=`, `:` event_time: `=`, `>`, `<`, `>=`, `<=` Usage: This
-  /// should be milliseconds since epoch or an RFC3339 string. Examples:
-  /// `event_time = "2019-06-10T16:07:18-07:00"` `event_time = 1560208038000`
-  /// security_marks.marks: `=`, `:` source_properties: `=`, `:`, `>`, `<`,
-  /// `>=`, `<=` For example, `source_properties.size = 100` is a valid filter
-  /// string. Use a partial match on the empty string to filter based on a
-  /// property existing: `source_properties.my_property : ""` Use a negated
-  /// partial match on the empty string to filter based on a property not
-  /// existing: `-source_properties.my_property : ""`
+  /// following field and operator combinations are supported: * name: `=` *
+  /// parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category:
+  /// `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=`
+  /// * severity: `=`, `:` Usage: This should be milliseconds since epoch or an
+  /// RFC3339 string. Examples: `event_time = "2019-06-10T16:07:18-07:00"`
+  /// `event_time = 1560208038000` security_marks.marks: `=`, `:`
+  /// source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example,
+  /// `source_properties.size = 100` is a valid filter string. Use a partial
+  /// match on the empty string to filter based on a property existing:
+  /// `source_properties.my_property : ""` Use a negated partial match on the
+  /// empty string to filter based on a property not existing:
+  /// `-source_properties.my_property : ""`
   ///
   /// [orderBy] - Expression that defines what fields and order to use for
   /// sorting. The string value should follow SQL syntax: comma separated list
@@ -2113,6 +2991,863 @@ class OrganizationsSourcesFindingsResource {
   }
 }
 
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsAssetsResource get assets => ProjectsAssetsResource(_requester);
+  ProjectsSourcesResource get sources => ProjectsSourcesResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsAssetsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsAssetsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Filters an organization's assets and groups them by their specified
+  /// properties.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the organization to groupBy. Its format is
+  /// "organizations/\[organization_id\], folders/\[folder_id\], or
+  /// projects/\[project_id\]".
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GroupAssetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GroupAssetsResponse> group(
+    GroupAssetsRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/assets:group';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GroupAssetsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Lists an organization's assets.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the organization assets should belong to. Its
+  /// format is "organizations/\[organization_id\], folders/\[folder_id\], or
+  /// projects/\[project_id\]".
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [compareDuration] - When compare_duration is set, the ListAssetsResult's
+  /// "state_change" attribute is updated to indicate whether the asset was
+  /// added, removed, or remained present during the compare_duration period of
+  /// time that precedes the read_time. This is the time between (read_time -
+  /// compare_duration) and read_time. The state_change value is derived based
+  /// on the presence of the asset at the two points in time. Intermediate state
+  /// changes between the two times don't affect the result. For example, the
+  /// results aren't affected if the asset is removed and re-created again.
+  /// Possible "state_change" values when compare_duration is specified: *
+  /// "ADDED": indicates that the asset was not present at the start of
+  /// compare_duration, but present at read_time. * "REMOVED": indicates that
+  /// the asset was present at the start of compare_duration, but not present at
+  /// read_time. * "ACTIVE": indicates that the asset was present at both the
+  /// start and the end of the time period defined by compare_duration and
+  /// read_time. If compare_duration is not specified, then the only possible
+  /// state_change is "UNUSED", which will be the state_change set for all
+  /// assets present at read_time.
+  ///
+  /// [fieldMask] - A field mask to specify the ListAssetsResult fields to be
+  /// listed in the response. An empty field mask will list all fields.
+  ///
+  /// [filter] - Expression that defines the filter to apply across assets. The
+  /// expression is a list of zero or more restrictions combined via logical
+  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
+  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
+  /// character in front of them to indicate negation. The fields map to those
+  /// defined in the Asset resource. Examples include: * name *
+  /// security_center_properties.resource_name * resource_properties.a_property
+  /// * security_marks.marks.marka The supported operators are: * `=` for all
+  /// value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning
+  /// substring matching, for strings. The supported value types are: * string
+  /// literals in quotes. * integer literals without quotes. * boolean literals
+  /// `true` and `false` without quotes. The following are the allowed field and
+  /// operator combinations: * name: `=` * update_time: `=`, `>`, `<`, `>=`,
+  /// `<=` Usage: This should be milliseconds since epoch or an RFC3339 string.
+  /// Examples: `update_time = "2019-06-10T16:07:18-07:00"` `update_time =
+  /// 1560208038000` * create_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should
+  /// be milliseconds since epoch or an RFC3339 string. Examples: `create_time =
+  /// "2019-06-10T16:07:18-07:00"` `create_time = 1560208038000` *
+  /// iam_policy.policy_blob: `=`, `:` * resource_properties: `=`, `:`, `>`,
+  /// `<`, `>=`, `<=` * security_marks.marks: `=`, `:` *
+  /// security_center_properties.resource_name: `=`, `:` *
+  /// security_center_properties.resource_display_name: `=`, `:` *
+  /// security_center_properties.resource_type: `=`, `:` *
+  /// security_center_properties.resource_parent: `=`, `:` *
+  /// security_center_properties.resource_parent_display_name: `=`, `:` *
+  /// security_center_properties.resource_project: `=`, `:` *
+  /// security_center_properties.resource_project_display_name: `=`, `:` *
+  /// security_center_properties.resource_owners: `=`, `:` For example,
+  /// `resource_properties.size = 100` is a valid filter string. Use a partial
+  /// match on the empty string to filter based on a property existing:
+  /// `resource_properties.my_property : ""` Use a negated partial match on the
+  /// empty string to filter based on a property not existing:
+  /// `-resource_properties.my_property : ""`
+  ///
+  /// [orderBy] - Expression that defines what fields and order to use for
+  /// sorting. The string value should follow SQL syntax: comma separated list
+  /// of fields. For example: "name,resource_properties.a_property". The default
+  /// sorting order is ascending. To specify descending order for a field, a
+  /// suffix " desc" should be appended to the field name. For example: "name
+  /// desc,resource_properties.a_property". Redundant space characters in the
+  /// syntax are insignificant. "name desc,resource_properties.a_property" and "
+  /// name desc , resource_properties.a_property " are equivalent. The following
+  /// fields are supported: name update_time resource_properties
+  /// security_marks.marks security_center_properties.resource_name
+  /// security_center_properties.resource_display_name
+  /// security_center_properties.resource_parent
+  /// security_center_properties.resource_parent_display_name
+  /// security_center_properties.resource_project
+  /// security_center_properties.resource_project_display_name
+  /// security_center_properties.resource_type
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last `ListAssetsResponse`;
+  /// indicates that this is a continuation of a prior `ListAssets` call, and
+  /// that the system should return the next page of data.
+  ///
+  /// [readTime] - Time used as a reference point when filtering assets. The
+  /// filter is limited to assets existing at the supplied time and their values
+  /// are those at that specific time. Absence of this field will default to the
+  /// API's version of NOW.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAssetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAssetsResponse> list(
+    core.String parent, {
+    core.String compareDuration,
+    core.String fieldMask,
+    core.String filter,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
+    core.String readTime,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (compareDuration != null) {
+      _queryParams['compareDuration'] = [compareDuration];
+    }
+    if (fieldMask != null) {
+      _queryParams['fieldMask'] = [fieldMask];
+    }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (readTime != null) {
+      _queryParams['readTime'] = [readTime];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/assets';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => ListAssetsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Updates security marks.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The relative resource name of the SecurityMarks. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// Examples:
+  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
+  /// Value must have pattern `^projects/\[^/\]+/assets/\[^/\]+/securityMarks$`.
+  ///
+  /// [startTime] - The time at which the updated SecurityMarks take effect. If
+  /// not set uses current server time. Updates will be applied to the
+  /// SecurityMarks that are active immediately preceding this time.
+  ///
+  /// [updateMask] - The FieldMask to use when updating the security marks
+  /// resource. The field mask must not contain duplicate fields. If empty or
+  /// set to "marks", all marks will be replaced. Individual marks can be
+  /// updated using "marks.".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecurityMarks].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecurityMarks> updateSecurityMarks(
+    SecurityMarks request,
+    core.String name, {
+    core.String startTime,
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if (startTime != null) {
+      _queryParams['startTime'] = [startTime];
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) =>
+          SecurityMarks.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class ProjectsSourcesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsSourcesFindingsResource get findings =>
+      ProjectsSourcesFindingsResource(_requester);
+
+  ProjectsSourcesResource(commons.ApiRequester client) : _requester = client;
+
+  /// Lists all sources belonging to an organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the parent of sources to list. Its
+  /// format should be "organizations/\[organization_id\],
+  /// folders/\[folder_id\], or projects/\[project_id\]".
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last `ListSourcesResponse`;
+  /// indicates that this is a continuation of a prior `ListSources` call, and
+  /// that the system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSourcesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSourcesResponse> list(
+    core.String parent, {
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sources';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => ListSourcesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class ProjectsSourcesFindingsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsSourcesFindingsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Filters an organization or source's findings and groups them by their
+  /// specified properties.
+  ///
+  /// To group across all sources provide a `-` as the source id. Example:
+  /// /v1/organizations/{organization_id}/sources/-/findings,
+  /// /v1/folders/{folder_id}/sources/-/findings,
+  /// /v1/projects/{project_id}/sources/-/findings
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the source to groupBy. Its format is
+  /// "organizations/\[organization_id\]/sources/\[source_id\]",
+  /// folders/\[folder_id\]/sources/\[source_id\], or
+  /// projects/\[project_id\]/sources/\[source_id\]. To groupBy across all
+  /// sources provide a source_id of `-`. For example:
+  /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-,
+  /// or projects/{project_id}/sources/-
+  /// Value must have pattern `^projects/\[^/\]+/sources/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GroupFindingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GroupFindingsResponse> group(
+    GroupFindingsRequest request,
+    core.String parent, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/findings:group';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GroupFindingsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Lists an organization or source's findings.
+  ///
+  /// To list across all sources provide a `-` as the source id. Example:
+  /// /v1/organizations/{organization_id}/sources/-/findings
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the source the findings belong to. Its format
+  /// is "organizations/\[organization_id\]/sources/\[source_id\],
+  /// folders/\[folder_id\]/sources/\[source_id\], or
+  /// projects/\[project_id\]/sources/\[source_id\]". To list across all sources
+  /// provide a source_id of `-`. For example:
+  /// organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-
+  /// or projects/{projects_id}/sources/-
+  /// Value must have pattern `^projects/\[^/\]+/sources/\[^/\]+$`.
+  ///
+  /// [compareDuration] - When compare_duration is set, the ListFindingsResult's
+  /// "state_change" attribute is updated to indicate whether the finding had
+  /// its state changed, the finding's state remained unchanged, or if the
+  /// finding was added in any state during the compare_duration period of time
+  /// that precedes the read_time. This is the time between (read_time -
+  /// compare_duration) and read_time. The state_change value is derived based
+  /// on the presence and state of the finding at the two points in time.
+  /// Intermediate state changes between the two times don't affect the result.
+  /// For example, the results aren't affected if the finding is made inactive
+  /// and then active again. Possible "state_change" values when
+  /// compare_duration is specified: * "CHANGED": indicates that the finding was
+  /// present and matched the given filter at the start of compare_duration, but
+  /// changed its state at read_time. * "UNCHANGED": indicates that the finding
+  /// was present and matched the given filter at the start of compare_duration
+  /// and did not change state at read_time. * "ADDED": indicates that the
+  /// finding did not match the given filter or was not present at the start of
+  /// compare_duration, but was present at read_time. * "REMOVED": indicates
+  /// that the finding was present and matched the filter at the start of
+  /// compare_duration, but did not match the filter at read_time. If
+  /// compare_duration is not specified, then the only possible state_change is
+  /// "UNUSED", which will be the state_change set for all findings present at
+  /// read_time.
+  ///
+  /// [fieldMask] - A field mask to specify the Finding fields to be listed in
+  /// the response. An empty field mask will list all fields.
+  ///
+  /// [filter] - Expression that defines the filter to apply across findings.
+  /// The expression is a list of one or more restrictions combined via logical
+  /// operators `AND` and `OR`. Parentheses are supported, and `OR` has higher
+  /// precedence than `AND`. Restrictions have the form ` ` and may have a `-`
+  /// character in front of them to indicate negation. Examples include: * name
+  /// * source_properties.a_property * security_marks.marks.marka The supported
+  /// operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for
+  /// integer values. * `:`, meaning substring matching, for strings. The
+  /// supported value types are: * string literals in quotes. * integer literals
+  /// without quotes. * boolean literals `true` and `false` without quotes. The
+  /// following field and operator combinations are supported: * name: `=` *
+  /// parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category:
+  /// `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=`
+  /// * severity: `=`, `:` Usage: This should be milliseconds since epoch or an
+  /// RFC3339 string. Examples: `event_time = "2019-06-10T16:07:18-07:00"`
+  /// `event_time = 1560208038000` security_marks.marks: `=`, `:`
+  /// source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example,
+  /// `source_properties.size = 100` is a valid filter string. Use a partial
+  /// match on the empty string to filter based on a property existing:
+  /// `source_properties.my_property : ""` Use a negated partial match on the
+  /// empty string to filter based on a property not existing:
+  /// `-source_properties.my_property : ""`
+  ///
+  /// [orderBy] - Expression that defines what fields and order to use for
+  /// sorting. The string value should follow SQL syntax: comma separated list
+  /// of fields. For example: "name,resource_properties.a_property". The default
+  /// sorting order is ascending. To specify descending order for a field, a
+  /// suffix " desc" should be appended to the field name. For example: "name
+  /// desc,source_properties.a_property". Redundant space characters in the
+  /// syntax are insignificant. "name desc,source_properties.a_property" and "
+  /// name desc , source_properties.a_property " are equivalent. The following
+  /// fields are supported: name parent state category resource_name event_time
+  /// source_properties security_marks.marks
+  ///
+  /// [pageSize] - The maximum number of results to return in a single response.
+  /// Default is 10, minimum is 1, maximum is 1000.
+  ///
+  /// [pageToken] - The value returned by the last `ListFindingsResponse`;
+  /// indicates that this is a continuation of a prior `ListFindings` call, and
+  /// that the system should return the next page of data.
+  ///
+  /// [readTime] - Time used as a reference point when filtering findings. The
+  /// filter is limited to findings existing at the supplied time and their
+  /// values are those at that specific time. Absence of this field will default
+  /// to the API's version of NOW.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListFindingsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListFindingsResponse> list(
+    core.String parent, {
+    core.String compareDuration,
+    core.String fieldMask,
+    core.String filter,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
+    core.String readTime,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (compareDuration != null) {
+      _queryParams['compareDuration'] = [compareDuration];
+    }
+    if (fieldMask != null) {
+      _queryParams['fieldMask'] = [fieldMask];
+    }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if (readTime != null) {
+      _queryParams['readTime'] = [readTime];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/findings';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => ListFindingsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Creates or updates a finding.
+  ///
+  /// The corresponding source must exist for a finding creation to succeed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The relative resource name of this finding. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// Example:
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}"
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
+  ///
+  /// [updateMask] - The FieldMask to use when updating the finding resource.
+  /// This field should not be specified when creating a finding. When updating
+  /// a finding, an empty mask is treated as updating all mutable fields and
+  /// replacing source_properties. Individual source_properties can be
+  /// added/updated by using "source_properties." in the field mask.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Finding].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Finding> patch(
+    Finding request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Finding.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Updates the state of a finding.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of the finding. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// Example:
+  /// "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Finding].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Finding> setState(
+    SetFindingStateRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setState';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Finding.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Updates security marks.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The relative resource name of the SecurityMarks. See:
+  /// https://cloud.google.com/apis/design/resource_names#relative_resource_name
+  /// Examples:
+  /// "organizations/{organization_id}/assets/{asset_id}/securityMarks"
+  /// "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/sources/\[^/\]+/findings/\[^/\]+/securityMarks$`.
+  ///
+  /// [startTime] - The time at which the updated SecurityMarks take effect. If
+  /// not set uses current server time. Updates will be applied to the
+  /// SecurityMarks that are active immediately preceding this time.
+  ///
+  /// [updateMask] - The FieldMask to use when updating the security marks
+  /// resource. The field mask must not contain duplicate fields. If empty or
+  /// set to "marks", all marks will be replaced. Individual marks can be
+  /// updated using "marks.".
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SecurityMarks].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SecurityMarks> updateSecurityMarks(
+    SecurityMarks request,
+    core.String name, {
+    core.String startTime,
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if (startTime != null) {
+      _queryParams['startTime'] = [startTime];
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) =>
+          SecurityMarks.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
 /// Security Command Center representation of a Google Cloud resource.
 ///
 /// The Asset is a Security Command Center resource that captures information
@@ -2228,6 +3963,11 @@ class Asset {
 
 /// The configuration used for Asset Discovery runs.
 class AssetDiscoveryConfig {
+  /// The folder ids to use for filtering asset discovery.
+  ///
+  /// It consists of only digits, e.g., 756619654966.
+  core.List<core.String> folderIds;
+
   /// The mode to use for filtering asset discovery.
   /// Possible string values are:
   /// - "INCLUSION_MODE_UNSPECIFIED" : Unspecified. Setting the mode with this
@@ -2244,6 +3984,11 @@ class AssetDiscoveryConfig {
   AssetDiscoveryConfig();
 
   AssetDiscoveryConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('folderIds')) {
+      folderIds = (_json['folderIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
     if (_json.containsKey('inclusionMode')) {
       inclusionMode = _json['inclusionMode'] as core.String;
     }
@@ -2256,6 +4001,9 @@ class AssetDiscoveryConfig {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (folderIds != null) {
+      _json['folderIds'] = folderIds;
+    }
     if (inclusionMode != null) {
       _json['inclusionMode'] = inclusionMode;
     }
@@ -2613,6 +4361,48 @@ class Finding {
   /// Output only.
   SecurityMarks securityMarks;
 
+  /// The severity of the finding.
+  ///
+  /// This field is managed by the source that writes the finding.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : This value is used for findings when a source
+  /// doesn't write a severity value.
+  /// - "CRITICAL" : Vulnerability: A critical vulnerability is easily
+  /// discoverable by an external actor, exploitable, and results in the direct
+  /// ability to execute arbitrary code, exfiltrate data, and otherwise gain
+  /// additional access and privileges to cloud resources and workloads.
+  /// Examples include publicly accessible unprotected user data, public SSH
+  /// access with weak or no passwords, etc. Threat: Indicates a threat that is
+  /// able to access, modify, or delete data or execute unauthorized code within
+  /// existing resources.
+  /// - "HIGH" : Vulnerability: A high risk vulnerability can be easily
+  /// discovered and exploited in combination with other vulnerabilities in
+  /// order to gain direct access and the ability to execute arbitrary code,
+  /// exfiltrate data, and otherwise gain additional access and privileges to
+  /// cloud resources and workloads. An example is a database with weak or no
+  /// passwords that is only accessible internally. This database could easily
+  /// be compromised by an actor that had access to the internal network.
+  /// Threat: Indicates a threat that is able to create new computational
+  /// resources in an environment but not able to access data or execute code in
+  /// existing resources.
+  /// - "MEDIUM" : Vulnerability: A medium risk vulnerability could be used by
+  /// an actor to gain access to resources or privileges that enable them to
+  /// eventually (through multiple steps or a complex exploit) gain access and
+  /// the ability to execute arbitrary code or exfiltrate data. An example is a
+  /// service account with access to more projects than it should have. If an
+  /// actor gains access to the service account, they could potentially use that
+  /// access to manipulate a project the service account was not intended to.
+  /// Threat: Indicates a threat that is able to cause operational impact but
+  /// may not access data or execute unauthorized code.
+  /// - "LOW" : Vulnerability: A low risk vulnerability hampers a security
+  /// organization’s ability to detect vulnerabilities or active threats in
+  /// their deployment, or prevents the root cause investigation of security
+  /// issues. An example is monitoring and logs being disabled for resource
+  /// configurations and access. Threat: Indicates a threat that has obtained
+  /// minimal access to an environment but is not able to access data, execute
+  /// code, or create resources.
+  core.String severity;
+
   /// Source specific properties.
   ///
   /// These properties are managed by the source that writes the finding. The
@@ -2661,6 +4451,9 @@ class Finding {
       securityMarks = SecurityMarks.fromJson(
           _json['securityMarks'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('severity')) {
+      severity = _json['severity'] as core.String;
+    }
     if (_json.containsKey('sourceProperties')) {
       sourceProperties = (_json['sourceProperties'] as core.Map)
           .cast<core.String, core.Object>()
@@ -2702,11 +4495,50 @@ class Finding {
     if (securityMarks != null) {
       _json['securityMarks'] = securityMarks.toJson();
     }
+    if (severity != null) {
+      _json['severity'] = severity;
+    }
     if (sourceProperties != null) {
       _json['sourceProperties'] = sourceProperties;
     }
     if (state != null) {
       _json['state'] = state;
+    }
+    return _json;
+  }
+}
+
+/// Message that contains the resource name and display name of a folder
+/// resource.
+class Folder {
+  /// Full resource name of this folder.
+  ///
+  /// See:
+  /// https://cloud.google.com/apis/design/resource_names#full_resource_name
+  core.String resourceFolder;
+
+  /// The user defined display name for this folder.
+  core.String resourceFolderDisplayName;
+
+  Folder();
+
+  Folder.fromJson(core.Map _json) {
+    if (_json.containsKey('resourceFolder')) {
+      resourceFolder = _json['resourceFolder'] as core.String;
+    }
+    if (_json.containsKey('resourceFolderDisplayName')) {
+      resourceFolderDisplayName =
+          _json['resourceFolderDisplayName'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (resourceFolder != null) {
+      _json['resourceFolder'] = resourceFolder;
+    }
+    if (resourceFolderDisplayName != null) {
+      _json['resourceFolderDisplayName'] = resourceFolderDisplayName;
     }
     return _json;
   }
@@ -2811,6 +4643,14 @@ class GoogleCloudSecuritycenterV1NotificationMessage {
 
 /// Information related to the Google Cloud resource.
 class GoogleCloudSecuritycenterV1Resource {
+  /// Contains a Folder message for each folder in the assets ancestry.
+  ///
+  /// The first folder is the deepest nested folder, and the last folder is the
+  /// folder directly under the Organization.
+  ///
+  /// Output only.
+  core.List<Folder> folders;
+
   /// The full resource name of the resource.
   ///
   /// See:
@@ -2832,6 +4672,12 @@ class GoogleCloudSecuritycenterV1Resource {
   GoogleCloudSecuritycenterV1Resource();
 
   GoogleCloudSecuritycenterV1Resource.fromJson(core.Map _json) {
+    if (_json.containsKey('folders')) {
+      folders = (_json['folders'] as core.List)
+          .map<Folder>((value) =>
+              Folder.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -2851,6 +4697,9 @@ class GoogleCloudSecuritycenterV1Resource {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (folders != null) {
+      _json['folders'] = folders.map((value) => value.toJson()).toList();
+    }
     if (name != null) {
       _json['name'] = name;
     }
@@ -3130,6 +4979,42 @@ class GoogleCloudSecuritycenterV1p1beta1Finding {
   }
 }
 
+/// Message that contains the resource name and display name of a folder
+/// resource.
+class GoogleCloudSecuritycenterV1p1beta1Folder {
+  /// Full resource name of this folder.
+  ///
+  /// See:
+  /// https://cloud.google.com/apis/design/resource_names#full_resource_name
+  core.String resourceFolder;
+
+  /// The user defined display name for this folder.
+  core.String resourceFolderDisplayName;
+
+  GoogleCloudSecuritycenterV1p1beta1Folder();
+
+  GoogleCloudSecuritycenterV1p1beta1Folder.fromJson(core.Map _json) {
+    if (_json.containsKey('resourceFolder')) {
+      resourceFolder = _json['resourceFolder'] as core.String;
+    }
+    if (_json.containsKey('resourceFolderDisplayName')) {
+      resourceFolderDisplayName =
+          _json['resourceFolderDisplayName'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (resourceFolder != null) {
+      _json['resourceFolder'] = resourceFolder;
+    }
+    if (resourceFolderDisplayName != null) {
+      _json['resourceFolderDisplayName'] = resourceFolderDisplayName;
+    }
+    return _json;
+  }
+}
+
 /// Security Command Center's Notification
 class GoogleCloudSecuritycenterV1p1beta1NotificationMessage {
   /// If it's a Finding based notification config, this field will be populated.
@@ -3175,6 +5060,14 @@ class GoogleCloudSecuritycenterV1p1beta1NotificationMessage {
 
 /// Information related to the Google Cloud resource.
 class GoogleCloudSecuritycenterV1p1beta1Resource {
+  /// Contains a Folder message for each folder in the assets ancestry.
+  ///
+  /// The first folder is the deepest nested folder, and the last folder is the
+  /// folder directly under the Organization.
+  ///
+  /// Output only.
+  core.List<GoogleCloudSecuritycenterV1p1beta1Folder> folders;
+
   /// The full resource name of the resource.
   ///
   /// See:
@@ -3196,6 +5089,13 @@ class GoogleCloudSecuritycenterV1p1beta1Resource {
   GoogleCloudSecuritycenterV1p1beta1Resource();
 
   GoogleCloudSecuritycenterV1p1beta1Resource.fromJson(core.Map _json) {
+    if (_json.containsKey('folders')) {
+      folders = (_json['folders'] as core.List)
+          .map<GoogleCloudSecuritycenterV1p1beta1Folder>((value) =>
+              GoogleCloudSecuritycenterV1p1beta1Folder.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -3215,6 +5115,9 @@ class GoogleCloudSecuritycenterV1p1beta1Resource {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (folders != null) {
+      _json['folders'] = folders.map((value) => value.toJson()).toList();
+    }
     if (name != null) {
       _json['name'] = name;
     }
@@ -3567,14 +5470,15 @@ class GroupFindingsRequest {
   /// following field and operator combinations are supported: * name: `=` *
   /// parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category:
   /// `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=`
-  /// Usage: This should be milliseconds since epoch or an RFC3339 string.
-  /// Examples: `event_time = "2019-06-10T16:07:18-07:00"` `event_time =
-  /// 1560208038000` * security_marks.marks: `=`, `:` * source_properties: `=`,
-  /// `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is a
-  /// valid filter string. Use a partial match on the empty string to filter
-  /// based on a property existing: `source_properties.my_property : ""` Use a
-  /// negated partial match on the empty string to filter based on a property
-  /// not existing: `-source_properties.my_property : ""`
+  /// * severity: `=`, `:` Usage: This should be milliseconds since epoch or an
+  /// RFC3339 string. Examples: `event_time = "2019-06-10T16:07:18-07:00"`
+  /// `event_time = 1560208038000` * security_marks.marks: `=`, `:` *
+  /// source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example,
+  /// `source_properties.size = 100` is a valid filter string. Use a partial
+  /// match on the empty string to filter based on a property existing:
+  /// `source_properties.my_property : ""` Use a negated partial match on the
+  /// empty string to filter based on a property not existing:
+  /// `-source_properties.my_property : ""`
   core.String filter;
 
   /// Expression that defines what assets fields to use for grouping (including
@@ -3582,8 +5486,8 @@ class GroupFindingsRequest {
   ///
   /// The string value should follow SQL syntax: comma separated list of fields.
   /// For example: "parent,resource_name". The following fields are supported: *
-  /// resource_name * category * state * parent The following fields are
-  /// supported when compare_duration is set: * state_change
+  /// resource_name * category * state * parent * severity The following fields
+  /// are supported when compare_duration is set: * state_change
   ///
   /// Required.
   core.String groupBy;
@@ -4433,6 +6337,12 @@ class Policy {
 ///
 /// LINT.IfChange
 class Resource {
+  /// Contains a Folder message for each folder in the assets ancestry.
+  ///
+  /// The first folder is the deepest nested folder, and the last folder is the
+  /// folder directly under the Organization.
+  core.List<Folder> folders;
+
   /// The full resource name of the resource.
   ///
   /// See:
@@ -4454,6 +6364,12 @@ class Resource {
   Resource();
 
   Resource.fromJson(core.Map _json) {
+    if (_json.containsKey('folders')) {
+      folders = (_json['folders'] as core.List)
+          .map<Folder>((value) =>
+              Folder.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -4473,6 +6389,9 @@ class Resource {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (folders != null) {
+      _json['folders'] = folders.map((value) => value.toJson()).toList();
+    }
     if (name != null) {
       _json['name'] = name;
     }
@@ -4511,6 +6430,12 @@ class RunAssetDiscoveryRequest {
 /// These properties are managed by Security Command Center and cannot be
 /// modified by the user.
 class SecurityCenterProperties {
+  /// Contains a Folder message for each folder in the assets ancestry.
+  ///
+  /// The first folder is the deepest nested folder, and the last folder is the
+  /// folder directly under the Organization.
+  core.List<Folder> folders;
+
   /// The user defined display name for this resource.
   core.String resourceDisplayName;
 
@@ -4551,6 +6476,12 @@ class SecurityCenterProperties {
   SecurityCenterProperties();
 
   SecurityCenterProperties.fromJson(core.Map _json) {
+    if (_json.containsKey('folders')) {
+      folders = (_json['folders'] as core.List)
+          .map<Folder>((value) =>
+              Folder.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('resourceDisplayName')) {
       resourceDisplayName = _json['resourceDisplayName'] as core.String;
     }
@@ -4583,6 +6514,9 @@ class SecurityCenterProperties {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (folders != null) {
+      _json['folders'] = folders.map((value) => value.toJson()).toList();
+    }
     if (resourceDisplayName != null) {
       _json['resourceDisplayName'] = resourceDisplayName;
     }

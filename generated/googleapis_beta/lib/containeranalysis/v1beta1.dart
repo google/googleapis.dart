@@ -1871,7 +1871,7 @@ class Basis {
 
 /// Request to create notes in batch.
 class BatchCreateNotesRequest {
-  /// The notes to create.
+  /// The notes to create, the key is expected to be the note ID.
   ///
   /// Max allowed length is 1000.
   ///
@@ -1984,11 +1984,6 @@ class BatchCreateOccurrencesResponse {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding.
-  ///
-  /// Expected to be globally unique to support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
@@ -2039,9 +2034,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'] as core.String;
-    }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(
           _json['condition'] as core.Map<core.String, core.dynamic>);
@@ -2058,9 +2050,6 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
-    if (bindingId != null) {
-      _json['bindingId'] = bindingId;
-    }
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }
@@ -2868,6 +2857,9 @@ class Detail {
   /// The severity (eg: distro assigned severity) for this vulnerability.
   core.String severityName;
 
+  /// The source from which the information in this Detail was obtained.
+  core.String source;
+
   /// The time this information was last changed at the source.
   ///
   /// This is an upstream timestamp from the underlying information source -
@@ -2907,6 +2899,9 @@ class Detail {
     if (_json.containsKey('severityName')) {
       severityName = _json['severityName'] as core.String;
     }
+    if (_json.containsKey('source')) {
+      source = _json['source'] as core.String;
+    }
     if (_json.containsKey('sourceUpdateTime')) {
       sourceUpdateTime = _json['sourceUpdateTime'] as core.String;
     }
@@ -2940,6 +2935,9 @@ class Detail {
     }
     if (severityName != null) {
       _json['severityName'] = severityName;
+    }
+    if (source != null) {
+      _json['source'] = source;
     }
     if (sourceUpdateTime != null) {
       _json['sourceUpdateTime'] = sourceUpdateTime;
@@ -3049,7 +3047,7 @@ class Discovery {
   ///
   /// Required. Immutable.
   /// Possible string values are:
-  /// - "NOTE_KIND_UNSPECIFIED" : Unknown.
+  /// - "NOTE_KIND_UNSPECIFIED" : Default value. This value is unused.
   /// - "VULNERABILITY" : The note and occurrence represent a package
   /// vulnerability.
   /// - "BUILD" : The note and occurrence assert build provenance.
@@ -4642,7 +4640,7 @@ class Note {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "NOTE_KIND_UNSPECIFIED" : Unknown.
+  /// - "NOTE_KIND_UNSPECIFIED" : Default value. This value is unused.
   /// - "VULNERABILITY" : The note and occurrence represent a package
   /// vulnerability.
   /// - "BUILD" : The note and occurrence assert build provenance.
@@ -4847,7 +4845,7 @@ class Occurrence {
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "NOTE_KIND_UNSPECIFIED" : Unknown.
+  /// - "NOTE_KIND_UNSPECIFIED" : Default value. This value is unused.
   /// - "VULNERABILITY" : The note and occurrence represent a package
   /// vulnerability.
   /// - "BUILD" : The note and occurrence assert build provenance.
@@ -5911,6 +5909,15 @@ class Version {
   /// Used to correct mistakes in the version numbering scheme.
   core.int epoch;
 
+  /// Whether this version is specifying part of an inclusive range.
+  ///
+  /// Grafeas does not have the capability to specify version ranges; instead we
+  /// have fields that specify start version and end versions. At times this is
+  /// insufficient - we also need to specify whether the version is included in
+  /// the range or is excluded from the range. This boolean is expected to be
+  /// set to true when the version is included in a range.
+  core.bool inclusive;
+
   /// Distinguishes between sentinel MIN/MAX versions and normal versions.
   ///
   /// Required.
@@ -5935,6 +5942,9 @@ class Version {
     if (_json.containsKey('epoch')) {
       epoch = _json['epoch'] as core.int;
     }
+    if (_json.containsKey('inclusive')) {
+      inclusive = _json['inclusive'] as core.bool;
+    }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
@@ -5950,6 +5960,9 @@ class Version {
     final _json = <core.String, core.Object>{};
     if (epoch != null) {
       _json['epoch'] = epoch;
+    }
+    if (inclusive != null) {
+      _json['inclusive'] = inclusive;
     }
     if (kind != null) {
       _json['kind'] = kind;

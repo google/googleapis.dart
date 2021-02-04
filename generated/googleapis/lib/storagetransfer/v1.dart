@@ -208,8 +208,8 @@ class TransferJobsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<TransferJob> get(
-    core.String jobName, {
-    core.String projectId,
+    core.String jobName,
+    core.String projectId, {
     core.String $fields,
   }) {
     core.String _url;
@@ -222,9 +222,10 @@ class TransferJobsResource {
     if (jobName == null) {
       throw core.ArgumentError('Parameter jobName is required.');
     }
-    if (projectId != null) {
-      _queryParams['projectId'] = [projectId];
+    if (projectId == null) {
+      throw core.ArgumentError('Parameter projectId is required.');
     }
+    _queryParams['projectId'] = [projectId];
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -251,13 +252,13 @@ class TransferJobsResource {
   /// Request parameters:
   ///
   /// [filter] - Required. A list of query parameters specified as JSON text in
-  /// the form of: {"project_id":"my_project_id",
-  /// "job_names":\["jobid1","jobid2",...\],
-  /// "job_statuses":\["status1","status2",...\]}. Since `job_names` and
-  /// `job_statuses` support multiple values, their values must be specified
-  /// with array notation. `project``_``id` is required. `job_names` and
-  /// `job_statuses` are optional. The valid values for `job_statuses` are
-  /// case-insensitive: ENABLED, DISABLED, and DELETED.
+  /// the form of: `{"projectId":"my_project_id",
+  /// "jobNames":["jobid1","jobid2",...],
+  /// "jobStatuses":["status1","status2",...]}` Since `jobNames` and
+  /// `jobStatuses` support multiple values, their values must be specified with
+  /// array notation. `projectId` is required. `jobNames` and `jobStatuses` are
+  /// optional. The valid values for `jobStatuses` are case-insensitive:
+  /// ENABLED, DISABLED, and DELETED.
   ///
   /// [pageSize] - The list page size. The max allowed value is 256.
   ///
@@ -273,8 +274,8 @@ class TransferJobsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<ListTransferJobsResponse> list({
-    core.String filter,
+  async.Future<ListTransferJobsResponse> list(
+    core.String filter, {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
@@ -286,9 +287,10 @@ class TransferJobsResource {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (filter == null) {
+      throw core.ArgumentError('Parameter filter is required.');
     }
+    _queryParams['filter'] = [filter];
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -319,9 +321,9 @@ class TransferJobsResource {
   /// Updates a transfer job.
   ///
   /// Updating a job's transfer spec does not affect transfer operations that
-  /// are running already. Updating a job's schedule is not allowed. **Note:**
-  /// The job's status field can be modified using this RPC (for example, to set
-  /// a job's status to DELETED, DISABLED, or ENABLED).
+  /// are running already. **Note:** The job's status field can be modified
+  /// using this RPC (for example, to set a job's status to DELETED, DISABLED,
+  /// or ENABLED).
   ///
   /// [request] - The metadata request object.
   ///
@@ -522,14 +524,14 @@ class TransferOperationsResource {
   /// Value must have pattern `^transferOperations$`.
   ///
   /// [filter] - Required. A list of query parameters specified as JSON text in
-  /// the form of: {"project_id":"my_project_id",
-  /// "job_names":\["jobid1","jobid2",...\],
-  /// "operation_names":\["opid1","opid2",...\],
-  /// "transfer_statuses":\["status1","status2",...\]}. Since `job_names`,
-  /// `operation_names`, and `transfer_statuses` support multiple values, they
-  /// must be specified with array notation. `project``_``id` is required.
-  /// `job_names`, `operation_names`, and `transfer_statuses` are optional. The
-  /// valid values for `transfer_statuses` are case-insensitive: IN_PROGRESS,
+  /// the form of: `{"projectId":"my_project_id",
+  /// "jobNames":["jobid1","jobid2",...],
+  /// "operationNames":["opid1","opid2",...],
+  /// "transferStatuses":["status1","status2",...]}` Since `jobNames`,
+  /// `operationNames`, and `transferStatuses` support multiple values, they
+  /// must be specified with array notation. `projectId` is required.
+  /// `jobNames`, `operationNames`, and `transferStatuses` are optional. The
+  /// valid values for `transferStatuses` are case-insensitive: IN_PROGRESS,
   /// PAUSED, SUCCESS, FAILED, and ABORTED.
   ///
   /// [pageSize] - The list page size. The max allowed value is 256.
@@ -547,8 +549,8 @@ class TransferOperationsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<ListOperationsResponse> list(
-    core.String name, {
-    core.String filter,
+    core.String name,
+    core.String filter, {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
@@ -563,9 +565,10 @@ class TransferOperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
+    if (filter == null) {
+      throw core.ArgumentError('Parameter filter is required.');
     }
+    _queryParams['filter'] = [filter];
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -710,6 +713,9 @@ class TransferOperationsResource {
 
 /// AWS access key (see
 /// [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)).
+///
+/// For information on our data retention policy for user credentials, see
+/// \[User credentials\](data-retention#user-credentials).
 class AwsAccessKey {
   /// AWS access key ID.
   ///
@@ -754,7 +760,8 @@ class AwsS3Data {
   ///
   /// AWS access key used to sign the API requests to the AWS S3 bucket.
   /// Permissions on the bucket must be granted to the access ID of the AWS
-  /// access key.
+  /// access key. For information on our data retention policy for user
+  /// credentials, see \[User credentials\](data-retention#user-credentials).
   ///
   /// Required.
   AwsAccessKey awsAccessKey;
@@ -764,6 +771,13 @@ class AwsS3Data {
   ///
   /// Required.
   core.String bucketName;
+
+  /// Root path to transfer objects.
+  ///
+  /// Must be an empty string or full path name that ends with a '/'. This field
+  /// is treated as an object prefix. As such, it should generally not begin
+  /// with a '/'.
+  core.String path;
 
   AwsS3Data();
 
@@ -775,6 +789,9 @@ class AwsS3Data {
     if (_json.containsKey('bucketName')) {
       bucketName = _json['bucketName'] as core.String;
     }
+    if (_json.containsKey('path')) {
+      path = _json['path'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -784,6 +801,9 @@ class AwsS3Data {
     }
     if (bucketName != null) {
       _json['bucketName'] = bucketName;
+    }
+    if (path != null) {
+      _json['path'] = path;
     }
     return _json;
   }
@@ -799,7 +819,9 @@ class AwsS3Data {
 class AzureBlobStorageData {
   /// Input only.
   ///
-  /// Credentials used to authenticate API requests to Azure.
+  /// Credentials used to authenticate API requests to Azure. For information on
+  /// our data retention policy for user credentials, see \[User
+  /// credentials\](data-retention#user-credentials).
   ///
   /// Required.
   AzureCredentials azureCredentials;
@@ -808,6 +830,13 @@ class AzureBlobStorageData {
   ///
   /// Required.
   core.String container;
+
+  /// Root path to transfer objects.
+  ///
+  /// Must be an empty string or full path name that ends with a '/'. This field
+  /// is treated as an object prefix. As such, it should generally not begin
+  /// with a '/'.
+  core.String path;
 
   /// The name of the Azure Storage account.
   ///
@@ -824,6 +853,9 @@ class AzureBlobStorageData {
     if (_json.containsKey('container')) {
       container = _json['container'] as core.String;
     }
+    if (_json.containsKey('path')) {
+      path = _json['path'] as core.String;
+    }
     if (_json.containsKey('storageAccount')) {
       storageAccount = _json['storageAccount'] as core.String;
     }
@@ -837,6 +869,9 @@ class AzureBlobStorageData {
     if (container != null) {
       _json['container'] = container;
     }
+    if (path != null) {
+      _json['path'] = path;
+    }
     if (storageAccount != null) {
       _json['storageAccount'] = storageAccount;
     }
@@ -844,7 +879,8 @@ class AzureBlobStorageData {
   }
 }
 
-/// Azure credentials
+/// Azure credentials For information on our data retention policy for user
+/// credentials, see \[User credentials\](data-retention#user-credentials).
 class AzureCredentials {
   /// Azure shared access signature.
   ///
@@ -886,30 +922,30 @@ class CancelOperationRequest {
   }
 }
 
-/// Represents a whole or partial calendar date, e.g. a birthday.
+/// Represents a whole or partial calendar date, such as a birthday.
 ///
-/// The time of day and time zone are either specified elsewhere or are not
-/// significant. The date is relative to the Proleptic Gregorian Calendar. This
-/// can represent: * A full date, with non-zero year, month and day values * A
-/// month and day value, with a zero year, e.g. an anniversary * A year on its
-/// own, with zero month and day values * A year and month value, with a zero
-/// day, e.g. a credit card expiration date Related types are
-/// google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values * A month and day value, with a zero year, such as an
+/// anniversary * A year on its own, with zero month and day values * A year and
+/// month value, with a zero day, such as a credit card expiration date Related
+/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class Date {
-  /// Day of month.
+  /// Day of a month.
   ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 if specifying
-  /// a year by itself or a year and month where the day is not significant.
+  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
+  /// year by itself or a year and month where the day isn't significant.
   core.int day;
 
-  /// Month of year.
+  /// Month of a year.
   ///
-  /// Must be from 1 to 12, or 0 if specifying a year without a month and day.
+  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
   core.int month;
 
-  /// Year of date.
+  /// Year of the date.
   ///
-  /// Must be from 1 to 9999, or 0 if specifying a date without a year.
+  /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int year;
 
   Date();
@@ -1138,11 +1174,22 @@ class GcsData {
   /// Required.
   core.String bucketName;
 
+  /// Root path to transfer objects.
+  ///
+  /// Must be an empty string or full path name that ends with a '/'. This field
+  /// is treated as an object prefix. As such, it should generally not begin
+  /// with a '/'. (must meet Object Name
+  /// Requirements\](https://cloud.google.com/storage/docs/naming#objectnames)).
+  core.String path;
+
   GcsData();
 
   GcsData.fromJson(core.Map _json) {
     if (_json.containsKey('bucketName')) {
       bucketName = _json['bucketName'] as core.String;
+    }
+    if (_json.containsKey('path')) {
+      path = _json['path'] as core.String;
     }
   }
 
@@ -1150,6 +1197,9 @@ class GcsData {
     final _json = <core.String, core.Object>{};
     if (bucketName != null) {
       _json['bucketName'] = bucketName;
+    }
+    if (path != null) {
+      _json['path'] = path;
     }
     return _json;
   }
@@ -1195,10 +1245,8 @@ class GoogleServiceAccount {
 /// specified size of an object does not match the actual size of the object
 /// fetched, the object will not be transferred. * If the specified MD5 does not
 /// match the MD5 computed from the transferred bytes, the object transfer will
-/// fail. For more information, see
-/// [Generating MD5 hashes](https://cloud.google.com/storage-transfer/docs/create-url-list#md5)
-/// * Ensure that each URL you specify is publicly accessible. For example, in
-/// Cloud Storage you can
+/// fail. * Ensure that each URL you specify is publicly accessible. For
+/// example, in Cloud Storage you can
 /// [share an object publicly](https://cloud.google.com/storage/docs/cloud-console#_sharingdata)
 /// and get a link to it. * Storage Transfer Service obeys `robots.txt` rules
 /// and requires the source HTTP server to support `Range` requests and to
@@ -1616,6 +1664,24 @@ class ResumeTransferOperationRequest {
 
 /// Transfers can be scheduled to recur or to run just once.
 class Schedule {
+  /// The time in UTC that no further transfer operations are scheduled.
+  ///
+  /// Combined with schedule_end_date, `end_time_of_day` specifies the end date
+  /// and time for starting new transfer operations. This field must be greater
+  /// than or equal to the timestamp corresponding to the combintation of
+  /// schedule_start_date and start_time_of_day, and is subject to the
+  /// following: * If `end_time_of_day` is not set and `schedule_end_date` is
+  /// set, then a default value of `23:59:59` is used for `end_time_of_day`. *
+  /// If `end_time_of_day` is set and `schedule_end_date` is not set, then
+  /// INVALID_ARGUMENT is returned.
+  TimeOfDay endTimeOfDay;
+
+  /// Interval between the start of each scheduled TransferOperation.
+  ///
+  /// If unspecified, the default value is 24 hours. This value may not be less
+  /// than 1 hour.
+  core.String repeatInterval;
+
   /// The last day a transfer runs.
   ///
   /// Date boundaries are determined relative to UTC time. A job will run once
@@ -1656,6 +1722,13 @@ class Schedule {
   Schedule();
 
   Schedule.fromJson(core.Map _json) {
+    if (_json.containsKey('endTimeOfDay')) {
+      endTimeOfDay = TimeOfDay.fromJson(
+          _json['endTimeOfDay'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('repeatInterval')) {
+      repeatInterval = _json['repeatInterval'] as core.String;
+    }
     if (_json.containsKey('scheduleEndDate')) {
       scheduleEndDate = Date.fromJson(
           _json['scheduleEndDate'] as core.Map<core.String, core.dynamic>);
@@ -1672,6 +1745,12 @@ class Schedule {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (endTimeOfDay != null) {
+      _json['endTimeOfDay'] = endTimeOfDay.toJson();
+    }
+    if (repeatInterval != null) {
+      _json['repeatInterval'] = repeatInterval;
+    }
     if (scheduleEndDate != null) {
       _json['scheduleEndDate'] = scheduleEndDate.toJson();
     }
@@ -2004,6 +2083,12 @@ class TransferJob {
   /// Output only.
   core.String lastModificationTime;
 
+  /// The name of the most recently started TransferOperation of this JobConfig.
+  ///
+  /// Present if and only if at least one TransferOperation has been created for
+  /// this JobConfig.
+  core.String latestOperationName;
+
   /// A unique name (within the transfer project) assigned when the job is
   /// created.
   ///
@@ -2061,6 +2146,9 @@ class TransferJob {
     if (_json.containsKey('lastModificationTime')) {
       lastModificationTime = _json['lastModificationTime'] as core.String;
     }
+    if (_json.containsKey('latestOperationName')) {
+      latestOperationName = _json['latestOperationName'] as core.String;
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -2097,6 +2185,9 @@ class TransferJob {
     }
     if (lastModificationTime != null) {
       _json['lastModificationTime'] = lastModificationTime;
+    }
+    if (latestOperationName != null) {
+      _json['latestOperationName'] = latestOperationName;
     }
     if (name != null) {
       _json['name'] = name;
@@ -2254,7 +2345,11 @@ class TransferOptions {
   /// mutually exclusive.
   core.bool deleteObjectsUniqueInSink;
 
-  /// Whether overwriting objects that already exist in the sink is allowed.
+  /// When to overwrite objects that already exist in the sink.
+  ///
+  /// The default is that only objects that are different from the source are
+  /// ovewritten. If true, all objects in the sink whose name matches an object
+  /// in the source will be overwritten with the source object.
   core.bool overwriteObjectsAlreadyExistingInSink;
 
   TransferOptions();

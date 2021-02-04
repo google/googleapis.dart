@@ -210,12 +210,11 @@ class ProjectsTestMatricesResource {
 
   /// Creates and runs a matrix of tests according to the given specifications.
   ///
-  /// Unsupported environments will be returned in the state UNSUPPORTED.
-  /// Matrices are limited to at most 200 supported executions. May return any
+  /// Unsupported environments will be returned in the state UNSUPPORTED. A test
+  /// matrix is limited to use at most 2000 devices in parallel. May return any
   /// of the following canonical error codes: - PERMISSION_DENIED - if the user
   /// is not authorized to write to project - INVALID_ARGUMENT - if the request
-  /// is malformed or if the matrix expands to more than 200 supported
-  /// executions
+  /// is malformed or if the matrix tries to use too many simultaneous devices.
   ///
   /// [request] - The metadata request object.
   ///
@@ -997,7 +996,7 @@ class AndroidModel {
 /// A test of an android application that explores the application on a virtual
 /// or physical Android Device, finding culprits and crashes as it goes.
 ///
-/// Next tag: 29
+/// Next tag: 30
 class AndroidRoboTest {
   /// The APK for the application under test.
   FileReference appApk;
@@ -1399,6 +1398,9 @@ class ApkManifest {
   /// Specifies the API Level on which the application is designed to run.
   core.int targetSdkVersion;
 
+  /// Permissions declared to be used by the application
+  core.List<core.String> usesPermission;
+
   ApkManifest();
 
   ApkManifest.fromJson(core.Map _json) {
@@ -1423,6 +1425,11 @@ class ApkManifest {
     if (_json.containsKey('targetSdkVersion')) {
       targetSdkVersion = _json['targetSdkVersion'] as core.int;
     }
+    if (_json.containsKey('usesPermission')) {
+      usesPermission = (_json['usesPermission'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -1445,6 +1452,9 @@ class ApkManifest {
     }
     if (targetSdkVersion != null) {
       _json['targetSdkVersion'] = targetSdkVersion;
+    }
+    if (usesPermission != null) {
+      _json['usesPermission'] = usesPermission;
     }
     return _json;
   }
@@ -1604,30 +1614,30 @@ class ClientInfoDetail {
   }
 }
 
-/// Represents a whole or partial calendar date, e.g. a birthday.
+/// Represents a whole or partial calendar date, such as a birthday.
 ///
-/// The time of day and time zone are either specified elsewhere or are not
-/// significant. The date is relative to the Proleptic Gregorian Calendar. This
-/// can represent: * A full date, with non-zero year, month and day values * A
-/// month and day value, with a zero year, e.g. an anniversary * A year on its
-/// own, with zero month and day values * A year and month value, with a zero
-/// day, e.g. a credit card expiration date Related types are
-/// google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values * A month and day value, with a zero year, such as an
+/// anniversary * A year on its own, with zero month and day values * A year and
+/// month value, with a zero day, such as a credit card expiration date Related
+/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class Date {
-  /// Day of month.
+  /// Day of a month.
   ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 if specifying
-  /// a year by itself or a year and month where the day is not significant.
+  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
+  /// year by itself or a year and month where the day isn't significant.
   core.int day;
 
-  /// Month of year.
+  /// Month of a year.
   ///
-  /// Must be from 1 to 12, or 0 if specifying a year without a month and day.
+  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
   core.int month;
 
-  /// Year of date.
+  /// Year of the date.
   ///
-  /// Must be from 1 to 9999, or 0 if specifying a date without a year.
+  /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int year;
 
   Date();
@@ -2248,8 +2258,6 @@ class IosDeviceList {
 }
 
 /// A description of an iOS device tests may be run on.
-///
-/// Next tag: 13
 class IosModel {
   /// Device capabilities.
   ///
@@ -2764,7 +2772,7 @@ class ManualSharding {
   ///
   /// When any physical devices are selected, the number of
   /// test_targets_for_shard must be >= 1 and <= 50. When no physical devices
-  /// are selected, the number must be >= 1 and <= 250.
+  /// are selected, the number must be >= 1 and <= 500.
   ///
   /// Required.
   core.List<TestTargetsForShard> testTargetsForShard;
@@ -3599,6 +3607,16 @@ class TestMatrix {
   /// Required.
   EnvironmentMatrix environmentMatrix;
 
+  /// If true, only a single attempt at most will be made to run each
+  /// execution/shard in the matrix.
+  ///
+  /// Flaky test attempts are not affected. Normally, 2 or more attempts are
+  /// made if a potential infrastructure issue is detected. This feature is for
+  /// latency sensitive workloads. The incidence of execution failures may be
+  /// significantly greater for fail-fast matrices and support is more limited
+  /// because of that expectation.
+  core.bool failFast;
+
   /// The number of times a TestExecution should be re-attempted if one or more
   /// of its test cases fail for any reason.
   ///
@@ -3775,6 +3793,9 @@ class TestMatrix {
       environmentMatrix = EnvironmentMatrix.fromJson(
           _json['environmentMatrix'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('failFast')) {
+      failFast = _json['failFast'] as core.bool;
+    }
     if (_json.containsKey('flakyTestAttempts')) {
       flakyTestAttempts = _json['flakyTestAttempts'] as core.int;
     }
@@ -3819,6 +3840,9 @@ class TestMatrix {
     }
     if (environmentMatrix != null) {
       _json['environmentMatrix'] = environmentMatrix.toJson();
+    }
+    if (failFast != null) {
+      _json['failFast'] = failFast;
     }
     if (flakyTestAttempts != null) {
       _json['flakyTestAttempts'] = flakyTestAttempts;
@@ -4332,7 +4356,7 @@ class UniformSharding {
   /// Total number of shards.
   ///
   /// When any physical devices are selected, the number must be >= 1 and <= 50.
-  /// When no physical devices are selected, the number must be >= 1 and <= 250.
+  /// When no physical devices are selected, the number must be >= 1 and <= 500.
   ///
   /// Required.
   core.int numShards;

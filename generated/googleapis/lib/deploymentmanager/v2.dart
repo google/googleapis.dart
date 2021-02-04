@@ -15,12 +15,13 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Google Cloud Deployment Manager API - v2
+/// Cloud Deployment Manager V2 API - v2
 ///
-/// Declares, configures, and deploys complex solutions on Google Cloud
-/// Platform.
+/// The Google Cloud Deployment Manager v2 API provides services for
+/// configuring, deploying, and viewing Google Cloud services and APIs via
+/// templates which specify deployments of Cloud resources.
 ///
-/// For more information, see <https://cloud.google.com/deployment-manager/>
+/// For more information, see <https://cloud.google.com/deployment-manager>
 ///
 /// Create an instance of [DeploymentManagerApi] to access these resources:
 ///
@@ -43,8 +44,9 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Declares, configures, and deploys complex solutions on Google Cloud
-/// Platform.
+/// The Google Cloud Deployment Manager v2 API provides services for
+/// configuring, deploying, and viewing Google Cloud services and APIs via
+/// templates which specify deployments of Cloud resources.
 class DeploymentManagerApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
@@ -73,8 +75,8 @@ class DeploymentManagerApi {
   TypesResource get types => TypesResource(_requester);
 
   DeploymentManagerApi(http.Client client,
-      {core.String rootUrl = 'https://www.googleapis.com/',
-      core.String servicePath = 'deploymentmanager/v2/projects/'})
+      {core.String rootUrl = 'https://deploymentmanager.googleapis.com/',
+      core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
 }
@@ -133,7 +135,8 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment') +
         '/cancelPreview';
@@ -164,8 +167,8 @@ class DeploymentsResource {
   ///
   /// [deletePolicy] - Sets the policy to use for deleting resources.
   /// Possible string values are:
-  /// - "ABANDON"
   /// - "DELETE"
+  /// - "ABANDON"
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -203,7 +206,8 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment');
 
@@ -264,7 +268,8 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment');
 
@@ -297,6 +302,8 @@ class DeploymentsResource {
   /// Value must have pattern
   /// `\[a-z\](?:\[-a-z0-9_\]{0,61}\[a-z0-9\])?|\[1-9\]\[0-9\]{0,19}`.
   ///
+  /// [optionsRequestedPolicyVersion] - Requested IAM Policy version.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -310,6 +317,7 @@ class DeploymentsResource {
   async.Future<Policy> getIamPolicy(
     core.String project,
     core.String resource, {
+    core.int optionsRequestedPolicyVersion,
     core.String $fields,
   }) {
     core.String _url;
@@ -325,11 +333,17 @@ class DeploymentsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    if (optionsRequestedPolicyVersion != null) {
+      _queryParams['optionsRequestedPolicyVersion'] = [
+        '${optionsRequestedPolicyVersion}'
+      ];
+    }
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/getIamPolicy';
@@ -361,8 +375,8 @@ class DeploymentsResource {
   ///
   /// [createPolicy] - Sets the policy to use for creating new resources.
   /// Possible string values are:
-  /// - "ACQUIRE"
   /// - "CREATE_OR_ACQUIRE"
+  /// - "ACQUIRE"
   ///
   /// [preview] - If set to true, creates a deployment and creates "shell"
   /// resources but does not actually instantiate these resources. This allows
@@ -413,7 +427,9 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments';
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/deployments';
 
     final _response = _requester.request(
       _url,
@@ -441,17 +457,12 @@ class DeploymentsResource {
   /// response. The expression must specify the field name, a comparison
   /// operator, and the value that you want to use for filtering. The value must
   /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`.
-  ///
-  /// For example, if you are filtering Compute Engine instances, you can
-  /// exclude instances named `example-instance` by specifying `name !=
-  /// example-instance`.
-  ///
-  /// You can also filter nested fields. For example, you could specify
-  /// `scheduling.automaticRestart = false` to include instances only if they
-  /// are not scheduled for automatic restarts. You can use filtering on nested
-  /// fields to filter based on resource labels.
-  ///
+  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
+  /// Engine instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. You can also filter nested fields.
+  /// For example, you could specify `scheduling.automaticRestart = false` to
+  /// include instances only if they are not scheduled for automatic restarts.
+  /// You can use filtering on nested fields to filter based on resource labels.
   /// To filter on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
@@ -467,16 +478,13 @@ class DeploymentsResource {
   /// `500`, inclusive. (Default: `500`)
   ///
   /// [orderBy] - Sorts list results by a certain order. By default, results are
-  /// returned in alphanumerical order based on the resource name.
-  ///
-  /// You can also sort results in descending order based on the creation
-  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
-  /// based on the `creationTimestamp` field in reverse chronological order
-  /// (newest result first). Use this to sort resources like operations so that
-  /// the newest operation is returned first.
-  ///
-  /// Currently, only sorting by `name` or `creationTimestamp desc` is
-  /// supported.
+  /// returned in alphanumerical order based on the resource name. You can also
+  /// sort results in descending order based on the creation timestamp using
+  /// `orderBy="creationTimestamp desc"`. This sorts results based on the
+  /// `creationTimestamp` field in reverse chronological order (newest result
+  /// first). Use this to sort resources like operations so that the newest
+  /// operation is returned first. Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
   ///
   /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
   /// `nextPageToken` returned by a previous list request to get the next page
@@ -526,7 +534,9 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/deployments';
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/deployments';
 
     final _response = _requester.request(
       _url,
@@ -559,13 +569,13 @@ class DeploymentsResource {
   ///
   /// [createPolicy] - Sets the policy to use for creating new resources.
   /// Possible string values are:
-  /// - "ACQUIRE"
   /// - "CREATE_OR_ACQUIRE"
+  /// - "ACQUIRE"
   ///
   /// [deletePolicy] - Sets the policy to use for deleting resources.
   /// Possible string values are:
-  /// - "ABANDON"
   /// - "DELETE"
+  /// - "ABANDON"
   ///
   /// [preview] - If set to true, updates the deployment and creates and updates
   /// the "shell" resources but does not actually alter or instantiate these
@@ -626,7 +636,8 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment');
 
@@ -696,7 +707,8 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/setIamPolicy';
@@ -767,7 +779,8 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment') +
         '/stop';
@@ -836,7 +849,8 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/testIamPermissions';
@@ -872,13 +886,13 @@ class DeploymentsResource {
   ///
   /// [createPolicy] - Sets the policy to use for creating new resources.
   /// Possible string values are:
-  /// - "ACQUIRE"
   /// - "CREATE_OR_ACQUIRE"
+  /// - "ACQUIRE"
   ///
   /// [deletePolicy] - Sets the policy to use for deleting resources.
   /// Possible string values are:
-  /// - "ABANDON"
   /// - "DELETE"
+  /// - "ABANDON"
   ///
   /// [preview] - If set to true, updates the deployment and creates and updates
   /// the "shell" resources but does not actually alter or instantiate these
@@ -939,7 +953,8 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment');
 
@@ -1013,7 +1028,8 @@ class ManifestsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment') +
         '/manifests/' +
@@ -1048,17 +1064,12 @@ class ManifestsResource {
   /// response. The expression must specify the field name, a comparison
   /// operator, and the value that you want to use for filtering. The value must
   /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`.
-  ///
-  /// For example, if you are filtering Compute Engine instances, you can
-  /// exclude instances named `example-instance` by specifying `name !=
-  /// example-instance`.
-  ///
-  /// You can also filter nested fields. For example, you could specify
-  /// `scheduling.automaticRestart = false` to include instances only if they
-  /// are not scheduled for automatic restarts. You can use filtering on nested
-  /// fields to filter based on resource labels.
-  ///
+  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
+  /// Engine instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. You can also filter nested fields.
+  /// For example, you could specify `scheduling.automaticRestart = false` to
+  /// include instances only if they are not scheduled for automatic restarts.
+  /// You can use filtering on nested fields to filter based on resource labels.
   /// To filter on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
@@ -1074,16 +1085,13 @@ class ManifestsResource {
   /// `500`, inclusive. (Default: `500`)
   ///
   /// [orderBy] - Sorts list results by a certain order. By default, results are
-  /// returned in alphanumerical order based on the resource name.
-  ///
-  /// You can also sort results in descending order based on the creation
-  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
-  /// based on the `creationTimestamp` field in reverse chronological order
-  /// (newest result first). Use this to sort resources like operations so that
-  /// the newest operation is returned first.
-  ///
-  /// Currently, only sorting by `name` or `creationTimestamp desc` is
-  /// supported.
+  /// returned in alphanumerical order based on the resource name. You can also
+  /// sort results in descending order based on the creation timestamp using
+  /// `orderBy="creationTimestamp desc"`. This sorts results based on the
+  /// `creationTimestamp` field in reverse chronological order (newest result
+  /// first). Use this to sort resources like operations so that the newest
+  /// operation is returned first. Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
   ///
   /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
   /// `nextPageToken` returned by a previous list request to get the next page
@@ -1137,7 +1145,8 @@ class ManifestsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment') +
         '/manifests';
@@ -1205,7 +1214,8 @@ class OperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/operations/' +
         commons.Escaper.ecapeVariable('$operation');
 
@@ -1235,17 +1245,12 @@ class OperationsResource {
   /// response. The expression must specify the field name, a comparison
   /// operator, and the value that you want to use for filtering. The value must
   /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`.
-  ///
-  /// For example, if you are filtering Compute Engine instances, you can
-  /// exclude instances named `example-instance` by specifying `name !=
-  /// example-instance`.
-  ///
-  /// You can also filter nested fields. For example, you could specify
-  /// `scheduling.automaticRestart = false` to include instances only if they
-  /// are not scheduled for automatic restarts. You can use filtering on nested
-  /// fields to filter based on resource labels.
-  ///
+  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
+  /// Engine instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. You can also filter nested fields.
+  /// For example, you could specify `scheduling.automaticRestart = false` to
+  /// include instances only if they are not scheduled for automatic restarts.
+  /// You can use filtering on nested fields to filter based on resource labels.
   /// To filter on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
@@ -1261,16 +1266,13 @@ class OperationsResource {
   /// `500`, inclusive. (Default: `500`)
   ///
   /// [orderBy] - Sorts list results by a certain order. By default, results are
-  /// returned in alphanumerical order based on the resource name.
-  ///
-  /// You can also sort results in descending order based on the creation
-  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
-  /// based on the `creationTimestamp` field in reverse chronological order
-  /// (newest result first). Use this to sort resources like operations so that
-  /// the newest operation is returned first.
-  ///
-  /// Currently, only sorting by `name` or `creationTimestamp desc` is
-  /// supported.
+  /// returned in alphanumerical order based on the resource name. You can also
+  /// sort results in descending order based on the creation timestamp using
+  /// `orderBy="creationTimestamp desc"`. This sorts results based on the
+  /// `creationTimestamp` field in reverse chronological order (newest result
+  /// first). Use this to sort resources like operations so that the newest
+  /// operation is returned first. Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
   ///
   /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
   /// `nextPageToken` returned by a previous list request to get the next page
@@ -1320,7 +1322,9 @@ class OperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/operations';
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/operations';
 
     final _response = _requester.request(
       _url,
@@ -1392,7 +1396,8 @@ class ResourcesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment') +
         '/resources/' +
@@ -1427,17 +1432,12 @@ class ResourcesResource {
   /// response. The expression must specify the field name, a comparison
   /// operator, and the value that you want to use for filtering. The value must
   /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`.
-  ///
-  /// For example, if you are filtering Compute Engine instances, you can
-  /// exclude instances named `example-instance` by specifying `name !=
-  /// example-instance`.
-  ///
-  /// You can also filter nested fields. For example, you could specify
-  /// `scheduling.automaticRestart = false` to include instances only if they
-  /// are not scheduled for automatic restarts. You can use filtering on nested
-  /// fields to filter based on resource labels.
-  ///
+  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
+  /// Engine instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. You can also filter nested fields.
+  /// For example, you could specify `scheduling.automaticRestart = false` to
+  /// include instances only if they are not scheduled for automatic restarts.
+  /// You can use filtering on nested fields to filter based on resource labels.
   /// To filter on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
@@ -1453,16 +1453,13 @@ class ResourcesResource {
   /// `500`, inclusive. (Default: `500`)
   ///
   /// [orderBy] - Sorts list results by a certain order. By default, results are
-  /// returned in alphanumerical order based on the resource name.
-  ///
-  /// You can also sort results in descending order based on the creation
-  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
-  /// based on the `creationTimestamp` field in reverse chronological order
-  /// (newest result first). Use this to sort resources like operations so that
-  /// the newest operation is returned first.
-  ///
-  /// Currently, only sorting by `name` or `creationTimestamp desc` is
-  /// supported.
+  /// returned in alphanumerical order based on the resource name. You can also
+  /// sort results in descending order based on the creation timestamp using
+  /// `orderBy="creationTimestamp desc"`. This sorts results based on the
+  /// `creationTimestamp` field in reverse chronological order (newest result
+  /// first). Use this to sort resources like operations so that the newest
+  /// operation is returned first. Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
   ///
   /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
   /// `nextPageToken` returned by a previous list request to get the next page
@@ -1516,7 +1513,8 @@ class ResourcesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') +
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment') +
         '/resources';
@@ -1554,17 +1552,12 @@ class TypesResource {
   /// response. The expression must specify the field name, a comparison
   /// operator, and the value that you want to use for filtering. The value must
   /// be a string, a number, or a boolean. The comparison operator must be
-  /// either `=`, `!=`, `>`, or `<`.
-  ///
-  /// For example, if you are filtering Compute Engine instances, you can
-  /// exclude instances named `example-instance` by specifying `name !=
-  /// example-instance`.
-  ///
-  /// You can also filter nested fields. For example, you could specify
-  /// `scheduling.automaticRestart = false` to include instances only if they
-  /// are not scheduled for automatic restarts. You can use filtering on nested
-  /// fields to filter based on resource labels.
-  ///
+  /// either `=`, `!=`, `>`, or `<`. For example, if you are filtering Compute
+  /// Engine instances, you can exclude instances named `example-instance` by
+  /// specifying `name != example-instance`. You can also filter nested fields.
+  /// For example, you could specify `scheduling.automaticRestart = false` to
+  /// include instances only if they are not scheduled for automatic restarts.
+  /// You can use filtering on nested fields to filter based on resource labels.
   /// To filter on multiple expressions, provide each separate expression within
   /// parentheses. For example: ``` (scheduling.automaticRestart = true)
   /// (cpuPlatform = "Intel Skylake") ``` By default, each expression is an
@@ -1580,16 +1573,13 @@ class TypesResource {
   /// `500`, inclusive. (Default: `500`)
   ///
   /// [orderBy] - Sorts list results by a certain order. By default, results are
-  /// returned in alphanumerical order based on the resource name.
-  ///
-  /// You can also sort results in descending order based on the creation
-  /// timestamp using `orderBy="creationTimestamp desc"`. This sorts results
-  /// based on the `creationTimestamp` field in reverse chronological order
-  /// (newest result first). Use this to sort resources like operations so that
-  /// the newest operation is returned first.
-  ///
-  /// Currently, only sorting by `name` or `creationTimestamp desc` is
-  /// supported.
+  /// returned in alphanumerical order based on the resource name. You can also
+  /// sort results in descending order based on the creation timestamp using
+  /// `orderBy="creationTimestamp desc"`. This sorts results based on the
+  /// `creationTimestamp` field in reverse chronological order (newest result
+  /// first). Use this to sort resources like operations so that the newest
+  /// operation is returned first. Currently, only sorting by `name` or
+  /// `creationTimestamp desc` is supported.
   ///
   /// [pageToken] - Specifies a page token to use. Set `pageToken` to the
   /// `nextPageToken` returned by a previous list request to get the next page
@@ -1639,7 +1629,9 @@ class TypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$project') + '/global/types';
+    _url = 'deploymentmanager/v2/projects/' +
+        commons.Escaper.ecapeVariable('$project') +
+        '/global/types';
 
     final _response = _requester.request(
       _url,
@@ -1661,29 +1653,22 @@ class TypesResource {
 ///
 /// The configuration determines which permission types are logged, and what
 /// identities, if any, are exempted from logging. An AuditConfig must have one
-/// or more AuditLogConfigs.
-///
-/// If there are AuditConfigs for both `allServices` and a specific service, the
-/// union of the two AuditConfigs is used for that service: the log_types
-/// specified in each AuditConfig are enabled, and the exempted_members in each
-/// AuditLogConfig are exempted.
-///
-/// Example Policy with multiple AuditConfigs:
-///
-/// { "audit_configs": \[ { "service": "allServices" "audit_log_configs": \[ {
-/// "log_type": "DATA_READ", "exempted_members": \[ "user:jose@example.com" \]
-/// }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } \] }, {
-/// "service": "sampleservice.googleapis.com" "audit_log_configs": \[ {
-/// "log_type": "DATA_READ", }, { "log_type": "DATA_WRITE", "exempted_members":
-/// \[ "user:aliya@example.com" \] } \] } \] }
-///
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
+/// service: the log_types specified in each AuditConfig are enabled, and the
+/// exempted_members in each AuditLogConfig are exempted. Example Policy with
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
 /// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
 /// logging. It also exempts jose@example.com from DATA_READ logging, and
 /// aliya@example.com from DATA_WRITE logging.
 class AuditConfig {
   /// The configuration for logging of each type of permission.
   core.List<AuditLogConfig> auditLogConfigs;
-  core.List<core.String> exemptedMembers;
 
   /// Specifies a service that will be enabled for audit logging.
   ///
@@ -1700,11 +1685,6 @@ class AuditConfig {
               value as core.Map<core.String, core.dynamic>))
           .toList();
     }
-    if (_json.containsKey('exemptedMembers')) {
-      exemptedMembers = (_json['exemptedMembers'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
     if (_json.containsKey('service')) {
       service = _json['service'] as core.String;
     }
@@ -1716,9 +1696,6 @@ class AuditConfig {
       _json['auditLogConfigs'] =
           auditLogConfigs.map((value) => value.toJson()).toList();
     }
-    if (exemptedMembers != null) {
-      _json['exemptedMembers'] = exemptedMembers;
-    }
     if (service != null) {
       _json['service'] = service;
     }
@@ -1728,22 +1705,23 @@ class AuditConfig {
 
 /// Provides the configuration for logging a type of permissions.
 ///
-/// Example:
-///
-/// { "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
-/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE", } \] }
-///
-/// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting
-/// jose@example.com from DATA_READ logging.
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
 class AuditLogConfig {
   /// Specifies the identities that do not cause logging for this type of
   /// permission.
   ///
-  /// Follows the same format of \[Binding.members\]\[\].
+  /// Follows the same format of Binding.members.
   core.List<core.String> exemptedMembers;
-  core.bool ignoreChildExemptions;
 
   /// The log type that this config enables.
+  /// Possible string values are:
+  /// - "LOG_TYPE_UNSPECIFIED" : Default case. Should never be this.
+  /// - "ADMIN_READ" : Admin reads. Example: CloudIAM getIamPolicy
+  /// - "DATA_WRITE" : Data writes. Example: CloudSQL Users create
+  /// - "DATA_READ" : Data reads. Example: CloudSQL Users list
   core.String logType;
 
   AuditLogConfig();
@@ -1753,9 +1731,6 @@ class AuditLogConfig {
       exemptedMembers = (_json['exemptedMembers'] as core.List)
           .map<core.String>((value) => value as core.String)
           .toList();
-    }
-    if (_json.containsKey('ignoreChildExemptions')) {
-      ignoreChildExemptions = _json['ignoreChildExemptions'] as core.bool;
     }
     if (_json.containsKey('logType')) {
       logType = _json['logType'] as core.String;
@@ -1767,33 +1742,8 @@ class AuditLogConfig {
     if (exemptedMembers != null) {
       _json['exemptedMembers'] = exemptedMembers;
     }
-    if (ignoreChildExemptions != null) {
-      _json['ignoreChildExemptions'] = ignoreChildExemptions;
-    }
     if (logType != null) {
       _json['logType'] = logType;
-    }
-    return _json;
-  }
-}
-
-/// Authorization-related information used by Cloud Audit Logging.
-class AuthorizationLoggingOptions {
-  /// The type of the permission that was checked.
-  core.String permissionType;
-
-  AuthorizationLoggingOptions();
-
-  AuthorizationLoggingOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('permissionType')) {
-      permissionType = _json['permissionType'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (permissionType != null) {
-      _json['permissionType'] = permissionType;
     }
     return _json;
   }
@@ -1804,63 +1754,43 @@ class Binding {
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
-  /// current request.
-  ///
-  /// If the condition evaluates to `false`, then this binding does not apply to
-  /// the current request.
-  ///
-  /// However, a different role binding might grant the same role to one or more
-  /// of the members in this binding.
-  ///
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the members in this binding.
   /// To learn which resources support conditions in their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   Expr condition;
 
   /// Specifies the identities requesting access for a Cloud Platform resource.
   ///
-  /// `members` can have the following values:
-  ///
-  /// * `allUsers`: A special identifier that represents anyone who is on the
-  /// internet; with or without a Google account.
-  ///
-  /// * `allAuthenticatedUsers`: A special identifier that represents anyone who
-  /// is authenticated with a Google account or a service account.
-  ///
-  /// * `user:{emailid}`: An email address that represents a specific Google
-  /// account. For example, `alice@example.com` .
-  ///
-  ///
-  ///
-  /// * `serviceAccount:{emailid}`: An email address that represents a service
-  /// account. For example, `my-other-app@appspot.gserviceaccount.com`.
-  ///
-  /// * `group:{emailid}`: An email address that represents a Google group. For
-  /// example, `admins@example.com`.
-  ///
-  /// * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
-  /// identifier) representing a user that has been recently deleted. For
-  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
-  /// recovered, this value reverts to `user:{emailid}` and the recovered user
-  /// retains the role in the binding.
-  ///
-  /// * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address
-  /// (plus unique identifier) representing a service account that has been
-  /// recently deleted. For example,
+  /// `members` can have the following values: * `allUsers`: A special
+  /// identifier that represents anyone who is on the internet; with or without
+  /// a Google account. * `allAuthenticatedUsers`: A special identifier that
+  /// represents anyone who is authenticated with a Google account or a service
+  /// account. * `user:{emailid}`: An email address that represents a specific
+  /// Google account. For example, `alice@example.com` . *
+  /// `serviceAccount:{emailid}`: An email address that represents a service
+  /// account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+  /// `group:{emailid}`: An email address that represents a Google group. For
+  /// example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a user that has
+  /// been recently deleted. For example,
+  /// `alice@example.com?uid=123456789012345678901`. If the user is recovered,
+  /// this value reverts to `user:{emailid}` and the recovered user retains the
+  /// role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`:
+  /// An email address (plus unique identifier) representing a service account
+  /// that has been recently deleted. For example,
   /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
   /// the service account is undeleted, this value reverts to
   /// `serviceAccount:{emailid}` and the undeleted service account retains the
-  /// role in the binding.
-  ///
-  /// * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique
-  /// identifier) representing a Google group that has been recently deleted.
-  /// For example, `admins@example.com?uid=123456789012345678901`. If the group
-  /// is recovered, this value reverts to `group:{emailid}` and the recovered
-  /// group retains the role in the binding.
-  ///
-  ///
-  ///
-  /// * `domain:{domain}`: The G Suite domain (primary) that represents all the
-  /// users of that domain. For example, `google.com` or `example.com`.
+  /// role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email
+  /// address (plus unique identifier) representing a Google group that has been
+  /// recently deleted. For example,
+  /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
+  /// this value reverts to `group:{emailid}` and the recovered group retains
+  /// the role in the binding. * `domain:{domain}`: The G Suite domain (primary)
+  /// that represents all the users of that domain. For example, `google.com` or
+  /// `example.com`.
   core.List<core.String> members;
 
   /// Role that is assigned to `members`.
@@ -1900,67 +1830,6 @@ class Binding {
   }
 }
 
-/// A condition to be met.
-class Condition {
-  /// Trusted attributes supplied by the IAM system.
-  core.String iam;
-
-  /// An operator to apply the subject with.
-  core.String op;
-
-  /// Trusted attributes discharged by the service.
-  core.String svc;
-
-  /// Trusted attributes supplied by any service that owns resources and uses
-  /// the IAM system for access control.
-  core.String sys;
-
-  /// The objects of the condition.
-  core.List<core.String> values;
-
-  Condition();
-
-  Condition.fromJson(core.Map _json) {
-    if (_json.containsKey('iam')) {
-      iam = _json['iam'] as core.String;
-    }
-    if (_json.containsKey('op')) {
-      op = _json['op'] as core.String;
-    }
-    if (_json.containsKey('svc')) {
-      svc = _json['svc'] as core.String;
-    }
-    if (_json.containsKey('sys')) {
-      sys = _json['sys'] as core.String;
-    }
-    if (_json.containsKey('values')) {
-      values = (_json['values'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (iam != null) {
-      _json['iam'] = iam;
-    }
-    if (op != null) {
-      _json['op'] = op;
-    }
-    if (svc != null) {
-      _json['svc'] = svc;
-    }
-    if (sys != null) {
-      _json['sys'] = sys;
-    }
-    if (values != null) {
-      _json['values'] = values;
-    }
-    return _json;
-  }
-}
-
 class ConfigFile {
   /// The contents of the file.
   core.String content;
@@ -1992,11 +1861,9 @@ class Deployment {
   /// A fingerprint is a randomly generated value that must be provided with
   /// `update()`, `stop()`, and `cancelPreview()` requests to perform optimistic
   /// locking. This ensures optimistic concurrency so that only one request
-  /// happens at a time.
-  ///
-  /// The fingerprint is initially generated by Deployment Manager and changes
-  /// after every request to modify data. To get the latest fingerprint value,
-  /// perform a `get()` request to a deployment.
+  /// happens at a time. The fingerprint is initially generated by Deployment
+  /// Manager and changes after every request to modify data. To get the latest
+  /// fingerprint value, perform a `get()` request to a deployment.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes =>
       convert.base64.decode(fingerprint);
@@ -2013,8 +1880,8 @@ class Deployment {
   /// Output only.
   core.String insertTime;
 
-  /// Map of labels; provided by the client when the resource is created or
-  /// updated.
+  /// Map of One Platform labels; provided by the client when the resource is
+  /// created or updated.
   ///
   /// Specifically: Label keys must be between 1 and 63 characters long and must
   /// conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`
@@ -2155,8 +2022,12 @@ class Deployment {
   }
 }
 
+/// Label object for Deployments
 class DeploymentLabelEntry {
+  /// Key of the label
   core.String key;
+
+  /// Value of the label
   core.String value;
 
   DeploymentLabelEntry();
@@ -2189,15 +2060,13 @@ class DeploymentUpdate {
   /// Output only.
   core.String description;
 
-  /// Map of labels; provided by the client when the resource is created or
-  /// updated.
+  /// Map of One Platform labels; provided by the client when the resource is
+  /// created or updated.
   ///
   /// Specifically: Label keys must be between 1 and 63 characters long and must
   /// conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`
   /// Label values must be between 0 and 63 characters long and must conform to
   /// the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
-  ///
-  /// Output only.
   core.List<DeploymentUpdateLabelEntry> labels;
 
   /// URL of the manifest representing the update configuration of this
@@ -2239,8 +2108,12 @@ class DeploymentUpdate {
   }
 }
 
+/// Label object for DeploymentUpdate
 class DeploymentUpdateLabelEntry {
+  /// Key of the label
   core.String key;
+
+  /// Value of the label
   core.String value;
 
   DeploymentUpdateLabelEntry();
@@ -2274,11 +2147,9 @@ class DeploymentsCancelPreviewRequest {
   /// optimistic concurrency so that the deployment does not have conflicting
   /// requests (e.g. if someone attempts to make a new update request while
   /// another user attempts to cancel a preview, this would prevent one of the
-  /// requests).
-  ///
-  /// The fingerprint is initially generated by Deployment Manager and changes
-  /// after every request to modify a deployment. To get the latest fingerprint
-  /// value, perform a `get()` request on the deployment.
+  /// requests). The fingerprint is initially generated by Deployment Manager
+  /// and changes after every request to modify a deployment. To get the latest
+  /// fingerprint value, perform a `get()` request on the deployment.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes =>
       convert.base64.decode(fingerprint);
@@ -2353,11 +2224,9 @@ class DeploymentsStopRequest {
   /// concurrency so that the deployment does not have conflicting requests
   /// (e.g. if someone attempts to make a new update request while another user
   /// attempts to stop an ongoing update request, this would prevent a
-  /// collision).
-  ///
-  /// The fingerprint is initially generated by Deployment Manager and changes
-  /// after every request to modify a deployment. To get the latest fingerprint
-  /// value, perform a `get()` request on the deployment.
+  /// collision). The fingerprint is initially generated by Deployment Manager
+  /// and changes after every request to modify a deployment. To get the latest
+  /// fingerprint value, perform a `get()` request on the deployment.
   core.String fingerprint;
   core.List<core.int> get fingerprintAsBytes =>
       convert.base64.decode(fingerprint);
@@ -2388,33 +2257,20 @@ class DeploymentsStopRequest {
 /// syntax.
 ///
 /// CEL is a C-like expression language. The syntax and semantics of CEL are
-/// documented at https://github.com/google/cel-spec.
-///
-/// Example (Comparison):
-///
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
 /// title: "Summary size limit" description: "Determines if a summary is less
-/// than 100 chars" expression: "document.summary.size() < 100"
-///
-/// Example (Equality):
-///
-/// title: "Requestor is owner" description: "Determines if requestor is the
-/// document owner" expression: "document.owner == request.auth.claims.email"
-///
-/// Example (Logic):
-///
-/// title: "Public documents" description: "Determine whether the document
-/// should be publicly visible" expression: "document.type != 'private' &&
-/// document.type != 'internal'"
-///
-/// Example (Data Manipulation):
-///
-/// title: "Notification string" description: "Create a notification string with
-/// a timestamp." expression: "'New message received at ' +
-/// string(document.create_time)"
-///
-/// The exact variables and functions that may be referenced within an
-/// expression are determined by the service that evaluates it. See the service
-/// documentation for additional information.
+/// than 100 chars" expression: "document.summary.size() < 100" Example
+/// (Equality): title: "Requestor is owner" description: "Determines if
+/// requestor is the document owner" expression: "document.owner ==
+/// request.auth.claims.email" Example (Logic): title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+/// expression: "document.type != 'private' && document.type != 'internal'"
+/// Example (Data Manipulation): title: "Notification string" description:
+/// "Create a notification string with a timestamp." expression: "'New message
+/// received at ' + string(document.create_time)" The exact variables and
+/// functions that may be referenced within an expression are determined by the
+/// service that evaluates it. See the service documentation for additional
+/// information.
 class Expr {
   /// Description of the expression.
   ///
@@ -2563,206 +2419,6 @@ class ImportFile {
   }
 }
 
-/// Specifies what kind of log the caller must write
-class LogConfig {
-  /// Cloud audit options.
-  LogConfigCloudAuditOptions cloudAudit;
-
-  /// Counter options.
-  LogConfigCounterOptions counter;
-
-  /// Data access options.
-  LogConfigDataAccessOptions dataAccess;
-
-  LogConfig();
-
-  LogConfig.fromJson(core.Map _json) {
-    if (_json.containsKey('cloudAudit')) {
-      cloudAudit = LogConfigCloudAuditOptions.fromJson(
-          _json['cloudAudit'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('counter')) {
-      counter = LogConfigCounterOptions.fromJson(
-          _json['counter'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('dataAccess')) {
-      dataAccess = LogConfigDataAccessOptions.fromJson(
-          _json['dataAccess'] as core.Map<core.String, core.dynamic>);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (cloudAudit != null) {
-      _json['cloudAudit'] = cloudAudit.toJson();
-    }
-    if (counter != null) {
-      _json['counter'] = counter.toJson();
-    }
-    if (dataAccess != null) {
-      _json['dataAccess'] = dataAccess.toJson();
-    }
-    return _json;
-  }
-}
-
-/// Write a Cloud Audit log
-class LogConfigCloudAuditOptions {
-  /// Information used by the Cloud Audit Logging pipeline.
-  AuthorizationLoggingOptions authorizationLoggingOptions;
-
-  /// The log_name to populate in the Cloud Audit Record.
-  core.String logName;
-
-  LogConfigCloudAuditOptions();
-
-  LogConfigCloudAuditOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('authorizationLoggingOptions')) {
-      authorizationLoggingOptions = AuthorizationLoggingOptions.fromJson(
-          _json['authorizationLoggingOptions']
-              as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('logName')) {
-      logName = _json['logName'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (authorizationLoggingOptions != null) {
-      _json['authorizationLoggingOptions'] =
-          authorizationLoggingOptions.toJson();
-    }
-    if (logName != null) {
-      _json['logName'] = logName;
-    }
-    return _json;
-  }
-}
-
-/// Increment a streamz counter with the specified metric and field names.
-///
-/// Metric names should start with a '/', generally be lowercase-only, and end
-/// in "_count".
-///
-/// Field names should not contain an initial slash. The actual exported metric
-/// names will have "/iam/policy" prepended.
-///
-/// Field names correspond to IAM request parameters and field values are their
-/// respective values.
-///
-/// Supported field names: - "authority", which is "\[token\]" if
-/// IAMContext.token is present, otherwise the value of
-/// IAMContext.authority_selector if present, and otherwise a representation of
-/// IAMContext.principal; or - "iam_principal", a representation of
-/// IAMContext.principal even if a token or authority selector is present; or -
-/// "" (empty string), resulting in a counter with no fields.
-///
-/// Examples: counter { metric: "/debug_access_count" field: "iam_principal" }
-/// ==> increment counter /iam/policy/debug_access_count {iam_principal=\[value
-/// of IAMContext.principal\]}
-class LogConfigCounterOptions {
-  /// Custom fields.
-  core.List<LogConfigCounterOptionsCustomField> customFields;
-
-  /// The field value to attribute.
-  core.String field;
-
-  /// The metric to update.
-  core.String metric;
-
-  LogConfigCounterOptions();
-
-  LogConfigCounterOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('customFields')) {
-      customFields = (_json['customFields'] as core.List)
-          .map<LogConfigCounterOptionsCustomField>((value) =>
-              LogConfigCounterOptionsCustomField.fromJson(
-                  value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('field')) {
-      field = _json['field'] as core.String;
-    }
-    if (_json.containsKey('metric')) {
-      metric = _json['metric'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (customFields != null) {
-      _json['customFields'] =
-          customFields.map((value) => value.toJson()).toList();
-    }
-    if (field != null) {
-      _json['field'] = field;
-    }
-    if (metric != null) {
-      _json['metric'] = metric;
-    }
-    return _json;
-  }
-}
-
-/// Custom fields.
-///
-/// These can be used to create a counter with arbitrary field/value pairs. See:
-/// go/rpcsp-custom-fields.
-class LogConfigCounterOptionsCustomField {
-  /// Name is the field name.
-  core.String name;
-
-  /// Value is the field value.
-  ///
-  /// It is important that in contrast to the CounterOptions.field, the value
-  /// here is a constant that is not derived from the IAMContext.
-  core.String value;
-
-  LogConfigCounterOptionsCustomField();
-
-  LogConfigCounterOptionsCustomField.fromJson(core.Map _json) {
-    if (_json.containsKey('name')) {
-      name = _json['name'] as core.String;
-    }
-    if (_json.containsKey('value')) {
-      value = _json['value'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (name != null) {
-      _json['name'] = name;
-    }
-    if (value != null) {
-      _json['value'] = value;
-    }
-    return _json;
-  }
-}
-
-/// Write a Data Access (Gin) log
-class LogConfigDataAccessOptions {
-  core.String logMode;
-
-  LogConfigDataAccessOptions();
-
-  LogConfigDataAccessOptions.fromJson(core.Map _json) {
-    if (_json.containsKey('logMode')) {
-      logMode = _json['logMode'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (logMode != null) {
-      _json['logMode'] = logMode;
-    }
-    return _json;
-  }
-}
-
 class Manifest {
   /// The YAML configuration for this manifest.
   ///
@@ -2791,9 +2447,19 @@ class Manifest {
   /// Output only.
   core.String layout;
 
-  /// Output only.
+  /// The computed size of the fully expanded manifest.
   ///
+  /// Output only.
+  core.String manifestSizeBytes;
+
+  /// The size limit for expanded manifests in the project.
+  ///
+  /// Output only.
+  core.String manifestSizeLimitBytes;
+
   /// The name of the manifest.
+  ///
+  /// Output only.
   core.String name;
 
   /// Self link for the manifest.
@@ -2826,6 +2492,12 @@ class Manifest {
     if (_json.containsKey('layout')) {
       layout = _json['layout'] as core.String;
     }
+    if (_json.containsKey('manifestSizeBytes')) {
+      manifestSizeBytes = _json['manifestSizeBytes'] as core.String;
+    }
+    if (_json.containsKey('manifestSizeLimitBytes')) {
+      manifestSizeLimitBytes = _json['manifestSizeLimitBytes'] as core.String;
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -2853,6 +2525,12 @@ class Manifest {
     }
     if (layout != null) {
       _json['layout'] = layout;
+    }
+    if (manifestSizeBytes != null) {
+      _json['manifestSizeBytes'] = manifestSizeBytes;
+    }
+    if (manifestSizeLimitBytes != null) {
+      _json['manifestSizeLimitBytes'] = manifestSizeLimitBytes;
     }
     if (name != null) {
       _json['name'] = name;
@@ -3028,12 +2706,59 @@ class OperationWarnings {
   /// results in the response.
   ///
   /// Output only.
+  /// Possible string values are:
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the network.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the same network as the route.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not accepted.
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted because they were in use.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but its application does not make a lot of
+  /// sense, because it allows only single instance in instance group.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite the mentioned error.
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed operation.
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden. Deprecated unused field.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as experimental
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as deprecated
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
   core.String code;
 
   /// Metadata about this warning in key: value format.
   ///
-  /// For example:
-  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
+  /// For example: "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<OperationWarningsData> data;
@@ -3077,25 +2802,16 @@ class OperationWarnings {
 
 /// Represents an Operation resource.
 ///
-/// Google Compute Engine has three Operation resources:
-///
-/// * \[Global\](/compute/docs/reference/rest/{$api_version}/globalOperations) *
+/// Google Compute Engine has three Operation resources: *
+/// \[Global\](/compute/docs/reference/rest/{$api_version}/globalOperations) *
 /// \[Regional\](/compute/docs/reference/rest/{$api_version}/regionOperations) *
-/// \[Zonal\](/compute/docs/reference/rest/{$api_version}/zoneOperations)
-///
-/// You can use an operation resource to manage asynchronous API requests.
-///
-/// For more information, read Handling API responses.
-///
-/// Operations can be global, regional or zonal.
-/// - For global operations, use the `globalOperations` resource.
-/// - For regional operations, use the `regionOperations` resource.
-/// - For zonal operations, use the `zonalOperations` resource.
-///
-/// For more information, read Global, Regional, and Zonal Resources. (==
-/// resource_for {$api_version}.globalOperations ==) (== resource_for
-/// {$api_version}.regionOperations ==) (== resource_for
-/// {$api_version}.zoneOperations ==)
+/// \[Zonal\](/compute/docs/reference/rest/{$api_version}/zoneOperations) You
+/// can use an operation resource to manage asynchronous API requests. For more
+/// information, read Handling API responses. Operations can be global, regional
+/// or zonal. - For global operations, use the `globalOperations` resource. -
+/// For regional operations, use the `regionOperations` resource. - For zonal
+/// operations, use the `zonalOperations` resource. For more information, read
+/// Global, Regional, and Zonal Resources.
 class Operation {
   /// The value of `requestId` if you provided it in the request.
   ///
@@ -3206,6 +2922,10 @@ class Operation {
   /// `RUNNING`, or `DONE`.
   ///
   /// Output only.
+  /// Possible string values are:
+  /// - "PENDING"
+  /// - "RUNNING"
+  /// - "DONE"
   core.String status;
 
   /// An optional textual description of the current status of the operation.
@@ -3440,45 +3160,33 @@ class OperationsListResponse {
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
 ///
-///
-///
-/// A `Policy` is a collection of `bindings`.
-///
-/// A `binding` binds one or more `members` to a single `role`. Members can be
-/// user accounts, service accounts, Google groups, and domains (such as G
-/// Suite). A `role` is a named list of permissions; each `role` can be an IAM
-/// predefined role or a user-created custom role.
-///
-/// For some types of Google Cloud resources, a `binding` can also specify a
-/// `condition`, which is a logical expression that allows access to a resource
-/// only if the expression evaluates to `true`. A condition can add constraints
-/// based on attributes of the request, the resource, or both. To learn which
-/// resources support conditions in their IAM policies, see the
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members` to a single `role`. Members can be user accounts, service
+/// accounts, Google groups, and domains (such as G Suite). A `role` is a named
+/// list of permissions; each `role` can be an IAM predefined role or a
+/// user-created custom role. For some types of Google Cloud resources, a
+/// `binding` can also specify a `condition`, which is a logical expression that
+/// allows access to a resource only if the expression evaluates to `true`. A
+/// condition can add constraints based on attributes of the request, the
+/// resource, or both. To learn which resources support conditions in their IAM
+/// policies, see the
 /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-///
-/// **JSON example:**
-///
-/// { "bindings": \[ { "role": "roles/resourcemanager.organizationAdmin",
-/// "members": \[ "user:mike@example.com", "group:admins@example.com",
-/// "domain:google.com",
+/// **JSON example:** { "bindings": \[ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": \[
+/// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
 /// "serviceAccount:my-project-id@appspot.gserviceaccount.com" \] }, { "role":
 /// "roles/resourcemanager.organizationViewer", "members": \[
 /// "user:eve@example.com" \], "condition": { "title": "expirable access",
 /// "description": "Does not grant access after Sep 2020", "expression":
 /// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } \], "etag":
-/// "BwWWja0YfJA=", "version": 3 }
-///
-/// **YAML example:**
-///
-/// bindings: - members: - user:mike@example.com - group:admins@example.com -
-/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
-/// role: roles/resourcemanager.organizationAdmin - members: -
-/// user:eve@example.com role: roles/resourcemanager.organizationViewer
-/// condition: title: expirable access description: Does not grant access after
-/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') -
-/// etag: BwWWja0YfJA= - version: 3
-///
-/// For a description of IAM and its features, see the
+/// "BwWWja0YfJA=", "version": 3 } **YAML example:** bindings: - members: -
+/// user:mike@example.com - group:admins@example.com - domain:google.com -
+/// serviceAccount:my-project-id@appspot.gserviceaccount.com role:
+/// roles/resourcemanager.organizationAdmin - members: - user:eve@example.com
+/// role: roles/resourcemanager.organizationViewer condition: title: expirable
+/// access description: Does not grant access after Sep 2020 expression:
+/// request.time < timestamp('2020-10-01T00:00:00.000Z') - etag: BwWWja0YfJA= -
+/// version: 3 For a description of IAM and its features, see the
 /// [IAM documentation](https://cloud.google.com/iam/docs/).
 class Policy {
   /// Specifies cloud audit logging configuration for this policy.
@@ -3499,12 +3207,10 @@ class Policy {
   /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
   /// systems are expected to put that etag in the request to `setIamPolicy` to
   /// ensure that their change will be applied to the same version of the
-  /// policy.
-  ///
-  /// **Important:** If you use IAM Conditions, you must include the `etag`
-  /// field whenever you call `setIamPolicy`. If you omit this field, then IAM
-  /// allows you to overwrite a version `3` policy with a version `1` policy,
-  /// and all of the conditions in the version `3` policy are lost.
+  /// policy. **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost.
   core.String etag;
   core.List<core.int> get etagAsBytes => convert.base64.decode(etag);
 
@@ -3513,41 +3219,22 @@ class Policy {
         convert.base64.encode(_bytes).replaceAll('/', '_').replaceAll('+', '-');
   }
 
-  core.bool iamOwned;
-
-  /// If more than one rule is specified, the rules are applied in the following
-  /// manner: - All matching LOG rules are always applied.
-  ///
-  /// - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging
-  /// will be applied if one or more matching rule requires logging. -
-  /// Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is
-  /// granted. Logging will be applied if one or more matching rule requires
-  /// logging. - Otherwise, if no rule applies, permission is denied.
-  core.List<Rule> rules;
-
   /// Specifies the format of the policy.
   ///
-  /// Valid values are `0`, `1`, and `3`.
-  ///
-  /// Requests that specify an invalid value are rejected.
-  ///
-  /// Any operation that affects conditional role bindings must specify version
-  /// `3`. This requirement applies to the following operations:
-  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
   /// * Getting a policy that includes a conditional role binding * Adding a
   /// conditional role binding to a policy * Changing a conditional role binding
   /// in a policy * Removing any role binding, with or without a condition, from
-  /// a policy that includes conditions
-  ///
-  /// **Important:** If you use IAM Conditions, you must include the `etag`
-  /// field whenever you call `setIamPolicy`. If you omit this field, then IAM
-  /// allows you to overwrite a version `3` policy with a version `1` policy,
-  /// and all of the conditions in the version `3` policy are lost.
-  ///
-  /// If a policy does not include any conditions, operations on that policy may
-  /// specify any valid version or leave the field unset.
-  ///
-  /// To learn which resources support conditions in their IAM policies, see the
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the
   /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
   core.int version;
 
@@ -3569,15 +3256,6 @@ class Policy {
     if (_json.containsKey('etag')) {
       etag = _json['etag'] as core.String;
     }
-    if (_json.containsKey('iamOwned')) {
-      iamOwned = _json['iamOwned'] as core.bool;
-    }
-    if (_json.containsKey('rules')) {
-      rules = (_json['rules'] as core.List)
-          .map<Rule>((value) =>
-              Rule.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
     if (_json.containsKey('version')) {
       version = _json['version'] as core.int;
     }
@@ -3594,12 +3272,6 @@ class Policy {
     }
     if (etag != null) {
       _json['etag'] = etag;
-    }
-    if (iamOwned != null) {
-      _json['iamOwned'] = iamOwned;
-    }
-    if (rules != null) {
-      _json['rules'] = rules.map((value) => value.toJson()).toList();
     }
     if (version != null) {
       _json['version'] = version;
@@ -3656,12 +3328,59 @@ class ResourceWarnings {
   /// results in the response.
   ///
   /// Output only.
+  /// Possible string values are:
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the network.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the same network as the route.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not accepted.
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted because they were in use.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but its application does not make a lot of
+  /// sense, because it allows only single instance in instance group.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite the mentioned error.
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed operation.
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden. Deprecated unused field.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as experimental
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as deprecated
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
   core.String code;
 
   /// Metadata about this warning in key: value format.
   ///
-  /// For example:
-  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
+  /// For example: "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ResourceWarningsData> data;
@@ -4003,12 +3722,59 @@ class ResourceUpdateWarnings {
   /// results in the response.
   ///
   /// Output only.
+  /// Possible string values are:
+  /// - "DEPRECATED_RESOURCE_USED" : A link to a deprecated resource was
+  /// created.
+  /// - "NO_RESULTS_ON_PAGE" : No results are present on a particular list page.
+  /// - "UNREACHABLE" : A given scope cannot be reached.
+  /// - "NEXT_HOP_ADDRESS_NOT_ASSIGNED" : The route's nextHopIp address is not
+  /// assigned to an instance on the network.
+  /// - "NEXT_HOP_INSTANCE_NOT_FOUND" : The route's nextHopInstance URL refers
+  /// to an instance that does not exist.
+  /// - "NEXT_HOP_INSTANCE_NOT_ON_NETWORK" : The route's nextHopInstance URL
+  /// refers to an instance that is not on the same network as the route.
+  /// - "NEXT_HOP_CANNOT_IP_FORWARD" : The route's next hop instance cannot ip
+  /// forward.
+  /// - "NEXT_HOP_NOT_RUNNING" : The route's next hop instance does not have a
+  /// status of RUNNING.
+  /// - "INJECTED_KERNELS_DEPRECATED" : The operation involved use of an
+  /// injected kernel, which is deprecated.
+  /// - "REQUIRED_TOS_AGREEMENT" : The user attempted to use a resource that
+  /// requires a TOS they have not accepted.
+  /// - "DISK_SIZE_LARGER_THAN_IMAGE_SIZE" : The user created a boot disk that
+  /// is larger than image size.
+  /// - "RESOURCE_NOT_DELETED" : One or more of the resources set to auto-delete
+  /// could not be deleted because they were in use.
+  /// - "SINGLE_INSTANCE_PROPERTY_TEMPLATE" : Instance template used in instance
+  /// group manager is valid as such, but its application does not make a lot of
+  /// sense, because it allows only single instance in instance group.
+  /// - "NOT_CRITICAL_ERROR" : Error which is not critical. We decided to
+  /// continue the process despite the mentioned error.
+  /// - "CLEANUP_FAILED" : Warning about failed cleanup of transient changes
+  /// made by a failed operation.
+  /// - "FIELD_VALUE_OVERRIDEN" : Warning that value of a field has been
+  /// overridden. Deprecated unused field.
+  /// - "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING" : Warning that a resource is
+  /// in use.
+  /// - "MISSING_TYPE_DEPENDENCY" : A resource depends on a missing type
+  /// - "EXTERNAL_API_WARNING" : Warning that is present in an external api call
+  /// - "SCHEMA_VALIDATION_IGNORED" : When a resource schema validation is
+  /// ignored.
+  /// - "UNDECLARED_PROPERTIES" : When undeclared properties in the schema are
+  /// present
+  /// - "EXPERIMENTAL_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as experimental
+  /// - "DEPRECATED_TYPE_USED" : When deploying and at least one of the
+  /// resources has a type marked as deprecated
+  /// - "PARTIAL_SUCCESS" : Success is reported, but some results may be missing
+  /// due to errors
+  /// - "LARGE_DEPLOYMENT_WARNING" : When deploying a deployment with a
+  /// exceedingly large number of resources
   core.String code;
 
   /// Metadata about this warning in key: value format.
   ///
-  /// For example:
-  /// "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
+  /// For example: "data": \[ { "key": "scope", "value": "zones/us-east1-d" }
   ///
   /// Output only.
   core.List<ResourceUpdateWarningsData> data;
@@ -4072,6 +3838,15 @@ class ResourceUpdate {
   /// The intent of the resource: `PREVIEW`, `UPDATE`, or `CANCEL`.
   ///
   /// Output only.
+  /// Possible string values are:
+  /// - "CREATE_OR_ACQUIRE" : The resource is scheduled to be created, or if it
+  /// already exists, acquired.
+  /// - "DELETE" : The resource is scheduled to be deleted.
+  /// - "ACQUIRE" : The resource is scheduled to be acquired.
+  /// - "UPDATE" : The resource is scheduled to be updated via the UPDATE
+  /// method.
+  /// - "ABANDON" : The resource is scheduled to be abandoned.
+  /// - "CREATE" : The resource is scheduled to be created.
   core.String intent;
 
   /// URL of the manifest representing the update configuration of this
@@ -4091,6 +3866,12 @@ class ResourceUpdate {
   /// The state of the resource.
   ///
   /// Output only.
+  /// Possible string values are:
+  /// - "PENDING" : There are changes pending for this resource.
+  /// - "IN_PROGRESS" : The service is executing changes on the resource.
+  /// - "IN_PREVIEW" : The service is previewing changes on the resource.
+  /// - "FAILED" : The service has failed to change the resource.
+  /// - "ABORTED" : The service has aborted trying to change the resource.
   core.String state;
 
   /// If warning messages are generated during processing of this resource, this
@@ -4194,102 +3975,6 @@ class ResourcesListResponse {
     }
     if (resources != null) {
       _json['resources'] = resources.map((value) => value.toJson()).toList();
-    }
-    return _json;
-  }
-}
-
-/// A rule to be applied in a Policy.
-class Rule {
-  /// Required
-  core.String action;
-
-  /// Additional restrictions that must be met.
-  ///
-  /// All conditions must pass for the rule to match.
-  core.List<Condition> conditions;
-
-  /// Human-readable description of the rule.
-  core.String description;
-
-  /// If one or more 'in' clauses are specified, the rule matches if the
-  /// PRINCIPAL/AUTHORITY_SELECTOR is in at least one of these entries.
-  core.List<core.String> ins;
-
-  /// The config returned to callers of tech.iam.IAM.CheckPolicy for any entries
-  /// that match the LOG action.
-  core.List<LogConfig> logConfigs;
-
-  /// If one or more 'not_in' clauses are specified, the rule matches if the
-  /// PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries.
-  core.List<core.String> notIns;
-
-  /// A permission is a string of form '..' (e.g., 'storage.buckets.list').
-  ///
-  /// A value of '*' matches all permissions, and a verb part of '*' (e.g.,
-  /// 'storage.buckets.*') matches all verbs.
-  core.List<core.String> permissions;
-
-  Rule();
-
-  Rule.fromJson(core.Map _json) {
-    if (_json.containsKey('action')) {
-      action = _json['action'] as core.String;
-    }
-    if (_json.containsKey('conditions')) {
-      conditions = (_json['conditions'] as core.List)
-          .map<Condition>((value) =>
-              Condition.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('description')) {
-      description = _json['description'] as core.String;
-    }
-    if (_json.containsKey('ins')) {
-      ins = (_json['ins'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('logConfigs')) {
-      logConfigs = (_json['logConfigs'] as core.List)
-          .map<LogConfig>((value) =>
-              LogConfig.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('notIns')) {
-      notIns = (_json['notIns'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-    if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (action != null) {
-      _json['action'] = action;
-    }
-    if (conditions != null) {
-      _json['conditions'] = conditions.map((value) => value.toJson()).toList();
-    }
-    if (description != null) {
-      _json['description'] = description;
-    }
-    if (ins != null) {
-      _json['ins'] = ins;
-    }
-    if (logConfigs != null) {
-      _json['logConfigs'] = logConfigs.map((value) => value.toJson()).toList();
-    }
-    if (notIns != null) {
-      _json['notIns'] = notIns;
-    }
-    if (permissions != null) {
-      _json['permissions'] = permissions;
     }
     return _json;
   }

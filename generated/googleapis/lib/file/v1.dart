@@ -26,6 +26,7 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsBackupsResource]
 ///     - [ProjectsLocationsInstancesResource]
 ///     - [ProjectsLocationsOperationsResource]
 library file.v1;
@@ -72,6 +73,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsBackupsResource get backups =>
+      ProjectsLocationsBackupsResource(_requester);
   ProjectsLocationsInstancesResource get instances =>
       ProjectsLocationsInstancesResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
@@ -211,6 +214,339 @@ class ProjectsLocationsResource {
   }
 }
 
+class ProjectsLocationsBackupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsBackupsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Creates a backup.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The backup's project and location, in the format
+  /// projects/{project_number}/locations/{location}. In Cloud Filestore, backup
+  /// locations map to GCP regions, for example **us-west1**.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [backupId] - Required. The ID to use for the backup. The ID must be unique
+  /// within the specified project and location. This value must start with a
+  /// lowercase letter followed by up to 62 lowercase letters, numbers, or
+  /// hyphens, and cannot end with a hyphen. Values that do not match this
+  /// pattern will trigger an INVALID_ARGUMENT error.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Backup request,
+    core.String parent, {
+    core.String backupId,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (backupId != null) {
+      _queryParams['backupId'] = [backupId];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/backups';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Deletes a backup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The backup resource name, in the format
+  /// projects/{project_number}/locations/{location}/backups/{backup_id}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'DELETE',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Gets the details of a specific backup.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The backup resource name, in the format
+  /// projects/{project_number}/locations/{location}/backups/{backup_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Backup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Backup> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Backup.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Lists all backups in a project for either a specified location or for all
+  /// locations.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project and location for which to retrieve backup
+  /// information, in the format projects/{project_number}/locations/{location}.
+  /// In Cloud Filestore, backup locations map to GCP regions, for example
+  /// **us-west1**. To retrieve backup information for all locations, use "-"
+  /// for the {location} value.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - List filter.
+  ///
+  /// [orderBy] - Sort results. Supported values are "name", "name desc" or ""
+  /// (unsorted).
+  ///
+  /// [pageSize] - The maximum number of items to return.
+  ///
+  /// [pageToken] - The next_page_token value to use if there are additional
+  /// results to retrieve for this list request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBackupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBackupsResponse> list(
+    core.String parent, {
+    core.String filter,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/backups';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => ListBackupsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Updates the settings of a specific backup.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. The resource name of the backup, in the format
+  /// projects/{project_number}/locations/{location_id}/backups/{backup_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backups/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Mask of fields to update. At least one path must
+  /// be supplied in this field.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Backup request,
+    core.String name, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
 class ProjectsLocationsInstancesResource {
   final commons.ApiRequester _requester;
 
@@ -218,6 +554,10 @@ class ProjectsLocationsInstancesResource {
       : _requester = client;
 
   /// Creates an instance.
+  ///
+  /// When creating from a backup, the capacity of the new instance needs to be
+  /// equal to or larger than the capacity of the backup (and also equal to or
+  /// larger than the minimum capacity of the tier).
   ///
   /// [request] - The metadata request object.
   ///
@@ -540,6 +880,69 @@ class ProjectsLocationsInstancesResource {
       (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
     );
   }
+
+  /// Restores an existing instance's file share from a backup.
+  ///
+  /// The capacity of the instance needs to be equal to or larger than the
+  /// capacity of the backup (and also equal to or larger than the minimum
+  /// capacity of the tier).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the instance, in the format
+  /// projects/{project_number}/locations/{location_id}/instances/{instance_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> restore(
+    RestoreInstanceRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':restore';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
 }
 
 class ProjectsLocationsOperationsResource {
@@ -807,6 +1210,171 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+/// A Cloud Filestore backup.
+class Backup {
+  /// Capacity of the source file share when the backup was created.
+  ///
+  /// Output only.
+  core.String capacityGb;
+
+  /// The time when the backup was created.
+  ///
+  /// Output only.
+  core.String createTime;
+
+  /// A description of the backup with 2048 characters or less.
+  ///
+  /// Requests with longer descriptions will be rejected.
+  core.String description;
+
+  /// Amount of bytes that will be downloaded if the backup is restored.
+  ///
+  /// This may be different than storage bytes, since sequential backups of the
+  /// same disk will share storage.
+  ///
+  /// Output only.
+  core.String downloadBytes;
+
+  /// Resource labels to represent user provided metadata.
+  core.Map<core.String, core.String> labels;
+
+  /// The resource name of the backup, in the format
+  /// projects/{project_number}/locations/{location_id}/backups/{backup_id}.
+  ///
+  /// Output only.
+  core.String name;
+
+  /// Name of the file share in the source Cloud Filestore instance that the
+  /// backup is created from.
+  core.String sourceFileShare;
+
+  /// The resource name of the source Cloud Filestore instance, in the format
+  /// projects/{project_number}/locations/{location_id}/instances/{instance_id},
+  /// used to create this backup.
+  core.String sourceInstance;
+
+  /// The service tier of the source Cloud Filestore instance that this backup
+  /// is created from.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TIER_UNSPECIFIED" : Not set.
+  /// - "STANDARD" : STANDARD tier.
+  /// - "PREMIUM" : PREMIUM tier.
+  /// - "BASIC_HDD" : BASIC instances offer a maximum capacity of 63.9 TB.
+  /// BASIC_HDD is an alias for STANDARD Tier, offering economical performance
+  /// backed by HDD.
+  /// - "BASIC_SSD" : BASIC instances offer a maximum capacity of 63.9 TB.
+  /// BASIC_SSD is an alias for PREMIUM Tier, and offers improved performance
+  /// backed by SSD.
+  /// - "HIGH_SCALE_SSD" : HIGH_SCALE instances offer expanded capacity and
+  /// performance scaling capabilities.
+  core.String sourceInstanceTier;
+
+  /// The backup state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not set.
+  /// - "CREATING" : Backup is being created.
+  /// - "FINALIZING" : Backup has been taken and the operation is being
+  /// finalized. At this point, changes to the file share will not be reflected
+  /// in the backup.
+  /// - "READY" : Backup is available for use.
+  /// - "DELETING" : Backup is being deleted.
+  core.String state;
+
+  /// The size of the storage used by the backup.
+  ///
+  /// As backups share storage, this number is expected to change with backup
+  /// creation/deletion.
+  ///
+  /// Output only.
+  core.String storageBytes;
+
+  Backup();
+
+  Backup.fromJson(core.Map _json) {
+    if (_json.containsKey('capacityGb')) {
+      capacityGb = _json['capacityGb'] as core.String;
+    }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('downloadBytes')) {
+      downloadBytes = _json['downloadBytes'] as core.String;
+    }
+    if (_json.containsKey('labels')) {
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('sourceFileShare')) {
+      sourceFileShare = _json['sourceFileShare'] as core.String;
+    }
+    if (_json.containsKey('sourceInstance')) {
+      sourceInstance = _json['sourceInstance'] as core.String;
+    }
+    if (_json.containsKey('sourceInstanceTier')) {
+      sourceInstanceTier = _json['sourceInstanceTier'] as core.String;
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+    if (_json.containsKey('storageBytes')) {
+      storageBytes = _json['storageBytes'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (capacityGb != null) {
+      _json['capacityGb'] = capacityGb;
+    }
+    if (createTime != null) {
+      _json['createTime'] = createTime;
+    }
+    if (description != null) {
+      _json['description'] = description;
+    }
+    if (downloadBytes != null) {
+      _json['downloadBytes'] = downloadBytes;
+    }
+    if (labels != null) {
+      _json['labels'] = labels;
+    }
+    if (name != null) {
+      _json['name'] = name;
+    }
+    if (sourceFileShare != null) {
+      _json['sourceFileShare'] = sourceFileShare;
+    }
+    if (sourceInstance != null) {
+      _json['sourceInstance'] = sourceInstance;
+    }
+    if (sourceInstanceTier != null) {
+      _json['sourceInstanceTier'] = sourceInstanceTier;
+    }
+    if (state != null) {
+      _json['state'] = state;
+    }
+    if (storageBytes != null) {
+      _json['storageBytes'] = storageBytes;
+    }
+    return _json;
+  }
+}
+
 /// The request message for Operations.CancelOperation.
 class CancelOperationRequest {
   CancelOperationRequest();
@@ -817,6 +1385,153 @@ class CancelOperationRequest {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    return _json;
+  }
+}
+
+/// Time window specified for daily operations.
+class DailyCycle {
+  /// Duration of the time window, set by service producer.
+  ///
+  /// Output only.
+  core.String duration;
+
+  /// Time within the day to start the operations.
+  TimeOfDay startTime;
+
+  DailyCycle();
+
+  DailyCycle.fromJson(core.Map _json) {
+    if (_json.containsKey('duration')) {
+      duration = _json['duration'] as core.String;
+    }
+    if (_json.containsKey('startTime')) {
+      startTime = TimeOfDay.fromJson(
+          _json['startTime'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (duration != null) {
+      _json['duration'] = duration;
+    }
+    if (startTime != null) {
+      _json['startTime'] = startTime.toJson();
+    }
+    return _json;
+  }
+}
+
+/// Represents a whole or partial calendar date, such as a birthday.
+///
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values * A month and day value, with a zero year, such as an
+/// anniversary * A year on its own, with zero month and day values * A year and
+/// month value, with a zero day, such as a credit card expiration date Related
+/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+class Date {
+  /// Day of a month.
+  ///
+  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
+  /// year by itself or a year and month where the day isn't significant.
+  core.int day;
+
+  /// Month of a year.
+  ///
+  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
+  core.int month;
+
+  /// Year of the date.
+  ///
+  /// Must be from 1 to 9999, or 0 to specify a date without a year.
+  core.int year;
+
+  Date();
+
+  Date.fromJson(core.Map _json) {
+    if (_json.containsKey('day')) {
+      day = _json['day'] as core.int;
+    }
+    if (_json.containsKey('month')) {
+      month = _json['month'] as core.int;
+    }
+    if (_json.containsKey('year')) {
+      year = _json['year'] as core.int;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (day != null) {
+      _json['day'] = day;
+    }
+    if (month != null) {
+      _json['month'] = month;
+    }
+    if (year != null) {
+      _json['year'] = year;
+    }
+    return _json;
+  }
+}
+
+/// DenyMaintenancePeriod definition.
+///
+/// Maintenance is forbidden within the deny period. The start_date must be less
+/// than the end_date.
+class DenyMaintenancePeriod {
+  /// Deny period end date.
+  ///
+  /// This can be: * A full date, with non-zero year, month and day values. * A
+  /// month and day value, with a zero year. Allows recurring deny periods each
+  /// year. Date matching this period will have to be before the end.
+  Date endDate;
+
+  /// Deny period start date.
+  ///
+  /// This can be: * A full date, with non-zero year, month and day values. * A
+  /// month and day value, with a zero year. Allows recurring deny periods each
+  /// year. Date matching this period will have to be the same or after the
+  /// start.
+  Date startDate;
+
+  /// Time in UTC when the Blackout period starts on start_date and ends on
+  /// end_date.
+  ///
+  /// This can be: * Full time. * All zeros for 00:00:00 UTC
+  TimeOfDay time;
+
+  DenyMaintenancePeriod();
+
+  DenyMaintenancePeriod.fromJson(core.Map _json) {
+    if (_json.containsKey('endDate')) {
+      endDate = Date.fromJson(
+          _json['endDate'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('startDate')) {
+      startDate = Date.fromJson(
+          _json['startDate'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('time')) {
+      time = TimeOfDay.fromJson(
+          _json['time'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (endDate != null) {
+      _json['endDate'] = endDate.toJson();
+    }
+    if (startDate != null) {
+      _json['startDate'] = startDate.toJson();
+    }
+    if (time != null) {
+      _json['time'] = time.toJson();
+    }
     return _json;
   }
 }
@@ -851,6 +1566,16 @@ class FileShareConfig {
   /// The name of the file share (must be 16 characters or less).
   core.String name;
 
+  /// Nfs Export Options.
+  ///
+  /// There is a limit of 10 export options per file share.
+  core.List<NfsExportOptions> nfsExportOptions;
+
+  /// The resource name of the backup, in the format
+  /// projects/{project_number}/locations/{location_id}/backups/{backup_id},
+  /// that this file share has been restored from.
+  core.String sourceBackup;
+
   FileShareConfig();
 
   FileShareConfig.fromJson(core.Map _json) {
@@ -859,6 +1584,15 @@ class FileShareConfig {
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('nfsExportOptions')) {
+      nfsExportOptions = (_json['nfsExportOptions'] as core.List)
+          .map<NfsExportOptions>((value) => NfsExportOptions.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('sourceBackup')) {
+      sourceBackup = _json['sourceBackup'] as core.String;
     }
   }
 
@@ -869,6 +1603,13 @@ class FileShareConfig {
     }
     if (name != null) {
       _json['name'] = name;
+    }
+    if (nfsExportOptions != null) {
+      _json['nfsExportOptions'] =
+          nfsExportOptions.map((value) => value.toJson()).toList();
+    }
+    if (sourceBackup != null) {
+      _json['sourceBackup'] = sourceBackup;
     }
     return _json;
   }
@@ -902,6 +1643,8 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
   /// MaintenancePolicy, and the referenced policy must define the same policy
   /// type. For complete details of MaintenancePolicy, please refer to
   /// go/cloud-saas-mw-ug.
+  ///
+  /// Deprecated.
   core.Map<core.String, core.String> maintenancePolicyNames;
 
   /// The MaintenanceSchedule contains the scheduling information of published
@@ -1153,6 +1896,15 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
   /// this given policy.
   core.String rolloutManagementPolicy;
 
+  /// schedule_deadline_time is the time deadline any schedule start time cannot
+  /// go beyond, including reschedule.
+  ///
+  /// It's normally the initial schedule start time plus a week. If the
+  /// reschedule type is next window, simply take this value as start time. If
+  /// reschedule type is IMMEDIATELY or BY_TIME, current or selected time cannot
+  /// go beyond this deadline.
+  core.String scheduleDeadlineTime;
+
   /// The scheduled start time for the maintenance.
   core.String startTime;
 
@@ -1169,6 +1921,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
     if (_json.containsKey('rolloutManagementPolicy')) {
       rolloutManagementPolicy = _json['rolloutManagementPolicy'] as core.String;
     }
+    if (_json.containsKey('scheduleDeadlineTime')) {
+      scheduleDeadlineTime = _json['scheduleDeadlineTime'] as core.String;
+    }
     if (_json.containsKey('startTime')) {
       startTime = _json['startTime'] as core.String;
     }
@@ -1184,6 +1939,9 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
     }
     if (rolloutManagementPolicy != null) {
       _json['rolloutManagementPolicy'] = rolloutManagementPolicy;
+    }
+    if (scheduleDeadlineTime != null) {
+      _json['scheduleDeadlineTime'] = scheduleDeadlineTime;
     }
     if (startTime != null) {
       _json['startTime'] = startTime;
@@ -1206,6 +1964,18 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
   /// Optional.
   core.bool exclude;
 
+  /// The MaintenancePolicies that have been attached to the instance.
+  ///
+  /// The key must be of the type name of the oneof policy name defined in
+  /// MaintenancePolicy, and the embedded policy must define the same policy
+  /// type. For complete details of MaintenancePolicy, please refer to
+  /// go/cloud-saas-mw-ug. If only the name is needed (like in the deprecated
+  /// Instance.maintenance_policy_names field) then only populate
+  /// MaintenancePolicy.name.
+  ///
+  /// Optional.
+  core.Map<core.String, MaintenancePolicy> maintenancePolicies;
+
   GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings();
 
   GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings.fromJson(
@@ -1213,12 +1983,27 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
     if (_json.containsKey('exclude')) {
       exclude = _json['exclude'] as core.bool;
     }
+    if (_json.containsKey('maintenancePolicies')) {
+      maintenancePolicies = (_json['maintenancePolicies'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              MaintenancePolicy.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (exclude != null) {
       _json['exclude'] = exclude;
+    }
+    if (maintenancePolicies != null) {
+      _json['maintenancePolicies'] = maintenancePolicies
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     return _json;
   }
@@ -1561,6 +2346,8 @@ class Instance {
   /// - "ERROR" : The instance is experiencing an issue and might be unusable.
   /// You can get further details from the `statusMessage` field of the
   /// `Instance` resource.
+  /// - "RESTORING" : The instance is restoring a backup to an existing file
+  /// share and may be unusable during this time.
   core.String state;
 
   /// Additional information about the instance state, if available.
@@ -1661,6 +2448,59 @@ class Instance {
     }
     if (tier != null) {
       _json['tier'] = tier;
+    }
+    return _json;
+  }
+}
+
+/// ListBackupsResponse is the result of ListBackupsRequest.
+class ListBackupsResponse {
+  /// A list of backups in the project for the specified location.
+  ///
+  /// If the {location} value in the request is "-", the response contains a
+  /// list of backups from all locations. If any location is unreachable, the
+  /// response will only return backups in reachable locations and the
+  /// "unreachable" field will be populated with a list of unreachable
+  /// locations.
+  core.List<Backup> backups;
+
+  /// The token you can use to retrieve the next page of results.
+  ///
+  /// Not returned if there are no more results in the list.
+  core.String nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String> unreachable;
+
+  ListBackupsResponse();
+
+  ListBackupsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('backups')) {
+      backups = (_json['backups'] as core.List)
+          .map<Backup>((value) =>
+              Backup.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('unreachable')) {
+      unreachable = (_json['unreachable'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (backups != null) {
+      _json['backups'] = backups.map((value) => value.toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json['nextPageToken'] = nextPageToken;
+    }
+    if (unreachable != null) {
+      _json['unreachable'] = unreachable;
     }
     return _json;
   }
@@ -1870,6 +2710,150 @@ class Location {
   }
 }
 
+/// Defines policies to service maintenance events.
+class MaintenancePolicy {
+  /// The time when the resource was created.
+  ///
+  /// Output only.
+  core.String createTime;
+
+  /// Description of what this policy is for.
+  ///
+  /// Create/Update methods return INVALID_ARGUMENT if the length is greater
+  /// than 512.
+  ///
+  /// Optional.
+  core.String description;
+
+  /// Resource labels to represent user provided metadata.
+  ///
+  /// Each label is a key-value pair, where both the key and the value are
+  /// arbitrary strings provided by the user.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String> labels;
+
+  /// MaintenancePolicy name using the form:
+  /// `projects/{project_id}/locations/{location_id}/maintenancePolicies/{maintenance_policy_id}`
+  /// where {project_id} refers to a GCP consumer project ID, {location_id}
+  /// refers to a GCP region/zone, {maintenance_policy_id} must be 1-63
+  /// characters long and match the regular expression
+  /// `[a-z0-9]([-a-z0-9]*[a-z0-9])?`.
+  ///
+  /// Required.
+  core.String name;
+
+  /// The state of the policy.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "READY" : Resource is ready to be used.
+  /// - "DELETING" : Resource is being deleted. It can no longer be attached to
+  /// instances.
+  core.String state;
+
+  /// Maintenance policy applicable to instance update.
+  UpdatePolicy updatePolicy;
+
+  /// The time when the resource was updated.
+  ///
+  /// Output only.
+  core.String updateTime;
+
+  MaintenancePolicy();
+
+  MaintenancePolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
+    if (_json.containsKey('labels')) {
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+    if (_json.containsKey('updatePolicy')) {
+      updatePolicy = UpdatePolicy.fromJson(
+          _json['updatePolicy'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (createTime != null) {
+      _json['createTime'] = createTime;
+    }
+    if (description != null) {
+      _json['description'] = description;
+    }
+    if (labels != null) {
+      _json['labels'] = labels;
+    }
+    if (name != null) {
+      _json['name'] = name;
+    }
+    if (state != null) {
+      _json['state'] = state;
+    }
+    if (updatePolicy != null) {
+      _json['updatePolicy'] = updatePolicy.toJson();
+    }
+    if (updateTime != null) {
+      _json['updateTime'] = updateTime;
+    }
+    return _json;
+  }
+}
+
+/// MaintenanceWindow definition.
+class MaintenanceWindow {
+  /// Daily cycle.
+  DailyCycle dailyCycle;
+
+  /// Weekly cycle.
+  WeeklyCycle weeklyCycle;
+
+  MaintenanceWindow();
+
+  MaintenanceWindow.fromJson(core.Map _json) {
+    if (_json.containsKey('dailyCycle')) {
+      dailyCycle = DailyCycle.fromJson(
+          _json['dailyCycle'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('weeklyCycle')) {
+      weeklyCycle = WeeklyCycle.fromJson(
+          _json['weeklyCycle'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (dailyCycle != null) {
+      _json['dailyCycle'] = dailyCycle.toJson();
+    }
+    if (weeklyCycle != null) {
+      _json['weeklyCycle'] = weeklyCycle.toJson();
+    }
+    return _json;
+  }
+}
+
 /// Network configuration for the instance.
 class NetworkConfig {
   /// IPv4 addresses in the format {octet 1}.{octet 2}.{octet 3}.{octet 4} or
@@ -1933,6 +2917,96 @@ class NetworkConfig {
     }
     if (reservedIpRange != null) {
       _json['reservedIpRange'] = reservedIpRange;
+    }
+    return _json;
+  }
+}
+
+/// NFS export options specifications.
+class NfsExportOptions {
+  /// Either READ_ONLY, for allowing only read requests on the exported
+  /// directory, or READ_WRITE, for allowing both read and write requests.
+  ///
+  /// The default is READ_WRITE.
+  /// Possible string values are:
+  /// - "ACCESS_MODE_UNSPECIFIED" : AccessMode not set.
+  /// - "READ_ONLY" : The client can only read the file share.
+  /// - "READ_WRITE" : The client can read and write the file share (default).
+  core.String accessMode;
+
+  /// An integer representing the anonymous group id with a default value of
+  /// 65534.
+  ///
+  /// Anon_gid may only be set with squash_mode of ROOT_SQUASH. An error will be
+  /// returned if this field is specified for other squash_mode settings.
+  core.String anonGid;
+
+  /// An integer representing the anonymous user id with a default value of
+  /// 65534.
+  ///
+  /// Anon_uid may only be set with squash_mode of ROOT_SQUASH. An error will be
+  /// returned if this field is specified for other squash_mode settings.
+  core.String anonUid;
+
+  /// List of either an IPv4 addresses in the format {octet 1}.{octet 2}.{octet
+  /// 3}.{octet 4} or CIDR ranges in the format {octet 1}.{octet 2}.{octet
+  /// 3}.{octet 4}/{mask size} which may mount the file share.
+  ///
+  /// Overlapping IP ranges are not allowed, both within and across
+  /// NfsExportOptions. An error will be returned. The limit is 64 IP
+  /// ranges/addresses for each FileShareConfig among all NfsExportOptions.
+  core.List<core.String> ipRanges;
+
+  /// Either NO_ROOT_SQUASH, for allowing root access on the exported directory,
+  /// or ROOT_SQUASH, for not allowing root access.
+  ///
+  /// The default is NO_ROOT_SQUASH.
+  /// Possible string values are:
+  /// - "SQUASH_MODE_UNSPECIFIED" : SquashMode not set.
+  /// - "NO_ROOT_SQUASH" : The Root user has root access to the file share
+  /// (default).
+  /// - "ROOT_SQUASH" : The Root user has squashed access to the anonymous
+  /// uid/gid.
+  core.String squashMode;
+
+  NfsExportOptions();
+
+  NfsExportOptions.fromJson(core.Map _json) {
+    if (_json.containsKey('accessMode')) {
+      accessMode = _json['accessMode'] as core.String;
+    }
+    if (_json.containsKey('anonGid')) {
+      anonGid = _json['anonGid'] as core.String;
+    }
+    if (_json.containsKey('anonUid')) {
+      anonUid = _json['anonUid'] as core.String;
+    }
+    if (_json.containsKey('ipRanges')) {
+      ipRanges = (_json['ipRanges'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
+    if (_json.containsKey('squashMode')) {
+      squashMode = _json['squashMode'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (accessMode != null) {
+      _json['accessMode'] = accessMode;
+    }
+    if (anonGid != null) {
+      _json['anonGid'] = anonGid;
+    }
+    if (anonUid != null) {
+      _json['anonUid'] = anonUid;
+    }
+    if (ipRanges != null) {
+      _json['ipRanges'] = ipRanges;
+    }
+    if (squashMode != null) {
+      _json['squashMode'] = squashMode;
     }
     return _json;
   }
@@ -2129,6 +3203,94 @@ class OperationMetadata {
   }
 }
 
+/// RestoreInstanceRequest restores an existing instances's file share from a
+/// backup.
+class RestoreInstanceRequest {
+  /// Name of the file share in the Cloud Filestore instance that the backup is
+  /// being restored to.
+  ///
+  /// Required.
+  core.String fileShare;
+
+  /// The resource name of the backup, in the format
+  /// projects/{project_number}/locations/{location_id}/backups/{backup_id}.
+  core.String sourceBackup;
+
+  RestoreInstanceRequest();
+
+  RestoreInstanceRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('fileShare')) {
+      fileShare = _json['fileShare'] as core.String;
+    }
+    if (_json.containsKey('sourceBackup')) {
+      sourceBackup = _json['sourceBackup'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (fileShare != null) {
+      _json['fileShare'] = fileShare;
+    }
+    if (sourceBackup != null) {
+      _json['sourceBackup'] = sourceBackup;
+    }
+    return _json;
+  }
+}
+
+/// Configure the schedule.
+class Schedule {
+  /// Allows to define schedule that runs specified day of the week.
+  /// Possible string values are:
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
+  core.String day;
+
+  /// Duration of the time window, set by service producer.
+  ///
+  /// Output only.
+  core.String duration;
+
+  /// Time within the window to start the operations.
+  TimeOfDay startTime;
+
+  Schedule();
+
+  Schedule.fromJson(core.Map _json) {
+    if (_json.containsKey('day')) {
+      day = _json['day'] as core.String;
+    }
+    if (_json.containsKey('duration')) {
+      duration = _json['duration'] as core.String;
+    }
+    if (_json.containsKey('startTime')) {
+      startTime = TimeOfDay.fromJson(
+          _json['startTime'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (day != null) {
+      _json['day'] = day;
+    }
+    if (duration != null) {
+      _json['duration'] = duration;
+    }
+    if (startTime != null) {
+      _json['startTime'] = startTime.toJson();
+    }
+    return _json;
+  }
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -2186,6 +3348,153 @@ class Status {
     }
     if (message != null) {
       _json['message'] = message;
+    }
+    return _json;
+  }
+}
+
+/// Represents a time of day.
+///
+/// The date and time zone are either not significant or are specified
+/// elsewhere. An API may choose to allow leap seconds. Related types are
+/// google.type.Date and `google.protobuf.Timestamp`.
+class TimeOfDay {
+  /// Hours of day in 24 hour format.
+  ///
+  /// Should be from 0 to 23. An API may choose to allow the value "24:00:00"
+  /// for scenarios like business closing time.
+  core.int hours;
+
+  /// Minutes of hour of day.
+  ///
+  /// Must be from 0 to 59.
+  core.int minutes;
+
+  /// Fractions of seconds in nanoseconds.
+  ///
+  /// Must be from 0 to 999,999,999.
+  core.int nanos;
+
+  /// Seconds of minutes of the time.
+  ///
+  /// Must normally be from 0 to 59. An API may allow the value 60 if it allows
+  /// leap-seconds.
+  core.int seconds;
+
+  TimeOfDay();
+
+  TimeOfDay.fromJson(core.Map _json) {
+    if (_json.containsKey('hours')) {
+      hours = _json['hours'] as core.int;
+    }
+    if (_json.containsKey('minutes')) {
+      minutes = _json['minutes'] as core.int;
+    }
+    if (_json.containsKey('nanos')) {
+      nanos = _json['nanos'] as core.int;
+    }
+    if (_json.containsKey('seconds')) {
+      seconds = _json['seconds'] as core.int;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (hours != null) {
+      _json['hours'] = hours;
+    }
+    if (minutes != null) {
+      _json['minutes'] = minutes;
+    }
+    if (nanos != null) {
+      _json['nanos'] = nanos;
+    }
+    if (seconds != null) {
+      _json['seconds'] = seconds;
+    }
+    return _json;
+  }
+}
+
+/// Maintenance policy applicable to instance updates.
+class UpdatePolicy {
+  /// Relative scheduling channel applied to resource.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "UPDATE_CHANNEL_UNSPECIFIED" : Unspecified channel.
+  /// - "EARLIER" : Early channel within a customer project.
+  /// - "LATER" : Later channel within a customer project.
+  core.String channel;
+
+  /// Deny Maintenance Period that is applied to resource to indicate when
+  /// maintenance is forbidden.
+  ///
+  /// User can specify zero or more non-overlapping deny periods. For V1,
+  /// Maximum number of deny_maintenance_periods is expected to be one.
+  core.List<DenyMaintenancePeriod> denyMaintenancePeriods;
+
+  /// Maintenance window that is applied to resources covered by this policy.
+  ///
+  /// Optional.
+  MaintenanceWindow window;
+
+  UpdatePolicy();
+
+  UpdatePolicy.fromJson(core.Map _json) {
+    if (_json.containsKey('channel')) {
+      channel = _json['channel'] as core.String;
+    }
+    if (_json.containsKey('denyMaintenancePeriods')) {
+      denyMaintenancePeriods = (_json['denyMaintenancePeriods'] as core.List)
+          .map<DenyMaintenancePeriod>((value) => DenyMaintenancePeriod.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('window')) {
+      window = MaintenanceWindow.fromJson(
+          _json['window'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (channel != null) {
+      _json['channel'] = channel;
+    }
+    if (denyMaintenancePeriods != null) {
+      _json['denyMaintenancePeriods'] =
+          denyMaintenancePeriods.map((value) => value.toJson()).toList();
+    }
+    if (window != null) {
+      _json['window'] = window.toJson();
+    }
+    return _json;
+  }
+}
+
+/// Time window specified for weekly operations.
+class WeeklyCycle {
+  /// User can specify multiple windows in a week.
+  ///
+  /// Minimum of 1 window.
+  core.List<Schedule> schedule;
+
+  WeeklyCycle();
+
+  WeeklyCycle.fromJson(core.Map _json) {
+    if (_json.containsKey('schedule')) {
+      schedule = (_json['schedule'] as core.List)
+          .map<Schedule>((value) =>
+              Schedule.fromJson(value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (schedule != null) {
+      _json['schedule'] = schedule.map((value) => value.toJson()).toList();
     }
     return _json;
   }

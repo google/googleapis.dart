@@ -145,14 +145,14 @@ void checkRenewalSettings(api.RenewalSettings o) {
   buildCounterRenewalSettings--;
 }
 
-core.List<core.String> buildUnnamed3387() {
+core.List<core.String> buildUnnamed3766() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3387(core.List<core.String> o) {
+void checkUnnamed3766(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -164,7 +164,7 @@ api.ResellernotifyGetwatchdetailsResponse
   var o = api.ResellernotifyGetwatchdetailsResponse();
   buildCounterResellernotifyGetwatchdetailsResponse++;
   if (buildCounterResellernotifyGetwatchdetailsResponse < 3) {
-    o.serviceAccountEmailAddresses = buildUnnamed3387();
+    o.serviceAccountEmailAddresses = buildUnnamed3766();
     o.topicName = 'foo';
   }
   buildCounterResellernotifyGetwatchdetailsResponse--;
@@ -175,7 +175,7 @@ void checkResellernotifyGetwatchdetailsResponse(
     api.ResellernotifyGetwatchdetailsResponse o) {
   buildCounterResellernotifyGetwatchdetailsResponse++;
   if (buildCounterResellernotifyGetwatchdetailsResponse < 3) {
-    checkUnnamed3387(o.serviceAccountEmailAddresses);
+    checkUnnamed3766(o.serviceAccountEmailAddresses);
     unittest.expect(o.topicName, unittest.equals('foo'));
   }
   buildCounterResellernotifyGetwatchdetailsResponse--;
@@ -272,14 +272,14 @@ void checkSubscriptionPlan(api.SubscriptionPlan o) {
   buildCounterSubscriptionPlan--;
 }
 
-core.List<core.String> buildUnnamed3388() {
+core.List<core.String> buildUnnamed3767() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed3388(core.List<core.String> o) {
+void checkUnnamed3767(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -347,7 +347,7 @@ api.Subscription buildSubscription() {
     o.skuName = 'foo';
     o.status = 'foo';
     o.subscriptionId = 'foo';
-    o.suspensionReasons = buildUnnamed3388();
+    o.suspensionReasons = buildUnnamed3767();
     o.transferInfo = buildSubscriptionTransferInfo();
     o.trialSettings = buildSubscriptionTrialSettings();
   }
@@ -373,7 +373,7 @@ void checkSubscription(api.Subscription o) {
     unittest.expect(o.skuName, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.subscriptionId, unittest.equals('foo'));
-    checkUnnamed3388(o.suspensionReasons);
+    checkUnnamed3767(o.suspensionReasons);
     checkSubscriptionTransferInfo(
         o.transferInfo as api.SubscriptionTransferInfo);
     checkSubscriptionTrialSettings(
@@ -382,14 +382,14 @@ void checkSubscription(api.Subscription o) {
   buildCounterSubscription--;
 }
 
-core.List<api.Subscription> buildUnnamed3389() {
+core.List<api.Subscription> buildUnnamed3768() {
   var o = <api.Subscription>[];
   o.add(buildSubscription());
   o.add(buildSubscription());
   return o;
 }
 
-void checkUnnamed3389(core.List<api.Subscription> o) {
+void checkUnnamed3768(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSubscription(o[0] as api.Subscription);
   checkSubscription(o[1] as api.Subscription);
@@ -402,7 +402,7 @@ api.Subscriptions buildSubscriptions() {
   if (buildCounterSubscriptions < 3) {
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.subscriptions = buildUnnamed3389();
+    o.subscriptions = buildUnnamed3768();
   }
   buildCounterSubscriptions--;
   return o;
@@ -413,7 +413,7 @@ void checkSubscriptions(api.Subscriptions o) {
   if (buildCounterSubscriptions < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed3389(o.subscriptions);
+    checkUnnamed3768(o.subscriptions);
   }
   buildCounterSubscriptions--;
 }
@@ -539,12 +539,9 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("apps/reseller/v1/"));
-        pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("customers/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 27),
+            unittest.equals("apps/reseller/v1/customers/"));
+        pathOffset += 27;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
         unittest.expect(subPart, unittest.equals('$arg_customerId'));
@@ -597,12 +594,9 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("apps/reseller/v1/"));
-        pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 9),
-            unittest.equals("customers"));
-        pathOffset += 9;
+        unittest.expect(path.substring(pathOffset, pathOffset + 26),
+            unittest.equals("apps/reseller/v1/customers"));
+        pathOffset += 26;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -655,12 +649,9 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("apps/reseller/v1/"));
-        pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("customers/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 27),
+            unittest.equals("apps/reseller/v1/customers/"));
+        pathOffset += 27;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
         unittest.expect(subPart, unittest.equals('$arg_customerId'));
@@ -713,12 +704,9 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("apps/reseller/v1/"));
-        pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("customers/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 27),
+            unittest.equals("apps/reseller/v1/customers/"));
+        pathOffset += 27;
         subPart = core.Uri.decodeQueryComponent(path.substring(pathOffset));
         pathOffset = path.length;
         unittest.expect(subPart, unittest.equals('$arg_customerId'));
@@ -767,12 +755,9 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("apps/reseller/v1/"));
-        pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 30),
-            unittest.equals("resellernotify/getwatchdetails"));
-        pathOffset += 30;
+        unittest.expect(path.substring(pathOffset, pathOffset + 47),
+            unittest.equals("apps/reseller/v1/resellernotify/getwatchdetails"));
+        pathOffset += 47;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -819,12 +804,9 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("apps/reseller/v1/"));
-        pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 23),
-            unittest.equals("resellernotify/register"));
-        pathOffset += 23;
+        unittest.expect(path.substring(pathOffset, pathOffset + 40),
+            unittest.equals("apps/reseller/v1/resellernotify/register"));
+        pathOffset += 40;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -873,12 +855,9 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("apps/reseller/v1/"));
-        pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 25),
-            unittest.equals("resellernotify/unregister"));
-        pathOffset += 25;
+        unittest.expect(path.substring(pathOffset, pathOffset + 42),
+            unittest.equals("apps/reseller/v1/resellernotify/unregister"));
+        pathOffset += 42;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -930,12 +909,9 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("apps/reseller/v1/"));
-        pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("customers/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 27),
+            unittest.equals("apps/reseller/v1/customers/"));
+        pathOffset += 27;
         index = path.indexOf('/subscriptions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -1004,12 +980,9 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("apps/reseller/v1/"));
-        pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("customers/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 27),
+            unittest.equals("apps/reseller/v1/customers/"));
+        pathOffset += 27;
         index = path.indexOf('/subscriptions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -1079,12 +1052,9 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("apps/reseller/v1/"));
-        pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("customers/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 27),
+            unittest.equals("apps/reseller/v1/customers/"));
+        pathOffset += 27;
         index = path.indexOf('/subscriptions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -1155,12 +1125,9 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("apps/reseller/v1/"));
-        pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("customers/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 27),
+            unittest.equals("apps/reseller/v1/customers/"));
+        pathOffset += 27;
         index = path.indexOf('/subscriptions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -1226,12 +1193,9 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("apps/reseller/v1/"));
-        pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("customers/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 27),
+            unittest.equals("apps/reseller/v1/customers/"));
+        pathOffset += 27;
         index = path.indexOf('/subscriptions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -1290,12 +1254,9 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("apps/reseller/v1/"));
-        pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("customers/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 27),
+            unittest.equals("apps/reseller/v1/customers/"));
+        pathOffset += 27;
         index = path.indexOf('/subscriptions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -1358,12 +1319,9 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("apps/reseller/v1/"));
-        pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("customers/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 27),
+            unittest.equals("apps/reseller/v1/customers/"));
+        pathOffset += 27;
         index = path.indexOf('/subscriptions', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -1424,12 +1382,9 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("apps/reseller/v1/"));
-        pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 13),
-            unittest.equals("subscriptions"));
-        pathOffset += 13;
+        unittest.expect(path.substring(pathOffset, pathOffset + 30),
+            unittest.equals("apps/reseller/v1/subscriptions"));
+        pathOffset += 30;
 
         var query = (req.url).query;
         var queryOffset = 0;
@@ -1491,12 +1446,9 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("apps/reseller/v1/"));
-        pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("customers/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 27),
+            unittest.equals("apps/reseller/v1/customers/"));
+        pathOffset += 27;
         index = path.indexOf('/subscriptions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =
@@ -1561,12 +1513,9 @@ void main() {
         unittest.expect(
             path.substring(pathOffset, pathOffset + 1), unittest.equals("/"));
         pathOffset += 1;
-        unittest.expect(path.substring(pathOffset, pathOffset + 17),
-            unittest.equals("apps/reseller/v1/"));
-        pathOffset += 17;
-        unittest.expect(path.substring(pathOffset, pathOffset + 10),
-            unittest.equals("customers/"));
-        pathOffset += 10;
+        unittest.expect(path.substring(pathOffset, pathOffset + 27),
+            unittest.equals("apps/reseller/v1/customers/"));
+        pathOffset += 27;
         index = path.indexOf('/subscriptions/', pathOffset);
         unittest.expect(index >= 0, unittest.isTrue);
         subPart =

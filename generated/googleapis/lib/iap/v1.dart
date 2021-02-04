@@ -1031,11 +1031,6 @@ class ApplicationSettings {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding.
-  ///
-  /// Expected to be globally unique to support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
@@ -1086,9 +1081,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'] as core.String;
-    }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(
           _json['condition'] as core.Map<core.String, core.dynamic>);
@@ -1105,9 +1097,6 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
-    if (bindingId != null) {
-      _json['bindingId'] = bindingId;
-    }
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }
@@ -1584,16 +1573,6 @@ class ListIdentityAwareProxyClientsResponse {
 /// Configuration for OAuth login&consent flow behavior as well as for OAuth
 /// Credentials.
 class OAuthSettings {
-  /// OAuth 2.0 client ID used in the OAuth flow to generate an access token.
-  ///
-  /// If this field is set, you can skip obtaining the OAuth credentials in this
-  /// step:
-  /// https://developers.google.com/identity/protocols/OAuth2?hl=en_US#1.-obtain-oauth-2.0-credentials-from-the-google-api-console.
-  /// However, this could allow for client sharing. The risks of client sharing
-  /// are outlined here:
-  /// https://cloud.google.com/iap/docs/sharing-oauth-clients#risks.
-  core.String clientId;
-
   /// Domain hint to send as hd=? parameter in OAuth request flow.
   ///
   /// Enables redirect to primary IDP by skipping Google's login screen.
@@ -1605,9 +1584,6 @@ class OAuthSettings {
   OAuthSettings();
 
   OAuthSettings.fromJson(core.Map _json) {
-    if (_json.containsKey('clientId')) {
-      clientId = _json['clientId'] as core.String;
-    }
     if (_json.containsKey('loginHint')) {
       loginHint = _json['loginHint'] as core.String;
     }
@@ -1615,9 +1591,6 @@ class OAuthSettings {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
-    if (clientId != null) {
-      _json['clientId'] = clientId;
-    }
     if (loginHint != null) {
       _json['loginHint'] = loginHint;
     }

@@ -45,7 +45,7 @@ class AnalyticsReportingApi {
   /// View and manage your Google Analytics data
   static const analyticsScope = 'https://www.googleapis.com/auth/analytics';
 
-  /// View your Google Analytics data
+  /// See and download your Google Analytics data
   static const analyticsReadonlyScope =
       'https://www.googleapis.com/auth/analytics.readonly';
 

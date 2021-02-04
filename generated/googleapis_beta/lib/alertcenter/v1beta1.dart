@@ -15,7 +15,7 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
-/// G Suite Alert Center API - v1beta1
+/// Google Workspace Alert Center API - v1beta1
 ///
 /// Manages alerts on issues affecting your domain.
 ///
@@ -178,9 +178,9 @@ class AlertsResource {
   ///
   /// [alertId] - Required. The identifier of the alert to delete.
   ///
-  /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the customer the alert is associated with. Inferred from the
-  /// caller identity if not provided.
+  /// [customerId] - Optional. The unique identifier of the Google Workspace
+  /// organization account of the customer the alert is associated with.
+  /// Inferred from the caller identity if not provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -238,9 +238,9 @@ class AlertsResource {
   ///
   /// [alertId] - Required. The identifier of the alert to retrieve.
   ///
-  /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the customer the alert is associated with. Inferred from the
-  /// caller identity if not provided.
+  /// [customerId] - Optional. The unique identifier of the Google Workspace
+  /// organization account of the customer the alert is associated with.
+  /// Inferred from the caller identity if not provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -300,9 +300,9 @@ class AlertsResource {
   /// [alertId] - Required. The identifier of the alert this metadata belongs
   /// to.
   ///
-  /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the customer the alert metadata is associated with. Inferred
-  /// from the caller identity if not provided.
+  /// [customerId] - Optional. The unique identifier of the Google Workspace
+  /// organization account of the customer the alert metadata is associated
+  /// with. Inferred from the caller identity if not provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -359,9 +359,9 @@ class AlertsResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the customer the alerts are associated with. Inferred from the
-  /// caller identity if not provided.
+  /// [customerId] - Optional. The unique identifier of the Google Workspace
+  /// organization account of the customer the alerts are associated with.
+  /// Inferred from the caller identity if not provided.
   ///
   /// [filter] - Optional. A query string for filtering alert results. For more
   /// details, see \[Query
@@ -527,9 +527,9 @@ class AlertsFeedbackResource {
   /// [alertId] - Required. The identifier of the alert this feedback belongs
   /// to.
   ///
-  /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the customer the alert is associated with. Inferred from the
-  /// caller identity if not provided.
+  /// [customerId] - Optional. The unique identifier of the Google Workspace
+  /// organization account of the customer the alert is associated with.
+  /// Inferred from the caller identity if not provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -596,9 +596,9 @@ class AlertsFeedbackResource {
   /// [alertId] - Required. The alert identifier. The "-" wildcard could be used
   /// to represent all alerts.
   ///
-  /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the customer the alert feedback are associated with. Inferred
-  /// from the caller identity if not provided.
+  /// [customerId] - Optional. The unique identifier of the Google Workspace
+  /// organization account of the customer the alert feedback are associated
+  /// with. Inferred from the caller identity if not provided.
   ///
   /// [filter] - Optional. A query string for filtering alert feedback results.
   /// For more details, see \[Query
@@ -671,9 +671,9 @@ class V1beta1Resource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the customer the alert settings are associated with. Inferred
-  /// from the caller identity if not provided.
+  /// [customerId] - Optional. The unique identifier of the Google Workspace
+  /// organization account of the customer the alert settings are associated
+  /// with. Inferred from the caller identity if not provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -725,9 +725,9 @@ class V1beta1Resource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Optional. The unique identifier of the G Suite organization
-  /// account of the customer the alert settings are associated with. Inferred
-  /// from the caller identity if not provided.
+  /// [customerId] - Optional. The unique identifier of the Google Workspace
+  /// organization account of the customer the alert settings are associated
+  /// with. Inferred from the caller identity if not provided.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1036,7 +1036,7 @@ class Alert {
   /// The type of the alert.
   ///
   /// This is output only after alert is created. For a list of available alert
-  /// types see \[G Suite Alert
+  /// types see \[Google Workspace Alert
   /// types\](/admin-sdk/alertcenter/reference/alert-types).
   ///
   /// Required.
@@ -1438,8 +1438,8 @@ class BatchDeleteAlertsRequest {
   /// Required.
   core.List<core.String> alertId;
 
-  /// The unique identifier of the G Suite organization account of the customer
-  /// the alerts are associated with.
+  /// The unique identifier of the Google Workspace organization account of the
+  /// customer the alerts are associated with.
   ///
   /// Optional.
   core.String customerId;
@@ -1517,8 +1517,8 @@ class BatchUndeleteAlertsRequest {
   /// Required.
   core.List<core.String> alertId;
 
-  /// The unique identifier of the G Suite organization account of the customer
-  /// the alerts are associated with.
+  /// The unique identifier of the Google Workspace organization account of the
+  /// customer the alerts are associated with.
   ///
   /// Optional.
   core.String customerId;
@@ -2021,6 +2021,12 @@ class GoogleOperations {
   /// A detailed, freeform incident description.
   core.String description;
 
+  /// A header to display above the incident message.
+  ///
+  /// Typcially used to attach a localized notice on the timeline for followup
+  /// comms translations.
+  core.String header;
+
   /// A one-line incident description.
   core.String title;
 
@@ -2039,6 +2045,9 @@ class GoogleOperations {
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
+    if (_json.containsKey('header')) {
+      header = _json['header'] as core.String;
+    }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
     }
@@ -2054,6 +2063,9 @@ class GoogleOperations {
     }
     if (description != null) {
       _json['description'] = description;
+    }
+    if (header != null) {
+      _json['header'] = header;
     }
     if (title != null) {
       _json['title'] = title;
@@ -2313,7 +2325,7 @@ class MatchInfo {
 
 /// Settings for callback notifications.
 ///
-/// For more details see \[G Suite Alert
+/// For more details see \[Google Workspace Alert
 /// Notification\](/admin-sdk/alertcenter/guides/notifications).
 class Notification {
   /// A Google Cloud Pub/sub topic destination.
@@ -2896,8 +2908,8 @@ class SuspiciousActivitySecurityDetail {
 
 /// A request to undelete a specific alert that was marked for deletion.
 class UndeleteAlertRequest {
-  /// The unique identifier of the G Suite organization account of the customer
-  /// the alert is associated with.
+  /// The unique identifier of the Google Workspace organization account of the
+  /// customer the alert is associated with.
   ///
   /// Inferred from the caller identity if not provided.
   ///

@@ -5375,6 +5375,11 @@ class BucketIamConfiguration {
   /// uniformBucketLevelAccess field to enable and disable the feature.
   BucketIamConfigurationBucketPolicyOnly bucketPolicyOnly;
 
+  /// The bucket's Public Access Prevention configuration.
+  ///
+  /// Currently, 'unspecified' and 'enforced' are supported.
+  core.String publicAccessPrevention;
+
   /// The bucket's uniform bucket-level access configuration.
   BucketIamConfigurationUniformBucketLevelAccess uniformBucketLevelAccess;
 
@@ -5384,6 +5389,9 @@ class BucketIamConfiguration {
     if (_json.containsKey('bucketPolicyOnly')) {
       bucketPolicyOnly = BucketIamConfigurationBucketPolicyOnly.fromJson(
           _json['bucketPolicyOnly'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('publicAccessPrevention')) {
+      publicAccessPrevention = _json['publicAccessPrevention'] as core.String;
     }
     if (_json.containsKey('uniformBucketLevelAccess')) {
       uniformBucketLevelAccess =
@@ -5397,6 +5405,9 @@ class BucketIamConfiguration {
     final _json = <core.String, core.Object>{};
     if (bucketPolicyOnly != null) {
       _json['bucketPolicyOnly'] = bucketPolicyOnly.toJson();
+    }
+    if (publicAccessPrevention != null) {
+      _json['publicAccessPrevention'] = publicAccessPrevention;
     }
     if (uniformBucketLevelAccess != null) {
       _json['uniformBucketLevelAccess'] = uniformBucketLevelAccess.toJson();
@@ -5936,6 +5947,9 @@ class Bucket {
   /// locked retention policy will result in a PERMISSION_DENIED error.
   BucketRetentionPolicy retentionPolicy;
 
+  /// Reserved for future use.
+  core.bool satisfiesPZS;
+
   /// The URI of this bucket.
   core.String selfLink;
 
@@ -6057,6 +6071,9 @@ class Bucket {
       retentionPolicy = BucketRetentionPolicy.fromJson(
           _json['retentionPolicy'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('satisfiesPZS')) {
+      satisfiesPZS = _json['satisfiesPZS'] as core.bool;
+    }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
     }
@@ -6146,6 +6163,9 @@ class Bucket {
     }
     if (retentionPolicy != null) {
       _json['retentionPolicy'] = retentionPolicy.toJson();
+    }
+    if (satisfiesPZS != null) {
+      _json['satisfiesPZS'] = satisfiesPZS;
     }
     if (selfLink != null) {
       _json['selfLink'] = selfLink;

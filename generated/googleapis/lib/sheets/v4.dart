@@ -2654,14 +2654,27 @@ class BasicChartSeries {
   /// precedence.
   ColorStyle colorStyle;
 
+  /// Information about the data labels for this series.
+  DataLabel dataLabel;
+
   /// The line style of this series.
   ///
   /// Valid only if the chartType is AREA, LINE, or SCATTER. COMBO charts are
   /// also supported if the series chart type is AREA or LINE.
   LineStyle lineStyle;
 
+  /// The style for points associated with this series.
+  ///
+  /// Valid only if the chartType is AREA, LINE, or SCATTER. COMBO charts are
+  /// also supported if the series chart type is AREA, LINE, or SCATTER. If
+  /// empty, a default point style is used.
+  PointStyle pointStyle;
+
   /// The data being visualized in this chart series.
   ChartData series;
+
+  /// Style override settings for series data points.
+  core.List<BasicSeriesDataPointStyleOverride> styleOverrides;
 
   /// The minor axis that will specify the range of values for this series.
   ///
@@ -2708,13 +2721,28 @@ class BasicChartSeries {
       colorStyle = ColorStyle.fromJson(
           _json['colorStyle'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('dataLabel')) {
+      dataLabel = DataLabel.fromJson(
+          _json['dataLabel'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('lineStyle')) {
       lineStyle = LineStyle.fromJson(
           _json['lineStyle'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('pointStyle')) {
+      pointStyle = PointStyle.fromJson(
+          _json['pointStyle'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('series')) {
       series = ChartData.fromJson(
           _json['series'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('styleOverrides')) {
+      styleOverrides = (_json['styleOverrides'] as core.List)
+          .map<BasicSeriesDataPointStyleOverride>((value) =>
+              BasicSeriesDataPointStyleOverride.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
     }
     if (_json.containsKey('targetAxis')) {
       targetAxis = _json['targetAxis'] as core.String;
@@ -2732,11 +2760,21 @@ class BasicChartSeries {
     if (colorStyle != null) {
       _json['colorStyle'] = colorStyle.toJson();
     }
+    if (dataLabel != null) {
+      _json['dataLabel'] = dataLabel.toJson();
+    }
     if (lineStyle != null) {
       _json['lineStyle'] = lineStyle.toJson();
     }
+    if (pointStyle != null) {
+      _json['pointStyle'] = pointStyle.toJson();
+    }
     if (series != null) {
       _json['series'] = series.toJson();
+    }
+    if (styleOverrides != null) {
+      _json['styleOverrides'] =
+          styleOverrides.map((value) => value.toJson()).toList();
     }
     if (targetAxis != null) {
       _json['targetAxis'] = targetAxis;
@@ -2831,6 +2869,21 @@ class BasicChartSpec {
   /// Applies to Bar and Column charts.
   core.bool threeDimensional;
 
+  /// Controls whether to display additional data labels on stacked charts which
+  /// sum the total value of all stacked values at each value along the domain
+  /// axis.
+  ///
+  /// These data labels can only be set when chart_type is one of AREA, BAR,
+  /// COLUMN, COMBO or STEPPED_AREA and stacked_type is either STACKED or
+  /// PERCENT_STACKED. In addition, for COMBO, this will only be supported if
+  /// there is only one type of stackable series type or one type has more
+  /// series than the others and each of the other types have no more than one
+  /// series. For example, if a chart has two stacked bar series and one area
+  /// series, the total data labels will be supported. If it has three bar
+  /// series and two area series, total data labels are not allowed. Neither
+  /// CUSTOM nor placement can be set on the total_data_label.
+  DataLabel totalDataLabel;
+
   BasicChartSpec();
 
   BasicChartSpec.fromJson(core.Map _json) {
@@ -2876,6 +2929,10 @@ class BasicChartSpec {
     if (_json.containsKey('threeDimensional')) {
       threeDimensional = _json['threeDimensional'] as core.bool;
     }
+    if (_json.containsKey('totalDataLabel')) {
+      totalDataLabel = DataLabel.fromJson(
+          _json['totalDataLabel'] as core.Map<core.String, core.dynamic>);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -2912,6 +2969,9 @@ class BasicChartSpec {
     }
     if (threeDimensional != null) {
       _json['threeDimensional'] = threeDimensional;
+    }
+    if (totalDataLabel != null) {
+      _json['totalDataLabel'] = totalDataLabel.toJson();
     }
     return _json;
   }
@@ -2986,6 +3046,67 @@ class BasicFilter {
     }
     if (sortSpecs != null) {
       _json['sortSpecs'] = sortSpecs.map((value) => value.toJson()).toList();
+    }
+    return _json;
+  }
+}
+
+/// Style override settings for a single series data point.
+class BasicSeriesDataPointStyleOverride {
+  /// Color of the series data point.
+  ///
+  /// If empty, the series default is used.
+  Color color;
+
+  /// Color of the series data point.
+  ///
+  /// If empty, the series default is used. If color is also set, this field
+  /// takes precedence.
+  ColorStyle colorStyle;
+
+  /// Zero based index of the series data point.
+  core.int index;
+
+  /// Point style of the series data point.
+  ///
+  /// Valid only if the chartType is AREA, LINE, or SCATTER. COMBO charts are
+  /// also supported if the series chart type is AREA, LINE, or SCATTER. If
+  /// empty, the series default is used.
+  PointStyle pointStyle;
+
+  BasicSeriesDataPointStyleOverride();
+
+  BasicSeriesDataPointStyleOverride.fromJson(core.Map _json) {
+    if (_json.containsKey('color')) {
+      color =
+          Color.fromJson(_json['color'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('colorStyle')) {
+      colorStyle = ColorStyle.fromJson(
+          _json['colorStyle'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('index')) {
+      index = _json['index'] as core.int;
+    }
+    if (_json.containsKey('pointStyle')) {
+      pointStyle = PointStyle.fromJson(
+          _json['pointStyle'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (color != null) {
+      _json['color'] = color.toJson();
+    }
+    if (colorStyle != null) {
+      _json['colorStyle'] = colorStyle.toJson();
+    }
+    if (index != null) {
+      _json['index'] = index;
+    }
+    if (pointStyle != null) {
+      _json['pointStyle'] = pointStyle.toJson();
     }
     return _json;
   }
@@ -4220,7 +4341,7 @@ class BubbleChartSpec {
 
   /// The format of the text inside the bubbles.
   ///
-  /// Underline and Strikethrough are not supported.
+  /// Strikethrough and underline are not supported.
   TextFormat bubbleTextStyle;
 
   /// The data containing the bubble x-values.
@@ -4547,8 +4668,9 @@ class CellData {
 
   /// A hyperlink this cell points to, if any.
   ///
-  /// This field is read-only. (To set it, use a `=HYPERLINK` formula in the
-  /// userEnteredValue.formulaValue field.)
+  /// If the cell contains multiple hyperlinks, this field will be empty. This
+  /// field is read-only. To set it, use a `=HYPERLINK` formula in the
+  /// userEnteredValue.formulaValue field.
   core.String hyperlink;
 
   /// Any note on the cell.
@@ -4566,12 +4688,11 @@ class CellData {
   /// Runs of rich text applied to subsections of the cell.
   ///
   /// Runs are only valid on user entered strings, not formulas, bools, or
-  /// numbers. Runs start at specific indexes in the text and continue until the
-  /// next run. Properties of a run will continue unless explicitly changed in a
-  /// subsequent run (and properties of the first run will continue the
-  /// properties of the cell unless explicitly changed). When writing, the new
-  /// runs will overwrite any prior runs. When writing a new user_entered_value,
-  /// previous runs are erased.
+  /// numbers. Properties of a run start at a specific index in the text and
+  /// continue until the next run. Runs will inherit the properties of the cell
+  /// unless explicitly changed. When writing, the new runs will overwrite any
+  /// prior runs. When writing a new user_entered_value, previous runs are
+  /// erased.
   core.List<TextFormatRun> textFormatRuns;
 
   /// The format the user entered for the cell.
@@ -6172,6 +6293,89 @@ class DataFilterValueRange {
     }
     if (values != null) {
       _json['values'] = values;
+    }
+    return _json;
+  }
+}
+
+/// Settings for one set of data labels.
+///
+/// Data labels are annotations that appear next to a set of data, such as the
+/// points on a line chart, and provide additional information about what the
+/// data represents, such as a text representation of the value behind that
+/// point on the graph.
+class DataLabel {
+  /// Data to use for custom labels.
+  ///
+  /// Only used if type is set to CUSTOM. This data must be the same length as
+  /// the series or other element this data label is applied to. In addition, if
+  /// the series is split into multiple source ranges, this source data must
+  /// come from the next column in the source data. For example, if the series
+  /// is B2:B4,E6:E8 then this data must come from C2:C4,F6:F8.
+  ChartData customLabelData;
+
+  /// The placement of the data label relative to the labeled data.
+  /// Possible string values are:
+  /// - "DATA_LABEL_PLACEMENT_UNSPECIFIED" : The positioning is determined
+  /// automatically by the renderer.
+  /// - "CENTER" : Center within a bar or column, both horizontally and
+  /// vertically.
+  /// - "LEFT" : To the left of a data point.
+  /// - "RIGHT" : To the right of a data point.
+  /// - "ABOVE" : Above a data point.
+  /// - "BELOW" : Below a data point.
+  /// - "INSIDE_END" : Inside a bar or column at the end (top if positive,
+  /// bottom if negative).
+  /// - "INSIDE_BASE" : Inside a bar or column at the base.
+  /// - "OUTSIDE_END" : Outside a bar or column at the end.
+  core.String placement;
+
+  /// The text format used for the data label.
+  TextFormat textFormat;
+
+  /// The type of the data label.
+  /// Possible string values are:
+  /// - "DATA_LABEL_TYPE_UNSPECIFIED" : The data label type is not specified and
+  /// will be interpreted depending on the context of the data label within the
+  /// chart.
+  /// - "NONE" : The data label is not displayed.
+  /// - "DATA" : The data label is displayed using values from the series data.
+  /// - "CUSTOM" : The data label is displayed using values from a custom data
+  /// source indicated by customLabelData.
+  core.String type;
+
+  DataLabel();
+
+  DataLabel.fromJson(core.Map _json) {
+    if (_json.containsKey('customLabelData')) {
+      customLabelData = ChartData.fromJson(
+          _json['customLabelData'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('placement')) {
+      placement = _json['placement'] as core.String;
+    }
+    if (_json.containsKey('textFormat')) {
+      textFormat = TextFormat.fromJson(
+          _json['textFormat'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('type')) {
+      type = _json['type'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (customLabelData != null) {
+      _json['customLabelData'] = customLabelData.toJson();
+    }
+    if (placement != null) {
+      _json['placement'] = placement;
+    }
+    if (textFormat != null) {
+      _json['textFormat'] = textFormat.toJson();
+    }
+    if (type != null) {
+      _json['type'] = type;
     }
     return _json;
   }
@@ -8131,6 +8335,9 @@ class Editors {
 
 /// A chart embedded in a sheet.
 class EmbeddedChart {
+  /// The border of the chart.
+  EmbeddedObjectBorder border;
+
   /// The ID of the chart.
   core.int chartId;
 
@@ -8143,6 +8350,10 @@ class EmbeddedChart {
   EmbeddedChart();
 
   EmbeddedChart.fromJson(core.Map _json) {
+    if (_json.containsKey('border')) {
+      border = EmbeddedObjectBorder.fromJson(
+          _json['border'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('chartId')) {
       chartId = _json['chartId'] as core.int;
     }
@@ -8158,6 +8369,9 @@ class EmbeddedChart {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (border != null) {
+      _json['border'] = border.toJson();
+    }
     if (chartId != null) {
       _json['chartId'] = chartId;
     }
@@ -8166,6 +8380,41 @@ class EmbeddedChart {
     }
     if (spec != null) {
       _json['spec'] = spec.toJson();
+    }
+    return _json;
+  }
+}
+
+/// A border along an embedded object.
+class EmbeddedObjectBorder {
+  /// The color of the border.
+  Color color;
+
+  /// The color of the border.
+  ///
+  /// If color is also set, this field takes precedence.
+  ColorStyle colorStyle;
+
+  EmbeddedObjectBorder();
+
+  EmbeddedObjectBorder.fromJson(core.Map _json) {
+    if (_json.containsKey('color')) {
+      color =
+          Color.fromJson(_json['color'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('colorStyle')) {
+      colorStyle = ColorStyle.fromJson(
+          _json['colorStyle'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (color != null) {
+      _json['color'] = color.toJson();
+    }
+    if (colorStyle != null) {
+      _json['colorStyle'] = colorStyle.toJson();
     }
     return _json;
   }
@@ -10304,6 +10553,27 @@ class PieChartSpec {
 
 /// Criteria for showing/hiding rows in a pivot table.
 class PivotFilterCriteria {
+  /// A condition that must be true for values to be shown.
+  ///
+  /// (`visibleValues` does not override this -- even if a value is listed
+  /// there, it is still hidden if it does not meet the condition.) Condition
+  /// values that refer to ranges in A1-notation are evaluated relative to the
+  /// pivot table sheet. References are treated absolutely, so are not filled
+  /// down the pivot table. For example, a condition value of `=A1` on "Pivot
+  /// Table 1" is treated as `'Pivot Table 1'!$A$1`. The source data of the
+  /// pivot table can be referenced by column header name. For example, if the
+  /// source data has columns named "Revenue" and "Cost" and a condition is
+  /// applied to the "Revenue" column with type `NUMBER_GREATER` and value
+  /// `=Cost`, then only columns where "Revenue" > "Cost" are included.
+  BooleanCondition condition;
+
+  /// Whether values are visible by default.
+  ///
+  /// If true, the visible_values are ignored, all values that meet condition
+  /// (if specified) are shown. If false, values that are both in visible_values
+  /// and meet condition are shown.
+  core.bool visibleByDefault;
+
   /// Values that should be included.
   ///
   /// Values not listed here are excluded.
@@ -10312,6 +10582,13 @@ class PivotFilterCriteria {
   PivotFilterCriteria();
 
   PivotFilterCriteria.fromJson(core.Map _json) {
+    if (_json.containsKey('condition')) {
+      condition = BooleanCondition.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('visibleByDefault')) {
+      visibleByDefault = _json['visibleByDefault'] as core.bool;
+    }
     if (_json.containsKey('visibleValues')) {
       visibleValues = (_json['visibleValues'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -10321,6 +10598,12 @@ class PivotFilterCriteria {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (condition != null) {
+      _json['condition'] = condition.toJson();
+    }
+    if (visibleByDefault != null) {
+      _json['visibleByDefault'] = visibleByDefault;
+    }
     if (visibleValues != null) {
       _json['visibleValues'] = visibleValues;
     }
@@ -10923,6 +11206,51 @@ class PivotValue {
   }
 }
 
+/// The style of a point on the chart.
+class PointStyle {
+  /// The point shape.
+  ///
+  /// If empty or unspecified, a default shape is used.
+  /// Possible string values are:
+  /// - "POINT_SHAPE_UNSPECIFIED" : Default value.
+  /// - "CIRCLE" : A circle shape.
+  /// - "DIAMOND" : A diamond shape.
+  /// - "HEXAGON" : A hexagon shape.
+  /// - "PENTAGON" : A pentagon shape.
+  /// - "SQUARE" : A square shape.
+  /// - "STAR" : A star shape.
+  /// - "TRIANGLE" : A triangle shape.
+  /// - "X_MARK" : An x-mark shape.
+  core.String shape;
+
+  /// The point size.
+  ///
+  /// If empty, a default size is used.
+  core.double size;
+
+  PointStyle();
+
+  PointStyle.fromJson(core.Map _json) {
+    if (_json.containsKey('shape')) {
+      shape = _json['shape'] as core.String;
+    }
+    if (_json.containsKey('size')) {
+      size = (_json['size'] as core.num).toDouble();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (shape != null) {
+      _json['shape'] = shape;
+    }
+    if (size != null) {
+      _json['size'] = size;
+    }
+    return _json;
+  }
+}
+
 /// A protected range.
 class ProtectedRange {
   /// The description of this protected range.
@@ -11415,6 +11743,9 @@ class Request {
   /// Updates dimensions' properties.
   UpdateDimensionPropertiesRequest updateDimensionProperties;
 
+  /// Updates an embedded object's border.
+  UpdateEmbeddedObjectBorderRequest updateEmbeddedObjectBorder;
+
   /// Updates an embedded object's (e.g. chart, image) position.
   UpdateEmbeddedObjectPositionRequest updateEmbeddedObjectPosition;
 
@@ -11674,6 +12005,11 @@ class Request {
           _json['updateDimensionProperties']
               as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('updateEmbeddedObjectBorder')) {
+      updateEmbeddedObjectBorder = UpdateEmbeddedObjectBorderRequest.fromJson(
+          _json['updateEmbeddedObjectBorder']
+              as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('updateEmbeddedObjectPosition')) {
       updateEmbeddedObjectPosition =
           UpdateEmbeddedObjectPositionRequest.fromJson(
@@ -11882,6 +12218,9 @@ class Request {
     }
     if (updateDimensionProperties != null) {
       _json['updateDimensionProperties'] = updateDimensionProperties.toJson();
+    }
+    if (updateEmbeddedObjectBorder != null) {
+      _json['updateEmbeddedObjectBorder'] = updateEmbeddedObjectBorder.toJson();
     }
     if (updateEmbeddedObjectPosition != null) {
       _json['updateEmbeddedObjectPosition'] =
@@ -14666,6 +15005,51 @@ class UpdateDimensionPropertiesRequest {
   }
 }
 
+/// Updates an embedded object's border property.
+class UpdateEmbeddedObjectBorderRequest {
+  /// The border that applies to the embedded object.
+  EmbeddedObjectBorder border;
+
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root `border` is implied and
+  /// should not be specified. A single `"*"` can be used as short-hand for
+  /// listing every field.
+  core.String fields;
+
+  /// The ID of the embedded object to update.
+  core.int objectId;
+
+  UpdateEmbeddedObjectBorderRequest();
+
+  UpdateEmbeddedObjectBorderRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('border')) {
+      border = EmbeddedObjectBorder.fromJson(
+          _json['border'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('fields')) {
+      fields = _json['fields'] as core.String;
+    }
+    if (_json.containsKey('objectId')) {
+      objectId = _json['objectId'] as core.int;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (border != null) {
+      _json['border'] = border.toJson();
+    }
+    if (fields != null) {
+      _json['fields'] = fields;
+    }
+    if (objectId != null) {
+      _json['objectId'] = objectId;
+    }
+    return _json;
+  }
+}
+
 /// Update an embedded object's position (such as a moving or resizing a chart
 /// or image).
 class UpdateEmbeddedObjectPositionRequest {
@@ -15323,6 +15707,9 @@ class WaterfallChartSeries {
   /// The data being visualized in this series.
   ChartData data;
 
+  /// Information about the data labels for this series.
+  DataLabel dataLabel;
+
   /// True to hide the subtotal column from the end of the series.
   ///
   /// By default, a subtotal column will appear at the end of each series.
@@ -15352,6 +15739,10 @@ class WaterfallChartSeries {
       data = ChartData.fromJson(
           _json['data'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('dataLabel')) {
+      dataLabel = DataLabel.fromJson(
+          _json['dataLabel'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('hideTrailingSubtotal')) {
       hideTrailingSubtotal = _json['hideTrailingSubtotal'] as core.bool;
     }
@@ -15377,6 +15768,9 @@ class WaterfallChartSeries {
     }
     if (data != null) {
       _json['data'] = data.toJson();
+    }
+    if (dataLabel != null) {
+      _json['dataLabel'] = dataLabel.toJson();
     }
     if (hideTrailingSubtotal != null) {
       _json['hideTrailingSubtotal'] = hideTrailingSubtotal;
@@ -15419,6 +15813,14 @@ class WaterfallChartSpec {
   /// - "SEQUENTIAL" : Series will spread out along the horizontal axis.
   core.String stackedType;
 
+  /// Controls whether to display additional data labels on stacked charts which
+  /// sum the total value of all stacked values at each value along the domain
+  /// axis.
+  ///
+  /// stacked_type must be STACKED and neither CUSTOM nor placement can be set
+  /// on the total_data_label.
+  DataLabel totalDataLabel;
+
   WaterfallChartSpec();
 
   WaterfallChartSpec.fromJson(core.Map _json) {
@@ -15445,6 +15847,10 @@ class WaterfallChartSpec {
     if (_json.containsKey('stackedType')) {
       stackedType = _json['stackedType'] as core.String;
     }
+    if (_json.containsKey('totalDataLabel')) {
+      totalDataLabel = DataLabel.fromJson(
+          _json['totalDataLabel'] as core.Map<core.String, core.dynamic>);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -15466,6 +15872,9 @@ class WaterfallChartSpec {
     }
     if (stackedType != null) {
       _json['stackedType'] = stackedType;
+    }
+    if (totalDataLabel != null) {
+      _json['totalDataLabel'] = totalDataLabel.toJson();
     }
     return _json;
   }

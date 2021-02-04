@@ -17,9 +17,8 @@
 
 /// IAM Service Account Credentials API - v1
 ///
-/// Creates short-lived credentials for impersonating IAM service accounts.
-/// *Note:* This API is tied to the IAM API (iam.googleapis.com). Enabling or
-/// disabling this API will also enable or disable the IAM API.
+/// Creates short-lived credentials for impersonating IAM service accounts. To
+/// enable this API, you must enable the IAM API (iam.googleapis.com).
 ///
 /// For more information, see
 /// <https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials>
@@ -42,10 +41,9 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-///  Creates short-lived credentials for impersonating IAM service accounts.
+/// Creates short-lived credentials for impersonating IAM service accounts.
 ///
-/// *Note:* This API is tied to the IAM API (iam.googleapis.com). Enabling or
-/// disabling this API will also enable or disable the IAM API.
+/// To enable this API, you must enable the IAM API (iam.googleapis.com).
 class IAMCredentialsApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =

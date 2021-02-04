@@ -36,6 +36,7 @@
 /// - [AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource]
 ///   - [AdvertisersLocationListsResource]
 ///     - [AdvertisersLocationListsAssignedLocationsResource]
+///   - [AdvertisersManualTriggersResource]
 ///   - [AdvertisersNegativeKeywordListsResource]
 ///     - [AdvertisersNegativeKeywordListsNegativeKeywordsResource]
 ///   - [AdvertisersTargetingTypesResource]
@@ -152,6 +153,8 @@ class AdvertisersResource {
       AdvertisersLineItemsResource(_requester);
   AdvertisersLocationListsResource get locationLists =>
       AdvertisersLocationListsResource(_requester);
+  AdvertisersManualTriggersResource get manualTriggers =>
+      AdvertisersManualTriggersResource(_requester);
   AdvertisersNegativeKeywordListsResource get negativeKeywordLists =>
       AdvertisersNegativeKeywordListsResource(_requester);
   AdvertisersTargetingTypesResource get targetingTypes =>
@@ -562,16 +565,23 @@ class AdvertisersResource {
   /// Filter expressions are made up of one or more restrictions. * Restrictions
   /// can be combined by `AND` or `OR` logical operators. A sequence of
   /// restrictions implicitly uses `AND`. * A restriction has the form of
-  /// `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. *
-  /// Supported fields: - `advertiserId` - `displayName` - `entityStatus`
-  /// Examples: * All active advertisers under a partner:
-  /// `entityStatus="ENTITY_STATUS_ACTIVE"` The length of this field should be
-  /// no more than 500 characters.
+  /// `{field} {operator} {value}`. * The operator used on `updateTime` must be
+  /// `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)`. * The
+  /// operator must be `EQUALS (=)`. * Supported fields: - `advertiserId` -
+  /// `displayName` - `entityStatus` - `updateTime` (input in ISO 8601 format,
+  /// or YYYY-MM-DDTHH:MM:SSZ) Examples: * All active advertisers under a
+  /// partner: `entityStatus="ENTITY_STATUS_ACTIVE"` * All advertisers with an
+  /// update time less than or equal to `2020-11-04T18:54:47Z (format of ISO
+  /// 8601)`: `updateTime<="2020-11-04T18:54:47Z"` * All advertisers with an
+  /// update time greater than or equal to `2020-11-04T18:54:47Z (format of ISO
+  /// 8601)`: `updateTime>="2020-11-04T18:54:47Z"` The length of this field
+  /// should be no more than 500 characters.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `displayName` (default) * `entityStatus` The default sorting order is
-  /// ascending. To specify descending order for a field, a suffix "desc" should
-  /// be added to the field name. For example, `displayName desc`.
+  /// `displayName` (default) * `entityStatus` * `updateTime` The default
+  /// sorting order is ascending. To specify descending order for a field, a
+  /// suffix "desc" should be added to the field name. For example, `displayName
+  /// desc`.
   ///
   /// [pageSize] - Requested page size. Must be between `1` and `100`. If
   /// unspecified will default to `100`.
@@ -1007,17 +1017,25 @@ class AdvertisersCampaignsResource {
   /// Filter expressions are made up of one or more restrictions. * Restrictions
   /// can be combined by `AND` or `OR` logical operators. A sequence of
   /// restrictions implicitly uses `AND`. * A restriction has the form of
-  /// `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. *
-  /// Supported fields: - `campaignId` - `displayName` - `entityStatus`
-  /// Examples: * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` campaigns
-  /// under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
-  /// entityStatus="ENTITY_STATUS_PAUSED")` The length of this field should be
-  /// no more than 500 characters.
+  /// `{field} {operator} {value}`. * The operator used on `updateTime` must be
+  /// `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)`. * The
+  /// operator must be `EQUALS (=)`. * Supported fields: - `campaignId` -
+  /// `displayName` - `entityStatus` - `updateTime` (input in ISO 8601 format,
+  /// or YYYY-MM-DDTHH:MM:SSZ) Examples: * All `ENTITY_STATUS_ACTIVE` or
+  /// `ENTITY_STATUS_PAUSED` campaigns under an advertiser:
+  /// `(entityStatus="ENTITY_STATUS_ACTIVE" OR
+  /// entityStatus="ENTITY_STATUS_PAUSED")` * All campaigns with an update time
+  /// less than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`:
+  /// `updateTime<="2020-11-04T18:54:47Z"` * All campaigns with an update time
+  /// greater than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`:
+  /// `updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no
+  /// more than 500 characters.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// `displayName` (default) * `entityStatus` The default sorting order is
-  /// ascending. To specify descending order for a field, a suffix "desc" should
-  /// be added to the field name. Example: `displayName desc`.
+  /// `displayName` (default) * `entityStatus` * `updateTime` The default
+  /// sorting order is ascending. To specify descending order for a field, a
+  /// suffix "desc" should be added to the field name. Example: `displayName
+  /// desc`.
   ///
   /// [pageSize] - Requested page size. Must be between `1` and `100`. If
   /// unspecified will default to `100`.
@@ -2438,21 +2456,30 @@ class AdvertisersInsertionOrdersResource {
   /// sequence of restrictions implicitly uses `AND`. * A restriction has the
   /// form of `{field} {operator} {value}`. * The operator used on
   /// `budget.budget_segments.date_range.end_date` must be LESS THAN (<). * The
-  /// operators used on all other fields must be `EQUALS (=)`. * Supported
-  /// fields: - `campaignId` - `displayName` - `entityStatus` -
-  /// `budget.budget_segments.date_range.end_date` (input as YYYY-MM-DD)
-  /// Examples: * All insertion orders under a campaign: `campaignId="1234"` *
-  /// All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders
-  /// under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
+  /// operator used on `updateTime` must be `GREATER THAN OR EQUAL TO (>=)` or
+  /// `LESS THAN OR EQUAL TO (<=)`. * The operators used on all other fields
+  /// must be `EQUALS (=)`. * Supported fields: - `campaignId` - `displayName` -
+  /// `entityStatus` - `budget.budget_segments.date_range.end_date` (input as
+  /// YYYY-MM-DD) - `updateTime` (input in ISO 8601 format, or
+  /// YYYY-MM-DDTHH:MM:SSZ) Examples: * All insertion orders under a campaign:
+  /// `campaignId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`
+  /// insertion orders under an advertiser:
+  /// `(entityStatus="ENTITY_STATUS_ACTIVE" OR
   /// entityStatus="ENTITY_STATUS_PAUSED")` * All insertion orders whose budget
   /// segments' dates end before March 28, 2019:
-  /// `budget.budget_segments.date_range.end_date<"2019-03-28"` The length of
-  /// this field should be no more than 500 characters.
+  /// `budget.budget_segments.date_range.end_date<"2019-03-28"` * All insertion
+  /// orders with an update time less than or equal to `2020-11-04T18:54:47Z
+  /// (format of ISO 8601)`: `updateTime<="2020-11-04T18:54:47Z"` * All
+  /// insertion orders with an update time greater than or equal to
+  /// `2020-11-04T18:54:47Z (format of ISO 8601)`:
+  /// `updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no
+  /// more than 500 characters.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// "displayName" (default) * "entityStatus" The default sorting order is
-  /// ascending. To specify descending order for a field, a suffix "desc" should
-  /// be added to the field name. Example: `displayName desc`.
+  /// "displayName" (default) * "entityStatus" * "updateTime" The default
+  /// sorting order is ascending. To specify descending order for a field, a
+  /// suffix "desc" should be added to the field name. Example: `displayName
+  /// desc`.
   ///
   /// [pageSize] - Requested page size. Must be between `1` and `100`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
@@ -3008,27 +3035,36 @@ class AdvertisersLineItemsResource {
   /// restrictions implicitly uses `AND`. * A restriction has the form of
   /// `{field} {operator} {value}`. * The operator used on
   /// `flight.dateRange.endDate` must be LESS THAN (<). * The operator used on
-  /// `warningMessages` must be `HAS (:)`. * The operators used on all other
-  /// fields must be `EQUALS (=)`. * Supported fields: - `campaignId` -
-  /// `displayName` - `insertionOrderId` - `entityStatus` - `lineItemId` -
-  /// `lineItemType` - `flight.dateRange.endDate` (input formatted as
-  /// YYYY-MM-DD) - `warningMessages` Examples: * All line items under an
-  /// insertion order: `insertionOrderId="1234"` * All `ENTITY_STATUS_ACTIVE` or
-  /// `ENTITY_STATUS_PAUSED` and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items
-  /// under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR
+  /// `updateTime` must be `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR
+  /// EQUAL TO (<=)`. * The operator used on `warningMessages` must be `HAS
+  /// (:)`. * The operators used on all other fields must be `EQUALS (=)`. *
+  /// Supported fields: - `campaignId` - `displayName` - `insertionOrderId` -
+  /// `entityStatus` - `lineItemId` - `lineItemType` -
+  /// `flight.dateRange.endDate` (input formatted as YYYY-MM-DD) -
+  /// `warningMessages` - `flight.triggerId` - `updateTime` (input in ISO 8601
+  /// format, or YYYY-MM-DDTHH:MM:SSZ) * The operator can be `NO LESS THAN (>=)`
+  /// or `NO GREATER THAN (<=)`. - `updateTime` (format of ISO 8601) Examples: *
+  /// All line items under an insertion order: `insertionOrderId="1234"` * All
+  /// `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and
+  /// `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser:
+  /// `(entityStatus="ENTITY_STATUS_ACTIVE" OR
   /// entityStatus="ENTITY_STATUS_PAUSED") AND
   /// lineItemType="LINE_ITEM_TYPE_DISPLAY_DEFAULT"` * All line items whose
   /// flight dates end before March 28, 2019:
   /// `flight.dateRange.endDate<"2019-03-28"` * All line items that have
   /// `NO_VALID_CREATIVE` in `warningMessages`:
-  /// `warningMessages:"NO_VALID_CREATIVE"` The length of this field should be
-  /// no more than 500 characters.
+  /// `warningMessages:"NO_VALID_CREATIVE"` * All line items with an update time
+  /// less than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`:
+  /// `updateTime<="2020-11-04T18:54:47Z"` * All line items with an update time
+  /// greater than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`:
+  /// `updateTime>="2020-11-04T18:54:47Z"` The length of this field should be no
+  /// more than 500 characters.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
-  /// "displayName" (default) * "entityStatus" * “flight.dateRange.endDate” The
-  /// default sorting order is ascending. To specify descending order for a
-  /// field, a suffix "desc" should be added to the field name. Example:
-  /// `displayName desc`.
+  /// "displayName" (default) * "entityStatus" * “flight.dateRange.endDate” *
+  /// "updateTime" The default sorting order is ascending. To specify descending
+  /// order for a field, a suffix "desc" should be added to the field name.
+  /// Example: `displayName desc`.
   ///
   /// [pageSize] - Requested page size. Must be between `1` and `100`. If
   /// unspecified will default to `100`. Returns error code `INVALID_ARGUMENT`
@@ -4516,6 +4552,456 @@ class AdvertisersLocationListsAssignedLocationsResource {
   }
 }
 
+class AdvertisersManualTriggersResource {
+  final commons.ApiRequester _requester;
+
+  AdvertisersManualTriggersResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Activates a manual trigger.
+  ///
+  /// Each activation of the manual trigger must be at least 5 minutes apart,
+  /// otherwise an error will be returned.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser that the manual
+  /// trigger belongs.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [triggerId] - Required. The ID of the manual trigger to activate.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ManualTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManualTrigger> activate(
+    ActivateManualTriggerRequest request,
+    core.String advertiserId,
+    core.String triggerId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (advertiserId == null) {
+      throw core.ArgumentError('Parameter advertiserId is required.');
+    }
+    if (triggerId == null) {
+      throw core.ArgumentError('Parameter triggerId is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/advertisers/' +
+        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        '/manualTriggers/' +
+        commons.Escaper.ecapeVariableReserved('$triggerId') +
+        ':activate';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) =>
+          ManualTrigger.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Creates a new manual trigger.
+  ///
+  /// Returns the newly created manual trigger if successful.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. Immutable. The unique ID of the advertiser that
+  /// the manual trigger belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ManualTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManualTrigger> create(
+    ManualTrigger request,
+    core.String advertiserId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (advertiserId == null) {
+      throw core.ArgumentError('Parameter advertiserId is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/advertisers/' +
+        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        '/manualTriggers';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) =>
+          ManualTrigger.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Deactivates a manual trigger.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser that the manual
+  /// trigger belongs.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [triggerId] - Required. The ID of the manual trigger to deactivate.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ManualTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManualTrigger> deactivate(
+    DeactivateManualTriggerRequest request,
+    core.String advertiserId,
+    core.String triggerId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (advertiserId == null) {
+      throw core.ArgumentError('Parameter advertiserId is required.');
+    }
+    if (triggerId == null) {
+      throw core.ArgumentError('Parameter triggerId is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/advertisers/' +
+        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        '/manualTriggers/' +
+        commons.Escaper.ecapeVariableReserved('$triggerId') +
+        ':deactivate';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) =>
+          ManualTrigger.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Gets a manual trigger.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser this manual trigger
+  /// belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [triggerId] - Required. The ID of the manual trigger to fetch.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ManualTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManualTrigger> get(
+    core.String advertiserId,
+    core.String triggerId, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (advertiserId == null) {
+      throw core.ArgumentError('Parameter advertiserId is required.');
+    }
+    if (triggerId == null) {
+      throw core.ArgumentError('Parameter triggerId is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/advertisers/' +
+        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        '/manualTriggers/' +
+        commons.Escaper.ecapeVariableReserved('$triggerId');
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) =>
+          ManualTrigger.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Lists manual triggers that are accessible to the current user for a given
+  /// advertiser ID.
+  ///
+  /// The order is defined by the order_by parameter. A single advertiser_id is
+  /// required.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. The ID of the advertiser that the fetched
+  /// manual triggers belong to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [filter] - Allows filtering by manual trigger properties. Supported
+  /// syntax: * Filter expressions are made up of one or more restrictions. *
+  /// Restrictions can be combined by `AND` or `OR` logical operators. A
+  /// sequence of restrictions implicitly uses `AND`. * A restriction has the
+  /// form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`.
+  /// * Supported fields: - `displayName` - `state` Examples: * All active
+  /// manual triggers under an advertiser: `state="ACTIVE"` The length of this
+  /// field should be no more than 500 characters.
+  ///
+  /// [orderBy] - Field by which to sort the list. Acceptable values are: *
+  /// `displayName` (default) * `state` The default sorting order is ascending.
+  /// To specify descending order for a field, a suffix "desc" should be added
+  /// to the field name. For example, `displayName desc`.
+  ///
+  /// [pageSize] - Requested page size. Must be between `1` and `100`. If
+  /// unspecified will default to `100`.
+  ///
+  /// [pageToken] - A token identifying a page of results the server should
+  /// return. Typically, this is the value of next_page_token returned from the
+  /// previous call to `ListManualTriggers` method. If not specified, the first
+  /// page of results will be returned.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListManualTriggersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListManualTriggersResponse> list(
+    core.String advertiserId, {
+    core.String filter,
+    core.String orderBy,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (advertiserId == null) {
+      throw core.ArgumentError('Parameter advertiserId is required.');
+    }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (orderBy != null) {
+      _queryParams['orderBy'] = [orderBy];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/advertisers/' +
+        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        '/manualTriggers';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => ListManualTriggersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Updates a manual trigger.
+  ///
+  /// Returns the updated manual trigger if successful.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [advertiserId] - Required. Immutable. The unique ID of the advertiser that
+  /// the manual trigger belongs to.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [triggerId] - Output only. The unique ID of the manual trigger.
+  /// Value must have pattern `^\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The mask to control which fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ManualTrigger].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ManualTrigger> patch(
+    ManualTrigger request,
+    core.String advertiserId,
+    core.String triggerId, {
+    core.String updateMask,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (advertiserId == null) {
+      throw core.ArgumentError('Parameter advertiserId is required.');
+    }
+    if (triggerId == null) {
+      throw core.ArgumentError('Parameter triggerId is required.');
+    }
+    if (updateMask != null) {
+      _queryParams['updateMask'] = [updateMask];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/advertisers/' +
+        commons.Escaper.ecapeVariableReserved('$advertiserId') +
+        '/manualTriggers/' +
+        commons.Escaper.ecapeVariableReserved('$triggerId');
+
+    final _response = _requester.request(
+      _url,
+      'PATCH',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) =>
+          ManualTrigger.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
 class AdvertisersNegativeKeywordListsResource {
   final commons.ApiRequester _requester;
 
@@ -5227,7 +5713,9 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
-  /// option.
+  /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -5374,7 +5862,9 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
-  /// option.
+  /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -5526,7 +6016,9 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of this assigned targeting
-  /// option.
+  /// option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -5680,7 +6172,9 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
   /// Value must have pattern `^\[^/\]+$`.
   ///
   /// [targetingType] - Required. Identifies the type of assigned targeting
-  /// options to list.
+  /// options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
   /// Value must have pattern `^\[^/\]+$`.
   /// Possible string values are:
   /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
@@ -9763,16 +10257,16 @@ class TargetingTypesTargetingOptionsResource {
   /// syntax: * Filter expressions are made up of one or more restrictions. *
   /// Restrictions can be combined by `OR` logical operators. * A restriction
   /// has the form of `{field} {operator} {value}`. * The operator must be "="
-  /// (equal sign). * Supported fields: - `carrier_and_isp_details.type` -
-  /// `geo_region_details.geo_region_type` - `targetingOptionId` Examples: * All
+  /// (equal sign). * Supported fields: - `carrierAndIspDetails.type` -
+  /// `geoRegionDetails.geoRegionType` - `targetingOptionId` Examples: * All
   /// `GEO REGION` targeting options that belong to sub type
   /// `GEO_REGION_TYPE_COUNTRY` or `GEO_REGION_TYPE_STATE`:
-  /// `geo_region_details.geo_region_type="GEO_REGION_TYPE_COUNTRY" OR
-  /// geo_region_details.geo_region_type="GEO_REGION_TYPE_STATE"` * All `CARRIER
-  /// AND ISP` targeting options that belong to sub type
+  /// `geoRegionDetails.geoRegionType="GEO_REGION_TYPE_COUNTRY" OR
+  /// geoRegionDetails.geoRegionType="GEO_REGION_TYPE_STATE"` * All `CARRIER AND
+  /// ISP` targeting options that belong to sub type
   /// `CARRIER_AND_ISP_TYPE_CARRIER`:
-  /// `carrier_and_isp_details.type="CARRIER_AND_ISP_TYPE_CARRIER"`. The length
-  /// of this field should be no more than 500 characters.
+  /// `carrierAndIspDetails.type="CARRIER_AND_ISP_TYPE_CARRIER"`. The length of
+  /// this field should be no more than 500 characters.
   ///
   /// [orderBy] - Field by which to sort the list. Acceptable values are: *
   /// `targetingOptionId` (default) The default sorting order is ascending. To
@@ -9851,6 +10345,147 @@ class TargetingTypesTargetingOptionsResource {
     );
     return _response.then(
       (data) => ListTargetingOptionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Searches for targeting options of a given type based on the given search
+  /// terms.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [targetingType] - Required. The type of targeting options to retrieve.
+  /// Accepted values are: * `TARGETING_TYPE_GEO_REGION`
+  /// Value must have pattern `^\[^/\]+$`.
+  /// Possible string values are:
+  /// - "TARGETING_TYPE_UNSPECIFIED" : Default value when type is not specified
+  /// or is unknown in this version.
+  /// - "TARGETING_TYPE_CHANNEL" : Target a channel (a custom group of related
+  /// websites or apps).
+  /// - "TARGETING_TYPE_APP_CATEGORY" : Target an app category (for example,
+  /// education or puzzle games).
+  /// - "TARGETING_TYPE_APP" : Target a specific app (for example, Angry Birds).
+  /// - "TARGETING_TYPE_URL" : Target a specific url (for example, quora.com).
+  /// - "TARGETING_TYPE_DAY_AND_TIME" : Target ads during a chosen time period
+  /// on a specific day.
+  /// - "TARGETING_TYPE_AGE_RANGE" : Target ads to a specific age range (for
+  /// example, 18-24).
+  /// - "TARGETING_TYPE_REGIONAL_LOCATION_LIST" : Target ads to the specified
+  /// regions on a regional location list.
+  /// - "TARGETING_TYPE_PROXIMITY_LOCATION_LIST" : Target ads to the specified
+  /// points of interest on a proximity location list.
+  /// - "TARGETING_TYPE_GENDER" : Target ads to a specific gender (for example,
+  /// female or male).
+  /// - "TARGETING_TYPE_VIDEO_PLAYER_SIZE" : Target a specific video player size
+  /// for video ads.
+  /// - "TARGETING_TYPE_USER_REWARDED_CONTENT" : Target user rewarded content
+  /// for video ads.
+  /// - "TARGETING_TYPE_PARENTAL_STATUS" : Target ads to a specific parental
+  /// status (for example, parent or not a parent).
+  /// - "TARGETING_TYPE_CONTENT_INSTREAM_POSITION" : Target video or audio ads
+  /// in a specific content instream position (for example, pre-roll, mid-roll,
+  /// or post-roll).
+  /// - "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION" : Target ads in a specific
+  /// content outstream position.
+  /// - "TARGETING_TYPE_DEVICE_TYPE" : Target ads to a specific device type (for
+  /// example, tablet or connected TV).
+  /// - "TARGETING_TYPE_AUDIENCE_GROUP" : Target ads to an audience or groups of
+  /// audiences. Singleton field, at most one can exist on a single Lineitem at
+  /// a time.
+  /// - "TARGETING_TYPE_BROWSER" : Target ads to specific web browsers (for
+  /// example, Chrome).
+  /// - "TARGETING_TYPE_HOUSEHOLD_INCOME" : Target ads to a specific household
+  /// income range (for example, top 10%).
+  /// - "TARGETING_TYPE_ON_SCREEN_POSITION" : Target ads in a specific on screen
+  /// position.
+  /// - "TARGETING_TYPE_THIRD_PARTY_VERIFIER" : Filter web sites through third
+  /// party verification (for example, IAS or DoubleVerify).
+  /// - "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION" : Filter web sites by
+  /// specific digital content label ratings (for example, DL-MA: suitable only
+  /// for mature audiences).
+  /// - "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION" : Filter website content
+  /// by sensitive categories (for example, adult).
+  /// - "TARGETING_TYPE_ENVIRONMENT" : Target ads to a specific environment (for
+  /// example, web or app).
+  /// - "TARGETING_TYPE_CARRIER_AND_ISP" : Target ads to a specific network
+  /// carrier or internet service provider (ISP) (for example, Comcast or
+  /// Orange).
+  /// - "TARGETING_TYPE_OPERATING_SYSTEM" : Target ads to a specific operating
+  /// system (for example, macOS).
+  /// - "TARGETING_TYPE_DEVICE_MAKE_MODEL" : Target ads to a specific device
+  /// make or model (for example, Roku or Samsung).
+  /// - "TARGETING_TYPE_KEYWORD" : Target ads to a specific keyword (for
+  /// example, dog or retriever).
+  /// - "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST" : Target ads to a specific
+  /// negative keyword list.
+  /// - "TARGETING_TYPE_VIEWABILITY" : Target ads to a specific viewability (for
+  /// example, 80% viewable).
+  /// - "TARGETING_TYPE_CATEGORY" : Target ads to a specific content category
+  /// (for example, arts & entertainment).
+  /// - "TARGETING_TYPE_INVENTORY_SOURCE" : Purchase impressions from specific
+  /// deals and auction packages.
+  /// - "TARGETING_TYPE_LANGUAGE" : Target ads to a specific language (for
+  /// example, English or Japanese).
+  /// - "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS" : Target ads to ads.txt
+  /// authorized sellers.
+  /// - "TARGETING_TYPE_GEO_REGION" : Target ads to a specific regional location
+  /// (for example, a city or state).
+  /// - "TARGETING_TYPE_INVENTORY_SOURCE_GROUP" : Purchase impressions from a
+  /// group of deals and auction packages.
+  /// - "TARGETING_TYPE_EXCHANGE" : Purchase impressions from specific
+  /// exchanges.
+  /// - "TARGETING_TYPE_SUB_EXCHANGE" : Purchase impressions from specific
+  /// sub-exchanges.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchTargetingOptionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchTargetingOptionsResponse> search(
+    SearchTargetingOptionsRequest request,
+    core.String targetingType, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (targetingType == null) {
+      throw core.ArgumentError('Parameter targetingType is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/targetingTypes/' +
+        commons.Escaper.ecapeVariableReserved('$targetingType') +
+        '/targetingOptions:search';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => SearchTargetingOptionsResponse.fromJson(
           data as core.Map<core.String, core.dynamic>),
     );
   }
@@ -10248,6 +10883,20 @@ class UsersResource {
   }
 }
 
+/// Request message for ManualTriggerService.ActivateManualTrigger.
+class ActivateManualTriggerRequest {
+  ActivateManualTriggerRequest();
+
+  ActivateManualTriggerRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    return _json;
+  }
+}
+
 /// Configuration for custom Active View video viewability metrics.
 class ActiveViewVideoViewabilityMetricConfig {
   /// The display name of the custom metric.
@@ -10568,8 +11217,8 @@ class Advertiser {
 
 /// Ad server related settings of an advertiser.
 class AdvertiserAdServerConfig {
-  /// The configuration for advertisers that use both Campaign Manager (CM) and
-  /// third-party ad servers.
+  /// The configuration for advertisers that use both Campaign Manager 360
+  /// (CM360) and third-party ad servers.
   CmHybridConfig cmHybridConfig;
 
   /// The configuration for advertisers that use third-party ad servers only.
@@ -10625,7 +11274,7 @@ class AdvertiserCreativeConfig {
   /// advertiser to provide reporting and features related to the advertiser's
   /// television campaigns.
   ///
-  /// Applicable only when the advertiser has a CM hybrid ad server
+  /// Applicable only when the advertiser has a CM360 hybrid ad server
   /// configuration.
   core.bool videoCreativeDataSharingAuthorized;
 
@@ -10725,10 +11374,10 @@ class AdvertiserGeneralConfig {
   /// The standard TZ database name of the advertiser's time zone.
   ///
   /// For example, `America/New_York`. See more at:
-  /// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones For CM hybrid
-  /// advertisers, the time zone is the same as that of the associated CM
-  /// account; for third-party only advertisers, the time zone is the same as
-  /// that of the parent partner.
+  /// https://en.wikipedia.org/wiki/List_of_tz_database_time_zones For CM360
+  /// hybrid advertisers, the time zone is the same as that of the associated
+  /// CM360 account; for third-party only advertisers, the time zone is the same
+  /// as that of the parent partner.
   ///
   /// Output only.
   core.String timeZone;
@@ -12614,10 +13263,18 @@ class BrowserTargetingOptionDetails {
 class BulkEditAdvertiserAssignedTargetingOptionsRequest {
   /// The assigned targeting options to create in batch, specified as a list of
   /// `CreateAssignedTargetingOptionsRequest`.
+  ///
+  /// Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
   core.List<CreateAssignedTargetingOptionsRequest> createRequests;
 
   /// The assigned targeting options to delete in batch, specified as a list of
   /// `DeleteAssignedTargetingOptionsRequest`.
+  ///
+  /// Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
+  /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
+  /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
   core.List<DeleteAssignedTargetingOptionsRequest> deleteRequests;
 
   BulkEditAdvertiserAssignedTargetingOptionsRequest();
@@ -13830,16 +14487,16 @@ class ChannelAssignedTargetingOptionDetails {
   }
 }
 
-/// Settings for advertisers that use both Campaign Manager (CM) and third-party
-/// ad servers.
+/// Settings for advertisers that use both Campaign Manager 360 (CM360) and
+/// third-party ad servers.
 class CmHybridConfig {
-  /// Account ID of the CM Floodlight configuration linked with the DV360
+  /// Account ID of the CM360 Floodlight configuration linked with the DV360
   /// advertiser.
   ///
   /// Required. Immutable.
   core.String cmAccountId;
 
-  /// ID of the CM Floodlight configuration linked with the DV360 advertiser.
+  /// ID of the CM360 Floodlight configuration linked with the DV360 advertiser.
   ///
   /// Required. Immutable.
   core.String cmFloodlightConfigId;
@@ -13851,18 +14508,19 @@ class CmHybridConfig {
   /// Required. Immutable.
   core.bool cmFloodlightLinkingAuthorized;
 
-  /// A list of CM sites whose placements will be synced to DV360 as creatives.
+  /// A list of CM360 sites whose placements will be synced to DV360 as
+  /// creatives.
   ///
   /// If absent or empty in CreateAdvertiser method, the system will
-  /// automatically create a CM site. Removing sites from this list may cause
-  /// DV360 creatives synced from CM to be deleted. At least one site must be
+  /// automatically create a CM360 site. Removing sites from this list may cause
+  /// DV360 creatives synced from CM360 to be deleted. At least one site must be
   /// specified.
   core.List<core.String> cmSyncableSiteIds;
 
-  /// Whether or not to report DV360 cost to CM.
+  /// Whether or not to report DV360 cost to CM360.
   core.bool dv360ToCmCostReportingEnabled;
 
-  /// Whether or not to include DV360 data in CM data transfer reports.
+  /// Whether or not to include DV360 data in CM360 data transfer reports.
   core.bool dv360ToCmDataSharingEnabled;
 
   CmHybridConfig();
@@ -13917,15 +14575,15 @@ class CmHybridConfig {
   }
 }
 
-/// A Campaign Manager tracking ad.
+/// A Campaign Manager 360 tracking ad.
 class CmTrackingAd {
-  /// The ad ID of the campaign manager tracking Ad.
+  /// The ad ID of the campaign manager 360 tracking Ad.
   core.String cmAdId;
 
-  /// The creative ID of the campaign manager tracking Ad.
+  /// The creative ID of the campaign manager 360 tracking Ad.
   core.String cmCreativeId;
 
-  /// The placement ID of the campaign manager tracking Ad.
+  /// The placement ID of the campaign manager 360 tracking Ad.
   core.String cmPlacementId;
 
   CmTrackingAd();
@@ -14546,7 +15204,8 @@ class CreateSdfDownloadTaskRequest {
   /// - "SDF_VERSION_4_2" : SDF version 4.2
   /// - "SDF_VERSION_5" : SDF version 5.
   /// - "SDF_VERSION_5_1" : SDF version 5.1
-  /// - "SDF_VERSION_5_2" : SDF version 5.2;
+  /// - "SDF_VERSION_5_2" : SDF version 5.2
+  /// - "SDF_VERSION_5_3" : SDF version 5.3
   core.String version;
 
   CreateSdfDownloadTaskRequest();
@@ -14631,7 +15290,7 @@ class Creative {
   /// Required.
   core.List<AssetAssociation> assets;
 
-  /// The unique ID of the Campaign Manager placement associated with the
+  /// The unique ID of the Campaign Manager 360 placement associated with the
   /// creative.
   ///
   /// This field is only applicable for creatives that are synced from Campaign
@@ -14640,10 +15299,10 @@ class Creative {
   /// Output only.
   core.String cmPlacementId;
 
-  /// The Campaign Manager tracking ad associated with the creative.
+  /// The Campaign Manager 360 tracking ad associated with the creative.
   ///
   /// Optional for the following creative_type when created by an advertiser
-  /// that uses both Campaign Manager and third-party ad serving: *
+  /// that uses both Campaign Manager 360 and third-party ad serving: *
   /// `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` *
   /// `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
   /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` Output only for other cases.
@@ -14835,22 +15494,23 @@ class Creative {
   /// Possible string values are:
   /// - "HOSTING_SOURCE_UNSPECIFIED" : Hosting source is not specified or is
   /// unknown in this version.
-  /// - "HOSTING_SOURCE_CM" : A creative synced from Campaign Manager. Create
-  /// and update methods are **not** supported for this hosting type.
+  /// - "HOSTING_SOURCE_CM" : A creative synced from Campaign Manager 360.
+  /// Create and update methods are **not** supported for this hosting type.
   /// - "HOSTING_SOURCE_THIRD_PARTY" : A creative hosted by a third-party ad
   /// server (3PAS). Create and update methods are supported for this hosting
-  /// type if the creative_type is one of the following: *
-  /// `CREATIVE_TYPE_EXPANDABLE` * `CREATIVE_TYPE_STANDARD` *
+  /// type if the creative_type is one of the following: * `CREATIVE_TYPE_AUDIO`
+  /// * `CREATIVE_TYPE_EXPANDABLE` * `CREATIVE_TYPE_STANDARD` *
   /// `CREATIVE_TYPE_VIDEO`
   /// - "HOSTING_SOURCE_HOSTED" : A creative created in DV360 and hosted by
-  /// Campaign Manager. Create and update methods are supported for this hosting
-  /// type if the creative_type is one of the following: * `CREATIVE_TYPE_AUDIO`
-  /// * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
+  /// Campaign Manager 360. Create and update methods are supported for this
+  /// hosting type if the creative_type is one of the following: *
+  /// `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_NATIVE` *
+  /// `CREATIVE_TYPE_NATIVE_APP_INSTALL` *
   /// `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` *
   /// `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO` *
   /// `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_VIDEO`
   /// - "HOSTING_SOURCE_RICH_MEDIA" : A rich media creative created in Studio
-  /// and hosted by Campaign Manager. Create and update methods are **not**
+  /// and hosted by Campaign Manager 360. Create and update methods are **not**
   /// supported for this hosting type.
   core.String hostingSource;
 
@@ -14948,15 +15608,15 @@ class Creative {
 
   /// Indicates that the creative will wait for a return ping for attribution.
   ///
-  /// Only valid when using a Campaign Manager tracking ad with a third-party ad
-  /// server parameter and the ${DC_DBM_TOKEN} macro. Optional and only valid
-  /// for third-party tag creatives or third-party VAST tag creatives.
-  /// Third-party tag creatives are creatives with following hosting_source: *
-  /// `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: *
-  /// `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE` Third-party VAST tag
-  /// creatives are creatives with following hosting_source: *
-  /// `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: *
-  /// `CREATIVE_TYPE_VIDEO`
+  /// Only valid when using a Campaign Manager 360 tracking ad with a
+  /// third-party ad server parameter and the ${DC_DBM_TOKEN} macro. Optional
+  /// and only valid for third-party tag creatives or third-party VAST tag
+  /// creatives. Third-party tag creatives are creatives with following
+  /// hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following
+  /// creative_type: * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE`
+  /// Third-party VAST tag creatives are creatives with following
+  /// hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following
+  /// creative_type: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO`
   ///
   /// Optional.
   core.bool requirePingForAttribution;
@@ -15052,7 +15712,7 @@ class Creative {
   /// Required and only valid for third-party VAST tag creatives. Third-party
   /// VAST tag creatives are creatives with following hosting_source: *
   /// `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: *
-  /// `CREATIVE_TYPE_VIDEO`
+  /// `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO`
   ///
   /// Optional.
   core.String vastTagUrl;
@@ -15705,30 +16365,30 @@ class CustomListTargetingSetting {
   }
 }
 
-/// Represents a whole or partial calendar date, e.g. a birthday.
+/// Represents a whole or partial calendar date, such as a birthday.
 ///
-/// The time of day and time zone are either specified elsewhere or are not
-/// significant. The date is relative to the Proleptic Gregorian Calendar. This
-/// can represent: * A full date, with non-zero year, month and day values * A
-/// month and day value, with a zero year, e.g. an anniversary * A year on its
-/// own, with zero month and day values * A year and month value, with a zero
-/// day, e.g. a credit card expiration date Related types are
-/// google.type.TimeOfDay and `google.protobuf.Timestamp`.
+/// The time of day and time zone are either specified elsewhere or are
+/// insignificant. The date is relative to the Gregorian Calendar. This can
+/// represent one of the following: * A full date, with non-zero year, month,
+/// and day values * A month and day value, with a zero year, such as an
+/// anniversary * A year on its own, with zero month and day values * A year and
+/// month value, with a zero day, such as a credit card expiration date Related
+/// types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
 class Date {
-  /// Day of month.
+  /// Day of a month.
   ///
-  /// Must be from 1 to 31 and valid for the year and month, or 0 if specifying
-  /// a year by itself or a year and month where the day is not significant.
+  /// Must be from 1 to 31 and valid for the year and month, or 0 to specify a
+  /// year by itself or a year and month where the day isn't significant.
   core.int day;
 
-  /// Month of year.
+  /// Month of a year.
   ///
-  /// Must be from 1 to 12, or 0 if specifying a year without a month and day.
+  /// Must be from 1 to 12, or 0 to specify a year without a month and day.
   core.int month;
 
-  /// Year of date.
+  /// Year of the date.
   ///
-  /// Must be from 1 to 9999, or 0 if specifying a date without a year.
+  /// Must be from 1 to 9999, or 0 to specify a date without a year.
   core.int year;
 
   Date();
@@ -15875,6 +16535,20 @@ class DayAndTimeAssignedTargetingOptionDetails {
     if (timeZoneResolution != null) {
       _json['timeZoneResolution'] = timeZoneResolution;
     }
+    return _json;
+  }
+}
+
+/// Request message for ManualTriggerService.DeactivateManualTrigger.
+class DeactivateManualTriggerRequest {
+  DeactivateManualTriggerRequest();
+
+  DeactivateManualTriggerRequest.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
     return _json;
   }
 }
@@ -16286,6 +16960,14 @@ class DoubleVerify {
   /// DV Brand Safety Controls.
   DoubleVerifyBrandSafetyCategories brandSafetyCategories;
 
+  /// The custom segment ID provided by DoubleVerify.
+  ///
+  /// The ID must start with "51" and consist of eight digits. Custom segment ID
+  /// cannot be specified along with any of the following fields: *
+  /// brand_safety_categories * avoided_age_ratings * app_star_rating *
+  /// fraud_invalid_traffic
+  core.String customSegmentId;
+
   /// Display viewability settings (applicable to display line items only).
   DoubleVerifyDisplayViewability displayViewability;
 
@@ -16312,6 +16994,9 @@ class DoubleVerify {
           _json['brandSafetyCategories']
               as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('customSegmentId')) {
+      customSegmentId = _json['customSegmentId'] as core.String;
+    }
     if (_json.containsKey('displayViewability')) {
       displayViewability = DoubleVerifyDisplayViewability.fromJson(
           _json['displayViewability'] as core.Map<core.String, core.dynamic>);
@@ -16336,6 +17021,9 @@ class DoubleVerify {
     }
     if (brandSafetyCategories != null) {
       _json['brandSafetyCategories'] = brandSafetyCategories.toJson();
+    }
+    if (customSegmentId != null) {
+      _json['customSegmentId'] = customSegmentId;
     }
     if (displayViewability != null) {
       _json['displayViewability'] = displayViewability.toJson();
@@ -16858,16 +17546,19 @@ class ExchangeConfigEnabledExchange {
   /// - "EXCHANGE_UNITED" : United.
   /// - "EXCHANGE_YIELDLAB" : Yieldlab.
   /// - "EXCHANGE_YIELDMO" : Yieldmo.
-  /// - "EXCHANGE_UNRULYX" : UnrulyX
-  /// - "EXCHANGE_OPEN8" : Open8
+  /// - "EXCHANGE_UNRULYX" : UnrulyX.
+  /// - "EXCHANGE_OPEN8" : Open8.
   /// - "EXCHANGE_TRITON" : Triton.
-  /// - "EXCHANGE_TRIPLELIFT" : TripleLift
-  /// - "EXCHANGE_TABOOLA" : Taboola
+  /// - "EXCHANGE_TRIPLELIFT" : TripleLift.
+  /// - "EXCHANGE_TABOOLA" : Taboola.
   /// - "EXCHANGE_INMOBI" : InMobi.
-  /// - "EXCHANGE_SMAATO" : Smaato
+  /// - "EXCHANGE_SMAATO" : Smaato.
   /// - "EXCHANGE_AJA" : Aja.
+  /// - "EXCHANGE_SUPERSHIP" : Supership.
   /// - "EXCHANGE_NEXSTAR_DIGITAL" : Nexstar Digital.
   /// - "EXCHANGE_WAZE" : Waze.
+  /// - "EXCHANGE_SOUNDCAST" : SoundCast.
+  /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
   core.String exchange;
 
   /// Agency ID of Google Ad Manager.
@@ -16981,16 +17672,19 @@ class ExchangeReviewStatus {
   /// - "EXCHANGE_UNITED" : United.
   /// - "EXCHANGE_YIELDLAB" : Yieldlab.
   /// - "EXCHANGE_YIELDMO" : Yieldmo.
-  /// - "EXCHANGE_UNRULYX" : UnrulyX
-  /// - "EXCHANGE_OPEN8" : Open8
+  /// - "EXCHANGE_UNRULYX" : UnrulyX.
+  /// - "EXCHANGE_OPEN8" : Open8.
   /// - "EXCHANGE_TRITON" : Triton.
-  /// - "EXCHANGE_TRIPLELIFT" : TripleLift
-  /// - "EXCHANGE_TABOOLA" : Taboola
+  /// - "EXCHANGE_TRIPLELIFT" : TripleLift.
+  /// - "EXCHANGE_TABOOLA" : Taboola.
   /// - "EXCHANGE_INMOBI" : InMobi.
-  /// - "EXCHANGE_SMAATO" : Smaato
+  /// - "EXCHANGE_SMAATO" : Smaato.
   /// - "EXCHANGE_AJA" : Aja.
+  /// - "EXCHANGE_SUPERSHIP" : Supership.
   /// - "EXCHANGE_NEXSTAR_DIGITAL" : Nexstar Digital.
   /// - "EXCHANGE_WAZE" : Waze.
+  /// - "EXCHANGE_SOUNDCAST" : SoundCast.
+  /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
   core.String exchange;
 
   /// Status of the exchange review.
@@ -17086,16 +17780,19 @@ class ExchangeTargetingOptionDetails {
   /// - "EXCHANGE_UNITED" : United.
   /// - "EXCHANGE_YIELDLAB" : Yieldlab.
   /// - "EXCHANGE_YIELDMO" : Yieldmo.
-  /// - "EXCHANGE_UNRULYX" : UnrulyX
-  /// - "EXCHANGE_OPEN8" : Open8
+  /// - "EXCHANGE_UNRULYX" : UnrulyX.
+  /// - "EXCHANGE_OPEN8" : Open8.
   /// - "EXCHANGE_TRITON" : Triton.
-  /// - "EXCHANGE_TRIPLELIFT" : TripleLift
-  /// - "EXCHANGE_TABOOLA" : Taboola
+  /// - "EXCHANGE_TRIPLELIFT" : TripleLift.
+  /// - "EXCHANGE_TABOOLA" : Taboola.
   /// - "EXCHANGE_INMOBI" : InMobi.
-  /// - "EXCHANGE_SMAATO" : Smaato
+  /// - "EXCHANGE_SMAATO" : Smaato.
   /// - "EXCHANGE_AJA" : Aja.
+  /// - "EXCHANGE_SUPERSHIP" : Supership.
   /// - "EXCHANGE_NEXSTAR_DIGITAL" : Nexstar Digital.
   /// - "EXCHANGE_WAZE" : Waze.
+  /// - "EXCHANGE_SOUNDCAST" : SoundCast.
+  /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
   core.String exchange;
 
   ExchangeTargetingOptionDetails();
@@ -17204,7 +17901,7 @@ class FirstAndThirdPartyAudience {
   /// - "AUDIENCE_SOURCE_UNSPECIFIED" : Default value when audience source is
   /// not specified or is unknown.
   /// - "DISPLAY_VIDEO_360" : Originated from Display & Video 360.
-  /// - "CAMPAIGN_MANAGER" : Originated from Campaign Manager.
+  /// - "CAMPAIGN_MANAGER" : Originated from Campaign Manager 360.
   /// - "AD_MANAGER" : Originated from Google Ad Manager.
   /// - "SEARCH_ADS_360" : Originated from Search Ads 360.
   /// - "YOUTUBE" : Originated from Youtube.
@@ -17953,6 +18650,30 @@ class GeoRegionAssignedTargetingOptionDetails {
   }
 }
 
+/// Search terms for geo region targeting options.
+class GeoRegionSearchTerms {
+  /// The search query for the desired geo region.
+  ///
+  /// The query can be a prefix, e.g. "New Yor", "Seattle", "USA", etc.
+  core.String geoRegionQuery;
+
+  GeoRegionSearchTerms();
+
+  GeoRegionSearchTerms.fromJson(core.Map _json) {
+    if (_json.containsKey('geoRegionQuery')) {
+      geoRegionQuery = _json['geoRegionQuery'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (geoRegionQuery != null) {
+      _json['geoRegionQuery'] = geoRegionQuery;
+    }
+    return _json;
+  }
+}
+
 /// Represents a targetable geographic region.
 ///
 /// This will be populated in the geo_region_details field when targeting_type
@@ -18058,9 +18779,12 @@ class GoogleAudience {
   /// specified or is unknown.
   /// - "GOOGLE_AUDIENCE_TYPE_AFFINITY" : Affinity type Google audience.
   /// - "GOOGLE_AUDIENCE_TYPE_IN_MARKET" : In-Market type Google audience.
-  /// - "GOOGLE_AUDIENCE_TYPE_INSTALLED_APPS" : Installed-apps type Google
+  /// - "GOOGLE_AUDIENCE_TYPE_INSTALLED_APPS" : Installed-Apps type Google
   /// audience.
-  /// - "GOOGLE_AUDIENCE_TYPE_NEW_MOBILE_DEVICES" : New-mobile-devices type
+  /// - "GOOGLE_AUDIENCE_TYPE_NEW_MOBILE_DEVICES" : New-Mobile-Devices type
+  /// Google audience.
+  /// - "GOOGLE_AUDIENCE_TYPE_LIFE_EVENT" : Life-Event type Google audience.
+  /// - "GOOGLE_AUDIENCE_TYPE_EXTENDED_DEMOGRAPHIC" : Extended-Demographic type
   /// Google audience.
   core.String googleAudienceType;
 
@@ -18393,8 +19117,6 @@ class InsertionOrder {
   /// The bidding strategy of the insertion order.
   ///
   /// By default, fixed_bid is set.
-  ///
-  /// Optional.
   BiddingStrategy bidStrategy;
 
   /// The budget allocation settings of the insertion order.
@@ -18451,6 +19173,16 @@ class InsertionOrder {
   ///
   /// Output only.
   core.String insertionOrderId;
+
+  /// The type of insertion order.
+  ///
+  /// If this field is unspecified in creation, the value defaults to `RTB`.
+  /// Possible string values are:
+  /// - "INSERTION_ORDER_TYPE_UNSPECIFIED" : Insertion order type is not
+  /// specified or is unknown.
+  /// - "RTB" : Real-time bidding.
+  /// - "OVER_THE_TOP" : Over-the-top.
+  core.String insertionOrderType;
 
   /// Additional integration details of the insertion order.
   IntegrationDetails integrationDetails;
@@ -18513,6 +19245,9 @@ class InsertionOrder {
     if (_json.containsKey('insertionOrderId')) {
       insertionOrderId = _json['insertionOrderId'] as core.String;
     }
+    if (_json.containsKey('insertionOrderType')) {
+      insertionOrderType = _json['insertionOrderType'] as core.String;
+    }
     if (_json.containsKey('integrationDetails')) {
       integrationDetails = IntegrationDetails.fromJson(
           _json['integrationDetails'] as core.Map<core.String, core.dynamic>);
@@ -18564,6 +19299,9 @@ class InsertionOrder {
     }
     if (insertionOrderId != null) {
       _json['insertionOrderId'] = insertionOrderId;
+    }
+    if (insertionOrderType != null) {
+      _json['insertionOrderType'] = insertionOrderType;
     }
     if (integrationDetails != null) {
       _json['integrationDetails'] = integrationDetails.toJson();
@@ -18733,6 +19471,11 @@ class InsertionOrderBudgetSegment {
 
 /// Details of Integral Ad Science settings.
 class IntegralAdScience {
+  /// The custom segment ID provided by Integral Ad Science.
+  ///
+  /// The ID must be between `1000001` and `1999999`, inclusive.
+  core.List<core.String> customSegmentId;
+
   /// Display Viewability section (applicable to display line items only).
   /// Possible string values are:
   /// - "PERFORMANCE_VIEWABILITY_UNSPECIFIED" : This enum is only a placeholder
@@ -18846,6 +19589,11 @@ class IntegralAdScience {
   IntegralAdScience();
 
   IntegralAdScience.fromJson(core.Map _json) {
+    if (_json.containsKey('customSegmentId')) {
+      customSegmentId = (_json['customSegmentId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
     if (_json.containsKey('displayViewability')) {
       displayViewability = _json['displayViewability'] as core.String;
     }
@@ -18891,6 +19639,9 @@ class IntegralAdScience {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (customSegmentId != null) {
+      _json['customSegmentId'] = customSegmentId;
+    }
     if (displayViewability != null) {
       _json['displayViewability'] = displayViewability;
     }
@@ -19069,16 +19820,19 @@ class InventorySource {
   /// - "EXCHANGE_UNITED" : United.
   /// - "EXCHANGE_YIELDLAB" : Yieldlab.
   /// - "EXCHANGE_YIELDMO" : Yieldmo.
-  /// - "EXCHANGE_UNRULYX" : UnrulyX
-  /// - "EXCHANGE_OPEN8" : Open8
+  /// - "EXCHANGE_UNRULYX" : UnrulyX.
+  /// - "EXCHANGE_OPEN8" : Open8.
   /// - "EXCHANGE_TRITON" : Triton.
-  /// - "EXCHANGE_TRIPLELIFT" : TripleLift
-  /// - "EXCHANGE_TABOOLA" : Taboola
+  /// - "EXCHANGE_TRIPLELIFT" : TripleLift.
+  /// - "EXCHANGE_TABOOLA" : Taboola.
   /// - "EXCHANGE_INMOBI" : InMobi.
-  /// - "EXCHANGE_SMAATO" : Smaato
+  /// - "EXCHANGE_SMAATO" : Smaato.
   /// - "EXCHANGE_AJA" : Aja.
+  /// - "EXCHANGE_SUPERSHIP" : Supership.
   /// - "EXCHANGE_NEXSTAR_DIGITAL" : Nexstar Digital.
   /// - "EXCHANGE_WAZE" : Waze.
+  /// - "EXCHANGE_SOUNDCAST" : SoundCast.
+  /// - "EXCHANGE_SHARETHROUGH" : Sharethrough.
   core.String exchange;
 
   /// The unique ID of the inventory source.
@@ -19750,9 +20504,19 @@ class LineItem {
   /// mobile app inventory.
   /// - "LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INVENTORY" : Video ads served on mobile
   /// app inventory.
-  /// - "LINE_ITEM_TYPE_AUDIO_DEFAULT" : Rtb Audio ads sold for a variety of
+  /// - "LINE_ITEM_TYPE_AUDIO_DEFAULT" : RTB Audio ads sold for a variety of
   /// environments.
+  /// - "LINE_ITEM_TYPE_VIDEO_OVER_THE_TOP" : Over-the-top ads present in OTT
+  /// insertion orders. This type is only applicable to line items with an
+  /// insertion order of insertion_order_type `OVER_THE_TOP`.
   core.String lineItemType;
+
+  /// The mobile app promoted by the line item.
+  ///
+  /// This is applicable only when line_item_type is either
+  /// `LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INSTALL` or
+  /// `LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INSTALL`.
+  MobileApp mobileApp;
 
   /// The resource name of the line item.
   ///
@@ -19774,6 +20538,14 @@ class LineItem {
   ///
   /// Required.
   PartnerRevenueModel partnerRevenueModel;
+
+  /// The
+  /// [targeting expansion](https://support.google.com/displayvideo/answer/10191558)
+  /// settings of the line item.
+  ///
+  /// This config is only applicable when eligible audience list targeting is
+  /// assigned to the line item.
+  TargetingExpansionConfig targetingExpansion;
 
   /// The timestamp when the line item was last updated.
   ///
@@ -19848,6 +20620,10 @@ class LineItem {
     if (_json.containsKey('lineItemType')) {
       lineItemType = _json['lineItemType'] as core.String;
     }
+    if (_json.containsKey('mobileApp')) {
+      mobileApp = MobileApp.fromJson(
+          _json['mobileApp'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -19864,6 +20640,10 @@ class LineItem {
     if (_json.containsKey('partnerRevenueModel')) {
       partnerRevenueModel = PartnerRevenueModel.fromJson(
           _json['partnerRevenueModel'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('targetingExpansion')) {
+      targetingExpansion = TargetingExpansionConfig.fromJson(
+          _json['targetingExpansion'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateTime')) {
       updateTime = _json['updateTime'] as core.String;
@@ -19922,6 +20702,9 @@ class LineItem {
     if (lineItemType != null) {
       _json['lineItemType'] = lineItemType;
     }
+    if (mobileApp != null) {
+      _json['mobileApp'] = mobileApp.toJson();
+    }
     if (name != null) {
       _json['name'] = name;
     }
@@ -19934,6 +20717,9 @@ class LineItem {
     }
     if (partnerRevenueModel != null) {
       _json['partnerRevenueModel'] = partnerRevenueModel.toJson();
+    }
+    if (targetingExpansion != null) {
+      _json['targetingExpansion'] = targetingExpansion.toJson();
     }
     if (updateTime != null) {
       _json['updateTime'] = updateTime;
@@ -20041,7 +20827,17 @@ class LineItemFlight {
   /// are inherited from its parent insertion order.
   /// - "LINE_ITEM_FLIGHT_DATE_TYPE_CUSTOM" : The line item uses its own custom
   /// flight dates.
+  /// - "LINE_ITEM_FLIGHT_DATE_TYPE_TRIGGER" : The line item uses a trigger.
   core.String flightDateType;
+
+  /// The ID of the manual trigger associated with the line item.
+  ///
+  /// * Required when flight_date_type is `LINE_ITEM_FLIGHT_DATE_TYPE_TRIGGER`.
+  /// Must not be set otherwise. * When set, the line item's flight dates are
+  /// inherited from its parent insertion order. * Active line items will spend
+  /// when the selected trigger is activated within the parent insertion order's
+  /// flight dates.
+  core.String triggerId;
 
   LineItemFlight();
 
@@ -20053,6 +20849,9 @@ class LineItemFlight {
     if (_json.containsKey('flightDateType')) {
       flightDateType = _json['flightDateType'] as core.String;
     }
+    if (_json.containsKey('triggerId')) {
+      triggerId = _json['triggerId'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -20062,6 +20861,9 @@ class LineItemFlight {
     }
     if (flightDateType != null) {
       _json['flightDateType'] = flightDateType;
+    }
+    if (triggerId != null) {
+      _json['triggerId'] = triggerId;
     }
     return _json;
   }
@@ -20789,6 +21591,45 @@ class ListLocationListsResponse {
   }
 }
 
+class ListManualTriggersResponse {
+  /// The list of manual triggers.
+  ///
+  /// This list will be absent if empty.
+  core.List<ManualTrigger> manualTriggers;
+
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass this value in the page_token field in the subsequent call to
+  /// `ListManualTriggers` method to retrieve the next page of results.
+  core.String nextPageToken;
+
+  ListManualTriggersResponse();
+
+  ListManualTriggersResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('manualTriggers')) {
+      manualTriggers = (_json['manualTriggers'] as core.List)
+          .map<ManualTrigger>((value) => ManualTrigger.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (manualTriggers != null) {
+      _json['manualTriggers'] =
+          manualTriggers.map((value) => value.toJson()).toList();
+    }
+    if (nextPageToken != null) {
+      _json['nextPageToken'] = nextPageToken;
+    }
+    return _json;
+  }
+}
+
 /// Response message for NegativeKeywordListService.ListNegativeKeywordLists.
 class ListNegativeKeywordListsResponse {
   /// The list of negative keyword lists.
@@ -21182,6 +22023,110 @@ class LookbackWindow {
   }
 }
 
+/// A single manual trigger in Display & Video 360.
+class ManualTrigger {
+  /// The maximum duration of each activation in minutes.
+  ///
+  /// Must be between 1 and 360 inclusive. After this duration, the trigger will
+  /// be automatically deactivated.
+  ///
+  /// Required.
+  core.String activationDurationMinutes;
+
+  /// The unique ID of the advertiser that the manual trigger belongs to.
+  ///
+  /// Required. Immutable.
+  core.String advertiserId;
+
+  /// The display name of the manual trigger.
+  ///
+  /// Must be UTF-8 encoded with a maximum size of 240 bytes.
+  ///
+  /// Required.
+  core.String displayName;
+
+  /// The timestamp of the trigger's latest activation.
+  ///
+  /// Output only.
+  core.String latestActivationTime;
+
+  /// The resource name of the manual trigger.
+  ///
+  /// Output only.
+  core.String name;
+
+  /// The state of the manual trigger.
+  ///
+  /// Will be set to the `INACTIVE` state upon creation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value when state is not specified or is
+  /// unknown in this version.
+  /// - "INACTIVE" : The trigger is currently inactive and ready to be
+  /// activated.
+  /// - "ACTIVE" : The trigger is currently active (activated).
+  core.String state;
+
+  /// The unique ID of the manual trigger.
+  ///
+  /// Output only.
+  core.String triggerId;
+
+  ManualTrigger();
+
+  ManualTrigger.fromJson(core.Map _json) {
+    if (_json.containsKey('activationDurationMinutes')) {
+      activationDurationMinutes =
+          _json['activationDurationMinutes'] as core.String;
+    }
+    if (_json.containsKey('advertiserId')) {
+      advertiserId = _json['advertiserId'] as core.String;
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('latestActivationTime')) {
+      latestActivationTime = _json['latestActivationTime'] as core.String;
+    }
+    if (_json.containsKey('name')) {
+      name = _json['name'] as core.String;
+    }
+    if (_json.containsKey('state')) {
+      state = _json['state'] as core.String;
+    }
+    if (_json.containsKey('triggerId')) {
+      triggerId = _json['triggerId'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (activationDurationMinutes != null) {
+      _json['activationDurationMinutes'] = activationDurationMinutes;
+    }
+    if (advertiserId != null) {
+      _json['advertiserId'] = advertiserId;
+    }
+    if (displayName != null) {
+      _json['displayName'] = displayName;
+    }
+    if (latestActivationTime != null) {
+      _json['latestActivationTime'] = latestActivationTime;
+    }
+    if (name != null) {
+      _json['name'] = name;
+    }
+    if (state != null) {
+      _json['state'] = state;
+    }
+    if (triggerId != null) {
+      _json['triggerId'] = triggerId;
+    }
+    return _json;
+  }
+}
+
 /// A strategy that automatically adjusts the bid to optimize a specified
 /// performance goal while spending the full budget.
 class MaximizeSpendBidStrategy {
@@ -21254,10 +22199,10 @@ class MaximizeSpendBidStrategy {
 
 /// Measurement settings of a partner.
 class MeasurementConfig {
-  /// Whether or not to report DV360 cost to CM.
+  /// Whether or not to report DV360 cost to CM360.
   core.bool dv360ToCmCostReportingEnabled;
 
-  /// Whether or not to include DV360 data in CM data transfer reports.
+  /// Whether or not to include DV360 data in CM360 data transfer reports.
   core.bool dv360ToCmDataSharingEnabled;
 
   MeasurementConfig();
@@ -21285,9 +22230,74 @@ class MeasurementConfig {
   }
 }
 
+/// A mobile app promoted by a mobile app install line item.
+class MobileApp {
+  /// The ID of the app provided by the platform store.
+  ///
+  /// Android apps are identified by the bundle ID used by Android's Play store,
+  /// such as `com.google.android.gm`. iOS apps are identified by a nine-digit
+  /// app ID used by Apple's App store, such as `422689480`.
+  ///
+  /// Required.
+  core.String appId;
+
+  /// The app name.
+  ///
+  /// Output only.
+  core.String displayName;
+
+  /// The app platform.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PLATFORM_UNSPECIFIED" : Platform is not specified.
+  /// - "IOS" : iOS platform.
+  /// - "ANDROID" : Android platform.
+  core.String platform;
+
+  /// The app publisher.
+  ///
+  /// Output only.
+  core.String publisher;
+
+  MobileApp();
+
+  MobileApp.fromJson(core.Map _json) {
+    if (_json.containsKey('appId')) {
+      appId = _json['appId'] as core.String;
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('platform')) {
+      platform = _json['platform'] as core.String;
+    }
+    if (_json.containsKey('publisher')) {
+      publisher = _json['publisher'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (appId != null) {
+      _json['appId'] = appId;
+    }
+    if (displayName != null) {
+      _json['displayName'] = displayName;
+    }
+    if (platform != null) {
+      _json['platform'] = platform;
+    }
+    if (publisher != null) {
+      _json['publisher'] = publisher;
+    }
+    return _json;
+  }
+}
+
 /// Represents an amount of money with its currency type.
 class Money {
-  /// The 3-letter currency code defined in ISO 4217.
+  /// The three-letter currency code defined in ISO 4217.
   core.String currencyCode;
 
   /// Number of nano (10^-9) units of the amount.
@@ -22995,7 +24005,8 @@ class SdfConfig {
   /// - "SDF_VERSION_4_2" : SDF version 4.2
   /// - "SDF_VERSION_5" : SDF version 5.
   /// - "SDF_VERSION_5_1" : SDF version 5.1
-  /// - "SDF_VERSION_5_2" : SDF version 5.2;
+  /// - "SDF_VERSION_5_2" : SDF version 5.2
+  /// - "SDF_VERSION_5_3" : SDF version 5.3
   core.String version;
 
   SdfConfig();
@@ -23069,7 +24080,8 @@ class SdfDownloadTaskMetadata {
   /// - "SDF_VERSION_4_2" : SDF version 4.2
   /// - "SDF_VERSION_5" : SDF version 5.
   /// - "SDF_VERSION_5_1" : SDF version 5.1
-  /// - "SDF_VERSION_5_2" : SDF version 5.2;
+  /// - "SDF_VERSION_5_2" : SDF version 5.2
+  /// - "SDF_VERSION_5_3" : SDF version 5.3
   core.String version;
 
   SdfDownloadTaskMetadata();
@@ -23096,6 +24108,107 @@ class SdfDownloadTaskMetadata {
     }
     if (version != null) {
       _json['version'] = version;
+    }
+    return _json;
+  }
+}
+
+/// Request message for SearchTargetingOptions.
+class SearchTargetingOptionsRequest {
+  /// The Advertiser this request is being made in the context of.
+  ///
+  /// Required.
+  core.String advertiserId;
+
+  /// Search terms for geo region targeting options.
+  ///
+  /// Can only be used when targeting_type is `TARGETING_TYPE_GEO_REGION`.
+  GeoRegionSearchTerms geoRegionSearchTerms;
+
+  /// Requested page size.
+  ///
+  /// Must be between `1` and `100`. If unspecified will default to `100`.
+  /// Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+  core.int pageSize;
+
+  /// A token identifying a page of results the server should return.
+  ///
+  /// Typically, this is the value of next_page_token returned from the previous
+  /// call to `SearchTargetingOptions` method. If not specified, the first page
+  /// of results will be returned.
+  core.String pageToken;
+
+  SearchTargetingOptionsRequest();
+
+  SearchTargetingOptionsRequest.fromJson(core.Map _json) {
+    if (_json.containsKey('advertiserId')) {
+      advertiserId = _json['advertiserId'] as core.String;
+    }
+    if (_json.containsKey('geoRegionSearchTerms')) {
+      geoRegionSearchTerms = GeoRegionSearchTerms.fromJson(
+          _json['geoRegionSearchTerms'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('pageSize')) {
+      pageSize = _json['pageSize'] as core.int;
+    }
+    if (_json.containsKey('pageToken')) {
+      pageToken = _json['pageToken'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (advertiserId != null) {
+      _json['advertiserId'] = advertiserId;
+    }
+    if (geoRegionSearchTerms != null) {
+      _json['geoRegionSearchTerms'] = geoRegionSearchTerms.toJson();
+    }
+    if (pageSize != null) {
+      _json['pageSize'] = pageSize;
+    }
+    if (pageToken != null) {
+      _json['pageToken'] = pageToken;
+    }
+    return _json;
+  }
+}
+
+/// Response message for SearchTargetingOptionsResponse.
+class SearchTargetingOptionsResponse {
+  /// A token to retrieve the next page of results.
+  ///
+  /// Pass this value in the page_token field in the subsequent call to
+  /// `SearchTargetingOptions` method to retrieve the next page of results.
+  core.String nextPageToken;
+
+  /// The list of targeting options that match the search criteria.
+  ///
+  /// This list will be absent if empty.
+  core.List<TargetingOption> targetingOptions;
+
+  SearchTargetingOptionsResponse();
+
+  SearchTargetingOptionsResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('nextPageToken')) {
+      nextPageToken = _json['nextPageToken'] as core.String;
+    }
+    if (_json.containsKey('targetingOptions')) {
+      targetingOptions = (_json['targetingOptions'] as core.List)
+          .map<TargetingOption>((value) => TargetingOption.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (nextPageToken != null) {
+      _json['nextPageToken'] = nextPageToken;
+    }
+    if (targetingOptions != null) {
+      _json['targetingOptions'] =
+          targetingOptions.map((value) => value.toJson()).toList();
     }
     return _json;
   }
@@ -23421,6 +24534,61 @@ class SubExchangeTargetingOptionDetails {
     final _json = <core.String, core.Object>{};
     if (displayName != null) {
       _json['displayName'] = displayName;
+    }
+    return _json;
+  }
+}
+
+/// Settings that control the targeting expansion of the line item.
+///
+/// Targeting expansion allows the line item to reach a larger audience based on
+/// the original audience list and the targeting expansion level.
+class TargetingExpansionConfig {
+  /// Whether to exclude first party audiences from targeting.
+  ///
+  /// Similar audiences of the excluded first party lists will not be excluded.
+  /// Only applicable when a first-party audience is positively targeted
+  /// (directly or included in a combined audience), otherwise this selection
+  /// will be ignored.
+  ///
+  /// Required.
+  core.bool excludeFirstPartyAudience;
+
+  /// Magnitude of expansion for applicable targeting under this line item.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TARGETING_EXPANSION_LEVEL_UNSPECIFIED" : Targeting expansion level is
+  /// not specified or is unknown in this version.
+  /// - "NO_EXPANSION" : Targeting expansion off.
+  /// - "LEAST_EXPANSION" : Conservative targeting expansion, lowest reach.
+  /// - "SOME_EXPANSION" : Moderately conservative targeting expansion, lower
+  /// reach.
+  /// - "BALANCED_EXPANSION" : Moderate targeting expansion, medium reach.
+  /// - "MORE_EXPANSION" : Moderately aggressive targeting expansion, higher
+  /// reach.
+  /// - "MOST_EXPANSION" : Aggressive targeting expansion, highest reach.
+  core.String targetingExpansionLevel;
+
+  TargetingExpansionConfig();
+
+  TargetingExpansionConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('excludeFirstPartyAudience')) {
+      excludeFirstPartyAudience =
+          _json['excludeFirstPartyAudience'] as core.bool;
+    }
+    if (_json.containsKey('targetingExpansionLevel')) {
+      targetingExpansionLevel = _json['targetingExpansionLevel'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() {
+    final _json = <core.String, core.Object>{};
+    if (excludeFirstPartyAudience != null) {
+      _json['excludeFirstPartyAudience'] = excludeFirstPartyAudience;
+    }
+    if (targetingExpansionLevel != null) {
+      _json['targetingExpansionLevel'] = targetingExpansionLevel;
     }
     return _json;
   }
@@ -24208,7 +25376,7 @@ class UniversalAdId {
   /// Universal Ad ID.
   /// - "UNIVERSAL_AD_REGISTRY_DV360" : Use Display & Video 360 to provide the
   /// Universal Ad ID.
-  /// - "UNIVERSAL_AD_REGISTRY_CM" : Use Campaign Manager to provide the
+  /// - "UNIVERSAL_AD_REGISTRY_CM" : Use Campaign Manager 360 to provide the
   /// Universal Ad ID.
   core.String registry;
 

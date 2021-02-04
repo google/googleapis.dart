@@ -114,7 +114,7 @@ class AnalyticsApi {
   UserDeletionResource get userDeletion => UserDeletionResource(_requester);
 
   AnalyticsApi(http.Client client,
-      {core.String rootUrl = 'https://www.googleapis.com/',
+      {core.String rootUrl = 'https://analytics.googleapis.com/',
       core.String servicePath = 'analytics/v3/'})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);

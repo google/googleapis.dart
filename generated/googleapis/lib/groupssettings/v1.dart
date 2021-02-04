@@ -546,6 +546,7 @@ class Groups {
   /// - ALL_MANAGERS_CAN_CONTACT
   /// - ALL_MEMBERS_CAN_CONTACT
   /// - ANYONE_CAN_CONTACT
+  /// - ALL_OWNERS_CAN_CONTACT
   core.String whoCanContactOwner;
 
   /// This is merged into the new whoCanModerateContent setting.

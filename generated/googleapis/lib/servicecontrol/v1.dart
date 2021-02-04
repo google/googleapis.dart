@@ -17,8 +17,8 @@
 
 /// Service Control API - v1
 ///
-/// Provides control plane functionality to managed services, such as logging,
-/// monitoring, and status checks.
+/// Provides admission control and telemetry reporting for services integrated
+/// with Service Infrastructure.
 ///
 /// For more information, see <https://cloud.google.com/service-control/>
 ///
@@ -39,8 +39,8 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Provides control plane functionality to managed services, such as logging,
-/// monitoring, and status checks.
+/// Provides admission control and telemetry reporting for services integrated
+/// with Service Infrastructure.
 class ServiceControlApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
@@ -2265,6 +2265,9 @@ class MetricValue {
 
   /// The end of the time period over which this metric value's measurement
   /// applies.
+  ///
+  /// If not specified, google.api.servicecontrol.v1.Operation.end_time will be
+  /// used.
   core.String endTime;
 
   /// A signed 64-bit integer value.
@@ -2285,7 +2288,8 @@ class MetricValue {
   ///
   /// The time period has different semantics for different metric types
   /// (cumulative, delta, and gauge). See the metric definition documentation in
-  /// the service configuration for details.
+  /// the service configuration for details. If not specified,
+  /// google.api.servicecontrol.v1.Operation.start_time will be used.
   core.String startTime;
 
   /// A text string value.
@@ -2404,7 +2408,7 @@ class MetricValueSet {
 
 /// Represents an amount of money with its currency type.
 class Money {
-  /// The 3-letter currency code defined in ISO 4217.
+  /// The three-letter currency code defined in ISO 4217.
   core.String currencyCode;
 
   /// Number of nano (10^-9) units of the amount.
@@ -2478,16 +2482,15 @@ class Operation {
   ///
   /// This is an experimental field.
   /// Possible string values are:
-  /// - "LOW" : The API implementation may cache and aggregate the data. The
-  /// data may be lost when rare and unexpected system failures occur.
-  /// - "HIGH" : The API implementation doesn't cache and aggregate the data. If
-  /// the method returns successfully, it's guaranteed that the data has been
-  /// persisted in durable storage.
-  /// - "DEBUG" : In addition to the behavior described in HIGH, DEBUG enables
-  /// additional validation logic that is only useful during the onboarding
-  /// process. This is only available to Google internal services and the
-  /// service must be whitelisted by chemist-dev@google.com in order to use this
-  /// level.
+  /// - "LOW" : Allows data caching, batching, and aggregation. It provides
+  /// higher performance with higher data loss risk.
+  /// - "HIGH" : Disables data aggregation to minimize data loss. It is for
+  /// operations that contains significant monetary value or audit trail. This
+  /// feature only applies to the client libraries.
+  /// - "DEBUG" : Deprecated. Do not use. Disables data aggregation and enables
+  /// additional validation logic. It should only be used during the onboarding
+  /// process. It is only available to Google internal services, and the service
+  /// must be approved by chemist-dev@google.com in order to use this level.
   core.String importance;
 
   /// Labels describing the operation.
@@ -2559,10 +2562,11 @@ class Operation {
   /// Unimplemented.
   core.List<TraceSpan> traceSpans;
 
-  /// User defined labels for the resource that this operation is associated
-  /// with.
+  /// Private Preview.
   ///
-  /// Only a combination of 1000 user labels per consumer project are allowed.
+  /// This feature is only available for approved services. User defined labels
+  /// for the resource that this operation is associated with. Only a
+  /// combination of 1000 user labels per consumer project are allowed.
   core.Map<core.String, core.String> userLabels;
 
   Operation();
@@ -2806,6 +2810,11 @@ class QuotaError {
   /// Free-form text that provides details on the cause of the error.
   core.String description;
 
+  /// Contains additional information about the quota error.
+  ///
+  /// If available, `status.code` will be non zero.
+  Status status;
+
   /// Subject to whom this error applies.
   ///
   /// See the specific enum for more details on this field. For example,
@@ -2821,6 +2830,10 @@ class QuotaError {
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
+    if (_json.containsKey('status')) {
+      status = Status.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('subject')) {
       subject = _json['subject'] as core.String;
     }
@@ -2833,6 +2846,9 @@ class QuotaError {
     }
     if (description != null) {
       _json['description'] = description;
+    }
+    if (status != null) {
+      _json['status'] = status.toJson();
     }
     if (subject != null) {
       _json['subject'] = subject;
@@ -2983,7 +2999,7 @@ class QuotaOperation {
   /// - "QUERY_ONLY" : Unimplemented. When used in AllocateQuotaRequest, this
   /// returns the effective quota limit(s) in the response, and no quota check
   /// will be performed. Not supported for other requests, and even for
-  /// AllocateQuotaRequest, this is currently supported only for whitelisted
+  /// AllocateQuotaRequest, this is currently supported only for allowlisted
   /// services.
   /// - "ADJUST_ONLY" : The operation allocates quota for the amount specified
   /// in the service configuration or specified using the quota metrics. If the
@@ -3114,38 +3130,6 @@ class ReportError {
   }
 }
 
-/// Contains additional info about the report operation.
-class ReportInfo {
-  /// The Operation.operation_id value from the request.
-  core.String operationId;
-
-  /// Quota usage info when processing the `Operation`.
-  QuotaInfo quotaInfo;
-
-  ReportInfo();
-
-  ReportInfo.fromJson(core.Map _json) {
-    if (_json.containsKey('operationId')) {
-      operationId = _json['operationId'] as core.String;
-    }
-    if (_json.containsKey('quotaInfo')) {
-      quotaInfo = QuotaInfo.fromJson(
-          _json['quotaInfo'] as core.Map<core.String, core.dynamic>);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (operationId != null) {
-      _json['operationId'] = operationId;
-    }
-    if (quotaInfo != null) {
-      _json['quotaInfo'] = quotaInfo.toJson();
-    }
-    return _json;
-  }
-}
-
 /// Request message for the Report method.
 class ReportRequest {
   /// Operations to be reported.
@@ -3208,15 +3192,6 @@ class ReportResponse {
   /// failed.
   core.List<ReportError> reportErrors;
 
-  /// Quota usage for each quota release `Operation` request.
-  ///
-  /// Fully or partially failed quota release request may or may not be present
-  /// in `report_quota_info`. For example, a failed quota release request will
-  /// have the current quota usage info when precise quota library returns the
-  /// info. A deadline exceeded quota request will not have quota usage info. If
-  /// there is no quota release request, report_quota_info will be empty.
-  core.List<ReportInfo> reportInfos;
-
   /// The actual config id used to process the request.
   core.String serviceConfigId;
 
@@ -3232,12 +3207,6 @@ class ReportResponse {
               value as core.Map<core.String, core.dynamic>))
           .toList();
     }
-    if (_json.containsKey('reportInfos')) {
-      reportInfos = (_json['reportInfos'] as core.List)
-          .map<ReportInfo>((value) =>
-              ReportInfo.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
     if (_json.containsKey('serviceConfigId')) {
       serviceConfigId = _json['serviceConfigId'] as core.String;
     }
@@ -3251,10 +3220,6 @@ class ReportResponse {
     if (reportErrors != null) {
       _json['reportErrors'] =
           reportErrors.map((value) => value.toJson()).toList();
-    }
-    if (reportInfos != null) {
-      _json['reportInfos'] =
-          reportInfos.map((value) => value.toJson()).toList();
     }
     if (serviceConfigId != null) {
       _json['serviceConfigId'] = serviceConfigId;
@@ -3519,9 +3484,57 @@ class RequestMetadata {
 /// A resource is an addressable (named) entity provided by the destination
 /// service. For example, a file stored on a network storage service.
 class Resource {
+  /// Annotations is an unstructured key-value map stored with a resource that
+  /// may be set by external tools to store and retrieve arbitrary metadata.
+  ///
+  /// They are not queryable and should be preserved when modifying objects.
+  /// More info: https://kubernetes.io/docs/user-guide/annotations
+  core.Map<core.String, core.String> annotations;
+
+  /// The timestamp when the resource was created.
+  ///
+  /// This may be either the time creation was initiated or when it was
+  /// completed.
+  ///
+  /// Output only.
+  core.String createTime;
+
+  /// The timestamp when the resource was deleted.
+  ///
+  /// If the resource is not deleted, this must be empty.
+  ///
+  /// Output only.
+  core.String deleteTime;
+
+  /// Mutable.
+  ///
+  /// The display name set by clients. Must be <= 63 characters.
+  core.String displayName;
+
+  /// An opaque value that uniquely identifies a version or generation of a
+  /// resource.
+  ///
+  /// It can be used to confirm that the client and server agree on the ordering
+  /// of a resource being written.
+  ///
+  /// Output only.
+  core.String etag;
+
   /// The labels or tags on the resource, such as AWS resource tags and
   /// Kubernetes resource labels.
   core.Map<core.String, core.String> labels;
+
+  /// The location of the resource.
+  ///
+  /// The location encoding is specific to the service provider, and new
+  /// encoding may be introduced as the service evolves. For Google Cloud
+  /// products, the encoding is what is used by Google Cloud APIs, such as
+  /// `us-east1`, `aws-us-east-1`, and `azure-eastus2`. The semantics of
+  /// `location` is identical to the `cloud.googleapis.com/location` label used
+  /// by some Google Cloud APIs.
+  ///
+  /// Immutable.
+  core.String location;
 
   /// The stable identifier (name) of a resource on the `service`.
   ///
@@ -3550,9 +3563,47 @@ class Resource {
   /// "{service}/{kind}".
   core.String type;
 
+  /// The unique identifier of the resource.
+  ///
+  /// UID is unique in the time and space for this resource within the scope of
+  /// the service. It is typically generated by the server on successful
+  /// creation of a resource and must not be changed. UID is used to uniquely
+  /// identify resources with resource name reuses. This should be a UUID4.
+  core.String uid;
+
+  /// The timestamp when the resource was last updated.
+  ///
+  /// Any change to the resource made by users must refresh this value. Changes
+  /// to a resource made by the service should refresh this value.
+  ///
+  /// Output only.
+  core.String updateTime;
+
   Resource();
 
   Resource.fromJson(core.Map _json) {
+    if (_json.containsKey('annotations')) {
+      annotations = (_json['annotations'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
+    }
+    if (_json.containsKey('createTime')) {
+      createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('deleteTime')) {
+      deleteTime = _json['deleteTime'] as core.String;
+    }
+    if (_json.containsKey('displayName')) {
+      displayName = _json['displayName'] as core.String;
+    }
+    if (_json.containsKey('etag')) {
+      etag = _json['etag'] as core.String;
+    }
     if (_json.containsKey('labels')) {
       labels =
           (_json['labels'] as core.Map).cast<core.String, core.String>().map(
@@ -3561,6 +3612,9 @@ class Resource {
                   item as core.String,
                 ),
               );
+    }
+    if (_json.containsKey('location')) {
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -3571,12 +3625,36 @@ class Resource {
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
     }
+    if (_json.containsKey('uid')) {
+      uid = _json['uid'] as core.String;
+    }
+    if (_json.containsKey('updateTime')) {
+      updateTime = _json['updateTime'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (annotations != null) {
+      _json['annotations'] = annotations;
+    }
+    if (createTime != null) {
+      _json['createTime'] = createTime;
+    }
+    if (deleteTime != null) {
+      _json['deleteTime'] = deleteTime;
+    }
+    if (displayName != null) {
+      _json['displayName'] = displayName;
+    }
+    if (etag != null) {
+      _json['etag'] = etag;
+    }
     if (labels != null) {
       _json['labels'] = labels;
+    }
+    if (location != null) {
+      _json['location'] = location;
     }
     if (name != null) {
       _json['name'] = name;
@@ -3586,6 +3664,12 @@ class Resource {
     }
     if (type != null) {
       _json['type'] = type;
+    }
+    if (uid != null) {
+      _json['uid'] = uid;
+    }
+    if (updateTime != null) {
+      _json['updateTime'] = updateTime;
     }
     return _json;
   }
@@ -3688,6 +3772,11 @@ class ServiceAccountDelegationInfo {
   /// First party (Google) identity as the real authority.
   FirstPartyPrincipal firstPartyPrincipal;
 
+  /// A string representing the principal_subject associated with the identity.
+  ///
+  /// See go/3pical for more info on how principal_subject is formatted.
+  core.String principalSubject;
+
   /// Third party identity as the real authority.
   ThirdPartyPrincipal thirdPartyPrincipal;
 
@@ -3697,6 +3786,9 @@ class ServiceAccountDelegationInfo {
     if (_json.containsKey('firstPartyPrincipal')) {
       firstPartyPrincipal = FirstPartyPrincipal.fromJson(
           _json['firstPartyPrincipal'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('principalSubject')) {
+      principalSubject = _json['principalSubject'] as core.String;
     }
     if (_json.containsKey('thirdPartyPrincipal')) {
       thirdPartyPrincipal = ThirdPartyPrincipal.fromJson(
@@ -3708,6 +3800,9 @@ class ServiceAccountDelegationInfo {
     final _json = <core.String, core.Object>{};
     if (firstPartyPrincipal != null) {
       _json['firstPartyPrincipal'] = firstPartyPrincipal.toJson();
+    }
+    if (principalSubject != null) {
+      _json['principalSubject'] = principalSubject;
     }
     if (thirdPartyPrincipal != null) {
       _json['thirdPartyPrincipal'] = thirdPartyPrincipal.toJson();

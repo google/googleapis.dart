@@ -15,7 +15,7 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Admin SDK - reports_v1
+/// Admin SDK API - reports_v1
 ///
 /// Admin SDK lets administrators of enterprise domains to view and manage
 /// resources like user, groups etc. It also provides audit and usage reports of
@@ -69,7 +69,7 @@ class ReportsApi {
       UserUsageReportResource(_requester);
 
   ReportsApi(http.Client client,
-      {core.String rootUrl = 'https://www.googleapis.com/',
+      {core.String rootUrl = 'https://admin.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
@@ -91,13 +91,13 @@ class ActivitiesResource {
   /// Request parameters:
   ///
   /// [userKey] - Represents the profile ID or the user email for which the data
-  /// should be filtered. Can be all for all information, or userKey for a
+  /// should be filtered. Can be `all` for all information, or `userKey` for a
   /// user's unique G Suite profile ID or their primary email address.
   ///
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// `(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)|(gcp)|(context_aware_access)|(data_studio)|(chrome)`.
+  /// `(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)`.
   /// Possible string values are:
   /// - "application_name_undefined"
   /// - "access_transparency" : The G Suite Access Transparency activity reports
@@ -143,6 +143,8 @@ class ActivitiesResource {
   /// access rules.
   /// - "chrome" : The Chrome activity reports return information about unsafe
   /// events reported in the context of the WebProtect features of BeyondCorp.
+  /// - "data_studio" : The Data Studio activity reports return information
+  /// about various types of Data Studio activity events.
   ///
   /// [actorIpAddress] - The Internet Protocol (IP) Address of host where the
   /// event was performed. This is an additional way to filter a report's
@@ -153,74 +155,82 @@ class ActivitiesResource {
   /// and IPv6 address versions.
   ///
   /// [customerId] - The unique ID of the customer to retrieve data for.
-  /// Value must have pattern `C.+`.
+  /// Value must have pattern `C.+|my_customer`.
   ///
   /// [endTime] - Sets the end of the range of time shown in the report. The
   /// date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The
   /// default value is the approximate time of the API request. An API report
   /// has three basic time concepts: - *Date of the API's request for a report*:
   /// When the API created and retrieved the report. - *Report's start time*:
-  /// The beginning of the timespan shown in the report. The startTime must be
-  /// before the endTime (if specified) and the current time when the request is
-  /// made, or the API returns an error. - *Report's end time*: The end of the
-  /// timespan shown in the report. For example, the timespan of events
+  /// The beginning of the timespan shown in the report. The `startTime` must be
+  /// before the `endTime` (if specified) and the current time when the request
+  /// is made, or the API returns an error. - *Report's end time*: The end of
+  /// the timespan shown in the report. For example, the timespan of events
   /// summarized in a report can start in April and end in May. The report
-  /// itself can be requested in August. If the endTime is not specified, the
-  /// report returns all activities from the startTime until the current time or
-  /// the most recent 180 days if the startTime is more than 180 days in the
-  /// past.
+  /// itself can be requested in August. If the `endTime` is not specified, the
+  /// report returns all activities from the `startTime` until the current time
+  /// or the most recent 180 days if the `startTime` is more than 180 days in
+  /// the past.
   /// Value must have pattern
   /// `(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|(\[-+\])(\d\d):(\d\d))`.
   ///
   /// [eventName] - The name of the event being queried by the API. Each
-  /// eventName is related to a specific G Suite service or feature which the
+  /// `eventName` is related to a specific G Suite service or feature which the
   /// API organizes into types of events. An example is the Google Calendar
   /// events in the Admin console application's reports. The Calendar Settings
-  /// type structure has all of the Calendar eventName activities reported by
-  /// the API. When an administrator changes a Calendar setting, the API reports
-  /// this activity in the Calendar Settings type and eventName parameters. For
-  /// more information about eventName query strings and parameters, see the
-  /// list of event names for various applications above in applicationName.
+  /// `type` structure has all of the Calendar `eventName` activities reported
+  /// by the API. When an administrator changes a Calendar setting, the API
+  /// reports this activity in the Calendar Settings `type` and `eventName`
+  /// parameters. For more information about `eventName` query strings and
+  /// parameters, see the list of event names for various applications above in
+  /// `applicationName`.
   ///
-  /// [filters] - The filters query string is a comma-separated list. The list
+  /// [filters] - The `filters` query string is a comma-separated list. The list
   /// is composed of event parameters that are manipulated by relational
-  /// operators. Event parameters are in the form parameter1 name\[parameter1
-  /// value\],parameter2 name\[parameter2 value\],... These event parameters are
-  /// associated with a specific eventName. An empty report is returned if the
-  /// filtered request's parameter does not belong to the eventName. For more
-  /// information about eventName parameters, see the list of event names for
-  /// various applications above in applicationName. In the following Admin
+  /// operators. Event parameters are in the form `parameter1 name[parameter1
+  /// value],parameter2 name[parameter2 value],...` These event parameters are
+  /// associated with a specific `eventName`. An empty report is returned if the
+  /// filtered request's parameter does not belong to the `eventName`. For more
+  /// information about `eventName` parameters, see the list of event names for
+  /// various applications above in `applicationName`. In the following Admin
   /// Activity example, the <> operator is URL-encoded in the request's query
   /// string (%3C%3E): GET...&eventName=CHANGE_CALENDAR_SETTING
   /// &filters=NEW_VALUE%3C%3EREAD_ONLY_ACCESS In the following Drive example,
-  /// the list can be a view or edit event's doc_id parameter with a value that
-  /// is manipulated by an 'equal to' (==) or 'not equal to' (<>) relational
-  /// operator. In the first example, the report returns each edited document's
-  /// doc_id. In the second example, the report returns each viewed document's
-  /// doc_id that equals the value 12345 and does not return any viewed
-  /// document's which have a doc_id value of 98765. The <> operator is
+  /// the list can be a view or edit event's `doc_id` parameter with a value
+  /// that is manipulated by an 'equal to' (==) or 'not equal to' (<>)
+  /// relational operator. In the first example, the report returns each edited
+  /// document's `doc_id`. In the second example, the report returns each viewed
+  /// document's `doc_id` that equals the value 12345 and does not return any
+  /// viewed document's which have a `doc_id` value of 98765. The <> operator is
   /// URL-encoded in the request's query string (%3C%3E):
   /// GET...&eventName=edit&filters=doc_id
   /// GET...&eventName=view&filters=doc_id==12345,doc_id%3C%3E98765 The
-  /// relational operators include: - == - 'equal to'. - <> - 'not equal to'. It
-  /// is URL-encoded (%3C%3E). - < - 'less than'. It is URL-encoded (%3C). - <=
-  /// - 'less than or equal to'. It is URL-encoded (%3C=). - > - 'greater than'.
-  /// It is URL-encoded (%3E). - >= - 'greater than or equal to'. It is
-  /// URL-encoded (%3E=). *Note:* The API doesn't accept multiple values of a
-  /// parameter. If a particular parameter is supplied more than once in the API
-  /// request, the API only accepts the last value of that request parameter. In
-  /// addition, if an invalid request parameter is supplied in the API request,
-  /// the API ignores that request parameter and returns the response
-  /// corresponding to the remaining valid request parameters. If no parameters
-  /// are requested, all parameters are returned.
+  /// relational operators include: - `==` - 'equal to'. - `<>` - 'not equal
+  /// to'. It is URL-encoded (%3C%3E). - `<` - 'less than'. It is URL-encoded
+  /// (%3C). - `<=` - 'less than or equal to'. It is URL-encoded (%3C=). - `>` -
+  /// 'greater than'. It is URL-encoded (%3E). - `>=` - 'greater than or equal
+  /// to'. It is URL-encoded (%3E=). *Note:* The API doesn't accept multiple
+  /// values of a parameter. If a particular parameter is supplied more than
+  /// once in the API request, the API only accepts the last value of that
+  /// request parameter. In addition, if an invalid request parameter is
+  /// supplied in the API request, the API ignores that request parameter and
+  /// returns the response corresponding to the remaining valid request
+  /// parameters. If no parameters are requested, all parameters are returned.
   /// Value must have pattern
   /// `(.+\[<,<=,==,>=,>,<>\].+,)*(.+\[<,<=,==,>=,>,<>\].+)`.
   ///
+  /// [groupIdFilter] - Comma separated group ids (obfuscated) on which user
+  /// activities are filtered, i.e, the response will contain activities for
+  /// only those users that are a part of at least one of the group ids
+  /// mentioned here. Format: "id:abc123,id:xyz456"
+  /// Value must have pattern `(id:\[a-z0-9\]+(,id:\[a-z0-9\]+)*)`.
+  ///
   /// [maxResults] - Determines how many activity records are shown on each
-  /// response page. For example, if the request sets maxResults=1 and the
+  /// response page. For example, if the request sets `maxResults=1` and the
   /// report has two activities, the report has two pages. The response's
-  /// nextPageToken property has the token to the second page. The maxResults
-  /// query string is optional in the request. The default value is 1000.
+  /// `nextPageToken` property has the token to the second page. The
+  /// `maxResults` query string is optional in the request. The default value is
+  /// 1000.
   /// Value must be between "1" and "1000".
   ///
   /// [orgUnitID] - ID of the organizational unit to report on. Activity records
@@ -229,15 +239,15 @@ class ActivitiesResource {
   /// Value must have pattern `(id:\[a-z0-9\]+)`.
   ///
   /// [pageToken] - The token to specify next page. A report with multiple pages
-  /// has a nextPageToken property in the response. In your follow-on request
-  /// getting the next page of the report, enter the nextPageToken value in the
-  /// pageToken query string.
+  /// has a `nextPageToken` property in the response. In your follow-on request
+  /// getting the next page of the report, enter the `nextPageToken` value in
+  /// the `pageToken` query string.
   ///
   /// [startTime] - Sets the beginning of the range of time shown in the report.
   /// The date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z.
-  /// The report returns all activities from startTime until endTime. The
-  /// startTime must be before the endTime (if specified) and the current time
-  /// when the request is made, or the API returns an error.
+  /// The report returns all activities from `startTime` until `endTime`. The
+  /// `startTime` must be before the `endTime` (if specified) and the current
+  /// time when the request is made, or the API returns an error.
   /// Value must have pattern
   /// `(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|(\[-+\])(\d\d):(\d\d))`.
   ///
@@ -259,6 +269,7 @@ class ActivitiesResource {
     core.String endTime,
     core.String eventName,
     core.String filters,
+    core.String groupIdFilter,
     core.int maxResults,
     core.String orgUnitID,
     core.String pageToken,
@@ -292,6 +303,9 @@ class ActivitiesResource {
     }
     if (filters != null) {
       _queryParams['filters'] = [filters];
+    }
+    if (groupIdFilter != null) {
+      _queryParams['groupIdFilter'] = [groupIdFilter];
     }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -338,13 +352,13 @@ class ActivitiesResource {
   /// Request parameters:
   ///
   /// [userKey] - Represents the profile ID or the user email for which the data
-  /// should be filtered. Can be all for all information, or userKey for a
+  /// should be filtered. Can be `all` for all information, or `userKey` for a
   /// user's unique G Suite profile ID or their primary email address.
   ///
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// `(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)|(jamboard)|(meet)|(user_accounts)|(access_transparency)|(groups_enterprise)|(gcp)|(context_aware_access)|(data_studio)|(chrome)`.
+  /// `(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)`.
   /// Possible string values are:
   /// - "application_name_unspecified"
   /// - "access_transparency" : The G Suite Access Transparency activity reports
@@ -390,6 +404,8 @@ class ActivitiesResource {
   /// access rules.
   /// - "chrome" : The Chrome activity reports return information about unsafe
   /// events reported in the context of the WebProtect features of BeyondCorp.
+  /// - "data_studio" : The Data Studio activity reports return information
+  /// about various types of Data Studio activity events.
   ///
   /// [actorIpAddress] - The Internet Protocol (IP) Address of host where the
   /// event was performed. This is an additional way to filter a report's
@@ -400,74 +416,82 @@ class ActivitiesResource {
   /// and IPv6 address versions.
   ///
   /// [customerId] - The unique ID of the customer to retrieve data for.
-  /// Value must have pattern `C.+`.
+  /// Value must have pattern `C.+|my_customer`.
   ///
   /// [endTime] - Sets the end of the range of time shown in the report. The
   /// date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The
   /// default value is the approximate time of the API request. An API report
   /// has three basic time concepts: - *Date of the API's request for a report*:
   /// When the API created and retrieved the report. - *Report's start time*:
-  /// The beginning of the timespan shown in the report. The startTime must be
-  /// before the endTime (if specified) and the current time when the request is
-  /// made, or the API returns an error. - *Report's end time*: The end of the
-  /// timespan shown in the report. For example, the timespan of events
+  /// The beginning of the timespan shown in the report. The `startTime` must be
+  /// before the `endTime` (if specified) and the current time when the request
+  /// is made, or the API returns an error. - *Report's end time*: The end of
+  /// the timespan shown in the report. For example, the timespan of events
   /// summarized in a report can start in April and end in May. The report
-  /// itself can be requested in August. If the endTime is not specified, the
-  /// report returns all activities from the startTime until the current time or
-  /// the most recent 180 days if the startTime is more than 180 days in the
-  /// past.
+  /// itself can be requested in August. If the `endTime` is not specified, the
+  /// report returns all activities from the `startTime` until the current time
+  /// or the most recent 180 days if the `startTime` is more than 180 days in
+  /// the past.
   /// Value must have pattern
   /// `(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|(\[-+\])(\d\d):(\d\d))`.
   ///
   /// [eventName] - The name of the event being queried by the API. Each
-  /// eventName is related to a specific G Suite service or feature which the
+  /// `eventName` is related to a specific G Suite service or feature which the
   /// API organizes into types of events. An example is the Google Calendar
   /// events in the Admin console application's reports. The Calendar Settings
-  /// type structure has all of the Calendar eventName activities reported by
-  /// the API. When an administrator changes a Calendar setting, the API reports
-  /// this activity in the Calendar Settings type and eventName parameters. For
-  /// more information about eventName query strings and parameters, see the
-  /// list of event names for various applications above in applicationName.
+  /// `type` structure has all of the Calendar `eventName` activities reported
+  /// by the API. When an administrator changes a Calendar setting, the API
+  /// reports this activity in the Calendar Settings `type` and `eventName`
+  /// parameters. For more information about `eventName` query strings and
+  /// parameters, see the list of event names for various applications above in
+  /// `applicationName`.
   ///
-  /// [filters] - The filters query string is a comma-separated list. The list
+  /// [filters] - The `filters` query string is a comma-separated list. The list
   /// is composed of event parameters that are manipulated by relational
-  /// operators. Event parameters are in the form parameter1 name\[parameter1
-  /// value\],parameter2 name\[parameter2 value\],... These event parameters are
-  /// associated with a specific eventName. An empty report is returned if the
-  /// filtered request's parameter does not belong to the eventName. For more
-  /// information about eventName parameters, see the list of event names for
-  /// various applications above in applicationName. In the following Admin
+  /// operators. Event parameters are in the form `parameter1 name[parameter1
+  /// value],parameter2 name[parameter2 value],...` These event parameters are
+  /// associated with a specific `eventName`. An empty report is returned if the
+  /// filtered request's parameter does not belong to the `eventName`. For more
+  /// information about `eventName` parameters, see the list of event names for
+  /// various applications above in `applicationName`. In the following Admin
   /// Activity example, the <> operator is URL-encoded in the request's query
   /// string (%3C%3E): GET...&eventName=CHANGE_CALENDAR_SETTING
   /// &filters=NEW_VALUE%3C%3EREAD_ONLY_ACCESS In the following Drive example,
-  /// the list can be a view or edit event's doc_id parameter with a value that
-  /// is manipulated by an 'equal to' (==) or 'not equal to' (<>) relational
-  /// operator. In the first example, the report returns each edited document's
-  /// doc_id. In the second example, the report returns each viewed document's
-  /// doc_id that equals the value 12345 and does not return any viewed
-  /// document's which have a doc_id value of 98765. The <> operator is
+  /// the list can be a view or edit event's `doc_id` parameter with a value
+  /// that is manipulated by an 'equal to' (==) or 'not equal to' (<>)
+  /// relational operator. In the first example, the report returns each edited
+  /// document's `doc_id`. In the second example, the report returns each viewed
+  /// document's `doc_id` that equals the value 12345 and does not return any
+  /// viewed document's which have a `doc_id` value of 98765. The <> operator is
   /// URL-encoded in the request's query string (%3C%3E):
   /// GET...&eventName=edit&filters=doc_id
   /// GET...&eventName=view&filters=doc_id==12345,doc_id%3C%3E98765 The
-  /// relational operators include: - == - 'equal to'. - <> - 'not equal to'. It
-  /// is URL-encoded (%3C%3E). - < - 'less than'. It is URL-encoded (%3C). - <=
-  /// - 'less than or equal to'. It is URL-encoded (%3C=). - > - 'greater than'.
-  /// It is URL-encoded (%3E). - >= - 'greater than or equal to'. It is
-  /// URL-encoded (%3E=). *Note:* The API doesn't accept multiple values of a
-  /// parameter. If a particular parameter is supplied more than once in the API
-  /// request, the API only accepts the last value of that request parameter. In
-  /// addition, if an invalid request parameter is supplied in the API request,
-  /// the API ignores that request parameter and returns the response
-  /// corresponding to the remaining valid request parameters. If no parameters
-  /// are requested, all parameters are returned.
+  /// relational operators include: - `==` - 'equal to'. - `<>` - 'not equal
+  /// to'. It is URL-encoded (%3C%3E). - `<` - 'less than'. It is URL-encoded
+  /// (%3C). - `<=` - 'less than or equal to'. It is URL-encoded (%3C=). - `>` -
+  /// 'greater than'. It is URL-encoded (%3E). - `>=` - 'greater than or equal
+  /// to'. It is URL-encoded (%3E=). *Note:* The API doesn't accept multiple
+  /// values of a parameter. If a particular parameter is supplied more than
+  /// once in the API request, the API only accepts the last value of that
+  /// request parameter. In addition, if an invalid request parameter is
+  /// supplied in the API request, the API ignores that request parameter and
+  /// returns the response corresponding to the remaining valid request
+  /// parameters. If no parameters are requested, all parameters are returned.
   /// Value must have pattern
   /// `(.+\[<,<=,==,>=,>,<>\].+,)*(.+\[<,<=,==,>=,>,<>\].+)`.
   ///
+  /// [groupIdFilter] - Comma separated group ids (obfuscated) on which user
+  /// activities are filtered, i.e, the response will contain activities for
+  /// only those users that are a part of at least one of the group ids
+  /// mentioned here. Format: "id:abc123,id:xyz456"
+  /// Value must have pattern `(id:\[a-z0-9\]+(,id:\[a-z0-9\]+)*)`.
+  ///
   /// [maxResults] - Determines how many activity records are shown on each
-  /// response page. For example, if the request sets maxResults=1 and the
+  /// response page. For example, if the request sets `maxResults=1` and the
   /// report has two activities, the report has two pages. The response's
-  /// nextPageToken property has the token to the second page. The maxResults
-  /// query string is optional in the request. The default value is 1000.
+  /// `nextPageToken` property has the token to the second page. The
+  /// `maxResults` query string is optional in the request. The default value is
+  /// 1000.
   /// Value must be between "1" and "1000".
   ///
   /// [orgUnitID] - ID of the organizational unit to report on. Activity records
@@ -476,15 +500,15 @@ class ActivitiesResource {
   /// Value must have pattern `(id:\[a-z0-9\]+)`.
   ///
   /// [pageToken] - The token to specify next page. A report with multiple pages
-  /// has a nextPageToken property in the response. In your follow-on request
-  /// getting the next page of the report, enter the nextPageToken value in the
-  /// pageToken query string.
+  /// has a `nextPageToken` property in the response. In your follow-on request
+  /// getting the next page of the report, enter the `nextPageToken` value in
+  /// the `pageToken` query string.
   ///
   /// [startTime] - Sets the beginning of the range of time shown in the report.
   /// The date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z.
-  /// The report returns all activities from startTime until endTime. The
-  /// startTime must be before the endTime (if specified) and the current time
-  /// when the request is made, or the API returns an error.
+  /// The report returns all activities from `startTime` until `endTime`. The
+  /// `startTime` must be before the `endTime` (if specified) and the current
+  /// time when the request is made, or the API returns an error.
   /// Value must have pattern
   /// `(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|(\[-+\])(\d\d):(\d\d))`.
   ///
@@ -507,6 +531,7 @@ class ActivitiesResource {
     core.String endTime,
     core.String eventName,
     core.String filters,
+    core.String groupIdFilter,
     core.int maxResults,
     core.String orgUnitID,
     core.String pageToken,
@@ -543,6 +568,9 @@ class ActivitiesResource {
     }
     if (filters != null) {
       _queryParams['filters'] = [filters];
+    }
+    if (groupIdFilter != null) {
+      _queryParams['groupIdFilter'] = [groupIdFilter];
     }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -658,28 +686,28 @@ class CustomerUsageReportsResource {
   /// Value must have pattern `(\d){4}-(\d){2}-(\d){2}`.
   ///
   /// [customerId] - The unique ID of the customer to retrieve data for.
-  /// Value must have pattern `C.+`.
+  /// Value must have pattern `C.+|my_customer`.
   ///
   /// [pageToken] - Token to specify next page. A report with multiple pages has
-  /// a nextPageToken property in the response. For your follow-on requests
-  /// getting all of the report's pages, enter the nextPageToken value in the
-  /// pageToken query string.
+  /// a `nextPageToken` property in the response. For your follow-on requests
+  /// getting all of the report's pages, enter the `nextPageToken` value in the
+  /// `pageToken` query string.
   ///
-  /// [parameters] - The parameters query string is a comma-separated list of
+  /// [parameters] - The `parameters` query string is a comma-separated list of
   /// event parameters that refine a report's results. The parameter is
   /// associated with a specific application. The application values for the
-  /// Customers usage report include accounts, app_maker, apps_scripts,
-  /// calendar, classroom, cros, docs, gmail, gplus, device_management, meet,
-  /// and sites. A parameters query string is in the CSV form of
-  /// app_name1:param_name1, app_name2:param_name2. *Note:* The API doesn't
-  /// accept multiple values of a parameter. If a particular parameter is
-  /// supplied more than once in the API request, the API only accepts the last
-  /// value of that request parameter. In addition, if an invalid request
-  /// parameter is supplied in the API request, the API ignores that request
-  /// parameter and returns the response corresponding to the remaining valid
-  /// request parameters. An example of an invalid request parameter is one that
-  /// does not belong to the application. If no parameters are requested, all
-  /// parameters are returned.
+  /// Customers usage report include `accounts`, `app_maker`, `apps_scripts`,
+  /// `calendar`, `classroom`, `cros`, `docs`, `gmail`, `gplus`,
+  /// `device_management`, `meet`, and `sites`. A `parameters` query string is
+  /// in the CSV form of `app_name1:param_name1, app_name2:param_name2`. *Note:*
+  /// The API doesn't accept multiple values of a parameter. If a particular
+  /// parameter is supplied more than once in the API request, the API only
+  /// accepts the last value of that request parameter. In addition, if an
+  /// invalid request parameter is supplied in the API request, the API ignores
+  /// that request parameter and returns the response corresponding to the
+  /// remaining valid request parameters. An example of an invalid request
+  /// parameter is one that does not belong to the application. If no parameters
+  /// are requested, all parameters are returned.
   /// Value must have pattern
   /// `(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)|(meet)):\[^,\]+,)*(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)|(meet)):\[^,\]+)`.
   ///
@@ -767,8 +795,8 @@ class EntityUsageReportsResource {
   /// - "entityKeyUndefined"
   /// - "all" : Returns activity events for all users.
   /// - "entityKey" : Represents an app-specific identifier for the entity. For
-  /// details on how to obtain the entityKey for a particular entityType, see
-  /// the Entities Usage parameters reference guides.
+  /// details on how to obtain the `entityKey` for a particular `entityType`,
+  /// see the Entities Usage parameters reference guides.
   ///
   /// [date] - Represents the date the usage occurred. The timestamp is in the
   /// ISO 8601 format, yyyy-mm-dd. We recommend you use your account's time zone
@@ -776,43 +804,43 @@ class EntityUsageReportsResource {
   /// Value must have pattern `(\d){4}-(\d){2}-(\d){2}`.
   ///
   /// [customerId] - The unique ID of the customer to retrieve data for.
-  /// Value must have pattern `C.+`.
+  /// Value must have pattern `C.+|my_customer`.
   ///
-  /// [filters] - The filters query string is a comma-separated list of an
+  /// [filters] - The `filters` query string is a comma-separated list of an
   /// application's event parameters where the parameter's value is manipulated
-  /// by a relational operator. The filters query string includes the name of
+  /// by a relational operator. The `filters` query string includes the name of
   /// the application whose usage is returned in the report. The application
-  /// values for the Entities usage report include accounts, docs, and gmail.
-  /// Filters are in the form \[application name\]:parameter name\[parameter
-  /// value\],.... In this example, the <> 'not equal to' operator is
-  /// URL-encoded in the request's query string (%3C%3E): GET
+  /// values for the Entities usage report include `accounts`, `docs`, and
+  /// `gmail`. Filters are in the form `[application name]:parameter
+  /// name[parameter value],...`. In this example, the `<>` 'not equal to'
+  /// operator is URL-encoded in the request's query string (%3C%3E): GET
   /// https://www.googleapis.com/admin/reports/v1/usage/gplus_communities/all/dates/2017-12-01
   /// ?parameters=gplus:community_name,gplus:num_total_members
-  /// &filters=gplus:num_total_members>0 The relational operators include: - ==
-  /// - 'equal to'. - <> - 'not equal to'. It is URL-encoded (%3C%3E). - < -
-  /// 'less than'. It is URL-encoded (%3C). - <= - 'less than or equal to'. It
-  /// is URL-encoded (%3C=). - > - 'greater than'. It is URL-encoded (%3E). - >=
-  /// - 'greater than or equal to'. It is URL-encoded (%3E=). Filters can only
-  /// be applied to numeric parameters.
+  /// &filters=gplus:num_total_members%3C%3E0 The relational operators include:
+  /// - `==` - 'equal to'. - `<>` - 'not equal to'. It is URL-encoded (%3C%3E).
+  /// - `<` - 'less than'. It is URL-encoded (%3C). - `<=` - 'less than or equal
+  /// to'. It is URL-encoded (%3C=). - `>` - 'greater than'. It is URL-encoded
+  /// (%3E). - `>=` - 'greater than or equal to'. It is URL-encoded (%3E=).
+  /// Filters can only be applied to numeric parameters.
   /// Value must have pattern
   /// `(((gplus)):\[a-z0-9_\]+\[<,<=,==,>=,>,!=\]\[^,\]+,)*(((gplus)):\[a-z0-9_\]+\[<,<=,==,>=,>,!=\]\[^,\]+)`.
   ///
   /// [maxResults] - Determines how many activity records are shown on each
-  /// response page. For example, if the request sets maxResults=1 and the
+  /// response page. For example, if the request sets `maxResults=1` and the
   /// report has two activities, the report has two pages. The response's
-  /// nextPageToken property has the token to the second page.
+  /// `nextPageToken` property has the token to the second page.
   /// Value must be between "1" and "1000".
   ///
   /// [pageToken] - Token to specify next page. A report with multiple pages has
-  /// a nextPageToken property in the response. In your follow-on request
-  /// getting the next page of the report, enter the nextPageToken value in the
-  /// pageToken query string.
+  /// a `nextPageToken` property in the response. In your follow-on request
+  /// getting the next page of the report, enter the `nextPageToken` value in
+  /// the `pageToken` query string.
   ///
-  /// [parameters] - The parameters query string is a comma-separated list of
+  /// [parameters] - The `parameters` query string is a comma-separated list of
   /// event parameters that refine a report's results. The parameter is
   /// associated with a specific application. The application values for the
-  /// Entities usage report are only gplus. A parameter query string is in the
-  /// CSV form of \[app_name1:param_name1\], \[app_name2:param_name2\]....
+  /// Entities usage report are only `gplus`. A `parameter` query string is in
+  /// the CSV form of `[app_name1:param_name1], [app_name2:param_name2]...`.
   /// *Note:* The API doesn't accept multiple values of a parameter. If a
   /// particular parameter is supplied more than once in the API request, the
   /// API only accepts the last value of that request parameter. In addition, if
@@ -917,7 +945,7 @@ class UserUsageReportResource {
   /// Request parameters:
   ///
   /// [userKey] - Represents the profile ID or the user email for which the data
-  /// should be filtered. Can be all for all information, or userKey for a
+  /// should be filtered. Can be `all` for all information, or `userKey` for a
   /// user's unique G Suite profile ID or their primary email address.
   ///
   /// [date] - Represents the date the usage occurred. The timestamp is in the
@@ -926,32 +954,38 @@ class UserUsageReportResource {
   /// Value must have pattern `(\d){4}-(\d){2}-(\d){2}`.
   ///
   /// [customerId] - The unique ID of the customer to retrieve data for.
-  /// Value must have pattern `C.+`.
+  /// Value must have pattern `C.+|my_customer`.
   ///
-  /// [filters] - The filters query string is a comma-separated list of an
+  /// [filters] - The `filters` query string is a comma-separated list of an
   /// application's event parameters where the parameter's value is manipulated
-  /// by a relational operator. The filters query string includes the name of
+  /// by a relational operator. The `filters` query string includes the name of
   /// the application whose usage is returned in the report. The application
-  /// values for the Users Usage Report include accounts, docs, and gmail.
-  /// Filters are in the form \[application name\]:parameter name\[parameter
-  /// value\],.... In this example, the <> 'not equal to' operator is
+  /// values for the Users Usage Report include `accounts`, `docs`, and `gmail`.
+  /// Filters are in the form `[application name]:parameter name[parameter
+  /// value],...`. In this example, the `<>` 'not equal to' operator is
   /// URL-encoded in the request's query string (%3C%3E): GET
   /// https://www.googleapis.com/admin/reports/v1/usage/users/all/dates/2013-03-03
   /// ?parameters=accounts:last_login_time
-  /// &filters=accounts:last_login_time>2010-10-28T10:26:35.000Z The relational
-  /// operators include: - == - 'equal to'. - <> - 'not equal to'. It is
-  /// URL-encoded (%3C%3E). - < - 'less than'. It is URL-encoded (%3C). - <= -
-  /// 'less than or equal to'. It is URL-encoded (%3C=). - > - 'greater than'.
-  /// It is URL-encoded (%3E). - >= - 'greater than or equal to'. It is
-  /// URL-encoded (%3E=).
+  /// &filters=accounts:last_login_time%3C%3E2010-10-28T10:26:35.000Z The
+  /// relational operators include: - `==` - 'equal to'. - `<>` - 'not equal
+  /// to'. It is URL-encoded (%3C%3E). - `<` - 'less than'. It is URL-encoded
+  /// (%3C). - `<=` - 'less than or equal to'. It is URL-encoded (%3C=). - `>` -
+  /// 'greater than'. It is URL-encoded (%3E). - `>=` - 'greater than or equal
+  /// to'. It is URL-encoded (%3E=).
   /// Value must have pattern
   /// `(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[a-z0-9_\]+\[<,<=,==,>=,>,!=\]\[^,\]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[a-z0-9_\]+\[<,<=,==,>=,>,!=\]\[^,\]+)`.
   ///
+  /// [groupIdFilter] - Comma separated group ids (obfuscated) on which user
+  /// activities are filtered, i.e, the response will contain activities for
+  /// only those users that are a part of at least one of the group ids
+  /// mentioned here. Format: "id:abc123,id:xyz456"
+  /// Value must have pattern `(id:\[a-z0-9\]+(,id:\[a-z0-9\]+)*)`.
+  ///
   /// [maxResults] - Determines how many activity records are shown on each
-  /// response page. For example, if the request sets maxResults=1 and the
+  /// response page. For example, if the request sets `maxResults=1` and the
   /// report has two activities, the report has two pages. The response's
-  /// nextPageToken property has the token to the second page. The maxResults
-  /// query string is optional.
+  /// `nextPageToken` property has the token to the second page. The
+  /// `maxResults` query string is optional.
   /// Value must be between "1" and "1000".
   ///
   /// [orgUnitID] - ID of the organizational unit to report on. User activity
@@ -960,25 +994,25 @@ class UserUsageReportResource {
   /// Value must have pattern `(id:\[a-z0-9\]+)`.
   ///
   /// [pageToken] - Token to specify next page. A report with multiple pages has
-  /// a nextPageToken property in the response. In your follow-on request
-  /// getting the next page of the report, enter the nextPageToken value in the
-  /// pageToken query string.
+  /// a `nextPageToken` property in the response. In your follow-on request
+  /// getting the next page of the report, enter the `nextPageToken` value in
+  /// the `pageToken` query string.
   ///
-  /// [parameters] - The parameters query string is a comma-separated list of
+  /// [parameters] - The `parameters` query string is a comma-separated list of
   /// event parameters that refine a report's results. The parameter is
   /// associated with a specific application. The application values for the
-  /// Customers usage report include accounts, app_maker, apps_scripts,
-  /// calendar, classroom, cros, docs, gmail, gplus, device_management, meet,
-  /// and sites. A parameters query string is in the CSV form of
-  /// app_name1:param_name1, app_name2:param_name2. *Note:* The API doesn't
-  /// accept multiple values of a parameter. If a particular parameter is
-  /// supplied more than once in the API request, the API only accepts the last
-  /// value of that request parameter. In addition, if an invalid request
-  /// parameter is supplied in the API request, the API ignores that request
-  /// parameter and returns the response corresponding to the remaining valid
-  /// request parameters. An example of an invalid request parameter is one that
-  /// does not belong to the application. If no parameters are requested, all
-  /// parameters are returned.
+  /// Customers Usage report include `accounts`, `app_maker`, `apps_scripts`,
+  /// `calendar`, `classroom`, `cros`, `docs`, `gmail`, `gplus`,
+  /// `device_management`, `meet`, and `sites`. A `parameters` query string is
+  /// in the CSV form of `app_name1:param_name1, app_name2:param_name2`. *Note:*
+  /// The API doesn't accept multiple values of a parameter. If a particular
+  /// parameter is supplied more than once in the API request, the API only
+  /// accepts the last value of that request parameter. In addition, if an
+  /// invalid request parameter is supplied in the API request, the API ignores
+  /// that request parameter and returns the response corresponding to the
+  /// remaining valid request parameters. An example of an invalid request
+  /// parameter is one that does not belong to the application. If no parameters
+  /// are requested, all parameters are returned.
   /// Value must have pattern
   /// `(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[^,\]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):\[^,\]+)`.
   ///
@@ -997,6 +1031,7 @@ class UserUsageReportResource {
     core.String date, {
     core.String customerId,
     core.String filters,
+    core.String groupIdFilter,
     core.int maxResults,
     core.String orgUnitID,
     core.String pageToken,
@@ -1021,6 +1056,9 @@ class UserUsageReportResource {
     }
     if (filters != null) {
       _queryParams['filters'] = [filters];
+    }
+    if (groupIdFilter != null) {
+      _queryParams['groupIdFilter'] = [groupIdFilter];
     }
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -1069,12 +1107,13 @@ class Activities {
 
   /// The type of API resource.
   ///
-  /// For an activity report, the value is reports#activities.
+  /// For an activity report, the value is `reports#activities`.
   core.String kind;
 
   /// Token for retrieving the follow-on next page of the report.
   ///
-  /// The nextPageToken value is used in the request's pageToken query string.
+  /// The `nextPageToken` value is used in the request's `pageToken` query
+  /// string.
   core.String nextPageToken;
 
   Activities();
@@ -1125,10 +1164,10 @@ class ActivityActor {
   /// May be absent if there is no email address associated with the actor.
   core.String email;
 
-  /// Only present when callerType is KEY.
+  /// Only present when `callerType` is `KEY`.
   ///
-  /// Can be the consumer_key of the requestor for OAuth 2LO API requests or an
-  /// identifier for robot accounts.
+  /// Can be the `consumer_key` of the requestor for OAuth 2LO API requests or
+  /// an identifier for robot accounts.
   core.String key;
 
   /// The unique G Suite profile ID of the actor.
@@ -1174,8 +1213,8 @@ class ActivityActor {
 /// Nested parameter value pairs associated with this parameter.
 ///
 /// Complex value type for a parameter are returned as a list of parameter
-/// values. For example, the address parameter may have a value as \[{parameter:
-/// \[{name: city, value: abc}\]}\]
+/// values. For example, the address parameter may have a value as `[{parameter:
+/// [{name: city, value: abc}]}]`
 class ActivityEventsParametersMessageValue {
   /// Parameter values
   core.List<NestedParameter> parameter;
@@ -1235,13 +1274,13 @@ class ActivityEventsParameters {
   ///
   /// Complex value type for a parameter are returned as a list of parameter
   /// values. For example, the address parameter may have a value as
-  /// \[{parameter: \[{name: city, value: abc}\]}\]
+  /// `[{parameter: [{name: city, value: abc}]}]`
   ActivityEventsParametersMessageValue messageValue;
 
   /// Integer values of the parameter.
   core.List<core.String> multiIntValue;
 
-  /// List of messageValue objects.
+  /// List of `messageValue` objects.
   core.List<ActivityEventsParametersMultiMessageValue> multiMessageValue;
 
   /// String values of the parameter.
@@ -1326,29 +1365,29 @@ class ActivityEvents {
   /// Name of the event.
   ///
   /// This is the specific name of the activity reported by the API. And each
-  /// eventName is related to a specific G Suite service or feature which the
-  /// API organizes into types of events. For eventName request parameters in
-  /// general: - If no eventName is given, the report returns all possible
-  /// instances of an eventName. - When you request an eventName, the API's
-  /// response returns all activities which contain that eventName. It is
-  /// possible that the returned activities will have other eventName properties
-  /// in addition to the one requested. For more information about eventName
-  /// properties, see the list of event names for various applications above in
-  /// applicationName.
+  /// `eventName` is related to a specific G Suite service or feature which the
+  /// API organizes into types of events. For `eventName` request parameters in
+  /// general: - If no `eventName` is given, the report returns all possible
+  /// instances of an `eventName`. - When you request an `eventName`, the API's
+  /// response returns all activities which contain that `eventName`. It is
+  /// possible that the returned activities will have other `eventName`
+  /// properties in addition to the one requested. For more information about
+  /// `eventName` properties, see the list of event names for various
+  /// applications above in `applicationName`.
   core.String name;
 
   /// Parameter value pairs for various applications.
   ///
-  /// For more information about eventName parameters, see the list of event
-  /// names for various applications above in applicationName.
+  /// For more information about `eventName` parameters, see the list of event
+  /// names for various applications above in `applicationName`.
   core.List<ActivityEventsParameters> parameters;
 
   /// Type of event.
   ///
   /// The G Suite service or feature that an administrator changes is identified
-  /// in the type property which identifies an event using the eventName
-  /// property. For a full list of the API's type categories, see the list of
-  /// event names for various applications above in applicationName.
+  /// in the `type` property which identifies an event using the `eventName`
+  /// property. For a full list of the API's `type` categories, see the list of
+  /// event names for various applications above in `applicationName`.
   core.String type;
 
   ActivityEvents();
@@ -1388,7 +1427,8 @@ class ActivityEvents {
 class ActivityId {
   /// Application name to which the event belongs.
   ///
-  /// For possible values see the list of applications above in applicationName.
+  /// For possible values see the list of applications above in
+  /// `applicationName`.
   core.String applicationName;
 
   /// The unique identifier for a G suite account.
@@ -1461,7 +1501,7 @@ class Activity {
 
   /// The type of API resource.
   ///
-  /// For an activity report, the value is audit#activity.
+  /// For an activity report, the value is `audit#activity`.
   core.String kind;
 
   /// This is the domain that is affected by the report's event.
@@ -1543,7 +1583,7 @@ class Channel {
   core.String id;
 
   /// Identifies this as a notification channel used to watch for changes to a
-  /// resource, which is "api#channel".
+  /// resource, which is "`api#channel`".
   core.String kind;
 
   /// Additional parameters controlling delivery channel behavior.
@@ -1571,6 +1611,8 @@ class Channel {
   core.String token;
 
   /// The type of delivery mechanism used for this channel.
+  ///
+  /// The value should be set to `"web_hook"`.
   core.String type;
 
   Channel();
@@ -1756,7 +1798,7 @@ class UsageReportEntity {
 
   /// The type of item.
   ///
-  /// The value is customer.
+  /// The value is `user`.
   ///
   /// Output only.
   core.String type;
@@ -1832,7 +1874,10 @@ class UsageReportParameters {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object>> msgValue;
 
-  /// Name of the parameter.
+  /// The name of the parameter.
+  ///
+  /// For the User Usage Report parameter names, see the User Usage parameters
+  /// reference.
   core.String name;
 
   /// String value of the parameter.
@@ -1913,13 +1958,14 @@ class UsageReport {
 
   /// The type of API resource.
   ///
-  /// For a usage report, the value is admin#reports#usageReport.
+  /// For a usage report, the value is `admin#reports#usageReport`.
   core.String kind;
 
   /// Parameter value pairs for various applications.
   ///
-  /// For the Customers usage report parameters and values, see the customer
-  /// usage parameters reference.
+  /// For the Entity Usage Report parameters and values, see \[the Entity Usage
+  /// parameters
+  /// reference\](/admin-sdk/reports/v1/reference/usage-ref-appendix-a/entities).
   ///
   /// Output only.
   core.List<UsageReportParameters> parameters;
@@ -2004,18 +2050,18 @@ class UsageReportsWarningsData {
 class UsageReportsWarnings {
   /// Machine readable code or warning type.
   ///
-  /// The warning code value is 200.
+  /// The warning code value is `200`.
   core.String code;
 
   /// Key-value pairs to give detailed information on the warning.
   core.List<UsageReportsWarningsData> data;
 
   /// The human readable messages for a warning are: - Data is not available
-  /// warning - Sorry, data for date yyyy-mm-dd for application "application
-  /// name" is not available.
+  /// warning - Sorry, data for date yyyy-mm-dd for application "`application
+  /// name`" is not available.
   ///
   /// - Partial data is available warning - Data for date yyyy-mm-dd for
-  /// application "application name" is not available right now, please try
+  /// application "`application name`" is not available right now, please try
   /// again after a few hours.
   core.String message;
 
@@ -2058,14 +2104,14 @@ class UsageReports {
 
   /// The type of API resource.
   ///
-  /// For a usage report, the value is admin#reports#usageReports.
+  /// For a usage report, the value is `admin#reports#usageReports`.
   core.String kind;
 
   /// Token to specify next page.
   ///
-  /// A report with multiple pages has a nextPageToken property in the response.
-  /// For your follow-on requests getting all of the report's pages, enter the
-  /// nextPageToken value in the pageToken query string.
+  /// A report with multiple pages has a `nextPageToken` property in the
+  /// response. For your follow-on requests getting all of the report's pages,
+  /// enter the `nextPageToken` value in the `pageToken` query string.
   core.String nextPageToken;
 
   /// Various application parameter records.

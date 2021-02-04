@@ -1456,7 +1456,9 @@ class UsersMessagesResource {
   /// [userId] - The user's email address. The special value `me` can be used to
   /// indicate the authenticated user.
   ///
-  /// [id] - The ID of the message to retrieve.
+  /// [id] - The ID of the message to retrieve. This ID is usually retrieved
+  /// using `messages.list`. The ID is also contained in the result when a
+  /// message is inserted (`messages.insert`) or imported (`messages.import`).
   ///
   /// [format] - The format to return the message in.
   /// Possible string values are:

@@ -1289,6 +1289,20 @@ class CloudFunction {
   /// Output only.
   core.String buildId;
 
+  /// Name of the Cloud Build Custom Worker Pool that should be used to build
+  /// the function.
+  ///
+  /// The format of this field is
+  /// `projects/{project}/locations/{region}/workerPools/{workerPool}` where
+  /// {project} and {region} are the project id and region respectively where
+  /// the worker pool is defined and {workerPool} is the short name of the
+  /// worker pool. If the project id is not the same as the function, then the
+  /// Cloud Functions Service Agent
+  /// (service-@gcf-admin-robot.iam.gserviceaccount.com) must be granted the
+  /// role Cloud Build Custom Workers Builder
+  /// (roles/cloudbuild.customworkers.builder) in the project.
+  core.String buildWorkerPool;
+
   /// User-provided description of a function.
   core.String description;
 
@@ -1375,6 +1389,12 @@ class CloudFunction {
   /// **Beta Feature** The source repository where a function is hosted.
   SourceRepository sourceRepository;
 
+  /// Input only.
+  ///
+  /// An identifier for Firebase function sources. Disclaimer: This field is
+  /// only supported for Firebase function deployments.
+  core.String sourceToken;
+
   /// The Google Cloud Storage signed URL used for source uploading, generated
   /// by google.cloud.functions.v1.GenerateUploadUrl
   core.String sourceUploadUrl;
@@ -1452,6 +1472,9 @@ class CloudFunction {
     if (_json.containsKey('buildId')) {
       buildId = _json['buildId'] as core.String;
     }
+    if (_json.containsKey('buildWorkerPool')) {
+      buildWorkerPool = _json['buildWorkerPool'] as core.String;
+    }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
@@ -1510,6 +1533,9 @@ class CloudFunction {
       sourceRepository = SourceRepository.fromJson(
           _json['sourceRepository'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('sourceToken')) {
+      sourceToken = _json['sourceToken'] as core.String;
+    }
     if (_json.containsKey('sourceUploadUrl')) {
       sourceUploadUrl = _json['sourceUploadUrl'] as core.String;
     }
@@ -1544,6 +1570,9 @@ class CloudFunction {
     }
     if (buildId != null) {
       _json['buildId'] = buildId;
+    }
+    if (buildWorkerPool != null) {
+      _json['buildWorkerPool'] = buildWorkerPool;
     }
     if (description != null) {
       _json['description'] = description;
@@ -1586,6 +1615,9 @@ class CloudFunction {
     }
     if (sourceRepository != null) {
       _json['sourceRepository'] = sourceRepository.toJson();
+    }
+    if (sourceToken != null) {
+      _json['sourceToken'] = sourceToken;
     }
     if (sourceUploadUrl != null) {
       _json['sourceUploadUrl'] = sourceUploadUrl;
@@ -1883,6 +1915,17 @@ class GenerateUploadUrlResponse {
 
 /// Describes HttpsTrigger, could be used to connect web hooks to function.
 class HttpsTrigger {
+  /// The security level for the function.
+  /// Possible string values are:
+  /// - "SECURITY_LEVEL_UNSPECIFIED" : Unspecified.
+  /// - "SECURE_ALWAYS" : Requests for a URL that match this handler that do not
+  /// use HTTPS are automatically redirected to the HTTPS URL with the same
+  /// path. Query parameters are reserved for the redirect.
+  /// - "SECURE_OPTIONAL" : Both HTTP and HTTPS requests with URLs that match
+  /// the handler succeed without redirects. The application can examine the
+  /// request to determine which protocol was used and respond accordingly.
+  core.String securityLevel;
+
   /// The deployed url for the function.
   ///
   /// Output only.
@@ -1891,6 +1934,9 @@ class HttpsTrigger {
   HttpsTrigger();
 
   HttpsTrigger.fromJson(core.Map _json) {
+    if (_json.containsKey('securityLevel')) {
+      securityLevel = _json['securityLevel'] as core.String;
+    }
     if (_json.containsKey('url')) {
       url = _json['url'] as core.String;
     }
@@ -1898,6 +1944,9 @@ class HttpsTrigger {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (securityLevel != null) {
+      _json['securityLevel'] = securityLevel;
+    }
     if (url != null) {
       _json['url'] = url;
     }
@@ -2215,6 +2264,12 @@ class OperationMetadataV1 {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object> request;
 
+  /// An identifier for Firebase function sources.
+  ///
+  /// Disclaimer: This field is only supported for Firebase function
+  /// deployments.
+  core.String sourceToken;
+
   /// Target of the operation - for example
   /// projects/project-1/locations/region-1/functions/function-1
   core.String target;
@@ -2250,6 +2305,9 @@ class OperationMetadataV1 {
                 ),
               );
     }
+    if (_json.containsKey('sourceToken')) {
+      sourceToken = _json['sourceToken'] as core.String;
+    }
     if (_json.containsKey('target')) {
       target = _json['target'] as core.String;
     }
@@ -2271,6 +2329,9 @@ class OperationMetadataV1 {
     }
     if (request != null) {
       _json['request'] = request;
+    }
+    if (sourceToken != null) {
+      _json['sourceToken'] = sourceToken;
     }
     if (target != null) {
       _json['target'] = target;

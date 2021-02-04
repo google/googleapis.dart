@@ -3877,11 +3877,6 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding.
-  ///
-  /// Expected to be globally unique to support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
@@ -3932,9 +3927,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'] as core.String;
-    }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(
           _json['condition'] as core.Map<core.String, core.dynamic>);
@@ -3951,9 +3943,6 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
-    if (bindingId != null) {
-      _json['bindingId'] = bindingId;
-    }
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }
@@ -4359,6 +4348,7 @@ class GoogleCloudDatacatalogV1beta1Entry {
   /// - "INTEGRATED_SYSTEM_UNSPECIFIED" : Default unknown system.
   /// - "BIGQUERY" : BigQuery.
   /// - "CLOUD_PUBSUB" : Cloud Pub/Sub.
+  /// - "DPMS" : Dataproc Metastore - Managed Hive Metastore.
   core.String integratedSystem;
 
   /// The resource this metadata entry refers to.
@@ -4668,18 +4658,6 @@ class GoogleCloudDatacatalogV1beta1FieldType {
 }
 
 class GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
-  /// The set of allowed values for this enum.
-  ///
-  /// This set must not be empty, the display names of the values in this set
-  /// must not be empty and the display names of the values must be
-  /// case-insensitively unique within this set. The order of items in this list
-  /// is preserved. This field can be used to Required on create; optional on
-  /// update. The set of allowed values for this enum. This set must not be
-  /// empty, the display names of the values in this set must not be empty and
-  /// the display names of the values must be case-insensitively unique within
-  /// this set. Currently, enum values can only be added to the list of allowed
-  /// values. Deletion and renaming of enum values are not supported. Can have
-  /// up to 500 allowed values.
   core.List<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>
       allowedValues;
 
@@ -5509,6 +5487,9 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResult {
   /// `//bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId`
   core.String linkedResource;
 
+  /// Last-modified timestamp of the entry from the managing system.
+  core.String modifyTime;
+
   /// The relative resource name of the resource in URL format.
   ///
   /// Examples: *
@@ -5540,6 +5521,9 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResult {
     if (_json.containsKey('linkedResource')) {
       linkedResource = _json['linkedResource'] as core.String;
     }
+    if (_json.containsKey('modifyTime')) {
+      modifyTime = _json['modifyTime'] as core.String;
+    }
     if (_json.containsKey('relativeResourceName')) {
       relativeResourceName = _json['relativeResourceName'] as core.String;
     }
@@ -5555,6 +5539,9 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResult {
     final _json = <core.String, core.Object>{};
     if (linkedResource != null) {
       _json['linkedResource'] = linkedResource;
+    }
+    if (modifyTime != null) {
+      _json['modifyTime'] = modifyTime;
     }
     if (relativeResourceName != null) {
       _json['relativeResourceName'] = relativeResourceName;
@@ -5636,6 +5623,9 @@ class GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
 ///
 /// Used for taxonomy import/export and mutation.
 class GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
+  /// A list of policy types that are activated for a taxonomy.
+  core.List<core.String> activatedPolicyTypes;
+
   /// Description of the serialized taxonomy.
   ///
   /// The length of the description is limited to 2000 bytes when encoded in
@@ -5655,6 +5645,11 @@ class GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
   GoogleCloudDatacatalogV1beta1SerializedTaxonomy();
 
   GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(core.Map _json) {
+    if (_json.containsKey('activatedPolicyTypes')) {
+      activatedPolicyTypes = (_json['activatedPolicyTypes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
+    }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
@@ -5672,6 +5667,9 @@ class GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (activatedPolicyTypes != null) {
+      _json['activatedPolicyTypes'] = activatedPolicyTypes;
+    }
     if (description != null) {
       _json['description'] = description;
     }
@@ -6032,6 +6030,11 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
 
 /// The template for an individual field within a tag template.
 class GoogleCloudDatacatalogV1beta1TagTemplateField {
+  /// The description for this field.
+  ///
+  /// Defaults to an empty string.
+  core.String description;
+
   /// The display name for this field.
   ///
   /// Defaults to an empty string.
@@ -6067,6 +6070,9 @@ class GoogleCloudDatacatalogV1beta1TagTemplateField {
   GoogleCloudDatacatalogV1beta1TagTemplateField();
 
   GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(core.Map _json) {
+    if (_json.containsKey('description')) {
+      description = _json['description'] as core.String;
+    }
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
     }
@@ -6087,6 +6093,9 @@ class GoogleCloudDatacatalogV1beta1TagTemplateField {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
+    if (description != null) {
+      _json['description'] = description;
+    }
     if (displayName != null) {
       _json['displayName'] = displayName;
     }
@@ -6145,6 +6154,18 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
   /// Output only.
   core.String name;
 
+  /// Number of policy tags contained in this taxonomy.
+  ///
+  /// Output only.
+  core.int policyTagCount;
+
+  /// Timestamps about this taxonomy.
+  ///
+  /// Only create_time and update_time are used.
+  ///
+  /// Output only.
+  GoogleCloudDatacatalogV1beta1SystemTimestamps taxonomyTimestamps;
+
   GoogleCloudDatacatalogV1beta1Taxonomy();
 
   GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(core.Map _json) {
@@ -6162,6 +6183,15 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
+    if (_json.containsKey('policyTagCount')) {
+      policyTagCount = _json['policyTagCount'] as core.int;
+    }
+    if (_json.containsKey('taxonomyTimestamps')) {
+      taxonomyTimestamps =
+          GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
+              _json['taxonomyTimestamps']
+                  as core.Map<core.String, core.dynamic>);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -6177,6 +6207,12 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
     }
     if (name != null) {
       _json['name'] = name;
+    }
+    if (policyTagCount != null) {
+      _json['policyTagCount'] = policyTagCount;
+    }
+    if (taxonomyTimestamps != null) {
+      _json['taxonomyTimestamps'] = taxonomyTimestamps.toJson();
     }
     return _json;
   }

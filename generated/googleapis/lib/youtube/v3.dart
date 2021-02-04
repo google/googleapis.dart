@@ -44,7 +44,6 @@
 /// - [PlaylistItemsResource]
 /// - [PlaylistsResource]
 /// - [SearchResource]
-/// - [SponsorsResource]
 /// - [SubscriptionsResource]
 /// - [SuperChatEventsResource]
 /// - [TestsResource]
@@ -138,7 +137,6 @@ class YouTubeApi {
   PlaylistItemsResource get playlistItems => PlaylistItemsResource(_requester);
   PlaylistsResource get playlists => PlaylistsResource(_requester);
   SearchResource get search => SearchResource(_requester);
-  SponsorsResource get sponsors => SponsorsResource(_requester);
   SubscriptionsResource get subscriptions => SubscriptionsResource(_requester);
   SuperChatEventsResource get superChatEvents =>
       SuperChatEventsResource(_requester);
@@ -154,7 +152,7 @@ class YouTubeApi {
   WatermarksResource get watermarks => WatermarksResource(_requester);
 
   YouTubeApi(http.Client client,
-      {core.String rootUrl = 'https://www.googleapis.com/',
+      {core.String rootUrl = 'https://youtube.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
@@ -250,6 +248,7 @@ class ActivitiesResource {
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
+  /// Value must be between "0" and "50".
   ///
   /// [mine] - null
   ///
@@ -624,11 +623,11 @@ class CaptionsResource {
   ///
   /// Request parameters:
   ///
-  /// [videoId] - Returns the captions for the specified video.
-  ///
   /// [part] - The *part* parameter specifies a comma-separated list of one or
   /// more caption resource parts that the API response will include. The part
   /// names that you can include in the parameter value are id and snippet.
+  ///
+  /// [videoId] - Returns the captions for the specified video.
   ///
   /// [id] - Returns the captions with the given IDs for Stubby or Apiary.
   ///
@@ -657,8 +656,8 @@ class CaptionsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CaptionListResponse> list(
-    core.String videoId,
-    core.List<core.String> part, {
+    core.List<core.String> part,
+    core.String videoId, {
     core.List<core.String> id,
     core.String onBehalfOf,
     core.String onBehalfOfContentOwner,
@@ -671,14 +670,14 @@ class CaptionsResource {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (videoId == null) {
-      throw core.ArgumentError('Parameter videoId is required.');
-    }
-    _queryParams['videoId'] = [videoId];
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
     _queryParams['part'] = part;
+    if (videoId == null) {
+      throw core.ArgumentError('Parameter videoId is required.');
+    }
+    _queryParams['videoId'] = [videoId];
     if (id != null) {
       _queryParams['id'] = id;
     }
@@ -1314,6 +1313,7 @@ class ChannelsResource {
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
+  /// Value must be between "0" and "50".
   ///
   /// [mine] - Return the ids of channels owned by the authenticated user.
   ///
@@ -1582,6 +1582,7 @@ class CommentThreadsResource {
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
+  /// Value must be between "1" and "100".
   ///
   /// [moderationStatus] - Limits the returned comment threads to those with the
   /// specified moderation status. Not compatible with the 'id' filter. Valid
@@ -1889,6 +1890,7 @@ class CommentsResource {
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
+  /// Value must be between "1" and "100".
   ///
   /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
@@ -2401,131 +2403,6 @@ class LiveBroadcastsResource {
     );
   }
 
-  /// Slate and recording control of the live broadcast.
-  ///
-  /// Support actions: slate on/off, recording start/stop/pause/resume. Design
-  /// doc: goto/yt-api-liveBroadcast-control
-  ///
-  /// Request parameters:
-  ///
-  /// [id] - Broadcast to operate.
-  ///
-  /// [part] - The *part* parameter specifies a comma-separated list of one or
-  /// more liveBroadcast resource properties that the API response will include.
-  /// The part names that you can include in the parameter value are id,
-  /// snippet, contentDetails, and status.
-  ///
-  /// [displaySlate] - Whether display or hide slate.
-  ///
-  /// [offsetTimeMs] - The exact time when the actions (e.g. slate on) are
-  /// executed. It is an offset from the first frame of the monitor stream. If
-  /// not set, it means "now" or ASAP. This field should not be set if the
-  /// monitor stream is disabled, otherwise an error will be returned.
-  ///
-  /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
-  /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
-  /// indicates that the request's authorization credentials identify a YouTube
-  /// CMS user who is acting on behalf of the content owner specified in the
-  /// parameter value. This parameter is intended for YouTube content partners
-  /// that own and manage many different YouTube channels. It allows content
-  /// owners to authenticate once and get access to all their video and channel
-  /// data, without having to provide authentication credentials for each
-  /// individual channel. The CMS account that the user authenticates with must
-  /// be linked to the specified YouTube content owner.
-  ///
-  /// [onBehalfOfContentOwnerChannel] - This parameter can only be used in a
-  /// properly authorized request. *Note:* This parameter is intended
-  /// exclusively for YouTube content partners. The
-  /// *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID
-  /// of the channel to which a video is being added. This parameter is required
-  /// when a request specifies a value for the onBehalfOfContentOwner parameter,
-  /// and it can only be used in conjunction with that parameter. In addition,
-  /// the request must be authorized using a CMS account that is linked to the
-  /// content owner that the onBehalfOfContentOwner parameter specifies.
-  /// Finally, the channel that the onBehalfOfContentOwnerChannel parameter
-  /// value specifies must be linked to the content owner that the
-  /// onBehalfOfContentOwner parameter specifies. This parameter is intended for
-  /// YouTube content partners that own and manage many different YouTube
-  /// channels. It allows content owners to authenticate once and perform
-  /// actions on behalf of the channel specified in the parameter value, without
-  /// having to provide authentication credentials for each separate channel.
-  ///
-  /// [walltime] - The wall clock time at which the action should be executed.
-  /// Only one of offset_time_ms and walltime may be set at a time.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [LiveBroadcast].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<LiveBroadcast> control(
-    core.String id,
-    core.List<core.String> part, {
-    core.bool displaySlate,
-    core.String offsetTimeMs,
-    core.String onBehalfOfContentOwner,
-    core.String onBehalfOfContentOwnerChannel,
-    core.String walltime,
-    core.String $fields,
-  }) {
-    core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    core.String _body;
-
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
-    _queryParams['id'] = [id];
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
-    }
-    _queryParams['part'] = part;
-    if (displaySlate != null) {
-      _queryParams['displaySlate'] = ['${displaySlate}'];
-    }
-    if (offsetTimeMs != null) {
-      _queryParams['offsetTimeMs'] = [offsetTimeMs];
-    }
-    if (onBehalfOfContentOwner != null) {
-      _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
-    }
-    if (onBehalfOfContentOwnerChannel != null) {
-      _queryParams['onBehalfOfContentOwnerChannel'] = [
-        onBehalfOfContentOwnerChannel
-      ];
-    }
-    if (walltime != null) {
-      _queryParams['walltime'] = [walltime];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
-
-    _url = 'youtube/v3/liveBroadcasts/control';
-
-    final _response = _requester.request(
-      _url,
-      'POST',
-      body: _body,
-      queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) =>
-          LiveBroadcast.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
-  }
-
   /// Delete a given broadcast.
   ///
   /// Request parameters:
@@ -2744,6 +2621,7 @@ class LiveBroadcastsResource {
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
+  /// Value must be between "0" and "50".
   ///
   /// [mine] - null
   ///
@@ -2863,8 +2741,6 @@ class LiveBroadcastsResource {
   ///
   /// Request parameters:
   ///
-  /// [id] - Broadcast to transition.
-  ///
   /// [broadcastStatus] - The status to which the broadcast is going to
   /// transition.
   /// Possible string values are:
@@ -2876,6 +2752,8 @@ class LiveBroadcastsResource {
   /// true.",
   /// - "live" : Return only persistent broadcasts.
   /// - "complete" : The broadcast is over. YouTube stops transmitting video.
+  ///
+  /// [id] - Broadcast to transition.
   ///
   /// [part] - The *part* parameter specifies a comma-separated list of one or
   /// more liveBroadcast resource properties that the API response will include.
@@ -2921,8 +2799,8 @@ class LiveBroadcastsResource {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<LiveBroadcast> transition(
-    core.String id,
     core.String broadcastStatus,
+    core.String id,
     core.List<core.String> part, {
     core.String onBehalfOfContentOwner,
     core.String onBehalfOfContentOwnerChannel,
@@ -2935,14 +2813,14 @@ class LiveBroadcastsResource {
     var _downloadOptions = commons.DownloadOptions.Metadata;
     core.String _body;
 
-    if (id == null) {
-      throw core.ArgumentError('Parameter id is required.');
-    }
-    _queryParams['id'] = [id];
     if (broadcastStatus == null) {
       throw core.ArgumentError('Parameter broadcastStatus is required.');
     }
     _queryParams['broadcastStatus'] = [broadcastStatus];
+    if (id == null) {
+      throw core.ArgumentError('Parameter id is required.');
+    }
+    _queryParams['id'] = [id];
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -3334,6 +3212,7 @@ class LiveChatMessagesResource {
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
+  /// Value must be between "200" and "2000".
   ///
   /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
@@ -3341,6 +3220,7 @@ class LiveChatMessagesResource {
   ///
   /// [profileImageSize] - Specifies the size of the profile image that should
   /// be returned for each user.
+  /// Value must be between "16" and "720".
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3540,6 +3420,7 @@ class LiveChatModeratorsResource {
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
+  /// Value must be between "0" and "50".
   ///
   /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
@@ -3708,7 +3589,8 @@ class LiveStreamsResource {
   /// [part] - The *part* parameter serves two purposes in this operation. It
   /// identifies the properties that the write operation will set as well as the
   /// properties that the API response will include. The part properties that
-  /// you can include in the parameter value are id, snippet, cdn, and status.
+  /// you can include in the parameter value are id, snippet, cdn,
+  /// content_details, and status.
   ///
   /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
   /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
@@ -3813,6 +3695,7 @@ class LiveStreamsResource {
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
+  /// Value must be between "0" and "50".
   ///
   /// [mine] - null
   ///
@@ -4044,6 +3927,7 @@ class MembersResource {
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
+  /// Value must be between "0" and "1000".
   ///
   /// [mode] - Parameter that specifies which channel members to return.
   /// Possible string values are:
@@ -4346,6 +4230,7 @@ class PlaylistItemsResource {
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
+  /// Value must be between "0" and "50".
   ///
   /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
   /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
@@ -4710,6 +4595,7 @@ class PlaylistsResource {
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
+  /// Value must be between "0" and "50".
   ///
   /// [mine] - Return the playlists owned by the authenticated user.
   ///
@@ -4947,6 +4833,7 @@ class SearchResource {
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
+  /// Value must be between "0" and "50".
   ///
   /// [onBehalfOfContentOwner] - *Note:* This parameter is intended exclusively
   /// for YouTube content partners. The *onBehalfOfContentOwner* parameter
@@ -5233,91 +5120,6 @@ class SearchResource {
   }
 }
 
-class SponsorsResource {
-  final commons.ApiRequester _requester;
-
-  SponsorsResource(commons.ApiRequester client) : _requester = client;
-
-  /// Retrieves a list of sponsors that match the request criteria for a
-  /// channel.
-  ///
-  /// Request parameters:
-  ///
-  /// [part] - The *part* parameter specifies the sponsor resource parts that
-  /// the API response will include. Supported values are id and snippet.
-  ///
-  /// [filter] - Parameter that specifies which channel sponsors to return.
-  /// Possible string values are:
-  /// - "sponsorFilterUnknown"
-  /// - "newest" : Return the most recent sponsors, from newest to oldest.
-  /// - "all" : Return all sponsors, from newest to oldest.
-  ///
-  /// [maxResults] - The *maxResults* parameter specifies the maximum number of
-  /// items that should be returned in the result set.
-  ///
-  /// [pageToken] - The *pageToken* parameter identifies a specific page in the
-  /// result set that should be returned. In an API response, the nextPageToken
-  /// and prevPageToken properties identify other pages that could be retrieved.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [SponsorListResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<SponsorListResponse> list(
-    core.List<core.String> part, {
-    core.String filter,
-    core.int maxResults,
-    core.String pageToken,
-    core.String $fields,
-  }) {
-    core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
-    commons.Media _uploadMedia;
-    commons.UploadOptions _uploadOptions;
-    var _downloadOptions = commons.DownloadOptions.Metadata;
-    core.String _body;
-
-    if (part == null || part.isEmpty) {
-      throw core.ArgumentError('Parameter part is required.');
-    }
-    _queryParams['part'] = part;
-    if (filter != null) {
-      _queryParams['filter'] = [filter];
-    }
-    if (maxResults != null) {
-      _queryParams['maxResults'] = ['${maxResults}'];
-    }
-    if (pageToken != null) {
-      _queryParams['pageToken'] = [pageToken];
-    }
-    if ($fields != null) {
-      _queryParams['fields'] = [$fields];
-    }
-
-    _url = 'youtube/v3/sponsors';
-
-    final _response = _requester.request(
-      _url,
-      'GET',
-      body: _body,
-      queryParams: _queryParams,
-      uploadOptions: _uploadOptions,
-      uploadMedia: _uploadMedia,
-      downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => SponsorListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
-  }
-}
-
 class SubscriptionsResource {
   final commons.ApiRequester _requester;
 
@@ -5455,6 +5257,7 @@ class SubscriptionsResource {
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
+  /// Value must be between "0" and "50".
   ///
   /// [mine] - Flag for returning the subscriptions of the authenticated user.
   ///
@@ -5610,6 +5413,7 @@ class SuperChatEventsResource {
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set.
+  /// Value must be between "1" and "50".
   ///
   /// [pageToken] - The *pageToken* parameter identifies a specific page in the
   /// result set that should be returned. In an API response, the nextPageToken
@@ -6547,13 +6351,16 @@ class VideosResource {
   /// [locale] - null
   ///
   /// [maxHeight] - null
+  /// Value must be between "72" and "8192".
   ///
   /// [maxResults] - The *maxResults* parameter specifies the maximum number of
   /// items that should be returned in the result set. *Note:* This parameter is
   /// supported for use in conjunction with the myRating and chart parameters,
   /// but it is not supported for use in conjunction with the id parameter.
+  /// Value must be between "1" and "50".
   ///
   /// [maxWidth] - Return the player with maximum height specified in
+  /// Value must be between "72" and "8192".
   ///
   /// [myRating] - Return videos liked/disliked by the authenticated user. Does
   /// not support RateType.RATED_TYPE_NONE.
@@ -7957,9 +7764,7 @@ class ActivitySnippet {
   core.String groupId;
 
   /// The date and time that the video was uploaded.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String publishedAt;
+  core.DateTime publishedAt;
 
   /// A map of thumbnail images associated with the resource that is primarily
   /// associated with the activity.
@@ -8004,7 +7809,7 @@ class ActivitySnippet {
       groupId = _json['groupId'] as core.String;
     }
     if (_json.containsKey('publishedAt')) {
-      publishedAt = _json['publishedAt'] as core.String;
+      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
     }
     if (_json.containsKey('thumbnails')) {
       thumbnails = ThumbnailDetails.fromJson(
@@ -8033,7 +7838,7 @@ class ActivitySnippet {
       _json['groupId'] = groupId;
     }
     if (publishedAt != null) {
-      _json['publishedAt'] = publishedAt;
+      _json['publishedAt'] = (publishedAt).toIso8601String();
     }
     if (thumbnails != null) {
       _json['thumbnails'] = thumbnails.toJson();
@@ -8224,9 +8029,7 @@ class CaptionSnippet {
   core.String language;
 
   /// The date and time when the caption track was last updated.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String lastUpdated;
+  core.DateTime lastUpdated;
 
   /// The name of the caption track.
   ///
@@ -8282,7 +8085,7 @@ class CaptionSnippet {
       language = _json['language'] as core.String;
     }
     if (_json.containsKey('lastUpdated')) {
-      lastUpdated = _json['lastUpdated'] as core.String;
+      lastUpdated = core.DateTime.parse(_json['lastUpdated'] as core.String);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -8325,7 +8128,7 @@ class CaptionSnippet {
       _json['language'] = language;
     }
     if (lastUpdated != null) {
-      _json['lastUpdated'] = lastUpdated;
+      _json['lastUpdated'] = (lastUpdated).toIso8601String();
     }
     if (name != null) {
       _json['name'] = name;
@@ -8820,10 +8623,8 @@ class ChannelContentOwnerDetails {
   /// The ID of the content owner linked to the channel.
   core.String contentOwner;
 
-  /// The date and time of when the channel was linked to the content owner.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String timeLinked;
+  /// The date and time when the channel was linked to the content owner.
+  core.DateTime timeLinked;
 
   ChannelContentOwnerDetails();
 
@@ -8832,7 +8633,7 @@ class ChannelContentOwnerDetails {
       contentOwner = _json['contentOwner'] as core.String;
     }
     if (_json.containsKey('timeLinked')) {
-      timeLinked = _json['timeLinked'] as core.String;
+      timeLinked = core.DateTime.parse(_json['timeLinked'] as core.String);
     }
   }
 
@@ -8842,7 +8643,7 @@ class ChannelContentOwnerDetails {
       _json['contentOwner'] = contentOwner;
     }
     if (timeLinked != null) {
-      _json['timeLinked'] = timeLinked;
+      _json['timeLinked'] = (timeLinked).toIso8601String();
     }
     return _json;
   }
@@ -9618,10 +9419,7 @@ class ChannelSnippet {
   ChannelLocalization localized;
 
   /// The date and time that the channel was created.
-  ///
-  /// The value is specified in < a href="//www.w3.org/TR/NOTE-datetime">ISO
-  /// 8601 format.
-  core.String publishedAt;
+  core.DateTime publishedAt;
 
   /// A map of thumbnail images associated with the channel.
   ///
@@ -9661,7 +9459,7 @@ class ChannelSnippet {
           _json['localized'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('publishedAt')) {
-      publishedAt = _json['publishedAt'] as core.String;
+      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
     }
     if (_json.containsKey('thumbnails')) {
       thumbnails = ThumbnailDetails.fromJson(
@@ -9690,7 +9488,7 @@ class ChannelSnippet {
       _json['localized'] = localized.toJson();
     }
     if (publishedAt != null) {
-      _json['publishedAt'] = publishedAt;
+      _json['publishedAt'] = (publishedAt).toIso8601String();
     }
     if (thumbnails != null) {
       _json['thumbnails'] = thumbnails.toJson();
@@ -10079,10 +9877,8 @@ class CommentSnippet {
   /// The unique id of the parent comment, only set for replies.
   core.String parentId;
 
-  /// The date and time when the comment was orignally published.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String publishedAt;
+  /// The date and time when the comment was originally published.
+  core.DateTime publishedAt;
 
   /// The comment's text.
   ///
@@ -10098,10 +9894,8 @@ class CommentSnippet {
   /// which is only guaranteed if the viewer is the comment's author.
   core.String textOriginal;
 
-  /// The date and time when was last updated .
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String updatedAt;
+  /// The date and time when the comment was last updated.
+  core.DateTime updatedAt;
 
   /// The ID of the video the comment refers to, if any.
   core.String videoId;
@@ -10148,7 +9942,7 @@ class CommentSnippet {
       parentId = _json['parentId'] as core.String;
     }
     if (_json.containsKey('publishedAt')) {
-      publishedAt = _json['publishedAt'] as core.String;
+      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
     }
     if (_json.containsKey('textDisplay')) {
       textDisplay = _json['textDisplay'] as core.String;
@@ -10157,7 +9951,7 @@ class CommentSnippet {
       textOriginal = _json['textOriginal'] as core.String;
     }
     if (_json.containsKey('updatedAt')) {
-      updatedAt = _json['updatedAt'] as core.String;
+      updatedAt = core.DateTime.parse(_json['updatedAt'] as core.String);
     }
     if (_json.containsKey('videoId')) {
       videoId = _json['videoId'] as core.String;
@@ -10197,7 +9991,7 @@ class CommentSnippet {
       _json['parentId'] = parentId;
     }
     if (publishedAt != null) {
-      _json['publishedAt'] = publishedAt;
+      _json['publishedAt'] = (publishedAt).toIso8601String();
     }
     if (textDisplay != null) {
       _json['textDisplay'] = textDisplay;
@@ -10206,7 +10000,7 @@ class CommentSnippet {
       _json['textOriginal'] = textOriginal;
     }
     if (updatedAt != null) {
-      _json['updatedAt'] = updatedAt;
+      _json['updatedAt'] = (updatedAt).toIso8601String();
     }
     if (videoId != null) {
       _json['videoId'] = videoId;
@@ -12226,8 +12020,8 @@ class ImageSettings {
   /// The image should be 1200px by 615px, with a maximum file size of 128k.
   LocalizedProperty backgroundImageUrl;
 
-  /// This is used only in update requests; if it's set, we use this URL to
-  /// generate all of the above banner URLs.
+  /// This is generated when a ChannelBanner.Insert request has succeeded for
+  /// the given channel.
   core.String bannerExternalUrl;
 
   /// Banner image.
@@ -12860,7 +12654,7 @@ class LiveBroadcastContentDetails {
 
   /// The date and time that the live stream referenced by boundStreamId was
   /// last updated.
-  core.String boundStreamLastUpdateTimeMs;
+  core.DateTime boundStreamLastUpdateTimeMs;
 
   ///
   /// Possible string values are:
@@ -12977,6 +12771,16 @@ class LiveBroadcastContentDetails {
   /// slate and make your broadcast stream visible to viewers.
   core.bool startWithSlate;
 
+  /// The 3D stereo layout of this broadcast.
+  ///
+  /// This defaults to mono.
+  /// Possible string values are:
+  /// - "stereoLayoutUnspecified"
+  /// - "mono"
+  /// - "leftRight"
+  /// - "topBottom"
+  core.String stereoLayout;
+
   LiveBroadcastContentDetails();
 
   LiveBroadcastContentDetails.fromJson(core.Map _json) {
@@ -12984,8 +12788,8 @@ class LiveBroadcastContentDetails {
       boundStreamId = _json['boundStreamId'] as core.String;
     }
     if (_json.containsKey('boundStreamLastUpdateTimeMs')) {
-      boundStreamLastUpdateTimeMs =
-          _json['boundStreamLastUpdateTimeMs'] as core.String;
+      boundStreamLastUpdateTimeMs = core.DateTime.parse(
+          _json['boundStreamLastUpdateTimeMs'] as core.String);
     }
     if (_json.containsKey('closedCaptionsType')) {
       closedCaptionsType = _json['closedCaptionsType'] as core.String;
@@ -13030,6 +12834,9 @@ class LiveBroadcastContentDetails {
     if (_json.containsKey('startWithSlate')) {
       startWithSlate = _json['startWithSlate'] as core.bool;
     }
+    if (_json.containsKey('stereoLayout')) {
+      stereoLayout = _json['stereoLayout'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
@@ -13038,7 +12845,8 @@ class LiveBroadcastContentDetails {
       _json['boundStreamId'] = boundStreamId;
     }
     if (boundStreamLastUpdateTimeMs != null) {
-      _json['boundStreamLastUpdateTimeMs'] = boundStreamLastUpdateTimeMs;
+      _json['boundStreamLastUpdateTimeMs'] =
+          (boundStreamLastUpdateTimeMs).toIso8601String();
     }
     if (closedCaptionsType != null) {
       _json['closedCaptionsType'] = closedCaptionsType;
@@ -13081,6 +12889,9 @@ class LiveBroadcastContentDetails {
     }
     if (startWithSlate != null) {
       _json['startWithSlate'] = startWithSlate;
+    }
+    if (stereoLayout != null) {
+      _json['stereoLayout'] = stereoLayout;
     }
     return _json;
   }
@@ -13191,14 +13002,12 @@ class LiveBroadcastSnippet {
   /// The date and time that the broadcast actually ended.
   ///
   /// This information is only available once the broadcast's state is complete.
-  /// The value is specified in ISO 8601 format.
-  core.String actualEndTime;
+  core.DateTime actualEndTime;
 
   /// The date and time that the broadcast actually started.
   ///
-  /// This information is only available once the broadcast's state is live. The
-  /// value is specified in ISO 8601 format.
-  core.String actualStartTime;
+  /// This information is only available once the broadcast's state is live.
+  core.DateTime actualStartTime;
 
   /// The ID that YouTube uses to uniquely identify the channel that is
   /// publishing the broadcast.
@@ -13221,19 +13030,13 @@ class LiveBroadcastSnippet {
 
   /// The date and time that the broadcast was added to YouTube's live broadcast
   /// schedule.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String publishedAt;
-
-  /// The date and time that the broadcast is scheduled to end.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String scheduledEndTime;
+  core.DateTime publishedAt;
 
   /// The date and time that the broadcast is scheduled to start.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String scheduledStartTime;
+  core.DateTime scheduledEndTime;
+
+  /// The date and time that the broadcast is scheduled to end.
+  core.DateTime scheduledStartTime;
 
   /// A map of thumbnail images associated with the broadcast.
   ///
@@ -13253,10 +13056,12 @@ class LiveBroadcastSnippet {
 
   LiveBroadcastSnippet.fromJson(core.Map _json) {
     if (_json.containsKey('actualEndTime')) {
-      actualEndTime = _json['actualEndTime'] as core.String;
+      actualEndTime =
+          core.DateTime.parse(_json['actualEndTime'] as core.String);
     }
     if (_json.containsKey('actualStartTime')) {
-      actualStartTime = _json['actualStartTime'] as core.String;
+      actualStartTime =
+          core.DateTime.parse(_json['actualStartTime'] as core.String);
     }
     if (_json.containsKey('channelId')) {
       channelId = _json['channelId'] as core.String;
@@ -13271,13 +13076,15 @@ class LiveBroadcastSnippet {
       liveChatId = _json['liveChatId'] as core.String;
     }
     if (_json.containsKey('publishedAt')) {
-      publishedAt = _json['publishedAt'] as core.String;
+      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
     }
     if (_json.containsKey('scheduledEndTime')) {
-      scheduledEndTime = _json['scheduledEndTime'] as core.String;
+      scheduledEndTime =
+          core.DateTime.parse(_json['scheduledEndTime'] as core.String);
     }
     if (_json.containsKey('scheduledStartTime')) {
-      scheduledStartTime = _json['scheduledStartTime'] as core.String;
+      scheduledStartTime =
+          core.DateTime.parse(_json['scheduledStartTime'] as core.String);
     }
     if (_json.containsKey('thumbnails')) {
       thumbnails = ThumbnailDetails.fromJson(
@@ -13291,10 +13098,10 @@ class LiveBroadcastSnippet {
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (actualEndTime != null) {
-      _json['actualEndTime'] = actualEndTime;
+      _json['actualEndTime'] = (actualEndTime).toIso8601String();
     }
     if (actualStartTime != null) {
-      _json['actualStartTime'] = actualStartTime;
+      _json['actualStartTime'] = (actualStartTime).toIso8601String();
     }
     if (channelId != null) {
       _json['channelId'] = channelId;
@@ -13309,13 +13116,13 @@ class LiveBroadcastSnippet {
       _json['liveChatId'] = liveChatId;
     }
     if (publishedAt != null) {
-      _json['publishedAt'] = publishedAt;
+      _json['publishedAt'] = (publishedAt).toIso8601String();
     }
     if (scheduledEndTime != null) {
-      _json['scheduledEndTime'] = scheduledEndTime;
+      _json['scheduledEndTime'] = (scheduledEndTime).toIso8601String();
     }
     if (scheduledStartTime != null) {
-      _json['scheduledStartTime'] = scheduledStartTime;
+      _json['scheduledStartTime'] = (scheduledStartTime).toIso8601String();
     }
     if (thumbnails != null) {
       _json['thumbnails'] = thumbnails.toJson();
@@ -13798,9 +13605,7 @@ class LiveChatMessageListResponse {
   core.String nextPageToken;
 
   /// The date and time when the underlying stream went offline.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String offlineAt;
+  core.DateTime offlineAt;
 
   /// General pagination information.
   PageInfo pageInfo;
@@ -13834,7 +13639,7 @@ class LiveChatMessageListResponse {
       nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('offlineAt')) {
-      offlineAt = _json['offlineAt'] as core.String;
+      offlineAt = core.DateTime.parse(_json['offlineAt'] as core.String);
     }
     if (_json.containsKey('pageInfo')) {
       pageInfo = PageInfo.fromJson(
@@ -13870,7 +13675,7 @@ class LiveChatMessageListResponse {
       _json['nextPageToken'] = nextPageToken;
     }
     if (offlineAt != null) {
-      _json['offlineAt'] = offlineAt;
+      _json['offlineAt'] = (offlineAt).toIso8601String();
     }
     if (pageInfo != null) {
       _json['pageInfo'] = pageInfo.toJson();
@@ -13937,9 +13742,7 @@ class LiveChatMessageSnippet {
   LiveChatMessageRetractedDetails messageRetractedDetails;
 
   /// The date and time when the message was orignally published.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String publishedAt;
+  core.DateTime publishedAt;
 
   /// Details about the Super Chat event, this is only set if the type is
   /// 'superChatEvent'.
@@ -14003,7 +13806,7 @@ class LiveChatMessageSnippet {
               as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('publishedAt')) {
-      publishedAt = _json['publishedAt'] as core.String;
+      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
     }
     if (_json.containsKey('superChatDetails')) {
       superChatDetails = LiveChatSuperChatDetails.fromJson(
@@ -14050,7 +13853,7 @@ class LiveChatMessageSnippet {
       _json['messageRetractedDetails'] = messageRetractedDetails.toJson();
     }
     if (publishedAt != null) {
-      _json['publishedAt'] = publishedAt;
+      _json['publishedAt'] = (publishedAt).toIso8601String();
     }
     if (superChatDetails != null) {
       _json['superChatDetails'] = superChatDetails.toJson();
@@ -14823,9 +14626,7 @@ class LiveStreamSnippet {
   core.bool isDefaultStream;
 
   /// The date and time that the stream was created.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String publishedAt;
+  core.DateTime publishedAt;
 
   /// The stream's title.
   ///
@@ -14845,7 +14646,7 @@ class LiveStreamSnippet {
       isDefaultStream = _json['isDefaultStream'] as core.bool;
     }
     if (_json.containsKey('publishedAt')) {
-      publishedAt = _json['publishedAt'] as core.String;
+      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -14864,7 +14665,7 @@ class LiveStreamSnippet {
       _json['isDefaultStream'] = isDefaultStream;
     }
     if (publishedAt != null) {
-      _json['publishedAt'] = publishedAt;
+      _json['publishedAt'] = (publishedAt).toIso8601String();
     }
     if (title != null) {
       _json['title'] = title;
@@ -15791,9 +15592,7 @@ class PlaylistItemContentDetails {
   core.String videoId;
 
   /// The date and time that the video was published to YouTube.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String videoPublishedAt;
+  core.DateTime videoPublishedAt;
 
   PlaylistItemContentDetails();
 
@@ -15811,7 +15610,8 @@ class PlaylistItemContentDetails {
       videoId = _json['videoId'] as core.String;
     }
     if (_json.containsKey('videoPublishedAt')) {
-      videoPublishedAt = _json['videoPublishedAt'] as core.String;
+      videoPublishedAt =
+          core.DateTime.parse(_json['videoPublishedAt'] as core.String);
     }
   }
 
@@ -15830,7 +15630,7 @@ class PlaylistItemContentDetails {
       _json['videoId'] = videoId;
     }
     if (videoPublishedAt != null) {
-      _json['videoPublishedAt'] = videoPublishedAt;
+      _json['videoPublishedAt'] = (videoPublishedAt).toIso8601String();
     }
     return _json;
   }
@@ -15961,9 +15761,7 @@ class PlaylistItemSnippet {
   core.int position;
 
   /// The date and time that the item was added to the playlist.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String publishedAt;
+  core.DateTime publishedAt;
 
   /// The id object contains information that can be used to uniquely identify
   /// the resource that is included in the playlist as the playlist item.
@@ -15998,7 +15796,7 @@ class PlaylistItemSnippet {
       position = _json['position'] as core.int;
     }
     if (_json.containsKey('publishedAt')) {
-      publishedAt = _json['publishedAt'] as core.String;
+      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
     }
     if (_json.containsKey('resourceId')) {
       resourceId = ResourceId.fromJson(
@@ -16031,7 +15829,7 @@ class PlaylistItemSnippet {
       _json['position'] = position;
     }
     if (publishedAt != null) {
-      _json['publishedAt'] = publishedAt;
+      _json['publishedAt'] = (publishedAt).toIso8601String();
     }
     if (resourceId != null) {
       _json['resourceId'] = resourceId.toJson();
@@ -16243,9 +16041,7 @@ class PlaylistSnippet {
   PlaylistLocalization localized;
 
   /// The date and time that the playlist was created.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String publishedAt;
+  core.DateTime publishedAt;
 
   /// Keyword tags associated with the playlist.
   core.List<core.String> tags;
@@ -16280,7 +16076,7 @@ class PlaylistSnippet {
           _json['localized'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('publishedAt')) {
-      publishedAt = _json['publishedAt'] as core.String;
+      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
     }
     if (_json.containsKey('tags')) {
       tags = (_json['tags'] as core.List)
@@ -16314,7 +16110,7 @@ class PlaylistSnippet {
       _json['localized'] = localized.toJson();
     }
     if (publishedAt != null) {
-      _json['publishedAt'] = publishedAt;
+      _json['publishedAt'] = (publishedAt).toIso8601String();
     }
     if (tags != null) {
       _json['tags'] = tags;
@@ -16664,9 +16460,7 @@ class SearchResultSnippet {
 
   /// The creation date and time of the resource that the search result
   /// identifies.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String publishedAt;
+  core.DateTime publishedAt;
 
   /// A map of thumbnail images associated with the search result.
   ///
@@ -16694,7 +16488,7 @@ class SearchResultSnippet {
       liveBroadcastContent = _json['liveBroadcastContent'] as core.String;
     }
     if (_json.containsKey('publishedAt')) {
-      publishedAt = _json['publishedAt'] as core.String;
+      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
     }
     if (_json.containsKey('thumbnails')) {
       thumbnails = ThumbnailDetails.fromJson(
@@ -16720,198 +16514,13 @@ class SearchResultSnippet {
       _json['liveBroadcastContent'] = liveBroadcastContent;
     }
     if (publishedAt != null) {
-      _json['publishedAt'] = publishedAt;
+      _json['publishedAt'] = (publishedAt).toIso8601String();
     }
     if (thumbnails != null) {
       _json['thumbnails'] = thumbnails.toJson();
     }
     if (title != null) {
       _json['title'] = title;
-    }
-    return _json;
-  }
-}
-
-/// A `__sponsor__` resource represents a sponsor for a YouTube channel.
-///
-/// A sponsor provides recurring monetary support to a creator and receives
-/// special benefits.
-class Sponsor {
-  /// Etag of this resource.
-  core.String etag;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string `"youtube#sponsor"`.
-  core.String kind;
-
-  /// The `snippet` object contains basic details about the sponsor.
-  SponsorSnippet snippet;
-
-  Sponsor();
-
-  Sponsor.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('snippet')) {
-      snippet = SponsorSnippet.fromJson(
-          _json['snippet'] as core.Map<core.String, core.dynamic>);
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (snippet != null) {
-      _json['snippet'] = snippet.toJson();
-    }
-    return _json;
-  }
-}
-
-class SponsorListResponse {
-  /// Etag of this resource.
-  core.String etag;
-
-  /// Serialized EventId of the request which produced this response.
-  core.String eventId;
-
-  /// A list of sponsors that match the request criteria.
-  core.List<Sponsor> items;
-
-  /// Identifies what kind of resource this is.
-  ///
-  /// Value: the fixed string \`"youtube#sponsorListResponse".
-  core.String kind;
-
-  /// The token that can be used as the value of the `pageToken` parameter to
-  /// retrieve the next page in the result set.
-  core.String nextPageToken;
-  PageInfo pageInfo;
-  TokenPagination tokenPagination;
-
-  /// The `visitorId` identifies the visitor.
-  core.String visitorId;
-
-  SponsorListResponse();
-
-  SponsorListResponse.fromJson(core.Map _json) {
-    if (_json.containsKey('etag')) {
-      etag = _json['etag'] as core.String;
-    }
-    if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'] as core.String;
-    }
-    if (_json.containsKey('items')) {
-      items = (_json['items'] as core.List)
-          .map<Sponsor>((value) =>
-              Sponsor.fromJson(value as core.Map<core.String, core.dynamic>))
-          .toList();
-    }
-    if (_json.containsKey('kind')) {
-      kind = _json['kind'] as core.String;
-    }
-    if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'] as core.String;
-    }
-    if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(
-          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(
-          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('visitorId')) {
-      visitorId = _json['visitorId'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (etag != null) {
-      _json['etag'] = etag;
-    }
-    if (eventId != null) {
-      _json['eventId'] = eventId;
-    }
-    if (items != null) {
-      _json['items'] = items.map((value) => value.toJson()).toList();
-    }
-    if (kind != null) {
-      _json['kind'] = kind;
-    }
-    if (nextPageToken != null) {
-      _json['nextPageToken'] = nextPageToken;
-    }
-    if (pageInfo != null) {
-      _json['pageInfo'] = pageInfo.toJson();
-    }
-    if (tokenPagination != null) {
-      _json['tokenPagination'] = tokenPagination.toJson();
-    }
-    if (visitorId != null) {
-      _json['visitorId'] = visitorId;
-    }
-    return _json;
-  }
-}
-
-class SponsorSnippet {
-  /// The id of the channel being sponsored.
-  core.String channelId;
-
-  /// The cumulative time a user has been a sponsor in months.
-  core.int cumulativeDurationMonths;
-
-  /// Details about the sponsor.
-  ChannelProfileDetails sponsorDetails;
-
-  /// The date and time when the user became a sponsor.
-  ///
-  /// The value is specified in ISO 8601 (`YYYY-MM-DDThh:mm:ss.sZ`) format.
-  core.String sponsorSince;
-
-  SponsorSnippet();
-
-  SponsorSnippet.fromJson(core.Map _json) {
-    if (_json.containsKey('channelId')) {
-      channelId = _json['channelId'] as core.String;
-    }
-    if (_json.containsKey('cumulativeDurationMonths')) {
-      cumulativeDurationMonths = _json['cumulativeDurationMonths'] as core.int;
-    }
-    if (_json.containsKey('sponsorDetails')) {
-      sponsorDetails = ChannelProfileDetails.fromJson(
-          _json['sponsorDetails'] as core.Map<core.String, core.dynamic>);
-    }
-    if (_json.containsKey('sponsorSince')) {
-      sponsorSince = _json['sponsorSince'] as core.String;
-    }
-  }
-
-  core.Map<core.String, core.Object> toJson() {
-    final _json = <core.String, core.Object>{};
-    if (channelId != null) {
-      _json['channelId'] = channelId;
-    }
-    if (cumulativeDurationMonths != null) {
-      _json['cumulativeDurationMonths'] = cumulativeDurationMonths;
-    }
-    if (sponsorDetails != null) {
-      _json['sponsorDetails'] = sponsorDetails.toJson();
-    }
-    if (sponsorSince != null) {
-      _json['sponsorSince'] = sponsorSince;
     }
     return _json;
   }
@@ -17152,9 +16761,7 @@ class SubscriptionSnippet {
   core.String description;
 
   /// The date and time that the subscription was created.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String publishedAt;
+  core.DateTime publishedAt;
 
   /// The id object contains information about the channel that the user
   /// subscribed to.
@@ -17183,7 +16790,7 @@ class SubscriptionSnippet {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('publishedAt')) {
-      publishedAt = _json['publishedAt'] as core.String;
+      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
     }
     if (_json.containsKey('resourceId')) {
       resourceId = ResourceId.fromJson(
@@ -17210,7 +16817,7 @@ class SubscriptionSnippet {
       _json['description'] = description;
     }
     if (publishedAt != null) {
-      _json['publishedAt'] = publishedAt;
+      _json['publishedAt'] = (publishedAt).toIso8601String();
     }
     if (resourceId != null) {
       _json['resourceId'] = resourceId.toJson();
@@ -17430,9 +17037,7 @@ class SuperChatEventSnippet {
   core.String commentText;
 
   /// The date and time when the event occurred.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String createdAt;
+  core.DateTime createdAt;
 
   /// The currency in which the purchase was made.
   ///
@@ -17472,7 +17077,7 @@ class SuperChatEventSnippet {
       commentText = _json['commentText'] as core.String;
     }
     if (_json.containsKey('createdAt')) {
-      createdAt = _json['createdAt'] as core.String;
+      createdAt = core.DateTime.parse(_json['createdAt'] as core.String);
     }
     if (_json.containsKey('currency')) {
       currency = _json['currency'] as core.String;
@@ -17508,7 +17113,7 @@ class SuperChatEventSnippet {
       _json['commentText'] = commentText;
     }
     if (createdAt != null) {
-      _json['createdAt'] = createdAt;
+      _json['createdAt'] = (createdAt).toIso8601String();
     }
     if (currency != null) {
       _json['currency'] = currency;
@@ -17997,6 +17602,15 @@ class Video {
 
   /// The projectDetails object contains information about the project specific
   /// video metadata.
+  ///
+  /// b/157517979: This part was never populated after it was added. However, it
+  /// sees non-zero traffic because there is generated client code in the wild
+  /// that refers to it \[1\]. We keep this field and do NOT remove it because
+  /// otherwise V3 would return an error when this part gets requested \[2\].
+  /// \[1\]
+  /// https://developers.google.com/resources/api-libraries/documentation/youtube/v3/csharp/latest/classGoogle_1_1Apis_1_1YouTube_1_1v3_1_1Data_1_1VideoProjectDetails.html
+  /// \[2\]
+  /// http://google3/video/youtube/src/python/servers/data_api/common.py?l=1565-1569&rcl=344141677
   VideoProjectDetails projectDetails;
 
   /// The recordingDetails object encapsulates information about the location,
@@ -19235,15 +18849,13 @@ class VideoLiveStreamingDetails {
 
   /// The time that the broadcast actually ended.
   ///
-  /// The value is specified in ISO 8601 format. This value will not be
-  /// available until the broadcast is over.
-  core.String actualEndTime;
+  /// This value will not be available until the broadcast is over.
+  core.DateTime actualEndTime;
 
   /// The time that the broadcast actually started.
   ///
-  /// The value is specified in ISO 8601 format. This value will not be
-  /// available until the broadcast begins.
-  core.String actualStartTime;
+  /// This value will not be available until the broadcast begins.
+  core.DateTime actualStartTime;
 
   /// The number of viewers currently watching the broadcast.
   ///
@@ -19257,15 +18869,12 @@ class VideoLiveStreamingDetails {
 
   /// The time that the broadcast is scheduled to end.
   ///
-  /// The value is specified in ISO 8601 format. If the value is empty or the
-  /// property is not present, then the broadcast is scheduled to continue
-  /// indefinitely.
-  core.String scheduledEndTime;
+  /// If the value is empty or the property is not present, then the broadcast
+  /// is scheduled to contiue indefinitely.
+  core.DateTime scheduledEndTime;
 
   /// The time that the broadcast is scheduled to begin.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String scheduledStartTime;
+  core.DateTime scheduledStartTime;
 
   VideoLiveStreamingDetails();
 
@@ -19274,19 +18883,23 @@ class VideoLiveStreamingDetails {
       activeLiveChatId = _json['activeLiveChatId'] as core.String;
     }
     if (_json.containsKey('actualEndTime')) {
-      actualEndTime = _json['actualEndTime'] as core.String;
+      actualEndTime =
+          core.DateTime.parse(_json['actualEndTime'] as core.String);
     }
     if (_json.containsKey('actualStartTime')) {
-      actualStartTime = _json['actualStartTime'] as core.String;
+      actualStartTime =
+          core.DateTime.parse(_json['actualStartTime'] as core.String);
     }
     if (_json.containsKey('concurrentViewers')) {
       concurrentViewers = _json['concurrentViewers'] as core.String;
     }
     if (_json.containsKey('scheduledEndTime')) {
-      scheduledEndTime = _json['scheduledEndTime'] as core.String;
+      scheduledEndTime =
+          core.DateTime.parse(_json['scheduledEndTime'] as core.String);
     }
     if (_json.containsKey('scheduledStartTime')) {
-      scheduledStartTime = _json['scheduledStartTime'] as core.String;
+      scheduledStartTime =
+          core.DateTime.parse(_json['scheduledStartTime'] as core.String);
     }
   }
 
@@ -19296,19 +18909,19 @@ class VideoLiveStreamingDetails {
       _json['activeLiveChatId'] = activeLiveChatId;
     }
     if (actualEndTime != null) {
-      _json['actualEndTime'] = actualEndTime;
+      _json['actualEndTime'] = (actualEndTime).toIso8601String();
     }
     if (actualStartTime != null) {
-      _json['actualStartTime'] = actualStartTime;
+      _json['actualStartTime'] = (actualStartTime).toIso8601String();
     }
     if (concurrentViewers != null) {
       _json['concurrentViewers'] = concurrentViewers;
     }
     if (scheduledEndTime != null) {
-      _json['scheduledEndTime'] = scheduledEndTime;
+      _json['scheduledEndTime'] = (scheduledEndTime).toIso8601String();
     }
     if (scheduledStartTime != null) {
-      _json['scheduledStartTime'] = scheduledStartTime;
+      _json['scheduledStartTime'] = (scheduledStartTime).toIso8601String();
     }
     return _json;
   }
@@ -19590,26 +19203,26 @@ class VideoProcessingDetailsProcessingProgress {
   }
 }
 
-/// Project specific details about the content of a YouTube Video.
+/// b/157517979: This part was never populated after it was added.
+///
+/// However, it sees non-zero traffic because there is generated client code in
+/// the wild that refers to it \[1\]. We keep this field and do NOT remove it
+/// because otherwise V3 would return an error when this part gets requested
+/// \[2\]. \[1\]
+/// https://developers.google.com/resources/api-libraries/documentation/youtube/v3/csharp/latest/classGoogle_1_1Apis_1_1YouTube_1_1v3_1_1Data_1_1VideoProjectDetails.html
+/// \[2\]
+/// http://google3/video/youtube/src/python/servers/data_api/common.py?l=1565-1569&rcl=344141677
+///
+/// Deprecated.
 class VideoProjectDetails {
-  /// A list of project tags associated with the video during the upload.
-  core.List<core.String> tags;
-
   VideoProjectDetails();
 
-  VideoProjectDetails.fromJson(core.Map _json) {
-    if (_json.containsKey('tags')) {
-      tags = (_json['tags'] as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList();
-    }
-  }
+  VideoProjectDetails.fromJson(
+      // ignore: avoid_unused_constructor_parameters
+      core.Map _json);
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
-    if (tags != null) {
-      _json['tags'] = tags;
-    }
     return _json;
   }
 }
@@ -19720,9 +19333,7 @@ class VideoRecordingDetails {
   core.String locationDescription;
 
   /// The date and time when the video was recorded.
-  ///
-  /// The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sssZ) format.
-  core.String recordingDate;
+  core.DateTime recordingDate;
 
   VideoRecordingDetails();
 
@@ -19735,7 +19346,8 @@ class VideoRecordingDetails {
       locationDescription = _json['locationDescription'] as core.String;
     }
     if (_json.containsKey('recordingDate')) {
-      recordingDate = _json['recordingDate'] as core.String;
+      recordingDate =
+          core.DateTime.parse(_json['recordingDate'] as core.String);
     }
   }
 
@@ -19748,7 +19360,7 @@ class VideoRecordingDetails {
       _json['locationDescription'] = locationDescription;
     }
     if (recordingDate != null) {
-      _json['recordingDate'] = recordingDate;
+      _json['recordingDate'] = (recordingDate).toIso8601String();
     }
     return _json;
   }
@@ -19795,10 +19407,8 @@ class VideoSnippet {
   /// snippet. (Read-only)
   VideoLocalization localized;
 
-  /// The date and time that the video was uploaded.
-  ///
-  /// The value is specified in ISO 8601 format.
-  core.String publishedAt;
+  /// The date and time when the video was uploaded.
+  core.DateTime publishedAt;
 
   /// A list of keyword tags associated with the video.
   ///
@@ -19846,7 +19456,7 @@ class VideoSnippet {
           _json['localized'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('publishedAt')) {
-      publishedAt = _json['publishedAt'] as core.String;
+      publishedAt = core.DateTime.parse(_json['publishedAt'] as core.String);
     }
     if (_json.containsKey('tags')) {
       tags = (_json['tags'] as core.List)
@@ -19889,7 +19499,7 @@ class VideoSnippet {
       _json['localized'] = localized.toJson();
     }
     if (publishedAt != null) {
-      _json['publishedAt'] = publishedAt;
+      _json['publishedAt'] = (publishedAt).toIso8601String();
     }
     if (tags != null) {
       _json['tags'] = tags;
@@ -20013,9 +19623,8 @@ class VideoStatus {
 
   /// The date and time when the video is scheduled to publish.
   ///
-  /// It can be set only if the privacy status of the video is private. The
-  /// value is specified in ISO 8601 format.
-  core.String publishAt;
+  /// It can be set only if the privacy status of the video is private..
+  core.DateTime publishAt;
 
   /// This value explains why YouTube rejected an uploaded video.
   ///
@@ -20066,7 +19675,7 @@ class VideoStatus {
       publicStatsViewable = _json['publicStatsViewable'] as core.bool;
     }
     if (_json.containsKey('publishAt')) {
-      publishAt = _json['publishAt'] as core.String;
+      publishAt = core.DateTime.parse(_json['publishAt'] as core.String);
     }
     if (_json.containsKey('rejectionReason')) {
       rejectionReason = _json['rejectionReason'] as core.String;
@@ -20100,7 +19709,7 @@ class VideoStatus {
       _json['publicStatsViewable'] = publicStatsViewable;
     }
     if (publishAt != null) {
-      _json['publishAt'] = publishAt;
+      _json['publishAt'] = (publishAt).toIso8601String();
     }
     if (rejectionReason != null) {
       _json['rejectionReason'] = rejectionReason;

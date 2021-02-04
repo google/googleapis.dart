@@ -15,15 +15,19 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Hangouts Chat API - v1
+/// Google Chat API - v1
 ///
-/// Enables bots to fetch information and perform actions in Hangouts Chat.
+/// Enables bots to fetch information and perform actions in Google Chat.
 ///
 /// For more information, see <https://developers.google.com/hangouts/chat>
 ///
 /// Create an instance of [HangoutsChatApi] to access these resources:
 ///
+/// - [DmsResource]
+///   - [DmsConversationsResource]
 /// - [MediaResource]
+/// - [RoomsResource]
+///   - [RoomsConversationsResource]
 /// - [SpacesResource]
 ///   - [SpacesMembersResource]
 ///   - [SpacesMessagesResource]
@@ -50,11 +54,13 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
         PartialDownloadOptions,
         ByteRange;
 
-/// Enables bots to fetch information and perform actions in Hangouts Chat.
+/// Enables bots to fetch information and perform actions in Google Chat.
 class HangoutsChatApi {
   final commons.ApiRequester _requester;
 
+  DmsResource get dms => DmsResource(_requester);
   MediaResource get media => MediaResource(_requester);
+  RoomsResource get rooms => RoomsResource(_requester);
   SpacesResource get spaces => SpacesResource(_requester);
 
   HangoutsChatApi(http.Client client,
@@ -62,6 +68,243 @@ class HangoutsChatApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+}
+
+class DmsResource {
+  final commons.ApiRequester _requester;
+
+  DmsConversationsResource get conversations =>
+      DmsConversationsResource(_requester);
+
+  DmsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Legacy path for creating message.
+  ///
+  /// Calling these will result in a BadRequest response.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Space resource name, in the form "spaces / * ".
+  /// Example: spaces/AAAAMpdlehY
+  /// Value must have pattern `^dms/\[^/\]+$`.
+  ///
+  /// [threadKey] - Opaque thread identifier string that can be specified to
+  /// group messages into a single thread. If this is the first message with a
+  /// given thread identifier, a new thread is created. Subsequent messages with
+  /// the same thread identifier will be posted into the same thread. This
+  /// relieves bots and webhooks from having to store the Hangouts Chat thread
+  /// ID of a thread (created earlier by them) to post further updates to it.
+  /// Has no effect if thread field, corresponding to an existing thread, is set
+  /// in message.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Message].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Message> messages(
+    Message request,
+    core.String parent, {
+    core.String threadKey,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (threadKey != null) {
+      _queryParams['threadKey'] = [threadKey];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Legacy path for creating message.
+  ///
+  /// Calling these will result in a BadRequest response.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Space resource name, in the form "spaces / * ".
+  /// Example: spaces/AAAAMpdlehY
+  /// Value must have pattern `^dms/\[^/\]+$`.
+  ///
+  /// [threadKey] - Opaque thread identifier string that can be specified to
+  /// group messages into a single thread. If this is the first message with a
+  /// given thread identifier, a new thread is created. Subsequent messages with
+  /// the same thread identifier will be posted into the same thread. This
+  /// relieves bots and webhooks from having to store the Hangouts Chat thread
+  /// ID of a thread (created earlier by them) to post further updates to it.
+  /// Has no effect if thread field, corresponding to an existing thread, is set
+  /// in message.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Message].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Message> webhooks(
+    Message request,
+    core.String parent, {
+    core.String threadKey,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (threadKey != null) {
+      _queryParams['threadKey'] = [threadKey];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/webhooks';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class DmsConversationsResource {
+  final commons.ApiRequester _requester;
+
+  DmsConversationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Legacy path for creating message.
+  ///
+  /// Calling these will result in a BadRequest response.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Space resource name, in the form "spaces / * ".
+  /// Example: spaces/AAAAMpdlehY
+  /// Value must have pattern `^dms/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [threadKey] - Opaque thread identifier string that can be specified to
+  /// group messages into a single thread. If this is the first message with a
+  /// given thread identifier, a new thread is created. Subsequent messages with
+  /// the same thread identifier will be posted into the same thread. This
+  /// relieves bots and webhooks from having to store the Hangouts Chat thread
+  /// ID of a thread (created earlier by them) to post further updates to it.
+  /// Has no effect if thread field, corresponding to an existing thread, is set
+  /// in message.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Message].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Message> messages(
+    Message request,
+    core.String parent, {
+    core.String threadKey,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (threadKey != null) {
+      _queryParams['threadKey'] = [threadKey];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
 }
 
 class MediaResource {
@@ -137,6 +380,243 @@ class MediaResource {
     } else {
       return _response;
     }
+  }
+}
+
+class RoomsResource {
+  final commons.ApiRequester _requester;
+
+  RoomsConversationsResource get conversations =>
+      RoomsConversationsResource(_requester);
+
+  RoomsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Legacy path for creating message.
+  ///
+  /// Calling these will result in a BadRequest response.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Space resource name, in the form "spaces / * ".
+  /// Example: spaces/AAAAMpdlehY
+  /// Value must have pattern `^rooms/\[^/\]+$`.
+  ///
+  /// [threadKey] - Opaque thread identifier string that can be specified to
+  /// group messages into a single thread. If this is the first message with a
+  /// given thread identifier, a new thread is created. Subsequent messages with
+  /// the same thread identifier will be posted into the same thread. This
+  /// relieves bots and webhooks from having to store the Hangouts Chat thread
+  /// ID of a thread (created earlier by them) to post further updates to it.
+  /// Has no effect if thread field, corresponding to an existing thread, is set
+  /// in message.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Message].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Message> messages(
+    Message request,
+    core.String parent, {
+    core.String threadKey,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (threadKey != null) {
+      _queryParams['threadKey'] = [threadKey];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Legacy path for creating message.
+  ///
+  /// Calling these will result in a BadRequest response.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Space resource name, in the form "spaces / * ".
+  /// Example: spaces/AAAAMpdlehY
+  /// Value must have pattern `^rooms/\[^/\]+$`.
+  ///
+  /// [threadKey] - Opaque thread identifier string that can be specified to
+  /// group messages into a single thread. If this is the first message with a
+  /// given thread identifier, a new thread is created. Subsequent messages with
+  /// the same thread identifier will be posted into the same thread. This
+  /// relieves bots and webhooks from having to store the Hangouts Chat thread
+  /// ID of a thread (created earlier by them) to post further updates to it.
+  /// Has no effect if thread field, corresponding to an existing thread, is set
+  /// in message.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Message].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Message> webhooks(
+    Message request,
+    core.String parent, {
+    core.String threadKey,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (threadKey != null) {
+      _queryParams['threadKey'] = [threadKey];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/webhooks';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class RoomsConversationsResource {
+  final commons.ApiRequester _requester;
+
+  RoomsConversationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Legacy path for creating message.
+  ///
+  /// Calling these will result in a BadRequest response.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Space resource name, in the form "spaces / * ".
+  /// Example: spaces/AAAAMpdlehY
+  /// Value must have pattern `^rooms/\[^/\]+/conversations/\[^/\]+$`.
+  ///
+  /// [threadKey] - Opaque thread identifier string that can be specified to
+  /// group messages into a single thread. If this is the first message with a
+  /// given thread identifier, a new thread is created. Subsequent messages with
+  /// the same thread identifier will be posted into the same thread. This
+  /// relieves bots and webhooks from having to store the Hangouts Chat thread
+  /// ID of a thread (created earlier by them) to post further updates to it.
+  /// Has no effect if thread field, corresponding to an existing thread, is set
+  /// in message.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Message].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Message> messages(
+    Message request,
+    core.String parent, {
+    core.String threadKey,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (threadKey != null) {
+      _queryParams['threadKey'] = [threadKey];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -257,6 +737,80 @@ class SpacesResource {
     return _response.then(
       (data) => ListSpacesResponse.fromJson(
           data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Legacy path for creating message.
+  ///
+  /// Calling these will result in a BadRequest response.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Space resource name, in the form "spaces / * ".
+  /// Example: spaces/AAAAMpdlehY
+  /// Value must have pattern `^spaces/\[^/\]+$`.
+  ///
+  /// [threadKey] - Opaque thread identifier string that can be specified to
+  /// group messages into a single thread. If this is the first message with a
+  /// given thread identifier, a new thread is created. Subsequent messages with
+  /// the same thread identifier will be posted into the same thread. This
+  /// relieves bots and webhooks from having to store the Hangouts Chat thread
+  /// ID of a thread (created earlier by them) to post further updates to it.
+  /// Has no effect if thread field, corresponding to an existing thread, is set
+  /// in message.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Message].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Message> webhooks(
+    Message request,
+    core.String parent, {
+    core.String threadKey,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (threadKey != null) {
+      _queryParams['threadKey'] = [threadKey];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/webhooks';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
     );
   }
 }
@@ -2287,6 +2841,9 @@ class User {
   /// Obfuscated domain information.
   core.String domainId;
 
+  /// True when the user is deleted or the user's proifle is not visible.
+  core.bool isAnonymous;
+
   /// Resource name, in the format "users / * ".
   core.String name;
 
@@ -2306,6 +2863,9 @@ class User {
     if (_json.containsKey('domainId')) {
       domainId = _json['domainId'] as core.String;
     }
+    if (_json.containsKey('isAnonymous')) {
+      isAnonymous = _json['isAnonymous'] as core.bool;
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -2321,6 +2881,9 @@ class User {
     }
     if (domainId != null) {
       _json['domainId'] = domainId;
+    }
+    if (isAnonymous != null) {
+      _json['isAnonymous'] = isAnonymous;
     }
     if (name != null) {
       _json['name'] = name;

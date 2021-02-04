@@ -1379,11 +1379,6 @@ class AutomaticStatus {
 
 /// Associates `members` with a `role`.
 class Binding {
-  /// A client-specified ID for this binding.
-  ///
-  /// Expected to be globally unique to support the internal bindings-by-ID API.
-  core.String bindingId;
-
   /// The condition that is associated with this binding.
   ///
   /// If the condition evaluates to `true`, then this binding applies to the
@@ -1434,9 +1429,6 @@ class Binding {
   Binding();
 
   Binding.fromJson(core.Map _json) {
-    if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'] as core.String;
-    }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(
           _json['condition'] as core.Map<core.String, core.dynamic>);
@@ -1453,9 +1445,6 @@ class Binding {
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
-    if (bindingId != null) {
-      _json['bindingId'] = bindingId;
-    }
     if (condition != null) {
       _json['condition'] = condition.toJson();
     }
@@ -2166,6 +2155,13 @@ class Secret {
   /// Output only.
   core.String createTime;
 
+  /// Timestamp in UTC when the Secret is scheduled to expire.
+  ///
+  /// This is always provided on output, regardless of what was sent on input.
+  ///
+  /// Optional.
+  core.String expireTime;
+
   /// The labels assigned to this Secret.
   ///
   /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding
@@ -2191,11 +2187,19 @@ class Secret {
   /// Required. Immutable.
   Replication replication;
 
+  /// Input only.
+  ///
+  /// The TTL for the Secret.
+  core.String ttl;
+
   Secret();
 
   Secret.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
+    }
+    if (_json.containsKey('expireTime')) {
+      expireTime = _json['expireTime'] as core.String;
     }
     if (_json.containsKey('labels')) {
       labels =
@@ -2213,12 +2217,18 @@ class Secret {
       replication = Replication.fromJson(
           _json['replication'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('ttl')) {
+      ttl = _json['ttl'] as core.String;
+    }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (createTime != null) {
       _json['createTime'] = createTime;
+    }
+    if (expireTime != null) {
+      _json['expireTime'] = expireTime;
     }
     if (labels != null) {
       _json['labels'] = labels;
@@ -2228,6 +2238,9 @@ class Secret {
     }
     if (replication != null) {
       _json['replication'] = replication.toJson();
+    }
+    if (ttl != null) {
+      _json['ttl'] = ttl;
     }
     return _json;
   }

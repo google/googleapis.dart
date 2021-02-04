@@ -21,6 +21,24 @@
 ///
 /// Create an instance of [RecommenderApi] to access these resources:
 ///
+/// - [BillingAccountsResource]
+///   - [BillingAccountsLocationsResource]
+///     - [BillingAccountsLocationsInsightTypesResource]
+///       - [BillingAccountsLocationsInsightTypesInsightsResource]
+///     - [BillingAccountsLocationsRecommendersResource]
+///       - [BillingAccountsLocationsRecommendersRecommendationsResource]
+/// - [FoldersResource]
+///   - [FoldersLocationsResource]
+///     - [FoldersLocationsInsightTypesResource]
+///       - [FoldersLocationsInsightTypesInsightsResource]
+///     - [FoldersLocationsRecommendersResource]
+///       - [FoldersLocationsRecommendersRecommendationsResource]
+/// - [OrganizationsResource]
+///   - [OrganizationsLocationsResource]
+///     - [OrganizationsLocationsInsightTypesResource]
+///       - [OrganizationsLocationsInsightTypesInsightsResource]
+///     - [OrganizationsLocationsRecommendersResource]
+///       - [OrganizationsLocationsRecommendersRecommendationsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsInsightTypesResource]
@@ -48,6 +66,10 @@ class RecommenderApi {
 
   final commons.ApiRequester _requester;
 
+  BillingAccountsResource get billingAccounts =>
+      BillingAccountsResource(_requester);
+  FoldersResource get folders => FoldersResource(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   RecommenderApi(http.Client client,
@@ -55,6 +77,1858 @@ class RecommenderApi {
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
+}
+
+class BillingAccountsResource {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLocationsResource get locations =>
+      BillingAccountsLocationsResource(_requester);
+
+  BillingAccountsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class BillingAccountsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLocationsInsightTypesResource get insightTypes =>
+      BillingAccountsLocationsInsightTypesResource(_requester);
+  BillingAccountsLocationsRecommendersResource get recommenders =>
+      BillingAccountsLocationsRecommendersResource(_requester);
+
+  BillingAccountsLocationsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class BillingAccountsLocationsInsightTypesResource {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLocationsInsightTypesInsightsResource get insights =>
+      BillingAccountsLocationsInsightTypesInsightsResource(_requester);
+
+  BillingAccountsLocationsInsightTypesResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class BillingAccountsLocationsInsightTypesInsightsResource {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLocationsInsightTypesInsightsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the requested insight.
+  ///
+  /// Requires the recommender.*.get IAM permission for the specified insight
+  /// type.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the insight.
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/insights/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Insight].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Insight> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Insight.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Lists insights for a Cloud project.
+  ///
+  /// Requires the recommender.*.list IAM permission for the specified insight
+  /// type.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The container resource on which to execute the
+  /// request. Acceptable formats: 1.
+  /// "projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]",
+  /// LOCATION here refers to GCP Locations:
+  /// https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
+  /// supported insight types:
+  /// https://cloud.google.com/recommender/docs/insights/insight-types.)
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression to restrict the insights returned.
+  /// Supported filter fields: state Eg: \`state:"DISMISSED" or state:"ACTIVE"
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. If not specified, the server
+  /// will determine the number of results to return.
+  ///
+  /// [pageToken] - Optional. If present, retrieves the next batch of results
+  /// from the preceding call to this method. `page_token` must be the value of
+  /// `next_page_token` from the previous response. The values of other method
+  /// parameters must be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1ListInsightsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1ListInsightsResponse> list(
+    core.String parent, {
+    core.String filter,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/insights';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Marks the Insight State as Accepted.
+  ///
+  /// Users can use this method to indicate to the Recommender API that they
+  /// have applied some action based on the insight. This stops the insight
+  /// content from being updated. MarkInsightAccepted can be applied to insights
+  /// in ACTIVE state. Requires the recommender.*.update IAM permission for the
+  /// specified insight.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the insight.
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/insights/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Insight].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Insight> markAccepted(
+    GoogleCloudRecommenderV1MarkInsightAcceptedRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':markAccepted';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Insight.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class BillingAccountsLocationsRecommendersResource {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLocationsRecommendersRecommendationsResource
+      get recommendations =>
+          BillingAccountsLocationsRecommendersRecommendationsResource(
+              _requester);
+
+  BillingAccountsLocationsRecommendersResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class BillingAccountsLocationsRecommendersRecommendationsResource {
+  final commons.ApiRequester _requester;
+
+  BillingAccountsLocationsRecommendersRecommendationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the requested recommendation.
+  ///
+  /// Requires the recommender.*.get IAM permission for the specified
+  /// recommender.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the recommendation.
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Recommendation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Recommendation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Lists recommendations for a Cloud project.
+  ///
+  /// Requires the recommender.*.list IAM permission for the specified
+  /// recommender.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The container resource on which to execute the
+  /// request. Acceptable formats: 1.
+  /// "projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]",
+  /// LOCATION here refers to GCP Locations:
+  /// https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
+  /// supported recommenders:
+  /// https://cloud.google.com/recommender/docs/recommenders.
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+$`.
+  ///
+  /// [filter] - Filter expression to restrict the recommendations returned.
+  /// Supported filter fields: state_info.state Eg:
+  /// \`state_info.state:"DISMISSED" or state_info.state:"FAILED"
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. If not specified, the server
+  /// will determine the number of results to return.
+  ///
+  /// [pageToken] - Optional. If present, retrieves the next batch of results
+  /// from the preceding call to this method. `page_token` must be the value of
+  /// `next_page_token` from the previous response. The values of other method
+  /// parameters must be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1ListRecommendationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1ListRecommendationsResponse> list(
+    core.String parent, {
+    core.String filter,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/recommendations';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Marks the Recommendation State as Claimed.
+  ///
+  /// Users can use this method to indicate to the Recommender API that they are
+  /// starting to apply the recommendation themselves. This stops the
+  /// recommendation content from being updated. Associated insights are frozen
+  /// and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied
+  /// to recommendations in CLAIMED, SUCCEEDED, FAILED, or ACTIVE state.
+  /// Requires the recommender.*.update IAM permission for the specified
+  /// recommender.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the recommendation.
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Recommendation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Recommendation> markClaimed(
+    GoogleCloudRecommenderV1MarkRecommendationClaimedRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markClaimed';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Marks the Recommendation State as Failed.
+  ///
+  /// Users can use this method to indicate to the Recommender API that they
+  /// have applied the recommendation themselves, and the operation failed. This
+  /// stops the recommendation content from being updated. Associated insights
+  /// are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can
+  /// be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED
+  /// state. Requires the recommender.*.update IAM permission for the specified
+  /// recommender.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the recommendation.
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Recommendation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Recommendation> markFailed(
+    GoogleCloudRecommenderV1MarkRecommendationFailedRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markFailed';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Marks the Recommendation State as Succeeded.
+  ///
+  /// Users can use this method to indicate to the Recommender API that they
+  /// have applied the recommendation themselves, and the operation was
+  /// successful. This stops the recommendation content from being updated.
+  /// Associated insights are frozen and placed in the ACCEPTED state.
+  /// MarkRecommendationSucceeded can be applied to recommendations in ACTIVE,
+  /// CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM
+  /// permission for the specified recommender.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the recommendation.
+  /// Value must have pattern
+  /// `^billingAccounts/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Recommendation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Recommendation> markSucceeded(
+    GoogleCloudRecommenderV1MarkRecommendationSucceededRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':markSucceeded';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class FoldersResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsResource get locations =>
+      FoldersLocationsResource(_requester);
+
+  FoldersResource(commons.ApiRequester client) : _requester = client;
+}
+
+class FoldersLocationsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsInsightTypesResource get insightTypes =>
+      FoldersLocationsInsightTypesResource(_requester);
+  FoldersLocationsRecommendersResource get recommenders =>
+      FoldersLocationsRecommendersResource(_requester);
+
+  FoldersLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class FoldersLocationsInsightTypesResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsInsightTypesInsightsResource get insights =>
+      FoldersLocationsInsightTypesInsightsResource(_requester);
+
+  FoldersLocationsInsightTypesResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class FoldersLocationsInsightTypesInsightsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsInsightTypesInsightsResource(commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the requested insight.
+  ///
+  /// Requires the recommender.*.get IAM permission for the specified insight
+  /// type.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the insight.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/insights/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Insight].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Insight> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Insight.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Lists insights for a Cloud project.
+  ///
+  /// Requires the recommender.*.list IAM permission for the specified insight
+  /// type.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The container resource on which to execute the
+  /// request. Acceptable formats: 1.
+  /// "projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]",
+  /// LOCATION here refers to GCP Locations:
+  /// https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
+  /// supported insight types:
+  /// https://cloud.google.com/recommender/docs/insights/insight-types.)
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression to restrict the insights returned.
+  /// Supported filter fields: state Eg: \`state:"DISMISSED" or state:"ACTIVE"
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. If not specified, the server
+  /// will determine the number of results to return.
+  ///
+  /// [pageToken] - Optional. If present, retrieves the next batch of results
+  /// from the preceding call to this method. `page_token` must be the value of
+  /// `next_page_token` from the previous response. The values of other method
+  /// parameters must be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1ListInsightsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1ListInsightsResponse> list(
+    core.String parent, {
+    core.String filter,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/insights';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Marks the Insight State as Accepted.
+  ///
+  /// Users can use this method to indicate to the Recommender API that they
+  /// have applied some action based on the insight. This stops the insight
+  /// content from being updated. MarkInsightAccepted can be applied to insights
+  /// in ACTIVE state. Requires the recommender.*.update IAM permission for the
+  /// specified insight.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the insight.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/insights/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Insight].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Insight> markAccepted(
+    GoogleCloudRecommenderV1MarkInsightAcceptedRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':markAccepted';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Insight.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class FoldersLocationsRecommendersResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsRecommendersRecommendationsResource get recommendations =>
+      FoldersLocationsRecommendersRecommendationsResource(_requester);
+
+  FoldersLocationsRecommendersResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class FoldersLocationsRecommendersRecommendationsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsRecommendersRecommendationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the requested recommendation.
+  ///
+  /// Requires the recommender.*.get IAM permission for the specified
+  /// recommender.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the recommendation.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Recommendation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Recommendation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Lists recommendations for a Cloud project.
+  ///
+  /// Requires the recommender.*.list IAM permission for the specified
+  /// recommender.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The container resource on which to execute the
+  /// request. Acceptable formats: 1.
+  /// "projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]",
+  /// LOCATION here refers to GCP Locations:
+  /// https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
+  /// supported recommenders:
+  /// https://cloud.google.com/recommender/docs/recommenders.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+$`.
+  ///
+  /// [filter] - Filter expression to restrict the recommendations returned.
+  /// Supported filter fields: state_info.state Eg:
+  /// \`state_info.state:"DISMISSED" or state_info.state:"FAILED"
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. If not specified, the server
+  /// will determine the number of results to return.
+  ///
+  /// [pageToken] - Optional. If present, retrieves the next batch of results
+  /// from the preceding call to this method. `page_token` must be the value of
+  /// `next_page_token` from the previous response. The values of other method
+  /// parameters must be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1ListRecommendationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1ListRecommendationsResponse> list(
+    core.String parent, {
+    core.String filter,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/recommendations';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Marks the Recommendation State as Claimed.
+  ///
+  /// Users can use this method to indicate to the Recommender API that they are
+  /// starting to apply the recommendation themselves. This stops the
+  /// recommendation content from being updated. Associated insights are frozen
+  /// and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied
+  /// to recommendations in CLAIMED, SUCCEEDED, FAILED, or ACTIVE state.
+  /// Requires the recommender.*.update IAM permission for the specified
+  /// recommender.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the recommendation.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Recommendation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Recommendation> markClaimed(
+    GoogleCloudRecommenderV1MarkRecommendationClaimedRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markClaimed';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Marks the Recommendation State as Failed.
+  ///
+  /// Users can use this method to indicate to the Recommender API that they
+  /// have applied the recommendation themselves, and the operation failed. This
+  /// stops the recommendation content from being updated. Associated insights
+  /// are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can
+  /// be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED
+  /// state. Requires the recommender.*.update IAM permission for the specified
+  /// recommender.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the recommendation.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Recommendation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Recommendation> markFailed(
+    GoogleCloudRecommenderV1MarkRecommendationFailedRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markFailed';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Marks the Recommendation State as Succeeded.
+  ///
+  /// Users can use this method to indicate to the Recommender API that they
+  /// have applied the recommendation themselves, and the operation was
+  /// successful. This stops the recommendation content from being updated.
+  /// Associated insights are frozen and placed in the ACCEPTED state.
+  /// MarkRecommendationSucceeded can be applied to recommendations in ACTIVE,
+  /// CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM
+  /// permission for the specified recommender.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the recommendation.
+  /// Value must have pattern
+  /// `^folders/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Recommendation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Recommendation> markSucceeded(
+    GoogleCloudRecommenderV1MarkRecommendationSucceededRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':markSucceeded';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class OrganizationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsResource get locations =>
+      OrganizationsLocationsResource(_requester);
+
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class OrganizationsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsInsightTypesResource get insightTypes =>
+      OrganizationsLocationsInsightTypesResource(_requester);
+  OrganizationsLocationsRecommendersResource get recommenders =>
+      OrganizationsLocationsRecommendersResource(_requester);
+
+  OrganizationsLocationsResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class OrganizationsLocationsInsightTypesResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsInsightTypesInsightsResource get insights =>
+      OrganizationsLocationsInsightTypesInsightsResource(_requester);
+
+  OrganizationsLocationsInsightTypesResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class OrganizationsLocationsInsightTypesInsightsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsInsightTypesInsightsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the requested insight.
+  ///
+  /// Requires the recommender.*.get IAM permission for the specified insight
+  /// type.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the insight.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/insights/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Insight].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Insight> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Insight.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Lists insights for a Cloud project.
+  ///
+  /// Requires the recommender.*.list IAM permission for the specified insight
+  /// type.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The container resource on which to execute the
+  /// request. Acceptable formats: 1.
+  /// "projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]",
+  /// LOCATION here refers to GCP Locations:
+  /// https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to
+  /// supported insight types:
+  /// https://cloud.google.com/recommender/docs/insights/insight-types.)
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression to restrict the insights returned.
+  /// Supported filter fields: state Eg: \`state:"DISMISSED" or state:"ACTIVE"
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. If not specified, the server
+  /// will determine the number of results to return.
+  ///
+  /// [pageToken] - Optional. If present, retrieves the next batch of results
+  /// from the preceding call to this method. `page_token` must be the value of
+  /// `next_page_token` from the previous response. The values of other method
+  /// parameters must be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1ListInsightsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1ListInsightsResponse> list(
+    core.String parent, {
+    core.String filter,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/insights';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Marks the Insight State as Accepted.
+  ///
+  /// Users can use this method to indicate to the Recommender API that they
+  /// have applied some action based on the insight. This stops the insight
+  /// content from being updated. MarkInsightAccepted can be applied to insights
+  /// in ACTIVE state. Requires the recommender.*.update IAM permission for the
+  /// specified insight.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the insight.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/insightTypes/\[^/\]+/insights/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Insight].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Insight> markAccepted(
+    GoogleCloudRecommenderV1MarkInsightAcceptedRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':markAccepted';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Insight.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+}
+
+class OrganizationsLocationsRecommendersResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsRecommendersRecommendationsResource
+      get recommendations =>
+          OrganizationsLocationsRecommendersRecommendationsResource(_requester);
+
+  OrganizationsLocationsRecommendersResource(commons.ApiRequester client)
+      : _requester = client;
+}
+
+class OrganizationsLocationsRecommendersRecommendationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsRecommendersRecommendationsResource(
+      commons.ApiRequester client)
+      : _requester = client;
+
+  /// Gets the requested recommendation.
+  ///
+  /// Requires the recommender.*.get IAM permission for the specified
+  /// recommender.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the recommendation.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Recommendation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Recommendation> get(
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Lists recommendations for a Cloud project.
+  ///
+  /// Requires the recommender.*.list IAM permission for the specified
+  /// recommender.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The container resource on which to execute the
+  /// request. Acceptable formats: 1.
+  /// "projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]",
+  /// LOCATION here refers to GCP Locations:
+  /// https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to
+  /// supported recommenders:
+  /// https://cloud.google.com/recommender/docs/recommenders.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+$`.
+  ///
+  /// [filter] - Filter expression to restrict the recommendations returned.
+  /// Supported filter fields: state_info.state Eg:
+  /// \`state_info.state:"DISMISSED" or state_info.state:"FAILED"
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. If not specified, the server
+  /// will determine the number of results to return.
+  ///
+  /// [pageToken] - Optional. If present, retrieves the next batch of results
+  /// from the preceding call to this method. `page_token` must be the value of
+  /// `next_page_token` from the previous response. The values of other method
+  /// parameters must be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1ListRecommendationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1ListRecommendationsResponse> list(
+    core.String parent, {
+    core.String filter,
+    core.int pageSize,
+    core.String pageToken,
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (parent == null) {
+      throw core.ArgumentError('Parameter parent is required.');
+    }
+    if (filter != null) {
+      _queryParams['filter'] = [filter];
+    }
+    if (pageSize != null) {
+      _queryParams['pageSize'] = ['${pageSize}'];
+    }
+    if (pageToken != null) {
+      _queryParams['pageToken'] = [pageToken];
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$parent') +
+        '/recommendations';
+
+    final _response = _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Marks the Recommendation State as Claimed.
+  ///
+  /// Users can use this method to indicate to the Recommender API that they are
+  /// starting to apply the recommendation themselves. This stops the
+  /// recommendation content from being updated. Associated insights are frozen
+  /// and placed in the ACCEPTED state. MarkRecommendationClaimed can be applied
+  /// to recommendations in CLAIMED, SUCCEEDED, FAILED, or ACTIVE state.
+  /// Requires the recommender.*.update IAM permission for the specified
+  /// recommender.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the recommendation.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Recommendation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Recommendation> markClaimed(
+    GoogleCloudRecommenderV1MarkRecommendationClaimedRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markClaimed';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Marks the Recommendation State as Failed.
+  ///
+  /// Users can use this method to indicate to the Recommender API that they
+  /// have applied the recommendation themselves, and the operation failed. This
+  /// stops the recommendation content from being updated. Associated insights
+  /// are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can
+  /// be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED
+  /// state. Requires the recommender.*.update IAM permission for the specified
+  /// recommender.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the recommendation.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Recommendation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Recommendation> markFailed(
+    GoogleCloudRecommenderV1MarkRecommendationFailedRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markFailed';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
+
+  /// Marks the Recommendation State as Succeeded.
+  ///
+  /// Users can use this method to indicate to the Recommender API that they
+  /// have applied the recommendation themselves, and the operation was
+  /// successful. This stops the recommendation content from being updated.
+  /// Associated insights are frozen and placed in the ACCEPTED state.
+  /// MarkRecommendationSucceeded can be applied to recommendations in ACTIVE,
+  /// CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM
+  /// permission for the specified recommender.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the recommendation.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/recommenders/\[^/\]+/recommendations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRecommenderV1Recommendation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRecommenderV1Recommendation> markSucceeded(
+    GoogleCloudRecommenderV1MarkRecommendationSucceededRequest request,
+    core.String name, {
+    core.String $fields,
+  }) {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (request != null) {
+      _body = convert.json.encode(request.toJson());
+    }
+    if (name == null) {
+      throw core.ArgumentError('Parameter name is required.');
+    }
+    if ($fields != null) {
+      _queryParams['fields'] = [$fields];
+    }
+
+    _url = 'v1/' +
+        commons.Escaper.ecapeVariableReserved('$name') +
+        ':markSucceeded';
+
+    final _response = _requester.request(
+      _url,
+      'POST',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
+    return _response.then(
+      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
+  }
 }
 
 class ProjectsResource {
@@ -1260,9 +3134,9 @@ class GoogleCloudRecommenderV1Operation {
   /// This is intended to be an exact match per filter. To perform advanced
   /// matching, use path_value_matchers. * Example: { "/versions / * /name" :
   /// "it-123" "/versions / * /targetSize/percent": 20 } * Example: { "/bindings
-  /// / * /role": "roles/admin" "/bindings / * /condition" : null } * Example: {
-  /// "/bindings / * /role": "roles/admin" "/bindings / * /members / * " :
-  /// \["x@google.com", "y@google.com"\] } When both path_filters and
+  /// / * /role": "roles/owner" "/bindings / * /condition" : null } * Example: {
+  /// "/bindings / * /role": "roles/owner" "/bindings / * /members / * " :
+  /// \["x@example.com", "y@example.com"\] } When both path_filters and
   /// path_value_matchers are set, an implicit AND must be performed.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
@@ -1712,7 +3586,7 @@ class GoogleCloudRecommenderV1ValueMatcher {
 
 /// Represents an amount of money with its currency type.
 class GoogleTypeMoney {
-  /// The 3-letter currency code defined in ISO 4217.
+  /// The three-letter currency code defined in ISO 4217.
   core.String currencyCode;
 
   /// Number of nano (10^-9) units of the amount.

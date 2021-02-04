@@ -415,13 +415,6 @@ class AdministrationRegion {
   /// The election administration body for this area.
   AdministrativeBody electionAdministrationBody;
 
-  /// An ID for this object.
-  ///
-  /// IDs may change in future requests and should not be cached. Access to this
-  /// field requires special access that can be requested from the Request more
-  /// link on the Quotas page.
-  core.String id;
-
   /// The city or county that provides election information for this voter.
   ///
   /// This object can have the same elements as state.
@@ -444,9 +437,6 @@ class AdministrationRegion {
           _json['electionAdministrationBody']
               as core.Map<core.String, core.dynamic>);
     }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
     if (_json.containsKey('local_jurisdiction')) {
       localJurisdiction = AdministrationRegion.fromJson(
           _json['local_jurisdiction'] as core.Map<core.String, core.dynamic>);
@@ -466,9 +456,6 @@ class AdministrationRegion {
     final _json = <core.String, core.Object>{};
     if (electionAdministrationBody != null) {
       _json['electionAdministrationBody'] = electionAdministrationBody.toJson();
-    }
-    if (id != null) {
-      _json['id'] = id;
     }
     if (localJurisdiction != null) {
       _json['local_jurisdiction'] = localJurisdiction.toJson();
@@ -796,13 +783,6 @@ class Contest {
   /// this contest.
   core.String electorateSpecifications;
 
-  /// An ID for this object.
-  ///
-  /// IDs may change in future requests and should not be cached. Access to this
-  /// field requires special access that can be requested from the Request more
-  /// link on the Quotas page.
-  core.String id;
-
   /// The levels of government of the office for this contest.
   ///
   /// There may be more than one in cases where a jurisdiction effectively acts
@@ -931,9 +911,6 @@ class Contest {
       electorateSpecifications =
           _json['electorateSpecifications'] as core.String;
     }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
     if (_json.containsKey('level')) {
       level = (_json['level'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -1026,9 +1003,6 @@ class Contest {
     }
     if (electorateSpecifications != null) {
       _json['electorateSpecifications'] = electorateSpecifications;
-    }
-    if (id != null) {
-      _json['id'] = id;
     }
     if (level != null) {
       _json['level'] = level;
@@ -1643,13 +1617,6 @@ class PollingLocation {
   /// This field is not populated for polling locations.
   core.String endDate;
 
-  /// An ID for this object.
-  ///
-  /// IDs may change in future requests and should not be cached. Access to this
-  /// field requires special access that can be requested from the Request more
-  /// link on the Quotas page.
-  core.String id;
-
   /// Latitude of the location, in degrees north of the equator.
   ///
   /// Note this field may not be available for some locations.
@@ -1697,9 +1664,6 @@ class PollingLocation {
     if (_json.containsKey('endDate')) {
       endDate = _json['endDate'] as core.String;
     }
-    if (_json.containsKey('id')) {
-      id = _json['id'] as core.String;
-    }
     if (_json.containsKey('latitude')) {
       latitude = (_json['latitude'] as core.num).toDouble();
     }
@@ -1736,9 +1700,6 @@ class PollingLocation {
     }
     if (endDate != null) {
       _json['endDate'] = endDate;
-    }
-    if (id != null) {
-      _json['id'] = id;
     }
     if (latitude != null) {
       _json['latitude'] = latitude;

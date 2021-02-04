@@ -92,6 +92,16 @@ class FitnessApi {
   static const fitnessBodyTemperatureWriteScope =
       'https://www.googleapis.com/auth/fitness.body_temperature.write';
 
+  /// See your heart rate data in Google Fit. I consent to Google sharing my
+  /// heart rate information with this app.
+  static const fitnessHeartRateReadScope =
+      'https://www.googleapis.com/auth/fitness.heart_rate.read';
+
+  /// See and add to your heart rate data in Google Fit. I consent to Google
+  /// sharing my heart rate information with this app.
+  static const fitnessHeartRateWriteScope =
+      'https://www.googleapis.com/auth/fitness.heart_rate.write';
+
   /// See your Google Fit speed and distance data
   static const fitnessLocationReadScope =
       'https://www.googleapis.com/auth/fitness.location.read';
@@ -127,6 +137,16 @@ class FitnessApi {
   /// to Google sharing my reproductive health information with this app.
   static const fitnessReproductiveHealthWriteScope =
       'https://www.googleapis.com/auth/fitness.reproductive_health.write';
+
+  /// See your sleep data in Google Fit. I consent to Google sharing my sleep
+  /// information with this app.
+  static const fitnessSleepReadScope =
+      'https://www.googleapis.com/auth/fitness.sleep.read';
+
+  /// See and add to your sleep data in Google Fit. I consent to Google sharing
+  /// my sleep information with this app.
+  static const fitnessSleepWriteScope =
+      'https://www.googleapis.com/auth/fitness.sleep.write';
 
   final commons.ApiRequester _requester;
 
@@ -704,7 +724,9 @@ class UsersDataSourcesDatasetsResource {
   ///
   /// [limit] - If specified, no more than this many data points will be
   /// included in the dataset. If there are more data points in the dataset,
-  /// nextPageToken will be set in the dataset response.
+  /// nextPageToken will be set in the dataset response. The limit is applied
+  /// from the end of the time range. That is, if pageToken is absent, the limit
+  /// most recent data points will be returned.
   ///
   /// [pageToken] - The continuation token, which is used to page through large
   /// datasets. To get the next page of a dataset, set this parameter to the
@@ -781,7 +803,8 @@ class UsersDataSourcesDatasetsResource {
   /// The dataset need not be previously created. All points within the given
   /// dataset will be returned with subsquent calls to retrieve this dataset.
   /// Data points can belong to more than one dataset. This method does not use
-  /// patch semantics.
+  /// patch semantics: the data points provided are merely inserted, with no
+  /// existing data replaced.
   ///
   /// [request] - The metadata request object.
   ///
@@ -793,10 +816,7 @@ class UsersDataSourcesDatasetsResource {
   /// [dataSourceId] - The data stream ID of the data source that created the
   /// dataset.
   ///
-  /// [datasetId] - Dataset identifier that is a composite of the minimum data
-  /// point start time and maximum data point end time represented as
-  /// nanoseconds from the epoch. The ID is formatted like: "startTime-endTime"
-  /// where startTime and endTime are 64 bit integers.
+  /// [datasetId] - This field is not used, and can be safely omitted.
   ///
   /// [currentTimeMillis] - The client's current time in milliseconds since
   /// epoch. Note that the minStartTimeNs and maxEndTimeNs properties in the

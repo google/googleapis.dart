@@ -15,7 +15,7 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
-/// Admin SDK - datatransfer_v1
+/// Admin SDK API - datatransfer_v1
 ///
 /// Admin SDK lets administrators of enterprise domains to view and manage
 /// resources like user, groups etc. It also provides audit and usage reports of
@@ -60,7 +60,7 @@ class DataTransferApi {
   TransfersResource get transfers => TransfersResource(_requester);
 
   DataTransferApi(http.Client client,
-      {core.String rootUrl = 'https://www.googleapis.com/',
+      {core.String rootUrl = 'https://admin.googleapis.com/',
       core.String servicePath = ''})
       : _requester =
             commons.ApiRequester(client, rootUrl, servicePath, userAgent);
@@ -127,7 +127,7 @@ class ApplicationsResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the Google Apps account.
+  /// [customerId] - Immutable ID of the Google Workspace account.
   ///
   /// [maxResults] - Maximum number of results to return. Default is 100.
   /// Value must be between "1" and "500".
@@ -302,7 +302,7 @@ class TransfersResource {
   ///
   /// Request parameters:
   ///
-  /// [customerId] - Immutable ID of the Google Apps account.
+  /// [customerId] - Immutable ID of the Google Workspace account.
   ///
   /// [maxResults] - Maximum number of results to return. Default is 100.
   /// Value must be between "1" and "500".
@@ -381,11 +381,8 @@ class TransfersResource {
   }
 }
 
-/// The JSON template for an Application resource.
-///
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// Applications resources represent applications installed on the domain that
+/// support transferring ownership of user data.
 class Application {
   /// Etag of the resource.
   core.String etag;
@@ -541,10 +538,6 @@ class ApplicationTransferParam {
 }
 
 /// Template for a collection of Applications.
-///
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class ApplicationsListResponse {
   /// List of applications that support data transfer and are also installed for
   /// the customer.
@@ -598,11 +591,8 @@ class ApplicationsListResponse {
   }
 }
 
-/// The JSON template for a DataTransfer resource.
-///
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
+/// A Transfer resource represents the transfer of the ownership of user data
+/// between users.
 class DataTransfer {
   /// List of per application data transfer resources.
   ///
@@ -700,10 +690,6 @@ class DataTransfer {
 }
 
 /// Template for a collection of DataTransfer resources.
-///
-/// STEPLADDER: Generated unstable field number for field 'kind'. (See
-/// http://go/stepladder-help#fieldNumber) STEPLADDER: Generated unstable field
-/// number for field 'etag'. (See http://go/stepladder-help#fieldNumber)
 class DataTransfersListResponse {
   /// List of data transfer requests.
   core.List<DataTransfer> dataTransfers;

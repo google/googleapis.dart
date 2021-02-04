@@ -3726,10 +3726,11 @@ class CustomerUserStats {
 /// All items must belong to a datasource. This is the prerequisite before items
 /// can be indexed into Cloud Search.
 class DataSource {
-  /// If true, Indexing API rejects any modification calls to this datasource
-  /// such as create, update, and delete.
+  /// If true, sets the datasource to read-only mode.
   ///
-  /// Disabling this does not imply halting process of previously accepted data.
+  /// In read-only mode, the Indexing API rejects any requests to index or
+  /// delete items in this source. Enabling read-only mode does not stop the
+  /// processing of previously accepted data.
   core.bool disableModifications;
 
   /// Disable serving any search or assist results.
@@ -5850,6 +5851,9 @@ class ItemAcl {
 }
 
 /// Content of an item to be indexed and surfaced by Cloud Search.
+///
+/// Only UTF-8 encoded strings are allowed as inlineContent. If the content is
+/// uploaded and not binary, it must be UTF-8 encoded.
 class ItemContent {
   /// Upload reference ID of a previously uploaded content via write method.
   UploadItemRef contentDataRef;
@@ -9697,8 +9701,9 @@ class SuggestRequest {
   /// The sources to use for suggestions.
   ///
   /// If not specified, the data sources are taken from the current search
-  /// application. NOTE: Suggestions are supported only for third party data
-  /// sources and people (i.e. PredefinedSource.PERSON).
+  /// application. NOTE: Suggestions are only supported for the following
+  /// sources: * Third-party data sources * PredefinedSource.PERSON *
+  /// PredefinedSource.GOOGLE_DRIVE
   core.List<DataSourceRestriction> dataSourceRestrictions;
 
   /// Partial query for which autocomplete suggestions will be shown.
