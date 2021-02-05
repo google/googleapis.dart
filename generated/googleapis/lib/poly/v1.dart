@@ -88,7 +88,6 @@ class AssetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -102,7 +101,6 @@ class AssetsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -176,7 +174,6 @@ class AssetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (category != null) {
       _queryParams['category'] = [category];
@@ -211,7 +208,6 @@ class AssetsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -294,7 +290,6 @@ class UsersAssetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -323,7 +318,6 @@ class UsersAssetsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -386,7 +380,6 @@ class UsersLikedassetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -413,7 +406,6 @@ class UsersLikedassetsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,

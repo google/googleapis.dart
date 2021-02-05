@@ -152,7 +152,6 @@ class BiddersCreativesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -179,7 +178,6 @@ class BiddersCreativesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -224,8 +222,8 @@ class BiddersCreativesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -288,8 +286,8 @@ class BiddersPretargetingConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -344,8 +342,8 @@ class BiddersPretargetingConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -402,8 +400,8 @@ class BiddersPretargetingConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -460,8 +458,8 @@ class BiddersPretargetingConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -522,8 +520,8 @@ class BiddersPretargetingConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -576,7 +574,6 @@ class BiddersPretargetingConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -590,7 +587,6 @@ class BiddersPretargetingConfigsResource {
     final _response = await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -624,7 +620,6 @@ class BiddersPretargetingConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -638,7 +633,6 @@ class BiddersPretargetingConfigsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -683,7 +677,6 @@ class BiddersPretargetingConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -705,7 +698,6 @@ class BiddersPretargetingConfigsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -747,8 +739,8 @@ class BiddersPretargetingConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -806,8 +798,8 @@ class BiddersPretargetingConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -864,8 +856,8 @@ class BiddersPretargetingConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -922,8 +914,8 @@ class BiddersPretargetingConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -979,8 +971,8 @@ class BiddersPretargetingConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1049,7 +1041,6 @@ class BuyersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1065,7 +1056,6 @@ class BuyersResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1113,8 +1103,8 @@ class BuyersCreativesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1177,7 +1167,6 @@ class BuyersCreativesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1194,7 +1183,6 @@ class BuyersCreativesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1269,7 +1257,6 @@ class BuyersCreativesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1296,7 +1283,6 @@ class BuyersCreativesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1340,8 +1326,8 @@ class BuyersCreativesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1404,8 +1390,8 @@ class BuyersUserListsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1462,8 +1448,8 @@ class BuyersUserListsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1514,7 +1500,6 @@ class BuyersUserListsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1528,7 +1513,6 @@ class BuyersUserListsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1571,7 +1555,6 @@ class BuyersUserListsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1587,7 +1570,6 @@ class BuyersUserListsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1633,7 +1615,6 @@ class BuyersUserListsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1654,7 +1635,6 @@ class BuyersUserListsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1693,8 +1673,8 @@ class BuyersUserListsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1753,8 +1733,8 @@ class BuyersUserListsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }

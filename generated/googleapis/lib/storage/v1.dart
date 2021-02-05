@@ -140,7 +140,6 @@ class BucketAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -166,7 +165,6 @@ class BucketAccessControlsResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -211,7 +209,6 @@ class BucketAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -237,7 +234,6 @@ class BucketAccessControlsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -281,8 +277,8 @@ class BucketAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -345,7 +341,6 @@ class BucketAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -365,7 +360,6 @@ class BucketAccessControlsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -414,8 +408,8 @@ class BucketAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -492,8 +486,8 @@ class BucketAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -574,7 +568,6 @@ class BucketsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -600,7 +593,6 @@ class BucketsResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -656,7 +648,6 @@ class BucketsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -685,7 +676,6 @@ class BucketsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -730,7 +720,6 @@ class BucketsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -755,7 +744,6 @@ class BucketsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -835,8 +823,8 @@ class BucketsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -924,7 +912,6 @@ class BucketsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -957,7 +944,6 @@ class BucketsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1001,7 +987,6 @@ class BucketsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -1027,7 +1012,6 @@ class BucketsResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1119,8 +1103,8 @@ class BucketsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1200,8 +1184,8 @@ class BucketsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1267,7 +1251,6 @@ class BucketsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -1293,7 +1276,6 @@ class BucketsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1386,8 +1368,8 @@ class BucketsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1460,8 +1442,8 @@ class ChannelsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1525,7 +1507,6 @@ class DefaultObjectAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -1551,7 +1532,6 @@ class DefaultObjectAccessControlsResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1597,7 +1577,6 @@ class DefaultObjectAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -1623,7 +1602,6 @@ class DefaultObjectAccessControlsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1667,8 +1645,8 @@ class DefaultObjectAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1740,7 +1718,6 @@ class DefaultObjectAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -1767,7 +1744,6 @@ class DefaultObjectAccessControlsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1816,8 +1792,8 @@ class DefaultObjectAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1894,8 +1870,8 @@ class DefaultObjectAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1971,7 +1947,6 @@ class NotificationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -1997,7 +1972,6 @@ class NotificationsResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2040,7 +2014,6 @@ class NotificationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -2066,7 +2039,6 @@ class NotificationsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2110,8 +2082,8 @@ class NotificationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -2176,7 +2148,6 @@ class NotificationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -2198,7 +2169,6 @@ class NotificationsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2258,7 +2228,6 @@ class ObjectAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -2292,7 +2261,6 @@ class ObjectAccessControlsResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2345,7 +2313,6 @@ class ObjectAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -2379,7 +2346,6 @@ class ObjectAccessControlsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2431,8 +2397,8 @@ class ObjectAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -2513,7 +2479,6 @@ class ObjectAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -2543,7 +2508,6 @@ class ObjectAccessControlsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2600,8 +2564,8 @@ class ObjectAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -2694,8 +2658,8 @@ class ObjectAccessControlsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -2818,8 +2782,8 @@ class ObjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -2991,8 +2955,8 @@ class ObjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -3138,7 +3102,6 @@ class ObjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -3179,7 +3142,6 @@ class ObjectsResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3261,7 +3223,6 @@ class ObjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -3305,7 +3266,6 @@ class ObjectsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3359,7 +3319,6 @@ class ObjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -3389,7 +3348,6 @@ class ObjectsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3502,8 +3460,8 @@ class ObjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -3651,7 +3609,6 @@ class ObjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -3700,7 +3657,6 @@ class ObjectsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3792,8 +3748,8 @@ class ObjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -3987,8 +3943,8 @@ class ObjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -4124,8 +4080,8 @@ class ObjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -4209,7 +4165,6 @@ class ObjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -4243,7 +4198,6 @@ class ObjectsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4336,8 +4290,8 @@ class ObjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -4475,8 +4429,8 @@ class ObjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -4581,7 +4535,6 @@ class ProjectsHmacKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -4603,7 +4556,6 @@ class ProjectsHmacKeysResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4639,7 +4591,6 @@ class ProjectsHmacKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -4662,7 +4613,6 @@ class ProjectsHmacKeysResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4700,7 +4650,6 @@ class ProjectsHmacKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -4723,7 +4672,6 @@ class ProjectsHmacKeysResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4778,7 +4726,6 @@ class ProjectsHmacKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -4808,7 +4755,6 @@ class ProjectsHmacKeysResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4852,8 +4798,8 @@ class ProjectsHmacKeysResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -4926,7 +4872,6 @@ class ProjectsServiceAccountResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -4948,7 +4893,6 @@ class ProjectsServiceAccountResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,

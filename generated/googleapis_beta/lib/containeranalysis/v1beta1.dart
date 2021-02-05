@@ -110,8 +110,8 @@ class ProjectsNotesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -170,8 +170,8 @@ class ProjectsNotesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -226,7 +226,6 @@ class ProjectsNotesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -240,7 +239,6 @@ class ProjectsNotesResource {
     final _response = await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -274,7 +272,6 @@ class ProjectsNotesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -288,7 +285,6 @@ class ProjectsNotesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -332,8 +328,8 @@ class ProjectsNotesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -395,7 +391,6 @@ class ProjectsNotesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -420,7 +415,6 @@ class ProjectsNotesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -461,8 +455,8 @@ class ProjectsNotesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -525,8 +519,8 @@ class ProjectsNotesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -588,8 +582,8 @@ class ProjectsNotesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -661,7 +655,6 @@ class ProjectsNotesOccurrencesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -686,7 +679,6 @@ class ProjectsNotesOccurrencesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -731,8 +723,8 @@ class ProjectsOccurrencesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -788,8 +780,8 @@ class ProjectsOccurrencesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -845,7 +837,6 @@ class ProjectsOccurrencesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -859,7 +850,6 @@ class ProjectsOccurrencesResource {
     final _response = await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -893,7 +883,6 @@ class ProjectsOccurrencesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -907,7 +896,6 @@ class ProjectsOccurrencesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -952,8 +940,8 @@ class ProjectsOccurrencesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1008,7 +996,6 @@ class ProjectsOccurrencesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1023,7 +1010,6 @@ class ProjectsOccurrencesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1060,7 +1046,6 @@ class ProjectsOccurrencesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1079,7 +1064,6 @@ class ProjectsOccurrencesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1125,7 +1109,6 @@ class ProjectsOccurrencesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1150,7 +1133,6 @@ class ProjectsOccurrencesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1191,8 +1173,8 @@ class ProjectsOccurrencesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1256,8 +1238,8 @@ class ProjectsOccurrencesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1319,8 +1301,8 @@ class ProjectsOccurrencesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1380,7 +1362,6 @@ class ProjectsScanConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1394,7 +1375,6 @@ class ProjectsScanConfigsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1438,7 +1418,6 @@ class ProjectsScanConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1463,7 +1442,6 @@ class ProjectsScanConfigsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1501,8 +1479,8 @@ class ProjectsScanConfigsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }

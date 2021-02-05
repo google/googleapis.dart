@@ -149,8 +149,8 @@ class AccountsClientsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -205,7 +205,6 @@ class AccountsClientsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -225,7 +224,6 @@ class AccountsClientsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -272,7 +270,6 @@ class AccountsClientsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -297,7 +294,6 @@ class AccountsClientsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -339,8 +335,8 @@ class AccountsClientsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -410,8 +406,8 @@ class AccountsClientsInvitationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -476,7 +472,6 @@ class AccountsClientsInvitationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -501,7 +496,6 @@ class AccountsClientsInvitationsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -552,7 +546,6 @@ class AccountsClientsInvitationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -579,7 +572,6 @@ class AccountsClientsInvitationsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -627,7 +619,6 @@ class AccountsClientsUsersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -652,7 +643,6 @@ class AccountsClientsUsersResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -702,7 +692,6 @@ class AccountsClientsUsersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -729,7 +718,6 @@ class AccountsClientsUsersResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -775,8 +763,8 @@ class AccountsClientsUsersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -862,8 +850,8 @@ class AccountsCreativesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -919,7 +907,6 @@ class AccountsCreativesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -939,7 +926,6 @@ class AccountsCreativesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -995,7 +981,6 @@ class AccountsCreativesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1020,7 +1005,6 @@ class AccountsCreativesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1063,8 +1047,8 @@ class AccountsCreativesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1127,8 +1111,8 @@ class AccountsCreativesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1194,8 +1178,8 @@ class AccountsCreativesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1263,8 +1247,8 @@ class AccountsCreativesDealAssociationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1343,7 +1327,6 @@ class AccountsCreativesDealAssociationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1373,7 +1356,6 @@ class AccountsCreativesDealAssociationsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1412,8 +1394,8 @@ class AccountsCreativesDealAssociationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1503,7 +1485,6 @@ class AccountsFinalizedProposalsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1531,7 +1512,6 @@ class AccountsFinalizedProposalsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1573,7 +1553,6 @@ class AccountsProductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1593,7 +1572,6 @@ class AccountsProductsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1639,7 +1617,6 @@ class AccountsProductsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1664,7 +1641,6 @@ class AccountsProductsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1715,8 +1691,8 @@ class AccountsProposalsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1780,8 +1756,8 @@ class AccountsProposalsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1845,8 +1821,8 @@ class AccountsProposalsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1913,8 +1889,8 @@ class AccountsProposalsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1975,8 +1951,8 @@ class AccountsProposalsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -2031,7 +2007,6 @@ class AccountsProposalsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2051,7 +2026,6 @@ class AccountsProposalsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2115,7 +2089,6 @@ class AccountsProposalsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2143,7 +2116,6 @@ class AccountsProposalsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2188,8 +2160,8 @@ class AccountsProposalsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -2257,8 +2229,8 @@ class AccountsProposalsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -2329,8 +2301,8 @@ class AccountsProposalsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -2394,7 +2366,6 @@ class AccountsPublisherProfilesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2414,7 +2385,6 @@ class AccountsPublisherProfilesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2453,7 +2423,6 @@ class AccountsPublisherProfilesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2475,7 +2444,6 @@ class AccountsPublisherProfilesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2569,8 +2537,8 @@ class BiddersAccountsFilterSetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -2631,7 +2599,6 @@ class BiddersAccountsFilterSetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2645,7 +2612,6 @@ class BiddersAccountsFilterSetsResource {
     final _response = await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2685,7 +2651,6 @@ class BiddersAccountsFilterSetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -2699,7 +2664,6 @@ class BiddersAccountsFilterSetsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2747,7 +2711,6 @@ class BiddersAccountsFilterSetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (ownerName == null) {
       throw core.ArgumentError('Parameter ownerName is required.');
@@ -2769,7 +2732,6 @@ class BiddersAccountsFilterSetsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2827,7 +2789,6 @@ class BiddersAccountsFilterSetsBidMetricsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -2849,7 +2810,6 @@ class BiddersAccountsFilterSetsBidMetricsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2909,7 +2869,6 @@ class BiddersAccountsFilterSetsBidResponseErrorsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -2931,7 +2890,6 @@ class BiddersAccountsFilterSetsBidResponseErrorsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2992,7 +2950,6 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -3014,7 +2971,6 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3074,7 +3030,6 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -3096,7 +3051,6 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3160,7 +3114,6 @@ class BiddersAccountsFilterSetsFilteredBidsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -3182,7 +3135,6 @@ class BiddersAccountsFilterSetsFilteredBidsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3247,7 +3199,6 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -3274,7 +3225,6 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3341,7 +3291,6 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -3368,7 +3317,6 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3427,7 +3375,6 @@ class BiddersAccountsFilterSetsImpressionMetricsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -3449,7 +3396,6 @@ class BiddersAccountsFilterSetsImpressionMetricsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3508,7 +3454,6 @@ class BiddersAccountsFilterSetsLosingBidsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -3530,7 +3475,6 @@ class BiddersAccountsFilterSetsLosingBidsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3590,7 +3534,6 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -3612,7 +3555,6 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3684,8 +3626,8 @@ class BiddersFilterSetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -3745,7 +3687,6 @@ class BiddersFilterSetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3759,7 +3700,6 @@ class BiddersFilterSetsResource {
     final _response = await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3798,7 +3738,6 @@ class BiddersFilterSetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -3812,7 +3751,6 @@ class BiddersFilterSetsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3860,7 +3798,6 @@ class BiddersFilterSetsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (ownerName == null) {
       throw core.ArgumentError('Parameter ownerName is required.');
@@ -3882,7 +3819,6 @@ class BiddersFilterSetsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3939,7 +3875,6 @@ class BiddersFilterSetsBidMetricsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -3961,7 +3896,6 @@ class BiddersFilterSetsBidMetricsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4019,7 +3953,6 @@ class BiddersFilterSetsBidResponseErrorsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -4041,7 +3974,6 @@ class BiddersFilterSetsBidResponseErrorsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4100,7 +4032,6 @@ class BiddersFilterSetsBidResponsesWithoutBidsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -4122,7 +4053,6 @@ class BiddersFilterSetsBidResponsesWithoutBidsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4180,7 +4110,6 @@ class BiddersFilterSetsFilteredBidRequestsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -4202,7 +4131,6 @@ class BiddersFilterSetsFilteredBidRequestsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4265,7 +4193,6 @@ class BiddersFilterSetsFilteredBidsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -4287,7 +4214,6 @@ class BiddersFilterSetsFilteredBidsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4350,7 +4276,6 @@ class BiddersFilterSetsFilteredBidsCreativesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -4377,7 +4302,6 @@ class BiddersFilterSetsFilteredBidsCreativesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4442,7 +4366,6 @@ class BiddersFilterSetsFilteredBidsDetailsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -4469,7 +4392,6 @@ class BiddersFilterSetsFilteredBidsDetailsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4526,7 +4448,6 @@ class BiddersFilterSetsImpressionMetricsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -4548,7 +4469,6 @@ class BiddersFilterSetsImpressionMetricsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4606,7 +4526,6 @@ class BiddersFilterSetsLosingBidsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -4628,7 +4547,6 @@ class BiddersFilterSetsLosingBidsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4686,7 +4604,6 @@ class BiddersFilterSetsNonBillableWinningBidsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -4708,7 +4625,6 @@ class BiddersFilterSetsNonBillableWinningBidsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,

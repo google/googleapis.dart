@@ -97,7 +97,6 @@ class CustomersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
@@ -112,7 +111,6 @@ class CustomersResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -152,8 +150,8 @@ class CustomersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -207,8 +205,8 @@ class CustomersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -263,8 +261,8 @@ class CustomersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -316,7 +314,6 @@ class ResellernotifyResource_1 {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -327,7 +324,6 @@ class ResellernotifyResource_1 {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -361,7 +357,6 @@ class ResellernotifyResource_1 {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (serviceAccountEmailAddress != null) {
       _queryParams['serviceAccountEmailAddress'] = [serviceAccountEmailAddress];
@@ -375,7 +370,6 @@ class ResellernotifyResource_1 {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -409,7 +403,6 @@ class ResellernotifyResource_1 {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (serviceAccountEmailAddress != null) {
       _queryParams['serviceAccountEmailAddress'] = [serviceAccountEmailAddress];
@@ -423,7 +416,6 @@ class ResellernotifyResource_1 {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -472,7 +464,6 @@ class SubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
@@ -493,7 +484,6 @@ class SubscriptionsResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -542,8 +532,8 @@ class SubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -614,8 +604,8 @@ class SubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -684,8 +674,8 @@ class SubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -762,7 +752,6 @@ class SubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
@@ -786,7 +775,6 @@ class SubscriptionsResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -828,7 +816,6 @@ class SubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
@@ -848,7 +835,6 @@ class SubscriptionsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -895,8 +881,8 @@ class SubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -982,7 +968,6 @@ class SubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (customerAuthToken != null) {
       _queryParams['customerAuthToken'] = [customerAuthToken];
@@ -1008,7 +993,6 @@ class SubscriptionsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1052,7 +1036,6 @@ class SubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
@@ -1073,7 +1056,6 @@ class SubscriptionsResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1116,7 +1098,6 @@ class SubscriptionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
@@ -1137,7 +1118,6 @@ class SubscriptionsResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,

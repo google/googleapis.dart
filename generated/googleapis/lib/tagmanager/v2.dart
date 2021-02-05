@@ -129,7 +129,6 @@ class AccountsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -143,7 +142,6 @@ class AccountsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -175,7 +173,6 @@ class AccountsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -189,7 +186,6 @@ class AccountsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -230,8 +226,8 @@ class AccountsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -302,8 +298,8 @@ class AccountsContainersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -353,7 +349,6 @@ class AccountsContainersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -367,7 +362,6 @@ class AccountsContainersResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -401,7 +395,6 @@ class AccountsContainersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -415,7 +408,6 @@ class AccountsContainersResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -452,7 +444,6 @@ class AccountsContainersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -471,7 +462,6 @@ class AccountsContainersResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -513,8 +503,8 @@ class AccountsContainersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -577,8 +567,8 @@ class AccountsContainersEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -630,7 +620,6 @@ class AccountsContainersEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -644,7 +633,6 @@ class AccountsContainersEnvironmentsResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -679,7 +667,6 @@ class AccountsContainersEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -693,7 +680,6 @@ class AccountsContainersEnvironmentsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -731,7 +717,6 @@ class AccountsContainersEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -750,7 +735,6 @@ class AccountsContainersEnvironmentsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -789,8 +773,8 @@ class AccountsContainersEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -851,8 +835,8 @@ class AccountsContainersEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -913,7 +897,6 @@ class AccountsContainersVersionHeadersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -929,7 +912,6 @@ class AccountsContainersVersionHeadersResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -970,7 +952,6 @@ class AccountsContainersVersionHeadersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -992,7 +973,6 @@ class AccountsContainersVersionHeadersResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1033,7 +1013,6 @@ class AccountsContainersVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1047,7 +1026,6 @@ class AccountsContainersVersionsResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1086,7 +1064,6 @@ class AccountsContainersVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1103,7 +1080,6 @@ class AccountsContainersVersionsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1138,7 +1114,6 @@ class AccountsContainersVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1154,7 +1129,6 @@ class AccountsContainersVersionsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1194,7 +1168,6 @@ class AccountsContainersVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1213,7 +1186,6 @@ class AccountsContainersVersionsResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1250,7 +1222,6 @@ class AccountsContainersVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1266,7 +1237,6 @@ class AccountsContainersVersionsResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1302,7 +1272,6 @@ class AccountsContainersVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1318,7 +1287,6 @@ class AccountsContainersVersionsResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1361,8 +1329,8 @@ class AccountsContainersVersionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1441,8 +1409,8 @@ class AccountsContainersWorkspacesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1500,8 +1468,8 @@ class AccountsContainersWorkspacesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1553,7 +1521,6 @@ class AccountsContainersWorkspacesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1567,7 +1534,6 @@ class AccountsContainersWorkspacesResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1602,7 +1568,6 @@ class AccountsContainersWorkspacesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1616,7 +1581,6 @@ class AccountsContainersWorkspacesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1651,7 +1615,6 @@ class AccountsContainersWorkspacesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1667,7 +1630,6 @@ class AccountsContainersWorkspacesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1705,7 +1667,6 @@ class AccountsContainersWorkspacesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1724,7 +1685,6 @@ class AccountsContainersWorkspacesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1761,7 +1721,6 @@ class AccountsContainersWorkspacesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1777,7 +1736,6 @@ class AccountsContainersWorkspacesResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1819,8 +1777,8 @@ class AccountsContainersWorkspacesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1878,7 +1836,6 @@ class AccountsContainersWorkspacesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -1894,7 +1851,6 @@ class AccountsContainersWorkspacesResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1937,8 +1893,8 @@ class AccountsContainersWorkspacesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -2003,7 +1959,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2022,7 +1977,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2059,7 +2013,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -2076,7 +2029,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2114,7 +2066,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2133,7 +2084,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2283,7 +2233,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -2302,7 +2251,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2348,8 +2296,8 @@ class AccountsContainersWorkspacesFoldersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -2400,7 +2348,6 @@ class AccountsContainersWorkspacesFoldersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -2414,7 +2361,6 @@ class AccountsContainersWorkspacesFoldersResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2452,7 +2398,6 @@ class AccountsContainersWorkspacesFoldersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -2471,7 +2416,6 @@ class AccountsContainersWorkspacesFoldersResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2507,7 +2451,6 @@ class AccountsContainersWorkspacesFoldersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -2521,7 +2464,6 @@ class AccountsContainersWorkspacesFoldersResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2559,7 +2501,6 @@ class AccountsContainersWorkspacesFoldersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2578,7 +2519,6 @@ class AccountsContainersWorkspacesFoldersResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2624,8 +2564,8 @@ class AccountsContainersWorkspacesFoldersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -2691,7 +2631,6 @@ class AccountsContainersWorkspacesFoldersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -2710,7 +2649,6 @@ class AccountsContainersWorkspacesFoldersResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2753,8 +2691,8 @@ class AccountsContainersWorkspacesFoldersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -2818,8 +2756,8 @@ class AccountsContainersWorkspacesTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -2870,7 +2808,6 @@ class AccountsContainersWorkspacesTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -2884,7 +2821,6 @@ class AccountsContainersWorkspacesTagsResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2919,7 +2855,6 @@ class AccountsContainersWorkspacesTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -2933,7 +2868,6 @@ class AccountsContainersWorkspacesTagsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2971,7 +2905,6 @@ class AccountsContainersWorkspacesTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2990,7 +2923,6 @@ class AccountsContainersWorkspacesTagsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3030,7 +2962,6 @@ class AccountsContainersWorkspacesTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3049,7 +2980,6 @@ class AccountsContainersWorkspacesTagsResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3092,8 +3022,8 @@ class AccountsContainersWorkspacesTagsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -3157,8 +3087,8 @@ class AccountsContainersWorkspacesTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -3210,7 +3140,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3224,7 +3153,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3259,7 +3187,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3273,7 +3200,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3312,7 +3238,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3331,7 +3256,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3371,7 +3295,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3390,7 +3313,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3433,8 +3355,8 @@ class AccountsContainersWorkspacesTemplatesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -3499,8 +3421,8 @@ class AccountsContainersWorkspacesTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -3551,7 +3473,6 @@ class AccountsContainersWorkspacesTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3565,7 +3486,6 @@ class AccountsContainersWorkspacesTriggersResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3600,7 +3520,6 @@ class AccountsContainersWorkspacesTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3614,7 +3533,6 @@ class AccountsContainersWorkspacesTriggersResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3652,7 +3570,6 @@ class AccountsContainersWorkspacesTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -3671,7 +3588,6 @@ class AccountsContainersWorkspacesTriggersResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3711,7 +3627,6 @@ class AccountsContainersWorkspacesTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3730,7 +3645,6 @@ class AccountsContainersWorkspacesTriggersResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3773,8 +3687,8 @@ class AccountsContainersWorkspacesTriggersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -3838,8 +3752,8 @@ class AccountsContainersWorkspacesVariablesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -3890,7 +3804,6 @@ class AccountsContainersWorkspacesVariablesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3904,7 +3817,6 @@ class AccountsContainersWorkspacesVariablesResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3939,7 +3851,6 @@ class AccountsContainersWorkspacesVariablesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -3953,7 +3864,6 @@ class AccountsContainersWorkspacesVariablesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3991,7 +3901,6 @@ class AccountsContainersWorkspacesVariablesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -4010,7 +3919,6 @@ class AccountsContainersWorkspacesVariablesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4050,7 +3958,6 @@ class AccountsContainersWorkspacesVariablesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -4069,7 +3976,6 @@ class AccountsContainersWorkspacesVariablesResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4112,8 +4018,8 @@ class AccountsContainersWorkspacesVariablesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -4177,8 +4083,8 @@ class AccountsContainersWorkspacesZonesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -4229,7 +4135,6 @@ class AccountsContainersWorkspacesZonesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -4243,7 +4148,6 @@ class AccountsContainersWorkspacesZonesResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4278,7 +4182,6 @@ class AccountsContainersWorkspacesZonesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -4292,7 +4195,6 @@ class AccountsContainersWorkspacesZonesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4330,7 +4232,6 @@ class AccountsContainersWorkspacesZonesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -4349,7 +4250,6 @@ class AccountsContainersWorkspacesZonesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4389,7 +4289,6 @@ class AccountsContainersWorkspacesZonesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -4408,7 +4307,6 @@ class AccountsContainersWorkspacesZonesResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4451,8 +4349,8 @@ class AccountsContainersWorkspacesZonesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -4514,8 +4412,8 @@ class AccountsUserPermissionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -4567,7 +4465,6 @@ class AccountsUserPermissionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -4581,7 +4478,6 @@ class AccountsUserPermissionsResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4615,7 +4511,6 @@ class AccountsUserPermissionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
@@ -4629,7 +4524,6 @@ class AccountsUserPermissionsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4668,7 +4562,6 @@ class AccountsUserPermissionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -4687,7 +4580,6 @@ class AccountsUserPermissionsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -4725,8 +4617,8 @@ class AccountsUserPermissionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }

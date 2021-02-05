@@ -103,8 +103,8 @@ class SearchanalyticsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -164,7 +164,6 @@ class SitemapsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
@@ -184,7 +183,6 @@ class SitemapsResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -221,7 +219,6 @@ class SitemapsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
@@ -241,7 +238,6 @@ class SitemapsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -280,7 +276,6 @@ class SitemapsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
@@ -297,7 +292,6 @@ class SitemapsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -333,7 +327,6 @@ class SitemapsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
@@ -353,7 +346,6 @@ class SitemapsResource {
     await _requester.request(
       _url,
       'PUT',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -389,7 +381,6 @@ class SitesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
@@ -403,7 +394,6 @@ class SitesResource {
     await _requester.request(
       _url,
       'PUT',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -436,7 +426,6 @@ class SitesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
@@ -450,7 +439,6 @@ class SitesResource {
     await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -485,7 +473,6 @@ class SitesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
@@ -499,7 +486,6 @@ class SitesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -528,7 +514,6 @@ class SitesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
@@ -539,7 +524,6 @@ class SitesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,

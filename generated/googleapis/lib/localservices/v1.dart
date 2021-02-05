@@ -130,7 +130,6 @@ class AccountReportsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (endDate_day != null) {
       _queryParams['endDate.day'] = ['${endDate_day}'];
@@ -168,7 +167,6 @@ class AccountReportsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -257,7 +255,6 @@ class DetailedLeadReportsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (endDate_day != null) {
       _queryParams['endDate.day'] = ['${endDate_day}'];
@@ -295,7 +292,6 @@ class DetailedLeadReportsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,

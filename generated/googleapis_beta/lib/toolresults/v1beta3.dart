@@ -99,7 +99,6 @@ class ProjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -115,7 +114,6 @@ class ProjectsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -167,7 +165,6 @@ class ProjectsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -183,7 +180,6 @@ class ProjectsResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -237,8 +233,8 @@ class ProjectsHistoriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -298,7 +294,6 @@ class ProjectsHistoriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -318,7 +313,6 @@ class ProjectsHistoriesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -370,7 +364,6 @@ class ProjectsHistoriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -395,7 +388,6 @@ class ProjectsHistoriesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -457,8 +449,8 @@ class ProjectsHistoriesExecutionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -526,7 +518,6 @@ class ProjectsHistoriesExecutionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -551,7 +542,6 @@ class ProjectsHistoriesExecutionsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -602,7 +592,6 @@ class ProjectsHistoriesExecutionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -629,7 +618,6 @@ class ProjectsHistoriesExecutionsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -681,8 +669,8 @@ class ProjectsHistoriesExecutionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -760,7 +748,6 @@ class ProjectsHistoriesExecutionsClustersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -790,7 +777,6 @@ class ProjectsHistoriesExecutionsClustersResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -836,7 +822,6 @@ class ProjectsHistoriesExecutionsClustersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -862,7 +847,6 @@ class ProjectsHistoriesExecutionsClustersResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -915,7 +899,6 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -945,7 +928,6 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -997,7 +979,6 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1029,7 +1010,6 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1097,7 +1077,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
@@ -1116,7 +1095,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1168,8 +1146,8 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1245,7 +1223,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1275,7 +1252,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1319,7 +1295,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1350,7 +1325,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1406,7 +1380,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1438,7 +1411,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1494,8 +1466,8 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1581,8 +1553,8 @@ class ProjectsHistoriesExecutionsStepsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1671,8 +1643,8 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1766,8 +1738,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1848,7 +1820,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1883,7 +1854,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1935,7 +1905,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1969,7 +1938,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2034,8 +2002,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -2135,7 +2103,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2177,7 +2144,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2235,7 +2201,6 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2270,7 +2235,6 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2326,7 +2290,6 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2363,7 +2326,6 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2427,7 +2389,6 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2464,7 +2425,6 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,

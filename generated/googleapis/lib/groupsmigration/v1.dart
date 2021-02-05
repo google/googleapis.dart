@@ -96,7 +96,6 @@ class ArchiveResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (groupId == null) {
       throw core.ArgumentError('Parameter groupId is required.');
@@ -121,7 +120,6 @@ class ArchiveResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,

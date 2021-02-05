@@ -116,8 +116,8 @@ class ControllerDebuggeesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -197,7 +197,6 @@ class ControllerDebuggeesBreakpointsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
@@ -222,7 +221,6 @@ class ControllerDebuggeesBreakpointsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -268,8 +266,8 @@ class ControllerDebuggeesBreakpointsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -351,7 +349,6 @@ class DebuggerDebuggeesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (clientVersion != null) {
       _queryParams['clientVersion'] = [clientVersion];
@@ -371,7 +368,6 @@ class DebuggerDebuggeesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -418,7 +414,6 @@ class DebuggerDebuggeesBreakpointsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
@@ -441,7 +436,6 @@ class DebuggerDebuggeesBreakpointsResource {
     final _response = await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -480,7 +474,6 @@ class DebuggerDebuggeesBreakpointsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
@@ -503,7 +496,6 @@ class DebuggerDebuggeesBreakpointsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -571,7 +563,6 @@ class DebuggerDebuggeesBreakpointsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
@@ -605,7 +596,6 @@ class DebuggerDebuggeesBreakpointsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -659,8 +649,8 @@ class DebuggerDebuggeesBreakpointsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }

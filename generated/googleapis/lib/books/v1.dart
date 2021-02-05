@@ -129,7 +129,6 @@ class BookshelvesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
@@ -152,7 +151,6 @@ class BookshelvesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -187,7 +185,6 @@ class BookshelvesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
@@ -206,7 +203,6 @@ class BookshelvesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -261,7 +257,6 @@ class BookshelvesVolumesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
@@ -294,7 +289,6 @@ class BookshelvesVolumesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -344,7 +338,6 @@ class CloudloadingResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (driveDocumentId != null) {
       _queryParams['drive_document_id'] = [driveDocumentId];
@@ -367,7 +360,6 @@ class CloudloadingResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -400,7 +392,6 @@ class CloudloadingResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
@@ -415,7 +406,6 @@ class CloudloadingResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -447,8 +437,8 @@ class CloudloadingResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -500,7 +490,6 @@ class DictionaryResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (cpksver == null) {
       throw core.ArgumentError('Parameter cpksver is required.');
@@ -515,7 +504,6 @@ class DictionaryResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -553,7 +541,6 @@ class FamilysharingResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (source != null) {
       _queryParams['source'] = [source];
@@ -567,7 +554,6 @@ class FamilysharingResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -608,7 +594,6 @@ class FamilysharingResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (docId != null) {
       _queryParams['docId'] = [docId];
@@ -628,7 +613,6 @@ class FamilysharingResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -669,7 +653,6 @@ class FamilysharingResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (docId != null) {
       _queryParams['docId'] = [docId];
@@ -689,7 +672,6 @@ class FamilysharingResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -741,7 +723,6 @@ class LayersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
@@ -767,7 +748,6 @@ class LayersResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -813,7 +793,6 @@ class LayersResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
@@ -841,7 +820,6 @@ class LayersResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -913,7 +891,6 @@ class LayersAnnotationDataResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
@@ -960,7 +937,6 @@ class LayersAnnotationDataResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1036,7 +1012,6 @@ class LayersAnnotationDataResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
@@ -1091,7 +1066,6 @@ class LayersAnnotationDataResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1144,7 +1118,6 @@ class LayersVolumeAnnotationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
@@ -1175,7 +1148,6 @@ class LayersVolumeAnnotationsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1256,7 +1228,6 @@ class LayersVolumeAnnotationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
@@ -1316,7 +1287,6 @@ class LayersVolumeAnnotationsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1356,7 +1326,6 @@ class MyconfigResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (country != null) {
       _queryParams['country'] = [country];
@@ -1370,7 +1339,6 @@ class MyconfigResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1413,7 +1381,6 @@ class MyconfigResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (cpksver == null) {
       throw core.ArgumentError('Parameter cpksver is required.');
@@ -1438,7 +1405,6 @@ class MyconfigResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1493,7 +1459,6 @@ class MyconfigResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (cpksver == null) {
       throw core.ArgumentError('Parameter cpksver is required.');
@@ -1526,7 +1491,6 @@ class MyconfigResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1584,7 +1548,6 @@ class MyconfigResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (cpksver == null) {
       throw core.ArgumentError('Parameter cpksver is required.');
@@ -1622,7 +1585,6 @@ class MyconfigResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1658,8 +1620,8 @@ class MyconfigResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1728,7 +1690,6 @@ class MylibraryAnnotationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (annotationId == null) {
       throw core.ArgumentError('Parameter annotationId is required.');
@@ -1746,7 +1707,6 @@ class MylibraryAnnotationsResource {
     final _response = await _requester.request(
       _url,
       'DELETE',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1791,8 +1751,8 @@ class MylibraryAnnotationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -1883,7 +1843,6 @@ class MylibraryAnnotationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (contentVersion != null) {
       _queryParams['contentVersion'] = [contentVersion];
@@ -1924,7 +1883,6 @@ class MylibraryAnnotationsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -1960,7 +1918,6 @@ class MylibraryAnnotationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (layerIds == null || layerIds.isEmpty) {
       throw core.ArgumentError('Parameter layerIds is required.');
@@ -1979,7 +1936,6 @@ class MylibraryAnnotationsResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2018,8 +1974,8 @@ class MylibraryAnnotationsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
+    core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
@@ -2096,7 +2052,6 @@ class MylibraryBookshelvesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
@@ -2122,7 +2077,6 @@ class MylibraryBookshelvesResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2157,7 +2111,6 @@ class MylibraryBookshelvesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
@@ -2176,7 +2129,6 @@ class MylibraryBookshelvesResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2212,7 +2164,6 @@ class MylibraryBookshelvesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
@@ -2230,7 +2181,6 @@ class MylibraryBookshelvesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2262,7 +2212,6 @@ class MylibraryBookshelvesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (source != null) {
       _queryParams['source'] = [source];
@@ -2276,7 +2225,6 @@ class MylibraryBookshelvesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2320,7 +2268,6 @@ class MylibraryBookshelvesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
@@ -2347,7 +2294,6 @@ class MylibraryBookshelvesResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2391,7 +2337,6 @@ class MylibraryBookshelvesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
@@ -2417,7 +2362,6 @@ class MylibraryBookshelvesResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2482,7 +2426,6 @@ class MylibraryBookshelvesVolumesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
@@ -2519,7 +2462,6 @@ class MylibraryBookshelvesVolumesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2565,7 +2507,6 @@ class MylibraryReadingpositionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
@@ -2586,7 +2527,6 @@ class MylibraryReadingpositionsResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2647,7 +2587,6 @@ class MylibraryReadingpositionsResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
@@ -2683,7 +2622,6 @@ class MylibraryReadingpositionsResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2728,7 +2666,6 @@ class NotificationResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (notificationId == null) {
       throw core.ArgumentError('Parameter notificationId is required.');
@@ -2749,7 +2686,6 @@ class NotificationResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2789,7 +2725,6 @@ class OnboardingResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (locale != null) {
       _queryParams['locale'] = [locale];
@@ -2803,7 +2738,6 @@ class OnboardingResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2854,7 +2788,6 @@ class OnboardingResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (categoryId != null) {
       _queryParams['categoryId'] = categoryId;
@@ -2880,7 +2813,6 @@ class OnboardingResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -2931,7 +2863,6 @@ class PersonalizedstreamResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (locale != null) {
       _queryParams['locale'] = [locale];
@@ -2951,7 +2882,6 @@ class PersonalizedstreamResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3011,7 +2941,6 @@ class PromoofferResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (androidId != null) {
       _queryParams['androidId'] = [androidId];
@@ -3046,7 +2975,6 @@ class PromoofferResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3096,7 +3024,6 @@ class PromoofferResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (androidId != null) {
       _queryParams['androidId'] = [androidId];
@@ -3128,7 +3055,6 @@ class PromoofferResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3175,7 +3101,6 @@ class PromoofferResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (androidId != null) {
       _queryParams['androidId'] = [androidId];
@@ -3204,7 +3129,6 @@ class PromoofferResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3245,7 +3169,6 @@ class SeriesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (seriesId == null || seriesId.isEmpty) {
       throw core.ArgumentError('Parameter seriesId is required.');
@@ -3260,7 +3183,6 @@ class SeriesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3305,7 +3227,6 @@ class SeriesMembershipResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (seriesId == null) {
       throw core.ArgumentError('Parameter seriesId is required.');
@@ -3326,7 +3247,6 @@ class SeriesMembershipResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3396,7 +3316,6 @@ class VolumesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
@@ -3430,7 +3349,6 @@ class VolumesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3536,7 +3454,6 @@ class VolumesResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (q == null) {
       throw core.ArgumentError('Parameter q is required.');
@@ -3590,7 +3507,6 @@ class VolumesResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3652,7 +3568,6 @@ class VolumesAssociatedResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
@@ -3680,7 +3595,6 @@ class VolumesAssociatedResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3740,7 +3654,6 @@ class VolumesMybooksResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (acquireMethod != null) {
       _queryParams['acquireMethod'] = acquireMethod;
@@ -3772,7 +3685,6 @@ class VolumesMybooksResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3823,7 +3735,6 @@ class VolumesRecommendedResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (locale != null) {
       _queryParams['locale'] = [locale];
@@ -3843,7 +3754,6 @@ class VolumesRecommendedResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3889,7 +3799,6 @@ class VolumesRecommendedResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (rating == null) {
       throw core.ArgumentError('Parameter rating is required.');
@@ -3914,7 +3823,6 @@ class VolumesRecommendedResource {
     final _response = await _requester.request(
       _url,
       'POST',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -3973,7 +3881,6 @@ class VolumesUseruploadedResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (locale != null) {
       _queryParams['locale'] = [locale];
@@ -4002,7 +3909,6 @@ class VolumesUseruploadedResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,

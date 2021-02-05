@@ -118,7 +118,6 @@ class PagespeedapiResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (url == null) {
       throw core.ArgumentError('Parameter url is required.');
@@ -151,7 +150,6 @@ class PagespeedapiResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,

@@ -227,9 +227,12 @@ class DartResourceMethod {
 
     final methodComment = Comment('$commentBuilder');
 
+    final core = imports.core.ref();
+
     if (requestParameter != null) {
       final parameterEncode =
           requestParameter.type.jsonEncode('${requestParameter.name}');
+      params.writeln('    ${core}String$orNull _body;');
       params.writeln('    if (${requestParameter.name} != null) {');
       params.writeln(
         '      _body = ${imports.convert.ref()}json.encode($parameterEncode);',
@@ -371,6 +374,8 @@ class DartResourceMethod {
             ? 'downloadOptions: null,'
             : '';
 
+    final bodyOption = requestParameter == null ? '' : 'body: _body,';
+
     requestCode.write('''
 
 $urlPatternCode
@@ -378,7 +383,7 @@ $urlPatternCode
     $responseVar await _requester.request(
       _url,
       '$httpMethod',
-      body: _body,
+      $bodyOption
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -408,14 +413,12 @@ $urlPatternCode
     methodString.write(methodComment.asDartDoc(2));
     methodString.writeln('  $signature async {');
 
-    final core = imports.core.ref();
     methodString.write(
       '''
     ${core}String _url;
     final _queryParams = <${core}String, ${core}List<${core}String>>{};
     ${imports.commons}.Media$orNull _uploadMedia;
     ${imports.commons}.UploadOptions$orNull _uploadOptions;
-    ${core}String$orNull _body;
 
 $params$requestCode''',
     );

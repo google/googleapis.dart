@@ -316,7 +316,6 @@ class CseResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (c2coff != null) {
       _queryParams['c2coff'] = [c2coff];
@@ -420,7 +419,6 @@ class CseResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
@@ -693,7 +691,6 @@ class CseSiterestrictResource {
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
     commons.UploadOptions _uploadOptions;
-    core.String _body;
 
     if (c2coff != null) {
       _queryParams['c2coff'] = [c2coff];
@@ -797,7 +794,6 @@ class CseSiterestrictResource {
     final _response = await _requester.request(
       _url,
       'GET',
-      body: _body,
       queryParams: _queryParams,
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
