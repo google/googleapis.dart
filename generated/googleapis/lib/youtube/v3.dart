@@ -187,7 +187,7 @@ class AbuseReportsResource {
     AbuseReport request,
     core.List<core.String> part, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -208,7 +208,7 @@ class AbuseReportsResource {
 
     _url = 'youtube/v3/abuseReports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -217,10 +217,8 @@ class AbuseReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AbuseReport.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AbuseReport.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -283,7 +281,7 @@ class ActivitiesResource {
     core.String publishedBefore,
     core.String regionCode,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -325,7 +323,7 @@ class ActivitiesResource {
 
     _url = 'youtube/v3/activities';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -334,10 +332,8 @@ class ActivitiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ActivityListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ActivityListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -374,12 +370,12 @@ class CaptionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String id, {
     core.String onBehalfOf,
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -405,7 +401,7 @@ class CaptionsResource {
 
     _url = 'youtube/v3/captions';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -413,9 +409,6 @@ class CaptionsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -457,7 +450,7 @@ class CaptionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future download(
+  async.Future<core.Object> download(
     core.String id, {
     core.String onBehalfOf,
     core.String onBehalfOfContentOwner,
@@ -465,7 +458,7 @@ class CaptionsResource {
     core.String tlang,
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -496,7 +489,7 @@ class CaptionsResource {
 
     _url = 'youtube/v3/captions/' + commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -507,9 +500,7 @@ class CaptionsResource {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then(
-        (data) => null,
-      );
+      return null;
     } else {
       return _response;
     }
@@ -566,7 +557,7 @@ class CaptionsResource {
     core.String $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -605,7 +596,7 @@ class CaptionsResource {
       _url = '/upload/youtube/v3/captions';
     }
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -614,9 +605,7 @@ class CaptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Caption.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Caption.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -662,7 +651,7 @@ class CaptionsResource {
     core.String onBehalfOf,
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -693,7 +682,7 @@ class CaptionsResource {
 
     _url = 'youtube/v3/captions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -702,10 +691,8 @@ class CaptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CaptionListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CaptionListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing resource.
@@ -760,7 +747,7 @@ class CaptionsResource {
     core.String $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -799,7 +786,7 @@ class CaptionsResource {
       _url = '/upload/youtube/v3/captions';
     }
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -808,9 +795,7 @@ class CaptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Caption.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Caption.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -880,7 +865,7 @@ class ChannelBannersResource {
     core.String $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -917,7 +902,7 @@ class ChannelBannersResource {
       _url = '/upload/youtube/v3/channelBanners/insert';
     }
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -926,10 +911,8 @@ class ChannelBannersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ChannelBannerResource.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ChannelBannerResource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -963,11 +946,11 @@ class ChannelSectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String id, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -990,7 +973,7 @@ class ChannelSectionsResource {
 
     _url = 'youtube/v3/channelSections';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -998,9 +981,6 @@ class ChannelSectionsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1059,7 +1039,7 @@ class ChannelSectionsResource {
     core.String onBehalfOfContentOwner,
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1088,7 +1068,7 @@ class ChannelSectionsResource {
 
     _url = 'youtube/v3/channelSections';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1097,10 +1077,8 @@ class ChannelSectionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ChannelSection.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ChannelSection.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -1155,7 +1133,7 @@ class ChannelSectionsResource {
     core.bool mine,
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1188,7 +1166,7 @@ class ChannelSectionsResource {
 
     _url = 'youtube/v3/channelSections';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1197,10 +1175,8 @@ class ChannelSectionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ChannelSectionListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ChannelSectionListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing resource.
@@ -1240,7 +1216,7 @@ class ChannelSectionsResource {
     core.List<core.String> part, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1264,7 +1240,7 @@ class ChannelSectionsResource {
 
     _url = 'youtube/v3/channelSections';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1273,10 +1249,8 @@ class ChannelSectionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ChannelSection.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ChannelSection.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1357,7 +1331,7 @@ class ChannelsResource {
     core.String onBehalfOfContentOwner,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1405,7 +1379,7 @@ class ChannelsResource {
 
     _url = 'youtube/v3/channels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1414,10 +1388,8 @@ class ChannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ChannelListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ChannelListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing resource.
@@ -1460,7 +1432,7 @@ class ChannelsResource {
     core.List<core.String> part, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1484,7 +1456,7 @@ class ChannelsResource {
 
     _url = 'youtube/v3/channels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1493,9 +1465,7 @@ class ChannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1528,7 +1498,7 @@ class CommentThreadsResource {
     CommentThread request,
     core.List<core.String> part, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1549,7 +1519,7 @@ class CommentThreadsResource {
 
     _url = 'youtube/v3/commentThreads';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1558,10 +1528,8 @@ class CommentThreadsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CommentThread.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CommentThread.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -1637,7 +1605,7 @@ class CommentThreadsResource {
     core.String textFormat,
     core.String videoId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1687,7 +1655,7 @@ class CommentThreadsResource {
 
     _url = 'youtube/v3/commentThreads';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1696,10 +1664,8 @@ class CommentThreadsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CommentThreadListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CommentThreadListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing resource.
@@ -1727,7 +1693,7 @@ class CommentThreadsResource {
     CommentThread request,
     core.List<core.String> part, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1748,7 +1714,7 @@ class CommentThreadsResource {
 
     _url = 'youtube/v3/commentThreads';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1757,10 +1723,8 @@ class CommentThreadsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CommentThread.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CommentThread.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1783,10 +1747,10 @@ class CommentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1806,7 +1770,7 @@ class CommentsResource {
 
     _url = 'youtube/v3/comments';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1814,9 +1778,6 @@ class CommentsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1844,7 +1805,7 @@ class CommentsResource {
     Comment request,
     core.List<core.String> part, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1865,7 +1826,7 @@ class CommentsResource {
 
     _url = 'youtube/v3/comments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1874,9 +1835,7 @@ class CommentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Comment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -1924,7 +1883,7 @@ class CommentsResource {
     core.String parentId,
     core.String textFormat,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1957,7 +1916,7 @@ class CommentsResource {
 
     _url = 'youtube/v3/comments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1966,10 +1925,8 @@ class CommentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CommentListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CommentListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Expresses the caller's opinion that one or more comments should be flagged
@@ -1988,10 +1945,10 @@ class CommentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future markAsSpam(
+  async.Future<void> markAsSpam(
     core.List<core.String> id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2011,7 +1968,7 @@ class CommentsResource {
 
     _url = 'youtube/v3/comments/markAsSpam';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2019,9 +1976,6 @@ class CommentsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -2054,12 +2008,12 @@ class CommentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future setModerationStatus(
+  async.Future<void> setModerationStatus(
     core.List<core.String> id,
     core.String moderationStatus, {
     core.bool banAuthor,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2086,7 +2040,7 @@ class CommentsResource {
 
     _url = 'youtube/v3/comments/setModerationStatus';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2094,9 +2048,6 @@ class CommentsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -2125,7 +2076,7 @@ class CommentsResource {
     Comment request,
     core.List<core.String> part, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2146,7 +2097,7 @@ class CommentsResource {
 
     _url = 'youtube/v3/comments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2155,9 +2106,7 @@ class CommentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Comment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2190,7 +2139,7 @@ class I18nLanguagesResource {
     core.List<core.String> part, {
     core.String hl,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2211,7 +2160,7 @@ class I18nLanguagesResource {
 
     _url = 'youtube/v3/i18nLanguages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2220,10 +2169,8 @@ class I18nLanguagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => I18nLanguageListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return I18nLanguageListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2255,7 +2202,7 @@ class I18nRegionsResource {
     core.List<core.String> part, {
     core.String hl,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2276,7 +2223,7 @@ class I18nRegionsResource {
 
     _url = 'youtube/v3/i18nRegions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2285,10 +2232,8 @@ class I18nRegionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => I18nRegionListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return I18nRegionListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2355,7 +2300,7 @@ class LiveBroadcastsResource {
     core.String onBehalfOfContentOwnerChannel,
     core.String streamId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2388,7 +2333,7 @@ class LiveBroadcastsResource {
 
     _url = 'youtube/v3/liveBroadcasts/bind';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2397,10 +2342,8 @@ class LiveBroadcastsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LiveBroadcast.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LiveBroadcast.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a given broadcast.
@@ -2445,12 +2388,12 @@ class LiveBroadcastsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String id, {
     core.String onBehalfOfContentOwner,
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2478,7 +2421,7 @@ class LiveBroadcastsResource {
 
     _url = 'youtube/v3/liveBroadcasts';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2486,9 +2429,6 @@ class LiveBroadcastsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -2548,7 +2488,7 @@ class LiveBroadcastsResource {
     core.String onBehalfOfContentOwner,
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2577,7 +2517,7 @@ class LiveBroadcastsResource {
 
     _url = 'youtube/v3/liveBroadcasts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2586,10 +2526,8 @@ class LiveBroadcastsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LiveBroadcast.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LiveBroadcast.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieve the list of broadcasts associated with the given channel.
@@ -2678,7 +2616,7 @@ class LiveBroadcastsResource {
     core.String onBehalfOfContentOwnerChannel,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2722,7 +2660,7 @@ class LiveBroadcastsResource {
 
     _url = 'youtube/v3/liveBroadcasts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2731,10 +2669,8 @@ class LiveBroadcastsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LiveBroadcastListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LiveBroadcastListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Transition a broadcast to a given status.
@@ -2805,7 +2741,7 @@ class LiveBroadcastsResource {
     core.String onBehalfOfContentOwner,
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2839,7 +2775,7 @@ class LiveBroadcastsResource {
 
     _url = 'youtube/v3/liveBroadcasts/transition';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2848,10 +2784,8 @@ class LiveBroadcastsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LiveBroadcast.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LiveBroadcast.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing broadcast for the authenticated user.
@@ -2918,7 +2852,7 @@ class LiveBroadcastsResource {
     core.String onBehalfOfContentOwner,
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2947,7 +2881,7 @@ class LiveBroadcastsResource {
 
     _url = 'youtube/v3/liveBroadcasts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2956,10 +2890,8 @@ class LiveBroadcastsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LiveBroadcast.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LiveBroadcast.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2982,10 +2914,10 @@ class LiveChatBansResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3005,7 +2937,7 @@ class LiveChatBansResource {
 
     _url = 'youtube/v3/liveChat/bans';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3013,9 +2945,6 @@ class LiveChatBansResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -3044,7 +2973,7 @@ class LiveChatBansResource {
     LiveChatBan request,
     core.List<core.String> part, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3065,7 +2994,7 @@ class LiveChatBansResource {
 
     _url = 'youtube/v3/liveChat/bans';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3074,10 +3003,8 @@ class LiveChatBansResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LiveChatBan.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LiveChatBan.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3100,10 +3027,10 @@ class LiveChatMessagesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3123,7 +3050,7 @@ class LiveChatMessagesResource {
 
     _url = 'youtube/v3/liveChat/messages';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3131,9 +3058,6 @@ class LiveChatMessagesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -3161,7 +3085,7 @@ class LiveChatMessagesResource {
     LiveChatMessage request,
     core.List<core.String> part, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3182,7 +3106,7 @@ class LiveChatMessagesResource {
 
     _url = 'youtube/v3/liveChat/messages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3191,10 +3115,8 @@ class LiveChatMessagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LiveChatMessage.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LiveChatMessage.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -3240,7 +3162,7 @@ class LiveChatMessagesResource {
     core.String pageToken,
     core.int profileImageSize,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3274,7 +3196,7 @@ class LiveChatMessagesResource {
 
     _url = 'youtube/v3/liveChat/messages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3283,10 +3205,8 @@ class LiveChatMessagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LiveChatMessageListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LiveChatMessageListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3309,10 +3229,10 @@ class LiveChatModeratorsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3332,7 +3252,7 @@ class LiveChatModeratorsResource {
 
     _url = 'youtube/v3/liveChat/moderators';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3340,9 +3260,6 @@ class LiveChatModeratorsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -3371,7 +3288,7 @@ class LiveChatModeratorsResource {
     LiveChatModerator request,
     core.List<core.String> part, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3392,7 +3309,7 @@ class LiveChatModeratorsResource {
 
     _url = 'youtube/v3/liveChat/moderators';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3401,10 +3318,8 @@ class LiveChatModeratorsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LiveChatModerator.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LiveChatModerator.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -3442,7 +3357,7 @@ class LiveChatModeratorsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3470,7 +3385,7 @@ class LiveChatModeratorsResource {
 
     _url = 'youtube/v3/liveChat/moderators';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3479,10 +3394,8 @@ class LiveChatModeratorsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LiveChatModeratorListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LiveChatModeratorListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3533,12 +3446,12 @@ class LiveStreamsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String id, {
     core.String onBehalfOfContentOwner,
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3566,7 +3479,7 @@ class LiveStreamsResource {
 
     _url = 'youtube/v3/liveStreams';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3574,9 +3487,6 @@ class LiveStreamsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -3636,7 +3546,7 @@ class LiveStreamsResource {
     core.String onBehalfOfContentOwner,
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3665,7 +3575,7 @@ class LiveStreamsResource {
 
     _url = 'youtube/v3/liveStreams';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3674,10 +3584,8 @@ class LiveStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LiveStream.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LiveStream.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieve the list of streams associated with the given channel.
@@ -3750,7 +3658,7 @@ class LiveStreamsResource {
     core.String onBehalfOfContentOwnerChannel,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3788,7 +3696,7 @@ class LiveStreamsResource {
 
     _url = 'youtube/v3/liveStreams';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3797,10 +3705,8 @@ class LiveStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LiveStreamListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LiveStreamListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing stream for the authenticated user.
@@ -3862,7 +3768,7 @@ class LiveStreamsResource {
     core.String onBehalfOfContentOwner,
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3891,7 +3797,7 @@ class LiveStreamsResource {
 
     _url = 'youtube/v3/liveStreams';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -3900,10 +3806,8 @@ class LiveStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LiveStream.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LiveStream.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3958,7 +3862,7 @@ class MembersResource {
     core.String mode,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3991,7 +3895,7 @@ class MembersResource {
 
     _url = 'youtube/v3/members';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4000,10 +3904,8 @@ class MembersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => MemberListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return MemberListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4033,7 +3935,7 @@ class MembershipsLevelsResource {
   async.Future<MembershipsLevelListResponse> list(
     core.List<core.String> part, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4051,7 +3953,7 @@ class MembershipsLevelsResource {
 
     _url = 'youtube/v3/membershipsLevels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4060,10 +3962,8 @@ class MembershipsLevelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => MembershipsLevelListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return MembershipsLevelListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4097,11 +3997,11 @@ class PlaylistItemsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String id, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4124,7 +4024,7 @@ class PlaylistItemsResource {
 
     _url = 'youtube/v3/playlistItems';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4132,9 +4032,6 @@ class PlaylistItemsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -4174,7 +4071,7 @@ class PlaylistItemsResource {
     core.List<core.String> part, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4198,7 +4095,7 @@ class PlaylistItemsResource {
 
     _url = 'youtube/v3/playlistItems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4207,10 +4104,8 @@ class PlaylistItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          PlaylistItem.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PlaylistItem.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -4270,7 +4165,7 @@ class PlaylistItemsResource {
     core.String playlistId,
     core.String videoId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4306,7 +4201,7 @@ class PlaylistItemsResource {
 
     _url = 'youtube/v3/playlistItems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4315,10 +4210,8 @@ class PlaylistItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlaylistItemListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlaylistItemListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing resource.
@@ -4367,7 +4260,7 @@ class PlaylistItemsResource {
     core.List<core.String> part, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4391,7 +4284,7 @@ class PlaylistItemsResource {
 
     _url = 'youtube/v3/playlistItems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -4400,10 +4293,8 @@ class PlaylistItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          PlaylistItem.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PlaylistItem.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4437,11 +4328,11 @@ class PlaylistsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String id, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4464,7 +4355,7 @@ class PlaylistsResource {
 
     _url = 'youtube/v3/playlists';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4472,9 +4363,6 @@ class PlaylistsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -4532,7 +4420,7 @@ class PlaylistsResource {
     core.String onBehalfOfContentOwner,
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4561,7 +4449,7 @@ class PlaylistsResource {
 
     _url = 'youtube/v3/playlists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4570,9 +4458,7 @@ class PlaylistsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Playlist.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Playlist.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -4652,7 +4538,7 @@ class PlaylistsResource {
     core.String onBehalfOfContentOwnerChannel,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4696,7 +4582,7 @@ class PlaylistsResource {
 
     _url = 'youtube/v3/playlists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4705,10 +4591,8 @@ class PlaylistsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlaylistListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlaylistListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing resource.
@@ -4753,7 +4637,7 @@ class PlaylistsResource {
     core.List<core.String> part, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4777,7 +4661,7 @@ class PlaylistsResource {
 
     _url = 'youtube/v3/playlists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -4786,9 +4670,7 @@ class PlaylistsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Playlist.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Playlist.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4996,7 +4878,7 @@ class SearchResource {
     core.String videoSyndicated,
     core.String videoType,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5104,7 +4986,7 @@ class SearchResource {
 
     _url = 'youtube/v3/search';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5113,10 +4995,8 @@ class SearchResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5139,10 +5019,10 @@ class SubscriptionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5162,7 +5042,7 @@ class SubscriptionsResource {
 
     _url = 'youtube/v3/subscriptions';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -5170,9 +5050,6 @@ class SubscriptionsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -5200,7 +5077,7 @@ class SubscriptionsResource {
     Subscription request,
     core.List<core.String> part, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5221,7 +5098,7 @@ class SubscriptionsResource {
 
     _url = 'youtube/v3/subscriptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5230,10 +5107,8 @@ class SubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -5328,7 +5203,7 @@ class SubscriptionsResource {
     core.String order,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5381,7 +5256,7 @@ class SubscriptionsResource {
 
     _url = 'youtube/v3/subscriptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5390,10 +5265,8 @@ class SubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SubscriptionListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SubscriptionListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5435,7 +5308,7 @@ class SuperChatEventsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5462,7 +5335,7 @@ class SuperChatEventsResource {
 
     _url = 'youtube/v3/superChatEvents';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5471,10 +5344,8 @@ class SuperChatEventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SuperChatEventListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SuperChatEventListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5505,7 +5376,7 @@ class TestsResource {
     TestItem request,
     core.List<core.String> part, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5526,7 +5397,7 @@ class TestsResource {
 
     _url = 'youtube/v3/tests';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5535,9 +5406,7 @@ class TestsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestItem.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TestItem.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5569,12 +5438,12 @@ class ThirdPartyLinksResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String linkingToken,
     core.String type, {
     core.List<core.String> part,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5601,7 +5470,7 @@ class ThirdPartyLinksResource {
 
     _url = 'youtube/v3/thirdPartyLinks';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -5609,9 +5478,6 @@ class ThirdPartyLinksResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -5639,7 +5505,7 @@ class ThirdPartyLinksResource {
     ThirdPartyLink request,
     core.List<core.String> part, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5660,7 +5526,7 @@ class ThirdPartyLinksResource {
 
     _url = 'youtube/v3/thirdPartyLinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5669,10 +5535,8 @@ class ThirdPartyLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ThirdPartyLink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ThirdPartyLink.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -5707,7 +5571,7 @@ class ThirdPartyLinksResource {
     core.String linkingToken,
     core.String type,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5731,7 +5595,7 @@ class ThirdPartyLinksResource {
 
     _url = 'youtube/v3/thirdPartyLinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5740,10 +5604,8 @@ class ThirdPartyLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ThirdPartyLink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ThirdPartyLink.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing resource.
@@ -5770,7 +5632,7 @@ class ThirdPartyLinksResource {
     ThirdPartyLink request,
     core.List<core.String> part, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5791,7 +5653,7 @@ class ThirdPartyLinksResource {
 
     _url = 'youtube/v3/thirdPartyLinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -5800,10 +5662,8 @@ class ThirdPartyLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ThirdPartyLink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ThirdPartyLink.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5854,7 +5714,7 @@ class ThumbnailsResource {
     core.String $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5884,7 +5744,7 @@ class ThumbnailsResource {
       _url = '/upload/youtube/v3/thumbnails/set';
     }
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5893,10 +5753,8 @@ class ThumbnailsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ThumbnailSetResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ThumbnailSetResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5929,7 +5787,7 @@ class VideoAbuseReportReasonsResource {
     core.List<core.String> part, {
     core.String hl,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5950,7 +5808,7 @@ class VideoAbuseReportReasonsResource {
 
     _url = 'youtube/v3/videoAbuseReportReasons';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5959,10 +5817,8 @@ class VideoAbuseReportReasonsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => VideoAbuseReportReasonListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return VideoAbuseReportReasonListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6002,7 +5858,7 @@ class VideoCategoriesResource {
     core.List<core.String> id,
     core.String regionCode,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6029,7 +5885,7 @@ class VideoCategoriesResource {
 
     _url = 'youtube/v3/videoCategories';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6038,10 +5894,8 @@ class VideoCategoriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => VideoCategoryListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return VideoCategoryListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6075,11 +5929,11 @@ class VideosResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String id, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6102,7 +5956,7 @@ class VideosResource {
 
     _url = 'youtube/v3/videos';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -6110,9 +5964,6 @@ class VideosResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -6148,7 +5999,7 @@ class VideosResource {
     core.List<core.String> id, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6169,7 +6020,7 @@ class VideosResource {
 
     _url = 'youtube/v3/videos/getRating';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6178,10 +6029,8 @@ class VideosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => VideoRatingListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return VideoRatingListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new resource into this collection.
@@ -6261,7 +6110,7 @@ class VideosResource {
     core.String $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6308,7 +6157,7 @@ class VideosResource {
       _url = '/upload/youtube/v3/videos';
     }
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6317,9 +6166,7 @@ class VideosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Video.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Video.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of resources, possibly filtered.
@@ -6417,7 +6264,7 @@ class VideosResource {
     core.String regionCode,
     core.String videoCategoryId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6471,7 +6318,7 @@ class VideosResource {
 
     _url = 'youtube/v3/videos';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6480,10 +6327,8 @@ class VideosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => VideoListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return VideoListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds a like or dislike rating to a video or removes a rating from a video.
@@ -6506,11 +6351,11 @@ class VideosResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future rate(
+  async.Future<void> rate(
     core.String id,
     core.String rating, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6534,7 +6379,7 @@ class VideosResource {
 
     _url = 'youtube/v3/videos/rate';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6542,9 +6387,6 @@ class VideosResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -6573,11 +6415,11 @@ class VideosResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future reportAbuse(
+  async.Future<void> reportAbuse(
     VideoAbuseReport request, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6599,7 +6441,7 @@ class VideosResource {
 
     _url = 'youtube/v3/videos/reportAbuse';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6607,9 +6449,6 @@ class VideosResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -6663,7 +6502,7 @@ class VideosResource {
     core.List<core.String> part, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6687,7 +6526,7 @@ class VideosResource {
 
     _url = 'youtube/v3/videos';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -6696,9 +6535,7 @@ class VideosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Video.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Video.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6740,14 +6577,14 @@ class WatermarksResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future set(
+  async.Future<void> set(
     InvideoBranding request,
     core.String channelId, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6781,7 +6618,7 @@ class WatermarksResource {
       _url = '/upload/youtube/v3/watermarks/set';
     }
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6789,9 +6626,6 @@ class WatermarksResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -6820,11 +6654,11 @@ class WatermarksResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future unset(
+  async.Future<void> unset(
     core.String channelId, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6847,7 +6681,7 @@ class WatermarksResource {
 
     _url = 'youtube/v3/watermarks/unset';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6855,9 +6689,6 @@ class WatermarksResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 }

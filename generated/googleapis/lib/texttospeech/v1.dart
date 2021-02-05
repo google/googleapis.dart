@@ -84,7 +84,7 @@ class TextResource {
   async.Future<SynthesizeSpeechResponse> synthesize(
     SynthesizeSpeechRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -101,7 +101,7 @@ class TextResource {
 
     _url = 'v1/text:synthesize';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -110,10 +110,8 @@ class TextResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SynthesizeSpeechResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SynthesizeSpeechResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -148,7 +146,7 @@ class VoicesResource {
   async.Future<ListVoicesResponse> list({
     core.String languageCode,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -165,7 +163,7 @@ class VoicesResource {
 
     _url = 'v1/voices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -174,10 +172,8 @@ class VoicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListVoicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListVoicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

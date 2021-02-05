@@ -109,7 +109,7 @@ class FoldersResource {
     Folder request, {
     core.String parent,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -129,7 +129,7 @@ class FoldersResource {
 
     _url = 'v2/folders';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -138,9 +138,7 @@ class FoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Requests deletion of a Folder.
@@ -170,7 +168,7 @@ class FoldersResource {
   async.Future<Folder> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -187,7 +185,7 @@ class FoldersResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -196,9 +194,7 @@ class FoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Folder.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a Folder identified by the supplied resource name.
@@ -226,7 +222,7 @@ class FoldersResource {
   async.Future<Folder> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -243,7 +239,7 @@ class FoldersResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -252,9 +248,7 @@ class FoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Folder.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a Folder.
@@ -288,7 +282,7 @@ class FoldersResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -310,7 +304,7 @@ class FoldersResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -319,9 +313,7 @@ class FoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the Folders that are direct descendants of supplied parent resource.
@@ -363,7 +355,7 @@ class FoldersResource {
     core.String parent,
     core.bool showDeleted,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -389,7 +381,7 @@ class FoldersResource {
 
     _url = 'v2/folders';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -398,10 +390,8 @@ class FoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListFoldersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListFoldersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves a Folder under a new resource parent.
@@ -442,7 +432,7 @@ class FoldersResource {
     MoveFolderRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -462,7 +452,7 @@ class FoldersResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -471,9 +461,7 @@ class FoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Folder, changing its display_name.
@@ -515,7 +503,7 @@ class FoldersResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -538,7 +526,7 @@ class FoldersResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -547,9 +535,7 @@ class FoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Folder.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Search for folders that match specific filter criteria.
@@ -576,7 +562,7 @@ class FoldersResource {
   async.Future<SearchFoldersResponse> search(
     SearchFoldersRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -593,7 +579,7 @@ class FoldersResource {
 
     _url = 'v2/folders:search';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -602,10 +588,8 @@ class FoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchFoldersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchFoldersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on a Folder, replacing any existing policy.
@@ -638,7 +622,7 @@ class FoldersResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -660,7 +644,7 @@ class FoldersResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -669,9 +653,7 @@ class FoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified Folder.
@@ -703,7 +685,7 @@ class FoldersResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -725,7 +707,7 @@ class FoldersResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -734,10 +716,8 @@ class FoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Cancels the deletion request for a Folder.
@@ -771,7 +751,7 @@ class FoldersResource {
     UndeleteFolderRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -791,7 +771,7 @@ class FoldersResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -800,9 +780,7 @@ class FoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Folder.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -834,7 +812,7 @@ class OperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -851,7 +829,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -860,9 +838,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

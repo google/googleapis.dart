@@ -94,7 +94,7 @@ class AccountsResource {
   async.Future<PublisherAccount> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -111,7 +111,7 @@ class AccountsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -120,10 +120,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PublisherAccount.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PublisherAccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List the AdMob publisher account accessible with the client credential.
@@ -153,7 +151,7 @@ class AccountsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -173,7 +171,7 @@ class AccountsResource {
 
     _url = 'v1/accounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -182,10 +180,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListPublisherAccountsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListPublisherAccountsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -223,7 +219,7 @@ class AccountsMediationReportResource {
     GenerateMediationReportRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -245,7 +241,7 @@ class AccountsMediationReportResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/mediationReport:generate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -254,10 +250,8 @@ class AccountsMediationReportResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GenerateMediationReportResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GenerateMediationReportResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -295,7 +289,7 @@ class AccountsNetworkReportResource {
     GenerateNetworkReportRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -317,7 +311,7 @@ class AccountsNetworkReportResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/networkReport:generate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -326,10 +320,8 @@ class AccountsNetworkReportResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GenerateNetworkReportResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GenerateNetworkReportResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

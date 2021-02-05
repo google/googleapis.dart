@@ -79,10 +79,10 @@ class TasklistsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String tasklist, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -102,7 +102,7 @@ class TasklistsResource {
     _url = 'tasks/v1/users/@me/lists/' +
         commons.Escaper.ecapeVariable('$tasklist');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -110,9 +110,6 @@ class TasklistsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -135,7 +132,7 @@ class TasklistsResource {
   async.Future<TaskList> get(
     core.String tasklist, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -153,7 +150,7 @@ class TasklistsResource {
     _url = 'tasks/v1/users/@me/lists/' +
         commons.Escaper.ecapeVariable('$tasklist');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -162,9 +159,7 @@ class TasklistsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TaskList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TaskList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new task list and adds it to the authenticated user's task
@@ -187,7 +182,7 @@ class TasklistsResource {
   async.Future<TaskList> insert(
     TaskList request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -204,7 +199,7 @@ class TasklistsResource {
 
     _url = 'tasks/v1/users/@me/lists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -213,9 +208,7 @@ class TasklistsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TaskList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TaskList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns all the authenticated user's task lists.
@@ -241,7 +234,7 @@ class TasklistsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -261,7 +254,7 @@ class TasklistsResource {
 
     _url = 'tasks/v1/users/@me/lists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -270,9 +263,7 @@ class TasklistsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TaskLists.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TaskLists.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the authenticated user's specified task list.
@@ -299,7 +290,7 @@ class TasklistsResource {
     TaskList request,
     core.String tasklist, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -320,7 +311,7 @@ class TasklistsResource {
     _url = 'tasks/v1/users/@me/lists/' +
         commons.Escaper.ecapeVariable('$tasklist');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -329,9 +320,7 @@ class TasklistsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TaskList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TaskList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the authenticated user's specified task list.
@@ -356,7 +345,7 @@ class TasklistsResource {
     TaskList request,
     core.String tasklist, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -377,7 +366,7 @@ class TasklistsResource {
     _url = 'tasks/v1/users/@me/lists/' +
         commons.Escaper.ecapeVariable('$tasklist');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -386,9 +375,7 @@ class TasklistsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TaskList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TaskList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -414,10 +401,10 @@ class TasksResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future clear(
+  async.Future<void> clear(
     core.String tasklist, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -438,7 +425,7 @@ class TasksResource {
         commons.Escaper.ecapeVariable('$tasklist') +
         '/clear';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -446,9 +433,6 @@ class TasksResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -468,11 +452,11 @@ class TasksResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String tasklist,
     core.String task, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -497,7 +481,7 @@ class TasksResource {
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -505,9 +489,6 @@ class TasksResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -533,7 +514,7 @@ class TasksResource {
     core.String tasklist,
     core.String task, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -556,7 +537,7 @@ class TasksResource {
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -565,9 +546,7 @@ class TasksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Task.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new task on the specified task list.
@@ -601,7 +580,7 @@ class TasksResource {
     core.String parent,
     core.String previous,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -629,7 +608,7 @@ class TasksResource {
         commons.Escaper.ecapeVariable('$tasklist') +
         '/tasks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -638,9 +617,7 @@ class TasksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Task.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns all tasks in the specified task list.
@@ -706,7 +683,7 @@ class TasksResource {
     core.bool showHidden,
     core.String updatedMin,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -755,7 +732,7 @@ class TasksResource {
         commons.Escaper.ecapeVariable('$tasklist') +
         '/tasks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -764,9 +741,7 @@ class TasksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Tasks.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Tasks.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves the specified task to another position in the task list.
@@ -803,7 +778,7 @@ class TasksResource {
     core.String parent,
     core.String previous,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -833,7 +808,7 @@ class TasksResource {
         commons.Escaper.ecapeVariable('$task') +
         '/move';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -842,9 +817,7 @@ class TasksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Task.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified task.
@@ -874,7 +847,7 @@ class TasksResource {
     core.String tasklist,
     core.String task, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -900,7 +873,7 @@ class TasksResource {
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -909,9 +882,7 @@ class TasksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Task.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified task.
@@ -939,7 +910,7 @@ class TasksResource {
     core.String tasklist,
     core.String task, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -965,7 +936,7 @@ class TasksResource {
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -974,9 +945,7 @@ class TasksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Task.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

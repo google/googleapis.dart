@@ -125,7 +125,7 @@ class AccountsResource {
   async.Future<Account> get(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -142,7 +142,7 @@ class AccountsResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -151,9 +151,7 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Accounts that a user has access to.
@@ -175,7 +173,7 @@ class AccountsResource {
   async.Future<ListAccountsResponse> list({
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -192,7 +190,7 @@ class AccountsResource {
 
     _url = 'tagmanager/v2/accounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -201,10 +199,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAccountsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAccountsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Account.
@@ -234,7 +230,7 @@ class AccountsResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -257,7 +253,7 @@ class AccountsResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -266,9 +262,7 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -310,7 +304,7 @@ class AccountsContainersResource {
     Container request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -332,7 +326,7 @@ class AccountsContainersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/containers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -341,9 +335,7 @@ class AccountsContainersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Container.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a Container.
@@ -362,10 +354,10 @@ class AccountsContainersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -384,7 +376,7 @@ class AccountsContainersResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -392,9 +384,6 @@ class AccountsContainersResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -419,7 +408,7 @@ class AccountsContainersResource {
   async.Future<Container> get(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -436,7 +425,7 @@ class AccountsContainersResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -445,9 +434,7 @@ class AccountsContainersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Container.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all Containers that belongs to a GTM Account.
@@ -474,7 +461,7 @@ class AccountsContainersResource {
     core.String parent, {
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -496,7 +483,7 @@ class AccountsContainersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/containers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -505,10 +492,8 @@ class AccountsContainersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListContainersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListContainersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Container.
@@ -539,7 +524,7 @@ class AccountsContainersResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -562,7 +547,7 @@ class AccountsContainersResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -571,9 +556,7 @@ class AccountsContainersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Container.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -607,7 +590,7 @@ class AccountsContainersEnvironmentsResource {
     Environment request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -629,7 +612,7 @@ class AccountsContainersEnvironmentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/environments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -638,10 +621,8 @@ class AccountsContainersEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Environment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Environment.
@@ -661,10 +642,10 @@ class AccountsContainersEnvironmentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -683,7 +664,7 @@ class AccountsContainersEnvironmentsResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -691,9 +672,6 @@ class AccountsContainersEnvironmentsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -719,7 +697,7 @@ class AccountsContainersEnvironmentsResource {
   async.Future<Environment> get(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -736,7 +714,7 @@ class AccountsContainersEnvironmentsResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -745,10 +723,8 @@ class AccountsContainersEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Environment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Environments of a GTM Container.
@@ -775,7 +751,7 @@ class AccountsContainersEnvironmentsResource {
     core.String parent, {
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -797,7 +773,7 @@ class AccountsContainersEnvironmentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/environments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -806,10 +782,8 @@ class AccountsContainersEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListEnvironmentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListEnvironmentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Re-generates the authorization code for a GTM Environment.
@@ -837,7 +811,7 @@ class AccountsContainersEnvironmentsResource {
     Environment request,
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -859,7 +833,7 @@ class AccountsContainersEnvironmentsResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':reauthorize';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -868,10 +842,8 @@ class AccountsContainersEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Environment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Environment.
@@ -903,7 +875,7 @@ class AccountsContainersEnvironmentsResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -926,7 +898,7 @@ class AccountsContainersEnvironmentsResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -935,10 +907,8 @@ class AccountsContainersEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Environment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -969,7 +939,7 @@ class AccountsContainersVersionHeadersResource {
   async.Future<ContainerVersionHeader> latest(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -988,7 +958,7 @@ class AccountsContainersVersionHeadersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/version_headers:latest';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -997,10 +967,8 @@ class AccountsContainersVersionHeadersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ContainerVersionHeader.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ContainerVersionHeader.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all Container Versions of a GTM Container.
@@ -1030,7 +998,7 @@ class AccountsContainersVersionHeadersResource {
     core.bool includeDeleted,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1055,7 +1023,7 @@ class AccountsContainersVersionHeadersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/version_headers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1064,10 +1032,8 @@ class AccountsContainersVersionHeadersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListContainerVersionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListContainerVersionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1094,10 +1060,10 @@ class AccountsContainersVersionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1116,7 +1082,7 @@ class AccountsContainersVersionsResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1124,9 +1090,6 @@ class AccountsContainersVersionsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1156,7 +1119,7 @@ class AccountsContainersVersionsResource {
     core.String path, {
     core.String containerVersionId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1176,7 +1139,7 @@ class AccountsContainersVersionsResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1185,10 +1148,8 @@ class AccountsContainersVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ContainerVersion.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ContainerVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the live (i.e. published) container version
@@ -1212,7 +1173,7 @@ class AccountsContainersVersionsResource {
   async.Future<ContainerVersion> live(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1231,7 +1192,7 @@ class AccountsContainersVersionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/versions:live';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1240,10 +1201,8 @@ class AccountsContainersVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ContainerVersion.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ContainerVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Publishes a Container Version.
@@ -1272,7 +1231,7 @@ class AccountsContainersVersionsResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1294,7 +1253,7 @@ class AccountsContainersVersionsResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':publish';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1303,10 +1262,8 @@ class AccountsContainersVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PublishContainerVersionResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PublishContainerVersionResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the latest version used for synchronization of workspaces when
@@ -1332,7 +1289,7 @@ class AccountsContainersVersionsResource {
   async.Future<ContainerVersion> setLatest(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1351,7 +1308,7 @@ class AccountsContainersVersionsResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':set_latest';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1360,10 +1317,8 @@ class AccountsContainersVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ContainerVersion.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ContainerVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a Container Version.
@@ -1388,7 +1343,7 @@ class AccountsContainersVersionsResource {
   async.Future<ContainerVersion> undelete(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1407,7 +1362,7 @@ class AccountsContainersVersionsResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':undelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1416,10 +1371,8 @@ class AccountsContainersVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ContainerVersion.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ContainerVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Container Version.
@@ -1451,7 +1404,7 @@ class AccountsContainersVersionsResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1474,7 +1427,7 @@ class AccountsContainersVersionsResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1483,10 +1436,8 @@ class AccountsContainersVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ContainerVersion.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ContainerVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1535,7 +1486,7 @@ class AccountsContainersWorkspacesResource {
     Workspace request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1557,7 +1508,7 @@ class AccountsContainersWorkspacesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/workspaces';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1566,9 +1517,7 @@ class AccountsContainersWorkspacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Workspace.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Workspace.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a Container Version from the entities present in the workspace,
@@ -1598,7 +1547,7 @@ class AccountsContainersWorkspacesResource {
     CreateContainerVersionRequestVersionOptions request,
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1620,7 +1569,7 @@ class AccountsContainersWorkspacesResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':create_version';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1629,10 +1578,8 @@ class AccountsContainersWorkspacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CreateContainerVersionResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CreateContainerVersionResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a Workspace.
@@ -1652,10 +1599,10 @@ class AccountsContainersWorkspacesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1674,7 +1621,7 @@ class AccountsContainersWorkspacesResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1682,9 +1629,6 @@ class AccountsContainersWorkspacesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1710,7 +1654,7 @@ class AccountsContainersWorkspacesResource {
   async.Future<Workspace> get(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1727,7 +1671,7 @@ class AccountsContainersWorkspacesResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1736,9 +1680,7 @@ class AccountsContainersWorkspacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Workspace.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Workspace.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Finds conflicting and modified entities in the workspace.
@@ -1763,7 +1705,7 @@ class AccountsContainersWorkspacesResource {
   async.Future<GetWorkspaceStatusResponse> getStatus(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1782,7 +1724,7 @@ class AccountsContainersWorkspacesResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         '/status';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1791,10 +1733,8 @@ class AccountsContainersWorkspacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetWorkspaceStatusResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetWorkspaceStatusResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all Workspaces that belong to a GTM Container.
@@ -1821,7 +1761,7 @@ class AccountsContainersWorkspacesResource {
     core.String parent, {
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1843,7 +1783,7 @@ class AccountsContainersWorkspacesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/workspaces';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1852,10 +1792,8 @@ class AccountsContainersWorkspacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListWorkspacesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListWorkspacesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Quick previews a workspace by creating a fake container version from all
@@ -1881,7 +1819,7 @@ class AccountsContainersWorkspacesResource {
   async.Future<QuickPreviewResponse> quickPreview(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1900,7 +1838,7 @@ class AccountsContainersWorkspacesResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':quick_preview';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1909,10 +1847,8 @@ class AccountsContainersWorkspacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => QuickPreviewResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return QuickPreviewResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Resolves a merge conflict for a workspace entity by updating it to the
@@ -1938,12 +1874,12 @@ class AccountsContainersWorkspacesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resolveConflict(
+  async.Future<void> resolveConflict(
     Entity request,
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1970,7 +1906,7 @@ class AccountsContainersWorkspacesResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':resolve_conflict';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1978,9 +1914,6 @@ class AccountsContainersWorkspacesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -2008,7 +1941,7 @@ class AccountsContainersWorkspacesResource {
   async.Future<SyncWorkspaceResponse> sync(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2027,7 +1960,7 @@ class AccountsContainersWorkspacesResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':sync';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2036,10 +1969,8 @@ class AccountsContainersWorkspacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SyncWorkspaceResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SyncWorkspaceResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Workspace.
@@ -2071,7 +2002,7 @@ class AccountsContainersWorkspacesResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2094,7 +2025,7 @@ class AccountsContainersWorkspacesResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2103,9 +2034,7 @@ class AccountsContainersWorkspacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Workspace.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Workspace.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2141,7 +2070,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     core.String parent, {
     core.List<core.String> type,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2163,7 +2092,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/built_in_variables';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2172,10 +2101,8 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CreateBuiltInVariableResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CreateBuiltInVariableResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes one or more GTM Built-In Variables.
@@ -2197,11 +2124,11 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String path, {
     core.List<core.String> type,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2223,7 +2150,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2231,9 +2158,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -2262,7 +2186,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     core.String parent, {
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2284,7 +2208,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/built_in_variables';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2293,10 +2217,8 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListEnabledBuiltInVariablesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListEnabledBuiltInVariablesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Reverts changes to a GTM Built-In Variables in a GTM Workspace.
@@ -2435,7 +2357,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     core.String path, {
     core.String type,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2457,7 +2379,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         '/built_in_variables:revert';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2466,10 +2388,8 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RevertBuiltInVariableResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RevertBuiltInVariableResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2504,7 +2424,7 @@ class AccountsContainersWorkspacesFoldersResource {
     Folder request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2526,7 +2446,7 @@ class AccountsContainersWorkspacesFoldersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/folders';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2535,9 +2455,7 @@ class AccountsContainersWorkspacesFoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Folder.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Folder.
@@ -2557,10 +2475,10 @@ class AccountsContainersWorkspacesFoldersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2579,7 +2497,7 @@ class AccountsContainersWorkspacesFoldersResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2587,9 +2505,6 @@ class AccountsContainersWorkspacesFoldersResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -2618,7 +2533,7 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String path, {
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2640,7 +2555,7 @@ class AccountsContainersWorkspacesFoldersResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':entities';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2649,10 +2564,8 @@ class AccountsContainersWorkspacesFoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          FolderEntities.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FolderEntities.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a GTM Folder.
@@ -2677,7 +2590,7 @@ class AccountsContainersWorkspacesFoldersResource {
   async.Future<Folder> get(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2694,7 +2607,7 @@ class AccountsContainersWorkspacesFoldersResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2703,9 +2616,7 @@ class AccountsContainersWorkspacesFoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Folder.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Folders of a Container.
@@ -2733,7 +2644,7 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String parent, {
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2755,7 +2666,7 @@ class AccountsContainersWorkspacesFoldersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/folders';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2764,10 +2675,8 @@ class AccountsContainersWorkspacesFoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListFoldersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListFoldersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves entities to a GTM Folder.
@@ -2795,14 +2704,14 @@ class AccountsContainersWorkspacesFoldersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future moveEntitiesToFolder(
+  async.Future<void> moveEntitiesToFolder(
     Folder request,
     core.String path, {
     core.List<core.String> tagId,
     core.List<core.String> triggerId,
     core.List<core.String> variableId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2835,7 +2744,7 @@ class AccountsContainersWorkspacesFoldersResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':move_entities_to_folder';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2843,9 +2752,6 @@ class AccountsContainersWorkspacesFoldersResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -2875,7 +2781,7 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2897,7 +2803,7 @@ class AccountsContainersWorkspacesFoldersResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2906,10 +2812,8 @@ class AccountsContainersWorkspacesFoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RevertFolderResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RevertFolderResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Folder.
@@ -2941,7 +2845,7 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2964,7 +2868,7 @@ class AccountsContainersWorkspacesFoldersResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2973,9 +2877,7 @@ class AccountsContainersWorkspacesFoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Folder.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3010,7 +2912,7 @@ class AccountsContainersWorkspacesTagsResource {
     Tag request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3032,7 +2934,7 @@ class AccountsContainersWorkspacesTagsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/tags';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3041,9 +2943,7 @@ class AccountsContainersWorkspacesTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Tag.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Tag.
@@ -3063,10 +2963,10 @@ class AccountsContainersWorkspacesTagsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3085,7 +2985,7 @@ class AccountsContainersWorkspacesTagsResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3093,9 +2993,6 @@ class AccountsContainersWorkspacesTagsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -3121,7 +3018,7 @@ class AccountsContainersWorkspacesTagsResource {
   async.Future<Tag> get(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3138,7 +3035,7 @@ class AccountsContainersWorkspacesTagsResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3147,9 +3044,7 @@ class AccountsContainersWorkspacesTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Tag.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Tags of a Container.
@@ -3177,7 +3072,7 @@ class AccountsContainersWorkspacesTagsResource {
     core.String parent, {
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3199,7 +3094,7 @@ class AccountsContainersWorkspacesTagsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/tags';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3208,10 +3103,8 @@ class AccountsContainersWorkspacesTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTagsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTagsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Reverts changes to a GTM Tag in a GTM Workspace.
@@ -3240,7 +3133,7 @@ class AccountsContainersWorkspacesTagsResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3262,7 +3155,7 @@ class AccountsContainersWorkspacesTagsResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3271,10 +3164,8 @@ class AccountsContainersWorkspacesTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RevertTagResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RevertTagResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Tag.
@@ -3306,7 +3197,7 @@ class AccountsContainersWorkspacesTagsResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3329,7 +3220,7 @@ class AccountsContainersWorkspacesTagsResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -3338,9 +3229,7 @@ class AccountsContainersWorkspacesTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Tag.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3375,7 +3264,7 @@ class AccountsContainersWorkspacesTemplatesResource {
     CustomTemplate request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3397,7 +3286,7 @@ class AccountsContainersWorkspacesTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/templates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3406,10 +3295,8 @@ class AccountsContainersWorkspacesTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CustomTemplate.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CustomTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Template.
@@ -3429,10 +3316,10 @@ class AccountsContainersWorkspacesTemplatesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3451,7 +3338,7 @@ class AccountsContainersWorkspacesTemplatesResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3459,9 +3346,6 @@ class AccountsContainersWorkspacesTemplatesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -3487,7 +3371,7 @@ class AccountsContainersWorkspacesTemplatesResource {
   async.Future<CustomTemplate> get(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3504,7 +3388,7 @@ class AccountsContainersWorkspacesTemplatesResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3513,10 +3397,8 @@ class AccountsContainersWorkspacesTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CustomTemplate.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CustomTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Templates of a GTM container workspace.
@@ -3544,7 +3426,7 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String parent, {
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3566,7 +3448,7 @@ class AccountsContainersWorkspacesTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/templates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3575,10 +3457,8 @@ class AccountsContainersWorkspacesTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTemplatesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTemplatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Reverts changes to a GTM Template in a GTM Workspace.
@@ -3607,7 +3487,7 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3629,7 +3509,7 @@ class AccountsContainersWorkspacesTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3638,10 +3518,8 @@ class AccountsContainersWorkspacesTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RevertTemplateResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RevertTemplateResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Template.
@@ -3673,7 +3551,7 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3696,7 +3574,7 @@ class AccountsContainersWorkspacesTemplatesResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -3705,10 +3583,8 @@ class AccountsContainersWorkspacesTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CustomTemplate.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CustomTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3743,7 +3619,7 @@ class AccountsContainersWorkspacesTriggersResource {
     Trigger request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3765,7 +3641,7 @@ class AccountsContainersWorkspacesTriggersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/triggers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3774,9 +3650,7 @@ class AccountsContainersWorkspacesTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Trigger.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Trigger.
@@ -3796,10 +3670,10 @@ class AccountsContainersWorkspacesTriggersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3818,7 +3692,7 @@ class AccountsContainersWorkspacesTriggersResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3826,9 +3700,6 @@ class AccountsContainersWorkspacesTriggersResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -3854,7 +3725,7 @@ class AccountsContainersWorkspacesTriggersResource {
   async.Future<Trigger> get(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3871,7 +3742,7 @@ class AccountsContainersWorkspacesTriggersResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3880,9 +3751,7 @@ class AccountsContainersWorkspacesTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Trigger.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Triggers of a Container.
@@ -3910,7 +3779,7 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String parent, {
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3932,7 +3801,7 @@ class AccountsContainersWorkspacesTriggersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/triggers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3941,10 +3810,8 @@ class AccountsContainersWorkspacesTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTriggersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTriggersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Reverts changes to a GTM Trigger in a GTM Workspace.
@@ -3973,7 +3840,7 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3995,7 +3862,7 @@ class AccountsContainersWorkspacesTriggersResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4004,10 +3871,8 @@ class AccountsContainersWorkspacesTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RevertTriggerResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RevertTriggerResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Trigger.
@@ -4039,7 +3904,7 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4062,7 +3927,7 @@ class AccountsContainersWorkspacesTriggersResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -4071,9 +3936,7 @@ class AccountsContainersWorkspacesTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Trigger.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4108,7 +3971,7 @@ class AccountsContainersWorkspacesVariablesResource {
     Variable request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4130,7 +3993,7 @@ class AccountsContainersWorkspacesVariablesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/variables';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4139,9 +4002,7 @@ class AccountsContainersWorkspacesVariablesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Variable.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Variable.
@@ -4161,10 +4022,10 @@ class AccountsContainersWorkspacesVariablesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4183,7 +4044,7 @@ class AccountsContainersWorkspacesVariablesResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4191,9 +4052,6 @@ class AccountsContainersWorkspacesVariablesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -4219,7 +4077,7 @@ class AccountsContainersWorkspacesVariablesResource {
   async.Future<Variable> get(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4236,7 +4094,7 @@ class AccountsContainersWorkspacesVariablesResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4245,9 +4103,7 @@ class AccountsContainersWorkspacesVariablesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Variable.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Variables of a Container.
@@ -4275,7 +4131,7 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String parent, {
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4297,7 +4153,7 @@ class AccountsContainersWorkspacesVariablesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/variables';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4306,10 +4162,8 @@ class AccountsContainersWorkspacesVariablesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListVariablesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListVariablesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Reverts changes to a GTM Variable in a GTM Workspace.
@@ -4338,7 +4192,7 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4360,7 +4214,7 @@ class AccountsContainersWorkspacesVariablesResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4369,10 +4223,8 @@ class AccountsContainersWorkspacesVariablesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RevertVariableResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RevertVariableResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Variable.
@@ -4404,7 +4256,7 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4427,7 +4279,7 @@ class AccountsContainersWorkspacesVariablesResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -4436,9 +4288,7 @@ class AccountsContainersWorkspacesVariablesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Variable.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4473,7 +4323,7 @@ class AccountsContainersWorkspacesZonesResource {
     Zone request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4495,7 +4345,7 @@ class AccountsContainersWorkspacesZonesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/zones';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4504,9 +4354,7 @@ class AccountsContainersWorkspacesZonesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Zone.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Zone.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Zone.
@@ -4526,10 +4374,10 @@ class AccountsContainersWorkspacesZonesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4548,7 +4396,7 @@ class AccountsContainersWorkspacesZonesResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4556,9 +4404,6 @@ class AccountsContainersWorkspacesZonesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -4584,7 +4429,7 @@ class AccountsContainersWorkspacesZonesResource {
   async.Future<Zone> get(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4601,7 +4446,7 @@ class AccountsContainersWorkspacesZonesResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4610,9 +4455,7 @@ class AccountsContainersWorkspacesZonesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Zone.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Zone.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Zones of a GTM container workspace.
@@ -4640,7 +4483,7 @@ class AccountsContainersWorkspacesZonesResource {
     core.String parent, {
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4662,7 +4505,7 @@ class AccountsContainersWorkspacesZonesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/zones';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4671,10 +4514,8 @@ class AccountsContainersWorkspacesZonesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListZonesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListZonesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Reverts changes to a GTM Zone in a GTM Workspace.
@@ -4703,7 +4544,7 @@ class AccountsContainersWorkspacesZonesResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4725,7 +4566,7 @@ class AccountsContainersWorkspacesZonesResource {
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4734,10 +4575,8 @@ class AccountsContainersWorkspacesZonesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RevertZoneResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RevertZoneResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Zone.
@@ -4769,7 +4608,7 @@ class AccountsContainersWorkspacesZonesResource {
     core.String path, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4792,7 +4631,7 @@ class AccountsContainersWorkspacesZonesResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -4801,9 +4640,7 @@ class AccountsContainersWorkspacesZonesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Zone.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Zone.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4836,7 +4673,7 @@ class AccountsUserPermissionsResource {
     UserPermission request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4858,7 +4695,7 @@ class AccountsUserPermissionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/user_permissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4867,10 +4704,8 @@ class AccountsUserPermissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          UserPermission.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserPermission.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes a user from the account, revoking access to it and all of its
@@ -4890,10 +4725,10 @@ class AccountsUserPermissionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4912,7 +4747,7 @@ class AccountsUserPermissionsResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4920,9 +4755,6 @@ class AccountsUserPermissionsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -4947,7 +4779,7 @@ class AccountsUserPermissionsResource {
   async.Future<UserPermission> get(
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4964,7 +4796,7 @@ class AccountsUserPermissionsResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4973,10 +4805,8 @@ class AccountsUserPermissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          UserPermission.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserPermission.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all users that have access to the account along with Account and
@@ -5004,7 +4834,7 @@ class AccountsUserPermissionsResource {
     core.String parent, {
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5026,7 +4856,7 @@ class AccountsUserPermissionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/user_permissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5035,10 +4865,8 @@ class AccountsUserPermissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListUserPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListUserPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a user's Account & Container access.
@@ -5065,7 +4893,7 @@ class AccountsUserPermissionsResource {
     UserPermission request,
     core.String path, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5085,7 +4913,7 @@ class AccountsUserPermissionsResource {
 
     _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -5094,10 +4922,8 @@ class AccountsUserPermissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          UserPermission.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserPermission.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

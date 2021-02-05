@@ -169,7 +169,7 @@ class HybridIssuersResource {
   async.Future<GoogleCloudApigeeV1ListHybridIssuersResponse> list(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -186,7 +186,7 @@ class HybridIssuersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -195,10 +195,8 @@ class HybridIssuersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListHybridIssuersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListHybridIssuersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -269,7 +267,7 @@ class OrganizationsResource {
     GoogleCloudApigeeV1Organization request, {
     core.String parent,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -289,7 +287,7 @@ class OrganizationsResource {
 
     _url = 'v1/organizations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -298,10 +296,8 @@ class OrganizationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete an Apigee organization.
@@ -327,7 +323,7 @@ class OrganizationsResource {
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -344,7 +340,7 @@ class OrganizationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -353,10 +349,8 @@ class OrganizationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the profile for an Apigee organization.
@@ -383,7 +377,7 @@ class OrganizationsResource {
   async.Future<GoogleCloudApigeeV1Organization> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -400,7 +394,7 @@ class OrganizationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -409,10 +403,8 @@ class OrganizationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Organization.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Organization.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the deployed ingress configuration for an organization.
@@ -450,7 +442,7 @@ class OrganizationsResource {
     core.String name, {
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -470,7 +462,7 @@ class OrganizationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -479,10 +471,8 @@ class OrganizationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1IngressConfig.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1IngressConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the service accounts with the permissions required to allow the
@@ -518,7 +508,7 @@ class OrganizationsResource {
     GoogleCloudApigeeV1GetSyncAuthorizationRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -540,7 +530,7 @@ class OrganizationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':getSyncAuthorization';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -549,10 +539,8 @@ class OrganizationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1SyncAuthorization.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1SyncAuthorization.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the Apigee organizations and associated GCP projects that you have
@@ -580,7 +568,7 @@ class OrganizationsResource {
   async.Future<GoogleCloudApigeeV1ListOrganizationsResponse> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -597,7 +585,7 @@ class OrganizationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -606,10 +594,8 @@ class OrganizationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListOrganizationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListOrganizationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the permissions required to allow the Synchronizer to download
@@ -646,7 +632,7 @@ class OrganizationsResource {
     GoogleCloudApigeeV1SyncAuthorization request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -668,7 +654,7 @@ class OrganizationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setSyncAuthorization';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -677,10 +663,8 @@ class OrganizationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1SyncAuthorization.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1SyncAuthorization.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the properties for an Apigee organization.
@@ -709,7 +693,7 @@ class OrganizationsResource {
     GoogleCloudApigeeV1Organization request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -729,7 +713,7 @@ class OrganizationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -738,10 +722,8 @@ class OrganizationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Organization.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Organization.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -785,7 +767,7 @@ class OrganizationsAnalyticsDatastoresResource {
     GoogleCloudApigeeV1Datastore request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -807,7 +789,7 @@ class OrganizationsAnalyticsDatastoresResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/analytics/datastores';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -816,10 +798,8 @@ class OrganizationsAnalyticsDatastoresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Datastore.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Datastore.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a Datastore from an org.
@@ -844,7 +824,7 @@ class OrganizationsAnalyticsDatastoresResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -861,7 +841,7 @@ class OrganizationsAnalyticsDatastoresResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -870,10 +850,8 @@ class OrganizationsAnalyticsDatastoresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a Datastore
@@ -898,7 +876,7 @@ class OrganizationsAnalyticsDatastoresResource {
   async.Future<GoogleCloudApigeeV1Datastore> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -915,7 +893,7 @@ class OrganizationsAnalyticsDatastoresResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -924,10 +902,8 @@ class OrganizationsAnalyticsDatastoresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Datastore.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Datastore.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List Datastores
@@ -955,7 +931,7 @@ class OrganizationsAnalyticsDatastoresResource {
     core.String parent, {
     core.String targetType,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -977,7 +953,7 @@ class OrganizationsAnalyticsDatastoresResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/analytics/datastores';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -986,10 +962,8 @@ class OrganizationsAnalyticsDatastoresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListDatastoresResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListDatastoresResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Test if Datastore configuration is correct.
@@ -1019,7 +993,7 @@ class OrganizationsAnalyticsDatastoresResource {
     GoogleCloudApigeeV1Datastore request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1041,7 +1015,7 @@ class OrganizationsAnalyticsDatastoresResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/analytics/datastores:test';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1050,10 +1024,8 @@ class OrganizationsAnalyticsDatastoresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1TestDatastoreResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1TestDatastoreResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a Datastore
@@ -1081,7 +1053,7 @@ class OrganizationsAnalyticsDatastoresResource {
     GoogleCloudApigeeV1Datastore request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1101,7 +1073,7 @@ class OrganizationsAnalyticsDatastoresResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1110,10 +1082,8 @@ class OrganizationsAnalyticsDatastoresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Datastore.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Datastore.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1161,7 +1131,7 @@ class OrganizationsApiproductsResource {
     GoogleCloudApigeeV1Attributes request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1182,7 +1152,7 @@ class OrganizationsApiproductsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/attributes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1191,10 +1161,8 @@ class OrganizationsApiproductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Attributes.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Attributes.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates an API product in an organization.
@@ -1240,7 +1208,7 @@ class OrganizationsApiproductsResource {
     GoogleCloudApigeeV1ApiProduct request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1262,7 +1230,7 @@ class OrganizationsApiproductsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/apiproducts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1271,10 +1239,8 @@ class OrganizationsApiproductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ApiProduct.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ApiProduct.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an API product from an organization.
@@ -1307,7 +1273,7 @@ class OrganizationsApiproductsResource {
   async.Future<GoogleCloudApigeeV1ApiProduct> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1324,7 +1290,7 @@ class OrganizationsApiproductsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1333,10 +1299,8 @@ class OrganizationsApiproductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ApiProduct.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ApiProduct.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets configuration details for an API product.
@@ -1365,7 +1329,7 @@ class OrganizationsApiproductsResource {
   async.Future<GoogleCloudApigeeV1ApiProduct> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1382,7 +1346,7 @@ class OrganizationsApiproductsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1391,10 +1355,8 @@ class OrganizationsApiproductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ApiProduct.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ApiProduct.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all API product names for an organization.
@@ -1444,7 +1406,7 @@ class OrganizationsApiproductsResource {
     core.bool expand,
     core.String startKey,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1478,7 +1440,7 @@ class OrganizationsApiproductsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/apiproducts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1487,10 +1449,8 @@ class OrganizationsApiproductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListApiProductsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListApiProductsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing API product.
@@ -1524,7 +1484,7 @@ class OrganizationsApiproductsResource {
     GoogleCloudApigeeV1ApiProduct request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1544,7 +1504,7 @@ class OrganizationsApiproductsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1553,10 +1513,8 @@ class OrganizationsApiproductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ApiProduct.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ApiProduct.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1589,7 +1547,7 @@ class OrganizationsApiproductsAttributesResource {
   async.Future<GoogleCloudApigeeV1Attribute> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1606,7 +1564,7 @@ class OrganizationsApiproductsAttributesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1615,10 +1573,8 @@ class OrganizationsApiproductsAttributesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Attribute.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Attribute.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the value of an API product attribute.
@@ -1644,7 +1600,7 @@ class OrganizationsApiproductsAttributesResource {
   async.Future<GoogleCloudApigeeV1Attribute> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1661,7 +1617,7 @@ class OrganizationsApiproductsAttributesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1670,10 +1626,8 @@ class OrganizationsApiproductsAttributesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Attribute.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Attribute.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all API product attributes.
@@ -1697,7 +1651,7 @@ class OrganizationsApiproductsAttributesResource {
   async.Future<GoogleCloudApigeeV1Attributes> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1716,7 +1670,7 @@ class OrganizationsApiproductsAttributesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/attributes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1725,10 +1679,8 @@ class OrganizationsApiproductsAttributesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Attributes.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Attributes.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the value of an API product attribute.
@@ -1763,7 +1715,7 @@ class OrganizationsApiproductsAttributesResource {
     GoogleCloudApigeeV1Attribute request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1783,7 +1735,7 @@ class OrganizationsApiproductsAttributesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1792,10 +1744,8 @@ class OrganizationsApiproductsAttributesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Attribute.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Attribute.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1865,7 +1815,7 @@ class OrganizationsApisResource {
     core.String name,
     core.bool validate,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1894,7 +1844,7 @@ class OrganizationsApisResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/apis';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1903,10 +1853,8 @@ class OrganizationsApisResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ApiProxyRevision.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ApiProxyRevision.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an API proxy and all associated endpoints, policies, resources,
@@ -1933,7 +1881,7 @@ class OrganizationsApisResource {
   async.Future<GoogleCloudApigeeV1ApiProxy> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1950,7 +1898,7 @@ class OrganizationsApisResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1959,10 +1907,8 @@ class OrganizationsApisResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ApiProxy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ApiProxy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an API proxy including a list of existing revisions.
@@ -1986,7 +1932,7 @@ class OrganizationsApisResource {
   async.Future<GoogleCloudApigeeV1ApiProxy> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2003,7 +1949,7 @@ class OrganizationsApisResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2012,10 +1958,8 @@ class OrganizationsApisResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ApiProxy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ApiProxy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the names of all API proxies in an organization.
@@ -2050,7 +1994,7 @@ class OrganizationsApisResource {
     core.bool includeMetaData,
     core.bool includeRevisions,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2073,7 +2017,7 @@ class OrganizationsApisResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/apis';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2082,10 +2026,8 @@ class OrganizationsApisResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2116,7 +2058,7 @@ class OrganizationsApisDeploymentsResource {
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2135,7 +2077,7 @@ class OrganizationsApisDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2144,10 +2086,8 @@ class OrganizationsApisDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2182,7 +2122,7 @@ class OrganizationsApisKeyvaluemapsResource {
     GoogleCloudApigeeV1KeyValueMap request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2204,7 +2144,7 @@ class OrganizationsApisKeyvaluemapsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/keyvaluemaps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2213,10 +2153,8 @@ class OrganizationsApisKeyvaluemapsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1KeyValueMap.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1KeyValueMap.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a key value map in an api proxy.
@@ -2241,7 +2179,7 @@ class OrganizationsApisKeyvaluemapsResource {
   async.Future<GoogleCloudApigeeV1KeyValueMap> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2258,7 +2196,7 @@ class OrganizationsApisKeyvaluemapsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2267,10 +2205,8 @@ class OrganizationsApisKeyvaluemapsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1KeyValueMap.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1KeyValueMap.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2308,7 +2244,7 @@ class OrganizationsApisRevisionsResource {
   async.Future<GoogleCloudApigeeV1ApiProxyRevision> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2325,7 +2261,7 @@ class OrganizationsApisRevisionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2334,10 +2270,8 @@ class OrganizationsApisRevisionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ApiProxyRevision.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ApiProxyRevision.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an API proxy revision.
@@ -2375,7 +2309,7 @@ class OrganizationsApisRevisionsResource {
     core.String name, {
     core.String format,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2395,7 +2329,7 @@ class OrganizationsApisRevisionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2404,10 +2338,8 @@ class OrganizationsApisRevisionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleApiHttpBody.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleApiHttpBody.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing API proxy revision by uploading the API proxy
@@ -2445,7 +2377,7 @@ class OrganizationsApisRevisionsResource {
     core.String name, {
     core.bool validate,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2468,7 +2400,7 @@ class OrganizationsApisRevisionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2477,10 +2409,8 @@ class OrganizationsApisRevisionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ApiProxyRevision.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ApiProxyRevision.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2513,7 +2443,7 @@ class OrganizationsApisRevisionsDeploymentsResource {
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2532,7 +2462,7 @@ class OrganizationsApisRevisionsDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2541,10 +2471,8 @@ class OrganizationsApisRevisionsDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2574,7 +2502,7 @@ class OrganizationsAppsResource {
   async.Future<GoogleCloudApigeeV1App> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2591,7 +2519,7 @@ class OrganizationsAppsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2600,10 +2528,8 @@ class OrganizationsAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1App.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1App.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists IDs of apps within an organization that have the specified app
@@ -2661,7 +2587,7 @@ class OrganizationsAppsResource {
     core.String startKey,
     core.String status,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2705,7 +2631,7 @@ class OrganizationsAppsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/apps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2714,10 +2640,8 @@ class OrganizationsAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListAppsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListAppsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2755,7 +2679,7 @@ class OrganizationsDatacollectorsResource {
     core.String parent, {
     core.String dataCollectorId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2780,7 +2704,7 @@ class OrganizationsDatacollectorsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/datacollectors';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2789,10 +2713,8 @@ class OrganizationsDatacollectorsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DataCollector.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DataCollector.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a data collector.
@@ -2816,7 +2738,7 @@ class OrganizationsDatacollectorsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2833,7 +2755,7 @@ class OrganizationsDatacollectorsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2842,10 +2764,8 @@ class OrganizationsDatacollectorsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a data collector.
@@ -2869,7 +2789,7 @@ class OrganizationsDatacollectorsResource {
   async.Future<GoogleCloudApigeeV1DataCollector> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2886,7 +2806,7 @@ class OrganizationsDatacollectorsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2895,10 +2815,8 @@ class OrganizationsDatacollectorsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DataCollector.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DataCollector.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all data collectors.
@@ -2930,7 +2848,7 @@ class OrganizationsDatacollectorsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2955,7 +2873,7 @@ class OrganizationsDatacollectorsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/datacollectors';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2964,10 +2882,8 @@ class OrganizationsDatacollectorsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListDataCollectorsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListDataCollectorsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a data collector.
@@ -2997,7 +2913,7 @@ class OrganizationsDatacollectorsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3020,7 +2936,7 @@ class OrganizationsDatacollectorsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3029,10 +2945,8 @@ class OrganizationsDatacollectorsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DataCollector.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DataCollector.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3069,7 +2983,7 @@ class OrganizationsDeploymentsResource {
     core.String parent, {
     core.bool sharedFlows,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3091,7 +3005,7 @@ class OrganizationsDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3100,10 +3014,8 @@ class OrganizationsDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3153,7 +3065,7 @@ class OrganizationsDevelopersResource {
     GoogleCloudApigeeV1Attributes request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3175,7 +3087,7 @@ class OrganizationsDevelopersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/attributes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3184,10 +3096,8 @@ class OrganizationsDevelopersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Attributes.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Attributes.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a developer.
@@ -3219,7 +3129,7 @@ class OrganizationsDevelopersResource {
     GoogleCloudApigeeV1Developer request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3241,7 +3151,7 @@ class OrganizationsDevelopersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/developers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3250,10 +3160,8 @@ class OrganizationsDevelopersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Developer.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Developer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a developer.
@@ -3286,7 +3194,7 @@ class OrganizationsDevelopersResource {
   async.Future<GoogleCloudApigeeV1Developer> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3303,7 +3211,7 @@ class OrganizationsDevelopersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3312,10 +3220,8 @@ class OrganizationsDevelopersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Developer.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Developer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the developer details, including the developer's name, email
@@ -3347,7 +3253,7 @@ class OrganizationsDevelopersResource {
     core.String name, {
     core.String action,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3367,7 +3273,7 @@ class OrganizationsDevelopersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3376,10 +3282,8 @@ class OrganizationsDevelopersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Developer.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Developer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all developers in an organization by email address.
@@ -3438,7 +3342,7 @@ class OrganizationsDevelopersResource {
     core.bool includeCompany,
     core.String startKey,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3475,7 +3379,7 @@ class OrganizationsDevelopersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/developers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3484,10 +3388,8 @@ class OrganizationsDevelopersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListOfDevelopersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListOfDevelopersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the status of a developer.
@@ -3524,7 +3426,7 @@ class OrganizationsDevelopersResource {
     core.String name, {
     core.String action,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3544,7 +3446,7 @@ class OrganizationsDevelopersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3553,10 +3455,8 @@ class OrganizationsDevelopersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a developer.
@@ -3594,7 +3494,7 @@ class OrganizationsDevelopersResource {
     GoogleCloudApigeeV1Developer request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3614,7 +3514,7 @@ class OrganizationsDevelopersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -3623,10 +3523,8 @@ class OrganizationsDevelopersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Developer.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Developer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3670,7 +3568,7 @@ class OrganizationsDevelopersAppsResource {
     GoogleCloudApigeeV1Attributes request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3691,7 +3589,7 @@ class OrganizationsDevelopersAppsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/attributes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3700,10 +3598,8 @@ class OrganizationsDevelopersAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Attributes.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Attributes.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates an app associated with a developer.
@@ -3737,7 +3633,7 @@ class OrganizationsDevelopersAppsResource {
     GoogleCloudApigeeV1DeveloperApp request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3757,7 +3653,7 @@ class OrganizationsDevelopersAppsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/apps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3766,10 +3662,8 @@ class OrganizationsDevelopersAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DeveloperApp.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DeveloperApp.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a developer app.
@@ -3800,7 +3694,7 @@ class OrganizationsDevelopersAppsResource {
   async.Future<GoogleCloudApigeeV1DeveloperApp> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3817,7 +3711,7 @@ class OrganizationsDevelopersAppsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3826,10 +3720,8 @@ class OrganizationsDevelopersAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DeveloperApp.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DeveloperApp.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Manages access to a developer app by enabling you to: * Approve or revoke
@@ -3886,7 +3778,7 @@ class OrganizationsDevelopersAppsResource {
     core.String name, {
     core.String action,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3909,7 +3801,7 @@ class OrganizationsDevelopersAppsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3918,10 +3810,8 @@ class OrganizationsDevelopersAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DeveloperApp.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DeveloperApp.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the details for a developer app.
@@ -3959,7 +3849,7 @@ class OrganizationsDevelopersAppsResource {
     core.String entity,
     core.String query,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3982,7 +3872,7 @@ class OrganizationsDevelopersAppsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3991,10 +3881,8 @@ class OrganizationsDevelopersAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DeveloperApp.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DeveloperApp.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all apps created by a developer in an Apigee organization.
@@ -4045,7 +3933,7 @@ class OrganizationsDevelopersAppsResource {
     core.bool shallowExpand,
     core.String startKey,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4074,7 +3962,7 @@ class OrganizationsDevelopersAppsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/apps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4083,10 +3971,8 @@ class OrganizationsDevelopersAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListDeveloperAppsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListDeveloperAppsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the details for a developer app.
@@ -4126,7 +4012,7 @@ class OrganizationsDevelopersAppsResource {
     GoogleCloudApigeeV1DeveloperApp request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4146,7 +4032,7 @@ class OrganizationsDevelopersAppsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -4155,10 +4041,8 @@ class OrganizationsDevelopersAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DeveloperApp.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DeveloperApp.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4191,7 +4075,7 @@ class OrganizationsDevelopersAppsAttributesResource {
   async.Future<GoogleCloudApigeeV1Attribute> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4208,7 +4092,7 @@ class OrganizationsDevelopersAppsAttributesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4217,10 +4101,8 @@ class OrganizationsDevelopersAppsAttributesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Attribute.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Attribute.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a developer app attribute.
@@ -4246,7 +4128,7 @@ class OrganizationsDevelopersAppsAttributesResource {
   async.Future<GoogleCloudApigeeV1Attribute> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4263,7 +4145,7 @@ class OrganizationsDevelopersAppsAttributesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4272,10 +4154,8 @@ class OrganizationsDevelopersAppsAttributesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Attribute.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Attribute.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of all developer app attributes.
@@ -4301,7 +4181,7 @@ class OrganizationsDevelopersAppsAttributesResource {
   async.Future<GoogleCloudApigeeV1Attributes> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4320,7 +4200,7 @@ class OrganizationsDevelopersAppsAttributesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/attributes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4329,10 +4209,8 @@ class OrganizationsDevelopersAppsAttributesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Attributes.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Attributes.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a developer app attribute.
@@ -4368,7 +4246,7 @@ class OrganizationsDevelopersAppsAttributesResource {
     GoogleCloudApigeeV1Attribute request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4388,7 +4266,7 @@ class OrganizationsDevelopersAppsAttributesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4397,10 +4275,8 @@ class OrganizationsDevelopersAppsAttributesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Attribute.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Attribute.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4452,7 +4328,7 @@ class OrganizationsDevelopersAppsKeysResource {
     GoogleCloudApigeeV1DeveloperAppKey request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4472,7 +4348,7 @@ class OrganizationsDevelopersAppsKeysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/keys';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4481,10 +4357,8 @@ class OrganizationsDevelopersAppsKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an app's consumer key and removes all API products associated with
@@ -4518,7 +4392,7 @@ class OrganizationsDevelopersAppsKeysResource {
   async.Future<GoogleCloudApigeeV1DeveloperAppKey> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4535,7 +4409,7 @@ class OrganizationsDevelopersAppsKeysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4544,10 +4418,8 @@ class OrganizationsDevelopersAppsKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns details for a consumer key for a developer app, including the key
@@ -4574,7 +4446,7 @@ class OrganizationsDevelopersAppsKeysResource {
   async.Future<GoogleCloudApigeeV1DeveloperAppKey> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4591,7 +4463,7 @@ class OrganizationsDevelopersAppsKeysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4600,10 +4472,8 @@ class OrganizationsDevelopersAppsKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the scope of an app.
@@ -4638,7 +4508,7 @@ class OrganizationsDevelopersAppsKeysResource {
     GoogleCloudApigeeV1DeveloperAppKey request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4658,7 +4528,7 @@ class OrganizationsDevelopersAppsKeysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -4667,10 +4537,8 @@ class OrganizationsDevelopersAppsKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds an API product to a developer app key, enabling the app that holds
@@ -4710,7 +4578,7 @@ class OrganizationsDevelopersAppsKeysResource {
     core.String name, {
     core.String action,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4733,7 +4601,7 @@ class OrganizationsDevelopersAppsKeysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4742,10 +4610,8 @@ class OrganizationsDevelopersAppsKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4783,7 +4649,7 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
   async.Future<GoogleCloudApigeeV1DeveloperAppKey> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4800,7 +4666,7 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4809,10 +4675,8 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Approve or revoke an app's consumer key.
@@ -4848,7 +4712,7 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
     core.String name, {
     core.String action,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4868,7 +4732,7 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4877,10 +4741,8 @@ class OrganizationsDevelopersAppsKeysApiproductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4927,7 +4789,7 @@ class OrganizationsDevelopersAppsKeysCreateResource {
     GoogleCloudApigeeV1DeveloperAppKey request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4949,7 +4811,7 @@ class OrganizationsDevelopersAppsKeysCreateResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/keys/create';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4958,10 +4820,8 @@ class OrganizationsDevelopersAppsKeysCreateResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4994,7 +4854,7 @@ class OrganizationsDevelopersAttributesResource {
   async.Future<GoogleCloudApigeeV1Attribute> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5011,7 +4871,7 @@ class OrganizationsDevelopersAttributesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -5020,10 +4880,8 @@ class OrganizationsDevelopersAttributesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Attribute.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Attribute.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the value of the specified developer attribute.
@@ -5049,7 +4907,7 @@ class OrganizationsDevelopersAttributesResource {
   async.Future<GoogleCloudApigeeV1Attribute> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5066,7 +4924,7 @@ class OrganizationsDevelopersAttributesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5075,10 +4933,8 @@ class OrganizationsDevelopersAttributesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Attribute.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Attribute.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of all developer attributes.
@@ -5103,7 +4959,7 @@ class OrganizationsDevelopersAttributesResource {
   async.Future<GoogleCloudApigeeV1Attributes> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5122,7 +4978,7 @@ class OrganizationsDevelopersAttributesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/attributes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5131,10 +4987,8 @@ class OrganizationsDevelopersAttributesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Attributes.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Attributes.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a developer attribute.
@@ -5170,7 +5024,7 @@ class OrganizationsDevelopersAttributesResource {
     GoogleCloudApigeeV1Attribute request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5190,7 +5044,7 @@ class OrganizationsDevelopersAttributesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5199,10 +5053,8 @@ class OrganizationsDevelopersAttributesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Attribute.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Attribute.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5243,7 +5095,7 @@ class OrganizationsEnvgroupsResource {
     core.String parent, {
     core.String name,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5267,7 +5119,7 @@ class OrganizationsEnvgroupsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/envgroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5276,10 +5128,8 @@ class OrganizationsEnvgroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an environment group.
@@ -5303,7 +5153,7 @@ class OrganizationsEnvgroupsResource {
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5320,7 +5170,7 @@ class OrganizationsEnvgroupsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -5329,10 +5179,8 @@ class OrganizationsEnvgroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an environment group.
@@ -5356,7 +5204,7 @@ class OrganizationsEnvgroupsResource {
   async.Future<GoogleCloudApigeeV1EnvironmentGroup> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5373,7 +5221,7 @@ class OrganizationsEnvgroupsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5382,10 +5230,8 @@ class OrganizationsEnvgroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1EnvironmentGroup.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1EnvironmentGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all environment groups.
@@ -5417,7 +5263,7 @@ class OrganizationsEnvgroupsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5441,7 +5287,7 @@ class OrganizationsEnvgroupsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/envgroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5450,10 +5296,8 @@ class OrganizationsEnvgroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an environment group.
@@ -5483,7 +5327,7 @@ class OrganizationsEnvgroupsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5506,7 +5350,7 @@ class OrganizationsEnvgroupsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -5515,10 +5359,8 @@ class OrganizationsEnvgroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5552,7 +5394,7 @@ class OrganizationsEnvgroupsAttachmentsResource {
     GoogleCloudApigeeV1EnvironmentGroupAttachment request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5574,7 +5416,7 @@ class OrganizationsEnvgroupsAttachmentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/attachments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5583,10 +5425,8 @@ class OrganizationsEnvgroupsAttachmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an environment group attachment.
@@ -5612,7 +5452,7 @@ class OrganizationsEnvgroupsAttachmentsResource {
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5629,7 +5469,7 @@ class OrganizationsEnvgroupsAttachmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -5638,10 +5478,8 @@ class OrganizationsEnvgroupsAttachmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an environment group attachment.
@@ -5667,7 +5505,7 @@ class OrganizationsEnvgroupsAttachmentsResource {
   async.Future<GoogleCloudApigeeV1EnvironmentGroupAttachment> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5684,7 +5522,7 @@ class OrganizationsEnvgroupsAttachmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5693,10 +5531,8 @@ class OrganizationsEnvgroupsAttachmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all attachments of an environment group.
@@ -5730,7 +5566,7 @@ class OrganizationsEnvgroupsAttachmentsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5755,7 +5591,7 @@ class OrganizationsEnvgroupsAttachmentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/attachments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5764,11 +5600,8 @@ class OrganizationsEnvgroupsAttachmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5836,7 +5669,7 @@ class OrganizationsEnvironmentsResource {
     core.String parent, {
     core.String name,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5861,7 +5694,7 @@ class OrganizationsEnvironmentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/environments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5870,10 +5703,8 @@ class OrganizationsEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an environment from an organization.
@@ -5897,7 +5728,7 @@ class OrganizationsEnvironmentsResource {
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5914,7 +5745,7 @@ class OrganizationsEnvironmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -5923,10 +5754,8 @@ class OrganizationsEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets environment details.
@@ -5950,7 +5779,7 @@ class OrganizationsEnvironmentsResource {
   async.Future<GoogleCloudApigeeV1Environment> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5967,7 +5796,7 @@ class OrganizationsEnvironmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5976,10 +5805,8 @@ class OrganizationsEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Environment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the debug mask singleton resource for an environment.
@@ -6004,7 +5831,7 @@ class OrganizationsEnvironmentsResource {
   async.Future<GoogleCloudApigeeV1DebugMask> getDebugmask(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6021,7 +5848,7 @@ class OrganizationsEnvironmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6030,10 +5857,8 @@ class OrganizationsEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DebugMask.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DebugMask.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the deployed configuration for an environment.
@@ -6059,7 +5884,7 @@ class OrganizationsEnvironmentsResource {
   async.Future<GoogleCloudApigeeV1EnvironmentConfig> getDeployedConfig(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6076,7 +5901,7 @@ class OrganizationsEnvironmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6085,10 +5910,8 @@ class OrganizationsEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1EnvironmentConfig.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1EnvironmentConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the IAM policy on an environment.
@@ -6127,7 +5950,7 @@ class OrganizationsEnvironmentsResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6151,7 +5974,7 @@ class OrganizationsEnvironmentsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6160,10 +5983,8 @@ class OrganizationsEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleIamV1Policy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleIamV1Policy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the IAM policy on an environment, if the policy already exists it
@@ -6197,7 +6018,7 @@ class OrganizationsEnvironmentsResource {
     GoogleIamV1SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6219,7 +6040,7 @@ class OrganizationsEnvironmentsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6228,10 +6049,8 @@ class OrganizationsEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleIamV1Policy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleIamV1Policy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a subscription for the environment's Pub/Sub topic.
@@ -6258,7 +6077,7 @@ class OrganizationsEnvironmentsResource {
   async.Future<GoogleCloudApigeeV1Subscription> subscribe(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6276,7 +6095,7 @@ class OrganizationsEnvironmentsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + ':subscribe';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6285,10 +6104,8 @@ class OrganizationsEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Subscription.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Tests the permissions of a user on an environment, and returns a subset of
@@ -6320,7 +6137,7 @@ class OrganizationsEnvironmentsResource {
     GoogleIamV1TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6342,7 +6159,7 @@ class OrganizationsEnvironmentsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6351,10 +6168,8 @@ class OrganizationsEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleIamV1TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a subscription for the environment's Pub/Sub topic.
@@ -6381,7 +6196,7 @@ class OrganizationsEnvironmentsResource {
     GoogleCloudApigeeV1Subscription request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6403,7 +6218,7 @@ class OrganizationsEnvironmentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':unsubscribe';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6412,10 +6227,8 @@ class OrganizationsEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing environment.
@@ -6447,7 +6260,7 @@ class OrganizationsEnvironmentsResource {
     GoogleCloudApigeeV1Environment request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6467,7 +6280,7 @@ class OrganizationsEnvironmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -6476,10 +6289,8 @@ class OrganizationsEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Environment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the debug mask singleton resource for an environment.
@@ -6515,7 +6326,7 @@ class OrganizationsEnvironmentsResource {
     core.bool replaceRepeatedFields,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6541,7 +6352,7 @@ class OrganizationsEnvironmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -6550,10 +6361,8 @@ class OrganizationsEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DebugMask.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DebugMask.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing environment.
@@ -6585,7 +6394,7 @@ class OrganizationsEnvironmentsResource {
     GoogleCloudApigeeV1Environment request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6605,7 +6414,7 @@ class OrganizationsEnvironmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6614,10 +6423,8 @@ class OrganizationsEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Environment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6670,7 +6477,7 @@ class OrganizationsEnvironmentsAnalyticsAdminResource {
     core.String name, {
     core.String type,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6690,7 +6497,7 @@ class OrganizationsEnvironmentsAnalyticsAdminResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6699,10 +6506,8 @@ class OrganizationsEnvironmentsAnalyticsAdminResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Schema.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Schema.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6740,7 +6545,7 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
     GoogleCloudApigeeV1ExportRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6762,7 +6567,7 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/analytics/exports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6771,10 +6576,8 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Export.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Export.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the details and status of an analytics export job.
@@ -6802,7 +6605,7 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
   async.Future<GoogleCloudApigeeV1Export> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6819,7 +6622,7 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6828,10 +6631,8 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Export.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Export.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the details and status of all analytics export jobs belonging to the
@@ -6856,7 +6657,7 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
   async.Future<GoogleCloudApigeeV1ListExportsResponse> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6875,7 +6676,7 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/analytics/exports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6884,10 +6685,8 @@ class OrganizationsEnvironmentsAnalyticsExportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListExportsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListExportsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6931,7 +6730,7 @@ class OrganizationsEnvironmentsApisDeploymentsResource {
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6950,7 +6749,7 @@ class OrganizationsEnvironmentsApisDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6959,10 +6758,8 @@ class OrganizationsEnvironmentsApisDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7034,7 +6831,7 @@ class OrganizationsEnvironmentsApisRevisionsResource {
     core.bool override,
     core.bool sequencedRollout,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7058,7 +6855,7 @@ class OrganizationsEnvironmentsApisRevisionsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7067,10 +6864,8 @@ class OrganizationsEnvironmentsApisRevisionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Deployment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Deployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the deployment of an API proxy revision and actual state reported by
@@ -7097,7 +6892,7 @@ class OrganizationsEnvironmentsApisRevisionsResource {
   async.Future<GoogleCloudApigeeV1Deployment> getDeployments(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7115,7 +6910,7 @@ class OrganizationsEnvironmentsApisRevisionsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7124,10 +6919,8 @@ class OrganizationsEnvironmentsApisRevisionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Deployment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Deployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeploys an API proxy revision from an environment.
@@ -7171,7 +6964,7 @@ class OrganizationsEnvironmentsApisRevisionsResource {
     core.String name, {
     core.bool sequencedRollout,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7192,7 +6985,7 @@ class OrganizationsEnvironmentsApisRevisionsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -7201,10 +6994,8 @@ class OrganizationsEnvironmentsApisRevisionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7249,7 +7040,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
     core.String parent, {
     core.String timeout,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7274,7 +7065,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/debugsessions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7283,10 +7074,8 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DebugSession.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DebugSession.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the data from a debug session.
@@ -7315,7 +7104,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   async.Future<GoogleProtobufEmpty> deleteData(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7332,7 +7121,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/data';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -7341,10 +7130,8 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a debug session.
@@ -7370,7 +7157,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
   async.Future<GoogleCloudApigeeV1DebugSession> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7387,7 +7174,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7396,10 +7183,8 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DebugSession.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DebugSession.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists debug sessions that are currently active in the given API Proxy
@@ -7434,7 +7219,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7459,7 +7244,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/debugsessions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7468,10 +7253,8 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListDebugSessionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListDebugSessionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7505,7 +7288,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource {
   async.Future<GoogleCloudApigeeV1DebugSessionTransaction> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7522,7 +7305,7 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7531,10 +7314,8 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DebugSessionTransaction.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DebugSessionTransaction.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7587,7 +7368,7 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
     core.String name, {
     core.bool override,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7609,7 +7390,7 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/deployments:generateDeployChangeReport';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7618,10 +7399,8 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DeploymentChangeReport.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DeploymentChangeReport.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Generates a report for a dry run analysis of an UndeployApiProxy request
@@ -7661,7 +7440,7 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
       generateUndeployChangeReport(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7680,7 +7459,7 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/deployments:generateUndeployChangeReport';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7689,10 +7468,8 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DeploymentChangeReport.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DeploymentChangeReport.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7724,7 +7501,7 @@ class OrganizationsEnvironmentsCachesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7741,7 +7518,7 @@ class OrganizationsEnvironmentsCachesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -7750,10 +7527,8 @@ class OrganizationsEnvironmentsCachesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7791,7 +7566,7 @@ class OrganizationsEnvironmentsDeploymentsResource {
     core.String parent, {
     core.bool sharedFlows,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7813,7 +7588,7 @@ class OrganizationsEnvironmentsDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7822,10 +7597,8 @@ class OrganizationsEnvironmentsDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7861,7 +7634,7 @@ class OrganizationsEnvironmentsFlowhooksResource {
     GoogleCloudApigeeV1FlowHook request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7881,7 +7654,7 @@ class OrganizationsEnvironmentsFlowhooksResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -7890,10 +7663,8 @@ class OrganizationsEnvironmentsFlowhooksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1FlowHook.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1FlowHook.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Detaches a shared flow from a flow hook.
@@ -7918,7 +7689,7 @@ class OrganizationsEnvironmentsFlowhooksResource {
   async.Future<GoogleCloudApigeeV1FlowHook> detachSharedFlowFromFlowHook(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7935,7 +7706,7 @@ class OrganizationsEnvironmentsFlowhooksResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -7944,10 +7715,8 @@ class OrganizationsEnvironmentsFlowhooksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1FlowHook.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1FlowHook.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the name of the shared flow attached to the specified flow hook.
@@ -7975,7 +7744,7 @@ class OrganizationsEnvironmentsFlowhooksResource {
   async.Future<GoogleCloudApigeeV1FlowHook> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7992,7 +7761,7 @@ class OrganizationsEnvironmentsFlowhooksResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8001,10 +7770,8 @@ class OrganizationsEnvironmentsFlowhooksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1FlowHook.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1FlowHook.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8050,7 +7817,7 @@ class OrganizationsEnvironmentsKeystoresResource {
     core.String parent, {
     core.String name,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8074,7 +7841,7 @@ class OrganizationsEnvironmentsKeystoresResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/keystores';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -8083,10 +7850,8 @@ class OrganizationsEnvironmentsKeystoresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Keystore.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Keystore.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a keystore or truststore.
@@ -8111,7 +7876,7 @@ class OrganizationsEnvironmentsKeystoresResource {
   async.Future<GoogleCloudApigeeV1Keystore> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8128,7 +7893,7 @@ class OrganizationsEnvironmentsKeystoresResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -8137,10 +7902,8 @@ class OrganizationsEnvironmentsKeystoresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Keystore.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Keystore.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a keystore or truststore.
@@ -8165,7 +7928,7 @@ class OrganizationsEnvironmentsKeystoresResource {
   async.Future<GoogleCloudApigeeV1Keystore> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8182,7 +7945,7 @@ class OrganizationsEnvironmentsKeystoresResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8191,10 +7954,8 @@ class OrganizationsEnvironmentsKeystoresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Keystore.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Keystore.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8268,7 +8029,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
     core.bool ignoreExpiryValidation,
     core.bool ignoreNewlineValidation,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8304,7 +8065,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/aliases';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -8313,10 +8074,8 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Alias.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Alias.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Generates a PKCS #10 Certificate Signing Request for the private key in an
@@ -8343,7 +8102,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   async.Future<GoogleApiHttpBody> csr(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8360,7 +8119,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/csr';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8369,10 +8128,8 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleApiHttpBody.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleApiHttpBody.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an alias.
@@ -8398,7 +8155,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   async.Future<GoogleCloudApigeeV1Alias> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8415,7 +8172,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -8424,10 +8181,8 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Alias.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Alias.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an alias.
@@ -8453,7 +8208,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   async.Future<GoogleCloudApigeeV1Alias> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8470,7 +8225,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8479,10 +8234,8 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Alias.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Alias.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the certificate from an alias in PEM-encoded form.
@@ -8508,7 +8261,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
   async.Future<GoogleApiHttpBody> getCertificate(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8526,7 +8279,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/certificate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8535,10 +8288,8 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleApiHttpBody.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleApiHttpBody.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the certificate in an alias.
@@ -8578,7 +8329,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
     core.bool ignoreExpiryValidation,
     core.bool ignoreNewlineValidation,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8604,7 +8355,7 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -8613,10 +8364,8 @@ class OrganizationsEnvironmentsKeystoresAliasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Alias.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Alias.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8651,7 +8400,7 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
     GoogleCloudApigeeV1KeyValueMap request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8673,7 +8422,7 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/keyvaluemaps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -8682,10 +8431,8 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1KeyValueMap.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1KeyValueMap.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a key value map in an environment.
@@ -8710,7 +8457,7 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
   async.Future<GoogleCloudApigeeV1KeyValueMap> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8727,7 +8474,7 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -8736,10 +8483,8 @@ class OrganizationsEnvironmentsKeyvaluemapsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1KeyValueMap.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1KeyValueMap.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8839,7 +8584,7 @@ class OrganizationsEnvironmentsOptimizedStatsResource {
     core.bool tsAscending,
     core.String tzo,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8901,7 +8646,7 @@ class OrganizationsEnvironmentsOptimizedStatsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8910,10 +8655,8 @@ class OrganizationsEnvironmentsOptimizedStatsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1OptimizedStats.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1OptimizedStats.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8951,7 +8694,7 @@ class OrganizationsEnvironmentsQueriesResource {
     GoogleCloudApigeeV1Query request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8972,7 +8715,7 @@ class OrganizationsEnvironmentsQueriesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/queries';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -8981,10 +8724,8 @@ class OrganizationsEnvironmentsQueriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1AsyncQuery.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1AsyncQuery.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get query status If the query is still in progress, the `state` is set to
@@ -9011,7 +8752,7 @@ class OrganizationsEnvironmentsQueriesResource {
   async.Future<GoogleCloudApigeeV1AsyncQuery> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9028,7 +8769,7 @@ class OrganizationsEnvironmentsQueriesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9037,10 +8778,8 @@ class OrganizationsEnvironmentsQueriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1AsyncQuery.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1AsyncQuery.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// After the query is completed, use this API to retrieve the results.
@@ -9071,7 +8810,7 @@ class OrganizationsEnvironmentsQueriesResource {
   async.Future<GoogleApiHttpBody> getResult(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9088,7 +8827,7 @@ class OrganizationsEnvironmentsQueriesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9097,10 +8836,8 @@ class OrganizationsEnvironmentsQueriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleApiHttpBody.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleApiHttpBody.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Return a list of Asynchronous Queries
@@ -9147,7 +8884,7 @@ class OrganizationsEnvironmentsQueriesResource {
     core.String submittedBy,
     core.String to,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9183,7 +8920,7 @@ class OrganizationsEnvironmentsQueriesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/queries';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9192,10 +8929,8 @@ class OrganizationsEnvironmentsQueriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9230,7 +8965,7 @@ class OrganizationsEnvironmentsReferencesResource {
     GoogleCloudApigeeV1Reference request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9252,7 +8987,7 @@ class OrganizationsEnvironmentsReferencesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/references';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -9261,10 +8996,8 @@ class OrganizationsEnvironmentsReferencesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Reference.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Reference.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a Reference from an environment.
@@ -9291,7 +9024,7 @@ class OrganizationsEnvironmentsReferencesResource {
   async.Future<GoogleCloudApigeeV1Reference> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9308,7 +9041,7 @@ class OrganizationsEnvironmentsReferencesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -9317,10 +9050,8 @@ class OrganizationsEnvironmentsReferencesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Reference.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Reference.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a Reference resource.
@@ -9345,7 +9076,7 @@ class OrganizationsEnvironmentsReferencesResource {
   async.Future<GoogleCloudApigeeV1Reference> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9362,7 +9093,7 @@ class OrganizationsEnvironmentsReferencesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9371,10 +9102,8 @@ class OrganizationsEnvironmentsReferencesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Reference.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Reference.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing Reference.
@@ -9405,7 +9134,7 @@ class OrganizationsEnvironmentsReferencesResource {
     GoogleCloudApigeeV1Reference request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9425,7 +9154,7 @@ class OrganizationsEnvironmentsReferencesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -9434,10 +9163,8 @@ class OrganizationsEnvironmentsReferencesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Reference.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Reference.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9483,7 +9210,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
     core.String name,
     core.String type,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9511,7 +9238,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/resourcefiles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -9520,10 +9247,8 @@ class OrganizationsEnvironmentsResourcefilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ResourceFile.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ResourceFile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a resource file.
@@ -9557,7 +9282,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
     core.String type,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9585,7 +9310,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
         '/' +
         commons.Escaper.ecapeVariable('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -9594,10 +9319,8 @@ class OrganizationsEnvironmentsResourcefilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ResourceFile.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ResourceFile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the contents of a resource file.
@@ -9631,7 +9354,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
     core.String type,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9659,7 +9382,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
         '/' +
         commons.Escaper.ecapeVariable('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9668,10 +9391,8 @@ class OrganizationsEnvironmentsResourcefilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleApiHttpBody.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleApiHttpBody.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all resource files, optionally filtering by type.
@@ -9702,7 +9423,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
     core.String parent, {
     core.String type,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9724,7 +9445,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/resourcefiles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9733,10 +9454,8 @@ class OrganizationsEnvironmentsResourcefilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all resource files, optionally filtering by type.
@@ -9768,7 +9487,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
     core.String parent,
     core.String type, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9791,7 +9510,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
         '/resourcefiles/' +
         commons.Escaper.ecapeVariable('$type');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9800,10 +9519,8 @@ class OrganizationsEnvironmentsResourcefilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a resource file.
@@ -9841,7 +9558,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
     core.String type,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9872,7 +9589,7 @@ class OrganizationsEnvironmentsResourcefilesResource {
         '/' +
         commons.Escaper.ecapeVariable('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -9881,10 +9598,8 @@ class OrganizationsEnvironmentsResourcefilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ResourceFile.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ResourceFile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9930,7 +9645,7 @@ class OrganizationsEnvironmentsSharedflowsDeploymentsResource {
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9949,7 +9664,7 @@ class OrganizationsEnvironmentsSharedflowsDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9958,10 +9673,8 @@ class OrganizationsEnvironmentsSharedflowsDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -10014,7 +9727,7 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
     core.String name, {
     core.bool override,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10035,7 +9748,7 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -10044,10 +9757,8 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Deployment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Deployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the deployment of a shared flow revision and actual state reported by
@@ -10074,7 +9785,7 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   async.Future<GoogleCloudApigeeV1Deployment> getDeployments(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10092,7 +9803,7 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -10101,10 +9812,8 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Deployment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Deployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeploys a shared flow revision from an environment.
@@ -10137,7 +9846,7 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
   async.Future<GoogleProtobufEmpty> undeploy(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10155,7 +9864,7 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -10164,10 +9873,8 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -10269,7 +9976,7 @@ class OrganizationsEnvironmentsStatsResource {
     core.bool tsAscending,
     core.String tzo,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10331,7 +10038,7 @@ class OrganizationsEnvironmentsStatsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -10340,10 +10047,8 @@ class OrganizationsEnvironmentsStatsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Stats.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Stats.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -10382,7 +10087,7 @@ class OrganizationsEnvironmentsTargetserversResource {
     core.String parent, {
     core.String name,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10407,7 +10112,7 @@ class OrganizationsEnvironmentsTargetserversResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/targetservers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -10416,10 +10121,8 @@ class OrganizationsEnvironmentsTargetserversResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1TargetServer.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1TargetServer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a TargetServer from an environment.
@@ -10447,7 +10150,7 @@ class OrganizationsEnvironmentsTargetserversResource {
   async.Future<GoogleCloudApigeeV1TargetServer> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10464,7 +10167,7 @@ class OrganizationsEnvironmentsTargetserversResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -10473,10 +10176,8 @@ class OrganizationsEnvironmentsTargetserversResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1TargetServer.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1TargetServer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a TargetServer resource.
@@ -10502,7 +10203,7 @@ class OrganizationsEnvironmentsTargetserversResource {
   async.Future<GoogleCloudApigeeV1TargetServer> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10519,7 +10220,7 @@ class OrganizationsEnvironmentsTargetserversResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -10528,10 +10229,8 @@ class OrganizationsEnvironmentsTargetserversResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1TargetServer.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1TargetServer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing TargetServer.
@@ -10563,7 +10262,7 @@ class OrganizationsEnvironmentsTargetserversResource {
     GoogleCloudApigeeV1TargetServer request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10583,7 +10282,7 @@ class OrganizationsEnvironmentsTargetserversResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -10592,10 +10291,8 @@ class OrganizationsEnvironmentsTargetserversResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1TargetServer.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1TargetServer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -10633,7 +10330,7 @@ class OrganizationsHostQueriesResource {
     GoogleCloudApigeeV1Query request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10655,7 +10352,7 @@ class OrganizationsHostQueriesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/hostQueries';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -10664,10 +10361,8 @@ class OrganizationsHostQueriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1AsyncQuery.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1AsyncQuery.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get status of a query submitted at host level.
@@ -10694,7 +10389,7 @@ class OrganizationsHostQueriesResource {
   async.Future<GoogleCloudApigeeV1AsyncQuery> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10711,7 +10406,7 @@ class OrganizationsHostQueriesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -10720,10 +10415,8 @@ class OrganizationsHostQueriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1AsyncQuery.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1AsyncQuery.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// After the query is completed, use this API to retrieve the results.
@@ -10753,7 +10446,7 @@ class OrganizationsHostQueriesResource {
   async.Future<GoogleApiHttpBody> getResult(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10770,7 +10463,7 @@ class OrganizationsHostQueriesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -10779,10 +10472,8 @@ class OrganizationsHostQueriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleApiHttpBody.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleApiHttpBody.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Request parameters:
@@ -10805,7 +10496,7 @@ class OrganizationsHostQueriesResource {
   async.Future<GoogleCloudApigeeV1AsyncQueryResultView> getResultView(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10822,7 +10513,7 @@ class OrganizationsHostQueriesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -10831,10 +10522,8 @@ class OrganizationsHostQueriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1AsyncQueryResultView.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1AsyncQueryResultView.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Return a list of Asynchronous Queries at host level.
@@ -10884,7 +10573,7 @@ class OrganizationsHostQueriesResource {
     core.String submittedBy,
     core.String to,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10924,7 +10613,7 @@ class OrganizationsHostQueriesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/hostQueries';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -10933,10 +10622,8 @@ class OrganizationsHostQueriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -11029,7 +10716,7 @@ class OrganizationsHostStatsResource {
     core.bool tsAscending,
     core.String tzo,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11088,7 +10775,7 @@ class OrganizationsHostStatsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -11097,10 +10784,8 @@ class OrganizationsHostStatsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Stats.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Stats.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -11144,7 +10829,7 @@ class OrganizationsInstancesResource {
     GoogleCloudApigeeV1Instance request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11165,7 +10850,7 @@ class OrganizationsInstancesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/instances';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -11174,10 +10859,8 @@ class OrganizationsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an Apigee runtime instance.
@@ -11204,7 +10887,7 @@ class OrganizationsInstancesResource {
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11221,7 +10904,7 @@ class OrganizationsInstancesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -11230,10 +10913,8 @@ class OrganizationsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the details for an Apigee runtime instance.
@@ -11259,7 +10940,7 @@ class OrganizationsInstancesResource {
   async.Future<GoogleCloudApigeeV1Instance> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11276,7 +10957,7 @@ class OrganizationsInstancesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -11285,10 +10966,8 @@ class OrganizationsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1Instance.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1Instance.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all Apigee runtime instances for the organization.
@@ -11321,7 +11000,7 @@ class OrganizationsInstancesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11345,7 +11024,7 @@ class OrganizationsInstancesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/instances';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -11354,10 +11033,8 @@ class OrganizationsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListInstancesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListInstancesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Reports the latest status for a runtime instance.
@@ -11385,7 +11062,7 @@ class OrganizationsInstancesResource {
     GoogleCloudApigeeV1ReportInstanceStatusRequest request,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11407,7 +11084,7 @@ class OrganizationsInstancesResource {
         commons.Escaper.ecapeVariableReserved('$instance') +
         ':reportStatus';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -11416,10 +11093,8 @@ class OrganizationsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ReportInstanceStatusResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ReportInstanceStatusResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -11455,7 +11130,7 @@ class OrganizationsInstancesAttachmentsResource {
     GoogleCloudApigeeV1InstanceAttachment request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11477,7 +11152,7 @@ class OrganizationsInstancesAttachmentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/attachments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -11486,10 +11161,8 @@ class OrganizationsInstancesAttachmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an attachment.
@@ -11517,7 +11190,7 @@ class OrganizationsInstancesAttachmentsResource {
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11534,7 +11207,7 @@ class OrganizationsInstancesAttachmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -11543,10 +11216,8 @@ class OrganizationsInstancesAttachmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an attachment.
@@ -11574,7 +11245,7 @@ class OrganizationsInstancesAttachmentsResource {
   async.Future<GoogleCloudApigeeV1InstanceAttachment> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11591,7 +11262,7 @@ class OrganizationsInstancesAttachmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -11600,10 +11271,8 @@ class OrganizationsInstancesAttachmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1InstanceAttachment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1InstanceAttachment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all attachments to an instance.
@@ -11637,7 +11306,7 @@ class OrganizationsInstancesAttachmentsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11662,7 +11331,7 @@ class OrganizationsInstancesAttachmentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/attachments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -11671,10 +11340,8 @@ class OrganizationsInstancesAttachmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -11708,7 +11375,7 @@ class OrganizationsInstancesCanaryevaluationsResource {
     GoogleCloudApigeeV1CanaryEvaluation request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11730,7 +11397,7 @@ class OrganizationsInstancesCanaryevaluationsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/canaryevaluations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -11739,10 +11406,8 @@ class OrganizationsInstancesCanaryevaluationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a CanaryEvaluation for an organization.
@@ -11768,7 +11433,7 @@ class OrganizationsInstancesCanaryevaluationsResource {
   async.Future<GoogleCloudApigeeV1CanaryEvaluation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11785,7 +11450,7 @@ class OrganizationsInstancesCanaryevaluationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -11794,10 +11459,8 @@ class OrganizationsInstancesCanaryevaluationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1CanaryEvaluation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1CanaryEvaluation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -11836,7 +11499,7 @@ class OrganizationsInstancesNatAddressesResource {
     GoogleCloudApigeeV1ActivateNatAddressRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11856,7 +11519,7 @@ class OrganizationsInstancesNatAddressesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':activate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -11865,10 +11528,8 @@ class OrganizationsInstancesNatAddressesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a NAT address.
@@ -11901,7 +11562,7 @@ class OrganizationsInstancesNatAddressesResource {
     GoogleCloudApigeeV1NatAddress request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11923,7 +11584,7 @@ class OrganizationsInstancesNatAddressesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/natAddresses';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -11932,10 +11593,8 @@ class OrganizationsInstancesNatAddressesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the NAT address.
@@ -11964,7 +11623,7 @@ class OrganizationsInstancesNatAddressesResource {
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11981,7 +11640,7 @@ class OrganizationsInstancesNatAddressesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -11990,10 +11649,8 @@ class OrganizationsInstancesNatAddressesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the details of a NAT address.
@@ -12021,7 +11678,7 @@ class OrganizationsInstancesNatAddressesResource {
   async.Future<GoogleCloudApigeeV1NatAddress> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12038,7 +11695,7 @@ class OrganizationsInstancesNatAddressesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -12047,10 +11704,8 @@ class OrganizationsInstancesNatAddressesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1NatAddress.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1NatAddress.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the NAT addresses for an Apigee instance.
@@ -12083,7 +11738,7 @@ class OrganizationsInstancesNatAddressesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12108,7 +11763,7 @@ class OrganizationsInstancesNatAddressesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/natAddresses';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -12117,10 +11772,8 @@ class OrganizationsInstancesNatAddressesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListNatAddressesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListNatAddressesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -12154,7 +11807,7 @@ class OrganizationsKeyvaluemapsResource {
     GoogleCloudApigeeV1KeyValueMap request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12176,7 +11829,7 @@ class OrganizationsKeyvaluemapsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/keyvaluemaps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -12185,10 +11838,8 @@ class OrganizationsKeyvaluemapsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1KeyValueMap.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1KeyValueMap.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a key value map in an organization.
@@ -12212,7 +11863,7 @@ class OrganizationsKeyvaluemapsResource {
   async.Future<GoogleCloudApigeeV1KeyValueMap> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12229,7 +11880,7 @@ class OrganizationsKeyvaluemapsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -12238,10 +11889,8 @@ class OrganizationsKeyvaluemapsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1KeyValueMap.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1KeyValueMap.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -12274,7 +11923,7 @@ class OrganizationsOperationsResource {
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12291,7 +11940,7 @@ class OrganizationsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -12300,10 +11949,8 @@ class OrganizationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -12344,7 +11991,7 @@ class OrganizationsOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12371,7 +12018,7 @@ class OrganizationsOperationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -12380,10 +12027,8 @@ class OrganizationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -12471,7 +12116,7 @@ class OrganizationsOptimizedHostStatsResource {
     core.bool tsAscending,
     core.String tzo,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12530,7 +12175,7 @@ class OrganizationsOptimizedHostStatsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -12539,10 +12184,8 @@ class OrganizationsOptimizedHostStatsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1OptimizedStats.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1OptimizedStats.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -12584,7 +12227,7 @@ class OrganizationsReportsResource {
     GoogleCloudApigeeV1CustomReport request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12605,7 +12248,7 @@ class OrganizationsReportsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/reports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -12614,10 +12257,8 @@ class OrganizationsReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1CustomReport.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1CustomReport.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing custom report definition
@@ -12641,7 +12282,7 @@ class OrganizationsReportsResource {
   async.Future<GoogleCloudApigeeV1DeleteCustomReportResponse> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12658,7 +12299,7 @@ class OrganizationsReportsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -12667,10 +12308,8 @@ class OrganizationsReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1DeleteCustomReportResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1DeleteCustomReportResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieve a custom report definition.
@@ -12694,7 +12333,7 @@ class OrganizationsReportsResource {
   async.Future<GoogleCloudApigeeV1CustomReport> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12711,7 +12350,7 @@ class OrganizationsReportsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -12720,10 +12359,8 @@ class OrganizationsReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1CustomReport.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1CustomReport.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Return a list of Custom Reports
@@ -12750,7 +12387,7 @@ class OrganizationsReportsResource {
     core.String parent, {
     core.bool expand,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12771,7 +12408,7 @@ class OrganizationsReportsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/reports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -12780,10 +12417,8 @@ class OrganizationsReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListCustomReportsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListCustomReportsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update an existing custom report definition
@@ -12810,7 +12445,7 @@ class OrganizationsReportsResource {
     GoogleCloudApigeeV1CustomReport request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12830,7 +12465,7 @@ class OrganizationsReportsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -12839,10 +12474,8 @@ class OrganizationsReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1CustomReport.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1CustomReport.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -12894,7 +12527,7 @@ class OrganizationsSharedflowsResource {
     core.String action,
     core.String name,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12922,7 +12555,7 @@ class OrganizationsSharedflowsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/sharedflows';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -12931,10 +12564,8 @@ class OrganizationsSharedflowsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1SharedFlowRevision.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1SharedFlowRevision.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a shared flow and all it's revisions.
@@ -12960,7 +12591,7 @@ class OrganizationsSharedflowsResource {
   async.Future<GoogleCloudApigeeV1SharedFlow> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12977,7 +12608,7 @@ class OrganizationsSharedflowsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -12986,10 +12617,8 @@ class OrganizationsSharedflowsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1SharedFlow.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1SharedFlow.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a shared flow by name, including a list of its revisions.
@@ -13013,7 +12642,7 @@ class OrganizationsSharedflowsResource {
   async.Future<GoogleCloudApigeeV1SharedFlow> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13030,7 +12659,7 @@ class OrganizationsSharedflowsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -13039,10 +12668,8 @@ class OrganizationsSharedflowsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1SharedFlow.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1SharedFlow.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all shared flows in the organization.
@@ -13074,7 +12701,7 @@ class OrganizationsSharedflowsResource {
     core.bool includeMetaData,
     core.bool includeRevisions,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13099,7 +12726,7 @@ class OrganizationsSharedflowsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/sharedflows';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -13108,10 +12735,8 @@ class OrganizationsSharedflowsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -13143,7 +12768,7 @@ class OrganizationsSharedflowsDeploymentsResource {
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13162,7 +12787,7 @@ class OrganizationsSharedflowsDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -13171,10 +12796,8 @@ class OrganizationsSharedflowsDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -13213,7 +12836,7 @@ class OrganizationsSharedflowsRevisionsResource {
   async.Future<GoogleCloudApigeeV1SharedFlowRevision> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13230,7 +12853,7 @@ class OrganizationsSharedflowsRevisionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -13239,10 +12862,8 @@ class OrganizationsSharedflowsRevisionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1SharedFlowRevision.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1SharedFlowRevision.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a revision of a shared flow.
@@ -13275,7 +12896,7 @@ class OrganizationsSharedflowsRevisionsResource {
     core.String name, {
     core.String format,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13295,7 +12916,7 @@ class OrganizationsSharedflowsRevisionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -13304,10 +12925,8 @@ class OrganizationsSharedflowsRevisionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleApiHttpBody.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleApiHttpBody.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a shared flow revision.
@@ -13346,7 +12965,7 @@ class OrganizationsSharedflowsRevisionsResource {
     core.String name, {
     core.bool validate,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13369,7 +12988,7 @@ class OrganizationsSharedflowsRevisionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -13378,10 +12997,8 @@ class OrganizationsSharedflowsRevisionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1SharedFlowRevision.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1SharedFlowRevision.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -13415,7 +13032,7 @@ class OrganizationsSharedflowsRevisionsDeploymentsResource {
   async.Future<GoogleCloudApigeeV1ListDeploymentsResponse> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13434,7 +13051,7 @@ class OrganizationsSharedflowsRevisionsDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -13443,10 +13060,8 @@ class OrganizationsSharedflowsRevisionsDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -13489,7 +13104,7 @@ class OrganizationsSitesApicategoriesResource {
     GoogleCloudApigeeV1ApiCategoryData request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13511,7 +13126,7 @@ class OrganizationsSitesApicategoriesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/apicategories';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -13520,10 +13135,8 @@ class OrganizationsSitesApicategoriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ApiCategory.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ApiCategory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a category from the portal.
@@ -13549,7 +13162,7 @@ class OrganizationsSitesApicategoriesResource {
   async.Future<GoogleCloudApigeeV1ApiResponseWrapper> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13566,7 +13179,7 @@ class OrganizationsSitesApicategoriesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -13575,10 +13188,8 @@ class OrganizationsSitesApicategoriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ApiResponseWrapper.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ApiResponseWrapper.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a category on the portal.
@@ -13604,7 +13215,7 @@ class OrganizationsSitesApicategoriesResource {
   async.Future<GoogleCloudApigeeV1ApiCategory> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13621,7 +13232,7 @@ class OrganizationsSitesApicategoriesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -13630,10 +13241,8 @@ class OrganizationsSitesApicategoriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ApiCategory.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ApiCategory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the categories on the portal.
@@ -13657,7 +13266,7 @@ class OrganizationsSitesApicategoriesResource {
   async.Future<GoogleCloudApigeeV1ListApiCategoriesResponse> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13676,7 +13285,7 @@ class OrganizationsSitesApicategoriesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/apicategories';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -13685,10 +13294,8 @@ class OrganizationsSitesApicategoriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a category on the portal.
@@ -13717,7 +13324,7 @@ class OrganizationsSitesApicategoriesResource {
     GoogleCloudApigeeV1ApiCategoryData request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13737,7 +13344,7 @@ class OrganizationsSitesApicategoriesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -13746,10 +13353,8 @@ class OrganizationsSitesApicategoriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudApigeeV1ApiCategory.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudApigeeV1ApiCategory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -13785,7 +13390,7 @@ class ProjectsResource {
     GoogleCloudApigeeV1ProvisionOrganizationRequest request,
     core.String project, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13807,7 +13412,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariableReserved('$project') +
         ':provisionOrganization';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -13816,10 +13421,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

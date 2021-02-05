@@ -193,7 +193,7 @@ class AdvertisersResource {
     core.String advertiserId, {
     core.String readMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -215,7 +215,7 @@ class AdvertisersResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         ':audit';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -224,10 +224,8 @@ class AdvertisersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AuditAdvertiserResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AuditAdvertiserResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Bulk edits targeting options under a single advertiser.
@@ -259,7 +257,7 @@ class AdvertisersResource {
     BulkEditAdvertiserAssignedTargetingOptionsRequest request,
     core.String advertiserId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -281,7 +279,7 @@ class AdvertisersResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         ':bulkEditAdvertiserAssignedTargetingOptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -290,10 +288,8 @@ class AdvertisersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BulkEditAdvertiserAssignedTargetingOptionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BulkEditAdvertiserAssignedTargetingOptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists assigned targeting options of an advertiser across targeting types.
@@ -345,7 +341,7 @@ class AdvertisersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -376,7 +372,7 @@ class AdvertisersResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         ':bulkListAdvertiserAssignedTargetingOptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -385,10 +381,8 @@ class AdvertisersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BulkListAdvertiserAssignedTargetingOptionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BulkListAdvertiserAssignedTargetingOptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new advertiser.
@@ -413,7 +407,7 @@ class AdvertisersResource {
   async.Future<Advertiser> create(
     Advertiser request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -430,7 +424,7 @@ class AdvertisersResource {
 
     _url = 'v1/advertisers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -439,10 +433,8 @@ class AdvertisersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Advertiser.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Advertiser.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an advertiser.
@@ -469,7 +461,7 @@ class AdvertisersResource {
   async.Future<Empty> delete(
     core.String advertiserId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -487,7 +479,7 @@ class AdvertisersResource {
     _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -496,9 +488,7 @@ class AdvertisersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an advertiser.
@@ -521,7 +511,7 @@ class AdvertisersResource {
   async.Future<Advertiser> get(
     core.String advertiserId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -539,7 +529,7 @@ class AdvertisersResource {
     _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -548,10 +538,8 @@ class AdvertisersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Advertiser.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Advertiser.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists advertisers that are accessible to the current user.
@@ -612,7 +600,7 @@ class AdvertisersResource {
     core.String pageToken,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -641,7 +629,7 @@ class AdvertisersResource {
 
     _url = 'v1/advertisers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -650,10 +638,8 @@ class AdvertisersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAdvertisersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAdvertisersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing advertiser.
@@ -685,7 +671,7 @@ class AdvertisersResource {
     core.String advertiserId, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -709,7 +695,7 @@ class AdvertisersResource {
     _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -718,10 +704,8 @@ class AdvertisersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Advertiser.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Advertiser.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -760,7 +744,7 @@ class AdvertisersAssetsResource {
     core.String advertiserId, {
     core.String $fields,
     commons.Media uploadMedia,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -791,7 +775,7 @@ class AdvertisersAssetsResource {
           '/assets';
     }
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -800,10 +784,8 @@ class AdvertisersAssetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CreateAssetResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CreateAssetResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -839,7 +821,7 @@ class AdvertisersCampaignsResource {
     Campaign request,
     core.String advertiserId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -861,7 +843,7 @@ class AdvertisersCampaignsResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/campaigns';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -870,9 +852,7 @@ class AdvertisersCampaignsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Campaign.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Campaign.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Permanently deletes a campaign.
@@ -903,7 +883,7 @@ class AdvertisersCampaignsResource {
     core.String advertiserId,
     core.String campaignId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -926,7 +906,7 @@ class AdvertisersCampaignsResource {
         '/campaigns/' +
         commons.Escaper.ecapeVariableReserved('$campaignId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -935,9 +915,7 @@ class AdvertisersCampaignsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a campaign.
@@ -965,7 +943,7 @@ class AdvertisersCampaignsResource {
     core.String advertiserId,
     core.String campaignId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -988,7 +966,7 @@ class AdvertisersCampaignsResource {
         '/campaigns/' +
         commons.Escaper.ecapeVariableReserved('$campaignId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -997,9 +975,7 @@ class AdvertisersCampaignsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Campaign.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Campaign.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists campaigns in an advertiser.
@@ -1062,7 +1038,7 @@ class AdvertisersCampaignsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1093,7 +1069,7 @@ class AdvertisersCampaignsResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/campaigns';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1102,10 +1078,8 @@ class AdvertisersCampaignsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCampaignsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCampaignsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing campaign.
@@ -1142,7 +1116,7 @@ class AdvertisersCampaignsResource {
     core.String campaignId, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1171,7 +1145,7 @@ class AdvertisersCampaignsResource {
         '/campaigns/' +
         commons.Escaper.ecapeVariableReserved('$campaignId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1180,9 +1154,7 @@ class AdvertisersCampaignsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Campaign.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Campaign.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1223,7 +1195,7 @@ class AdvertisersChannelsResource {
     core.String advertiserId, {
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1248,7 +1220,7 @@ class AdvertisersChannelsResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/channels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1257,9 +1229,7 @@ class AdvertisersChannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a channel for a partner or advertiser.
@@ -1289,7 +1259,7 @@ class AdvertisersChannelsResource {
     core.String channelId, {
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1315,7 +1285,7 @@ class AdvertisersChannelsResource {
         '/channels/' +
         commons.Escaper.ecapeVariableReserved('$channelId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1324,9 +1294,7 @@ class AdvertisersChannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists channels for a partner or advertiser.
@@ -1378,7 +1346,7 @@ class AdvertisersChannelsResource {
     core.String pageToken,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1412,7 +1380,7 @@ class AdvertisersChannelsResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/channels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1421,10 +1389,8 @@ class AdvertisersChannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListChannelsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListChannelsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a channel.
@@ -1462,7 +1428,7 @@ class AdvertisersChannelsResource {
     core.String partnerId,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1494,7 +1460,7 @@ class AdvertisersChannelsResource {
         '/channels/' +
         commons.Escaper.ecapeVariable('$channelId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1503,9 +1469,7 @@ class AdvertisersChannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1546,7 +1510,7 @@ class AdvertisersChannelsSitesResource {
     core.String advertiserId,
     core.String channelId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1573,7 +1537,7 @@ class AdvertisersChannelsSitesResource {
         commons.Escaper.ecapeVariableReserved('$channelId') +
         '/sites:bulkEdit';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1582,10 +1546,8 @@ class AdvertisersChannelsSitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BulkEditSitesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BulkEditSitesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a site in a channel.
@@ -1618,7 +1580,7 @@ class AdvertisersChannelsSitesResource {
     core.String channelId, {
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1648,7 +1610,7 @@ class AdvertisersChannelsSitesResource {
         commons.Escaper.ecapeVariableReserved('$channelId') +
         '/sites';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1657,9 +1619,7 @@ class AdvertisersChannelsSitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Site.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Site.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a site from a channel.
@@ -1693,7 +1653,7 @@ class AdvertisersChannelsSitesResource {
     core.String urlOrAppId, {
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1724,7 +1684,7 @@ class AdvertisersChannelsSitesResource {
         '/sites/' +
         commons.Escaper.ecapeVariableReserved('$urlOrAppId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1733,9 +1693,7 @@ class AdvertisersChannelsSitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists sites in a channel.
@@ -1791,7 +1749,7 @@ class AdvertisersChannelsSitesResource {
     core.String pageToken,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1830,7 +1788,7 @@ class AdvertisersChannelsSitesResource {
         commons.Escaper.ecapeVariableReserved('$channelId') +
         '/sites';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1839,10 +1797,8 @@ class AdvertisersChannelsSitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListSitesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListSitesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1878,7 +1834,7 @@ class AdvertisersCreativesResource {
     Creative request,
     core.String advertiserId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1900,7 +1856,7 @@ class AdvertisersCreativesResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/creatives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1909,9 +1865,7 @@ class AdvertisersCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Creative.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a creative.
@@ -1942,7 +1896,7 @@ class AdvertisersCreativesResource {
     core.String advertiserId,
     core.String creativeId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1965,7 +1919,7 @@ class AdvertisersCreativesResource {
         '/creatives/' +
         commons.Escaper.ecapeVariableReserved('$creativeId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1974,9 +1928,7 @@ class AdvertisersCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a creative.
@@ -2004,7 +1956,7 @@ class AdvertisersCreativesResource {
     core.String advertiserId,
     core.String creativeId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2027,7 +1979,7 @@ class AdvertisersCreativesResource {
         '/creatives/' +
         commons.Escaper.ecapeVariableReserved('$creativeId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2036,9 +1988,7 @@ class AdvertisersCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Creative.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists creatives in an advertiser.
@@ -2115,7 +2065,7 @@ class AdvertisersCreativesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2146,7 +2096,7 @@ class AdvertisersCreativesResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/creatives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2155,10 +2105,8 @@ class AdvertisersCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCreativesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCreativesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing creative.
@@ -2195,7 +2143,7 @@ class AdvertisersCreativesResource {
     core.String creativeId, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2224,7 +2172,7 @@ class AdvertisersCreativesResource {
         '/creatives/' +
         commons.Escaper.ecapeVariableReserved('$creativeId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2233,9 +2181,7 @@ class AdvertisersCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Creative.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2271,7 +2217,7 @@ class AdvertisersInsertionOrdersResource {
     InsertionOrder request,
     core.String advertiserId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2293,7 +2239,7 @@ class AdvertisersInsertionOrdersResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/insertionOrders';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2302,10 +2248,8 @@ class AdvertisersInsertionOrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          InsertionOrder.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return InsertionOrder.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an insertion order.
@@ -2336,7 +2280,7 @@ class AdvertisersInsertionOrdersResource {
     core.String advertiserId,
     core.String insertionOrderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2359,7 +2303,7 @@ class AdvertisersInsertionOrdersResource {
         '/insertionOrders/' +
         commons.Escaper.ecapeVariableReserved('$insertionOrderId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2368,9 +2312,7 @@ class AdvertisersInsertionOrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an insertion order.
@@ -2400,7 +2342,7 @@ class AdvertisersInsertionOrdersResource {
     core.String advertiserId,
     core.String insertionOrderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2423,7 +2365,7 @@ class AdvertisersInsertionOrdersResource {
         '/insertionOrders/' +
         commons.Escaper.ecapeVariableReserved('$insertionOrderId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2432,10 +2374,8 @@ class AdvertisersInsertionOrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          InsertionOrder.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return InsertionOrder.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists insertion orders in an advertiser.
@@ -2507,7 +2447,7 @@ class AdvertisersInsertionOrdersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2538,7 +2478,7 @@ class AdvertisersInsertionOrdersResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/insertionOrders';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2547,10 +2487,8 @@ class AdvertisersInsertionOrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListInsertionOrdersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListInsertionOrdersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing insertion order.
@@ -2587,7 +2525,7 @@ class AdvertisersInsertionOrdersResource {
     core.String insertionOrderId, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2616,7 +2554,7 @@ class AdvertisersInsertionOrdersResource {
         '/insertionOrders/' +
         commons.Escaper.ecapeVariableReserved('$insertionOrderId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2625,10 +2563,8 @@ class AdvertisersInsertionOrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          InsertionOrder.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return InsertionOrder.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2676,7 +2612,7 @@ class AdvertisersLineItemsResource {
     core.String advertiserId,
     core.String lineItemId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2703,7 +2639,7 @@ class AdvertisersLineItemsResource {
         commons.Escaper.ecapeVariableReserved('$lineItemId') +
         ':bulkEditLineItemAssignedTargetingOptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2712,10 +2648,8 @@ class AdvertisersLineItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BulkEditLineItemAssignedTargetingOptionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BulkEditLineItemAssignedTargetingOptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists assigned targeting options of a line item across targeting types.
@@ -2777,7 +2711,7 @@ class AdvertisersLineItemsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2813,7 +2747,7 @@ class AdvertisersLineItemsResource {
         commons.Escaper.ecapeVariableReserved('$lineItemId') +
         ':bulkListLineItemAssignedTargetingOptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2822,10 +2756,8 @@ class AdvertisersLineItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BulkListLineItemAssignedTargetingOptionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BulkListLineItemAssignedTargetingOptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new line item.
@@ -2854,7 +2786,7 @@ class AdvertisersLineItemsResource {
     LineItem request,
     core.String advertiserId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2876,7 +2808,7 @@ class AdvertisersLineItemsResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/lineItems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2885,9 +2817,7 @@ class AdvertisersLineItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LineItem.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LineItem.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a line item.
@@ -2918,7 +2848,7 @@ class AdvertisersLineItemsResource {
     core.String advertiserId,
     core.String lineItemId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2941,7 +2871,7 @@ class AdvertisersLineItemsResource {
         '/lineItems/' +
         commons.Escaper.ecapeVariableReserved('$lineItemId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2950,9 +2880,7 @@ class AdvertisersLineItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a line item.
@@ -2980,7 +2908,7 @@ class AdvertisersLineItemsResource {
     core.String advertiserId,
     core.String lineItemId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3003,7 +2931,7 @@ class AdvertisersLineItemsResource {
         '/lineItems/' +
         commons.Escaper.ecapeVariableReserved('$lineItemId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3012,9 +2940,7 @@ class AdvertisersLineItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LineItem.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LineItem.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists line items in an advertiser.
@@ -3092,7 +3018,7 @@ class AdvertisersLineItemsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3123,7 +3049,7 @@ class AdvertisersLineItemsResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/lineItems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3132,10 +3058,8 @@ class AdvertisersLineItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLineItemsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLineItemsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing line item.
@@ -3172,7 +3096,7 @@ class AdvertisersLineItemsResource {
     core.String lineItemId, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3201,7 +3125,7 @@ class AdvertisersLineItemsResource {
         '/lineItems/' +
         commons.Escaper.ecapeVariableReserved('$lineItemId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3210,9 +3134,7 @@ class AdvertisersLineItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LineItem.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LineItem.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3350,7 +3272,7 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
     core.String lineItemId,
     core.String targetingType, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3382,7 +3304,7 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/assignedTargetingOptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3391,10 +3313,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AssignedTargetingOption.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AssignedTargetingOption.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an assigned targeting option from a line item.
@@ -3512,7 +3432,7 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
     core.String targetingType,
     core.String assignedTargetingOptionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3546,7 +3466,7 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
         '/assignedTargetingOptions/' +
         commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3555,9 +3475,7 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a single targeting option assigned to a line item.
@@ -3676,7 +3594,7 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
     core.String targetingType,
     core.String assignedTargetingOptionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3710,7 +3628,7 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
         '/assignedTargetingOptions/' +
         commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3719,10 +3637,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AssignedTargetingOption.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AssignedTargetingOption.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the targeting options assigned to a line item.
@@ -3865,7 +3781,7 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3906,7 +3822,7 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/assignedTargetingOptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3915,10 +3831,8 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLineItemAssignedTargetingOptionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLineItemAssignedTargetingOptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3957,7 +3871,7 @@ class AdvertisersLocationListsResource {
     LocationList request,
     core.String advertiserId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3979,7 +3893,7 @@ class AdvertisersLocationListsResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/locationLists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3988,10 +3902,8 @@ class AdvertisersLocationListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LocationList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LocationList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a location list.
@@ -4019,7 +3931,7 @@ class AdvertisersLocationListsResource {
     core.String advertiserId,
     core.String locationListId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4042,7 +3954,7 @@ class AdvertisersLocationListsResource {
         '/locationLists/' +
         commons.Escaper.ecapeVariableReserved('$locationListId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4051,10 +3963,8 @@ class AdvertisersLocationListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LocationList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LocationList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists location lists based on a given advertiser id.
@@ -4105,7 +4015,7 @@ class AdvertisersLocationListsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4136,7 +4046,7 @@ class AdvertisersLocationListsResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/locationLists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4145,10 +4055,8 @@ class AdvertisersLocationListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLocationListsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLocationListsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a location list.
@@ -4184,7 +4092,7 @@ class AdvertisersLocationListsResource {
     core.String locationListId, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4213,7 +4121,7 @@ class AdvertisersLocationListsResource {
         '/locationLists/' +
         commons.Escaper.ecapeVariable('$locationListId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -4222,10 +4130,8 @@ class AdvertisersLocationListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LocationList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LocationList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4269,7 +4175,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
     core.String advertiserId,
     core.String locationListId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4296,7 +4202,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
         commons.Escaper.ecapeVariableReserved('$locationListId') +
         '/assignedLocations:bulkEdit';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4305,10 +4211,8 @@ class AdvertisersLocationListsAssignedLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BulkEditAssignedLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BulkEditAssignedLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates an assignment between a location and a location list.
@@ -4338,7 +4242,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
     core.String advertiserId,
     core.String locationListId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4365,7 +4269,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
         commons.Escaper.ecapeVariable('$locationListId') +
         '/assignedLocations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4374,10 +4278,8 @@ class AdvertisersLocationListsAssignedLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AssignedLocation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AssignedLocation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the assignment between a location and a location list.
@@ -4409,7 +4311,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
     core.String locationListId,
     core.String assignedLocationId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4437,7 +4339,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
         '/assignedLocations/' +
         commons.Escaper.ecapeVariableReserved('$assignedLocationId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4446,9 +4348,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists locations assigned to a location list.
@@ -4500,7 +4400,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4536,7 +4436,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
         commons.Escaper.ecapeVariable('$locationListId') +
         '/assignedLocations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4545,10 +4445,8 @@ class AdvertisersLocationListsAssignedLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAssignedLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAssignedLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4589,7 +4487,7 @@ class AdvertisersManualTriggersResource {
     core.String advertiserId,
     core.String triggerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4616,7 +4514,7 @@ class AdvertisersManualTriggersResource {
         commons.Escaper.ecapeVariableReserved('$triggerId') +
         ':activate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4625,10 +4523,8 @@ class AdvertisersManualTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ManualTrigger.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ManualTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new manual trigger.
@@ -4657,7 +4553,7 @@ class AdvertisersManualTriggersResource {
     ManualTrigger request,
     core.String advertiserId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4679,7 +4575,7 @@ class AdvertisersManualTriggersResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/manualTriggers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4688,10 +4584,8 @@ class AdvertisersManualTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ManualTrigger.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ManualTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deactivates a manual trigger.
@@ -4722,7 +4616,7 @@ class AdvertisersManualTriggersResource {
     core.String advertiserId,
     core.String triggerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4749,7 +4643,7 @@ class AdvertisersManualTriggersResource {
         commons.Escaper.ecapeVariableReserved('$triggerId') +
         ':deactivate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4758,10 +4652,8 @@ class AdvertisersManualTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ManualTrigger.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ManualTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a manual trigger.
@@ -4789,7 +4681,7 @@ class AdvertisersManualTriggersResource {
     core.String advertiserId,
     core.String triggerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4812,7 +4704,7 @@ class AdvertisersManualTriggersResource {
         '/manualTriggers/' +
         commons.Escaper.ecapeVariableReserved('$triggerId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4821,10 +4713,8 @@ class AdvertisersManualTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ManualTrigger.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ManualTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists manual triggers that are accessible to the current user for a given
@@ -4878,7 +4768,7 @@ class AdvertisersManualTriggersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4909,7 +4799,7 @@ class AdvertisersManualTriggersResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/manualTriggers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4918,10 +4808,8 @@ class AdvertisersManualTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListManualTriggersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListManualTriggersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a manual trigger.
@@ -4957,7 +4845,7 @@ class AdvertisersManualTriggersResource {
     core.String triggerId, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4986,7 +4874,7 @@ class AdvertisersManualTriggersResource {
         '/manualTriggers/' +
         commons.Escaper.ecapeVariableReserved('$triggerId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -4995,10 +4883,8 @@ class AdvertisersManualTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ManualTrigger.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ManualTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5038,7 +4924,7 @@ class AdvertisersNegativeKeywordListsResource {
     NegativeKeywordList request,
     core.String advertiserId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5060,7 +4946,7 @@ class AdvertisersNegativeKeywordListsResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/negativeKeywordLists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5069,10 +4955,8 @@ class AdvertisersNegativeKeywordListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => NegativeKeywordList.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return NegativeKeywordList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a negative keyword list given an advertiser ID and a negative
@@ -5102,7 +4986,7 @@ class AdvertisersNegativeKeywordListsResource {
     core.String advertiserId,
     core.String negativeKeywordListId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5125,7 +5009,7 @@ class AdvertisersNegativeKeywordListsResource {
         '/negativeKeywordLists/' +
         commons.Escaper.ecapeVariableReserved('$negativeKeywordListId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -5134,9 +5018,7 @@ class AdvertisersNegativeKeywordListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a negative keyword list given an advertiser ID and a negative keyword
@@ -5166,7 +5048,7 @@ class AdvertisersNegativeKeywordListsResource {
     core.String advertiserId,
     core.String negativeKeywordListId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5189,7 +5071,7 @@ class AdvertisersNegativeKeywordListsResource {
         '/negativeKeywordLists/' +
         commons.Escaper.ecapeVariableReserved('$negativeKeywordListId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5198,10 +5080,8 @@ class AdvertisersNegativeKeywordListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => NegativeKeywordList.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return NegativeKeywordList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists negative keyword lists based on a given advertiser id.
@@ -5236,7 +5116,7 @@ class AdvertisersNegativeKeywordListsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5261,7 +5141,7 @@ class AdvertisersNegativeKeywordListsResource {
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/negativeKeywordLists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5270,10 +5150,8 @@ class AdvertisersNegativeKeywordListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListNegativeKeywordListsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListNegativeKeywordListsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a negative keyword list.
@@ -5309,7 +5187,7 @@ class AdvertisersNegativeKeywordListsResource {
     core.String negativeKeywordListId, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5338,7 +5216,7 @@ class AdvertisersNegativeKeywordListsResource {
         '/negativeKeywordLists/' +
         commons.Escaper.ecapeVariable('$negativeKeywordListId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -5347,10 +5225,8 @@ class AdvertisersNegativeKeywordListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => NegativeKeywordList.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return NegativeKeywordList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5396,7 +5272,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
     core.String advertiserId,
     core.String negativeKeywordListId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5423,7 +5299,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
         commons.Escaper.ecapeVariableReserved('$negativeKeywordListId') +
         '/negativeKeywords:bulkEdit';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5432,10 +5308,8 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BulkEditNegativeKeywordsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BulkEditNegativeKeywordsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a negative keyword in a negative keyword list.
@@ -5466,7 +5340,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
     core.String advertiserId,
     core.String negativeKeywordListId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5493,7 +5367,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
         commons.Escaper.ecapeVariableReserved('$negativeKeywordListId') +
         '/negativeKeywords';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5502,10 +5376,8 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          NegativeKeyword.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return NegativeKeyword.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a negative keyword from a negative keyword list.
@@ -5538,7 +5410,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
     core.String negativeKeywordListId,
     core.String keywordValue, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5566,7 +5438,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
         '/negativeKeywords/' +
         commons.Escaper.ecapeVariableReserved('$keywordValue');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -5575,9 +5447,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists negative keywords in a negative keyword list.
@@ -5631,7 +5501,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5667,7 +5537,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
         commons.Escaper.ecapeVariableReserved('$negativeKeywordListId') +
         '/negativeKeywords';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5676,10 +5546,8 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListNegativeKeywordsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListNegativeKeywordsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5812,7 +5680,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
     core.String advertiserId,
     core.String targetingType, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5839,7 +5707,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/assignedTargetingOptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5848,10 +5716,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AssignedTargetingOption.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AssignedTargetingOption.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an assigned targeting option from an advertiser.
@@ -5965,7 +5831,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
     core.String targetingType,
     core.String assignedTargetingOptionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5994,7 +5860,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
         '/assignedTargetingOptions/' +
         commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -6003,9 +5869,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a single targeting option assigned to an advertiser.
@@ -6120,7 +5984,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
     core.String targetingType,
     core.String assignedTargetingOptionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6149,7 +6013,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
         '/assignedTargetingOptions/' +
         commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6158,10 +6022,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AssignedTargetingOption.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AssignedTargetingOption.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the targeting options assigned to an advertiser.
@@ -6297,7 +6159,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6333,7 +6195,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/assignedTargetingOptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6342,10 +6204,8 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAdvertiserAssignedTargetingOptionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAdvertiserAssignedTargetingOptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6382,7 +6242,7 @@ class CombinedAudiencesResource {
     core.String advertiserId,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6406,7 +6266,7 @@ class CombinedAudiencesResource {
     _url = 'v1/combinedAudiences/' +
         commons.Escaper.ecapeVariableReserved('$combinedAudienceId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6415,10 +6275,8 @@ class CombinedAudiencesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CombinedAudience.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CombinedAudience.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists combined audiences.
@@ -6473,7 +6331,7 @@ class CombinedAudiencesResource {
     core.String pageToken,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6505,7 +6363,7 @@ class CombinedAudiencesResource {
 
     _url = 'v1/combinedAudiences';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6514,10 +6372,8 @@ class CombinedAudiencesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCombinedAudiencesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCombinedAudiencesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6556,7 +6412,7 @@ class CustomBiddingAlgorithmsResource {
     core.String advertiserId,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6581,7 +6437,7 @@ class CustomBiddingAlgorithmsResource {
     _url = 'v1/customBiddingAlgorithms/' +
         commons.Escaper.ecapeVariableReserved('$customBiddingAlgorithmId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6590,10 +6446,8 @@ class CustomBiddingAlgorithmsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CustomBiddingAlgorithm.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CustomBiddingAlgorithm.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists custom bidding algorithms that are accessible to the current user
@@ -6658,7 +6512,7 @@ class CustomBiddingAlgorithmsResource {
     core.String pageToken,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6690,7 +6544,7 @@ class CustomBiddingAlgorithmsResource {
 
     _url = 'v1/customBiddingAlgorithms';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6699,10 +6553,8 @@ class CustomBiddingAlgorithmsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCustomBiddingAlgorithmsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCustomBiddingAlgorithmsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6735,7 +6587,7 @@ class CustomListsResource {
     core.String customListId, {
     core.String advertiserId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6756,7 +6608,7 @@ class CustomListsResource {
     _url = 'v1/customLists/' +
         commons.Escaper.ecapeVariableReserved('$customListId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6765,10 +6617,8 @@ class CustomListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CustomList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CustomList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists custom lists.
@@ -6819,7 +6669,7 @@ class CustomListsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6848,7 +6698,7 @@ class CustomListsResource {
 
     _url = 'v1/customLists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6857,10 +6707,8 @@ class CustomListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCustomListsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCustomListsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6899,7 +6747,7 @@ class FirstAndThirdPartyAudiencesResource {
     core.String advertiserId,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6924,7 +6772,7 @@ class FirstAndThirdPartyAudiencesResource {
     _url = 'v1/firstAndThirdPartyAudiences/' +
         commons.Escaper.ecapeVariableReserved('$firstAndThirdPartyAudienceId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6933,10 +6781,8 @@ class FirstAndThirdPartyAudiencesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FirstAndThirdPartyAudience.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FirstAndThirdPartyAudience.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists first and third party audiences.
@@ -6993,7 +6839,7 @@ class FirstAndThirdPartyAudiencesResource {
     core.String pageToken,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7025,7 +6871,7 @@ class FirstAndThirdPartyAudiencesResource {
 
     _url = 'v1/firstAndThirdPartyAudiences';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7034,10 +6880,8 @@ class FirstAndThirdPartyAudiencesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListFirstAndThirdPartyAudiencesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListFirstAndThirdPartyAudiencesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7070,7 +6914,7 @@ class FloodlightGroupsResource {
     core.String floodlightGroupId, {
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7091,7 +6935,7 @@ class FloodlightGroupsResource {
     _url = 'v1/floodlightGroups/' +
         commons.Escaper.ecapeVariableReserved('$floodlightGroupId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7100,10 +6944,8 @@ class FloodlightGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          FloodlightGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FloodlightGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing Floodlight group.
@@ -7138,7 +6980,7 @@ class FloodlightGroupsResource {
     core.String partnerId,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7165,7 +7007,7 @@ class FloodlightGroupsResource {
     _url = 'v1/floodlightGroups/' +
         commons.Escaper.ecapeVariable('$floodlightGroupId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -7174,10 +7016,8 @@ class FloodlightGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          FloodlightGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FloodlightGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7214,7 +7054,7 @@ class GoogleAudiencesResource {
     core.String advertiserId,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7238,7 +7078,7 @@ class GoogleAudiencesResource {
     _url = 'v1/googleAudiences/' +
         commons.Escaper.ecapeVariableReserved('$googleAudienceId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7247,10 +7087,8 @@ class GoogleAudiencesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleAudience.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAudience.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Google audiences.
@@ -7305,7 +7143,7 @@ class GoogleAudiencesResource {
     core.String pageToken,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7337,7 +7175,7 @@ class GoogleAudiencesResource {
 
     _url = 'v1/googleAudiences';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7346,10 +7184,8 @@ class GoogleAudiencesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListGoogleAudiencesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListGoogleAudiencesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7394,7 +7230,7 @@ class InventorySourceGroupsResource {
     core.String advertiserId,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7417,7 +7253,7 @@ class InventorySourceGroupsResource {
 
     _url = 'v1/inventorySourceGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7426,10 +7262,8 @@ class InventorySourceGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => InventorySourceGroup.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return InventorySourceGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an inventory source group.
@@ -7461,7 +7295,7 @@ class InventorySourceGroupsResource {
     core.String advertiserId,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7485,7 +7319,7 @@ class InventorySourceGroupsResource {
     _url = 'v1/inventorySourceGroups/' +
         commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -7494,9 +7328,7 @@ class InventorySourceGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an inventory source group.
@@ -7530,7 +7362,7 @@ class InventorySourceGroupsResource {
     core.String advertiserId,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7554,7 +7386,7 @@ class InventorySourceGroupsResource {
     _url = 'v1/inventorySourceGroups/' +
         commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7563,10 +7395,8 @@ class InventorySourceGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => InventorySourceGroup.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return InventorySourceGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists inventory source groups that are accessible to the current user.
@@ -7622,7 +7452,7 @@ class InventorySourceGroupsResource {
     core.String pageToken,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7654,7 +7484,7 @@ class InventorySourceGroupsResource {
 
     _url = 'v1/inventorySourceGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7663,10 +7493,8 @@ class InventorySourceGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListInventorySourceGroupsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListInventorySourceGroupsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an inventory source group.
@@ -7705,7 +7533,7 @@ class InventorySourceGroupsResource {
     core.String partnerId,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7735,7 +7563,7 @@ class InventorySourceGroupsResource {
     _url = 'v1/inventorySourceGroups/' +
         commons.Escaper.ecapeVariable('$inventorySourceGroupId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -7744,10 +7572,8 @@ class InventorySourceGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => InventorySourceGroup.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return InventorySourceGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7788,7 +7614,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
     BulkEditAssignedInventorySourcesRequest request,
     core.String inventorySourceGroupId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7810,7 +7636,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
         commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId') +
         '/assignedInventorySources:bulkEdit';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7819,10 +7645,8 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BulkEditAssignedInventorySourcesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BulkEditAssignedInventorySourcesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates an assignment between an inventory source and an inventory source
@@ -7860,7 +7684,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
     core.String advertiserId,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7888,7 +7712,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
         commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId') +
         '/assignedInventorySources';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7897,10 +7721,8 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AssignedInventorySource.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AssignedInventorySource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the assignment between an inventory source and an inventory source
@@ -7940,7 +7762,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
     core.String advertiserId,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7970,7 +7792,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
         '/assignedInventorySources/' +
         commons.Escaper.ecapeVariableReserved('$assignedInventorySourceId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -7979,9 +7801,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists inventory sources assigned to an inventory source group.
@@ -8042,7 +7862,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
     core.String pageToken,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8079,7 +7899,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
         commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId') +
         '/assignedInventorySources';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8088,10 +7908,8 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAssignedInventorySourcesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAssignedInventorySourcesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8124,7 +7942,7 @@ class InventorySourcesResource {
     core.String inventorySourceId, {
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8145,7 +7963,7 @@ class InventorySourcesResource {
     _url = 'v1/inventorySources/' +
         commons.Escaper.ecapeVariableReserved('$inventorySourceId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8154,10 +7972,8 @@ class InventorySourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          InventorySource.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return InventorySource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists inventory sources that are accessible to the current user.
@@ -8217,7 +8033,7 @@ class InventorySourcesResource {
     core.String pageToken,
     core.String partnerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8249,7 +8065,7 @@ class InventorySourcesResource {
 
     _url = 'v1/inventorySources';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8258,10 +8074,8 @@ class InventorySourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListInventorySourcesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListInventorySourcesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8300,11 +8114,11 @@ class MediaResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future download(
+  async.Future<core.Object> download(
     core.String resourceName, {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8323,7 +8137,7 @@ class MediaResource {
 
     _url = 'download/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8334,10 +8148,8 @@ class MediaResource {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then(
-        (data) => GoogleBytestreamMedia.fromJson(
-            data as core.Map<core.String, core.dynamic>),
-      );
+      return GoogleBytestreamMedia.fromJson(
+          _response as core.Map<core.String, core.dynamic>);
     } else {
       return _response;
     }
@@ -8382,7 +8194,7 @@ class PartnersResource {
     BulkEditPartnerAssignedTargetingOptionsRequest request,
     core.String partnerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8404,7 +8216,7 @@ class PartnersResource {
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         ':bulkEditPartnerAssignedTargetingOptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -8413,10 +8225,8 @@ class PartnersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BulkEditPartnerAssignedTargetingOptionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BulkEditPartnerAssignedTargetingOptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a partner.
@@ -8439,7 +8249,7 @@ class PartnersResource {
   async.Future<Partner> get(
     core.String partnerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8456,7 +8266,7 @@ class PartnersResource {
 
     _url = 'v1/partners/' + commons.Escaper.ecapeVariableReserved('$partnerId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8465,9 +8275,7 @@ class PartnersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Partner.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Partner.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists partners that are accessible to the current user.
@@ -8514,7 +8322,7 @@ class PartnersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8540,7 +8348,7 @@ class PartnersResource {
 
     _url = 'v1/partners';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8549,10 +8357,8 @@ class PartnersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListPartnersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListPartnersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8592,7 +8398,7 @@ class PartnersChannelsResource {
     core.String partnerId, {
     core.String advertiserId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8617,7 +8423,7 @@ class PartnersChannelsResource {
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/channels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -8626,9 +8432,7 @@ class PartnersChannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a channel for a partner or advertiser.
@@ -8658,7 +8462,7 @@ class PartnersChannelsResource {
     core.String channelId, {
     core.String advertiserId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8684,7 +8488,7 @@ class PartnersChannelsResource {
         '/channels/' +
         commons.Escaper.ecapeVariableReserved('$channelId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8693,9 +8497,7 @@ class PartnersChannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists channels for a partner or advertiser.
@@ -8747,7 +8549,7 @@ class PartnersChannelsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8781,7 +8583,7 @@ class PartnersChannelsResource {
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/channels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8790,10 +8592,8 @@ class PartnersChannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListChannelsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListChannelsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a channel.
@@ -8831,7 +8631,7 @@ class PartnersChannelsResource {
     core.String advertiserId,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8863,7 +8663,7 @@ class PartnersChannelsResource {
         '/channels/' +
         commons.Escaper.ecapeVariable('$channelId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -8872,9 +8672,7 @@ class PartnersChannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8915,7 +8713,7 @@ class PartnersChannelsSitesResource {
     core.String partnerId,
     core.String channelId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8942,7 +8740,7 @@ class PartnersChannelsSitesResource {
         commons.Escaper.ecapeVariableReserved('$channelId') +
         '/sites:bulkEdit';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -8951,10 +8749,8 @@ class PartnersChannelsSitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BulkEditSitesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BulkEditSitesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a site in a channel.
@@ -8987,7 +8783,7 @@ class PartnersChannelsSitesResource {
     core.String channelId, {
     core.String advertiserId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9017,7 +8813,7 @@ class PartnersChannelsSitesResource {
         commons.Escaper.ecapeVariableReserved('$channelId') +
         '/sites';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -9026,9 +8822,7 @@ class PartnersChannelsSitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Site.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Site.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a site from a channel.
@@ -9062,7 +8856,7 @@ class PartnersChannelsSitesResource {
     core.String urlOrAppId, {
     core.String advertiserId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9093,7 +8887,7 @@ class PartnersChannelsSitesResource {
         '/sites/' +
         commons.Escaper.ecapeVariableReserved('$urlOrAppId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -9102,9 +8896,7 @@ class PartnersChannelsSitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists sites in a channel.
@@ -9160,7 +8952,7 @@ class PartnersChannelsSitesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9199,7 +8991,7 @@ class PartnersChannelsSitesResource {
         commons.Escaper.ecapeVariableReserved('$channelId') +
         '/sites';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9208,10 +9000,8 @@ class PartnersChannelsSitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListSitesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListSitesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9342,7 +9132,7 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
     core.String partnerId,
     core.String targetingType, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9369,7 +9159,7 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/assignedTargetingOptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -9378,10 +9168,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AssignedTargetingOption.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AssignedTargetingOption.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an assigned targeting option from a partner.
@@ -9493,7 +9281,7 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
     core.String targetingType,
     core.String assignedTargetingOptionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9522,7 +9310,7 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
         '/assignedTargetingOptions/' +
         commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -9531,9 +9319,7 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a single targeting option assigned to a partner.
@@ -9646,7 +9432,7 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
     core.String targetingType,
     core.String assignedTargetingOptionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9675,7 +9461,7 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
         '/assignedTargetingOptions/' +
         commons.Escaper.ecapeVariableReserved('$assignedTargetingOptionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9684,10 +9470,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AssignedTargetingOption.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AssignedTargetingOption.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the targeting options assigned to a partner.
@@ -9821,7 +9605,7 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9857,7 +9641,7 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/assignedTargetingOptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9866,10 +9650,8 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListPartnerAssignedTargetingOptionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListPartnerAssignedTargetingOptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9908,7 +9690,7 @@ class SdfdownloadtasksResource {
   async.Future<Operation> create(
     CreateSdfDownloadTaskRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9925,7 +9707,7 @@ class SdfdownloadtasksResource {
 
     _url = 'v1/sdfdownloadtasks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -9934,9 +9716,7 @@ class SdfdownloadtasksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9968,7 +9748,7 @@ class SdfdownloadtasksOperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9985,7 +9765,7 @@ class SdfdownloadtasksOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9994,9 +9774,7 @@ class SdfdownloadtasksOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -10123,7 +9901,7 @@ class TargetingTypesTargetingOptionsResource {
     core.String targetingOptionId, {
     core.String advertiserId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10149,7 +9927,7 @@ class TargetingTypesTargetingOptionsResource {
         '/targetingOptions/' +
         commons.Escaper.ecapeVariableReserved('$targetingOptionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -10158,10 +9936,8 @@ class TargetingTypesTargetingOptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TargetingOption.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TargetingOption.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists targeting options of a given type.
@@ -10300,7 +10076,7 @@ class TargetingTypesTargetingOptionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10334,7 +10110,7 @@ class TargetingTypesTargetingOptionsResource {
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/targetingOptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -10343,10 +10119,8 @@ class TargetingTypesTargetingOptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTargetingOptionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTargetingOptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Searches for targeting options of a given type based on the given search
@@ -10453,7 +10227,7 @@ class TargetingTypesTargetingOptionsResource {
     SearchTargetingOptionsRequest request,
     core.String targetingType, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10475,7 +10249,7 @@ class TargetingTypesTargetingOptionsResource {
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/targetingOptions:search';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -10484,10 +10258,8 @@ class TargetingTypesTargetingOptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchTargetingOptionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchTargetingOptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -10525,7 +10297,7 @@ class UsersResource {
     BulkEditAssignedUserRolesRequest request,
     core.String userId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10547,7 +10319,7 @@ class UsersResource {
         commons.Escaper.ecapeVariableReserved('$userId') +
         ':bulkEditAssignedUserRoles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -10556,10 +10328,8 @@ class UsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BulkEditAssignedUserRolesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BulkEditAssignedUserRolesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new user.
@@ -10583,7 +10353,7 @@ class UsersResource {
   async.Future<User> create(
     User request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10600,7 +10370,7 @@ class UsersResource {
 
     _url = 'v1/users';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -10609,9 +10379,7 @@ class UsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => User.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return User.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a user.
@@ -10634,7 +10402,7 @@ class UsersResource {
   async.Future<Empty> delete(
     core.String userId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10651,7 +10419,7 @@ class UsersResource {
 
     _url = 'v1/users/' + commons.Escaper.ecapeVariableReserved('$userId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -10660,9 +10428,7 @@ class UsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a user.
@@ -10685,7 +10451,7 @@ class UsersResource {
   async.Future<User> get(
     core.String userId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10702,7 +10468,7 @@ class UsersResource {
 
     _url = 'v1/users/' + commons.Escaper.ecapeVariableReserved('$userId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -10711,9 +10477,7 @@ class UsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => User.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return User.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists users that are accessible to the current user.
@@ -10776,7 +10540,7 @@ class UsersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10802,7 +10566,7 @@ class UsersResource {
 
     _url = 'v1/users';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -10811,10 +10575,8 @@ class UsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListUsersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListUsersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing user.
@@ -10845,7 +10607,7 @@ class UsersResource {
     core.String userId, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10868,7 +10630,7 @@ class UsersResource {
 
     _url = 'v1/users/' + commons.Escaper.ecapeVariableReserved('$userId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -10877,9 +10639,7 @@ class UsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => User.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return User.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -100,7 +100,7 @@ class PhotoResource {
   async.Future<Photo> create(
     Photo request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -117,7 +117,7 @@ class PhotoResource {
 
     _url = 'v1/photo';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -126,9 +126,7 @@ class PhotoResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Photo.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Photo.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a Photo and its metadata.
@@ -155,7 +153,7 @@ class PhotoResource {
   async.Future<Empty> delete(
     core.String photoId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -172,7 +170,7 @@ class PhotoResource {
 
     _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$photoId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -181,9 +179,7 @@ class PhotoResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the metadata of the specified Photo.
@@ -227,7 +223,7 @@ class PhotoResource {
     core.String languageCode,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -250,7 +246,7 @@ class PhotoResource {
 
     _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$photoId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -259,9 +255,7 @@ class PhotoResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Photo.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Photo.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates an upload session to start uploading photo bytes.
@@ -295,7 +289,7 @@ class PhotoResource {
   async.Future<UploadRef> startUpload(
     Empty request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -312,7 +306,7 @@ class PhotoResource {
 
     _url = 'v1/photo:startUpload';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -321,9 +315,7 @@ class PhotoResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UploadRef.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UploadRef.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the metadata of a Photo, such as pose, place association,
@@ -371,7 +363,7 @@ class PhotoResource {
     core.String id, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -394,7 +386,7 @@ class PhotoResource {
 
     _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -403,9 +395,7 @@ class PhotoResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Photo.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Photo.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -440,7 +430,7 @@ class PhotosResource {
   async.Future<BatchDeletePhotosResponse> batchDelete(
     BatchDeletePhotosRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -457,7 +447,7 @@ class PhotosResource {
 
     _url = 'v1/photos:batchDelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -466,10 +456,8 @@ class PhotosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchDeletePhotosResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchDeletePhotosResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the metadata of the specified Photo batch.
@@ -514,7 +502,7 @@ class PhotosResource {
     core.List<core.String> photoIds,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -537,7 +525,7 @@ class PhotosResource {
 
     _url = 'v1/photos:batchGet';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -546,10 +534,8 @@ class PhotosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchGetPhotosResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchGetPhotosResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the metadata of Photos, such as pose, place association,
@@ -584,7 +570,7 @@ class PhotosResource {
   async.Future<BatchUpdatePhotosResponse> batchUpdate(
     BatchUpdatePhotosRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -601,7 +587,7 @@ class PhotosResource {
 
     _url = 'v1/photos:batchUpdate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -610,10 +596,8 @@ class PhotosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchUpdatePhotosResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchUpdatePhotosResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the Photos that belong to the user.
@@ -667,7 +651,7 @@ class PhotosResource {
     core.String pageToken,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -696,7 +680,7 @@ class PhotosResource {
 
     _url = 'v1/photos';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -705,10 +689,8 @@ class PhotosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListPhotosResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListPhotosResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

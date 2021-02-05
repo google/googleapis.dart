@@ -89,7 +89,7 @@ class LineitemsResource {
   async.Future<DownloadLineItemsResponse> downloadlineitems(
     DownloadLineItemsRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -106,7 +106,7 @@ class LineitemsResource {
 
     _url = 'lineitems/downloadlineitems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -115,10 +115,8 @@ class LineitemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DownloadLineItemsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DownloadLineItemsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Uploads line items in CSV format.
@@ -142,7 +140,7 @@ class LineitemsResource {
   async.Future<UploadLineItemsResponse> uploadlineitems(
     UploadLineItemsRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -159,7 +157,7 @@ class LineitemsResource {
 
     _url = 'lineitems/uploadlineitems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -168,10 +166,8 @@ class LineitemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UploadLineItemsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return UploadLineItemsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -203,7 +199,7 @@ class QueriesResource {
     Query request, {
     core.bool asynchronous,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -223,7 +219,7 @@ class QueriesResource {
 
     _url = 'query';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -232,9 +228,7 @@ class QueriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Query.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Query.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a stored query as well as the associated stored reports.
@@ -251,10 +245,10 @@ class QueriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future deletequery(
+  async.Future<void> deletequery(
     core.String queryId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -273,7 +267,7 @@ class QueriesResource {
 
     _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -281,9 +275,6 @@ class QueriesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -306,7 +297,7 @@ class QueriesResource {
   async.Future<Query> getquery(
     core.String queryId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -323,7 +314,7 @@ class QueriesResource {
 
     _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -332,9 +323,7 @@ class QueriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Query.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Query.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves stored queries.
@@ -360,7 +349,7 @@ class QueriesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -380,7 +369,7 @@ class QueriesResource {
 
     _url = 'queries';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -389,10 +378,8 @@ class QueriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListQueriesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListQueriesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Runs a stored query to generate a report.
@@ -413,12 +400,12 @@ class QueriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future runquery(
+  async.Future<void> runquery(
     RunQueryRequest request,
     core.String queryId, {
     core.bool asynchronous,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -443,7 +430,7 @@ class QueriesResource {
 
     _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -451,9 +438,6 @@ class QueriesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 }
@@ -489,7 +473,7 @@ class ReportsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -512,7 +496,7 @@ class ReportsResource {
 
     _url = 'queries/' + commons.Escaper.ecapeVariable('$queryId') + '/reports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -521,10 +505,8 @@ class ReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListReportsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListReportsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -552,7 +534,7 @@ class SdfResource {
   async.Future<DownloadResponse> download(
     DownloadRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -569,7 +551,7 @@ class SdfResource {
 
     _url = 'sdf/download';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -578,10 +560,8 @@ class SdfResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DownloadResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DownloadResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -133,7 +133,7 @@ class ProjectsAggregatedUsableSubnetworksResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -161,7 +161,7 @@ class ProjectsAggregatedUsableSubnetworksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/aggregated/usableSubnetworks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -170,10 +170,8 @@ class ProjectsAggregatedUsableSubnetworksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListUsableSubnetworksResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListUsableSubnetworksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -219,7 +217,7 @@ class ProjectsLocationsResource {
     core.String projectId,
     core.String zone,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -244,7 +242,7 @@ class ProjectsLocationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/serverConfig';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -253,10 +251,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ServerConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ServerConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -297,7 +293,7 @@ class ProjectsLocationsClustersResource {
     CompleteIPRotationRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -319,7 +315,7 @@ class ProjectsLocationsClustersResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':completeIpRotation';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -328,9 +324,7 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a cluster, consisting of the specified number and type of Google
@@ -366,7 +360,7 @@ class ProjectsLocationsClustersResource {
     CreateClusterRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -387,7 +381,7 @@ class ProjectsLocationsClustersResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/clusters';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -396,9 +390,7 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the cluster, including the Kubernetes endpoint and all worker
@@ -444,7 +436,7 @@ class ProjectsLocationsClustersResource {
     core.String projectId,
     core.String zone,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -470,7 +462,7 @@ class ProjectsLocationsClustersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -479,9 +471,7 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the details of a specific cluster.
@@ -521,7 +511,7 @@ class ProjectsLocationsClustersResource {
     core.String projectId,
     core.String zone,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -547,7 +537,7 @@ class ProjectsLocationsClustersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -556,9 +546,7 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Cluster.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Cluster.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the public component of the cluster signing keys in JSON Web Key
@@ -587,7 +575,7 @@ class ProjectsLocationsClustersResource {
   async.Future<GetJSONWebKeysResponse> getJwks(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -604,7 +592,7 @@ class ProjectsLocationsClustersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jwks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -613,10 +601,8 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetJSONWebKeysResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetJSONWebKeysResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all clusters owned by a project in either the specified zone or all
@@ -653,7 +639,7 @@ class ProjectsLocationsClustersResource {
     core.String projectId,
     core.String zone,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -677,7 +663,7 @@ class ProjectsLocationsClustersResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/clusters';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -686,10 +672,8 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListClustersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListClustersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the addons for a specific cluster.
@@ -718,7 +702,7 @@ class ProjectsLocationsClustersResource {
     SetAddonsConfigRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -739,7 +723,7 @@ class ProjectsLocationsClustersResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setAddons';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -748,9 +732,7 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Enables or disables the ABAC authorization mechanism on a cluster.
@@ -779,7 +761,7 @@ class ProjectsLocationsClustersResource {
     SetLegacyAbacRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -801,7 +783,7 @@ class ProjectsLocationsClustersResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setLegacyAbac';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -810,9 +792,7 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the locations for a specific cluster.
@@ -845,7 +825,7 @@ class ProjectsLocationsClustersResource {
     SetLocationsRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -867,7 +847,7 @@ class ProjectsLocationsClustersResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setLocations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -876,9 +856,7 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the logging service for a specific cluster.
@@ -907,7 +885,7 @@ class ProjectsLocationsClustersResource {
     SetLoggingServiceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -928,7 +906,7 @@ class ProjectsLocationsClustersResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setLogging';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -937,9 +915,7 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the maintenance policy for a cluster.
@@ -968,7 +944,7 @@ class ProjectsLocationsClustersResource {
     SetMaintenancePolicyRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -990,7 +966,7 @@ class ProjectsLocationsClustersResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setMaintenancePolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -999,9 +975,7 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets master auth materials.
@@ -1032,7 +1006,7 @@ class ProjectsLocationsClustersResource {
     SetMasterAuthRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1054,7 +1028,7 @@ class ProjectsLocationsClustersResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setMasterAuth';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1063,9 +1037,7 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the monitoring service for a specific cluster.
@@ -1094,7 +1066,7 @@ class ProjectsLocationsClustersResource {
     SetMonitoringServiceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1116,7 +1088,7 @@ class ProjectsLocationsClustersResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setMonitoring';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1125,9 +1097,7 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Enables or disables Network Policy for a cluster.
@@ -1156,7 +1126,7 @@ class ProjectsLocationsClustersResource {
     SetNetworkPolicyRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1178,7 +1148,7 @@ class ProjectsLocationsClustersResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setNetworkPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1187,9 +1157,7 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets labels on a cluster.
@@ -1218,7 +1186,7 @@ class ProjectsLocationsClustersResource {
     SetLabelsRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1240,7 +1208,7 @@ class ProjectsLocationsClustersResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setResourceLabels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1249,9 +1217,7 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Starts master IP rotation.
@@ -1280,7 +1246,7 @@ class ProjectsLocationsClustersResource {
     StartIPRotationRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1302,7 +1268,7 @@ class ProjectsLocationsClustersResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':startIpRotation';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1311,9 +1277,7 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the settings of a specific cluster.
@@ -1341,7 +1305,7 @@ class ProjectsLocationsClustersResource {
     UpdateClusterRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1361,7 +1325,7 @@ class ProjectsLocationsClustersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1370,9 +1334,7 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the master for a specific cluster.
@@ -1400,7 +1362,7 @@ class ProjectsLocationsClustersResource {
     UpdateMasterRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1422,7 +1384,7 @@ class ProjectsLocationsClustersResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':updateMaster';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1431,9 +1393,7 @@ class ProjectsLocationsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1469,7 +1429,7 @@ class ProjectsLocationsClustersNodePoolsResource {
     CreateNodePoolRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1490,7 +1450,7 @@ class ProjectsLocationsClustersNodePoolsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/nodePools';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1499,9 +1459,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a node pool from a cluster.
@@ -1546,7 +1504,7 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String projectId,
     core.String zone,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1575,7 +1533,7 @@ class ProjectsLocationsClustersNodePoolsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1584,9 +1542,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the requested node pool.
@@ -1631,7 +1587,7 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String projectId,
     core.String zone,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1660,7 +1616,7 @@ class ProjectsLocationsClustersNodePoolsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1669,9 +1625,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => NodePool.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return NodePool.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the node pools for a cluster.
@@ -1712,7 +1666,7 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String projectId,
     core.String zone,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1739,7 +1693,7 @@ class ProjectsLocationsClustersNodePoolsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/nodePools';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1748,10 +1702,8 @@ class ProjectsLocationsClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListNodePoolsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListNodePoolsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Rolls back a previously Aborted or Failed NodePool upgrade.
@@ -1782,7 +1734,7 @@ class ProjectsLocationsClustersNodePoolsResource {
     RollbackNodePoolUpgradeRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1802,7 +1754,7 @@ class ProjectsLocationsClustersNodePoolsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':rollback';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1811,9 +1763,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the autoscaling settings for the specified node pool.
@@ -1842,7 +1792,7 @@ class ProjectsLocationsClustersNodePoolsResource {
     SetNodePoolAutoscalingRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1864,7 +1814,7 @@ class ProjectsLocationsClustersNodePoolsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setAutoscaling';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1873,9 +1823,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the NodeManagement options for a node pool.
@@ -1904,7 +1852,7 @@ class ProjectsLocationsClustersNodePoolsResource {
     SetNodePoolManagementRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1926,7 +1874,7 @@ class ProjectsLocationsClustersNodePoolsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setManagement';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1935,9 +1883,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the size for a specific node pool.
@@ -1969,7 +1915,7 @@ class ProjectsLocationsClustersNodePoolsResource {
     SetNodePoolSizeRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1989,7 +1935,7 @@ class ProjectsLocationsClustersNodePoolsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setSize';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1998,9 +1944,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the version and/or image type for the specified node pool.
@@ -2029,7 +1973,7 @@ class ProjectsLocationsClustersNodePoolsResource {
     UpdateNodePoolRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2049,7 +1993,7 @@ class ProjectsLocationsClustersNodePoolsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2058,9 +2002,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2098,7 +2040,7 @@ class ProjectsLocationsClustersWellKnownResource {
   async.Future<GetOpenIDConfigResponse> getOpenidConfiguration(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2117,7 +2059,7 @@ class ProjectsLocationsClustersWellKnownResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/.well-known/openid-configuration';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2126,10 +2068,8 @@ class ProjectsLocationsClustersWellKnownResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetOpenIDConfigResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetOpenIDConfigResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2165,7 +2105,7 @@ class ProjectsLocationsOperationsResource {
     CancelOperationRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2185,7 +2125,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2194,9 +2134,7 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified operation.
@@ -2237,7 +2175,7 @@ class ProjectsLocationsOperationsResource {
     core.String projectId,
     core.String zone,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2263,7 +2201,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2272,9 +2210,7 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all operations in a project in a specific zone or all zones.
@@ -2310,7 +2246,7 @@ class ProjectsLocationsOperationsResource {
     core.String projectId,
     core.String zone,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2335,7 +2271,7 @@ class ProjectsLocationsOperationsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2344,10 +2280,8 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2392,7 +2326,7 @@ class ProjectsZonesResource {
     core.String zone, {
     core.String name,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2419,7 +2353,7 @@ class ProjectsZonesResource {
         commons.Escaper.ecapeVariable('$zone') +
         '/serverconfig';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2428,10 +2362,8 @@ class ProjectsZonesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ServerConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ServerConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2478,7 +2410,7 @@ class ProjectsZonesClustersResource {
     core.String zone,
     core.String clusterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2510,7 +2442,7 @@ class ProjectsZonesClustersResource {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/addons';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2519,9 +2451,7 @@ class ProjectsZonesClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Completes master IP rotation.
@@ -2558,7 +2488,7 @@ class ProjectsZonesClustersResource {
     core.String zone,
     core.String clusterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2590,7 +2520,7 @@ class ProjectsZonesClustersResource {
         commons.Escaper.ecapeVariable('$clusterId') +
         ':completeIpRotation';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2599,9 +2529,7 @@ class ProjectsZonesClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a cluster, consisting of the specified number and type of Google
@@ -2643,7 +2571,7 @@ class ProjectsZonesClustersResource {
     core.String projectId,
     core.String zone, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2670,7 +2598,7 @@ class ProjectsZonesClustersResource {
         commons.Escaper.ecapeVariable('$zone') +
         '/clusters';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2679,9 +2607,7 @@ class ProjectsZonesClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the cluster, including the Kubernetes endpoint and all worker
@@ -2725,7 +2651,7 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String name,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2756,7 +2682,7 @@ class ProjectsZonesClustersResource {
         '/clusters/' +
         commons.Escaper.ecapeVariable('$clusterId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2765,9 +2691,7 @@ class ProjectsZonesClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the details of a specific cluster.
@@ -2805,7 +2729,7 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String name,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2836,7 +2760,7 @@ class ProjectsZonesClustersResource {
         '/clusters/' +
         commons.Escaper.ecapeVariable('$clusterId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2845,9 +2769,7 @@ class ProjectsZonesClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Cluster.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Cluster.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Enables or disables the ABAC authorization mechanism on a cluster.
@@ -2884,7 +2806,7 @@ class ProjectsZonesClustersResource {
     core.String zone,
     core.String clusterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2916,7 +2838,7 @@ class ProjectsZonesClustersResource {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/legacyAbac';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2925,9 +2847,7 @@ class ProjectsZonesClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all clusters owned by a project in either the specified zone or all
@@ -2963,7 +2883,7 @@ class ProjectsZonesClustersResource {
     core.String zone, {
     core.String parent,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2990,7 +2910,7 @@ class ProjectsZonesClustersResource {
         commons.Escaper.ecapeVariable('$zone') +
         '/clusters';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2999,10 +2919,8 @@ class ProjectsZonesClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListClustersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListClustersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the locations for a specific cluster.
@@ -3043,7 +2961,7 @@ class ProjectsZonesClustersResource {
     core.String zone,
     core.String clusterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3075,7 +2993,7 @@ class ProjectsZonesClustersResource {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3084,9 +3002,7 @@ class ProjectsZonesClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the logging service for a specific cluster.
@@ -3123,7 +3039,7 @@ class ProjectsZonesClustersResource {
     core.String zone,
     core.String clusterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3155,7 +3071,7 @@ class ProjectsZonesClustersResource {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/logging';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3164,9 +3080,7 @@ class ProjectsZonesClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the master for a specific cluster.
@@ -3203,7 +3117,7 @@ class ProjectsZonesClustersResource {
     core.String zone,
     core.String clusterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3235,7 +3149,7 @@ class ProjectsZonesClustersResource {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/master';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3244,9 +3158,7 @@ class ProjectsZonesClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the monitoring service for a specific cluster.
@@ -3283,7 +3195,7 @@ class ProjectsZonesClustersResource {
     core.String zone,
     core.String clusterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3315,7 +3227,7 @@ class ProjectsZonesClustersResource {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/monitoring';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3324,9 +3236,7 @@ class ProjectsZonesClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets labels on a cluster.
@@ -3363,7 +3273,7 @@ class ProjectsZonesClustersResource {
     core.String zone,
     core.String clusterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3395,7 +3305,7 @@ class ProjectsZonesClustersResource {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/resourceLabels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3404,9 +3314,7 @@ class ProjectsZonesClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the maintenance policy for a cluster.
@@ -3440,7 +3348,7 @@ class ProjectsZonesClustersResource {
     core.String zone,
     core.String clusterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3472,7 +3380,7 @@ class ProjectsZonesClustersResource {
         commons.Escaper.ecapeVariable('$clusterId') +
         ':setMaintenancePolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3481,9 +3389,7 @@ class ProjectsZonesClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets master auth materials.
@@ -3523,7 +3429,7 @@ class ProjectsZonesClustersResource {
     core.String zone,
     core.String clusterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3555,7 +3461,7 @@ class ProjectsZonesClustersResource {
         commons.Escaper.ecapeVariable('$clusterId') +
         ':setMasterAuth';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3564,9 +3470,7 @@ class ProjectsZonesClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Enables or disables Network Policy for a cluster.
@@ -3603,7 +3507,7 @@ class ProjectsZonesClustersResource {
     core.String zone,
     core.String clusterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3635,7 +3539,7 @@ class ProjectsZonesClustersResource {
         commons.Escaper.ecapeVariable('$clusterId') +
         ':setNetworkPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3644,9 +3548,7 @@ class ProjectsZonesClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Starts master IP rotation.
@@ -3683,7 +3585,7 @@ class ProjectsZonesClustersResource {
     core.String zone,
     core.String clusterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3715,7 +3617,7 @@ class ProjectsZonesClustersResource {
         commons.Escaper.ecapeVariable('$clusterId') +
         ':startIpRotation';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3724,9 +3626,7 @@ class ProjectsZonesClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the settings of a specific cluster.
@@ -3763,7 +3663,7 @@ class ProjectsZonesClustersResource {
     core.String zone,
     core.String clusterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3794,7 +3694,7 @@ class ProjectsZonesClustersResource {
         '/clusters/' +
         commons.Escaper.ecapeVariable('$clusterId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -3803,9 +3703,7 @@ class ProjectsZonesClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3853,7 +3751,7 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String clusterId,
     core.String nodePoolId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3890,7 +3788,7 @@ class ProjectsZonesClustersNodePoolsResource {
         commons.Escaper.ecapeVariable('$nodePoolId') +
         '/autoscaling';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3899,9 +3797,7 @@ class ProjectsZonesClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a node pool for a cluster.
@@ -3938,7 +3834,7 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String zone,
     core.String clusterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3970,7 +3866,7 @@ class ProjectsZonesClustersNodePoolsResource {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/nodePools';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3979,9 +3875,7 @@ class ProjectsZonesClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a node pool from a cluster.
@@ -4024,7 +3918,7 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String nodePoolId, {
     core.String name,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4060,7 +3954,7 @@ class ProjectsZonesClustersNodePoolsResource {
         '/nodePools/' +
         commons.Escaper.ecapeVariable('$nodePoolId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4069,9 +3963,7 @@ class ProjectsZonesClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the requested node pool.
@@ -4114,7 +4006,7 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String nodePoolId, {
     core.String name,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4150,7 +4042,7 @@ class ProjectsZonesClustersNodePoolsResource {
         '/nodePools/' +
         commons.Escaper.ecapeVariable('$nodePoolId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4159,9 +4051,7 @@ class ProjectsZonesClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => NodePool.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return NodePool.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the node pools for a cluster.
@@ -4200,7 +4090,7 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String clusterId, {
     core.String parent,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4232,7 +4122,7 @@ class ProjectsZonesClustersNodePoolsResource {
         commons.Escaper.ecapeVariable('$clusterId') +
         '/nodePools';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4241,10 +4131,8 @@ class ProjectsZonesClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListNodePoolsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListNodePoolsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Rolls back a previously Aborted or Failed NodePool upgrade.
@@ -4287,7 +4175,7 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String clusterId,
     core.String nodePoolId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4324,7 +4212,7 @@ class ProjectsZonesClustersNodePoolsResource {
         commons.Escaper.ecapeVariable('$nodePoolId') +
         ':rollback';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4333,9 +4221,7 @@ class ProjectsZonesClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the NodeManagement options for a node pool.
@@ -4376,7 +4262,7 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String clusterId,
     core.String nodePoolId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4413,7 +4299,7 @@ class ProjectsZonesClustersNodePoolsResource {
         commons.Escaper.ecapeVariable('$nodePoolId') +
         '/setManagement';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4422,9 +4308,7 @@ class ProjectsZonesClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the size for a specific node pool.
@@ -4468,7 +4352,7 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String clusterId,
     core.String nodePoolId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4505,7 +4389,7 @@ class ProjectsZonesClustersNodePoolsResource {
         commons.Escaper.ecapeVariable('$nodePoolId') +
         '/setSize';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4514,9 +4398,7 @@ class ProjectsZonesClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the version and/or image type for the specified node pool.
@@ -4557,7 +4439,7 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String clusterId,
     core.String nodePoolId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4594,7 +4476,7 @@ class ProjectsZonesClustersNodePoolsResource {
         commons.Escaper.ecapeVariable('$nodePoolId') +
         '/update';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4603,9 +4485,7 @@ class ProjectsZonesClustersNodePoolsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4649,7 +4529,7 @@ class ProjectsZonesOperationsResource {
     core.String zone,
     core.String operationId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4681,7 +4561,7 @@ class ProjectsZonesOperationsResource {
         commons.Escaper.ecapeVariable('$operationId') +
         ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4690,9 +4570,7 @@ class ProjectsZonesOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified operation.
@@ -4731,7 +4609,7 @@ class ProjectsZonesOperationsResource {
     core.String operationId, {
     core.String name,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4762,7 +4640,7 @@ class ProjectsZonesOperationsResource {
         '/operations/' +
         commons.Escaper.ecapeVariable('$operationId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4771,9 +4649,7 @@ class ProjectsZonesOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all operations in a project in a specific zone or all zones.
@@ -4808,7 +4684,7 @@ class ProjectsZonesOperationsResource {
     core.String zone, {
     core.String parent,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4835,7 +4711,7 @@ class ProjectsZonesOperationsResource {
         commons.Escaper.ecapeVariable('$zone') +
         '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4844,10 +4720,8 @@ class ProjectsZonesOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

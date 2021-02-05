@@ -229,7 +229,7 @@ class UsersDataSourcesResource {
     DataSource request,
     core.String userId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -249,7 +249,7 @@ class UsersDataSourcesResource {
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -258,10 +258,8 @@ class UsersDataSourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DataSource.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DataSource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified data source.
@@ -289,7 +287,7 @@ class UsersDataSourcesResource {
     core.String userId,
     core.String dataSourceId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -311,7 +309,7 @@ class UsersDataSourcesResource {
         '/dataSources/' +
         commons.Escaper.ecapeVariable('$dataSourceId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -320,10 +318,8 @@ class UsersDataSourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DataSource.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DataSource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the specified data source.
@@ -349,7 +345,7 @@ class UsersDataSourcesResource {
     core.String userId,
     core.String dataSourceId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -371,7 +367,7 @@ class UsersDataSourcesResource {
         '/dataSources/' +
         commons.Escaper.ecapeVariable('$dataSourceId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -380,10 +376,8 @@ class UsersDataSourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DataSource.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DataSource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all data sources that are visible to the developer, using the OAuth
@@ -414,7 +408,7 @@ class UsersDataSourcesResource {
     core.String userId, {
     core.List<core.String> dataTypeName,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -434,7 +428,7 @@ class UsersDataSourcesResource {
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -443,10 +437,8 @@ class UsersDataSourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListDataSourcesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListDataSourcesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified data source.
@@ -479,7 +471,7 @@ class UsersDataSourcesResource {
     core.String userId,
     core.String dataSourceId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -504,7 +496,7 @@ class UsersDataSourcesResource {
         '/dataSources/' +
         commons.Escaper.ecapeVariable('$dataSourceId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -513,10 +505,8 @@ class UsersDataSourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DataSource.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DataSource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -559,7 +549,7 @@ class UsersDataSourcesDataPointChangesResource {
     core.int limit,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -588,7 +578,7 @@ class UsersDataSourcesDataPointChangesResource {
         commons.Escaper.ecapeVariable('$dataSourceId') +
         '/dataPointChanges';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -597,10 +587,8 @@ class UsersDataSourcesDataPointChangesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListDataPointChangesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListDataPointChangesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -645,14 +633,14 @@ class UsersDataSourcesDatasetsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String userId,
     core.String dataSourceId,
     core.String datasetId, {
     core.String currentTimeMillis,
     core.String modifiedTimeMillis,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -687,7 +675,7 @@ class UsersDataSourcesDatasetsResource {
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -695,9 +683,6 @@ class UsersDataSourcesDatasetsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -751,7 +736,7 @@ class UsersDataSourcesDatasetsResource {
     core.int limit,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -784,7 +769,7 @@ class UsersDataSourcesDatasetsResource {
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -793,9 +778,7 @@ class UsersDataSourcesDatasetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Dataset.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Dataset.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds data points to a dataset.
@@ -839,7 +822,7 @@ class UsersDataSourcesDatasetsResource {
     core.String datasetId, {
     core.String currentTimeMillis,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -872,7 +855,7 @@ class UsersDataSourcesDatasetsResource {
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -881,9 +864,7 @@ class UsersDataSourcesDatasetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Dataset.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Dataset.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -919,7 +900,7 @@ class UsersDatasetResource {
     AggregateRequest request,
     core.String userId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -939,7 +920,7 @@ class UsersDatasetResource {
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/dataset:aggregate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -948,10 +929,8 @@ class UsersDatasetResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AggregateResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AggregateResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -980,12 +959,12 @@ class UsersSessionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String userId,
     core.String sessionId, {
     core.String currentTimeMillis,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1012,7 +991,7 @@ class UsersSessionsResource {
         '/sessions/' +
         commons.Escaper.ecapeVariable('$sessionId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1020,9 +999,6 @@ class UsersSessionsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1074,7 +1050,7 @@ class UsersSessionsResource {
     core.String pageToken,
     core.String startTime,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1107,7 +1083,7 @@ class UsersSessionsResource {
 
     _url = commons.Escaper.ecapeVariable('$userId') + '/sessions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1116,10 +1092,8 @@ class UsersSessionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListSessionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListSessionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates or insert a given session.
@@ -1152,7 +1126,7 @@ class UsersSessionsResource {
     core.String sessionId, {
     core.String currentTimeMillis,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1180,7 +1154,7 @@ class UsersSessionsResource {
         '/sessions/' +
         commons.Escaper.ecapeVariable('$sessionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1189,9 +1163,7 @@ class UsersSessionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Session.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Session.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

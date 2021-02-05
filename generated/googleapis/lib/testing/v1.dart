@@ -93,7 +93,7 @@ class ApplicationDetailServiceResource {
   async.Future<GetApkDetailsResponse> getApkDetails(
     FileReference request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -110,7 +110,7 @@ class ApplicationDetailServiceResource {
 
     _url = 'v1/applicationDetailService/getApkDetails';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -119,10 +119,8 @@ class ApplicationDetailServiceResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetApkDetailsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetApkDetailsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -169,7 +167,7 @@ class ProjectsTestMatricesResource {
     core.String projectId,
     core.String testMatrixId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -193,7 +191,7 @@ class ProjectsTestMatricesResource {
         commons.Escaper.ecapeVariable('$testMatrixId') +
         ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -202,10 +200,8 @@ class ProjectsTestMatricesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CancelTestMatrixResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CancelTestMatrixResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates and runs a matrix of tests according to the given specifications.
@@ -241,7 +237,7 @@ class ProjectsTestMatricesResource {
     core.String projectId, {
     core.String requestId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -266,7 +262,7 @@ class ProjectsTestMatricesResource {
         commons.Escaper.ecapeVariable('$projectId') +
         '/testMatrices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -275,10 +271,8 @@ class ProjectsTestMatricesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TestMatrix.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TestMatrix.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Checks the status of a test matrix.
@@ -307,7 +301,7 @@ class ProjectsTestMatricesResource {
     core.String projectId,
     core.String testMatrixId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -330,7 +324,7 @@ class ProjectsTestMatricesResource {
         '/testMatrices/' +
         commons.Escaper.ecapeVariable('$testMatrixId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -339,10 +333,8 @@ class ProjectsTestMatricesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TestMatrix.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TestMatrix.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -390,7 +382,7 @@ class TestEnvironmentCatalogResource {
     core.String environmentType, {
     core.String projectId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -411,7 +403,7 @@ class TestEnvironmentCatalogResource {
     _url = 'v1/testEnvironmentCatalog/' +
         commons.Escaper.ecapeVariable('$environmentType');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -420,10 +412,8 @@ class TestEnvironmentCatalogResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestEnvironmentCatalog.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestEnvironmentCatalog.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

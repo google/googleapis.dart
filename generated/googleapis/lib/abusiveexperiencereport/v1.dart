@@ -83,7 +83,7 @@ class SitesResource {
   async.Future<SiteSummaryResponse> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -100,7 +100,7 @@ class SitesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -109,10 +109,8 @@ class SitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SiteSummaryResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SiteSummaryResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -137,7 +135,7 @@ class ViolatingSitesResource {
   /// this method will complete with the same error.
   async.Future<ViolatingSitesResponse> list({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -151,7 +149,7 @@ class ViolatingSitesResource {
 
     _url = 'v1/violatingSites';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -160,10 +158,8 @@ class ViolatingSitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ViolatingSitesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ViolatingSitesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

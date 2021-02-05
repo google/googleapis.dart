@@ -89,7 +89,7 @@ class DocumentsResource {
   async.Future<AnalyzeEntitiesResponse> analyzeEntities(
     AnalyzeEntitiesRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -106,7 +106,7 @@ class DocumentsResource {
 
     _url = 'v1/documents:analyzeEntities';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -115,10 +115,8 @@ class DocumentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AnalyzeEntitiesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AnalyzeEntitiesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Finds entities, similar to AnalyzeEntities in the text and analyzes
@@ -141,7 +139,7 @@ class DocumentsResource {
   async.Future<AnalyzeEntitySentimentResponse> analyzeEntitySentiment(
     AnalyzeEntitySentimentRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -158,7 +156,7 @@ class DocumentsResource {
 
     _url = 'v1/documents:analyzeEntitySentiment';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -167,10 +165,8 @@ class DocumentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AnalyzeEntitySentimentResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AnalyzeEntitySentimentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Analyzes the sentiment of the provided text.
@@ -192,7 +188,7 @@ class DocumentsResource {
   async.Future<AnalyzeSentimentResponse> analyzeSentiment(
     AnalyzeSentimentRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -209,7 +205,7 @@ class DocumentsResource {
 
     _url = 'v1/documents:analyzeSentiment';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -218,10 +214,8 @@ class DocumentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AnalyzeSentimentResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AnalyzeSentimentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Analyzes the syntax of the text and provides sentence boundaries and
@@ -245,7 +239,7 @@ class DocumentsResource {
   async.Future<AnalyzeSyntaxResponse> analyzeSyntax(
     AnalyzeSyntaxRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -262,7 +256,7 @@ class DocumentsResource {
 
     _url = 'v1/documents:analyzeSyntax';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -271,10 +265,8 @@ class DocumentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AnalyzeSyntaxResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AnalyzeSyntaxResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// A convenience method that provides all the features that analyzeSentiment,
@@ -297,7 +289,7 @@ class DocumentsResource {
   async.Future<AnnotateTextResponse> annotateText(
     AnnotateTextRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -314,7 +306,7 @@ class DocumentsResource {
 
     _url = 'v1/documents:annotateText';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -323,10 +315,8 @@ class DocumentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AnnotateTextResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AnnotateTextResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Classifies a document into categories.
@@ -348,7 +338,7 @@ class DocumentsResource {
   async.Future<ClassifyTextResponse> classifyText(
     ClassifyTextRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -365,7 +355,7 @@ class DocumentsResource {
 
     _url = 'v1/documents:classifyText';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -374,10 +364,8 @@ class DocumentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ClassifyTextResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ClassifyTextResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

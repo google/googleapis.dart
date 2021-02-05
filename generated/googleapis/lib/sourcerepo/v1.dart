@@ -98,7 +98,7 @@ class ProjectsResource {
   async.Future<ProjectConfig> getConfig(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -115,7 +115,7 @@ class ProjectsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/config';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -124,10 +124,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ProjectConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ProjectConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the Cloud Source Repositories configuration of the project.
@@ -154,7 +152,7 @@ class ProjectsResource {
     UpdateProjectConfigRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -174,7 +172,7 @@ class ProjectsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/config';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -183,10 +181,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ProjectConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ProjectConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -222,7 +218,7 @@ class ProjectsReposResource {
     Repo request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -242,7 +238,7 @@ class ProjectsReposResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/repos';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -251,9 +247,7 @@ class ProjectsReposResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Repo.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Repo.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a repo.
@@ -277,7 +271,7 @@ class ProjectsReposResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -294,7 +288,7 @@ class ProjectsReposResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -303,9 +297,7 @@ class ProjectsReposResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about a repo.
@@ -329,7 +321,7 @@ class ProjectsReposResource {
   async.Future<Repo> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -346,7 +338,7 @@ class ProjectsReposResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -355,9 +347,7 @@ class ProjectsReposResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Repo.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Repo.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -394,7 +384,7 @@ class ProjectsReposResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -418,7 +408,7 @@ class ProjectsReposResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -427,9 +417,7 @@ class ProjectsReposResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns all repos belonging to a project.
@@ -465,7 +453,7 @@ class ProjectsReposResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -488,7 +476,7 @@ class ProjectsReposResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/repos';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -497,10 +485,8 @@ class ProjectsReposResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListReposResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListReposResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates information about a repo.
@@ -527,7 +513,7 @@ class ProjectsReposResource {
     UpdateRepoRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -547,7 +533,7 @@ class ProjectsReposResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -556,9 +542,7 @@ class ProjectsReposResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Repo.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Repo.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -588,7 +572,7 @@ class ProjectsReposResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -610,7 +594,7 @@ class ProjectsReposResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -619,9 +603,7 @@ class ProjectsReposResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Synchronize a connected repo.
@@ -650,7 +632,7 @@ class ProjectsReposResource {
     SyncRepoRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -670,7 +652,7 @@ class ProjectsReposResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':sync';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -679,9 +661,7 @@ class ProjectsReposResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -712,7 +692,7 @@ class ProjectsReposResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -734,7 +714,7 @@ class ProjectsReposResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -743,10 +723,8 @@ class ProjectsReposResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

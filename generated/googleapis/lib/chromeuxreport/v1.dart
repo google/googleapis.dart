@@ -81,7 +81,7 @@ class RecordsResource {
   async.Future<QueryResponse> queryRecord(
     QueryRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -98,7 +98,7 @@ class RecordsResource {
 
     _url = 'v1/records:queryRecord';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -107,10 +107,8 @@ class RecordsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          QueryResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return QueryResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

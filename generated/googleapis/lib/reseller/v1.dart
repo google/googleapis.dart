@@ -93,7 +93,7 @@ class CustomersResource {
   async.Future<Customer> get(
     core.String customerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -111,7 +111,7 @@ class CustomersResource {
     _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -120,9 +120,7 @@ class CustomersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Customer.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Customer.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Order a new customer's account.
@@ -152,7 +150,7 @@ class CustomersResource {
     Customer request, {
     core.String customerAuthToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -172,7 +170,7 @@ class CustomersResource {
 
     _url = 'apps/reseller/v1/customers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -181,9 +179,7 @@ class CustomersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Customer.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Customer.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Patch a customer account's settings via Apiary Patch Orchestration
@@ -211,7 +207,7 @@ class CustomersResource {
     Customer request,
     core.String customerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -232,7 +228,7 @@ class CustomersResource {
     _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -241,9 +237,7 @@ class CustomersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Customer.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Customer.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a customer account's settings.
@@ -271,7 +265,7 @@ class CustomersResource {
     Customer request,
     core.String customerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -292,7 +286,7 @@ class CustomersResource {
     _url = 'apps/reseller/v1/customers/' +
         commons.Escaper.ecapeVariable('$customerId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -301,9 +295,7 @@ class CustomersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Customer.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Customer.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -328,7 +320,7 @@ class ResellernotifyResource_1 {
   /// this method will complete with the same error.
   async.Future<ResellernotifyGetwatchdetailsResponse> getwatchdetails({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -342,7 +334,7 @@ class ResellernotifyResource_1 {
 
     _url = 'apps/reseller/v1/resellernotify/getwatchdetails';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -351,10 +343,8 @@ class ResellernotifyResource_1 {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ResellernotifyGetwatchdetailsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ResellernotifyGetwatchdetailsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Registers a Reseller for receiving notifications.
@@ -377,7 +367,7 @@ class ResellernotifyResource_1 {
   async.Future<ResellernotifyResource> register({
     core.String serviceAccountEmailAddress,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -394,7 +384,7 @@ class ResellernotifyResource_1 {
 
     _url = 'apps/reseller/v1/resellernotify/register';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -403,10 +393,8 @@ class ResellernotifyResource_1 {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ResellernotifyResource.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ResellernotifyResource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Unregisters a Reseller for receiving notifications.
@@ -429,7 +417,7 @@ class ResellernotifyResource_1 {
   async.Future<ResellernotifyResource> unregister({
     core.String serviceAccountEmailAddress,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -446,7 +434,7 @@ class ResellernotifyResource_1 {
 
     _url = 'apps/reseller/v1/resellernotify/unregister';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -455,10 +443,8 @@ class ResellernotifyResource_1 {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ResellernotifyResource.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ResellernotifyResource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -496,7 +482,7 @@ class SubscriptionsResource {
     core.String customerId,
     core.String subscriptionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -520,7 +506,7 @@ class SubscriptionsResource {
         commons.Escaper.ecapeVariable('$subscriptionId') +
         '/activate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -529,10 +515,8 @@ class SubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a subscription plan.
@@ -570,7 +554,7 @@ class SubscriptionsResource {
     core.String customerId,
     core.String subscriptionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -597,7 +581,7 @@ class SubscriptionsResource {
         commons.Escaper.ecapeVariable('$subscriptionId') +
         '/changePlan';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -606,10 +590,8 @@ class SubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a user license's renewal settings.
@@ -646,7 +628,7 @@ class SubscriptionsResource {
     core.String customerId,
     core.String subscriptionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -673,7 +655,7 @@ class SubscriptionsResource {
         commons.Escaper.ecapeVariable('$subscriptionId') +
         '/changeRenewalSettings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -682,10 +664,8 @@ class SubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a subscription's user license settings.
@@ -720,7 +700,7 @@ class SubscriptionsResource {
     core.String customerId,
     core.String subscriptionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -747,7 +727,7 @@ class SubscriptionsResource {
         commons.Escaper.ecapeVariable('$subscriptionId') +
         '/changeSeats';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -756,10 +736,8 @@ class SubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Cancel, suspend, or transfer a subscription to direct.
@@ -797,12 +775,12 @@ class SubscriptionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String customerId,
     core.String subscriptionId,
     core.String deletionType, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -831,7 +809,7 @@ class SubscriptionsResource {
         '/subscriptions/' +
         commons.Escaper.ecapeVariable('$subscriptionId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -839,9 +817,6 @@ class SubscriptionsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -874,7 +849,7 @@ class SubscriptionsResource {
     core.String customerId,
     core.String subscriptionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -897,7 +872,7 @@ class SubscriptionsResource {
         '/subscriptions/' +
         commons.Escaper.ecapeVariable('$subscriptionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -906,10 +881,8 @@ class SubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Create or transfer a subscription.
@@ -945,7 +918,7 @@ class SubscriptionsResource {
     core.String customerId, {
     core.String customerAuthToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -970,7 +943,7 @@ class SubscriptionsResource {
         commons.Escaper.ecapeVariable('$customerId') +
         '/subscriptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -979,10 +952,8 @@ class SubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List of subscriptions managed by the reseller.
@@ -1036,7 +1007,7 @@ class SubscriptionsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1065,7 +1036,7 @@ class SubscriptionsResource {
 
     _url = 'apps/reseller/v1/subscriptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1074,10 +1045,8 @@ class SubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Subscriptions.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Subscriptions.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Immediately move a 30-day free trial subscription to a paid service
@@ -1110,7 +1079,7 @@ class SubscriptionsResource {
     core.String customerId,
     core.String subscriptionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1134,7 +1103,7 @@ class SubscriptionsResource {
         commons.Escaper.ecapeVariable('$subscriptionId') +
         '/startPaidService';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1143,10 +1112,8 @@ class SubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Suspends an active subscription.
@@ -1178,7 +1145,7 @@ class SubscriptionsResource {
     core.String customerId,
     core.String subscriptionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1202,7 +1169,7 @@ class SubscriptionsResource {
         commons.Escaper.ecapeVariable('$subscriptionId') +
         '/suspend';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1211,10 +1178,8 @@ class SubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

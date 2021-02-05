@@ -101,7 +101,7 @@ class ProjectsServiceAccountsResource {
     GenerateAccessTokenRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -123,7 +123,7 @@ class ProjectsServiceAccountsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':generateAccessToken';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -132,10 +132,8 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GenerateAccessTokenResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GenerateAccessTokenResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Generates an OpenID Connect ID token for a service account.
@@ -164,7 +162,7 @@ class ProjectsServiceAccountsResource {
     GenerateIdTokenRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -186,7 +184,7 @@ class ProjectsServiceAccountsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':generateIdToken';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -195,10 +193,8 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GenerateIdTokenResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GenerateIdTokenResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Signs a blob using a service account's system-managed private key.
@@ -227,7 +223,7 @@ class ProjectsServiceAccountsResource {
     SignBlobRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -247,7 +243,7 @@ class ProjectsServiceAccountsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signBlob';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -256,10 +252,8 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SignBlobResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SignBlobResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Signs a JWT using a service account's system-managed private key.
@@ -288,7 +282,7 @@ class ProjectsServiceAccountsResource {
     SignJwtRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -308,7 +302,7 @@ class ProjectsServiceAccountsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signJwt';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -317,10 +311,8 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SignJwtResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SignJwtResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

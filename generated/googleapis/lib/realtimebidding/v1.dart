@@ -148,7 +148,7 @@ class BiddersCreativesResource {
     core.String pageToken,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -178,7 +178,7 @@ class BiddersCreativesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/creatives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -187,10 +187,8 @@ class BiddersCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCreativesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCreativesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Watches all creatives pertaining to a bidder.
@@ -224,7 +222,7 @@ class BiddersCreativesResource {
     WatchCreativesRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -246,7 +244,7 @@ class BiddersCreativesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/creatives:watch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -255,10 +253,8 @@ class BiddersCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => WatchCreativesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return WatchCreativesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -292,7 +288,7 @@ class BiddersPretargetingConfigsResource {
     ActivatePretargetingConfigRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -312,7 +308,7 @@ class BiddersPretargetingConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':activate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -321,10 +317,8 @@ class BiddersPretargetingConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PretargetingConfig.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PretargetingConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds targeted apps to the pretargeting configuration.
@@ -352,7 +346,7 @@ class BiddersPretargetingConfigsResource {
     AddTargetedAppsRequest request,
     core.String pretargetingConfig, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -374,7 +368,7 @@ class BiddersPretargetingConfigsResource {
         commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
         ':addTargetedApps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -383,10 +377,8 @@ class BiddersPretargetingConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PretargetingConfig.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PretargetingConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds targeted publishers to the pretargeting config.
@@ -414,7 +406,7 @@ class BiddersPretargetingConfigsResource {
     AddTargetedPublishersRequest request,
     core.String pretargetingConfig, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -436,7 +428,7 @@ class BiddersPretargetingConfigsResource {
         commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
         ':addTargetedPublishers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -445,10 +437,8 @@ class BiddersPretargetingConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PretargetingConfig.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PretargetingConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds targeted sites to the pretargeting configuration.
@@ -476,7 +466,7 @@ class BiddersPretargetingConfigsResource {
     AddTargetedSitesRequest request,
     core.String pretargetingConfig, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -498,7 +488,7 @@ class BiddersPretargetingConfigsResource {
         commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
         ':addTargetedSites';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -507,10 +497,8 @@ class BiddersPretargetingConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PretargetingConfig.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PretargetingConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a pretargeting configuration.
@@ -542,7 +530,7 @@ class BiddersPretargetingConfigsResource {
     PretargetingConfig request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -564,7 +552,7 @@ class BiddersPretargetingConfigsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/pretargetingConfigs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -573,10 +561,8 @@ class BiddersPretargetingConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PretargetingConfig.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PretargetingConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a pretargeting configuration.
@@ -600,7 +586,7 @@ class BiddersPretargetingConfigsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -617,7 +603,7 @@ class BiddersPretargetingConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -626,9 +612,7 @@ class BiddersPretargetingConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a pretargeting configuration.
@@ -652,7 +636,7 @@ class BiddersPretargetingConfigsResource {
   async.Future<PretargetingConfig> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -669,7 +653,7 @@ class BiddersPretargetingConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -678,10 +662,8 @@ class BiddersPretargetingConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PretargetingConfig.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PretargetingConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all pretargeting configurations for a single bidder.
@@ -715,7 +697,7 @@ class BiddersPretargetingConfigsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -740,7 +722,7 @@ class BiddersPretargetingConfigsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/pretargetingConfigs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -749,10 +731,8 @@ class BiddersPretargetingConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListPretargetingConfigsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListPretargetingConfigsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a pretargeting configuration.
@@ -783,7 +763,7 @@ class BiddersPretargetingConfigsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -806,7 +786,7 @@ class BiddersPretargetingConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -815,10 +795,8 @@ class BiddersPretargetingConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PretargetingConfig.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PretargetingConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes targeted apps from the pretargeting configuration.
@@ -846,7 +824,7 @@ class BiddersPretargetingConfigsResource {
     RemoveTargetedAppsRequest request,
     core.String pretargetingConfig, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -868,7 +846,7 @@ class BiddersPretargetingConfigsResource {
         commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
         ':removeTargetedApps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -877,10 +855,8 @@ class BiddersPretargetingConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PretargetingConfig.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PretargetingConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes targeted publishers from the pretargeting config.
@@ -908,7 +884,7 @@ class BiddersPretargetingConfigsResource {
     RemoveTargetedPublishersRequest request,
     core.String pretargetingConfig, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -930,7 +906,7 @@ class BiddersPretargetingConfigsResource {
         commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
         ':removeTargetedPublishers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -939,10 +915,8 @@ class BiddersPretargetingConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PretargetingConfig.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PretargetingConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes targeted sites from the pretargeting configuration.
@@ -970,7 +944,7 @@ class BiddersPretargetingConfigsResource {
     RemoveTargetedSitesRequest request,
     core.String pretargetingConfig, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -992,7 +966,7 @@ class BiddersPretargetingConfigsResource {
         commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
         ':removeTargetedSites';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1001,10 +975,8 @@ class BiddersPretargetingConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PretargetingConfig.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PretargetingConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Suspends a pretargeting configuration.
@@ -1031,7 +1003,7 @@ class BiddersPretargetingConfigsResource {
     SuspendPretargetingConfigRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1051,7 +1023,7 @@ class BiddersPretargetingConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':suspend';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1060,10 +1032,8 @@ class BiddersPretargetingConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PretargetingConfig.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PretargetingConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1105,7 +1075,7 @@ class BuyersResource {
   async.Future<GetRemarketingTagResponse> getRemarketingTag(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1124,7 +1094,7 @@ class BuyersResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':getRemarketingTag';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1133,10 +1103,8 @@ class BuyersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetRemarketingTagResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetRemarketingTagResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1173,7 +1141,7 @@ class BuyersCreativesResource {
     Creative request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1194,7 +1162,7 @@ class BuyersCreativesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/creatives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1203,9 +1171,7 @@ class BuyersCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Creative.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a creative.
@@ -1241,7 +1207,7 @@ class BuyersCreativesResource {
     core.String name, {
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1261,7 +1227,7 @@ class BuyersCreativesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1270,9 +1236,7 @@ class BuyersCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Creative.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists creatives.
@@ -1337,7 +1301,7 @@ class BuyersCreativesResource {
     core.String pageToken,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1367,7 +1331,7 @@ class BuyersCreativesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/creatives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1376,10 +1340,8 @@ class BuyersCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCreativesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCreativesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a creative.
@@ -1412,7 +1374,7 @@ class BuyersCreativesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1435,7 +1397,7 @@ class BuyersCreativesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1444,9 +1406,7 @@ class BuyersCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Creative.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1480,7 +1440,7 @@ class BuyersUserListsResource {
     CloseUserListRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1500,7 +1460,7 @@ class BuyersUserListsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':close';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1509,9 +1469,7 @@ class BuyersUserListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UserList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Create a new user list.
@@ -1542,7 +1500,7 @@ class BuyersUserListsResource {
     UserList request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1563,7 +1521,7 @@ class BuyersUserListsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/userLists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1572,9 +1530,7 @@ class BuyersUserListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UserList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a user list by its name.
@@ -1598,7 +1554,7 @@ class BuyersUserListsResource {
   async.Future<UserList> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1615,7 +1571,7 @@ class BuyersUserListsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1624,9 +1580,7 @@ class BuyersUserListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UserList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets remarketing tag for a buyer.
@@ -1659,7 +1613,7 @@ class BuyersUserListsResource {
   async.Future<GetRemarketingTagResponse> getRemarketingTag(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1678,7 +1632,7 @@ class BuyersUserListsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':getRemarketingTag';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1687,10 +1641,8 @@ class BuyersUserListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetRemarketingTagResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetRemarketingTagResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the user lists visible to the current user.
@@ -1725,7 +1677,7 @@ class BuyersUserListsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1749,7 +1701,7 @@ class BuyersUserListsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/userLists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1758,10 +1710,8 @@ class BuyersUserListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListUserListsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListUserListsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Change the status of a user list to OPEN.
@@ -1789,7 +1739,7 @@ class BuyersUserListsResource {
     OpenUserListRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1809,7 +1759,7 @@ class BuyersUserListsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':open';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1818,9 +1768,7 @@ class BuyersUserListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UserList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the given user list.
@@ -1853,7 +1801,7 @@ class BuyersUserListsResource {
     UserList request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1873,7 +1821,7 @@ class BuyersUserListsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1882,9 +1830,7 @@ class BuyersUserListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UserList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

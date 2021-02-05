@@ -98,7 +98,7 @@ class OperationsResource {
     CancelOperationRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -118,7 +118,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -127,9 +127,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -156,7 +154,7 @@ class OperationsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -173,7 +171,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -182,9 +180,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -210,7 +206,7 @@ class OperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -227,7 +223,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -236,9 +232,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -279,7 +273,7 @@ class OperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -305,7 +299,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -314,10 +308,8 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -376,7 +368,7 @@ class ServicesResource {
     core.String pageToken,
     core.String query,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -402,7 +394,7 @@ class ServicesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + ':search';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -411,10 +403,8 @@ class ServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchTenancyUnitsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchTenancyUnitsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -454,7 +444,7 @@ class ServicesTenancyUnitsResource {
     AddTenantProjectRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -476,7 +466,7 @@ class ServicesTenancyUnitsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':addProject';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -485,9 +475,7 @@ class ServicesTenancyUnitsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Apply a configuration to an existing tenant project.
@@ -530,7 +518,7 @@ class ServicesTenancyUnitsResource {
     ApplyTenantProjectConfigRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -552,7 +540,7 @@ class ServicesTenancyUnitsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':applyProjectConfig';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -561,9 +549,7 @@ class ServicesTenancyUnitsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Attach an existing project to the tenancy unit as a new tenant resource.
@@ -601,7 +587,7 @@ class ServicesTenancyUnitsResource {
     AttachTenantProjectRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -623,7 +609,7 @@ class ServicesTenancyUnitsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':attachProject';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -632,9 +618,7 @@ class ServicesTenancyUnitsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a tenancy unit with no tenant resources.
@@ -670,7 +654,7 @@ class ServicesTenancyUnitsResource {
     CreateTenancyUnitRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -692,7 +676,7 @@ class ServicesTenancyUnitsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/tenancyUnits';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -701,10 +685,8 @@ class ServicesTenancyUnitsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TenancyUnit.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TenancyUnit.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a tenancy unit.
@@ -731,7 +713,7 @@ class ServicesTenancyUnitsResource {
   async.Future<Operation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -748,7 +730,7 @@ class ServicesTenancyUnitsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -757,9 +739,7 @@ class ServicesTenancyUnitsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified project resource identified by a tenant resource
@@ -796,7 +776,7 @@ class ServicesTenancyUnitsResource {
     DeleteTenantProjectRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -818,7 +798,7 @@ class ServicesTenancyUnitsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':deleteProject';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -827,9 +807,7 @@ class ServicesTenancyUnitsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Find the tenancy unit for a managed service and service consumer.
@@ -875,7 +853,7 @@ class ServicesTenancyUnitsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -903,7 +881,7 @@ class ServicesTenancyUnitsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/tenancyUnits';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -912,10 +890,8 @@ class ServicesTenancyUnitsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTenancyUnitsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTenancyUnitsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes the specified project resource identified by a tenant resource
@@ -951,7 +927,7 @@ class ServicesTenancyUnitsResource {
     RemoveTenantProjectRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -973,7 +949,7 @@ class ServicesTenancyUnitsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':removeProject';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -982,9 +958,7 @@ class ServicesTenancyUnitsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Attempts to undelete a previously deleted tenant project.
@@ -1017,7 +991,7 @@ class ServicesTenancyUnitsResource {
     UndeleteTenantProjectRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1039,7 +1013,7 @@ class ServicesTenancyUnitsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':undeleteProject';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1048,9 +1022,7 @@ class ServicesTenancyUnitsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

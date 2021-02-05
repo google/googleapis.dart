@@ -101,7 +101,7 @@ class PropertiesResource {
   async.Future<Metadata> getMetadata(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -118,7 +118,7 @@ class PropertiesResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -127,9 +127,7 @@ class PropertiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Metadata.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Metadata.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// The Google Analytics Realtime API returns a customized report of realtime
@@ -161,7 +159,7 @@ class PropertiesResource {
     RunRealtimeReportRequest request,
     core.String property, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -183,7 +181,7 @@ class PropertiesResource {
         commons.Escaper.ecapeVariableReserved('$property') +
         ':runRealtimeReport';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -192,10 +190,8 @@ class PropertiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RunRealtimeReportResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RunRealtimeReportResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -225,7 +221,7 @@ class V1alphaResource {
   async.Future<BatchRunPivotReportsResponse> batchRunPivotReports(
     BatchRunPivotReportsRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -242,7 +238,7 @@ class V1alphaResource {
 
     _url = 'v1alpha:batchRunPivotReports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -251,10 +247,8 @@ class V1alphaResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchRunPivotReportsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchRunPivotReportsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns multiple reports in a batch.
@@ -278,7 +272,7 @@ class V1alphaResource {
   async.Future<BatchRunReportsResponse> batchRunReports(
     BatchRunReportsRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -295,7 +289,7 @@ class V1alphaResource {
 
     _url = 'v1alpha:batchRunReports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -304,10 +298,8 @@ class V1alphaResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchRunReportsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchRunReportsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a customized pivot report of your Google Analytics event data.
@@ -334,7 +326,7 @@ class V1alphaResource {
   async.Future<RunPivotReportResponse> runPivotReport(
     RunPivotReportRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -351,7 +343,7 @@ class V1alphaResource {
 
     _url = 'v1alpha:runPivotReport';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -360,10 +352,8 @@ class V1alphaResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RunPivotReportResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RunPivotReportResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a customized report of your Google Analytics event data.
@@ -392,7 +382,7 @@ class V1alphaResource {
   async.Future<RunReportResponse> runReport(
     RunReportRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -409,7 +399,7 @@ class V1alphaResource {
 
     _url = 'v1alpha:runReport';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -418,10 +408,8 @@ class V1alphaResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RunReportResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RunReportResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

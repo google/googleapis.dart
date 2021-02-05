@@ -134,7 +134,7 @@ class OperationsProjectsLocationsOperationsResource {
   async.Future<GoogleProtobufEmpty> cancel(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -153,7 +153,7 @@ class OperationsProjectsLocationsOperationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -162,10 +162,8 @@ class OperationsProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -193,7 +191,7 @@ class OperationsProjectsLocationsOperationsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -210,7 +208,7 @@ class OperationsProjectsLocationsOperationsResource {
 
     _url = 'v1/operations/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -219,10 +217,8 @@ class OperationsProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -249,7 +245,7 @@ class OperationsProjectsLocationsOperationsResource {
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -266,7 +262,7 @@ class OperationsProjectsLocationsOperationsResource {
 
     _url = 'v1/operations/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -275,10 +271,8 @@ class OperationsProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -339,7 +333,7 @@ class ProjectsLocationsOperationsResource {
     GoogleLongrunningCancelOperationRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -359,7 +353,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -368,10 +362,8 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -399,7 +391,7 @@ class ProjectsLocationsOperationsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -416,7 +408,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -425,10 +417,8 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -455,7 +445,7 @@ class ProjectsLocationsOperationsResource {
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -472,7 +462,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -481,10 +471,8 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -525,7 +513,7 @@ class ProjectsLocationsOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -552,7 +540,7 @@ class ProjectsLocationsOperationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -561,10 +549,8 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -597,7 +583,7 @@ class VideosResource {
   async.Future<GoogleLongrunningOperation> annotate(
     GoogleCloudVideointelligenceV1AnnotateVideoRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -614,7 +600,7 @@ class VideosResource {
 
     _url = 'v1/videos:annotate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -623,10 +609,8 @@ class VideosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

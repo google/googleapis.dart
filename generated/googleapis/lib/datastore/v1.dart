@@ -95,7 +95,7 @@ class ProjectsResource {
     AllocateIdsRequest request,
     core.String projectId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -117,7 +117,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariable('$projectId') +
         ':allocateIds';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -126,10 +126,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AllocateIdsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AllocateIdsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Begins a new transaction.
@@ -155,7 +153,7 @@ class ProjectsResource {
     BeginTransactionRequest request,
     core.String projectId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -177,7 +175,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariable('$projectId') +
         ':beginTransaction';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -186,10 +184,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BeginTransactionResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BeginTransactionResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Commits a transaction, optionally creating, deleting or modifying some
@@ -216,7 +212,7 @@ class ProjectsResource {
     CommitRequest request,
     core.String projectId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -238,7 +234,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariable('$projectId') +
         ':commit';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -247,10 +243,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CommitResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CommitResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Exports a copy of all or a subset of entities from Google Cloud Datastore
@@ -283,7 +277,7 @@ class ProjectsResource {
     GoogleDatastoreAdminV1ExportEntitiesRequest request,
     core.String projectId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -305,7 +299,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariable('$projectId') +
         ':export';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -314,10 +308,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Imports entities into Google Cloud Datastore.
@@ -348,7 +340,7 @@ class ProjectsResource {
     GoogleDatastoreAdminV1ImportEntitiesRequest request,
     core.String projectId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -370,7 +362,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariable('$projectId') +
         ':import';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -379,10 +371,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Looks up entities by key.
@@ -408,7 +398,7 @@ class ProjectsResource {
     LookupRequest request,
     core.String projectId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -430,7 +420,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariable('$projectId') +
         ':lookup';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -439,10 +429,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LookupResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LookupResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Prevents the supplied keys' IDs from being auto-allocated by Cloud
@@ -469,7 +457,7 @@ class ProjectsResource {
     ReserveIdsRequest request,
     core.String projectId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -491,7 +479,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariable('$projectId') +
         ':reserveIds';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -500,10 +488,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ReserveIdsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ReserveIdsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Rolls back a transaction.
@@ -529,7 +515,7 @@ class ProjectsResource {
     RollbackRequest request,
     core.String projectId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -551,7 +537,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariable('$projectId') +
         ':rollback';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -560,10 +546,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RollbackResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RollbackResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Queries for entities.
@@ -589,7 +573,7 @@ class ProjectsResource {
     RunQueryRequest request,
     core.String projectId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -611,7 +595,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariable('$projectId') +
         ':runQuery';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -620,10 +604,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RunQueryResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RunQueryResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -663,7 +645,7 @@ class ProjectsIndexesResource {
     GoogleDatastoreAdminV1Index request,
     core.String projectId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -685,7 +667,7 @@ class ProjectsIndexesResource {
         commons.Escaper.ecapeVariable('$projectId') +
         '/indexes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -694,10 +676,8 @@ class ProjectsIndexesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing index.
@@ -730,7 +710,7 @@ class ProjectsIndexesResource {
     core.String projectId,
     core.String indexId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -753,7 +733,7 @@ class ProjectsIndexesResource {
         '/indexes/' +
         commons.Escaper.ecapeVariable('$indexId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -762,10 +742,8 @@ class ProjectsIndexesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an index.
@@ -790,7 +768,7 @@ class ProjectsIndexesResource {
     core.String projectId,
     core.String indexId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -813,7 +791,7 @@ class ProjectsIndexesResource {
         '/indexes/' +
         commons.Escaper.ecapeVariable('$indexId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -822,10 +800,8 @@ class ProjectsIndexesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleDatastoreAdminV1Index.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleDatastoreAdminV1Index.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the indexes that match the specified filters.
@@ -861,7 +837,7 @@ class ProjectsIndexesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -889,7 +865,7 @@ class ProjectsIndexesResource {
         commons.Escaper.ecapeVariable('$projectId') +
         '/indexes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -898,10 +874,8 @@ class ProjectsIndexesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleDatastoreAdminV1ListIndexesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleDatastoreAdminV1ListIndexesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -939,7 +913,7 @@ class ProjectsOperationsResource {
   async.Future<Empty> cancel(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -956,7 +930,7 @@ class ProjectsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -965,9 +939,7 @@ class ProjectsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -994,7 +966,7 @@ class ProjectsOperationsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1011,7 +983,7 @@ class ProjectsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1020,9 +992,7 @@ class ProjectsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -1048,7 +1018,7 @@ class ProjectsOperationsResource {
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1065,7 +1035,7 @@ class ProjectsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1074,10 +1044,8 @@ class ProjectsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -1118,7 +1086,7 @@ class ProjectsOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1145,7 +1113,7 @@ class ProjectsOperationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1154,10 +1122,8 @@ class ProjectsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

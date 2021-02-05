@@ -180,7 +180,7 @@ class FeaturetilesResource {
     core.String languageCode,
     core.String regionCode,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -256,7 +256,7 @@ class FeaturetilesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -265,10 +265,8 @@ class FeaturetilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          FeatureTile.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FeatureTile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -367,7 +365,7 @@ class TerraintilesResource {
     core.int minElevationResolutionCells,
     core.List<core.String> terrainFormats,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -425,7 +423,7 @@ class TerraintilesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -434,10 +432,8 @@ class TerraintilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TerrainTile.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TerrainTile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

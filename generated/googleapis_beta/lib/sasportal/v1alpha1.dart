@@ -106,7 +106,7 @@ class CustomersResource {
   async.Future<SasPortalCustomer> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -123,7 +123,7 @@ class CustomersResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -132,10 +132,8 @@ class CustomersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalCustomer.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalCustomer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of requested customers.
@@ -161,7 +159,7 @@ class CustomersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -181,7 +179,7 @@ class CustomersResource {
 
     _url = 'v1alpha1/customers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -190,10 +188,8 @@ class CustomersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalListCustomersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalListCustomersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing customer.
@@ -222,7 +218,7 @@ class CustomersResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -245,7 +241,7 @@ class CustomersResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -254,10 +250,8 @@ class CustomersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalCustomer.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalCustomer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -294,7 +288,7 @@ class CustomersDeploymentsResource {
     SasPortalDeployment request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -316,7 +310,7 @@ class CustomersDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -325,10 +319,8 @@ class CustomersDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalDeployment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDeployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a deployment.
@@ -351,7 +343,7 @@ class CustomersDeploymentsResource {
   async.Future<SasPortalEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -368,7 +360,7 @@ class CustomersDeploymentsResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -377,10 +369,8 @@ class CustomersDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a requested deployment.
@@ -403,7 +393,7 @@ class CustomersDeploymentsResource {
   async.Future<SasPortalDeployment> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -420,7 +410,7 @@ class CustomersDeploymentsResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -429,10 +419,8 @@ class CustomersDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalDeployment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDeployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists deployments.
@@ -468,7 +456,7 @@ class CustomersDeploymentsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -496,7 +484,7 @@ class CustomersDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -505,10 +493,8 @@ class CustomersDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalListDeploymentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalListDeploymentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves a deployment under another node or customer.
@@ -534,7 +520,7 @@ class CustomersDeploymentsResource {
     SasPortalMoveDeploymentRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -555,7 +541,7 @@ class CustomersDeploymentsResource {
     _url =
         'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -564,10 +550,8 @@ class CustomersDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing deployment.
@@ -596,7 +580,7 @@ class CustomersDeploymentsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -619,7 +603,7 @@ class CustomersDeploymentsResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -628,10 +612,8 @@ class CustomersDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalDeployment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDeployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -664,7 +646,7 @@ class CustomersDeploymentsDevicesResource {
     SasPortalDevice request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -686,7 +668,7 @@ class CustomersDeploymentsDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -695,10 +677,8 @@ class CustomersDeploymentsDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a signed device under a node or customer.
@@ -724,7 +704,7 @@ class CustomersDeploymentsDevicesResource {
     SasPortalCreateSignedDeviceRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -746,7 +726,7 @@ class CustomersDeploymentsDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices:createSigned';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -755,10 +735,8 @@ class CustomersDeploymentsDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists devices under a node or customer.
@@ -795,7 +773,7 @@ class CustomersDeploymentsDevicesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -823,7 +801,7 @@ class CustomersDeploymentsDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -832,10 +810,8 @@ class CustomersDeploymentsDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalListDevicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalListDevicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -867,7 +843,7 @@ class CustomersDevicesResource {
     SasPortalDevice request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -889,7 +865,7 @@ class CustomersDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -898,10 +874,8 @@ class CustomersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a signed device under a node or customer.
@@ -927,7 +901,7 @@ class CustomersDevicesResource {
     SasPortalCreateSignedDeviceRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -949,7 +923,7 @@ class CustomersDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices:createSigned';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -958,10 +932,8 @@ class CustomersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a device.
@@ -984,7 +956,7 @@ class CustomersDevicesResource {
   async.Future<SasPortalEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1001,7 +973,7 @@ class CustomersDevicesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1010,10 +982,8 @@ class CustomersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details about a device.
@@ -1036,7 +1006,7 @@ class CustomersDevicesResource {
   async.Future<SasPortalDevice> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1053,7 +1023,7 @@ class CustomersDevicesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1062,10 +1032,8 @@ class CustomersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists devices under a node or customer.
@@ -1102,7 +1070,7 @@ class CustomersDevicesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1130,7 +1098,7 @@ class CustomersDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1139,10 +1107,8 @@ class CustomersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalListDevicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalListDevicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves a device under another node or customer.
@@ -1168,7 +1134,7 @@ class CustomersDevicesResource {
     SasPortalMoveDeviceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1189,7 +1155,7 @@ class CustomersDevicesResource {
     _url =
         'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1198,10 +1164,8 @@ class CustomersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a device.
@@ -1230,7 +1194,7 @@ class CustomersDevicesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1253,7 +1217,7 @@ class CustomersDevicesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1262,10 +1226,8 @@ class CustomersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Signs a device.
@@ -1291,7 +1253,7 @@ class CustomersDevicesResource {
     SasPortalSignDeviceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1313,7 +1275,7 @@ class CustomersDevicesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':signDevice';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1322,10 +1284,8 @@ class CustomersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a signed device.
@@ -1351,7 +1311,7 @@ class CustomersDevicesResource {
     SasPortalUpdateSignedDeviceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1373,7 +1333,7 @@ class CustomersDevicesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':updateSigned';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1382,10 +1342,8 @@ class CustomersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1425,7 +1383,7 @@ class CustomersNodesResource {
     SasPortalNode request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1447,7 +1405,7 @@ class CustomersNodesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/nodes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1456,10 +1414,8 @@ class CustomersNodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalNode.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a node.
@@ -1482,7 +1438,7 @@ class CustomersNodesResource {
   async.Future<SasPortalEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1499,7 +1455,7 @@ class CustomersNodesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1508,10 +1464,8 @@ class CustomersNodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a requested node.
@@ -1534,7 +1488,7 @@ class CustomersNodesResource {
   async.Future<SasPortalNode> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1551,7 +1505,7 @@ class CustomersNodesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1560,10 +1514,8 @@ class CustomersNodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalNode.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists nodes.
@@ -1598,7 +1550,7 @@ class CustomersNodesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1626,7 +1578,7 @@ class CustomersNodesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/nodes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1635,10 +1587,8 @@ class CustomersNodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalListNodesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalListNodesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves a node under another node or customer.
@@ -1664,7 +1614,7 @@ class CustomersNodesResource {
     SasPortalMoveNodeRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1685,7 +1635,7 @@ class CustomersNodesResource {
     _url =
         'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1694,10 +1644,8 @@ class CustomersNodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing node.
@@ -1726,7 +1674,7 @@ class CustomersNodesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1749,7 +1697,7 @@ class CustomersNodesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1758,10 +1706,8 @@ class CustomersNodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalNode.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1795,7 +1741,7 @@ class CustomersNodesDeploymentsResource {
     SasPortalDeployment request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1817,7 +1763,7 @@ class CustomersNodesDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1826,10 +1772,8 @@ class CustomersNodesDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalDeployment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDeployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists deployments.
@@ -1865,7 +1809,7 @@ class CustomersNodesDeploymentsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1893,7 +1837,7 @@ class CustomersNodesDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1902,10 +1846,8 @@ class CustomersNodesDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalListDeploymentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalListDeploymentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1938,7 +1880,7 @@ class CustomersNodesDevicesResource {
     SasPortalDevice request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1960,7 +1902,7 @@ class CustomersNodesDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1969,10 +1911,8 @@ class CustomersNodesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a signed device under a node or customer.
@@ -1998,7 +1938,7 @@ class CustomersNodesDevicesResource {
     SasPortalCreateSignedDeviceRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2020,7 +1960,7 @@ class CustomersNodesDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices:createSigned';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2029,10 +1969,8 @@ class CustomersNodesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists devices under a node or customer.
@@ -2069,7 +2007,7 @@ class CustomersNodesDevicesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2097,7 +2035,7 @@ class CustomersNodesDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2106,10 +2044,8 @@ class CustomersNodesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalListDevicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalListDevicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2143,7 +2079,7 @@ class CustomersNodesNodesResource {
     SasPortalNode request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2165,7 +2101,7 @@ class CustomersNodesNodesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/nodes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2174,10 +2110,8 @@ class CustomersNodesNodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalNode.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists nodes.
@@ -2212,7 +2146,7 @@ class CustomersNodesNodesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2240,7 +2174,7 @@ class CustomersNodesNodesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/nodes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2249,10 +2183,8 @@ class CustomersNodesNodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalListNodesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalListNodesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2284,7 +2216,7 @@ class DeploymentsResource {
   async.Future<SasPortalDeployment> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2301,7 +2233,7 @@ class DeploymentsResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2310,10 +2242,8 @@ class DeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalDeployment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDeployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2342,7 +2272,7 @@ class DeploymentsDevicesResource {
   async.Future<SasPortalEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2359,7 +2289,7 @@ class DeploymentsDevicesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2368,10 +2298,8 @@ class DeploymentsDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details about a device.
@@ -2394,7 +2322,7 @@ class DeploymentsDevicesResource {
   async.Future<SasPortalDevice> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2411,7 +2339,7 @@ class DeploymentsDevicesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2420,10 +2348,8 @@ class DeploymentsDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves a device under another node or customer.
@@ -2449,7 +2375,7 @@ class DeploymentsDevicesResource {
     SasPortalMoveDeviceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2470,7 +2396,7 @@ class DeploymentsDevicesResource {
     _url =
         'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2479,10 +2405,8 @@ class DeploymentsDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a device.
@@ -2511,7 +2435,7 @@ class DeploymentsDevicesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2534,7 +2458,7 @@ class DeploymentsDevicesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2543,10 +2467,8 @@ class DeploymentsDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Signs a device.
@@ -2572,7 +2494,7 @@ class DeploymentsDevicesResource {
     SasPortalSignDeviceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2594,7 +2516,7 @@ class DeploymentsDevicesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':signDevice';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2603,10 +2525,8 @@ class DeploymentsDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a signed device.
@@ -2632,7 +2552,7 @@ class DeploymentsDevicesResource {
     SasPortalUpdateSignedDeviceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2654,7 +2574,7 @@ class DeploymentsDevicesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':updateSigned';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2663,10 +2583,8 @@ class DeploymentsDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2694,7 +2612,7 @@ class InstallerResource {
   async.Future<SasPortalGenerateSecretResponse> generateSecret(
     SasPortalGenerateSecretRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2711,7 +2629,7 @@ class InstallerResource {
 
     _url = 'v1alpha1/installer:generateSecret';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2720,10 +2638,8 @@ class InstallerResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalGenerateSecretResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalGenerateSecretResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Validates the identity of a Certified Professional Installer (CPI).
@@ -2745,7 +2661,7 @@ class InstallerResource {
   async.Future<SasPortalValidateInstallerResponse> validate(
     SasPortalValidateInstallerRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2762,7 +2678,7 @@ class InstallerResource {
 
     _url = 'v1alpha1/installer:validate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2771,10 +2687,8 @@ class InstallerResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalValidateInstallerResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalValidateInstallerResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2808,7 +2722,7 @@ class NodesResource {
   async.Future<SasPortalNode> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2825,7 +2739,7 @@ class NodesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2834,10 +2748,8 @@ class NodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalNode.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2869,7 +2781,7 @@ class NodesDeploymentsResource {
   async.Future<SasPortalEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2886,7 +2798,7 @@ class NodesDeploymentsResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2895,10 +2807,8 @@ class NodesDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a requested deployment.
@@ -2921,7 +2831,7 @@ class NodesDeploymentsResource {
   async.Future<SasPortalDeployment> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2938,7 +2848,7 @@ class NodesDeploymentsResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2947,10 +2857,8 @@ class NodesDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalDeployment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDeployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists deployments.
@@ -2986,7 +2894,7 @@ class NodesDeploymentsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3014,7 +2922,7 @@ class NodesDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3023,10 +2931,8 @@ class NodesDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalListDeploymentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalListDeploymentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves a deployment under another node or customer.
@@ -3052,7 +2958,7 @@ class NodesDeploymentsResource {
     SasPortalMoveDeploymentRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3073,7 +2979,7 @@ class NodesDeploymentsResource {
     _url =
         'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3082,10 +2988,8 @@ class NodesDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing deployment.
@@ -3114,7 +3018,7 @@ class NodesDeploymentsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3137,7 +3041,7 @@ class NodesDeploymentsResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3146,10 +3050,8 @@ class NodesDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalDeployment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDeployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3182,7 +3084,7 @@ class NodesDeploymentsDevicesResource {
     SasPortalDevice request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3204,7 +3106,7 @@ class NodesDeploymentsDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3213,10 +3115,8 @@ class NodesDeploymentsDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a signed device under a node or customer.
@@ -3242,7 +3142,7 @@ class NodesDeploymentsDevicesResource {
     SasPortalCreateSignedDeviceRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3264,7 +3164,7 @@ class NodesDeploymentsDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices:createSigned';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3273,10 +3173,8 @@ class NodesDeploymentsDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists devices under a node or customer.
@@ -3313,7 +3211,7 @@ class NodesDeploymentsDevicesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3341,7 +3239,7 @@ class NodesDeploymentsDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3350,10 +3248,8 @@ class NodesDeploymentsDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalListDevicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalListDevicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3385,7 +3281,7 @@ class NodesDevicesResource {
     SasPortalDevice request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3407,7 +3303,7 @@ class NodesDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3416,10 +3312,8 @@ class NodesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a signed device under a node or customer.
@@ -3445,7 +3339,7 @@ class NodesDevicesResource {
     SasPortalCreateSignedDeviceRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3467,7 +3361,7 @@ class NodesDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices:createSigned';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3476,10 +3370,8 @@ class NodesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a device.
@@ -3502,7 +3394,7 @@ class NodesDevicesResource {
   async.Future<SasPortalEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3519,7 +3411,7 @@ class NodesDevicesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3528,10 +3420,8 @@ class NodesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details about a device.
@@ -3554,7 +3444,7 @@ class NodesDevicesResource {
   async.Future<SasPortalDevice> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3571,7 +3461,7 @@ class NodesDevicesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3580,10 +3470,8 @@ class NodesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists devices under a node or customer.
@@ -3620,7 +3508,7 @@ class NodesDevicesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3648,7 +3536,7 @@ class NodesDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3657,10 +3545,8 @@ class NodesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalListDevicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalListDevicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves a device under another node or customer.
@@ -3686,7 +3572,7 @@ class NodesDevicesResource {
     SasPortalMoveDeviceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3707,7 +3593,7 @@ class NodesDevicesResource {
     _url =
         'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3716,10 +3602,8 @@ class NodesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a device.
@@ -3748,7 +3632,7 @@ class NodesDevicesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3771,7 +3655,7 @@ class NodesDevicesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3780,10 +3664,8 @@ class NodesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Signs a device.
@@ -3809,7 +3691,7 @@ class NodesDevicesResource {
     SasPortalSignDeviceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3831,7 +3713,7 @@ class NodesDevicesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':signDevice';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3840,10 +3722,8 @@ class NodesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a signed device.
@@ -3869,7 +3749,7 @@ class NodesDevicesResource {
     SasPortalUpdateSignedDeviceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3891,7 +3771,7 @@ class NodesDevicesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':updateSigned';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3900,10 +3780,8 @@ class NodesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3942,7 +3820,7 @@ class NodesNodesResource {
     SasPortalNode request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3964,7 +3842,7 @@ class NodesNodesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/nodes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3973,10 +3851,8 @@ class NodesNodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalNode.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a node.
@@ -3999,7 +3875,7 @@ class NodesNodesResource {
   async.Future<SasPortalEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4016,7 +3892,7 @@ class NodesNodesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4025,10 +3901,8 @@ class NodesNodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a requested node.
@@ -4051,7 +3925,7 @@ class NodesNodesResource {
   async.Future<SasPortalNode> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4068,7 +3942,7 @@ class NodesNodesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4077,10 +3951,8 @@ class NodesNodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalNode.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists nodes.
@@ -4115,7 +3987,7 @@ class NodesNodesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4143,7 +4015,7 @@ class NodesNodesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/nodes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4152,10 +4024,8 @@ class NodesNodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalListNodesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalListNodesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves a node under another node or customer.
@@ -4181,7 +4051,7 @@ class NodesNodesResource {
     SasPortalMoveNodeRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4202,7 +4072,7 @@ class NodesNodesResource {
     _url =
         'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4211,10 +4081,8 @@ class NodesNodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing node.
@@ -4243,7 +4111,7 @@ class NodesNodesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4266,7 +4134,7 @@ class NodesNodesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -4275,10 +4143,8 @@ class NodesNodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalNode.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4312,7 +4178,7 @@ class NodesNodesDeploymentsResource {
     SasPortalDeployment request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4334,7 +4200,7 @@ class NodesNodesDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4343,10 +4209,8 @@ class NodesNodesDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalDeployment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDeployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists deployments.
@@ -4382,7 +4246,7 @@ class NodesNodesDeploymentsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4410,7 +4274,7 @@ class NodesNodesDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4419,10 +4283,8 @@ class NodesNodesDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalListDeploymentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalListDeploymentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4454,7 +4316,7 @@ class NodesNodesDevicesResource {
     SasPortalDevice request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4476,7 +4338,7 @@ class NodesNodesDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4485,10 +4347,8 @@ class NodesNodesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a signed device under a node or customer.
@@ -4514,7 +4374,7 @@ class NodesNodesDevicesResource {
     SasPortalCreateSignedDeviceRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4536,7 +4396,7 @@ class NodesNodesDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices:createSigned';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4545,10 +4405,8 @@ class NodesNodesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalDevice.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists devices under a node or customer.
@@ -4585,7 +4443,7 @@ class NodesNodesDevicesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4613,7 +4471,7 @@ class NodesNodesDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4622,10 +4480,8 @@ class NodesNodesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalListDevicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalListDevicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4658,7 +4514,7 @@ class NodesNodesNodesResource {
     SasPortalNode request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4680,7 +4536,7 @@ class NodesNodesNodesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/nodes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4689,10 +4545,8 @@ class NodesNodesNodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalNode.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists nodes.
@@ -4727,7 +4581,7 @@ class NodesNodesNodesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4755,7 +4609,7 @@ class NodesNodesNodesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/nodes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4764,10 +4618,8 @@ class NodesNodesNodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalListNodesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalListNodesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4798,7 +4650,7 @@ class PoliciesResource {
   async.Future<SasPortalPolicy> get(
     SasPortalGetPolicyRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4815,7 +4667,7 @@ class PoliciesResource {
 
     _url = 'v1alpha1/policies:get';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4824,10 +4676,8 @@ class PoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalPolicy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -4851,7 +4701,7 @@ class PoliciesResource {
   async.Future<SasPortalPolicy> set(
     SasPortalSetPolicyRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4868,7 +4718,7 @@ class PoliciesResource {
 
     _url = 'v1alpha1/policies:set';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4877,10 +4727,8 @@ class PoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SasPortalPolicy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -4902,7 +4750,7 @@ class PoliciesResource {
   async.Future<SasPortalTestPermissionsResponse> test(
     SasPortalTestPermissionsRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4919,7 +4767,7 @@ class PoliciesResource {
 
     _url = 'v1alpha1/policies:test';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4928,10 +4776,8 @@ class PoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SasPortalTestPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SasPortalTestPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

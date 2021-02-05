@@ -119,7 +119,7 @@ class ActionResultsResource {
     core.bool inlineStderr,
     core.bool inlineStdout,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -156,7 +156,7 @@ class ActionResultsResource {
         '/' +
         commons.Escaper.ecapeVariable('$sizeBytes');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -165,10 +165,8 @@ class ActionResultsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BuildBazelRemoteExecutionV2ActionResult.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BuildBazelRemoteExecutionV2ActionResult.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Upload a new execution result.
@@ -223,7 +221,7 @@ class ActionResultsResource {
     core.String sizeBytes, {
     core.int resultsCachePolicy_priority,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -259,7 +257,7 @@ class ActionResultsResource {
         '/' +
         commons.Escaper.ecapeVariable('$sizeBytes');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -268,10 +266,8 @@ class ActionResultsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BuildBazelRemoteExecutionV2ActionResult.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BuildBazelRemoteExecutionV2ActionResult.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -349,7 +345,7 @@ class ActionsResource {
     BuildBazelRemoteExecutionV2ExecuteRequest request,
     core.String instanceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -371,7 +367,7 @@ class ActionsResource {
         commons.Escaper.ecapeVariableReserved('$instanceName') +
         '/actions:execute';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -380,10 +376,8 @@ class ActionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -429,7 +423,7 @@ class BlobsResource {
     BuildBazelRemoteExecutionV2BatchReadBlobsRequest request,
     core.String instanceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -451,7 +445,7 @@ class BlobsResource {
         commons.Escaper.ecapeVariableReserved('$instanceName') +
         '/blobs:batchRead';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -460,10 +454,8 @@ class BlobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BuildBazelRemoteExecutionV2BatchReadBlobsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BuildBazelRemoteExecutionV2BatchReadBlobsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Upload many blobs at once.
@@ -505,7 +497,7 @@ class BlobsResource {
     BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest request,
     core.String instanceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -527,7 +519,7 @@ class BlobsResource {
         commons.Escaper.ecapeVariableReserved('$instanceName') +
         '/blobs:batchUpdate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -536,10 +528,8 @@ class BlobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Determine if blobs are present in the CAS.
@@ -574,7 +564,7 @@ class BlobsResource {
     BuildBazelRemoteExecutionV2FindMissingBlobsRequest request,
     core.String instanceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -596,7 +586,7 @@ class BlobsResource {
         commons.Escaper.ecapeVariableReserved('$instanceName') +
         '/blobs:findMissing';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -605,10 +595,8 @@ class BlobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BuildBazelRemoteExecutionV2FindMissingBlobsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BuildBazelRemoteExecutionV2FindMissingBlobsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Fetch the entire directory tree rooted at a node.
@@ -667,7 +655,7 @@ class BlobsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -702,7 +690,7 @@ class BlobsResource {
         commons.Escaper.ecapeVariable('$sizeBytes') +
         ':getTree';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -711,10 +699,8 @@ class BlobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BuildBazelRemoteExecutionV2GetTreeResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BuildBazelRemoteExecutionV2GetTreeResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -753,7 +739,7 @@ class OperationsResource {
     BuildBazelRemoteExecutionV2WaitExecutionRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -775,7 +761,7 @@ class OperationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':waitExecution';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -784,10 +770,8 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -827,7 +811,7 @@ class V2Resource {
   async.Future<BuildBazelRemoteExecutionV2ServerCapabilities> getCapabilities(
     core.String instanceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -846,7 +830,7 @@ class V2Resource {
         commons.Escaper.ecapeVariableReserved('$instanceName') +
         '/capabilities';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -855,10 +839,8 @@ class V2Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BuildBazelRemoteExecutionV2ServerCapabilities.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BuildBazelRemoteExecutionV2ServerCapabilities.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

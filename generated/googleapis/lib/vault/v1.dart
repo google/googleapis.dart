@@ -96,7 +96,7 @@ class MattersResource {
     AddMatterPermissionsRequest request,
     core.String matterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -118,7 +118,7 @@ class MattersResource {
         commons.Escaper.ecapeVariable('$matterId') +
         ':addPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -127,10 +127,8 @@ class MattersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => MatterPermission.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return MatterPermission.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Closes the specified matter.
@@ -157,7 +155,7 @@ class MattersResource {
     CloseMatterRequest request,
     core.String matterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -178,7 +176,7 @@ class MattersResource {
     _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + ':close';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -187,10 +185,8 @@ class MattersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CloseMatterResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CloseMatterResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Counts the artifacts within the context of a matter and returns a detailed
@@ -216,7 +212,7 @@ class MattersResource {
     CountArtifactsRequest request,
     core.String matterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -237,7 +233,7 @@ class MattersResource {
     _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + ':count';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -246,9 +242,7 @@ class MattersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new matter with the given name and description.
@@ -273,7 +267,7 @@ class MattersResource {
   async.Future<Matter> create(
     Matter request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -290,7 +284,7 @@ class MattersResource {
 
     _url = 'v1/matters';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -299,9 +293,7 @@ class MattersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Matter.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Matter.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified matter.
@@ -325,7 +317,7 @@ class MattersResource {
   async.Future<Matter> delete(
     core.String matterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -342,7 +334,7 @@ class MattersResource {
 
     _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -351,9 +343,7 @@ class MattersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Matter.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Matter.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified matter.
@@ -384,7 +374,7 @@ class MattersResource {
     core.String matterId, {
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -404,7 +394,7 @@ class MattersResource {
 
     _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -413,9 +403,7 @@ class MattersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Matter.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Matter.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists matters the user has access to.
@@ -459,7 +447,7 @@ class MattersResource {
     core.String state,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -485,7 +473,7 @@ class MattersResource {
 
     _url = 'v1/matters';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -494,10 +482,8 @@ class MattersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListMattersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListMattersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes an account as a matter collaborator.
@@ -522,7 +508,7 @@ class MattersResource {
     RemoveMatterPermissionsRequest request,
     core.String matterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -544,7 +530,7 @@ class MattersResource {
         commons.Escaper.ecapeVariable('$matterId') +
         ':removePermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -553,9 +539,7 @@ class MattersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Reopens the specified matter.
@@ -582,7 +566,7 @@ class MattersResource {
     ReopenMatterRequest request,
     core.String matterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -603,7 +587,7 @@ class MattersResource {
     _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + ':reopen';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -612,10 +596,8 @@ class MattersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ReopenMatterResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ReopenMatterResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes the specified matter.
@@ -642,7 +624,7 @@ class MattersResource {
     UndeleteMatterRequest request,
     core.String matterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -664,7 +646,7 @@ class MattersResource {
         commons.Escaper.ecapeVariable('$matterId') +
         ':undelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -673,9 +655,7 @@ class MattersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Matter.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Matter.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified matter.
@@ -704,7 +684,7 @@ class MattersResource {
     Matter request,
     core.String matterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -724,7 +704,7 @@ class MattersResource {
 
     _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -733,9 +713,7 @@ class MattersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Matter.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Matter.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -766,7 +744,7 @@ class MattersExportsResource {
     Export request,
     core.String matterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -787,7 +765,7 @@ class MattersExportsResource {
     _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/exports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -796,9 +774,7 @@ class MattersExportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Export.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Export.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an Export.
@@ -823,7 +799,7 @@ class MattersExportsResource {
     core.String matterId,
     core.String exportId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -846,7 +822,7 @@ class MattersExportsResource {
         '/exports/' +
         commons.Escaper.ecapeVariable('$exportId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -855,9 +831,7 @@ class MattersExportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an Export.
@@ -882,7 +856,7 @@ class MattersExportsResource {
     core.String matterId,
     core.String exportId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -905,7 +879,7 @@ class MattersExportsResource {
         '/exports/' +
         commons.Escaper.ecapeVariable('$exportId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -914,9 +888,7 @@ class MattersExportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Export.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Export.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Exports.
@@ -944,7 +916,7 @@ class MattersExportsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -968,7 +940,7 @@ class MattersExportsResource {
     _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/exports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -977,10 +949,8 @@ class MattersExportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListExportsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListExportsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1020,7 +990,7 @@ class MattersHoldsResource {
     core.String matterId,
     core.String holdId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1047,7 +1017,7 @@ class MattersHoldsResource {
         commons.Escaper.ecapeVariable('$holdId') +
         ':addHeldAccounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1056,10 +1026,8 @@ class MattersHoldsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AddHeldAccountsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AddHeldAccountsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a hold in the given matter.
@@ -1084,7 +1052,7 @@ class MattersHoldsResource {
     Hold request,
     core.String matterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1105,7 +1073,7 @@ class MattersHoldsResource {
     _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/holds';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1114,9 +1082,7 @@ class MattersHoldsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Hold.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Hold.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes a hold by ID.
@@ -1143,7 +1109,7 @@ class MattersHoldsResource {
     core.String matterId,
     core.String holdId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1166,7 +1132,7 @@ class MattersHoldsResource {
         '/holds/' +
         commons.Escaper.ecapeVariable('$holdId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1175,9 +1141,7 @@ class MattersHoldsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a hold by ID.
@@ -1213,7 +1177,7 @@ class MattersHoldsResource {
     core.String holdId, {
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1239,7 +1203,7 @@ class MattersHoldsResource {
         '/holds/' +
         commons.Escaper.ecapeVariable('$holdId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1248,9 +1212,7 @@ class MattersHoldsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Hold.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Hold.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists holds within a matter.
@@ -1294,7 +1256,7 @@ class MattersHoldsResource {
     core.String pageToken,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1321,7 +1283,7 @@ class MattersHoldsResource {
     _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/holds';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1330,10 +1292,8 @@ class MattersHoldsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListHoldsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListHoldsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes HeldAccounts from a hold.
@@ -1365,7 +1325,7 @@ class MattersHoldsResource {
     core.String matterId,
     core.String holdId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1392,7 +1352,7 @@ class MattersHoldsResource {
         commons.Escaper.ecapeVariable('$holdId') +
         ':removeHeldAccounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1401,10 +1361,8 @@ class MattersHoldsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RemoveHeldAccountsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RemoveHeldAccountsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the OU and/or query parameters of a hold.
@@ -1436,7 +1394,7 @@ class MattersHoldsResource {
     core.String matterId,
     core.String holdId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1462,7 +1420,7 @@ class MattersHoldsResource {
         '/holds/' +
         commons.Escaper.ecapeVariable('$holdId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1471,9 +1429,7 @@ class MattersHoldsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Hold.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Hold.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1511,7 +1467,7 @@ class MattersHoldsAccountsResource {
     core.String matterId,
     core.String holdId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1538,7 +1494,7 @@ class MattersHoldsAccountsResource {
         commons.Escaper.ecapeVariable('$holdId') +
         '/accounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1547,10 +1503,8 @@ class MattersHoldsAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          HeldAccount.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return HeldAccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes a HeldAccount from a hold.
@@ -1581,7 +1535,7 @@ class MattersHoldsAccountsResource {
     core.String holdId,
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1609,7 +1563,7 @@ class MattersHoldsAccountsResource {
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1618,9 +1572,7 @@ class MattersHoldsAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists HeldAccounts for a hold.
@@ -1648,7 +1600,7 @@ class MattersHoldsAccountsResource {
     core.String matterId,
     core.String holdId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1672,7 +1624,7 @@ class MattersHoldsAccountsResource {
         commons.Escaper.ecapeVariable('$holdId') +
         '/accounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1681,10 +1633,8 @@ class MattersHoldsAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListHeldAccountsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListHeldAccountsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1717,7 +1667,7 @@ class MattersSavedQueriesResource {
     SavedQuery request,
     core.String matterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1739,7 +1689,7 @@ class MattersSavedQueriesResource {
         commons.Escaper.ecapeVariable('$matterId') +
         '/savedQueries';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1748,10 +1698,8 @@ class MattersSavedQueriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SavedQuery.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SavedQuery.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a saved query by Id.
@@ -1777,7 +1725,7 @@ class MattersSavedQueriesResource {
     core.String matterId,
     core.String savedQueryId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1800,7 +1748,7 @@ class MattersSavedQueriesResource {
         '/savedQueries/' +
         commons.Escaper.ecapeVariable('$savedQueryId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1809,9 +1757,7 @@ class MattersSavedQueriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a saved query by Id.
@@ -1837,7 +1783,7 @@ class MattersSavedQueriesResource {
     core.String matterId,
     core.String savedQueryId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1860,7 +1806,7 @@ class MattersSavedQueriesResource {
         '/savedQueries/' +
         commons.Escaper.ecapeVariable('$savedQueryId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1869,10 +1815,8 @@ class MattersSavedQueriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SavedQuery.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SavedQuery.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists saved queries within a matter.
@@ -1905,7 +1849,7 @@ class MattersSavedQueriesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1930,7 +1874,7 @@ class MattersSavedQueriesResource {
         commons.Escaper.ecapeVariable('$matterId') +
         '/savedQueries';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1939,10 +1883,8 @@ class MattersSavedQueriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListSavedQueriesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListSavedQueriesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1983,7 +1925,7 @@ class OperationsResource {
     CancelOperationRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2003,7 +1945,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2012,9 +1954,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -2041,7 +1981,7 @@ class OperationsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2058,7 +1998,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2067,9 +2007,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -2095,7 +2033,7 @@ class OperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2112,7 +2050,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2121,9 +2059,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -2164,7 +2100,7 @@ class OperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2190,7 +2126,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2199,10 +2135,8 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

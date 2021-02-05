@@ -312,7 +312,7 @@ class CseResource {
     core.String sort,
     core.int start,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -419,7 +419,7 @@ class CseResource {
 
     _url = 'customsearch/v1';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -428,9 +428,7 @@ class CseResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Search.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Search.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -693,7 +691,7 @@ class CseSiterestrictResource {
     core.String sort,
     core.int start,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -800,7 +798,7 @@ class CseSiterestrictResource {
 
     _url = 'customsearch/v1/siterestrict';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -809,9 +807,7 @@ class CseSiterestrictResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Search.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Search.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

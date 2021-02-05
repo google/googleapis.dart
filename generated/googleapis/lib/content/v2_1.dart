@@ -148,7 +148,7 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<AccountsAuthInfoResponse> authinfo({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -162,7 +162,7 @@ class AccountsResource {
 
     _url = 'content/v2.1/accounts/authinfo';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -171,10 +171,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountsAuthInfoResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountsAuthInfoResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Claims the website of a Merchant Center sub-account.
@@ -206,7 +204,7 @@ class AccountsResource {
     core.String accountId, {
     core.bool overwrite,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -233,7 +231,7 @@ class AccountsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/claimwebsite';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -242,10 +240,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountsClaimWebsiteResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountsClaimWebsiteResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves, inserts, updates, and deletes multiple Merchant Center
@@ -268,7 +264,7 @@ class AccountsResource {
   async.Future<AccountsCustomBatchResponse> custombatch(
     AccountsCustomBatchRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -285,7 +281,7 @@ class AccountsResource {
 
     _url = 'content/v2.1/accounts/batch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -294,10 +290,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountsCustomBatchResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountsCustomBatchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a Merchant Center sub-account.
@@ -320,12 +314,12 @@ class AccountsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String merchantId,
     core.String accountId, {
     core.bool force,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -353,7 +347,7 @@ class AccountsResource {
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -361,9 +355,6 @@ class AccountsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -398,7 +389,7 @@ class AccountsResource {
     core.String accountId, {
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -424,7 +415,7 @@ class AccountsResource {
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -433,9 +424,7 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a Merchant Center sub-account.
@@ -461,7 +450,7 @@ class AccountsResource {
     Account request,
     core.String merchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -483,7 +472,7 @@ class AccountsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -492,9 +481,7 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Performs an action on a link between two Merchant Center accounts, namely
@@ -525,7 +512,7 @@ class AccountsResource {
     core.String merchantId,
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -552,7 +539,7 @@ class AccountsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/link';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -561,10 +548,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountsLinkResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountsLinkResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the sub-accounts in your Merchant Center account.
@@ -605,7 +590,7 @@ class AccountsResource {
     core.String pageToken,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -636,7 +621,7 @@ class AccountsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -645,10 +630,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the list of accounts linked to your Merchant Center account.
@@ -682,7 +665,7 @@ class AccountsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -712,7 +695,7 @@ class AccountsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/listlinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -721,10 +704,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountsListLinksResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountsListLinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Merchant Center account.
@@ -756,7 +737,7 @@ class AccountsResource {
     core.String merchantId,
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -782,7 +763,7 @@ class AccountsResource {
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -791,9 +772,7 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates labels that are assigned to the Merchant Center account by CSS
@@ -822,7 +801,7 @@ class AccountsResource {
     core.String merchantId,
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -849,7 +828,7 @@ class AccountsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/updatelabels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -858,10 +837,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountsUpdateLabelsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountsUpdateLabelsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -892,7 +869,7 @@ class AccountsLabelsResource {
     AccountLabel request,
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -914,7 +891,7 @@ class AccountsLabelsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/labels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -923,10 +900,8 @@ class AccountsLabelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AccountLabel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountLabel.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a label and removes it from all accounts to which it was assigned.
@@ -945,11 +920,11 @@ class AccountsLabelsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String accountId,
     core.String labelId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -974,7 +949,7 @@ class AccountsLabelsResource {
         '/labels/' +
         commons.Escaper.ecapeVariable('$labelId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -982,9 +957,6 @@ class AccountsLabelsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1019,7 +991,7 @@ class AccountsLabelsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1044,7 +1016,7 @@ class AccountsLabelsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/labels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1053,10 +1025,8 @@ class AccountsLabelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAccountLabelsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAccountLabelsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a label.
@@ -1084,7 +1054,7 @@ class AccountsLabelsResource {
     core.String accountId,
     core.String labelId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1110,7 +1080,7 @@ class AccountsLabelsResource {
         '/labels/' +
         commons.Escaper.ecapeVariable('$labelId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1119,10 +1089,8 @@ class AccountsLabelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AccountLabel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountLabel.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1155,7 +1123,7 @@ class AccountsReturncarrierResource {
     AccountReturnCarrier request,
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1177,7 +1145,7 @@ class AccountsReturncarrierResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/returncarrier';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1186,10 +1154,8 @@ class AccountsReturncarrierResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountReturnCarrier.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountReturnCarrier.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a return carrier in the merchant account.
@@ -1210,11 +1176,11 @@ class AccountsReturncarrierResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String accountId,
     core.String carrierAccountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1239,7 +1205,7 @@ class AccountsReturncarrierResource {
         '/returncarrier/' +
         commons.Escaper.ecapeVariable('$carrierAccountId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1247,9 +1213,6 @@ class AccountsReturncarrierResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1273,7 +1236,7 @@ class AccountsReturncarrierResource {
   async.Future<ListAccountReturnCarrierResponse> list(
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1292,7 +1255,7 @@ class AccountsReturncarrierResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/returncarrier';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1301,10 +1264,8 @@ class AccountsReturncarrierResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAccountReturnCarrierResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAccountReturnCarrierResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a return carrier in the merchant account.
@@ -1334,7 +1295,7 @@ class AccountsReturncarrierResource {
     core.String accountId,
     core.String carrierAccountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1360,7 +1321,7 @@ class AccountsReturncarrierResource {
         '/returncarrier/' +
         commons.Escaper.ecapeVariable('$carrierAccountId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1369,10 +1330,8 @@ class AccountsReturncarrierResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountReturnCarrier.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountReturnCarrier.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1400,7 +1359,7 @@ class AccountstatusesResource {
   async.Future<AccountstatusesCustomBatchResponse> custombatch(
     AccountstatusesCustomBatchRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1417,7 +1376,7 @@ class AccountstatusesResource {
 
     _url = 'content/v2.1/accountstatuses/batch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1426,10 +1385,8 @@ class AccountstatusesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountstatusesCustomBatchResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountstatusesCustomBatchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the status of a Merchant Center account.
@@ -1462,7 +1419,7 @@ class AccountstatusesResource {
     core.String accountId, {
     core.List<core.String> destinations,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1488,7 +1445,7 @@ class AccountstatusesResource {
         '/accountstatuses/' +
         commons.Escaper.ecapeVariable('$accountId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1497,10 +1454,8 @@ class AccountstatusesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AccountStatus.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountStatus.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the statuses of the sub-accounts in your Merchant Center account.
@@ -1534,7 +1489,7 @@ class AccountstatusesResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1562,7 +1517,7 @@ class AccountstatusesResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accountstatuses';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1571,10 +1526,8 @@ class AccountstatusesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountstatusesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountstatusesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1603,7 +1556,7 @@ class AccounttaxResource {
   async.Future<AccounttaxCustomBatchResponse> custombatch(
     AccounttaxCustomBatchRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1620,7 +1573,7 @@ class AccounttaxResource {
 
     _url = 'content/v2.1/accounttax/batch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1629,10 +1582,8 @@ class AccounttaxResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccounttaxCustomBatchResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccounttaxCustomBatchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the tax settings of the account.
@@ -1660,7 +1611,7 @@ class AccounttaxResource {
     core.String merchantId,
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1683,7 +1634,7 @@ class AccounttaxResource {
         '/accounttax/' +
         commons.Escaper.ecapeVariable('$accountId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1692,10 +1643,8 @@ class AccounttaxResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AccountTax.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountTax.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the tax settings of the sub-accounts in your Merchant Center
@@ -1726,7 +1675,7 @@ class AccounttaxResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1751,7 +1700,7 @@ class AccounttaxResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accounttax';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1760,10 +1709,8 @@ class AccounttaxResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccounttaxListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccounttaxListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the tax settings of the account.
@@ -1796,7 +1743,7 @@ class AccounttaxResource {
     core.String merchantId,
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1822,7 +1769,7 @@ class AccounttaxResource {
         '/accounttax/' +
         commons.Escaper.ecapeVariable('$accountId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1831,10 +1778,8 @@ class AccounttaxResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AccountTax.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountTax.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1870,7 +1815,7 @@ class CollectionsResource {
     Collection request,
     core.String merchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1892,7 +1837,7 @@ class CollectionsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/collections';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1901,10 +1846,8 @@ class CollectionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Collection.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Collection.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a collection from your Merchant Center account.
@@ -1925,11 +1868,11 @@ class CollectionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String merchantId,
     core.String collectionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1954,7 +1897,7 @@ class CollectionsResource {
         '/collections/' +
         commons.Escaper.ecapeVariable('$collectionId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1962,9 +1905,6 @@ class CollectionsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1991,7 +1931,7 @@ class CollectionsResource {
     core.String merchantId,
     core.String collectionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2014,7 +1954,7 @@ class CollectionsResource {
         '/collections/' +
         commons.Escaper.ecapeVariable('$collectionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2023,10 +1963,8 @@ class CollectionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Collection.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Collection.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the collections in your Merchant Center account.
@@ -2062,7 +2000,7 @@ class CollectionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2087,7 +2025,7 @@ class CollectionsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/collections';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2096,10 +2034,8 @@ class CollectionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCollectionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCollectionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2132,7 +2068,7 @@ class CollectionstatusesResource {
     core.String merchantId,
     core.String collectionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2155,7 +2091,7 @@ class CollectionstatusesResource {
         '/collectionstatuses/' +
         commons.Escaper.ecapeVariable('$collectionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2164,10 +2100,8 @@ class CollectionstatusesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CollectionStatus.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CollectionStatus.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the statuses of the collections in your Merchant Center account.
@@ -2200,7 +2134,7 @@ class CollectionstatusesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2225,7 +2159,7 @@ class CollectionstatusesResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/collectionstatuses';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2234,10 +2168,8 @@ class CollectionstatusesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCollectionStatusesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCollectionStatusesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2271,7 +2203,7 @@ class CssesResource {
     core.String cssGroupId,
     core.String cssDomainId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2294,7 +2226,7 @@ class CssesResource {
         '/csses/' +
         commons.Escaper.ecapeVariable('$cssDomainId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2303,9 +2235,7 @@ class CssesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Css.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Css.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists CSS domains affiliated with a CSS group.
@@ -2339,7 +2269,7 @@ class CssesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2364,7 +2294,7 @@ class CssesResource {
         commons.Escaper.ecapeVariable('$cssGroupId') +
         '/csses';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2373,10 +2303,8 @@ class CssesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCssesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCssesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates labels that are assigned to a CSS domain by its CSS group.
@@ -2404,7 +2332,7 @@ class CssesResource {
     core.String cssGroupId,
     core.String cssDomainId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2431,7 +2359,7 @@ class CssesResource {
         commons.Escaper.ecapeVariable('$cssDomainId') +
         '/updatelabels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2440,9 +2368,7 @@ class CssesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Css.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Css.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2471,7 +2397,7 @@ class DatafeedsResource {
   async.Future<DatafeedsCustomBatchResponse> custombatch(
     DatafeedsCustomBatchRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2488,7 +2414,7 @@ class DatafeedsResource {
 
     _url = 'content/v2.1/datafeeds/batch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2497,10 +2423,8 @@ class DatafeedsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DatafeedsCustomBatchResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DatafeedsCustomBatchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a datafeed configuration from your Merchant Center account.
@@ -2520,11 +2444,11 @@ class DatafeedsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String merchantId,
     core.String datafeedId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2549,7 +2473,7 @@ class DatafeedsResource {
         '/datafeeds/' +
         commons.Escaper.ecapeVariable('$datafeedId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2557,9 +2481,6 @@ class DatafeedsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -2589,7 +2510,7 @@ class DatafeedsResource {
     core.String merchantId,
     core.String datafeedId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2613,7 +2534,7 @@ class DatafeedsResource {
         commons.Escaper.ecapeVariable('$datafeedId') +
         '/fetchNow';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2622,10 +2543,8 @@ class DatafeedsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DatafeedsFetchNowResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DatafeedsFetchNowResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a datafeed configuration from your Merchant Center account.
@@ -2651,7 +2570,7 @@ class DatafeedsResource {
     core.String merchantId,
     core.String datafeedId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2674,7 +2593,7 @@ class DatafeedsResource {
         '/datafeeds/' +
         commons.Escaper.ecapeVariable('$datafeedId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2683,9 +2602,7 @@ class DatafeedsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Datafeed.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Datafeed.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Registers a datafeed configuration with your Merchant Center account.
@@ -2711,7 +2628,7 @@ class DatafeedsResource {
     Datafeed request,
     core.String merchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2733,7 +2650,7 @@ class DatafeedsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/datafeeds';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2742,9 +2659,7 @@ class DatafeedsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Datafeed.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Datafeed.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the configurations for datafeeds in your Merchant Center account.
@@ -2774,7 +2689,7 @@ class DatafeedsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2799,7 +2714,7 @@ class DatafeedsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/datafeeds';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2808,10 +2723,8 @@ class DatafeedsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DatafeedsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DatafeedsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a datafeed configuration of your Merchant Center account.
@@ -2842,7 +2755,7 @@ class DatafeedsResource {
     core.String merchantId,
     core.String datafeedId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2868,7 +2781,7 @@ class DatafeedsResource {
         '/datafeeds/' +
         commons.Escaper.ecapeVariable('$datafeedId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2877,9 +2790,7 @@ class DatafeedsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Datafeed.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Datafeed.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2907,7 +2818,7 @@ class DatafeedstatusesResource {
   async.Future<DatafeedstatusesCustomBatchResponse> custombatch(
     DatafeedstatusesCustomBatchRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2924,7 +2835,7 @@ class DatafeedstatusesResource {
 
     _url = 'content/v2.1/datafeedstatuses/batch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2933,10 +2844,8 @@ class DatafeedstatusesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DatafeedstatusesCustomBatchResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DatafeedstatusesCustomBatchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the status of a datafeed from your Merchant Center account.
@@ -2974,7 +2883,7 @@ class DatafeedstatusesResource {
     core.String country,
     core.String language,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3003,7 +2912,7 @@ class DatafeedstatusesResource {
         '/datafeedstatuses/' +
         commons.Escaper.ecapeVariable('$datafeedId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3012,10 +2921,8 @@ class DatafeedstatusesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DatafeedStatus.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DatafeedStatus.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the statuses of the datafeeds in your Merchant Center account.
@@ -3045,7 +2952,7 @@ class DatafeedstatusesResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3070,7 +2977,7 @@ class DatafeedstatusesResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/datafeedstatuses';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3079,10 +2986,8 @@ class DatafeedstatusesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DatafeedstatusesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DatafeedstatusesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3111,7 +3016,7 @@ class LiasettingsResource {
   async.Future<LiasettingsCustomBatchResponse> custombatch(
     LiasettingsCustomBatchRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3128,7 +3033,7 @@ class LiasettingsResource {
 
     _url = 'content/v2.1/liasettings/batch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3137,10 +3042,8 @@ class LiasettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LiasettingsCustomBatchResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LiasettingsCustomBatchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the LIA settings of the account.
@@ -3168,7 +3071,7 @@ class LiasettingsResource {
     core.String merchantId,
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3191,7 +3094,7 @@ class LiasettingsResource {
         '/liasettings/' +
         commons.Escaper.ecapeVariable('$accountId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3200,10 +3103,8 @@ class LiasettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LiaSettings.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LiaSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the list of accessible Google My Business accounts.
@@ -3232,7 +3133,7 @@ class LiasettingsResource {
     core.String merchantId,
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3256,7 +3157,7 @@ class LiasettingsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/accessiblegmbaccounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3265,10 +3166,8 @@ class LiasettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LiasettingsGetAccessibleGmbAccountsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LiasettingsGetAccessibleGmbAccountsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the LIA settings of the sub-accounts in your Merchant Center
@@ -3299,7 +3198,7 @@ class LiasettingsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3324,7 +3223,7 @@ class LiasettingsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/liasettings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3333,10 +3232,8 @@ class LiasettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LiasettingsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LiasettingsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the list of POS data providers that have active settings for the
@@ -3356,7 +3253,7 @@ class LiasettingsResource {
   /// this method will complete with the same error.
   async.Future<LiasettingsListPosDataProvidersResponse> listposdataproviders({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3370,7 +3267,7 @@ class LiasettingsResource {
 
     _url = 'content/v2.1/liasettings/posdataproviders';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3379,10 +3276,8 @@ class LiasettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LiasettingsListPosDataProvidersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LiasettingsListPosDataProvidersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Requests access to a specified Google My Business account.
@@ -3412,7 +3307,7 @@ class LiasettingsResource {
     core.String accountId,
     core.String gmbEmail, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3440,7 +3335,7 @@ class LiasettingsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/requestgmbaccess';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3449,10 +3344,8 @@ class LiasettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LiasettingsRequestGmbAccessResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LiasettingsRequestGmbAccessResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Requests inventory validation for the specified country.
@@ -3484,7 +3377,7 @@ class LiasettingsResource {
     core.String accountId,
     core.String country, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3512,7 +3405,7 @@ class LiasettingsResource {
         '/requestinventoryverification/' +
         commons.Escaper.ecapeVariable('$country');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3521,10 +3414,8 @@ class LiasettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LiasettingsRequestInventoryVerificationResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LiasettingsRequestInventoryVerificationResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the inventory verification contract for the specified country.
@@ -3565,7 +3456,7 @@ class LiasettingsResource {
     core.String contactName,
     core.String contactEmail, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3605,7 +3496,7 @@ class LiasettingsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/setinventoryverificationcontact';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3614,10 +3505,8 @@ class LiasettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LiasettingsSetInventoryVerificationContactResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LiasettingsSetInventoryVerificationContactResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the POS data provider for the specified country.
@@ -3655,7 +3544,7 @@ class LiasettingsResource {
     core.String posDataProviderId,
     core.String posExternalAccountId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3689,7 +3578,7 @@ class LiasettingsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/setposdataprovider';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3698,10 +3587,8 @@ class LiasettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LiasettingsSetPosDataProviderResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LiasettingsSetPosDataProviderResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the LIA settings of the account.
@@ -3734,7 +3621,7 @@ class LiasettingsResource {
     core.String merchantId,
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3760,7 +3647,7 @@ class LiasettingsResource {
         '/liasettings/' +
         commons.Escaper.ecapeVariable('$accountId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -3769,10 +3656,8 @@ class LiasettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LiaSettings.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LiaSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3801,7 +3686,7 @@ class LocalinventoryResource {
   async.Future<LocalinventoryCustomBatchResponse> custombatch(
     LocalinventoryCustomBatchRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3818,7 +3703,7 @@ class LocalinventoryResource {
 
     _url = 'content/v2.1/localinventory/batch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3827,10 +3712,8 @@ class LocalinventoryResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LocalinventoryCustomBatchResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LocalinventoryCustomBatchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the local inventory of a product in your Merchant Center account.
@@ -3860,7 +3743,7 @@ class LocalinventoryResource {
     core.String merchantId,
     core.String productId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3887,7 +3770,7 @@ class LocalinventoryResource {
         commons.Escaper.ecapeVariable('$productId') +
         '/localinventory';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3896,10 +3779,8 @@ class LocalinventoryResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LocalInventory.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LocalInventory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3935,7 +3816,7 @@ class OrderinvoicesResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3962,7 +3843,7 @@ class OrderinvoicesResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/createChargeInvoice';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3971,10 +3852,8 @@ class OrderinvoicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrderinvoicesCreateChargeInvoiceResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrderinvoicesCreateChargeInvoiceResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a refund invoice for one or more shipment groups, and triggers a
@@ -4008,7 +3887,7 @@ class OrderinvoicesResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4035,7 +3914,7 @@ class OrderinvoicesResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/createRefundInvoice';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4044,10 +3923,8 @@ class OrderinvoicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrderinvoicesCreateRefundInvoiceResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrderinvoicesCreateRefundInvoiceResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4091,7 +3968,7 @@ class OrderreportsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4122,7 +3999,7 @@ class OrderreportsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orderreports/disbursements';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4131,10 +4008,8 @@ class OrderreportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrderreportsListDisbursementsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrderreportsListDisbursementsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of transactions for a disbursement from your Merchant
@@ -4177,7 +4052,7 @@ class OrderreportsResource {
     core.String transactionEndDate,
     core.String transactionStartDate,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4213,7 +4088,7 @@ class OrderreportsResource {
         commons.Escaper.ecapeVariable('$disbursementId') +
         '/transactions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4222,10 +4097,8 @@ class OrderreportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrderreportsListTransactionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrderreportsListTransactionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4260,7 +4133,7 @@ class OrderreturnsResource {
     core.String merchantId,
     core.String returnId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4287,7 +4160,7 @@ class OrderreturnsResource {
         commons.Escaper.ecapeVariable('$returnId') +
         '/acknowledge';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4296,10 +4169,8 @@ class OrderreturnsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrderreturnsAcknowledgeResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrderreturnsAcknowledgeResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Create return in your Merchant Center account.
@@ -4325,7 +4196,7 @@ class OrderreturnsResource {
     OrderreturnsCreateOrderReturnRequest request,
     core.String merchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4347,7 +4218,7 @@ class OrderreturnsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orderreturns/createOrderReturn';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4356,10 +4227,8 @@ class OrderreturnsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrderreturnsCreateOrderReturnResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrderreturnsCreateOrderReturnResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves an order return from your Merchant Center account.
@@ -4385,7 +4254,7 @@ class OrderreturnsResource {
     core.String merchantId,
     core.String returnId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4408,7 +4277,7 @@ class OrderreturnsResource {
         '/orderreturns/' +
         commons.Escaper.ecapeVariable('$returnId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4417,10 +4286,8 @@ class OrderreturnsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => MerchantOrderReturn.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return MerchantOrderReturn.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists order returns in your Merchant Center account.
@@ -4507,7 +4374,7 @@ class OrderreturnsResource {
     core.List<core.String> shipmentTrackingNumbers,
     core.List<core.String> shipmentTypes,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4559,7 +4426,7 @@ class OrderreturnsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orderreturns';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4568,10 +4435,8 @@ class OrderreturnsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrderreturnsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrderreturnsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Processes return in your Merchant Center account.
@@ -4600,7 +4465,7 @@ class OrderreturnsResource {
     core.String merchantId,
     core.String returnId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4627,7 +4492,7 @@ class OrderreturnsResource {
         commons.Escaper.ecapeVariable('$returnId') +
         '/process';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4636,10 +4501,8 @@ class OrderreturnsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrderreturnsProcessResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrderreturnsProcessResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4674,7 +4537,7 @@ class OrdersResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4701,7 +4564,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/acknowledge';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4710,10 +4573,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersAcknowledgeResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersAcknowledgeResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sandbox only.
@@ -4741,7 +4602,7 @@ class OrdersResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4765,7 +4626,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/advance';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4774,10 +4635,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersAdvanceTestOrderResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersAdvanceTestOrderResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Cancels all line items in an order, making a full refund.
@@ -4806,7 +4665,7 @@ class OrdersResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4833,7 +4692,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4842,10 +4701,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersCancelResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersCancelResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Cancels a line item, making a full refund.
@@ -4874,7 +4731,7 @@ class OrdersResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4901,7 +4758,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/cancelLineItem';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4910,10 +4767,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersCancelLineItemResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersCancelLineItemResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sandbox only.
@@ -4945,7 +4800,7 @@ class OrdersResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4972,7 +4827,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/cancelByCustomer';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4981,10 +4836,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersCancelTestOrderByCustomerResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersCancelTestOrderByCustomerResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sandbox only.
@@ -5012,7 +4865,7 @@ class OrdersResource {
     OrdersCreateTestOrderRequest request,
     core.String merchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5034,7 +4887,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/testorders';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5043,10 +4896,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersCreateTestOrderResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersCreateTestOrderResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sandbox only.
@@ -5077,7 +4928,7 @@ class OrdersResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5104,7 +4955,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/testreturn';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5113,10 +4964,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersCreateTestReturnResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersCreateTestReturnResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves an order from your Merchant Center account.
@@ -5142,7 +4991,7 @@ class OrdersResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5165,7 +5014,7 @@ class OrdersResource {
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5174,9 +5023,7 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Order.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Order.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves an order using merchant order ID.
@@ -5202,7 +5049,7 @@ class OrdersResource {
     core.String merchantId,
     core.String merchantOrderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5225,7 +5072,7 @@ class OrdersResource {
         '/ordersbymerchantid/' +
         commons.Escaper.ecapeVariable('$merchantOrderId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5234,10 +5081,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersGetByMerchantOrderIdResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersGetByMerchantOrderIdResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sandbox only.
@@ -5276,7 +5121,7 @@ class OrdersResource {
     core.String templateName, {
     core.String country,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5302,7 +5147,7 @@ class OrdersResource {
         '/testordertemplates/' +
         commons.Escaper.ecapeVariable('$templateName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5311,10 +5156,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersGetTestOrderTemplateResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersGetTestOrderTemplateResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Notifies that item return and refund was handled directly by merchant
@@ -5353,7 +5196,7 @@ class OrdersResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5380,7 +5223,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/inStoreRefundLineItem';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5389,10 +5232,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersInStoreRefundLineItemResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersInStoreRefundLineItemResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the orders in your Merchant Center account.
@@ -5449,7 +5290,7 @@ class OrdersResource {
     core.String placedDateStart,
     core.List<core.String> statuses,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5489,7 +5330,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orders';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5498,10 +5339,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Issues a partial or total refund for items and shipment.
@@ -5530,7 +5369,7 @@ class OrdersResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5557,7 +5396,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/refunditem';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5566,10 +5405,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersRefundItemResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersRefundItemResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Issues a partial or total refund for an order.
@@ -5598,7 +5435,7 @@ class OrdersResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5625,7 +5462,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/refundorder';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5634,10 +5471,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersRefundOrderResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersRefundOrderResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Rejects return on an line item.
@@ -5666,7 +5501,7 @@ class OrdersResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5693,7 +5528,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/rejectReturnLineItem';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5702,10 +5537,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersRejectReturnLineItemResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersRejectReturnLineItemResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns and refunds a line item.
@@ -5741,7 +5574,7 @@ class OrdersResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5768,7 +5601,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/returnRefundLineItem';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5777,10 +5610,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersReturnRefundLineItemResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersReturnRefundLineItemResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets (or overrides if it already exists) merchant provided annotations in
@@ -5814,7 +5645,7 @@ class OrdersResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5841,7 +5672,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/setLineItemMetadata';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5850,10 +5681,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersSetLineItemMetadataResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersSetLineItemMetadataResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks line item(s) as shipped.
@@ -5882,7 +5711,7 @@ class OrdersResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5909,7 +5738,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/shipLineItems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5918,10 +5747,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersShipLineItemsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersShipLineItemsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates ship by and delivery by dates for a line item.
@@ -5951,7 +5778,7 @@ class OrdersResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5978,7 +5805,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/updateLineItemShippingDetails';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5987,10 +5814,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersUpdateLineItemShippingDetailsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersUpdateLineItemShippingDetailsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the merchant order ID for a given order.
@@ -6019,7 +5844,7 @@ class OrdersResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6046,7 +5871,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/updateMerchantOrderId';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6055,10 +5880,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersUpdateMerchantOrderIdResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersUpdateMerchantOrderIdResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a shipment's status, carrier, and/or tracking ID.
@@ -6087,7 +5910,7 @@ class OrdersResource {
     core.String merchantId,
     core.String orderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6114,7 +5937,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$orderId') +
         '/updateShipment';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6123,10 +5946,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersUpdateShipmentResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersUpdateShipmentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6159,7 +5980,7 @@ class OrdertrackingsignalsResource {
     OrderTrackingSignal request,
     core.String merchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6181,7 +6002,7 @@ class OrdertrackingsignalsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/ordertrackingsignals';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6190,10 +6011,8 @@ class OrdertrackingsignalsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrderTrackingSignal.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrderTrackingSignal.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6221,7 +6040,7 @@ class PosResource {
   async.Future<PosCustomBatchResponse> custombatch(
     PosCustomBatchRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6238,7 +6057,7 @@ class PosResource {
 
     _url = 'content/v2.1/pos/batch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6247,10 +6066,8 @@ class PosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PosCustomBatchResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PosCustomBatchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a store for the given merchant.
@@ -6271,12 +6088,12 @@ class PosResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String merchantId,
     core.String targetMerchantId,
     core.String storeCode, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6306,7 +6123,7 @@ class PosResource {
         '/store/' +
         commons.Escaper.ecapeVariable('$storeCode');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -6314,9 +6131,6 @@ class PosResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -6345,7 +6159,7 @@ class PosResource {
     core.String targetMerchantId,
     core.String storeCode, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6373,7 +6187,7 @@ class PosResource {
         '/store/' +
         commons.Escaper.ecapeVariable('$storeCode');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6382,9 +6196,7 @@ class PosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PosStore.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PosStore.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a store for the given merchant.
@@ -6412,7 +6224,7 @@ class PosResource {
     core.String merchantId,
     core.String targetMerchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6439,7 +6251,7 @@ class PosResource {
         commons.Escaper.ecapeVariable('$targetMerchantId') +
         '/store';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6448,9 +6260,7 @@ class PosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PosStore.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PosStore.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Submit inventory for the given merchant.
@@ -6478,7 +6288,7 @@ class PosResource {
     core.String merchantId,
     core.String targetMerchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6505,7 +6315,7 @@ class PosResource {
         commons.Escaper.ecapeVariable('$targetMerchantId') +
         '/inventory';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6514,10 +6324,8 @@ class PosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PosInventoryResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PosInventoryResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the stores of the target merchant.
@@ -6542,7 +6350,7 @@ class PosResource {
     core.String merchantId,
     core.String targetMerchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6566,7 +6374,7 @@ class PosResource {
         commons.Escaper.ecapeVariable('$targetMerchantId') +
         '/store';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6575,10 +6383,8 @@ class PosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          PosListResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PosListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Submit a sale event for the given merchant.
@@ -6606,7 +6412,7 @@ class PosResource {
     core.String merchantId,
     core.String targetMerchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6633,7 +6439,7 @@ class PosResource {
         commons.Escaper.ecapeVariable('$targetMerchantId') +
         '/sale';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6642,10 +6448,8 @@ class PosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          PosSaleResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PosSaleResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6673,7 +6477,7 @@ class ProductsResource {
   async.Future<ProductsCustomBatchResponse> custombatch(
     ProductsCustomBatchRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6690,7 +6494,7 @@ class ProductsResource {
 
     _url = 'content/v2.1/products/batch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6699,10 +6503,8 @@ class ProductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ProductsCustomBatchResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ProductsCustomBatchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a product from your Merchant Center account.
@@ -6724,12 +6526,12 @@ class ProductsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String merchantId,
     core.String productId, {
     core.String feedId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6757,7 +6559,7 @@ class ProductsResource {
         '/products/' +
         commons.Escaper.ecapeVariable('$productId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -6765,9 +6567,6 @@ class ProductsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -6794,7 +6593,7 @@ class ProductsResource {
     core.String merchantId,
     core.String productId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6817,7 +6616,7 @@ class ProductsResource {
         '/products/' +
         commons.Escaper.ecapeVariable('$productId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6826,9 +6625,7 @@ class ProductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Product.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Product.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Uploads a product to your Merchant Center account.
@@ -6860,7 +6657,7 @@ class ProductsResource {
     core.String merchantId, {
     core.String feedId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6885,7 +6682,7 @@ class ProductsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/products';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6894,9 +6691,7 @@ class ProductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Product.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Product.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the products in your Merchant Center account.
@@ -6929,7 +6724,7 @@ class ProductsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6954,7 +6749,7 @@ class ProductsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/products';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6963,10 +6758,8 @@ class ProductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ProductsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ProductsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6997,7 +6790,7 @@ class ProductstatusesResource {
   async.Future<ProductstatusesCustomBatchResponse> custombatch(
     ProductstatusesCustomBatchRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7014,7 +6807,7 @@ class ProductstatusesResource {
 
     _url = 'content/v2.1/productstatuses/batch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7023,10 +6816,8 @@ class ProductstatusesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ProductstatusesCustomBatchResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ProductstatusesCustomBatchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the status of a product from your Merchant Center account.
@@ -7056,7 +6847,7 @@ class ProductstatusesResource {
     core.String productId, {
     core.List<core.String> destinations,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7082,7 +6873,7 @@ class ProductstatusesResource {
         '/productstatuses/' +
         commons.Escaper.ecapeVariable('$productId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7091,10 +6882,8 @@ class ProductstatusesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ProductStatus.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ProductStatus.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the statuses of the products in your Merchant Center account.
@@ -7128,7 +6917,7 @@ class ProductstatusesResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7156,7 +6945,7 @@ class ProductstatusesResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/productstatuses';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7165,10 +6954,8 @@ class ProductstatusesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ProductstatusesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ProductstatusesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7229,7 +7016,7 @@ class ProductstatusesRepricingreportsResource {
     core.String ruleId,
     core.String startDate,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7268,7 +7055,7 @@ class ProductstatusesRepricingreportsResource {
         commons.Escaper.ecapeVariable('$productId') +
         '/repricingreports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7277,10 +7064,8 @@ class ProductstatusesRepricingreportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListRepricingProductReportsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListRepricingProductReportsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7310,7 +7095,7 @@ class PubsubnotificationsettingsResource {
   async.Future<PubsubNotificationSettings> get(
     core.String merchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7329,7 +7114,7 @@ class PubsubnotificationsettingsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/pubsubnotificationsettings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7338,10 +7123,8 @@ class PubsubnotificationsettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PubsubNotificationSettings.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PubsubNotificationSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Register a Merchant Center account for pubsub notifications.
@@ -7368,7 +7151,7 @@ class PubsubnotificationsettingsResource {
     PubsubNotificationSettings request,
     core.String merchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7390,7 +7173,7 @@ class PubsubnotificationsettingsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/pubsubnotificationsettings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -7399,10 +7182,8 @@ class PubsubnotificationsettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PubsubNotificationSettings.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PubsubNotificationSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7431,7 +7212,7 @@ class RegionalinventoryResource {
   async.Future<RegionalinventoryCustomBatchResponse> custombatch(
     RegionalinventoryCustomBatchRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7448,7 +7229,7 @@ class RegionalinventoryResource {
 
     _url = 'content/v2.1/regionalinventory/batch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7457,10 +7238,8 @@ class RegionalinventoryResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RegionalinventoryCustomBatchResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RegionalinventoryCustomBatchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the regional inventory of a product in your Merchant Center
@@ -7494,7 +7273,7 @@ class RegionalinventoryResource {
     core.String merchantId,
     core.String productId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7521,7 +7300,7 @@ class RegionalinventoryResource {
         commons.Escaper.ecapeVariable('$productId') +
         '/regionalinventory';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7530,10 +7309,8 @@ class RegionalinventoryResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RegionalInventory.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RegionalInventory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7568,7 +7345,7 @@ class RegionsResource {
     core.String merchantId, {
     core.String regionId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7593,7 +7370,7 @@ class RegionsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/regions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7602,9 +7379,7 @@ class RegionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Region.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Region.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a region definition from your Merchant Center account.
@@ -7624,11 +7399,11 @@ class RegionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String merchantId,
     core.String regionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7653,7 +7428,7 @@ class RegionsResource {
         '/regions/' +
         commons.Escaper.ecapeVariable('$regionId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -7661,9 +7436,6 @@ class RegionsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -7690,7 +7462,7 @@ class RegionsResource {
     core.String merchantId,
     core.String regionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7713,7 +7485,7 @@ class RegionsResource {
         '/regions/' +
         commons.Escaper.ecapeVariable('$regionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7722,9 +7494,7 @@ class RegionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Region.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Region.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the regions in your Merchant Center account.
@@ -7759,7 +7529,7 @@ class RegionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7784,7 +7554,7 @@ class RegionsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/regions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7793,10 +7563,8 @@ class RegionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListRegionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListRegionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a region definition in your Merchant Center account.
@@ -7828,7 +7596,7 @@ class RegionsResource {
     core.String regionId, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7857,7 +7625,7 @@ class RegionsResource {
         '/regions/' +
         commons.Escaper.ecapeVariable('$regionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -7866,9 +7634,7 @@ class RegionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Region.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Region.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7906,7 +7672,7 @@ class RepricingrulesResource {
     core.String merchantId, {
     core.String ruleId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7931,7 +7697,7 @@ class RepricingrulesResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/repricingrules';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7940,10 +7706,8 @@ class RepricingrulesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          RepricingRule.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return RepricingRule.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a repricing rule in your Merchant Center account.
@@ -7963,11 +7727,11 @@ class RepricingrulesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String merchantId,
     core.String ruleId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7992,7 +7756,7 @@ class RepricingrulesResource {
         '/repricingrules/' +
         commons.Escaper.ecapeVariable('$ruleId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -8000,9 +7764,6 @@ class RepricingrulesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -8029,7 +7790,7 @@ class RepricingrulesResource {
     core.String merchantId,
     core.String ruleId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8052,7 +7813,7 @@ class RepricingrulesResource {
         '/repricingrules/' +
         commons.Escaper.ecapeVariable('$ruleId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8061,10 +7822,8 @@ class RepricingrulesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          RepricingRule.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return RepricingRule.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the repricing rules in your Merchant Center account.
@@ -8107,7 +7866,7 @@ class RepricingrulesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8138,7 +7897,7 @@ class RepricingrulesResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/repricingrules';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8147,10 +7906,8 @@ class RepricingrulesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListRepricingRulesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListRepricingRulesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a repricing rule in your Merchant Center account.
@@ -8184,7 +7941,7 @@ class RepricingrulesResource {
     core.String merchantId,
     core.String ruleId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8210,7 +7967,7 @@ class RepricingrulesResource {
         '/repricingrules/' +
         commons.Escaper.ecapeVariable('$ruleId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -8219,10 +7976,8 @@ class RepricingrulesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          RepricingRule.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return RepricingRule.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8276,7 +8031,7 @@ class RepricingrulesRepricingreportsResource {
     core.String pageToken,
     core.String startDate,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8312,7 +8067,7 @@ class RepricingrulesRepricingreportsResource {
         commons.Escaper.ecapeVariable('$ruleId') +
         '/repricingreports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8321,10 +8076,8 @@ class RepricingrulesRepricingreportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListRepricingRuleReportsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListRepricingRuleReportsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8352,7 +8105,7 @@ class ReturnaddressResource {
   async.Future<ReturnaddressCustomBatchResponse> custombatch(
     ReturnaddressCustomBatchRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8369,7 +8122,7 @@ class ReturnaddressResource {
 
     _url = 'content/v2.1/returnaddress/batch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -8378,10 +8131,8 @@ class ReturnaddressResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ReturnaddressCustomBatchResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ReturnaddressCustomBatchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a return address for the given Merchant Center account.
@@ -8401,11 +8152,11 @@ class ReturnaddressResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String merchantId,
     core.String returnAddressId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8430,7 +8181,7 @@ class ReturnaddressResource {
         '/returnaddress/' +
         commons.Escaper.ecapeVariable('$returnAddressId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -8438,9 +8189,6 @@ class ReturnaddressResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -8466,7 +8214,7 @@ class ReturnaddressResource {
     core.String merchantId,
     core.String returnAddressId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8489,7 +8237,7 @@ class ReturnaddressResource {
         '/returnaddress/' +
         commons.Escaper.ecapeVariable('$returnAddressId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8498,10 +8246,8 @@ class ReturnaddressResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ReturnAddress.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ReturnAddress.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a return address for the Merchant Center account.
@@ -8526,7 +8272,7 @@ class ReturnaddressResource {
     ReturnAddress request,
     core.String merchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8548,7 +8294,7 @@ class ReturnaddressResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/returnaddress';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -8557,10 +8303,8 @@ class ReturnaddressResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ReturnAddress.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ReturnAddress.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the return addresses of the Merchant Center account.
@@ -8593,7 +8337,7 @@ class ReturnaddressResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8621,7 +8365,7 @@ class ReturnaddressResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/returnaddress';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8630,10 +8374,8 @@ class ReturnaddressResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ReturnaddressListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ReturnaddressListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8661,7 +8403,7 @@ class ReturnpolicyResource {
   async.Future<ReturnpolicyCustomBatchResponse> custombatch(
     ReturnpolicyCustomBatchRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8678,7 +8420,7 @@ class ReturnpolicyResource {
 
     _url = 'content/v2.1/returnpolicy/batch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -8687,10 +8429,8 @@ class ReturnpolicyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ReturnpolicyCustomBatchResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ReturnpolicyCustomBatchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a return policy for the given Merchant Center account.
@@ -8710,11 +8450,11 @@ class ReturnpolicyResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String merchantId,
     core.String returnPolicyId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8739,7 +8479,7 @@ class ReturnpolicyResource {
         '/returnpolicy/' +
         commons.Escaper.ecapeVariable('$returnPolicyId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -8747,9 +8487,6 @@ class ReturnpolicyResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -8775,7 +8512,7 @@ class ReturnpolicyResource {
     core.String merchantId,
     core.String returnPolicyId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8798,7 +8535,7 @@ class ReturnpolicyResource {
         '/returnpolicy/' +
         commons.Escaper.ecapeVariable('$returnPolicyId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8807,10 +8544,8 @@ class ReturnpolicyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ReturnPolicy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ReturnPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a return policy for the Merchant Center account.
@@ -8835,7 +8570,7 @@ class ReturnpolicyResource {
     ReturnPolicy request,
     core.String merchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8857,7 +8592,7 @@ class ReturnpolicyResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/returnpolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -8866,10 +8601,8 @@ class ReturnpolicyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ReturnPolicy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ReturnPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the return policies of the Merchant Center account.
@@ -8891,7 +8624,7 @@ class ReturnpolicyResource {
   async.Future<ReturnpolicyListResponse> list(
     core.String merchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8910,7 +8643,7 @@ class ReturnpolicyResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/returnpolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8919,10 +8652,8 @@ class ReturnpolicyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ReturnpolicyListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ReturnpolicyListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8953,7 +8684,7 @@ class SettlementreportsResource {
     core.String merchantId,
     core.String settlementId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8976,7 +8707,7 @@ class SettlementreportsResource {
         '/settlementreports/' +
         commons.Escaper.ecapeVariable('$settlementId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8985,10 +8716,8 @@ class SettlementreportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SettlementReport.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SettlementReport.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of settlement reports from your Merchant Center account.
@@ -9026,7 +8755,7 @@ class SettlementreportsResource {
     core.String transferEndDate,
     core.String transferStartDate,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9057,7 +8786,7 @@ class SettlementreportsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/settlementreports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9066,10 +8795,8 @@ class SettlementreportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SettlementreportsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SettlementreportsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9113,7 +8840,7 @@ class SettlementtransactionsResource {
     core.String pageToken,
     core.List<core.String> transactionIds,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9146,7 +8873,7 @@ class SettlementtransactionsResource {
         commons.Escaper.ecapeVariable('$settlementId') +
         '/transactions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9155,10 +8882,8 @@ class SettlementtransactionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SettlementtransactionsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SettlementtransactionsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9187,7 +8912,7 @@ class ShippingsettingsResource {
   async.Future<ShippingsettingsCustomBatchResponse> custombatch(
     ShippingsettingsCustomBatchRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9204,7 +8929,7 @@ class ShippingsettingsResource {
 
     _url = 'content/v2.1/shippingsettings/batch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -9213,10 +8938,8 @@ class ShippingsettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ShippingsettingsCustomBatchResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ShippingsettingsCustomBatchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the shipping settings of the account.
@@ -9244,7 +8967,7 @@ class ShippingsettingsResource {
     core.String merchantId,
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9267,7 +8990,7 @@ class ShippingsettingsResource {
         '/shippingsettings/' +
         commons.Escaper.ecapeVariable('$accountId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9276,10 +8999,8 @@ class ShippingsettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ShippingSettings.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ShippingSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves supported carriers and carrier services for an account.
@@ -9303,7 +9024,7 @@ class ShippingsettingsResource {
       getsupportedcarriers(
     core.String merchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9322,7 +9043,7 @@ class ShippingsettingsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/supportedCarriers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9331,10 +9052,8 @@ class ShippingsettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ShippingsettingsGetSupportedCarriersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ShippingsettingsGetSupportedCarriersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves supported holidays for an account.
@@ -9358,7 +9077,7 @@ class ShippingsettingsResource {
       getsupportedholidays(
     core.String merchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9377,7 +9096,7 @@ class ShippingsettingsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/supportedHolidays';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9386,10 +9105,8 @@ class ShippingsettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ShippingsettingsGetSupportedHolidaysResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ShippingsettingsGetSupportedHolidaysResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves supported pickup services for an account.
@@ -9413,7 +9130,7 @@ class ShippingsettingsResource {
       getsupportedpickupservices(
     core.String merchantId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9432,7 +9149,7 @@ class ShippingsettingsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/supportedPickupServices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9441,10 +9158,8 @@ class ShippingsettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ShippingsettingsGetSupportedPickupServicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ShippingsettingsGetSupportedPickupServicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the shipping settings of the sub-accounts in your Merchant Center
@@ -9475,7 +9190,7 @@ class ShippingsettingsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9500,7 +9215,7 @@ class ShippingsettingsResource {
         commons.Escaper.ecapeVariable('$merchantId') +
         '/shippingsettings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9509,10 +9224,8 @@ class ShippingsettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ShippingsettingsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ShippingsettingsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the shipping settings of the account.
@@ -9545,7 +9258,7 @@ class ShippingsettingsResource {
     core.String merchantId,
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9571,7 +9284,7 @@ class ShippingsettingsResource {
         '/shippingsettings/' +
         commons.Escaper.ecapeVariable('$accountId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -9580,10 +9293,8 @@ class ShippingsettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ShippingSettings.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ShippingSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

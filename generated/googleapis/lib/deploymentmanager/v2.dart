@@ -114,7 +114,7 @@ class DeploymentsResource {
     core.String project,
     core.String deployment, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -141,7 +141,7 @@ class DeploymentsResource {
         commons.Escaper.ecapeVariable('$deployment') +
         '/cancelPreview';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -150,9 +150,7 @@ class DeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a deployment and all of the resources in the deployment.
@@ -185,7 +183,7 @@ class DeploymentsResource {
     core.String deployment, {
     core.String deletePolicy,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -211,7 +209,7 @@ class DeploymentsResource {
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -220,9 +218,7 @@ class DeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about a specific deployment.
@@ -250,7 +246,7 @@ class DeploymentsResource {
     core.String project,
     core.String deployment, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -273,7 +269,7 @@ class DeploymentsResource {
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -282,10 +278,8 @@ class DeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Deployment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Deployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -319,7 +313,7 @@ class DeploymentsResource {
     core.String resource, {
     core.int optionsRequestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -348,7 +342,7 @@ class DeploymentsResource {
         commons.Escaper.ecapeVariable('$resource') +
         '/getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -357,9 +351,7 @@ class DeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a deployment and all of the resources described by the deployment
@@ -403,7 +395,7 @@ class DeploymentsResource {
     core.String createPolicy,
     core.bool preview,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -431,7 +423,7 @@ class DeploymentsResource {
         commons.Escaper.ecapeVariable('$project') +
         '/global/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -440,9 +432,7 @@ class DeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all deployments for a given project.
@@ -507,7 +497,7 @@ class DeploymentsResource {
     core.String orderBy,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -538,7 +528,7 @@ class DeploymentsResource {
         commons.Escaper.ecapeVariable('$project') +
         '/global/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -547,10 +537,8 @@ class DeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DeploymentsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DeploymentsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches a deployment and all of the resources described by the deployment
@@ -606,7 +594,7 @@ class DeploymentsResource {
     core.String deletePolicy,
     core.bool preview,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -641,7 +629,7 @@ class DeploymentsResource {
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -650,9 +638,7 @@ class DeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -686,7 +672,7 @@ class DeploymentsResource {
     core.String project,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -713,7 +699,7 @@ class DeploymentsResource {
         commons.Escaper.ecapeVariable('$resource') +
         '/setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -722,9 +708,7 @@ class DeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Stops an ongoing operation.
@@ -758,7 +742,7 @@ class DeploymentsResource {
     core.String project,
     core.String deployment, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -785,7 +769,7 @@ class DeploymentsResource {
         commons.Escaper.ecapeVariable('$deployment') +
         '/stop';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -794,9 +778,7 @@ class DeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -828,7 +810,7 @@ class DeploymentsResource {
     core.String project,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -855,7 +837,7 @@ class DeploymentsResource {
         commons.Escaper.ecapeVariable('$resource') +
         '/testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -864,10 +846,8 @@ class DeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a deployment and all of the resources described by the deployment
@@ -923,7 +903,7 @@ class DeploymentsResource {
     core.String deletePolicy,
     core.bool preview,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -958,7 +938,7 @@ class DeploymentsResource {
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -967,9 +947,7 @@ class DeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1007,7 +985,7 @@ class ManifestsResource {
     core.String deployment,
     core.String manifest, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1035,7 +1013,7 @@ class ManifestsResource {
         '/manifests/' +
         commons.Escaper.ecapeVariable('$manifest');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1044,9 +1022,7 @@ class ManifestsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Manifest.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Manifest.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all manifests for a given deployment.
@@ -1115,7 +1091,7 @@ class ManifestsResource {
     core.String orderBy,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1151,7 +1127,7 @@ class ManifestsResource {
         commons.Escaper.ecapeVariable('$deployment') +
         '/manifests';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1160,10 +1136,8 @@ class ManifestsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ManifestsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ManifestsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1196,7 +1170,7 @@ class OperationsResource {
     core.String project,
     core.String operation, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1219,7 +1193,7 @@ class OperationsResource {
         '/global/operations/' +
         commons.Escaper.ecapeVariable('$operation');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1228,9 +1202,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all operations for a project.
@@ -1295,7 +1267,7 @@ class OperationsResource {
     core.String orderBy,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1326,7 +1298,7 @@ class OperationsResource {
         commons.Escaper.ecapeVariable('$project') +
         '/global/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1335,10 +1307,8 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OperationsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OperationsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1375,7 +1345,7 @@ class ResourcesResource {
     core.String deployment,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1403,7 +1373,7 @@ class ResourcesResource {
         '/resources/' +
         commons.Escaper.ecapeVariable('$resource');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1412,9 +1382,7 @@ class ResourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Resource.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Resource.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all resources in a given deployment.
@@ -1483,7 +1451,7 @@ class ResourcesResource {
     core.String orderBy,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1519,7 +1487,7 @@ class ResourcesResource {
         commons.Escaper.ecapeVariable('$deployment') +
         '/resources';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1528,10 +1496,8 @@ class ResourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ResourcesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ResourcesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1602,7 +1568,7 @@ class TypesResource {
     core.String orderBy,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1633,7 +1599,7 @@ class TypesResource {
         commons.Escaper.ecapeVariable('$project') +
         '/global/types';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1642,10 +1608,8 @@ class TypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TypesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TypesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

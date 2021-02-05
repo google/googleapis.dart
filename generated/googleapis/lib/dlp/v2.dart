@@ -130,7 +130,7 @@ class InfoTypesResource {
     core.String locationId,
     core.String parent,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -156,7 +156,7 @@ class InfoTypesResource {
 
     _url = 'v2/infoTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -165,10 +165,8 @@ class InfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -222,7 +220,7 @@ class LocationsInfoTypesResource {
     core.String languageCode,
     core.String locationId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -249,7 +247,7 @@ class LocationsInfoTypesResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/infoTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -258,10 +256,8 @@ class LocationsInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -326,7 +322,7 @@ class OrganizationsDeidentifyTemplatesResource {
     GooglePrivacyDlpV2CreateDeidentifyTemplateRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -348,7 +344,7 @@ class OrganizationsDeidentifyTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deidentifyTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -357,10 +353,8 @@ class OrganizationsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a DeidentifyTemplate.
@@ -390,7 +384,7 @@ class OrganizationsDeidentifyTemplatesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -407,7 +401,7 @@ class OrganizationsDeidentifyTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -416,10 +410,8 @@ class OrganizationsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a DeidentifyTemplate.
@@ -449,7 +441,7 @@ class OrganizationsDeidentifyTemplatesResource {
   async.Future<GooglePrivacyDlpV2DeidentifyTemplate> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -466,7 +458,7 @@ class OrganizationsDeidentifyTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -475,10 +467,8 @@ class OrganizationsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists DeidentifyTemplates.
@@ -537,7 +527,7 @@ class OrganizationsDeidentifyTemplatesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -568,7 +558,7 @@ class OrganizationsDeidentifyTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deidentifyTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -577,10 +567,8 @@ class OrganizationsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the DeidentifyTemplate.
@@ -613,7 +601,7 @@ class OrganizationsDeidentifyTemplatesResource {
     GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -633,7 +621,7 @@ class OrganizationsDeidentifyTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -642,10 +630,8 @@ class OrganizationsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -694,7 +680,7 @@ class OrganizationsInspectTemplatesResource {
     GooglePrivacyDlpV2CreateInspectTemplateRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -716,7 +702,7 @@ class OrganizationsInspectTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/inspectTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -725,10 +711,8 @@ class OrganizationsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2InspectTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an InspectTemplate.
@@ -757,7 +741,7 @@ class OrganizationsInspectTemplatesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -774,7 +758,7 @@ class OrganizationsInspectTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -783,10 +767,8 @@ class OrganizationsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an InspectTemplate.
@@ -815,7 +797,7 @@ class OrganizationsInspectTemplatesResource {
   async.Future<GooglePrivacyDlpV2InspectTemplate> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -832,7 +814,7 @@ class OrganizationsInspectTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -841,10 +823,8 @@ class OrganizationsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2InspectTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists InspectTemplates.
@@ -902,7 +882,7 @@ class OrganizationsInspectTemplatesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -933,7 +913,7 @@ class OrganizationsInspectTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/inspectTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -942,10 +922,8 @@ class OrganizationsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the InspectTemplate.
@@ -976,7 +954,7 @@ class OrganizationsInspectTemplatesResource {
     GooglePrivacyDlpV2UpdateInspectTemplateRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -996,7 +974,7 @@ class OrganizationsInspectTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1005,10 +983,8 @@ class OrganizationsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2InspectTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1076,7 +1052,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
     GooglePrivacyDlpV2CreateDeidentifyTemplateRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1098,7 +1074,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deidentifyTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1107,10 +1083,8 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a DeidentifyTemplate.
@@ -1140,7 +1114,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1157,7 +1131,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1166,10 +1140,8 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a DeidentifyTemplate.
@@ -1199,7 +1171,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
   async.Future<GooglePrivacyDlpV2DeidentifyTemplate> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1216,7 +1188,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1225,10 +1197,8 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists DeidentifyTemplates.
@@ -1287,7 +1257,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1318,7 +1288,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deidentifyTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1327,10 +1297,8 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the DeidentifyTemplate.
@@ -1363,7 +1331,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
     GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1383,7 +1351,7 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1392,10 +1360,8 @@ class OrganizationsLocationsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1482,7 +1448,7 @@ class OrganizationsLocationsDlpJobsResource {
     core.String pageToken,
     core.String type,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1518,7 +1484,7 @@ class OrganizationsLocationsDlpJobsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/dlpJobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1527,10 +1493,8 @@ class OrganizationsLocationsDlpJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1579,7 +1543,7 @@ class OrganizationsLocationsInspectTemplatesResource {
     GooglePrivacyDlpV2CreateInspectTemplateRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1601,7 +1565,7 @@ class OrganizationsLocationsInspectTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/inspectTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1610,10 +1574,8 @@ class OrganizationsLocationsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2InspectTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an InspectTemplate.
@@ -1642,7 +1604,7 @@ class OrganizationsLocationsInspectTemplatesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1659,7 +1621,7 @@ class OrganizationsLocationsInspectTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1668,10 +1630,8 @@ class OrganizationsLocationsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an InspectTemplate.
@@ -1700,7 +1660,7 @@ class OrganizationsLocationsInspectTemplatesResource {
   async.Future<GooglePrivacyDlpV2InspectTemplate> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1717,7 +1677,7 @@ class OrganizationsLocationsInspectTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1726,10 +1686,8 @@ class OrganizationsLocationsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2InspectTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists InspectTemplates.
@@ -1787,7 +1745,7 @@ class OrganizationsLocationsInspectTemplatesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1818,7 +1776,7 @@ class OrganizationsLocationsInspectTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/inspectTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1827,10 +1785,8 @@ class OrganizationsLocationsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the InspectTemplate.
@@ -1861,7 +1817,7 @@ class OrganizationsLocationsInspectTemplatesResource {
     GooglePrivacyDlpV2UpdateInspectTemplateRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1881,7 +1837,7 @@ class OrganizationsLocationsInspectTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1890,10 +1846,8 @@ class OrganizationsLocationsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2InspectTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1938,7 +1892,7 @@ class OrganizationsLocationsJobTriggersResource {
     GooglePrivacyDlpV2CreateJobTriggerRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1960,7 +1914,7 @@ class OrganizationsLocationsJobTriggersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/jobTriggers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1969,10 +1923,8 @@ class OrganizationsLocationsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2JobTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a job trigger.
@@ -1999,7 +1951,7 @@ class OrganizationsLocationsJobTriggersResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2016,7 +1968,7 @@ class OrganizationsLocationsJobTriggersResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2025,10 +1977,8 @@ class OrganizationsLocationsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a job trigger.
@@ -2055,7 +2005,7 @@ class OrganizationsLocationsJobTriggersResource {
   async.Future<GooglePrivacyDlpV2JobTrigger> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2072,7 +2022,7 @@ class OrganizationsLocationsJobTriggersResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2081,10 +2031,8 @@ class OrganizationsLocationsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2JobTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists job triggers.
@@ -2157,7 +2105,7 @@ class OrganizationsLocationsJobTriggersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2191,7 +2139,7 @@ class OrganizationsLocationsJobTriggersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/jobTriggers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2200,10 +2148,8 @@ class OrganizationsLocationsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a job trigger.
@@ -2233,7 +2179,7 @@ class OrganizationsLocationsJobTriggersResource {
     GooglePrivacyDlpV2UpdateJobTriggerRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2253,7 +2199,7 @@ class OrganizationsLocationsJobTriggersResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2262,10 +2208,8 @@ class OrganizationsLocationsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2JobTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2314,7 +2258,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
     GooglePrivacyDlpV2CreateStoredInfoTypeRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2336,7 +2280,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/storedInfoTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2345,10 +2289,8 @@ class OrganizationsLocationsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2StoredInfoType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a stored infoType.
@@ -2378,7 +2320,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2395,7 +2337,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2404,10 +2346,8 @@ class OrganizationsLocationsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a stored infoType.
@@ -2436,7 +2376,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
   async.Future<GooglePrivacyDlpV2StoredInfoType> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2453,7 +2393,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2462,10 +2402,8 @@ class OrganizationsLocationsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2StoredInfoType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists stored infoTypes.
@@ -2525,7 +2463,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2556,7 +2494,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/storedInfoTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2565,10 +2503,8 @@ class OrganizationsLocationsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the stored infoType by creating a new version.
@@ -2601,7 +2537,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
     GooglePrivacyDlpV2UpdateStoredInfoTypeRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2621,7 +2557,7 @@ class OrganizationsLocationsStoredInfoTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2630,10 +2566,8 @@ class OrganizationsLocationsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2StoredInfoType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2682,7 +2616,7 @@ class OrganizationsStoredInfoTypesResource {
     GooglePrivacyDlpV2CreateStoredInfoTypeRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2704,7 +2638,7 @@ class OrganizationsStoredInfoTypesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/storedInfoTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2713,10 +2647,8 @@ class OrganizationsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2StoredInfoType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a stored infoType.
@@ -2745,7 +2677,7 @@ class OrganizationsStoredInfoTypesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2762,7 +2694,7 @@ class OrganizationsStoredInfoTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2771,10 +2703,8 @@ class OrganizationsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a stored infoType.
@@ -2802,7 +2732,7 @@ class OrganizationsStoredInfoTypesResource {
   async.Future<GooglePrivacyDlpV2StoredInfoType> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2819,7 +2749,7 @@ class OrganizationsStoredInfoTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2828,10 +2758,8 @@ class OrganizationsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2StoredInfoType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists stored infoTypes.
@@ -2891,7 +2819,7 @@ class OrganizationsStoredInfoTypesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2922,7 +2850,7 @@ class OrganizationsStoredInfoTypesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/storedInfoTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2931,10 +2859,8 @@ class OrganizationsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the stored infoType by creating a new version.
@@ -2966,7 +2892,7 @@ class OrganizationsStoredInfoTypesResource {
     GooglePrivacyDlpV2UpdateStoredInfoTypeRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2986,7 +2912,7 @@ class OrganizationsStoredInfoTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2995,10 +2921,8 @@ class OrganizationsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2StoredInfoType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3065,7 +2989,7 @@ class ProjectsContentResource {
     GooglePrivacyDlpV2DeidentifyContentRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3087,7 +3011,7 @@ class ProjectsContentResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/content:deidentify';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3096,10 +3020,8 @@ class ProjectsContentResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Finds potentially sensitive info in content.
@@ -3141,7 +3063,7 @@ class ProjectsContentResource {
     GooglePrivacyDlpV2InspectContentRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3163,7 +3085,7 @@ class ProjectsContentResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/content:inspect';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3172,10 +3094,8 @@ class ProjectsContentResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2InspectContentResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2InspectContentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Re-identifies content that has been de-identified.
@@ -3214,7 +3134,7 @@ class ProjectsContentResource {
     GooglePrivacyDlpV2ReidentifyContentRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3236,7 +3156,7 @@ class ProjectsContentResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/content:reidentify';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3245,10 +3165,8 @@ class ProjectsContentResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3298,7 +3216,7 @@ class ProjectsDeidentifyTemplatesResource {
     GooglePrivacyDlpV2CreateDeidentifyTemplateRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3320,7 +3238,7 @@ class ProjectsDeidentifyTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deidentifyTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3329,10 +3247,8 @@ class ProjectsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a DeidentifyTemplate.
@@ -3361,7 +3277,7 @@ class ProjectsDeidentifyTemplatesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3378,7 +3294,7 @@ class ProjectsDeidentifyTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3387,10 +3303,8 @@ class ProjectsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a DeidentifyTemplate.
@@ -3419,7 +3333,7 @@ class ProjectsDeidentifyTemplatesResource {
   async.Future<GooglePrivacyDlpV2DeidentifyTemplate> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3436,7 +3350,7 @@ class ProjectsDeidentifyTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3445,10 +3359,8 @@ class ProjectsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists DeidentifyTemplates.
@@ -3507,7 +3419,7 @@ class ProjectsDeidentifyTemplatesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3538,7 +3450,7 @@ class ProjectsDeidentifyTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deidentifyTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3547,10 +3459,8 @@ class ProjectsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the DeidentifyTemplate.
@@ -3582,7 +3492,7 @@ class ProjectsDeidentifyTemplatesResource {
     GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3602,7 +3512,7 @@ class ProjectsDeidentifyTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3611,10 +3521,8 @@ class ProjectsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3650,7 +3558,7 @@ class ProjectsDlpJobsResource {
     GooglePrivacyDlpV2CancelDlpJobRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3670,7 +3578,7 @@ class ProjectsDlpJobsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3679,10 +3587,8 @@ class ProjectsDlpJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new job to inspect storage or calculate risk metrics.
@@ -3723,7 +3629,7 @@ class ProjectsDlpJobsResource {
     GooglePrivacyDlpV2CreateDlpJobRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3744,7 +3650,7 @@ class ProjectsDlpJobsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/dlpJobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3753,10 +3659,8 @@ class ProjectsDlpJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DlpJob.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DlpJob.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running DlpJob.
@@ -3784,7 +3688,7 @@ class ProjectsDlpJobsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3801,7 +3705,7 @@ class ProjectsDlpJobsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3810,10 +3714,8 @@ class ProjectsDlpJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running DlpJob.
@@ -3839,7 +3741,7 @@ class ProjectsDlpJobsResource {
   async.Future<GooglePrivacyDlpV2DlpJob> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3856,7 +3758,7 @@ class ProjectsDlpJobsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3865,10 +3767,8 @@ class ProjectsDlpJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DlpJob.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DlpJob.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists DlpJobs that match the specified filter in the request.
@@ -3948,7 +3848,7 @@ class ProjectsDlpJobsResource {
     core.String pageToken,
     core.String type,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3984,7 +3884,7 @@ class ProjectsDlpJobsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/dlpJobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3993,10 +3893,8 @@ class ProjectsDlpJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4044,7 +3942,7 @@ class ProjectsImageResource {
     GooglePrivacyDlpV2RedactImageRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4066,7 +3964,7 @@ class ProjectsImageResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/image:redact';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4075,10 +3973,8 @@ class ProjectsImageResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2RedactImageResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2RedactImageResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4127,7 +4023,7 @@ class ProjectsInspectTemplatesResource {
     GooglePrivacyDlpV2CreateInspectTemplateRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4149,7 +4045,7 @@ class ProjectsInspectTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/inspectTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4158,10 +4054,8 @@ class ProjectsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2InspectTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an InspectTemplate.
@@ -4189,7 +4083,7 @@ class ProjectsInspectTemplatesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4206,7 +4100,7 @@ class ProjectsInspectTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4215,10 +4109,8 @@ class ProjectsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an InspectTemplate.
@@ -4246,7 +4138,7 @@ class ProjectsInspectTemplatesResource {
   async.Future<GooglePrivacyDlpV2InspectTemplate> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4263,7 +4155,7 @@ class ProjectsInspectTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4272,10 +4164,8 @@ class ProjectsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2InspectTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists InspectTemplates.
@@ -4333,7 +4223,7 @@ class ProjectsInspectTemplatesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4364,7 +4254,7 @@ class ProjectsInspectTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/inspectTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4373,10 +4263,8 @@ class ProjectsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the InspectTemplate.
@@ -4406,7 +4294,7 @@ class ProjectsInspectTemplatesResource {
     GooglePrivacyDlpV2UpdateInspectTemplateRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4426,7 +4314,7 @@ class ProjectsInspectTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -4435,10 +4323,8 @@ class ProjectsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2InspectTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4475,7 +4361,7 @@ class ProjectsJobTriggersResource {
     GooglePrivacyDlpV2ActivateJobTriggerRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4495,7 +4381,7 @@ class ProjectsJobTriggersResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':activate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4504,10 +4390,8 @@ class ProjectsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DlpJob.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DlpJob.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a job trigger to run DLP actions such as scanning storage for
@@ -4545,7 +4429,7 @@ class ProjectsJobTriggersResource {
     GooglePrivacyDlpV2CreateJobTriggerRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4567,7 +4451,7 @@ class ProjectsJobTriggersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/jobTriggers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4576,10 +4460,8 @@ class ProjectsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2JobTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a job trigger.
@@ -4605,7 +4487,7 @@ class ProjectsJobTriggersResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4622,7 +4504,7 @@ class ProjectsJobTriggersResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4631,10 +4513,8 @@ class ProjectsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a job trigger.
@@ -4660,7 +4540,7 @@ class ProjectsJobTriggersResource {
   async.Future<GooglePrivacyDlpV2JobTrigger> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4677,7 +4557,7 @@ class ProjectsJobTriggersResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4686,10 +4566,8 @@ class ProjectsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2JobTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists job triggers.
@@ -4762,7 +4640,7 @@ class ProjectsJobTriggersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4796,7 +4674,7 @@ class ProjectsJobTriggersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/jobTriggers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4805,10 +4683,8 @@ class ProjectsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a job trigger.
@@ -4837,7 +4713,7 @@ class ProjectsJobTriggersResource {
     GooglePrivacyDlpV2UpdateJobTriggerRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4857,7 +4733,7 @@ class ProjectsJobTriggersResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -4866,10 +4742,8 @@ class ProjectsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2JobTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4938,7 +4812,7 @@ class ProjectsLocationsContentResource {
     GooglePrivacyDlpV2DeidentifyContentRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4960,7 +4834,7 @@ class ProjectsLocationsContentResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/content:deidentify';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4969,10 +4843,8 @@ class ProjectsLocationsContentResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Finds potentially sensitive info in content.
@@ -5014,7 +4886,7 @@ class ProjectsLocationsContentResource {
     GooglePrivacyDlpV2InspectContentRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5036,7 +4908,7 @@ class ProjectsLocationsContentResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/content:inspect';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5045,10 +4917,8 @@ class ProjectsLocationsContentResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2InspectContentResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2InspectContentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Re-identifies content that has been de-identified.
@@ -5087,7 +4957,7 @@ class ProjectsLocationsContentResource {
     GooglePrivacyDlpV2ReidentifyContentRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5109,7 +4979,7 @@ class ProjectsLocationsContentResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/content:reidentify';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5118,10 +4988,8 @@ class ProjectsLocationsContentResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5171,7 +5039,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
     GooglePrivacyDlpV2CreateDeidentifyTemplateRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5193,7 +5061,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deidentifyTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5202,10 +5070,8 @@ class ProjectsLocationsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a DeidentifyTemplate.
@@ -5235,7 +5101,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5252,7 +5118,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -5261,10 +5127,8 @@ class ProjectsLocationsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a DeidentifyTemplate.
@@ -5294,7 +5158,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
   async.Future<GooglePrivacyDlpV2DeidentifyTemplate> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5311,7 +5175,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5320,10 +5184,8 @@ class ProjectsLocationsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists DeidentifyTemplates.
@@ -5382,7 +5244,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5413,7 +5275,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deidentifyTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5422,10 +5284,8 @@ class ProjectsLocationsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the DeidentifyTemplate.
@@ -5458,7 +5318,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
     GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5478,7 +5338,7 @@ class ProjectsLocationsDeidentifyTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -5487,10 +5347,8 @@ class ProjectsLocationsDeidentifyTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5528,7 +5386,7 @@ class ProjectsLocationsDlpJobsResource {
     GooglePrivacyDlpV2CancelDlpJobRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5548,7 +5406,7 @@ class ProjectsLocationsDlpJobsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5557,10 +5415,8 @@ class ProjectsLocationsDlpJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new job to inspect storage or calculate risk metrics.
@@ -5601,7 +5457,7 @@ class ProjectsLocationsDlpJobsResource {
     GooglePrivacyDlpV2CreateDlpJobRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5622,7 +5478,7 @@ class ProjectsLocationsDlpJobsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/dlpJobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5631,10 +5487,8 @@ class ProjectsLocationsDlpJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DlpJob.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DlpJob.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running DlpJob.
@@ -5663,7 +5517,7 @@ class ProjectsLocationsDlpJobsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5680,7 +5534,7 @@ class ProjectsLocationsDlpJobsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -5689,10 +5543,8 @@ class ProjectsLocationsDlpJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Finish a running hybrid DlpJob.
@@ -5722,7 +5574,7 @@ class ProjectsLocationsDlpJobsResource {
     GooglePrivacyDlpV2FinishDlpJobRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5742,7 +5594,7 @@ class ProjectsLocationsDlpJobsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':finish';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5751,10 +5603,8 @@ class ProjectsLocationsDlpJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running DlpJob.
@@ -5781,7 +5631,7 @@ class ProjectsLocationsDlpJobsResource {
   async.Future<GooglePrivacyDlpV2DlpJob> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5798,7 +5648,7 @@ class ProjectsLocationsDlpJobsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5807,10 +5657,8 @@ class ProjectsLocationsDlpJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DlpJob.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DlpJob.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inspect hybrid content and store findings to a job.
@@ -5841,7 +5689,7 @@ class ProjectsLocationsDlpJobsResource {
     GooglePrivacyDlpV2HybridInspectDlpJobRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5863,7 +5711,7 @@ class ProjectsLocationsDlpJobsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':hybridInspect';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5872,10 +5720,8 @@ class ProjectsLocationsDlpJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2HybridInspectResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2HybridInspectResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists DlpJobs that match the specified filter in the request.
@@ -5955,7 +5801,7 @@ class ProjectsLocationsDlpJobsResource {
     core.String pageToken,
     core.String type,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5991,7 +5837,7 @@ class ProjectsLocationsDlpJobsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/dlpJobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6000,10 +5846,8 @@ class ProjectsLocationsDlpJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6052,7 +5896,7 @@ class ProjectsLocationsImageResource {
     GooglePrivacyDlpV2RedactImageRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6074,7 +5918,7 @@ class ProjectsLocationsImageResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/image:redact';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6083,10 +5927,8 @@ class ProjectsLocationsImageResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2RedactImageResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2RedactImageResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6135,7 +5977,7 @@ class ProjectsLocationsInspectTemplatesResource {
     GooglePrivacyDlpV2CreateInspectTemplateRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6157,7 +5999,7 @@ class ProjectsLocationsInspectTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/inspectTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6166,10 +6008,8 @@ class ProjectsLocationsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2InspectTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an InspectTemplate.
@@ -6198,7 +6038,7 @@ class ProjectsLocationsInspectTemplatesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6215,7 +6055,7 @@ class ProjectsLocationsInspectTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -6224,10 +6064,8 @@ class ProjectsLocationsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an InspectTemplate.
@@ -6256,7 +6094,7 @@ class ProjectsLocationsInspectTemplatesResource {
   async.Future<GooglePrivacyDlpV2InspectTemplate> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6273,7 +6111,7 @@ class ProjectsLocationsInspectTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6282,10 +6120,8 @@ class ProjectsLocationsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2InspectTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists InspectTemplates.
@@ -6343,7 +6179,7 @@ class ProjectsLocationsInspectTemplatesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6374,7 +6210,7 @@ class ProjectsLocationsInspectTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/inspectTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6383,10 +6219,8 @@ class ProjectsLocationsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the InspectTemplate.
@@ -6417,7 +6251,7 @@ class ProjectsLocationsInspectTemplatesResource {
     GooglePrivacyDlpV2UpdateInspectTemplateRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6437,7 +6271,7 @@ class ProjectsLocationsInspectTemplatesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -6446,10 +6280,8 @@ class ProjectsLocationsInspectTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2InspectTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6487,7 +6319,7 @@ class ProjectsLocationsJobTriggersResource {
     GooglePrivacyDlpV2ActivateJobTriggerRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6507,7 +6339,7 @@ class ProjectsLocationsJobTriggersResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':activate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6516,10 +6348,8 @@ class ProjectsLocationsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2DlpJob.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2DlpJob.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a job trigger to run DLP actions such as scanning storage for
@@ -6557,7 +6387,7 @@ class ProjectsLocationsJobTriggersResource {
     GooglePrivacyDlpV2CreateJobTriggerRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6579,7 +6409,7 @@ class ProjectsLocationsJobTriggersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/jobTriggers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6588,10 +6418,8 @@ class ProjectsLocationsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2JobTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a job trigger.
@@ -6618,7 +6446,7 @@ class ProjectsLocationsJobTriggersResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6635,7 +6463,7 @@ class ProjectsLocationsJobTriggersResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -6644,10 +6472,8 @@ class ProjectsLocationsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a job trigger.
@@ -6674,7 +6500,7 @@ class ProjectsLocationsJobTriggersResource {
   async.Future<GooglePrivacyDlpV2JobTrigger> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6691,7 +6517,7 @@ class ProjectsLocationsJobTriggersResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6700,10 +6526,8 @@ class ProjectsLocationsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2JobTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inspect hybrid content and store findings to a trigger.
@@ -6734,7 +6558,7 @@ class ProjectsLocationsJobTriggersResource {
     GooglePrivacyDlpV2HybridInspectJobTriggerRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6756,7 +6580,7 @@ class ProjectsLocationsJobTriggersResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':hybridInspect';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6765,10 +6589,8 @@ class ProjectsLocationsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2HybridInspectResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2HybridInspectResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists job triggers.
@@ -6841,7 +6663,7 @@ class ProjectsLocationsJobTriggersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6875,7 +6697,7 @@ class ProjectsLocationsJobTriggersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/jobTriggers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6884,10 +6706,8 @@ class ProjectsLocationsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a job trigger.
@@ -6917,7 +6737,7 @@ class ProjectsLocationsJobTriggersResource {
     GooglePrivacyDlpV2UpdateJobTriggerRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6937,7 +6757,7 @@ class ProjectsLocationsJobTriggersResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -6946,10 +6766,8 @@ class ProjectsLocationsJobTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2JobTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6998,7 +6816,7 @@ class ProjectsLocationsStoredInfoTypesResource {
     GooglePrivacyDlpV2CreateStoredInfoTypeRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7020,7 +6838,7 @@ class ProjectsLocationsStoredInfoTypesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/storedInfoTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7029,10 +6847,8 @@ class ProjectsLocationsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2StoredInfoType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a stored infoType.
@@ -7062,7 +6878,7 @@ class ProjectsLocationsStoredInfoTypesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7079,7 +6895,7 @@ class ProjectsLocationsStoredInfoTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -7088,10 +6904,8 @@ class ProjectsLocationsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a stored infoType.
@@ -7120,7 +6934,7 @@ class ProjectsLocationsStoredInfoTypesResource {
   async.Future<GooglePrivacyDlpV2StoredInfoType> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7137,7 +6951,7 @@ class ProjectsLocationsStoredInfoTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7146,10 +6960,8 @@ class ProjectsLocationsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2StoredInfoType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists stored infoTypes.
@@ -7209,7 +7021,7 @@ class ProjectsLocationsStoredInfoTypesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7240,7 +7052,7 @@ class ProjectsLocationsStoredInfoTypesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/storedInfoTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7249,10 +7061,8 @@ class ProjectsLocationsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the stored infoType by creating a new version.
@@ -7285,7 +7095,7 @@ class ProjectsLocationsStoredInfoTypesResource {
     GooglePrivacyDlpV2UpdateStoredInfoTypeRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7305,7 +7115,7 @@ class ProjectsLocationsStoredInfoTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -7314,10 +7124,8 @@ class ProjectsLocationsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2StoredInfoType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7366,7 +7174,7 @@ class ProjectsStoredInfoTypesResource {
     GooglePrivacyDlpV2CreateStoredInfoTypeRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7388,7 +7196,7 @@ class ProjectsStoredInfoTypesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/storedInfoTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7397,10 +7205,8 @@ class ProjectsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2StoredInfoType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a stored infoType.
@@ -7429,7 +7235,7 @@ class ProjectsStoredInfoTypesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7446,7 +7252,7 @@ class ProjectsStoredInfoTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -7455,10 +7261,8 @@ class ProjectsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a stored infoType.
@@ -7486,7 +7290,7 @@ class ProjectsStoredInfoTypesResource {
   async.Future<GooglePrivacyDlpV2StoredInfoType> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7503,7 +7307,7 @@ class ProjectsStoredInfoTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7512,10 +7316,8 @@ class ProjectsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2StoredInfoType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists stored infoTypes.
@@ -7575,7 +7377,7 @@ class ProjectsStoredInfoTypesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7606,7 +7408,7 @@ class ProjectsStoredInfoTypesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/storedInfoTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7615,10 +7417,8 @@ class ProjectsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the stored infoType by creating a new version.
@@ -7650,7 +7450,7 @@ class ProjectsStoredInfoTypesResource {
     GooglePrivacyDlpV2UpdateStoredInfoTypeRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7670,7 +7470,7 @@ class ProjectsStoredInfoTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -7679,10 +7479,8 @@ class ProjectsStoredInfoTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GooglePrivacyDlpV2StoredInfoType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

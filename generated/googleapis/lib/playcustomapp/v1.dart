@@ -109,7 +109,7 @@ class AccountsCustomAppsResource {
     core.String $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -144,7 +144,7 @@ class AccountsCustomAppsResource {
           '/customApps';
     }
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -153,9 +153,7 @@ class AccountsCustomAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CustomApp.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CustomApp.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

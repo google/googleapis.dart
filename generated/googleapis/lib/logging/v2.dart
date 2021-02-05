@@ -181,7 +181,7 @@ class BillingAccountsBucketsResource {
   async.Future<LogBucket> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -198,7 +198,7 @@ class BillingAccountsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -207,9 +207,7 @@ class BillingAccountsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -243,7 +241,7 @@ class BillingAccountsBucketsViewsResource {
   async.Future<LogView> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -260,7 +258,7 @@ class BillingAccountsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -269,9 +267,7 @@ class BillingAccountsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogView.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -310,7 +306,7 @@ class BillingAccountsExclusionsResource {
     LogExclusion request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -332,7 +328,7 @@ class BillingAccountsExclusionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/exclusions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -341,10 +337,8 @@ class BillingAccountsExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogExclusion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an exclusion.
@@ -372,7 +366,7 @@ class BillingAccountsExclusionsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -389,7 +383,7 @@ class BillingAccountsExclusionsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -398,9 +392,7 @@ class BillingAccountsExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the description of an exclusion.
@@ -428,7 +420,7 @@ class BillingAccountsExclusionsResource {
   async.Future<LogExclusion> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -445,7 +437,7 @@ class BillingAccountsExclusionsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -454,10 +446,8 @@ class BillingAccountsExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogExclusion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the exclusions in a parent resource.
@@ -493,7 +483,7 @@ class BillingAccountsExclusionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -518,7 +508,7 @@ class BillingAccountsExclusionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/exclusions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -527,10 +517,8 @@ class BillingAccountsExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListExclusionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListExclusionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Changes one or more properties of an existing exclusion.
@@ -569,7 +557,7 @@ class BillingAccountsExclusionsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -592,7 +580,7 @@ class BillingAccountsExclusionsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -601,10 +589,8 @@ class BillingAccountsExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogExclusion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -637,7 +623,7 @@ class BillingAccountsLocationsResource {
   async.Future<Location> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -654,7 +640,7 @@ class BillingAccountsLocationsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -663,9 +649,7 @@ class BillingAccountsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -697,7 +681,7 @@ class BillingAccountsLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -724,7 +708,7 @@ class BillingAccountsLocationsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -733,10 +717,8 @@ class BillingAccountsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -781,7 +763,7 @@ class BillingAccountsLocationsBucketsResource {
     core.String parent, {
     core.String bucketId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -805,7 +787,7 @@ class BillingAccountsLocationsBucketsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/buckets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -814,9 +796,7 @@ class BillingAccountsLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a bucket.
@@ -849,7 +829,7 @@ class BillingAccountsLocationsBucketsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -866,7 +846,7 @@ class BillingAccountsLocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -875,9 +855,7 @@ class BillingAccountsLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists buckets.
@@ -917,7 +895,7 @@ class BillingAccountsLocationsBucketsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -941,7 +919,7 @@ class BillingAccountsLocationsBucketsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/buckets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -950,10 +928,8 @@ class BillingAccountsLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListBucketsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListBucketsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a bucket.
@@ -1003,7 +979,7 @@ class BillingAccountsLocationsBucketsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1026,7 +1002,7 @@ class BillingAccountsLocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1035,9 +1011,7 @@ class BillingAccountsLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a bucket.
@@ -1073,7 +1047,7 @@ class BillingAccountsLocationsBucketsResource {
     UndeleteBucketRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1093,7 +1067,7 @@ class BillingAccountsLocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1102,9 +1076,7 @@ class BillingAccountsLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1146,7 +1118,7 @@ class BillingAccountsLocationsBucketsViewsResource {
     core.String parent, {
     core.String viewId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1169,7 +1141,7 @@ class BillingAccountsLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1178,9 +1150,7 @@ class BillingAccountsLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogView.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a view from a bucket.
@@ -1207,7 +1177,7 @@ class BillingAccountsLocationsBucketsViewsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1224,7 +1194,7 @@ class BillingAccountsLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1233,9 +1203,7 @@ class BillingAccountsLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists views on a bucket.
@@ -1271,7 +1239,7 @@ class BillingAccountsLocationsBucketsViewsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1294,7 +1262,7 @@ class BillingAccountsLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1303,10 +1271,8 @@ class BillingAccountsLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListViewsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListViewsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a view.
@@ -1347,7 +1313,7 @@ class BillingAccountsLocationsBucketsViewsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1370,7 +1336,7 @@ class BillingAccountsLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1379,9 +1345,7 @@ class BillingAccountsLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogView.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1423,7 +1387,7 @@ class BillingAccountsLogsResource {
   async.Future<Empty> delete(
     core.String logName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1440,7 +1404,7 @@ class BillingAccountsLogsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$logName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1449,9 +1413,7 @@ class BillingAccountsLogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
@@ -1499,7 +1461,7 @@ class BillingAccountsLogsResource {
     core.String pageToken,
     core.List<core.String> resourceNames,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1525,7 +1487,7 @@ class BillingAccountsLogsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1534,10 +1496,8 @@ class BillingAccountsLogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLogsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLogsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1589,7 +1549,7 @@ class BillingAccountsSinksResource {
     core.String parent, {
     core.bool uniqueWriterIdentity,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1612,7 +1572,7 @@ class BillingAccountsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1621,9 +1581,7 @@ class BillingAccountsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a sink.
@@ -1655,7 +1613,7 @@ class BillingAccountsSinksResource {
   async.Future<Empty> delete(
     core.String sinkName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1672,7 +1630,7 @@ class BillingAccountsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1681,9 +1639,7 @@ class BillingAccountsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a sink.
@@ -1711,7 +1667,7 @@ class BillingAccountsSinksResource {
   async.Future<LogSink> get(
     core.String sinkName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1728,7 +1684,7 @@ class BillingAccountsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1737,9 +1693,7 @@ class BillingAccountsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists sinks.
@@ -1775,7 +1729,7 @@ class BillingAccountsSinksResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1798,7 +1752,7 @@ class BillingAccountsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1807,10 +1761,8 @@ class BillingAccountsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListSinksResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListSinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -1867,7 +1819,7 @@ class BillingAccountsSinksResource {
     core.bool uniqueWriterIdentity,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1893,7 +1845,7 @@ class BillingAccountsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1902,9 +1854,7 @@ class BillingAccountsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -1961,7 +1911,7 @@ class BillingAccountsSinksResource {
     core.bool uniqueWriterIdentity,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1987,7 +1937,7 @@ class BillingAccountsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1996,9 +1946,7 @@ class BillingAccountsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2031,7 +1979,7 @@ class EntriesResource {
   async.Future<ListLogEntriesResponse> list(
     ListLogEntriesRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2048,7 +1996,7 @@ class EntriesResource {
 
     _url = 'v2/entries:list';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2057,10 +2005,8 @@ class EntriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLogEntriesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLogEntriesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Streaming read of log entries as they are ingested.
@@ -2084,7 +2030,7 @@ class EntriesResource {
   async.Future<TailLogEntriesResponse> tail(
     TailLogEntriesRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2101,7 +2047,7 @@ class EntriesResource {
 
     _url = 'v2/entries:tail';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2110,10 +2056,8 @@ class EntriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TailLogEntriesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TailLogEntriesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Writes log entries to Logging.
@@ -2141,7 +2085,7 @@ class EntriesResource {
   async.Future<WriteLogEntriesResponse> write(
     WriteLogEntriesRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2158,7 +2102,7 @@ class EntriesResource {
 
     _url = 'v2/entries:write';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2167,10 +2111,8 @@ class EntriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => WriteLogEntriesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return WriteLogEntriesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2208,7 +2150,7 @@ class ExclusionsResource {
     LogExclusion request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2230,7 +2172,7 @@ class ExclusionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/exclusions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2239,10 +2181,8 @@ class ExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogExclusion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an exclusion.
@@ -2270,7 +2210,7 @@ class ExclusionsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2287,7 +2227,7 @@ class ExclusionsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2296,9 +2236,7 @@ class ExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the description of an exclusion.
@@ -2326,7 +2264,7 @@ class ExclusionsResource {
   async.Future<LogExclusion> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2343,7 +2281,7 @@ class ExclusionsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2352,10 +2290,8 @@ class ExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogExclusion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the exclusions in a parent resource.
@@ -2391,7 +2327,7 @@ class ExclusionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2416,7 +2352,7 @@ class ExclusionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/exclusions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2425,10 +2361,8 @@ class ExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListExclusionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListExclusionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Changes one or more properties of an existing exclusion.
@@ -2467,7 +2401,7 @@ class ExclusionsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2490,7 +2424,7 @@ class ExclusionsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2499,10 +2433,8 @@ class ExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogExclusion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2553,7 +2485,7 @@ class FoldersExclusionsResource {
     LogExclusion request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2575,7 +2507,7 @@ class FoldersExclusionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/exclusions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2584,10 +2516,8 @@ class FoldersExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogExclusion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an exclusion.
@@ -2615,7 +2545,7 @@ class FoldersExclusionsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2632,7 +2562,7 @@ class FoldersExclusionsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2641,9 +2571,7 @@ class FoldersExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the description of an exclusion.
@@ -2671,7 +2599,7 @@ class FoldersExclusionsResource {
   async.Future<LogExclusion> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2688,7 +2616,7 @@ class FoldersExclusionsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2697,10 +2625,8 @@ class FoldersExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogExclusion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the exclusions in a parent resource.
@@ -2736,7 +2662,7 @@ class FoldersExclusionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2761,7 +2687,7 @@ class FoldersExclusionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/exclusions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2770,10 +2696,8 @@ class FoldersExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListExclusionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListExclusionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Changes one or more properties of an existing exclusion.
@@ -2812,7 +2736,7 @@ class FoldersExclusionsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2835,7 +2759,7 @@ class FoldersExclusionsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2844,10 +2768,8 @@ class FoldersExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogExclusion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2879,7 +2801,7 @@ class FoldersLocationsResource {
   async.Future<Location> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2896,7 +2818,7 @@ class FoldersLocationsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2905,9 +2827,7 @@ class FoldersLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -2939,7 +2859,7 @@ class FoldersLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2966,7 +2886,7 @@ class FoldersLocationsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2975,10 +2895,8 @@ class FoldersLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3023,7 +2941,7 @@ class FoldersLocationsBucketsResource {
     core.String parent, {
     core.String bucketId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3047,7 +2965,7 @@ class FoldersLocationsBucketsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/buckets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3056,9 +2974,7 @@ class FoldersLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a bucket.
@@ -3091,7 +3007,7 @@ class FoldersLocationsBucketsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3108,7 +3024,7 @@ class FoldersLocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3117,9 +3033,7 @@ class FoldersLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a bucket.
@@ -3149,7 +3063,7 @@ class FoldersLocationsBucketsResource {
   async.Future<LogBucket> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3166,7 +3080,7 @@ class FoldersLocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3175,9 +3089,7 @@ class FoldersLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists buckets.
@@ -3217,7 +3129,7 @@ class FoldersLocationsBucketsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3241,7 +3153,7 @@ class FoldersLocationsBucketsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/buckets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3250,10 +3162,8 @@ class FoldersLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListBucketsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListBucketsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a bucket.
@@ -3303,7 +3213,7 @@ class FoldersLocationsBucketsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3326,7 +3236,7 @@ class FoldersLocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3335,9 +3245,7 @@ class FoldersLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a bucket.
@@ -3373,7 +3281,7 @@ class FoldersLocationsBucketsResource {
     UndeleteBucketRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3393,7 +3301,7 @@ class FoldersLocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3402,9 +3310,7 @@ class FoldersLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3446,7 +3352,7 @@ class FoldersLocationsBucketsViewsResource {
     core.String parent, {
     core.String viewId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3469,7 +3375,7 @@ class FoldersLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3478,9 +3384,7 @@ class FoldersLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogView.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a view from a bucket.
@@ -3507,7 +3411,7 @@ class FoldersLocationsBucketsViewsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3524,7 +3428,7 @@ class FoldersLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3533,9 +3437,7 @@ class FoldersLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a view.
@@ -3562,7 +3464,7 @@ class FoldersLocationsBucketsViewsResource {
   async.Future<LogView> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3579,7 +3481,7 @@ class FoldersLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3588,9 +3490,7 @@ class FoldersLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogView.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists views on a bucket.
@@ -3626,7 +3526,7 @@ class FoldersLocationsBucketsViewsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3649,7 +3549,7 @@ class FoldersLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3658,10 +3558,8 @@ class FoldersLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListViewsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListViewsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a view.
@@ -3702,7 +3600,7 @@ class FoldersLocationsBucketsViewsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3725,7 +3623,7 @@ class FoldersLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3734,9 +3632,7 @@ class FoldersLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogView.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3777,7 +3673,7 @@ class FoldersLogsResource {
   async.Future<Empty> delete(
     core.String logName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3794,7 +3690,7 @@ class FoldersLogsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$logName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3803,9 +3699,7 @@ class FoldersLogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
@@ -3853,7 +3747,7 @@ class FoldersLogsResource {
     core.String pageToken,
     core.List<core.String> resourceNames,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3879,7 +3773,7 @@ class FoldersLogsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3888,10 +3782,8 @@ class FoldersLogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLogsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLogsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3942,7 +3834,7 @@ class FoldersSinksResource {
     core.String parent, {
     core.bool uniqueWriterIdentity,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3965,7 +3857,7 @@ class FoldersSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3974,9 +3866,7 @@ class FoldersSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a sink.
@@ -4008,7 +3898,7 @@ class FoldersSinksResource {
   async.Future<Empty> delete(
     core.String sinkName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4025,7 +3915,7 @@ class FoldersSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4034,9 +3924,7 @@ class FoldersSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a sink.
@@ -4064,7 +3952,7 @@ class FoldersSinksResource {
   async.Future<LogSink> get(
     core.String sinkName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4081,7 +3969,7 @@ class FoldersSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4090,9 +3978,7 @@ class FoldersSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists sinks.
@@ -4128,7 +4014,7 @@ class FoldersSinksResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4151,7 +4037,7 @@ class FoldersSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4160,10 +4046,8 @@ class FoldersSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListSinksResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListSinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -4220,7 +4104,7 @@ class FoldersSinksResource {
     core.bool uniqueWriterIdentity,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4246,7 +4130,7 @@ class FoldersSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -4255,9 +4139,7 @@ class FoldersSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -4314,7 +4196,7 @@ class FoldersSinksResource {
     core.bool uniqueWriterIdentity,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4340,7 +4222,7 @@ class FoldersSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -4349,9 +4231,7 @@ class FoldersSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4382,7 +4262,7 @@ class LocationsResource {
   async.Future<Location> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4399,7 +4279,7 @@ class LocationsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4408,9 +4288,7 @@ class LocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -4442,7 +4320,7 @@ class LocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4469,7 +4347,7 @@ class LocationsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4478,10 +4356,8 @@ class LocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4525,7 +4401,7 @@ class LocationsBucketsResource {
     core.String parent, {
     core.String bucketId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4549,7 +4425,7 @@ class LocationsBucketsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/buckets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4558,9 +4434,7 @@ class LocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a bucket.
@@ -4593,7 +4467,7 @@ class LocationsBucketsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4610,7 +4484,7 @@ class LocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4619,9 +4493,7 @@ class LocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a bucket.
@@ -4651,7 +4523,7 @@ class LocationsBucketsResource {
   async.Future<LogBucket> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4668,7 +4540,7 @@ class LocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4677,9 +4549,7 @@ class LocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists buckets.
@@ -4719,7 +4589,7 @@ class LocationsBucketsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4743,7 +4613,7 @@ class LocationsBucketsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/buckets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4752,10 +4622,8 @@ class LocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListBucketsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListBucketsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a bucket.
@@ -4805,7 +4673,7 @@ class LocationsBucketsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4828,7 +4696,7 @@ class LocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -4837,9 +4705,7 @@ class LocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a bucket.
@@ -4875,7 +4741,7 @@ class LocationsBucketsResource {
     UndeleteBucketRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4895,7 +4761,7 @@ class LocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4904,9 +4770,7 @@ class LocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4948,7 +4812,7 @@ class LocationsBucketsViewsResource {
     core.String parent, {
     core.String viewId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4971,7 +4835,7 @@ class LocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4980,9 +4844,7 @@ class LocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogView.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a view from a bucket.
@@ -5009,7 +4871,7 @@ class LocationsBucketsViewsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5026,7 +4888,7 @@ class LocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -5035,9 +4897,7 @@ class LocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a view.
@@ -5064,7 +4924,7 @@ class LocationsBucketsViewsResource {
   async.Future<LogView> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5081,7 +4941,7 @@ class LocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5090,9 +4950,7 @@ class LocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogView.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists views on a bucket.
@@ -5128,7 +4986,7 @@ class LocationsBucketsViewsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5151,7 +5009,7 @@ class LocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5160,10 +5018,8 @@ class LocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListViewsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListViewsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a view.
@@ -5204,7 +5060,7 @@ class LocationsBucketsViewsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5227,7 +5083,7 @@ class LocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -5236,9 +5092,7 @@ class LocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogView.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5279,7 +5133,7 @@ class LogsResource {
   async.Future<Empty> delete(
     core.String logName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5296,7 +5150,7 @@ class LogsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$logName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -5305,9 +5159,7 @@ class LogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
@@ -5355,7 +5207,7 @@ class LogsResource {
     core.String pageToken,
     core.List<core.String> resourceNames,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5381,7 +5233,7 @@ class LogsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5390,10 +5242,8 @@ class LogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLogsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLogsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5430,7 +5280,7 @@ class MonitoredResourceDescriptorsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5450,7 +5300,7 @@ class MonitoredResourceDescriptorsResource {
 
     _url = 'v2/monitoredResourceDescriptors';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5459,10 +5309,8 @@ class MonitoredResourceDescriptorsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListMonitoredResourceDescriptorsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListMonitoredResourceDescriptorsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5512,7 +5360,7 @@ class OrganizationsResource {
   async.Future<CmekSettings> getCmekSettings(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5531,7 +5379,7 @@ class OrganizationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/cmekSettings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5540,10 +5388,8 @@ class OrganizationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CmekSettings.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CmekSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the Logs Router CMEK settings for the given resource.Note: CMEK
@@ -5592,7 +5438,7 @@ class OrganizationsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5617,7 +5463,7 @@ class OrganizationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/cmekSettings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -5626,10 +5472,8 @@ class OrganizationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CmekSettings.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CmekSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5668,7 +5512,7 @@ class OrganizationsExclusionsResource {
     LogExclusion request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5690,7 +5534,7 @@ class OrganizationsExclusionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/exclusions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5699,10 +5543,8 @@ class OrganizationsExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogExclusion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an exclusion.
@@ -5730,7 +5572,7 @@ class OrganizationsExclusionsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5747,7 +5589,7 @@ class OrganizationsExclusionsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -5756,9 +5598,7 @@ class OrganizationsExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the description of an exclusion.
@@ -5786,7 +5626,7 @@ class OrganizationsExclusionsResource {
   async.Future<LogExclusion> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5803,7 +5643,7 @@ class OrganizationsExclusionsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5812,10 +5652,8 @@ class OrganizationsExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogExclusion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the exclusions in a parent resource.
@@ -5851,7 +5689,7 @@ class OrganizationsExclusionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5876,7 +5714,7 @@ class OrganizationsExclusionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/exclusions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5885,10 +5723,8 @@ class OrganizationsExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListExclusionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListExclusionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Changes one or more properties of an existing exclusion.
@@ -5927,7 +5763,7 @@ class OrganizationsExclusionsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5950,7 +5786,7 @@ class OrganizationsExclusionsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -5959,10 +5795,8 @@ class OrganizationsExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogExclusion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5995,7 +5829,7 @@ class OrganizationsLocationsResource {
   async.Future<Location> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6012,7 +5846,7 @@ class OrganizationsLocationsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6021,9 +5855,7 @@ class OrganizationsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -6055,7 +5887,7 @@ class OrganizationsLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6082,7 +5914,7 @@ class OrganizationsLocationsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6091,10 +5923,8 @@ class OrganizationsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6139,7 +5969,7 @@ class OrganizationsLocationsBucketsResource {
     core.String parent, {
     core.String bucketId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6163,7 +5993,7 @@ class OrganizationsLocationsBucketsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/buckets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6172,9 +6002,7 @@ class OrganizationsLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a bucket.
@@ -6207,7 +6035,7 @@ class OrganizationsLocationsBucketsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6224,7 +6052,7 @@ class OrganizationsLocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -6233,9 +6061,7 @@ class OrganizationsLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a bucket.
@@ -6265,7 +6091,7 @@ class OrganizationsLocationsBucketsResource {
   async.Future<LogBucket> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6282,7 +6108,7 @@ class OrganizationsLocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6291,9 +6117,7 @@ class OrganizationsLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists buckets.
@@ -6333,7 +6157,7 @@ class OrganizationsLocationsBucketsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6357,7 +6181,7 @@ class OrganizationsLocationsBucketsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/buckets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6366,10 +6190,8 @@ class OrganizationsLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListBucketsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListBucketsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a bucket.
@@ -6419,7 +6241,7 @@ class OrganizationsLocationsBucketsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6442,7 +6264,7 @@ class OrganizationsLocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -6451,9 +6273,7 @@ class OrganizationsLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a bucket.
@@ -6489,7 +6309,7 @@ class OrganizationsLocationsBucketsResource {
     UndeleteBucketRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6509,7 +6329,7 @@ class OrganizationsLocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6518,9 +6338,7 @@ class OrganizationsLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6562,7 +6380,7 @@ class OrganizationsLocationsBucketsViewsResource {
     core.String parent, {
     core.String viewId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6585,7 +6403,7 @@ class OrganizationsLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6594,9 +6412,7 @@ class OrganizationsLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogView.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a view from a bucket.
@@ -6623,7 +6439,7 @@ class OrganizationsLocationsBucketsViewsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6640,7 +6456,7 @@ class OrganizationsLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -6649,9 +6465,7 @@ class OrganizationsLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a view.
@@ -6678,7 +6492,7 @@ class OrganizationsLocationsBucketsViewsResource {
   async.Future<LogView> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6695,7 +6509,7 @@ class OrganizationsLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6704,9 +6518,7 @@ class OrganizationsLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogView.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists views on a bucket.
@@ -6742,7 +6554,7 @@ class OrganizationsLocationsBucketsViewsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6765,7 +6577,7 @@ class OrganizationsLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6774,10 +6586,8 @@ class OrganizationsLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListViewsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListViewsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a view.
@@ -6818,7 +6628,7 @@ class OrganizationsLocationsBucketsViewsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6841,7 +6651,7 @@ class OrganizationsLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -6850,9 +6660,7 @@ class OrganizationsLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogView.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6893,7 +6701,7 @@ class OrganizationsLogsResource {
   async.Future<Empty> delete(
     core.String logName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6910,7 +6718,7 @@ class OrganizationsLogsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$logName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -6919,9 +6727,7 @@ class OrganizationsLogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
@@ -6969,7 +6775,7 @@ class OrganizationsLogsResource {
     core.String pageToken,
     core.List<core.String> resourceNames,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6995,7 +6801,7 @@ class OrganizationsLogsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7004,10 +6810,8 @@ class OrganizationsLogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLogsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLogsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7058,7 +6862,7 @@ class OrganizationsSinksResource {
     core.String parent, {
     core.bool uniqueWriterIdentity,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7081,7 +6885,7 @@ class OrganizationsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7090,9 +6894,7 @@ class OrganizationsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a sink.
@@ -7124,7 +6926,7 @@ class OrganizationsSinksResource {
   async.Future<Empty> delete(
     core.String sinkName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7141,7 +6943,7 @@ class OrganizationsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -7150,9 +6952,7 @@ class OrganizationsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a sink.
@@ -7180,7 +6980,7 @@ class OrganizationsSinksResource {
   async.Future<LogSink> get(
     core.String sinkName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7197,7 +6997,7 @@ class OrganizationsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7206,9 +7006,7 @@ class OrganizationsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists sinks.
@@ -7244,7 +7042,7 @@ class OrganizationsSinksResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7267,7 +7065,7 @@ class OrganizationsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7276,10 +7074,8 @@ class OrganizationsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListSinksResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListSinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -7336,7 +7132,7 @@ class OrganizationsSinksResource {
     core.bool uniqueWriterIdentity,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7362,7 +7158,7 @@ class OrganizationsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -7371,9 +7167,7 @@ class OrganizationsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -7430,7 +7224,7 @@ class OrganizationsSinksResource {
     core.bool uniqueWriterIdentity,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7456,7 +7250,7 @@ class OrganizationsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -7465,9 +7259,7 @@ class OrganizationsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7519,7 +7311,7 @@ class ProjectsExclusionsResource {
     LogExclusion request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7541,7 +7333,7 @@ class ProjectsExclusionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/exclusions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7550,10 +7342,8 @@ class ProjectsExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogExclusion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an exclusion.
@@ -7581,7 +7371,7 @@ class ProjectsExclusionsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7598,7 +7388,7 @@ class ProjectsExclusionsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -7607,9 +7397,7 @@ class ProjectsExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the description of an exclusion.
@@ -7637,7 +7425,7 @@ class ProjectsExclusionsResource {
   async.Future<LogExclusion> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7654,7 +7442,7 @@ class ProjectsExclusionsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7663,10 +7451,8 @@ class ProjectsExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogExclusion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the exclusions in a parent resource.
@@ -7702,7 +7488,7 @@ class ProjectsExclusionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7727,7 +7513,7 @@ class ProjectsExclusionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/exclusions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7736,10 +7522,8 @@ class ProjectsExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListExclusionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListExclusionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Changes one or more properties of an existing exclusion.
@@ -7778,7 +7562,7 @@ class ProjectsExclusionsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7801,7 +7585,7 @@ class ProjectsExclusionsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -7810,10 +7594,8 @@ class ProjectsExclusionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogExclusion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7845,7 +7627,7 @@ class ProjectsLocationsResource {
   async.Future<Location> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7862,7 +7644,7 @@ class ProjectsLocationsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7871,9 +7653,7 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -7905,7 +7685,7 @@ class ProjectsLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7932,7 +7712,7 @@ class ProjectsLocationsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7941,10 +7721,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7989,7 +7767,7 @@ class ProjectsLocationsBucketsResource {
     core.String parent, {
     core.String bucketId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8013,7 +7791,7 @@ class ProjectsLocationsBucketsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/buckets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -8022,9 +7800,7 @@ class ProjectsLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a bucket.
@@ -8057,7 +7833,7 @@ class ProjectsLocationsBucketsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8074,7 +7850,7 @@ class ProjectsLocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -8083,9 +7859,7 @@ class ProjectsLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a bucket.
@@ -8115,7 +7889,7 @@ class ProjectsLocationsBucketsResource {
   async.Future<LogBucket> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8132,7 +7906,7 @@ class ProjectsLocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8141,9 +7915,7 @@ class ProjectsLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists buckets.
@@ -8183,7 +7955,7 @@ class ProjectsLocationsBucketsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8207,7 +7979,7 @@ class ProjectsLocationsBucketsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/buckets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8216,10 +7988,8 @@ class ProjectsLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListBucketsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListBucketsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a bucket.
@@ -8269,7 +8039,7 @@ class ProjectsLocationsBucketsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8292,7 +8062,7 @@ class ProjectsLocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -8301,9 +8071,7 @@ class ProjectsLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogBucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a bucket.
@@ -8339,7 +8107,7 @@ class ProjectsLocationsBucketsResource {
     UndeleteBucketRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8359,7 +8127,7 @@ class ProjectsLocationsBucketsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -8368,9 +8136,7 @@ class ProjectsLocationsBucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8412,7 +8178,7 @@ class ProjectsLocationsBucketsViewsResource {
     core.String parent, {
     core.String viewId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8435,7 +8201,7 @@ class ProjectsLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -8444,9 +8210,7 @@ class ProjectsLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogView.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a view from a bucket.
@@ -8473,7 +8237,7 @@ class ProjectsLocationsBucketsViewsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8490,7 +8254,7 @@ class ProjectsLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -8499,9 +8263,7 @@ class ProjectsLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a view.
@@ -8528,7 +8290,7 @@ class ProjectsLocationsBucketsViewsResource {
   async.Future<LogView> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8545,7 +8307,7 @@ class ProjectsLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8554,9 +8316,7 @@ class ProjectsLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogView.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists views on a bucket.
@@ -8592,7 +8352,7 @@ class ProjectsLocationsBucketsViewsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8615,7 +8375,7 @@ class ProjectsLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/views';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8624,10 +8384,8 @@ class ProjectsLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListViewsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListViewsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a view.
@@ -8668,7 +8426,7 @@ class ProjectsLocationsBucketsViewsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8691,7 +8449,7 @@ class ProjectsLocationsBucketsViewsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -8700,9 +8458,7 @@ class ProjectsLocationsBucketsViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogView.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogView.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8743,7 +8499,7 @@ class ProjectsLogsResource {
   async.Future<Empty> delete(
     core.String logName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8760,7 +8516,7 @@ class ProjectsLogsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$logName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -8769,9 +8525,7 @@ class ProjectsLogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
@@ -8819,7 +8573,7 @@ class ProjectsLogsResource {
     core.String pageToken,
     core.List<core.String> resourceNames,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8845,7 +8599,7 @@ class ProjectsLogsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/logs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8854,10 +8608,8 @@ class ProjectsLogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLogsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLogsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8891,7 +8643,7 @@ class ProjectsMetricsResource {
     LogMetric request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8912,7 +8664,7 @@ class ProjectsMetricsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/metrics';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -8921,9 +8673,7 @@ class ProjectsMetricsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogMetric.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogMetric.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a logs-based metric.
@@ -8947,7 +8697,7 @@ class ProjectsMetricsResource {
   async.Future<Empty> delete(
     core.String metricName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8964,7 +8714,7 @@ class ProjectsMetricsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$metricName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -8973,9 +8723,7 @@ class ProjectsMetricsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a logs-based metric.
@@ -8999,7 +8747,7 @@ class ProjectsMetricsResource {
   async.Future<LogMetric> get(
     core.String metricName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9016,7 +8764,7 @@ class ProjectsMetricsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$metricName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9025,9 +8773,7 @@ class ProjectsMetricsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogMetric.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogMetric.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists logs-based metrics.
@@ -9062,7 +8808,7 @@ class ProjectsMetricsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9086,7 +8832,7 @@ class ProjectsMetricsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/metrics';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9095,10 +8841,8 @@ class ProjectsMetricsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLogMetricsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLogMetricsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates or updates a logs-based metric.
@@ -9128,7 +8872,7 @@ class ProjectsMetricsResource {
     LogMetric request,
     core.String metricName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9148,7 +8892,7 @@ class ProjectsMetricsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$metricName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -9157,9 +8901,7 @@ class ProjectsMetricsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogMetric.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogMetric.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9210,7 +8952,7 @@ class ProjectsSinksResource {
     core.String parent, {
     core.bool uniqueWriterIdentity,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9233,7 +8975,7 @@ class ProjectsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -9242,9 +8984,7 @@ class ProjectsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a sink.
@@ -9276,7 +9016,7 @@ class ProjectsSinksResource {
   async.Future<Empty> delete(
     core.String sinkName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9293,7 +9033,7 @@ class ProjectsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -9302,9 +9042,7 @@ class ProjectsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a sink.
@@ -9332,7 +9070,7 @@ class ProjectsSinksResource {
   async.Future<LogSink> get(
     core.String sinkName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9349,7 +9087,7 @@ class ProjectsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9358,9 +9096,7 @@ class ProjectsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists sinks.
@@ -9396,7 +9132,7 @@ class ProjectsSinksResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9419,7 +9155,7 @@ class ProjectsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9428,10 +9164,8 @@ class ProjectsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListSinksResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListSinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -9488,7 +9222,7 @@ class ProjectsSinksResource {
     core.bool uniqueWriterIdentity,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9514,7 +9248,7 @@ class ProjectsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -9523,9 +9257,7 @@ class ProjectsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -9582,7 +9314,7 @@ class ProjectsSinksResource {
     core.bool uniqueWriterIdentity,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9608,7 +9340,7 @@ class ProjectsSinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -9617,9 +9349,7 @@ class ProjectsSinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9670,7 +9400,7 @@ class SinksResource {
     core.String parent, {
     core.bool uniqueWriterIdentity,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9693,7 +9423,7 @@ class SinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -9702,9 +9432,7 @@ class SinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a sink.
@@ -9736,7 +9464,7 @@ class SinksResource {
   async.Future<Empty> delete(
     core.String sinkName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9753,7 +9481,7 @@ class SinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -9762,9 +9490,7 @@ class SinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a sink.
@@ -9792,7 +9518,7 @@ class SinksResource {
   async.Future<LogSink> get(
     core.String sinkName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9809,7 +9535,7 @@ class SinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9818,9 +9544,7 @@ class SinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists sinks.
@@ -9856,7 +9580,7 @@ class SinksResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9879,7 +9603,7 @@ class SinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9888,10 +9612,8 @@ class SinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListSinksResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListSinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a sink.
@@ -9948,7 +9670,7 @@ class SinksResource {
     core.bool uniqueWriterIdentity,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9974,7 +9696,7 @@ class SinksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$sinkName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -9983,9 +9705,7 @@ class SinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LogSink.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -10027,7 +9747,7 @@ class V2Resource {
   async.Future<CmekSettings> getCmekSettings(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10046,7 +9766,7 @@ class V2Resource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/cmekSettings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -10055,10 +9775,8 @@ class V2Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CmekSettings.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CmekSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the Logs Router CMEK settings for the given resource.Note: CMEK
@@ -10107,7 +9825,7 @@ class V2Resource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10132,7 +9850,7 @@ class V2Resource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/cmekSettings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -10141,10 +9859,8 @@ class V2Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CmekSettings.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CmekSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

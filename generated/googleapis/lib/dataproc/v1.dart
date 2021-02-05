@@ -120,7 +120,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     AutoscalingPolicy request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -142,7 +142,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/autoscalingPolicies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -151,10 +151,8 @@ class ProjectsLocationsAutoscalingPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AutoscalingPolicy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AutoscalingPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an autoscaling policy.
@@ -188,7 +186,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -205,7 +203,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -214,9 +212,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves autoscaling policy.
@@ -247,7 +243,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
   async.Future<AutoscalingPolicy> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -264,7 +260,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -273,10 +269,8 @@ class ProjectsLocationsAutoscalingPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AutoscalingPolicy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AutoscalingPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -308,7 +302,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -330,7 +324,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -339,9 +333,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists autoscaling policies in the project.
@@ -378,7 +370,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -403,7 +395,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/autoscalingPolicies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -412,10 +404,8 @@ class ProjectsLocationsAutoscalingPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAutoscalingPoliciesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAutoscalingPoliciesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -447,7 +437,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -469,7 +459,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -478,9 +468,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -514,7 +502,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -536,7 +524,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -545,10 +533,8 @@ class ProjectsLocationsAutoscalingPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates (replaces) autoscaling policy.Disabled check for update_mask,
@@ -583,7 +569,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
     AutoscalingPolicy request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -603,7 +589,7 @@ class ProjectsLocationsAutoscalingPoliciesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -612,10 +598,8 @@ class ProjectsLocationsAutoscalingPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AutoscalingPolicy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AutoscalingPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -654,7 +638,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     WorkflowTemplate request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -676,7 +660,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/workflowTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -685,10 +669,8 @@ class ProjectsLocationsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => WorkflowTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return WorkflowTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a workflow template.
@@ -726,7 +708,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     core.String name, {
     core.int version,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -746,7 +728,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -755,9 +737,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the latest workflow template.Can retrieve previously
@@ -794,7 +774,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     core.String name, {
     core.int version,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -814,7 +794,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -823,10 +803,8 @@ class ProjectsLocationsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => WorkflowTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return WorkflowTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -858,7 +836,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -880,7 +858,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -889,9 +867,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Instantiates a template and begins execution.The returned Operation can be
@@ -935,7 +911,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     InstantiateWorkflowTemplateRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -956,7 +932,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':instantiate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -965,9 +941,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Instantiates a template and begins execution.This method is equivalent to
@@ -1021,7 +995,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     core.String parent, {
     core.String requestId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1046,7 +1020,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/workflowTemplates:instantiateInline';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1055,9 +1029,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists workflows that match the specified filter in the request.
@@ -1094,7 +1066,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1119,7 +1091,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/workflowTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1128,10 +1100,8 @@ class ProjectsLocationsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListWorkflowTemplatesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListWorkflowTemplatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1163,7 +1133,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1185,7 +1155,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1194,9 +1164,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1230,7 +1198,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1252,7 +1220,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1261,10 +1229,8 @@ class ProjectsLocationsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates (replaces) workflow template.
@@ -1301,7 +1267,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
     WorkflowTemplate request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1321,7 +1287,7 @@ class ProjectsLocationsWorkflowTemplatesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1330,10 +1296,8 @@ class ProjectsLocationsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => WorkflowTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return WorkflowTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1389,7 +1353,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     AutoscalingPolicy request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1411,7 +1375,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/autoscalingPolicies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1420,10 +1384,8 @@ class ProjectsRegionsAutoscalingPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AutoscalingPolicy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AutoscalingPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an autoscaling policy.
@@ -1457,7 +1419,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1474,7 +1436,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1483,9 +1445,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves autoscaling policy.
@@ -1516,7 +1476,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
   async.Future<AutoscalingPolicy> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1533,7 +1493,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1542,10 +1502,8 @@ class ProjectsRegionsAutoscalingPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AutoscalingPolicy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AutoscalingPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -1577,7 +1535,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1599,7 +1557,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1608,9 +1566,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists autoscaling policies in the project.
@@ -1647,7 +1603,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1672,7 +1628,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/autoscalingPolicies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1681,10 +1637,8 @@ class ProjectsRegionsAutoscalingPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAutoscalingPoliciesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAutoscalingPoliciesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1716,7 +1670,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1738,7 +1692,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1747,9 +1701,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1783,7 +1735,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1805,7 +1757,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1814,10 +1766,8 @@ class ProjectsRegionsAutoscalingPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates (replaces) autoscaling policy.Disabled check for update_mask,
@@ -1852,7 +1802,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
     AutoscalingPolicy request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1872,7 +1822,7 @@ class ProjectsRegionsAutoscalingPoliciesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1881,10 +1831,8 @@ class ProjectsRegionsAutoscalingPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AutoscalingPolicy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AutoscalingPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1933,7 +1881,7 @@ class ProjectsRegionsClustersResource {
     core.String region, {
     core.String requestId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1963,7 +1911,7 @@ class ProjectsRegionsClustersResource {
         commons.Escaper.ecapeVariable('$region') +
         '/clusters';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1972,9 +1920,7 @@ class ProjectsRegionsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a cluster in a project.
@@ -2020,7 +1966,7 @@ class ProjectsRegionsClustersResource {
     core.String clusterUuid,
     core.String requestId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2054,7 +2000,7 @@ class ProjectsRegionsClustersResource {
         '/clusters/' +
         commons.Escaper.ecapeVariable('$clusterName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2063,9 +2009,7 @@ class ProjectsRegionsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets cluster diagnostic information.
@@ -2103,7 +2047,7 @@ class ProjectsRegionsClustersResource {
     core.String region,
     core.String clusterName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2135,7 +2079,7 @@ class ProjectsRegionsClustersResource {
         commons.Escaper.ecapeVariable('$clusterName') +
         ':diagnose';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2144,9 +2088,7 @@ class ProjectsRegionsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the resource representation for a cluster in a project.
@@ -2175,7 +2117,7 @@ class ProjectsRegionsClustersResource {
     core.String region,
     core.String clusterName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2203,7 +2145,7 @@ class ProjectsRegionsClustersResource {
         '/clusters/' +
         commons.Escaper.ecapeVariable('$clusterName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2212,9 +2154,7 @@ class ProjectsRegionsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Cluster.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Cluster.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -2246,7 +2186,7 @@ class ProjectsRegionsClustersResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2268,7 +2208,7 @@ class ProjectsRegionsClustersResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2277,9 +2217,7 @@ class ProjectsRegionsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inject encrypted credentials into all of the VMs in a cluster.The target
@@ -2317,7 +2255,7 @@ class ProjectsRegionsClustersResource {
     core.String region,
     core.String cluster, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2349,7 +2287,7 @@ class ProjectsRegionsClustersResource {
         commons.Escaper.ecapeVariableReserved('$cluster') +
         ':injectCredentials';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2358,9 +2296,7 @@ class ProjectsRegionsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all regions/{region}/clusters in a project alphabetically.
@@ -2406,7 +2342,7 @@ class ProjectsRegionsClustersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2439,7 +2375,7 @@ class ProjectsRegionsClustersResource {
         commons.Escaper.ecapeVariable('$region') +
         '/clusters';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2448,10 +2384,8 @@ class ProjectsRegionsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListClustersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListClustersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a cluster in a project.
@@ -2524,7 +2458,7 @@ class ProjectsRegionsClustersResource {
     core.String requestId,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2566,7 +2500,7 @@ class ProjectsRegionsClustersResource {
         '/clusters/' +
         commons.Escaper.ecapeVariable('$clusterName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2575,9 +2509,7 @@ class ProjectsRegionsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2609,7 +2541,7 @@ class ProjectsRegionsClustersResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2631,7 +2563,7 @@ class ProjectsRegionsClustersResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2640,9 +2572,7 @@ class ProjectsRegionsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2676,7 +2606,7 @@ class ProjectsRegionsClustersResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2698,7 +2628,7 @@ class ProjectsRegionsClustersResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2707,10 +2637,8 @@ class ProjectsRegionsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2755,7 +2683,7 @@ class ProjectsRegionsJobsResource {
     core.String region,
     core.String jobId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2787,7 +2715,7 @@ class ProjectsRegionsJobsResource {
         commons.Escaper.ecapeVariable('$jobId') +
         ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2796,9 +2724,7 @@ class ProjectsRegionsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the job from the project.
@@ -2830,7 +2756,7 @@ class ProjectsRegionsJobsResource {
     core.String region,
     core.String jobId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2858,7 +2784,7 @@ class ProjectsRegionsJobsResource {
         '/jobs/' +
         commons.Escaper.ecapeVariable('$jobId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2867,9 +2793,7 @@ class ProjectsRegionsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the resource representation for a job in a project.
@@ -2898,7 +2822,7 @@ class ProjectsRegionsJobsResource {
     core.String region,
     core.String jobId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2926,7 +2850,7 @@ class ProjectsRegionsJobsResource {
         '/jobs/' +
         commons.Escaper.ecapeVariable('$jobId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2935,9 +2859,7 @@ class ProjectsRegionsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -2968,7 +2890,7 @@ class ProjectsRegionsJobsResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2990,7 +2912,7 @@ class ProjectsRegionsJobsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2999,9 +2921,7 @@ class ProjectsRegionsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists regions/{region}/jobs in a project.
@@ -3059,7 +2979,7 @@ class ProjectsRegionsJobsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3098,7 +3018,7 @@ class ProjectsRegionsJobsResource {
         commons.Escaper.ecapeVariable('$region') +
         '/jobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3107,10 +3027,8 @@ class ProjectsRegionsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListJobsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListJobsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a job in a project.
@@ -3149,7 +3067,7 @@ class ProjectsRegionsJobsResource {
     core.String jobId, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3183,7 +3101,7 @@ class ProjectsRegionsJobsResource {
         '/jobs/' +
         commons.Escaper.ecapeVariable('$jobId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3192,9 +3110,7 @@ class ProjectsRegionsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3225,7 +3141,7 @@ class ProjectsRegionsJobsResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3247,7 +3163,7 @@ class ProjectsRegionsJobsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3256,9 +3172,7 @@ class ProjectsRegionsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Submits a job to a cluster.
@@ -3287,7 +3201,7 @@ class ProjectsRegionsJobsResource {
     core.String projectId,
     core.String region, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3314,7 +3228,7 @@ class ProjectsRegionsJobsResource {
         commons.Escaper.ecapeVariable('$region') +
         '/jobs:submit';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3323,9 +3237,7 @@ class ProjectsRegionsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Submits job to a cluster.
@@ -3354,7 +3266,7 @@ class ProjectsRegionsJobsResource {
     core.String projectId,
     core.String region, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3381,7 +3293,7 @@ class ProjectsRegionsJobsResource {
         commons.Escaper.ecapeVariable('$region') +
         '/jobs:submitAsOperation';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3390,9 +3302,7 @@ class ProjectsRegionsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -3425,7 +3335,7 @@ class ProjectsRegionsJobsResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3447,7 +3357,7 @@ class ProjectsRegionsJobsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3456,10 +3366,8 @@ class ProjectsRegionsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3499,7 +3407,7 @@ class ProjectsRegionsOperationsResource {
   async.Future<Empty> cancel(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3516,7 +3424,7 @@ class ProjectsRegionsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3525,9 +3433,7 @@ class ProjectsRegionsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -3555,7 +3461,7 @@ class ProjectsRegionsOperationsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3572,7 +3478,7 @@ class ProjectsRegionsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3581,9 +3487,7 @@ class ProjectsRegionsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -3610,7 +3514,7 @@ class ProjectsRegionsOperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3627,7 +3531,7 @@ class ProjectsRegionsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3636,9 +3540,7 @@ class ProjectsRegionsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -3670,7 +3572,7 @@ class ProjectsRegionsOperationsResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3692,7 +3594,7 @@ class ProjectsRegionsOperationsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3701,9 +3603,7 @@ class ProjectsRegionsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -3744,7 +3644,7 @@ class ProjectsRegionsOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3770,7 +3670,7 @@ class ProjectsRegionsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3779,10 +3679,8 @@ class ProjectsRegionsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -3814,7 +3712,7 @@ class ProjectsRegionsOperationsResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3836,7 +3734,7 @@ class ProjectsRegionsOperationsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3845,9 +3743,7 @@ class ProjectsRegionsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -3881,7 +3777,7 @@ class ProjectsRegionsOperationsResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3903,7 +3799,7 @@ class ProjectsRegionsOperationsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3912,10 +3808,8 @@ class ProjectsRegionsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3954,7 +3848,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     WorkflowTemplate request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3976,7 +3870,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/workflowTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3985,10 +3879,8 @@ class ProjectsRegionsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => WorkflowTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return WorkflowTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a workflow template.
@@ -4026,7 +3918,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     core.String name, {
     core.int version,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4046,7 +3938,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4055,9 +3947,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the latest workflow template.Can retrieve previously
@@ -4094,7 +3984,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     core.String name, {
     core.int version,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4114,7 +4004,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4123,10 +4013,8 @@ class ProjectsRegionsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => WorkflowTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return WorkflowTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -4158,7 +4046,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4180,7 +4068,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4189,9 +4077,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Instantiates a template and begins execution.The returned Operation can be
@@ -4235,7 +4121,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     InstantiateWorkflowTemplateRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4256,7 +4142,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':instantiate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4265,9 +4151,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Instantiates a template and begins execution.This method is equivalent to
@@ -4321,7 +4205,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     core.String parent, {
     core.String requestId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4346,7 +4230,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/workflowTemplates:instantiateInline';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4355,9 +4239,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists workflows that match the specified filter in the request.
@@ -4394,7 +4276,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4419,7 +4301,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/workflowTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4428,10 +4310,8 @@ class ProjectsRegionsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListWorkflowTemplatesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListWorkflowTemplatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -4463,7 +4343,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4485,7 +4365,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4494,9 +4374,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -4530,7 +4408,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4552,7 +4430,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4561,10 +4439,8 @@ class ProjectsRegionsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates (replaces) workflow template.
@@ -4601,7 +4477,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
     WorkflowTemplate request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4621,7 +4497,7 @@ class ProjectsRegionsWorkflowTemplatesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -4630,10 +4506,8 @@ class ProjectsRegionsWorkflowTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => WorkflowTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return WorkflowTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

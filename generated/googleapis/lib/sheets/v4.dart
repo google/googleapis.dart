@@ -120,7 +120,7 @@ class SpreadsheetsResource {
     BatchUpdateSpreadsheetRequest request,
     core.String spreadsheetId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -142,7 +142,7 @@ class SpreadsheetsResource {
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         ':batchUpdate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -151,10 +151,8 @@ class SpreadsheetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchUpdateSpreadsheetResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchUpdateSpreadsheetResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a spreadsheet, returning the newly created spreadsheet.
@@ -176,7 +174,7 @@ class SpreadsheetsResource {
   async.Future<Spreadsheet> create(
     Spreadsheet request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -193,7 +191,7 @@ class SpreadsheetsResource {
 
     _url = 'v4/spreadsheets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -202,10 +200,8 @@ class SpreadsheetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Spreadsheet.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Spreadsheet.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the spreadsheet at the given ID.
@@ -245,7 +241,7 @@ class SpreadsheetsResource {
     core.bool includeGridData,
     core.List<core.String> ranges,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -268,7 +264,7 @@ class SpreadsheetsResource {
 
     _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -277,10 +273,8 @@ class SpreadsheetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Spreadsheet.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Spreadsheet.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the spreadsheet at the given ID.
@@ -318,7 +312,7 @@ class SpreadsheetsResource {
     GetSpreadsheetByDataFilterRequest request,
     core.String spreadsheetId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -340,7 +334,7 @@ class SpreadsheetsResource {
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         ':getByDataFilter';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -349,10 +343,8 @@ class SpreadsheetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Spreadsheet.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Spreadsheet.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -387,7 +379,7 @@ class SpreadsheetsDeveloperMetadataResource {
     core.String spreadsheetId,
     core.int metadataId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -410,7 +402,7 @@ class SpreadsheetsDeveloperMetadataResource {
         '/developerMetadata/' +
         commons.Escaper.ecapeVariable('$metadataId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -419,10 +411,8 @@ class SpreadsheetsDeveloperMetadataResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DeveloperMetadata.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DeveloperMetadata.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns all developer metadata matching the specified DataFilter.
@@ -452,7 +442,7 @@ class SpreadsheetsDeveloperMetadataResource {
     SearchDeveloperMetadataRequest request,
     core.String spreadsheetId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -474,7 +464,7 @@ class SpreadsheetsDeveloperMetadataResource {
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/developerMetadata:search';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -483,10 +473,8 @@ class SpreadsheetsDeveloperMetadataResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchDeveloperMetadataResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchDeveloperMetadataResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -522,7 +510,7 @@ class SpreadsheetsSheetsResource {
     core.String spreadsheetId,
     core.int sheetId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -549,7 +537,7 @@ class SpreadsheetsSheetsResource {
         commons.Escaper.ecapeVariable('$sheetId') +
         ':copyTo';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -558,10 +546,8 @@ class SpreadsheetsSheetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SheetProperties.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SheetProperties.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -667,7 +653,7 @@ class SpreadsheetsValuesResource {
     core.String responseValueRenderOption,
     core.String valueInputOption,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -711,7 +697,7 @@ class SpreadsheetsValuesResource {
         commons.Escaper.ecapeVariable('$range') +
         ':append';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -720,10 +706,8 @@ class SpreadsheetsValuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AppendValuesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AppendValuesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Clears one or more ranges of values from a spreadsheet.
@@ -752,7 +736,7 @@ class SpreadsheetsValuesResource {
     BatchClearValuesRequest request,
     core.String spreadsheetId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -774,7 +758,7 @@ class SpreadsheetsValuesResource {
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/values:batchClear';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -783,10 +767,8 @@ class SpreadsheetsValuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchClearValuesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchClearValuesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Clears one or more ranges of values from a spreadsheet.
@@ -816,7 +798,7 @@ class SpreadsheetsValuesResource {
     BatchClearValuesByDataFilterRequest request,
     core.String spreadsheetId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -838,7 +820,7 @@ class SpreadsheetsValuesResource {
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/values:batchClearByDataFilter';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -847,10 +829,8 @@ class SpreadsheetsValuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchClearValuesByDataFilterResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchClearValuesByDataFilterResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns one or more ranges of values from a spreadsheet.
@@ -922,7 +902,7 @@ class SpreadsheetsValuesResource {
     core.List<core.String> ranges,
     core.String valueRenderOption,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -953,7 +933,7 @@ class SpreadsheetsValuesResource {
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/values:batchGet';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -962,10 +942,8 @@ class SpreadsheetsValuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchGetValuesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchGetValuesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns one or more ranges of values that match the specified data
@@ -994,7 +972,7 @@ class SpreadsheetsValuesResource {
     BatchGetValuesByDataFilterRequest request,
     core.String spreadsheetId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1016,7 +994,7 @@ class SpreadsheetsValuesResource {
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/values:batchGetByDataFilter';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1025,10 +1003,8 @@ class SpreadsheetsValuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchGetValuesByDataFilterResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchGetValuesByDataFilterResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets values in one or more ranges of a spreadsheet.
@@ -1056,7 +1032,7 @@ class SpreadsheetsValuesResource {
     BatchUpdateValuesRequest request,
     core.String spreadsheetId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1078,7 +1054,7 @@ class SpreadsheetsValuesResource {
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/values:batchUpdate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1087,10 +1063,8 @@ class SpreadsheetsValuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchUpdateValuesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchUpdateValuesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets values in one or more ranges of a spreadsheet.
@@ -1118,7 +1092,7 @@ class SpreadsheetsValuesResource {
     BatchUpdateValuesByDataFilterRequest request,
     core.String spreadsheetId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1140,7 +1114,7 @@ class SpreadsheetsValuesResource {
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/values:batchUpdateByDataFilter';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1149,10 +1123,8 @@ class SpreadsheetsValuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchUpdateValuesByDataFilterResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchUpdateValuesByDataFilterResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Clears values from a spreadsheet.
@@ -1184,7 +1156,7 @@ class SpreadsheetsValuesResource {
     core.String spreadsheetId,
     core.String range, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1211,7 +1183,7 @@ class SpreadsheetsValuesResource {
         commons.Escaper.ecapeVariable('$range') +
         ':clear';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1220,10 +1192,8 @@ class SpreadsheetsValuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ClearValuesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ClearValuesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a range of values from a spreadsheet.
@@ -1295,7 +1265,7 @@ class SpreadsheetsValuesResource {
     core.String majorDimension,
     core.String valueRenderOption,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1327,7 +1297,7 @@ class SpreadsheetsValuesResource {
         '/values/' +
         commons.Escaper.ecapeVariable('$range');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1336,10 +1306,8 @@ class SpreadsheetsValuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ValueRange.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ValueRange.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets values in a range of a spreadsheet.
@@ -1423,7 +1391,7 @@ class SpreadsheetsValuesResource {
     core.String responseValueRenderOption,
     core.String valueInputOption,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1463,7 +1431,7 @@ class SpreadsheetsValuesResource {
         '/values/' +
         commons.Escaper.ecapeVariable('$range');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1472,10 +1440,8 @@ class SpreadsheetsValuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UpdateValuesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return UpdateValuesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

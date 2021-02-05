@@ -99,7 +99,7 @@ class ProjectsMessagesResource {
     SendMessageRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -121,7 +121,7 @@ class ProjectsMessagesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/messages:send';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -130,9 +130,7 @@ class ProjectsMessagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

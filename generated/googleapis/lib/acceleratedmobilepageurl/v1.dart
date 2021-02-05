@@ -79,7 +79,7 @@ class AmpUrlsResource {
   async.Future<BatchGetAmpUrlsResponse> batchGet(
     BatchGetAmpUrlsRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -96,7 +96,7 @@ class AmpUrlsResource {
 
     _url = 'v1/ampUrls:batchGet';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -105,10 +105,8 @@ class AmpUrlsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchGetAmpUrlsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchGetAmpUrlsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

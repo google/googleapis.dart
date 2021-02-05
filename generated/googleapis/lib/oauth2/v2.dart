@@ -84,7 +84,7 @@ class Oauth2Api {
     core.String accessToken,
     core.String idToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -104,7 +104,7 @@ class Oauth2Api {
 
     _url = 'oauth2/v2/tokeninfo';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -113,9 +113,7 @@ class Oauth2Api {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Tokeninfo.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Tokeninfo.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -140,7 +138,7 @@ class UserinfoResource {
   /// this method will complete with the same error.
   async.Future<Userinfo> get({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -154,7 +152,7 @@ class UserinfoResource {
 
     _url = 'oauth2/v2/userinfo';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -163,9 +161,7 @@ class UserinfoResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Userinfo.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Userinfo.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -196,7 +192,7 @@ class UserinfoV2MeResource {
   /// this method will complete with the same error.
   async.Future<Userinfo> get({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -210,7 +206,7 @@ class UserinfoV2MeResource {
 
     _url = 'userinfo/v2/me';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -219,9 +215,7 @@ class UserinfoV2MeResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Userinfo.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Userinfo.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

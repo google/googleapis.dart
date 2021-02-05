@@ -85,7 +85,7 @@ class WebfontsResource {
   async.Future<WebfontList> list({
     core.String sort,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -102,7 +102,7 @@ class WebfontsResource {
 
     _url = 'v1/webfonts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -111,10 +111,8 @@ class WebfontsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          WebfontList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return WebfontList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -108,7 +108,7 @@ class BillingAccountsResource {
   async.Future<BillingAccount> create(
     BillingAccount request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -125,7 +125,7 @@ class BillingAccountsResource {
 
     _url = 'v1/billingAccounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -134,10 +134,8 @@ class BillingAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          BillingAccount.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return BillingAccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about a billing account.
@@ -164,7 +162,7 @@ class BillingAccountsResource {
   async.Future<BillingAccount> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -181,7 +179,7 @@ class BillingAccountsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -190,10 +188,8 @@ class BillingAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          BillingAccount.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return BillingAccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a billing account.
@@ -231,7 +227,7 @@ class BillingAccountsResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -255,7 +251,7 @@ class BillingAccountsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -264,9 +260,7 @@ class BillingAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the billing accounts that the current authenticated user has
@@ -305,7 +299,7 @@ class BillingAccountsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -328,7 +322,7 @@ class BillingAccountsResource {
 
     _url = 'v1/billingAccounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -337,10 +331,8 @@ class BillingAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListBillingAccountsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListBillingAccountsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a billing account's fields.
@@ -376,7 +368,7 @@ class BillingAccountsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -399,7 +391,7 @@ class BillingAccountsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -408,10 +400,8 @@ class BillingAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          BillingAccount.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return BillingAccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy for a billing account.
@@ -444,7 +434,7 @@ class BillingAccountsResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -466,7 +456,7 @@ class BillingAccountsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -475,9 +465,7 @@ class BillingAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Tests the access control policy for a billing account.
@@ -509,7 +497,7 @@ class BillingAccountsResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -531,7 +519,7 @@ class BillingAccountsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -540,10 +528,8 @@ class BillingAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -590,7 +576,7 @@ class BillingAccountsProjectsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -613,7 +599,7 @@ class BillingAccountsProjectsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/projects';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -622,10 +608,8 @@ class BillingAccountsProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListProjectBillingInfoResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListProjectBillingInfoResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -659,7 +643,7 @@ class ProjectsResource {
   async.Future<ProjectBillingInfo> getBillingInfo(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -677,7 +661,7 @@ class ProjectsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/billingInfo';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -686,10 +670,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ProjectBillingInfo.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ProjectBillingInfo.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets or updates the billing account associated with a project.
@@ -743,7 +725,7 @@ class ProjectsResource {
     ProjectBillingInfo request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -764,7 +746,7 @@ class ProjectsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/billingInfo';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -773,10 +755,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ProjectBillingInfo.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ProjectBillingInfo.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -811,7 +791,7 @@ class ServicesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -831,7 +811,7 @@ class ServicesResource {
 
     _url = 'v1/services';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -840,10 +820,8 @@ class ServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListServicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListServicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -902,7 +880,7 @@ class ServicesSkusResource {
     core.String pageToken,
     core.String startTime,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -934,7 +912,7 @@ class ServicesSkusResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/skus';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -943,10 +921,8 @@ class ServicesSkusResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListSkusResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListSkusResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

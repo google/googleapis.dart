@@ -110,7 +110,7 @@ class DocumentsResource {
     BatchUpdateDocumentRequest request,
     core.String documentId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -132,7 +132,7 @@ class DocumentsResource {
         commons.Escaper.ecapeVariable('$documentId') +
         ':batchUpdate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -141,10 +141,8 @@ class DocumentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchUpdateDocumentResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchUpdateDocumentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a blank document using the title given in the request.
@@ -169,7 +167,7 @@ class DocumentsResource {
   async.Future<Document> create(
     Document request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -186,7 +184,7 @@ class DocumentsResource {
 
     _url = 'v1/documents';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -195,9 +193,7 @@ class DocumentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Document.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Document.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest version of the specified document.
@@ -241,7 +237,7 @@ class DocumentsResource {
     core.String documentId, {
     core.String suggestionsViewMode,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -261,7 +257,7 @@ class DocumentsResource {
 
     _url = 'v1/documents/' + commons.Escaper.ecapeVariable('$documentId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -270,9 +266,7 @@ class DocumentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Document.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Document.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

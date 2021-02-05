@@ -74,7 +74,7 @@ class DiscoveryResource {
   async.Future<ClientStatusResponse> clientStatus(
     ClientStatusRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -91,7 +91,7 @@ class DiscoveryResource {
 
     _url = 'v2/discovery:client_status';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -100,10 +100,8 @@ class DiscoveryResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ClientStatusResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ClientStatusResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -100,7 +100,7 @@ class AccountsProductsResource {
     core.String parent,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -123,7 +123,7 @@ class AccountsProductsResource {
         '/products/' +
         commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -132,9 +132,7 @@ class AccountsProductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the product from a Manufacturer Center account, including product
@@ -178,7 +176,7 @@ class AccountsProductsResource {
     core.String name, {
     core.List<core.String> include,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -204,7 +202,7 @@ class AccountsProductsResource {
         '/products/' +
         commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -213,9 +211,7 @@ class AccountsProductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Product.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Product.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the products in a Manufacturer Center account.
@@ -250,7 +246,7 @@ class AccountsProductsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -277,7 +273,7 @@ class AccountsProductsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -286,10 +282,8 @@ class AccountsProductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListProductsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListProductsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts or updates the attributes of the product in a Manufacturer Center
@@ -339,7 +333,7 @@ class AccountsProductsResource {
     core.String parent,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -365,7 +359,7 @@ class AccountsProductsResource {
         '/products/' +
         commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -374,9 +368,7 @@ class AccountsProductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

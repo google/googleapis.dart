@@ -80,7 +80,7 @@ class GroupsResource {
   async.Future<Groups> get(
     core.String groupUniqueId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -97,7 +97,7 @@ class GroupsResource {
 
     _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -106,9 +106,7 @@ class GroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Groups.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Groups.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing resource.
@@ -135,7 +133,7 @@ class GroupsResource {
     Groups request,
     core.String groupUniqueId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -155,7 +153,7 @@ class GroupsResource {
 
     _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -164,9 +162,7 @@ class GroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Groups.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Groups.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing resource.
@@ -191,7 +187,7 @@ class GroupsResource {
     Groups request,
     core.String groupUniqueId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -211,7 +207,7 @@ class GroupsResource {
 
     _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -220,9 +216,7 @@ class GroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Groups.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Groups.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

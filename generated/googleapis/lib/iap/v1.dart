@@ -107,7 +107,7 @@ class ProjectsBrandsResource {
     Brand request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -127,7 +127,7 @@ class ProjectsBrandsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/brands';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -136,9 +136,7 @@ class ProjectsBrandsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Brand.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Brand.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the OAuth brand of the project.
@@ -162,7 +160,7 @@ class ProjectsBrandsResource {
   async.Future<Brand> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -179,7 +177,7 @@ class ProjectsBrandsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -188,9 +186,7 @@ class ProjectsBrandsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Brand.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Brand.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the existing brands for the project.
@@ -214,7 +210,7 @@ class ProjectsBrandsResource {
   async.Future<ListBrandsResponse> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -231,7 +227,7 @@ class ProjectsBrandsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/brands';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -240,10 +236,8 @@ class ProjectsBrandsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListBrandsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListBrandsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -281,7 +275,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
     IdentityAwareProxyClient request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -303,7 +297,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/identityAwareProxyClients';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -312,10 +306,8 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => IdentityAwareProxyClient.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return IdentityAwareProxyClient.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an Identity Aware Proxy (IAP) OAuth client.
@@ -345,7 +337,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -362,7 +354,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -371,9 +363,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves an Identity Aware Proxy (IAP) OAuth client.
@@ -401,7 +391,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
   async.Future<IdentityAwareProxyClient> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -418,7 +408,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -427,10 +417,8 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => IdentityAwareProxyClient.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return IdentityAwareProxyClient.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the existing clients for the brand.
@@ -467,7 +455,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -492,7 +480,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/identityAwareProxyClients';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -501,10 +489,8 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListIdentityAwareProxyClientsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListIdentityAwareProxyClientsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Resets an Identity Aware Proxy (IAP) OAuth client secret.
@@ -536,7 +522,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
     ResetIdentityAwareProxyClientSecretRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -557,7 +543,7 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':resetSecret';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -566,10 +552,8 @@ class ProjectsBrandsIdentityAwareProxyClientsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => IdentityAwareProxyClient.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return IdentityAwareProxyClient.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -607,7 +591,7 @@ class V1Resource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -629,7 +613,7 @@ class V1Resource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -638,9 +622,7 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the IAP settings on a particular IAP protected resource.
@@ -665,7 +647,7 @@ class V1Resource {
   async.Future<IapSettings> getIapSettings(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -683,7 +665,7 @@ class V1Resource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':iapSettings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -692,10 +674,8 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          IapSettings.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return IapSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy for an Identity-Aware Proxy protected
@@ -728,7 +708,7 @@ class V1Resource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -750,7 +730,7 @@ class V1Resource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -759,9 +739,7 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the Identity-Aware Proxy
@@ -793,7 +771,7 @@ class V1Resource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -815,7 +793,7 @@ class V1Resource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -824,10 +802,8 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the IAP settings on a particular IAP protected resource.
@@ -860,7 +836,7 @@ class V1Resource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -884,7 +860,7 @@ class V1Resource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':iapSettings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -893,10 +869,8 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          IapSettings.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return IapSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

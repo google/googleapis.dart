@@ -189,7 +189,7 @@ class DebugDatasourcesItemsResource {
     core.String name, {
     core.bool debugOptions_enableDebugging,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -216,7 +216,7 @@ class DebugDatasourcesItemsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':checkAccess';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -225,10 +225,8 @@ class DebugDatasourcesItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CheckAccessResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CheckAccessResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Fetches the item whose viewUrl exactly matches that of the URL provided in
@@ -257,7 +255,7 @@ class DebugDatasourcesItemsResource {
     SearchItemsByViewUrlRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -279,7 +277,7 @@ class DebugDatasourcesItemsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/items:searchByViewUrl';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -288,10 +286,8 @@ class DebugDatasourcesItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchItemsByViewUrlResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchItemsByViewUrlResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -336,7 +332,7 @@ class DebugDatasourcesItemsUnmappedidsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -366,7 +362,7 @@ class DebugDatasourcesItemsUnmappedidsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/unmappedids';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -375,10 +371,8 @@ class DebugDatasourcesItemsUnmappedidsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListUnmappedIdentitiesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListUnmappedIdentitiesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -442,7 +436,7 @@ class DebugIdentitysourcesItemsResource {
     core.String pageToken,
     core.String userResourceName,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -478,7 +472,7 @@ class DebugIdentitysourcesItemsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/items:forunmappedidentity';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -487,10 +481,8 @@ class DebugIdentitysourcesItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListItemNamesForUnmappedIdentityResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListItemNamesForUnmappedIdentityResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -550,7 +542,7 @@ class DebugIdentitysourcesUnmappedidsResource {
     core.String pageToken,
     core.String resolutionStatusCode,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -583,7 +575,7 @@ class DebugIdentitysourcesUnmappedidsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/unmappedids';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -592,10 +584,8 @@ class DebugIdentitysourcesUnmappedidsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListUnmappedIdentitiesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListUnmappedIdentitiesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -644,7 +634,7 @@ class IndexingDatasourcesResource {
     core.String name, {
     core.bool debugOptions_enableDebugging,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -668,7 +658,7 @@ class IndexingDatasourcesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/schema';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -677,9 +667,7 @@ class IndexingDatasourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the schema of a data source.
@@ -709,7 +697,7 @@ class IndexingDatasourcesResource {
     core.String name, {
     core.bool debugOptions_enableDebugging,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -733,7 +721,7 @@ class IndexingDatasourcesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/schema';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -742,9 +730,7 @@ class IndexingDatasourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Schema.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Schema.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the schema of a data source.
@@ -775,7 +761,7 @@ class IndexingDatasourcesResource {
     UpdateSchemaRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -797,7 +783,7 @@ class IndexingDatasourcesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/schema';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -806,9 +792,7 @@ class IndexingDatasourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -868,7 +852,7 @@ class IndexingDatasourcesItemsResource {
     core.String mode,
     core.String version,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -899,7 +883,7 @@ class IndexingDatasourcesItemsResource {
 
     _url = 'v1/indexing/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -908,9 +892,7 @@ class IndexingDatasourcesItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes all items in a queue.
@@ -941,7 +923,7 @@ class IndexingDatasourcesItemsResource {
     DeleteQueueItemsRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -963,7 +945,7 @@ class IndexingDatasourcesItemsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/items:deleteQueueItems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -972,9 +954,7 @@ class IndexingDatasourcesItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets Item resource by item name.
@@ -1009,7 +989,7 @@ class IndexingDatasourcesItemsResource {
     core.String connectorName,
     core.bool debugOptions_enableDebugging,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1034,7 +1014,7 @@ class IndexingDatasourcesItemsResource {
 
     _url = 'v1/indexing/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1043,9 +1023,7 @@ class IndexingDatasourcesItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Item.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Item.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates Item ACL, metadata, and content.
@@ -1078,7 +1056,7 @@ class IndexingDatasourcesItemsResource {
     IndexItemRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1100,7 +1078,7 @@ class IndexingDatasourcesItemsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':index';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1109,9 +1087,7 @@ class IndexingDatasourcesItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all or a subset of Item resources.
@@ -1164,7 +1140,7 @@ class IndexingDatasourcesItemsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1200,7 +1176,7 @@ class IndexingDatasourcesItemsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/items';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1209,10 +1185,8 @@ class IndexingDatasourcesItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListItemsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListItemsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Polls for unreserved items from the indexing queue and marks a set as
@@ -1250,7 +1224,7 @@ class IndexingDatasourcesItemsResource {
     PollItemsRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1272,7 +1246,7 @@ class IndexingDatasourcesItemsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/items:poll';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1281,10 +1255,8 @@ class IndexingDatasourcesItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PollItemsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PollItemsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Pushes an item onto a queue for later polling and updating.
@@ -1315,7 +1287,7 @@ class IndexingDatasourcesItemsResource {
     PushItemRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1337,7 +1309,7 @@ class IndexingDatasourcesItemsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':push';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1346,9 +1318,7 @@ class IndexingDatasourcesItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Item.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Item.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Unreserves all items from a queue, making them all eligible to be polled.
@@ -1380,7 +1350,7 @@ class IndexingDatasourcesItemsResource {
     UnreserveItemsRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1402,7 +1372,7 @@ class IndexingDatasourcesItemsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/items:unreserve';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1411,9 +1381,7 @@ class IndexingDatasourcesItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates an upload session for uploading item content.
@@ -1445,7 +1413,7 @@ class IndexingDatasourcesItemsResource {
     StartUploadItemRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1467,7 +1435,7 @@ class IndexingDatasourcesItemsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':upload';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1476,10 +1444,8 @@ class IndexingDatasourcesItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          UploadItemRef.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UploadItemRef.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1528,7 +1494,7 @@ class MediaResource {
     core.String resourceName, {
     core.String $fields,
     commons.Media uploadMedia,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1557,7 +1523,7 @@ class MediaResource {
           commons.Escaper.ecapeVariableReserved('$resourceName');
     }
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1566,9 +1532,7 @@ class MediaResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Media.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Media.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1602,7 +1566,7 @@ class OperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1619,7 +1583,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1628,9 +1592,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1677,7 +1639,7 @@ class OperationsLroResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1703,7 +1665,7 @@ class OperationsLroResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/lro';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1712,10 +1674,8 @@ class OperationsLroResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1754,7 +1714,7 @@ class QueryResource {
   async.Future<SearchResponse> search(
     SearchRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1771,7 +1731,7 @@ class QueryResource {
 
     _url = 'v1/query/search';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1780,10 +1740,8 @@ class QueryResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SearchResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Provides suggestions for autocompleting the query.
@@ -1811,7 +1769,7 @@ class QueryResource {
   async.Future<SuggestResponse> suggest(
     SuggestRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1828,7 +1786,7 @@ class QueryResource {
 
     _url = 'v1/query/suggest';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1837,10 +1795,8 @@ class QueryResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SuggestResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SuggestResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1903,7 +1859,7 @@ class QuerySourcesResource {
     core.String requestOptions_searchApplicationId,
     core.String requestOptions_timeZone,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1938,7 +1894,7 @@ class QuerySourcesResource {
 
     _url = 'v1/query/sources';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1947,10 +1903,8 @@ class QuerySourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListQuerySourcesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListQuerySourcesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1992,7 +1946,7 @@ class SettingsDatasourcesResource {
   async.Future<Operation> create(
     DataSource request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2009,7 +1963,7 @@ class SettingsDatasourcesResource {
 
     _url = 'v1/settings/datasources';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2018,9 +1972,7 @@ class SettingsDatasourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a datasource.
@@ -2049,7 +2001,7 @@ class SettingsDatasourcesResource {
     core.String name, {
     core.bool debugOptions_enableDebugging,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2071,7 +2023,7 @@ class SettingsDatasourcesResource {
 
     _url = 'v1/settings/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2080,9 +2032,7 @@ class SettingsDatasourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a datasource.
@@ -2111,7 +2061,7 @@ class SettingsDatasourcesResource {
     core.String name, {
     core.bool debugOptions_enableDebugging,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2133,7 +2083,7 @@ class SettingsDatasourcesResource {
 
     _url = 'v1/settings/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2142,10 +2092,8 @@ class SettingsDatasourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DataSource.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DataSource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists datasources.
@@ -2177,7 +2125,7 @@ class SettingsDatasourcesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2202,7 +2150,7 @@ class SettingsDatasourcesResource {
 
     _url = 'v1/settings/datasources';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2211,10 +2159,8 @@ class SettingsDatasourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListDataSourceResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListDataSourceResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a datasource.
@@ -2243,7 +2189,7 @@ class SettingsDatasourcesResource {
     UpdateDataSourceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2263,7 +2209,7 @@ class SettingsDatasourcesResource {
 
     _url = 'v1/settings/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2272,9 +2218,7 @@ class SettingsDatasourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2305,7 +2249,7 @@ class SettingsSearchapplicationsResource {
   async.Future<Operation> create(
     SearchApplication request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2322,7 +2266,7 @@ class SettingsSearchapplicationsResource {
 
     _url = 'v1/settings/searchapplications';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2331,9 +2275,7 @@ class SettingsSearchapplicationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a search application.
@@ -2363,7 +2305,7 @@ class SettingsSearchapplicationsResource {
     core.String name, {
     core.bool debugOptions_enableDebugging,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2385,7 +2327,7 @@ class SettingsSearchapplicationsResource {
 
     _url = 'v1/settings/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2394,9 +2336,7 @@ class SettingsSearchapplicationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified search application.
@@ -2426,7 +2366,7 @@ class SettingsSearchapplicationsResource {
     core.String name, {
     core.bool debugOptions_enableDebugging,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2448,7 +2388,7 @@ class SettingsSearchapplicationsResource {
 
     _url = 'v1/settings/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2457,10 +2397,8 @@ class SettingsSearchapplicationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchApplication.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchApplication.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all search applications.
@@ -2492,7 +2430,7 @@ class SettingsSearchapplicationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2517,7 +2455,7 @@ class SettingsSearchapplicationsResource {
 
     _url = 'v1/settings/searchapplications';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2526,10 +2464,8 @@ class SettingsSearchapplicationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListSearchApplicationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListSearchApplicationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Resets a search application to default settings.
@@ -2559,7 +2495,7 @@ class SettingsSearchapplicationsResource {
     ResetSearchApplicationRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2581,7 +2517,7 @@ class SettingsSearchapplicationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':reset';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2590,9 +2526,7 @@ class SettingsSearchapplicationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a search application.
@@ -2621,7 +2555,7 @@ class SettingsSearchapplicationsResource {
     SearchApplication request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2641,7 +2575,7 @@ class SettingsSearchapplicationsResource {
 
     _url = 'v1/settings/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2650,9 +2584,7 @@ class SettingsSearchapplicationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2706,7 +2638,7 @@ class StatsResource {
     core.int toDate_month,
     core.int toDate_year,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2738,7 +2670,7 @@ class StatsResource {
 
     _url = 'v1/stats/index';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2747,10 +2679,8 @@ class StatsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetCustomerIndexStatsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetCustomerIndexStatsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get the query statistics for customer.
@@ -2791,7 +2721,7 @@ class StatsResource {
     core.int toDate_month,
     core.int toDate_year,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2823,7 +2753,7 @@ class StatsResource {
 
     _url = 'v1/stats/query';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2832,10 +2762,8 @@ class StatsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetCustomerQueryStatsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetCustomerQueryStatsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get the # of search sessions, % of successful sessions with a click query
@@ -2877,7 +2805,7 @@ class StatsResource {
     core.int toDate_month,
     core.int toDate_year,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2909,7 +2837,7 @@ class StatsResource {
 
     _url = 'v1/stats/session';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2918,10 +2846,8 @@ class StatsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetCustomerSessionStatsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetCustomerSessionStatsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get the users statistics for customer.
@@ -2962,7 +2888,7 @@ class StatsResource {
     core.int toDate_month,
     core.int toDate_year,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2994,7 +2920,7 @@ class StatsResource {
 
     _url = 'v1/stats/user';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3003,10 +2929,8 @@ class StatsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetCustomerUserStatsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetCustomerUserStatsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3068,7 +2992,7 @@ class StatsIndexDatasourcesResource {
     core.int toDate_month,
     core.int toDate_year,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3103,7 +3027,7 @@ class StatsIndexDatasourcesResource {
 
     _url = 'v1/stats/index/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3112,10 +3036,8 @@ class StatsIndexDatasourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetDataSourceIndexStatsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetDataSourceIndexStatsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3177,7 +3099,7 @@ class StatsQuerySearchapplicationsResource {
     core.int toDate_month,
     core.int toDate_year,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3212,7 +3134,7 @@ class StatsQuerySearchapplicationsResource {
 
     _url = 'v1/stats/query/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3221,10 +3143,8 @@ class StatsQuerySearchapplicationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetSearchApplicationQueryStatsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetSearchApplicationQueryStatsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3287,7 +3207,7 @@ class StatsSessionSearchapplicationsResource {
     core.int toDate_month,
     core.int toDate_year,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3322,7 +3242,7 @@ class StatsSessionSearchapplicationsResource {
 
     _url = 'v1/stats/session/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3331,10 +3251,8 @@ class StatsSessionSearchapplicationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetSearchApplicationSessionStatsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetSearchApplicationSessionStatsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3396,7 +3314,7 @@ class StatsUserSearchapplicationsResource {
     core.int toDate_month,
     core.int toDate_year,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3431,7 +3349,7 @@ class StatsUserSearchapplicationsResource {
 
     _url = 'v1/stats/user/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3440,10 +3358,8 @@ class StatsUserSearchapplicationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetSearchApplicationUserStatsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetSearchApplicationUserStatsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

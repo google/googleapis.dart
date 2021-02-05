@@ -103,7 +103,7 @@ class ProjectsLocationsResource {
   async.Future<GoogleCloudLocationLocation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -120,7 +120,7 @@ class ProjectsLocationsResource {
 
     _url = 'v1beta3/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -129,10 +129,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudLocationLocation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudLocationLocation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -164,7 +162,7 @@ class ProjectsLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -192,7 +190,7 @@ class ProjectsLocationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -201,10 +199,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudLocationListLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudLocationListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -238,7 +234,7 @@ class ProjectsLocationsOperationsResource {
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -255,7 +251,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1beta3/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -264,10 +260,8 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -310,7 +304,7 @@ class ProjectsLocationsProcessorsResource {
     GoogleCloudDocumentaiV1beta3BatchProcessRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -332,7 +326,7 @@ class ProjectsLocationsProcessorsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':batchProcess';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -341,10 +335,8 @@ class ProjectsLocationsProcessorsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Processes a single document.
@@ -375,7 +367,7 @@ class ProjectsLocationsProcessorsResource {
     GoogleCloudDocumentaiV1beta3ProcessRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -397,7 +389,7 @@ class ProjectsLocationsProcessorsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':process';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -406,10 +398,8 @@ class ProjectsLocationsProcessorsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDocumentaiV1beta3ProcessResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDocumentaiV1beta3ProcessResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -447,7 +437,7 @@ class ProjectsLocationsProcessorsHumanReviewConfigResource {
     GoogleCloudDocumentaiV1beta3ReviewDocumentRequest request,
     core.String humanReviewConfig, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -469,7 +459,7 @@ class ProjectsLocationsProcessorsHumanReviewConfigResource {
         commons.Escaper.ecapeVariableReserved('$humanReviewConfig') +
         ':reviewDocument';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -478,10 +468,8 @@ class ProjectsLocationsProcessorsHumanReviewConfigResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -520,7 +508,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
     GoogleCloudDocumentaiV1beta3BatchProcessRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -542,7 +530,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':batchProcess';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -551,10 +539,8 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Processes a single document.
@@ -585,7 +571,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
     GoogleCloudDocumentaiV1beta3ProcessRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -607,7 +593,7 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':process';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -616,10 +602,8 @@ class ProjectsLocationsProcessorsProcessorVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDocumentaiV1beta3ProcessResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDocumentaiV1beta3ProcessResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

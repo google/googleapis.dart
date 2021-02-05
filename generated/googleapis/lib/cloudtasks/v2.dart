@@ -95,7 +95,7 @@ class ProjectsLocationsResource {
   async.Future<Location> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -112,7 +112,7 @@ class ProjectsLocationsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -121,9 +121,7 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -155,7 +153,7 @@ class ProjectsLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -182,7 +180,7 @@ class ProjectsLocationsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -191,10 +189,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -241,7 +237,7 @@ class ProjectsLocationsQueuesResource {
     Queue request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -261,7 +257,7 @@ class ProjectsLocationsQueuesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/queues';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -270,9 +266,7 @@ class ProjectsLocationsQueuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Queue.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Queue.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a queue.
@@ -305,7 +299,7 @@ class ProjectsLocationsQueuesResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -322,7 +316,7 @@ class ProjectsLocationsQueuesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -331,9 +325,7 @@ class ProjectsLocationsQueuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a queue.
@@ -358,7 +350,7 @@ class ProjectsLocationsQueuesResource {
   async.Future<Queue> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -375,7 +367,7 @@ class ProjectsLocationsQueuesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -384,9 +376,7 @@ class ProjectsLocationsQueuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Queue.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Queue.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a Queue.
@@ -420,7 +410,7 @@ class ProjectsLocationsQueuesResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -442,7 +432,7 @@ class ProjectsLocationsQueuesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -451,9 +441,7 @@ class ProjectsLocationsQueuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists queues.
@@ -501,7 +489,7 @@ class ProjectsLocationsQueuesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -527,7 +515,7 @@ class ProjectsLocationsQueuesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/queues';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -536,10 +524,8 @@ class ProjectsLocationsQueuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListQueuesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListQueuesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a queue.
@@ -590,7 +576,7 @@ class ProjectsLocationsQueuesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -613,7 +599,7 @@ class ProjectsLocationsQueuesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -622,9 +608,7 @@ class ProjectsLocationsQueuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Queue.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Queue.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Pauses the queue.
@@ -656,7 +640,7 @@ class ProjectsLocationsQueuesResource {
     PauseQueueRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -676,7 +660,7 @@ class ProjectsLocationsQueuesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':pause';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -685,9 +669,7 @@ class ProjectsLocationsQueuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Queue.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Queue.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Purges a queue by deleting all of its tasks.
@@ -719,7 +701,7 @@ class ProjectsLocationsQueuesResource {
     PurgeQueueRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -739,7 +721,7 @@ class ProjectsLocationsQueuesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':purge';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -748,9 +730,7 @@ class ProjectsLocationsQueuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Queue.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Queue.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Resume a queue.
@@ -785,7 +765,7 @@ class ProjectsLocationsQueuesResource {
     ResumeQueueRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -805,7 +785,7 @@ class ProjectsLocationsQueuesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':resume';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -814,9 +794,7 @@ class ProjectsLocationsQueuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Queue.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Queue.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy for a Queue.
@@ -851,7 +829,7 @@ class ProjectsLocationsQueuesResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -873,7 +851,7 @@ class ProjectsLocationsQueuesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -882,9 +860,7 @@ class ProjectsLocationsQueuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on a Queue.
@@ -918,7 +894,7 @@ class ProjectsLocationsQueuesResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -940,7 +916,7 @@ class ProjectsLocationsQueuesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -949,10 +925,8 @@ class ProjectsLocationsQueuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -991,7 +965,7 @@ class ProjectsLocationsQueuesTasksResource {
     CreateTaskRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1011,7 +985,7 @@ class ProjectsLocationsQueuesTasksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/tasks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1020,9 +994,7 @@ class ProjectsLocationsQueuesTasksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Task.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a task.
@@ -1050,7 +1022,7 @@ class ProjectsLocationsQueuesTasksResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1067,7 +1039,7 @@ class ProjectsLocationsQueuesTasksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1076,9 +1048,7 @@ class ProjectsLocationsQueuesTasksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a task.
@@ -1123,7 +1093,7 @@ class ProjectsLocationsQueuesTasksResource {
     core.String name, {
     core.String responseView,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1143,7 +1113,7 @@ class ProjectsLocationsQueuesTasksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1152,9 +1122,7 @@ class ProjectsLocationsQueuesTasksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Task.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the tasks in a queue.
@@ -1217,7 +1185,7 @@ class ProjectsLocationsQueuesTasksResource {
     core.String pageToken,
     core.String responseView,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1243,7 +1211,7 @@ class ProjectsLocationsQueuesTasksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/tasks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1252,10 +1220,8 @@ class ProjectsLocationsQueuesTasksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTasksResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTasksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Forces a task to run now.
@@ -1296,7 +1262,7 @@ class ProjectsLocationsQueuesTasksResource {
     RunTaskRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1316,7 +1282,7 @@ class ProjectsLocationsQueuesTasksResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':run';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1325,9 +1291,7 @@ class ProjectsLocationsQueuesTasksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Task.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Task.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

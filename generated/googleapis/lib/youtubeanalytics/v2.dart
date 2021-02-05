@@ -112,7 +112,7 @@ class GroupItemsResource {
     core.String id,
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -132,7 +132,7 @@ class GroupItemsResource {
 
     _url = 'v2/groupItems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -141,10 +141,8 @@ class GroupItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          EmptyResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return EmptyResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a group item.
@@ -178,7 +176,7 @@ class GroupItemsResource {
     GroupItem request, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -198,7 +196,7 @@ class GroupItemsResource {
 
     _url = 'v2/groupItems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -207,9 +205,7 @@ class GroupItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GroupItem.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return GroupItem.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a collection of group items that match the API request parameters.
@@ -244,7 +240,7 @@ class GroupItemsResource {
     core.String groupId,
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -264,7 +260,7 @@ class GroupItemsResource {
 
     _url = 'v2/groupItems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -273,10 +269,8 @@ class GroupItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListGroupItemsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListGroupItemsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -317,7 +311,7 @@ class GroupsResource {
     core.String id,
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -337,7 +331,7 @@ class GroupsResource {
 
     _url = 'v2/groups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -346,10 +340,8 @@ class GroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          EmptyResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return EmptyResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a group.
@@ -383,7 +375,7 @@ class GroupsResource {
     Group request, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -403,7 +395,7 @@ class GroupsResource {
 
     _url = 'v2/groups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -412,9 +404,7 @@ class GroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Group.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Group.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a collection of groups that match the API request parameters.
@@ -466,7 +456,7 @@ class GroupsResource {
     core.String onBehalfOfContentOwner,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -492,7 +482,7 @@ class GroupsResource {
 
     _url = 'v2/groups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -501,10 +491,8 @@ class GroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListGroupsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListGroupsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies a group.
@@ -540,7 +528,7 @@ class GroupsResource {
     Group request, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -560,7 +548,7 @@ class GroupsResource {
 
     _url = 'v2/groups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -569,9 +557,7 @@ class GroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Group.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Group.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -669,7 +655,7 @@ class ReportsResource {
     core.String startDate,
     core.int startIndex,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -718,7 +704,7 @@ class ReportsResource {
 
     _url = 'v2/reports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -727,10 +713,8 @@ class ReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          QueryResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return QueryResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -93,7 +93,7 @@ class OperationsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -110,7 +110,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -119,9 +119,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -162,7 +160,7 @@ class OperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -188,7 +186,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -197,10 +195,8 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -245,7 +241,7 @@ class ProjectsLocationsResource {
   async.Future<BiReservation> getBiReservation(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -262,7 +258,7 @@ class ProjectsLocationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -271,10 +267,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          BiReservation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return BiReservation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Looks up assignments for a specified resource for a particular region.
@@ -322,7 +316,7 @@ class ProjectsLocationsResource {
     core.String pageToken,
     core.String query,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -350,7 +344,7 @@ class ProjectsLocationsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':searchAllAssignments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -359,10 +353,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchAllAssignmentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchAllAssignmentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Looks up assignments for a specified resource for a particular region.
@@ -411,7 +403,7 @@ class ProjectsLocationsResource {
     core.String pageToken,
     core.String query,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -439,7 +431,7 @@ class ProjectsLocationsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':searchAssignments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -448,10 +440,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchAssignmentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchAssignmentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a BI reservation.
@@ -488,7 +478,7 @@ class ProjectsLocationsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -511,7 +501,7 @@ class ProjectsLocationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -520,10 +510,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          BiReservation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return BiReservation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -561,7 +549,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
     core.String parent, {
     core.bool enforceSingleAdminProjectPerOrg,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -588,7 +576,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/capacityCommitments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -597,10 +585,8 @@ class ProjectsLocationsCapacityCommitmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CapacityCommitment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CapacityCommitment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a capacity commitment.
@@ -628,7 +614,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -645,7 +631,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -654,9 +640,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about the capacity commitment.
@@ -681,7 +665,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
   async.Future<CapacityCommitment> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -698,7 +682,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -707,10 +691,8 @@ class ProjectsLocationsCapacityCommitmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CapacityCommitment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CapacityCommitment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the capacity commitments for the admin project.
@@ -741,7 +723,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -766,7 +748,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/capacityCommitments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -775,10 +757,8 @@ class ProjectsLocationsCapacityCommitmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCapacityCommitmentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCapacityCommitmentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Merges capacity commitments of the same plan into a single commitment.
@@ -810,7 +790,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
     MergeCapacityCommitmentsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -832,7 +812,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/capacityCommitments:merge';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -841,10 +821,8 @@ class ProjectsLocationsCapacityCommitmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CapacityCommitment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CapacityCommitment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing capacity commitment.
@@ -880,7 +858,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -903,7 +881,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -912,10 +890,8 @@ class ProjectsLocationsCapacityCommitmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CapacityCommitment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CapacityCommitment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Splits capacity commitment to two commitments of the same plan and
@@ -949,7 +925,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
     SplitCapacityCommitmentRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -969,7 +945,7 @@ class ProjectsLocationsCapacityCommitmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':split';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -978,10 +954,8 @@ class ProjectsLocationsCapacityCommitmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SplitCapacityCommitmentResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SplitCapacityCommitmentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1022,7 +996,7 @@ class ProjectsLocationsReservationsResource {
     core.String parent, {
     core.String reservationId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1047,7 +1021,7 @@ class ProjectsLocationsReservationsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/reservations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1056,10 +1030,8 @@ class ProjectsLocationsReservationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Reservation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Reservation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a reservation.
@@ -1087,7 +1059,7 @@ class ProjectsLocationsReservationsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1104,7 +1076,7 @@ class ProjectsLocationsReservationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1113,9 +1085,7 @@ class ProjectsLocationsReservationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about the reservation.
@@ -1140,7 +1110,7 @@ class ProjectsLocationsReservationsResource {
   async.Future<Reservation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1157,7 +1127,7 @@ class ProjectsLocationsReservationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1166,10 +1136,8 @@ class ProjectsLocationsReservationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Reservation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Reservation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the reservations for the project in the specified location.
@@ -1200,7 +1168,7 @@ class ProjectsLocationsReservationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1225,7 +1193,7 @@ class ProjectsLocationsReservationsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/reservations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1234,10 +1202,8 @@ class ProjectsLocationsReservationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListReservationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListReservationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing reservation resource.
@@ -1268,7 +1234,7 @@ class ProjectsLocationsReservationsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1291,7 +1257,7 @@ class ProjectsLocationsReservationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1300,10 +1266,8 @@ class ProjectsLocationsReservationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Reservation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Reservation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1356,7 +1320,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
     Assignment request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1378,7 +1342,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/assignments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1387,10 +1351,8 @@ class ProjectsLocationsReservationsAssignmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Assignment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Assignment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a assignment.
@@ -1423,7 +1385,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1440,7 +1402,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1449,9 +1411,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists assignments.
@@ -1495,7 +1455,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1520,7 +1480,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/assignments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1529,10 +1489,8 @@ class ProjectsLocationsReservationsAssignmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAssignmentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAssignmentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves an assignment under a new reservation.
@@ -1564,7 +1522,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
     MoveAssignmentRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1584,7 +1542,7 @@ class ProjectsLocationsReservationsAssignmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1593,10 +1551,8 @@ class ProjectsLocationsReservationsAssignmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Assignment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Assignment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

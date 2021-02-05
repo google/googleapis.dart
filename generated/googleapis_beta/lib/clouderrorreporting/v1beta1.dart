@@ -95,7 +95,7 @@ class ProjectsResource {
   async.Future<DeleteEventsResponse> deleteEvents(
     core.String projectName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -114,7 +114,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariableReserved('$projectName') +
         '/events';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -123,10 +123,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DeleteEventsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DeleteEventsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -196,7 +194,7 @@ class ProjectsEventsResource {
     core.String serviceFilter_version,
     core.String timeRange_period,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -236,7 +234,7 @@ class ProjectsEventsResource {
         commons.Escaper.ecapeVariableReserved('$projectName') +
         '/events';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -245,10 +243,8 @@ class ProjectsEventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListEventsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListEventsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Report an individual error event.
@@ -283,7 +279,7 @@ class ProjectsEventsResource {
     ReportedErrorEvent request,
     core.String projectName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -305,7 +301,7 @@ class ProjectsEventsResource {
         commons.Escaper.ecapeVariableReserved('$projectName') +
         '/events:report';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -314,10 +310,8 @@ class ProjectsEventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ReportErrorEventResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ReportErrorEventResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -427,7 +421,7 @@ class ProjectsGroupStatsResource {
     core.String timeRange_period,
     core.String timedCountDuration,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -479,7 +473,7 @@ class ProjectsGroupStatsResource {
         commons.Escaper.ecapeVariableReserved('$projectName') +
         '/groupStats';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -488,10 +482,8 @@ class ProjectsGroupStatsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListGroupStatsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListGroupStatsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -524,7 +516,7 @@ class ProjectsGroupsResource {
   async.Future<ErrorGroup> get(
     core.String groupName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -541,7 +533,7 @@ class ProjectsGroupsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$groupName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -550,10 +542,8 @@ class ProjectsGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ErrorGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ErrorGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Replace the data for the specified group.
@@ -582,7 +572,7 @@ class ProjectsGroupsResource {
     ErrorGroup request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -602,7 +592,7 @@ class ProjectsGroupsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -611,10 +601,8 @@ class ProjectsGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ErrorGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ErrorGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

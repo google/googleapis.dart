@@ -95,7 +95,7 @@ class ProjectsResource {
   async.Future<ProjectSettings> getSettings(
     core.String projectId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -114,7 +114,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariable('$projectId') +
         '/settings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -123,10 +123,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ProjectSettings.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ProjectSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates resources for settings which have not yet been set.
@@ -167,7 +165,7 @@ class ProjectsResource {
   async.Future<ProjectSettings> initializeSettings(
     core.String projectId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -186,7 +184,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariable('$projectId') +
         ':initializeSettings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -195,10 +193,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ProjectSettings.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ProjectSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -241,7 +237,7 @@ class ProjectsHistoriesResource {
     core.String projectId, {
     core.String requestId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -266,7 +262,7 @@ class ProjectsHistoriesResource {
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -275,9 +271,7 @@ class ProjectsHistoriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => History.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return History.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a History.
@@ -306,7 +300,7 @@ class ProjectsHistoriesResource {
     core.String projectId,
     core.String historyId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -329,7 +323,7 @@ class ProjectsHistoriesResource {
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -338,9 +332,7 @@ class ProjectsHistoriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => History.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return History.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Histories for a given Project.
@@ -382,7 +374,7 @@ class ProjectsHistoriesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -410,7 +402,7 @@ class ProjectsHistoriesResource {
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -419,10 +411,8 @@ class ProjectsHistoriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListHistoriesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListHistoriesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -473,7 +463,7 @@ class ProjectsHistoriesExecutionsResource {
     core.String historyId, {
     core.String requestId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -503,7 +493,7 @@ class ProjectsHistoriesExecutionsResource {
         commons.Escaper.ecapeVariable('$historyId') +
         '/executions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -512,9 +502,7 @@ class ProjectsHistoriesExecutionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Execution.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an Execution.
@@ -546,7 +534,7 @@ class ProjectsHistoriesExecutionsResource {
     core.String historyId,
     core.String executionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -574,7 +562,7 @@ class ProjectsHistoriesExecutionsResource {
         '/executions/' +
         commons.Escaper.ecapeVariable('$executionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -583,9 +571,7 @@ class ProjectsHistoriesExecutionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Execution.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Executions for a given History.
@@ -626,7 +612,7 @@ class ProjectsHistoriesExecutionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -656,7 +642,7 @@ class ProjectsHistoriesExecutionsResource {
         commons.Escaper.ecapeVariable('$historyId') +
         '/executions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -665,10 +651,8 @@ class ProjectsHistoriesExecutionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListExecutionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListExecutionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing Execution with the supplied partial entity.
@@ -709,7 +693,7 @@ class ProjectsHistoriesExecutionsResource {
     core.String executionId, {
     core.String requestId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -743,7 +727,7 @@ class ProjectsHistoriesExecutionsResource {
         '/executions/' +
         commons.Escaper.ecapeVariable('$executionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -752,9 +736,7 @@ class ProjectsHistoriesExecutionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Execution.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -792,7 +774,7 @@ class ProjectsHistoriesExecutionsClustersResource {
     core.String executionId,
     core.String clusterId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -825,7 +807,7 @@ class ProjectsHistoriesExecutionsClustersResource {
         '/clusters/' +
         commons.Escaper.ecapeVariable('$clusterId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -834,10 +816,8 @@ class ProjectsHistoriesExecutionsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ScreenshotCluster.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ScreenshotCluster.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Screenshot Clusters Returns the list of screenshot clusters
@@ -872,7 +852,7 @@ class ProjectsHistoriesExecutionsClustersResource {
     core.String historyId,
     core.String executionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -901,7 +881,7 @@ class ProjectsHistoriesExecutionsClustersResource {
         commons.Escaper.ecapeVariable('$executionId') +
         '/clusters';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -910,10 +890,8 @@ class ProjectsHistoriesExecutionsClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListScreenshotClustersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListScreenshotClustersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -955,7 +933,7 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     core.String executionId,
     core.String environmentId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -988,7 +966,7 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
         '/environments/' +
         commons.Escaper.ecapeVariable('$environmentId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -997,10 +975,8 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Environment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Environments for a given Execution.
@@ -1041,7 +1017,7 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1076,7 +1052,7 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
         commons.Escaper.ecapeVariable('$executionId') +
         '/environments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1085,10 +1061,8 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListEnvironmentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListEnvironmentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1145,7 +1119,7 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String name, {
     core.String locale,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1167,7 +1141,7 @@ class ProjectsHistoriesExecutionsStepsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':accessibilityClusters';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1176,10 +1150,8 @@ class ProjectsHistoriesExecutionsStepsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListStepAccessibilityClustersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListStepAccessibilityClustersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a Step.
@@ -1220,7 +1192,7 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String executionId, {
     core.String requestId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1255,7 +1227,7 @@ class ProjectsHistoriesExecutionsStepsResource {
         commons.Escaper.ecapeVariable('$executionId') +
         '/steps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1264,9 +1236,7 @@ class ProjectsHistoriesExecutionsStepsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Step.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Step.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a Step.
@@ -1301,7 +1271,7 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String executionId,
     core.String stepId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1334,7 +1304,7 @@ class ProjectsHistoriesExecutionsStepsResource {
         '/steps/' +
         commons.Escaper.ecapeVariable('$stepId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1343,9 +1313,7 @@ class ProjectsHistoriesExecutionsStepsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Step.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Step.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a PerfMetricsSummary.
@@ -1379,7 +1347,7 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String executionId,
     core.String stepId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1413,7 +1381,7 @@ class ProjectsHistoriesExecutionsStepsResource {
         commons.Escaper.ecapeVariable('$stepId') +
         '/perfMetricsSummary';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1422,10 +1390,8 @@ class ProjectsHistoriesExecutionsStepsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PerfMetricsSummary.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PerfMetricsSummary.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Steps for a given Execution.
@@ -1470,7 +1436,7 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1505,7 +1471,7 @@ class ProjectsHistoriesExecutionsStepsResource {
         commons.Escaper.ecapeVariable('$executionId') +
         '/steps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1514,10 +1480,8 @@ class ProjectsHistoriesExecutionsStepsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListStepsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListStepsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing Step with the supplied partial entity.
@@ -1562,7 +1526,7 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String stepId, {
     core.String requestId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1601,7 +1565,7 @@ class ProjectsHistoriesExecutionsStepsResource {
         '/steps/' +
         commons.Escaper.ecapeVariable('$stepId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1610,9 +1574,7 @@ class ProjectsHistoriesExecutionsStepsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Step.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Step.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Publish xml files to an existing Step.
@@ -1653,7 +1615,7 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String executionId,
     core.String stepId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1690,7 +1652,7 @@ class ProjectsHistoriesExecutionsStepsResource {
         commons.Escaper.ecapeVariable('$stepId') +
         ':publishXunitXmlFiles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1699,9 +1661,7 @@ class ProjectsHistoriesExecutionsStepsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Step.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Step.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1747,7 +1707,7 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
     core.String executionId,
     core.String stepId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1784,7 +1744,7 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
         commons.Escaper.ecapeVariable('$stepId') +
         '/perfMetricsSummary';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1793,10 +1753,8 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PerfMetricsSummary.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PerfMetricsSummary.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1846,7 +1804,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     core.String executionId,
     core.String stepId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1883,7 +1841,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
         commons.Escaper.ecapeVariable('$stepId') +
         '/perfSampleSeries';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1892,10 +1850,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PerfSampleSeries.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PerfSampleSeries.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a PerfSampleSeries.
@@ -1932,7 +1888,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     core.String stepId,
     core.String sampleSeriesId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1970,7 +1926,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
         '/perfSampleSeries/' +
         commons.Escaper.ecapeVariable('$sampleSeriesId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1979,10 +1935,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PerfSampleSeries.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PerfSampleSeries.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists PerfSampleSeries for a given Step.
@@ -2023,7 +1977,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     core.String stepId, {
     core.List<core.String> filter,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2060,7 +2014,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
         commons.Escaper.ecapeVariable('$stepId') +
         '/perfSampleSeries';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2069,10 +2023,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListPerfSampleSeriesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListPerfSampleSeriesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2126,7 +2078,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     core.String stepId,
     core.String sampleSeriesId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2168,7 +2120,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
         commons.Escaper.ecapeVariable('$sampleSeriesId') +
         '/samples:batchCreate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2177,10 +2129,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchCreatePerfSamplesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchCreatePerfSamplesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the Performance Samples of a given Sample Series - The list results
@@ -2231,7 +2181,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2276,7 +2226,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
         commons.Escaper.ecapeVariable('$sampleSeriesId') +
         '/samples';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2285,10 +2235,8 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListPerfSamplesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListPerfSamplesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2335,7 +2283,7 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     core.String stepId,
     core.String testCaseId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2373,7 +2321,7 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
         '/testCases/' +
         commons.Escaper.ecapeVariable('$testCaseId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2382,9 +2330,7 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestCase.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TestCase.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Test Cases attached to a Step.
@@ -2430,7 +2376,7 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2470,7 +2416,7 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
         commons.Escaper.ecapeVariable('$stepId') +
         '/testCases';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2479,10 +2425,8 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTestCasesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTestCasesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2535,7 +2479,7 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2575,7 +2519,7 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
         commons.Escaper.ecapeVariable('$stepId') +
         '/thumbnails';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2584,10 +2528,8 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListStepThumbnailsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListStepThumbnailsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

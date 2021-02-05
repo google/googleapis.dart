@@ -141,7 +141,7 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
   async.Future<GoogleCloudRecommenderV1Insight> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -158,7 +158,7 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -167,10 +167,8 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Insight.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Insight.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists insights for a Cloud project.
@@ -218,7 +216,7 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -245,7 +243,7 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/insights';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -254,10 +252,8 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Insight State as Accepted.
@@ -290,7 +286,7 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
     GoogleCloudRecommenderV1MarkInsightAcceptedRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -312,7 +308,7 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':markAccepted';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -321,10 +317,8 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Insight.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Insight.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -371,7 +365,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
   async.Future<GoogleCloudRecommenderV1Recommendation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -388,7 +382,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -397,10 +391,8 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists recommendations for a Cloud project.
@@ -449,7 +441,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -477,7 +469,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/recommendations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -486,10 +478,8 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Claimed.
@@ -524,7 +514,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     GoogleCloudRecommenderV1MarkRecommendationClaimedRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -545,7 +535,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markClaimed';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -554,10 +544,8 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Failed.
@@ -592,7 +580,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     GoogleCloudRecommenderV1MarkRecommendationFailedRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -613,7 +601,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markFailed';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -622,10 +610,8 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Succeeded.
@@ -660,7 +646,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     GoogleCloudRecommenderV1MarkRecommendationSucceededRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -682,7 +668,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':markSucceeded';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -691,10 +677,8 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -758,7 +742,7 @@ class FoldersLocationsInsightTypesInsightsResource {
   async.Future<GoogleCloudRecommenderV1Insight> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -775,7 +759,7 @@ class FoldersLocationsInsightTypesInsightsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -784,10 +768,8 @@ class FoldersLocationsInsightTypesInsightsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Insight.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Insight.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists insights for a Cloud project.
@@ -835,7 +817,7 @@ class FoldersLocationsInsightTypesInsightsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -862,7 +844,7 @@ class FoldersLocationsInsightTypesInsightsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/insights';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -871,10 +853,8 @@ class FoldersLocationsInsightTypesInsightsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Insight State as Accepted.
@@ -907,7 +887,7 @@ class FoldersLocationsInsightTypesInsightsResource {
     GoogleCloudRecommenderV1MarkInsightAcceptedRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -929,7 +909,7 @@ class FoldersLocationsInsightTypesInsightsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':markAccepted';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -938,10 +918,8 @@ class FoldersLocationsInsightTypesInsightsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Insight.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Insight.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -986,7 +964,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
   async.Future<GoogleCloudRecommenderV1Recommendation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1003,7 +981,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1012,10 +990,8 @@ class FoldersLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists recommendations for a Cloud project.
@@ -1064,7 +1040,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1092,7 +1068,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/recommendations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1101,10 +1077,8 @@ class FoldersLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Claimed.
@@ -1139,7 +1113,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
     GoogleCloudRecommenderV1MarkRecommendationClaimedRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1160,7 +1134,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markClaimed';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1169,10 +1143,8 @@ class FoldersLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Failed.
@@ -1207,7 +1179,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
     GoogleCloudRecommenderV1MarkRecommendationFailedRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1228,7 +1200,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markFailed';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1237,10 +1209,8 @@ class FoldersLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Succeeded.
@@ -1275,7 +1245,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
     GoogleCloudRecommenderV1MarkRecommendationSucceededRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1297,7 +1267,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':markSucceeded';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1306,10 +1276,8 @@ class FoldersLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1375,7 +1343,7 @@ class OrganizationsLocationsInsightTypesInsightsResource {
   async.Future<GoogleCloudRecommenderV1Insight> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1392,7 +1360,7 @@ class OrganizationsLocationsInsightTypesInsightsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1401,10 +1369,8 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Insight.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Insight.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists insights for a Cloud project.
@@ -1452,7 +1418,7 @@ class OrganizationsLocationsInsightTypesInsightsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1479,7 +1445,7 @@ class OrganizationsLocationsInsightTypesInsightsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/insights';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1488,10 +1454,8 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Insight State as Accepted.
@@ -1524,7 +1488,7 @@ class OrganizationsLocationsInsightTypesInsightsResource {
     GoogleCloudRecommenderV1MarkInsightAcceptedRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1546,7 +1510,7 @@ class OrganizationsLocationsInsightTypesInsightsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':markAccepted';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1555,10 +1519,8 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Insight.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Insight.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1604,7 +1566,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
   async.Future<GoogleCloudRecommenderV1Recommendation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1621,7 +1583,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1630,10 +1592,8 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists recommendations for a Cloud project.
@@ -1682,7 +1642,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1710,7 +1670,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/recommendations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1719,10 +1679,8 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Claimed.
@@ -1757,7 +1715,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     GoogleCloudRecommenderV1MarkRecommendationClaimedRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1778,7 +1736,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markClaimed';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1787,10 +1745,8 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Failed.
@@ -1825,7 +1781,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     GoogleCloudRecommenderV1MarkRecommendationFailedRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1846,7 +1802,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markFailed';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1855,10 +1811,8 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Succeeded.
@@ -1893,7 +1847,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     GoogleCloudRecommenderV1MarkRecommendationSucceededRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1915,7 +1869,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':markSucceeded';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1924,10 +1878,8 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1991,7 +1943,7 @@ class ProjectsLocationsInsightTypesInsightsResource {
   async.Future<GoogleCloudRecommenderV1Insight> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2008,7 +1960,7 @@ class ProjectsLocationsInsightTypesInsightsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2017,10 +1969,8 @@ class ProjectsLocationsInsightTypesInsightsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Insight.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Insight.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists insights for a Cloud project.
@@ -2068,7 +2018,7 @@ class ProjectsLocationsInsightTypesInsightsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2095,7 +2045,7 @@ class ProjectsLocationsInsightTypesInsightsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/insights';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2104,10 +2054,8 @@ class ProjectsLocationsInsightTypesInsightsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1ListInsightsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Insight State as Accepted.
@@ -2140,7 +2088,7 @@ class ProjectsLocationsInsightTypesInsightsResource {
     GoogleCloudRecommenderV1MarkInsightAcceptedRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2162,7 +2110,7 @@ class ProjectsLocationsInsightTypesInsightsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':markAccepted';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2171,10 +2119,8 @@ class ProjectsLocationsInsightTypesInsightsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Insight.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Insight.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2219,7 +2165,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
   async.Future<GoogleCloudRecommenderV1Recommendation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2236,7 +2182,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2245,10 +2191,8 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists recommendations for a Cloud project.
@@ -2297,7 +2241,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2325,7 +2269,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/recommendations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2334,10 +2278,8 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Claimed.
@@ -2372,7 +2314,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     GoogleCloudRecommenderV1MarkRecommendationClaimedRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2393,7 +2335,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markClaimed';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2402,10 +2344,8 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Failed.
@@ -2440,7 +2380,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     GoogleCloudRecommenderV1MarkRecommendationFailedRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2461,7 +2401,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markFailed';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2470,10 +2410,8 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the Recommendation State as Succeeded.
@@ -2508,7 +2446,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     GoogleCloudRecommenderV1MarkRecommendationSucceededRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2530,7 +2468,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':markSucceeded';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2539,10 +2477,8 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommenderV1Recommendation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommenderV1Recommendation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

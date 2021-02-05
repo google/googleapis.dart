@@ -109,11 +109,11 @@ class AclResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String calendarId,
     core.String ruleId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -138,7 +138,7 @@ class AclResource {
         '/acl/' +
         commons.Escaper.ecapeVariable('$ruleId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -146,9 +146,6 @@ class AclResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -176,7 +173,7 @@ class AclResource {
     core.String calendarId,
     core.String ruleId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -199,7 +196,7 @@ class AclResource {
         '/acl/' +
         commons.Escaper.ecapeVariable('$ruleId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -208,9 +205,7 @@ class AclResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AclRule.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AclRule.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates an access control rule.
@@ -241,7 +236,7 @@ class AclResource {
     core.String calendarId, {
     core.bool sendNotifications,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -264,7 +259,7 @@ class AclResource {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -273,9 +268,7 @@ class AclResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AclRule.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AclRule.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the rules in the access control list for the calendar.
@@ -324,7 +317,7 @@ class AclResource {
     core.bool showDeleted,
     core.String syncToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -353,7 +346,7 @@ class AclResource {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -362,9 +355,7 @@ class AclResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Acl.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Acl.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an access control rule.
@@ -401,7 +392,7 @@ class AclResource {
     core.String ruleId, {
     core.bool sendNotifications,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -430,7 +421,7 @@ class AclResource {
         '/acl/' +
         commons.Escaper.ecapeVariable('$ruleId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -439,9 +430,7 @@ class AclResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AclRule.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AclRule.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an access control rule.
@@ -476,7 +465,7 @@ class AclResource {
     core.String ruleId, {
     core.bool sendNotifications,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -505,7 +494,7 @@ class AclResource {
         '/acl/' +
         commons.Escaper.ecapeVariable('$ruleId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -514,9 +503,7 @@ class AclResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AclRule.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AclRule.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Watch for changes to ACL resources.
@@ -568,7 +555,7 @@ class AclResource {
     core.bool showDeleted,
     core.String syncToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -602,7 +589,7 @@ class AclResource {
         commons.Escaper.ecapeVariable('$calendarId') +
         '/acl/watch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -611,9 +598,7 @@ class AclResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -638,10 +623,10 @@ class CalendarListResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String calendarId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -661,7 +646,7 @@ class CalendarListResource {
     _url =
         'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -669,9 +654,6 @@ class CalendarListResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -696,7 +678,7 @@ class CalendarListResource {
   async.Future<CalendarListEntry> get(
     core.String calendarId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -714,7 +696,7 @@ class CalendarListResource {
     _url =
         'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -723,10 +705,8 @@ class CalendarListResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CalendarListEntry.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CalendarListEntry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts an existing calendar into the user's calendar list.
@@ -754,7 +734,7 @@ class CalendarListResource {
     CalendarListEntry request, {
     core.bool colorRgbFormat,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -774,7 +754,7 @@ class CalendarListResource {
 
     _url = 'users/me/calendarList';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -783,10 +763,8 @@ class CalendarListResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CalendarListEntry.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CalendarListEntry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the calendars on the user's calendar list.
@@ -846,7 +824,7 @@ class CalendarListResource {
     core.bool showHidden,
     core.String syncToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -878,7 +856,7 @@ class CalendarListResource {
 
     _url = 'users/me/calendarList';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -887,10 +865,8 @@ class CalendarListResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CalendarList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CalendarList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing calendar on the user's calendar list.
@@ -925,7 +901,7 @@ class CalendarListResource {
     core.String calendarId, {
     core.bool colorRgbFormat,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -949,7 +925,7 @@ class CalendarListResource {
     _url =
         'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -958,10 +934,8 @@ class CalendarListResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CalendarListEntry.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CalendarListEntry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing calendar on the user's calendar list.
@@ -994,7 +968,7 @@ class CalendarListResource {
     core.String calendarId, {
     core.bool colorRgbFormat,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1018,7 +992,7 @@ class CalendarListResource {
     _url =
         'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1027,10 +1001,8 @@ class CalendarListResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CalendarListEntry.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CalendarListEntry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Watch for changes to CalendarList resources.
@@ -1093,7 +1065,7 @@ class CalendarListResource {
     core.bool showHidden,
     core.String syncToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1128,7 +1100,7 @@ class CalendarListResource {
 
     _url = 'users/me/calendarList/watch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1137,9 +1109,7 @@ class CalendarListResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1167,10 +1137,10 @@ class CalendarsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future clear(
+  async.Future<void> clear(
     core.String calendarId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1190,7 +1160,7 @@ class CalendarsResource {
     _url =
         'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/clear';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1198,9 +1168,6 @@ class CalendarsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1222,10 +1189,10 @@ class CalendarsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String calendarId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1244,7 +1211,7 @@ class CalendarsResource {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1252,9 +1219,6 @@ class CalendarsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1279,7 +1243,7 @@ class CalendarsResource {
   async.Future<Calendar> get(
     core.String calendarId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1296,7 +1260,7 @@ class CalendarsResource {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1305,9 +1269,7 @@ class CalendarsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Calendar.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Calendar.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a secondary calendar.
@@ -1329,7 +1291,7 @@ class CalendarsResource {
   async.Future<Calendar> insert(
     Calendar request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1346,7 +1308,7 @@ class CalendarsResource {
 
     _url = 'calendars';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1355,9 +1317,7 @@ class CalendarsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Calendar.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Calendar.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates metadata for a calendar.
@@ -1386,7 +1346,7 @@ class CalendarsResource {
     Calendar request,
     core.String calendarId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1406,7 +1366,7 @@ class CalendarsResource {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1415,9 +1375,7 @@ class CalendarsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Calendar.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Calendar.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates metadata for a calendar.
@@ -1444,7 +1402,7 @@ class CalendarsResource {
     Calendar request,
     core.String calendarId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1464,7 +1422,7 @@ class CalendarsResource {
 
     _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1473,9 +1431,7 @@ class CalendarsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Calendar.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Calendar.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1498,10 +1454,10 @@ class ChannelsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future stop(
+  async.Future<void> stop(
     Channel request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1520,7 +1476,7 @@ class ChannelsResource {
 
     _url = 'channels/stop';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1528,9 +1484,6 @@ class ChannelsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 }
@@ -1556,7 +1509,7 @@ class ColorsResource {
   /// this method will complete with the same error.
   async.Future<Colors> get({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1570,7 +1523,7 @@ class ColorsResource {
 
     _url = 'colors';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1579,9 +1532,7 @@ class ColorsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Colors.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Colors.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1624,13 +1575,13 @@ class EventsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String calendarId,
     core.String eventId, {
     core.bool sendNotifications,
     core.String sendUpdates,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1661,7 +1612,7 @@ class EventsResource {
         '/events/' +
         commons.Escaper.ecapeVariable('$eventId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1669,9 +1620,6 @@ class EventsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1714,7 +1662,7 @@ class EventsResource {
     core.int maxAttendees,
     core.String timeZone,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1746,7 +1694,7 @@ class EventsResource {
         '/events/' +
         commons.Escaper.ecapeVariable('$eventId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1755,9 +1703,7 @@ class EventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Event.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Event.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Imports an event.
@@ -1799,7 +1745,7 @@ class EventsResource {
     core.int conferenceDataVersion,
     core.bool supportsAttachments,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1827,7 +1773,7 @@ class EventsResource {
         commons.Escaper.ecapeVariable('$calendarId') +
         '/events/import';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1836,9 +1782,7 @@ class EventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Event.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Event.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates an event.
@@ -1901,7 +1845,7 @@ class EventsResource {
     core.String sendUpdates,
     core.bool supportsAttachments,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1937,7 +1881,7 @@ class EventsResource {
     _url =
         'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1946,9 +1890,7 @@ class EventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Event.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Event.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns instances of the specified recurring event.
@@ -2018,7 +1960,7 @@ class EventsResource {
     core.DateTime timeMin,
     core.String timeZone,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2069,7 +2011,7 @@ class EventsResource {
         commons.Escaper.ecapeVariable('$eventId') +
         '/instances';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2078,9 +2020,7 @@ class EventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Events.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Events.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns events on the specified calendar.
@@ -2222,7 +2162,7 @@ class EventsResource {
     core.String timeZone,
     core.DateTime updatedMin,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2291,7 +2231,7 @@ class EventsResource {
     _url =
         'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2300,9 +2240,7 @@ class EventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Events.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Events.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves an event to another calendar, i.e. changes an event's organizer.
@@ -2350,7 +2288,7 @@ class EventsResource {
     core.bool sendNotifications,
     core.String sendUpdates,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2384,7 +2322,7 @@ class EventsResource {
         commons.Escaper.ecapeVariable('$eventId') +
         '/move';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2393,9 +2331,7 @@ class EventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Event.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Event.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an event.
@@ -2468,7 +2404,7 @@ class EventsResource {
     core.String sendUpdates,
     core.bool supportsAttachments,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2512,7 +2448,7 @@ class EventsResource {
         '/events/' +
         commons.Escaper.ecapeVariable('$eventId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2521,9 +2457,7 @@ class EventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Event.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Event.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates an event based on a simple text string.
@@ -2568,7 +2502,7 @@ class EventsResource {
     core.bool sendNotifications,
     core.String sendUpdates,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2597,7 +2531,7 @@ class EventsResource {
         commons.Escaper.ecapeVariable('$calendarId') +
         '/events/quickAdd';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2606,9 +2540,7 @@ class EventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Event.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Event.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an event.
@@ -2679,7 +2611,7 @@ class EventsResource {
     core.String sendUpdates,
     core.bool supportsAttachments,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2723,7 +2655,7 @@ class EventsResource {
         '/events/' +
         commons.Escaper.ecapeVariable('$eventId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2732,9 +2664,7 @@ class EventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Event.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Event.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Watch for changes to Events resources.
@@ -2879,7 +2809,7 @@ class EventsResource {
     core.String timeZone,
     core.DateTime updatedMin,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2952,7 +2882,7 @@ class EventsResource {
         commons.Escaper.ecapeVariable('$calendarId') +
         '/events/watch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2961,9 +2891,7 @@ class EventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2991,7 +2919,7 @@ class FreebusyResource {
   async.Future<FreeBusyResponse> query(
     FreeBusyRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3008,7 +2936,7 @@ class FreebusyResource {
 
     _url = 'freeBusy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3017,10 +2945,8 @@ class FreebusyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FreeBusyResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FreeBusyResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3048,7 +2974,7 @@ class SettingsResource {
   async.Future<Setting> get(
     core.String setting, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3065,7 +2991,7 @@ class SettingsResource {
 
     _url = 'users/me/settings/' + commons.Escaper.ecapeVariable('$setting');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3074,9 +3000,7 @@ class SettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Setting.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Setting.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns all user settings for the authenticated user.
@@ -3113,7 +3037,7 @@ class SettingsResource {
     core.String pageToken,
     core.String syncToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3136,7 +3060,7 @@ class SettingsResource {
 
     _url = 'users/me/settings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3145,9 +3069,7 @@ class SettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Settings.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Watch for changes to Settings resources.
@@ -3187,7 +3109,7 @@ class SettingsResource {
     core.String pageToken,
     core.String syncToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3213,7 +3135,7 @@ class SettingsResource {
 
     _url = 'users/me/settings/watch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3222,9 +3144,7 @@ class SettingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -114,7 +114,7 @@ class ProjectsResource {
     TestRulesetRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -134,7 +134,7 @@ class ProjectsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':test';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -143,10 +143,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestRulesetResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestRulesetResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -195,7 +193,7 @@ class ProjectsReleasesResource {
     Release request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -215,7 +213,7 @@ class ProjectsReleasesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/releases';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -224,9 +222,7 @@ class ProjectsReleasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Release.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Release.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a `Release` by resource name.
@@ -250,7 +246,7 @@ class ProjectsReleasesResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -267,7 +263,7 @@ class ProjectsReleasesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -276,9 +272,7 @@ class ProjectsReleasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a `Release` by name.
@@ -302,7 +296,7 @@ class ProjectsReleasesResource {
   async.Future<Release> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -319,7 +313,7 @@ class ProjectsReleasesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -328,9 +322,7 @@ class ProjectsReleasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Release.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Release.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get the `Release` executable to use when enforcing rules.
@@ -365,7 +357,7 @@ class ProjectsReleasesResource {
     core.String name, {
     core.String executableVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -387,7 +379,7 @@ class ProjectsReleasesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':getExecutable';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -396,10 +388,8 @@ class ProjectsReleasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetReleaseExecutableResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetReleaseExecutableResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List the `Release` values for a project.
@@ -453,7 +443,7 @@ class ProjectsReleasesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -479,7 +469,7 @@ class ProjectsReleasesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/releases';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -488,10 +478,8 @@ class ProjectsReleasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListReleasesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListReleasesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a `Release` via PATCH.
@@ -522,7 +510,7 @@ class ProjectsReleasesResource {
     UpdateReleaseRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -542,7 +530,7 @@ class ProjectsReleasesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -551,9 +539,7 @@ class ProjectsReleasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Release.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Release.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -591,7 +577,7 @@ class ProjectsRulesetsResource {
     Ruleset request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -611,7 +597,7 @@ class ProjectsRulesetsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/rulesets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -620,9 +606,7 @@ class ProjectsRulesetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Ruleset.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Ruleset.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a `Ruleset` by resource name.
@@ -648,7 +632,7 @@ class ProjectsRulesetsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -665,7 +649,7 @@ class ProjectsRulesetsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -674,9 +658,7 @@ class ProjectsRulesetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a `Ruleset` by name including the full `Source` contents.
@@ -700,7 +682,7 @@ class ProjectsRulesetsResource {
   async.Future<Ruleset> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -717,7 +699,7 @@ class ProjectsRulesetsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -726,9 +708,7 @@ class ProjectsRulesetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Ruleset.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Ruleset.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// List `Ruleset` metadata only and optionally filter the results by
@@ -772,7 +752,7 @@ class ProjectsRulesetsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -798,7 +778,7 @@ class ProjectsRulesetsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/rulesets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -807,10 +787,8 @@ class ProjectsRulesetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListRulesetsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListRulesetsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

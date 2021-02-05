@@ -106,7 +106,7 @@ class BillingAccountsBudgetsResource {
     GoogleCloudBillingBudgetsV1Budget request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -127,7 +127,7 @@ class BillingAccountsBudgetsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/budgets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -136,10 +136,8 @@ class BillingAccountsBudgetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudBillingBudgetsV1Budget.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudBillingBudgetsV1Budget.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a budget.
@@ -165,7 +163,7 @@ class BillingAccountsBudgetsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -182,7 +180,7 @@ class BillingAccountsBudgetsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -191,10 +189,8 @@ class BillingAccountsBudgetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a budget.
@@ -223,7 +219,7 @@ class BillingAccountsBudgetsResource {
   async.Future<GoogleCloudBillingBudgetsV1Budget> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -240,7 +236,7 @@ class BillingAccountsBudgetsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -249,10 +245,8 @@ class BillingAccountsBudgetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudBillingBudgetsV1Budget.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudBillingBudgetsV1Budget.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of budgets for a billing account.
@@ -291,7 +285,7 @@ class BillingAccountsBudgetsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -315,7 +309,7 @@ class BillingAccountsBudgetsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/budgets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -324,10 +318,8 @@ class BillingAccountsBudgetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudBillingBudgetsV1ListBudgetsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudBillingBudgetsV1ListBudgetsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a budget and returns the updated budget.
@@ -367,7 +359,7 @@ class BillingAccountsBudgetsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -390,7 +382,7 @@ class BillingAccountsBudgetsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -399,10 +391,8 @@ class BillingAccountsBudgetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudBillingBudgetsV1Budget.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudBillingBudgetsV1Budget.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

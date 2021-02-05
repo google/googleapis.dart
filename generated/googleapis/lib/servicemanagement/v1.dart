@@ -104,7 +104,7 @@ class OperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -121,7 +121,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -130,9 +130,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists service operations that match the specified filter in the request.
@@ -176,7 +174,7 @@ class OperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -202,7 +200,7 @@ class OperationsResource {
 
     _url = 'v1/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -211,10 +209,8 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -253,7 +249,7 @@ class ServicesResource {
   async.Future<Operation> create(
     ManagedService request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -270,7 +266,7 @@ class ServicesResource {
 
     _url = 'v1/services';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -279,9 +275,7 @@ class ServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a managed service.
@@ -310,7 +304,7 @@ class ServicesResource {
   async.Future<Operation> delete(
     core.String serviceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -327,7 +321,7 @@ class ServicesResource {
 
     _url = 'v1/services/' + commons.Escaper.ecapeVariable('$serviceName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -336,9 +330,7 @@ class ServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Enables a service for a project, so it can be used for the project.
@@ -367,7 +359,7 @@ class ServicesResource {
     EnableServiceRequest request,
     core.String serviceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -389,7 +381,7 @@ class ServicesResource {
         commons.Escaper.ecapeVariable('$serviceName') +
         ':enable';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -398,9 +390,7 @@ class ServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Generates and returns a report (errors, warnings and changes from existing
@@ -431,7 +421,7 @@ class ServicesResource {
   async.Future<GenerateConfigReportResponse> generateConfigReport(
     GenerateConfigReportRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -448,7 +438,7 @@ class ServicesResource {
 
     _url = 'v1/services:generateConfigReport';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -457,10 +447,8 @@ class ServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GenerateConfigReportResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GenerateConfigReportResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a managed service.
@@ -486,7 +474,7 @@ class ServicesResource {
   async.Future<ManagedService> get(
     core.String serviceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -503,7 +491,7 @@ class ServicesResource {
 
     _url = 'v1/services/' + commons.Escaper.ecapeVariable('$serviceName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -512,10 +500,8 @@ class ServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ManagedService.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ManagedService.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a service configuration (version) for a managed service.
@@ -554,7 +540,7 @@ class ServicesResource {
     core.String configId,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -579,7 +565,7 @@ class ServicesResource {
         commons.Escaper.ecapeVariable('$serviceName') +
         '/config';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -588,9 +574,7 @@ class ServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Service.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Service.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -621,7 +605,7 @@ class ServicesResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -643,7 +627,7 @@ class ServicesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -652,9 +636,7 @@ class ServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists managed services.
@@ -695,7 +677,7 @@ class ServicesResource {
     core.String pageToken,
     core.String producerProjectId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -721,7 +703,7 @@ class ServicesResource {
 
     _url = 'v1/services';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -730,10 +712,8 @@ class ServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListServicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListServicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -764,7 +744,7 @@ class ServicesResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -786,7 +766,7 @@ class ServicesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -795,9 +775,7 @@ class ServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -830,7 +808,7 @@ class ServicesResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -852,7 +830,7 @@ class ServicesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -861,10 +839,8 @@ class ServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Revives a previously deleted managed service.
@@ -892,7 +868,7 @@ class ServicesResource {
   async.Future<Operation> undelete(
     core.String serviceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -911,7 +887,7 @@ class ServicesResource {
         commons.Escaper.ecapeVariable('$serviceName') +
         ':undelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -920,9 +896,7 @@ class ServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -960,7 +934,7 @@ class ServicesConfigsResource {
     Service request,
     core.String serviceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -982,7 +956,7 @@ class ServicesConfigsResource {
         commons.Escaper.ecapeVariable('$serviceName') +
         '/configs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -991,9 +965,7 @@ class ServicesConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Service.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Service.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a service configuration (version) for a managed service.
@@ -1032,7 +1004,7 @@ class ServicesConfigsResource {
     core.String configId, {
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1058,7 +1030,7 @@ class ServicesConfigsResource {
         '/configs/' +
         commons.Escaper.ecapeVariable('$configId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1067,9 +1039,7 @@ class ServicesConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Service.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Service.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the history of the service configuration for a managed service, from
@@ -1101,7 +1071,7 @@ class ServicesConfigsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1126,7 +1096,7 @@ class ServicesConfigsResource {
         commons.Escaper.ecapeVariable('$serviceName') +
         '/configs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1135,10 +1105,8 @@ class ServicesConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListServiceConfigsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListServiceConfigsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new service configuration (version) for a managed service based
@@ -1174,7 +1142,7 @@ class ServicesConfigsResource {
     SubmitConfigSourceRequest request,
     core.String serviceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1196,7 +1164,7 @@ class ServicesConfigsResource {
         commons.Escaper.ecapeVariable('$serviceName') +
         '/configs:submit';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1205,9 +1173,7 @@ class ServicesConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1244,7 +1210,7 @@ class ServicesConsumersResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1266,7 +1232,7 @@ class ServicesConsumersResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1275,9 +1241,7 @@ class ServicesConsumersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1308,7 +1272,7 @@ class ServicesConsumersResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1330,7 +1294,7 @@ class ServicesConsumersResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1339,9 +1303,7 @@ class ServicesConsumersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1374,7 +1336,7 @@ class ServicesConsumersResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1396,7 +1358,7 @@ class ServicesConsumersResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1405,10 +1367,8 @@ class ServicesConsumersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1450,7 +1410,7 @@ class ServicesRolloutsResource {
     Rollout request,
     core.String serviceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1472,7 +1432,7 @@ class ServicesRolloutsResource {
         commons.Escaper.ecapeVariable('$serviceName') +
         '/rollouts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1481,9 +1441,7 @@ class ServicesRolloutsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a service configuration rollout.
@@ -1510,7 +1468,7 @@ class ServicesRolloutsResource {
     core.String serviceName,
     core.String rolloutId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1533,7 +1491,7 @@ class ServicesRolloutsResource {
         '/rollouts/' +
         commons.Escaper.ecapeVariable('$rolloutId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1542,9 +1500,7 @@ class ServicesRolloutsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Rollout.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Rollout.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the history of the service configuration rollouts for a managed
@@ -1584,7 +1540,7 @@ class ServicesRolloutsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1612,7 +1568,7 @@ class ServicesRolloutsResource {
         commons.Escaper.ecapeVariable('$serviceName') +
         '/rollouts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1621,10 +1577,8 @@ class ServicesRolloutsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListServiceRolloutsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListServiceRolloutsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -84,7 +84,7 @@ class RelyingpartyResource {
   async.Future<CreateAuthUriResponse> createAuthUri(
     IdentitytoolkitRelyingpartyCreateAuthUriRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -101,7 +101,7 @@ class RelyingpartyResource {
 
     _url = 'createAuthUri';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -110,10 +110,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CreateAuthUriResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CreateAuthUriResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete user account.
@@ -135,7 +133,7 @@ class RelyingpartyResource {
   async.Future<DeleteAccountResponse> deleteAccount(
     IdentitytoolkitRelyingpartyDeleteAccountRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -152,7 +150,7 @@ class RelyingpartyResource {
 
     _url = 'deleteAccount';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -161,10 +159,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DeleteAccountResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DeleteAccountResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Batch download user accounts.
@@ -186,7 +182,7 @@ class RelyingpartyResource {
   async.Future<DownloadAccountResponse> downloadAccount(
     IdentitytoolkitRelyingpartyDownloadAccountRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -203,7 +199,7 @@ class RelyingpartyResource {
 
     _url = 'downloadAccount';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -212,10 +208,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DownloadAccountResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DownloadAccountResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Reset password for a user.
@@ -237,7 +231,7 @@ class RelyingpartyResource {
   async.Future<EmailLinkSigninResponse> emailLinkSignin(
     IdentitytoolkitRelyingpartyEmailLinkSigninRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -254,7 +248,7 @@ class RelyingpartyResource {
 
     _url = 'emailLinkSignin';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -263,10 +257,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => EmailLinkSigninResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return EmailLinkSigninResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the account info.
@@ -288,7 +280,7 @@ class RelyingpartyResource {
   async.Future<GetAccountInfoResponse> getAccountInfo(
     IdentitytoolkitRelyingpartyGetAccountInfoRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -305,7 +297,7 @@ class RelyingpartyResource {
 
     _url = 'getAccountInfo';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -314,10 +306,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetAccountInfoResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetAccountInfoResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a code for user action confirmation.
@@ -339,7 +329,7 @@ class RelyingpartyResource {
   async.Future<GetOobConfirmationCodeResponse> getOobConfirmationCode(
     Relyingparty request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -356,7 +346,7 @@ class RelyingpartyResource {
 
     _url = 'getOobConfirmationCode';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -365,10 +355,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetOobConfirmationCodeResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetOobConfirmationCodeResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get project configuration.
@@ -394,7 +382,7 @@ class RelyingpartyResource {
     core.String delegatedProjectNumber,
     core.String projectNumber,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -414,7 +402,7 @@ class RelyingpartyResource {
 
     _url = 'getProjectConfig';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -423,10 +411,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get token signing public key.
@@ -445,7 +431,7 @@ class RelyingpartyResource {
   /// this method will complete with the same error.
   async.Future<IdentitytoolkitRelyingpartyGetPublicKeysResponse> getPublicKeys({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -459,7 +445,7 @@ class RelyingpartyResource {
 
     _url = 'publicKeys';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -468,10 +454,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => IdentitytoolkitRelyingpartyGetPublicKeysResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return IdentitytoolkitRelyingpartyGetPublicKeysResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get recaptcha secure param.
@@ -490,7 +474,7 @@ class RelyingpartyResource {
   /// this method will complete with the same error.
   async.Future<GetRecaptchaParamResponse> getRecaptchaParam({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -504,7 +488,7 @@ class RelyingpartyResource {
 
     _url = 'getRecaptchaParam';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -513,10 +497,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetRecaptchaParamResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetRecaptchaParamResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Reset password for a user.
@@ -538,7 +520,7 @@ class RelyingpartyResource {
   async.Future<ResetPasswordResponse> resetPassword(
     IdentitytoolkitRelyingpartyResetPasswordRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -555,7 +537,7 @@ class RelyingpartyResource {
 
     _url = 'resetPassword';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -564,10 +546,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ResetPasswordResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ResetPasswordResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Send SMS verification code.
@@ -591,7 +571,7 @@ class RelyingpartyResource {
       sendVerificationCode(
     IdentitytoolkitRelyingpartySendVerificationCodeRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -608,7 +588,7 @@ class RelyingpartyResource {
 
     _url = 'sendVerificationCode';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -617,11 +597,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Set account info for a user.
@@ -643,7 +620,7 @@ class RelyingpartyResource {
   async.Future<SetAccountInfoResponse> setAccountInfo(
     IdentitytoolkitRelyingpartySetAccountInfoRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -660,7 +637,7 @@ class RelyingpartyResource {
 
     _url = 'setAccountInfo';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -669,10 +646,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SetAccountInfoResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SetAccountInfoResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Set project configuration.
@@ -695,7 +670,7 @@ class RelyingpartyResource {
       setProjectConfig(
     IdentitytoolkitRelyingpartySetProjectConfigRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -712,7 +687,7 @@ class RelyingpartyResource {
 
     _url = 'setProjectConfig';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -721,10 +696,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sign out user.
@@ -746,7 +719,7 @@ class RelyingpartyResource {
   async.Future<IdentitytoolkitRelyingpartySignOutUserResponse> signOutUser(
     IdentitytoolkitRelyingpartySignOutUserRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -763,7 +736,7 @@ class RelyingpartyResource {
 
     _url = 'signOutUser';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -772,10 +745,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Signup new user.
@@ -797,7 +768,7 @@ class RelyingpartyResource {
   async.Future<SignupNewUserResponse> signupNewUser(
     IdentitytoolkitRelyingpartySignupNewUserRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -814,7 +785,7 @@ class RelyingpartyResource {
 
     _url = 'signupNewUser';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -823,10 +794,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SignupNewUserResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SignupNewUserResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Batch upload existing user accounts.
@@ -848,7 +817,7 @@ class RelyingpartyResource {
   async.Future<UploadAccountResponse> uploadAccount(
     IdentitytoolkitRelyingpartyUploadAccountRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -865,7 +834,7 @@ class RelyingpartyResource {
 
     _url = 'uploadAccount';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -874,10 +843,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UploadAccountResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return UploadAccountResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Verifies the assertion returned by the IdP.
@@ -899,7 +866,7 @@ class RelyingpartyResource {
   async.Future<VerifyAssertionResponse> verifyAssertion(
     IdentitytoolkitRelyingpartyVerifyAssertionRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -916,7 +883,7 @@ class RelyingpartyResource {
 
     _url = 'verifyAssertion';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -925,10 +892,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => VerifyAssertionResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return VerifyAssertionResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Verifies the developer asserted ID token.
@@ -950,7 +915,7 @@ class RelyingpartyResource {
   async.Future<VerifyCustomTokenResponse> verifyCustomToken(
     IdentitytoolkitRelyingpartyVerifyCustomTokenRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -967,7 +932,7 @@ class RelyingpartyResource {
 
     _url = 'verifyCustomToken';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -976,10 +941,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => VerifyCustomTokenResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return VerifyCustomTokenResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Verifies the user entered password.
@@ -1001,7 +964,7 @@ class RelyingpartyResource {
   async.Future<VerifyPasswordResponse> verifyPassword(
     IdentitytoolkitRelyingpartyVerifyPasswordRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1018,7 +981,7 @@ class RelyingpartyResource {
 
     _url = 'verifyPassword';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1027,10 +990,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => VerifyPasswordResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return VerifyPasswordResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Verifies ownership of a phone number and creates/updates the user account
@@ -1054,7 +1015,7 @@ class RelyingpartyResource {
       verifyPhoneNumber(
     IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1071,7 +1032,7 @@ class RelyingpartyResource {
 
     _url = 'verifyPhoneNumber';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1080,10 +1041,8 @@ class RelyingpartyResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

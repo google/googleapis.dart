@@ -110,7 +110,7 @@ class ProjectsLocationsResource {
   async.Future<Location> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -127,7 +127,7 @@ class ProjectsLocationsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -136,9 +136,7 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -170,7 +168,7 @@ class ProjectsLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -198,7 +196,7 @@ class ProjectsLocationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -207,10 +205,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -259,7 +255,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     ActivateCertificateAuthorityRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -281,7 +277,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':activate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -290,9 +286,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Create a new CertificateAuthority in a given Project and Location.
@@ -336,7 +330,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     core.String certificateAuthorityId,
     core.String requestId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -364,7 +358,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/certificateAuthorities';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -373,9 +367,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Disable a CertificateAuthority.
@@ -403,7 +395,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     DisableCertificateAuthorityRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -425,7 +417,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':disable';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -434,9 +426,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Enable a CertificateAuthority.
@@ -464,7 +454,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     EnableCertificateAuthorityRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -485,7 +475,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':enable';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -494,9 +484,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Fetch a certificate signing request (CSR) from a CertificateAuthority that
@@ -526,7 +514,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
   async.Future<FetchCertificateAuthorityCsrResponse> fetch(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -544,7 +532,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':fetch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -553,10 +541,8 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FetchCertificateAuthorityCsrResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FetchCertificateAuthorityCsrResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a CertificateAuthority.
@@ -580,7 +566,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
   async.Future<CertificateAuthority> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -597,7 +583,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -606,10 +592,8 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CertificateAuthority.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CertificateAuthority.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -647,7 +631,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -671,7 +655,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -680,9 +664,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists CertificateAuthorities.
@@ -724,7 +706,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -755,7 +737,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/certificateAuthorities';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -764,10 +746,8 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCertificateAuthoritiesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCertificateAuthoritiesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a CertificateAuthority.
@@ -811,7 +791,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     core.String requestId,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -837,7 +817,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -846,9 +826,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Restore a CertificateAuthority that is scheduled for deletion.
@@ -876,7 +854,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     RestoreCertificateAuthorityRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -898,7 +876,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':restore';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -907,9 +885,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Schedule a CertificateAuthority for deletion.
@@ -937,7 +913,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     ScheduleDeleteCertificateAuthorityRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -959,7 +935,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':scheduleDelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -968,9 +944,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1002,7 +976,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1024,7 +998,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1033,9 +1007,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1069,7 +1041,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1091,7 +1063,7 @@ class ProjectsLocationsCertificateAuthoritiesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1100,10 +1072,8 @@ class ProjectsLocationsCertificateAuthoritiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1135,7 +1105,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
   async.Future<CertificateRevocationList> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1152,7 +1122,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1161,10 +1131,8 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CertificateRevocationList.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CertificateRevocationList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -1202,7 +1170,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1226,7 +1194,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1235,9 +1203,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists CertificateRevocationLists.
@@ -1281,7 +1247,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1312,7 +1278,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/certificateRevocationLists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1321,10 +1287,8 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCertificateRevocationListsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCertificateRevocationListsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a CertificateRevocationList.
@@ -1369,7 +1333,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
     core.String requestId,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1395,7 +1359,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1404,9 +1368,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1438,7 +1400,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1460,7 +1422,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1469,9 +1431,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1505,7 +1465,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1527,7 +1487,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1536,10 +1496,8 @@ class ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource 
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1596,7 +1554,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
     core.String certificateId,
     core.String requestId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1624,7 +1582,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/certificates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1633,10 +1591,8 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Certificate.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Certificate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a Certificate.
@@ -1660,7 +1616,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
   async.Future<Certificate> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1677,7 +1633,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1686,10 +1642,8 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Certificate.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Certificate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Certificates.
@@ -1735,7 +1689,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1766,7 +1720,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/certificates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1775,10 +1729,8 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCertificatesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCertificatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a Certificate.
@@ -1825,7 +1777,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
     core.String requestId,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1851,7 +1803,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1860,10 +1812,8 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Certificate.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Certificate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Revoke a Certificate.
@@ -1892,7 +1842,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
     RevokeCertificateRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1913,7 +1863,7 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':revoke';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1922,10 +1872,8 @@ class ProjectsLocationsCertificateAuthoritiesCertificatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Certificate.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Certificate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1968,7 +1916,7 @@ class ProjectsLocationsOperationsResource {
     CancelOperationRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1989,7 +1937,7 @@ class ProjectsLocationsOperationsResource {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1998,9 +1946,7 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -2028,7 +1974,7 @@ class ProjectsLocationsOperationsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2045,7 +1991,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2054,9 +2000,7 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -2083,7 +2027,7 @@ class ProjectsLocationsOperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2100,7 +2044,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2109,9 +2053,7 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -2152,7 +2094,7 @@ class ProjectsLocationsOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2180,7 +2122,7 @@ class ProjectsLocationsOperationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2189,10 +2131,8 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2223,7 +2163,7 @@ class ProjectsLocationsReusableConfigsResource {
   async.Future<ReusableConfig> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2240,7 +2180,7 @@ class ProjectsLocationsReusableConfigsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2249,10 +2189,8 @@ class ProjectsLocationsReusableConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ReusableConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ReusableConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -2290,7 +2228,7 @@ class ProjectsLocationsReusableConfigsResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2314,7 +2252,7 @@ class ProjectsLocationsReusableConfigsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2323,9 +2261,7 @@ class ProjectsLocationsReusableConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists ReusableConfigs.
@@ -2366,7 +2302,7 @@ class ProjectsLocationsReusableConfigsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2397,7 +2333,7 @@ class ProjectsLocationsReusableConfigsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/reusableConfigs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2406,10 +2342,8 @@ class ProjectsLocationsReusableConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListReusableConfigsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListReusableConfigsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2441,7 +2375,7 @@ class ProjectsLocationsReusableConfigsResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2463,7 +2397,7 @@ class ProjectsLocationsReusableConfigsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2472,9 +2406,7 @@ class ProjectsLocationsReusableConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2508,7 +2440,7 @@ class ProjectsLocationsReusableConfigsResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2530,7 +2462,7 @@ class ProjectsLocationsReusableConfigsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2539,10 +2471,8 @@ class ProjectsLocationsReusableConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

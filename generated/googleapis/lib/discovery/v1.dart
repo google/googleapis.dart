@@ -79,7 +79,7 @@ class ApisResource {
     core.String api,
     core.String version, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -103,7 +103,7 @@ class ApisResource {
         commons.Escaper.ecapeVariable('$version') +
         '/rest';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -112,10 +112,8 @@ class ApisResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          RestDescription.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return RestDescription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieve the list of APIs supported at this endpoint.
@@ -140,7 +138,7 @@ class ApisResource {
     core.String name,
     core.bool preferred,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -160,7 +158,7 @@ class ApisResource {
 
     _url = 'apis';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -169,10 +167,8 @@ class ApisResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DirectoryList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DirectoryList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

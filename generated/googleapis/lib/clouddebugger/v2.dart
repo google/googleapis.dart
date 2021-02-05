@@ -112,7 +112,7 @@ class ControllerDebuggeesResource {
   async.Future<RegisterDebuggeeResponse> register(
     RegisterDebuggeeRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -129,7 +129,7 @@ class ControllerDebuggeesResource {
 
     _url = 'v2/controller/debuggees/register';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -138,10 +138,8 @@ class ControllerDebuggeesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RegisterDebuggeeResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RegisterDebuggeeResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -197,7 +195,7 @@ class ControllerDebuggeesBreakpointsResource {
     core.bool successOnTimeout,
     core.String waitToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -225,7 +223,7 @@ class ControllerDebuggeesBreakpointsResource {
         commons.Escaper.ecapeVariable('$debuggeeId') +
         '/breakpoints';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -234,10 +232,8 @@ class ControllerDebuggeesBreakpointsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListActiveBreakpointsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListActiveBreakpointsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the breakpoint state or mutable fields.
@@ -272,7 +268,7 @@ class ControllerDebuggeesBreakpointsResource {
     core.String debuggeeId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -298,7 +294,7 @@ class ControllerDebuggeesBreakpointsResource {
         '/breakpoints/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -307,10 +303,8 @@ class ControllerDebuggeesBreakpointsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UpdateActiveBreakpointResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return UpdateActiveBreakpointResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -359,7 +353,7 @@ class DebuggerDebuggeesResource {
     core.bool includeInactive,
     core.String project,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -382,7 +376,7 @@ class DebuggerDebuggeesResource {
 
     _url = 'v2/debugger/debuggees';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -391,10 +385,8 @@ class DebuggerDebuggeesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListDebuggeesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListDebuggeesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -430,7 +422,7 @@ class DebuggerDebuggeesBreakpointsResource {
     core.String breakpointId, {
     core.String clientVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -456,7 +448,7 @@ class DebuggerDebuggeesBreakpointsResource {
         '/breakpoints/' +
         commons.Escaper.ecapeVariable('$breakpointId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -465,9 +457,7 @@ class DebuggerDebuggeesBreakpointsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets breakpoint information.
@@ -496,7 +486,7 @@ class DebuggerDebuggeesBreakpointsResource {
     core.String breakpointId, {
     core.String clientVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -522,7 +512,7 @@ class DebuggerDebuggeesBreakpointsResource {
         '/breakpoints/' +
         commons.Escaper.ecapeVariable('$breakpointId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -531,10 +521,8 @@ class DebuggerDebuggeesBreakpointsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetBreakpointResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetBreakpointResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all breakpoints for the debuggee.
@@ -591,7 +579,7 @@ class DebuggerDebuggeesBreakpointsResource {
     core.bool stripResults,
     core.String waitToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -628,7 +616,7 @@ class DebuggerDebuggeesBreakpointsResource {
         commons.Escaper.ecapeVariable('$debuggeeId') +
         '/breakpoints';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -637,10 +625,8 @@ class DebuggerDebuggeesBreakpointsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListBreakpointsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListBreakpointsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the breakpoint to the debuggee.
@@ -683,7 +669,7 @@ class DebuggerDebuggeesBreakpointsResource {
     core.String canaryOption,
     core.String clientVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -711,7 +697,7 @@ class DebuggerDebuggeesBreakpointsResource {
         commons.Escaper.ecapeVariable('$debuggeeId') +
         '/breakpoints/set';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -720,10 +706,8 @@ class DebuggerDebuggeesBreakpointsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SetBreakpointResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SetBreakpointResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -104,7 +104,7 @@ class ProjectsScanConfigsResource {
     ScanConfig request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -126,7 +126,7 @@ class ProjectsScanConfigsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/scanConfigs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -135,10 +135,8 @@ class ProjectsScanConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ScanConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ScanConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing ScanConfig and its child resources.
@@ -163,7 +161,7 @@ class ProjectsScanConfigsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -180,7 +178,7 @@ class ProjectsScanConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -189,9 +187,7 @@ class ProjectsScanConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a ScanConfig.
@@ -216,7 +212,7 @@ class ProjectsScanConfigsResource {
   async.Future<ScanConfig> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -233,7 +229,7 @@ class ProjectsScanConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -242,10 +238,8 @@ class ProjectsScanConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ScanConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ScanConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists ScanConfigs under a given project.
@@ -279,7 +273,7 @@ class ProjectsScanConfigsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -304,7 +298,7 @@ class ProjectsScanConfigsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/scanConfigs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -313,10 +307,8 @@ class ProjectsScanConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListScanConfigsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListScanConfigsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a ScanConfig.
@@ -351,7 +343,7 @@ class ProjectsScanConfigsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -374,7 +366,7 @@ class ProjectsScanConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -383,10 +375,8 @@ class ProjectsScanConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ScanConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ScanConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Start a ScanRun according to the given ScanConfig.
@@ -414,7 +404,7 @@ class ProjectsScanConfigsResource {
     StartScanRunRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -434,7 +424,7 @@ class ProjectsScanConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':start';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -443,9 +433,7 @@ class ProjectsScanConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ScanRun.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ScanRun.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -485,7 +473,7 @@ class ProjectsScanConfigsScanRunsResource {
   async.Future<ScanRun> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -502,7 +490,7 @@ class ProjectsScanConfigsScanRunsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -511,9 +499,7 @@ class ProjectsScanConfigsScanRunsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ScanRun.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ScanRun.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists ScanRuns under a given ScanConfig, in descending order of ScanRun
@@ -549,7 +535,7 @@ class ProjectsScanConfigsScanRunsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -573,7 +559,7 @@ class ProjectsScanConfigsScanRunsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/scanRuns';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -582,10 +568,8 @@ class ProjectsScanConfigsScanRunsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListScanRunsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListScanRunsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Stops a ScanRun.
@@ -616,7 +600,7 @@ class ProjectsScanConfigsScanRunsResource {
     StopScanRunRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -636,7 +620,7 @@ class ProjectsScanConfigsScanRunsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':stop';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -645,9 +629,7 @@ class ProjectsScanConfigsScanRunsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ScanRun.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ScanRun.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -690,7 +672,7 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -715,7 +697,7 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/crawledUrls';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -724,10 +706,8 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCrawledUrlsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCrawledUrlsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -761,7 +741,7 @@ class ProjectsScanConfigsScanRunsFindingTypeStatsResource {
   async.Future<ListFindingTypeStatsResponse> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -780,7 +760,7 @@ class ProjectsScanConfigsScanRunsFindingTypeStatsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/findingTypeStats';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -789,10 +769,8 @@ class ProjectsScanConfigsScanRunsFindingTypeStatsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListFindingTypeStatsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListFindingTypeStatsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -825,7 +803,7 @@ class ProjectsScanConfigsScanRunsFindingsResource {
   async.Future<Finding> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -842,7 +820,7 @@ class ProjectsScanConfigsScanRunsFindingsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -851,9 +829,7 @@ class ProjectsScanConfigsScanRunsFindingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Finding.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Finding.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// List Findings under a given ScanRun.
@@ -893,7 +869,7 @@ class ProjectsScanConfigsScanRunsFindingsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -920,7 +896,7 @@ class ProjectsScanConfigsScanRunsFindingsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/findings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -929,10 +905,8 @@ class ProjectsScanConfigsScanRunsFindingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListFindingsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListFindingsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

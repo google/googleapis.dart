@@ -82,7 +82,7 @@ class ChallengeResource {
   async.Future<Challenge> create(
     Empty request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -99,7 +99,7 @@ class ChallengeResource {
 
     _url = 'v1/challenge';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -108,9 +108,7 @@ class ChallengeResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Challenge.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Challenge.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// VerifyChallengeResponse API
@@ -132,7 +130,7 @@ class ChallengeResource {
   async.Future<VerifyChallengeResponseResult> verify(
     VerifyChallengeResponseRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -149,7 +147,7 @@ class ChallengeResource {
 
     _url = 'v1/challenge:verify';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -158,10 +156,8 @@ class ChallengeResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => VerifyChallengeResponseResult.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return VerifyChallengeResponseResult.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

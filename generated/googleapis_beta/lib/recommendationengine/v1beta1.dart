@@ -139,7 +139,7 @@ class ProjectsLocationsCatalogsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -164,7 +164,7 @@ class ProjectsLocationsCatalogsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/catalogs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -173,11 +173,8 @@ class ProjectsLocationsCatalogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleCloudRecommendationengineV1beta1ListCatalogsResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommendationengineV1beta1ListCatalogsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the catalog configuration.
@@ -210,7 +207,7 @@ class ProjectsLocationsCatalogsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -233,7 +230,7 @@ class ProjectsLocationsCatalogsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -242,10 +239,8 @@ class ProjectsLocationsCatalogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommendationengineV1beta1Catalog.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommendationengineV1beta1Catalog.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -280,7 +275,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
     GoogleCloudRecommendationengineV1beta1CatalogItem request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -302,7 +297,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/catalogItems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -311,10 +306,8 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a catalog item.
@@ -340,7 +333,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -357,7 +350,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -366,10 +359,8 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a specific catalog item.
@@ -395,7 +386,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
   async.Future<GoogleCloudRecommendationengineV1beta1CatalogItem> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -412,7 +403,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -421,10 +412,8 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Bulk import of multiple catalog items.
@@ -459,7 +448,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
     GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -481,7 +470,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/catalogItems:import';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -490,10 +479,8 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a list of catalog items.
@@ -531,7 +518,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -559,7 +546,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/catalogItems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -568,10 +555,8 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse
-          .fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a catalog item.
@@ -606,7 +591,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -629,7 +614,7 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -638,10 +623,8 @@ class ProjectsLocationsCatalogsCatalogItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -694,7 +677,7 @@ class ProjectsLocationsCatalogsEventStoresOperationsResource {
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -711,7 +694,7 @@ class ProjectsLocationsCatalogsEventStoresOperationsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -720,10 +703,8 @@ class ProjectsLocationsCatalogsEventStoresOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -765,7 +746,7 @@ class ProjectsLocationsCatalogsEventStoresOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -793,7 +774,7 @@ class ProjectsLocationsCatalogsEventStoresOperationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -802,10 +783,8 @@ class ProjectsLocationsCatalogsEventStoresOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -864,7 +843,7 @@ class ProjectsLocationsCatalogsEventStoresPlacementsResource {
     GoogleCloudRecommendationengineV1beta1PredictRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -886,7 +865,7 @@ class ProjectsLocationsCatalogsEventStoresPlacementsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':predict';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -895,10 +874,8 @@ class ProjectsLocationsCatalogsEventStoresPlacementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommendationengineV1beta1PredictResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommendationengineV1beta1PredictResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -938,7 +915,7 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
         request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -960,7 +937,7 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/predictionApiKeyRegistrations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -969,11 +946,8 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration
-              .fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Unregister an apiKey from using for predict method.
@@ -999,7 +973,7 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1016,7 +990,7 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1025,10 +999,8 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List the registered apiKeys for use with predict method.
@@ -1064,7 +1036,7 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1089,7 +1061,7 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/predictionApiKeyRegistrations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1098,11 +1070,8 @@ class ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource 
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse
-              .fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1153,7 +1122,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
     core.String uri,
     core.String userEvent,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1181,7 +1150,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userEvents:collect';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1190,10 +1159,8 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleApiHttpBody.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleApiHttpBody.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Bulk import of User events.
@@ -1227,7 +1194,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
     GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1249,7 +1216,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userEvents:import';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1258,10 +1225,8 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a list of user events within a time range, with potential filtering.
@@ -1326,7 +1291,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1354,7 +1319,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userEvents';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1363,11 +1328,8 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleCloudRecommendationengineV1beta1ListUserEventsResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommendationengineV1beta1ListUserEventsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes permanently all user events specified by the filter provided.
@@ -1400,7 +1362,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
     GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1422,7 +1384,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userEvents:purge';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1431,10 +1393,8 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Triggers a user event rejoin operation with latest catalog data.
@@ -1470,7 +1430,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
     GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1492,7 +1452,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userEvents:rejoin';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1501,10 +1461,8 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Writes a single user event.
@@ -1532,7 +1490,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
     GoogleCloudRecommendationengineV1beta1UserEvent request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1554,7 +1512,7 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userEvents:write';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1563,10 +1521,8 @@ class ProjectsLocationsCatalogsEventStoresUserEventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRecommendationengineV1beta1UserEvent.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRecommendationengineV1beta1UserEvent.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1600,7 +1556,7 @@ class ProjectsLocationsCatalogsOperationsResource {
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1617,7 +1573,7 @@ class ProjectsLocationsCatalogsOperationsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1626,10 +1582,8 @@ class ProjectsLocationsCatalogsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -1671,7 +1625,7 @@ class ProjectsLocationsCatalogsOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1699,7 +1653,7 @@ class ProjectsLocationsCatalogsOperationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1708,10 +1662,8 @@ class ProjectsLocationsCatalogsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

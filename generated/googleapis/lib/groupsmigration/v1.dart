@@ -92,7 +92,7 @@ class ArchiveResource {
     core.String groupId, {
     core.String $fields,
     commons.Media uploadMedia,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -120,7 +120,7 @@ class ArchiveResource {
           '/archive';
     }
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -129,9 +129,7 @@ class ArchiveResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Groups.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Groups.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

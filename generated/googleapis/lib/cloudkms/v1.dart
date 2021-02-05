@@ -103,7 +103,7 @@ class ProjectsLocationsResource {
   async.Future<Location> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -120,7 +120,7 @@ class ProjectsLocationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -129,9 +129,7 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -163,7 +161,7 @@ class ProjectsLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -190,7 +188,7 @@ class ProjectsLocationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -199,10 +197,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -245,7 +241,7 @@ class ProjectsLocationsKeyRingsResource {
     core.String parent, {
     core.String keyRingId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -269,7 +265,7 @@ class ProjectsLocationsKeyRingsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/keyRings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -278,9 +274,7 @@ class ProjectsLocationsKeyRingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => KeyRing.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return KeyRing.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns metadata for a given KeyRing.
@@ -304,7 +298,7 @@ class ProjectsLocationsKeyRingsResource {
   async.Future<KeyRing> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -321,7 +315,7 @@ class ProjectsLocationsKeyRingsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -330,9 +324,7 @@ class ProjectsLocationsKeyRingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => KeyRing.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return KeyRing.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -370,7 +362,7 @@ class ProjectsLocationsKeyRingsResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -394,7 +386,7 @@ class ProjectsLocationsKeyRingsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -403,9 +395,7 @@ class ProjectsLocationsKeyRingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists KeyRings.
@@ -450,7 +440,7 @@ class ProjectsLocationsKeyRingsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -480,7 +470,7 @@ class ProjectsLocationsKeyRingsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/keyRings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -489,10 +479,8 @@ class ProjectsLocationsKeyRingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListKeyRingsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListKeyRingsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -524,7 +512,7 @@ class ProjectsLocationsKeyRingsResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -546,7 +534,7 @@ class ProjectsLocationsKeyRingsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -555,9 +543,7 @@ class ProjectsLocationsKeyRingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -591,7 +577,7 @@ class ProjectsLocationsKeyRingsResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -613,7 +599,7 @@ class ProjectsLocationsKeyRingsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -622,10 +608,8 @@ class ProjectsLocationsKeyRingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -677,7 +661,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String cryptoKeyId,
     core.bool skipInitialVersionCreation,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -707,7 +691,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/cryptoKeys';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -716,9 +700,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CryptoKey.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CryptoKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Decrypts data that was protected by Encrypt.
@@ -748,7 +730,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     DecryptRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -768,7 +750,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':decrypt';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -777,10 +759,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DecryptResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DecryptResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Encrypts data, so that it can only be recovered by a call to Decrypt.
@@ -811,7 +791,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     EncryptRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -831,7 +811,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':encrypt';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -840,10 +820,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          EncryptResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return EncryptResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns metadata for a given CryptoKey, as well as its primary
@@ -868,7 +846,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
   async.Future<CryptoKey> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -885,7 +863,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -894,9 +872,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CryptoKey.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CryptoKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -934,7 +910,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -958,7 +934,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -967,9 +943,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists CryptoKeys.
@@ -1024,7 +998,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String pageToken,
     core.String versionView,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1058,7 +1032,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/cryptoKeys';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1067,10 +1041,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCryptoKeysResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCryptoKeysResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a CryptoKey.
@@ -1101,7 +1073,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1124,7 +1096,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1133,9 +1105,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CryptoKey.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CryptoKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1167,7 +1137,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1189,7 +1159,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1198,9 +1168,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1234,7 +1202,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1256,7 +1224,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1265,10 +1233,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the version of a CryptoKey that will be used in Encrypt.
@@ -1297,7 +1263,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     UpdateCryptoKeyPrimaryVersionRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1319,7 +1285,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':updatePrimaryVersion';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1328,9 +1294,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CryptoKey.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CryptoKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1368,7 +1332,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     AsymmetricDecryptRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1390,7 +1354,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':asymmetricDecrypt';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1399,10 +1363,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AsymmetricDecryptResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AsymmetricDecryptResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Signs data using a CryptoKeyVersion with CryptoKey.purpose
@@ -1432,7 +1394,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     AsymmetricSignRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1454,7 +1416,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':asymmetricSign';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1463,10 +1425,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AsymmetricSignResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AsymmetricSignResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Create a new CryptoKeyVersion in a CryptoKey.
@@ -1497,7 +1457,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     CryptoKeyVersion request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1519,7 +1479,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/cryptoKeyVersions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1528,10 +1488,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CryptoKeyVersion.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CryptoKeyVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Schedule a CryptoKeyVersion for destruction.
@@ -1564,7 +1522,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     DestroyCryptoKeyVersionRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1584,7 +1542,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':destroy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1593,10 +1551,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CryptoKeyVersion.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CryptoKeyVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns metadata for a given CryptoKeyVersion.
@@ -1620,7 +1576,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   async.Future<CryptoKeyVersion> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1637,7 +1593,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1646,10 +1602,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CryptoKeyVersion.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CryptoKeyVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the public key for the given CryptoKeyVersion.
@@ -1675,7 +1629,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   async.Future<PublicKey> getPublicKey(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1693,7 +1647,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/publicKey';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1702,9 +1656,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PublicKey.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PublicKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Imports a new CryptoKeyVersion into an existing CryptoKey using the
@@ -1735,7 +1687,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     ImportCryptoKeyVersionRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1757,7 +1709,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/cryptoKeyVersions:import';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1766,10 +1718,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CryptoKeyVersion.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CryptoKeyVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists CryptoKeyVersions.
@@ -1824,7 +1774,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String pageToken,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1858,7 +1808,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/cryptoKeyVersions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1867,10 +1817,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCryptoKeyVersionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCryptoKeyVersionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a CryptoKeyVersion's metadata.
@@ -1906,7 +1854,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1929,7 +1877,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1938,10 +1886,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CryptoKeyVersion.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CryptoKeyVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state.
@@ -1971,7 +1917,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     RestoreCryptoKeyVersionRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1991,7 +1937,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':restore';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2000,10 +1946,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CryptoKeyVersion.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CryptoKeyVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2044,7 +1988,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.String parent, {
     core.String importJobId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2069,7 +2013,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/importJobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2078,9 +2022,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ImportJob.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ImportJob.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns metadata for a given ImportJob.
@@ -2104,7 +2046,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
   async.Future<ImportJob> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2121,7 +2063,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2130,9 +2072,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ImportJob.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ImportJob.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -2170,7 +2110,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2194,7 +2134,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2203,9 +2143,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists ImportJobs.
@@ -2251,7 +2189,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2282,7 +2220,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/importJobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2291,10 +2229,8 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListImportJobsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListImportJobsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2326,7 +2262,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2348,7 +2284,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2357,9 +2293,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2393,7 +2327,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2415,7 +2349,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2424,10 +2358,8 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

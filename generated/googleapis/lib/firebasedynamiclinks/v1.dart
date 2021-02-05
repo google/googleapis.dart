@@ -93,7 +93,7 @@ class ManagedShortLinksResource {
   async.Future<CreateManagedShortLinkResponse> create(
     CreateManagedShortLinkRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -110,7 +110,7 @@ class ManagedShortLinksResource {
 
     _url = 'v1/managedShortLinks:create';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -119,10 +119,8 @@ class ManagedShortLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CreateManagedShortLinkResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CreateManagedShortLinkResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -156,7 +154,7 @@ class ShortLinksResource {
   async.Future<CreateShortDynamicLinkResponse> create(
     CreateShortDynamicLinkRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -173,7 +171,7 @@ class ShortLinksResource {
 
     _url = 'v1/shortLinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -182,10 +180,8 @@ class ShortLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CreateShortDynamicLinkResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CreateShortDynamicLinkResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -223,7 +219,7 @@ class V1Resource {
     core.String durationDays,
     core.String sdkVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -246,7 +242,7 @@ class V1Resource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariable('$dynamicLink') + '/linkStats';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -255,10 +251,8 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DynamicLinkStats.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DynamicLinkStats.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get iOS strong/weak-match info for post-install attribution.
@@ -280,7 +274,7 @@ class V1Resource {
   async.Future<GetIosPostInstallAttributionResponse> installAttribution(
     GetIosPostInstallAttributionRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -297,7 +291,7 @@ class V1Resource {
 
     _url = 'v1/installAttribution';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -306,10 +300,8 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetIosPostInstallAttributionResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetIosPostInstallAttributionResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get iOS reopen attribution for app universal link open deeplinking.
@@ -331,7 +323,7 @@ class V1Resource {
   async.Future<GetIosReopenAttributionResponse> reopenAttribution(
     GetIosReopenAttributionRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -348,7 +340,7 @@ class V1Resource {
 
     _url = 'v1/reopenAttribution';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -357,10 +349,8 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetIosReopenAttributionResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetIosReopenAttributionResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

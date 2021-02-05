@@ -84,7 +84,7 @@ class AssetsResource {
   async.Future<Asset> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -101,7 +101,7 @@ class AssetsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -110,9 +110,7 @@ class AssetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Asset.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Asset.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all public, remixable assets.
@@ -176,7 +174,7 @@ class AssetsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -214,7 +212,7 @@ class AssetsResource {
 
     _url = 'v1/assets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -223,10 +221,8 @@ class AssetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAssetsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAssetsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -298,7 +294,7 @@ class UsersAssetsResource {
     core.String pageToken,
     core.String visibility,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -330,7 +326,7 @@ class UsersAssetsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/assets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -339,10 +335,8 @@ class UsersAssetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListUserAssetsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListUserAssetsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -394,7 +388,7 @@ class UsersLikedassetsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -424,7 +418,7 @@ class UsersLikedassetsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/likedassets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -433,10 +427,8 @@ class UsersLikedassetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLikedAssetsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLikedAssetsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

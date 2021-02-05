@@ -145,7 +145,7 @@ class AccountsClientsResource {
     Client request,
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -167,7 +167,7 @@ class AccountsClientsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/clients';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -176,9 +176,7 @@ class AccountsClientsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Client.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Client.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a client buyer with a given client account ID.
@@ -205,7 +203,7 @@ class AccountsClientsResource {
     core.String accountId,
     core.String clientAccountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -228,7 +226,7 @@ class AccountsClientsResource {
         '/clients/' +
         commons.Escaper.ecapeVariable('$clientAccountId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -237,9 +235,7 @@ class AccountsClientsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Client.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Client.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the clients for the current sponsor buyer.
@@ -276,7 +272,7 @@ class AccountsClientsResource {
     core.String pageToken,
     core.String partnerClientId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -304,7 +300,7 @@ class AccountsClientsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/clients';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -313,10 +309,8 @@ class AccountsClientsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListClientsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListClientsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing client buyer.
@@ -347,7 +341,7 @@ class AccountsClientsResource {
     core.String accountId,
     core.String clientAccountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -373,7 +367,7 @@ class AccountsClientsResource {
         '/clients/' +
         commons.Escaper.ecapeVariable('$clientAccountId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -382,9 +376,7 @@ class AccountsClientsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Client.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Client.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -422,7 +414,7 @@ class AccountsClientsInvitationsResource {
     core.String accountId,
     core.String clientAccountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -449,7 +441,7 @@ class AccountsClientsInvitationsResource {
         commons.Escaper.ecapeVariable('$clientAccountId') +
         '/invitations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -458,10 +450,8 @@ class AccountsClientsInvitationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ClientUserInvitation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ClientUserInvitation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves an existing client user invitation.
@@ -492,7 +482,7 @@ class AccountsClientsInvitationsResource {
     core.String clientAccountId,
     core.String invitationId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -520,7 +510,7 @@ class AccountsClientsInvitationsResource {
         '/invitations/' +
         commons.Escaper.ecapeVariable('$invitationId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -529,10 +519,8 @@ class AccountsClientsInvitationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ClientUserInvitation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ClientUserInvitation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the client users invitations for a client with a given account
@@ -572,7 +560,7 @@ class AccountsClientsInvitationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -602,7 +590,7 @@ class AccountsClientsInvitationsResource {
         commons.Escaper.ecapeVariable('$clientAccountId') +
         '/invitations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -611,10 +599,8 @@ class AccountsClientsInvitationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListClientUserInvitationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListClientUserInvitationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -651,7 +637,7 @@ class AccountsClientsUsersResource {
     core.String clientAccountId,
     core.String userId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -679,7 +665,7 @@ class AccountsClientsUsersResource {
         '/users/' +
         commons.Escaper.ecapeVariable('$userId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -688,10 +674,8 @@ class AccountsClientsUsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ClientUser.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ClientUser.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the known client users for a specified sponsor buyer account ID.
@@ -730,7 +714,7 @@ class AccountsClientsUsersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -760,7 +744,7 @@ class AccountsClientsUsersResource {
         commons.Escaper.ecapeVariable('$clientAccountId') +
         '/users';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -769,10 +753,8 @@ class AccountsClientsUsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListClientUsersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListClientUsersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing client user.
@@ -807,7 +789,7 @@ class AccountsClientsUsersResource {
     core.String clientAccountId,
     core.String userId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -838,7 +820,7 @@ class AccountsClientsUsersResource {
         '/users/' +
         commons.Escaper.ecapeVariable('$userId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -847,10 +829,8 @@ class AccountsClientsUsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ClientUser.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ClientUser.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -898,7 +878,7 @@ class AccountsCreativesResource {
     core.String accountId, {
     core.String duplicateIdMode,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -923,7 +903,7 @@ class AccountsCreativesResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/creatives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -932,9 +912,7 @@ class AccountsCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Creative.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a creative.
@@ -959,7 +937,7 @@ class AccountsCreativesResource {
     core.String accountId,
     core.String creativeId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -982,7 +960,7 @@ class AccountsCreativesResource {
         '/creatives/' +
         commons.Escaper.ecapeVariable('$creativeId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -991,9 +969,7 @@ class AccountsCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Creative.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists creatives.
@@ -1039,7 +1015,7 @@ class AccountsCreativesResource {
     core.String pageToken,
     core.String query,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1067,7 +1043,7 @@ class AccountsCreativesResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/creatives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1076,10 +1052,8 @@ class AccountsCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCreativesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCreativesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Stops watching a creative.
@@ -1111,7 +1085,7 @@ class AccountsCreativesResource {
     core.String accountId,
     core.String creativeId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1138,7 +1112,7 @@ class AccountsCreativesResource {
         commons.Escaper.ecapeVariable('$creativeId') +
         ':stopWatching';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1147,9 +1121,7 @@ class AccountsCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a creative.
@@ -1179,7 +1151,7 @@ class AccountsCreativesResource {
     core.String accountId,
     core.String creativeId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1205,7 +1177,7 @@ class AccountsCreativesResource {
         '/creatives/' +
         commons.Escaper.ecapeVariable('$creativeId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1214,9 +1186,7 @@ class AccountsCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Creative.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Watches a creative.
@@ -1250,7 +1220,7 @@ class AccountsCreativesResource {
     core.String accountId,
     core.String creativeId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1277,7 +1247,7 @@ class AccountsCreativesResource {
         commons.Escaper.ecapeVariable('$creativeId') +
         ':watch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1286,9 +1256,7 @@ class AccountsCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1323,7 +1291,7 @@ class AccountsCreativesDealAssociationsResource {
     core.String accountId,
     core.String creativeId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1350,7 +1318,7 @@ class AccountsCreativesDealAssociationsResource {
         commons.Escaper.ecapeVariable('$creativeId') +
         '/dealAssociations:add';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1359,9 +1327,7 @@ class AccountsCreativesDealAssociationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all creative-deal associations.
@@ -1407,7 +1373,7 @@ class AccountsCreativesDealAssociationsResource {
     core.String pageToken,
     core.String query,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1440,7 +1406,7 @@ class AccountsCreativesDealAssociationsResource {
         commons.Escaper.ecapeVariable('$creativeId') +
         '/dealAssociations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1449,10 +1415,8 @@ class AccountsCreativesDealAssociationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListDealAssociationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListDealAssociationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Remove the association between a deal and a creative.
@@ -1480,7 +1444,7 @@ class AccountsCreativesDealAssociationsResource {
     core.String accountId,
     core.String creativeId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1507,7 +1471,7 @@ class AccountsCreativesDealAssociationsResource {
         commons.Escaper.ecapeVariable('$creativeId') +
         '/dealAssociations:remove';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1516,9 +1480,7 @@ class AccountsCreativesDealAssociationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1575,7 +1537,7 @@ class AccountsFinalizedProposalsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1606,7 +1568,7 @@ class AccountsFinalizedProposalsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/finalizedProposals';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1615,10 +1577,8 @@ class AccountsFinalizedProposalsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListProposalsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListProposalsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1649,7 +1609,7 @@ class AccountsProductsResource {
     core.String accountId,
     core.String productId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1672,7 +1632,7 @@ class AccountsProductsResource {
         '/products/' +
         commons.Escaper.ecapeVariable('$productId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1681,9 +1641,7 @@ class AccountsProductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Product.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Product.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all products visible to the buyer (optionally filtered by the
@@ -1719,7 +1677,7 @@ class AccountsProductsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1747,7 +1705,7 @@ class AccountsProductsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/products';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1756,10 +1714,8 @@ class AccountsProductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListProductsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListProductsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1799,7 +1755,7 @@ class AccountsProposalsResource {
     core.String accountId,
     core.String proposalId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1826,7 +1782,7 @@ class AccountsProposalsResource {
         commons.Escaper.ecapeVariable('$proposalId') +
         ':accept';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1835,9 +1791,7 @@ class AccountsProposalsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Proposal.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Create a new note and attach it to the proposal.
@@ -1868,7 +1822,7 @@ class AccountsProposalsResource {
     core.String accountId,
     core.String proposalId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1895,7 +1849,7 @@ class AccountsProposalsResource {
         commons.Escaper.ecapeVariable('$proposalId') +
         ':addNote';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1904,9 +1858,7 @@ class AccountsProposalsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Note.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Note.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Cancel an ongoing negotiation on a proposal.
@@ -1937,7 +1889,7 @@ class AccountsProposalsResource {
     core.String accountId,
     core.String proposalId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1964,7 +1916,7 @@ class AccountsProposalsResource {
         commons.Escaper.ecapeVariable('$proposalId') +
         ':cancelNegotiation';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1973,9 +1925,7 @@ class AccountsProposalsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Proposal.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the given proposal to indicate that setup has been completed.
@@ -2009,7 +1959,7 @@ class AccountsProposalsResource {
     core.String accountId,
     core.String proposalId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2036,7 +1986,7 @@ class AccountsProposalsResource {
         commons.Escaper.ecapeVariable('$proposalId') +
         ':completeSetup';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2045,9 +1995,7 @@ class AccountsProposalsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Proposal.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Create the given proposal.
@@ -2075,7 +2023,7 @@ class AccountsProposalsResource {
     Proposal request,
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2097,7 +2045,7 @@ class AccountsProposalsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/proposals';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2106,9 +2054,7 @@ class AccountsProposalsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Proposal.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a proposal given its ID.
@@ -2135,7 +2081,7 @@ class AccountsProposalsResource {
     core.String accountId,
     core.String proposalId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2158,7 +2104,7 @@ class AccountsProposalsResource {
         '/proposals/' +
         commons.Escaper.ecapeVariable('$proposalId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2167,9 +2113,7 @@ class AccountsProposalsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Proposal.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// List proposals.
@@ -2223,7 +2167,7 @@ class AccountsProposalsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2254,7 +2198,7 @@ class AccountsProposalsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/proposals';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2263,10 +2207,8 @@ class AccountsProposalsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListProposalsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListProposalsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the given proposal to pause serving.
@@ -2300,7 +2242,7 @@ class AccountsProposalsResource {
     core.String accountId,
     core.String proposalId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2327,7 +2269,7 @@ class AccountsProposalsResource {
         commons.Escaper.ecapeVariable('$proposalId') +
         ':pause';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2336,9 +2278,7 @@ class AccountsProposalsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Proposal.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the given proposal to resume serving.
@@ -2373,7 +2313,7 @@ class AccountsProposalsResource {
     core.String accountId,
     core.String proposalId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2400,7 +2340,7 @@ class AccountsProposalsResource {
         commons.Escaper.ecapeVariable('$proposalId') +
         ':resume';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2409,9 +2349,7 @@ class AccountsProposalsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Proposal.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the given proposal at the client known revision number.
@@ -2449,7 +2387,7 @@ class AccountsProposalsResource {
     core.String accountId,
     core.String proposalId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2475,7 +2413,7 @@ class AccountsProposalsResource {
         '/proposals/' +
         commons.Escaper.ecapeVariable('$proposalId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2484,9 +2422,7 @@ class AccountsProposalsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Proposal.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Proposal.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2518,7 +2454,7 @@ class AccountsPublisherProfilesResource {
     core.String accountId,
     core.String publisherProfileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2541,7 +2477,7 @@ class AccountsPublisherProfilesResource {
         '/publisherProfiles/' +
         commons.Escaper.ecapeVariable('$publisherProfileId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2550,10 +2486,8 @@ class AccountsPublisherProfilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PublisherProfile.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PublisherProfile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all publisher profiles visible to the buyer
@@ -2581,7 +2515,7 @@ class AccountsPublisherProfilesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2606,7 +2540,7 @@ class AccountsPublisherProfilesResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/publisherProfiles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2615,10 +2549,8 @@ class AccountsPublisherProfilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListPublisherProfilesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListPublisherProfilesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2701,7 +2633,7 @@ class BiddersAccountsFilterSetsResource {
     core.String ownerName, {
     core.bool isTransient,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2726,7 +2658,7 @@ class BiddersAccountsFilterSetsResource {
         commons.Escaper.ecapeVariableReserved('$ownerName') +
         '/filterSets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2735,9 +2667,7 @@ class BiddersAccountsFilterSetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FilterSet.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FilterSet.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the requested filter set from the account with the given account
@@ -2767,7 +2697,7 @@ class BiddersAccountsFilterSetsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2784,7 +2714,7 @@ class BiddersAccountsFilterSetsResource {
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2793,9 +2723,7 @@ class BiddersAccountsFilterSetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the requested filter set for the account with the given account
@@ -2825,7 +2753,7 @@ class BiddersAccountsFilterSetsResource {
   async.Future<FilterSet> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2842,7 +2770,7 @@ class BiddersAccountsFilterSetsResource {
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2851,9 +2779,7 @@ class BiddersAccountsFilterSetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FilterSet.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FilterSet.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all filter sets for the account with the given account ID.
@@ -2891,7 +2817,7 @@ class BiddersAccountsFilterSetsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2916,7 +2842,7 @@ class BiddersAccountsFilterSetsResource {
         commons.Escaper.ecapeVariableReserved('$ownerName') +
         '/filterSets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2925,10 +2851,8 @@ class BiddersAccountsFilterSetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListFilterSetsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListFilterSetsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2975,7 +2899,7 @@ class BiddersAccountsFilterSetsBidMetricsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3000,7 +2924,7 @@ class BiddersAccountsFilterSetsBidMetricsResource {
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/bidMetrics';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3009,10 +2933,8 @@ class BiddersAccountsFilterSetsBidMetricsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListBidMetricsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListBidMetricsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3061,7 +2983,7 @@ class BiddersAccountsFilterSetsBidResponseErrorsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3086,7 +3008,7 @@ class BiddersAccountsFilterSetsBidResponseErrorsResource {
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/bidResponseErrors';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3095,10 +3017,8 @@ class BiddersAccountsFilterSetsBidResponseErrorsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListBidResponseErrorsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListBidResponseErrorsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3148,7 +3068,7 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3173,7 +3093,7 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResource {
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/bidResponsesWithoutBids';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3182,10 +3102,8 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListBidResponsesWithoutBidsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListBidResponsesWithoutBidsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3234,7 +3152,7 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3259,7 +3177,7 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResource {
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/filteredBidRequests';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3268,10 +3186,8 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListFilteredBidRequestsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListFilteredBidRequestsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3324,7 +3240,7 @@ class BiddersAccountsFilterSetsFilteredBidsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3349,7 +3265,7 @@ class BiddersAccountsFilterSetsFilteredBidsResource {
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/filteredBids';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3358,10 +3274,8 @@ class BiddersAccountsFilterSetsFilteredBidsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListFilteredBidsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListFilteredBidsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3415,7 +3329,7 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3445,7 +3359,7 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResource {
         commons.Escaper.ecapeVariable('$creativeStatusId') +
         '/creatives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3454,10 +3368,8 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCreativeStatusBreakdownByCreativeResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCreativeStatusBreakdownByCreativeResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3513,7 +3425,7 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3543,7 +3455,7 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResource {
         commons.Escaper.ecapeVariable('$creativeStatusId') +
         '/details';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3552,10 +3464,8 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCreativeStatusBreakdownByDetailResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCreativeStatusBreakdownByDetailResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3603,7 +3513,7 @@ class BiddersAccountsFilterSetsImpressionMetricsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3628,7 +3538,7 @@ class BiddersAccountsFilterSetsImpressionMetricsResource {
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/impressionMetrics';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3637,10 +3547,8 @@ class BiddersAccountsFilterSetsImpressionMetricsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListImpressionMetricsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListImpressionMetricsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3688,7 +3596,7 @@ class BiddersAccountsFilterSetsLosingBidsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3713,7 +3621,7 @@ class BiddersAccountsFilterSetsLosingBidsResource {
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/losingBids';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3722,10 +3630,8 @@ class BiddersAccountsFilterSetsLosingBidsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLosingBidsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLosingBidsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3774,7 +3680,7 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3799,7 +3705,7 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResource {
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/nonBillableWinningBids';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3808,10 +3714,8 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListNonBillableWinningBidsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListNonBillableWinningBidsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3872,7 +3776,7 @@ class BiddersFilterSetsResource {
     core.String ownerName, {
     core.bool isTransient,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3897,7 +3801,7 @@ class BiddersFilterSetsResource {
         commons.Escaper.ecapeVariableReserved('$ownerName') +
         '/filterSets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3906,9 +3810,7 @@ class BiddersFilterSetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FilterSet.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FilterSet.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the requested filter set from the account with the given account
@@ -3937,7 +3839,7 @@ class BiddersFilterSetsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3954,7 +3856,7 @@ class BiddersFilterSetsResource {
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3963,9 +3865,7 @@ class BiddersFilterSetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the requested filter set for the account with the given account
@@ -3994,7 +3894,7 @@ class BiddersFilterSetsResource {
   async.Future<FilterSet> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4011,7 +3911,7 @@ class BiddersFilterSetsResource {
 
     _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4020,9 +3920,7 @@ class BiddersFilterSetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FilterSet.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FilterSet.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all filter sets for the account with the given account ID.
@@ -4060,7 +3958,7 @@ class BiddersFilterSetsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4085,7 +3983,7 @@ class BiddersFilterSetsResource {
         commons.Escaper.ecapeVariableReserved('$ownerName') +
         '/filterSets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4094,10 +3992,8 @@ class BiddersFilterSetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListFilterSetsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListFilterSetsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4143,7 +4039,7 @@ class BiddersFilterSetsBidMetricsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4168,7 +4064,7 @@ class BiddersFilterSetsBidMetricsResource {
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/bidMetrics';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4177,10 +4073,8 @@ class BiddersFilterSetsBidMetricsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListBidMetricsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListBidMetricsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4227,7 +4121,7 @@ class BiddersFilterSetsBidResponseErrorsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4252,7 +4146,7 @@ class BiddersFilterSetsBidResponseErrorsResource {
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/bidResponseErrors';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4261,10 +4155,8 @@ class BiddersFilterSetsBidResponseErrorsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListBidResponseErrorsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListBidResponseErrorsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4312,7 +4204,7 @@ class BiddersFilterSetsBidResponsesWithoutBidsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4337,7 +4229,7 @@ class BiddersFilterSetsBidResponsesWithoutBidsResource {
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/bidResponsesWithoutBids';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4346,10 +4238,8 @@ class BiddersFilterSetsBidResponsesWithoutBidsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListBidResponsesWithoutBidsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListBidResponsesWithoutBidsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4396,7 +4286,7 @@ class BiddersFilterSetsFilteredBidRequestsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4421,7 +4311,7 @@ class BiddersFilterSetsFilteredBidRequestsResource {
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/filteredBidRequests';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4430,10 +4320,8 @@ class BiddersFilterSetsFilteredBidRequestsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListFilteredBidRequestsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListFilteredBidRequestsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4485,7 +4373,7 @@ class BiddersFilterSetsFilteredBidsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4510,7 +4398,7 @@ class BiddersFilterSetsFilteredBidsResource {
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/filteredBids';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4519,10 +4407,8 @@ class BiddersFilterSetsFilteredBidsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListFilteredBidsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListFilteredBidsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4574,7 +4460,7 @@ class BiddersFilterSetsFilteredBidsCreativesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4604,7 +4490,7 @@ class BiddersFilterSetsFilteredBidsCreativesResource {
         commons.Escaper.ecapeVariable('$creativeStatusId') +
         '/creatives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4613,10 +4499,8 @@ class BiddersFilterSetsFilteredBidsCreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCreativeStatusBreakdownByCreativeResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCreativeStatusBreakdownByCreativeResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4670,7 +4554,7 @@ class BiddersFilterSetsFilteredBidsDetailsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4700,7 +4584,7 @@ class BiddersFilterSetsFilteredBidsDetailsResource {
         commons.Escaper.ecapeVariable('$creativeStatusId') +
         '/details';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4709,10 +4593,8 @@ class BiddersFilterSetsFilteredBidsDetailsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCreativeStatusBreakdownByDetailResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCreativeStatusBreakdownByDetailResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4758,7 +4640,7 @@ class BiddersFilterSetsImpressionMetricsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4783,7 +4665,7 @@ class BiddersFilterSetsImpressionMetricsResource {
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/impressionMetrics';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4792,10 +4674,8 @@ class BiddersFilterSetsImpressionMetricsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListImpressionMetricsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListImpressionMetricsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4842,7 +4722,7 @@ class BiddersFilterSetsLosingBidsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4867,7 +4747,7 @@ class BiddersFilterSetsLosingBidsResource {
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/losingBids';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4876,10 +4756,8 @@ class BiddersFilterSetsLosingBidsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLosingBidsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLosingBidsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4926,7 +4804,7 @@ class BiddersFilterSetsNonBillableWinningBidsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4951,7 +4829,7 @@ class BiddersFilterSetsNonBillableWinningBidsResource {
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/nonBillableWinningBids';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4960,10 +4838,8 @@ class BiddersFilterSetsNonBillableWinningBidsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListNonBillableWinningBidsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListNonBillableWinningBidsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -183,7 +183,7 @@ class AssetlinksResource {
     core.String target_androidApp_packageName,
     core.String target_web_site,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -226,7 +226,7 @@ class AssetlinksResource {
 
     _url = 'v1/assetlinks:check';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -235,10 +235,8 @@ class AssetlinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CheckResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CheckResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -326,7 +324,7 @@ class StatementsResource {
     core.String source_androidApp_packageName,
     core.String source_web_site,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -356,7 +354,7 @@ class StatementsResource {
 
     _url = 'v1/statements:list';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -365,10 +363,8 @@ class StatementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ListResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

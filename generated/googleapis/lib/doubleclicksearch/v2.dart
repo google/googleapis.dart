@@ -130,7 +130,7 @@ class ConversionResource {
     core.String campaignId,
     core.String criterionId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -187,7 +187,7 @@ class ConversionResource {
         commons.Escaper.ecapeVariable('$engineAccountId') +
         '/conversion';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -196,10 +196,8 @@ class ConversionResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ConversionList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ConversionList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a batch of new conversions into DoubleClick Search.
@@ -221,7 +219,7 @@ class ConversionResource {
   async.Future<ConversionList> insert(
     ConversionList request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -238,7 +236,7 @@ class ConversionResource {
 
     _url = 'doubleclicksearch/v2/conversion';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -247,10 +245,8 @@ class ConversionResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ConversionList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ConversionList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a batch of conversions in DoubleClick Search.
@@ -272,7 +268,7 @@ class ConversionResource {
   async.Future<ConversionList> update(
     ConversionList request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -289,7 +285,7 @@ class ConversionResource {
 
     _url = 'doubleclicksearch/v2/conversion';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -298,10 +294,8 @@ class ConversionResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ConversionList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ConversionList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the availabilities of a batch of floodlight activities in
@@ -324,7 +318,7 @@ class ConversionResource {
   async.Future<UpdateAvailabilityResponse> updateAvailability(
     UpdateAvailabilityRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -341,7 +335,7 @@ class ConversionResource {
 
     _url = 'doubleclicksearch/v2/conversion/updateAvailability';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -350,10 +344,8 @@ class ConversionResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UpdateAvailabilityResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return UpdateAvailabilityResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -381,7 +373,7 @@ class ReportsResource {
   async.Future<Report> generate(
     ReportRequest request_1, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -398,7 +390,7 @@ class ReportsResource {
 
     _url = 'doubleclicksearch/v2/reports/generate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -407,9 +399,7 @@ class ReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Report.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Polls for the status of a report request.
@@ -431,7 +421,7 @@ class ReportsResource {
   async.Future<Report> get(
     core.String reportId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -449,7 +439,7 @@ class ReportsResource {
     _url = 'doubleclicksearch/v2/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -458,9 +448,7 @@ class ReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Report.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Downloads a report file encoded in UTF-8.
@@ -483,12 +471,12 @@ class ReportsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future getFile(
+  async.Future<core.Object> getFile(
     core.String reportId,
     core.int reportFragment, {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -513,7 +501,7 @@ class ReportsResource {
         '/files/' +
         commons.Escaper.ecapeVariable('$reportFragment');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -524,9 +512,7 @@ class ReportsResource {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then(
-        (data) => null,
-      );
+      return null;
     } else {
       return _response;
     }
@@ -551,7 +537,7 @@ class ReportsResource {
   async.Future<Report> request(
     ReportRequest request_1, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -568,7 +554,7 @@ class ReportsResource {
 
     _url = 'doubleclicksearch/v2/reports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -577,9 +563,7 @@ class ReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Report.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -610,7 +594,7 @@ class SavedColumnsResource {
     core.String agencyId,
     core.String advertiserId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -634,7 +618,7 @@ class SavedColumnsResource {
         commons.Escaper.ecapeVariable('$advertiserId') +
         '/savedcolumns';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -643,10 +627,8 @@ class SavedColumnsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SavedColumnList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SavedColumnList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

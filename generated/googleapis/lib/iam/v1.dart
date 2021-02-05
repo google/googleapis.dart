@@ -105,7 +105,7 @@ class IamPoliciesResource {
   async.Future<LintPolicyResponse> lintPolicy(
     LintPolicyRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -122,7 +122,7 @@ class IamPoliciesResource {
 
     _url = 'v1/iamPolicies:lintPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -131,10 +131,8 @@ class IamPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LintPolicyResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LintPolicyResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of services that allow you to opt into audit logs that are
@@ -160,7 +158,7 @@ class IamPoliciesResource {
   async.Future<QueryAuditableServicesResponse> queryAuditableServices(
     QueryAuditableServicesRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -177,7 +175,7 @@ class IamPoliciesResource {
 
     _url = 'v1/iamPolicies:queryAuditableServices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -186,10 +184,8 @@ class IamPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => QueryAuditableServicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return QueryAuditableServicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -244,7 +240,7 @@ class OrganizationsRolesResource {
     CreateRoleRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -264,7 +260,7 @@ class OrganizationsRolesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -273,9 +269,7 @@ class OrganizationsRolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a custom Role.
@@ -326,7 +320,7 @@ class OrganizationsRolesResource {
     core.String name, {
     core.String etag,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -346,7 +340,7 @@ class OrganizationsRolesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -355,9 +349,7 @@ class OrganizationsRolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the definition of a Role.
@@ -401,7 +393,7 @@ class OrganizationsRolesResource {
   async.Future<Role> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -418,7 +410,7 @@ class OrganizationsRolesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -427,9 +419,7 @@ class OrganizationsRolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists every predefined Role that IAM supports, or every custom role that
@@ -493,7 +483,7 @@ class OrganizationsRolesResource {
     core.bool showDeleted,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -522,7 +512,7 @@ class OrganizationsRolesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -531,10 +521,8 @@ class OrganizationsRolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListRolesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListRolesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the definition of a custom Role.
@@ -579,7 +567,7 @@ class OrganizationsRolesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -602,7 +590,7 @@ class OrganizationsRolesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -611,9 +599,7 @@ class OrganizationsRolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a custom Role.
@@ -655,7 +641,7 @@ class OrganizationsRolesResource {
     UndeleteRoleRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -675,7 +661,7 @@ class OrganizationsRolesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -684,9 +670,7 @@ class OrganizationsRolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -717,7 +701,7 @@ class PermissionsResource {
   async.Future<QueryTestablePermissionsResponse> queryTestablePermissions(
     QueryTestablePermissionsRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -734,7 +718,7 @@ class PermissionsResource {
 
     _url = 'v1/permissions:queryTestablePermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -743,10 +727,8 @@ class PermissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => QueryTestablePermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return QueryTestablePermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -814,7 +796,7 @@ class ProjectsLocationsWorkloadIdentityPoolsOperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -831,7 +813,7 @@ class ProjectsLocationsWorkloadIdentityPoolsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -840,9 +822,7 @@ class ProjectsLocationsWorkloadIdentityPoolsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -890,7 +870,7 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -907,7 +887,7 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -916,9 +896,7 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -964,7 +942,7 @@ class ProjectsRolesResource {
     CreateRoleRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -984,7 +962,7 @@ class ProjectsRolesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -993,9 +971,7 @@ class ProjectsRolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a custom Role.
@@ -1046,7 +1022,7 @@ class ProjectsRolesResource {
     core.String name, {
     core.String etag,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1066,7 +1042,7 @@ class ProjectsRolesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1075,9 +1051,7 @@ class ProjectsRolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the definition of a Role.
@@ -1121,7 +1095,7 @@ class ProjectsRolesResource {
   async.Future<Role> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1138,7 +1112,7 @@ class ProjectsRolesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1147,9 +1121,7 @@ class ProjectsRolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists every predefined Role that IAM supports, or every custom role that
@@ -1213,7 +1185,7 @@ class ProjectsRolesResource {
     core.bool showDeleted,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1242,7 +1214,7 @@ class ProjectsRolesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1251,10 +1223,8 @@ class ProjectsRolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListRolesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListRolesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the definition of a custom Role.
@@ -1299,7 +1269,7 @@ class ProjectsRolesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1322,7 +1292,7 @@ class ProjectsRolesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1331,9 +1301,7 @@ class ProjectsRolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a custom Role.
@@ -1375,7 +1343,7 @@ class ProjectsRolesResource {
     UndeleteRoleRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1395,7 +1363,7 @@ class ProjectsRolesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1404,9 +1372,7 @@ class ProjectsRolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1443,7 +1409,7 @@ class ProjectsServiceAccountsResource {
     CreateServiceAccountRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1465,7 +1431,7 @@ class ProjectsServiceAccountsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/serviceAccounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1474,10 +1440,8 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ServiceAccount.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ServiceAccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a ServiceAccount.
@@ -1515,7 +1479,7 @@ class ProjectsServiceAccountsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1532,7 +1496,7 @@ class ProjectsServiceAccountsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1541,9 +1505,7 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Disables a ServiceAccount immediately.
@@ -1585,7 +1547,7 @@ class ProjectsServiceAccountsResource {
     DisableServiceAccountRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1605,7 +1567,7 @@ class ProjectsServiceAccountsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':disable';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1614,9 +1576,7 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Enables a ServiceAccount that was disabled by DisableServiceAccount.
@@ -1651,7 +1611,7 @@ class ProjectsServiceAccountsResource {
     EnableServiceAccountRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1671,7 +1631,7 @@ class ProjectsServiceAccountsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':enable';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1680,9 +1640,7 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a ServiceAccount.
@@ -1709,7 +1667,7 @@ class ProjectsServiceAccountsResource {
   async.Future<ServiceAccount> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1726,7 +1684,7 @@ class ProjectsServiceAccountsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1735,10 +1693,8 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ServiceAccount.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ServiceAccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the IAM policy that is attached to a ServiceAccount.
@@ -1781,7 +1737,7 @@ class ProjectsServiceAccountsResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1805,7 +1761,7 @@ class ProjectsServiceAccountsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1814,9 +1770,7 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists every ServiceAccount that belongs to a specific project.
@@ -1850,7 +1804,7 @@ class ProjectsServiceAccountsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1875,7 +1829,7 @@ class ProjectsServiceAccountsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/serviceAccounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1884,10 +1838,8 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListServiceAccountsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListServiceAccountsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches a ServiceAccount.
@@ -1924,7 +1876,7 @@ class ProjectsServiceAccountsResource {
     PatchServiceAccountRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1944,7 +1896,7 @@ class ProjectsServiceAccountsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1953,10 +1905,8 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ServiceAccount.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ServiceAccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the IAM policy that is attached to a ServiceAccount.
@@ -1994,7 +1944,7 @@ class ProjectsServiceAccountsResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2016,7 +1966,7 @@ class ProjectsServiceAccountsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2025,9 +1975,7 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// **Note:** This method is deprecated and will stop working on July 1, 2021.
@@ -2067,7 +2015,7 @@ class ProjectsServiceAccountsResource {
     SignBlobRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2087,7 +2035,7 @@ class ProjectsServiceAccountsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signBlob';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2096,10 +2044,8 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SignBlobResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SignBlobResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// **Note:** This method is deprecated and will stop working on July 1, 2021.
@@ -2139,7 +2085,7 @@ class ProjectsServiceAccountsResource {
     SignJwtRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2159,7 +2105,7 @@ class ProjectsServiceAccountsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signJwt';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2168,10 +2114,8 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SignJwtResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SignJwtResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Tests whether the caller has the specified permissions on a
@@ -2200,7 +2144,7 @@ class ProjectsServiceAccountsResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2222,7 +2166,7 @@ class ProjectsServiceAccountsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2231,10 +2175,8 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Restores a deleted ServiceAccount.
@@ -2268,7 +2210,7 @@ class ProjectsServiceAccountsResource {
     UndeleteServiceAccountRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2288,7 +2230,7 @@ class ProjectsServiceAccountsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2297,10 +2239,8 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UndeleteServiceAccountResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return UndeleteServiceAccountResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// **Note:** We are in the process of deprecating this method.
@@ -2340,7 +2280,7 @@ class ProjectsServiceAccountsResource {
     ServiceAccount request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2360,7 +2300,7 @@ class ProjectsServiceAccountsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2369,10 +2309,8 @@ class ProjectsServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ServiceAccount.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ServiceAccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2409,7 +2347,7 @@ class ProjectsServiceAccountsKeysResource {
     CreateServiceAccountKeyRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2429,7 +2367,7 @@ class ProjectsServiceAccountsKeysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/keys';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2438,10 +2376,8 @@ class ProjectsServiceAccountsKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ServiceAccountKey.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ServiceAccountKey.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a ServiceAccountKey.
@@ -2473,7 +2409,7 @@ class ProjectsServiceAccountsKeysResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2490,7 +2426,7 @@ class ProjectsServiceAccountsKeysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2499,9 +2435,7 @@ class ProjectsServiceAccountsKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a ServiceAccountKey.
@@ -2538,7 +2472,7 @@ class ProjectsServiceAccountsKeysResource {
     core.String name, {
     core.String publicKeyType,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2558,7 +2492,7 @@ class ProjectsServiceAccountsKeysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2567,10 +2501,8 @@ class ProjectsServiceAccountsKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ServiceAccountKey.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ServiceAccountKey.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists every ServiceAccountKey for a service account.
@@ -2602,7 +2534,7 @@ class ProjectsServiceAccountsKeysResource {
     core.String name, {
     core.List<core.String> keyTypes,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2622,7 +2554,7 @@ class ProjectsServiceAccountsKeysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/keys';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2631,10 +2563,8 @@ class ProjectsServiceAccountsKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListServiceAccountKeysResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListServiceAccountKeysResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a ServiceAccountKey, using a public key that you provide.
@@ -2664,7 +2594,7 @@ class ProjectsServiceAccountsKeysResource {
     UploadServiceAccountKeyRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2685,7 +2615,7 @@ class ProjectsServiceAccountsKeysResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/keys:upload';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2694,10 +2624,8 @@ class ProjectsServiceAccountsKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ServiceAccountKey.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ServiceAccountKey.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2747,7 +2675,7 @@ class RolesResource {
   async.Future<Role> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2764,7 +2692,7 @@ class RolesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2773,9 +2701,7 @@ class RolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Role.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists every predefined Role that IAM supports, or every custom role that
@@ -2838,7 +2764,7 @@ class RolesResource {
     core.bool showDeleted,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2867,7 +2793,7 @@ class RolesResource {
 
     _url = 'v1/roles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2876,10 +2802,8 @@ class RolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListRolesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListRolesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists roles that can be granted on a Google Cloud resource.
@@ -2904,7 +2828,7 @@ class RolesResource {
   async.Future<QueryGrantableRolesResponse> queryGrantableRoles(
     QueryGrantableRolesRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2921,7 +2845,7 @@ class RolesResource {
 
     _url = 'v1/roles:queryGrantableRoles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2930,10 +2854,8 @@ class RolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => QueryGrantableRolesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return QueryGrantableRolesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

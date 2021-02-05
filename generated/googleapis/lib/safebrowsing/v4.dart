@@ -104,7 +104,7 @@ class EncodedFullHashesResource {
     core.String clientId,
     core.String clientVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -128,7 +128,7 @@ class EncodedFullHashesResource {
     _url = 'v4/encodedFullHashes/' +
         commons.Escaper.ecapeVariable('$encodedRequest');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -137,10 +137,8 @@ class EncodedFullHashesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleSecuritySafebrowsingV4FindFullHashesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleSecuritySafebrowsingV4FindFullHashesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -174,7 +172,7 @@ class EncodedUpdatesResource {
     core.String clientId,
     core.String clientVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -198,7 +196,7 @@ class EncodedUpdatesResource {
     _url =
         'v4/encodedUpdates/' + commons.Escaper.ecapeVariable('$encodedRequest');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -207,11 +205,8 @@ class EncodedUpdatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -239,7 +234,7 @@ class FullHashesResource {
   async.Future<GoogleSecuritySafebrowsingV4FindFullHashesResponse> find(
     GoogleSecuritySafebrowsingV4FindFullHashesRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -256,7 +251,7 @@ class FullHashesResource {
 
     _url = 'v4/fullHashes:find';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -265,10 +260,8 @@ class FullHashesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleSecuritySafebrowsingV4FindFullHashesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleSecuritySafebrowsingV4FindFullHashesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -298,7 +291,7 @@ class ThreatHitsResource {
   async.Future<GoogleProtobufEmpty> create(
     GoogleSecuritySafebrowsingV4ThreatHit request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -315,7 +308,7 @@ class ThreatHitsResource {
 
     _url = 'v4/threatHits';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -324,10 +317,8 @@ class ThreatHitsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -359,7 +350,7 @@ class ThreatListUpdatesResource {
       fetch(
     GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -376,7 +367,7 @@ class ThreatListUpdatesResource {
 
     _url = 'v4/threatListUpdates:fetch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -385,11 +376,8 @@ class ThreatListUpdatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -414,7 +402,7 @@ class ThreatListsResource {
   /// this method will complete with the same error.
   async.Future<GoogleSecuritySafebrowsingV4ListThreatListsResponse> list({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -428,7 +416,7 @@ class ThreatListsResource {
 
     _url = 'v4/threatLists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -437,10 +425,8 @@ class ThreatListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleSecuritySafebrowsingV4ListThreatListsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleSecuritySafebrowsingV4ListThreatListsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -468,7 +454,7 @@ class ThreatMatchesResource {
   async.Future<GoogleSecuritySafebrowsingV4FindThreatMatchesResponse> find(
     GoogleSecuritySafebrowsingV4FindThreatMatchesRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -485,7 +471,7 @@ class ThreatMatchesResource {
 
     _url = 'v4/threatMatches:find';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -494,10 +480,8 @@ class ThreatMatchesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleSecuritySafebrowsingV4FindThreatMatchesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleSecuritySafebrowsingV4FindThreatMatchesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

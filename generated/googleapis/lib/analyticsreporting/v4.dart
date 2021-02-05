@@ -85,7 +85,7 @@ class ReportsResource {
   async.Future<GetReportsResponse> batchGet(
     GetReportsRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -102,7 +102,7 @@ class ReportsResource {
 
     _url = 'v4/reports:batchGet';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -111,10 +111,8 @@ class ReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetReportsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetReportsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -142,7 +140,7 @@ class UserActivityResource {
   async.Future<SearchUserActivityResponse> search(
     SearchUserActivityRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -159,7 +157,7 @@ class UserActivityResource {
 
     _url = 'v4/userActivity:search';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -168,10 +166,8 @@ class UserActivityResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchUserActivityResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchUserActivityResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

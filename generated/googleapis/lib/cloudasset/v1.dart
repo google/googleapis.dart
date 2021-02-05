@@ -93,7 +93,7 @@ class FeedsResource {
     CreateFeedRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -113,7 +113,7 @@ class FeedsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/feeds';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -122,9 +122,7 @@ class FeedsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Feed.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Feed.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an asset feed.
@@ -149,7 +147,7 @@ class FeedsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -166,7 +164,7 @@ class FeedsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -175,9 +173,7 @@ class FeedsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details about an asset feed.
@@ -202,7 +198,7 @@ class FeedsResource {
   async.Future<Feed> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -219,7 +215,7 @@ class FeedsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -228,9 +224,7 @@ class FeedsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Feed.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Feed.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all asset feeds in a parent project/folder/organization.
@@ -256,7 +250,7 @@ class FeedsResource {
   async.Future<ListFeedsResponse> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -273,7 +267,7 @@ class FeedsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/feeds';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -282,10 +276,8 @@ class FeedsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListFeedsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListFeedsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an asset feed configuration.
@@ -316,7 +308,7 @@ class FeedsResource {
     UpdateFeedRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -336,7 +328,7 @@ class FeedsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -345,9 +337,7 @@ class FeedsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Feed.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Feed.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -379,7 +369,7 @@ class OperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -396,7 +386,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -405,9 +395,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -543,7 +531,7 @@ class V1Resource {
     core.String analysisQuery_resourceSelector_fullResourceName,
     core.String executionTimeout,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -612,7 +600,7 @@ class V1Resource {
         commons.Escaper.ecapeVariableReserved('$scope') +
         ':analyzeIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -621,10 +609,8 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AnalyzeIamPolicyResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AnalyzeIamPolicyResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Analyzes IAM policies asynchronously to answer which identities have what
@@ -667,7 +653,7 @@ class V1Resource {
     AnalyzeIamPolicyLongrunningRequest request,
     core.String scope, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -689,7 +675,7 @@ class V1Resource {
         commons.Escaper.ecapeVariableReserved('$scope') +
         ':analyzeIamPolicyLongrunning';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -698,9 +684,7 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Batch gets the update history of assets that overlap a time window.
@@ -758,7 +742,7 @@ class V1Resource {
     core.String readTimeWindow_endTime,
     core.String readTimeWindow_startTime,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -789,7 +773,7 @@ class V1Resource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':batchGetAssetsHistory';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -798,10 +782,8 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchGetAssetsHistoryResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchGetAssetsHistoryResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Exports assets with time and resource types to a given Cloud Storage
@@ -840,7 +822,7 @@ class V1Resource {
     ExportAssetsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -862,7 +844,7 @@ class V1Resource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':exportAssets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -871,9 +853,7 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Searches all IAM policies within the specified scope, such as a project,
@@ -954,7 +934,7 @@ class V1Resource {
     core.String pageToken,
     core.String query,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -982,7 +962,7 @@ class V1Resource {
         commons.Escaper.ecapeVariableReserved('$scope') +
         ':searchAllIamPolicies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -991,10 +971,8 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchAllIamPoliciesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchAllIamPoliciesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Searches all Cloud resources within the specified scope, such as a
@@ -1086,7 +1064,7 @@ class V1Resource {
     core.String pageToken,
     core.String query,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1120,7 +1098,7 @@ class V1Resource {
         commons.Escaper.ecapeVariableReserved('$scope') +
         ':searchAllResources';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1129,10 +1107,8 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchAllResourcesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchAllResourcesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

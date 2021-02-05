@@ -134,7 +134,7 @@ class ProjectsLocationsInstancesResource {
     core.String databaseId,
     core.bool validateOnly,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -162,7 +162,7 @@ class ProjectsLocationsInstancesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/instances';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -171,10 +171,8 @@ class ProjectsLocationsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DatabaseInstance.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DatabaseInstance.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks a DatabaseInstance to be deleted.
@@ -205,7 +203,7 @@ class ProjectsLocationsInstancesResource {
   async.Future<DatabaseInstance> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -222,7 +220,7 @@ class ProjectsLocationsInstancesResource {
 
     _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -231,10 +229,8 @@ class ProjectsLocationsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DatabaseInstance.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DatabaseInstance.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Disables a DatabaseInstance.
@@ -267,7 +263,7 @@ class ProjectsLocationsInstancesResource {
     DisableDatabaseInstanceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -288,7 +284,7 @@ class ProjectsLocationsInstancesResource {
     _url =
         'v1beta/' + commons.Escaper.ecapeVariableReserved('$name') + ':disable';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -297,10 +293,8 @@ class ProjectsLocationsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DatabaseInstance.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DatabaseInstance.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the DatabaseInstance identified by the specified resource name.
@@ -331,7 +325,7 @@ class ProjectsLocationsInstancesResource {
   async.Future<DatabaseInstance> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -348,7 +342,7 @@ class ProjectsLocationsInstancesResource {
 
     _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -357,10 +351,8 @@ class ProjectsLocationsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DatabaseInstance.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DatabaseInstance.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists each DatabaseInstance associated with the specified parent project.
@@ -403,7 +395,7 @@ class ProjectsLocationsInstancesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -428,7 +420,7 @@ class ProjectsLocationsInstancesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/instances';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -437,10 +429,8 @@ class ProjectsLocationsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListDatabaseInstancesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListDatabaseInstancesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Enables a DatabaseInstance.
@@ -473,7 +463,7 @@ class ProjectsLocationsInstancesResource {
     ReenableDatabaseInstanceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -495,7 +485,7 @@ class ProjectsLocationsInstancesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':reenable';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -504,10 +494,8 @@ class ProjectsLocationsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DatabaseInstance.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DatabaseInstance.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

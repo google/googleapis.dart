@@ -92,7 +92,7 @@ class DomainsResource {
   async.Future<Domain> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -109,7 +109,7 @@ class DomainsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -118,9 +118,7 @@ class DomainsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Domain.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Domain.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the domains that have been registered by the client.
@@ -152,7 +150,7 @@ class DomainsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -172,7 +170,7 @@ class DomainsResource {
 
     _url = 'v1/domains';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -181,10 +179,8 @@ class DomainsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListDomainsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListDomainsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -218,7 +214,7 @@ class DomainsTrafficStatsResource {
   async.Future<TrafficStats> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -235,7 +231,7 @@ class DomainsTrafficStatsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -244,10 +240,8 @@ class DomainsTrafficStatsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TrafficStats.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TrafficStats.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List traffic statistics for all available days.
@@ -311,7 +305,7 @@ class DomainsTrafficStatsResource {
     core.int startDate_month,
     core.int startDate_year,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -354,7 +348,7 @@ class DomainsTrafficStatsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/trafficStats';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -363,10 +357,8 @@ class DomainsTrafficStatsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTrafficStatsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTrafficStatsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

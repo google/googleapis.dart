@@ -107,7 +107,7 @@ class CatalogResource {
   async.Future<GoogleCloudDatacatalogV1beta1SearchCatalogResponse> search(
     GoogleCloudDatacatalogV1beta1SearchCatalogRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -124,7 +124,7 @@ class CatalogResource {
 
     _url = 'v1beta1/catalog:search';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -133,10 +133,8 @@ class CatalogResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -182,7 +180,7 @@ class EntriesResource {
     core.String linkedResource,
     core.String sqlResource,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -202,7 +200,7 @@ class EntriesResource {
 
     _url = 'v1beta1/entries:lookup';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -211,10 +209,8 @@ class EntriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1Entry.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1Entry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -288,7 +284,7 @@ class ProjectsLocationsEntryGroupsResource {
     core.String parent, {
     core.String entryGroupId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -313,7 +309,7 @@ class ProjectsLocationsEntryGroupsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entryGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -322,10 +318,8 @@ class ProjectsLocationsEntryGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an EntryGroup.
@@ -359,7 +353,7 @@ class ProjectsLocationsEntryGroupsResource {
     core.String name, {
     core.bool force,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -379,7 +373,7 @@ class ProjectsLocationsEntryGroupsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -388,9 +382,7 @@ class ProjectsLocationsEntryGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an EntryGroup.
@@ -419,7 +411,7 @@ class ProjectsLocationsEntryGroupsResource {
     core.String name, {
     core.String readMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -439,7 +431,7 @@ class ProjectsLocationsEntryGroupsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -448,10 +440,8 @@ class ProjectsLocationsEntryGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -490,7 +480,7 @@ class ProjectsLocationsEntryGroupsResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -512,7 +502,7 @@ class ProjectsLocationsEntryGroupsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -521,9 +511,7 @@ class ProjectsLocationsEntryGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists entry groups.
@@ -556,7 +544,7 @@ class ProjectsLocationsEntryGroupsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -581,7 +569,7 @@ class ProjectsLocationsEntryGroupsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entryGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -590,10 +578,8 @@ class ProjectsLocationsEntryGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an EntryGroup.
@@ -632,7 +618,7 @@ class ProjectsLocationsEntryGroupsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -655,7 +641,7 @@ class ProjectsLocationsEntryGroupsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -664,10 +650,8 @@ class ProjectsLocationsEntryGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy for a resource.
@@ -705,7 +689,7 @@ class ProjectsLocationsEntryGroupsResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -727,7 +711,7 @@ class ProjectsLocationsEntryGroupsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -736,9 +720,7 @@ class ProjectsLocationsEntryGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the caller's permissions on a resource.
@@ -774,7 +756,7 @@ class ProjectsLocationsEntryGroupsResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -796,7 +778,7 @@ class ProjectsLocationsEntryGroupsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -805,10 +787,8 @@ class ProjectsLocationsEntryGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -859,7 +839,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     core.String parent, {
     core.String entryId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -884,7 +864,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entries';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -893,10 +873,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1Entry.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1Entry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing entry.
@@ -927,7 +905,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -944,7 +922,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -953,9 +931,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an entry.
@@ -980,7 +956,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   async.Future<GoogleCloudDatacatalogV1beta1Entry> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -997,7 +973,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1006,10 +982,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1Entry.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1Entry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -1048,7 +1022,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1070,7 +1044,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1079,9 +1053,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists entries.
@@ -1121,7 +1093,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     core.String pageToken,
     core.String readMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1149,7 +1121,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entries';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1158,10 +1130,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing entry.
@@ -1207,7 +1177,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1230,7 +1200,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1239,10 +1209,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1Entry.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1Entry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the caller's permissions on a resource.
@@ -1278,7 +1246,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1300,7 +1268,7 @@ class ProjectsLocationsEntryGroupsEntriesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1309,10 +1277,8 @@ class ProjectsLocationsEntryGroupsEntriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1356,7 +1322,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     GoogleCloudDatacatalogV1beta1Tag request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1377,7 +1343,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/tags';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1386,10 +1352,8 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1Tag.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1Tag.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a tag.
@@ -1414,7 +1378,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1431,7 +1395,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1440,9 +1404,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the tags on an Entry.
@@ -1477,7 +1439,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1501,7 +1463,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/tags';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1510,10 +1472,8 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing tag.
@@ -1548,7 +1508,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1571,7 +1531,7 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1580,10 +1540,8 @@ class ProjectsLocationsEntryGroupsEntriesTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1Tag.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1Tag.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1627,7 +1585,7 @@ class ProjectsLocationsEntryGroupsTagsResource {
     GoogleCloudDatacatalogV1beta1Tag request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1648,7 +1606,7 @@ class ProjectsLocationsEntryGroupsTagsResource {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/tags';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1657,10 +1615,8 @@ class ProjectsLocationsEntryGroupsTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1Tag.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1Tag.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a tag.
@@ -1685,7 +1641,7 @@ class ProjectsLocationsEntryGroupsTagsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1702,7 +1658,7 @@ class ProjectsLocationsEntryGroupsTagsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1711,9 +1667,7 @@ class ProjectsLocationsEntryGroupsTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the tags on an Entry.
@@ -1748,7 +1702,7 @@ class ProjectsLocationsEntryGroupsTagsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1772,7 +1726,7 @@ class ProjectsLocationsEntryGroupsTagsResource {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/tags';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1781,10 +1735,8 @@ class ProjectsLocationsEntryGroupsTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing tag.
@@ -1819,7 +1771,7 @@ class ProjectsLocationsEntryGroupsTagsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1842,7 +1794,7 @@ class ProjectsLocationsEntryGroupsTagsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1851,10 +1803,8 @@ class ProjectsLocationsEntryGroupsTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1Tag.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1Tag.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1900,7 +1850,7 @@ class ProjectsLocationsTagTemplatesResource {
     core.String parent, {
     core.String tagTemplateId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1925,7 +1875,7 @@ class ProjectsLocationsTagTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/tagTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1934,10 +1884,8 @@ class ProjectsLocationsTagTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a tag template and all tags using the template.
@@ -1972,7 +1920,7 @@ class ProjectsLocationsTagTemplatesResource {
     core.String name, {
     core.bool force,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1992,7 +1940,7 @@ class ProjectsLocationsTagTemplatesResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2001,9 +1949,7 @@ class ProjectsLocationsTagTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a tag template.
@@ -2028,7 +1974,7 @@ class ProjectsLocationsTagTemplatesResource {
   async.Future<GoogleCloudDatacatalogV1beta1TagTemplate> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2045,7 +1991,7 @@ class ProjectsLocationsTagTemplatesResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2054,10 +2000,8 @@ class ProjectsLocationsTagTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -2096,7 +2040,7 @@ class ProjectsLocationsTagTemplatesResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2118,7 +2062,7 @@ class ProjectsLocationsTagTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2127,9 +2071,7 @@ class ProjectsLocationsTagTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a tag template.
@@ -2172,7 +2114,7 @@ class ProjectsLocationsTagTemplatesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2195,7 +2137,7 @@ class ProjectsLocationsTagTemplatesResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2204,10 +2146,8 @@ class ProjectsLocationsTagTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy for a resource.
@@ -2245,7 +2185,7 @@ class ProjectsLocationsTagTemplatesResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2267,7 +2207,7 @@ class ProjectsLocationsTagTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2276,9 +2216,7 @@ class ProjectsLocationsTagTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the caller's permissions on a resource.
@@ -2314,7 +2252,7 @@ class ProjectsLocationsTagTemplatesResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2336,7 +2274,7 @@ class ProjectsLocationsTagTemplatesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2345,10 +2283,8 @@ class ProjectsLocationsTagTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2400,7 +2336,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     core.String parent, {
     core.String tagTemplateFieldId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2425,7 +2361,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/fields';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2434,10 +2370,8 @@ class ProjectsLocationsTagTemplatesFieldsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a field in a tag template and all uses of that field.
@@ -2473,7 +2407,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     core.String name, {
     core.bool force,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2493,7 +2427,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2502,9 +2436,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a field in a tag template.
@@ -2548,7 +2480,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2571,7 +2503,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2580,10 +2512,8 @@ class ProjectsLocationsTagTemplatesFieldsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Renames a field in a tag template.
@@ -2616,7 +2546,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2637,7 +2567,7 @@ class ProjectsLocationsTagTemplatesFieldsResource {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':rename';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2646,10 +2576,8 @@ class ProjectsLocationsTagTemplatesFieldsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2689,7 +2617,7 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResource {
     GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2710,7 +2638,7 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResource {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':rename';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2719,10 +2647,8 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2759,7 +2685,7 @@ class ProjectsLocationsTaxonomiesResource {
     GoogleCloudDatacatalogV1beta1Taxonomy request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2781,7 +2707,7 @@ class ProjectsLocationsTaxonomiesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/taxonomies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2790,10 +2716,8 @@ class ProjectsLocationsTaxonomiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a taxonomy.
@@ -2821,7 +2745,7 @@ class ProjectsLocationsTaxonomiesResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2838,7 +2762,7 @@ class ProjectsLocationsTaxonomiesResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2847,9 +2771,7 @@ class ProjectsLocationsTaxonomiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Exports all taxonomies and their policy tags in a project.
@@ -2882,7 +2804,7 @@ class ProjectsLocationsTaxonomiesResource {
     core.bool serializedTaxonomies,
     core.List<core.String> taxonomies,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2907,7 +2829,7 @@ class ProjectsLocationsTaxonomiesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/taxonomies:export';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2916,10 +2838,8 @@ class ProjectsLocationsTaxonomiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a taxonomy.
@@ -2943,7 +2863,7 @@ class ProjectsLocationsTaxonomiesResource {
   async.Future<GoogleCloudDatacatalogV1beta1Taxonomy> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2960,7 +2880,7 @@ class ProjectsLocationsTaxonomiesResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2969,10 +2889,8 @@ class ProjectsLocationsTaxonomiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the IAM policy for a taxonomy or a policy tag.
@@ -3001,7 +2919,7 @@ class ProjectsLocationsTaxonomiesResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3023,7 +2941,7 @@ class ProjectsLocationsTaxonomiesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3032,9 +2950,7 @@ class ProjectsLocationsTaxonomiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Imports all taxonomies and their policy tags to a project as new
@@ -3065,7 +2981,7 @@ class ProjectsLocationsTaxonomiesResource {
     GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3087,7 +3003,7 @@ class ProjectsLocationsTaxonomiesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/taxonomies:import';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3096,10 +3012,8 @@ class ProjectsLocationsTaxonomiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all taxonomies in a project in a particular location that the caller
@@ -3132,7 +3046,7 @@ class ProjectsLocationsTaxonomiesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3157,7 +3071,7 @@ class ProjectsLocationsTaxonomiesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/taxonomies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3166,10 +3080,8 @@ class ProjectsLocationsTaxonomiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a taxonomy.
@@ -3203,7 +3115,7 @@ class ProjectsLocationsTaxonomiesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3226,7 +3138,7 @@ class ProjectsLocationsTaxonomiesResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3235,10 +3147,8 @@ class ProjectsLocationsTaxonomiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the IAM policy for a taxonomy or a policy tag.
@@ -3267,7 +3177,7 @@ class ProjectsLocationsTaxonomiesResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3289,7 +3199,7 @@ class ProjectsLocationsTaxonomiesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3298,9 +3208,7 @@ class ProjectsLocationsTaxonomiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the permissions that a caller has on the specified taxonomy or
@@ -3330,7 +3238,7 @@ class ProjectsLocationsTaxonomiesResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3352,7 +3260,7 @@ class ProjectsLocationsTaxonomiesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3361,10 +3269,8 @@ class ProjectsLocationsTaxonomiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3399,7 +3305,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     GoogleCloudDatacatalogV1beta1PolicyTag request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3421,7 +3327,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/policyTags';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3430,10 +3336,8 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a policy tag.
@@ -3460,7 +3364,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3477,7 +3381,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3486,9 +3390,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a policy tag.
@@ -3512,7 +3414,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
   async.Future<GoogleCloudDatacatalogV1beta1PolicyTag> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3529,7 +3431,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3538,10 +3440,8 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the IAM policy for a taxonomy or a policy tag.
@@ -3570,7 +3470,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3592,7 +3492,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3601,9 +3501,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all policy tags in a taxonomy.
@@ -3636,7 +3534,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3661,7 +3559,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/policyTags';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3670,10 +3568,8 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a policy tag.
@@ -3710,7 +3606,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3733,7 +3629,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3742,10 +3638,8 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the IAM policy for a taxonomy or a policy tag.
@@ -3774,7 +3668,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3796,7 +3690,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3805,9 +3699,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the permissions that a caller has on the specified taxonomy or
@@ -3837,7 +3729,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3859,7 +3751,7 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3868,10 +3760,8 @@ class ProjectsLocationsTaxonomiesPolicyTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

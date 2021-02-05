@@ -97,7 +97,7 @@ class GoogleServiceAccountsResource {
   async.Future<GoogleServiceAccount> get(
     core.String projectId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -115,7 +115,7 @@ class GoogleServiceAccountsResource {
     _url = 'v1/googleServiceAccounts/' +
         commons.Escaper.ecapeVariable('$projectId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -124,10 +124,8 @@ class GoogleServiceAccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleServiceAccount.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleServiceAccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -155,7 +153,7 @@ class TransferJobsResource {
   async.Future<TransferJob> create(
     TransferJob request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -172,7 +170,7 @@ class TransferJobsResource {
 
     _url = 'v1/transferJobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -181,10 +179,8 @@ class TransferJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TransferJob.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TransferJob.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a transfer job.
@@ -211,7 +207,7 @@ class TransferJobsResource {
     core.String jobName,
     core.String projectId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -232,7 +228,7 @@ class TransferJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$jobName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -241,10 +237,8 @@ class TransferJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TransferJob.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TransferJob.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists transfer jobs.
@@ -279,7 +273,7 @@ class TransferJobsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -303,7 +297,7 @@ class TransferJobsResource {
 
     _url = 'v1/transferJobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -312,10 +306,8 @@ class TransferJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTransferJobsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTransferJobsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a transfer job.
@@ -346,7 +338,7 @@ class TransferJobsResource {
     UpdateTransferJobRequest request,
     core.String jobName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -366,7 +358,7 @@ class TransferJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$jobName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -375,10 +367,8 @@ class TransferJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TransferJob.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TransferJob.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -428,7 +418,7 @@ class TransferOperationsResource {
     CancelOperationRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -448,7 +438,7 @@ class TransferOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -457,9 +447,7 @@ class TransferOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -485,7 +473,7 @@ class TransferOperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -502,7 +490,7 @@ class TransferOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -511,9 +499,7 @@ class TransferOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists transfer operations.
@@ -554,7 +540,7 @@ class TransferOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -581,7 +567,7 @@ class TransferOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -590,10 +576,8 @@ class TransferOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Pauses a transfer operation.
@@ -619,7 +603,7 @@ class TransferOperationsResource {
     PauseTransferOperationRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -639,7 +623,7 @@ class TransferOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':pause';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -648,9 +632,7 @@ class TransferOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Resumes a transfer operation that is paused.
@@ -676,7 +658,7 @@ class TransferOperationsResource {
     ResumeTransferOperationRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -696,7 +678,7 @@ class TransferOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':resume';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -705,9 +687,7 @@ class TransferOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

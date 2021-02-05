@@ -102,7 +102,7 @@ class ProjectsLocationsResource {
   async.Future<Location> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -119,7 +119,7 @@ class ProjectsLocationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -128,9 +128,7 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -166,7 +164,7 @@ class ProjectsLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -198,7 +196,7 @@ class ProjectsLocationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -207,10 +205,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -251,7 +247,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
     core.String parent, {
     core.String deploymentId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -276,7 +272,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/gameServerDeployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -285,9 +281,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a single game server deployment.
@@ -313,7 +307,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   async.Future<Operation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -330,7 +324,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -339,9 +333,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves information about the current state of the game server
@@ -374,7 +366,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
     FetchDeploymentStateRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -396,7 +388,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':fetchDeploymentState';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -405,10 +397,8 @@ class ProjectsLocationsGameServerDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FetchDeploymentStateResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FetchDeploymentStateResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single game server deployment.
@@ -434,7 +424,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   async.Future<GameServerDeployment> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -451,7 +441,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -460,10 +450,8 @@ class ProjectsLocationsGameServerDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GameServerDeployment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GameServerDeployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -501,7 +489,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -525,7 +513,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -534,9 +522,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details a single game server deployment rollout.
@@ -562,7 +548,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
   async.Future<GameServerDeploymentRollout> getRollout(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -579,7 +565,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/rollout';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -588,10 +574,8 @@ class ProjectsLocationsGameServerDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GameServerDeploymentRollout.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GameServerDeploymentRollout.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists game server deployments in a given project and location.
@@ -633,7 +617,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -664,7 +648,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/gameServerDeployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -673,10 +657,8 @@ class ProjectsLocationsGameServerDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListGameServerDeploymentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListGameServerDeploymentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches a game server deployment.
@@ -712,7 +694,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -735,7 +717,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -744,9 +726,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Previews the game server deployment rollout.
@@ -788,7 +768,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
     core.String previewTime,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -816,7 +796,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/rollout:preview';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -825,10 +805,8 @@ class ProjectsLocationsGameServerDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PreviewGameServerDeploymentRolloutResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PreviewGameServerDeploymentRolloutResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -860,7 +838,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -882,7 +860,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -891,9 +869,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -927,7 +903,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -949,7 +925,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -958,10 +934,8 @@ class ProjectsLocationsGameServerDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches a single game server deployment rollout.
@@ -1003,7 +977,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1026,7 +1000,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/rollout';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1035,9 +1009,7 @@ class ProjectsLocationsGameServerDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1081,7 +1053,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
     core.String parent, {
     core.String configId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1105,7 +1077,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/configs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1114,9 +1086,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a single game server config.
@@ -1145,7 +1115,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
   async.Future<Operation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1162,7 +1132,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1171,9 +1141,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single game server config.
@@ -1199,7 +1167,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
   async.Future<GameServerConfig> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1216,7 +1184,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1225,10 +1193,8 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GameServerConfig.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GameServerConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists game server configs in a given project, location, and game server
@@ -1273,7 +1239,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1303,7 +1269,7 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/configs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1312,10 +1278,8 @@ class ProjectsLocationsGameServerDeploymentsConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListGameServerConfigsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListGameServerConfigsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1358,7 +1322,7 @@ class ProjectsLocationsOperationsResource {
     CancelOperationRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1378,7 +1342,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1387,9 +1351,7 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -1417,7 +1379,7 @@ class ProjectsLocationsOperationsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1434,7 +1396,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1443,9 +1405,7 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -1472,7 +1432,7 @@ class ProjectsLocationsOperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1489,7 +1449,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1498,9 +1458,7 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -1541,7 +1499,7 @@ class ProjectsLocationsOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1568,7 +1526,7 @@ class ProjectsLocationsOperationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1577,10 +1535,8 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1620,7 +1576,7 @@ class ProjectsLocationsRealmsResource {
     core.String parent, {
     core.String realmId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1643,7 +1599,7 @@ class ProjectsLocationsRealmsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/realms';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1652,9 +1608,7 @@ class ProjectsLocationsRealmsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a single realm.
@@ -1679,7 +1633,7 @@ class ProjectsLocationsRealmsResource {
   async.Future<Operation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1696,7 +1650,7 @@ class ProjectsLocationsRealmsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1705,9 +1659,7 @@ class ProjectsLocationsRealmsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single realm.
@@ -1732,7 +1684,7 @@ class ProjectsLocationsRealmsResource {
   async.Future<Realm> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1749,7 +1701,7 @@ class ProjectsLocationsRealmsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1758,9 +1710,7 @@ class ProjectsLocationsRealmsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Realm.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Realm.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists realms in a given project and location.
@@ -1801,7 +1751,7 @@ class ProjectsLocationsRealmsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1830,7 +1780,7 @@ class ProjectsLocationsRealmsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/realms';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1839,10 +1789,8 @@ class ProjectsLocationsRealmsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListRealmsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListRealmsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches a single realm.
@@ -1876,7 +1824,7 @@ class ProjectsLocationsRealmsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1899,7 +1847,7 @@ class ProjectsLocationsRealmsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1908,9 +1856,7 @@ class ProjectsLocationsRealmsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Previews patches to a single realm.
@@ -1947,7 +1893,7 @@ class ProjectsLocationsRealmsResource {
     core.String previewTime,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1975,7 +1921,7 @@ class ProjectsLocationsRealmsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':previewUpdate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1984,10 +1930,8 @@ class ProjectsLocationsRealmsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PreviewRealmUpdateResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PreviewRealmUpdateResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2026,7 +1970,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
     core.String parent, {
     core.String gameServerClusterId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2051,7 +1995,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/gameServerClusters';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2060,9 +2004,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a single game server cluster.
@@ -2088,7 +2030,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   async.Future<Operation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2105,7 +2047,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2114,9 +2056,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single game server cluster.
@@ -2142,7 +2082,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
   async.Future<GameServerCluster> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2159,7 +2099,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2168,10 +2108,8 @@ class ProjectsLocationsRealmsGameServerClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GameServerCluster.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GameServerCluster.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists game server clusters in a given project and location.
@@ -2214,7 +2152,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2245,7 +2183,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/gameServerClusters';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2254,10 +2192,8 @@ class ProjectsLocationsRealmsGameServerClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListGameServerClustersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListGameServerClustersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches a single game server cluster.
@@ -2293,7 +2229,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2316,7 +2252,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2325,9 +2261,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Previews creation of a new game server cluster in a given project and
@@ -2363,7 +2297,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
     core.String gameServerClusterId,
     core.String previewTime,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2391,7 +2325,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/gameServerClusters:previewCreate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2400,10 +2334,8 @@ class ProjectsLocationsRealmsGameServerClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PreviewCreateGameServerClusterResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PreviewCreateGameServerClusterResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Previews deletion of a single game server cluster.
@@ -2432,7 +2364,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
     core.String name, {
     core.String previewTime,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2454,7 +2386,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':previewDelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2463,10 +2395,8 @@ class ProjectsLocationsRealmsGameServerClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PreviewDeleteGameServerClusterResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PreviewDeleteGameServerClusterResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Previews updating a GameServerCluster.
@@ -2505,7 +2435,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
     core.String previewTime,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2533,7 +2463,7 @@ class ProjectsLocationsRealmsGameServerClustersResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':previewUpdate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2542,10 +2472,8 @@ class ProjectsLocationsRealmsGameServerClustersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PreviewUpdateGameServerClusterResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PreviewUpdateGameServerClusterResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

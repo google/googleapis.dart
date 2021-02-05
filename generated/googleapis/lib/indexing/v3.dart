@@ -84,7 +84,7 @@ class UrlNotificationsResource {
   async.Future<UrlNotificationMetadata> getMetadata({
     core.String url,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -101,7 +101,7 @@ class UrlNotificationsResource {
 
     _url = 'v3/urlNotifications/metadata';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -110,10 +110,8 @@ class UrlNotificationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UrlNotificationMetadata.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return UrlNotificationMetadata.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Notifies that a URL has been updated or deleted.
@@ -135,7 +133,7 @@ class UrlNotificationsResource {
   async.Future<PublishUrlNotificationResponse> publish(
     UrlNotification request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -152,7 +150,7 @@ class UrlNotificationsResource {
 
     _url = 'v3/urlNotifications:publish';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -161,10 +159,8 @@ class UrlNotificationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PublishUrlNotificationResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PublishUrlNotificationResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

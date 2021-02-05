@@ -114,7 +114,7 @@ class DmsResource {
     core.String parent, {
     core.String threadKey,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -138,7 +138,7 @@ class DmsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -147,9 +147,7 @@ class DmsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Legacy path for creating message.
@@ -188,7 +186,7 @@ class DmsResource {
     core.String parent, {
     core.String threadKey,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -212,7 +210,7 @@ class DmsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/webhooks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -221,9 +219,7 @@ class DmsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -268,7 +264,7 @@ class DmsConversationsResource {
     core.String parent, {
     core.String threadKey,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -292,7 +288,7 @@ class DmsConversationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -301,9 +297,7 @@ class DmsConversationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -340,11 +334,11 @@ class MediaResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future download(
+  async.Future<core.Object> download(
     core.String resourceName, {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -363,7 +357,7 @@ class MediaResource {
 
     _url = 'v1/media/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -374,9 +368,7 @@ class MediaResource {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then(
-        (data) => Media.fromJson(data as core.Map<core.String, core.dynamic>),
-      );
+      return Media.fromJson(_response as core.Map<core.String, core.dynamic>);
     } else {
       return _response;
     }
@@ -427,7 +419,7 @@ class RoomsResource {
     core.String parent, {
     core.String threadKey,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -451,7 +443,7 @@ class RoomsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -460,9 +452,7 @@ class RoomsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Legacy path for creating message.
@@ -501,7 +491,7 @@ class RoomsResource {
     core.String parent, {
     core.String threadKey,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -525,7 +515,7 @@ class RoomsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/webhooks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -534,9 +524,7 @@ class RoomsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -581,7 +569,7 @@ class RoomsConversationsResource {
     core.String parent, {
     core.String threadKey,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -605,7 +593,7 @@ class RoomsConversationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -614,9 +602,7 @@ class RoomsConversationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -649,7 +635,7 @@ class SpacesResource {
   async.Future<Space> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -666,7 +652,7 @@ class SpacesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -675,9 +661,7 @@ class SpacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Space.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Space.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists spaces the caller is a member of.
@@ -705,7 +689,7 @@ class SpacesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -725,7 +709,7 @@ class SpacesResource {
 
     _url = 'v1/spaces';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -734,10 +718,8 @@ class SpacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListSpacesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListSpacesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Legacy path for creating message.
@@ -776,7 +758,7 @@ class SpacesResource {
     core.String parent, {
     core.String threadKey,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -800,7 +782,7 @@ class SpacesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/webhooks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -809,9 +791,7 @@ class SpacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -842,7 +822,7 @@ class SpacesMembersResource {
   async.Future<Membership> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -859,7 +839,7 @@ class SpacesMembersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -868,10 +848,8 @@ class SpacesMembersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Membership.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Membership.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists human memberships in a space.
@@ -905,7 +883,7 @@ class SpacesMembersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -929,7 +907,7 @@ class SpacesMembersResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/members';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -938,10 +916,8 @@ class SpacesMembersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListMembershipsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListMembershipsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -987,7 +963,7 @@ class SpacesMessagesResource {
     core.String parent, {
     core.String threadKey,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1011,7 +987,7 @@ class SpacesMessagesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1020,9 +996,7 @@ class SpacesMessagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a message.
@@ -1047,7 +1021,7 @@ class SpacesMessagesResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1064,7 +1038,7 @@ class SpacesMessagesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1073,9 +1047,7 @@ class SpacesMessagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a message.
@@ -1100,7 +1072,7 @@ class SpacesMessagesResource {
   async.Future<Message> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1117,7 +1089,7 @@ class SpacesMessagesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1126,9 +1098,7 @@ class SpacesMessagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a message.
@@ -1159,7 +1129,7 @@ class SpacesMessagesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1182,7 +1152,7 @@ class SpacesMessagesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1191,9 +1161,7 @@ class SpacesMessagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Message.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1227,7 +1195,7 @@ class SpacesMessagesAttachmentsResource {
   async.Future<Attachment> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1244,7 +1212,7 @@ class SpacesMessagesAttachmentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1253,10 +1221,8 @@ class SpacesMessagesAttachmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Attachment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Attachment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

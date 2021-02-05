@@ -90,7 +90,7 @@ class ApplicationsResource {
   async.Future<Application> get(
     core.String applicationId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -108,7 +108,7 @@ class ApplicationsResource {
     _url = 'admin/datatransfer/v1/applications/' +
         commons.Escaper.ecapeVariable('$applicationId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -117,10 +117,8 @@ class ApplicationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Application.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Application.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the applications available for data transfer for a customer.
@@ -149,7 +147,7 @@ class ApplicationsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -172,7 +170,7 @@ class ApplicationsResource {
 
     _url = 'admin/datatransfer/v1/applications';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -181,10 +179,8 @@ class ApplicationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApplicationsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApplicationsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -213,7 +209,7 @@ class TransfersResource {
   async.Future<DataTransfer> get(
     core.String dataTransferId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -231,7 +227,7 @@ class TransfersResource {
     _url = 'admin/datatransfer/v1/transfers/' +
         commons.Escaper.ecapeVariable('$dataTransferId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -240,10 +236,8 @@ class TransfersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DataTransfer.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DataTransfer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a data transfer request.
@@ -265,7 +259,7 @@ class TransfersResource {
   async.Future<DataTransfer> insert(
     DataTransfer request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -282,7 +276,7 @@ class TransfersResource {
 
     _url = 'admin/datatransfer/v1/transfers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -291,10 +285,8 @@ class TransfersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DataTransfer.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DataTransfer.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the transfers for a customer by source user, destination user, or
@@ -333,7 +325,7 @@ class TransfersResource {
     core.String pageToken,
     core.String status,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -365,7 +357,7 @@ class TransfersResource {
 
     _url = 'admin/datatransfer/v1/transfers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -374,10 +366,8 @@ class TransfersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DataTransfersListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DataTransfersListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

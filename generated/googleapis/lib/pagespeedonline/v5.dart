@@ -114,7 +114,7 @@ class PagespeedapiResource {
     core.String utmCampaign,
     core.String utmSource,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -150,7 +150,7 @@ class PagespeedapiResource {
 
     _url = 'pagespeedonline/v5/runPagespeed';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -159,10 +159,8 @@ class PagespeedapiResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PagespeedApiPagespeedResponseV5.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PagespeedApiPagespeedResponseV5.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

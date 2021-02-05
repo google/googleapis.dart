@@ -132,7 +132,7 @@ class AboutResource {
   /// this method will complete with the same error.
   async.Future<About> get({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -146,7 +146,7 @@ class AboutResource {
 
     _url = 'about';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -155,9 +155,7 @@ class AboutResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => About.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return About.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -196,7 +194,7 @@ class ChangesResource {
     core.bool supportsTeamDrives,
     core.String teamDriveId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -222,7 +220,7 @@ class ChangesResource {
 
     _url = 'changes/startPageToken';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -231,10 +229,8 @@ class ChangesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          StartPageToken.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return StartPageToken.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the changes for a user or shared drive.
@@ -310,7 +306,7 @@ class ChangesResource {
     core.bool supportsTeamDrives,
     core.String teamDriveId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -366,7 +362,7 @@ class ChangesResource {
 
     _url = 'changes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -375,10 +371,8 @@ class ChangesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ChangeList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ChangeList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Subscribes to changes for a user.
@@ -457,7 +451,7 @@ class ChangesResource {
     core.bool supportsTeamDrives,
     core.String teamDriveId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -516,7 +510,7 @@ class ChangesResource {
 
     _url = 'changes/watch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -525,9 +519,7 @@ class ChangesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -550,10 +542,10 @@ class ChannelsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future stop(
+  async.Future<void> stop(
     Channel request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -572,7 +564,7 @@ class ChannelsResource {
 
     _url = 'channels/stop';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -580,9 +572,6 @@ class ChannelsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 }
@@ -614,7 +603,7 @@ class CommentsResource {
     Comment request,
     core.String fileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -634,7 +623,7 @@ class CommentsResource {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -643,9 +632,7 @@ class CommentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Comment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a comment.
@@ -664,11 +651,11 @@ class CommentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String fileId,
     core.String commentId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -693,7 +680,7 @@ class CommentsResource {
         '/comments/' +
         commons.Escaper.ecapeVariable('$commentId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -701,9 +688,6 @@ class CommentsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -733,7 +717,7 @@ class CommentsResource {
     core.String commentId, {
     core.bool includeDeleted,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -759,7 +743,7 @@ class CommentsResource {
         '/comments/' +
         commons.Escaper.ecapeVariable('$commentId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -768,9 +752,7 @@ class CommentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Comment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists a file's comments.
@@ -809,7 +791,7 @@ class CommentsResource {
     core.String pageToken,
     core.String startModifiedTime,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -838,7 +820,7 @@ class CommentsResource {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -847,10 +829,8 @@ class CommentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CommentList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CommentList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a comment with patch semantics.
@@ -878,7 +858,7 @@ class CommentsResource {
     core.String fileId,
     core.String commentId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -904,7 +884,7 @@ class CommentsResource {
         '/comments/' +
         commons.Escaper.ecapeVariable('$commentId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -913,9 +893,7 @@ class CommentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Comment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -950,7 +928,7 @@ class DrivesResource {
     Drive request,
     core.String requestId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -971,7 +949,7 @@ class DrivesResource {
 
     _url = 'drives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -980,9 +958,7 @@ class DrivesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Drive.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Drive.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Permanently deletes a shared drive for which the user is an organizer.
@@ -1001,10 +977,10 @@ class DrivesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String driveId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1023,7 +999,7 @@ class DrivesResource {
 
     _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1031,9 +1007,6 @@ class DrivesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1061,7 +1034,7 @@ class DrivesResource {
     core.String driveId, {
     core.bool useDomainAdminAccess,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1081,7 +1054,7 @@ class DrivesResource {
 
     _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1090,9 +1063,7 @@ class DrivesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Drive.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Drive.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Hides a shared drive from the default view.
@@ -1114,7 +1085,7 @@ class DrivesResource {
   async.Future<Drive> hide(
     core.String driveId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1131,7 +1102,7 @@ class DrivesResource {
 
     _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId') + '/hide';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1140,9 +1111,7 @@ class DrivesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Drive.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Drive.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the user's shared drives.
@@ -1176,7 +1145,7 @@ class DrivesResource {
     core.String q,
     core.bool useDomainAdminAccess,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1202,7 +1171,7 @@ class DrivesResource {
 
     _url = 'drives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1211,9 +1180,7 @@ class DrivesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DriveList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DriveList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Restores a shared drive to the default view.
@@ -1235,7 +1202,7 @@ class DrivesResource {
   async.Future<Drive> unhide(
     core.String driveId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1252,7 +1219,7 @@ class DrivesResource {
 
     _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId') + '/unhide';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1261,9 +1228,7 @@ class DrivesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Drive.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Drive.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the metadate for a shared drive.
@@ -1293,7 +1258,7 @@ class DrivesResource {
     core.String driveId, {
     core.bool useDomainAdminAccess,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1316,7 +1281,7 @@ class DrivesResource {
 
     _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1325,9 +1290,7 @@ class DrivesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Drive.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Drive.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1393,7 +1356,7 @@ class FilesResource {
     core.bool supportsAllDrives,
     core.bool supportsTeamDrives,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1434,7 +1397,7 @@ class FilesResource {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/copy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1443,9 +1406,7 @@ class FilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => File.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return File.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new file.
@@ -1511,7 +1472,7 @@ class FilesResource {
     core.String $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1563,7 +1524,7 @@ class FilesResource {
       _url = '/upload/drive/v3/files';
     }
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1572,9 +1533,7 @@ class FilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => File.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return File.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Permanently deletes a file owned by the user without moving it to the
@@ -1605,13 +1564,13 @@ class FilesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String fileId, {
     core.bool enforceSingleParent,
     core.bool supportsAllDrives,
     core.bool supportsTeamDrives,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1639,7 +1598,7 @@ class FilesResource {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1647,9 +1606,6 @@ class FilesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1669,10 +1625,10 @@ class FilesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future emptyTrash({
+  async.Future<void> emptyTrash({
     core.bool enforceSingleParent,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1691,7 +1647,7 @@ class FilesResource {
 
     _url = 'files/trash';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1699,9 +1655,6 @@ class FilesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1728,12 +1681,12 @@ class FilesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future export(
+  async.Future<core.Object> export(
     core.String fileId,
     core.String mimeType, {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1756,7 +1709,7 @@ class FilesResource {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/export';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1767,9 +1720,7 @@ class FilesResource {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then(
-        (data) => null,
-      );
+      return null;
     } else {
       return _response;
     }
@@ -1800,7 +1751,7 @@ class FilesResource {
     core.int count,
     core.String space,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1820,7 +1771,7 @@ class FilesResource {
 
     _url = 'files/generateIds';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1829,10 +1780,8 @@ class FilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GeneratedIds.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return GeneratedIds.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a file's metadata or content by ID.
@@ -1871,7 +1820,7 @@ class FilesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future get(
+  async.Future<core.Object> get(
     core.String fileId, {
     core.bool acknowledgeAbuse,
     core.String includePermissionsForView,
@@ -1879,7 +1828,7 @@ class FilesResource {
     core.bool supportsTeamDrives,
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1910,7 +1859,7 @@ class FilesResource {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1921,9 +1870,7 @@ class FilesResource {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then(
-        (data) => File.fromJson(data as core.Map<core.String, core.dynamic>),
-      );
+      return File.fromJson(_response as core.Map<core.String, core.dynamic>);
     } else {
       return _response;
     }
@@ -2016,7 +1963,7 @@ class FilesResource {
     core.bool supportsTeamDrives,
     core.String teamDriveId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2074,7 +2021,7 @@ class FilesResource {
 
     _url = 'files';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2083,9 +2030,7 @@ class FilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FileList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FileList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a file's metadata and/or content.
@@ -2155,7 +2100,7 @@ class FilesResource {
     core.String $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2215,7 +2160,7 @@ class FilesResource {
           '/upload/drive/v3/files/' + commons.Escaper.ecapeVariable('$fileId');
     }
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2224,9 +2169,7 @@ class FilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => File.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return File.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Subscribes to changes to a file
@@ -2267,7 +2210,7 @@ class FilesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future watch(
+  async.Future<core.Object> watch(
     Channel request,
     core.String fileId, {
     core.bool acknowledgeAbuse,
@@ -2276,7 +2219,7 @@ class FilesResource {
     core.bool supportsTeamDrives,
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2310,7 +2253,7 @@ class FilesResource {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/watch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2321,9 +2264,7 @@ class FilesResource {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then(
-        (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
-      );
+      return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
     } else {
       return _response;
     }
@@ -2395,7 +2336,7 @@ class PermissionsResource {
     core.bool transferOwnership,
     core.bool useDomainAdminAccess,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2439,7 +2380,7 @@ class PermissionsResource {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2448,10 +2389,8 @@ class PermissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Permission.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Permission.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a permission.
@@ -2480,14 +2419,14 @@ class PermissionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String fileId,
     core.String permissionId, {
     core.bool supportsAllDrives,
     core.bool supportsTeamDrives,
     core.bool useDomainAdminAccess,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2521,7 +2460,7 @@ class PermissionsResource {
         '/permissions/' +
         commons.Escaper.ecapeVariable('$permissionId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2529,9 +2468,6 @@ class PermissionsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -2570,7 +2506,7 @@ class PermissionsResource {
     core.bool supportsTeamDrives,
     core.bool useDomainAdminAccess,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2602,7 +2538,7 @@ class PermissionsResource {
         '/permissions/' +
         commons.Escaper.ecapeVariable('$permissionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2611,10 +2547,8 @@ class PermissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Permission.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Permission.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists a file's or shared drive's permissions.
@@ -2665,7 +2599,7 @@ class PermissionsResource {
     core.bool supportsTeamDrives,
     core.bool useDomainAdminAccess,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2700,7 +2634,7 @@ class PermissionsResource {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2709,10 +2643,8 @@ class PermissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          PermissionList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PermissionList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a permission with patch semantics.
@@ -2761,7 +2693,7 @@ class PermissionsResource {
     core.bool transferOwnership,
     core.bool useDomainAdminAccess,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2802,7 +2734,7 @@ class PermissionsResource {
         '/permissions/' +
         commons.Escaper.ecapeVariable('$permissionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2811,10 +2743,8 @@ class PermissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Permission.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Permission.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2848,7 +2778,7 @@ class RepliesResource {
     core.String fileId,
     core.String commentId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2875,7 +2805,7 @@ class RepliesResource {
         commons.Escaper.ecapeVariable('$commentId') +
         '/replies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2884,9 +2814,7 @@ class RepliesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Reply.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Reply.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a reply.
@@ -2907,12 +2835,12 @@ class RepliesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String fileId,
     core.String commentId,
     core.String replyId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2942,7 +2870,7 @@ class RepliesResource {
         '/replies/' +
         commons.Escaper.ecapeVariable('$replyId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2950,9 +2878,6 @@ class RepliesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -2985,7 +2910,7 @@ class RepliesResource {
     core.String replyId, {
     core.bool includeDeleted,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3016,7 +2941,7 @@ class RepliesResource {
         '/replies/' +
         commons.Escaper.ecapeVariable('$replyId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3025,9 +2950,7 @@ class RepliesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Reply.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Reply.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists a comment's replies.
@@ -3065,7 +2988,7 @@ class RepliesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3098,7 +3021,7 @@ class RepliesResource {
         commons.Escaper.ecapeVariable('$commentId') +
         '/replies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3107,9 +3030,7 @@ class RepliesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ReplyList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ReplyList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a reply with patch semantics.
@@ -3140,7 +3061,7 @@ class RepliesResource {
     core.String commentId,
     core.String replyId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3171,7 +3092,7 @@ class RepliesResource {
         '/replies/' +
         commons.Escaper.ecapeVariable('$replyId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3180,9 +3101,7 @@ class RepliesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Reply.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Reply.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3211,11 +3130,11 @@ class RevisionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String fileId,
     core.String revisionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3240,7 +3159,7 @@ class RevisionsResource {
         '/revisions/' +
         commons.Escaper.ecapeVariable('$revisionId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3248,9 +3167,6 @@ class RevisionsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -3284,13 +3200,13 @@ class RevisionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future get(
+  async.Future<core.Object> get(
     core.String fileId,
     core.String revisionId, {
     core.bool acknowledgeAbuse,
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3318,7 +3234,7 @@ class RevisionsResource {
         '/revisions/' +
         commons.Escaper.ecapeVariable('$revisionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3329,10 +3245,8 @@ class RevisionsResource {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then(
-        (data) =>
-            Revision.fromJson(data as core.Map<core.String, core.dynamic>),
-      );
+      return Revision.fromJson(
+          _response as core.Map<core.String, core.dynamic>);
     } else {
       return _response;
     }
@@ -3366,7 +3280,7 @@ class RevisionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3389,7 +3303,7 @@ class RevisionsResource {
 
     _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3398,10 +3312,8 @@ class RevisionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          RevisionList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return RevisionList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a revision with patch semantics.
@@ -3429,7 +3341,7 @@ class RevisionsResource {
     core.String fileId,
     core.String revisionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3455,7 +3367,7 @@ class RevisionsResource {
         '/revisions/' +
         commons.Escaper.ecapeVariable('$revisionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3464,9 +3376,7 @@ class RevisionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Revision.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Revision.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3501,7 +3411,7 @@ class TeamdrivesResource {
     TeamDrive request,
     core.String requestId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3522,7 +3432,7 @@ class TeamdrivesResource {
 
     _url = 'teamdrives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3531,9 +3441,7 @@ class TeamdrivesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TeamDrive.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TeamDrive.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deprecated use drives.delete instead.
@@ -3550,10 +3458,10 @@ class TeamdrivesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String teamDriveId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3572,7 +3480,7 @@ class TeamdrivesResource {
 
     _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3580,9 +3488,6 @@ class TeamdrivesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -3610,7 +3515,7 @@ class TeamdrivesResource {
     core.String teamDriveId, {
     core.bool useDomainAdminAccess,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3630,7 +3535,7 @@ class TeamdrivesResource {
 
     _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3639,9 +3544,7 @@ class TeamdrivesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TeamDrive.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TeamDrive.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deprecated use drives.list instead.
@@ -3675,7 +3578,7 @@ class TeamdrivesResource {
     core.String q,
     core.bool useDomainAdminAccess,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3701,7 +3604,7 @@ class TeamdrivesResource {
 
     _url = 'teamdrives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3710,10 +3613,8 @@ class TeamdrivesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TeamDriveList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TeamDriveList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deprecated use drives.update instead
@@ -3743,7 +3644,7 @@ class TeamdrivesResource {
     core.String teamDriveId, {
     core.bool useDomainAdminAccess,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3766,7 +3667,7 @@ class TeamdrivesResource {
 
     _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3775,9 +3676,7 @@ class TeamdrivesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TeamDrive.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TeamDrive.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -110,7 +110,7 @@ class ProjectsProfilesResource {
     CreateProfileRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -131,7 +131,7 @@ class ProjectsProfilesResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/profiles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -140,9 +140,7 @@ class ProjectsProfilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Profile.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Profile.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// CreateOfflineProfile creates a new profile resource in the offline mode.
@@ -171,7 +169,7 @@ class ProjectsProfilesResource {
     Profile request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -193,7 +191,7 @@ class ProjectsProfilesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/profiles:createOffline';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -202,9 +200,7 @@ class ProjectsProfilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Profile.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Profile.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// UpdateProfile updates the profile bytes and labels on the profile resource
@@ -241,7 +237,7 @@ class ProjectsProfilesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -264,7 +260,7 @@ class ProjectsProfilesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -273,9 +269,7 @@ class ProjectsProfilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Profile.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Profile.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

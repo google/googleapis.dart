@@ -275,7 +275,7 @@ class ActivitiesResource {
     core.String pageToken,
     core.String startTime,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -328,7 +328,7 @@ class ActivitiesResource {
         '/applications/' +
         commons.Escaper.ecapeVariable('$applicationName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -337,10 +337,8 @@ class ActivitiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Activities.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Activities.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Start receiving notifications for account activities.
@@ -537,7 +535,7 @@ class ActivitiesResource {
     core.String pageToken,
     core.String startTime,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -594,7 +592,7 @@ class ActivitiesResource {
         commons.Escaper.ecapeVariable('$applicationName') +
         '/watch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -603,9 +601,7 @@ class ActivitiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -628,10 +624,10 @@ class ChannelsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future stop(
+  async.Future<void> stop(
     Channel request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -650,7 +646,7 @@ class ChannelsResource {
 
     _url = 'admin/reports_v1/channels/stop';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -658,9 +654,6 @@ class ChannelsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 }
@@ -727,7 +720,7 @@ class CustomerUsageReportsResource {
     core.String pageToken,
     core.String parameters,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -754,7 +747,7 @@ class CustomerUsageReportsResource {
     _url = 'admin/reports/v1/usage/dates/' +
         commons.Escaper.ecapeVariable('$date');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -763,10 +756,8 @@ class CustomerUsageReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          UsageReports.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UsageReports.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -871,7 +862,7 @@ class EntityUsageReportsResource {
     core.String pageToken,
     core.String parameters,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -914,7 +905,7 @@ class EntityUsageReportsResource {
         '/dates/' +
         commons.Escaper.ecapeVariable('$date');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -923,10 +914,8 @@ class EntityUsageReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          UsageReports.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UsageReports.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1037,7 +1026,7 @@ class UserUsageReportResource {
     core.String pageToken,
     core.String parameters,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1081,7 +1070,7 @@ class UserUsageReportResource {
         '/dates/' +
         commons.Escaper.ecapeVariable('$date');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1090,10 +1079,8 @@ class UserUsageReportResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          UsageReports.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UsageReports.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -85,7 +85,7 @@ class DivisionsResource {
   async.Future<DivisionSearchResponse> search({
     core.String query,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -102,7 +102,7 @@ class DivisionsResource {
 
     _url = 'civicinfo/v2/divisions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -111,10 +111,8 @@ class DivisionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DivisionSearchResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DivisionSearchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -139,7 +137,7 @@ class ElectionsResource {
   /// this method will complete with the same error.
   async.Future<ElectionsQueryResponse> electionQuery({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -153,7 +151,7 @@ class ElectionsResource {
 
     _url = 'civicinfo/v2/elections';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -162,10 +160,8 @@ class ElectionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ElectionsQueryResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ElectionsQueryResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Looks up information relevant to a voter based on the voter's registered
@@ -206,7 +202,7 @@ class ElectionsResource {
     core.bool officialOnly,
     core.bool returnAllAvailableData,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -233,7 +229,7 @@ class ElectionsResource {
 
     _url = 'civicinfo/v2/voterinfo';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -242,10 +238,8 @@ class ElectionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => VoterInfoResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return VoterInfoResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -290,7 +284,7 @@ class RepresentativesResource {
     core.List<core.String> levels,
     core.List<core.String> roles,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -316,7 +310,7 @@ class RepresentativesResource {
 
     _url = 'civicinfo/v2/representatives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -325,10 +319,8 @@ class RepresentativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RepresentativeInfoResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RepresentativeInfoResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Looks up representative information for a single geographic division.
@@ -367,7 +359,7 @@ class RepresentativesResource {
     core.bool recursive,
     core.List<core.String> roles,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -394,7 +386,7 @@ class RepresentativesResource {
     _url = 'civicinfo/v2/representatives/' +
         commons.Escaper.ecapeVariable('$ocdId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -403,10 +395,8 @@ class RepresentativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RepresentativeInfoData.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RepresentativeInfoData.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

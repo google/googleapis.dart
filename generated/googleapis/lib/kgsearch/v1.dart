@@ -100,7 +100,7 @@ class EntitiesResource {
     core.String query,
     core.List<core.String> types,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -135,7 +135,7 @@ class EntitiesResource {
 
     _url = 'v1/entities:search';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -144,10 +144,8 @@ class EntitiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SearchResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

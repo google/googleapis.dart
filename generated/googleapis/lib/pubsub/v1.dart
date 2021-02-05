@@ -125,7 +125,7 @@ class ProjectsSnapshotsResource {
     CreateSnapshotRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -145,7 +145,7 @@ class ProjectsSnapshotsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -154,9 +154,7 @@ class ProjectsSnapshotsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Snapshot.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Snapshot.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes an existing snapshot.
@@ -190,7 +188,7 @@ class ProjectsSnapshotsResource {
   async.Future<Empty> delete(
     core.String snapshot, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -207,7 +205,7 @@ class ProjectsSnapshotsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$snapshot');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -216,9 +214,7 @@ class ProjectsSnapshotsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the configuration details of a snapshot.
@@ -246,7 +242,7 @@ class ProjectsSnapshotsResource {
   async.Future<Snapshot> get(
     core.String snapshot, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -263,7 +259,7 @@ class ProjectsSnapshotsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$snapshot');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -272,9 +268,7 @@ class ProjectsSnapshotsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Snapshot.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Snapshot.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -311,7 +305,7 @@ class ProjectsSnapshotsResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -335,7 +329,7 @@ class ProjectsSnapshotsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -344,9 +338,7 @@ class ProjectsSnapshotsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the existing snapshots.
@@ -384,7 +376,7 @@ class ProjectsSnapshotsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -409,7 +401,7 @@ class ProjectsSnapshotsResource {
         commons.Escaper.ecapeVariableReserved('$project') +
         '/snapshots';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -418,10 +410,8 @@ class ProjectsSnapshotsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListSnapshotsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListSnapshotsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing snapshot.
@@ -451,7 +441,7 @@ class ProjectsSnapshotsResource {
     UpdateSnapshotRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -471,7 +461,7 @@ class ProjectsSnapshotsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -480,9 +470,7 @@ class ProjectsSnapshotsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Snapshot.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Snapshot.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -513,7 +501,7 @@ class ProjectsSnapshotsResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -535,7 +523,7 @@ class ProjectsSnapshotsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -544,9 +532,7 @@ class ProjectsSnapshotsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -579,7 +565,7 @@ class ProjectsSnapshotsResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -601,7 +587,7 @@ class ProjectsSnapshotsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -610,10 +596,8 @@ class ProjectsSnapshotsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -653,7 +637,7 @@ class ProjectsSubscriptionsResource {
     AcknowledgeRequest request,
     core.String subscription, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -675,7 +659,7 @@ class ProjectsSubscriptionsResource {
         commons.Escaper.ecapeVariableReserved('$subscription') +
         ':acknowledge';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -684,9 +668,7 @@ class ProjectsSubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a subscription to a given topic.
@@ -727,7 +709,7 @@ class ProjectsSubscriptionsResource {
     Subscription request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -747,7 +729,7 @@ class ProjectsSubscriptionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -756,10 +738,8 @@ class ProjectsSubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing subscription.
@@ -789,7 +769,7 @@ class ProjectsSubscriptionsResource {
   async.Future<Empty> delete(
     core.String subscription, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -806,7 +786,7 @@ class ProjectsSubscriptionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$subscription');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -815,9 +795,7 @@ class ProjectsSubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Detaches a subscription from this topic.
@@ -845,7 +823,7 @@ class ProjectsSubscriptionsResource {
   async.Future<DetachSubscriptionResponse> detach(
     core.String subscription, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -864,7 +842,7 @@ class ProjectsSubscriptionsResource {
         commons.Escaper.ecapeVariableReserved('$subscription') +
         ':detach';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -873,10 +851,8 @@ class ProjectsSubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DetachSubscriptionResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DetachSubscriptionResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the configuration details of a subscription.
@@ -900,7 +876,7 @@ class ProjectsSubscriptionsResource {
   async.Future<Subscription> get(
     core.String subscription, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -917,7 +893,7 @@ class ProjectsSubscriptionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$subscription');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -926,10 +902,8 @@ class ProjectsSubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -966,7 +940,7 @@ class ProjectsSubscriptionsResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -990,7 +964,7 @@ class ProjectsSubscriptionsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -999,9 +973,7 @@ class ProjectsSubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists matching subscriptions.
@@ -1033,7 +1005,7 @@ class ProjectsSubscriptionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1058,7 +1030,7 @@ class ProjectsSubscriptionsResource {
         commons.Escaper.ecapeVariableReserved('$project') +
         '/subscriptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1067,10 +1039,8 @@ class ProjectsSubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListSubscriptionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListSubscriptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies the ack deadline for a specific message.
@@ -1102,7 +1072,7 @@ class ProjectsSubscriptionsResource {
     ModifyAckDeadlineRequest request,
     core.String subscription, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1124,7 +1094,7 @@ class ProjectsSubscriptionsResource {
         commons.Escaper.ecapeVariableReserved('$subscription') +
         ':modifyAckDeadline';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1133,9 +1103,7 @@ class ProjectsSubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies the `PushConfig` for a specified subscription.
@@ -1167,7 +1135,7 @@ class ProjectsSubscriptionsResource {
     ModifyPushConfigRequest request,
     core.String subscription, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1189,7 +1157,7 @@ class ProjectsSubscriptionsResource {
         commons.Escaper.ecapeVariableReserved('$subscription') +
         ':modifyPushConfig';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1198,9 +1166,7 @@ class ProjectsSubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing subscription.
@@ -1234,7 +1200,7 @@ class ProjectsSubscriptionsResource {
     UpdateSubscriptionRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1254,7 +1220,7 @@ class ProjectsSubscriptionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1263,10 +1229,8 @@ class ProjectsSubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Subscription.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Pulls messages from the server.
@@ -1296,7 +1260,7 @@ class ProjectsSubscriptionsResource {
     PullRequest request,
     core.String subscription, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1318,7 +1282,7 @@ class ProjectsSubscriptionsResource {
         commons.Escaper.ecapeVariableReserved('$subscription') +
         ':pull';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1327,10 +1291,8 @@ class ProjectsSubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          PullResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PullResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Seeks an existing subscription to a point in time or to a given snapshot,
@@ -1364,7 +1326,7 @@ class ProjectsSubscriptionsResource {
     SeekRequest request,
     core.String subscription, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1386,7 +1348,7 @@ class ProjectsSubscriptionsResource {
         commons.Escaper.ecapeVariableReserved('$subscription') +
         ':seek';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1395,10 +1357,8 @@ class ProjectsSubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SeekResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SeekResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1429,7 +1389,7 @@ class ProjectsSubscriptionsResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1451,7 +1411,7 @@ class ProjectsSubscriptionsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1460,9 +1420,7 @@ class ProjectsSubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1495,7 +1453,7 @@ class ProjectsSubscriptionsResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1517,7 +1475,7 @@ class ProjectsSubscriptionsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1526,10 +1484,8 @@ class ProjectsSubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1574,7 +1530,7 @@ class ProjectsTopicsResource {
     Topic request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1594,7 +1550,7 @@ class ProjectsTopicsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1603,9 +1559,7 @@ class ProjectsTopicsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Topic.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Topic.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the topic with the given name.
@@ -1635,7 +1589,7 @@ class ProjectsTopicsResource {
   async.Future<Empty> delete(
     core.String topic, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1652,7 +1606,7 @@ class ProjectsTopicsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$topic');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1661,9 +1615,7 @@ class ProjectsTopicsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the configuration of a topic.
@@ -1687,7 +1639,7 @@ class ProjectsTopicsResource {
   async.Future<Topic> get(
     core.String topic, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1704,7 +1656,7 @@ class ProjectsTopicsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$topic');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1713,9 +1665,7 @@ class ProjectsTopicsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Topic.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Topic.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -1752,7 +1702,7 @@ class ProjectsTopicsResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1776,7 +1726,7 @@ class ProjectsTopicsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1785,9 +1735,7 @@ class ProjectsTopicsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists matching topics.
@@ -1819,7 +1767,7 @@ class ProjectsTopicsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1843,7 +1791,7 @@ class ProjectsTopicsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$project') + '/topics';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1852,10 +1800,8 @@ class ProjectsTopicsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTopicsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTopicsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing topic.
@@ -1888,7 +1834,7 @@ class ProjectsTopicsResource {
     UpdateTopicRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1908,7 +1854,7 @@ class ProjectsTopicsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1917,9 +1863,7 @@ class ProjectsTopicsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Topic.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Topic.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds one or more messages to the topic.
@@ -1948,7 +1892,7 @@ class ProjectsTopicsResource {
     PublishRequest request,
     core.String topic, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1968,7 +1912,7 @@ class ProjectsTopicsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$topic') + ':publish';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1977,10 +1921,8 @@ class ProjectsTopicsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          PublishResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PublishResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2011,7 +1953,7 @@ class ProjectsTopicsResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2033,7 +1975,7 @@ class ProjectsTopicsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2042,9 +1984,7 @@ class ProjectsTopicsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2077,7 +2017,7 @@ class ProjectsTopicsResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2099,7 +2039,7 @@ class ProjectsTopicsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2108,10 +2048,8 @@ class ProjectsTopicsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2156,7 +2094,7 @@ class ProjectsTopicsSnapshotsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2180,7 +2118,7 @@ class ProjectsTopicsSnapshotsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$topic') + '/snapshots';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2189,10 +2127,8 @@ class ProjectsTopicsSnapshotsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTopicSnapshotsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTopicSnapshotsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2232,7 +2168,7 @@ class ProjectsTopicsSubscriptionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2257,7 +2193,7 @@ class ProjectsTopicsSubscriptionsResource {
         commons.Escaper.ecapeVariableReserved('$topic') +
         '/subscriptions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2266,10 +2202,8 @@ class ProjectsTopicsSubscriptionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTopicSubscriptionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTopicSubscriptionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

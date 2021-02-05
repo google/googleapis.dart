@@ -100,7 +100,7 @@ class AccountsResource {
   async.Future<Account> get(
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -117,7 +117,7 @@ class AccountsResource {
 
     _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -126,9 +126,7 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// List hosted accounts associated with this AdSense account by ad client id.
@@ -150,7 +148,7 @@ class AccountsResource {
   async.Future<Accounts> list(
     core.List<core.String> filterAdClientId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -168,7 +166,7 @@ class AccountsResource {
 
     _url = 'accounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -177,9 +175,7 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Accounts.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Accounts.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -211,7 +207,7 @@ class AccountsAdclientsResource {
     core.String accountId,
     core.String adClientId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -234,7 +230,7 @@ class AccountsAdclientsResource {
         '/adclients/' +
         commons.Escaper.ecapeVariable('$adClientId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -243,9 +239,7 @@ class AccountsAdclientsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AdClient.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AdClient.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all hosted ad clients in the specified hosted account.
@@ -277,7 +271,7 @@ class AccountsAdclientsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -302,7 +296,7 @@ class AccountsAdclientsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/adclients';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -311,9 +305,7 @@ class AccountsAdclientsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AdClients.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AdClients.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -347,7 +339,7 @@ class AccountsAdunitsResource {
     core.String adClientId,
     core.String adUnitId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -375,7 +367,7 @@ class AccountsAdunitsResource {
         '/adunits/' +
         commons.Escaper.ecapeVariable('$adUnitId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -384,9 +376,7 @@ class AccountsAdunitsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AdUnit.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AdUnit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get the specified host ad unit in this AdSense account.
@@ -414,7 +404,7 @@ class AccountsAdunitsResource {
     core.String adClientId,
     core.String adUnitId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -442,7 +432,7 @@ class AccountsAdunitsResource {
         '/adunits/' +
         commons.Escaper.ecapeVariable('$adUnitId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -451,9 +441,7 @@ class AccountsAdunitsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AdUnit.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AdUnit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get ad code for the specified ad unit, attaching the specified host custom
@@ -485,7 +473,7 @@ class AccountsAdunitsResource {
     core.String adUnitId, {
     core.List<core.String> hostCustomChannelId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -517,7 +505,7 @@ class AccountsAdunitsResource {
         commons.Escaper.ecapeVariable('$adUnitId') +
         '/adcode';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -526,9 +514,7 @@ class AccountsAdunitsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AdCode.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AdCode.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Insert the supplied ad unit into the specified publisher AdSense account.
@@ -556,7 +542,7 @@ class AccountsAdunitsResource {
     core.String accountId,
     core.String adClientId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -583,7 +569,7 @@ class AccountsAdunitsResource {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/adunits';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -592,9 +578,7 @@ class AccountsAdunitsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AdUnit.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AdUnit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all ad units in the specified publisher's AdSense account.
@@ -632,7 +616,7 @@ class AccountsAdunitsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -665,7 +649,7 @@ class AccountsAdunitsResource {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/adunits';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -674,9 +658,7 @@ class AccountsAdunitsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AdUnits.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AdUnits.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the supplied ad unit in the specified publisher AdSense account.
@@ -709,7 +691,7 @@ class AccountsAdunitsResource {
     core.String adClientId,
     core.String adUnitId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -740,7 +722,7 @@ class AccountsAdunitsResource {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/adunits';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -749,9 +731,7 @@ class AccountsAdunitsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AdUnit.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AdUnit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the supplied ad unit in the specified publisher AdSense account.
@@ -779,7 +759,7 @@ class AccountsAdunitsResource {
     core.String accountId,
     core.String adClientId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -806,7 +786,7 @@ class AccountsAdunitsResource {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/adunits';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -815,9 +795,7 @@ class AccountsAdunitsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AdUnit.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AdUnit.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -892,7 +870,7 @@ class AccountsReportsResource {
     core.List<core.String> sort,
     core.int startIndex,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -939,7 +917,7 @@ class AccountsReportsResource {
     _url =
         'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/reports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -948,9 +926,7 @@ class AccountsReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Report.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -978,7 +954,7 @@ class AdclientsResource {
   async.Future<AdClient> get(
     core.String adClientId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -995,7 +971,7 @@ class AdclientsResource {
 
     _url = 'adclients/' + commons.Escaper.ecapeVariable('$adClientId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1004,9 +980,7 @@ class AdclientsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AdClient.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AdClient.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all host ad clients in this AdSense account.
@@ -1035,7 +1009,7 @@ class AdclientsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1055,7 +1029,7 @@ class AdclientsResource {
 
     _url = 'adclients';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1064,9 +1038,7 @@ class AdclientsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AdClients.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AdClients.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1110,7 +1082,7 @@ class AssociationsessionsResource {
     core.String userLocale,
     core.String websiteLocale,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1141,7 +1113,7 @@ class AssociationsessionsResource {
 
     _url = 'associationsessions/start';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1150,10 +1122,8 @@ class AssociationsessionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AssociationSession.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AssociationSession.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Verify an association session after the association callback returns from
@@ -1176,7 +1146,7 @@ class AssociationsessionsResource {
   async.Future<AssociationSession> verify(
     core.String token, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1194,7 +1164,7 @@ class AssociationsessionsResource {
 
     _url = 'associationsessions/verify';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1203,10 +1173,8 @@ class AssociationsessionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AssociationSession.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AssociationSession.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1237,7 +1205,7 @@ class CustomchannelsResource {
     core.String adClientId,
     core.String customChannelId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1260,7 +1228,7 @@ class CustomchannelsResource {
         '/customchannels/' +
         commons.Escaper.ecapeVariable('$customChannelId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1269,10 +1237,8 @@ class CustomchannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CustomChannel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CustomChannel.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a specific custom channel from the host AdSense account.
@@ -1297,7 +1263,7 @@ class CustomchannelsResource {
     core.String adClientId,
     core.String customChannelId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1320,7 +1286,7 @@ class CustomchannelsResource {
         '/customchannels/' +
         commons.Escaper.ecapeVariable('$customChannelId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1329,10 +1295,8 @@ class CustomchannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CustomChannel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CustomChannel.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Add a new custom channel to the host AdSense account.
@@ -1357,7 +1321,7 @@ class CustomchannelsResource {
     CustomChannel request,
     core.String adClientId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1379,7 +1343,7 @@ class CustomchannelsResource {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/customchannels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1388,10 +1352,8 @@ class CustomchannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CustomChannel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CustomChannel.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all host custom channels in this AdSense account.
@@ -1423,7 +1385,7 @@ class CustomchannelsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1448,7 +1410,7 @@ class CustomchannelsResource {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/customchannels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1457,10 +1419,8 @@ class CustomchannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CustomChannels.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CustomChannels.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a custom channel in the host AdSense account.
@@ -1490,7 +1450,7 @@ class CustomchannelsResource {
     core.String adClientId,
     core.String customChannelId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1516,7 +1476,7 @@ class CustomchannelsResource {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/customchannels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1525,10 +1485,8 @@ class CustomchannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CustomChannel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CustomChannel.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a custom channel in the host AdSense account.
@@ -1553,7 +1511,7 @@ class CustomchannelsResource {
     CustomChannel request,
     core.String adClientId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1575,7 +1533,7 @@ class CustomchannelsResource {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/customchannels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1584,10 +1542,8 @@ class CustomchannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CustomChannel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CustomChannel.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1659,7 +1615,7 @@ class ReportsResource {
     core.List<core.String> sort,
     core.int startIndex,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1702,7 +1658,7 @@ class ReportsResource {
 
     _url = 'reports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1711,9 +1667,7 @@ class ReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Report.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1744,7 +1698,7 @@ class UrlchannelsResource {
     core.String adClientId,
     core.String urlChannelId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1767,7 +1721,7 @@ class UrlchannelsResource {
         '/urlchannels/' +
         commons.Escaper.ecapeVariable('$urlChannelId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1776,10 +1730,8 @@ class UrlchannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          UrlChannel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UrlChannel.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Add a new URL channel to the host AdSense account.
@@ -1804,7 +1756,7 @@ class UrlchannelsResource {
     UrlChannel request,
     core.String adClientId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1826,7 +1778,7 @@ class UrlchannelsResource {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/urlchannels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1835,10 +1787,8 @@ class UrlchannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          UrlChannel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UrlChannel.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all host URL channels in the host AdSense account.
@@ -1870,7 +1820,7 @@ class UrlchannelsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1895,7 +1845,7 @@ class UrlchannelsResource {
         commons.Escaper.ecapeVariable('$adClientId') +
         '/urlchannels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1904,10 +1854,8 @@ class UrlchannelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          UrlChannels.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UrlChannels.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

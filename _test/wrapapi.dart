@@ -49,7 +49,7 @@ class WrapApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<WrapResponse> helloPost(WrapRequest request) {
+  async.Future<WrapResponse> helloPost(WrapRequest request) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -63,7 +63,7 @@ class WrapApi {
 
     _url = 'helloPost';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -72,10 +72,8 @@ class WrapApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => WrapResponse.fromJson(
-          data['data'] as core.Map<core.String, core.dynamic>),
-    );
+    return WrapResponse.fromJson(
+        _response['data'] as core.Map<core.String, core.dynamic>);
   }
 }
 

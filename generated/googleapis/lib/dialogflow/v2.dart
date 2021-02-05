@@ -107,7 +107,7 @@ class ProjectsResource {
   async.Future<GoogleProtobufEmpty> deleteAgent(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -124,7 +124,7 @@ class ProjectsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/agent';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -133,10 +133,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the specified agent.
@@ -160,7 +158,7 @@ class ProjectsResource {
   async.Future<GoogleCloudDialogflowV2Agent> getAgent(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -177,7 +175,7 @@ class ProjectsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/agent';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -186,10 +184,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2Agent.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2Agent.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates/updates the specified agent.
@@ -218,7 +214,7 @@ class ProjectsResource {
     core.String parent, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -241,7 +237,7 @@ class ProjectsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/agent';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -250,10 +246,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2Agent.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2Agent.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -297,7 +291,7 @@ class ProjectsAgentResource {
     GoogleCloudDialogflowV2ExportAgentRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -319,7 +313,7 @@ class ProjectsAgentResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/agent:export';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -328,10 +322,8 @@ class ProjectsAgentResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the fulfillment.
@@ -355,7 +347,7 @@ class ProjectsAgentResource {
   async.Future<GoogleCloudDialogflowV2Fulfillment> getFulfillment(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -372,7 +364,7 @@ class ProjectsAgentResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -381,10 +373,8 @@ class ProjectsAgentResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2Fulfillment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2Fulfillment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets agent validation result.
@@ -418,7 +408,7 @@ class ProjectsAgentResource {
     core.String parent, {
     core.String languageCode,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -440,7 +430,7 @@ class ProjectsAgentResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/agent/validationResult';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -449,10 +439,8 @@ class ProjectsAgentResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2ValidationResult.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2ValidationResult.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Imports the specified agent from a ZIP file.
@@ -489,7 +477,7 @@ class ProjectsAgentResource {
     GoogleCloudDialogflowV2ImportAgentRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -511,7 +499,7 @@ class ProjectsAgentResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/agent:import';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -520,10 +508,8 @@ class ProjectsAgentResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Restores the specified agent from a ZIP file.
@@ -559,7 +545,7 @@ class ProjectsAgentResource {
     GoogleCloudDialogflowV2RestoreAgentRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -581,7 +567,7 @@ class ProjectsAgentResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/agent:restore';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -590,10 +576,8 @@ class ProjectsAgentResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the list of agents.
@@ -630,7 +614,7 @@ class ProjectsAgentResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -655,7 +639,7 @@ class ProjectsAgentResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/agent:search';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -664,10 +648,8 @@ class ProjectsAgentResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2SearchAgentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2SearchAgentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Trains the specified agent.
@@ -696,7 +678,7 @@ class ProjectsAgentResource {
     GoogleCloudDialogflowV2TrainAgentRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -718,7 +700,7 @@ class ProjectsAgentResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/agent:train';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -727,10 +709,8 @@ class ProjectsAgentResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the fulfillment.
@@ -761,7 +741,7 @@ class ProjectsAgentResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -784,7 +764,7 @@ class ProjectsAgentResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -793,10 +773,8 @@ class ProjectsAgentResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2Fulfillment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2Fulfillment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -835,7 +813,7 @@ class ProjectsAgentEntityTypesResource {
     GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -857,7 +835,7 @@ class ProjectsAgentEntityTypesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entityTypes:batchDelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -866,10 +844,8 @@ class ProjectsAgentEntityTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates/Creates multiple entity types in the specified agent.
@@ -898,7 +874,7 @@ class ProjectsAgentEntityTypesResource {
     GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -920,7 +896,7 @@ class ProjectsAgentEntityTypesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entityTypes:batchUpdate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -929,10 +905,8 @@ class ProjectsAgentEntityTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates an entity type in the specified agent.
@@ -965,7 +939,7 @@ class ProjectsAgentEntityTypesResource {
     core.String parent, {
     core.String languageCode,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -990,7 +964,7 @@ class ProjectsAgentEntityTypesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entityTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -999,10 +973,8 @@ class ProjectsAgentEntityTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2EntityType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2EntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified entity type.
@@ -1026,7 +998,7 @@ class ProjectsAgentEntityTypesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1043,7 +1015,7 @@ class ProjectsAgentEntityTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1052,10 +1024,8 @@ class ProjectsAgentEntityTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the specified entity type.
@@ -1085,7 +1055,7 @@ class ProjectsAgentEntityTypesResource {
     core.String name, {
     core.String languageCode,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1105,7 +1075,7 @@ class ProjectsAgentEntityTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1114,10 +1084,8 @@ class ProjectsAgentEntityTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2EntityType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2EntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the list of all entity types in the specified agent.
@@ -1155,7 +1123,7 @@ class ProjectsAgentEntityTypesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1183,7 +1151,7 @@ class ProjectsAgentEntityTypesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entityTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1192,10 +1160,8 @@ class ProjectsAgentEntityTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2ListEntityTypesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2ListEntityTypesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified entity type.
@@ -1232,7 +1198,7 @@ class ProjectsAgentEntityTypesResource {
     core.String languageCode,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1258,7 +1224,7 @@ class ProjectsAgentEntityTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1267,10 +1233,8 @@ class ProjectsAgentEntityTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2EntityType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2EntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1306,7 +1270,7 @@ class ProjectsAgentEntityTypesEntitiesResource {
     GoogleCloudDialogflowV2BatchCreateEntitiesRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1328,7 +1292,7 @@ class ProjectsAgentEntityTypesEntitiesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entities:batchCreate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1337,10 +1301,8 @@ class ProjectsAgentEntityTypesEntitiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes entities in the specified entity type.
@@ -1369,7 +1331,7 @@ class ProjectsAgentEntityTypesEntitiesResource {
     GoogleCloudDialogflowV2BatchDeleteEntitiesRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1391,7 +1353,7 @@ class ProjectsAgentEntityTypesEntitiesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entities:batchDelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1400,10 +1362,8 @@ class ProjectsAgentEntityTypesEntitiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates or creates multiple entities in the specified entity type.
@@ -1433,7 +1393,7 @@ class ProjectsAgentEntityTypesEntitiesResource {
     GoogleCloudDialogflowV2BatchUpdateEntitiesRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1455,7 +1415,7 @@ class ProjectsAgentEntityTypesEntitiesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entities:batchUpdate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1464,10 +1424,8 @@ class ProjectsAgentEntityTypesEntitiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1509,7 +1467,7 @@ class ProjectsAgentEnvironmentsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1534,7 +1492,7 @@ class ProjectsAgentEnvironmentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/environments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1543,10 +1501,8 @@ class ProjectsAgentEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2ListEnvironmentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2ListEnvironmentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1596,7 +1552,7 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
   async.Future<GoogleProtobufEmpty> deleteContexts(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1614,7 +1570,7 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/contexts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1623,10 +1579,8 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Processes a natural language query and returns structured, actionable data
@@ -1670,7 +1624,7 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
     GoogleCloudDialogflowV2DetectIntentRequest request,
     core.String session, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1692,7 +1646,7 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
         commons.Escaper.ecapeVariableReserved('$session') +
         ':detectIntent';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1701,10 +1655,8 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1745,7 +1697,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
     GoogleCloudDialogflowV2Context request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1766,7 +1718,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/contexts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1775,10 +1727,8 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2Context.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2Context.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified context.
@@ -1806,7 +1756,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1823,7 +1773,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1832,10 +1782,8 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the specified context.
@@ -1863,7 +1811,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
   async.Future<GoogleCloudDialogflowV2Context> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1880,7 +1828,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1889,10 +1837,8 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2Context.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2Context.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the list of all contexts in the specified session.
@@ -1928,7 +1874,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1952,7 +1898,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/contexts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1961,10 +1907,8 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2ListContextsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2ListContextsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified context.
@@ -2003,7 +1947,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2026,7 +1970,7 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2035,10 +1979,8 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2Context.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2Context.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2082,7 +2024,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
     GoogleCloudDialogflowV2SessionEntityType request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2104,7 +2046,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entityTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2113,10 +2055,8 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2SessionEntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified session entity type.
@@ -2148,7 +2088,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2165,7 +2105,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2174,10 +2114,8 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the specified session entity type.
@@ -2209,7 +2147,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
   async.Future<GoogleCloudDialogflowV2SessionEntityType> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2226,7 +2164,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2235,10 +2173,8 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2SessionEntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the list of all session entity types in the specified session.
@@ -2278,7 +2214,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2303,7 +2239,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entityTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2312,10 +2248,8 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified session entity type.
@@ -2355,7 +2289,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2378,7 +2312,7 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2387,10 +2321,8 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2SessionEntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2426,7 +2358,7 @@ class ProjectsAgentIntentsResource {
     GoogleCloudDialogflowV2BatchDeleteIntentsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2448,7 +2380,7 @@ class ProjectsAgentIntentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/intents:batchDelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2457,10 +2389,8 @@ class ProjectsAgentIntentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates/Creates multiple intents in the specified agent.
@@ -2489,7 +2419,7 @@ class ProjectsAgentIntentsResource {
     GoogleCloudDialogflowV2BatchUpdateIntentsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2511,7 +2441,7 @@ class ProjectsAgentIntentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/intents:batchUpdate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2520,10 +2450,8 @@ class ProjectsAgentIntentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates an intent in the specified agent.
@@ -2564,7 +2492,7 @@ class ProjectsAgentIntentsResource {
     core.String intentView,
     core.String languageCode,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2591,7 +2519,7 @@ class ProjectsAgentIntentsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/intents';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2600,10 +2528,8 @@ class ProjectsAgentIntentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2Intent.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2Intent.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified intent and its direct or indirect followup intents.
@@ -2628,7 +2554,7 @@ class ProjectsAgentIntentsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2645,7 +2571,7 @@ class ProjectsAgentIntentsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2654,10 +2580,8 @@ class ProjectsAgentIntentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the specified intent.
@@ -2695,7 +2619,7 @@ class ProjectsAgentIntentsResource {
     core.String intentView,
     core.String languageCode,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2718,7 +2642,7 @@ class ProjectsAgentIntentsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2727,10 +2651,8 @@ class ProjectsAgentIntentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2Intent.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2Intent.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the list of all intents in the specified agent.
@@ -2776,7 +2698,7 @@ class ProjectsAgentIntentsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2806,7 +2728,7 @@ class ProjectsAgentIntentsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/intents';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2815,10 +2737,8 @@ class ProjectsAgentIntentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2ListIntentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2ListIntentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified intent.
@@ -2863,7 +2783,7 @@ class ProjectsAgentIntentsResource {
     core.String languageCode,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2892,7 +2812,7 @@ class ProjectsAgentIntentsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2901,10 +2821,8 @@ class ProjectsAgentIntentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2Intent.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2Intent.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2943,7 +2861,7 @@ class ProjectsAgentSessionsResource {
   async.Future<GoogleProtobufEmpty> deleteContexts(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2961,7 +2879,7 @@ class ProjectsAgentSessionsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/contexts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2970,10 +2888,8 @@ class ProjectsAgentSessionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Processes a natural language query and returns structured, actionable data
@@ -3016,7 +2932,7 @@ class ProjectsAgentSessionsResource {
     GoogleCloudDialogflowV2DetectIntentRequest request,
     core.String session, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3038,7 +2954,7 @@ class ProjectsAgentSessionsResource {
         commons.Escaper.ecapeVariableReserved('$session') +
         ':detectIntent';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3047,10 +2963,8 @@ class ProjectsAgentSessionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3089,7 +3003,7 @@ class ProjectsAgentSessionsContextsResource {
     GoogleCloudDialogflowV2Context request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3110,7 +3024,7 @@ class ProjectsAgentSessionsContextsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/contexts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3119,10 +3033,8 @@ class ProjectsAgentSessionsContextsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2Context.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2Context.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified context.
@@ -3150,7 +3062,7 @@ class ProjectsAgentSessionsContextsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3167,7 +3079,7 @@ class ProjectsAgentSessionsContextsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3176,10 +3088,8 @@ class ProjectsAgentSessionsContextsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the specified context.
@@ -3207,7 +3117,7 @@ class ProjectsAgentSessionsContextsResource {
   async.Future<GoogleCloudDialogflowV2Context> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3224,7 +3134,7 @@ class ProjectsAgentSessionsContextsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3233,10 +3143,8 @@ class ProjectsAgentSessionsContextsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2Context.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2Context.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the list of all contexts in the specified session.
@@ -3271,7 +3179,7 @@ class ProjectsAgentSessionsContextsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3295,7 +3203,7 @@ class ProjectsAgentSessionsContextsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/contexts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3304,10 +3212,8 @@ class ProjectsAgentSessionsContextsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2ListContextsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2ListContextsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified context.
@@ -3346,7 +3252,7 @@ class ProjectsAgentSessionsContextsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3369,7 +3275,7 @@ class ProjectsAgentSessionsContextsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3378,10 +3284,8 @@ class ProjectsAgentSessionsContextsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2Context.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2Context.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3423,7 +3327,7 @@ class ProjectsAgentSessionsEntityTypesResource {
     GoogleCloudDialogflowV2SessionEntityType request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3445,7 +3349,7 @@ class ProjectsAgentSessionsEntityTypesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entityTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3454,10 +3358,8 @@ class ProjectsAgentSessionsEntityTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2SessionEntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified session entity type.
@@ -3489,7 +3391,7 @@ class ProjectsAgentSessionsEntityTypesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3506,7 +3408,7 @@ class ProjectsAgentSessionsEntityTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3515,10 +3417,8 @@ class ProjectsAgentSessionsEntityTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the specified session entity type.
@@ -3550,7 +3450,7 @@ class ProjectsAgentSessionsEntityTypesResource {
   async.Future<GoogleCloudDialogflowV2SessionEntityType> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3567,7 +3467,7 @@ class ProjectsAgentSessionsEntityTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3576,10 +3476,8 @@ class ProjectsAgentSessionsEntityTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2SessionEntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the list of all session entity types in the specified session.
@@ -3618,7 +3516,7 @@ class ProjectsAgentSessionsEntityTypesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3643,7 +3541,7 @@ class ProjectsAgentSessionsEntityTypesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/entityTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3652,10 +3550,8 @@ class ProjectsAgentSessionsEntityTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified session entity type.
@@ -3695,7 +3591,7 @@ class ProjectsAgentSessionsEntityTypesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3718,7 +3614,7 @@ class ProjectsAgentSessionsEntityTypesResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3727,10 +3623,8 @@ class ProjectsAgentSessionsEntityTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDialogflowV2SessionEntityType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3779,7 +3673,7 @@ class ProjectsLocationsOperationsResource {
   async.Future<GoogleProtobufEmpty> cancel(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3796,7 +3690,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3805,10 +3699,8 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -3835,7 +3727,7 @@ class ProjectsLocationsOperationsResource {
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3852,7 +3744,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3861,10 +3753,8 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -3905,7 +3795,7 @@ class ProjectsLocationsOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3932,7 +3822,7 @@ class ProjectsLocationsOperationsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3941,10 +3831,8 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3982,7 +3870,7 @@ class ProjectsOperationsResource {
   async.Future<GoogleProtobufEmpty> cancel(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3999,7 +3887,7 @@ class ProjectsOperationsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4008,10 +3896,8 @@ class ProjectsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -4037,7 +3923,7 @@ class ProjectsOperationsResource {
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4054,7 +3940,7 @@ class ProjectsOperationsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4063,10 +3949,8 @@ class ProjectsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -4107,7 +3991,7 @@ class ProjectsOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4134,7 +4018,7 @@ class ProjectsOperationsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4143,10 +4027,8 @@ class ProjectsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

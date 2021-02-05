@@ -83,7 +83,7 @@ class ActivityResource {
   async.Future<QueryDriveActivityResponse> query(
     QueryDriveActivityRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -100,7 +100,7 @@ class ActivityResource {
 
     _url = 'v2/activity:query';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -109,10 +109,8 @@ class ActivityResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => QueryDriveActivityResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return QueryDriveActivityResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

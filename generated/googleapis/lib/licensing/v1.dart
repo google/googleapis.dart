@@ -95,7 +95,7 @@ class LicenseAssignmentsResource {
     core.String skuId,
     core.String userId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -123,7 +123,7 @@ class LicenseAssignmentsResource {
         '/user/' +
         commons.Escaper.ecapeVariable('$userId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -132,9 +132,7 @@ class LicenseAssignmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a specific user's license by product SKU.
@@ -168,7 +166,7 @@ class LicenseAssignmentsResource {
     core.String skuId,
     core.String userId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -196,7 +194,7 @@ class LicenseAssignmentsResource {
         '/user/' +
         commons.Escaper.ecapeVariable('$userId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -205,10 +203,8 @@ class LicenseAssignmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LicenseAssignment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LicenseAssignment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Assign a license.
@@ -238,7 +234,7 @@ class LicenseAssignmentsResource {
     core.String productId,
     core.String skuId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -265,7 +261,7 @@ class LicenseAssignmentsResource {
         commons.Escaper.ecapeVariable('$skuId') +
         '/user';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -274,10 +270,8 @@ class LicenseAssignmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LicenseAssignment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LicenseAssignment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all users assigned licenses for a specific product SKU.
@@ -317,7 +311,7 @@ class LicenseAssignmentsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -346,7 +340,7 @@ class LicenseAssignmentsResource {
         commons.Escaper.ecapeVariable('$productId') +
         '/users';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -355,10 +349,8 @@ class LicenseAssignmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LicenseAssignmentList.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LicenseAssignmentList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all users assigned licenses for a specific product SKU.
@@ -402,7 +394,7 @@ class LicenseAssignmentsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -436,7 +428,7 @@ class LicenseAssignmentsResource {
         commons.Escaper.ecapeVariable('$skuId') +
         '/users';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -445,10 +437,8 @@ class LicenseAssignmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LicenseAssignmentList.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LicenseAssignmentList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Reassign a user's product SKU with a different SKU in the same product.
@@ -487,7 +477,7 @@ class LicenseAssignmentsResource {
     core.String skuId,
     core.String userId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -518,7 +508,7 @@ class LicenseAssignmentsResource {
         '/user/' +
         commons.Escaper.ecapeVariable('$userId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -527,10 +517,8 @@ class LicenseAssignmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LicenseAssignment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LicenseAssignment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Reassign a user's product SKU with a different SKU in the same product.
@@ -567,7 +555,7 @@ class LicenseAssignmentsResource {
     core.String skuId,
     core.String userId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -598,7 +586,7 @@ class LicenseAssignmentsResource {
         '/user/' +
         commons.Escaper.ecapeVariable('$userId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -607,10 +595,8 @@ class LicenseAssignmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LicenseAssignment.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LicenseAssignment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

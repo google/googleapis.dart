@@ -96,7 +96,7 @@ class FoldersResource {
   async.Future<Empty> deleteAccessApprovalSettings(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -113,7 +113,7 @@ class FoldersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -122,9 +122,7 @@ class FoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the settings associated with a project, folder, or organization.
@@ -147,7 +145,7 @@ class FoldersResource {
   async.Future<AccessApprovalSettings> getAccessApprovalSettings(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -164,7 +162,7 @@ class FoldersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -173,10 +171,8 @@ class FoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccessApprovalSettings.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccessApprovalSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the settings associated with a project, folder, or organization.
@@ -217,7 +213,7 @@ class FoldersResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -240,7 +236,7 @@ class FoldersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -249,10 +245,8 @@ class FoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccessApprovalSettings.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccessApprovalSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -288,7 +282,7 @@ class FoldersApprovalRequestsResource {
     ApproveApprovalRequestMessage request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -308,7 +302,7 @@ class FoldersApprovalRequestsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':approve';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -317,10 +311,8 @@ class FoldersApprovalRequestsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ApprovalRequest.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Dismisses a request.
@@ -352,7 +344,7 @@ class FoldersApprovalRequestsResource {
     DismissApprovalRequestMessage request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -372,7 +364,7 @@ class FoldersApprovalRequestsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':dismiss';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -381,10 +373,8 @@ class FoldersApprovalRequestsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ApprovalRequest.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an approval request.
@@ -409,7 +399,7 @@ class FoldersApprovalRequestsResource {
   async.Future<ApprovalRequest> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -426,7 +416,7 @@ class FoldersApprovalRequestsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -435,10 +425,8 @@ class FoldersApprovalRequestsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ApprovalRequest.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists approval requests associated with a project, folder, or
@@ -482,7 +470,7 @@ class FoldersApprovalRequestsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -510,7 +498,7 @@ class FoldersApprovalRequestsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/approvalRequests';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -519,10 +507,8 @@ class FoldersApprovalRequestsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListApprovalRequestsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListApprovalRequestsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -560,7 +546,7 @@ class OrganizationsResource {
   async.Future<Empty> deleteAccessApprovalSettings(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -577,7 +563,7 @@ class OrganizationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -586,9 +572,7 @@ class OrganizationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the settings associated with a project, folder, or organization.
@@ -611,7 +595,7 @@ class OrganizationsResource {
   async.Future<AccessApprovalSettings> getAccessApprovalSettings(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -628,7 +612,7 @@ class OrganizationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -637,10 +621,8 @@ class OrganizationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccessApprovalSettings.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccessApprovalSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the settings associated with a project, folder, or organization.
@@ -681,7 +663,7 @@ class OrganizationsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -704,7 +686,7 @@ class OrganizationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -713,10 +695,8 @@ class OrganizationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccessApprovalSettings.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccessApprovalSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -753,7 +733,7 @@ class OrganizationsApprovalRequestsResource {
     ApproveApprovalRequestMessage request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -773,7 +753,7 @@ class OrganizationsApprovalRequestsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':approve';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -782,10 +762,8 @@ class OrganizationsApprovalRequestsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ApprovalRequest.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Dismisses a request.
@@ -818,7 +796,7 @@ class OrganizationsApprovalRequestsResource {
     DismissApprovalRequestMessage request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -838,7 +816,7 @@ class OrganizationsApprovalRequestsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':dismiss';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -847,10 +825,8 @@ class OrganizationsApprovalRequestsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ApprovalRequest.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an approval request.
@@ -876,7 +852,7 @@ class OrganizationsApprovalRequestsResource {
   async.Future<ApprovalRequest> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -893,7 +869,7 @@ class OrganizationsApprovalRequestsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -902,10 +878,8 @@ class OrganizationsApprovalRequestsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ApprovalRequest.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists approval requests associated with a project, folder, or
@@ -949,7 +923,7 @@ class OrganizationsApprovalRequestsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -977,7 +951,7 @@ class OrganizationsApprovalRequestsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/approvalRequests';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -986,10 +960,8 @@ class OrganizationsApprovalRequestsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListApprovalRequestsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListApprovalRequestsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1027,7 +999,7 @@ class ProjectsResource {
   async.Future<Empty> deleteAccessApprovalSettings(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1044,7 +1016,7 @@ class ProjectsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1053,9 +1025,7 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the settings associated with a project, folder, or organization.
@@ -1078,7 +1048,7 @@ class ProjectsResource {
   async.Future<AccessApprovalSettings> getAccessApprovalSettings(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1095,7 +1065,7 @@ class ProjectsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1104,10 +1074,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccessApprovalSettings.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccessApprovalSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the settings associated with a project, folder, or organization.
@@ -1148,7 +1116,7 @@ class ProjectsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1171,7 +1139,7 @@ class ProjectsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1180,10 +1148,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccessApprovalSettings.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccessApprovalSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1219,7 +1185,7 @@ class ProjectsApprovalRequestsResource {
     ApproveApprovalRequestMessage request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1239,7 +1205,7 @@ class ProjectsApprovalRequestsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':approve';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1248,10 +1214,8 @@ class ProjectsApprovalRequestsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ApprovalRequest.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Dismisses a request.
@@ -1283,7 +1247,7 @@ class ProjectsApprovalRequestsResource {
     DismissApprovalRequestMessage request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1303,7 +1267,7 @@ class ProjectsApprovalRequestsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':dismiss';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1312,10 +1276,8 @@ class ProjectsApprovalRequestsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ApprovalRequest.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an approval request.
@@ -1340,7 +1302,7 @@ class ProjectsApprovalRequestsResource {
   async.Future<ApprovalRequest> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1357,7 +1319,7 @@ class ProjectsApprovalRequestsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1366,10 +1328,8 @@ class ProjectsApprovalRequestsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ApprovalRequest.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists approval requests associated with a project, folder, or
@@ -1413,7 +1373,7 @@ class ProjectsApprovalRequestsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1441,7 +1401,7 @@ class ProjectsApprovalRequestsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/approvalRequests';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1450,10 +1410,8 @@ class ProjectsApprovalRequestsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListApprovalRequestsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListApprovalRequestsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

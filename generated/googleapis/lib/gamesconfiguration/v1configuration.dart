@@ -92,10 +92,10 @@ class AchievementConfigurationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String achievementId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -115,7 +115,7 @@ class AchievementConfigurationsResource {
     _url = 'games/v1configuration/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -123,9 +123,6 @@ class AchievementConfigurationsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -148,7 +145,7 @@ class AchievementConfigurationsResource {
   async.Future<AchievementConfiguration> get(
     core.String achievementId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -166,7 +163,7 @@ class AchievementConfigurationsResource {
     _url = 'games/v1configuration/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -175,10 +172,8 @@ class AchievementConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AchievementConfiguration.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AchievementConfiguration.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Insert a new achievement configuration in this application.
@@ -204,7 +199,7 @@ class AchievementConfigurationsResource {
     AchievementConfiguration request,
     core.String applicationId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -226,7 +221,7 @@ class AchievementConfigurationsResource {
         commons.Escaper.ecapeVariable('$applicationId') +
         '/achievements';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -235,10 +230,8 @@ class AchievementConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AchievementConfiguration.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AchievementConfiguration.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of the achievement configurations in this application.
@@ -269,7 +262,7 @@ class AchievementConfigurationsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -294,7 +287,7 @@ class AchievementConfigurationsResource {
         commons.Escaper.ecapeVariable('$applicationId') +
         '/achievements';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -303,10 +296,8 @@ class AchievementConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AchievementConfigurationListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AchievementConfigurationListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the metadata of the achievement configuration with the given ID.
@@ -331,7 +322,7 @@ class AchievementConfigurationsResource {
     AchievementConfiguration request,
     core.String achievementId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -352,7 +343,7 @@ class AchievementConfigurationsResource {
     _url = 'games/v1configuration/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -361,10 +352,8 @@ class AchievementConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AchievementConfiguration.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AchievementConfiguration.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -403,7 +392,7 @@ class ImageConfigurationsResource {
     core.String imageType, {
     core.String $fields,
     commons.Media uploadMedia,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -436,7 +425,7 @@ class ImageConfigurationsResource {
           commons.Escaper.ecapeVariable('$imageType');
     }
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -445,10 +434,8 @@ class ImageConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ImageConfiguration.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ImageConfiguration.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -472,10 +459,10 @@ class LeaderboardConfigurationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String leaderboardId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -495,7 +482,7 @@ class LeaderboardConfigurationsResource {
     _url = 'games/v1configuration/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -503,9 +490,6 @@ class LeaderboardConfigurationsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -528,7 +512,7 @@ class LeaderboardConfigurationsResource {
   async.Future<LeaderboardConfiguration> get(
     core.String leaderboardId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -546,7 +530,7 @@ class LeaderboardConfigurationsResource {
     _url = 'games/v1configuration/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -555,10 +539,8 @@ class LeaderboardConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LeaderboardConfiguration.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LeaderboardConfiguration.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Insert a new leaderboard configuration in this application.
@@ -584,7 +566,7 @@ class LeaderboardConfigurationsResource {
     LeaderboardConfiguration request,
     core.String applicationId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -606,7 +588,7 @@ class LeaderboardConfigurationsResource {
         commons.Escaper.ecapeVariable('$applicationId') +
         '/leaderboards';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -615,10 +597,8 @@ class LeaderboardConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LeaderboardConfiguration.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LeaderboardConfiguration.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of the leaderboard configurations in this application.
@@ -649,7 +629,7 @@ class LeaderboardConfigurationsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -674,7 +654,7 @@ class LeaderboardConfigurationsResource {
         commons.Escaper.ecapeVariable('$applicationId') +
         '/leaderboards';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -683,10 +663,8 @@ class LeaderboardConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LeaderboardConfigurationListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LeaderboardConfigurationListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the metadata of the leaderboard configuration with the given ID.
@@ -711,7 +689,7 @@ class LeaderboardConfigurationsResource {
     LeaderboardConfiguration request,
     core.String leaderboardId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -732,7 +710,7 @@ class LeaderboardConfigurationsResource {
     _url = 'games/v1configuration/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -741,10 +719,8 @@ class LeaderboardConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LeaderboardConfiguration.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LeaderboardConfiguration.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

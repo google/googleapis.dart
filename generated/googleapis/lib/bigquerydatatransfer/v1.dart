@@ -127,7 +127,7 @@ class ProjectsDataSourcesResource {
     CheckValidCredsRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -149,7 +149,7 @@ class ProjectsDataSourcesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':checkValidCreds';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -158,10 +158,8 @@ class ProjectsDataSourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CheckValidCredsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CheckValidCredsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a supported data source and returns its settings, which can be
@@ -187,7 +185,7 @@ class ProjectsDataSourcesResource {
   async.Future<DataSource> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -204,7 +202,7 @@ class ProjectsDataSourcesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -213,10 +211,8 @@ class ProjectsDataSourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DataSource.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DataSource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists supported data sources and returns their settings, which can be used
@@ -252,7 +248,7 @@ class ProjectsDataSourcesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -277,7 +273,7 @@ class ProjectsDataSourcesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dataSources';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -286,10 +282,8 @@ class ProjectsDataSourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListDataSourcesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListDataSourcesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -323,7 +317,7 @@ class ProjectsLocationsResource {
   async.Future<Location> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -340,7 +334,7 @@ class ProjectsLocationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -349,9 +343,7 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -383,7 +375,7 @@ class ProjectsLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -410,7 +402,7 @@ class ProjectsLocationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -419,10 +411,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -464,7 +454,7 @@ class ProjectsLocationsDataSourcesResource {
     CheckValidCredsRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -486,7 +476,7 @@ class ProjectsLocationsDataSourcesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':checkValidCreds';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -495,10 +485,8 @@ class ProjectsLocationsDataSourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CheckValidCredsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CheckValidCredsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a supported data source and returns its settings, which can be
@@ -525,7 +513,7 @@ class ProjectsLocationsDataSourcesResource {
   async.Future<DataSource> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -542,7 +530,7 @@ class ProjectsLocationsDataSourcesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -551,10 +539,8 @@ class ProjectsLocationsDataSourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DataSource.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DataSource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists supported data sources and returns their settings, which can be used
@@ -590,7 +576,7 @@ class ProjectsLocationsDataSourcesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -615,7 +601,7 @@ class ProjectsLocationsDataSourcesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dataSources';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -624,10 +610,8 @@ class ProjectsLocationsDataSourcesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListDataSourcesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListDataSourcesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -697,7 +681,7 @@ class ProjectsLocationsTransferConfigsResource {
     core.String serviceAccountName,
     core.String versionInfo,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -728,7 +712,7 @@ class ProjectsLocationsTransferConfigsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/transferConfigs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -737,10 +721,8 @@ class ProjectsLocationsTransferConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TransferConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TransferConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a data transfer configuration, including any associated transfer
@@ -767,7 +749,7 @@ class ProjectsLocationsTransferConfigsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -784,7 +766,7 @@ class ProjectsLocationsTransferConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -793,9 +775,7 @@ class ProjectsLocationsTransferConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about a data transfer config.
@@ -821,7 +801,7 @@ class ProjectsLocationsTransferConfigsResource {
   async.Future<TransferConfig> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -838,7 +818,7 @@ class ProjectsLocationsTransferConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -847,10 +827,8 @@ class ProjectsLocationsTransferConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TransferConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TransferConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about all data transfers in the project.
@@ -889,7 +867,7 @@ class ProjectsLocationsTransferConfigsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -917,7 +895,7 @@ class ProjectsLocationsTransferConfigsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/transferConfigs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -926,10 +904,8 @@ class ProjectsLocationsTransferConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTransferConfigsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTransferConfigsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a data transfer configuration.
@@ -999,7 +975,7 @@ class ProjectsLocationsTransferConfigsResource {
     core.String updateMask,
     core.String versionInfo,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1031,7 +1007,7 @@ class ProjectsLocationsTransferConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1040,10 +1016,8 @@ class ProjectsLocationsTransferConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TransferConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TransferConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates transfer runs for a time range \[start_time, end_time\].
@@ -1076,7 +1050,7 @@ class ProjectsLocationsTransferConfigsResource {
     ScheduleTransferRunsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1098,7 +1072,7 @@ class ProjectsLocationsTransferConfigsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':scheduleRuns';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1107,10 +1081,8 @@ class ProjectsLocationsTransferConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ScheduleTransferRunsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ScheduleTransferRunsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Start manual transfer runs to be executed now with schedule_time equal to
@@ -1144,7 +1116,7 @@ class ProjectsLocationsTransferConfigsResource {
     StartManualTransferRunsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1166,7 +1138,7 @@ class ProjectsLocationsTransferConfigsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':startManualRuns';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1175,10 +1147,8 @@ class ProjectsLocationsTransferConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => StartManualTransferRunsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return StartManualTransferRunsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1215,7 +1185,7 @@ class ProjectsLocationsTransferConfigsRunsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1232,7 +1202,7 @@ class ProjectsLocationsTransferConfigsRunsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1241,9 +1211,7 @@ class ProjectsLocationsTransferConfigsRunsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about the particular transfer run.
@@ -1270,7 +1238,7 @@ class ProjectsLocationsTransferConfigsRunsResource {
   async.Future<TransferRun> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1287,7 +1255,7 @@ class ProjectsLocationsTransferConfigsRunsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1296,10 +1264,8 @@ class ProjectsLocationsTransferConfigsRunsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TransferRun.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TransferRun.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about running and completed jobs.
@@ -1346,7 +1312,7 @@ class ProjectsLocationsTransferConfigsRunsResource {
     core.String runAttempt,
     core.List<core.String> states,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1375,7 +1341,7 @@ class ProjectsLocationsTransferConfigsRunsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/runs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1384,10 +1350,8 @@ class ProjectsLocationsTransferConfigsRunsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTransferRunsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTransferRunsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1435,7 +1399,7 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1463,7 +1427,7 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/transferLogs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1472,10 +1436,8 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTransferLogsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTransferLogsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1545,7 +1507,7 @@ class ProjectsTransferConfigsResource {
     core.String serviceAccountName,
     core.String versionInfo,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1576,7 +1538,7 @@ class ProjectsTransferConfigsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/transferConfigs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1585,10 +1547,8 @@ class ProjectsTransferConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TransferConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TransferConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a data transfer configuration, including any associated transfer
@@ -1614,7 +1574,7 @@ class ProjectsTransferConfigsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1631,7 +1591,7 @@ class ProjectsTransferConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1640,9 +1600,7 @@ class ProjectsTransferConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about a data transfer config.
@@ -1667,7 +1625,7 @@ class ProjectsTransferConfigsResource {
   async.Future<TransferConfig> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1684,7 +1642,7 @@ class ProjectsTransferConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1693,10 +1651,8 @@ class ProjectsTransferConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TransferConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TransferConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about all data transfers in the project.
@@ -1735,7 +1691,7 @@ class ProjectsTransferConfigsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1763,7 +1719,7 @@ class ProjectsTransferConfigsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/transferConfigs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1772,10 +1728,8 @@ class ProjectsTransferConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTransferConfigsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTransferConfigsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a data transfer configuration.
@@ -1844,7 +1798,7 @@ class ProjectsTransferConfigsResource {
     core.String updateMask,
     core.String versionInfo,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1876,7 +1830,7 @@ class ProjectsTransferConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1885,10 +1839,8 @@ class ProjectsTransferConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TransferConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TransferConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates transfer runs for a time range \[start_time, end_time\].
@@ -1920,7 +1872,7 @@ class ProjectsTransferConfigsResource {
     ScheduleTransferRunsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1942,7 +1894,7 @@ class ProjectsTransferConfigsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':scheduleRuns';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1951,10 +1903,8 @@ class ProjectsTransferConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ScheduleTransferRunsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ScheduleTransferRunsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Start manual transfer runs to be executed now with schedule_time equal to
@@ -1987,7 +1937,7 @@ class ProjectsTransferConfigsResource {
     StartManualTransferRunsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2009,7 +1959,7 @@ class ProjectsTransferConfigsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':startManualRuns';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2018,10 +1968,8 @@ class ProjectsTransferConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => StartManualTransferRunsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return StartManualTransferRunsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2058,7 +2006,7 @@ class ProjectsTransferConfigsRunsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2075,7 +2023,7 @@ class ProjectsTransferConfigsRunsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2084,9 +2032,7 @@ class ProjectsTransferConfigsRunsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about the particular transfer run.
@@ -2113,7 +2059,7 @@ class ProjectsTransferConfigsRunsResource {
   async.Future<TransferRun> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2130,7 +2076,7 @@ class ProjectsTransferConfigsRunsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2139,10 +2085,8 @@ class ProjectsTransferConfigsRunsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          TransferRun.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return TransferRun.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about running and completed jobs.
@@ -2188,7 +2132,7 @@ class ProjectsTransferConfigsRunsResource {
     core.String runAttempt,
     core.List<core.String> states,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2217,7 +2161,7 @@ class ProjectsTransferConfigsRunsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/runs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2226,10 +2170,8 @@ class ProjectsTransferConfigsRunsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTransferRunsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTransferRunsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2276,7 +2218,7 @@ class ProjectsTransferConfigsRunsTransferLogsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2304,7 +2246,7 @@ class ProjectsTransferConfigsRunsTransferLogsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/transferLogs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2313,10 +2255,8 @@ class ProjectsTransferConfigsRunsTransferLogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTransferLogsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTransferLogsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

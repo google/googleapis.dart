@@ -108,7 +108,7 @@ class ProjectsPatchDeploymentsResource {
     core.String parent, {
     core.String patchDeploymentId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -133,7 +133,7 @@ class ProjectsPatchDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/patchDeployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -142,10 +142,8 @@ class ProjectsPatchDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          PatchDeployment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PatchDeployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete an OS Config patch deployment.
@@ -169,7 +167,7 @@ class ProjectsPatchDeploymentsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -186,7 +184,7 @@ class ProjectsPatchDeploymentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -195,9 +193,7 @@ class ProjectsPatchDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get an OS Config patch deployment.
@@ -221,7 +217,7 @@ class ProjectsPatchDeploymentsResource {
   async.Future<PatchDeployment> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -238,7 +234,7 @@ class ProjectsPatchDeploymentsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -247,10 +243,8 @@ class ProjectsPatchDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          PatchDeployment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PatchDeployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a page of OS Config patch deployments.
@@ -283,7 +277,7 @@ class ProjectsPatchDeploymentsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -308,7 +302,7 @@ class ProjectsPatchDeploymentsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/patchDeployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -317,10 +311,8 @@ class ProjectsPatchDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListPatchDeploymentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListPatchDeploymentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -358,7 +350,7 @@ class ProjectsPatchJobsResource {
     CancelPatchJobRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -378,7 +370,7 @@ class ProjectsPatchJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -387,9 +379,7 @@ class ProjectsPatchJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PatchJob.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PatchJob.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Patch VM instances by creating and running a patch job.
@@ -416,7 +406,7 @@ class ProjectsPatchJobsResource {
     ExecutePatchJobRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -438,7 +428,7 @@ class ProjectsPatchJobsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/patchJobs:execute';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -447,9 +437,7 @@ class ProjectsPatchJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PatchJob.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PatchJob.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get the patch job.
@@ -476,7 +464,7 @@ class ProjectsPatchJobsResource {
   async.Future<PatchJob> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -493,7 +481,7 @@ class ProjectsPatchJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -502,9 +490,7 @@ class ProjectsPatchJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PatchJob.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PatchJob.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a list of patch jobs.
@@ -539,7 +525,7 @@ class ProjectsPatchJobsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -566,7 +552,7 @@ class ProjectsPatchJobsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/patchJobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -575,10 +561,8 @@ class ProjectsPatchJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListPatchJobsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListPatchJobsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -622,7 +606,7 @@ class ProjectsPatchJobsInstanceDetailsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -650,7 +634,7 @@ class ProjectsPatchJobsInstanceDetailsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/instanceDetails';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -659,10 +643,8 @@ class ProjectsPatchJobsInstanceDetailsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListPatchJobInstanceDetailsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListPatchJobInstanceDetailsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

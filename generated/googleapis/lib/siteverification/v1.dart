@@ -78,10 +78,10 @@ class WebResourceResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -100,7 +100,7 @@ class WebResourceResource {
 
     _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -108,9 +108,6 @@ class WebResourceResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -133,7 +130,7 @@ class WebResourceResource {
   async.Future<SiteVerificationWebResourceResource> get(
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -150,7 +147,7 @@ class WebResourceResource {
 
     _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -159,10 +156,8 @@ class WebResourceResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SiteVerificationWebResourceResource.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SiteVerificationWebResourceResource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a verification token for placing on a website or domain.
@@ -184,7 +179,7 @@ class WebResourceResource {
   async.Future<SiteVerificationWebResourceGettokenResponse> getToken(
     SiteVerificationWebResourceGettokenRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -201,7 +196,7 @@ class WebResourceResource {
 
     _url = 'token';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -210,10 +205,8 @@ class WebResourceResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SiteVerificationWebResourceGettokenResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SiteVerificationWebResourceGettokenResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Attempt verification of a website or domain.
@@ -238,7 +231,7 @@ class WebResourceResource {
     SiteVerificationWebResourceResource request,
     core.String verificationMethod, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -259,7 +252,7 @@ class WebResourceResource {
 
     _url = 'webResource';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -268,10 +261,8 @@ class WebResourceResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SiteVerificationWebResourceResource.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SiteVerificationWebResourceResource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get the list of your verified websites and domains.
@@ -290,7 +281,7 @@ class WebResourceResource {
   /// this method will complete with the same error.
   async.Future<SiteVerificationWebResourceListResponse> list({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -304,7 +295,7 @@ class WebResourceResource {
 
     _url = 'webResource';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -313,10 +304,8 @@ class WebResourceResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SiteVerificationWebResourceListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SiteVerificationWebResourceListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Modify the list of owners for your website or domain.
@@ -343,7 +332,7 @@ class WebResourceResource {
     SiteVerificationWebResourceResource request,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -363,7 +352,7 @@ class WebResourceResource {
 
     _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -372,10 +361,8 @@ class WebResourceResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SiteVerificationWebResourceResource.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SiteVerificationWebResourceResource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Modify the list of owners for your website or domain.
@@ -400,7 +387,7 @@ class WebResourceResource {
     SiteVerificationWebResourceResource request,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -420,7 +407,7 @@ class WebResourceResource {
 
     _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -429,10 +416,8 @@ class WebResourceResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SiteVerificationWebResourceResource.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SiteVerificationWebResourceResource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

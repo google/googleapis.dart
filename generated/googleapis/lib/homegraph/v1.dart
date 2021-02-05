@@ -89,7 +89,7 @@ class AgentUsersResource {
     core.String agentUserId, {
     core.String requestId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -109,7 +109,7 @@ class AgentUsersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$agentUserId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -118,9 +118,7 @@ class AgentUsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -153,7 +151,7 @@ class DevicesResource {
   async_1.Future<QueryResponse> query(
     QueryRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -170,7 +168,7 @@ class DevicesResource {
 
     _url = 'v1/devices:query';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -179,10 +177,8 @@ class DevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          QueryResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return QueryResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Reports device state and optionally sends device notifications.
@@ -216,7 +212,7 @@ class DevicesResource {
   async_1.Future<ReportStateAndNotificationResponse> reportStateAndNotification(
     ReportStateAndNotificationRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -233,7 +229,7 @@ class DevicesResource {
 
     _url = 'v1/devices:reportStateAndNotification';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -242,10 +238,8 @@ class DevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ReportStateAndNotificationResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ReportStateAndNotificationResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Requests Google to send an `action.devices.SYNC`
@@ -273,7 +267,7 @@ class DevicesResource {
   async_1.Future<RequestSyncDevicesResponse> requestSync(
     RequestSyncDevicesRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -290,7 +284,7 @@ class DevicesResource {
 
     _url = 'v1/devices:requestSync';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -299,10 +293,8 @@ class DevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RequestSyncDevicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RequestSyncDevicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets all the devices associated with the given third-party user.
@@ -328,7 +320,7 @@ class DevicesResource {
   async_1.Future<SyncResponse> sync(
     SyncRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -345,7 +337,7 @@ class DevicesResource {
 
     _url = 'v1/devices:sync';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -354,10 +346,8 @@ class DevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SyncResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SyncResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

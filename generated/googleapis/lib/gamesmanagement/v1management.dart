@@ -92,7 +92,7 @@ class AchievementsResource {
   async.Future<AchievementResetResponse> reset(
     core.String achievementId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -111,7 +111,7 @@ class AchievementsResource {
         commons.Escaper.ecapeVariable('$achievementId') +
         '/reset';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -120,10 +120,8 @@ class AchievementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AchievementResetResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AchievementResetResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Resets all achievements for the currently authenticated player for your
@@ -146,7 +144,7 @@ class AchievementsResource {
   /// this method will complete with the same error.
   async.Future<AchievementResetAllResponse> resetAll({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -160,7 +158,7 @@ class AchievementsResource {
 
     _url = 'games/v1management/achievements/reset';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -169,10 +167,8 @@ class AchievementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AchievementResetAllResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AchievementResetAllResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Resets all draft achievements for all players.
@@ -189,9 +185,9 @@ class AchievementsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetAllForAllPlayers({
+  async.Future<void> resetAllForAllPlayers({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -207,7 +203,7 @@ class AchievementsResource {
 
     _url = 'games/v1management/achievements/resetAllForAllPlayers';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -215,9 +211,6 @@ class AchievementsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -238,10 +231,10 @@ class AchievementsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetForAllPlayers(
+  async.Future<void> resetForAllPlayers(
     core.String achievementId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -262,7 +255,7 @@ class AchievementsResource {
         commons.Escaper.ecapeVariable('$achievementId') +
         '/resetForAllPlayers';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -270,9 +263,6 @@ class AchievementsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -293,10 +283,10 @@ class AchievementsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetMultipleForAllPlayers(
+  async.Future<void> resetMultipleForAllPlayers(
     AchievementResetMultipleForAllRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -315,7 +305,7 @@ class AchievementsResource {
 
     _url = 'games/v1management/achievements/resetMultipleForAllPlayers';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -323,9 +313,6 @@ class AchievementsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 }
@@ -365,7 +352,7 @@ class ApplicationsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -390,7 +377,7 @@ class ApplicationsResource {
         commons.Escaper.ecapeVariable('$applicationId') +
         '/players/hidden';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -399,10 +386,8 @@ class ApplicationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => HiddenPlayerList.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return HiddenPlayerList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -429,10 +414,10 @@ class EventsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future reset(
+  async.Future<void> reset(
     core.String eventId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -453,7 +438,7 @@ class EventsResource {
         commons.Escaper.ecapeVariable('$eventId') +
         '/reset';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -461,9 +446,6 @@ class EventsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -483,9 +465,9 @@ class EventsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetAll({
+  async.Future<void> resetAll({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -501,7 +483,7 @@ class EventsResource {
 
     _url = 'games/v1management/events/reset';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -509,9 +491,6 @@ class EventsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -529,9 +508,9 @@ class EventsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetAllForAllPlayers({
+  async.Future<void> resetAllForAllPlayers({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -547,7 +526,7 @@ class EventsResource {
 
     _url = 'games/v1management/events/resetAllForAllPlayers';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -555,9 +534,6 @@ class EventsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -578,10 +554,10 @@ class EventsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetForAllPlayers(
+  async.Future<void> resetForAllPlayers(
     core.String eventId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -602,7 +578,7 @@ class EventsResource {
         commons.Escaper.ecapeVariable('$eventId') +
         '/resetForAllPlayers';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -610,9 +586,6 @@ class EventsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -633,10 +606,10 @@ class EventsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetMultipleForAllPlayers(
+  async.Future<void> resetMultipleForAllPlayers(
     EventsResetMultipleForAllRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -655,7 +628,7 @@ class EventsResource {
 
     _url = 'games/v1management/events/resetMultipleForAllPlayers';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -663,9 +636,6 @@ class EventsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 }
@@ -695,11 +665,11 @@ class PlayersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future hide(
+  async.Future<void> hide(
     core.String applicationId,
     core.String playerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -724,7 +694,7 @@ class PlayersResource {
         '/players/hidden/' +
         commons.Escaper.ecapeVariable('$playerId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -732,9 +702,6 @@ class PlayersResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -758,11 +725,11 @@ class PlayersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future unhide(
+  async.Future<void> unhide(
     core.String applicationId,
     core.String playerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -787,7 +754,7 @@ class PlayersResource {
         '/players/hidden/' +
         commons.Escaper.ecapeVariable('$playerId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -795,9 +762,6 @@ class PlayersResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 }
@@ -830,7 +794,7 @@ class ScoresResource {
   async.Future<PlayerScoreResetResponse> reset(
     core.String leaderboardId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -849,7 +813,7 @@ class ScoresResource {
         commons.Escaper.ecapeVariable('$leaderboardId') +
         '/scores/reset';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -858,10 +822,8 @@ class ScoresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlayerScoreResetResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlayerScoreResetResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Resets all scores for all leaderboards for the currently authenticated
@@ -884,7 +846,7 @@ class ScoresResource {
   /// this method will complete with the same error.
   async.Future<PlayerScoreResetAllResponse> resetAll({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -898,7 +860,7 @@ class ScoresResource {
 
     _url = 'games/v1management/scores/reset';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -907,10 +869,8 @@ class ScoresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlayerScoreResetAllResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlayerScoreResetAllResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Resets scores for all draft leaderboards for all players.
@@ -927,9 +887,9 @@ class ScoresResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetAllForAllPlayers({
+  async.Future<void> resetAllForAllPlayers({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -945,7 +905,7 @@ class ScoresResource {
 
     _url = 'games/v1management/scores/resetAllForAllPlayers';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -953,9 +913,6 @@ class ScoresResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -976,10 +933,10 @@ class ScoresResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetForAllPlayers(
+  async.Future<void> resetForAllPlayers(
     core.String leaderboardId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1000,7 +957,7 @@ class ScoresResource {
         commons.Escaper.ecapeVariable('$leaderboardId') +
         '/scores/resetForAllPlayers';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1008,9 +965,6 @@ class ScoresResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1031,10 +985,10 @@ class ScoresResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future resetMultipleForAllPlayers(
+  async.Future<void> resetMultipleForAllPlayers(
     ScoresResetMultipleForAllRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1053,7 +1007,7 @@ class ScoresResource {
 
     _url = 'games/v1management/scores/resetMultipleForAllPlayers';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1061,9 +1015,6 @@ class ScoresResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 }

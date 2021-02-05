@@ -96,7 +96,7 @@ class ProjectsLocationsResource {
   async.Future<Location> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -113,7 +113,7 @@ class ProjectsLocationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -122,9 +122,7 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -156,7 +154,7 @@ class ProjectsLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -183,7 +181,7 @@ class ProjectsLocationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -192,10 +190,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -232,7 +228,7 @@ class ProjectsSecretsResource {
     AddSecretVersionRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -254,7 +250,7 @@ class ProjectsSecretsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':addVersion';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -263,10 +259,8 @@ class ProjectsSecretsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SecretVersion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SecretVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new Secret containing no SecretVersions.
@@ -299,7 +293,7 @@ class ProjectsSecretsResource {
     core.String parent, {
     core.String secretId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -323,7 +317,7 @@ class ProjectsSecretsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/secrets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -332,9 +326,7 @@ class ProjectsSecretsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Secret.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Secret.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a Secret.
@@ -358,7 +350,7 @@ class ProjectsSecretsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -375,7 +367,7 @@ class ProjectsSecretsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -384,9 +376,7 @@ class ProjectsSecretsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets metadata for a given Secret.
@@ -410,7 +400,7 @@ class ProjectsSecretsResource {
   async.Future<Secret> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -427,7 +417,7 @@ class ProjectsSecretsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -436,9 +426,7 @@ class ProjectsSecretsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Secret.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Secret.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a secret.
@@ -474,7 +462,7 @@ class ProjectsSecretsResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -498,7 +486,7 @@ class ProjectsSecretsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -507,9 +495,7 @@ class ProjectsSecretsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Secrets.
@@ -542,7 +528,7 @@ class ProjectsSecretsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -566,7 +552,7 @@ class ProjectsSecretsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/secrets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -575,10 +561,8 @@ class ProjectsSecretsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListSecretsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListSecretsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates metadata of an existing Secret.
@@ -608,7 +592,7 @@ class ProjectsSecretsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -631,7 +615,7 @@ class ProjectsSecretsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -640,9 +624,7 @@ class ProjectsSecretsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Secret.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Secret.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified secret.
@@ -673,7 +655,7 @@ class ProjectsSecretsResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -695,7 +677,7 @@ class ProjectsSecretsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -704,9 +686,7 @@ class ProjectsSecretsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has for the specified secret.
@@ -739,7 +719,7 @@ class ProjectsSecretsResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -761,7 +741,7 @@ class ProjectsSecretsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -770,10 +750,8 @@ class ProjectsSecretsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -808,7 +786,7 @@ class ProjectsSecretsVersionsResource {
   async.Future<AccessSecretVersionResponse> access(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -825,7 +803,7 @@ class ProjectsSecretsVersionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':access';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -834,10 +812,8 @@ class ProjectsSecretsVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccessSecretVersionResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccessSecretVersionResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Destroys a SecretVersion.
@@ -868,7 +844,7 @@ class ProjectsSecretsVersionsResource {
     DestroySecretVersionRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -888,7 +864,7 @@ class ProjectsSecretsVersionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':destroy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -897,10 +873,8 @@ class ProjectsSecretsVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SecretVersion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SecretVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Disables a SecretVersion.
@@ -930,7 +904,7 @@ class ProjectsSecretsVersionsResource {
     DisableSecretVersionRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -950,7 +924,7 @@ class ProjectsSecretsVersionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':disable';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -959,10 +933,8 @@ class ProjectsSecretsVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SecretVersion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SecretVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Enables a SecretVersion.
@@ -992,7 +964,7 @@ class ProjectsSecretsVersionsResource {
     EnableSecretVersionRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1012,7 +984,7 @@ class ProjectsSecretsVersionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':enable';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1021,10 +993,8 @@ class ProjectsSecretsVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SecretVersion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SecretVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets metadata for a SecretVersion.
@@ -1053,7 +1023,7 @@ class ProjectsSecretsVersionsResource {
   async.Future<SecretVersion> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1070,7 +1040,7 @@ class ProjectsSecretsVersionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1079,10 +1049,8 @@ class ProjectsSecretsVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SecretVersion.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SecretVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists SecretVersions.
@@ -1117,7 +1085,7 @@ class ProjectsSecretsVersionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1141,7 +1109,7 @@ class ProjectsSecretsVersionsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/versions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1150,10 +1118,8 @@ class ProjectsSecretsVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListSecretVersionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListSecretVersionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

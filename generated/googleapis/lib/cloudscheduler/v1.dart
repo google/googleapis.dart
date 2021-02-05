@@ -94,7 +94,7 @@ class ProjectsLocationsResource {
   async.Future<Location> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -111,7 +111,7 @@ class ProjectsLocationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -120,9 +120,7 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -154,7 +152,7 @@ class ProjectsLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -181,7 +179,7 @@ class ProjectsLocationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -190,10 +188,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -227,7 +223,7 @@ class ProjectsLocationsJobsResource {
     Job request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -247,7 +243,7 @@ class ProjectsLocationsJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -256,9 +252,7 @@ class ProjectsLocationsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a job.
@@ -283,7 +277,7 @@ class ProjectsLocationsJobsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -300,7 +294,7 @@ class ProjectsLocationsJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -309,9 +303,7 @@ class ProjectsLocationsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a job.
@@ -336,7 +328,7 @@ class ProjectsLocationsJobsResource {
   async.Future<Job> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -353,7 +345,7 @@ class ProjectsLocationsJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -362,9 +354,7 @@ class ProjectsLocationsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists jobs.
@@ -402,7 +392,7 @@ class ProjectsLocationsJobsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -425,7 +415,7 @@ class ProjectsLocationsJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -434,10 +424,8 @@ class ProjectsLocationsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListJobsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListJobsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a job.
@@ -484,7 +472,7 @@ class ProjectsLocationsJobsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -507,7 +495,7 @@ class ProjectsLocationsJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -516,9 +504,7 @@ class ProjectsLocationsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Pauses a job.
@@ -551,7 +537,7 @@ class ProjectsLocationsJobsResource {
     PauseJobRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -571,7 +557,7 @@ class ProjectsLocationsJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':pause';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -580,9 +566,7 @@ class ProjectsLocationsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Resume a job.
@@ -614,7 +598,7 @@ class ProjectsLocationsJobsResource {
     ResumeJobRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -634,7 +618,7 @@ class ProjectsLocationsJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':resume';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -643,9 +627,7 @@ class ProjectsLocationsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Forces a job to run now.
@@ -676,7 +658,7 @@ class ProjectsLocationsJobsResource {
     RunJobRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -696,7 +678,7 @@ class ProjectsLocationsJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':run';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -705,9 +687,7 @@ class ProjectsLocationsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

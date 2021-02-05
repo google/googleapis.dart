@@ -107,7 +107,7 @@ class BackupRunsResource {
     core.String instance,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -135,7 +135,7 @@ class BackupRunsResource {
         '/backupRuns/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -144,9 +144,7 @@ class BackupRunsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a resource containing information about a backup run.
@@ -174,7 +172,7 @@ class BackupRunsResource {
     core.String instance,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -202,7 +200,7 @@ class BackupRunsResource {
         '/backupRuns/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -211,9 +209,7 @@ class BackupRunsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BackupRun.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return BackupRun.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new backup run on demand.
@@ -243,7 +239,7 @@ class BackupRunsResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -270,7 +266,7 @@ class BackupRunsResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/backupRuns';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -279,9 +275,7 @@ class BackupRunsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all backup runs associated with a given instance and configuration
@@ -314,7 +308,7 @@ class BackupRunsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -344,7 +338,7 @@ class BackupRunsResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/backupRuns';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -353,10 +347,8 @@ class BackupRunsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BackupRunsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BackupRunsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -390,7 +382,7 @@ class DatabasesResource {
     core.String instance,
     core.String database, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -418,7 +410,7 @@ class DatabasesResource {
         '/databases/' +
         commons.Escaper.ecapeVariable('$database');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -427,9 +419,7 @@ class DatabasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a resource containing information about a database inside a
@@ -458,7 +448,7 @@ class DatabasesResource {
     core.String instance,
     core.String database, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -486,7 +476,7 @@ class DatabasesResource {
         '/databases/' +
         commons.Escaper.ecapeVariable('$database');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -495,9 +485,7 @@ class DatabasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Database.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Database.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a resource containing information about a database inside a Cloud
@@ -526,7 +514,7 @@ class DatabasesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -553,7 +541,7 @@ class DatabasesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/databases';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -562,9 +550,7 @@ class DatabasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists databases in the specified Cloud SQL instance.
@@ -589,7 +575,7 @@ class DatabasesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -613,7 +599,7 @@ class DatabasesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/databases';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -622,10 +608,8 @@ class DatabasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DatabasesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DatabasesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Partially updates a resource containing information about a database
@@ -659,7 +643,7 @@ class DatabasesResource {
     core.String instance,
     core.String database, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -690,7 +674,7 @@ class DatabasesResource {
         '/databases/' +
         commons.Escaper.ecapeVariable('$database');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -699,9 +683,7 @@ class DatabasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a resource containing information about a database inside a Cloud
@@ -733,7 +715,7 @@ class DatabasesResource {
     core.String instance,
     core.String database, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -764,7 +746,7 @@ class DatabasesResource {
         '/databases/' +
         commons.Escaper.ecapeVariable('$database');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -773,9 +755,7 @@ class DatabasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -805,7 +785,7 @@ class FlagsResource {
   async.Future<FlagsListResponse> list({
     core.String databaseVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -822,7 +802,7 @@ class FlagsResource {
 
     _url = 'sql/v1beta4/flags';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -831,10 +811,8 @@ class FlagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FlagsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FlagsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -871,7 +849,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -895,7 +873,7 @@ class InstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/addServerCa';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -904,9 +882,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a Cloud SQL instance as a clone of the source instance.
@@ -938,7 +914,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -965,7 +941,7 @@ class InstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/clone';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -974,9 +950,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a Cloud SQL instance.
@@ -1002,7 +976,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1025,7 +999,7 @@ class InstancesResource {
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1034,9 +1008,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Demotes the stand-alone instance to be a Cloud SQL read replica for an
@@ -1065,7 +1037,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1092,7 +1064,7 @@ class InstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/demoteMaster';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1101,9 +1073,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Exports data from a Cloud SQL instance to a Cloud Storage bucket as a SQL
@@ -1133,7 +1103,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1160,7 +1130,7 @@ class InstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/export';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1169,9 +1139,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Failover the instance to its failover replica instance.
@@ -1201,7 +1169,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1228,7 +1196,7 @@ class InstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/failover';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1237,9 +1205,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a resource containing information about a Cloud SQL instance.
@@ -1264,7 +1230,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1287,7 +1253,7 @@ class InstancesResource {
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1296,10 +1262,8 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DatabaseInstance.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DatabaseInstance.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Imports data into a Cloud SQL instance from a SQL dump or CSV file in
@@ -1328,7 +1292,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1355,7 +1319,7 @@ class InstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/import';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1364,9 +1328,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new Cloud SQL instance.
@@ -1392,7 +1354,7 @@ class InstancesResource {
     DatabaseInstance request,
     core.String project, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1414,7 +1376,7 @@ class InstancesResource {
         commons.Escaper.ecapeVariable('$project') +
         '/instances';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1423,9 +1385,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists instances under a given project.
@@ -1464,7 +1424,7 @@ class InstancesResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1492,7 +1452,7 @@ class InstancesResource {
         commons.Escaper.ecapeVariable('$project') +
         '/instances';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1501,10 +1461,8 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => InstancesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return InstancesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all of the trusted Certificate Authorities (CAs) for the specified
@@ -1535,7 +1493,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1559,7 +1517,7 @@ class InstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/listServerCas';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1568,10 +1526,8 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => InstancesListServerCasResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return InstancesListServerCasResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates settings of a Cloud SQL instance.
@@ -1601,7 +1557,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1627,7 +1583,7 @@ class InstancesResource {
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1636,9 +1592,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Promotes the read replica instance to be a stand-alone Cloud SQL instance.
@@ -1665,7 +1619,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1689,7 +1643,7 @@ class InstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/promoteReplica';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1698,9 +1652,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes all client certificates and generates a new server SSL certificate
@@ -1726,7 +1678,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1750,7 +1702,7 @@ class InstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/resetSslConfig';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1759,9 +1711,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Restarts a Cloud SQL instance.
@@ -1787,7 +1737,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1811,7 +1761,7 @@ class InstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/restart';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1820,9 +1770,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Restores a backup of a Cloud SQL instance.
@@ -1852,7 +1800,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1879,7 +1827,7 @@ class InstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/restoreBackup';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1888,9 +1836,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Rotates the server certificate to one signed by the Certificate Authority
@@ -1919,7 +1865,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1946,7 +1892,7 @@ class InstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/rotateServerCa';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1955,9 +1901,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Starts the replication in the read replica instance.
@@ -1982,7 +1926,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2006,7 +1950,7 @@ class InstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/startReplica';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2015,9 +1959,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Stops the replication in the read replica instance.
@@ -2042,7 +1984,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2066,7 +2008,7 @@ class InstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/stopReplica';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2075,9 +2017,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Truncate MySQL general and slow query log tables
@@ -2105,7 +2045,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2132,7 +2072,7 @@ class InstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/truncateLog';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2141,9 +2081,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates settings of a Cloud SQL instance.
@@ -2173,7 +2111,7 @@ class InstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2199,7 +2137,7 @@ class InstancesResource {
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2208,9 +2146,7 @@ class InstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2241,7 +2177,7 @@ class OperationsResource {
     core.String project,
     core.String operation, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2264,7 +2200,7 @@ class OperationsResource {
         '/operations/' +
         commons.Escaper.ecapeVariable('$operation');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2273,9 +2209,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all instance operations that have been performed on the given Cloud
@@ -2308,7 +2242,7 @@ class OperationsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2336,7 +2270,7 @@ class OperationsResource {
         commons.Escaper.ecapeVariable('$project') +
         '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2345,10 +2279,8 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OperationsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OperationsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2391,7 +2323,7 @@ class ProjectsInstancesResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2418,7 +2350,7 @@ class ProjectsInstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/rescheduleMaintenance';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2427,9 +2359,7 @@ class ProjectsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Start External primary instance migration.
@@ -2467,7 +2397,7 @@ class ProjectsInstancesResource {
     core.bool skipVerification,
     core.String syncMode,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2497,7 +2427,7 @@ class ProjectsInstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/startExternalSync';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2506,9 +2436,7 @@ class ProjectsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Verify External primary instance external sync settings.
@@ -2547,7 +2475,7 @@ class ProjectsInstancesResource {
     core.String syncMode,
     core.bool verifyConnectionOnly,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2577,7 +2505,7 @@ class ProjectsInstancesResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/verifyExternalSyncSettings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2586,10 +2514,8 @@ class ProjectsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SqlInstancesVerifyExternalSyncSettingsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SqlInstancesVerifyExternalSyncSettingsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2627,7 +2553,7 @@ class SslCertsResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2654,7 +2580,7 @@ class SslCertsResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/createEphemeral';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2663,9 +2589,7 @@ class SslCertsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SslCert.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SslCert.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the SSL certificate.
@@ -2696,7 +2620,7 @@ class SslCertsResource {
     core.String instance,
     core.String sha1Fingerprint, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2724,7 +2648,7 @@ class SslCertsResource {
         '/sslCerts/' +
         commons.Escaper.ecapeVariable('$sha1Fingerprint');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2733,9 +2657,7 @@ class SslCertsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a particular SSL certificate.
@@ -2766,7 +2688,7 @@ class SslCertsResource {
     core.String instance,
     core.String sha1Fingerprint, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2794,7 +2716,7 @@ class SslCertsResource {
         '/sslCerts/' +
         commons.Escaper.ecapeVariable('$sha1Fingerprint');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2803,9 +2725,7 @@ class SslCertsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SslCert.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SslCert.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates an SSL certificate and returns it along with the private key and
@@ -2836,7 +2756,7 @@ class SslCertsResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2863,7 +2783,7 @@ class SslCertsResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/sslCerts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2872,10 +2792,8 @@ class SslCertsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SslCertsInsertResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SslCertsInsertResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all of the current SSL certificates for the instance.
@@ -2900,7 +2818,7 @@ class SslCertsResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2924,7 +2842,7 @@ class SslCertsResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/sslCerts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2933,10 +2851,8 @@ class SslCertsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SslCertsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SslCertsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2967,7 +2883,7 @@ class TiersResource {
   async.Future<TiersListResponse> list(
     core.String project, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2986,7 +2902,7 @@ class TiersResource {
         commons.Escaper.ecapeVariable('$project') +
         '/tiers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2995,10 +2911,8 @@ class TiersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TiersListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TiersListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3035,7 +2949,7 @@ class UsersResource {
     core.String host,
     core.String name,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3065,7 +2979,7 @@ class UsersResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/users';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3074,9 +2988,7 @@ class UsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new user in a Cloud SQL instance.
@@ -3104,7 +3016,7 @@ class UsersResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3131,7 +3043,7 @@ class UsersResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/users';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3140,9 +3052,7 @@ class UsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists users in the specified Cloud SQL instance.
@@ -3167,7 +3077,7 @@ class UsersResource {
     core.String project,
     core.String instance, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3191,7 +3101,7 @@ class UsersResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/users';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3200,10 +3110,8 @@ class UsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UsersListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return UsersListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing user in a Cloud SQL instance.
@@ -3237,7 +3145,7 @@ class UsersResource {
     core.String host,
     core.String name,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3270,7 +3178,7 @@ class UsersResource {
         commons.Escaper.ecapeVariable('$instance') +
         '/users';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -3279,9 +3187,7 @@ class UsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

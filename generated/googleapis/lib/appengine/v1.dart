@@ -116,7 +116,7 @@ class AppsResource {
   async.Future<Operation> create(
     Application request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -133,7 +133,7 @@ class AppsResource {
 
     _url = 'v1/apps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -142,9 +142,7 @@ class AppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about an application.
@@ -167,7 +165,7 @@ class AppsResource {
   async.Future<Application> get(
     core.String appsId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -184,7 +182,7 @@ class AppsResource {
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -193,10 +191,8 @@ class AppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Application.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Application.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified Application resource.
@@ -229,7 +225,7 @@ class AppsResource {
     core.String appsId, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -252,7 +248,7 @@ class AppsResource {
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -261,9 +257,7 @@ class AppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Recreates the required App Engine features for the specified App Engine
@@ -299,7 +293,7 @@ class AppsResource {
     RepairApplicationRequest request,
     core.String appsId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -319,7 +313,7 @@ class AppsResource {
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + ':repair';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -328,9 +322,7 @@ class AppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -363,7 +355,7 @@ class AppsAuthorizedCertificatesResource {
     AuthorizedCertificate request,
     core.String appsId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -385,7 +377,7 @@ class AppsAuthorizedCertificatesResource {
         commons.Escaper.ecapeVariable('$appsId') +
         '/authorizedCertificates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -394,10 +386,8 @@ class AppsAuthorizedCertificatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AuthorizedCertificate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AuthorizedCertificate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified SSL certificate.
@@ -424,7 +414,7 @@ class AppsAuthorizedCertificatesResource {
     core.String appsId,
     core.String authorizedCertificatesId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -448,7 +438,7 @@ class AppsAuthorizedCertificatesResource {
         '/authorizedCertificates/' +
         commons.Escaper.ecapeVariable('$authorizedCertificatesId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -457,9 +447,7 @@ class AppsAuthorizedCertificatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified SSL certificate.
@@ -495,7 +483,7 @@ class AppsAuthorizedCertificatesResource {
     core.String authorizedCertificatesId, {
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -522,7 +510,7 @@ class AppsAuthorizedCertificatesResource {
         '/authorizedCertificates/' +
         commons.Escaper.ecapeVariable('$authorizedCertificatesId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -531,10 +519,8 @@ class AppsAuthorizedCertificatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AuthorizedCertificate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AuthorizedCertificate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all SSL certificates the user is authorized to administer.
@@ -572,7 +558,7 @@ class AppsAuthorizedCertificatesResource {
     core.String pageToken,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -600,7 +586,7 @@ class AppsAuthorizedCertificatesResource {
         commons.Escaper.ecapeVariable('$appsId') +
         '/authorizedCertificates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -609,10 +595,8 @@ class AppsAuthorizedCertificatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAuthorizedCertificatesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAuthorizedCertificatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified SSL certificate.
@@ -652,7 +636,7 @@ class AppsAuthorizedCertificatesResource {
     core.String authorizedCertificatesId, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -682,7 +666,7 @@ class AppsAuthorizedCertificatesResource {
         '/authorizedCertificates/' +
         commons.Escaper.ecapeVariable('$authorizedCertificatesId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -691,10 +675,8 @@ class AppsAuthorizedCertificatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AuthorizedCertificate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AuthorizedCertificate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -730,7 +712,7 @@ class AppsAuthorizedDomainsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -755,7 +737,7 @@ class AppsAuthorizedDomainsResource {
         commons.Escaper.ecapeVariable('$appsId') +
         '/authorizedDomains';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -764,10 +746,8 @@ class AppsAuthorizedDomainsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAuthorizedDomainsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAuthorizedDomainsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -817,7 +797,7 @@ class AppsDomainMappingsResource {
     core.String appsId, {
     core.String overrideStrategy,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -842,7 +822,7 @@ class AppsDomainMappingsResource {
         commons.Escaper.ecapeVariable('$appsId') +
         '/domainMappings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -851,9 +831,7 @@ class AppsDomainMappingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified domain mapping.
@@ -882,7 +860,7 @@ class AppsDomainMappingsResource {
     core.String appsId,
     core.String domainMappingsId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -905,7 +883,7 @@ class AppsDomainMappingsResource {
         '/domainMappings/' +
         commons.Escaper.ecapeVariable('$domainMappingsId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -914,9 +892,7 @@ class AppsDomainMappingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified domain mapping.
@@ -942,7 +918,7 @@ class AppsDomainMappingsResource {
     core.String appsId,
     core.String domainMappingsId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -965,7 +941,7 @@ class AppsDomainMappingsResource {
         '/domainMappings/' +
         commons.Escaper.ecapeVariable('$domainMappingsId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -974,10 +950,8 @@ class AppsDomainMappingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DomainMapping.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DomainMapping.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the domain mappings on an application.
@@ -1006,7 +980,7 @@ class AppsDomainMappingsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1031,7 +1005,7 @@ class AppsDomainMappingsResource {
         commons.Escaper.ecapeVariable('$appsId') +
         '/domainMappings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1040,10 +1014,8 @@ class AppsDomainMappingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListDomainMappingsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListDomainMappingsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified domain mapping.
@@ -1080,7 +1052,7 @@ class AppsDomainMappingsResource {
     core.String domainMappingsId, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1109,7 +1081,7 @@ class AppsDomainMappingsResource {
         '/domainMappings/' +
         commons.Escaper.ecapeVariable('$domainMappingsId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1118,9 +1090,7 @@ class AppsDomainMappingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1167,7 +1137,7 @@ class AppsFirewallIngressRulesResource {
     BatchUpdateIngressRulesRequest request,
     core.String appsId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1189,7 +1159,7 @@ class AppsFirewallIngressRulesResource {
         commons.Escaper.ecapeVariable('$appsId') +
         '/firewall/ingressRules:batchUpdate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1198,10 +1168,8 @@ class AppsFirewallIngressRulesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchUpdateIngressRulesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchUpdateIngressRulesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a firewall rule for the application.
@@ -1227,7 +1195,7 @@ class AppsFirewallIngressRulesResource {
     FirewallRule request,
     core.String appsId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1249,7 +1217,7 @@ class AppsFirewallIngressRulesResource {
         commons.Escaper.ecapeVariable('$appsId') +
         '/firewall/ingressRules';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1258,10 +1226,8 @@ class AppsFirewallIngressRulesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          FirewallRule.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FirewallRule.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified firewall rule.
@@ -1287,7 +1253,7 @@ class AppsFirewallIngressRulesResource {
     core.String appsId,
     core.String ingressRulesId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1310,7 +1276,7 @@ class AppsFirewallIngressRulesResource {
         '/firewall/ingressRules/' +
         commons.Escaper.ecapeVariable('$ingressRulesId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1319,9 +1285,7 @@ class AppsFirewallIngressRulesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified firewall rule.
@@ -1347,7 +1311,7 @@ class AppsFirewallIngressRulesResource {
     core.String appsId,
     core.String ingressRulesId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1370,7 +1334,7 @@ class AppsFirewallIngressRulesResource {
         '/firewall/ingressRules/' +
         commons.Escaper.ecapeVariable('$ingressRulesId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1379,10 +1343,8 @@ class AppsFirewallIngressRulesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          FirewallRule.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FirewallRule.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the firewall rules of an application.
@@ -1416,7 +1378,7 @@ class AppsFirewallIngressRulesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1444,7 +1406,7 @@ class AppsFirewallIngressRulesResource {
         commons.Escaper.ecapeVariable('$appsId') +
         '/firewall/ingressRules';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1453,10 +1415,8 @@ class AppsFirewallIngressRulesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListIngressRulesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListIngressRulesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified firewall rule.
@@ -1488,7 +1448,7 @@ class AppsFirewallIngressRulesResource {
     core.String ingressRulesId, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1517,7 +1477,7 @@ class AppsFirewallIngressRulesResource {
         '/firewall/ingressRules/' +
         commons.Escaper.ecapeVariable('$ingressRulesId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1526,10 +1486,8 @@ class AppsFirewallIngressRulesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          FirewallRule.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FirewallRule.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1560,7 +1518,7 @@ class AppsLocationsResource {
     core.String appsId,
     core.String locationsId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1583,7 +1541,7 @@ class AppsLocationsResource {
         '/locations/' +
         commons.Escaper.ecapeVariable('$locationsId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1592,9 +1550,7 @@ class AppsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -1626,7 +1582,7 @@ class AppsLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1652,7 +1608,7 @@ class AppsLocationsResource {
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1661,10 +1617,8 @@ class AppsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1698,7 +1652,7 @@ class AppsOperationsResource {
     core.String appsId,
     core.String operationsId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1721,7 +1675,7 @@ class AppsOperationsResource {
         '/operations/' +
         commons.Escaper.ecapeVariable('$operationsId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1730,9 +1684,7 @@ class AppsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -1772,7 +1724,7 @@ class AppsOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1799,7 +1751,7 @@ class AppsOperationsResource {
     _url =
         'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1808,10 +1760,8 @@ class AppsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1846,7 +1796,7 @@ class AppsServicesResource {
     core.String appsId,
     core.String servicesId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1869,7 +1819,7 @@ class AppsServicesResource {
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1878,9 +1828,7 @@ class AppsServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the current configuration of the specified service.
@@ -1906,7 +1854,7 @@ class AppsServicesResource {
     core.String appsId,
     core.String servicesId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1929,7 +1877,7 @@ class AppsServicesResource {
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1938,9 +1886,7 @@ class AppsServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Service.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Service.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the services in the application.
@@ -1969,7 +1915,7 @@ class AppsServicesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1992,7 +1938,7 @@ class AppsServicesResource {
 
     _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2001,10 +1947,8 @@ class AppsServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListServicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListServicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the configuration of the specified service.
@@ -2051,7 +1995,7 @@ class AppsServicesResource {
     core.bool migrateTraffic,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2083,7 +2027,7 @@ class AppsServicesResource {
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2092,9 +2036,7 @@ class AppsServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2133,7 +2075,7 @@ class AppsServicesVersionsResource {
     core.String appsId,
     core.String servicesId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2160,7 +2102,7 @@ class AppsServicesVersionsResource {
         commons.Escaper.ecapeVariable('$servicesId') +
         '/versions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2169,9 +2111,7 @@ class AppsServicesVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an existing Version resource.
@@ -2200,7 +2140,7 @@ class AppsServicesVersionsResource {
     core.String servicesId,
     core.String versionsId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2228,7 +2168,7 @@ class AppsServicesVersionsResource {
         '/versions/' +
         commons.Escaper.ecapeVariable('$versionsId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2237,9 +2177,7 @@ class AppsServicesVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified Version resource.
@@ -2280,7 +2218,7 @@ class AppsServicesVersionsResource {
     core.String versionsId, {
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2311,7 +2249,7 @@ class AppsServicesVersionsResource {
         '/versions/' +
         commons.Escaper.ecapeVariable('$versionsId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2320,9 +2258,7 @@ class AppsServicesVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Version.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Version.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the versions of a service.
@@ -2363,7 +2299,7 @@ class AppsServicesVersionsResource {
     core.String pageToken,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2396,7 +2332,7 @@ class AppsServicesVersionsResource {
         commons.Escaper.ecapeVariable('$servicesId') +
         '/versions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2405,10 +2341,8 @@ class AppsServicesVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListVersionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListVersionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified Version resource.
@@ -2476,7 +2410,7 @@ class AppsServicesVersionsResource {
     core.String versionsId, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2510,7 +2444,7 @@ class AppsServicesVersionsResource {
         '/versions/' +
         commons.Escaper.ecapeVariable('$versionsId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2519,9 +2453,7 @@ class AppsServicesVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2570,7 +2502,7 @@ class AppsServicesVersionsInstancesResource {
     core.String versionsId,
     core.String instancesId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2607,7 +2539,7 @@ class AppsServicesVersionsInstancesResource {
         commons.Escaper.ecapeVariable('$instancesId') +
         ':debug';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2616,9 +2548,7 @@ class AppsServicesVersionsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Stops a running instance.The instance might be automatically recreated
@@ -2662,7 +2592,7 @@ class AppsServicesVersionsInstancesResource {
     core.String versionsId,
     core.String instancesId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2695,7 +2625,7 @@ class AppsServicesVersionsInstancesResource {
         '/instances/' +
         commons.Escaper.ecapeVariable('$instancesId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2704,9 +2634,7 @@ class AppsServicesVersionsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets instance information.
@@ -2738,7 +2666,7 @@ class AppsServicesVersionsInstancesResource {
     core.String versionsId,
     core.String instancesId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2771,7 +2699,7 @@ class AppsServicesVersionsInstancesResource {
         '/instances/' +
         commons.Escaper.ecapeVariable('$instancesId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2780,9 +2708,7 @@ class AppsServicesVersionsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Instance.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Instance.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the instances of a version.Tip: To aggregate details about instances
@@ -2819,7 +2745,7 @@ class AppsServicesVersionsInstancesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2854,7 +2780,7 @@ class AppsServicesVersionsInstancesResource {
         commons.Escaper.ecapeVariable('$versionsId') +
         '/instances';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2863,10 +2789,8 @@ class AppsServicesVersionsInstancesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListInstancesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListInstancesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

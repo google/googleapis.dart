@@ -106,7 +106,7 @@ class OrganizationsLocationsOperationsResource {
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -123,7 +123,7 @@ class OrganizationsLocationsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -132,10 +132,8 @@ class OrganizationsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -176,7 +174,7 @@ class OrganizationsLocationsOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -203,7 +201,7 @@ class OrganizationsLocationsOperationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -212,10 +210,8 @@ class OrganizationsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -255,7 +251,7 @@ class OrganizationsLocationsWorkloadsResource {
     core.String parent, {
     core.String externalId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -279,7 +275,7 @@ class OrganizationsLocationsWorkloadsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/workloads';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -288,10 +284,8 @@ class OrganizationsLocationsWorkloadsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the workload.
@@ -324,7 +318,7 @@ class OrganizationsLocationsWorkloadsResource {
     core.String name, {
     core.String etag,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -344,7 +338,7 @@ class OrganizationsLocationsWorkloadsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -353,10 +347,8 @@ class OrganizationsLocationsWorkloadsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets Assured Workload associated with a CRM Node
@@ -384,7 +376,7 @@ class OrganizationsLocationsWorkloadsResource {
   async.Future<GoogleCloudAssuredworkloadsV1Workload> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -401,7 +393,7 @@ class OrganizationsLocationsWorkloadsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -410,10 +402,8 @@ class OrganizationsLocationsWorkloadsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudAssuredworkloadsV1Workload.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudAssuredworkloadsV1Workload.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Assured Workloads under a CRM Node.
@@ -449,7 +439,7 @@ class OrganizationsLocationsWorkloadsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -476,7 +466,7 @@ class OrganizationsLocationsWorkloadsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/workloads';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -485,10 +475,8 @@ class OrganizationsLocationsWorkloadsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudAssuredworkloadsV1ListWorkloadsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudAssuredworkloadsV1ListWorkloadsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing workload.
@@ -524,7 +512,7 @@ class OrganizationsLocationsWorkloadsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -547,7 +535,7 @@ class OrganizationsLocationsWorkloadsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -556,10 +544,8 @@ class OrganizationsLocationsWorkloadsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudAssuredworkloadsV1Workload.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudAssuredworkloadsV1Workload.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

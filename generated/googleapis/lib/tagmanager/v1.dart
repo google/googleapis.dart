@@ -122,7 +122,7 @@ class AccountsResource {
   async.Future<Account> get(
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -140,7 +140,7 @@ class AccountsResource {
     _url =
         'tagmanager/v1/accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -149,9 +149,7 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Accounts that a user has access to.
@@ -170,7 +168,7 @@ class AccountsResource {
   /// this method will complete with the same error.
   async.Future<ListAccountsResponse> list({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -184,7 +182,7 @@ class AccountsResource {
 
     _url = 'tagmanager/v1/accounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -193,10 +191,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAccountsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAccountsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Account.
@@ -225,7 +221,7 @@ class AccountsResource {
     core.String accountId, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -249,7 +245,7 @@ class AccountsResource {
     _url =
         'tagmanager/v1/accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -258,9 +254,7 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -309,7 +303,7 @@ class AccountsContainersResource {
     Container request,
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -331,7 +325,7 @@ class AccountsContainersResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -340,9 +334,7 @@ class AccountsContainersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Container.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a Container.
@@ -361,11 +353,11 @@ class AccountsContainersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String accountId,
     core.String containerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -390,7 +382,7 @@ class AccountsContainersResource {
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -398,9 +390,6 @@ class AccountsContainersResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -426,7 +415,7 @@ class AccountsContainersResource {
     core.String accountId,
     core.String containerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -449,7 +438,7 @@ class AccountsContainersResource {
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -458,9 +447,7 @@ class AccountsContainersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Container.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all Containers that belongs to a GTM Account.
@@ -482,7 +469,7 @@ class AccountsContainersResource {
   async.Future<ListContainersResponse> list(
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -501,7 +488,7 @@ class AccountsContainersResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -510,10 +497,8 @@ class AccountsContainersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListContainersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListContainersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Container.
@@ -545,7 +530,7 @@ class AccountsContainersResource {
     core.String containerId, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -574,7 +559,7 @@ class AccountsContainersResource {
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -583,9 +568,7 @@ class AccountsContainersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Container.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Container.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -620,7 +603,7 @@ class AccountsContainersEnvironmentsResource {
     core.String accountId,
     core.String containerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -647,7 +630,7 @@ class AccountsContainersEnvironmentsResource {
         commons.Escaper.ecapeVariable('$containerId') +
         '/environments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -656,10 +639,8 @@ class AccountsContainersEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Environment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Environment.
@@ -680,12 +661,12 @@ class AccountsContainersEnvironmentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String accountId,
     core.String containerId,
     core.String environmentId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -715,7 +696,7 @@ class AccountsContainersEnvironmentsResource {
         '/environments/' +
         commons.Escaper.ecapeVariable('$environmentId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -723,9 +704,6 @@ class AccountsContainersEnvironmentsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -754,7 +732,7 @@ class AccountsContainersEnvironmentsResource {
     core.String containerId,
     core.String environmentId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -782,7 +760,7 @@ class AccountsContainersEnvironmentsResource {
         '/environments/' +
         commons.Escaper.ecapeVariable('$environmentId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -791,10 +769,8 @@ class AccountsContainersEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Environment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Environments of a GTM Container.
@@ -819,7 +795,7 @@ class AccountsContainersEnvironmentsResource {
     core.String accountId,
     core.String containerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -843,7 +819,7 @@ class AccountsContainersEnvironmentsResource {
         commons.Escaper.ecapeVariable('$containerId') +
         '/environments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -852,10 +828,8 @@ class AccountsContainersEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListEnvironmentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListEnvironmentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Environment.
@@ -890,7 +864,7 @@ class AccountsContainersEnvironmentsResource {
     core.String environmentId, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -924,7 +898,7 @@ class AccountsContainersEnvironmentsResource {
         '/environments/' +
         commons.Escaper.ecapeVariable('$environmentId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -933,10 +907,8 @@ class AccountsContainersEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Environment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -974,7 +946,7 @@ class AccountsContainersFoldersResource {
     core.String accountId,
     core.String containerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1001,7 +973,7 @@ class AccountsContainersFoldersResource {
         commons.Escaper.ecapeVariable('$containerId') +
         '/folders';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1010,9 +982,7 @@ class AccountsContainersFoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Folder.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Folder.
@@ -1033,12 +1003,12 @@ class AccountsContainersFoldersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String accountId,
     core.String containerId,
     core.String folderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1068,7 +1038,7 @@ class AccountsContainersFoldersResource {
         '/folders/' +
         commons.Escaper.ecapeVariable('$folderId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1076,9 +1046,6 @@ class AccountsContainersFoldersResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1107,7 +1074,7 @@ class AccountsContainersFoldersResource {
     core.String containerId,
     core.String folderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1135,7 +1102,7 @@ class AccountsContainersFoldersResource {
         '/folders/' +
         commons.Escaper.ecapeVariable('$folderId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1144,9 +1111,7 @@ class AccountsContainersFoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Folder.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Folders of a Container.
@@ -1171,7 +1136,7 @@ class AccountsContainersFoldersResource {
     core.String accountId,
     core.String containerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1195,7 +1160,7 @@ class AccountsContainersFoldersResource {
         commons.Escaper.ecapeVariable('$containerId') +
         '/folders';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1204,10 +1169,8 @@ class AccountsContainersFoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListFoldersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListFoldersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Folder.
@@ -1242,7 +1205,7 @@ class AccountsContainersFoldersResource {
     core.String folderId, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1276,7 +1239,7 @@ class AccountsContainersFoldersResource {
         '/folders/' +
         commons.Escaper.ecapeVariable('$folderId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1285,9 +1248,7 @@ class AccountsContainersFoldersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Folder.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Folder.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1322,7 +1283,7 @@ class AccountsContainersFoldersEntitiesResource {
     core.String containerId,
     core.String folderId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1351,7 +1312,7 @@ class AccountsContainersFoldersEntitiesResource {
         commons.Escaper.ecapeVariable('$folderId') +
         '/entities';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1360,10 +1321,8 @@ class AccountsContainersFoldersEntitiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          FolderEntities.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FolderEntities.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1399,7 +1358,7 @@ class AccountsContainersMoveFoldersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future update(
+  async.Future<void> update(
     Folder request,
     core.String accountId,
     core.String containerId,
@@ -1408,7 +1367,7 @@ class AccountsContainersMoveFoldersResource {
     core.List<core.String> triggerId,
     core.List<core.String> variableId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1450,7 +1409,7 @@ class AccountsContainersMoveFoldersResource {
         '/move_folders/' +
         commons.Escaper.ecapeVariable('$folderId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1458,9 +1417,6 @@ class AccountsContainersMoveFoldersResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 }
@@ -1499,7 +1455,7 @@ class AccountsContainersReauthorizeEnvironmentsResource {
     core.String containerId,
     core.String environmentId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1530,7 +1486,7 @@ class AccountsContainersReauthorizeEnvironmentsResource {
         '/reauthorize_environments/' +
         commons.Escaper.ecapeVariable('$environmentId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1539,10 +1495,8 @@ class AccountsContainersReauthorizeEnvironmentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Environment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Environment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1577,7 +1531,7 @@ class AccountsContainersTagsResource {
     core.String accountId,
     core.String containerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1604,7 +1558,7 @@ class AccountsContainersTagsResource {
         commons.Escaper.ecapeVariable('$containerId') +
         '/tags';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1613,9 +1567,7 @@ class AccountsContainersTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Tag.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Tag.
@@ -1636,12 +1588,12 @@ class AccountsContainersTagsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String accountId,
     core.String containerId,
     core.String tagId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1671,7 +1623,7 @@ class AccountsContainersTagsResource {
         '/tags/' +
         commons.Escaper.ecapeVariable('$tagId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1679,9 +1631,6 @@ class AccountsContainersTagsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1710,7 +1659,7 @@ class AccountsContainersTagsResource {
     core.String containerId,
     core.String tagId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1738,7 +1687,7 @@ class AccountsContainersTagsResource {
         '/tags/' +
         commons.Escaper.ecapeVariable('$tagId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1747,9 +1696,7 @@ class AccountsContainersTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Tag.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Tags of a Container.
@@ -1774,7 +1721,7 @@ class AccountsContainersTagsResource {
     core.String accountId,
     core.String containerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1798,7 +1745,7 @@ class AccountsContainersTagsResource {
         commons.Escaper.ecapeVariable('$containerId') +
         '/tags';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1807,10 +1754,8 @@ class AccountsContainersTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTagsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTagsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Tag.
@@ -1845,7 +1790,7 @@ class AccountsContainersTagsResource {
     core.String tagId, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1879,7 +1824,7 @@ class AccountsContainersTagsResource {
         '/tags/' +
         commons.Escaper.ecapeVariable('$tagId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1888,9 +1833,7 @@ class AccountsContainersTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Tag.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Tag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1925,7 +1868,7 @@ class AccountsContainersTriggersResource {
     core.String accountId,
     core.String containerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1952,7 +1895,7 @@ class AccountsContainersTriggersResource {
         commons.Escaper.ecapeVariable('$containerId') +
         '/triggers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1961,9 +1904,7 @@ class AccountsContainersTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Trigger.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Trigger.
@@ -1984,12 +1925,12 @@ class AccountsContainersTriggersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String accountId,
     core.String containerId,
     core.String triggerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2019,7 +1960,7 @@ class AccountsContainersTriggersResource {
         '/triggers/' +
         commons.Escaper.ecapeVariable('$triggerId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2027,9 +1968,6 @@ class AccountsContainersTriggersResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -2058,7 +1996,7 @@ class AccountsContainersTriggersResource {
     core.String containerId,
     core.String triggerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2086,7 +2024,7 @@ class AccountsContainersTriggersResource {
         '/triggers/' +
         commons.Escaper.ecapeVariable('$triggerId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2095,9 +2033,7 @@ class AccountsContainersTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Trigger.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Triggers of a Container.
@@ -2122,7 +2058,7 @@ class AccountsContainersTriggersResource {
     core.String accountId,
     core.String containerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2146,7 +2082,7 @@ class AccountsContainersTriggersResource {
         commons.Escaper.ecapeVariable('$containerId') +
         '/triggers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2155,10 +2091,8 @@ class AccountsContainersTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTriggersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTriggersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Trigger.
@@ -2193,7 +2127,7 @@ class AccountsContainersTriggersResource {
     core.String triggerId, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2227,7 +2161,7 @@ class AccountsContainersTriggersResource {
         '/triggers/' +
         commons.Escaper.ecapeVariable('$triggerId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2236,9 +2170,7 @@ class AccountsContainersTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Trigger.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Trigger.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2273,7 +2205,7 @@ class AccountsContainersVariablesResource {
     core.String accountId,
     core.String containerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2300,7 +2232,7 @@ class AccountsContainersVariablesResource {
         commons.Escaper.ecapeVariable('$containerId') +
         '/variables';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2309,9 +2241,7 @@ class AccountsContainersVariablesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Variable.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GTM Variable.
@@ -2332,12 +2262,12 @@ class AccountsContainersVariablesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String accountId,
     core.String containerId,
     core.String variableId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2367,7 +2297,7 @@ class AccountsContainersVariablesResource {
         '/variables/' +
         commons.Escaper.ecapeVariable('$variableId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2375,9 +2305,6 @@ class AccountsContainersVariablesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -2406,7 +2333,7 @@ class AccountsContainersVariablesResource {
     core.String containerId,
     core.String variableId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2434,7 +2361,7 @@ class AccountsContainersVariablesResource {
         '/variables/' +
         commons.Escaper.ecapeVariable('$variableId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2443,9 +2370,7 @@ class AccountsContainersVariablesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Variable.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GTM Variables of a Container.
@@ -2470,7 +2395,7 @@ class AccountsContainersVariablesResource {
     core.String accountId,
     core.String containerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2494,7 +2419,7 @@ class AccountsContainersVariablesResource {
         commons.Escaper.ecapeVariable('$containerId') +
         '/variables';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2503,10 +2428,8 @@ class AccountsContainersVariablesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListVariablesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListVariablesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GTM Variable.
@@ -2541,7 +2464,7 @@ class AccountsContainersVariablesResource {
     core.String variableId, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2575,7 +2498,7 @@ class AccountsContainersVariablesResource {
         '/variables/' +
         commons.Escaper.ecapeVariable('$variableId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2584,9 +2507,7 @@ class AccountsContainersVariablesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Variable.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Variable.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2621,7 +2542,7 @@ class AccountsContainersVersionsResource {
     core.String accountId,
     core.String containerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2648,7 +2569,7 @@ class AccountsContainersVersionsResource {
         commons.Escaper.ecapeVariable('$containerId') +
         '/versions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2657,10 +2578,8 @@ class AccountsContainersVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CreateContainerVersionResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CreateContainerVersionResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a Container Version.
@@ -2681,12 +2600,12 @@ class AccountsContainersVersionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String accountId,
     core.String containerId,
     core.String containerVersionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2716,7 +2635,7 @@ class AccountsContainersVersionsResource {
         '/versions/' +
         commons.Escaper.ecapeVariable('$containerVersionId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2724,9 +2643,6 @@ class AccountsContainersVersionsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -2756,7 +2672,7 @@ class AccountsContainersVersionsResource {
     core.String containerId,
     core.String containerVersionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2784,7 +2700,7 @@ class AccountsContainersVersionsResource {
         '/versions/' +
         commons.Escaper.ecapeVariable('$containerVersionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2793,10 +2709,8 @@ class AccountsContainersVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ContainerVersion.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ContainerVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all Container Versions of a GTM Container.
@@ -2827,7 +2741,7 @@ class AccountsContainersVersionsResource {
     core.bool headers,
     core.bool includeDeleted,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2857,7 +2771,7 @@ class AccountsContainersVersionsResource {
         commons.Escaper.ecapeVariable('$containerId') +
         '/versions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2866,10 +2780,8 @@ class AccountsContainersVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListContainerVersionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListContainerVersionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Publishes a Container Version.
@@ -2901,7 +2813,7 @@ class AccountsContainersVersionsResource {
     core.String containerVersionId, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2933,7 +2845,7 @@ class AccountsContainersVersionsResource {
         commons.Escaper.ecapeVariable('$containerVersionId') +
         '/publish';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2942,10 +2854,8 @@ class AccountsContainersVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PublishContainerVersionResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PublishContainerVersionResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Restores a Container Version.
@@ -2977,7 +2887,7 @@ class AccountsContainersVersionsResource {
     core.String containerId,
     core.String containerVersionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3006,7 +2916,7 @@ class AccountsContainersVersionsResource {
         commons.Escaper.ecapeVariable('$containerVersionId') +
         '/restore';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3015,10 +2925,8 @@ class AccountsContainersVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ContainerVersion.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ContainerVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Undeletes a Container Version.
@@ -3046,7 +2954,7 @@ class AccountsContainersVersionsResource {
     core.String containerId,
     core.String containerVersionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3075,7 +2983,7 @@ class AccountsContainersVersionsResource {
         commons.Escaper.ecapeVariable('$containerVersionId') +
         '/undelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3084,10 +2992,8 @@ class AccountsContainersVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ContainerVersion.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ContainerVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Container Version.
@@ -3122,7 +3028,7 @@ class AccountsContainersVersionsResource {
     core.String containerVersionId, {
     core.String fingerprint,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3156,7 +3062,7 @@ class AccountsContainersVersionsResource {
         '/versions/' +
         commons.Escaper.ecapeVariable('$containerVersionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -3165,10 +3071,8 @@ class AccountsContainersVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ContainerVersion.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ContainerVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3200,7 +3104,7 @@ class AccountsPermissionsResource {
     UserAccess request,
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3222,7 +3126,7 @@ class AccountsPermissionsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/permissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3231,10 +3135,8 @@ class AccountsPermissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          UserAccess.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserAccess.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes a user from the account, revoking access to it and all of its
@@ -3254,11 +3156,11 @@ class AccountsPermissionsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String accountId,
     core.String permissionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3283,7 +3185,7 @@ class AccountsPermissionsResource {
         '/permissions/' +
         commons.Escaper.ecapeVariable('$permissionId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3291,9 +3193,6 @@ class AccountsPermissionsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -3319,7 +3218,7 @@ class AccountsPermissionsResource {
     core.String accountId,
     core.String permissionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3342,7 +3241,7 @@ class AccountsPermissionsResource {
         '/permissions/' +
         commons.Escaper.ecapeVariable('$permissionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3351,10 +3250,8 @@ class AccountsPermissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          UserAccess.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserAccess.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all users that have access to the account along with Account and
@@ -3377,7 +3274,7 @@ class AccountsPermissionsResource {
   async.Future<ListAccountUsersResponse> list(
     core.String accountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3396,7 +3293,7 @@ class AccountsPermissionsResource {
         commons.Escaper.ecapeVariable('$accountId') +
         '/permissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3405,10 +3302,8 @@ class AccountsPermissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAccountUsersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAccountUsersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a user's Account & Container Permissions.
@@ -3436,7 +3331,7 @@ class AccountsPermissionsResource {
     core.String accountId,
     core.String permissionId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3462,7 +3357,7 @@ class AccountsPermissionsResource {
         '/permissions/' +
         commons.Escaper.ecapeVariable('$permissionId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -3471,10 +3366,8 @@ class AccountsPermissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          UserAccess.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserAccess.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

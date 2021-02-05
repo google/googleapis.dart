@@ -139,7 +139,7 @@ class ProjectsLocationsCatalogsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -163,7 +163,7 @@ class ProjectsLocationsCatalogsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/catalogs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -172,10 +172,8 @@ class ProjectsLocationsCatalogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRetailV2ListCatalogsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRetailV2ListCatalogsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the Catalogs.
@@ -209,7 +207,7 @@ class ProjectsLocationsCatalogsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -232,7 +230,7 @@ class ProjectsLocationsCatalogsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -241,10 +239,8 @@ class ProjectsLocationsCatalogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRetailV2Catalog.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRetailV2Catalog.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -291,7 +287,7 @@ class ProjectsLocationsCatalogsBranchesOperationsResource {
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -308,7 +304,7 @@ class ProjectsLocationsCatalogsBranchesOperationsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -317,10 +313,8 @@ class ProjectsLocationsCatalogsBranchesOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -364,7 +358,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
     core.String parent, {
     core.String productId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -388,7 +382,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -397,10 +391,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRetailV2Product.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRetailV2Product.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a Product.
@@ -431,7 +423,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -448,7 +440,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -457,10 +449,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a Product.
@@ -488,7 +478,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
   async.Future<GoogleCloudRetailV2Product> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -505,7 +495,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -514,10 +504,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRetailV2Product.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRetailV2Product.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Bulk import of multiple Products.
@@ -551,7 +539,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
     GoogleCloudRetailV2ImportProductsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -573,7 +561,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/products:import';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -582,10 +570,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a Product.
@@ -626,7 +612,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
     core.bool allowMissing,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -652,7 +638,7 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -661,10 +647,8 @@ class ProjectsLocationsCatalogsBranchesProductsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRetailV2Product.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRetailV2Product.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -698,7 +682,7 @@ class ProjectsLocationsCatalogsOperationsResource {
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -715,7 +699,7 @@ class ProjectsLocationsCatalogsOperationsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -724,10 +708,8 @@ class ProjectsLocationsCatalogsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -769,7 +751,7 @@ class ProjectsLocationsCatalogsOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -796,7 +778,7 @@ class ProjectsLocationsCatalogsOperationsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -805,10 +787,8 @@ class ProjectsLocationsCatalogsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -862,7 +842,7 @@ class ProjectsLocationsCatalogsPlacementsResource {
     GoogleCloudRetailV2PredictRequest request,
     core.String placement, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -884,7 +864,7 @@ class ProjectsLocationsCatalogsPlacementsResource {
         commons.Escaper.ecapeVariableReserved('$placement') +
         ':predict';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -893,10 +873,8 @@ class ProjectsLocationsCatalogsPlacementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRetailV2PredictResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRetailV2PredictResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -947,7 +925,7 @@ class ProjectsLocationsCatalogsUserEventsResource {
     core.String uri,
     core.String userEvent,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -975,7 +953,7 @@ class ProjectsLocationsCatalogsUserEventsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userEvents:collect';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -984,10 +962,8 @@ class ProjectsLocationsCatalogsUserEventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleApiHttpBody.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleApiHttpBody.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Bulk import of User events.
@@ -1021,7 +997,7 @@ class ProjectsLocationsCatalogsUserEventsResource {
     GoogleCloudRetailV2ImportUserEventsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1043,7 +1019,7 @@ class ProjectsLocationsCatalogsUserEventsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userEvents:import';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1052,10 +1028,8 @@ class ProjectsLocationsCatalogsUserEventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes permanently all user events specified by the filter provided.
@@ -1088,7 +1062,7 @@ class ProjectsLocationsCatalogsUserEventsResource {
     GoogleCloudRetailV2PurgeUserEventsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1110,7 +1084,7 @@ class ProjectsLocationsCatalogsUserEventsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userEvents:purge';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1119,10 +1093,8 @@ class ProjectsLocationsCatalogsUserEventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Triggers a user event rejoin operation with latest product catalog.
@@ -1157,7 +1129,7 @@ class ProjectsLocationsCatalogsUserEventsResource {
     GoogleCloudRetailV2RejoinUserEventsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1179,7 +1151,7 @@ class ProjectsLocationsCatalogsUserEventsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userEvents:rejoin';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1188,10 +1160,8 @@ class ProjectsLocationsCatalogsUserEventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Writes a single user event.
@@ -1219,7 +1189,7 @@ class ProjectsLocationsCatalogsUserEventsResource {
     GoogleCloudRetailV2UserEvent request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1241,7 +1211,7 @@ class ProjectsLocationsCatalogsUserEventsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userEvents:write';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1250,10 +1220,8 @@ class ProjectsLocationsCatalogsUserEventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudRetailV2UserEvent.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudRetailV2UserEvent.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1287,7 +1255,7 @@ class ProjectsLocationsOperationsResource {
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1304,7 +1272,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1313,10 +1281,8 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -1357,7 +1323,7 @@ class ProjectsLocationsOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1384,7 +1350,7 @@ class ProjectsLocationsOperationsResource {
     _url =
         'v2/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1393,10 +1359,8 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -96,7 +96,7 @@ class UsersResource {
     core.String projectId,
     core.String systemId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -121,7 +121,7 @@ class UsersResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/loginProfile';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -130,10 +130,8 @@ class UsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LoginProfile.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LoginProfile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds an SSH public key and returns the profile information.
@@ -165,7 +163,7 @@ class UsersResource {
     core.String parent, {
     core.String projectId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -190,7 +188,7 @@ class UsersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':importSshPublicKey';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -199,10 +197,8 @@ class UsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ImportSshPublicKeyResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ImportSshPublicKeyResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -234,7 +230,7 @@ class UsersProjectsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -251,7 +247,7 @@ class UsersProjectsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -260,9 +256,7 @@ class UsersProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -293,7 +287,7 @@ class UsersSshPublicKeysResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -310,7 +304,7 @@ class UsersSshPublicKeysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -319,9 +313,7 @@ class UsersSshPublicKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves an SSH public key.
@@ -346,7 +338,7 @@ class UsersSshPublicKeysResource {
   async.Future<SshPublicKey> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -363,7 +355,7 @@ class UsersSshPublicKeysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -372,10 +364,8 @@ class UsersSshPublicKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SshPublicKey.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SshPublicKey.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an SSH public key and returns the profile information.
@@ -409,7 +399,7 @@ class UsersSshPublicKeysResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -432,7 +422,7 @@ class UsersSshPublicKeysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -441,10 +431,8 @@ class UsersSshPublicKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          SshPublicKey.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return SshPublicKey.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -107,7 +107,7 @@ class JobsResource {
     Job request, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -127,7 +127,7 @@ class JobsResource {
 
     _url = 'v1/jobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -136,9 +136,7 @@ class JobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a job.
@@ -165,7 +163,7 @@ class JobsResource {
     core.String jobId, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -185,7 +183,7 @@ class JobsResource {
 
     _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -194,9 +192,7 @@ class JobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a job.
@@ -223,7 +219,7 @@ class JobsResource {
     core.String jobId, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -243,7 +239,7 @@ class JobsResource {
 
     _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -252,9 +248,7 @@ class JobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Job.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists jobs.
@@ -293,7 +287,7 @@ class JobsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -319,7 +313,7 @@ class JobsResource {
 
     _url = 'v1/jobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -328,10 +322,8 @@ class JobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListJobsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListJobsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -367,7 +359,7 @@ class JobsReportsResource {
     core.String reportId, {
     core.String onBehalfOfContentOwner,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -393,7 +385,7 @@ class JobsReportsResource {
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -402,9 +394,7 @@ class JobsReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Report.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists reports created by a specific job.
@@ -455,7 +445,7 @@ class JobsReportsResource {
     core.String startTimeAtOrAfter,
     core.String startTimeBefore,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -490,7 +480,7 @@ class JobsReportsResource {
 
     _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/reports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -499,10 +489,8 @@ class JobsReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListReportsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListReportsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -538,11 +526,11 @@ class MediaResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future download(
+  async.Future<core.Object> download(
     core.String resourceName, {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -561,7 +549,7 @@ class MediaResource {
 
     _url = 'v1/media/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -572,10 +560,8 @@ class MediaResource {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then(
-        (data) =>
-            GdataMedia.fromJson(data as core.Map<core.String, core.dynamic>),
-      );
+      return GdataMedia.fromJson(
+          _response as core.Map<core.String, core.dynamic>);
     } else {
       return _response;
     }
@@ -623,7 +609,7 @@ class ReportTypesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -649,7 +635,7 @@ class ReportTypesResource {
 
     _url = 'v1/reportTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -658,10 +644,8 @@ class ReportTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListReportTypesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListReportTypesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -132,6 +132,38 @@
     "$ref": "CompileResponse"
    }
   },
+  "get": {
+   "description": "Retrieves an object or its metadata.",
+   "httpMethod": "GET",
+   "id": "storage.objects.get",
+   "parameterOrder": [
+    "bucket",
+    "object"
+   ],
+   "parameters": {
+    "bucket": {
+     "description": "Name of the bucket in which the object resides.",
+     "location": "path",
+     "required": true,
+     "type": "string"
+    },
+    "object": {
+     "description": "Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.",
+     "location": "path",
+     "required": true,
+     "type": "string"
+    }
+   },
+   "path": "b/{bucket}/o/{object}",
+   "response": {
+    "$ref": "CompileResponse"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/cloud-platform"
+   ],
+   "supportsMediaDownload": true,
+   "useMediaDownloadService": true
+  },
   "compileGet": {
    "id": "CommonServer.compileGet",
    "path": "compile",

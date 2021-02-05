@@ -25,7 +25,15 @@ import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
-    show ApiRequestError, DetailedApiRequestError;
+    show
+        ApiRequestError,
+        DetailedApiRequestError,
+        Media,
+        UploadOptions,
+        ResumableUploadOptions,
+        DownloadOptions,
+        PartialDownloadOptions,
+        ByteRange;
 
 const userAgent = 'dart-api-client dartservices/v1';
 
@@ -49,7 +57,7 @@ class DartservicesApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<AnalysisResults> analyze(SourceRequest request) {
+  async.Future<AnalysisResults> analyze(SourceRequest request) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -63,7 +71,7 @@ class DartservicesApi {
 
     _url = 'analyze';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -72,10 +80,8 @@ class DartservicesApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AnalysisResults.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AnalysisResults.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Request parameters:
@@ -91,7 +97,7 @@ class DartservicesApi {
   /// this method will complete with the same error.
   async.Future<AnalysisResults> analyzeGet({
     core.String source,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -105,7 +111,7 @@ class DartservicesApi {
 
     _url = 'analyze';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -114,10 +120,8 @@ class DartservicesApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AnalysisResults.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AnalysisResults.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// [request] - The metadata request object.
@@ -131,7 +135,7 @@ class DartservicesApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<CompileResponse> compile(SourceRequest request) {
+  async.Future<CompileResponse> compile(SourceRequest request) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -145,7 +149,7 @@ class DartservicesApi {
 
     _url = 'compile';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -154,10 +158,8 @@ class DartservicesApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CompileResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CompileResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Request parameters:
@@ -173,7 +175,7 @@ class DartservicesApi {
   /// this method will complete with the same error.
   async.Future<CompileResponse> compileGet({
     core.String source,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -187,7 +189,7 @@ class DartservicesApi {
 
     _url = 'compile';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -196,10 +198,8 @@ class DartservicesApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CompileResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CompileResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// [request] - The metadata request object.
@@ -211,7 +211,7 @@ class DartservicesApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future complete(SourceRequest request) {
+  async.Future<void> complete(SourceRequest request) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -227,7 +227,7 @@ class DartservicesApi {
 
     _url = 'complete';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -235,9 +235,6 @@ class DartservicesApi {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -252,10 +249,10 @@ class DartservicesApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future completeGet({
+  async.Future<void> completeGet({
     core.int offset,
     core.String source,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -274,7 +271,7 @@ class DartservicesApi {
 
     _url = 'complete';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -282,9 +279,6 @@ class DartservicesApi {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -299,7 +293,7 @@ class DartservicesApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<DocumentResponse> document(SourceRequest request) {
+  async.Future<DocumentResponse> document(SourceRequest request) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -313,7 +307,7 @@ class DartservicesApi {
 
     _url = 'document';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -322,10 +316,8 @@ class DartservicesApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DocumentResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DocumentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Request parameters:
@@ -344,7 +336,7 @@ class DartservicesApi {
   async.Future<DocumentResponse> documentGet({
     core.int offset,
     core.String source,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -361,7 +353,7 @@ class DartservicesApi {
 
     _url = 'document';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -370,10 +362,76 @@ class DartservicesApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DocumentResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
+    return DocumentResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves an object or its metadata.
+  ///
+  /// Request parameters:
+  ///
+  /// [bucket] - Name of the bucket in which the object resides.
+  ///
+  /// [object] - Name of the object. For information about how to URL encode
+  /// object names to be path safe, see Encoding URI Path Parts.
+  ///
+  /// [downloadOptions] - Options for downloading. A download can be either a
+  /// Metadata (default) or Media download. Partial Media downloads are possible
+  /// as well.
+  ///
+  /// Completes with a
+  ///
+  /// - [CompileResponse] for Metadata downloads (see [downloadOptions]).
+  ///
+  /// - [commons.Media] for Media downloads (see [downloadOptions]).
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<core.Object> get(
+    core.String bucket,
+    core.String object, {
+    commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
+  }) async {
+    core.String _url;
+    final _queryParams = <core.String, core.List<core.String>>{};
+    commons.Media _uploadMedia;
+    commons.UploadOptions _uploadOptions;
+    var _downloadOptions = commons.DownloadOptions.Metadata;
+    core.String _body;
+
+    if (bucket == null) {
+      throw core.ArgumentError('Parameter bucket is required.');
+    }
+    if (object == null) {
+      throw core.ArgumentError('Parameter object is required.');
+    }
+
+    _downloadOptions = downloadOptions;
+
+    _url = 'b/' +
+        commons.Escaper.ecapeVariable('$bucket') +
+        '/o/' +
+        commons.Escaper.ecapeVariable('$object');
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
     );
+    if (_downloadOptions == null ||
+        _downloadOptions == commons.DownloadOptions.Metadata) {
+      return CompileResponse.fromJson(
+          _response as core.Map<core.String, core.dynamic>);
+    } else {
+      return _response;
+    }
   }
 }
 

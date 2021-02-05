@@ -115,7 +115,7 @@ class DevicesResource {
     GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -136,7 +136,7 @@ class DevicesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancelWipe';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -145,9 +145,7 @@ class DevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a device.
@@ -182,7 +180,7 @@ class DevicesResource {
     GoogleAppsCloudidentityDevicesV1Device request, {
     core.String customer,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -202,7 +200,7 @@ class DevicesResource {
 
     _url = 'v1/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -211,9 +209,7 @@ class DevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified device.
@@ -247,7 +243,7 @@ class DevicesResource {
     core.String name, {
     core.String customer,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -267,7 +263,7 @@ class DevicesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -276,9 +272,7 @@ class DevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the specified device.
@@ -313,7 +307,7 @@ class DevicesResource {
     core.String name, {
     core.String customer,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -333,7 +327,7 @@ class DevicesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -342,10 +336,8 @@ class DevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAppsCloudidentityDevicesV1Device.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAppsCloudidentityDevicesV1Device.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists/Searches devices.
@@ -409,7 +401,7 @@ class DevicesResource {
     core.String pageToken,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -441,7 +433,7 @@ class DevicesResource {
 
     _url = 'v1/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -450,10 +442,8 @@ class DevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Wipes all data on the specified device.
@@ -483,7 +473,7 @@ class DevicesResource {
     GoogleAppsCloudidentityDevicesV1WipeDeviceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -503,7 +493,7 @@ class DevicesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':wipe';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -512,9 +502,7 @@ class DevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -553,7 +541,7 @@ class DevicesDeviceUsersResource {
     GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -573,7 +561,7 @@ class DevicesDeviceUsersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':approve';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -582,9 +570,7 @@ class DevicesDeviceUsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Blocks device from accessing user data
@@ -614,7 +600,7 @@ class DevicesDeviceUsersResource {
     GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -634,7 +620,7 @@ class DevicesDeviceUsersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':block';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -643,9 +629,7 @@ class DevicesDeviceUsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Cancels an unfinished user account wipe.
@@ -678,7 +662,7 @@ class DevicesDeviceUsersResource {
     GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -699,7 +683,7 @@ class DevicesDeviceUsersResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancelWipe';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -708,9 +692,7 @@ class DevicesDeviceUsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the specified DeviceUser.
@@ -747,7 +729,7 @@ class DevicesDeviceUsersResource {
     core.String name, {
     core.String customer,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -767,7 +749,7 @@ class DevicesDeviceUsersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -776,9 +758,7 @@ class DevicesDeviceUsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the specified DeviceUser
@@ -813,7 +793,7 @@ class DevicesDeviceUsersResource {
     core.String name, {
     core.String customer,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -833,7 +813,7 @@ class DevicesDeviceUsersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -842,10 +822,8 @@ class DevicesDeviceUsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists/Searches DeviceUsers.
@@ -899,7 +877,7 @@ class DevicesDeviceUsersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -933,7 +911,7 @@ class DevicesDeviceUsersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/deviceUsers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -942,11 +920,8 @@ class DevicesDeviceUsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Looks up resource names of the DeviceUsers associated with the caller's
@@ -1011,7 +986,7 @@ class DevicesDeviceUsersResource {
     core.String rawResourceId,
     core.String userId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1043,7 +1018,7 @@ class DevicesDeviceUsersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + ':lookup';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1052,10 +1027,8 @@ class DevicesDeviceUsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
-          .fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Wipes the user's account on a device.
@@ -1092,7 +1065,7 @@ class DevicesDeviceUsersResource {
     GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1112,7 +1085,7 @@ class DevicesDeviceUsersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':wipe';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1121,9 +1094,7 @@ class DevicesDeviceUsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1173,7 +1144,7 @@ class DevicesDeviceUsersClientStatesResource {
     core.String name, {
     core.String customer,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1193,7 +1164,7 @@ class DevicesDeviceUsersClientStatesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1202,10 +1173,8 @@ class DevicesDeviceUsersClientStatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAppsCloudidentityDevicesV1ClientState.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAppsCloudidentityDevicesV1ClientState.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the client states for the given search query.
@@ -1254,7 +1223,7 @@ class DevicesDeviceUsersClientStatesResource {
     core.String orderBy,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1285,7 +1254,7 @@ class DevicesDeviceUsersClientStatesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/clientStates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1294,11 +1263,8 @@ class DevicesDeviceUsersClientStatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the client state for the device user **Note**: This method is
@@ -1356,7 +1322,7 @@ class DevicesDeviceUsersClientStatesResource {
     core.String customer,
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1382,7 +1348,7 @@ class DevicesDeviceUsersClientStatesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1391,9 +1357,7 @@ class DevicesDeviceUsersClientStatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1434,7 +1398,7 @@ class GroupsResource {
     Group request, {
     core.String initialGroupConfig,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1454,7 +1418,7 @@ class GroupsResource {
 
     _url = 'v1/groups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1463,9 +1427,7 @@ class GroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a `Group`.
@@ -1490,7 +1452,7 @@ class GroupsResource {
   async.Future<Operation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1507,7 +1469,7 @@ class GroupsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1516,9 +1478,7 @@ class GroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a `Group`.
@@ -1543,7 +1503,7 @@ class GroupsResource {
   async.Future<Group> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1560,7 +1520,7 @@ class GroupsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1569,9 +1529,7 @@ class GroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Group.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Group.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the `Group`s under a customer or namespace.
@@ -1616,7 +1574,7 @@ class GroupsResource {
     core.String parent,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1642,7 +1600,7 @@ class GroupsResource {
 
     _url = 'v1/groups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1651,10 +1609,8 @@ class GroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListGroupsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListGroupsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Looks up the
@@ -1689,7 +1645,7 @@ class GroupsResource {
     core.String groupKey_id,
     core.String groupKey_namespace,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1709,7 +1665,7 @@ class GroupsResource {
 
     _url = 'v1/groups:lookup';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1718,10 +1674,8 @@ class GroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LookupGroupNameResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LookupGroupNameResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a `Group`.
@@ -1753,7 +1707,7 @@ class GroupsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1776,7 +1730,7 @@ class GroupsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1785,9 +1739,7 @@ class GroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Searches for `Group`s matching a specified query.
@@ -1834,7 +1786,7 @@ class GroupsResource {
     core.String query,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1860,7 +1812,7 @@ class GroupsResource {
 
     _url = 'v1/groups:search';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1869,10 +1821,8 @@ class GroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchGroupsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchGroupsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1921,7 +1871,7 @@ class GroupsMembershipsResource {
     core.String parent, {
     core.String query,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1943,7 +1893,7 @@ class GroupsMembershipsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/memberships:checkTransitiveMembership';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1952,10 +1902,8 @@ class GroupsMembershipsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CheckTransitiveMembershipResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CheckTransitiveMembershipResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a `Membership`.
@@ -1982,7 +1930,7 @@ class GroupsMembershipsResource {
     Membership request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2004,7 +1952,7 @@ class GroupsMembershipsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/memberships';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2013,9 +1961,7 @@ class GroupsMembershipsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a `Membership`.
@@ -2041,7 +1987,7 @@ class GroupsMembershipsResource {
   async.Future<Operation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2058,7 +2004,7 @@ class GroupsMembershipsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2067,9 +2013,7 @@ class GroupsMembershipsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a `Membership`.
@@ -2095,7 +2039,7 @@ class GroupsMembershipsResource {
   async.Future<Membership> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2112,7 +2056,7 @@ class GroupsMembershipsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2121,10 +2065,8 @@ class GroupsMembershipsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Membership.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Membership.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a membership graph of just a member or both a member and a group.
@@ -2170,7 +2112,7 @@ class GroupsMembershipsResource {
     core.String parent, {
     core.String query,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2192,7 +2134,7 @@ class GroupsMembershipsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/memberships:getMembershipGraph';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2201,9 +2143,7 @@ class GroupsMembershipsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the `Membership`s within a `Group`.
@@ -2248,7 +2188,7 @@ class GroupsMembershipsResource {
     core.String pageToken,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2276,7 +2216,7 @@ class GroupsMembershipsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/memberships';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2285,10 +2225,8 @@ class GroupsMembershipsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListMembershipsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListMembershipsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Looks up the
@@ -2328,7 +2266,7 @@ class GroupsMembershipsResource {
     core.String memberKey_id,
     core.String memberKey_namespace,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2353,7 +2291,7 @@ class GroupsMembershipsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/memberships:lookup';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2362,10 +2300,8 @@ class GroupsMembershipsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LookupMembershipNameResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LookupMembershipNameResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies the `MembershipRole`s of a `Membership`.
@@ -2394,7 +2330,7 @@ class GroupsMembershipsResource {
     ModifyMembershipRolesRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2416,7 +2352,7 @@ class GroupsMembershipsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':modifyMembershipRoles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2425,10 +2361,8 @@ class GroupsMembershipsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ModifyMembershipRolesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ModifyMembershipRolesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Search transitive groups of a member.
@@ -2478,7 +2412,7 @@ class GroupsMembershipsResource {
     core.String pageToken,
     core.String query,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2506,7 +2440,7 @@ class GroupsMembershipsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/memberships:searchTransitiveGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2515,10 +2449,8 @@ class GroupsMembershipsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchTransitiveGroupsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchTransitiveGroupsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Search transitive memberships of a group.
@@ -2559,7 +2491,7 @@ class GroupsMembershipsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2584,7 +2516,7 @@ class GroupsMembershipsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/memberships:searchTransitiveMemberships';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2593,10 +2525,8 @@ class GroupsMembershipsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchTransitiveMembershipsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchTransitiveMembershipsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

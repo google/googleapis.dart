@@ -120,7 +120,7 @@ class ProjectsAnnotationSpecSetsResource {
     GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -142,7 +142,7 @@ class ProjectsAnnotationSpecSetsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/annotationSpecSets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -151,10 +151,8 @@ class ProjectsAnnotationSpecSetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1AnnotationSpecSet.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1AnnotationSpecSet.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an annotation spec set by resource name.
@@ -178,7 +176,7 @@ class ProjectsAnnotationSpecSetsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -195,7 +193,7 @@ class ProjectsAnnotationSpecSetsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -204,10 +202,8 @@ class ProjectsAnnotationSpecSetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an annotation spec set by resource name.
@@ -231,7 +227,7 @@ class ProjectsAnnotationSpecSetsResource {
   async.Future<GoogleCloudDatalabelingV1beta1AnnotationSpecSet> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -248,7 +244,7 @@ class ProjectsAnnotationSpecSetsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -257,10 +253,8 @@ class ProjectsAnnotationSpecSetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1AnnotationSpecSet.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1AnnotationSpecSet.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists annotation spec sets for a project.
@@ -302,7 +296,7 @@ class ProjectsAnnotationSpecSetsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -330,7 +324,7 @@ class ProjectsAnnotationSpecSetsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/annotationSpecSets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -339,11 +333,8 @@ class ProjectsAnnotationSpecSetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -391,7 +382,7 @@ class ProjectsDatasetsResource {
     GoogleCloudDatalabelingV1beta1CreateDatasetRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -413,7 +404,7 @@ class ProjectsDatasetsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/datasets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -422,10 +413,8 @@ class ProjectsDatasetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1Dataset.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1Dataset.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a dataset by resource name.
@@ -449,7 +438,7 @@ class ProjectsDatasetsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -466,7 +455,7 @@ class ProjectsDatasetsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -475,10 +464,8 @@ class ProjectsDatasetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Exports data and annotations from dataset.
@@ -505,7 +492,7 @@ class ProjectsDatasetsResource {
     GoogleCloudDatalabelingV1beta1ExportDataRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -527,7 +514,7 @@ class ProjectsDatasetsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':exportData';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -536,10 +523,8 @@ class ProjectsDatasetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets dataset by resource name.
@@ -563,7 +548,7 @@ class ProjectsDatasetsResource {
   async.Future<GoogleCloudDatalabelingV1beta1Dataset> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -580,7 +565,7 @@ class ProjectsDatasetsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -589,10 +574,8 @@ class ProjectsDatasetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1Dataset.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1Dataset.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Imports data into dataset based on source locations defined in request.
@@ -624,7 +607,7 @@ class ProjectsDatasetsResource {
     GoogleCloudDatalabelingV1beta1ImportDataRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -646,7 +629,7 @@ class ProjectsDatasetsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':importData';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -655,10 +638,8 @@ class ProjectsDatasetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists datasets under a project.
@@ -698,7 +679,7 @@ class ProjectsDatasetsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -726,7 +707,7 @@ class ProjectsDatasetsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/datasets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -735,10 +716,8 @@ class ProjectsDatasetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1ListDatasetsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1ListDatasetsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -779,7 +758,7 @@ class ProjectsDatasetsAnnotatedDatasetsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -796,7 +775,7 @@ class ProjectsDatasetsAnnotatedDatasetsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -805,10 +784,8 @@ class ProjectsDatasetsAnnotatedDatasetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an annotated dataset by resource name.
@@ -834,7 +811,7 @@ class ProjectsDatasetsAnnotatedDatasetsResource {
   async.Future<GoogleCloudDatalabelingV1beta1AnnotatedDataset> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -851,7 +828,7 @@ class ProjectsDatasetsAnnotatedDatasetsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -860,10 +837,8 @@ class ProjectsDatasetsAnnotatedDatasetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1AnnotatedDataset.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1AnnotatedDataset.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists annotated datasets for a dataset.
@@ -905,7 +880,7 @@ class ProjectsDatasetsAnnotatedDatasetsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -933,7 +908,7 @@ class ProjectsDatasetsAnnotatedDatasetsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/annotatedDatasets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -942,11 +917,8 @@ class ProjectsDatasetsAnnotatedDatasetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -981,7 +953,7 @@ class ProjectsDatasetsAnnotatedDatasetsDataItemsResource {
   async.Future<GoogleCloudDatalabelingV1beta1DataItem> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -998,7 +970,7 @@ class ProjectsDatasetsAnnotatedDatasetsDataItemsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1007,10 +979,8 @@ class ProjectsDatasetsAnnotatedDatasetsDataItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1DataItem.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1DataItem.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists data items in a dataset.
@@ -1051,7 +1021,7 @@ class ProjectsDatasetsAnnotatedDatasetsDataItemsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1079,7 +1049,7 @@ class ProjectsDatasetsAnnotatedDatasetsDataItemsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dataItems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1088,10 +1058,8 @@ class ProjectsDatasetsAnnotatedDatasetsDataItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1ListDataItemsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1ListDataItemsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1129,7 +1097,7 @@ class ProjectsDatasetsAnnotatedDatasetsExamplesResource {
     core.String name, {
     core.String filter,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1149,7 +1117,7 @@ class ProjectsDatasetsAnnotatedDatasetsExamplesResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1158,10 +1126,8 @@ class ProjectsDatasetsAnnotatedDatasetsExamplesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1Example.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1Example.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists examples in an annotated dataset.
@@ -1203,7 +1169,7 @@ class ProjectsDatasetsAnnotatedDatasetsExamplesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1231,7 +1197,7 @@ class ProjectsDatasetsAnnotatedDatasetsExamplesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/examples';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1240,10 +1206,8 @@ class ProjectsDatasetsAnnotatedDatasetsExamplesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1ListExamplesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1ListExamplesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1282,7 +1246,7 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1299,7 +1263,7 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1308,10 +1272,8 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a FeedbackThread object.
@@ -1336,7 +1298,7 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResource {
   async.Future<GoogleCloudDatalabelingV1beta1FeedbackThread> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1353,7 +1315,7 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1362,10 +1324,8 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1FeedbackThread.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1FeedbackThread.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List FeedbackThreads with pagination.
@@ -1402,7 +1362,7 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1427,7 +1387,7 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/feedbackThreads';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1436,11 +1396,8 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1476,7 +1433,7 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResource {
     GoogleCloudDatalabelingV1beta1FeedbackMessage request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1498,7 +1455,7 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/feedbackMessages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1507,10 +1464,8 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a FeedbackMessage.
@@ -1536,7 +1491,7 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1553,7 +1508,7 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1562,10 +1517,8 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a FeedbackMessage object.
@@ -1590,7 +1543,7 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResource {
   async.Future<GoogleCloudDatalabelingV1beta1FeedbackMessage> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1607,7 +1560,7 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1616,10 +1569,8 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1FeedbackMessage.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1FeedbackMessage.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List FeedbackMessages with pagination.
@@ -1656,7 +1607,7 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1681,7 +1632,7 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/feedbackMessages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1690,11 +1641,8 @@ class ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1728,7 +1676,7 @@ class ProjectsDatasetsDataItemsResource {
   async.Future<GoogleCloudDatalabelingV1beta1DataItem> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1745,7 +1693,7 @@ class ProjectsDatasetsDataItemsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1754,10 +1702,8 @@ class ProjectsDatasetsDataItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1DataItem.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1DataItem.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists data items in a dataset.
@@ -1797,7 +1743,7 @@ class ProjectsDatasetsDataItemsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1825,7 +1771,7 @@ class ProjectsDatasetsDataItemsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dataItems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1834,10 +1780,8 @@ class ProjectsDatasetsDataItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1ListDataItemsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1ListDataItemsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1874,7 +1818,7 @@ class ProjectsDatasetsEvaluationsResource {
   async.Future<GoogleCloudDatalabelingV1beta1Evaluation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1891,7 +1835,7 @@ class ProjectsDatasetsEvaluationsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1900,10 +1844,8 @@ class ProjectsDatasetsEvaluationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1Evaluation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1Evaluation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1946,7 +1888,7 @@ class ProjectsDatasetsEvaluationsExampleComparisonsResource {
     GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1968,7 +1910,7 @@ class ProjectsDatasetsEvaluationsExampleComparisonsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/exampleComparisons:search';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1977,10 +1919,8 @@ class ProjectsDatasetsEvaluationsExampleComparisonsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse
-          .fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2016,7 +1956,7 @@ class ProjectsDatasetsImageResource {
     GoogleCloudDatalabelingV1beta1LabelImageRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2038,7 +1978,7 @@ class ProjectsDatasetsImageResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/image:label';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2047,10 +1987,8 @@ class ProjectsDatasetsImageResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2086,7 +2024,7 @@ class ProjectsDatasetsTextResource {
     GoogleCloudDatalabelingV1beta1LabelTextRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2108,7 +2046,7 @@ class ProjectsDatasetsTextResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/text:label';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2117,10 +2055,8 @@ class ProjectsDatasetsTextResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2156,7 +2092,7 @@ class ProjectsDatasetsVideoResource {
     GoogleCloudDatalabelingV1beta1LabelVideoRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2178,7 +2114,7 @@ class ProjectsDatasetsVideoResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/video:label';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2187,10 +2123,8 @@ class ProjectsDatasetsVideoResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2224,7 +2158,7 @@ class ProjectsEvaluationJobsResource {
     GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2246,7 +2180,7 @@ class ProjectsEvaluationJobsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/evaluationJobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2255,10 +2189,8 @@ class ProjectsEvaluationJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1EvaluationJob.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1EvaluationJob.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Stops and deletes an evaluation job.
@@ -2282,7 +2214,7 @@ class ProjectsEvaluationJobsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2299,7 +2231,7 @@ class ProjectsEvaluationJobsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2308,10 +2240,8 @@ class ProjectsEvaluationJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an evaluation job by resource name.
@@ -2335,7 +2265,7 @@ class ProjectsEvaluationJobsResource {
   async.Future<GoogleCloudDatalabelingV1beta1EvaluationJob> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2352,7 +2282,7 @@ class ProjectsEvaluationJobsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2361,10 +2291,8 @@ class ProjectsEvaluationJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1EvaluationJob.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1EvaluationJob.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all evaluation jobs within a project with possible filters.
@@ -2409,7 +2337,7 @@ class ProjectsEvaluationJobsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2437,7 +2365,7 @@ class ProjectsEvaluationJobsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/evaluationJobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2446,11 +2374,8 @@ class ProjectsEvaluationJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an evaluation job.
@@ -2491,7 +2416,7 @@ class ProjectsEvaluationJobsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2514,7 +2439,7 @@ class ProjectsEvaluationJobsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2523,10 +2448,8 @@ class ProjectsEvaluationJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1EvaluationJob.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1EvaluationJob.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Pauses an evaluation job.
@@ -2555,7 +2478,7 @@ class ProjectsEvaluationJobsResource {
     GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2576,7 +2499,7 @@ class ProjectsEvaluationJobsResource {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':pause';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2585,10 +2508,8 @@ class ProjectsEvaluationJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Resumes a paused evaluation job.
@@ -2618,7 +2539,7 @@ class ProjectsEvaluationJobsResource {
     GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2639,7 +2560,7 @@ class ProjectsEvaluationJobsResource {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':resume';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2648,10 +2569,8 @@ class ProjectsEvaluationJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2711,7 +2630,7 @@ class ProjectsEvaluationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2739,7 +2658,7 @@ class ProjectsEvaluationsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/evaluations:search';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2748,11 +2667,8 @@ class ProjectsEvaluationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2786,7 +2702,7 @@ class ProjectsInstructionsResource {
     GoogleCloudDatalabelingV1beta1CreateInstructionRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2808,7 +2724,7 @@ class ProjectsInstructionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/instructions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2817,10 +2733,8 @@ class ProjectsInstructionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an instruction object by resource name.
@@ -2844,7 +2758,7 @@ class ProjectsInstructionsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2861,7 +2775,7 @@ class ProjectsInstructionsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2870,10 +2784,8 @@ class ProjectsInstructionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets an instruction by resource name.
@@ -2897,7 +2809,7 @@ class ProjectsInstructionsResource {
   async.Future<GoogleCloudDatalabelingV1beta1Instruction> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2914,7 +2826,7 @@ class ProjectsInstructionsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2923,10 +2835,8 @@ class ProjectsInstructionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1Instruction.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1Instruction.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists instructions for a project.
@@ -2965,7 +2875,7 @@ class ProjectsInstructionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2993,7 +2903,7 @@ class ProjectsInstructionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/instructions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3002,10 +2912,8 @@ class ProjectsInstructionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudDatalabelingV1beta1ListInstructionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudDatalabelingV1beta1ListInstructionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3043,7 +2951,7 @@ class ProjectsOperationsResource {
   async.Future<GoogleProtobufEmpty> cancel(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3061,7 +2969,7 @@ class ProjectsOperationsResource {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3070,10 +2978,8 @@ class ProjectsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -3100,7 +3006,7 @@ class ProjectsOperationsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3117,7 +3023,7 @@ class ProjectsOperationsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3126,10 +3032,8 @@ class ProjectsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -3155,7 +3059,7 @@ class ProjectsOperationsResource {
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3172,7 +3076,7 @@ class ProjectsOperationsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3181,10 +3085,8 @@ class ProjectsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -3225,7 +3127,7 @@ class ProjectsOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3253,7 +3155,7 @@ class ProjectsOperationsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3262,10 +3164,8 @@ class ProjectsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

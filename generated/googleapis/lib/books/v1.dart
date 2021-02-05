@@ -125,7 +125,7 @@ class BookshelvesResource {
     core.String shelf, {
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -151,7 +151,7 @@ class BookshelvesResource {
         '/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -160,9 +160,7 @@ class BookshelvesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Bookshelf.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Bookshelf.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of public bookshelves for the specified user.
@@ -187,7 +185,7 @@ class BookshelvesResource {
     core.String userId, {
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -209,7 +207,7 @@ class BookshelvesResource {
         commons.Escaper.ecapeVariable('$userId') +
         '/bookshelves';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -218,10 +216,8 @@ class BookshelvesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Bookshelves.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Bookshelves.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -265,7 +261,7 @@ class BookshelvesVolumesResource {
     core.String source,
     core.int startIndex,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -301,7 +297,7 @@ class BookshelvesVolumesResource {
         commons.Escaper.ecapeVariable('$shelf') +
         '/volumes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -310,9 +306,7 @@ class BookshelvesVolumesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Volumes.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -352,7 +346,7 @@ class CloudloadingResource {
     core.String name,
     core.String uploadClientToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -378,7 +372,7 @@ class CloudloadingResource {
 
     _url = 'books/v1/cloudloading/addBook';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -387,10 +381,8 @@ class CloudloadingResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BooksCloudloadingResource.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BooksCloudloadingResource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Remove the book and its contents
@@ -412,7 +404,7 @@ class CloudloadingResource {
   async.Future<Empty> deleteBook(
     core.String volumeId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -430,7 +422,7 @@ class CloudloadingResource {
 
     _url = 'books/v1/cloudloading/deleteBook';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -439,9 +431,7 @@ class CloudloadingResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a user-upload volume.
@@ -463,7 +453,7 @@ class CloudloadingResource {
   async.Future<BooksCloudloadingResource> updateBook(
     BooksCloudloadingResource request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -480,7 +470,7 @@ class CloudloadingResource {
 
     _url = 'books/v1/cloudloading/updateBook';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -489,10 +479,8 @@ class CloudloadingResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BooksCloudloadingResource.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BooksCloudloadingResource.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -520,7 +508,7 @@ class DictionaryResource {
   async.Future<Metadata> listOfflineMetadata(
     core.String cpksver, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -538,7 +526,7 @@ class DictionaryResource {
 
     _url = 'books/v1/dictionary/listOfflineMetadata';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -547,9 +535,7 @@ class DictionaryResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Metadata.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Metadata.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -577,7 +563,7 @@ class FamilysharingResource {
   async.Future<FamilyInfo> getFamilyInfo({
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -594,7 +580,7 @@ class FamilysharingResource {
 
     _url = 'books/v1/familysharing/getFamilyInfo';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -603,10 +589,8 @@ class FamilysharingResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          FamilyInfo.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FamilyInfo.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Initiates sharing of the content with the user's family.
@@ -636,7 +620,7 @@ class FamilysharingResource {
     core.String source,
     core.String volumeId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -659,7 +643,7 @@ class FamilysharingResource {
 
     _url = 'books/v1/familysharing/share';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -668,9 +652,7 @@ class FamilysharingResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Initiates revoking content that has already been shared with the user's
@@ -701,7 +683,7 @@ class FamilysharingResource {
     core.String source,
     core.String volumeId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -724,7 +706,7 @@ class FamilysharingResource {
 
     _url = 'books/v1/familysharing/unshare';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -733,9 +715,7 @@ class FamilysharingResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -777,7 +757,7 @@ class LayersResource {
     core.String contentVersion,
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -806,7 +786,7 @@ class LayersResource {
         '/layersummary/' +
         commons.Escaper.ecapeVariable('$summaryId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -815,10 +795,8 @@ class LayersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Layersummary.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Layersummary.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List the layer summaries for a volume.
@@ -853,7 +831,7 @@ class LayersResource {
     core.String pageToken,
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -884,7 +862,7 @@ class LayersResource {
         commons.Escaper.ecapeVariable('$volumeId') +
         '/layersummary';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -893,10 +871,8 @@ class LayersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Layersummaries.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Layersummaries.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -957,7 +933,7 @@ class LayersAnnotationDataResource {
     core.String source,
     core.int w,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1007,7 +983,7 @@ class LayersAnnotationDataResource {
         '/data/' +
         commons.Escaper.ecapeVariable('$annotationDataId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1016,10 +992,8 @@ class LayersAnnotationDataResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DictionaryAnnotationdata.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DictionaryAnnotationdata.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the annotation data for a volume and layer.
@@ -1084,7 +1058,7 @@ class LayersAnnotationDataResource {
     core.String updatedMin,
     core.int w,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1142,7 +1116,7 @@ class LayersAnnotationDataResource {
         commons.Escaper.ecapeVariable('$layerId') +
         '/data';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1151,10 +1125,8 @@ class LayersAnnotationDataResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Annotationsdata.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Annotationsdata.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1196,7 +1168,7 @@ class LayersVolumeAnnotationsResource {
     core.String locale,
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1230,7 +1202,7 @@ class LayersVolumeAnnotationsResource {
         '/annotations/' +
         commons.Escaper.ecapeVariable('$annotationId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1239,10 +1211,8 @@ class LayersVolumeAnnotationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Volumeannotation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return Volumeannotation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the volume annotations for a volume and layer.
@@ -1312,7 +1282,7 @@ class LayersVolumeAnnotationsResource {
     core.String updatedMin,
     core.String volumeAnnotationsVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1375,7 +1345,7 @@ class LayersVolumeAnnotationsResource {
         '/layers/' +
         commons.Escaper.ecapeVariable('$layerId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1384,10 +1354,8 @@ class LayersVolumeAnnotationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Volumeannotations.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return Volumeannotations.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1416,7 +1384,7 @@ class MyconfigResource {
   async.Future<Usersettings> getUserSettings({
     core.String country,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1433,7 +1401,7 @@ class MyconfigResource {
 
     _url = 'books/v1/myconfig/getUserSettings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1442,10 +1410,8 @@ class MyconfigResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Usersettings.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Usersettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Release downloaded content access restriction.
@@ -1477,7 +1443,7 @@ class MyconfigResource {
     core.String locale,
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1505,7 +1471,7 @@ class MyconfigResource {
 
     _url = 'books/v1/myconfig/releaseDownloadAccess';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1514,10 +1480,8 @@ class MyconfigResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DownloadAccesses.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DownloadAccesses.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Request concurrent and download access restrictions.
@@ -1561,7 +1525,7 @@ class MyconfigResource {
     core.String licenseTypes,
     core.String locale,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1597,7 +1561,7 @@ class MyconfigResource {
 
     _url = 'books/v1/myconfig/requestAccess';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1606,10 +1570,8 @@ class MyconfigResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RequestAccessData.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RequestAccessData.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Request downloaded content access for specified volumes on the My eBooks
@@ -1656,7 +1618,7 @@ class MyconfigResource {
     core.bool showPreorders,
     core.List<core.String> volumeIds,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1697,7 +1659,7 @@ class MyconfigResource {
 
     _url = 'books/v1/myconfig/syncVolumeLicenses';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1706,9 +1668,7 @@ class MyconfigResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Volumes.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the settings for the user.
@@ -1734,7 +1694,7 @@ class MyconfigResource {
   async.Future<Usersettings> updateUserSettings(
     Usersettings request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1751,7 +1711,7 @@ class MyconfigResource {
 
     _url = 'books/v1/myconfig/updateUserSettings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1760,10 +1720,8 @@ class MyconfigResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Usersettings.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Usersettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1808,7 +1766,7 @@ class MylibraryAnnotationsResource {
     core.String annotationId, {
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1829,7 +1787,7 @@ class MylibraryAnnotationsResource {
     _url = 'books/v1/mylibrary/annotations/' +
         commons.Escaper.ecapeVariable('$annotationId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1838,9 +1796,7 @@ class MylibraryAnnotationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new annotation.
@@ -1875,7 +1831,7 @@ class MylibraryAnnotationsResource {
     core.bool showOnlySummaryInResponse,
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1906,7 +1862,7 @@ class MylibraryAnnotationsResource {
 
     _url = 'books/v1/mylibrary/annotations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1915,10 +1871,8 @@ class MylibraryAnnotationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Annotation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Annotation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of annotations, possibly filtered.
@@ -1971,7 +1925,7 @@ class MylibraryAnnotationsResource {
     core.String updatedMin,
     core.String volumeId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2015,7 +1969,7 @@ class MylibraryAnnotationsResource {
 
     _url = 'books/v1/mylibrary/annotations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2024,10 +1978,8 @@ class MylibraryAnnotationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Annotations.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Annotations.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the summary of specified layers.
@@ -2052,7 +2004,7 @@ class MylibraryAnnotationsResource {
     core.List<core.String> layerIds,
     core.String volumeId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2074,7 +2026,7 @@ class MylibraryAnnotationsResource {
 
     _url = 'books/v1/mylibrary/annotations/summary';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2083,10 +2035,8 @@ class MylibraryAnnotationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AnnotationsSummary.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AnnotationsSummary.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing annotation.
@@ -2114,7 +2064,7 @@ class MylibraryAnnotationsResource {
     core.String annotationId, {
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2138,7 +2088,7 @@ class MylibraryAnnotationsResource {
     _url = 'books/v1/mylibrary/annotations/' +
         commons.Escaper.ecapeVariable('$annotationId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2147,10 +2097,8 @@ class MylibraryAnnotationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Annotation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Annotation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2196,7 +2144,7 @@ class MylibraryBookshelvesResource {
     core.String reason,
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2225,7 +2173,7 @@ class MylibraryBookshelvesResource {
         commons.Escaper.ecapeVariable('$shelf') +
         '/addVolume';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2234,9 +2182,7 @@ class MylibraryBookshelvesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Clears all volumes from a bookshelf.
@@ -2261,7 +2207,7 @@ class MylibraryBookshelvesResource {
     core.String shelf, {
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2283,7 +2229,7 @@ class MylibraryBookshelvesResource {
         commons.Escaper.ecapeVariable('$shelf') +
         '/clearVolumes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2292,9 +2238,7 @@ class MylibraryBookshelvesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves metadata for a specific bookshelf belonging to the authenticated
@@ -2320,7 +2264,7 @@ class MylibraryBookshelvesResource {
     core.String shelf, {
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2341,7 +2285,7 @@ class MylibraryBookshelvesResource {
     _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2350,9 +2294,7 @@ class MylibraryBookshelvesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Bookshelf.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Bookshelf.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of bookshelves belonging to the authenticated user.
@@ -2374,7 +2316,7 @@ class MylibraryBookshelvesResource {
   async.Future<Bookshelves> list({
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2391,7 +2333,7 @@ class MylibraryBookshelvesResource {
 
     _url = 'books/v1/mylibrary/bookshelves';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2400,10 +2342,8 @@ class MylibraryBookshelvesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Bookshelves.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Bookshelves.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Moves a volume within a bookshelf.
@@ -2436,7 +2376,7 @@ class MylibraryBookshelvesResource {
     core.int volumePosition, {
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2466,7 +2406,7 @@ class MylibraryBookshelvesResource {
         commons.Escaper.ecapeVariable('$shelf') +
         '/moveVolume';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2475,9 +2415,7 @@ class MylibraryBookshelvesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes a volume from a bookshelf.
@@ -2511,7 +2449,7 @@ class MylibraryBookshelvesResource {
     core.String reason,
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2540,7 +2478,7 @@ class MylibraryBookshelvesResource {
         commons.Escaper.ecapeVariable('$shelf') +
         '/removeVolume';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2549,9 +2487,7 @@ class MylibraryBookshelvesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2606,7 +2542,7 @@ class MylibraryBookshelvesVolumesResource {
     core.String source,
     core.int startIndex,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2646,7 +2582,7 @@ class MylibraryBookshelvesVolumesResource {
         commons.Escaper.ecapeVariable('$shelf') +
         '/volumes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2655,9 +2591,7 @@ class MylibraryBookshelvesVolumesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Volumes.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2693,7 +2627,7 @@ class MylibraryReadingpositionsResource {
     core.String contentVersion,
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2717,7 +2651,7 @@ class MylibraryReadingpositionsResource {
     _url = 'books/v1/mylibrary/readingpositions/' +
         commons.Escaper.ecapeVariable('$volumeId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2726,10 +2660,8 @@ class MylibraryReadingpositionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ReadingPosition.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ReadingPosition.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets my reading position information for a volume.
@@ -2779,7 +2711,7 @@ class MylibraryReadingpositionsResource {
     core.String deviceCookie,
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2818,7 +2750,7 @@ class MylibraryReadingpositionsResource {
         commons.Escaper.ecapeVariable('$volumeId') +
         '/setPosition';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2827,9 +2759,7 @@ class MylibraryReadingpositionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2864,7 +2794,7 @@ class NotificationResource {
     core.String locale,
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2888,7 +2818,7 @@ class NotificationResource {
 
     _url = 'books/v1/notification/get';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2897,10 +2827,8 @@ class NotificationResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Notification.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Notification.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2929,7 +2857,7 @@ class OnboardingResource {
   async.Future<Category> listCategories({
     core.String locale,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2946,7 +2874,7 @@ class OnboardingResource {
 
     _url = 'books/v1/onboarding/listCategories';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2955,9 +2883,7 @@ class OnboardingResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Category.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Category.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// List available volumes under categories for onboarding experience.
@@ -2998,7 +2924,7 @@ class OnboardingResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3027,7 +2953,7 @@ class OnboardingResource {
 
     _url = 'books/v1/onboarding/listCategoryVolumes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3036,9 +2962,7 @@ class OnboardingResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Volume2.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Volume2.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3079,7 +3003,7 @@ class PersonalizedstreamResource {
     core.String maxAllowedMaturityRating,
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3102,7 +3026,7 @@ class PersonalizedstreamResource {
 
     _url = 'books/v1/personalizedstream/get';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3111,10 +3035,8 @@ class PersonalizedstreamResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Discoveryclusters.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return Discoveryclusters.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3163,7 +3085,7 @@ class PromoofferResource {
     core.String serial,
     core.String volumeId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3201,7 +3123,7 @@ class PromoofferResource {
 
     _url = 'books/v1/promooffer/accept';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3210,9 +3132,7 @@ class PromoofferResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the promo offer as dismissed.
@@ -3252,7 +3172,7 @@ class PromoofferResource {
     core.String product,
     core.String serial,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3287,7 +3207,7 @@ class PromoofferResource {
 
     _url = 'books/v1/promooffer/dismiss';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3296,9 +3216,7 @@ class PromoofferResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of promo offers available to the user
@@ -3335,7 +3253,7 @@ class PromoofferResource {
     core.String product,
     core.String serial,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3367,7 +3285,7 @@ class PromoofferResource {
 
     _url = 'books/v1/promooffer/get';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3376,9 +3294,7 @@ class PromoofferResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Offers.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Offers.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3409,7 +3325,7 @@ class SeriesResource {
   async.Future<Series> get(
     core.List<core.String> seriesId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3427,7 +3343,7 @@ class SeriesResource {
 
     _url = 'books/v1/series/get';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3436,9 +3352,7 @@ class SeriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Series.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Series.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3473,7 +3387,7 @@ class SeriesMembershipResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3497,7 +3411,7 @@ class SeriesMembershipResource {
 
     _url = 'books/v1/series/membership/get';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3506,10 +3420,8 @@ class SeriesMembershipResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Seriesmembership.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return Seriesmembership.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3568,7 +3480,7 @@ class VolumesResource {
     core.String source,
     core.bool userLibraryConsistentRead,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3605,7 +3517,7 @@ class VolumesResource {
 
     _url = 'books/v1/volumes/' + commons.Escaper.ecapeVariable('$volumeId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3614,9 +3526,7 @@ class VolumesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Volume.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Volume.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Performs a book search.
@@ -3712,7 +3622,7 @@ class VolumesResource {
     core.String source,
     core.int startIndex,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3769,7 +3679,7 @@ class VolumesResource {
 
     _url = 'books/v1/volumes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3778,9 +3688,7 @@ class VolumesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Volumes.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3832,7 +3740,7 @@ class VolumesAssociatedResource {
     core.String maxAllowedMaturityRating,
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3863,7 +3771,7 @@ class VolumesAssociatedResource {
         commons.Escaper.ecapeVariable('$volumeId') +
         '/associated';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3872,9 +3780,7 @@ class VolumesAssociatedResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Volumes.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3924,7 +3830,7 @@ class VolumesMybooksResource {
     core.String source,
     core.int startIndex,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3959,7 +3865,7 @@ class VolumesMybooksResource {
 
     _url = 'books/v1/volumes/mybooks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3968,9 +3874,7 @@ class VolumesMybooksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Volumes.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4011,7 +3915,7 @@ class VolumesRecommendedResource {
     core.String maxAllowedMaturityRating,
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4034,7 +3938,7 @@ class VolumesRecommendedResource {
 
     _url = 'books/v1/volumes/recommended';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4043,9 +3947,7 @@ class VolumesRecommendedResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Volumes.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Rate a recommended book for the current user.
@@ -4081,7 +3983,7 @@ class VolumesRecommendedResource {
     core.String locale,
     core.String source,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4109,7 +4011,7 @@ class VolumesRecommendedResource {
 
     _url = 'books/v1/volumes/recommended/rate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4118,10 +4020,8 @@ class VolumesRecommendedResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BooksVolumesRecommendedRateResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BooksVolumesRecommendedRateResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4169,7 +4069,7 @@ class VolumesUseruploadedResource {
     core.int startIndex,
     core.List<core.String> volumeId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4201,7 +4101,7 @@ class VolumesUseruploadedResource {
 
     _url = 'books/v1/volumes/useruploaded';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4210,9 +4110,7 @@ class VolumesUseruploadedResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Volumes.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Volumes.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

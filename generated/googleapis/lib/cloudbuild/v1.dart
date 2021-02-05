@@ -99,7 +99,7 @@ class OperationsResource {
     CancelOperationRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -119,7 +119,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -128,9 +128,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -156,7 +154,7 @@ class OperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -173,7 +171,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -182,9 +180,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -229,7 +225,7 @@ class ProjectsBuildsResource {
     core.String projectId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -256,7 +252,7 @@ class ProjectsBuildsResource {
         commons.Escaper.ecapeVariable('$id') +
         ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -265,9 +261,7 @@ class ProjectsBuildsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Build.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Build.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Starts a build with the specified configuration.
@@ -300,7 +294,7 @@ class ProjectsBuildsResource {
     core.String projectId, {
     core.String parent,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -325,7 +319,7 @@ class ProjectsBuildsResource {
         commons.Escaper.ecapeVariable('$projectId') +
         '/builds';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -334,9 +328,7 @@ class ProjectsBuildsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about a previously requested build.
@@ -368,7 +360,7 @@ class ProjectsBuildsResource {
     core.String id, {
     core.String name,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -394,7 +386,7 @@ class ProjectsBuildsResource {
         '/builds/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -403,9 +395,7 @@ class ProjectsBuildsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Build.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Build.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists previously requested builds.
@@ -447,7 +437,7 @@ class ProjectsBuildsResource {
     core.String pageToken,
     core.String parent,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -478,7 +468,7 @@ class ProjectsBuildsResource {
         commons.Escaper.ecapeVariable('$projectId') +
         '/builds';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -487,10 +477,8 @@ class ProjectsBuildsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListBuildsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListBuildsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new build based on the specified build.
@@ -535,7 +523,7 @@ class ProjectsBuildsResource {
     core.String projectId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -562,7 +550,7 @@ class ProjectsBuildsResource {
         commons.Escaper.ecapeVariable('$id') +
         ':retry';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -571,9 +559,7 @@ class ProjectsBuildsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -619,7 +605,7 @@ class ProjectsLocationsBuildsResource {
     CancelBuildRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -639,7 +625,7 @@ class ProjectsLocationsBuildsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -648,9 +634,7 @@ class ProjectsLocationsBuildsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Build.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Build.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Starts a build with the specified configuration.
@@ -684,7 +668,7 @@ class ProjectsLocationsBuildsResource {
     core.String parent, {
     core.String projectId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -707,7 +691,7 @@ class ProjectsLocationsBuildsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/builds';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -716,9 +700,7 @@ class ProjectsLocationsBuildsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about a previously requested build.
@@ -752,7 +734,7 @@ class ProjectsLocationsBuildsResource {
     core.String id,
     core.String projectId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -775,7 +757,7 @@ class ProjectsLocationsBuildsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -784,9 +766,7 @@ class ProjectsLocationsBuildsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Build.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Build.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists previously requested builds.
@@ -829,7 +809,7 @@ class ProjectsLocationsBuildsResource {
     core.String pageToken,
     core.String projectId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -858,7 +838,7 @@ class ProjectsLocationsBuildsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/builds';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -867,10 +847,8 @@ class ProjectsLocationsBuildsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListBuildsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListBuildsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new build based on the specified build.
@@ -915,7 +893,7 @@ class ProjectsLocationsBuildsResource {
     RetryBuildRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -935,7 +913,7 @@ class ProjectsLocationsBuildsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':retry';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -944,9 +922,7 @@ class ProjectsLocationsBuildsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -989,7 +965,7 @@ class ProjectsLocationsOperationsResource {
     CancelOperationRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1009,7 +985,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1018,9 +994,7 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -1047,7 +1021,7 @@ class ProjectsLocationsOperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1064,7 +1038,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1073,9 +1047,7 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1109,7 +1081,7 @@ class ProjectsTriggersResource {
     BuildTrigger request,
     core.String projectId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1131,7 +1103,7 @@ class ProjectsTriggersResource {
         commons.Escaper.ecapeVariable('$projectId') +
         '/triggers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1140,10 +1112,8 @@ class ProjectsTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          BuildTrigger.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return BuildTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a `BuildTrigger` by its project ID and trigger ID.
@@ -1170,7 +1140,7 @@ class ProjectsTriggersResource {
     core.String projectId,
     core.String triggerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1193,7 +1163,7 @@ class ProjectsTriggersResource {
         '/triggers/' +
         commons.Escaper.ecapeVariable('$triggerId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1202,9 +1172,7 @@ class ProjectsTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns information about a `BuildTrigger`.
@@ -1232,7 +1200,7 @@ class ProjectsTriggersResource {
     core.String projectId,
     core.String triggerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1255,7 +1223,7 @@ class ProjectsTriggersResource {
         '/triggers/' +
         commons.Escaper.ecapeVariable('$triggerId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1264,10 +1232,8 @@ class ProjectsTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          BuildTrigger.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return BuildTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists existing `BuildTrigger`s.
@@ -1297,7 +1263,7 @@ class ProjectsTriggersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1322,7 +1288,7 @@ class ProjectsTriggersResource {
         commons.Escaper.ecapeVariable('$projectId') +
         '/triggers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1331,10 +1297,8 @@ class ProjectsTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListBuildTriggersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListBuildTriggersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a `BuildTrigger` by its project ID and trigger ID.
@@ -1364,7 +1328,7 @@ class ProjectsTriggersResource {
     core.String projectId,
     core.String triggerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1390,7 +1354,7 @@ class ProjectsTriggersResource {
         '/triggers/' +
         commons.Escaper.ecapeVariable('$triggerId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1399,10 +1363,8 @@ class ProjectsTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          BuildTrigger.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return BuildTrigger.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Runs a `BuildTrigger` at a particular source revision.
@@ -1430,7 +1392,7 @@ class ProjectsTriggersResource {
     core.String projectId,
     core.String triggerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1457,7 +1419,7 @@ class ProjectsTriggersResource {
         commons.Escaper.ecapeVariable('$triggerId') +
         ':run';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1466,9 +1428,7 @@ class ProjectsTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// ReceiveTriggerWebhook \[Experimental\] is called when the API receives a
@@ -1501,7 +1461,7 @@ class ProjectsTriggersResource {
     core.String trigger, {
     core.String secret,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1531,7 +1491,7 @@ class ProjectsTriggersResource {
         commons.Escaper.ecapeVariable('$trigger') +
         ':webhook';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1540,10 +1500,8 @@ class ProjectsTriggersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ReceiveTriggerWebhookResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ReceiveTriggerWebhookResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

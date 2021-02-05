@@ -78,7 +78,7 @@ class V1Resource {
   async.Future<GoogleIdentityStsV1ExchangeTokenResponse> token(
     GoogleIdentityStsV1ExchangeTokenRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -95,7 +95,7 @@ class V1Resource {
 
     _url = 'v1/token';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -104,10 +104,8 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleIdentityStsV1ExchangeTokenResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleIdentityStsV1ExchangeTokenResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

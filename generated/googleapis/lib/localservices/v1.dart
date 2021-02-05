@@ -126,7 +126,7 @@ class AccountReportsResource {
     core.int startDate_month,
     core.int startDate_year,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -167,7 +167,7 @@ class AccountReportsResource {
 
     _url = 'v1/accountReports:search';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -176,10 +176,8 @@ class AccountReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse
-          .fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -257,7 +255,7 @@ class DetailedLeadReportsResource {
     core.int startDate_month,
     core.int startDate_year,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -298,7 +296,7 @@ class DetailedLeadReportsResource {
 
     _url = 'v1/detailedLeadReports:search';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -307,11 +305,8 @@ class DetailedLeadReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse
-              .fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -99,7 +99,7 @@ class CustomersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -119,7 +119,7 @@ class CustomersResource {
 
     _url = 'v1/customers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -128,10 +128,8 @@ class CustomersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CustomerListCustomersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CustomerListCustomersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -167,7 +165,7 @@ class CustomersConfigurationsResource {
     Configuration request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -189,7 +187,7 @@ class CustomersConfigurationsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/configurations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -198,10 +196,8 @@ class CustomersConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Configuration.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Configuration.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an unused configuration.
@@ -229,7 +225,7 @@ class CustomersConfigurationsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -246,7 +242,7 @@ class CustomersConfigurationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -255,9 +251,7 @@ class CustomersConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the details of a configuration.
@@ -281,7 +275,7 @@ class CustomersConfigurationsResource {
   async.Future<Configuration> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -298,7 +292,7 @@ class CustomersConfigurationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -307,10 +301,8 @@ class CustomersConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Configuration.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Configuration.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists a customer's configurations.
@@ -334,7 +326,7 @@ class CustomersConfigurationsResource {
   async.Future<CustomerListConfigurationsResponse> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -353,7 +345,7 @@ class CustomersConfigurationsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/configurations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -362,10 +354,8 @@ class CustomersConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CustomerListConfigurationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CustomerListConfigurationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a configuration's field values.
@@ -400,7 +390,7 @@ class CustomersConfigurationsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -423,7 +413,7 @@ class CustomersConfigurationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -432,10 +422,8 @@ class CustomersConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Configuration.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Configuration.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -472,7 +460,7 @@ class CustomersDevicesResource {
     CustomerApplyConfigurationRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -494,7 +482,7 @@ class CustomersDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices:applyConfiguration';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -503,9 +491,7 @@ class CustomersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the details of a device.
@@ -529,7 +515,7 @@ class CustomersDevicesResource {
   async.Future<Device> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -546,7 +532,7 @@ class CustomersDevicesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -555,9 +541,7 @@ class CustomersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Device.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Device.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists a customer's devices.
@@ -588,7 +572,7 @@ class CustomersDevicesResource {
     core.String pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -612,7 +596,7 @@ class CustomersDevicesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -621,10 +605,8 @@ class CustomersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CustomerListDevicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CustomerListDevicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes a configuration from device.
@@ -651,7 +633,7 @@ class CustomersDevicesResource {
     CustomerRemoveConfigurationRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -673,7 +655,7 @@ class CustomersDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices:removeConfiguration';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -682,9 +664,7 @@ class CustomersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Unclaims a device from a customer and removes it from zero-touch
@@ -715,7 +695,7 @@ class CustomersDevicesResource {
     CustomerUnclaimDeviceRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -737,7 +717,7 @@ class CustomersDevicesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/devices:unclaim';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -746,9 +726,7 @@ class CustomersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -779,7 +757,7 @@ class CustomersDpcsResource {
   async.Future<CustomerListDpcsResponse> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -796,7 +774,7 @@ class CustomersDpcsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/dpcs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -805,10 +783,8 @@ class CustomersDpcsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CustomerListDpcsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CustomerListDpcsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -840,7 +816,7 @@ class OperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -857,7 +833,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -866,9 +842,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -917,7 +891,7 @@ class PartnersCustomersResource {
     CreateCustomerRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -938,7 +912,7 @@ class PartnersCustomersResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/customers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -947,9 +921,7 @@ class PartnersCustomersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Company.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Company.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the customers that are enrolled to the reseller identified by the
@@ -984,7 +956,7 @@ class PartnersCustomersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1009,7 +981,7 @@ class PartnersCustomersResource {
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/customers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1018,10 +990,8 @@ class PartnersCustomersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCustomersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCustomersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1056,7 +1026,7 @@ class PartnersDevicesResource {
     ClaimDeviceRequest request,
     core.String partnerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1078,7 +1048,7 @@ class PartnersDevicesResource {
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/devices:claim';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1087,10 +1057,8 @@ class PartnersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ClaimDeviceResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ClaimDeviceResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Claims a batch of devices for a customer asynchronously.
@@ -1120,7 +1088,7 @@ class PartnersDevicesResource {
     ClaimDevicesRequest request,
     core.String partnerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1142,7 +1110,7 @@ class PartnersDevicesResource {
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/devices:claimAsync';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1151,9 +1119,7 @@ class PartnersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Finds devices by hardware identifiers, such as IMEI.
@@ -1179,7 +1145,7 @@ class PartnersDevicesResource {
     FindDevicesByDeviceIdentifierRequest request,
     core.String partnerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1201,7 +1167,7 @@ class PartnersDevicesResource {
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/devices:findByIdentifier';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1210,10 +1176,8 @@ class PartnersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FindDevicesByDeviceIdentifierResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FindDevicesByDeviceIdentifierResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Finds devices claimed for customers.
@@ -1243,7 +1207,7 @@ class PartnersDevicesResource {
     FindDevicesByOwnerRequest request,
     core.String partnerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1265,7 +1229,7 @@ class PartnersDevicesResource {
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/devices:findByOwner';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1274,10 +1238,8 @@ class PartnersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FindDevicesByOwnerResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FindDevicesByOwnerResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a device.
@@ -1301,7 +1263,7 @@ class PartnersDevicesResource {
   async.Future<Device> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1318,7 +1280,7 @@ class PartnersDevicesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1327,9 +1289,7 @@ class PartnersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Device.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Device.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates reseller metadata associated with the device.
@@ -1360,7 +1320,7 @@ class PartnersDevicesResource {
     core.String metadataOwnerId,
     core.String deviceId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1387,7 +1347,7 @@ class PartnersDevicesResource {
         commons.Escaper.ecapeVariableReserved('$deviceId') +
         '/metadata';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1396,10 +1356,8 @@ class PartnersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DeviceMetadata.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DeviceMetadata.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Unclaims a device from a customer and removes it from zero-touch
@@ -1426,7 +1384,7 @@ class PartnersDevicesResource {
     UnclaimDeviceRequest request,
     core.String partnerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1448,7 +1406,7 @@ class PartnersDevicesResource {
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/devices:unclaim';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1457,9 +1415,7 @@ class PartnersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Unclaims a batch of devices for a customer asynchronously.
@@ -1489,7 +1445,7 @@ class PartnersDevicesResource {
     UnclaimDevicesRequest request,
     core.String partnerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1511,7 +1467,7 @@ class PartnersDevicesResource {
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/devices:unclaimAsync';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1520,9 +1476,7 @@ class PartnersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the reseller metadata attached to a batch of devices.
@@ -1552,7 +1506,7 @@ class PartnersDevicesResource {
     UpdateDeviceMetadataInBatchRequest request,
     core.String partnerId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1574,7 +1528,7 @@ class PartnersDevicesResource {
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/devices:updateMetadataAsync';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1583,9 +1537,7 @@ class PartnersDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1625,7 +1577,7 @@ class PartnersVendorsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1649,7 +1601,7 @@ class PartnersVendorsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/vendors';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1658,10 +1610,8 @@ class PartnersVendorsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListVendorsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListVendorsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1699,7 +1649,7 @@ class PartnersVendorsCustomersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1723,7 +1673,7 @@ class PartnersVendorsCustomersResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/customers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1732,10 +1682,8 @@ class PartnersVendorsCustomersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListVendorCustomersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListVendorCustomersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

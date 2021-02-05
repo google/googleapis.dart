@@ -98,7 +98,7 @@ class ProjectsLocationsResource {
   async.Future<Location> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -115,7 +115,7 @@ class ProjectsLocationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -124,9 +124,7 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Location.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -158,7 +156,7 @@ class ProjectsLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -185,7 +183,7 @@ class ProjectsLocationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -194,10 +192,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -242,7 +238,7 @@ class ProjectsLocationsNamespacesResource {
     core.String parent, {
     core.String namespaceId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -267,7 +263,7 @@ class ProjectsLocationsNamespacesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/namespaces';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -276,9 +272,7 @@ class ProjectsLocationsNamespacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Namespace.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Namespace.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a namespace.
@@ -304,7 +298,7 @@ class ProjectsLocationsNamespacesResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -321,7 +315,7 @@ class ProjectsLocationsNamespacesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -330,9 +324,7 @@ class ProjectsLocationsNamespacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a namespace.
@@ -356,7 +348,7 @@ class ProjectsLocationsNamespacesResource {
   async.Future<Namespace> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -373,7 +365,7 @@ class ProjectsLocationsNamespacesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -382,9 +374,7 @@ class ProjectsLocationsNamespacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Namespace.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Namespace.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the IAM Policy for a resource (namespace or service only).
@@ -413,7 +403,7 @@ class ProjectsLocationsNamespacesResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -435,7 +425,7 @@ class ProjectsLocationsNamespacesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -444,9 +434,7 @@ class ProjectsLocationsNamespacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all namespaces.
@@ -501,7 +489,7 @@ class ProjectsLocationsNamespacesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -532,7 +520,7 @@ class ProjectsLocationsNamespacesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/namespaces';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -541,10 +529,8 @@ class ProjectsLocationsNamespacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListNamespacesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListNamespacesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a namespace.
@@ -575,7 +561,7 @@ class ProjectsLocationsNamespacesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -598,7 +584,7 @@ class ProjectsLocationsNamespacesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -607,9 +593,7 @@ class ProjectsLocationsNamespacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Namespace.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Namespace.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the IAM Policy for a resource (namespace or service only).
@@ -638,7 +622,7 @@ class ProjectsLocationsNamespacesResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -660,7 +644,7 @@ class ProjectsLocationsNamespacesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -669,9 +653,7 @@ class ProjectsLocationsNamespacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Tests IAM permissions for a resource (namespace or service only).
@@ -700,7 +682,7 @@ class ProjectsLocationsNamespacesResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -722,7 +704,7 @@ class ProjectsLocationsNamespacesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -731,10 +713,8 @@ class ProjectsLocationsNamespacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -780,7 +760,7 @@ class ProjectsLocationsNamespacesServicesResource {
     core.String parent, {
     core.String serviceId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -804,7 +784,7 @@ class ProjectsLocationsNamespacesServicesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/services';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -813,9 +793,7 @@ class ProjectsLocationsNamespacesServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Service.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Service.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a service.
@@ -841,7 +819,7 @@ class ProjectsLocationsNamespacesServicesResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -858,7 +836,7 @@ class ProjectsLocationsNamespacesServicesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -867,9 +845,7 @@ class ProjectsLocationsNamespacesServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a service.
@@ -893,7 +869,7 @@ class ProjectsLocationsNamespacesServicesResource {
   async.Future<Service> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -910,7 +886,7 @@ class ProjectsLocationsNamespacesServicesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -919,9 +895,7 @@ class ProjectsLocationsNamespacesServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Service.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Service.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the IAM Policy for a resource (namespace or service only).
@@ -950,7 +924,7 @@ class ProjectsLocationsNamespacesServicesResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -972,7 +946,7 @@ class ProjectsLocationsNamespacesServicesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -981,9 +955,7 @@ class ProjectsLocationsNamespacesServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all services belonging to a namespace.
@@ -1036,7 +1008,7 @@ class ProjectsLocationsNamespacesServicesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1066,7 +1038,7 @@ class ProjectsLocationsNamespacesServicesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/services';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1075,10 +1047,8 @@ class ProjectsLocationsNamespacesServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListServicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListServicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a service.
@@ -1109,7 +1079,7 @@ class ProjectsLocationsNamespacesServicesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1132,7 +1102,7 @@ class ProjectsLocationsNamespacesServicesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1141,9 +1111,7 @@ class ProjectsLocationsNamespacesServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Service.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Service.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a service and its associated endpoints.
@@ -1172,7 +1140,7 @@ class ProjectsLocationsNamespacesServicesResource {
     ResolveServiceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1192,7 +1160,7 @@ class ProjectsLocationsNamespacesServicesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':resolve';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1201,10 +1169,8 @@ class ProjectsLocationsNamespacesServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ResolveServiceResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ResolveServiceResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the IAM Policy for a resource (namespace or service only).
@@ -1233,7 +1199,7 @@ class ProjectsLocationsNamespacesServicesResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1255,7 +1221,7 @@ class ProjectsLocationsNamespacesServicesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1264,9 +1230,7 @@ class ProjectsLocationsNamespacesServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Tests IAM permissions for a resource (namespace or service only).
@@ -1295,7 +1259,7 @@ class ProjectsLocationsNamespacesServicesResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1317,7 +1281,7 @@ class ProjectsLocationsNamespacesServicesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1326,10 +1290,8 @@ class ProjectsLocationsNamespacesServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1373,7 +1335,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
     core.String parent, {
     core.String endpointId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1397,7 +1359,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/endpoints';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1406,9 +1368,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Endpoint.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Endpoint.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a endpoint.
@@ -1432,7 +1392,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1449,7 +1409,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1458,9 +1418,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a endpoint.
@@ -1484,7 +1442,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
   async.Future<Endpoint> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1501,7 +1459,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1510,9 +1468,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Endpoint.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Endpoint.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all endpoints.
@@ -1567,7 +1523,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1597,7 +1553,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/endpoints';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1606,10 +1562,8 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListEndpointsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListEndpointsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a endpoint.
@@ -1641,7 +1595,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1664,7 +1618,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1673,9 +1627,7 @@ class ProjectsLocationsNamespacesServicesEndpointsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Endpoint.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Endpoint.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

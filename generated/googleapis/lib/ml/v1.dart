@@ -107,7 +107,7 @@ class ProjectsResource {
     GoogleCloudMlV1ExplainRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -127,7 +127,7 @@ class ProjectsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':explain';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -136,10 +136,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleApiHttpBody.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleApiHttpBody.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get the service account information associated with your project.
@@ -166,7 +164,7 @@ class ProjectsResource {
   async.Future<GoogleCloudMlV1GetConfigResponse> getConfig(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -184,7 +182,7 @@ class ProjectsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':getConfig';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -193,10 +191,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1GetConfigResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1GetConfigResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Performs online prediction on the data in the request.
@@ -226,7 +222,7 @@ class ProjectsResource {
     GoogleCloudMlV1PredictRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -246,7 +242,7 @@ class ProjectsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':predict';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -255,10 +251,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleApiHttpBody.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleApiHttpBody.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -290,7 +284,7 @@ class ProjectsJobsResource {
     GoogleCloudMlV1CancelJobRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -310,7 +304,7 @@ class ProjectsJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -319,10 +313,8 @@ class ProjectsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a training or a batch prediction job.
@@ -348,7 +340,7 @@ class ProjectsJobsResource {
     GoogleCloudMlV1Job request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -368,7 +360,7 @@ class ProjectsJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -377,10 +369,8 @@ class ProjectsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1Job.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1Job.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Describes a job.
@@ -403,7 +393,7 @@ class ProjectsJobsResource {
   async.Future<GoogleCloudMlV1Job> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -420,7 +410,7 @@ class ProjectsJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -429,10 +419,8 @@ class ProjectsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1Job.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1Job.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -469,7 +457,7 @@ class ProjectsJobsResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -493,7 +481,7 @@ class ProjectsJobsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -502,10 +490,8 @@ class ProjectsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleIamV1Policy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleIamV1Policy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the jobs in the project.
@@ -551,7 +537,7 @@ class ProjectsJobsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -577,7 +563,7 @@ class ProjectsJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jobs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -586,10 +572,8 @@ class ProjectsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1ListJobsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1ListJobsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a specific job resource.
@@ -629,7 +613,7 @@ class ProjectsJobsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -652,7 +636,7 @@ class ProjectsJobsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -661,10 +645,8 @@ class ProjectsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1Job.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1Job.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -695,7 +677,7 @@ class ProjectsJobsResource {
     GoogleIamV1SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -717,7 +699,7 @@ class ProjectsJobsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -726,10 +708,8 @@ class ProjectsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleIamV1Policy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleIamV1Policy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -762,7 +742,7 @@ class ProjectsJobsResource {
     GoogleIamV1TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -784,7 +764,7 @@ class ProjectsJobsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -793,10 +773,8 @@ class ProjectsJobsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleIamV1TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -831,7 +809,7 @@ class ProjectsLocationsResource {
   async.Future<GoogleCloudMlV1Location> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -848,7 +826,7 @@ class ProjectsLocationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -857,10 +835,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1Location.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1Location.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all locations that provides at least one type of CMLE capability.
@@ -896,7 +872,7 @@ class ProjectsLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -920,7 +896,7 @@ class ProjectsLocationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -929,10 +905,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1ListLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1ListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -972,7 +946,7 @@ class ProjectsLocationsOperationsResource {
   async.Future<GoogleProtobufEmpty> cancel(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -989,7 +963,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -998,10 +972,8 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -1028,7 +1000,7 @@ class ProjectsLocationsOperationsResource {
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1045,7 +1017,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1054,10 +1026,8 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1098,7 +1068,7 @@ class ProjectsLocationsStudiesResource {
     core.String parent, {
     core.String studyId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1122,7 +1092,7 @@ class ProjectsLocationsStudiesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/studies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1131,10 +1101,8 @@ class ProjectsLocationsStudiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1Study.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1Study.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a study.
@@ -1158,7 +1126,7 @@ class ProjectsLocationsStudiesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1175,7 +1143,7 @@ class ProjectsLocationsStudiesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1184,10 +1152,8 @@ class ProjectsLocationsStudiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a study.
@@ -1211,7 +1177,7 @@ class ProjectsLocationsStudiesResource {
   async.Future<GoogleCloudMlV1Study> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1228,7 +1194,7 @@ class ProjectsLocationsStudiesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1237,10 +1203,8 @@ class ProjectsLocationsStudiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1Study.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1Study.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the studies in a region for an associated project.
@@ -1264,7 +1228,7 @@ class ProjectsLocationsStudiesResource {
   async.Future<GoogleCloudMlV1ListStudiesResponse> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1282,7 +1246,7 @@ class ProjectsLocationsStudiesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/studies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1291,10 +1255,8 @@ class ProjectsLocationsStudiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1ListStudiesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1ListStudiesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1331,7 +1293,7 @@ class ProjectsLocationsStudiesTrialsResource {
     GoogleCloudMlV1AddTrialMeasurementRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1353,7 +1315,7 @@ class ProjectsLocationsStudiesTrialsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':addMeasurement';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1362,10 +1324,8 @@ class ProjectsLocationsStudiesTrialsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1Trial.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1Trial.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Checks whether a trial should stop or not.
@@ -1395,7 +1355,7 @@ class ProjectsLocationsStudiesTrialsResource {
     GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1417,7 +1377,7 @@ class ProjectsLocationsStudiesTrialsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':checkEarlyStoppingState';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1426,10 +1386,8 @@ class ProjectsLocationsStudiesTrialsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks a trial as complete.
@@ -1456,7 +1414,7 @@ class ProjectsLocationsStudiesTrialsResource {
     GoogleCloudMlV1CompleteTrialRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1476,7 +1434,7 @@ class ProjectsLocationsStudiesTrialsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':complete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1485,10 +1443,8 @@ class ProjectsLocationsStudiesTrialsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1Trial.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1Trial.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds a user provided trial to a study.
@@ -1515,7 +1471,7 @@ class ProjectsLocationsStudiesTrialsResource {
     GoogleCloudMlV1Trial request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1535,7 +1491,7 @@ class ProjectsLocationsStudiesTrialsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/trials';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1544,10 +1500,8 @@ class ProjectsLocationsStudiesTrialsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1Trial.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1Trial.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a trial.
@@ -1571,7 +1525,7 @@ class ProjectsLocationsStudiesTrialsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1588,7 +1542,7 @@ class ProjectsLocationsStudiesTrialsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1597,10 +1551,8 @@ class ProjectsLocationsStudiesTrialsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a trial.
@@ -1624,7 +1576,7 @@ class ProjectsLocationsStudiesTrialsResource {
   async.Future<GoogleCloudMlV1Trial> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1641,7 +1593,7 @@ class ProjectsLocationsStudiesTrialsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1650,10 +1602,8 @@ class ProjectsLocationsStudiesTrialsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1Trial.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1Trial.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the trials associated with a study.
@@ -1677,7 +1627,7 @@ class ProjectsLocationsStudiesTrialsResource {
   async.Future<GoogleCloudMlV1ListTrialsResponse> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1694,7 +1644,7 @@ class ProjectsLocationsStudiesTrialsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/trials';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1703,10 +1653,8 @@ class ProjectsLocationsStudiesTrialsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1ListTrialsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1ListTrialsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the pareto-optimal trials for multi-objective study or the optimal
@@ -1738,7 +1686,7 @@ class ProjectsLocationsStudiesTrialsResource {
     GoogleCloudMlV1ListOptimalTrialsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1760,7 +1708,7 @@ class ProjectsLocationsStudiesTrialsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/trials:listOptimalTrials';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1769,10 +1717,8 @@ class ProjectsLocationsStudiesTrialsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1ListOptimalTrialsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1ListOptimalTrialsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Stops a trial.
@@ -1799,7 +1745,7 @@ class ProjectsLocationsStudiesTrialsResource {
     GoogleCloudMlV1StopTrialRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1819,7 +1765,7 @@ class ProjectsLocationsStudiesTrialsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':stop';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1828,10 +1774,8 @@ class ProjectsLocationsStudiesTrialsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1Trial.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1Trial.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Adds one or more trials to a study, with parameter values suggested by AI
@@ -1863,7 +1807,7 @@ class ProjectsLocationsStudiesTrialsResource {
     GoogleCloudMlV1SuggestTrialsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1885,7 +1829,7 @@ class ProjectsLocationsStudiesTrialsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/trials:suggest';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1894,10 +1838,8 @@ class ProjectsLocationsStudiesTrialsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1935,7 +1877,7 @@ class ProjectsModelsResource {
     GoogleCloudMlV1Model request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1955,7 +1897,7 @@ class ProjectsModelsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/models';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1964,10 +1906,8 @@ class ProjectsModelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1Model.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1Model.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a model.
@@ -1993,7 +1933,7 @@ class ProjectsModelsResource {
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2010,7 +1950,7 @@ class ProjectsModelsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2019,10 +1959,8 @@ class ProjectsModelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about a model, including its name, the description (if
@@ -2047,7 +1985,7 @@ class ProjectsModelsResource {
   async.Future<GoogleCloudMlV1Model> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2064,7 +2002,7 @@ class ProjectsModelsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2073,10 +2011,8 @@ class ProjectsModelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1Model.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1Model.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -2113,7 +2049,7 @@ class ProjectsModelsResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2137,7 +2073,7 @@ class ProjectsModelsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2146,10 +2082,8 @@ class ProjectsModelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleIamV1Policy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleIamV1Policy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the models in a project.
@@ -2191,7 +2125,7 @@ class ProjectsModelsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2217,7 +2151,7 @@ class ProjectsModelsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/models';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2226,10 +2160,8 @@ class ProjectsModelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1ListModelsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1ListModelsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a specific model resource.
@@ -2267,7 +2199,7 @@ class ProjectsModelsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2290,7 +2222,7 @@ class ProjectsModelsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2299,10 +2231,8 @@ class ProjectsModelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -2333,7 +2263,7 @@ class ProjectsModelsResource {
     GoogleIamV1SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2355,7 +2285,7 @@ class ProjectsModelsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2364,10 +2294,8 @@ class ProjectsModelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleIamV1Policy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleIamV1Policy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2400,7 +2328,7 @@ class ProjectsModelsResource {
     GoogleIamV1TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2422,7 +2350,7 @@ class ProjectsModelsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2431,10 +2359,8 @@ class ProjectsModelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleIamV1TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2474,7 +2400,7 @@ class ProjectsModelsVersionsResource {
     GoogleCloudMlV1Version request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2495,7 +2421,7 @@ class ProjectsModelsVersionsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/versions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2504,10 +2430,8 @@ class ProjectsModelsVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a model version.
@@ -2537,7 +2461,7 @@ class ProjectsModelsVersionsResource {
   async.Future<GoogleLongrunningOperation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2554,7 +2478,7 @@ class ProjectsModelsVersionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2563,10 +2487,8 @@ class ProjectsModelsVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about a model version.
@@ -2594,7 +2516,7 @@ class ProjectsModelsVersionsResource {
   async.Future<GoogleCloudMlV1Version> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2611,7 +2533,7 @@ class ProjectsModelsVersionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2620,10 +2542,8 @@ class ProjectsModelsVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1Version.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1Version.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets basic information about all the versions of a model.
@@ -2666,7 +2586,7 @@ class ProjectsModelsVersionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2693,7 +2613,7 @@ class ProjectsModelsVersionsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/versions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2702,10 +2622,8 @@ class ProjectsModelsVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1ListVersionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1ListVersionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the specified Version resource.
@@ -2746,7 +2664,7 @@ class ProjectsModelsVersionsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2769,7 +2687,7 @@ class ProjectsModelsVersionsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2778,10 +2696,8 @@ class ProjectsModelsVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Designates a version to be the default for the model.
@@ -2815,7 +2731,7 @@ class ProjectsModelsVersionsResource {
     GoogleCloudMlV1SetDefaultVersionRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2836,7 +2752,7 @@ class ProjectsModelsVersionsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setDefault';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2845,10 +2761,8 @@ class ProjectsModelsVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudMlV1Version.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudMlV1Version.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2886,7 +2800,7 @@ class ProjectsOperationsResource {
   async.Future<GoogleProtobufEmpty> cancel(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2903,7 +2817,7 @@ class ProjectsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2912,10 +2826,8 @@ class ProjectsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -2941,7 +2853,7 @@ class ProjectsOperationsResource {
   async.Future<GoogleLongrunningOperation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2958,7 +2870,7 @@ class ProjectsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2967,10 +2879,8 @@ class ProjectsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -3011,7 +2921,7 @@ class ProjectsOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3038,7 +2948,7 @@ class ProjectsOperationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3047,10 +2957,8 @@ class ProjectsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleLongrunningListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleLongrunningListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

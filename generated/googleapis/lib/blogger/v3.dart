@@ -105,7 +105,7 @@ class BlogUserInfosResource {
     core.String blogId, {
     core.int maxPosts,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -131,7 +131,7 @@ class BlogUserInfosResource {
         '/blogs/' +
         commons.Escaper.ecapeVariable('$blogId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -140,10 +140,8 @@ class BlogUserInfosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          BlogUserInfo.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return BlogUserInfo.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -182,7 +180,7 @@ class BlogsResource {
     core.int maxPosts,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -205,7 +203,7 @@ class BlogsResource {
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -214,9 +212,7 @@ class BlogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Blog.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Blog.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a blog by url.
@@ -246,7 +242,7 @@ class BlogsResource {
     core.String url, {
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -267,7 +263,7 @@ class BlogsResource {
 
     _url = 'v3/blogs/byurl';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -276,9 +272,7 @@ class BlogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Blog.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Blog.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists blogs by user.
@@ -317,7 +311,7 @@ class BlogsResource {
     core.List<core.String> status,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -346,7 +340,7 @@ class BlogsResource {
 
     _url = 'v3/users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -355,9 +349,7 @@ class BlogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BlogList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return BlogList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -391,7 +383,7 @@ class CommentsResource {
     core.String postId,
     core.String commentId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -420,7 +412,7 @@ class CommentsResource {
         commons.Escaper.ecapeVariable('$commentId') +
         '/approve';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -429,9 +421,7 @@ class CommentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Comment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a comment by blog id, post id and comment id.
@@ -452,12 +442,12 @@ class CommentsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String blogId,
     core.String postId,
     core.String commentId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -487,7 +477,7 @@ class CommentsResource {
         '/comments/' +
         commons.Escaper.ecapeVariable('$commentId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -495,9 +485,6 @@ class CommentsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -534,7 +521,7 @@ class CommentsResource {
     core.String commentId, {
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -565,7 +552,7 @@ class CommentsResource {
         '/comments/' +
         commons.Escaper.ecapeVariable('$commentId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -574,9 +561,7 @@ class CommentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Comment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists comments.
@@ -632,7 +617,7 @@ class CommentsResource {
     core.String status,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -677,7 +662,7 @@ class CommentsResource {
         commons.Escaper.ecapeVariable('$postId') +
         '/comments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -686,10 +671,8 @@ class CommentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CommentList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CommentList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists comments by blog.
@@ -729,7 +712,7 @@ class CommentsResource {
     core.String startDate,
     core.List<core.String> status,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -764,7 +747,7 @@ class CommentsResource {
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/comments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -773,10 +756,8 @@ class CommentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CommentList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CommentList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks a comment as spam by blog id, post id and comment id.
@@ -804,7 +785,7 @@ class CommentsResource {
     core.String postId,
     core.String commentId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -833,7 +814,7 @@ class CommentsResource {
         commons.Escaper.ecapeVariable('$commentId') +
         '/spam';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -842,9 +823,7 @@ class CommentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Comment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes the content of a comment by blog id, post id and comment id.
@@ -872,7 +851,7 @@ class CommentsResource {
     core.String postId,
     core.String commentId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -901,7 +880,7 @@ class CommentsResource {
         commons.Escaper.ecapeVariable('$commentId') +
         '/removecontent';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -910,9 +889,7 @@ class CommentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Comment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Comment.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -943,7 +920,7 @@ class PageViewsResource {
     core.String blogId, {
     core.List<core.String> range,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -964,7 +941,7 @@ class PageViewsResource {
     _url =
         'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pageviews';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -973,9 +950,7 @@ class PageViewsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Pageviews.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Pageviews.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1000,11 +975,11 @@ class PagesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String blogId,
     core.String pageId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1029,7 +1004,7 @@ class PagesResource {
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1037,9 +1012,6 @@ class PagesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1073,7 +1045,7 @@ class PagesResource {
     core.String pageId, {
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1099,7 +1071,7 @@ class PagesResource {
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1108,9 +1080,7 @@ class PagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Page.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Page.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a page.
@@ -1138,7 +1108,7 @@ class PagesResource {
     core.String blogId, {
     core.bool isDraft,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1161,7 +1131,7 @@ class PagesResource {
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1170,9 +1140,7 @@ class PagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Page.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Page.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists pages.
@@ -1214,7 +1182,7 @@ class PagesResource {
     core.List<core.String> status,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1246,7 +1214,7 @@ class PagesResource {
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1255,9 +1223,7 @@ class PagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PageList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PageList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches a page.
@@ -1291,7 +1257,7 @@ class PagesResource {
     core.bool publish_1,
     core.bool revert_1,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1323,7 +1289,7 @@ class PagesResource {
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1332,9 +1298,7 @@ class PagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Page.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Page.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Publishes a page.
@@ -1359,7 +1323,7 @@ class PagesResource {
     core.String blogId,
     core.String pageId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1383,7 +1347,7 @@ class PagesResource {
         commons.Escaper.ecapeVariable('$pageId') +
         '/publish';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1392,9 +1356,7 @@ class PagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Page.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Page.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Reverts a published or scheduled page to draft state.
@@ -1419,7 +1381,7 @@ class PagesResource {
     core.String blogId,
     core.String pageId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1443,7 +1405,7 @@ class PagesResource {
         commons.Escaper.ecapeVariable('$pageId') +
         '/revert';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1452,9 +1414,7 @@ class PagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Page.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Page.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a page by blog id and page id.
@@ -1488,7 +1448,7 @@ class PagesResource {
     core.bool publish_1,
     core.bool revert_1,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1520,7 +1480,7 @@ class PagesResource {
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1529,9 +1489,7 @@ class PagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Page.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Page.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1568,7 +1526,7 @@ class PostUserInfosResource {
     core.String postId, {
     core.int maxComments,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1599,7 +1557,7 @@ class PostUserInfosResource {
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1608,10 +1566,8 @@ class PostUserInfosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          PostUserInfo.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PostUserInfo.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists post and user info pairs.
@@ -1672,7 +1628,7 @@ class PostUserInfosResource {
     core.List<core.String> status,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1723,7 +1679,7 @@ class PostUserInfosResource {
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1732,10 +1688,8 @@ class PostUserInfosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PostUserInfosList.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PostUserInfosList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1760,11 +1714,11 @@ class PostsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String blogId,
     core.String postId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1789,7 +1743,7 @@ class PostsResource {
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1797,9 +1751,6 @@ class PostsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1842,7 +1793,7 @@ class PostsResource {
     core.int maxComments,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1877,7 +1828,7 @@ class PostsResource {
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1886,9 +1837,7 @@ class PostsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Post.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Post.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a post by path.
@@ -1924,7 +1873,7 @@ class PostsResource {
     core.int maxComments,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1953,7 +1902,7 @@ class PostsResource {
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/bypath';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1962,9 +1911,7 @@ class PostsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Post.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Post.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a post.
@@ -1998,7 +1945,7 @@ class PostsResource {
     core.bool fetchImages,
     core.bool isDraft,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2027,7 +1974,7 @@ class PostsResource {
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2036,9 +1983,7 @@ class PostsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Post.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Post.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists posts.
@@ -2099,7 +2044,7 @@ class PostsResource {
     core.List<core.String> status,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2146,7 +2091,7 @@ class PostsResource {
 
     _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2155,9 +2100,7 @@ class PostsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PostList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PostList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches a post.
@@ -2200,7 +2143,7 @@ class PostsResource {
     core.bool publish_1,
     core.bool revert_1,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2241,7 +2184,7 @@ class PostsResource {
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2250,9 +2193,7 @@ class PostsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Post.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Post.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Publishes a post.
@@ -2280,7 +2221,7 @@ class PostsResource {
     core.String postId, {
     core.String publishDate,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2307,7 +2248,7 @@ class PostsResource {
         commons.Escaper.ecapeVariable('$postId') +
         '/publish';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2316,9 +2257,7 @@ class PostsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Post.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Post.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Reverts a published or scheduled post to draft state.
@@ -2343,7 +2282,7 @@ class PostsResource {
     core.String blogId,
     core.String postId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2367,7 +2306,7 @@ class PostsResource {
         commons.Escaper.ecapeVariable('$postId') +
         '/revert';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2376,9 +2315,7 @@ class PostsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Post.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Post.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Searches for posts matching given query terms in the specified blog.
@@ -2413,7 +2350,7 @@ class PostsResource {
     core.bool fetchBodies,
     core.String orderBy,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2442,7 +2379,7 @@ class PostsResource {
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/search';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2451,9 +2388,7 @@ class PostsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PostList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PostList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a post by blog id and post id.
@@ -2496,7 +2431,7 @@ class PostsResource {
     core.bool publish_1,
     core.bool revert_1,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2537,7 +2472,7 @@ class PostsResource {
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2546,9 +2481,7 @@ class PostsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Post.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Post.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2576,7 +2509,7 @@ class UsersResource {
   async.Future<User> get(
     core.String userId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2593,7 +2526,7 @@ class UsersResource {
 
     _url = 'v3/users/' + commons.Escaper.ecapeVariable('$userId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2602,9 +2535,7 @@ class UsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => User.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return User.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

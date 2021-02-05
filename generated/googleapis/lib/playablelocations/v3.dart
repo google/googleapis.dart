@@ -79,7 +79,7 @@ class V3Resource {
       logImpressions(
     GoogleMapsPlayablelocationsV3LogImpressionsRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -96,7 +96,7 @@ class V3Resource {
 
     _url = 'v3:logImpressions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -105,10 +105,8 @@ class V3Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleMapsPlayablelocationsV3LogImpressionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleMapsPlayablelocationsV3LogImpressionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Logs bad playable location reports submitted by players.
@@ -134,7 +132,7 @@ class V3Resource {
       logPlayerReports(
     GoogleMapsPlayablelocationsV3LogPlayerReportsRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -151,7 +149,7 @@ class V3Resource {
 
     _url = 'v3:logPlayerReports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -160,10 +158,8 @@ class V3Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleMapsPlayablelocationsV3LogPlayerReportsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleMapsPlayablelocationsV3LogPlayerReportsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a set of playable locations that lie within a specified area, that
@@ -191,7 +187,7 @@ class V3Resource {
       samplePlayableLocations(
     GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -208,7 +204,7 @@ class V3Resource {
 
     _url = 'v3:samplePlayableLocations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -217,11 +213,8 @@ class V3Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

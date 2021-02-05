@@ -99,7 +99,7 @@ class SearchanalyticsResource {
     SearchAnalyticsQueryRequest request,
     core.String siteUrl, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -121,7 +121,7 @@ class SearchanalyticsResource {
         commons.Escaper.ecapeVariable('$siteUrl') +
         '/searchAnalytics/query';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -130,10 +130,8 @@ class SearchanalyticsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchAnalyticsQueryResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchAnalyticsQueryResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -160,11 +158,11 @@ class SitemapsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String siteUrl,
     core.String feedpath, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -189,7 +187,7 @@ class SitemapsResource {
         '/sitemaps/' +
         commons.Escaper.ecapeVariable('$feedpath');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -197,9 +195,6 @@ class SitemapsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -227,7 +222,7 @@ class SitemapsResource {
     core.String siteUrl,
     core.String feedpath, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -250,7 +245,7 @@ class SitemapsResource {
         '/sitemaps/' +
         commons.Escaper.ecapeVariable('$feedpath');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -259,10 +254,8 @@ class SitemapsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          WmxSitemap.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return WmxSitemap.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the sitemaps-entries submitted for this site, or included in the
@@ -290,7 +283,7 @@ class SitemapsResource {
     core.String siteUrl, {
     core.String sitemapIndex,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -310,7 +303,7 @@ class SitemapsResource {
 
     _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl') + '/sitemaps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -319,10 +312,8 @@ class SitemapsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SitemapsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SitemapsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Submits a sitemap for a site.
@@ -343,11 +334,11 @@ class SitemapsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future submit(
+  async.Future<void> submit(
     core.String siteUrl,
     core.String feedpath, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -372,7 +363,7 @@ class SitemapsResource {
         '/sitemaps/' +
         commons.Escaper.ecapeVariable('$feedpath');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -380,9 +371,6 @@ class SitemapsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 }
@@ -406,10 +394,10 @@ class SitesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future add(
+  async.Future<void> add(
     core.String siteUrl, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -428,7 +416,7 @@ class SitesResource {
 
     _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -436,9 +424,6 @@ class SitesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -459,10 +444,10 @@ class SitesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String siteUrl, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -481,7 +466,7 @@ class SitesResource {
 
     _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -489,9 +474,6 @@ class SitesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -517,7 +499,7 @@ class SitesResource {
   async.Future<WmxSite> get(
     core.String siteUrl, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -534,7 +516,7 @@ class SitesResource {
 
     _url = 'sites/' + commons.Escaper.ecapeVariable('$siteUrl');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -543,9 +525,7 @@ class SitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => WmxSite.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return WmxSite.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the user's Search Console sites.
@@ -564,7 +544,7 @@ class SitesResource {
   /// this method will complete with the same error.
   async.Future<SitesListResponse> list({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -578,7 +558,7 @@ class SitesResource {
 
     _url = 'sites';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -587,10 +567,8 @@ class SitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SitesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SitesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

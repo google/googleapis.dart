@@ -100,7 +100,7 @@ class AccessPoliciesResource {
   async.Future<Operation> create(
     AccessPolicy request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -117,7 +117,7 @@ class AccessPoliciesResource {
 
     _url = 'v1/accessPolicies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -126,9 +126,7 @@ class AccessPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete an AccessPolicy by resource name.
@@ -155,7 +153,7 @@ class AccessPoliciesResource {
   async.Future<Operation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -172,7 +170,7 @@ class AccessPoliciesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -181,9 +179,7 @@ class AccessPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get an AccessPolicy by name.
@@ -207,7 +203,7 @@ class AccessPoliciesResource {
   async.Future<AccessPolicy> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -224,7 +220,7 @@ class AccessPoliciesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -233,10 +229,8 @@ class AccessPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AccessPolicy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AccessPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all AccessPolicies under a container.
@@ -267,7 +261,7 @@ class AccessPoliciesResource {
     core.String pageToken,
     core.String parent,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -290,7 +284,7 @@ class AccessPoliciesResource {
 
     _url = 'v1/accessPolicies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -299,10 +293,8 @@ class AccessPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAccessPoliciesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAccessPoliciesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update an AccessPolicy.
@@ -338,7 +330,7 @@ class AccessPoliciesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -361,7 +353,7 @@ class AccessPoliciesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -370,9 +362,7 @@ class AccessPoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -411,7 +401,7 @@ class AccessPoliciesAccessLevelsResource {
     AccessLevel request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -433,7 +423,7 @@ class AccessPoliciesAccessLevelsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/accessLevels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -442,9 +432,7 @@ class AccessPoliciesAccessLevelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete an Access Level by resource name.
@@ -471,7 +459,7 @@ class AccessPoliciesAccessLevelsResource {
   async.Future<Operation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -488,7 +476,7 @@ class AccessPoliciesAccessLevelsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -497,9 +485,7 @@ class AccessPoliciesAccessLevelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get an Access Level by resource name.
@@ -537,7 +523,7 @@ class AccessPoliciesAccessLevelsResource {
     core.String name, {
     core.String accessLevelFormat,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -557,7 +543,7 @@ class AccessPoliciesAccessLevelsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -566,10 +552,8 @@ class AccessPoliciesAccessLevelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AccessLevel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AccessLevel.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all Access Levels for an access policy.
@@ -611,7 +595,7 @@ class AccessPoliciesAccessLevelsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -639,7 +623,7 @@ class AccessPoliciesAccessLevelsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/accessLevels';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -648,10 +632,8 @@ class AccessPoliciesAccessLevelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAccessLevelsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAccessLevelsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update an Access Level.
@@ -689,7 +671,7 @@ class AccessPoliciesAccessLevelsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -712,7 +694,7 @@ class AccessPoliciesAccessLevelsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -721,9 +703,7 @@ class AccessPoliciesAccessLevelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Replace all existing Access Levels in an Access Policy with the Access
@@ -759,7 +739,7 @@ class AccessPoliciesAccessLevelsResource {
     ReplaceAccessLevelsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -781,7 +761,7 @@ class AccessPoliciesAccessLevelsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/accessLevels:replaceAll';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -790,9 +770,7 @@ class AccessPoliciesAccessLevelsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -839,7 +817,7 @@ class AccessPoliciesServicePerimetersResource {
     CommitServicePerimetersRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -861,7 +839,7 @@ class AccessPoliciesServicePerimetersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/servicePerimeters:commit';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -870,9 +848,7 @@ class AccessPoliciesServicePerimetersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Create a Service Perimeter.
@@ -904,7 +880,7 @@ class AccessPoliciesServicePerimetersResource {
     ServicePerimeter request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -926,7 +902,7 @@ class AccessPoliciesServicePerimetersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/servicePerimeters';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -935,9 +911,7 @@ class AccessPoliciesServicePerimetersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a Service Perimeter by resource name.
@@ -965,7 +939,7 @@ class AccessPoliciesServicePerimetersResource {
   async.Future<Operation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -982,7 +956,7 @@ class AccessPoliciesServicePerimetersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -991,9 +965,7 @@ class AccessPoliciesServicePerimetersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a Service Perimeter by resource name.
@@ -1018,7 +990,7 @@ class AccessPoliciesServicePerimetersResource {
   async.Future<ServicePerimeter> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1035,7 +1007,7 @@ class AccessPoliciesServicePerimetersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1044,10 +1016,8 @@ class AccessPoliciesServicePerimetersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ServicePerimeter.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ServicePerimeter.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all Service Perimeters for an access policy.
@@ -1079,7 +1049,7 @@ class AccessPoliciesServicePerimetersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1104,7 +1074,7 @@ class AccessPoliciesServicePerimetersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/servicePerimeters';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1113,10 +1083,8 @@ class AccessPoliciesServicePerimetersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListServicePerimetersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListServicePerimetersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a Service Perimeter.
@@ -1155,7 +1123,7 @@ class AccessPoliciesServicePerimetersResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1178,7 +1146,7 @@ class AccessPoliciesServicePerimetersResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1187,9 +1155,7 @@ class AccessPoliciesServicePerimetersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Replace all existing Service Perimeters in an Access Policy with the
@@ -1224,7 +1190,7 @@ class AccessPoliciesServicePerimetersResource {
     ReplaceServicePerimetersRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1246,7 +1212,7 @@ class AccessPoliciesServicePerimetersResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/servicePerimeters:replaceAll';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1255,9 +1221,7 @@ class AccessPoliciesServicePerimetersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1298,7 +1262,7 @@ class OperationsResource {
     CancelOperationRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1318,7 +1282,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1327,9 +1291,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -1356,7 +1318,7 @@ class OperationsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1373,7 +1335,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1382,9 +1344,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -1410,7 +1370,7 @@ class OperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1427,7 +1387,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1436,9 +1396,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -1479,7 +1437,7 @@ class OperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1505,7 +1463,7 @@ class OperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1514,10 +1472,8 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1564,7 +1520,7 @@ class OrganizationsGcpUserAccessBindingsResource {
     GcpUserAccessBinding request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1586,7 +1542,7 @@ class OrganizationsGcpUserAccessBindingsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/gcpUserAccessBindings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1595,9 +1551,7 @@ class OrganizationsGcpUserAccessBindingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GcpUserAccessBinding.
@@ -1626,7 +1580,7 @@ class OrganizationsGcpUserAccessBindingsResource {
   async.Future<Operation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1643,7 +1597,7 @@ class OrganizationsGcpUserAccessBindingsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1652,9 +1606,7 @@ class OrganizationsGcpUserAccessBindingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the GcpUserAccessBinding with the given name.
@@ -1679,7 +1631,7 @@ class OrganizationsGcpUserAccessBindingsResource {
   async.Future<GcpUserAccessBinding> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1696,7 +1648,7 @@ class OrganizationsGcpUserAccessBindingsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1705,10 +1657,8 @@ class OrganizationsGcpUserAccessBindingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GcpUserAccessBinding.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GcpUserAccessBinding.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all GcpUserAccessBindings for a Google Cloud organization.
@@ -1741,7 +1691,7 @@ class OrganizationsGcpUserAccessBindingsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1766,7 +1716,7 @@ class OrganizationsGcpUserAccessBindingsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/gcpUserAccessBindings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1775,10 +1725,8 @@ class OrganizationsGcpUserAccessBindingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListGcpUserAccessBindingsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListGcpUserAccessBindingsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GcpUserAccessBinding.
@@ -1819,7 +1767,7 @@ class OrganizationsGcpUserAccessBindingsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1842,7 +1790,7 @@ class OrganizationsGcpUserAccessBindingsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1851,9 +1799,7 @@ class OrganizationsGcpUserAccessBindingsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

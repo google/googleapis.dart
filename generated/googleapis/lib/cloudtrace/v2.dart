@@ -112,7 +112,7 @@ class ProjectsTracesResource {
     BatchWriteSpansRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -134,7 +134,7 @@ class ProjectsTracesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/traces:batchWrite';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -143,9 +143,7 @@ class ProjectsTracesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -183,7 +181,7 @@ class ProjectsTracesSpansResource {
     Span request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -203,7 +201,7 @@ class ProjectsTracesSpansResource {
 
     _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -212,9 +210,7 @@ class ProjectsTracesSpansResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Span.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Span.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

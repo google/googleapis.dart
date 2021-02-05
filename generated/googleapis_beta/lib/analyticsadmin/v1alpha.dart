@@ -111,7 +111,7 @@ class AccountSummariesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -131,7 +131,7 @@ class AccountSummariesResource {
 
     _url = 'v1alpha/accountSummaries';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -140,11 +140,8 @@ class AccountSummariesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleAnalyticsAdminV1alphaListAccountSummariesResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaListAccountSummariesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -184,7 +181,7 @@ class AccountsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -201,7 +198,7 @@ class AccountsResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -210,10 +207,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lookup for a single Account.
@@ -237,7 +232,7 @@ class AccountsResource {
   async.Future<GoogleAnalyticsAdminV1alphaAccount> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -254,7 +249,7 @@ class AccountsResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -263,10 +258,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaAccount.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaAccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get data sharing settings on an account.
@@ -294,7 +287,7 @@ class AccountsResource {
       getDataSharingSettings(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -311,7 +304,7 @@ class AccountsResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -320,10 +313,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaDataSharingSettings.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaDataSharingSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns all accounts accessible by the caller.
@@ -363,7 +354,7 @@ class AccountsResource {
     core.String pageToken,
     core.bool showDeleted,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -386,7 +377,7 @@ class AccountsResource {
 
     _url = 'v1alpha/accounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -395,10 +386,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaListAccountsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaListAccountsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an account.
@@ -430,7 +419,7 @@ class AccountsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -453,7 +442,7 @@ class AccountsResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -462,10 +451,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaAccount.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaAccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Requests a ticket for creating an account.
@@ -489,7 +476,7 @@ class AccountsResource {
       provisionAccountTicket(
     GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -506,7 +493,7 @@ class AccountsResource {
 
     _url = 'v1alpha/accounts:provisionAccountTicket';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -515,11 +502,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -559,7 +543,7 @@ class AccountsUserLinksResource {
     GoogleAnalyticsAdminV1alphaAuditUserLinksRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -581,7 +565,7 @@ class AccountsUserLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userLinks:audit';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -590,10 +574,8 @@ class AccountsUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaAuditUserLinksResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaAuditUserLinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates information about multiple users' links to an account or property.
@@ -627,7 +609,7 @@ class AccountsUserLinksResource {
     GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -649,7 +631,7 @@ class AccountsUserLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userLinks:batchCreate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -658,11 +640,8 @@ class AccountsUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes information about multiple users' links to an account or property.
@@ -690,7 +669,7 @@ class AccountsUserLinksResource {
     GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -712,7 +691,7 @@ class AccountsUserLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userLinks:batchDelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -721,10 +700,8 @@ class AccountsUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about multiple users' links to an account or property.
@@ -754,7 +731,7 @@ class AccountsUserLinksResource {
     core.String parent, {
     core.List<core.String> names,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -776,7 +753,7 @@ class AccountsUserLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userLinks:batchGet';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -785,10 +762,8 @@ class AccountsUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates information about multiple users' links to an account or property.
@@ -818,7 +793,7 @@ class AccountsUserLinksResource {
     GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -840,7 +815,7 @@ class AccountsUserLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userLinks:batchUpdate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -849,11 +824,8 @@ class AccountsUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a user link on an account or property.
@@ -887,7 +859,7 @@ class AccountsUserLinksResource {
     core.String parent, {
     core.bool notifyNewUser,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -912,7 +884,7 @@ class AccountsUserLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userLinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -921,10 +893,8 @@ class AccountsUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaUserLink.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a user link on an account or property.
@@ -947,7 +917,7 @@ class AccountsUserLinksResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -964,7 +934,7 @@ class AccountsUserLinksResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -973,10 +943,8 @@ class AccountsUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about a user's link to an account or property.
@@ -999,7 +967,7 @@ class AccountsUserLinksResource {
   async.Future<GoogleAnalyticsAdminV1alphaUserLink> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1016,7 +984,7 @@ class AccountsUserLinksResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1025,10 +993,8 @@ class AccountsUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaUserLink.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all user links on an account or property.
@@ -1063,7 +1029,7 @@ class AccountsUserLinksResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1088,7 +1054,7 @@ class AccountsUserLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userLinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1097,10 +1063,8 @@ class AccountsUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaListUserLinksResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaListUserLinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a user link on an account or property.
@@ -1126,7 +1090,7 @@ class AccountsUserLinksResource {
     GoogleAnalyticsAdminV1alphaUserLink request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1146,7 +1110,7 @@ class AccountsUserLinksResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1155,10 +1119,8 @@ class AccountsUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaUserLink.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1199,7 +1161,7 @@ class PropertiesResource {
   async.Future<GoogleAnalyticsAdminV1alphaProperty> create(
     GoogleAnalyticsAdminV1alphaProperty request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1216,7 +1178,7 @@ class PropertiesResource {
 
     _url = 'v1alpha/properties';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1225,10 +1187,8 @@ class PropertiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaProperty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaProperty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks target Property as soft-deleted (ie: "trashed") and returns it.
@@ -1259,7 +1219,7 @@ class PropertiesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1276,7 +1236,7 @@ class PropertiesResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1285,10 +1245,8 @@ class PropertiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lookup for a single "GA4" Property.
@@ -1312,7 +1270,7 @@ class PropertiesResource {
   async.Future<GoogleAnalyticsAdminV1alphaProperty> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1329,7 +1287,7 @@ class PropertiesResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1338,10 +1296,8 @@ class PropertiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaProperty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaProperty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns child Properties under the specified parent Account.
@@ -1392,7 +1348,7 @@ class PropertiesResource {
     core.String pageToken,
     core.bool showDeleted,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1418,7 +1374,7 @@ class PropertiesResource {
 
     _url = 'v1alpha/properties';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1427,10 +1383,8 @@ class PropertiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaListPropertiesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaListPropertiesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a property.
@@ -1462,7 +1416,7 @@ class PropertiesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1485,7 +1439,7 @@ class PropertiesResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1494,10 +1448,8 @@ class PropertiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaProperty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaProperty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1537,7 +1489,7 @@ class PropertiesAndroidAppDataStreamsResource {
     GoogleAnalyticsAdminV1alphaAndroidAppDataStream request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1559,7 +1511,7 @@ class PropertiesAndroidAppDataStreamsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/androidAppDataStreams';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1568,10 +1520,8 @@ class PropertiesAndroidAppDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an android app stream on a property.
@@ -1597,7 +1547,7 @@ class PropertiesAndroidAppDataStreamsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1614,7 +1564,7 @@ class PropertiesAndroidAppDataStreamsResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1623,10 +1573,8 @@ class PropertiesAndroidAppDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lookup for a single AndroidAppDataStream
@@ -1652,7 +1600,7 @@ class PropertiesAndroidAppDataStreamsResource {
   async.Future<GoogleAnalyticsAdminV1alphaAndroidAppDataStream> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1669,7 +1617,7 @@ class PropertiesAndroidAppDataStreamsResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1678,10 +1626,8 @@ class PropertiesAndroidAppDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns child android app streams under the specified parent property.
@@ -1722,7 +1668,7 @@ class PropertiesAndroidAppDataStreamsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1747,7 +1693,7 @@ class PropertiesAndroidAppDataStreamsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/androidAppDataStreams';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1756,11 +1702,8 @@ class PropertiesAndroidAppDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an android app stream on a property.
@@ -1794,7 +1737,7 @@ class PropertiesAndroidAppDataStreamsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1817,7 +1760,7 @@ class PropertiesAndroidAppDataStreamsResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1826,10 +1769,8 @@ class PropertiesAndroidAppDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1865,7 +1806,7 @@ class PropertiesFirebaseLinksResource {
     GoogleAnalyticsAdminV1alphaFirebaseLink request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1887,7 +1828,7 @@ class PropertiesFirebaseLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/firebaseLinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1896,10 +1837,8 @@ class PropertiesFirebaseLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a FirebaseLink on a property
@@ -1924,7 +1863,7 @@ class PropertiesFirebaseLinksResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1941,7 +1880,7 @@ class PropertiesFirebaseLinksResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1950,10 +1889,8 @@ class PropertiesFirebaseLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists FirebaseLinks on a property.
@@ -1991,7 +1928,7 @@ class PropertiesFirebaseLinksResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2016,7 +1953,7 @@ class PropertiesFirebaseLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/firebaseLinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2025,10 +1962,8 @@ class PropertiesFirebaseLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a FirebaseLink on a property
@@ -2059,7 +1994,7 @@ class PropertiesFirebaseLinksResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2082,7 +2017,7 @@ class PropertiesFirebaseLinksResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2091,10 +2026,8 @@ class PropertiesFirebaseLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2127,7 +2060,7 @@ class PropertiesGoogleAdsLinksResource {
     GoogleAnalyticsAdminV1alphaGoogleAdsLink request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2149,7 +2082,7 @@ class PropertiesGoogleAdsLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/googleAdsLinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2158,10 +2091,8 @@ class PropertiesGoogleAdsLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a GoogleAdsLink on a property
@@ -2184,7 +2115,7 @@ class PropertiesGoogleAdsLinksResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2201,7 +2132,7 @@ class PropertiesGoogleAdsLinksResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2210,10 +2141,8 @@ class PropertiesGoogleAdsLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists GoogleAdsLinks on a property.
@@ -2247,7 +2176,7 @@ class PropertiesGoogleAdsLinksResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2272,7 +2201,7 @@ class PropertiesGoogleAdsLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/googleAdsLinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2281,10 +2210,8 @@ class PropertiesGoogleAdsLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a GoogleAdsLink on a property
@@ -2317,7 +2244,7 @@ class PropertiesGoogleAdsLinksResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2340,7 +2267,7 @@ class PropertiesGoogleAdsLinksResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2349,10 +2276,8 @@ class PropertiesGoogleAdsLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2392,7 +2317,7 @@ class PropertiesIosAppDataStreamsResource {
     GoogleAnalyticsAdminV1alphaIosAppDataStream request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2414,7 +2339,7 @@ class PropertiesIosAppDataStreamsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/iosAppDataStreams';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2423,10 +2348,8 @@ class PropertiesIosAppDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an iOS app stream on a property.
@@ -2451,7 +2374,7 @@ class PropertiesIosAppDataStreamsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2468,7 +2391,7 @@ class PropertiesIosAppDataStreamsResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2477,10 +2400,8 @@ class PropertiesIosAppDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lookup for a single IosAppDataStream
@@ -2505,7 +2426,7 @@ class PropertiesIosAppDataStreamsResource {
   async.Future<GoogleAnalyticsAdminV1alphaIosAppDataStream> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2522,7 +2443,7 @@ class PropertiesIosAppDataStreamsResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2531,10 +2452,8 @@ class PropertiesIosAppDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns child iOS app data streams under the specified parent property.
@@ -2573,7 +2492,7 @@ class PropertiesIosAppDataStreamsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2598,7 +2517,7 @@ class PropertiesIosAppDataStreamsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/iosAppDataStreams';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2607,11 +2526,8 @@ class PropertiesIosAppDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an iOS app stream on a property.
@@ -2644,7 +2560,7 @@ class PropertiesIosAppDataStreamsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2667,7 +2583,7 @@ class PropertiesIosAppDataStreamsResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2676,10 +2592,8 @@ class PropertiesIosAppDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2720,7 +2634,7 @@ class PropertiesUserLinksResource {
     GoogleAnalyticsAdminV1alphaAuditUserLinksRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2742,7 +2656,7 @@ class PropertiesUserLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userLinks:audit';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2751,10 +2665,8 @@ class PropertiesUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaAuditUserLinksResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaAuditUserLinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates information about multiple users' links to an account or property.
@@ -2788,7 +2700,7 @@ class PropertiesUserLinksResource {
     GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2810,7 +2722,7 @@ class PropertiesUserLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userLinks:batchCreate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2819,11 +2731,8 @@ class PropertiesUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes information about multiple users' links to an account or property.
@@ -2851,7 +2760,7 @@ class PropertiesUserLinksResource {
     GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2873,7 +2782,7 @@ class PropertiesUserLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userLinks:batchDelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2882,10 +2791,8 @@ class PropertiesUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about multiple users' links to an account or property.
@@ -2915,7 +2822,7 @@ class PropertiesUserLinksResource {
     core.String parent, {
     core.List<core.String> names,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2937,7 +2844,7 @@ class PropertiesUserLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userLinks:batchGet';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2946,10 +2853,8 @@ class PropertiesUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates information about multiple users' links to an account or property.
@@ -2979,7 +2884,7 @@ class PropertiesUserLinksResource {
     GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3001,7 +2906,7 @@ class PropertiesUserLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userLinks:batchUpdate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3010,11 +2915,8 @@ class PropertiesUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse.fromJson(
-              data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a user link on an account or property.
@@ -3048,7 +2950,7 @@ class PropertiesUserLinksResource {
     core.String parent, {
     core.bool notifyNewUser,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3073,7 +2975,7 @@ class PropertiesUserLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userLinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3082,10 +2984,8 @@ class PropertiesUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaUserLink.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a user link on an account or property.
@@ -3108,7 +3008,7 @@ class PropertiesUserLinksResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3125,7 +3025,7 @@ class PropertiesUserLinksResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3134,10 +3034,8 @@ class PropertiesUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets information about a user's link to an account or property.
@@ -3160,7 +3058,7 @@ class PropertiesUserLinksResource {
   async.Future<GoogleAnalyticsAdminV1alphaUserLink> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3177,7 +3075,7 @@ class PropertiesUserLinksResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3186,10 +3084,8 @@ class PropertiesUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaUserLink.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all user links on an account or property.
@@ -3224,7 +3120,7 @@ class PropertiesUserLinksResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3249,7 +3145,7 @@ class PropertiesUserLinksResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/userLinks';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3258,10 +3154,8 @@ class PropertiesUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaListUserLinksResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaListUserLinksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a user link on an account or property.
@@ -3287,7 +3181,7 @@ class PropertiesUserLinksResource {
     GoogleAnalyticsAdminV1alphaUserLink request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3307,7 +3201,7 @@ class PropertiesUserLinksResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3316,10 +3210,8 @@ class PropertiesUserLinksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaUserLink.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaUserLink.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3353,7 +3245,7 @@ class PropertiesWebDataStreamsResource {
     GoogleAnalyticsAdminV1alphaWebDataStream request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3375,7 +3267,7 @@ class PropertiesWebDataStreamsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/webDataStreams';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3384,10 +3276,8 @@ class PropertiesWebDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a web stream on a property.
@@ -3412,7 +3302,7 @@ class PropertiesWebDataStreamsResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3429,7 +3319,7 @@ class PropertiesWebDataStreamsResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3438,10 +3328,8 @@ class PropertiesWebDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lookup for a single WebDataStream
@@ -3466,7 +3354,7 @@ class PropertiesWebDataStreamsResource {
   async.Future<GoogleAnalyticsAdminV1alphaWebDataStream> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3483,7 +3371,7 @@ class PropertiesWebDataStreamsResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3492,10 +3380,8 @@ class PropertiesWebDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the singleton enhanced measurement settings for this web stream.
@@ -3525,7 +3411,7 @@ class PropertiesWebDataStreamsResource {
       getEnhancedMeasurementSettings(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3542,7 +3428,7 @@ class PropertiesWebDataStreamsResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3551,10 +3437,8 @@ class PropertiesWebDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the Site Tag for the specified web stream.
@@ -3583,7 +3467,7 @@ class PropertiesWebDataStreamsResource {
   async.Future<GoogleAnalyticsAdminV1alphaGlobalSiteTag> getGlobalSiteTag(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3600,7 +3484,7 @@ class PropertiesWebDataStreamsResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3609,10 +3493,8 @@ class PropertiesWebDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaGlobalSiteTag.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaGlobalSiteTag.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns child web data streams under the specified parent property.
@@ -3650,7 +3532,7 @@ class PropertiesWebDataStreamsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3675,7 +3557,7 @@ class PropertiesWebDataStreamsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/webDataStreams';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3684,10 +3566,8 @@ class PropertiesWebDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a web stream on a property.
@@ -3720,7 +3600,7 @@ class PropertiesWebDataStreamsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3743,7 +3623,7 @@ class PropertiesWebDataStreamsResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3752,10 +3632,8 @@ class PropertiesWebDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the singleton enhanced measurement settings for this web stream.
@@ -3793,7 +3671,7 @@ class PropertiesWebDataStreamsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3816,7 +3694,7 @@ class PropertiesWebDataStreamsResource {
 
     _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3825,10 +3703,8 @@ class PropertiesWebDataStreamsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

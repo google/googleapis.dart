@@ -79,7 +79,7 @@ class IamResource {
       troubleshoot(
     GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -96,7 +96,7 @@ class IamResource {
 
     _url = 'v1/iam:troubleshoot';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -105,10 +105,8 @@ class IamResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse
-          .fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

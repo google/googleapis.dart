@@ -114,7 +114,7 @@ class ChangesResource {
     core.String managedZone, {
     core.String clientOperationId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -144,7 +144,7 @@ class ChangesResource {
         commons.Escaper.ecapeVariable('$managedZone') +
         '/changes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -153,9 +153,7 @@ class ChangesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Change.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Change.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Fetch the representation of an existing Change.
@@ -190,7 +188,7 @@ class ChangesResource {
     core.String changeId, {
     core.String clientOperationId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -221,7 +219,7 @@ class ChangesResource {
         '/changes/' +
         commons.Escaper.ecapeVariable('$changeId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -230,9 +228,7 @@ class ChangesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Change.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Change.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Enumerate Changes to a ResourceRecordSet collection.
@@ -274,7 +270,7 @@ class ChangesResource {
     core.String sortBy,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -310,7 +306,7 @@ class ChangesResource {
         commons.Escaper.ecapeVariable('$managedZone') +
         '/changes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -319,10 +315,8 @@ class ChangesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ChangesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ChangesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -367,7 +361,7 @@ class DnsKeysResource {
     core.String clientOperationId,
     core.String digestType,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -401,7 +395,7 @@ class DnsKeysResource {
         '/dnsKeys/' +
         commons.Escaper.ecapeVariable('$dnsKeyId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -410,9 +404,7 @@ class DnsKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DnsKey.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DnsKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Enumerate DnsKeys to a ResourceRecordSet collection.
@@ -451,7 +443,7 @@ class DnsKeysResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -484,7 +476,7 @@ class DnsKeysResource {
         commons.Escaper.ecapeVariable('$managedZone') +
         '/dnsKeys';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -493,10 +485,8 @@ class DnsKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DnsKeysListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DnsKeysListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -536,7 +526,7 @@ class ManagedZoneOperationsResource {
     core.String operation, {
     core.String clientOperationId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -567,7 +557,7 @@ class ManagedZoneOperationsResource {
         '/operations/' +
         commons.Escaper.ecapeVariable('$operation');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -576,9 +566,7 @@ class ManagedZoneOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Enumerate Operations for the given ManagedZone.
@@ -618,7 +606,7 @@ class ManagedZoneOperationsResource {
     core.String pageToken,
     core.String sortBy,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -651,7 +639,7 @@ class ManagedZoneOperationsResource {
         commons.Escaper.ecapeVariable('$managedZone') +
         '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -660,10 +648,8 @@ class ManagedZoneOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ManagedZoneOperationsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ManagedZoneOperationsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -699,7 +685,7 @@ class ManagedZonesResource {
     core.String project, {
     core.String clientOperationId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -724,7 +710,7 @@ class ManagedZonesResource {
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -733,10 +719,8 @@ class ManagedZonesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ManagedZone.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ManagedZone.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a previously created ManagedZone.
@@ -760,12 +744,12 @@ class ManagedZonesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String project,
     core.String managedZone, {
     core.String clientOperationId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -793,7 +777,7 @@ class ManagedZonesResource {
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -801,9 +785,6 @@ class ManagedZonesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -835,7 +816,7 @@ class ManagedZonesResource {
     core.String managedZone, {
     core.String clientOperationId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -861,7 +842,7 @@ class ManagedZonesResource {
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -870,10 +851,8 @@ class ManagedZonesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ManagedZone.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ManagedZone.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Enumerate ManagedZones that have been created but not yet deleted.
@@ -906,7 +885,7 @@ class ManagedZonesResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -934,7 +913,7 @@ class ManagedZonesResource {
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -943,10 +922,8 @@ class ManagedZonesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ManagedZonesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ManagedZonesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Apply a partial update to an existing ManagedZone.
@@ -980,7 +957,7 @@ class ManagedZonesResource {
     core.String managedZone, {
     core.String clientOperationId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1009,7 +986,7 @@ class ManagedZonesResource {
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1018,9 +995,7 @@ class ManagedZonesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update an existing ManagedZone.
@@ -1054,7 +1029,7 @@ class ManagedZonesResource {
     core.String managedZone, {
     core.String clientOperationId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1083,7 +1058,7 @@ class ManagedZonesResource {
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1092,9 +1067,7 @@ class ManagedZonesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1130,7 +1103,7 @@ class PoliciesResource {
     core.String project, {
     core.String clientOperationId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1155,7 +1128,7 @@ class PoliciesResource {
         commons.Escaper.ecapeVariable('$project') +
         '/policies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1164,9 +1137,7 @@ class PoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a previously created Policy.
@@ -1192,12 +1163,12 @@ class PoliciesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String project,
     core.String policy, {
     core.String clientOperationId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1225,7 +1196,7 @@ class PoliciesResource {
         '/policies/' +
         commons.Escaper.ecapeVariable('$policy');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1233,9 +1204,6 @@ class PoliciesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1267,7 +1235,7 @@ class PoliciesResource {
     core.String policy, {
     core.String clientOperationId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1293,7 +1261,7 @@ class PoliciesResource {
         '/policies/' +
         commons.Escaper.ecapeVariable('$policy');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1302,9 +1270,7 @@ class PoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Enumerate all Policies associated with a project.
@@ -1334,7 +1300,7 @@ class PoliciesResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1359,7 +1325,7 @@ class PoliciesResource {
         commons.Escaper.ecapeVariable('$project') +
         '/policies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1368,10 +1334,8 @@ class PoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PoliciesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PoliciesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Apply a partial update to an existing Policy.
@@ -1405,7 +1369,7 @@ class PoliciesResource {
     core.String policy, {
     core.String clientOperationId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1434,7 +1398,7 @@ class PoliciesResource {
         '/policies/' +
         commons.Escaper.ecapeVariable('$policy');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1443,10 +1407,8 @@ class PoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PoliciesPatchResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PoliciesPatchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update an existing Policy.
@@ -1480,7 +1442,7 @@ class PoliciesResource {
     core.String policy, {
     core.String clientOperationId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1509,7 +1471,7 @@ class PoliciesResource {
         '/policies/' +
         commons.Escaper.ecapeVariable('$policy');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1518,10 +1480,8 @@ class PoliciesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PoliciesUpdateResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PoliciesUpdateResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1554,7 +1514,7 @@ class ProjectsResource {
     core.String project, {
     core.String clientOperationId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1574,7 +1534,7 @@ class ProjectsResource {
 
     _url = 'dns/v1/projects/' + commons.Escaper.ecapeVariable('$project');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1583,9 +1543,7 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Project.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Project.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1633,7 +1591,7 @@ class ResourceRecordSetsResource {
     core.String pageToken,
     core.String type,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1669,7 +1627,7 @@ class ResourceRecordSetsResource {
         commons.Escaper.ecapeVariable('$managedZone') +
         '/rrsets';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1678,10 +1636,8 @@ class ResourceRecordSetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ResourceRecordSetsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ResourceRecordSetsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -121,7 +121,7 @@ class AvailableProjectsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -141,7 +141,7 @@ class AvailableProjectsResource {
 
     _url = 'v1beta1/availableProjects';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -150,10 +150,8 @@ class AvailableProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAvailableProjectsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAvailableProjectsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -185,7 +183,7 @@ class OperationsResource {
   async.Future<Operation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -202,7 +200,7 @@ class OperationsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -211,9 +209,7 @@ class OperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -286,7 +282,7 @@ class ProjectsResource {
     AddFirebaseRequest request,
     core.String project, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -308,7 +304,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariableReserved('$project') +
         ':addFirebase';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -317,9 +313,7 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Links the specified FirebaseProject with an existing
@@ -386,7 +380,7 @@ class ProjectsResource {
     AddGoogleAnalyticsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -408,7 +402,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':addGoogleAnalytics';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -417,9 +411,7 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified FirebaseProject.
@@ -445,7 +437,7 @@ class ProjectsResource {
   async.Future<FirebaseProject> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -462,7 +454,7 @@ class ProjectsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -471,10 +463,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          FirebaseProject.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FirebaseProject.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the configuration artifact associated with the specified
@@ -505,7 +495,7 @@ class ProjectsResource {
   async.Future<AdminSdkConfig> getAdminSdkConfig(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -522,7 +512,7 @@ class ProjectsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -531,10 +521,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AdminSdkConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AdminSdkConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the Google Analytics details currently associated with the specified
@@ -564,7 +552,7 @@ class ProjectsResource {
   async.Future<AnalyticsDetails> getAnalyticsDetails(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -581,7 +569,7 @@ class ProjectsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -590,10 +578,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AnalyticsDetails.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AnalyticsDetails.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists each FirebaseProject accessible to the caller.
@@ -631,7 +617,7 @@ class ProjectsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -651,7 +637,7 @@ class ProjectsResource {
 
     _url = 'v1beta1/projects';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -660,10 +646,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListFirebaseProjectsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListFirebaseProjectsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the attributes of the specified FirebaseProject.
@@ -703,7 +687,7 @@ class ProjectsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -726,7 +710,7 @@ class ProjectsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -735,10 +719,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          FirebaseProject.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FirebaseProject.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Unlinks the specified FirebaseProject from its Google Analytics account.
@@ -780,7 +762,7 @@ class ProjectsResource {
     RemoveAnalyticsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -802,7 +784,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':removeAnalytics';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -811,9 +793,7 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all available Apps for the specified FirebaseProject.
@@ -875,7 +855,7 @@ class ProjectsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -903,7 +883,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':searchApps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -912,10 +892,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchFirebaseAppsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchFirebaseAppsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -960,7 +938,7 @@ class ProjectsAndroidAppsResource {
     AndroidApp request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -982,7 +960,7 @@ class ProjectsAndroidAppsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/androidApps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -991,9 +969,7 @@ class ProjectsAndroidAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified AndroidApp.
@@ -1021,7 +997,7 @@ class ProjectsAndroidAppsResource {
   async.Future<AndroidApp> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1038,7 +1014,7 @@ class ProjectsAndroidAppsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1047,10 +1023,8 @@ class ProjectsAndroidAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AndroidApp.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AndroidApp.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the configuration artifact associated with the specified AndroidApp.
@@ -1079,7 +1053,7 @@ class ProjectsAndroidAppsResource {
   async.Future<AndroidAppConfig> getConfig(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1096,7 +1070,7 @@ class ProjectsAndroidAppsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1105,10 +1079,8 @@ class ProjectsAndroidAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AndroidAppConfig.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AndroidAppConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists each AndroidApp associated with the specified FirebaseProject.
@@ -1148,7 +1120,7 @@ class ProjectsAndroidAppsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1173,7 +1145,7 @@ class ProjectsAndroidAppsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/androidApps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1182,10 +1154,8 @@ class ProjectsAndroidAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAndroidAppsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAndroidAppsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the attributes of the specified AndroidApp.
@@ -1225,7 +1195,7 @@ class ProjectsAndroidAppsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1248,7 +1218,7 @@ class ProjectsAndroidAppsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1257,10 +1227,8 @@ class ProjectsAndroidAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AndroidApp.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AndroidApp.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1299,7 +1267,7 @@ class ProjectsAndroidAppsShaResource {
     ShaCertificate request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1320,7 +1288,7 @@ class ProjectsAndroidAppsShaResource {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sha';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1329,10 +1297,8 @@ class ProjectsAndroidAppsShaResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ShaCertificate.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ShaCertificate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Removes a ShaCertificate from the specified AndroidApp.
@@ -1363,7 +1329,7 @@ class ProjectsAndroidAppsShaResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1380,7 +1346,7 @@ class ProjectsAndroidAppsShaResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1389,9 +1355,7 @@ class ProjectsAndroidAppsShaResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the SHA-1 and SHA-256 certificates for the specified AndroidApp.
@@ -1420,7 +1384,7 @@ class ProjectsAndroidAppsShaResource {
   async.Future<ListShaCertificatesResponse> list(
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1438,7 +1402,7 @@ class ProjectsAndroidAppsShaResource {
     _url =
         'v1beta1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/sha';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1447,10 +1411,8 @@ class ProjectsAndroidAppsShaResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListShaCertificatesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListShaCertificatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1513,7 +1475,7 @@ class ProjectsAvailableLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1538,7 +1500,7 @@ class ProjectsAvailableLocationsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/availableLocations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1547,10 +1509,8 @@ class ProjectsAvailableLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAvailableLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAvailableLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1615,7 +1575,7 @@ class ProjectsDefaultLocationResource {
     FinalizeDefaultLocationRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1637,7 +1597,7 @@ class ProjectsDefaultLocationResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/defaultLocation:finalize';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1646,9 +1606,7 @@ class ProjectsDefaultLocationResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1688,7 +1646,7 @@ class ProjectsIosAppsResource {
     IosApp request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1710,7 +1668,7 @@ class ProjectsIosAppsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/iosApps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1719,9 +1677,7 @@ class ProjectsIosAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified IosApp.
@@ -1749,7 +1705,7 @@ class ProjectsIosAppsResource {
   async.Future<IosApp> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1766,7 +1722,7 @@ class ProjectsIosAppsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1775,9 +1731,7 @@ class ProjectsIosAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => IosApp.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return IosApp.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the configuration artifact associated with the specified IosApp.
@@ -1805,7 +1759,7 @@ class ProjectsIosAppsResource {
   async.Future<IosAppConfig> getConfig(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1822,7 +1776,7 @@ class ProjectsIosAppsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1831,10 +1785,8 @@ class ProjectsIosAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          IosAppConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return IosAppConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists each IosApp associated with the specified FirebaseProject.
@@ -1874,7 +1826,7 @@ class ProjectsIosAppsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1899,7 +1851,7 @@ class ProjectsIosAppsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/iosApps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1908,10 +1860,8 @@ class ProjectsIosAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListIosAppsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListIosAppsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the attributes of the specified IosApp.
@@ -1951,7 +1901,7 @@ class ProjectsIosAppsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1974,7 +1924,7 @@ class ProjectsIosAppsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1983,9 +1933,7 @@ class ProjectsIosAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => IosApp.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return IosApp.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2025,7 +1973,7 @@ class ProjectsWebAppsResource {
     WebApp request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2047,7 +1995,7 @@ class ProjectsWebAppsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/webApps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2056,9 +2004,7 @@ class ProjectsWebAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified WebApp.
@@ -2086,7 +2032,7 @@ class ProjectsWebAppsResource {
   async.Future<WebApp> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2103,7 +2049,7 @@ class ProjectsWebAppsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2112,9 +2058,7 @@ class ProjectsWebAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => WebApp.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return WebApp.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the configuration artifact associated with the specified WebApp.
@@ -2142,7 +2086,7 @@ class ProjectsWebAppsResource {
   async.Future<WebAppConfig> getConfig(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2159,7 +2103,7 @@ class ProjectsWebAppsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2168,10 +2112,8 @@ class ProjectsWebAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          WebAppConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return WebAppConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists each WebApp associated with the specified FirebaseProject.
@@ -2211,7 +2153,7 @@ class ProjectsWebAppsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2236,7 +2178,7 @@ class ProjectsWebAppsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/webApps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2245,10 +2187,8 @@ class ProjectsWebAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListWebAppsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListWebAppsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the attributes of the specified WebApp.
@@ -2288,7 +2228,7 @@ class ProjectsWebAppsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2311,7 +2251,7 @@ class ProjectsWebAppsResource {
 
     _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2320,9 +2260,7 @@ class ProjectsWebAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => WebApp.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return WebApp.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -113,7 +113,7 @@ class ClaimsResource {
     core.String query,
     core.String reviewPublisherSiteFilter,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -148,7 +148,7 @@ class ClaimsResource {
 
     _url = 'v1alpha1/claims:search';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -157,11 +157,8 @@ class ClaimsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
-              .fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -191,7 +188,7 @@ class PagesResource {
       create(
     GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -208,7 +205,7 @@ class PagesResource {
 
     _url = 'v1alpha1/pages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -217,10 +214,8 @@ class PagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
-          .fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete all `ClaimReview` markup on a page.
@@ -244,7 +239,7 @@ class PagesResource {
   async.Future<GoogleProtobufEmpty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -261,7 +256,7 @@ class PagesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -270,10 +265,8 @@ class PagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleProtobufEmpty.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleProtobufEmpty.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get all `ClaimReview` markup on a page.
@@ -299,7 +292,7 @@ class PagesResource {
       get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -316,7 +309,7 @@ class PagesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -325,10 +318,8 @@ class PagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
-          .fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// List the `ClaimReview` markup pages for a specific URL or for an
@@ -378,7 +369,7 @@ class PagesResource {
     core.String pageToken,
     core.String url,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -407,7 +398,7 @@ class PagesResource {
 
     _url = 'v1alpha1/pages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -416,11 +407,8 @@ class PagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
-              .fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update for all `ClaimReview` markup on a page Note that this is a full
@@ -455,7 +443,7 @@ class PagesResource {
     GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -475,7 +463,7 @@ class PagesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -484,10 +472,8 @@ class PagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
-          .fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
+        .fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

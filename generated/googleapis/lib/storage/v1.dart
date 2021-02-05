@@ -130,13 +130,13 @@ class BucketAccessControlsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String bucket,
     core.String entity, {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -167,7 +167,7 @@ class BucketAccessControlsResource {
         '/acl/' +
         commons.Escaper.ecapeVariable('$entity');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -175,9 +175,6 @@ class BucketAccessControlsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -213,7 +210,7 @@ class BucketAccessControlsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -242,7 +239,7 @@ class BucketAccessControlsResource {
         '/acl/' +
         commons.Escaper.ecapeVariable('$entity');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -251,10 +248,8 @@ class BucketAccessControlsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BucketAccessControl.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BucketAccessControl.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new ACL entry on the specified bucket.
@@ -287,7 +282,7 @@ class BucketAccessControlsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -313,7 +308,7 @@ class BucketAccessControlsResource {
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -322,10 +317,8 @@ class BucketAccessControlsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BucketAccessControl.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BucketAccessControl.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves ACL entries on the specified bucket.
@@ -355,7 +348,7 @@ class BucketAccessControlsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -378,7 +371,7 @@ class BucketAccessControlsResource {
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -387,10 +380,8 @@ class BucketAccessControlsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BucketAccessControls.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BucketAccessControls.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches an ACL entry on the specified bucket.
@@ -428,7 +419,7 @@ class BucketAccessControlsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -460,7 +451,7 @@ class BucketAccessControlsResource {
         '/acl/' +
         commons.Escaper.ecapeVariable('$entity');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -469,10 +460,8 @@ class BucketAccessControlsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BucketAccessControl.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BucketAccessControl.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an ACL entry on the specified bucket.
@@ -510,7 +499,7 @@ class BucketAccessControlsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -542,7 +531,7 @@ class BucketAccessControlsResource {
         '/acl/' +
         commons.Escaper.ecapeVariable('$entity');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -551,10 +540,8 @@ class BucketAccessControlsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BucketAccessControl.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BucketAccessControl.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -589,14 +576,14 @@ class BucketsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String bucket, {
     core.String ifMetagenerationMatch,
     core.String ifMetagenerationNotMatch,
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -627,7 +614,7 @@ class BucketsResource {
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -635,9 +622,6 @@ class BucketsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -684,7 +668,7 @@ class BucketsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -716,7 +700,7 @@ class BucketsResource {
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -725,9 +709,7 @@ class BucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Bucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Bucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns an IAM policy for the specified bucket.
@@ -762,7 +744,7 @@ class BucketsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -790,7 +772,7 @@ class BucketsResource {
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -799,9 +781,7 @@ class BucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new bucket.
@@ -871,7 +851,7 @@ class BucketsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -907,7 +887,7 @@ class BucketsResource {
 
     _url = 'b';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -916,9 +896,7 @@ class BucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Bucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Bucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of buckets for a given project.
@@ -964,7 +942,7 @@ class BucketsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1000,7 +978,7 @@ class BucketsResource {
 
     _url = 'b';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1009,9 +987,7 @@ class BucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Buckets.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Buckets.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Locks retention policy on a bucket.
@@ -1045,7 +1021,7 @@ class BucketsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1074,7 +1050,7 @@ class BucketsResource {
         commons.Escaper.ecapeVariable('$bucket') +
         '/lockRetentionPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1083,9 +1059,7 @@ class BucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Bucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Bucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches a bucket.
@@ -1167,7 +1141,7 @@ class BucketsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1208,7 +1182,7 @@ class BucketsResource {
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1217,9 +1191,7 @@ class BucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Bucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Bucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an IAM policy for the specified bucket.
@@ -1252,7 +1224,7 @@ class BucketsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1278,7 +1250,7 @@ class BucketsResource {
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1287,9 +1259,7 @@ class BucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Tests a set of permissions on the given bucket to see which, if any, are
@@ -1323,7 +1293,7 @@ class BucketsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1352,7 +1322,7 @@ class BucketsResource {
         commons.Escaper.ecapeVariable('$bucket') +
         '/iam/testPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1361,10 +1331,8 @@ class BucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a bucket.
@@ -1446,7 +1414,7 @@ class BucketsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1487,7 +1455,7 @@ class BucketsResource {
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1496,9 +1464,7 @@ class BucketsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Bucket.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Bucket.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1521,10 +1487,10 @@ class ChannelsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future stop(
+  async.Future<void> stop(
     Channel request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1543,7 +1509,7 @@ class ChannelsResource {
 
     _url = 'channels/stop';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1551,9 +1517,6 @@ class ChannelsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 }
@@ -1589,13 +1552,13 @@ class DefaultObjectAccessControlsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String bucket,
     core.String entity, {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1626,7 +1589,7 @@ class DefaultObjectAccessControlsResource {
         '/defaultObjectAcl/' +
         commons.Escaper.ecapeVariable('$entity');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1634,9 +1597,6 @@ class DefaultObjectAccessControlsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1673,7 +1633,7 @@ class DefaultObjectAccessControlsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1702,7 +1662,7 @@ class DefaultObjectAccessControlsResource {
         '/defaultObjectAcl/' +
         commons.Escaper.ecapeVariable('$entity');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1711,10 +1671,8 @@ class DefaultObjectAccessControlsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ObjectAccessControl.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ObjectAccessControl.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new default object ACL entry on the specified bucket.
@@ -1747,7 +1705,7 @@ class DefaultObjectAccessControlsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1774,7 +1732,7 @@ class DefaultObjectAccessControlsResource {
     _url =
         'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1783,10 +1741,8 @@ class DefaultObjectAccessControlsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ObjectAccessControl.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ObjectAccessControl.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves default object ACL entries on the specified bucket.
@@ -1824,7 +1780,7 @@ class DefaultObjectAccessControlsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1854,7 +1810,7 @@ class DefaultObjectAccessControlsResource {
     _url =
         'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1863,10 +1819,8 @@ class DefaultObjectAccessControlsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ObjectAccessControls.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ObjectAccessControls.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches a default object ACL entry on the specified bucket.
@@ -1904,7 +1858,7 @@ class DefaultObjectAccessControlsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1936,7 +1890,7 @@ class DefaultObjectAccessControlsResource {
         '/defaultObjectAcl/' +
         commons.Escaper.ecapeVariable('$entity');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1945,10 +1899,8 @@ class DefaultObjectAccessControlsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ObjectAccessControl.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ObjectAccessControl.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a default object ACL entry on the specified bucket.
@@ -1986,7 +1938,7 @@ class DefaultObjectAccessControlsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2018,7 +1970,7 @@ class DefaultObjectAccessControlsResource {
         '/defaultObjectAcl/' +
         commons.Escaper.ecapeVariable('$entity');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2027,10 +1979,8 @@ class DefaultObjectAccessControlsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ObjectAccessControl.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ObjectAccessControl.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2061,13 +2011,13 @@ class NotificationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String bucket,
     core.String notification, {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2098,7 +2048,7 @@ class NotificationsResource {
         '/notificationConfigs/' +
         commons.Escaper.ecapeVariable('$notification');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2106,9 +2056,6 @@ class NotificationsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -2142,7 +2089,7 @@ class NotificationsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2171,7 +2118,7 @@ class NotificationsResource {
         '/notificationConfigs/' +
         commons.Escaper.ecapeVariable('$notification');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2180,10 +2127,8 @@ class NotificationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Notification.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Notification.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a notification subscription for a given bucket.
@@ -2216,7 +2161,7 @@ class NotificationsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2244,7 +2189,7 @@ class NotificationsResource {
         commons.Escaper.ecapeVariable('$bucket') +
         '/notificationConfigs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2253,10 +2198,8 @@ class NotificationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Notification.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Notification.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of notification subscriptions for a given bucket.
@@ -2286,7 +2229,7 @@ class NotificationsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2311,7 +2254,7 @@ class NotificationsResource {
         commons.Escaper.ecapeVariable('$bucket') +
         '/notificationConfigs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2320,10 +2263,8 @@ class NotificationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Notifications.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Notifications.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2364,7 +2305,7 @@ class ObjectAccessControlsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String bucket,
     core.String object,
     core.String entity, {
@@ -2372,7 +2313,7 @@ class ObjectAccessControlsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2411,7 +2352,7 @@ class ObjectAccessControlsResource {
         '/acl/' +
         commons.Escaper.ecapeVariable('$entity');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2419,9 +2360,6 @@ class ObjectAccessControlsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -2465,7 +2403,7 @@ class ObjectAccessControlsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2502,7 +2440,7 @@ class ObjectAccessControlsResource {
         '/acl/' +
         commons.Escaper.ecapeVariable('$entity');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2511,10 +2449,8 @@ class ObjectAccessControlsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ObjectAccessControl.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ObjectAccessControl.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new ACL entry on the specified object.
@@ -2555,7 +2491,7 @@ class ObjectAccessControlsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2591,7 +2527,7 @@ class ObjectAccessControlsResource {
         commons.Escaper.ecapeVariable('$object') +
         '/acl';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2600,10 +2536,8 @@ class ObjectAccessControlsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ObjectAccessControl.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ObjectAccessControl.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves ACL entries on the specified object.
@@ -2641,7 +2575,7 @@ class ObjectAccessControlsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2674,7 +2608,7 @@ class ObjectAccessControlsResource {
         commons.Escaper.ecapeVariable('$object') +
         '/acl';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2683,10 +2617,8 @@ class ObjectAccessControlsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ObjectAccessControls.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ObjectAccessControls.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches an ACL entry on the specified object.
@@ -2732,7 +2664,7 @@ class ObjectAccessControlsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2772,7 +2704,7 @@ class ObjectAccessControlsResource {
         '/acl/' +
         commons.Escaper.ecapeVariable('$entity');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2781,10 +2713,8 @@ class ObjectAccessControlsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ObjectAccessControl.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ObjectAccessControl.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an ACL entry on the specified object.
@@ -2830,7 +2760,7 @@ class ObjectAccessControlsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2870,7 +2800,7 @@ class ObjectAccessControlsResource {
         '/acl/' +
         commons.Escaper.ecapeVariable('$entity');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2879,10 +2809,8 @@ class ObjectAccessControlsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ObjectAccessControl.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ObjectAccessControl.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2958,7 +2886,7 @@ class ObjectsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3003,7 +2931,7 @@ class ObjectsResource {
         commons.Escaper.ecapeVariable('$destinationObject') +
         '/compose';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3012,9 +2940,7 @@ class ObjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Object.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Object.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Copies a source object to a destination object.
@@ -3135,7 +3061,7 @@ class ObjectsResource {
     core.String sourceGeneration,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3217,7 +3143,7 @@ class ObjectsResource {
         '/o/' +
         commons.Escaper.ecapeVariable('$destinationObject');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3226,9 +3152,7 @@ class ObjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Object.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Object.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an object and its metadata.
@@ -3275,7 +3199,7 @@ class ObjectsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String bucket,
     core.String object, {
     core.String generation,
@@ -3286,7 +3210,7 @@ class ObjectsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3332,7 +3256,7 @@ class ObjectsResource {
         '/o/' +
         commons.Escaper.ecapeVariable('$object');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3340,9 +3264,6 @@ class ObjectsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -3402,7 +3323,7 @@ class ObjectsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future get(
+  async.Future<core.Object> get(
     core.String bucket,
     core.String object, {
     core.String generation,
@@ -3415,7 +3336,7 @@ class ObjectsResource {
     core.String userProject,
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3464,7 +3385,7 @@ class ObjectsResource {
         '/o/' +
         commons.Escaper.ecapeVariable('$object');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3475,9 +3396,7 @@ class ObjectsResource {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then(
-        (data) => Object.fromJson(data as core.Map<core.String, core.dynamic>),
-      );
+      return Object.fromJson(_response as core.Map<core.String, core.dynamic>);
     } else {
       return _response;
     }
@@ -3518,7 +3437,7 @@ class ObjectsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3551,7 +3470,7 @@ class ObjectsResource {
         commons.Escaper.ecapeVariable('$object') +
         '/iam';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3560,9 +3479,7 @@ class ObjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Stores a new object and metadata.
@@ -3665,7 +3582,7 @@ class ObjectsResource {
     core.String $fields,
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3731,7 +3648,7 @@ class ObjectsResource {
           '/o';
     }
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3740,9 +3657,7 @@ class ObjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Object.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Object.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of objects matching the criteria.
@@ -3818,7 +3733,7 @@ class ObjectsResource {
     core.String userProject,
     core.bool versions,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3870,7 +3785,7 @@ class ObjectsResource {
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3879,9 +3794,7 @@ class ObjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Objects.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Objects.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Patches an object's metadata.
@@ -3963,7 +3876,7 @@ class ObjectsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4016,7 +3929,7 @@ class ObjectsResource {
         '/o/' +
         commons.Escaper.ecapeVariable('$object');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -4025,9 +3938,7 @@ class ObjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Object.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Object.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Rewrites a source object to a destination object.
@@ -4162,7 +4073,7 @@ class ObjectsResource {
     core.String sourceGeneration,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4250,7 +4161,7 @@ class ObjectsResource {
         '/o/' +
         commons.Escaper.ecapeVariable('$destinationObject');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4259,10 +4170,8 @@ class ObjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          RewriteResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return RewriteResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an IAM policy for the specified object.
@@ -4303,7 +4212,7 @@ class ObjectsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4339,7 +4248,7 @@ class ObjectsResource {
         commons.Escaper.ecapeVariable('$object') +
         '/iam';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -4348,9 +4257,7 @@ class ObjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Tests a set of permissions on the given object to see which, if any, are
@@ -4392,7 +4299,7 @@ class ObjectsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4429,7 +4336,7 @@ class ObjectsResource {
         commons.Escaper.ecapeVariable('$object') +
         '/iam/testPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4438,10 +4345,8 @@ class ObjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an object's metadata.
@@ -4523,7 +4428,7 @@ class ObjectsResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4576,7 +4481,7 @@ class ObjectsResource {
         '/o/' +
         commons.Escaper.ecapeVariable('$object');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -4585,9 +4490,7 @@ class ObjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Object.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Object.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Watch for changes on all objects in a bucket.
@@ -4666,7 +4569,7 @@ class ObjectsResource {
     core.String userProject,
     core.bool versions,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4721,7 +4624,7 @@ class ObjectsResource {
 
     _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/watch';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4730,9 +4633,7 @@ class ObjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Channel.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4776,7 +4677,7 @@ class ProjectsHmacKeysResource {
     core.String serviceAccountEmail, {
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4801,7 +4702,7 @@ class ProjectsHmacKeysResource {
     _url =
         'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/hmacKeys';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4810,9 +4711,7 @@ class ProjectsHmacKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => HmacKey.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return HmacKey.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an HMAC key.
@@ -4833,12 +4732,12 @@ class ProjectsHmacKeysResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String projectId,
     core.String accessId, {
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4866,7 +4765,7 @@ class ProjectsHmacKeysResource {
         '/hmacKeys/' +
         commons.Escaper.ecapeVariable('$accessId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4874,9 +4773,6 @@ class ProjectsHmacKeysResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -4905,7 +4801,7 @@ class ProjectsHmacKeysResource {
     core.String accessId, {
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4931,7 +4827,7 @@ class ProjectsHmacKeysResource {
         '/hmacKeys/' +
         commons.Escaper.ecapeVariable('$accessId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4940,10 +4836,8 @@ class ProjectsHmacKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          HmacKeyMetadata.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return HmacKeyMetadata.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of HMAC keys matching the criteria.
@@ -4987,7 +4881,7 @@ class ProjectsHmacKeysResource {
     core.bool showDeletedKeys,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5020,7 +4914,7 @@ class ProjectsHmacKeysResource {
     _url =
         'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/hmacKeys';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5029,10 +4923,8 @@ class ProjectsHmacKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => HmacKeysMetadata.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return HmacKeysMetadata.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the state of an HMAC key.
@@ -5065,7 +4957,7 @@ class ProjectsHmacKeysResource {
     core.String accessId, {
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5094,7 +4986,7 @@ class ProjectsHmacKeysResource {
         '/hmacKeys/' +
         commons.Escaper.ecapeVariable('$accessId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -5103,10 +4995,8 @@ class ProjectsHmacKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          HmacKeyMetadata.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return HmacKeyMetadata.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5143,7 +5033,7 @@ class ProjectsServiceAccountResource {
     core.String provisionalUserProject,
     core.String userProject,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5168,7 +5058,7 @@ class ProjectsServiceAccountResource {
         commons.Escaper.ecapeVariable('$projectId') +
         '/serviceAccount';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5177,10 +5067,8 @@ class ProjectsServiceAccountResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ServiceAccount.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ServiceAccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

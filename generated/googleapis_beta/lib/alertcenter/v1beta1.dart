@@ -84,7 +84,7 @@ class AlertsResource {
   async.Future<BatchDeleteAlertsResponse> batchDelete(
     BatchDeleteAlertsRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -101,7 +101,7 @@ class AlertsResource {
 
     _url = 'v1beta1/alerts:batchDelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -110,10 +110,8 @@ class AlertsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchDeleteAlertsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchDeleteAlertsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Performs batch undelete operation on alerts.
@@ -135,7 +133,7 @@ class AlertsResource {
   async.Future<BatchUndeleteAlertsResponse> batchUndelete(
     BatchUndeleteAlertsRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -152,7 +150,7 @@ class AlertsResource {
 
     _url = 'v1beta1/alerts:batchUndelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -161,10 +159,8 @@ class AlertsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchUndeleteAlertsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchUndeleteAlertsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Marks the specified alert for deletion.
@@ -196,7 +192,7 @@ class AlertsResource {
     core.String alertId, {
     core.String customerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -216,7 +212,7 @@ class AlertsResource {
 
     _url = 'v1beta1/alerts/' + commons.Escaper.ecapeVariable('$alertId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -225,9 +221,7 @@ class AlertsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the specified alert.
@@ -256,7 +250,7 @@ class AlertsResource {
     core.String alertId, {
     core.String customerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -276,7 +270,7 @@ class AlertsResource {
 
     _url = 'v1beta1/alerts/' + commons.Escaper.ecapeVariable('$alertId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -285,9 +279,7 @@ class AlertsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Alert.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Alert.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the metadata of an alert.
@@ -318,7 +310,7 @@ class AlertsResource {
     core.String alertId, {
     core.String customerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -340,7 +332,7 @@ class AlertsResource {
         commons.Escaper.ecapeVariable('$alertId') +
         '/metadata';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -349,10 +341,8 @@ class AlertsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AlertMetadata.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AlertMetadata.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the alerts.
@@ -400,7 +390,7 @@ class AlertsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -429,7 +419,7 @@ class AlertsResource {
 
     _url = 'v1beta1/alerts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -438,10 +428,8 @@ class AlertsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAlertsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAlertsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Restores, or "undeletes", an alert that was marked for deletion within the
@@ -472,7 +460,7 @@ class AlertsResource {
     UndeleteAlertRequest request,
     core.String alertId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -494,7 +482,7 @@ class AlertsResource {
         commons.Escaper.ecapeVariable('$alertId') +
         ':undelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -503,9 +491,7 @@ class AlertsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Alert.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Alert.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -546,7 +532,7 @@ class AlertsFeedbackResource {
     core.String alertId, {
     core.String customerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -571,7 +557,7 @@ class AlertsFeedbackResource {
         commons.Escaper.ecapeVariable('$alertId') +
         '/feedback';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -580,10 +566,8 @@ class AlertsFeedbackResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AlertFeedback.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AlertFeedback.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the feedback for an alert.
@@ -621,7 +605,7 @@ class AlertsFeedbackResource {
     core.String customerId,
     core.String filter,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -646,7 +630,7 @@ class AlertsFeedbackResource {
         commons.Escaper.ecapeVariable('$alertId') +
         '/feedback';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -655,10 +639,8 @@ class AlertsFeedbackResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAlertFeedbackResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAlertFeedbackResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -688,7 +670,7 @@ class V1beta1Resource {
   async.Future<Settings> getSettings({
     core.String customerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -705,7 +687,7 @@ class V1beta1Resource {
 
     _url = 'v1beta1/settings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -714,9 +696,7 @@ class V1beta1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Settings.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the customer-level settings.
@@ -743,7 +723,7 @@ class V1beta1Resource {
     Settings request, {
     core.String customerId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -763,7 +743,7 @@ class V1beta1Resource {
 
     _url = 'v1beta1/settings';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -772,9 +752,7 @@ class V1beta1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Settings.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Settings.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

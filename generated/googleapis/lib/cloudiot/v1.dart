@@ -121,7 +121,7 @@ class ProjectsLocationsRegistriesResource {
     BindDeviceToGatewayRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -143,7 +143,7 @@ class ProjectsLocationsRegistriesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':bindDeviceToGateway';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -152,10 +152,8 @@ class ProjectsLocationsRegistriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BindDeviceToGatewayResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BindDeviceToGatewayResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a device registry that contains devices.
@@ -183,7 +181,7 @@ class ProjectsLocationsRegistriesResource {
     DeviceRegistry request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -205,7 +203,7 @@ class ProjectsLocationsRegistriesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/registries';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -214,10 +212,8 @@ class ProjectsLocationsRegistriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DeviceRegistry.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DeviceRegistry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a device registry configuration.
@@ -242,7 +238,7 @@ class ProjectsLocationsRegistriesResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -259,7 +255,7 @@ class ProjectsLocationsRegistriesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -268,9 +264,7 @@ class ProjectsLocationsRegistriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a device registry configuration.
@@ -295,7 +289,7 @@ class ProjectsLocationsRegistriesResource {
   async.Future<DeviceRegistry> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -312,7 +306,7 @@ class ProjectsLocationsRegistriesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -321,10 +315,8 @@ class ProjectsLocationsRegistriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DeviceRegistry.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DeviceRegistry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -356,7 +348,7 @@ class ProjectsLocationsRegistriesResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -378,7 +370,7 @@ class ProjectsLocationsRegistriesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -387,9 +379,7 @@ class ProjectsLocationsRegistriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists device registries.
@@ -425,7 +415,7 @@ class ProjectsLocationsRegistriesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -450,7 +440,7 @@ class ProjectsLocationsRegistriesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/registries';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -459,10 +449,8 @@ class ProjectsLocationsRegistriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListDeviceRegistriesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListDeviceRegistriesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a device registry configuration.
@@ -497,7 +485,7 @@ class ProjectsLocationsRegistriesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -520,7 +508,7 @@ class ProjectsLocationsRegistriesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -529,10 +517,8 @@ class ProjectsLocationsRegistriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DeviceRegistry.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DeviceRegistry.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -563,7 +549,7 @@ class ProjectsLocationsRegistriesResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -585,7 +571,7 @@ class ProjectsLocationsRegistriesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -594,9 +580,7 @@ class ProjectsLocationsRegistriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -628,7 +612,7 @@ class ProjectsLocationsRegistriesResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -650,7 +634,7 @@ class ProjectsLocationsRegistriesResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -659,10 +643,8 @@ class ProjectsLocationsRegistriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes the association between the device and the gateway.
@@ -690,7 +672,7 @@ class ProjectsLocationsRegistriesResource {
     UnbindDeviceFromGatewayRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -712,7 +694,7 @@ class ProjectsLocationsRegistriesResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':unbindDeviceFromGateway';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -721,10 +703,8 @@ class ProjectsLocationsRegistriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UnbindDeviceFromGatewayResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return UnbindDeviceFromGatewayResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -765,7 +745,7 @@ class ProjectsLocationsRegistriesDevicesResource {
     Device request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -786,7 +766,7 @@ class ProjectsLocationsRegistriesDevicesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -795,9 +775,7 @@ class ProjectsLocationsRegistriesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Device.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Device.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a device.
@@ -824,7 +802,7 @@ class ProjectsLocationsRegistriesDevicesResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -841,7 +819,7 @@ class ProjectsLocationsRegistriesDevicesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -850,9 +828,7 @@ class ProjectsLocationsRegistriesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details about a device.
@@ -883,7 +859,7 @@ class ProjectsLocationsRegistriesDevicesResource {
     core.String name, {
     core.String fieldMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -903,7 +879,7 @@ class ProjectsLocationsRegistriesDevicesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -912,9 +888,7 @@ class ProjectsLocationsRegistriesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Device.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Device.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// List devices in a device registry.
@@ -988,7 +962,7 @@ class ProjectsLocationsRegistriesDevicesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1036,7 +1010,7 @@ class ProjectsLocationsRegistriesDevicesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1045,10 +1019,8 @@ class ProjectsLocationsRegistriesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListDevicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListDevicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies the configuration for the device, which is eventually sent from
@@ -1081,7 +1053,7 @@ class ProjectsLocationsRegistriesDevicesResource {
     ModifyCloudToDeviceConfigRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1103,7 +1075,7 @@ class ProjectsLocationsRegistriesDevicesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':modifyCloudToDeviceConfig';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1112,10 +1084,8 @@ class ProjectsLocationsRegistriesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DeviceConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DeviceConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a device.
@@ -1152,7 +1122,7 @@ class ProjectsLocationsRegistriesDevicesResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1175,7 +1145,7 @@ class ProjectsLocationsRegistriesDevicesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1184,9 +1154,7 @@ class ProjectsLocationsRegistriesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Device.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Device.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sends a command to the specified device.
@@ -1229,7 +1197,7 @@ class ProjectsLocationsRegistriesDevicesResource {
     SendCommandToDeviceRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1251,7 +1219,7 @@ class ProjectsLocationsRegistriesDevicesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':sendCommandToDevice';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1260,10 +1228,8 @@ class ProjectsLocationsRegistriesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SendCommandToDeviceResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SendCommandToDeviceResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1305,7 +1271,7 @@ class ProjectsLocationsRegistriesDevicesConfigVersionsResource {
     core.String name, {
     core.int numVersions,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1327,7 +1293,7 @@ class ProjectsLocationsRegistriesDevicesConfigVersionsResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         '/configVersions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1336,10 +1302,8 @@ class ProjectsLocationsRegistriesDevicesConfigVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListDeviceConfigVersionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListDeviceConfigVersionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1379,7 +1343,7 @@ class ProjectsLocationsRegistriesDevicesStatesResource {
     core.String name, {
     core.int numStates,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1399,7 +1363,7 @@ class ProjectsLocationsRegistriesDevicesStatesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/states';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1408,10 +1372,8 @@ class ProjectsLocationsRegistriesDevicesStatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListDeviceStatesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListDeviceStatesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1453,7 +1415,7 @@ class ProjectsLocationsRegistriesGroupsResource {
     GetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1475,7 +1437,7 @@ class ProjectsLocationsRegistriesGroupsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1484,9 +1446,7 @@ class ProjectsLocationsRegistriesGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1517,7 +1477,7 @@ class ProjectsLocationsRegistriesGroupsResource {
     SetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1539,7 +1499,7 @@ class ProjectsLocationsRegistriesGroupsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1548,9 +1508,7 @@ class ProjectsLocationsRegistriesGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Policy.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1582,7 +1540,7 @@ class ProjectsLocationsRegistriesGroupsResource {
     TestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1604,7 +1562,7 @@ class ProjectsLocationsRegistriesGroupsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1613,10 +1571,8 @@ class ProjectsLocationsRegistriesGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1697,7 +1653,7 @@ class ProjectsLocationsRegistriesGroupsDevicesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1745,7 +1701,7 @@ class ProjectsLocationsRegistriesGroupsDevicesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1754,10 +1710,8 @@ class ProjectsLocationsRegistriesGroupsDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListDevicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListDevicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

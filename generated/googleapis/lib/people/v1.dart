@@ -144,7 +144,7 @@ class ContactGroupsResource {
     core.int maxMembers,
     core.List<core.String> resourceNames,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -167,7 +167,7 @@ class ContactGroupsResource {
 
     _url = 'v1/contactGroups:batchGet';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -176,10 +176,8 @@ class ContactGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchGetContactGroupsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchGetContactGroupsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Create a new contact group owned by the authenticated user.
@@ -201,7 +199,7 @@ class ContactGroupsResource {
   async.Future<ContactGroup> create(
     CreateContactGroupRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -218,7 +216,7 @@ class ContactGroupsResource {
 
     _url = 'v1/contactGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -227,10 +225,8 @@ class ContactGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ContactGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ContactGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete an existing contact group owned by the authenticated user by
@@ -259,7 +255,7 @@ class ContactGroupsResource {
     core.String resourceName, {
     core.bool deleteContacts,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -279,7 +275,7 @@ class ContactGroupsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -288,9 +284,7 @@ class ContactGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get a specific contact group owned by the authenticated user by specifying
@@ -324,7 +318,7 @@ class ContactGroupsResource {
     core.String groupFields,
     core.int maxMembers,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -347,7 +341,7 @@ class ContactGroupsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -356,10 +350,8 @@ class ContactGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ContactGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ContactGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all contact groups owned by the authenticated user.
@@ -401,7 +393,7 @@ class ContactGroupsResource {
     core.String pageToken,
     core.String syncToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -427,7 +419,7 @@ class ContactGroupsResource {
 
     _url = 'v1/contactGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -436,10 +428,8 @@ class ContactGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListContactGroupsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListContactGroupsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update the name of an existing contact group owned by the authenticated
@@ -468,7 +458,7 @@ class ContactGroupsResource {
     UpdateContactGroupRequest request,
     core.String resourceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -488,7 +478,7 @@ class ContactGroupsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -497,10 +487,8 @@ class ContactGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ContactGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ContactGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -538,7 +526,7 @@ class ContactGroupsMembersResource {
     ModifyContactGroupMembersRequest request,
     core.String resourceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -560,7 +548,7 @@ class ContactGroupsMembersResource {
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         '/members:modify';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -569,10 +557,8 @@ class ContactGroupsMembersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ModifyContactGroupMembersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ModifyContactGroupMembersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -606,7 +592,7 @@ class OtherContactsResource {
     CopyOtherContactToMyContactsGroupRequest request,
     core.String resourceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -628,7 +614,7 @@ class OtherContactsResource {
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         ':copyOtherContactToMyContactsGroup';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -637,9 +623,7 @@ class OtherContactsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Person.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Person.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// List all "Other contacts", that is contacts that are not in a contact
@@ -691,7 +675,7 @@ class OtherContactsResource {
     core.bool requestSyncToken,
     core.String syncToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -720,7 +704,7 @@ class OtherContactsResource {
 
     _url = 'v1/otherContacts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -729,10 +713,8 @@ class OtherContactsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListOtherContactsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListOtherContactsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -782,7 +764,7 @@ class PeopleResource {
     core.String personFields,
     core.List<core.String> sources,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -805,7 +787,7 @@ class PeopleResource {
 
     _url = 'v1/people:createContact';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -814,9 +796,7 @@ class PeopleResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Person.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Person.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a contact person.
@@ -841,7 +821,7 @@ class PeopleResource {
   async.Future<Empty> deleteContact(
     core.String resourceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -860,7 +840,7 @@ class PeopleResource {
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         ':deleteContact';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -869,9 +849,7 @@ class PeopleResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Delete a contact's photo.
@@ -910,7 +888,7 @@ class PeopleResource {
     core.String personFields,
     core.List<core.String> sources,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -935,7 +913,7 @@ class PeopleResource {
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         ':deleteContactPhoto';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -944,10 +922,8 @@ class PeopleResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DeleteContactPhotoResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DeleteContactPhotoResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Provides information about a person by specifying a resource name.
@@ -997,7 +973,7 @@ class PeopleResource {
     core.String requestMask_includeField,
     core.List<core.String> sources,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1023,7 +999,7 @@ class PeopleResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1032,9 +1008,7 @@ class PeopleResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Person.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Person.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Provides information about a list of specific people by specifying a list
@@ -1087,7 +1061,7 @@ class PeopleResource {
     core.List<core.String> resourceNames,
     core.List<core.String> sources,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1113,7 +1087,7 @@ class PeopleResource {
 
     _url = 'v1/people:batchGet';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1122,10 +1096,8 @@ class PeopleResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GetPeopleResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GetPeopleResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Provides a list of domain profiles and domain contacts in the
@@ -1186,7 +1158,7 @@ class PeopleResource {
     core.List<core.String> sources,
     core.String syncToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1221,7 +1193,7 @@ class PeopleResource {
 
     _url = 'v1/people:listDirectoryPeople';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1230,10 +1202,8 @@ class PeopleResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListDirectoryPeopleResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListDirectoryPeopleResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Provides a list of domain profiles and domain contacts in the
@@ -1286,7 +1256,7 @@ class PeopleResource {
     core.String readMask,
     core.List<core.String> sources,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1318,7 +1288,7 @@ class PeopleResource {
 
     _url = 'v1/people:searchDirectoryPeople';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1327,10 +1297,8 @@ class PeopleResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SearchDirectoryPeopleResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SearchDirectoryPeopleResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update contact data for an existing contact person.
@@ -1397,7 +1365,7 @@ class PeopleResource {
     core.List<core.String> sources,
     core.String updatePersonFields,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1428,7 +1396,7 @@ class PeopleResource {
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         ':updateContact';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1437,9 +1405,7 @@ class PeopleResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Person.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Person.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Update a contact's photo.
@@ -1465,7 +1431,7 @@ class PeopleResource {
     UpdateContactPhotoRequest request,
     core.String resourceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1487,7 +1453,7 @@ class PeopleResource {
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         ':updateContactPhoto';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1496,10 +1462,8 @@ class PeopleResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UpdateContactPhotoResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return UpdateContactPhotoResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1594,7 +1558,7 @@ class PeopleConnectionsResource {
     core.List<core.String> sources,
     core.String syncToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1637,7 +1601,7 @@ class PeopleConnectionsResource {
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         '/connections';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1646,10 +1610,8 @@ class PeopleConnectionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListConnectionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListConnectionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

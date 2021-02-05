@@ -123,7 +123,7 @@ class PresentationsResource {
     BatchUpdatePresentationRequest request,
     core.String presentationId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -145,7 +145,7 @@ class PresentationsResource {
         commons.Escaper.ecapeVariable('$presentationId') +
         ':batchUpdate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -154,10 +154,8 @@ class PresentationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchUpdatePresentationResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchUpdatePresentationResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a blank presentation using the title given in the request.
@@ -184,7 +182,7 @@ class PresentationsResource {
   async.Future<Presentation> create(
     Presentation request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -201,7 +199,7 @@ class PresentationsResource {
 
     _url = 'v1/presentations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -210,10 +208,8 @@ class PresentationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Presentation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Presentation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest version of the specified presentation.
@@ -236,7 +232,7 @@ class PresentationsResource {
   async.Future<Presentation> get(
     core.String presentationId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -254,7 +250,7 @@ class PresentationsResource {
     _url = 'v1/presentations/' +
         commons.Escaper.ecapeVariableReserved('$presentationId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -263,10 +259,8 @@ class PresentationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Presentation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Presentation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -297,7 +291,7 @@ class PresentationsPagesResource {
     core.String presentationId,
     core.String pageObjectId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -320,7 +314,7 @@ class PresentationsPagesResource {
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageObjectId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -329,9 +323,7 @@ class PresentationsPagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Page.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Page.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Generates a thumbnail of the latest version of the specified page in the
@@ -378,7 +370,7 @@ class PresentationsPagesResource {
     core.String thumbnailProperties_mimeType,
     core.String thumbnailProperties_thumbnailSize,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -412,7 +404,7 @@ class PresentationsPagesResource {
         commons.Escaper.ecapeVariable('$pageObjectId') +
         '/thumbnail';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -421,9 +413,7 @@ class PresentationsPagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Thumbnail.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Thumbnail.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 

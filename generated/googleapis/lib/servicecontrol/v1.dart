@@ -98,7 +98,7 @@ class ServicesResource {
     AllocateQuotaRequest request,
     core.String serviceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -120,7 +120,7 @@ class ServicesResource {
         commons.Escaper.ecapeVariable('$serviceName') +
         ':allocateQuota';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -129,10 +129,8 @@ class ServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AllocateQuotaResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AllocateQuotaResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Checks whether an operation on a service should be allowed to proceed
@@ -171,7 +169,7 @@ class ServicesResource {
     CheckRequest request,
     core.String serviceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -193,7 +191,7 @@ class ServicesResource {
         commons.Escaper.ecapeVariable('$serviceName') +
         ':check';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -202,10 +200,8 @@ class ServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CheckResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CheckResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Reports operation results to Google Service Control, such as logs and
@@ -244,7 +240,7 @@ class ServicesResource {
     ReportRequest request,
     core.String serviceName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -266,7 +262,7 @@ class ServicesResource {
         commons.Escaper.ecapeVariable('$serviceName') +
         ':report';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -275,10 +271,8 @@ class ServicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ReportResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ReportResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

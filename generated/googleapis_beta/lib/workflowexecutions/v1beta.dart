@@ -117,7 +117,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     CancelExecutionRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -138,7 +138,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     _url =
         'v1beta/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -147,9 +147,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Execution.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a new execution using the latest revision of the given workflow.
@@ -179,7 +177,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     Execution request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -201,7 +199,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/executions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -210,9 +208,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Execution.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns an execution of the given name.
@@ -247,7 +243,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     core.String name, {
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -267,7 +263,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
 
     _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -276,9 +272,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Execution.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Execution.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of executions which belong to the workflow with the given
@@ -331,7 +325,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     core.String pageToken,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -359,7 +353,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/executions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -368,10 +362,8 @@ class ProjectsLocationsWorkflowsExecutionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListExecutionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListExecutionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

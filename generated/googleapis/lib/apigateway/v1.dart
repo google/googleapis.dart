@@ -98,7 +98,7 @@ class ProjectsLocationsResource {
   async.Future<ApigatewayLocation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -115,7 +115,7 @@ class ProjectsLocationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -124,10 +124,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayLocation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayLocation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists information about the supported locations for this service.
@@ -159,7 +157,7 @@ class ProjectsLocationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -186,7 +184,7 @@ class ProjectsLocationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -195,10 +193,8 @@ class ProjectsLocationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayListLocationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayListLocationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -239,7 +235,7 @@ class ProjectsLocationsApisResource {
     core.String parent, {
     core.String apiId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -262,7 +258,7 @@ class ProjectsLocationsApisResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/apis';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -271,10 +267,8 @@ class ProjectsLocationsApisResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a single Api.
@@ -299,7 +293,7 @@ class ProjectsLocationsApisResource {
   async.Future<ApigatewayOperation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -316,7 +310,7 @@ class ProjectsLocationsApisResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -325,10 +319,8 @@ class ProjectsLocationsApisResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single Api.
@@ -353,7 +345,7 @@ class ProjectsLocationsApisResource {
   async.Future<ApigatewayApi> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -370,7 +362,7 @@ class ProjectsLocationsApisResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -379,10 +371,8 @@ class ProjectsLocationsApisResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ApigatewayApi.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayApi.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -420,7 +410,7 @@ class ProjectsLocationsApisResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -444,7 +434,7 @@ class ProjectsLocationsApisResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -453,10 +443,8 @@ class ProjectsLocationsApisResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayPolicy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Apis in a given project and location.
@@ -492,7 +480,7 @@ class ProjectsLocationsApisResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -521,7 +509,7 @@ class ProjectsLocationsApisResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/apis';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -530,10 +518,8 @@ class ProjectsLocationsApisResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayListApisResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayListApisResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the parameters of a single Api.
@@ -568,7 +554,7 @@ class ProjectsLocationsApisResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -591,7 +577,7 @@ class ProjectsLocationsApisResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -600,10 +586,8 @@ class ProjectsLocationsApisResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -635,7 +619,7 @@ class ProjectsLocationsApisResource {
     ApigatewaySetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -657,7 +641,7 @@ class ProjectsLocationsApisResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -666,10 +650,8 @@ class ProjectsLocationsApisResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayPolicy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -703,7 +685,7 @@ class ProjectsLocationsApisResource {
     ApigatewayTestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -725,7 +707,7 @@ class ProjectsLocationsApisResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -734,10 +716,8 @@ class ProjectsLocationsApisResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayTestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayTestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -776,7 +756,7 @@ class ProjectsLocationsApisConfigsResource {
     core.String parent, {
     core.String apiConfigId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -800,7 +780,7 @@ class ProjectsLocationsApisConfigsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/configs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -809,10 +789,8 @@ class ProjectsLocationsApisConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a single ApiConfig.
@@ -837,7 +815,7 @@ class ProjectsLocationsApisConfigsResource {
   async.Future<ApigatewayOperation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -854,7 +832,7 @@ class ProjectsLocationsApisConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -863,10 +841,8 @@ class ProjectsLocationsApisConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single ApiConfig.
@@ -899,7 +875,7 @@ class ProjectsLocationsApisConfigsResource {
     core.String name, {
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -919,7 +895,7 @@ class ProjectsLocationsApisConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -928,10 +904,8 @@ class ProjectsLocationsApisConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayApiConfig.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayApiConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -969,7 +943,7 @@ class ProjectsLocationsApisConfigsResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -993,7 +967,7 @@ class ProjectsLocationsApisConfigsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1002,10 +976,8 @@ class ProjectsLocationsApisConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayPolicy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists ApiConfigs in a given project and location.
@@ -1042,7 +1014,7 @@ class ProjectsLocationsApisConfigsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1072,7 +1044,7 @@ class ProjectsLocationsApisConfigsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/configs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1081,10 +1053,8 @@ class ProjectsLocationsApisConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayListApiConfigsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayListApiConfigsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the parameters of a single ApiConfig.
@@ -1119,7 +1089,7 @@ class ProjectsLocationsApisConfigsResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1142,7 +1112,7 @@ class ProjectsLocationsApisConfigsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1151,10 +1121,8 @@ class ProjectsLocationsApisConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1186,7 +1154,7 @@ class ProjectsLocationsApisConfigsResource {
     ApigatewaySetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1208,7 +1176,7 @@ class ProjectsLocationsApisConfigsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1217,10 +1185,8 @@ class ProjectsLocationsApisConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayPolicy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1254,7 +1220,7 @@ class ProjectsLocationsApisConfigsResource {
     ApigatewayTestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1276,7 +1242,7 @@ class ProjectsLocationsApisConfigsResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1285,10 +1251,8 @@ class ProjectsLocationsApisConfigsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayTestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayTestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1326,7 +1290,7 @@ class ProjectsLocationsGatewaysResource {
     core.String parent, {
     core.String gatewayId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1350,7 +1314,7 @@ class ProjectsLocationsGatewaysResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/gateways';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1359,10 +1323,8 @@ class ProjectsLocationsGatewaysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a single Gateway.
@@ -1387,7 +1349,7 @@ class ProjectsLocationsGatewaysResource {
   async.Future<ApigatewayOperation> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1404,7 +1366,7 @@ class ProjectsLocationsGatewaysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1413,10 +1375,8 @@ class ProjectsLocationsGatewaysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets details of a single Gateway.
@@ -1441,7 +1401,7 @@ class ProjectsLocationsGatewaysResource {
   async.Future<ApigatewayGateway> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1458,7 +1418,7 @@ class ProjectsLocationsGatewaysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1467,10 +1427,8 @@ class ProjectsLocationsGatewaysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayGateway.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayGateway.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the access control policy for a resource.
@@ -1508,7 +1466,7 @@ class ProjectsLocationsGatewaysResource {
     core.String resource, {
     core.int options_requestedPolicyVersion,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1532,7 +1490,7 @@ class ProjectsLocationsGatewaysResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1541,10 +1499,8 @@ class ProjectsLocationsGatewaysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayPolicy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists Gateways in a given project and location.
@@ -1580,7 +1536,7 @@ class ProjectsLocationsGatewaysResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1610,7 +1566,7 @@ class ProjectsLocationsGatewaysResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/gateways';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1619,10 +1575,8 @@ class ProjectsLocationsGatewaysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayListGatewaysResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayListGatewaysResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the parameters of a single Gateway.
@@ -1657,7 +1611,7 @@ class ProjectsLocationsGatewaysResource {
     core.String name, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1680,7 +1634,7 @@ class ProjectsLocationsGatewaysResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1689,10 +1643,8 @@ class ProjectsLocationsGatewaysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the access control policy on the specified resource.
@@ -1724,7 +1676,7 @@ class ProjectsLocationsGatewaysResource {
     ApigatewaySetIamPolicyRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1746,7 +1698,7 @@ class ProjectsLocationsGatewaysResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1755,10 +1707,8 @@ class ProjectsLocationsGatewaysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayPolicy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayPolicy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1792,7 +1742,7 @@ class ProjectsLocationsGatewaysResource {
     ApigatewayTestIamPermissionsRequest request,
     core.String resource, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1814,7 +1764,7 @@ class ProjectsLocationsGatewaysResource {
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1823,10 +1773,8 @@ class ProjectsLocationsGatewaysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayTestIamPermissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayTestIamPermissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1869,7 +1817,7 @@ class ProjectsLocationsOperationsResource {
     ApigatewayCancelOperationRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1889,7 +1837,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1898,9 +1846,7 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a long-running operation.
@@ -1928,7 +1874,7 @@ class ProjectsLocationsOperationsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1945,7 +1891,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1954,9 +1900,7 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the latest state of a long-running operation.
@@ -1983,7 +1927,7 @@ class ProjectsLocationsOperationsResource {
   async.Future<ApigatewayOperation> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2000,7 +1944,7 @@ class ProjectsLocationsOperationsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2009,10 +1953,8 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayOperation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayOperation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -2053,7 +1995,7 @@ class ProjectsLocationsOperationsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2080,7 +2022,7 @@ class ProjectsLocationsOperationsResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2089,10 +2031,8 @@ class ProjectsLocationsOperationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApigatewayListOperationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApigatewayListOperationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

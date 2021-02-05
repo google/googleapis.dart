@@ -203,7 +203,7 @@ class CoursesResource {
   async.Future<Course> create(
     Course request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -220,7 +220,7 @@ class CoursesResource {
 
     _url = 'v1/courses';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -229,9 +229,7 @@ class CoursesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Course.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Course.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a course.
@@ -258,7 +256,7 @@ class CoursesResource {
   async.Future<Empty> delete(
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -275,7 +273,7 @@ class CoursesResource {
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -284,9 +282,7 @@ class CoursesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a course.
@@ -313,7 +309,7 @@ class CoursesResource {
   async.Future<Course> get(
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -330,7 +326,7 @@ class CoursesResource {
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -339,9 +335,7 @@ class CoursesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Course.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Course.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of courses that the requesting user is permitted to view,
@@ -395,7 +389,7 @@ class CoursesResource {
     core.String studentId,
     core.String teacherId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -424,7 +418,7 @@ class CoursesResource {
 
     _url = 'v1/courses';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -433,10 +427,8 @@ class CoursesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCoursesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCoursesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates one or more fields in a course.
@@ -479,7 +471,7 @@ class CoursesResource {
     core.String id, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -502,7 +494,7 @@ class CoursesResource {
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -511,9 +503,7 @@ class CoursesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Course.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Course.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a course.
@@ -545,7 +535,7 @@ class CoursesResource {
     Course request,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -565,7 +555,7 @@ class CoursesResource {
 
     _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -574,9 +564,7 @@ class CoursesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Course.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Course.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -615,7 +603,7 @@ class CoursesAliasesResource {
     CourseAlias request,
     core.String courseId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -636,7 +624,7 @@ class CoursesAliasesResource {
     _url =
         'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/aliases';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -645,10 +633,8 @@ class CoursesAliasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CourseAlias.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CourseAlias.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an alias of a course.
@@ -682,7 +668,7 @@ class CoursesAliasesResource {
     core.String courseId,
     core.String alias, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -705,7 +691,7 @@ class CoursesAliasesResource {
         '/aliases/' +
         commons.Escaper.ecapeVariable('$alias');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -714,9 +700,7 @@ class CoursesAliasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of aliases for a course.
@@ -754,7 +738,7 @@ class CoursesAliasesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -778,7 +762,7 @@ class CoursesAliasesResource {
     _url =
         'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/aliases';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -787,10 +771,8 @@ class CoursesAliasesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCourseAliasesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCourseAliasesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -831,7 +813,7 @@ class CoursesAnnouncementsResource {
     Announcement request,
     core.String courseId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -853,7 +835,7 @@ class CoursesAnnouncementsResource {
         commons.Escaper.ecapeVariable('$courseId') +
         '/announcements';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -862,10 +844,8 @@ class CoursesAnnouncementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Announcement.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Announcement.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an announcement.
@@ -901,7 +881,7 @@ class CoursesAnnouncementsResource {
     core.String courseId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -924,7 +904,7 @@ class CoursesAnnouncementsResource {
         '/announcements/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -933,9 +913,7 @@ class CoursesAnnouncementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns an announcement.
@@ -967,7 +945,7 @@ class CoursesAnnouncementsResource {
     core.String courseId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -990,7 +968,7 @@ class CoursesAnnouncementsResource {
         '/announcements/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -999,10 +977,8 @@ class CoursesAnnouncementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Announcement.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Announcement.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of announcements that the requester is permitted to view.
@@ -1055,7 +1031,7 @@ class CoursesAnnouncementsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1086,7 +1062,7 @@ class CoursesAnnouncementsResource {
         commons.Escaper.ecapeVariable('$courseId') +
         '/announcements';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1095,10 +1071,8 @@ class CoursesAnnouncementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListAnnouncementsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListAnnouncementsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies assignee mode and options of an announcement.
@@ -1134,7 +1108,7 @@ class CoursesAnnouncementsResource {
     core.String courseId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1161,7 +1135,7 @@ class CoursesAnnouncementsResource {
         commons.Escaper.ecapeVariable('$id') +
         ':modifyAssignees';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1170,10 +1144,8 @@ class CoursesAnnouncementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Announcement.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Announcement.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates one or more fields of an announcement.
@@ -1219,7 +1191,7 @@ class CoursesAnnouncementsResource {
     core.String id, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1248,7 +1220,7 @@ class CoursesAnnouncementsResource {
         '/announcements/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1257,10 +1229,8 @@ class CoursesAnnouncementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Announcement.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Announcement.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1308,7 +1278,7 @@ class CoursesCourseWorkResource {
     CourseWork request,
     core.String courseId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1330,7 +1300,7 @@ class CoursesCourseWorkResource {
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWork';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1339,10 +1309,8 @@ class CoursesCourseWorkResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CourseWork.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CourseWork.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a course work.
@@ -1378,7 +1346,7 @@ class CoursesCourseWorkResource {
     core.String courseId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1401,7 +1369,7 @@ class CoursesCourseWorkResource {
         '/courseWork/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1410,9 +1378,7 @@ class CoursesCourseWorkResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns course work.
@@ -1444,7 +1410,7 @@ class CoursesCourseWorkResource {
     core.String courseId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1467,7 +1433,7 @@ class CoursesCourseWorkResource {
         '/courseWork/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1476,10 +1442,8 @@ class CoursesCourseWorkResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CourseWork.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CourseWork.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of course work that the requester is permitted to view.
@@ -1532,7 +1496,7 @@ class CoursesCourseWorkResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1563,7 +1527,7 @@ class CoursesCourseWorkResource {
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWork';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1572,10 +1536,8 @@ class CoursesCourseWorkResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCourseWorkResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCourseWorkResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies assignee mode and options of a coursework.
@@ -1611,7 +1573,7 @@ class CoursesCourseWorkResource {
     core.String courseId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1638,7 +1600,7 @@ class CoursesCourseWorkResource {
         commons.Escaper.ecapeVariable('$id') +
         ':modifyAssignees';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1647,10 +1609,8 @@ class CoursesCourseWorkResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CourseWork.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CourseWork.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates one or more fields of a course work.
@@ -1703,7 +1663,7 @@ class CoursesCourseWorkResource {
     core.String id, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1732,7 +1692,7 @@ class CoursesCourseWorkResource {
         '/courseWork/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1741,10 +1701,8 @@ class CoursesCourseWorkResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CourseWork.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CourseWork.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1785,7 +1743,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String courseWorkId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1813,7 +1771,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
         '/studentSubmissions/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1822,10 +1780,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => StudentSubmission.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return StudentSubmission.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of student submissions that the requester is permitted to
@@ -1895,7 +1851,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.List<core.String> states,
     core.String userId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1934,7 +1890,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
         commons.Escaper.ecapeVariable('$courseWorkId') +
         '/studentSubmissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1943,10 +1899,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListStudentSubmissionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListStudentSubmissionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies attachments of student submission.
@@ -1990,7 +1944,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String courseWorkId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2022,7 +1976,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
         commons.Escaper.ecapeVariable('$id') +
         ':modifyAttachments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2031,10 +1985,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => StudentSubmission.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return StudentSubmission.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates one or more fields of a student submission.
@@ -2084,7 +2036,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2118,7 +2070,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
         '/studentSubmissions/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2127,10 +2079,8 @@ class CoursesCourseWorkStudentSubmissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => StudentSubmission.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return StudentSubmission.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Reclaims a student submission on behalf of the student that owns it.
@@ -2176,7 +2126,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String courseWorkId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2208,7 +2158,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
         commons.Escaper.ecapeVariable('$id') +
         ':reclaim';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2217,9 +2167,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a student submission.
@@ -2265,7 +2213,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String courseWorkId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2297,7 +2245,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
         commons.Escaper.ecapeVariable('$id') +
         ':return';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2306,9 +2254,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Turns in a student submission.
@@ -2352,7 +2298,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String courseWorkId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2384,7 +2330,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
         commons.Escaper.ecapeVariable('$id') +
         ':turnIn';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2393,9 +2339,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2436,7 +2380,7 @@ class CoursesCourseWorkMaterialsResource {
     CourseWorkMaterial request,
     core.String courseId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2458,7 +2402,7 @@ class CoursesCourseWorkMaterialsResource {
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWorkMaterials';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2467,10 +2411,8 @@ class CoursesCourseWorkMaterialsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CourseWorkMaterial.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CourseWorkMaterial.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a course work material.
@@ -2507,7 +2449,7 @@ class CoursesCourseWorkMaterialsResource {
     core.String courseId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2530,7 +2472,7 @@ class CoursesCourseWorkMaterialsResource {
         '/courseWorkMaterials/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2539,9 +2481,7 @@ class CoursesCourseWorkMaterialsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a course work material.
@@ -2573,7 +2513,7 @@ class CoursesCourseWorkMaterialsResource {
     core.String courseId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2596,7 +2536,7 @@ class CoursesCourseWorkMaterialsResource {
         '/courseWorkMaterials/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2605,10 +2545,8 @@ class CoursesCourseWorkMaterialsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CourseWorkMaterial.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CourseWorkMaterial.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of course work material that the requester is permitted to
@@ -2672,7 +2610,7 @@ class CoursesCourseWorkMaterialsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2709,7 +2647,7 @@ class CoursesCourseWorkMaterialsResource {
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWorkMaterials';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2718,10 +2656,8 @@ class CoursesCourseWorkMaterialsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListCourseWorkMaterialResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListCourseWorkMaterialResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates one or more fields of a course work material.
@@ -2767,7 +2703,7 @@ class CoursesCourseWorkMaterialsResource {
     core.String id, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2796,7 +2732,7 @@ class CoursesCourseWorkMaterialsResource {
         '/courseWorkMaterials/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2805,10 +2741,8 @@ class CoursesCourseWorkMaterialsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CourseWorkMaterial.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CourseWorkMaterial.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2854,7 +2788,7 @@ class CoursesStudentsResource {
     core.String courseId, {
     core.String enrollmentCode,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2879,7 +2813,7 @@ class CoursesStudentsResource {
         commons.Escaper.ecapeVariable('$courseId') +
         '/students';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2888,9 +2822,7 @@ class CoursesStudentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Student.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Student.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a student of a course.
@@ -2924,7 +2856,7 @@ class CoursesStudentsResource {
     core.String courseId,
     core.String userId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2947,7 +2879,7 @@ class CoursesStudentsResource {
         '/students/' +
         commons.Escaper.ecapeVariable('$userId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -2956,9 +2888,7 @@ class CoursesStudentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a student of a course.
@@ -2992,7 +2922,7 @@ class CoursesStudentsResource {
     core.String courseId,
     core.String userId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3015,7 +2945,7 @@ class CoursesStudentsResource {
         '/students/' +
         commons.Escaper.ecapeVariable('$userId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3024,9 +2954,7 @@ class CoursesStudentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Student.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Student.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of students of this course that the requester is permitted
@@ -3064,7 +2992,7 @@ class CoursesStudentsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3089,7 +3017,7 @@ class CoursesStudentsResource {
         commons.Escaper.ecapeVariable('$courseId') +
         '/students';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3098,10 +3026,8 @@ class CoursesStudentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListStudentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListStudentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3142,7 +3068,7 @@ class CoursesTeachersResource {
     Teacher request,
     core.String courseId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3164,7 +3090,7 @@ class CoursesTeachersResource {
         commons.Escaper.ecapeVariable('$courseId') +
         '/teachers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3173,9 +3099,7 @@ class CoursesTeachersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Teacher.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Teacher.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a teacher of a course.
@@ -3210,7 +3134,7 @@ class CoursesTeachersResource {
     core.String courseId,
     core.String userId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3233,7 +3157,7 @@ class CoursesTeachersResource {
         '/teachers/' +
         commons.Escaper.ecapeVariable('$userId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3242,9 +3166,7 @@ class CoursesTeachersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a teacher of a course.
@@ -3278,7 +3200,7 @@ class CoursesTeachersResource {
     core.String courseId,
     core.String userId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3301,7 +3223,7 @@ class CoursesTeachersResource {
         '/teachers/' +
         commons.Escaper.ecapeVariable('$userId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3310,9 +3232,7 @@ class CoursesTeachersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Teacher.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Teacher.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of teachers of this course that the requester is permitted
@@ -3350,7 +3270,7 @@ class CoursesTeachersResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3375,7 +3295,7 @@ class CoursesTeachersResource {
         commons.Escaper.ecapeVariable('$courseId') +
         '/teachers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3384,10 +3304,8 @@ class CoursesTeachersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTeachersResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTeachersResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3425,7 +3343,7 @@ class CoursesTopicsResource {
     Topic request,
     core.String courseId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3446,7 +3364,7 @@ class CoursesTopicsResource {
     _url =
         'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/topics';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3455,9 +3373,7 @@ class CoursesTopicsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Topic.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Topic.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a topic.
@@ -3489,7 +3405,7 @@ class CoursesTopicsResource {
     core.String courseId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3512,7 +3428,7 @@ class CoursesTopicsResource {
         '/topics/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3521,9 +3437,7 @@ class CoursesTopicsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a topic.
@@ -3553,7 +3467,7 @@ class CoursesTopicsResource {
     core.String courseId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3576,7 +3490,7 @@ class CoursesTopicsResource {
         '/topics/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3585,9 +3499,7 @@ class CoursesTopicsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Topic.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Topic.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns the list of topics that the requester is permitted to view.
@@ -3626,7 +3538,7 @@ class CoursesTopicsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3650,7 +3562,7 @@ class CoursesTopicsResource {
     _url =
         'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/topics';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3659,10 +3571,8 @@ class CoursesTopicsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTopicResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTopicResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates one or more fields of a topic.
@@ -3705,7 +3615,7 @@ class CoursesTopicsResource {
     core.String id, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3734,7 +3644,7 @@ class CoursesTopicsResource {
         '/topics/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3743,9 +3653,7 @@ class CoursesTopicsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Topic.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Topic.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3782,7 +3690,7 @@ class InvitationsResource {
   async.Future<Empty> accept(
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3799,7 +3707,7 @@ class InvitationsResource {
 
     _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id') + ':accept';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3808,9 +3716,7 @@ class InvitationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates an invitation.
@@ -3841,7 +3747,7 @@ class InvitationsResource {
   async.Future<Invitation> create(
     Invitation request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3858,7 +3764,7 @@ class InvitationsResource {
 
     _url = 'v1/invitations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3867,10 +3773,8 @@ class InvitationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Invitation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Invitation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes an invitation.
@@ -3897,7 +3801,7 @@ class InvitationsResource {
   async.Future<Empty> delete(
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3914,7 +3818,7 @@ class InvitationsResource {
 
     _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -3923,9 +3827,7 @@ class InvitationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns an invitation.
@@ -3952,7 +3854,7 @@ class InvitationsResource {
   async.Future<Invitation> get(
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3969,7 +3871,7 @@ class InvitationsResource {
 
     _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3978,10 +3880,8 @@ class InvitationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Invitation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Invitation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of invitations that the requesting user is permitted to
@@ -4026,7 +3926,7 @@ class InvitationsResource {
     core.String pageToken,
     core.String userId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4052,7 +3952,7 @@ class InvitationsResource {
 
     _url = 'v1/invitations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4061,10 +3961,8 @@ class InvitationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListInvitationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListInvitationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4115,7 +4013,7 @@ class RegistrationsResource {
   async.Future<Registration> create(
     Registration request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4132,7 +4030,7 @@ class RegistrationsResource {
 
     _url = 'v1/registrations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4141,10 +4039,8 @@ class RegistrationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Registration.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Registration.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a `Registration`, causing Classroom to stop sending notifications
@@ -4168,7 +4064,7 @@ class RegistrationsResource {
   async.Future<Empty> delete(
     core.String registrationId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4186,7 +4082,7 @@ class RegistrationsResource {
     _url =
         'v1/registrations/' + commons.Escaper.ecapeVariable('$registrationId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4195,9 +4091,7 @@ class RegistrationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4237,7 +4131,7 @@ class UserProfilesResource {
   async.Future<UserProfile> get(
     core.String userId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4254,7 +4148,7 @@ class UserProfilesResource {
 
     _url = 'v1/userProfiles/' + commons.Escaper.ecapeVariable('$userId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4263,10 +4157,8 @@ class UserProfilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          UserProfile.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserProfile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4322,7 +4214,7 @@ class UserProfilesGuardianInvitationsResource {
     GuardianInvitation request,
     core.String studentId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4344,7 +4236,7 @@ class UserProfilesGuardianInvitationsResource {
         commons.Escaper.ecapeVariable('$studentId') +
         '/guardianInvitations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4353,10 +4245,8 @@ class UserProfilesGuardianInvitationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GuardianInvitation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GuardianInvitation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a specific guardian invitation.
@@ -4393,7 +4283,7 @@ class UserProfilesGuardianInvitationsResource {
     core.String studentId,
     core.String invitationId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4416,7 +4306,7 @@ class UserProfilesGuardianInvitationsResource {
         '/guardianInvitations/' +
         commons.Escaper.ecapeVariable('$invitationId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4425,10 +4315,8 @@ class UserProfilesGuardianInvitationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GuardianInvitation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GuardianInvitation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of guardian invitations that the requesting user is
@@ -4487,7 +4375,7 @@ class UserProfilesGuardianInvitationsResource {
     core.String pageToken,
     core.List<core.String> states,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4518,7 +4406,7 @@ class UserProfilesGuardianInvitationsResource {
         commons.Escaper.ecapeVariable('$studentId') +
         '/guardianInvitations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4527,10 +4415,8 @@ class UserProfilesGuardianInvitationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListGuardianInvitationsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListGuardianInvitationsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Modifies a guardian invitation.
@@ -4580,7 +4466,7 @@ class UserProfilesGuardianInvitationsResource {
     core.String invitationId, {
     core.String updateMask,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4609,7 +4495,7 @@ class UserProfilesGuardianInvitationsResource {
         '/guardianInvitations/' +
         commons.Escaper.ecapeVariable('$invitationId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -4618,10 +4504,8 @@ class UserProfilesGuardianInvitationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GuardianInvitation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GuardianInvitation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4668,7 +4552,7 @@ class UserProfilesGuardiansResource {
     core.String studentId,
     core.String guardianId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4691,7 +4575,7 @@ class UserProfilesGuardiansResource {
         '/guardians/' +
         commons.Escaper.ecapeVariable('$guardianId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4700,9 +4584,7 @@ class UserProfilesGuardiansResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a specific guardian.
@@ -4741,7 +4623,7 @@ class UserProfilesGuardiansResource {
     core.String studentId,
     core.String guardianId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4764,7 +4646,7 @@ class UserProfilesGuardiansResource {
         '/guardians/' +
         commons.Escaper.ecapeVariable('$guardianId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4773,9 +4655,7 @@ class UserProfilesGuardiansResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Guardian.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Guardian.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of guardians that the requesting user is permitted to view,
@@ -4834,7 +4714,7 @@ class UserProfilesGuardiansResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4862,7 +4742,7 @@ class UserProfilesGuardiansResource {
         commons.Escaper.ecapeVariable('$studentId') +
         '/guardians';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4871,10 +4751,8 @@ class UserProfilesGuardiansResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListGuardiansResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListGuardiansResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

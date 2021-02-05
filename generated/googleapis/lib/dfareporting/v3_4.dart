@@ -255,7 +255,7 @@ class AccountActiveAdSummariesResource {
     core.String profileId,
     core.String summaryAccountId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -278,7 +278,7 @@ class AccountActiveAdSummariesResource {
         '/accountActiveAdSummaries/' +
         commons.Escaper.ecapeVariable('$summaryAccountId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -287,10 +287,8 @@ class AccountActiveAdSummariesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountActiveAdSummary.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountActiveAdSummary.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -322,7 +320,7 @@ class AccountPermissionGroupsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -345,7 +343,7 @@ class AccountPermissionGroupsResource {
         '/accountPermissionGroups/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -354,10 +352,8 @@ class AccountPermissionGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountPermissionGroup.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountPermissionGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the list of account permission groups.
@@ -379,7 +375,7 @@ class AccountPermissionGroupsResource {
   async.Future<AccountPermissionGroupsListResponse> list(
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -398,7 +394,7 @@ class AccountPermissionGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountPermissionGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -407,10 +403,8 @@ class AccountPermissionGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountPermissionGroupsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountPermissionGroupsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -441,7 +435,7 @@ class AccountPermissionsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -464,7 +458,7 @@ class AccountPermissionsResource {
         '/accountPermissions/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -473,10 +467,8 @@ class AccountPermissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountPermission.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountPermission.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the list of account permissions.
@@ -498,7 +490,7 @@ class AccountPermissionsResource {
   async.Future<AccountPermissionsListResponse> list(
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -517,7 +509,7 @@ class AccountPermissionsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountPermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -526,10 +518,8 @@ class AccountPermissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountPermissionsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountPermissionsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -561,7 +551,7 @@ class AccountUserProfilesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -584,7 +574,7 @@ class AccountUserProfilesResource {
         '/accountUserProfiles/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -593,10 +583,8 @@ class AccountUserProfilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountUserProfile.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountUserProfile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new account user profile.
@@ -621,7 +609,7 @@ class AccountUserProfilesResource {
     AccountUserProfile request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -643,7 +631,7 @@ class AccountUserProfilesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountUserProfiles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -652,10 +640,8 @@ class AccountUserProfilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountUserProfile.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountUserProfile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of account user profiles, possibly filtered.
@@ -720,7 +706,7 @@ class AccountUserProfilesResource {
     core.String subaccountId,
     core.String userRoleId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -766,7 +752,7 @@ class AccountUserProfilesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountUserProfiles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -775,10 +761,8 @@ class AccountUserProfilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountUserProfilesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountUserProfilesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing account user profile.
@@ -808,7 +792,7 @@ class AccountUserProfilesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -834,7 +818,7 @@ class AccountUserProfilesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountUserProfiles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -843,10 +827,8 @@ class AccountUserProfilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountUserProfile.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountUserProfile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing account user profile.
@@ -871,7 +853,7 @@ class AccountUserProfilesResource {
     AccountUserProfile request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -893,7 +875,7 @@ class AccountUserProfilesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountUserProfiles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -902,10 +884,8 @@ class AccountUserProfilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountUserProfile.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountUserProfile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -936,7 +916,7 @@ class AccountsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -959,7 +939,7 @@ class AccountsResource {
         '/accounts/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -968,9 +948,7 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the list of accounts, possibly filtered.
@@ -1028,7 +1006,7 @@ class AccountsResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1068,7 +1046,7 @@ class AccountsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1077,10 +1055,8 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AccountsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AccountsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing account.
@@ -1110,7 +1086,7 @@ class AccountsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1136,7 +1112,7 @@ class AccountsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1145,9 +1121,7 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing account.
@@ -1172,7 +1146,7 @@ class AccountsResource {
     Account request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1194,7 +1168,7 @@ class AccountsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/accounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1203,9 +1177,7 @@ class AccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Account.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1236,7 +1208,7 @@ class AdsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1259,7 +1231,7 @@ class AdsResource {
         '/ads/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1268,9 +1240,7 @@ class AdsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Ad.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Ad.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new ad.
@@ -1295,7 +1265,7 @@ class AdsResource {
     Ad request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1316,7 +1286,7 @@ class AdsResource {
     _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1325,9 +1295,7 @@ class AdsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Ad.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Ad.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of ads, possibly filtered.
@@ -1449,7 +1417,7 @@ class AdsResource {
     core.bool sslRequired,
     core.List<core.String> type,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1537,7 +1505,7 @@ class AdsResource {
     _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1546,10 +1514,8 @@ class AdsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AdsListResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AdsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing ad.
@@ -1579,7 +1545,7 @@ class AdsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1604,7 +1570,7 @@ class AdsResource {
     _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -1613,9 +1579,7 @@ class AdsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Ad.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Ad.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing ad.
@@ -1640,7 +1604,7 @@ class AdsResource {
     Ad request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1661,7 +1625,7 @@ class AdsResource {
     _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1670,9 +1634,7 @@ class AdsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Ad.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Ad.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1697,11 +1659,11 @@ class AdvertiserGroupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1726,7 +1688,7 @@ class AdvertiserGroupsResource {
         '/advertiserGroups/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -1734,9 +1696,6 @@ class AdvertiserGroupsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -1762,7 +1721,7 @@ class AdvertiserGroupsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1785,7 +1744,7 @@ class AdvertiserGroupsResource {
         '/advertiserGroups/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1794,10 +1753,8 @@ class AdvertiserGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AdvertiserGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AdvertiserGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new advertiser group.
@@ -1822,7 +1779,7 @@ class AdvertiserGroupsResource {
     AdvertiserGroup request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1844,7 +1801,7 @@ class AdvertiserGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1853,10 +1810,8 @@ class AdvertiserGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AdvertiserGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AdvertiserGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of advertiser groups, possibly filtered.
@@ -1911,7 +1866,7 @@ class AdvertiserGroupsResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1948,7 +1903,7 @@ class AdvertiserGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1957,10 +1912,8 @@ class AdvertiserGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AdvertiserGroupsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AdvertiserGroupsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing advertiser group.
@@ -1990,7 +1943,7 @@ class AdvertiserGroupsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2016,7 +1969,7 @@ class AdvertiserGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2025,10 +1978,8 @@ class AdvertiserGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AdvertiserGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AdvertiserGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing advertiser group.
@@ -2053,7 +2004,7 @@ class AdvertiserGroupsResource {
     AdvertiserGroup request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2075,7 +2026,7 @@ class AdvertiserGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2084,10 +2035,8 @@ class AdvertiserGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          AdvertiserGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return AdvertiserGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2119,7 +2068,7 @@ class AdvertiserLandingPagesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2142,7 +2091,7 @@ class AdvertiserLandingPagesResource {
         '/advertiserLandingPages/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2151,10 +2100,8 @@ class AdvertiserLandingPagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LandingPage.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LandingPage.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new landing page.
@@ -2179,7 +2126,7 @@ class AdvertiserLandingPagesResource {
     LandingPage request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2201,7 +2148,7 @@ class AdvertiserLandingPagesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserLandingPages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2210,10 +2157,8 @@ class AdvertiserLandingPagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LandingPage.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LandingPage.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of landing pages.
@@ -2281,7 +2226,7 @@ class AdvertiserLandingPagesResource {
     core.String sortOrder,
     core.String subaccountId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2330,7 +2275,7 @@ class AdvertiserLandingPagesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserLandingPages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2339,10 +2284,8 @@ class AdvertiserLandingPagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AdvertiserLandingPagesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AdvertiserLandingPagesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing advertiser landing page.
@@ -2372,7 +2315,7 @@ class AdvertiserLandingPagesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2398,7 +2341,7 @@ class AdvertiserLandingPagesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserLandingPages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2407,10 +2350,8 @@ class AdvertiserLandingPagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LandingPage.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LandingPage.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing landing page.
@@ -2435,7 +2376,7 @@ class AdvertiserLandingPagesResource {
     LandingPage request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2457,7 +2398,7 @@ class AdvertiserLandingPagesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserLandingPages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2466,10 +2407,8 @@ class AdvertiserLandingPagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          LandingPage.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return LandingPage.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2500,7 +2439,7 @@ class AdvertisersResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2523,7 +2462,7 @@ class AdvertisersResource {
         '/advertisers/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2532,10 +2471,8 @@ class AdvertisersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Advertiser.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Advertiser.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new advertiser.
@@ -2560,7 +2497,7 @@ class AdvertisersResource {
     Advertiser request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2582,7 +2519,7 @@ class AdvertisersResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertisers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2591,10 +2528,8 @@ class AdvertisersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Advertiser.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Advertiser.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of advertisers, possibly filtered.
@@ -2674,7 +2609,7 @@ class AdvertisersResource {
     core.String status,
     core.String subaccountId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2731,7 +2666,7 @@ class AdvertisersResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertisers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2740,10 +2675,8 @@ class AdvertisersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AdvertisersListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AdvertisersListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing advertiser.
@@ -2773,7 +2706,7 @@ class AdvertisersResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2799,7 +2732,7 @@ class AdvertisersResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertisers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -2808,10 +2741,8 @@ class AdvertisersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Advertiser.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Advertiser.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing advertiser.
@@ -2836,7 +2767,7 @@ class AdvertisersResource {
     Advertiser request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2858,7 +2789,7 @@ class AdvertisersResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertisers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -2867,10 +2798,8 @@ class AdvertisersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Advertiser.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Advertiser.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2898,7 +2827,7 @@ class BrowsersResource {
   async.Future<BrowsersListResponse> list(
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2917,7 +2846,7 @@ class BrowsersResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/browsers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2926,10 +2855,8 @@ class BrowsersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BrowsersListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BrowsersListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2967,7 +2894,7 @@ class CampaignCreativeAssociationsResource {
     core.String profileId,
     core.String campaignId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2994,7 +2921,7 @@ class CampaignCreativeAssociationsResource {
         commons.Escaper.ecapeVariable('$campaignId') +
         '/campaignCreativeAssociations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3003,10 +2930,8 @@ class CampaignCreativeAssociationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CampaignCreativeAssociation.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CampaignCreativeAssociation.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves the list of creative IDs associated with the specified campaign.
@@ -3046,7 +2971,7 @@ class CampaignCreativeAssociationsResource {
     core.String pageToken,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3079,7 +3004,7 @@ class CampaignCreativeAssociationsResource {
         commons.Escaper.ecapeVariable('$campaignId') +
         '/campaignCreativeAssociations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3088,10 +3013,8 @@ class CampaignCreativeAssociationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CampaignCreativeAssociationsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CampaignCreativeAssociationsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3122,7 +3045,7 @@ class CampaignsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3145,7 +3068,7 @@ class CampaignsResource {
         '/campaigns/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3154,9 +3077,7 @@ class CampaignsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Campaign.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Campaign.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new campaign.
@@ -3181,7 +3102,7 @@ class CampaignsResource {
     Campaign request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3203,7 +3124,7 @@ class CampaignsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/campaigns';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -3212,9 +3133,7 @@ class CampaignsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Campaign.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Campaign.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of campaigns, possibly filtered.
@@ -3294,7 +3213,7 @@ class CampaignsResource {
     core.String sortOrder,
     core.String subaccountId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3354,7 +3273,7 @@ class CampaignsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/campaigns';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3363,10 +3282,8 @@ class CampaignsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CampaignsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CampaignsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing campaign.
@@ -3396,7 +3313,7 @@ class CampaignsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3422,7 +3339,7 @@ class CampaignsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/campaigns';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -3431,9 +3348,7 @@ class CampaignsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Campaign.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Campaign.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing campaign.
@@ -3458,7 +3373,7 @@ class CampaignsResource {
     Campaign request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3480,7 +3395,7 @@ class CampaignsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/campaigns';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -3489,9 +3404,7 @@ class CampaignsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Campaign.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Campaign.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3522,7 +3435,7 @@ class ChangeLogsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3545,7 +3458,7 @@ class ChangeLogsResource {
         '/changeLogs/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3554,9 +3467,7 @@ class ChangeLogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ChangeLog.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ChangeLog.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of change logs.
@@ -3681,7 +3592,7 @@ class ChangeLogsResource {
     core.String searchString,
     core.List<core.String> userProfileIds,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3730,7 +3641,7 @@ class ChangeLogsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/changeLogs';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3739,10 +3650,8 @@ class ChangeLogsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ChangeLogsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ChangeLogsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3782,7 +3691,7 @@ class CitiesResource {
     core.String namePrefix,
     core.List<core.String> regionDartIds,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3813,7 +3722,7 @@ class CitiesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/cities';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3822,10 +3731,8 @@ class CitiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CitiesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CitiesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3856,7 +3763,7 @@ class ConnectionTypesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3879,7 +3786,7 @@ class ConnectionTypesResource {
         '/connectionTypes/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3888,10 +3795,8 @@ class ConnectionTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ConnectionType.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ConnectionType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of connection types.
@@ -3913,7 +3818,7 @@ class ConnectionTypesResource {
   async.Future<ConnectionTypesListResponse> list(
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3932,7 +3837,7 @@ class ConnectionTypesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/connectionTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -3941,10 +3846,8 @@ class ConnectionTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ConnectionTypesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ConnectionTypesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -3969,11 +3872,11 @@ class ContentCategoriesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -3998,7 +3901,7 @@ class ContentCategoriesResource {
         '/contentCategories/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4006,9 +3909,6 @@ class ContentCategoriesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -4034,7 +3934,7 @@ class ContentCategoriesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4057,7 +3957,7 @@ class ContentCategoriesResource {
         '/contentCategories/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4066,10 +3966,8 @@ class ContentCategoriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ContentCategory.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ContentCategory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new content category.
@@ -4094,7 +3992,7 @@ class ContentCategoriesResource {
     ContentCategory request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4116,7 +4014,7 @@ class ContentCategoriesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/contentCategories';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4125,10 +4023,8 @@ class ContentCategoriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ContentCategory.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ContentCategory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of content categories, possibly filtered.
@@ -4183,7 +4079,7 @@ class ContentCategoriesResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4220,7 +4116,7 @@ class ContentCategoriesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/contentCategories';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4229,10 +4125,8 @@ class ContentCategoriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ContentCategoriesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ContentCategoriesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing content category.
@@ -4262,7 +4156,7 @@ class ContentCategoriesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4288,7 +4182,7 @@ class ContentCategoriesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/contentCategories';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -4297,10 +4191,8 @@ class ContentCategoriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ContentCategory.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ContentCategory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing content category.
@@ -4325,7 +4217,7 @@ class ContentCategoriesResource {
     ContentCategory request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4347,7 +4239,7 @@ class ContentCategoriesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/contentCategories';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -4356,10 +4248,8 @@ class ContentCategoriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ContentCategory.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ContentCategory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4390,7 +4280,7 @@ class ConversionsResource {
     ConversionsBatchInsertRequest request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4412,7 +4302,7 @@ class ConversionsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/conversions/batchinsert';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4421,10 +4311,8 @@ class ConversionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ConversionsBatchInsertResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ConversionsBatchInsertResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates existing conversions.
@@ -4449,7 +4337,7 @@ class ConversionsResource {
     ConversionsBatchUpdateRequest request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4471,7 +4359,7 @@ class ConversionsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/conversions/batchupdate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4480,10 +4368,8 @@ class ConversionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ConversionsBatchUpdateResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ConversionsBatchUpdateResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4514,7 +4400,7 @@ class CountriesResource {
     core.String profileId,
     core.String dartId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4537,7 +4423,7 @@ class CountriesResource {
         '/countries/' +
         commons.Escaper.ecapeVariable('$dartId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4546,9 +4432,7 @@ class CountriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Country.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Country.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of countries.
@@ -4570,7 +4454,7 @@ class CountriesResource {
   async.Future<CountriesListResponse> list(
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4589,7 +4473,7 @@ class CountriesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/countries';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4598,10 +4482,8 @@ class CountriesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CountriesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CountriesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4638,7 +4520,7 @@ class CreativeAssetsResource {
     core.String advertiserId, {
     core.String $fields,
     commons.Media uploadMedia,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4676,7 +4558,7 @@ class CreativeAssetsResource {
           '/creativeAssets';
     }
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4685,10 +4567,8 @@ class CreativeAssetsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CreativeAssetMetadata.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CreativeAssetMetadata.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -4716,12 +4596,12 @@ class CreativeFieldValuesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String profileId,
     core.String creativeFieldId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4751,7 +4631,7 @@ class CreativeFieldValuesResource {
         '/creativeFieldValues/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -4759,9 +4639,6 @@ class CreativeFieldValuesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -4790,7 +4667,7 @@ class CreativeFieldValuesResource {
     core.String creativeFieldId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4818,7 +4695,7 @@ class CreativeFieldValuesResource {
         '/creativeFieldValues/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -4827,10 +4704,8 @@ class CreativeFieldValuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CreativeFieldValue.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CreativeFieldValue.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new creative field value.
@@ -4858,7 +4733,7 @@ class CreativeFieldValuesResource {
     core.String profileId,
     core.String creativeFieldId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4885,7 +4760,7 @@ class CreativeFieldValuesResource {
         commons.Escaper.ecapeVariable('$creativeFieldId') +
         '/creativeFieldValues';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -4894,10 +4769,8 @@ class CreativeFieldValuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CreativeFieldValue.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CreativeFieldValue.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of creative field values, possibly filtered.
@@ -4950,7 +4823,7 @@ class CreativeFieldValuesResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -4992,7 +4865,7 @@ class CreativeFieldValuesResource {
         commons.Escaper.ecapeVariable('$creativeFieldId') +
         '/creativeFieldValues';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5001,10 +4874,8 @@ class CreativeFieldValuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CreativeFieldValuesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CreativeFieldValuesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing creative field value.
@@ -5037,7 +4908,7 @@ class CreativeFieldValuesResource {
     core.String creativeFieldId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5068,7 +4939,7 @@ class CreativeFieldValuesResource {
         commons.Escaper.ecapeVariable('$creativeFieldId') +
         '/creativeFieldValues';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -5077,10 +4948,8 @@ class CreativeFieldValuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CreativeFieldValue.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CreativeFieldValue.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing creative field value.
@@ -5108,7 +4977,7 @@ class CreativeFieldValuesResource {
     core.String profileId,
     core.String creativeFieldId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5135,7 +5004,7 @@ class CreativeFieldValuesResource {
         commons.Escaper.ecapeVariable('$creativeFieldId') +
         '/creativeFieldValues';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -5144,10 +5013,8 @@ class CreativeFieldValuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CreativeFieldValue.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CreativeFieldValue.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5172,11 +5039,11 @@ class CreativeFieldsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5201,7 +5068,7 @@ class CreativeFieldsResource {
         '/creativeFields/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -5209,9 +5076,6 @@ class CreativeFieldsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -5237,7 +5101,7 @@ class CreativeFieldsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5260,7 +5124,7 @@ class CreativeFieldsResource {
         '/creativeFields/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5269,10 +5133,8 @@ class CreativeFieldsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CreativeField.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CreativeField.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new creative field.
@@ -5297,7 +5159,7 @@ class CreativeFieldsResource {
     CreativeField request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5319,7 +5181,7 @@ class CreativeFieldsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5328,10 +5190,8 @@ class CreativeFieldsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CreativeField.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CreativeField.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of creative fields, possibly filtered.
@@ -5391,7 +5251,7 @@ class CreativeFieldsResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5431,7 +5291,7 @@ class CreativeFieldsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5440,10 +5300,8 @@ class CreativeFieldsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CreativeFieldsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CreativeFieldsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing creative field.
@@ -5473,7 +5331,7 @@ class CreativeFieldsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5499,7 +5357,7 @@ class CreativeFieldsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -5508,10 +5366,8 @@ class CreativeFieldsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CreativeField.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CreativeField.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing creative field.
@@ -5536,7 +5392,7 @@ class CreativeFieldsResource {
     CreativeField request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5558,7 +5414,7 @@ class CreativeFieldsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -5567,10 +5423,8 @@ class CreativeFieldsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CreativeField.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CreativeField.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5601,7 +5455,7 @@ class CreativeGroupsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5624,7 +5478,7 @@ class CreativeGroupsResource {
         '/creativeGroups/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5633,10 +5487,8 @@ class CreativeGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CreativeGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CreativeGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new creative group.
@@ -5661,7 +5513,7 @@ class CreativeGroupsResource {
     CreativeGroup request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5683,7 +5535,7 @@ class CreativeGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -5692,10 +5544,8 @@ class CreativeGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CreativeGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CreativeGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of creative groups, possibly filtered.
@@ -5759,7 +5609,7 @@ class CreativeGroupsResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5802,7 +5652,7 @@ class CreativeGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -5811,10 +5661,8 @@ class CreativeGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CreativeGroupsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CreativeGroupsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing creative group.
@@ -5844,7 +5692,7 @@ class CreativeGroupsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5870,7 +5718,7 @@ class CreativeGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -5879,10 +5727,8 @@ class CreativeGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CreativeGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CreativeGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing creative group.
@@ -5907,7 +5753,7 @@ class CreativeGroupsResource {
     CreativeGroup request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5929,7 +5775,7 @@ class CreativeGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -5938,10 +5784,8 @@ class CreativeGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          CreativeGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return CreativeGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5972,7 +5816,7 @@ class CreativesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -5995,7 +5839,7 @@ class CreativesResource {
         '/creatives/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6004,9 +5848,7 @@ class CreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Creative.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new creative.
@@ -6031,7 +5873,7 @@ class CreativesResource {
     Creative request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6053,7 +5895,7 @@ class CreativesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creatives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6062,9 +5904,7 @@ class CreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Creative.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of creatives, possibly filtered.
@@ -6153,7 +5993,7 @@ class CreativesResource {
     core.String studioCreativeId,
     core.List<core.String> types,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6220,7 +6060,7 @@ class CreativesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creatives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6229,10 +6069,8 @@ class CreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CreativesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CreativesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing creative.
@@ -6262,7 +6100,7 @@ class CreativesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6288,7 +6126,7 @@ class CreativesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creatives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -6297,9 +6135,7 @@ class CreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Creative.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing creative.
@@ -6324,7 +6160,7 @@ class CreativesResource {
     Creative request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6346,7 +6182,7 @@ class CreativesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/creatives';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -6355,9 +6191,7 @@ class CreativesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Creative.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Creative.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6388,7 +6222,7 @@ class CustomEventsResource {
     CustomEventsBatchInsertRequest request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6410,7 +6244,7 @@ class CustomEventsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/customEvents/batchinsert';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6419,10 +6253,8 @@ class CustomEventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CustomEventsBatchInsertResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CustomEventsBatchInsertResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6460,7 +6292,7 @@ class DimensionValuesResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6488,7 +6320,7 @@ class DimensionValuesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/dimensionvalues/query';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6497,10 +6329,8 @@ class DimensionValuesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DimensionValueList.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DimensionValueList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6531,7 +6361,7 @@ class DirectorySitesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6554,7 +6384,7 @@ class DirectorySitesResource {
         '/directorySites/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6563,10 +6393,8 @@ class DirectorySitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DirectorySite.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DirectorySite.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new directory site.
@@ -6591,7 +6419,7 @@ class DirectorySitesResource {
     DirectorySite request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6613,7 +6441,7 @@ class DirectorySitesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/directorySites';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6622,10 +6450,8 @@ class DirectorySitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          DirectorySite.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return DirectorySite.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of directory sites, possibly filtered.
@@ -6700,7 +6526,7 @@ class DirectorySitesResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6758,7 +6584,7 @@ class DirectorySitesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/directorySites';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -6767,10 +6593,8 @@ class DirectorySitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DirectorySitesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DirectorySitesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6809,13 +6633,13 @@ class DynamicTargetingKeysResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String profileId,
     core.String objectId,
     core.String name,
     core.String objectType, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6848,7 +6672,7 @@ class DynamicTargetingKeysResource {
         '/dynamicTargetingKeys/' +
         commons.Escaper.ecapeVariable('$objectId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -6856,9 +6680,6 @@ class DynamicTargetingKeysResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -6889,7 +6710,7 @@ class DynamicTargetingKeysResource {
     DynamicTargetingKey request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6911,7 +6732,7 @@ class DynamicTargetingKeysResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/dynamicTargetingKeys';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -6920,10 +6741,8 @@ class DynamicTargetingKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DynamicTargetingKey.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DynamicTargetingKey.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of dynamic targeting keys.
@@ -6963,7 +6782,7 @@ class DynamicTargetingKeysResource {
     core.String objectId,
     core.String objectType,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -6994,7 +6813,7 @@ class DynamicTargetingKeysResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/dynamicTargetingKeys';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7003,10 +6822,8 @@ class DynamicTargetingKeysResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => DynamicTargetingKeysListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return DynamicTargetingKeysListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7031,11 +6848,11 @@ class EventTagsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7060,7 +6877,7 @@ class EventTagsResource {
         '/eventTags/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -7068,9 +6885,6 @@ class EventTagsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -7096,7 +6910,7 @@ class EventTagsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7119,7 +6933,7 @@ class EventTagsResource {
         '/eventTags/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7128,9 +6942,7 @@ class EventTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => EventTag.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return EventTag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new event tag.
@@ -7155,7 +6967,7 @@ class EventTagsResource {
     EventTag request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7177,7 +6989,7 @@ class EventTagsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/eventTags';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7186,9 +6998,7 @@ class EventTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => EventTag.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return EventTag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of event tags, possibly filtered.
@@ -7266,7 +7076,7 @@ class EventTagsResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7315,7 +7125,7 @@ class EventTagsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/eventTags';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7324,10 +7134,8 @@ class EventTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => EventTagsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return EventTagsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing event tag.
@@ -7357,7 +7165,7 @@ class EventTagsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7383,7 +7191,7 @@ class EventTagsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/eventTags';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -7392,9 +7200,7 @@ class EventTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => EventTag.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return EventTag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing event tag.
@@ -7419,7 +7225,7 @@ class EventTagsResource {
     EventTag request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7441,7 +7247,7 @@ class EventTagsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/eventTags';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -7450,9 +7256,7 @@ class EventTagsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => EventTag.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return EventTag.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7489,12 +7293,12 @@ class FilesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future get(
+  async.Future<core.Object> get(
     core.String reportId,
     core.String fileId, {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7519,7 +7323,7 @@ class FilesResource {
         '/files/' +
         commons.Escaper.ecapeVariable('$fileId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7530,9 +7334,7 @@ class FilesResource {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then(
-        (data) => File.fromJson(data as core.Map<core.String, core.dynamic>),
-      );
+      return File.fromJson(_response as core.Map<core.String, core.dynamic>);
     } else {
       return _response;
     }
@@ -7583,7 +7385,7 @@ class FilesResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7617,7 +7419,7 @@ class FilesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/files';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7626,9 +7428,7 @@ class FilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FileList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FileList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -7654,11 +7454,11 @@ class FloodlightActivitiesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7683,7 +7483,7 @@ class FloodlightActivitiesResource {
         '/floodlightActivities/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -7691,9 +7491,6 @@ class FloodlightActivitiesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -7720,7 +7517,7 @@ class FloodlightActivitiesResource {
     core.String profileId, {
     core.String floodlightActivityId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7742,7 +7539,7 @@ class FloodlightActivitiesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivities/generatetag';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7751,10 +7548,8 @@ class FloodlightActivitiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FloodlightActivitiesGenerateTagResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FloodlightActivitiesGenerateTagResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets one floodlight activity by ID.
@@ -7779,7 +7574,7 @@ class FloodlightActivitiesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7802,7 +7597,7 @@ class FloodlightActivitiesResource {
         '/floodlightActivities/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -7811,10 +7606,8 @@ class FloodlightActivitiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FloodlightActivity.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FloodlightActivity.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new floodlight activity.
@@ -7839,7 +7632,7 @@ class FloodlightActivitiesResource {
     FloodlightActivity request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -7861,7 +7654,7 @@ class FloodlightActivitiesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivities';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -7870,10 +7663,8 @@ class FloodlightActivitiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FloodlightActivity.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FloodlightActivity.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of floodlight activities, possibly filtered.
@@ -7964,7 +7755,7 @@ class FloodlightActivitiesResource {
     core.String sortOrder,
     core.String tagString,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8028,7 +7819,7 @@ class FloodlightActivitiesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivities';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8037,10 +7828,8 @@ class FloodlightActivitiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FloodlightActivitiesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FloodlightActivitiesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing floodlight activity.
@@ -8070,7 +7859,7 @@ class FloodlightActivitiesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8096,7 +7885,7 @@ class FloodlightActivitiesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivities';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -8105,10 +7894,8 @@ class FloodlightActivitiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FloodlightActivity.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FloodlightActivity.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing floodlight activity.
@@ -8133,7 +7920,7 @@ class FloodlightActivitiesResource {
     FloodlightActivity request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8155,7 +7942,7 @@ class FloodlightActivitiesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivities';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -8164,10 +7951,8 @@ class FloodlightActivitiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FloodlightActivity.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FloodlightActivity.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8199,7 +7984,7 @@ class FloodlightActivityGroupsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8222,7 +8007,7 @@ class FloodlightActivityGroupsResource {
         '/floodlightActivityGroups/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8231,10 +8016,8 @@ class FloodlightActivityGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FloodlightActivityGroup.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FloodlightActivityGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new floodlight activity group.
@@ -8259,7 +8042,7 @@ class FloodlightActivityGroupsResource {
     FloodlightActivityGroup request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8281,7 +8064,7 @@ class FloodlightActivityGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivityGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -8290,10 +8073,8 @@ class FloodlightActivityGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FloodlightActivityGroup.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FloodlightActivityGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of floodlight activity groups, possibly filtered.
@@ -8369,7 +8150,7 @@ class FloodlightActivityGroupsResource {
     core.String sortOrder,
     core.String type,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8415,7 +8196,7 @@ class FloodlightActivityGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivityGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8424,10 +8205,8 @@ class FloodlightActivityGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FloodlightActivityGroupsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FloodlightActivityGroupsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing floodlight activity group.
@@ -8457,7 +8236,7 @@ class FloodlightActivityGroupsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8483,7 +8262,7 @@ class FloodlightActivityGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivityGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -8492,10 +8271,8 @@ class FloodlightActivityGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FloodlightActivityGroup.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FloodlightActivityGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing floodlight activity group.
@@ -8520,7 +8297,7 @@ class FloodlightActivityGroupsResource {
     FloodlightActivityGroup request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8542,7 +8319,7 @@ class FloodlightActivityGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivityGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -8551,10 +8328,8 @@ class FloodlightActivityGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FloodlightActivityGroup.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FloodlightActivityGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8586,7 +8361,7 @@ class FloodlightConfigurationsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8609,7 +8384,7 @@ class FloodlightConfigurationsResource {
         '/floodlightConfigurations/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8618,10 +8393,8 @@ class FloodlightConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FloodlightConfiguration.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FloodlightConfiguration.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of floodlight configurations, possibly filtered.
@@ -8647,7 +8420,7 @@ class FloodlightConfigurationsResource {
     core.String profileId, {
     core.List<core.String> ids,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8669,7 +8442,7 @@ class FloodlightConfigurationsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightConfigurations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8678,10 +8451,8 @@ class FloodlightConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FloodlightConfigurationsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FloodlightConfigurationsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing floodlight configuration.
@@ -8711,7 +8482,7 @@ class FloodlightConfigurationsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8737,7 +8508,7 @@ class FloodlightConfigurationsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightConfigurations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -8746,10 +8517,8 @@ class FloodlightConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FloodlightConfiguration.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FloodlightConfiguration.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing floodlight configuration.
@@ -8774,7 +8543,7 @@ class FloodlightConfigurationsResource {
     FloodlightConfiguration request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8796,7 +8565,7 @@ class FloodlightConfigurationsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightConfigurations';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -8805,10 +8574,8 @@ class FloodlightConfigurationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FloodlightConfiguration.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return FloodlightConfiguration.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -8842,7 +8609,7 @@ class InventoryItemsResource {
     core.String projectId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8870,7 +8637,7 @@ class InventoryItemsResource {
         '/inventoryItems/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -8879,10 +8646,8 @@ class InventoryItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          InventoryItem.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return InventoryItem.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of inventory items, possibly filtered.
@@ -8947,7 +8712,7 @@ class InventoryItemsResource {
     core.String sortOrder,
     core.String type,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -8998,7 +8763,7 @@ class InventoryItemsResource {
         commons.Escaper.ecapeVariable('$projectId') +
         '/inventoryItems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9007,10 +8772,8 @@ class InventoryItemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => InventoryItemsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return InventoryItemsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9038,7 +8801,7 @@ class LanguagesResource {
   async.Future<LanguagesListResponse> list(
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9057,7 +8820,7 @@ class LanguagesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/languages';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9066,10 +8829,8 @@ class LanguagesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LanguagesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LanguagesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9097,7 +8858,7 @@ class MetrosResource {
   async.Future<MetrosListResponse> list(
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9116,7 +8877,7 @@ class MetrosResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/metros';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9125,10 +8886,8 @@ class MetrosResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => MetrosListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return MetrosListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9159,7 +8918,7 @@ class MobileAppsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9182,7 +8941,7 @@ class MobileAppsResource {
         '/mobileApps/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9191,9 +8950,7 @@ class MobileAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => MobileApp.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return MobileApp.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves list of available mobile apps.
@@ -9236,7 +8993,7 @@ class MobileAppsResource {
     core.String pageToken,
     core.String searchString,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9270,7 +9027,7 @@ class MobileAppsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/mobileApps';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9279,10 +9036,8 @@ class MobileAppsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => MobileAppsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return MobileAppsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9313,7 +9068,7 @@ class MobileCarriersResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9336,7 +9091,7 @@ class MobileCarriersResource {
         '/mobileCarriers/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9345,10 +9100,8 @@ class MobileCarriersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          MobileCarrier.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return MobileCarrier.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of mobile carriers.
@@ -9370,7 +9123,7 @@ class MobileCarriersResource {
   async.Future<MobileCarriersListResponse> list(
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9389,7 +9142,7 @@ class MobileCarriersResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/mobileCarriers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9398,10 +9151,8 @@ class MobileCarriersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => MobileCarriersListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return MobileCarriersListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9433,7 +9184,7 @@ class OperatingSystemVersionsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9456,7 +9207,7 @@ class OperatingSystemVersionsResource {
         '/operatingSystemVersions/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9465,10 +9216,8 @@ class OperatingSystemVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OperatingSystemVersion.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OperatingSystemVersion.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of operating system versions.
@@ -9490,7 +9239,7 @@ class OperatingSystemVersionsResource {
   async.Future<OperatingSystemVersionsListResponse> list(
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9509,7 +9258,7 @@ class OperatingSystemVersionsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/operatingSystemVersions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9518,10 +9267,8 @@ class OperatingSystemVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OperatingSystemVersionsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OperatingSystemVersionsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9552,7 +9299,7 @@ class OperatingSystemsResource {
     core.String profileId,
     core.String dartId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9575,7 +9322,7 @@ class OperatingSystemsResource {
         '/operatingSystems/' +
         commons.Escaper.ecapeVariable('$dartId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9584,10 +9331,8 @@ class OperatingSystemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          OperatingSystem.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return OperatingSystem.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of operating systems.
@@ -9609,7 +9354,7 @@ class OperatingSystemsResource {
   async.Future<OperatingSystemsListResponse> list(
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9628,7 +9373,7 @@ class OperatingSystemsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/operatingSystems';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9637,10 +9382,8 @@ class OperatingSystemsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OperatingSystemsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OperatingSystemsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9674,7 +9417,7 @@ class OrderDocumentsResource {
     core.String projectId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9702,7 +9445,7 @@ class OrderDocumentsResource {
         '/orderDocuments/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9711,10 +9454,8 @@ class OrderDocumentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          OrderDocument.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return OrderDocument.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of order documents, possibly filtered.
@@ -9784,7 +9525,7 @@ class OrderDocumentsResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9835,7 +9576,7 @@ class OrderDocumentsResource {
         commons.Escaper.ecapeVariable('$projectId') +
         '/orderDocuments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9844,10 +9585,8 @@ class OrderDocumentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrderDocumentsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrderDocumentsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -9881,7 +9620,7 @@ class OrdersResource {
     core.String projectId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -9909,7 +9648,7 @@ class OrdersResource {
         '/orders/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -9918,9 +9657,7 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Order.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Order.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of orders, possibly filtered.
@@ -9980,7 +9717,7 @@ class OrdersResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10025,7 +9762,7 @@ class OrdersResource {
         commons.Escaper.ecapeVariable('$projectId') +
         '/orders';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -10034,10 +9771,8 @@ class OrdersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => OrdersListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return OrdersListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -10068,7 +9803,7 @@ class PlacementGroupsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10091,7 +9826,7 @@ class PlacementGroupsResource {
         '/placementGroups/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -10100,10 +9835,8 @@ class PlacementGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          PlacementGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PlacementGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new placement group.
@@ -10128,7 +9861,7 @@ class PlacementGroupsResource {
     PlacementGroup request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10150,7 +9883,7 @@ class PlacementGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -10159,10 +9892,8 @@ class PlacementGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          PlacementGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PlacementGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of placement groups, possibly filtered.
@@ -10281,7 +10012,7 @@ class PlacementGroupsResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10357,7 +10088,7 @@ class PlacementGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -10366,10 +10097,8 @@ class PlacementGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlacementGroupsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlacementGroupsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing placement group.
@@ -10399,7 +10128,7 @@ class PlacementGroupsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10425,7 +10154,7 @@ class PlacementGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -10434,10 +10163,8 @@ class PlacementGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          PlacementGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PlacementGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing placement group.
@@ -10462,7 +10189,7 @@ class PlacementGroupsResource {
     PlacementGroup request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10484,7 +10211,7 @@ class PlacementGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -10493,10 +10220,8 @@ class PlacementGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          PlacementGroup.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PlacementGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -10522,11 +10247,11 @@ class PlacementStrategiesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10551,7 +10276,7 @@ class PlacementStrategiesResource {
         '/placementStrategies/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -10559,9 +10284,6 @@ class PlacementStrategiesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -10587,7 +10309,7 @@ class PlacementStrategiesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10610,7 +10332,7 @@ class PlacementStrategiesResource {
         '/placementStrategies/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -10619,10 +10341,8 @@ class PlacementStrategiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlacementStrategy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlacementStrategy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new placement strategy.
@@ -10647,7 +10367,7 @@ class PlacementStrategiesResource {
     PlacementStrategy request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10669,7 +10389,7 @@ class PlacementStrategiesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementStrategies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -10678,10 +10398,8 @@ class PlacementStrategiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlacementStrategy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlacementStrategy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of placement strategies, possibly filtered.
@@ -10737,7 +10455,7 @@ class PlacementStrategiesResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10774,7 +10492,7 @@ class PlacementStrategiesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementStrategies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -10783,10 +10501,8 @@ class PlacementStrategiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlacementStrategiesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlacementStrategiesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing placement strategy.
@@ -10816,7 +10532,7 @@ class PlacementStrategiesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10842,7 +10558,7 @@ class PlacementStrategiesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementStrategies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -10851,10 +10567,8 @@ class PlacementStrategiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlacementStrategy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlacementStrategy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing placement strategy.
@@ -10879,7 +10593,7 @@ class PlacementStrategiesResource {
     PlacementStrategy request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10901,7 +10615,7 @@ class PlacementStrategiesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementStrategies';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -10910,10 +10624,8 @@ class PlacementStrategiesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlacementStrategy.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlacementStrategy.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -10952,7 +10664,7 @@ class PlacementsResource {
     core.List<core.String> placementIds,
     core.List<core.String> tagFormats,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -10980,7 +10692,7 @@ class PlacementsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placements/generatetags';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -10989,10 +10701,8 @@ class PlacementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlacementsGenerateTagsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlacementsGenerateTagsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets one placement by ID.
@@ -11017,7 +10727,7 @@ class PlacementsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11040,7 +10750,7 @@ class PlacementsResource {
         '/placements/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -11049,9 +10759,7 @@ class PlacementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Placement.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Placement.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new placement.
@@ -11076,7 +10784,7 @@ class PlacementsResource {
     Placement request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11098,7 +10806,7 @@ class PlacementsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placements';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -11107,9 +10815,7 @@ class PlacementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Placement.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Placement.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of placements, possibly filtered.
@@ -11232,7 +10938,7 @@ class PlacementsResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11317,7 +11023,7 @@ class PlacementsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placements';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -11326,10 +11032,8 @@ class PlacementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlacementsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlacementsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing placement.
@@ -11359,7 +11063,7 @@ class PlacementsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11385,7 +11089,7 @@ class PlacementsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placements';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -11394,9 +11098,7 @@ class PlacementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Placement.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Placement.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing placement.
@@ -11421,7 +11123,7 @@ class PlacementsResource {
     Placement request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11443,7 +11145,7 @@ class PlacementsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/placements';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -11452,9 +11154,7 @@ class PlacementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Placement.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Placement.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -11485,7 +11185,7 @@ class PlatformTypesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11508,7 +11208,7 @@ class PlatformTypesResource {
         '/platformTypes/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -11517,10 +11217,8 @@ class PlatformTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          PlatformType.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PlatformType.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of platform types.
@@ -11542,7 +11240,7 @@ class PlatformTypesResource {
   async.Future<PlatformTypesListResponse> list(
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11561,7 +11259,7 @@ class PlatformTypesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/platformTypes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -11570,10 +11268,8 @@ class PlatformTypesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlatformTypesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlatformTypesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -11604,7 +11300,7 @@ class PostalCodesResource {
     core.String profileId,
     core.String code, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11627,7 +11323,7 @@ class PostalCodesResource {
         '/postalCodes/' +
         commons.Escaper.ecapeVariable('$code');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -11636,10 +11332,8 @@ class PostalCodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          PostalCode.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return PostalCode.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of postal codes.
@@ -11661,7 +11355,7 @@ class PostalCodesResource {
   async.Future<PostalCodesListResponse> list(
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11680,7 +11374,7 @@ class PostalCodesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/postalCodes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -11689,10 +11383,8 @@ class PostalCodesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PostalCodesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PostalCodesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -11723,7 +11415,7 @@ class ProjectsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11746,7 +11438,7 @@ class ProjectsResource {
         '/projects/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -11755,9 +11447,7 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Project.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Project.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of projects, possibly filtered.
@@ -11815,7 +11505,7 @@ class ProjectsResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11855,7 +11545,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/projects';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -11864,10 +11554,8 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ProjectsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ProjectsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -11895,7 +11583,7 @@ class RegionsResource {
   async.Future<RegionsListResponse> list(
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11914,7 +11602,7 @@ class RegionsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/regions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -11923,10 +11611,8 @@ class RegionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RegionsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RegionsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -11958,7 +11644,7 @@ class RemarketingListSharesResource {
     core.String profileId,
     core.String remarketingListId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -11981,7 +11667,7 @@ class RemarketingListSharesResource {
         '/remarketingListShares/' +
         commons.Escaper.ecapeVariable('$remarketingListId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -11990,10 +11676,8 @@ class RemarketingListSharesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RemarketingListShare.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RemarketingListShare.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing remarketing list share.
@@ -12023,7 +11707,7 @@ class RemarketingListSharesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12049,7 +11733,7 @@ class RemarketingListSharesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingListShares';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -12058,10 +11742,8 @@ class RemarketingListSharesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RemarketingListShare.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RemarketingListShare.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing remarketing list share.
@@ -12086,7 +11768,7 @@ class RemarketingListSharesResource {
     RemarketingListShare request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12108,7 +11790,7 @@ class RemarketingListSharesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingListShares';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -12117,10 +11799,8 @@ class RemarketingListSharesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RemarketingListShare.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RemarketingListShare.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -12151,7 +11831,7 @@ class RemarketingListsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12174,7 +11854,7 @@ class RemarketingListsResource {
         '/remarketingLists/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -12183,10 +11863,8 @@ class RemarketingListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          RemarketingList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return RemarketingList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new remarketing list.
@@ -12211,7 +11889,7 @@ class RemarketingListsResource {
     RemarketingList request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12233,7 +11911,7 @@ class RemarketingListsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingLists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -12242,10 +11920,8 @@ class RemarketingListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          RemarketingList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return RemarketingList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of remarketing lists, possibly filtered.
@@ -12307,7 +11983,7 @@ class RemarketingListsResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12351,7 +12027,7 @@ class RemarketingListsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingLists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -12360,10 +12036,8 @@ class RemarketingListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RemarketingListsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RemarketingListsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing remarketing list.
@@ -12393,7 +12067,7 @@ class RemarketingListsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12419,7 +12093,7 @@ class RemarketingListsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingLists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -12428,10 +12102,8 @@ class RemarketingListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          RemarketingList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return RemarketingList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing remarketing list.
@@ -12456,7 +12128,7 @@ class RemarketingListsResource {
     RemarketingList request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12478,7 +12150,7 @@ class RemarketingListsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingLists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -12487,10 +12159,8 @@ class RemarketingListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          RemarketingList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return RemarketingList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -12519,11 +12189,11 @@ class ReportsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String profileId,
     core.String reportId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12548,7 +12218,7 @@ class ReportsResource {
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -12556,9 +12226,6 @@ class ReportsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -12584,7 +12251,7 @@ class ReportsResource {
     core.String profileId,
     core.String reportId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12607,7 +12274,7 @@ class ReportsResource {
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -12616,9 +12283,7 @@ class ReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Report.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a report.
@@ -12643,7 +12308,7 @@ class ReportsResource {
     Report request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12665,7 +12330,7 @@ class ReportsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/reports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -12674,9 +12339,7 @@ class ReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Report.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves list of reports.
@@ -12724,7 +12387,7 @@ class ReportsResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12758,7 +12421,7 @@ class ReportsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/reports';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -12767,10 +12430,8 @@ class ReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          ReportList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return ReportList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing report.
@@ -12800,7 +12461,7 @@ class ReportsResource {
     core.String profileId,
     core.String reportId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12826,7 +12487,7 @@ class ReportsResource {
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -12835,9 +12496,7 @@ class ReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Report.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Runs a report.
@@ -12865,7 +12524,7 @@ class ReportsResource {
     core.String reportId, {
     core.bool synchronous,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12892,7 +12551,7 @@ class ReportsResource {
         commons.Escaper.ecapeVariable('$reportId') +
         '/run';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -12901,9 +12560,7 @@ class ReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => File.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return File.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a report.
@@ -12931,7 +12588,7 @@ class ReportsResource {
     core.String profileId,
     core.String reportId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -12957,7 +12614,7 @@ class ReportsResource {
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -12966,9 +12623,7 @@ class ReportsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Report.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Report.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -13002,7 +12657,7 @@ class ReportsCompatibleFieldsResource {
     Report request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13024,7 +12679,7 @@ class ReportsCompatibleFieldsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/reports/compatiblefields/query';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -13033,10 +12688,8 @@ class ReportsCompatibleFieldsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CompatibleFields.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CompatibleFields.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -13075,13 +12728,13 @@ class ReportsFilesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future get(
+  async.Future<core.Object> get(
     core.String profileId,
     core.String reportId,
     core.String fileId, {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13111,7 +12764,7 @@ class ReportsFilesResource {
         '/files/' +
         commons.Escaper.ecapeVariable('$fileId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -13122,9 +12775,7 @@ class ReportsFilesResource {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then(
-        (data) => File.fromJson(data as core.Map<core.String, core.dynamic>),
-      );
+      return File.fromJson(_response as core.Map<core.String, core.dynamic>);
     } else {
       return _response;
     }
@@ -13171,7 +12822,7 @@ class ReportsFilesResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13207,7 +12858,7 @@ class ReportsFilesResource {
         commons.Escaper.ecapeVariable('$reportId') +
         '/files';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -13216,9 +12867,7 @@ class ReportsFilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => FileList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return FileList.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -13249,7 +12898,7 @@ class SitesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13272,7 +12921,7 @@ class SitesResource {
         '/sites/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -13281,9 +12930,7 @@ class SitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Site.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Site.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new site.
@@ -13308,7 +12955,7 @@ class SitesResource {
     Site request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13330,7 +12977,7 @@ class SitesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/sites';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -13339,9 +12986,7 @@ class SitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Site.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Site.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of sites, possibly filtered.
@@ -13426,7 +13071,7 @@ class SitesResource {
     core.String subaccountId,
     core.bool unmappedSite,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13496,7 +13141,7 @@ class SitesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/sites';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -13505,10 +13150,8 @@ class SitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SitesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SitesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing site.
@@ -13538,7 +13181,7 @@ class SitesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13564,7 +13207,7 @@ class SitesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/sites';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -13573,9 +13216,7 @@ class SitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Site.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Site.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing site.
@@ -13600,7 +13241,7 @@ class SitesResource {
     Site request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13622,7 +13263,7 @@ class SitesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/sites';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -13631,9 +13272,7 @@ class SitesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Site.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Site.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -13664,7 +13303,7 @@ class SizesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13687,7 +13326,7 @@ class SizesResource {
         '/sizes/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -13696,9 +13335,7 @@ class SizesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Size.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Size.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new size.
@@ -13723,7 +13360,7 @@ class SizesResource {
     Size request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13745,7 +13382,7 @@ class SizesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/sizes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -13754,9 +13391,7 @@ class SizesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Size.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Size.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of sizes, possibly filtered.
@@ -13796,7 +13431,7 @@ class SizesResource {
     core.List<core.String> ids,
     core.int width,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13827,7 +13462,7 @@ class SizesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/sizes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -13836,10 +13471,8 @@ class SizesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SizesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SizesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -13870,7 +13503,7 @@ class SubaccountsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13893,7 +13526,7 @@ class SubaccountsResource {
         '/subaccounts/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -13902,10 +13535,8 @@ class SubaccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Subaccount.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Subaccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new subaccount.
@@ -13930,7 +13561,7 @@ class SubaccountsResource {
     Subaccount request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -13952,7 +13583,7 @@ class SubaccountsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/subaccounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -13961,10 +13592,8 @@ class SubaccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Subaccount.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Subaccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a list of subaccounts, possibly filtered.
@@ -14019,7 +13648,7 @@ class SubaccountsResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -14056,7 +13685,7 @@ class SubaccountsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/subaccounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -14065,10 +13694,8 @@ class SubaccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SubaccountsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SubaccountsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing subaccount.
@@ -14098,7 +13725,7 @@ class SubaccountsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -14124,7 +13751,7 @@ class SubaccountsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/subaccounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -14133,10 +13760,8 @@ class SubaccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Subaccount.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Subaccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing subaccount.
@@ -14161,7 +13786,7 @@ class SubaccountsResource {
     Subaccount request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -14183,7 +13808,7 @@ class SubaccountsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/subaccounts';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -14192,10 +13817,8 @@ class SubaccountsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Subaccount.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Subaccount.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -14227,7 +13850,7 @@ class TargetableRemarketingListsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -14250,7 +13873,7 @@ class TargetableRemarketingListsResource {
         '/targetableRemarketingLists/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -14259,10 +13882,8 @@ class TargetableRemarketingListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TargetableRemarketingList.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TargetableRemarketingList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of targetable remarketing lists, possibly filtered.
@@ -14322,7 +13943,7 @@ class TargetableRemarketingListsResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -14363,7 +13984,7 @@ class TargetableRemarketingListsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/targetableRemarketingLists';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -14372,10 +13993,8 @@ class TargetableRemarketingListsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TargetableRemarketingListsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TargetableRemarketingListsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -14406,7 +14025,7 @@ class TargetingTemplatesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -14429,7 +14048,7 @@ class TargetingTemplatesResource {
         '/targetingTemplates/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -14438,10 +14057,8 @@ class TargetingTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TargetingTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TargetingTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new targeting template.
@@ -14466,7 +14083,7 @@ class TargetingTemplatesResource {
     TargetingTemplate request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -14488,7 +14105,7 @@ class TargetingTemplatesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/targetingTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -14497,10 +14114,8 @@ class TargetingTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TargetingTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TargetingTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of targeting templates, optionally filtered.
@@ -14558,7 +14173,7 @@ class TargetingTemplatesResource {
     core.String sortField,
     core.String sortOrder,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -14598,7 +14213,7 @@ class TargetingTemplatesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/targetingTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -14607,10 +14222,8 @@ class TargetingTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TargetingTemplatesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TargetingTemplatesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing targeting template.
@@ -14640,7 +14253,7 @@ class TargetingTemplatesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -14666,7 +14279,7 @@ class TargetingTemplatesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/targetingTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -14675,10 +14288,8 @@ class TargetingTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TargetingTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TargetingTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing targeting template.
@@ -14703,7 +14314,7 @@ class TargetingTemplatesResource {
     TargetingTemplate request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -14725,7 +14336,7 @@ class TargetingTemplatesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/targetingTemplates';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -14734,10 +14345,8 @@ class TargetingTemplatesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => TargetingTemplate.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return TargetingTemplate.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -14765,7 +14374,7 @@ class UserProfilesResource {
   async.Future<UserProfile> get(
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -14782,7 +14391,7 @@ class UserProfilesResource {
 
     _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -14791,10 +14400,8 @@ class UserProfilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          UserProfile.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserProfile.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves list of user profiles for a user.
@@ -14813,7 +14420,7 @@ class UserProfilesResource {
   /// this method will complete with the same error.
   async.Future<UserProfileList> list({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -14827,7 +14434,7 @@ class UserProfilesResource {
 
     _url = 'userprofiles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -14836,10 +14443,8 @@ class UserProfilesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          UserProfileList.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserProfileList.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -14871,7 +14476,7 @@ class UserRolePermissionGroupsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -14894,7 +14499,7 @@ class UserRolePermissionGroupsResource {
         '/userRolePermissionGroups/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -14903,10 +14508,8 @@ class UserRolePermissionGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UserRolePermissionGroup.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return UserRolePermissionGroup.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a list of all supported user role permission groups.
@@ -14928,7 +14531,7 @@ class UserRolePermissionGroupsResource {
   async.Future<UserRolePermissionGroupsListResponse> list(
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -14947,7 +14550,7 @@ class UserRolePermissionGroupsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRolePermissionGroups';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -14956,10 +14559,8 @@ class UserRolePermissionGroupsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UserRolePermissionGroupsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return UserRolePermissionGroupsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -14991,7 +14592,7 @@ class UserRolePermissionsResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -15014,7 +14615,7 @@ class UserRolePermissionsResource {
         '/userRolePermissions/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -15023,10 +14624,8 @@ class UserRolePermissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UserRolePermission.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return UserRolePermission.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a list of user role permissions, possibly filtered.
@@ -15051,7 +14650,7 @@ class UserRolePermissionsResource {
     core.String profileId, {
     core.List<core.String> ids,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -15073,7 +14672,7 @@ class UserRolePermissionsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRolePermissions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -15082,10 +14681,8 @@ class UserRolePermissionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UserRolePermissionsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return UserRolePermissionsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -15110,11 +14707,11 @@ class UserRolesResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future delete(
+  async.Future<void> delete(
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -15139,7 +14736,7 @@ class UserRolesResource {
         '/userRoles/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -15147,9 +14744,6 @@ class UserRolesResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -15175,7 +14769,7 @@ class UserRolesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -15198,7 +14792,7 @@ class UserRolesResource {
         '/userRoles/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -15207,9 +14801,7 @@ class UserRolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UserRole.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserRole.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Inserts a new user role.
@@ -15234,7 +14826,7 @@ class UserRolesResource {
     UserRole request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -15256,7 +14848,7 @@ class UserRolesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRoles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -15265,9 +14857,7 @@ class UserRolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UserRole.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserRole.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of user roles, possibly filtered.
@@ -15329,7 +14919,7 @@ class UserRolesResource {
     core.String sortOrder,
     core.String subaccountId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -15372,7 +14962,7 @@ class UserRolesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRoles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -15381,10 +14971,8 @@ class UserRolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UserRolesListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return UserRolesListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing user role.
@@ -15414,7 +15002,7 @@ class UserRolesResource {
     core.String profileId,
     core.String id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -15440,7 +15028,7 @@ class UserRolesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRoles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -15449,9 +15037,7 @@ class UserRolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UserRole.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserRole.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates an existing user role.
@@ -15476,7 +15062,7 @@ class UserRolesResource {
     UserRole request,
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -15498,7 +15084,7 @@ class UserRolesResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRoles';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -15507,9 +15093,7 @@ class UserRolesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => UserRole.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return UserRole.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -15540,7 +15124,7 @@ class VideoFormatsResource {
     core.String profileId,
     core.int id, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -15563,7 +15147,7 @@ class VideoFormatsResource {
         '/videoFormats/' +
         commons.Escaper.ecapeVariable('$id');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -15572,10 +15156,8 @@ class VideoFormatsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          VideoFormat.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return VideoFormat.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists available video formats.
@@ -15597,7 +15179,7 @@ class VideoFormatsResource {
   async.Future<VideoFormatsListResponse> list(
     core.String profileId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -15616,7 +15198,7 @@ class VideoFormatsResource {
         commons.Escaper.ecapeVariable('$profileId') +
         '/videoFormats';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -15625,10 +15207,8 @@ class VideoFormatsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => VideoFormatsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return VideoFormatsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

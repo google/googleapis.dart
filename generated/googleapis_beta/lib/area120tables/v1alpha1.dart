@@ -104,7 +104,7 @@ class TablesResource {
   async.Future<Table> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -121,7 +121,7 @@ class TablesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -130,9 +130,7 @@ class TablesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Table.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Table.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists tables for the user.
@@ -162,7 +160,7 @@ class TablesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -182,7 +180,7 @@ class TablesResource {
 
     _url = 'v1alpha1/tables';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -191,10 +189,8 @@ class TablesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListTablesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListTablesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -227,7 +223,7 @@ class TablesRowsResource {
     BatchCreateRowsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -249,7 +245,7 @@ class TablesRowsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/rows:batchCreate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -258,10 +254,8 @@ class TablesRowsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchCreateRowsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchCreateRowsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes multiple rows.
@@ -288,7 +282,7 @@ class TablesRowsResource {
     BatchDeleteRowsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -310,7 +304,7 @@ class TablesRowsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/rows:batchDelete';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -319,9 +313,7 @@ class TablesRowsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates multiple rows.
@@ -348,7 +340,7 @@ class TablesRowsResource {
     BatchUpdateRowsRequest request,
     core.String parent, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -370,7 +362,7 @@ class TablesRowsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/rows:batchUpdate';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -379,10 +371,8 @@ class TablesRowsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => BatchUpdateRowsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return BatchUpdateRowsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Creates a row.
@@ -417,7 +407,7 @@ class TablesRowsResource {
     core.String parent, {
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -442,7 +432,7 @@ class TablesRowsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/rows';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -451,9 +441,7 @@ class TablesRowsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Row.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Row.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a row.
@@ -477,7 +465,7 @@ class TablesRowsResource {
   async.Future<Empty> delete(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -494,7 +482,7 @@ class TablesRowsResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -503,9 +491,7 @@ class TablesRowsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a row.
@@ -539,7 +525,7 @@ class TablesRowsResource {
     core.String name, {
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -559,7 +545,7 @@ class TablesRowsResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -568,9 +554,7 @@ class TablesRowsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Row.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Row.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists rows in a table.
@@ -614,7 +598,7 @@ class TablesRowsResource {
     core.String pageToken,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -642,7 +626,7 @@ class TablesRowsResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/rows';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -651,10 +635,8 @@ class TablesRowsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListRowsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListRowsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a row.
@@ -692,7 +674,7 @@ class TablesRowsResource {
     core.String updateMask,
     core.String view,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -718,7 +700,7 @@ class TablesRowsResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PATCH',
       body: _body,
@@ -727,9 +709,7 @@ class TablesRowsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Row.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Row.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -761,7 +741,7 @@ class WorkspacesResource {
   async.Future<Workspace> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -778,7 +758,7 @@ class WorkspacesResource {
 
     _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -787,9 +767,7 @@ class WorkspacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Workspace.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Workspace.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists workspaces for the user.
@@ -819,7 +797,7 @@ class WorkspacesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -839,7 +817,7 @@ class WorkspacesResource {
 
     _url = 'v1alpha1/workspaces';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -848,10 +826,8 @@ class WorkspacesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListWorkspacesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListWorkspacesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

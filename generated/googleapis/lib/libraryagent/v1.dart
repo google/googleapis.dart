@@ -84,7 +84,7 @@ class ShelvesResource {
   async.Future<GoogleExampleLibraryagentV1Shelf> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -101,7 +101,7 @@ class ShelvesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -110,10 +110,8 @@ class ShelvesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleExampleLibraryagentV1Shelf.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleExampleLibraryagentV1Shelf.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists shelves.
@@ -145,7 +143,7 @@ class ShelvesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -165,7 +163,7 @@ class ShelvesResource {
 
     _url = 'v1/shelves';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -174,10 +172,8 @@ class ShelvesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -210,7 +206,7 @@ class ShelvesBooksResource {
   async.Future<GoogleExampleLibraryagentV1Book> borrow(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -227,7 +223,7 @@ class ShelvesBooksResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':borrow';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -236,10 +232,8 @@ class ShelvesBooksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleExampleLibraryagentV1Book.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleExampleLibraryagentV1Book.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a book.
@@ -264,7 +258,7 @@ class ShelvesBooksResource {
   async.Future<GoogleExampleLibraryagentV1Book> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -281,7 +275,7 @@ class ShelvesBooksResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -290,10 +284,8 @@ class ShelvesBooksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleExampleLibraryagentV1Book.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleExampleLibraryagentV1Book.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists books in a shelf.
@@ -329,7 +321,7 @@ class ShelvesBooksResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -352,7 +344,7 @@ class ShelvesBooksResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/books';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -361,10 +353,8 @@ class ShelvesBooksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleExampleLibraryagentV1ListBooksResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleExampleLibraryagentV1ListBooksResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Return a book to the library.
@@ -391,7 +381,7 @@ class ShelvesBooksResource {
   async.Future<GoogleExampleLibraryagentV1Book> return_(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -408,7 +398,7 @@ class ShelvesBooksResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':return';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -417,10 +407,8 @@ class ShelvesBooksResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleExampleLibraryagentV1Book.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleExampleLibraryagentV1Book.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -100,7 +100,7 @@ class EnterprisesDevicesResource {
     GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -122,7 +122,7 @@ class EnterprisesDevicesResource {
         commons.Escaper.ecapeVariableReserved('$name') +
         ':executeCommand';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -131,10 +131,8 @@ class EnterprisesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a device managed by the enterprise.
@@ -158,7 +156,7 @@ class EnterprisesDevicesResource {
   async.Future<GoogleHomeEnterpriseSdmV1Device> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -175,7 +173,7 @@ class EnterprisesDevicesResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -184,10 +182,8 @@ class EnterprisesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleHomeEnterpriseSdmV1Device.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleHomeEnterpriseSdmV1Device.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists devices managed by the enterprise.
@@ -222,7 +218,7 @@ class EnterprisesDevicesResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -249,7 +245,7 @@ class EnterprisesDevicesResource {
     _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -258,10 +254,8 @@ class EnterprisesDevicesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleHomeEnterpriseSdmV1ListDevicesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleHomeEnterpriseSdmV1ListDevicesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -295,7 +289,7 @@ class EnterprisesStructuresResource {
   async.Future<GoogleHomeEnterpriseSdmV1Structure> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -312,7 +306,7 @@ class EnterprisesStructuresResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -321,10 +315,8 @@ class EnterprisesStructuresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleHomeEnterpriseSdmV1Structure.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleHomeEnterpriseSdmV1Structure.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists structures managed by the enterprise.
@@ -358,7 +350,7 @@ class EnterprisesStructuresResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -386,7 +378,7 @@ class EnterprisesStructuresResource {
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/structures';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -395,10 +387,8 @@ class EnterprisesStructuresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleHomeEnterpriseSdmV1ListStructuresResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleHomeEnterpriseSdmV1ListStructuresResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -430,7 +420,7 @@ class EnterprisesStructuresRoomsResource {
   async.Future<GoogleHomeEnterpriseSdmV1Room> get(
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -447,7 +437,7 @@ class EnterprisesStructuresRoomsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -456,10 +446,8 @@ class EnterprisesStructuresRoomsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleHomeEnterpriseSdmV1Room.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleHomeEnterpriseSdmV1Room.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists rooms managed by the enterprise.
@@ -490,7 +478,7 @@ class EnterprisesStructuresRoomsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -513,7 +501,7 @@ class EnterprisesStructuresRoomsResource {
 
     _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/rooms';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -522,10 +510,8 @@ class EnterprisesStructuresRoomsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => GoogleHomeEnterpriseSdmV1ListRoomsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return GoogleHomeEnterpriseSdmV1ListRoomsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

@@ -90,7 +90,7 @@ class AutnumResource {
   async.Future<RdapResponse> get(
     core.String autnumId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -107,7 +107,7 @@ class AutnumResource {
 
     _url = 'v1/autnum/' + commons.Escaper.ecapeVariable('$autnumId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -116,10 +116,8 @@ class AutnumResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          RdapResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return RdapResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -148,7 +146,7 @@ class DomainResource {
   async.Future<HttpBody> get(
     core.String domainName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -165,7 +163,7 @@ class DomainResource {
 
     _url = 'v1/domain/' + commons.Escaper.ecapeVariableReserved('$domainName');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -174,9 +172,7 @@ class DomainResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -207,7 +203,7 @@ class EntityResource {
   async.Future<RdapResponse> get(
     core.String entityId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -224,7 +220,7 @@ class EntityResource {
 
     _url = 'v1/entity/' + commons.Escaper.ecapeVariable('$entityId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -233,10 +229,8 @@ class EntityResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          RdapResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return RdapResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -270,7 +264,7 @@ class IpResource {
     core.String ipId,
     core.String ipId1, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -293,7 +287,7 @@ class IpResource {
         '/' +
         commons.Escaper.ecapeVariable('$ipId1');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -302,10 +296,8 @@ class IpResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          RdapResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return RdapResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -336,7 +328,7 @@ class NameserverResource {
   async.Future<RdapResponse> get(
     core.String nameserverId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -353,7 +345,7 @@ class NameserverResource {
 
     _url = 'v1/nameserver/' + commons.Escaper.ecapeVariable('$nameserverId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -362,10 +354,8 @@ class NameserverResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          RdapResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return RdapResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -393,7 +383,7 @@ class V1Resource {
   /// this method will complete with the same error.
   async.Future<RdapResponse> getDomains({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -407,7 +397,7 @@ class V1Resource {
 
     _url = 'v1/domains';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -416,10 +406,8 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          RdapResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return RdapResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// The RDAP API recognizes this command from the RDAP specification but does
@@ -441,7 +429,7 @@ class V1Resource {
   /// this method will complete with the same error.
   async.Future<RdapResponse> getEntities({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -455,7 +443,7 @@ class V1Resource {
 
     _url = 'v1/entities';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -464,10 +452,8 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          RdapResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return RdapResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get help information for the RDAP API, including links to documentation.
@@ -486,7 +472,7 @@ class V1Resource {
   /// this method will complete with the same error.
   async.Future<HttpBody> getHelp({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -500,7 +486,7 @@ class V1Resource {
 
     _url = 'v1/help';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -509,9 +495,7 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// The RDAP API recognizes this command from the RDAP specification but does
@@ -533,7 +517,7 @@ class V1Resource {
   /// this method will complete with the same error.
   async.Future<HttpBody> getIp({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -547,7 +531,7 @@ class V1Resource {
 
     _url = 'v1/ip';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -556,9 +540,7 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return HttpBody.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// The RDAP API recognizes this command from the RDAP specification but does
@@ -580,7 +562,7 @@ class V1Resource {
   /// this method will complete with the same error.
   async.Future<RdapResponse> getNameservers({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -594,7 +576,7 @@ class V1Resource {
 
     _url = 'v1/nameservers';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -603,10 +585,8 @@ class V1Resource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          RdapResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return RdapResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

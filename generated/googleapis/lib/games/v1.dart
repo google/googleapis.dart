@@ -119,7 +119,7 @@ class AchievementDefinitionsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -142,7 +142,7 @@ class AchievementDefinitionsResource {
 
     _url = 'games/v1/achievements';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -151,10 +151,8 @@ class AchievementDefinitionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AchievementDefinitionsListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AchievementDefinitionsListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -191,7 +189,7 @@ class AchievementsResource {
     core.int stepsToIncrement, {
     core.String requestId,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -217,7 +215,7 @@ class AchievementsResource {
         commons.Escaper.ecapeVariable('$achievementId') +
         '/increment';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -226,10 +224,8 @@ class AchievementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AchievementIncrementResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AchievementIncrementResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the progress for all your application's achievements for the
@@ -275,7 +271,7 @@ class AchievementsResource {
     core.String pageToken,
     core.String state,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -306,7 +302,7 @@ class AchievementsResource {
         commons.Escaper.ecapeVariable('$playerId') +
         '/achievements';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -315,10 +311,8 @@ class AchievementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlayerAchievementListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlayerAchievementListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the state of the achievement with the given ID to `REVEALED` for the
@@ -341,7 +335,7 @@ class AchievementsResource {
   async.Future<AchievementRevealResponse> reveal(
     core.String achievementId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -360,7 +354,7 @@ class AchievementsResource {
         commons.Escaper.ecapeVariable('$achievementId') +
         '/reveal';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -369,10 +363,8 @@ class AchievementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AchievementRevealResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AchievementRevealResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Sets the steps for the currently authenticated player towards unlocking an
@@ -402,7 +394,7 @@ class AchievementsResource {
     core.String achievementId,
     core.int steps, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -425,7 +417,7 @@ class AchievementsResource {
         commons.Escaper.ecapeVariable('$achievementId') +
         '/setStepsAtLeast';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -434,10 +426,8 @@ class AchievementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AchievementSetStepsAtLeastResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AchievementSetStepsAtLeastResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Unlocks this achievement for the currently authenticated player.
@@ -459,7 +449,7 @@ class AchievementsResource {
   async.Future<AchievementUnlockResponse> unlock(
     core.String achievementId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -478,7 +468,7 @@ class AchievementsResource {
         commons.Escaper.ecapeVariable('$achievementId') +
         '/unlock';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -487,10 +477,8 @@ class AchievementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AchievementUnlockResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AchievementUnlockResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates multiple achievements for the currently authenticated player.
@@ -512,7 +500,7 @@ class AchievementsResource {
   async.Future<AchievementUpdateMultipleResponse> updateMultiple(
     AchievementUpdateMultipleRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -529,7 +517,7 @@ class AchievementsResource {
 
     _url = 'games/v1/achievements/updateMultiple';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -538,10 +526,8 @@ class AchievementsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => AchievementUpdateMultipleResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return AchievementUpdateMultipleResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -586,7 +572,7 @@ class ApplicationsResource {
     core.String language,
     core.String platformType,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -610,7 +596,7 @@ class ApplicationsResource {
     _url = 'games/v1/applications/' +
         commons.Escaper.ecapeVariable('$applicationId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -619,10 +605,8 @@ class ApplicationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Application.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Application.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a URL for the requested end point type.
@@ -652,7 +636,7 @@ class ApplicationsResource {
     core.String applicationId,
     core.String endPointType,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -672,7 +656,7 @@ class ApplicationsResource {
 
     _url = 'games/v1/applications/getEndPoint';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -681,9 +665,7 @@ class ApplicationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => EndPoint.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return EndPoint.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Indicate that the currently authenticated user is playing your
@@ -699,9 +681,9 @@ class ApplicationsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future played({
+  async.Future<void> played({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -717,7 +699,7 @@ class ApplicationsResource {
 
     _url = 'games/v1/applications/played';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -725,9 +707,6 @@ class ApplicationsResource {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -753,7 +732,7 @@ class ApplicationsResource {
   async.Future<ApplicationVerifyResponse> verify(
     core.String applicationId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -772,7 +751,7 @@ class ApplicationsResource {
         commons.Escaper.ecapeVariable('$applicationId') +
         '/verify';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -781,10 +760,8 @@ class ApplicationsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ApplicationVerifyResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ApplicationVerifyResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -822,7 +799,7 @@ class EventsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -845,7 +822,7 @@ class EventsResource {
 
     _url = 'games/v1/events';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -854,10 +831,8 @@ class EventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlayerEventListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlayerEventListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Returns a list of the event definitions in this application.
@@ -888,7 +863,7 @@ class EventsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -911,7 +886,7 @@ class EventsResource {
 
     _url = 'games/v1/eventDefinitions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -920,10 +895,8 @@ class EventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => EventDefinitionListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return EventDefinitionListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Records a batch of changes to the number of times events have occurred for
@@ -950,7 +923,7 @@ class EventsResource {
     EventRecordRequest request, {
     core.String language,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -970,7 +943,7 @@ class EventsResource {
 
     _url = 'games/v1/events';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -979,10 +952,8 @@ class EventsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => EventUpdateResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return EventUpdateResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1014,7 +985,7 @@ class LeaderboardsResource {
     core.String leaderboardId, {
     core.String language,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1035,7 +1006,7 @@ class LeaderboardsResource {
     _url = 'games/v1/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1044,10 +1015,8 @@ class LeaderboardsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Leaderboard.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Leaderboard.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists all the leaderboard metadata for your application.
@@ -1078,7 +1047,7 @@ class LeaderboardsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1101,7 +1070,7 @@ class LeaderboardsResource {
 
     _url = 'games/v1/leaderboards';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1110,10 +1079,8 @@ class LeaderboardsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LeaderboardListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LeaderboardListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1138,7 +1105,7 @@ class MetagameResource {
   /// this method will complete with the same error.
   async.Future<MetagameConfig> getMetagameConfig({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1152,7 +1119,7 @@ class MetagameResource {
 
     _url = 'games/v1/metagameConfig';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1161,10 +1128,8 @@ class MetagameResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          MetagameConfig.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return MetagameConfig.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List play data aggregated per category for the player corresponding to
@@ -1207,7 +1172,7 @@ class MetagameResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1239,7 +1204,7 @@ class MetagameResource {
         '/categories/' +
         commons.Escaper.ecapeVariable('$collection');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1248,10 +1213,8 @@ class MetagameResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => CategoryListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return CategoryListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1287,7 +1250,7 @@ class PlayersResource {
     core.String playerId, {
     core.String language,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1307,7 +1270,7 @@ class PlayersResource {
 
     _url = 'games/v1/players/' + commons.Escaper.ecapeVariable('$playerId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1316,9 +1279,7 @@ class PlayersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Player.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Player.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get the collection of players for the currently authenticated user.
@@ -1359,7 +1320,7 @@ class PlayersResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1386,7 +1347,7 @@ class PlayersResource {
     _url = 'games/v1/players/me/players/' +
         commons.Escaper.ecapeVariable('$collection');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1395,10 +1356,8 @@ class PlayersResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlayerListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlayerListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1430,7 +1389,7 @@ class RevisionsResource {
   async.Future<RevisionCheckResponse> check(
     core.String clientRevision, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1448,7 +1407,7 @@ class RevisionsResource {
 
     _url = 'games/v1/revisions/check';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1457,10 +1416,8 @@ class RevisionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => RevisionCheckResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return RevisionCheckResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1533,7 +1490,7 @@ class ScoresResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1573,7 +1530,7 @@ class ScoresResource {
         '/scores/' +
         commons.Escaper.ecapeVariable('$timeSpan');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1582,10 +1539,8 @@ class ScoresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlayerLeaderboardScoreListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlayerLeaderboardScoreListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the scores in a leaderboard, starting from the top.
@@ -1635,7 +1590,7 @@ class ScoresResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1671,7 +1626,7 @@ class ScoresResource {
         '/scores/' +
         commons.Escaper.ecapeVariable('$collection');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1680,10 +1635,8 @@ class ScoresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LeaderboardScores.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LeaderboardScores.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the scores in a leaderboard around (and including) a player's score.
@@ -1743,7 +1696,7 @@ class ScoresResource {
     core.int resultsAbove,
     core.bool returnTopIfAbsent,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1785,7 +1738,7 @@ class ScoresResource {
         '/window/' +
         commons.Escaper.ecapeVariable('$collection');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1794,10 +1747,8 @@ class ScoresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => LeaderboardScores.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return LeaderboardScores.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Submits a score to the specified leaderboard.
@@ -1837,7 +1788,7 @@ class ScoresResource {
     core.String language,
     core.String scoreTag,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1866,7 +1817,7 @@ class ScoresResource {
         commons.Escaper.ecapeVariable('$leaderboardId') +
         '/scores';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1875,10 +1826,8 @@ class ScoresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlayerScoreResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlayerScoreResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Submits multiple scores to leaderboards.
@@ -1904,7 +1853,7 @@ class ScoresResource {
     PlayerScoreSubmissionList request, {
     core.String language,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1924,7 +1873,7 @@ class ScoresResource {
 
     _url = 'games/v1/leaderboards/scores';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1933,10 +1882,8 @@ class ScoresResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => PlayerScoreListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return PlayerScoreListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1968,7 +1915,7 @@ class SnapshotsResource {
     core.String snapshotId, {
     core.String language,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1988,7 +1935,7 @@ class SnapshotsResource {
 
     _url = 'games/v1/snapshots/' + commons.Escaper.ecapeVariable('$snapshotId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1997,9 +1944,7 @@ class SnapshotsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Snapshot.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Snapshot.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Retrieves a list of snapshots created by your application for the player
@@ -2035,7 +1980,7 @@ class SnapshotsResource {
     core.int maxResults,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2063,7 +2008,7 @@ class SnapshotsResource {
         commons.Escaper.ecapeVariable('$playerId') +
         '/snapshots';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2072,10 +2017,8 @@ class SnapshotsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => SnapshotListResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return SnapshotListResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2108,7 +2051,7 @@ class SnapshotsExtendedResource {
     ResolveSnapshotHeadRequest request,
     core.String snapshotName, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2130,7 +2073,7 @@ class SnapshotsExtendedResource {
         commons.Escaper.ecapeVariable('$snapshotName') +
         ':resolveHead';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -2139,10 +2082,8 @@ class SnapshotsExtendedResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ResolveSnapshotHeadResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ResolveSnapshotHeadResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2168,7 +2109,7 @@ class StatsResource {
   /// this method will complete with the same error.
   async.Future<StatsResponse> get({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -2182,7 +2123,7 @@ class StatsResource {
 
     _url = 'games/v1/stats';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -2191,10 +2132,8 @@ class StatsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          StatsResponse.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return StatsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

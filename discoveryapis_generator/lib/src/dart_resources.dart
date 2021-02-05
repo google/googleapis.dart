@@ -148,16 +148,18 @@ class DartResourceMethod {
       if (mediaDownload) {
         if (namedString.isNotEmpty) namedString.write(', ');
         namedString
-            .write('${imports.commons}.DownloadOptions downloadOptions = '
+            .write('${imports.commons.ref()}DownloadOptions downloadOptions = '
                 '${imports.commons}.DownloadOptions.Metadata');
       }
 
       parameterString.write('{$namedString,}');
     }
 
-    var genericReturnType = '';
+    var genericReturnType = '<void>';
     // NOTE: Media downloads are optional, so we cannot return [Media] as type.
-    if (returnType != null && !mediaDownload) {
+    if (mediaDownload) {
+      genericReturnType = '<${imports.core.ref()}Object>';
+    } else if (returnType != null) {
       genericReturnType = '<${returnType.declaration}>';
     }
     return '${imports.async.ref()}Future$genericReturnType '
@@ -367,40 +369,45 @@ class DartResourceMethod {
       }
     }
 
+    final responseVar =
+        (returnType == null && !mediaDownload) ? '' : 'final _response = ';
+
     requestCode.write('''
 
 $urlPatternCode
 
-    final _response = _requester.request(_url,
-                                       '$httpMethod',
-                                       body: _body,
-                                       queryParams: _queryParams,
-                                       uploadOptions: _uploadOptions,
-                                       uploadMedia: _uploadMedia,
-                                       downloadOptions: _downloadOptions,);
+    $responseVar await _requester.request(
+      _url,
+      '$httpMethod',
+      body: _body,
+      queryParams: _queryParams,
+      uploadOptions: _uploadOptions,
+      uploadMedia: _uploadMedia,
+      downloadOptions: _downloadOptions,
+    );
 ''');
 
-    final data = enableDataWrapper ? "data['data']" : 'data';
+    final data = enableDataWrapper ? "_response['data']" : '_response';
     final plainResponse =
         returnType != null ? returnType.jsonDecode(data) : 'null';
     if (mediaDownload) {
       requestCode.write('''
     if (_downloadOptions == null ||
         _downloadOptions == ${imports.commons}.DownloadOptions.Metadata) {
-      return _response.then((data) => $plainResponse,);
+      return $plainResponse;
     } else {
       return _response;
     }
 ''');
-    } else {
+    } else if (returnType != null) {
       requestCode.write('''
-    return _response.then((data) => $plainResponse,);
+    return $plainResponse;
 ''');
     }
 
     final methodString = StringBuffer();
     methodString.write(methodComment.asDartDoc(2));
-    methodString.writeln('  $signature {');
+    methodString.writeln('  $signature async {');
 
     final core = imports.core.ref();
     // For null safe code need an explicit type since `var` will infer as

@@ -59,9 +59,9 @@ class ToyApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future failing({
+  async.Future<void> failing({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -77,7 +77,7 @@ class ToyApi {
 
     _url = 'failing';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -85,9 +85,6 @@ class ToyApi {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -105,7 +102,7 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<ToyResponse> hello({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -119,7 +116,7 @@ class ToyApi {
 
     _url = 'hello';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -128,10 +125,8 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ToyResponseFactory.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ToyResponseFactory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// [request] - The metadata request object.
@@ -151,7 +146,7 @@ class ToyApi {
   async.Future<core.Map<core.String, ToyResponse>> helloListOfClass(
     core.List<ToyRequest> request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -169,7 +164,7 @@ class ToyApi {
 
     _url = 'helloListOfClass';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -178,15 +173,13 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => (data as core.Map).cast<core.String, core.Map>().map(
-            (key, item) => core.MapEntry(
-              key,
-              ToyResponseFactory.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
+    return (_response as core.Map).cast<core.String, core.Map>().map(
+          (key, item) => core.MapEntry(
+            key,
+            ToyResponseFactory.fromJson(
+                item as core.Map<core.String, core.dynamic>),
           ),
-    );
+        );
   }
 
   /// [request] - The metadata request object.
@@ -206,7 +199,7 @@ class ToyApi {
   async.Future<core.Map<core.String, ToyResponse>> helloListOfListOfClass(
     core.List<core.List<ToyRequest>> request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -226,7 +219,7 @@ class ToyApi {
 
     _url = 'helloListOfListOfClass';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -235,15 +228,13 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => (data as core.Map).cast<core.String, core.Map>().map(
-            (key, item) => core.MapEntry(
-              key,
-              ToyResponseFactory.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
+    return (_response as core.Map).cast<core.String, core.Map>().map(
+          (key, item) => core.MapEntry(
+            key,
+            ToyResponseFactory.fromJson(
+                item as core.Map<core.String, core.dynamic>),
           ),
-    );
+        );
   }
 
   /// [request] - The metadata request object.
@@ -263,7 +254,7 @@ class ToyApi {
   async.Future<core.Map<core.String, core.int>> helloMap(
     core.Map<core.String, core.int> request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -280,7 +271,7 @@ class ToyApi {
 
     _url = 'helloMap';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -289,14 +280,12 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => (data as core.Map).cast<core.String, core.int>().map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.int,
-            ),
+    return (_response as core.Map).cast<core.String, core.int>().map(
+          (key, item) => core.MapEntry(
+            key,
+            item as core.int,
           ),
-    );
+        );
   }
 
   /// Request parameters:
@@ -319,7 +308,7 @@ class ToyApi {
     core.String name,
     core.int age, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -342,7 +331,7 @@ class ToyApi {
         '/age/' +
         commons.Escaper.ecapeVariable('$age');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -351,10 +340,8 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ToyResponseFactory.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ToyResponseFactory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// [request] - The metadata request object.
@@ -377,7 +364,7 @@ class ToyApi {
     ToyAgeRequest request,
     core.String name, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -397,7 +384,7 @@ class ToyApi {
 
     _url = 'helloPost/' + commons.Escaper.ecapeVariable('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -406,10 +393,8 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ToyResponseFactory.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ToyResponseFactory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Request parameters:
@@ -435,7 +420,7 @@ class ToyApi {
     core.int age,
     core.String foo,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -458,7 +443,7 @@ class ToyApi {
 
     _url = 'helloQuery/' + commons.Escaper.ecapeVariable('$name');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -467,10 +452,8 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ToyResponseFactory.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ToyResponseFactory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// [request] - The metadata request object.
@@ -490,7 +473,7 @@ class ToyApi {
   async.Future<core.List<core.List<core.String>>> helloNestedListList(
     core.List<core.List<core.int>> request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -507,7 +490,7 @@ class ToyApi {
 
     _url = 'helloNestedListList';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -516,13 +499,11 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => (data as core.List)
-          .map<core.List<core.String>>((value) => (value as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList())
-          .toList(),
-    );
+    return (_response as core.List)
+        .map<core.List<core.String>>((value) => (value as core.List)
+            .map<core.String>((value) => value as core.String)
+            .toList())
+        .toList();
   }
 
   /// [request] - The metadata request object.
@@ -544,7 +525,7 @@ class ToyApi {
       helloNestedListMapList(
     core.List<core.Map<core.String, core.List<core.int>>> request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -561,7 +542,7 @@ class ToyApi {
 
     _url = 'helloNestedListMapList';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -570,19 +551,17 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => (data as core.List)
-          .map<core.Map<core.String, core.List<core.String>>>(
-              (value) => (value as core.Map).cast<core.String, core.List>().map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      (item as core.List)
-                          .map<core.String>((value) => value as core.String)
-                          .toList(),
-                    ),
-                  ))
-          .toList(),
-    );
+    return (_response as core.List)
+        .map<core.Map<core.String, core.List<core.String>>>(
+            (value) => (value as core.Map).cast<core.String, core.List>().map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    (item as core.List)
+                        .map<core.String>((value) => value as core.String)
+                        .toList(),
+                  ),
+                ))
+        .toList();
   }
 
   /// Request parameters:
@@ -599,7 +578,7 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<ToyMapResponse> helloNestedMap({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -613,7 +592,7 @@ class ToyApi {
 
     _url = 'helloNestedMap';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -622,10 +601,8 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ToyMapResponseFactory.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ToyMapResponseFactory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// [request] - The metadata request object.
@@ -648,7 +625,7 @@ class ToyApi {
       helloNestedMapListMap(
     core.Map<core.String, core.List<core.Map<core.String, core.int>>> request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -665,7 +642,7 @@ class ToyApi {
 
     _url = 'helloNestedMapListMap';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -674,22 +651,20 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => (data as core.Map).cast<core.String, core.List>().map(
-            (key, item) => core.MapEntry(
-              key,
-              (item as core.List)
-                  .map<core.Map<core.String, core.bool>>((value) =>
-                      (value as core.Map).cast<core.String, core.bool>().map(
-                            (key, item) => core.MapEntry(
-                              key,
-                              item as core.bool,
-                            ),
-                          ))
-                  .toList(),
-            ),
+    return (_response as core.Map).cast<core.String, core.List>().map(
+          (key, item) => core.MapEntry(
+            key,
+            (item as core.List)
+                .map<core.Map<core.String, core.bool>>((value) =>
+                    (value as core.Map).cast<core.String, core.bool>().map(
+                          (key, item) => core.MapEntry(
+                            key,
+                            item as core.bool,
+                          ),
+                        ))
+                .toList(),
           ),
-    );
+        );
   }
 
   /// [request] - The metadata request object.
@@ -711,7 +686,7 @@ class ToyApi {
       helloNestedMapMap(
     core.Map<core.String, core.Map<core.String, core.int>> request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -728,7 +703,7 @@ class ToyApi {
 
     _url = 'helloNestedMapMap';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -737,19 +712,17 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => (data as core.Map).cast<core.String, core.Map>().map(
-            (key, item) => core.MapEntry(
-              key,
-              (item as core.Map).cast<core.String, core.bool>().map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.bool,
-                    ),
+    return (_response as core.Map).cast<core.String, core.Map>().map(
+          (key, item) => core.MapEntry(
+            key,
+            (item as core.Map).cast<core.String, core.bool>().map(
+                  (key, item) => core.MapEntry(
+                    key,
+                    item as core.bool,
                   ),
-            ),
+                ),
           ),
-    );
+        );
   }
 
   /// [request] - The metadata request object.
@@ -769,7 +742,7 @@ class ToyApi {
   async.Future<ToyResponse> helloPost(
     ToyRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -786,7 +759,7 @@ class ToyApi {
 
     _url = 'helloPost';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -795,10 +768,8 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ToyResponseFactory.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ToyResponseFactory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Request parameters:
@@ -815,7 +786,7 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<ToyResponse> helloReturnNull({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -829,7 +800,7 @@ class ToyApi {
 
     _url = 'helloReturnNull';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -838,10 +809,8 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ToyResponseFactory.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ToyResponseFactory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Request parameters:
@@ -858,7 +827,7 @@ class ToyApi {
   /// this method will complete with the same error.
   async.Future<ToyResponse> helloVoid({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -872,7 +841,7 @@ class ToyApi {
 
     _url = 'helloVoid';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -881,10 +850,8 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ToyResponseFactory.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ToyResponseFactory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Request parameters:
@@ -897,9 +864,9 @@ class ToyApi {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future noop({
+  async.Future<void> noop({
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -915,7 +882,7 @@ class ToyApi {
 
     _url = 'noop';
 
-    final _response = _requester.request(
+    await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -923,9 +890,6 @@ class ToyApi {
       uploadOptions: _uploadOptions,
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
-    );
-    return _response.then(
-      (data) => null,
     );
   }
 
@@ -946,7 +910,7 @@ class ToyApi {
   async.Future<core.List<core.String>> reverseList(
     core.List<core.String> request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -963,7 +927,7 @@ class ToyApi {
 
     _url = 'reverseList';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -972,11 +936,9 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => (data as core.List)
-          .map<core.String>((value) => value as core.String)
-          .toList(),
-    );
+    return (_response as core.List)
+        .map<core.String>((value) => value as core.String)
+        .toList();
   }
 }
 
@@ -1006,7 +968,7 @@ class ComputeResource {
     core.String resource,
     core.String compute, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1029,7 +991,7 @@ class ComputeResource {
         '/compute/' +
         commons.Escaper.ecapeVariable('$compute');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1038,10 +1000,8 @@ class ComputeResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ToyResourceResponseFactory.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ToyResourceResponseFactory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1072,7 +1032,7 @@ class StorageResource {
     core.String resource,
     core.String storage, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1095,7 +1055,7 @@ class StorageResource {
         '/storage/' +
         commons.Escaper.ecapeVariable('$storage');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1104,10 +1064,8 @@ class StorageResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ToyResourceResponseFactory.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ToyResourceResponseFactory.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 

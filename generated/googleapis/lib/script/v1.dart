@@ -195,7 +195,7 @@ class ProcessesResource {
     core.List<core.String> userProcessFilter_types,
     core.List<core.String> userProcessFilter_userAccessLevels,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -251,7 +251,7 @@ class ProcessesResource {
 
     _url = 'v1/processes';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -260,10 +260,8 @@ class ProcessesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListUserProcessesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListUserProcessesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// List information about a script's executed processes, such as process type
@@ -326,7 +324,7 @@ class ProcessesResource {
     core.List<core.String> scriptProcessFilter_types,
     core.List<core.String> scriptProcessFilter_userAccessLevels,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -380,7 +378,7 @@ class ProcessesResource {
 
     _url = 'v1/processes:listScriptProcesses';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -389,10 +387,8 @@ class ProcessesResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListScriptProcessesResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListScriptProcessesResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -425,7 +421,7 @@ class ProjectsResource {
   async.Future<Project> create(
     CreateProjectRequest request, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -442,7 +438,7 @@ class ProjectsResource {
 
     _url = 'v1/projects';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -451,9 +447,7 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Project.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Project.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a script project's metadata.
@@ -475,7 +469,7 @@ class ProjectsResource {
   async.Future<Project> get(
     core.String scriptId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -492,7 +486,7 @@ class ProjectsResource {
 
     _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$scriptId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -501,9 +495,7 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Project.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Project.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets the content of the script project, including the code source and
@@ -530,7 +522,7 @@ class ProjectsResource {
     core.String scriptId, {
     core.int versionNumber,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -552,7 +544,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariable('$scriptId') +
         '/content';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -561,9 +553,7 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Content.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Content.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Get metrics data for scripts, such as number of executions and active
@@ -599,7 +589,7 @@ class ProjectsResource {
     core.String metricsFilter_deploymentId,
     core.String metricsGranularity,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -624,7 +614,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariable('$scriptId') +
         '/metrics';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -633,9 +623,7 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Metrics.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Metrics.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates the content of the specified script project.
@@ -665,7 +653,7 @@ class ProjectsResource {
     Content request,
     core.String scriptId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -687,7 +675,7 @@ class ProjectsResource {
         commons.Escaper.ecapeVariable('$scriptId') +
         '/content';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -696,9 +684,7 @@ class ProjectsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Content.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Content.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -730,7 +716,7 @@ class ProjectsDeploymentsResource {
     DeploymentConfig request,
     core.String scriptId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -752,7 +738,7 @@ class ProjectsDeploymentsResource {
         commons.Escaper.ecapeVariable('$scriptId') +
         '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -761,10 +747,8 @@ class ProjectsDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Deployment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Deployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Deletes a deployment of an Apps Script project.
@@ -789,7 +773,7 @@ class ProjectsDeploymentsResource {
     core.String scriptId,
     core.String deploymentId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -812,7 +796,7 @@ class ProjectsDeploymentsResource {
         '/deployments/' +
         commons.Escaper.ecapeVariable('$deploymentId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'DELETE',
       body: _body,
@@ -821,9 +805,7 @@ class ProjectsDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Empty.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a deployment of an Apps Script project.
@@ -848,7 +830,7 @@ class ProjectsDeploymentsResource {
     core.String scriptId,
     core.String deploymentId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -871,7 +853,7 @@ class ProjectsDeploymentsResource {
         '/deployments/' +
         commons.Escaper.ecapeVariable('$deploymentId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -880,10 +862,8 @@ class ProjectsDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Deployment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Deployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Lists the deployments of an Apps Script project.
@@ -914,7 +894,7 @@ class ProjectsDeploymentsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -939,7 +919,7 @@ class ProjectsDeploymentsResource {
         commons.Escaper.ecapeVariable('$scriptId') +
         '/deployments';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -948,10 +928,8 @@ class ProjectsDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListDeploymentsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListDeploymentsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 
   /// Updates a deployment of an Apps Script project.
@@ -979,7 +957,7 @@ class ProjectsDeploymentsResource {
     core.String scriptId,
     core.String deploymentId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1005,7 +983,7 @@ class ProjectsDeploymentsResource {
         '/deployments/' +
         commons.Escaper.ecapeVariable('$deploymentId');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'PUT',
       body: _body,
@@ -1014,10 +992,8 @@ class ProjectsDeploymentsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) =>
-          Deployment.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Deployment.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1049,7 +1025,7 @@ class ProjectsVersionsResource {
     Version request,
     core.String scriptId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1071,7 +1047,7 @@ class ProjectsVersionsResource {
         commons.Escaper.ecapeVariable('$scriptId') +
         '/versions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1080,9 +1056,7 @@ class ProjectsVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Version.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Version.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// Gets a version of a script project.
@@ -1107,7 +1081,7 @@ class ProjectsVersionsResource {
     core.String scriptId,
     core.int versionNumber, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1130,7 +1104,7 @@ class ProjectsVersionsResource {
         '/versions/' +
         commons.Escaper.ecapeVariable('$versionNumber');
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1139,9 +1113,7 @@ class ProjectsVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Version.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Version.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 
   /// List the versions of a script project.
@@ -1172,7 +1144,7 @@ class ProjectsVersionsResource {
     core.int pageSize,
     core.String pageToken,
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1197,7 +1169,7 @@ class ProjectsVersionsResource {
         commons.Escaper.ecapeVariable('$scriptId') +
         '/versions';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'GET',
       body: _body,
@@ -1206,10 +1178,8 @@ class ProjectsVersionsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => ListVersionsResponse.fromJson(
-          data as core.Map<core.String, core.dynamic>),
-    );
+    return ListVersionsResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1253,7 +1223,7 @@ class ScriptsResource {
     ExecutionRequest request,
     core.String scriptId, {
     core.String $fields,
-  }) {
+  }) async {
     core.String _url;
     final _queryParams = <core.String, core.List<core.String>>{};
     commons.Media _uploadMedia;
@@ -1273,7 +1243,7 @@ class ScriptsResource {
 
     _url = 'v1/scripts/' + commons.Escaper.ecapeVariable('$scriptId') + ':run';
 
-    final _response = _requester.request(
+    final _response = await _requester.request(
       _url,
       'POST',
       body: _body,
@@ -1282,9 +1252,7 @@ class ScriptsResource {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then(
-      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
-    );
+    return Operation.fromJson(_response as core.Map<core.String, core.dynamic>);
   }
 }
 
