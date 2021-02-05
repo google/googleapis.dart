@@ -100,8 +100,6 @@ class AccountsProductsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -113,7 +111,7 @@ class AccountsProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/products/' +
         commons.Escaper.ecapeVariableReserved('$name');
@@ -168,8 +166,6 @@ class AccountsProductsResource {
     core.List<core.String> include,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -184,7 +180,7 @@ class AccountsProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/products/' +
         commons.Escaper.ecapeVariableReserved('$name');
@@ -230,8 +226,6 @@ class AccountsProductsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -249,7 +243,7 @@ class AccountsProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/products';
 
     final _response = await _requester.request(
@@ -309,8 +303,6 @@ class AccountsProductsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -326,7 +318,7 @@ class AccountsProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/products/' +
         commons.Escaper.ecapeVariableReserved('$name');

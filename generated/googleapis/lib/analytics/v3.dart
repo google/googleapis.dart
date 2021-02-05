@@ -220,8 +220,6 @@ class DataGaResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (ids == null) {
       throw core.ArgumentError('Parameter ids is required.');
@@ -270,7 +268,7 @@ class DataGaResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'data/ga';
+    const _url = 'data/ga';
 
     final _response = await _requester.request(
       _url,
@@ -359,8 +357,6 @@ class DataMcfResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (ids == null) {
       throw core.ArgumentError('Parameter ids is required.');
@@ -400,7 +396,7 @@ class DataMcfResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'data/mcf';
+    const _url = 'data/mcf';
 
     final _response = await _requester.request(
       _url,
@@ -461,8 +457,6 @@ class DataRealtimeResource {
     core.String sort,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (ids == null) {
       throw core.ArgumentError('Parameter ids is required.');
@@ -488,7 +482,7 @@ class DataRealtimeResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'data/realtime';
+    const _url = 'data/realtime';
 
     final _response = await _requester.request(
       _url,
@@ -578,8 +572,6 @@ class ManagementAccountSummariesResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['max-results'] = ['${maxResults}'];
@@ -591,7 +583,7 @@ class ManagementAccountSummariesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accountSummaries';
+    const _url = 'management/accountSummaries';
 
     final _response = await _requester.request(
       _url,
@@ -630,8 +622,6 @@ class ManagementAccountUserLinksResource {
     core.String linkId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -643,7 +633,7 @@ class ManagementAccountUserLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/entityUserLinks/' +
         commons.Escaper.ecapeVariable('$linkId');
@@ -679,8 +669,6 @@ class ManagementAccountUserLinksResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -693,7 +681,7 @@ class ManagementAccountUserLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/entityUserLinks';
 
@@ -736,8 +724,6 @@ class ManagementAccountUserLinksResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -752,7 +738,7 @@ class ManagementAccountUserLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/entityUserLinks';
 
@@ -791,8 +777,6 @@ class ManagementAccountUserLinksResource {
     core.String linkId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -808,7 +792,7 @@ class ManagementAccountUserLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/entityUserLinks/' +
         commons.Escaper.ecapeVariable('$linkId');
@@ -853,8 +837,6 @@ class ManagementAccountsResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['max-results'] = ['${maxResults}'];
@@ -866,7 +848,7 @@ class ManagementAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts';
+    const _url = 'management/accounts';
 
     final _response = await _requester.request(
       _url,
@@ -902,8 +884,6 @@ class ManagementClientIdResource {
     HashClientIdRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -913,7 +893,7 @@ class ManagementClientIdResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/clientId:hashClientId';
+    const _url = 'management/clientId:hashClientId';
 
     final _response = await _requester.request(
       _url,
@@ -966,8 +946,6 @@ class ManagementCustomDataSourcesResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -985,7 +963,7 @@ class ManagementCustomDataSourcesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -1033,8 +1011,6 @@ class ManagementCustomDimensionsResource {
     core.String customDimensionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1049,7 +1025,7 @@ class ManagementCustomDimensionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -1091,8 +1067,6 @@ class ManagementCustomDimensionsResource {
     core.String webPropertyId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1108,7 +1082,7 @@ class ManagementCustomDimensionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -1155,8 +1129,6 @@ class ManagementCustomDimensionsResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1174,7 +1146,7 @@ class ManagementCustomDimensionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -1226,8 +1198,6 @@ class ManagementCustomDimensionsResource {
     core.bool ignoreCustomDataSourceLinks,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1251,7 +1221,7 @@ class ManagementCustomDimensionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -1303,8 +1273,6 @@ class ManagementCustomDimensionsResource {
     core.bool ignoreCustomDataSourceLinks,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1328,7 +1296,7 @@ class ManagementCustomDimensionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -1378,8 +1346,6 @@ class ManagementCustomMetricsResource {
     core.String customMetricId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1394,7 +1360,7 @@ class ManagementCustomMetricsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -1436,8 +1402,6 @@ class ManagementCustomMetricsResource {
     core.String webPropertyId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1453,7 +1417,7 @@ class ManagementCustomMetricsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -1500,8 +1464,6 @@ class ManagementCustomMetricsResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1519,7 +1481,7 @@ class ManagementCustomMetricsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -1570,8 +1532,6 @@ class ManagementCustomMetricsResource {
     core.bool ignoreCustomDataSourceLinks,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1595,7 +1555,7 @@ class ManagementCustomMetricsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -1646,8 +1606,6 @@ class ManagementCustomMetricsResource {
     core.bool ignoreCustomDataSourceLinks,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1671,7 +1629,7 @@ class ManagementCustomMetricsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -1722,8 +1680,6 @@ class ManagementExperimentsResource {
     core.String experimentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1741,7 +1697,7 @@ class ManagementExperimentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -1787,8 +1743,6 @@ class ManagementExperimentsResource {
     core.String experimentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1806,7 +1760,7 @@ class ManagementExperimentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -1853,8 +1807,6 @@ class ManagementExperimentsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1873,7 +1825,7 @@ class ManagementExperimentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -1928,8 +1880,6 @@ class ManagementExperimentsResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1950,7 +1900,7 @@ class ManagementExperimentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -2001,8 +1951,6 @@ class ManagementExperimentsResource {
     core.String experimentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2024,7 +1972,7 @@ class ManagementExperimentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -2075,8 +2023,6 @@ class ManagementExperimentsResource {
     core.String experimentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2098,7 +2044,7 @@ class ManagementExperimentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -2146,8 +2092,6 @@ class ManagementFiltersResource {
     core.String filterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2159,7 +2103,7 @@ class ManagementFiltersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/filters/' +
         commons.Escaper.ecapeVariable('$filterId');
@@ -2195,8 +2139,6 @@ class ManagementFiltersResource {
     core.String filterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2208,7 +2150,7 @@ class ManagementFiltersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/filters/' +
         commons.Escaper.ecapeVariable('$filterId');
@@ -2244,8 +2186,6 @@ class ManagementFiltersResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2258,7 +2198,7 @@ class ManagementFiltersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/filters';
 
@@ -2299,8 +2239,6 @@ class ManagementFiltersResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2315,7 +2253,7 @@ class ManagementFiltersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/filters';
 
@@ -2355,8 +2293,6 @@ class ManagementFiltersResource {
     core.String filterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2372,7 +2308,7 @@ class ManagementFiltersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/filters/' +
         commons.Escaper.ecapeVariable('$filterId');
@@ -2412,8 +2348,6 @@ class ManagementFiltersResource {
     core.String filterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2429,7 +2363,7 @@ class ManagementFiltersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/filters/' +
         commons.Escaper.ecapeVariable('$filterId');
@@ -2478,8 +2412,6 @@ class ManagementGoalsResource {
     core.String goalId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2497,7 +2429,7 @@ class ManagementGoalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -2543,8 +2475,6 @@ class ManagementGoalsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2563,7 +2493,7 @@ class ManagementGoalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -2619,8 +2549,6 @@ class ManagementGoalsResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2641,7 +2569,7 @@ class ManagementGoalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -2691,8 +2619,6 @@ class ManagementGoalsResource {
     core.String goalId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2714,7 +2640,7 @@ class ManagementGoalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -2764,8 +2690,6 @@ class ManagementGoalsResource {
     core.String goalId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2787,7 +2711,7 @@ class ManagementGoalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -2844,8 +2768,6 @@ class ManagementProfileFilterLinksResource {
     core.String linkId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2863,7 +2785,7 @@ class ManagementProfileFilterLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -2913,8 +2835,6 @@ class ManagementProfileFilterLinksResource {
     core.String linkId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2932,7 +2852,7 @@ class ManagementProfileFilterLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -2982,8 +2902,6 @@ class ManagementProfileFilterLinksResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3002,7 +2920,7 @@ class ManagementProfileFilterLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -3059,8 +2977,6 @@ class ManagementProfileFilterLinksResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -3081,7 +2997,7 @@ class ManagementProfileFilterLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -3136,8 +3052,6 @@ class ManagementProfileFilterLinksResource {
     core.String linkId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3159,7 +3073,7 @@ class ManagementProfileFilterLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -3214,8 +3128,6 @@ class ManagementProfileFilterLinksResource {
     core.String linkId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3237,7 +3149,7 @@ class ManagementProfileFilterLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -3290,8 +3202,6 @@ class ManagementProfileUserLinksResource {
     core.String linkId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -3309,7 +3219,7 @@ class ManagementProfileUserLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -3355,8 +3265,6 @@ class ManagementProfileUserLinksResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3375,7 +3283,7 @@ class ManagementProfileUserLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -3432,8 +3340,6 @@ class ManagementProfileUserLinksResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -3454,7 +3360,7 @@ class ManagementProfileUserLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -3503,8 +3409,6 @@ class ManagementProfileUserLinksResource {
     core.String linkId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3526,7 +3430,7 @@ class ManagementProfileUserLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -3575,8 +3479,6 @@ class ManagementProfilesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -3591,7 +3493,7 @@ class ManagementProfilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -3635,8 +3537,6 @@ class ManagementProfilesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -3651,7 +3551,7 @@ class ManagementProfilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -3692,8 +3592,6 @@ class ManagementProfilesResource {
     core.String webPropertyId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3709,7 +3607,7 @@ class ManagementProfilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -3759,8 +3657,6 @@ class ManagementProfilesResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -3778,7 +3674,7 @@ class ManagementProfilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -3823,8 +3719,6 @@ class ManagementProfilesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3843,7 +3737,7 @@ class ManagementProfilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -3888,8 +3782,6 @@ class ManagementProfilesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3908,7 +3800,7 @@ class ManagementProfilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -3956,8 +3848,6 @@ class ManagementRemarketingAudienceResource {
     core.String remarketingAudienceId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -3972,7 +3862,7 @@ class ManagementRemarketingAudienceResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -4014,8 +3904,6 @@ class ManagementRemarketingAudienceResource {
     core.String remarketingAudienceId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -4030,7 +3918,7 @@ class ManagementRemarketingAudienceResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -4073,8 +3961,6 @@ class ManagementRemarketingAudienceResource {
     core.String webPropertyId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4090,7 +3976,7 @@ class ManagementRemarketingAudienceResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -4141,8 +4027,6 @@ class ManagementRemarketingAudienceResource {
     core.String type,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -4163,7 +4047,7 @@ class ManagementRemarketingAudienceResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -4210,8 +4094,6 @@ class ManagementRemarketingAudienceResource {
     core.String remarketingAudienceId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4230,7 +4112,7 @@ class ManagementRemarketingAudienceResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -4277,8 +4159,6 @@ class ManagementRemarketingAudienceResource {
     core.String remarketingAudienceId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4297,7 +4177,7 @@ class ManagementRemarketingAudienceResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -4344,8 +4224,6 @@ class ManagementSegmentsResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['max-results'] = ['${maxResults}'];
@@ -4357,7 +4235,7 @@ class ManagementSegmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/segments';
+    const _url = 'management/segments';
 
     final _response = await _requester.request(
       _url,
@@ -4401,8 +4279,6 @@ class ManagementUnsampledReportsResource {
     core.String unsampledReportId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -4420,7 +4296,7 @@ class ManagementUnsampledReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -4466,8 +4342,6 @@ class ManagementUnsampledReportsResource {
     core.String unsampledReportId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -4485,7 +4359,7 @@ class ManagementUnsampledReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -4532,8 +4406,6 @@ class ManagementUnsampledReportsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4552,7 +4424,7 @@ class ManagementUnsampledReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -4608,8 +4480,6 @@ class ManagementUnsampledReportsResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -4630,7 +4500,7 @@ class ManagementUnsampledReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -4684,8 +4554,6 @@ class ManagementUploadsResource {
     core.String customDataSourceId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4704,7 +4572,7 @@ class ManagementUploadsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -4754,8 +4622,6 @@ class ManagementUploadsResource {
     core.String uploadId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -4773,7 +4639,7 @@ class ManagementUploadsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -4826,8 +4692,6 @@ class ManagementUploadsResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -4848,7 +4712,7 @@ class ManagementUploadsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -4901,8 +4765,6 @@ class ManagementUploadsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -4917,6 +4779,7 @@ class ManagementUploadsResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'management/accounts/' +
           commons.Escaper.ecapeVariable('$accountId') +
@@ -4984,8 +4847,6 @@ class ManagementWebPropertyAdWordsLinksResource {
     core.String webPropertyAdWordsLinkId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -5001,7 +4862,7 @@ class ManagementWebPropertyAdWordsLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -5042,8 +4903,6 @@ class ManagementWebPropertyAdWordsLinksResource {
     core.String webPropertyAdWordsLinkId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -5059,7 +4918,7 @@ class ManagementWebPropertyAdWordsLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -5101,8 +4960,6 @@ class ManagementWebPropertyAdWordsLinksResource {
     core.String webPropertyId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5118,7 +4975,7 @@ class ManagementWebPropertyAdWordsLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -5167,8 +5024,6 @@ class ManagementWebPropertyAdWordsLinksResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -5186,7 +5041,7 @@ class ManagementWebPropertyAdWordsLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -5232,8 +5087,6 @@ class ManagementWebPropertyAdWordsLinksResource {
     core.String webPropertyAdWordsLinkId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5253,7 +5106,7 @@ class ManagementWebPropertyAdWordsLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -5299,8 +5152,6 @@ class ManagementWebPropertyAdWordsLinksResource {
     core.String webPropertyAdWordsLinkId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5320,7 +5171,7 @@ class ManagementWebPropertyAdWordsLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -5369,8 +5220,6 @@ class ManagementWebpropertiesResource {
     core.String webPropertyId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -5382,7 +5231,7 @@ class ManagementWebpropertiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId');
@@ -5422,8 +5271,6 @@ class ManagementWebpropertiesResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5436,7 +5283,7 @@ class ManagementWebpropertiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties';
 
@@ -5480,8 +5327,6 @@ class ManagementWebpropertiesResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -5496,7 +5341,7 @@ class ManagementWebpropertiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties';
 
@@ -5537,8 +5382,6 @@ class ManagementWebpropertiesResource {
     core.String webPropertyId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5554,7 +5397,7 @@ class ManagementWebpropertiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId');
@@ -5595,8 +5438,6 @@ class ManagementWebpropertiesResource {
     core.String webPropertyId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5612,7 +5453,7 @@ class ManagementWebpropertiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId');
@@ -5658,8 +5499,6 @@ class ManagementWebpropertyUserLinksResource {
     core.String linkId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -5674,7 +5513,7 @@ class ManagementWebpropertyUserLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -5715,8 +5554,6 @@ class ManagementWebpropertyUserLinksResource {
     core.String webPropertyId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5732,7 +5569,7 @@ class ManagementWebpropertyUserLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -5782,8 +5619,6 @@ class ManagementWebpropertyUserLinksResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -5801,7 +5636,7 @@ class ManagementWebpropertyUserLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -5845,8 +5680,6 @@ class ManagementWebpropertyUserLinksResource {
     core.String linkId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5865,7 +5698,7 @@ class ManagementWebpropertyUserLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'management/accounts/' +
+    final _url = 'management/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/webproperties/' +
         commons.Escaper.ecapeVariable('$webPropertyId') +
@@ -5918,8 +5751,6 @@ class MetadataColumnsResource {
     core.String reportType, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (reportType == null) {
       throw core.ArgumentError('Parameter reportType is required.');
     }
@@ -5928,7 +5759,7 @@ class MetadataColumnsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'metadata/' + commons.Escaper.ecapeVariable('$reportType') + '/columns';
 
     final _response = await _requester.request(
@@ -5965,8 +5796,6 @@ class ProvisioningResource {
     AccountTicket request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5976,7 +5805,7 @@ class ProvisioningResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'provisioning/createAccountTicket';
+    const _url = 'provisioning/createAccountTicket';
 
     final _response = await _requester.request(
       _url,
@@ -6008,8 +5837,6 @@ class ProvisioningResource {
     AccountTreeRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6019,7 +5846,7 @@ class ProvisioningResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'provisioning/createAccountTree';
+    const _url = 'provisioning/createAccountTree';
 
     final _response = await _requester.request(
       _url,
@@ -6067,8 +5894,6 @@ class UserDeletionUserDeletionRequestResource {
     UserDeletionRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6078,7 +5903,7 @@ class UserDeletionUserDeletionRequestResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userDeletion/userDeletionRequests:upsert';
+    const _url = 'userDeletion/userDeletionRequests:upsert';
 
     final _response = await _requester.request(
       _url,

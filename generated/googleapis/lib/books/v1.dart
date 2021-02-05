@@ -125,8 +125,6 @@ class BookshelvesResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -141,7 +139,7 @@ class BookshelvesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/users/' +
+    final _url = 'books/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf');
@@ -177,8 +175,6 @@ class BookshelvesResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -190,7 +186,7 @@ class BookshelvesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/users/' +
+    final _url = 'books/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/bookshelves';
 
@@ -245,8 +241,6 @@ class BookshelvesVolumesResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -270,7 +264,7 @@ class BookshelvesVolumesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/users/' +
+    final _url = 'books/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf') +
@@ -322,8 +316,6 @@ class CloudloadingResource {
     core.String uploadClientToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (driveDocumentId != null) {
       _queryParams['drive_document_id'] = [driveDocumentId];
@@ -341,7 +333,7 @@ class CloudloadingResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/cloudloading/addBook';
+    const _url = 'books/v1/cloudloading/addBook';
 
     final _response = await _requester.request(
       _url,
@@ -372,8 +364,6 @@ class CloudloadingResource {
     core.String volumeId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
@@ -383,7 +373,7 @@ class CloudloadingResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/cloudloading/deleteBook';
+    const _url = 'books/v1/cloudloading/deleteBook';
 
     final _response = await _requester.request(
       _url,
@@ -413,8 +403,6 @@ class CloudloadingResource {
     BooksCloudloadingResource request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -424,7 +412,7 @@ class CloudloadingResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/cloudloading/updateBook';
+    const _url = 'books/v1/cloudloading/updateBook';
 
     final _response = await _requester.request(
       _url,
@@ -462,8 +450,6 @@ class DictionaryResource {
     core.String cpksver, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (cpksver == null) {
       throw core.ArgumentError('Parameter cpksver is required.');
@@ -473,7 +459,7 @@ class DictionaryResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/dictionary/listOfflineMetadata';
+    const _url = 'books/v1/dictionary/listOfflineMetadata';
 
     final _response = await _requester.request(
       _url,
@@ -509,8 +495,6 @@ class FamilysharingResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (source != null) {
       _queryParams['source'] = [source];
@@ -519,7 +503,7 @@ class FamilysharingResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/familysharing/getFamilyInfo';
+    const _url = 'books/v1/familysharing/getFamilyInfo';
 
     final _response = await _requester.request(
       _url,
@@ -558,8 +542,6 @@ class FamilysharingResource {
     core.String volumeId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (docId != null) {
       _queryParams['docId'] = [docId];
@@ -574,7 +556,7 @@ class FamilysharingResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/familysharing/share';
+    const _url = 'books/v1/familysharing/share';
 
     final _response = await _requester.request(
       _url,
@@ -613,8 +595,6 @@ class FamilysharingResource {
     core.String volumeId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (docId != null) {
       _queryParams['docId'] = [docId];
@@ -629,7 +609,7 @@ class FamilysharingResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/familysharing/unshare';
+    const _url = 'books/v1/familysharing/unshare';
 
     final _response = await _requester.request(
       _url,
@@ -679,8 +659,6 @@ class LayersResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
@@ -698,7 +676,7 @@ class LayersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/volumes/' +
+    final _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
         '/layersummary/' +
         commons.Escaper.ecapeVariable('$summaryId');
@@ -745,8 +723,6 @@ class LayersResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
@@ -767,7 +743,7 @@ class LayersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/volumes/' +
+    final _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
         '/layersummary';
 
@@ -839,8 +815,6 @@ class LayersAnnotationDataResource {
     core.int w,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
@@ -877,7 +851,7 @@ class LayersAnnotationDataResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/volumes/' +
+    final _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
         '/layers/' +
         commons.Escaper.ecapeVariable('$layerId') +
@@ -956,8 +930,6 @@ class LayersAnnotationDataResource {
     core.int w,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
@@ -1003,7 +975,7 @@ class LayersAnnotationDataResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/volumes/' +
+    final _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
         '/layers/' +
         commons.Escaper.ecapeVariable('$layerId') +
@@ -1058,8 +1030,6 @@ class LayersVolumeAnnotationsResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
@@ -1080,7 +1050,7 @@ class LayersVolumeAnnotationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/volumes/' +
+    final _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
         '/layers/' +
         commons.Escaper.ecapeVariable('$layerId') +
@@ -1164,8 +1134,6 @@ class LayersVolumeAnnotationsResource {
     core.String volumeAnnotationsVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
@@ -1217,7 +1185,7 @@ class LayersVolumeAnnotationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/volumes/' +
+    final _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
         '/layers/' +
         commons.Escaper.ecapeVariable('$layerId');
@@ -1258,8 +1226,6 @@ class MyconfigResource {
     core.String country,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (country != null) {
       _queryParams['country'] = [country];
@@ -1268,7 +1234,7 @@ class MyconfigResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/myconfig/getUserSettings';
+    const _url = 'books/v1/myconfig/getUserSettings';
 
     final _response = await _requester.request(
       _url,
@@ -1309,8 +1275,6 @@ class MyconfigResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (cpksver == null) {
       throw core.ArgumentError('Parameter cpksver is required.');
@@ -1330,7 +1294,7 @@ class MyconfigResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/myconfig/releaseDownloadAccess';
+    const _url = 'books/v1/myconfig/releaseDownloadAccess';
 
     final _response = await _requester.request(
       _url,
@@ -1383,8 +1347,6 @@ class MyconfigResource {
     core.String locale,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (cpksver == null) {
       throw core.ArgumentError('Parameter cpksver is required.');
@@ -1412,7 +1374,7 @@ class MyconfigResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/myconfig/requestAccess';
+    const _url = 'books/v1/myconfig/requestAccess';
 
     final _response = await _requester.request(
       _url,
@@ -1468,8 +1430,6 @@ class MyconfigResource {
     core.List<core.String> volumeIds,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (cpksver == null) {
       throw core.ArgumentError('Parameter cpksver is required.');
@@ -1502,7 +1462,7 @@ class MyconfigResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/myconfig/syncVolumeLicenses';
+    const _url = 'books/v1/myconfig/syncVolumeLicenses';
 
     final _response = await _requester.request(
       _url,
@@ -1536,8 +1496,6 @@ class MyconfigResource {
     Usersettings request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1547,7 +1505,7 @@ class MyconfigResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/myconfig/updateUserSettings';
+    const _url = 'books/v1/myconfig/updateUserSettings';
 
     final _response = await _requester.request(
       _url,
@@ -1602,8 +1560,6 @@ class MylibraryAnnotationsResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (annotationId == null) {
       throw core.ArgumentError('Parameter annotationId is required.');
     }
@@ -1615,7 +1571,7 @@ class MylibraryAnnotationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/mylibrary/annotations/' +
+    final _url = 'books/v1/mylibrary/annotations/' +
         commons.Escaper.ecapeVariable('$annotationId');
 
     final _response = await _requester.request(
@@ -1659,8 +1615,6 @@ class MylibraryAnnotationsResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1684,7 +1638,7 @@ class MylibraryAnnotationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/mylibrary/annotations';
+    const _url = 'books/v1/mylibrary/annotations';
 
     final _response = await _requester.request(
       _url,
@@ -1747,8 +1701,6 @@ class MylibraryAnnotationsResource {
     core.String volumeId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (contentVersion != null) {
       _queryParams['contentVersion'] = [contentVersion];
@@ -1784,7 +1736,7 @@ class MylibraryAnnotationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/mylibrary/annotations';
+    const _url = 'books/v1/mylibrary/annotations';
 
     final _response = await _requester.request(
       _url,
@@ -1818,8 +1770,6 @@ class MylibraryAnnotationsResource {
     core.String volumeId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (layerIds == null || layerIds.isEmpty) {
       throw core.ArgumentError('Parameter layerIds is required.');
@@ -1833,7 +1783,7 @@ class MylibraryAnnotationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/mylibrary/annotations/summary';
+    const _url = 'books/v1/mylibrary/annotations/summary';
 
     final _response = await _requester.request(
       _url,
@@ -1870,8 +1820,6 @@ class MylibraryAnnotationsResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1887,7 +1835,7 @@ class MylibraryAnnotationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/mylibrary/annotations/' +
+    final _url = 'books/v1/mylibrary/annotations/' +
         commons.Escaper.ecapeVariable('$annotationId');
 
     final _response = await _requester.request(
@@ -1944,8 +1892,6 @@ class MylibraryBookshelvesResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
@@ -1964,7 +1910,7 @@ class MylibraryBookshelvesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/mylibrary/bookshelves/' +
+    final _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf') +
         '/addVolume';
 
@@ -1999,8 +1945,6 @@ class MylibraryBookshelvesResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
@@ -2012,7 +1956,7 @@ class MylibraryBookshelvesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/mylibrary/bookshelves/' +
+    final _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf') +
         '/clearVolumes';
 
@@ -2048,8 +1992,6 @@ class MylibraryBookshelvesResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
@@ -2061,7 +2003,7 @@ class MylibraryBookshelvesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/mylibrary/bookshelves/' +
+    final _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf');
 
     final _response = await _requester.request(
@@ -2092,8 +2034,6 @@ class MylibraryBookshelvesResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (source != null) {
       _queryParams['source'] = [source];
@@ -2102,7 +2042,7 @@ class MylibraryBookshelvesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/mylibrary/bookshelves';
+    const _url = 'books/v1/mylibrary/bookshelves';
 
     final _response = await _requester.request(
       _url,
@@ -2144,8 +2084,6 @@ class MylibraryBookshelvesResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
@@ -2165,7 +2103,7 @@ class MylibraryBookshelvesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/mylibrary/bookshelves/' +
+    final _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf') +
         '/moveVolume';
 
@@ -2209,8 +2147,6 @@ class MylibraryBookshelvesResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
@@ -2229,7 +2165,7 @@ class MylibraryBookshelvesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/mylibrary/bookshelves/' +
+    final _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf') +
         '/removeVolume';
 
@@ -2294,8 +2230,6 @@ class MylibraryBookshelvesVolumesResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
@@ -2325,7 +2259,7 @@ class MylibraryBookshelvesVolumesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/mylibrary/bookshelves/' +
+    final _url = 'books/v1/mylibrary/bookshelves/' +
         commons.Escaper.ecapeVariable('$shelf') +
         '/volumes';
 
@@ -2371,8 +2305,6 @@ class MylibraryReadingpositionsResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
@@ -2387,7 +2319,7 @@ class MylibraryReadingpositionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/mylibrary/readingpositions/' +
+    final _url = 'books/v1/mylibrary/readingpositions/' +
         commons.Escaper.ecapeVariable('$volumeId');
 
     final _response = await _requester.request(
@@ -2447,8 +2379,6 @@ class MylibraryReadingpositionsResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
@@ -2477,7 +2407,7 @@ class MylibraryReadingpositionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/mylibrary/readingpositions/' +
+    final _url = 'books/v1/mylibrary/readingpositions/' +
         commons.Escaper.ecapeVariable('$volumeId') +
         '/setPosition';
 
@@ -2522,8 +2452,6 @@ class NotificationResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (notificationId == null) {
       throw core.ArgumentError('Parameter notificationId is required.');
@@ -2539,7 +2467,7 @@ class NotificationResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/notification/get';
+    const _url = 'books/v1/notification/get';
 
     final _response = await _requester.request(
       _url,
@@ -2577,8 +2505,6 @@ class OnboardingResource {
     core.String locale,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (locale != null) {
       _queryParams['locale'] = [locale];
@@ -2587,7 +2513,7 @@ class OnboardingResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/onboarding/listCategories';
+    const _url = 'books/v1/onboarding/listCategories';
 
     final _response = await _requester.request(
       _url,
@@ -2636,8 +2562,6 @@ class OnboardingResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (categoryId != null) {
       _queryParams['categoryId'] = categoryId;
@@ -2658,7 +2582,7 @@ class OnboardingResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/onboarding/listCategoryVolumes';
+    const _url = 'books/v1/onboarding/listCategoryVolumes';
 
     final _response = await _requester.request(
       _url,
@@ -2707,8 +2631,6 @@ class PersonalizedstreamResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (locale != null) {
       _queryParams['locale'] = [locale];
@@ -2723,7 +2645,7 @@ class PersonalizedstreamResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/personalizedstream/get';
+    const _url = 'books/v1/personalizedstream/get';
 
     final _response = await _requester.request(
       _url,
@@ -2781,8 +2703,6 @@ class PromoofferResource {
     core.String volumeId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (androidId != null) {
       _queryParams['androidId'] = [androidId];
@@ -2812,7 +2732,7 @@ class PromoofferResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/promooffer/accept';
+    const _url = 'books/v1/promooffer/accept';
 
     final _response = await _requester.request(
       _url,
@@ -2860,8 +2780,6 @@ class PromoofferResource {
     core.String serial,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (androidId != null) {
       _queryParams['androidId'] = [androidId];
@@ -2888,7 +2806,7 @@ class PromoofferResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/promooffer/dismiss';
+    const _url = 'books/v1/promooffer/dismiss';
 
     final _response = await _requester.request(
       _url,
@@ -2933,8 +2851,6 @@ class PromoofferResource {
     core.String serial,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (androidId != null) {
       _queryParams['androidId'] = [androidId];
@@ -2958,7 +2874,7 @@ class PromoofferResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/promooffer/get';
+    const _url = 'books/v1/promooffer/get';
 
     final _response = await _requester.request(
       _url,
@@ -2997,8 +2913,6 @@ class SeriesResource {
     core.List<core.String> seriesId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (seriesId == null || seriesId.isEmpty) {
       throw core.ArgumentError('Parameter seriesId is required.');
@@ -3008,7 +2922,7 @@ class SeriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/series/get';
+    const _url = 'books/v1/series/get';
 
     final _response = await _requester.request(
       _url,
@@ -3051,8 +2965,6 @@ class SeriesMembershipResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (seriesId == null) {
       throw core.ArgumentError('Parameter seriesId is required.');
@@ -3068,7 +2980,7 @@ class SeriesMembershipResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/series/membership/get';
+    const _url = 'books/v1/series/membership/get';
 
     final _response = await _requester.request(
       _url,
@@ -3136,8 +3048,6 @@ class VolumesResource {
     core.bool userLibraryConsistentRead,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
@@ -3166,7 +3076,8 @@ class VolumesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/volumes/' + commons.Escaper.ecapeVariable('$volumeId');
+    final _url =
+        'books/v1/volumes/' + commons.Escaper.ecapeVariable('$volumeId');
 
     final _response = await _requester.request(
       _url,
@@ -3270,8 +3181,6 @@ class VolumesResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (q == null) {
       throw core.ArgumentError('Parameter q is required.');
@@ -3320,7 +3229,7 @@ class VolumesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/volumes';
+    const _url = 'books/v1/volumes';
 
     final _response = await _requester.request(
       _url,
@@ -3380,8 +3289,6 @@ class VolumesAssociatedResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
@@ -3402,7 +3309,7 @@ class VolumesAssociatedResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/volumes/' +
+    final _url = 'books/v1/volumes/' +
         commons.Escaper.ecapeVariable('$volumeId') +
         '/associated';
 
@@ -3462,8 +3369,6 @@ class VolumesMybooksResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (acquireMethod != null) {
       _queryParams['acquireMethod'] = acquireMethod;
@@ -3490,7 +3395,7 @@ class VolumesMybooksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/volumes/mybooks';
+    const _url = 'books/v1/volumes/mybooks';
 
     final _response = await _requester.request(
       _url,
@@ -3539,8 +3444,6 @@ class VolumesRecommendedResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (locale != null) {
       _queryParams['locale'] = [locale];
@@ -3555,7 +3458,7 @@ class VolumesRecommendedResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/volumes/recommended';
+    const _url = 'books/v1/volumes/recommended';
 
     final _response = await _requester.request(
       _url,
@@ -3599,8 +3502,6 @@ class VolumesRecommendedResource {
     core.String source,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (rating == null) {
       throw core.ArgumentError('Parameter rating is required.');
@@ -3620,7 +3521,7 @@ class VolumesRecommendedResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/volumes/recommended/rate';
+    const _url = 'books/v1/volumes/recommended/rate';
 
     final _response = await _requester.request(
       _url,
@@ -3677,8 +3578,6 @@ class VolumesUseruploadedResource {
     core.List<core.String> volumeId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (locale != null) {
       _queryParams['locale'] = [locale];
@@ -3702,7 +3601,7 @@ class VolumesUseruploadedResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'books/v1/volumes/useruploaded';
+    const _url = 'books/v1/volumes/useruploaded';
 
     final _response = await _requester.request(
       _url,

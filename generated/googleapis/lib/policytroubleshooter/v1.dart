@@ -79,8 +79,6 @@ class IamResource {
     GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -90,7 +88,7 @@ class IamResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/iam:troubleshoot';
+    const _url = 'v1/iam:troubleshoot';
 
     final _response = await _requester.request(
       _url,

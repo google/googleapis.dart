@@ -85,8 +85,6 @@ class DivisionsResource {
     core.String query,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (query != null) {
       _queryParams['query'] = [query];
@@ -95,7 +93,7 @@ class DivisionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'civicinfo/v2/divisions';
+    const _url = 'civicinfo/v2/divisions';
 
     final _response = await _requester.request(
       _url,
@@ -129,14 +127,12 @@ class ElectionsResource {
   async.Future<ElectionsQueryResponse> electionQuery({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'civicinfo/v2/elections';
+    const _url = 'civicinfo/v2/elections';
 
     final _response = await _requester.request(
       _url,
@@ -186,8 +182,6 @@ class ElectionsResource {
     core.bool returnAllAvailableData,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (address == null) {
       throw core.ArgumentError('Parameter address is required.');
@@ -206,7 +200,7 @@ class ElectionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'civicinfo/v2/voterinfo';
+    const _url = 'civicinfo/v2/voterinfo';
 
     final _response = await _requester.request(
       _url,
@@ -260,8 +254,6 @@ class RepresentativesResource {
     core.List<core.String> roles,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (address != null) {
       _queryParams['address'] = [address];
@@ -279,7 +271,7 @@ class RepresentativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'civicinfo/v2/representatives';
+    const _url = 'civicinfo/v2/representatives';
 
     final _response = await _requester.request(
       _url,
@@ -327,8 +319,6 @@ class RepresentativesResource {
     core.List<core.String> roles,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (ocdId == null) {
       throw core.ArgumentError('Parameter ocdId is required.');
     }
@@ -346,7 +336,7 @@ class RepresentativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'civicinfo/v2/representatives/' +
+    final _url = 'civicinfo/v2/representatives/' +
         commons.Escaper.ecapeVariable('$ocdId');
 
     final _response = await _requester.request(

@@ -80,8 +80,6 @@ class GroupsResource {
     core.String groupUniqueId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (groupUniqueId == null) {
       throw core.ArgumentError('Parameter groupUniqueId is required.');
     }
@@ -90,7 +88,7 @@ class GroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$groupUniqueId');
+    final _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 
     final _response = await _requester.request(
       _url,
@@ -125,8 +123,6 @@ class GroupsResource {
     core.String groupUniqueId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -139,7 +135,7 @@ class GroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$groupUniqueId');
+    final _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 
     final _response = await _requester.request(
       _url,
@@ -173,8 +169,6 @@ class GroupsResource {
     core.String groupUniqueId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -187,7 +181,7 @@ class GroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$groupUniqueId');
+    final _url = commons.Escaper.ecapeVariable('$groupUniqueId');
 
     final _response = await _requester.request(
       _url,

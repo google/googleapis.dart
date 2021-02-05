@@ -133,8 +133,6 @@ class ProjectsAggregatedUsableSubnetworksResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -152,7 +150,7 @@ class ProjectsAggregatedUsableSubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/aggregated/usableSubnetworks';
 
@@ -209,8 +207,6 @@ class ProjectsLocationsResource {
     core.String zone,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -225,7 +221,7 @@ class ProjectsLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         '/serverConfig';
 
@@ -277,8 +273,6 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -291,7 +285,7 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':completeIpRotation';
 
@@ -338,8 +332,6 @@ class ProjectsLocationsClustersResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -352,7 +344,7 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/clusters';
 
     final _response = await _requester.request(
@@ -408,8 +400,6 @@ class ProjectsLocationsClustersResource {
     core.String zone,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -427,7 +417,7 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -475,8 +465,6 @@ class ProjectsLocationsClustersResource {
     core.String zone,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -494,7 +482,7 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -531,8 +519,6 @@ class ProjectsLocationsClustersResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -541,7 +527,8 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jwks';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/jwks';
 
     final _response = await _requester.request(
       _url,
@@ -587,8 +574,6 @@ class ProjectsLocationsClustersResource {
     core.String zone,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -603,7 +588,7 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/clusters';
 
     final _response = await _requester.request(
@@ -642,8 +627,6 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -656,7 +639,7 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setAddons';
 
     final _response = await _requester.request(
@@ -695,8 +678,6 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -709,7 +690,7 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setLegacyAbac';
 
@@ -753,8 +734,6 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -767,7 +746,7 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setLocations';
 
@@ -807,8 +786,6 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -821,7 +798,7 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setLogging';
 
     final _response = await _requester.request(
@@ -860,8 +837,6 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -874,7 +849,7 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setMaintenancePolicy';
 
@@ -916,8 +891,6 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -930,7 +903,7 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setMasterAuth';
 
@@ -970,8 +943,6 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -984,7 +955,7 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setMonitoring';
 
@@ -1024,8 +995,6 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1038,7 +1007,7 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setNetworkPolicy';
 
@@ -1078,8 +1047,6 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1092,7 +1059,7 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setResourceLabels';
 
@@ -1132,8 +1099,6 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1146,7 +1111,7 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':startIpRotation';
 
@@ -1185,8 +1150,6 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1199,7 +1162,7 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1236,8 +1199,6 @@ class ProjectsLocationsClustersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1250,7 +1211,7 @@ class ProjectsLocationsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':updateMaster';
 
@@ -1297,8 +1258,6 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1311,7 +1270,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/nodePools';
 
     final _response = await _requester.request(
@@ -1366,8 +1325,6 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String zone,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1388,7 +1345,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1441,8 +1398,6 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String zone,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1463,7 +1418,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1512,8 +1467,6 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String zone,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1531,7 +1484,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/nodePools';
 
     final _response = await _requester.request(
@@ -1572,8 +1525,6 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1586,7 +1537,8 @@ class ProjectsLocationsClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':rollback';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':rollback';
 
     final _response = await _requester.request(
       _url,
@@ -1624,8 +1576,6 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1638,7 +1588,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setAutoscaling';
 
@@ -1678,8 +1628,6 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1692,7 +1640,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':setManagement';
 
@@ -1735,8 +1683,6 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1749,7 +1695,8 @@ class ProjectsLocationsClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setSize';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':setSize';
 
     final _response = await _requester.request(
       _url,
@@ -1787,8 +1734,6 @@ class ProjectsLocationsClustersNodePoolsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1801,7 +1746,7 @@ class ProjectsLocationsClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1848,8 +1793,6 @@ class ProjectsLocationsClustersWellKnownResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1858,7 +1801,7 @@ class ProjectsLocationsClustersWellKnownResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/.well-known/openid-configuration';
 
@@ -1905,8 +1848,6 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1919,7 +1860,8 @@ class ProjectsLocationsOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -1969,8 +1911,6 @@ class ProjectsLocationsOperationsResource {
     core.String zone,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1988,7 +1928,7 @@ class ProjectsLocationsOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2032,8 +1972,6 @@ class ProjectsLocationsOperationsResource {
     core.String zone,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2048,7 +1986,7 @@ class ProjectsLocationsOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/operations';
 
@@ -2104,8 +2042,6 @@ class ProjectsZonesResource {
     core.String name,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2120,7 +2056,7 @@ class ProjectsZonesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -2180,8 +2116,6 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2200,7 +2134,7 @@ class ProjectsZonesClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -2252,8 +2186,6 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2272,7 +2204,7 @@ class ProjectsZonesClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -2329,8 +2261,6 @@ class ProjectsZonesClustersResource {
     core.String zone, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2346,7 +2276,7 @@ class ProjectsZonesClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -2403,8 +2333,6 @@ class ProjectsZonesClustersResource {
     core.String name,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2422,7 +2350,7 @@ class ProjectsZonesClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -2473,8 +2401,6 @@ class ProjectsZonesClustersResource {
     core.String name,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2492,7 +2418,7 @@ class ProjectsZonesClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -2542,8 +2468,6 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2562,7 +2486,7 @@ class ProjectsZonesClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -2613,8 +2537,6 @@ class ProjectsZonesClustersResource {
     core.String parent,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2629,7 +2551,7 @@ class ProjectsZonesClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -2683,8 +2605,6 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2703,7 +2623,7 @@ class ProjectsZonesClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -2755,8 +2675,6 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2775,7 +2693,7 @@ class ProjectsZonesClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -2827,8 +2745,6 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2847,7 +2763,7 @@ class ProjectsZonesClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -2899,8 +2815,6 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2919,7 +2833,7 @@ class ProjectsZonesClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -2971,8 +2885,6 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2991,7 +2903,7 @@ class ProjectsZonesClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -3040,8 +2952,6 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3060,7 +2970,7 @@ class ProjectsZonesClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -3115,8 +3025,6 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3135,7 +3043,7 @@ class ProjectsZonesClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -3187,8 +3095,6 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3207,7 +3113,7 @@ class ProjectsZonesClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -3259,8 +3165,6 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3279,7 +3183,7 @@ class ProjectsZonesClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -3331,8 +3235,6 @@ class ProjectsZonesClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3351,7 +3253,7 @@ class ProjectsZonesClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -3413,8 +3315,6 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String nodePoolId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3436,7 +3336,7 @@ class ProjectsZonesClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -3490,8 +3390,6 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3510,7 +3408,7 @@ class ProjectsZonesClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -3568,8 +3466,6 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String name,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -3590,7 +3486,7 @@ class ProjectsZonesClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -3648,8 +3544,6 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String name,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -3670,7 +3564,7 @@ class ProjectsZonesClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -3724,8 +3618,6 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String parent,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -3743,7 +3635,7 @@ class ProjectsZonesClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -3801,8 +3693,6 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String nodePoolId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3824,7 +3714,7 @@ class ProjectsZonesClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -3882,8 +3772,6 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String nodePoolId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3905,7 +3793,7 @@ class ProjectsZonesClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -3966,8 +3854,6 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String nodePoolId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3989,7 +3875,7 @@ class ProjectsZonesClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -4047,8 +3933,6 @@ class ProjectsZonesClustersNodePoolsResource {
     core.String nodePoolId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4070,7 +3954,7 @@ class ProjectsZonesClustersNodePoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -4131,8 +4015,6 @@ class ProjectsZonesOperationsResource {
     core.String operationId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4151,7 +4033,7 @@ class ProjectsZonesOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -4205,8 +4087,6 @@ class ProjectsZonesOperationsResource {
     core.String name,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -4224,7 +4104,7 @@ class ProjectsZonesOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -4272,8 +4152,6 @@ class ProjectsZonesOperationsResource {
     core.String parent,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -4288,7 +4166,7 @@ class ProjectsZonesOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +

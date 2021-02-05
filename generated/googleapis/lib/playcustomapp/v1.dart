@@ -109,8 +109,6 @@ class AccountsCustomAppsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -123,6 +121,7 @@ class AccountsCustomAppsResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'playcustomapp/v1/accounts/' +
           commons.Escaper.ecapeVariable('$account') +

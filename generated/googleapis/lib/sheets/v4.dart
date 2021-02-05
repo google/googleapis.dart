@@ -120,8 +120,6 @@ class SpreadsheetsResource {
     core.String spreadsheetId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -134,7 +132,7 @@ class SpreadsheetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/spreadsheets/' +
+    final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         ':batchUpdate';
 
@@ -168,8 +166,6 @@ class SpreadsheetsResource {
     Spreadsheet request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -179,7 +175,7 @@ class SpreadsheetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/spreadsheets';
+    const _url = 'v4/spreadsheets';
 
     final _response = await _requester.request(
       _url,
@@ -229,8 +225,6 @@ class SpreadsheetsResource {
     core.List<core.String> ranges,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
@@ -245,7 +239,8 @@ class SpreadsheetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId');
+    final _url =
+        'v4/spreadsheets/' + commons.Escaper.ecapeVariable('$spreadsheetId');
 
     final _response = await _requester.request(
       _url,
@@ -292,8 +287,6 @@ class SpreadsheetsResource {
     core.String spreadsheetId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -306,7 +299,7 @@ class SpreadsheetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/spreadsheets/' +
+    final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         ':getByDataFilter';
 
@@ -353,8 +346,6 @@ class SpreadsheetsDeveloperMetadataResource {
     core.int metadataId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
@@ -366,7 +357,7 @@ class SpreadsheetsDeveloperMetadataResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/spreadsheets/' +
+    final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/developerMetadata/' +
         commons.Escaper.ecapeVariable('$metadataId');
@@ -408,8 +399,6 @@ class SpreadsheetsDeveloperMetadataResource {
     core.String spreadsheetId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -422,7 +411,7 @@ class SpreadsheetsDeveloperMetadataResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/spreadsheets/' +
+    final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/developerMetadata:search';
 
@@ -470,8 +459,6 @@ class SpreadsheetsSheetsResource {
     core.int sheetId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -487,7 +474,7 @@ class SpreadsheetsSheetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/spreadsheets/' +
+    final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/sheets/' +
         commons.Escaper.ecapeVariable('$sheetId') +
@@ -607,8 +594,6 @@ class SpreadsheetsValuesResource {
     core.String valueInputOption,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -641,7 +626,7 @@ class SpreadsheetsValuesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/spreadsheets/' +
+    final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/values/' +
         commons.Escaper.ecapeVariable('$range') +
@@ -684,8 +669,6 @@ class SpreadsheetsValuesResource {
     core.String spreadsheetId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -698,7 +681,7 @@ class SpreadsheetsValuesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/spreadsheets/' +
+    final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/values:batchClear';
 
@@ -740,8 +723,6 @@ class SpreadsheetsValuesResource {
     core.String spreadsheetId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -754,7 +735,7 @@ class SpreadsheetsValuesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/spreadsheets/' +
+    final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/values:batchClearByDataFilter';
 
@@ -838,8 +819,6 @@ class SpreadsheetsValuesResource {
     core.String valueRenderOption,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
@@ -860,7 +839,7 @@ class SpreadsheetsValuesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/spreadsheets/' +
+    final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/values:batchGet';
 
@@ -900,8 +879,6 @@ class SpreadsheetsValuesResource {
     core.String spreadsheetId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -914,7 +891,7 @@ class SpreadsheetsValuesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/spreadsheets/' +
+    final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/values:batchGetByDataFilter';
 
@@ -954,8 +931,6 @@ class SpreadsheetsValuesResource {
     core.String spreadsheetId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -968,7 +943,7 @@ class SpreadsheetsValuesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/spreadsheets/' +
+    final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/values:batchUpdate';
 
@@ -1008,8 +983,6 @@ class SpreadsheetsValuesResource {
     core.String spreadsheetId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1022,7 +995,7 @@ class SpreadsheetsValuesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/spreadsheets/' +
+    final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/values:batchUpdateByDataFilter';
 
@@ -1066,8 +1039,6 @@ class SpreadsheetsValuesResource {
     core.String range, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1083,7 +1054,7 @@ class SpreadsheetsValuesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/spreadsheets/' +
+    final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/values/' +
         commons.Escaper.ecapeVariable('$range') +
@@ -1169,8 +1140,6 @@ class SpreadsheetsValuesResource {
     core.String valueRenderOption,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
@@ -1191,7 +1160,7 @@ class SpreadsheetsValuesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/spreadsheets/' +
+    final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/values/' +
         commons.Escaper.ecapeVariable('$range');
@@ -1287,8 +1256,6 @@ class SpreadsheetsValuesResource {
     core.String valueInputOption,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1318,7 +1285,7 @@ class SpreadsheetsValuesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/spreadsheets/' +
+    final _url = 'v4/spreadsheets/' +
         commons.Escaper.ecapeVariable('$spreadsheetId') +
         '/values/' +
         commons.Escaper.ecapeVariable('$range');

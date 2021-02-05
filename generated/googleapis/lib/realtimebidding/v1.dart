@@ -148,8 +148,6 @@ class BiddersCreativesResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -170,7 +168,7 @@ class BiddersCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/creatives';
 
     final _response = await _requester.request(
@@ -214,8 +212,6 @@ class BiddersCreativesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -228,7 +224,7 @@ class BiddersCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/creatives:watch';
 
@@ -274,8 +270,6 @@ class BiddersPretargetingConfigsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -288,7 +282,8 @@ class BiddersPretargetingConfigsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':activate';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':activate';
 
     final _response = await _requester.request(
       _url,
@@ -326,8 +321,6 @@ class BiddersPretargetingConfigsResource {
     core.String pretargetingConfig, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -340,7 +333,7 @@ class BiddersPretargetingConfigsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
         ':addTargetedApps';
 
@@ -380,8 +373,6 @@ class BiddersPretargetingConfigsResource {
     core.String pretargetingConfig, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -394,7 +385,7 @@ class BiddersPretargetingConfigsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
         ':addTargetedPublishers';
 
@@ -434,8 +425,6 @@ class BiddersPretargetingConfigsResource {
     core.String pretargetingConfig, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -448,7 +437,7 @@ class BiddersPretargetingConfigsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
         ':addTargetedSites';
 
@@ -492,8 +481,6 @@ class BiddersPretargetingConfigsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -506,7 +493,7 @@ class BiddersPretargetingConfigsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/pretargetingConfigs';
 
@@ -542,8 +529,6 @@ class BiddersPretargetingConfigsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -552,7 +537,7 @@ class BiddersPretargetingConfigsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -584,8 +569,6 @@ class BiddersPretargetingConfigsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -594,7 +577,7 @@ class BiddersPretargetingConfigsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -637,8 +620,6 @@ class BiddersPretargetingConfigsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -653,7 +634,7 @@ class BiddersPretargetingConfigsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/pretargetingConfigs';
 
@@ -695,8 +676,6 @@ class BiddersPretargetingConfigsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -712,7 +691,7 @@ class BiddersPretargetingConfigsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -750,8 +729,6 @@ class BiddersPretargetingConfigsResource {
     core.String pretargetingConfig, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -764,7 +741,7 @@ class BiddersPretargetingConfigsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
         ':removeTargetedApps';
 
@@ -804,8 +781,6 @@ class BiddersPretargetingConfigsResource {
     core.String pretargetingConfig, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -818,7 +793,7 @@ class BiddersPretargetingConfigsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
         ':removeTargetedPublishers';
 
@@ -858,8 +833,6 @@ class BiddersPretargetingConfigsResource {
     core.String pretargetingConfig, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -872,7 +845,7 @@ class BiddersPretargetingConfigsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$pretargetingConfig') +
         ':removeTargetedSites';
 
@@ -911,8 +884,6 @@ class BiddersPretargetingConfigsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -925,7 +896,8 @@ class BiddersPretargetingConfigsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':suspend';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':suspend';
 
     final _response = await _requester.request(
       _url,
@@ -977,8 +949,6 @@ class BuyersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -987,7 +957,7 @@ class BuyersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':getRemarketingTag';
 
@@ -1035,8 +1005,6 @@ class BuyersCreativesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1049,7 +1017,7 @@ class BuyersCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/creatives';
 
     final _response = await _requester.request(
@@ -1095,8 +1063,6 @@ class BuyersCreativesResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1108,7 +1074,7 @@ class BuyersCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1181,8 +1147,6 @@ class BuyersCreativesResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1203,7 +1167,7 @@ class BuyersCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/creatives';
 
     final _response = await _requester.request(
@@ -1246,8 +1210,6 @@ class BuyersCreativesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1263,7 +1225,7 @@ class BuyersCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1306,8 +1268,6 @@ class BuyersUserListsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1320,7 +1280,8 @@ class BuyersUserListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':close';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':close';
 
     final _response = await _requester.request(
       _url,
@@ -1360,8 +1321,6 @@ class BuyersUserListsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1374,7 +1333,7 @@ class BuyersUserListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/userLists';
 
     final _response = await _requester.request(
@@ -1408,8 +1367,6 @@ class BuyersUserListsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1418,7 +1375,7 @@ class BuyersUserListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1459,8 +1416,6 @@ class BuyersUserListsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1469,7 +1424,7 @@ class BuyersUserListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':getRemarketingTag';
 
@@ -1515,8 +1470,6 @@ class BuyersUserListsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1531,7 +1484,7 @@ class BuyersUserListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/userLists';
 
     final _response = await _requester.request(
@@ -1569,8 +1522,6 @@ class BuyersUserListsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1583,7 +1534,8 @@ class BuyersUserListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':open';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':open';
 
     final _response = await _requester.request(
       _url,
@@ -1625,8 +1577,6 @@ class BuyersUserListsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1639,7 +1589,7 @@ class BuyersUserListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,

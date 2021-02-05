@@ -96,8 +96,6 @@ class MattersResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -110,7 +108,7 @@ class MattersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' +
+    final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
         ':addPermissions';
 
@@ -149,8 +147,6 @@ class MattersResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -163,7 +159,7 @@ class MattersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + ':close';
 
     final _response = await _requester.request(
@@ -200,8 +196,6 @@ class MattersResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -214,7 +208,7 @@ class MattersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + ':count';
 
     final _response = await _requester.request(
@@ -249,8 +243,6 @@ class MattersResource {
     Matter request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -260,7 +252,7 @@ class MattersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters';
+    const _url = 'v1/matters';
 
     final _response = await _requester.request(
       _url,
@@ -293,8 +285,6 @@ class MattersResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -303,7 +293,7 @@ class MattersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
+    final _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
 
     final _response = await _requester.request(
       _url,
@@ -342,8 +332,6 @@ class MattersResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -355,7 +343,7 @@ class MattersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
+    final _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
 
     final _response = await _requester.request(
       _url,
@@ -407,8 +395,6 @@ class MattersResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -426,7 +412,7 @@ class MattersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters';
+    const _url = 'v1/matters';
 
     final _response = await _requester.request(
       _url,
@@ -460,8 +446,6 @@ class MattersResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -474,7 +458,7 @@ class MattersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' +
+    final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
         ':removePermissions';
 
@@ -512,8 +496,6 @@ class MattersResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -526,7 +508,7 @@ class MattersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + ':reopen';
 
     final _response = await _requester.request(
@@ -564,8 +546,6 @@ class MattersResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -578,7 +558,7 @@ class MattersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' +
+    final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
         ':undelete';
 
@@ -618,8 +598,6 @@ class MattersResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -632,7 +610,7 @@ class MattersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
+    final _url = 'v1/matters/' + commons.Escaper.ecapeVariable('$matterId');
 
     final _response = await _requester.request(
       _url,
@@ -672,8 +650,6 @@ class MattersExportsResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -686,7 +662,7 @@ class MattersExportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/exports';
 
     final _response = await _requester.request(
@@ -721,8 +697,6 @@ class MattersExportsResource {
     core.String exportId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -734,7 +708,7 @@ class MattersExportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' +
+    final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
         '/exports/' +
         commons.Escaper.ecapeVariable('$exportId');
@@ -770,8 +744,6 @@ class MattersExportsResource {
     core.String exportId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -783,7 +755,7 @@ class MattersExportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' +
+    final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
         '/exports/' +
         commons.Escaper.ecapeVariable('$exportId');
@@ -822,8 +794,6 @@ class MattersExportsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -838,7 +808,7 @@ class MattersExportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/exports';
 
     final _response = await _requester.request(
@@ -888,8 +858,6 @@ class MattersHoldsResource {
     core.String holdId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -905,7 +873,7 @@ class MattersHoldsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' +
+    final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
         '/holds/' +
         commons.Escaper.ecapeVariable('$holdId') +
@@ -944,8 +912,6 @@ class MattersHoldsResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -958,7 +924,7 @@ class MattersHoldsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/holds';
 
     final _response = await _requester.request(
@@ -995,8 +961,6 @@ class MattersHoldsResource {
     core.String holdId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -1008,7 +972,7 @@ class MattersHoldsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' +
+    final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
         '/holds/' +
         commons.Escaper.ecapeVariable('$holdId');
@@ -1055,8 +1019,6 @@ class MattersHoldsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -1071,7 +1033,7 @@ class MattersHoldsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' +
+    final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
         '/holds/' +
         commons.Escaper.ecapeVariable('$holdId');
@@ -1126,8 +1088,6 @@ class MattersHoldsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -1145,7 +1105,7 @@ class MattersHoldsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/matters/' + commons.Escaper.ecapeVariable('$matterId') + '/holds';
 
     final _response = await _requester.request(
@@ -1187,8 +1147,6 @@ class MattersHoldsResource {
     core.String holdId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1204,7 +1162,7 @@ class MattersHoldsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' +
+    final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
         '/holds/' +
         commons.Escaper.ecapeVariable('$holdId') +
@@ -1250,8 +1208,6 @@ class MattersHoldsResource {
     core.String holdId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1267,7 +1223,7 @@ class MattersHoldsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' +
+    final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
         '/holds/' +
         commons.Escaper.ecapeVariable('$holdId');
@@ -1317,8 +1273,6 @@ class MattersHoldsAccountsResource {
     core.String holdId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1334,7 +1288,7 @@ class MattersHoldsAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' +
+    final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
         '/holds/' +
         commons.Escaper.ecapeVariable('$holdId') +
@@ -1379,8 +1333,6 @@ class MattersHoldsAccountsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -1395,7 +1347,7 @@ class MattersHoldsAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' +
+    final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
         '/holds/' +
         commons.Escaper.ecapeVariable('$holdId') +
@@ -1436,8 +1388,6 @@ class MattersHoldsAccountsResource {
     core.String holdId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -1449,7 +1399,7 @@ class MattersHoldsAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' +
+    final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
         '/holds/' +
         commons.Escaper.ecapeVariable('$holdId') +
@@ -1495,8 +1445,6 @@ class MattersSavedQueriesResource {
     core.String matterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1509,7 +1457,7 @@ class MattersSavedQueriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' +
+    final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
         '/savedQueries';
 
@@ -1547,8 +1495,6 @@ class MattersSavedQueriesResource {
     core.String savedQueryId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -1560,7 +1506,7 @@ class MattersSavedQueriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' +
+    final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
         '/savedQueries/' +
         commons.Escaper.ecapeVariable('$savedQueryId');
@@ -1597,8 +1543,6 @@ class MattersSavedQueriesResource {
     core.String savedQueryId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -1610,7 +1554,7 @@ class MattersSavedQueriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' +
+    final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
         '/savedQueries/' +
         commons.Escaper.ecapeVariable('$savedQueryId');
@@ -1655,8 +1599,6 @@ class MattersSavedQueriesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
@@ -1671,7 +1613,7 @@ class MattersSavedQueriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/matters/' +
+    final _url = 'v1/matters/' +
         commons.Escaper.ecapeVariable('$matterId') +
         '/savedQueries';
 
@@ -1723,8 +1665,6 @@ class OperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1737,7 +1677,8 @@ class OperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -1773,8 +1714,6 @@ class OperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1783,7 +1722,7 @@ class OperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1817,8 +1756,6 @@ class OperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1827,7 +1764,7 @@ class OperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1876,8 +1813,6 @@ class OperationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1895,7 +1830,7 @@ class OperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,

@@ -112,8 +112,6 @@ class GroupItemsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id != null) {
       _queryParams['id'] = [id];
@@ -125,7 +123,7 @@ class GroupItemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/groupItems';
+    const _url = 'v2/groupItems';
 
     final _response = await _requester.request(
       _url,
@@ -168,8 +166,6 @@ class GroupItemsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -182,7 +178,7 @@ class GroupItemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/groupItems';
+    const _url = 'v2/groupItems';
 
     final _response = await _requester.request(
       _url,
@@ -226,8 +222,6 @@ class GroupItemsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (groupId != null) {
       _queryParams['groupId'] = [groupId];
@@ -239,7 +233,7 @@ class GroupItemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/groupItems';
+    const _url = 'v2/groupItems';
 
     final _response = await _requester.request(
       _url,
@@ -289,8 +283,6 @@ class GroupsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id != null) {
       _queryParams['id'] = [id];
@@ -302,7 +294,7 @@ class GroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/groups';
+    const _url = 'v2/groups';
 
     final _response = await _requester.request(
       _url,
@@ -345,8 +337,6 @@ class GroupsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -359,7 +349,7 @@ class GroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/groups';
+    const _url = 'v2/groups';
 
     final _response = await _requester.request(
       _url,
@@ -420,8 +410,6 @@ class GroupsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id != null) {
       _queryParams['id'] = [id];
@@ -439,7 +427,7 @@ class GroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/groups';
+    const _url = 'v2/groups';
 
     final _response = await _requester.request(
       _url,
@@ -484,8 +472,6 @@ class GroupsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -498,7 +484,7 @@ class GroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/groups';
+    const _url = 'v2/groups';
 
     final _response = await _requester.request(
       _url,
@@ -605,8 +591,6 @@ class ReportsResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (currency != null) {
       _queryParams['currency'] = [currency];
@@ -647,7 +631,7 @@ class ReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/reports';
+    const _url = 'v2/reports';
 
     final _response = await _requester.request(
       _url,

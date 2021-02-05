@@ -119,8 +119,6 @@ class AchievementDefinitionsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
@@ -135,7 +133,7 @@ class AchievementDefinitionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/achievements';
+    const _url = 'games/v1/achievements';
 
     final _response = await _requester.request(
       _url,
@@ -181,8 +179,6 @@ class AchievementsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
@@ -198,7 +194,7 @@ class AchievementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/achievements/' +
+    final _url = 'games/v1/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
         '/increment';
 
@@ -255,8 +251,6 @@ class AchievementsResource {
     core.String state,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
     }
@@ -277,7 +271,7 @@ class AchievementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/players/' +
+    final _url = 'games/v1/players/' +
         commons.Escaper.ecapeVariable('$playerId') +
         '/achievements';
 
@@ -311,8 +305,6 @@ class AchievementsResource {
     core.String achievementId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
@@ -321,7 +313,7 @@ class AchievementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/achievements/' +
+    final _url = 'games/v1/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
         '/reveal';
 
@@ -362,8 +354,6 @@ class AchievementsResource {
     core.int steps, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
@@ -376,7 +366,7 @@ class AchievementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/achievements/' +
+    final _url = 'games/v1/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
         '/setStepsAtLeast';
 
@@ -409,8 +399,6 @@ class AchievementsResource {
     core.String achievementId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
@@ -419,7 +407,7 @@ class AchievementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/achievements/' +
+    final _url = 'games/v1/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
         '/unlock';
 
@@ -452,8 +440,6 @@ class AchievementsResource {
     AchievementUpdateMultipleRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -463,7 +449,7 @@ class AchievementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/achievements/updateMultiple';
+    const _url = 'games/v1/achievements/updateMultiple';
 
     final _response = await _requester.request(
       _url,
@@ -518,8 +504,6 @@ class ApplicationsResource {
     core.String platformType,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
@@ -534,7 +518,7 @@ class ApplicationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/applications/' +
+    final _url = 'games/v1/applications/' +
         commons.Escaper.ecapeVariable('$applicationId');
 
     final _response = await _requester.request(
@@ -574,8 +558,6 @@ class ApplicationsResource {
     core.String endPointType,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (applicationId != null) {
       _queryParams['applicationId'] = [applicationId];
@@ -587,7 +569,7 @@ class ApplicationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/applications/getEndPoint';
+    const _url = 'games/v1/applications/getEndPoint';
 
     final _response = await _requester.request(
       _url,
@@ -613,14 +595,12 @@ class ApplicationsResource {
   async.Future<void> played({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/applications/played';
+    const _url = 'games/v1/applications/played';
 
     await _requester.request(
       _url,
@@ -653,8 +633,6 @@ class ApplicationsResource {
     core.String applicationId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
@@ -663,7 +641,7 @@ class ApplicationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/applications/' +
+    final _url = 'games/v1/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
         '/verify';
 
@@ -712,8 +690,6 @@ class EventsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
@@ -728,7 +704,7 @@ class EventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/events';
+    const _url = 'games/v1/events';
 
     final _response = await _requester.request(
       _url,
@@ -768,8 +744,6 @@ class EventsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
@@ -784,7 +758,7 @@ class EventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/eventDefinitions';
+    const _url = 'games/v1/eventDefinitions';
 
     final _response = await _requester.request(
       _url,
@@ -820,8 +794,6 @@ class EventsResource {
     core.String language,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -834,7 +806,7 @@ class EventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/events';
+    const _url = 'games/v1/events';
 
     final _response = await _requester.request(
       _url,
@@ -876,8 +848,6 @@ class LeaderboardsResource {
     core.String language,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
@@ -889,7 +859,7 @@ class LeaderboardsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/leaderboards/' +
+    final _url = 'games/v1/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId');
 
     final _response = await _requester.request(
@@ -930,8 +900,6 @@ class LeaderboardsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
@@ -946,7 +914,7 @@ class LeaderboardsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/leaderboards';
+    const _url = 'games/v1/leaderboards';
 
     final _response = await _requester.request(
       _url,
@@ -980,14 +948,12 @@ class MetagameResource {
   async.Future<MetagameConfig> getMetagameConfig({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/metagameConfig';
+    const _url = 'games/v1/metagameConfig';
 
     final _response = await _requester.request(
       _url,
@@ -1039,8 +1005,6 @@ class MetagameResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
     }
@@ -1061,7 +1025,7 @@ class MetagameResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/players/' +
+    final _url = 'games/v1/players/' +
         commons.Escaper.ecapeVariable('$playerId') +
         '/categories/' +
         commons.Escaper.ecapeVariable('$collection');
@@ -1109,8 +1073,6 @@ class PlayersResource {
     core.String language,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
     }
@@ -1122,7 +1084,8 @@ class PlayersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/players/' + commons.Escaper.ecapeVariable('$playerId');
+    final _url =
+        'games/v1/players/' + commons.Escaper.ecapeVariable('$playerId');
 
     final _response = await _requester.request(
       _url,
@@ -1171,8 +1134,6 @@ class PlayersResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (collection == null) {
       throw core.ArgumentError('Parameter collection is required.');
     }
@@ -1190,7 +1151,7 @@ class PlayersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/players/me/players/' +
+    final _url = 'games/v1/players/me/players/' +
         commons.Escaper.ecapeVariable('$collection');
 
     final _response = await _requester.request(
@@ -1232,8 +1193,6 @@ class RevisionsResource {
     core.String clientRevision, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (clientRevision == null) {
       throw core.ArgumentError('Parameter clientRevision is required.');
@@ -1243,7 +1202,7 @@ class RevisionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/revisions/check';
+    const _url = 'games/v1/revisions/check';
 
     final _response = await _requester.request(
       _url,
@@ -1325,8 +1284,6 @@ class ScoresResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
     }
@@ -1353,7 +1310,7 @@ class ScoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/players/' +
+    final _url = 'games/v1/players/' +
         commons.Escaper.ecapeVariable('$playerId') +
         '/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId') +
@@ -1417,8 +1374,6 @@ class ScoresResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
@@ -1443,7 +1398,7 @@ class ScoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/leaderboards/' +
+    final _url = 'games/v1/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId') +
         '/scores/' +
         commons.Escaper.ecapeVariable('$collection');
@@ -1515,8 +1470,6 @@ class ScoresResource {
     core.bool returnTopIfAbsent,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
@@ -1547,7 +1500,7 @@ class ScoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/leaderboards/' +
+    final _url = 'games/v1/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId') +
         '/window/' +
         commons.Escaper.ecapeVariable('$collection');
@@ -1599,8 +1552,6 @@ class ScoresResource {
     core.String scoreTag,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
@@ -1619,7 +1570,7 @@ class ScoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/leaderboards/' +
+    final _url = 'games/v1/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId') +
         '/scores';
 
@@ -1656,8 +1607,6 @@ class ScoresResource {
     core.String language,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1670,7 +1619,7 @@ class ScoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/leaderboards/scores';
+    const _url = 'games/v1/leaderboards/scores';
 
     final _response = await _requester.request(
       _url,
@@ -1712,8 +1661,6 @@ class SnapshotsResource {
     core.String language,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (snapshotId == null) {
       throw core.ArgumentError('Parameter snapshotId is required.');
     }
@@ -1725,7 +1672,8 @@ class SnapshotsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/snapshots/' + commons.Escaper.ecapeVariable('$snapshotId');
+    final _url =
+        'games/v1/snapshots/' + commons.Escaper.ecapeVariable('$snapshotId');
 
     final _response = await _requester.request(
       _url,
@@ -1769,8 +1717,6 @@ class SnapshotsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
     }
@@ -1788,7 +1734,7 @@ class SnapshotsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/players/' +
+    final _url = 'games/v1/players/' +
         commons.Escaper.ecapeVariable('$playerId') +
         '/snapshots';
 
@@ -1832,8 +1778,6 @@ class SnapshotsExtendedResource {
     core.String snapshotName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1846,7 +1790,7 @@ class SnapshotsExtendedResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/snapshotsExtended/' +
+    final _url = 'games/v1/snapshotsExtended/' +
         commons.Escaper.ecapeVariable('$snapshotName') +
         ':resolveHead';
 
@@ -1884,14 +1828,12 @@ class StatsResource {
   async.Future<StatsResponse> get({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1/stats';
+    const _url = 'games/v1/stats';
 
     final _response = await _requester.request(
       _url,

@@ -84,8 +84,6 @@ class AssetsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -94,7 +92,7 @@ class AssetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -166,8 +164,6 @@ class AssetsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (category != null) {
       _queryParams['category'] = [category];
@@ -197,7 +193,7 @@ class AssetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/assets';
+    const _url = 'v1/assets';
 
     final _response = await _requester.request(
       _url,
@@ -278,8 +274,6 @@ class UsersAssetsResource {
     core.String visibility,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -303,7 +297,8 @@ class UsersAssetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/assets';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/assets';
 
     final _response = await _requester.request(
       _url,
@@ -364,8 +359,6 @@ class UsersLikedassetsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -386,7 +379,7 @@ class UsersLikedassetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/likedassets';
 
     final _response = await _requester.request(

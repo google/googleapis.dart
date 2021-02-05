@@ -121,8 +121,6 @@ class ProjectsLocationsRegistriesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -135,7 +133,7 @@ class ProjectsLocationsRegistriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':bindDeviceToGateway';
 
@@ -175,8 +173,6 @@ class ProjectsLocationsRegistriesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -189,7 +185,7 @@ class ProjectsLocationsRegistriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/registries';
 
@@ -226,8 +222,6 @@ class ProjectsLocationsRegistriesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -236,7 +230,7 @@ class ProjectsLocationsRegistriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -269,8 +263,6 @@ class ProjectsLocationsRegistriesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -279,7 +271,7 @@ class ProjectsLocationsRegistriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -320,8 +312,6 @@ class ProjectsLocationsRegistriesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -334,7 +324,7 @@ class ProjectsLocationsRegistriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
@@ -381,8 +371,6 @@ class ProjectsLocationsRegistriesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -397,7 +385,7 @@ class ProjectsLocationsRegistriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/registries';
 
@@ -443,8 +431,6 @@ class ProjectsLocationsRegistriesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -460,7 +446,7 @@ class ProjectsLocationsRegistriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -501,8 +487,6 @@ class ProjectsLocationsRegistriesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -515,7 +499,7 @@ class ProjectsLocationsRegistriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
@@ -558,8 +542,6 @@ class ProjectsLocationsRegistriesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -572,7 +554,7 @@ class ProjectsLocationsRegistriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
@@ -612,8 +594,6 @@ class ProjectsLocationsRegistriesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -626,7 +606,7 @@ class ProjectsLocationsRegistriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':unbindDeviceFromGateway';
 
@@ -679,8 +659,6 @@ class ProjectsLocationsRegistriesDevicesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -693,7 +671,7 @@ class ProjectsLocationsRegistriesDevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
 
     final _response = await _requester.request(
@@ -730,8 +708,6 @@ class ProjectsLocationsRegistriesDevicesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -740,7 +716,7 @@ class ProjectsLocationsRegistriesDevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -779,8 +755,6 @@ class ProjectsLocationsRegistriesDevicesResource {
     core.String fieldMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -792,7 +766,7 @@ class ProjectsLocationsRegistriesDevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -874,8 +848,6 @@ class ProjectsLocationsRegistriesDevicesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -914,7 +886,7 @@ class ProjectsLocationsRegistriesDevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
 
     final _response = await _requester.request(
@@ -957,8 +929,6 @@ class ProjectsLocationsRegistriesDevicesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -971,7 +941,7 @@ class ProjectsLocationsRegistriesDevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':modifyCloudToDeviceConfig';
 
@@ -1020,8 +990,6 @@ class ProjectsLocationsRegistriesDevicesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1037,7 +1005,7 @@ class ProjectsLocationsRegistriesDevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1089,8 +1057,6 @@ class ProjectsLocationsRegistriesDevicesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1103,7 +1069,7 @@ class ProjectsLocationsRegistriesDevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':sendCommandToDevice';
 
@@ -1157,8 +1123,6 @@ class ProjectsLocationsRegistriesDevicesConfigVersionsResource {
     core.int numVersions,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1170,7 +1134,7 @@ class ProjectsLocationsRegistriesDevicesConfigVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         '/configVersions';
 
@@ -1221,8 +1185,6 @@ class ProjectsLocationsRegistriesDevicesStatesResource {
     core.int numStates,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1234,7 +1196,8 @@ class ProjectsLocationsRegistriesDevicesStatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/states';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/states';
 
     final _response = await _requester.request(
       _url,
@@ -1285,8 +1248,6 @@ class ProjectsLocationsRegistriesGroupsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1299,7 +1260,7 @@ class ProjectsLocationsRegistriesGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
@@ -1341,8 +1302,6 @@ class ProjectsLocationsRegistriesGroupsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1355,7 +1314,7 @@ class ProjectsLocationsRegistriesGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
@@ -1398,8 +1357,6 @@ class ProjectsLocationsRegistriesGroupsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1412,7 +1369,7 @@ class ProjectsLocationsRegistriesGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
@@ -1505,8 +1462,6 @@ class ProjectsLocationsRegistriesGroupsDevicesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1545,7 +1500,7 @@ class ProjectsLocationsRegistriesGroupsDevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/devices';
 
     final _response = await _requester.request(

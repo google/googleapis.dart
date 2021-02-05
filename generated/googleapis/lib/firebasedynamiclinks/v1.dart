@@ -93,8 +93,6 @@ class ManagedShortLinksResource {
     CreateManagedShortLinkRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -104,7 +102,7 @@ class ManagedShortLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/managedShortLinks:create';
+    const _url = 'v1/managedShortLinks:create';
 
     final _response = await _requester.request(
       _url,
@@ -148,8 +146,6 @@ class ShortLinksResource {
     CreateShortDynamicLinkRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -159,7 +155,7 @@ class ShortLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/shortLinks';
+    const _url = 'v1/shortLinks';
 
     final _response = await _requester.request(
       _url,
@@ -207,8 +203,6 @@ class V1Resource {
     core.String sdkVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (dynamicLink == null) {
       throw core.ArgumentError('Parameter dynamicLink is required.');
     }
@@ -223,7 +217,8 @@ class V1Resource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariable('$dynamicLink') + '/linkStats';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariable('$dynamicLink') + '/linkStats';
 
     final _response = await _requester.request(
       _url,
@@ -254,8 +249,6 @@ class V1Resource {
     GetIosPostInstallAttributionRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -265,7 +258,7 @@ class V1Resource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/installAttribution';
+    const _url = 'v1/installAttribution';
 
     final _response = await _requester.request(
       _url,
@@ -297,8 +290,6 @@ class V1Resource {
     GetIosReopenAttributionRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -308,7 +299,7 @@ class V1Resource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/reopenAttribution';
+    const _url = 'v1/reopenAttribution';
 
     final _response = await _requester.request(
       _url,

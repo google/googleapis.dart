@@ -89,8 +89,6 @@ class LineitemsResource {
     DownloadLineItemsRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -100,7 +98,7 @@ class LineitemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'lineitems/downloadlineitems';
+    const _url = 'lineitems/downloadlineitems';
 
     final _response = await _requester.request(
       _url,
@@ -134,8 +132,6 @@ class LineitemsResource {
     UploadLineItemsRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -145,7 +141,7 @@ class LineitemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'lineitems/uploadlineitems';
+    const _url = 'lineitems/uploadlineitems';
 
     final _response = await _requester.request(
       _url,
@@ -187,8 +183,6 @@ class QueriesResource {
     core.bool asynchronous,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -201,7 +195,7 @@ class QueriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'query';
+    const _url = 'query';
 
     final _response = await _requester.request(
       _url,
@@ -230,8 +224,6 @@ class QueriesResource {
     core.String queryId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (queryId == null) {
       throw core.ArgumentError('Parameter queryId is required.');
     }
@@ -240,7 +232,7 @@ class QueriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
+    final _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
 
     await _requester.request(
       _url,
@@ -270,8 +262,6 @@ class QueriesResource {
     core.String queryId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (queryId == null) {
       throw core.ArgumentError('Parameter queryId is required.');
     }
@@ -280,7 +270,7 @@ class QueriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
+    final _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
 
     final _response = await _requester.request(
       _url,
@@ -314,8 +304,6 @@ class QueriesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -327,7 +315,7 @@ class QueriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'queries';
+    const _url = 'queries';
 
     final _response = await _requester.request(
       _url,
@@ -362,8 +350,6 @@ class QueriesResource {
     core.bool asynchronous,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -379,7 +365,7 @@ class QueriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
+    final _url = 'query/' + commons.Escaper.ecapeVariable('$queryId');
 
     await _requester.request(
       _url,
@@ -423,8 +409,6 @@ class ReportsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (queryId == null) {
       throw core.ArgumentError('Parameter queryId is required.');
     }
@@ -439,7 +423,8 @@ class ReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'queries/' + commons.Escaper.ecapeVariable('$queryId') + '/reports';
+    final _url =
+        'queries/' + commons.Escaper.ecapeVariable('$queryId') + '/reports';
 
     final _response = await _requester.request(
       _url,
@@ -476,8 +461,6 @@ class SdfResource {
     DownloadRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -487,7 +470,7 @@ class SdfResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sdf/download';
+    const _url = 'sdf/download';
 
     final _response = await _requester.request(
       _url,

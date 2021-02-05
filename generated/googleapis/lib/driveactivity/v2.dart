@@ -83,8 +83,6 @@ class ActivityResource {
     QueryDriveActivityRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -94,7 +92,7 @@ class ActivityResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/activity:query';
+    const _url = 'v2/activity:query';
 
     final _response = await _requester.request(
       _url,

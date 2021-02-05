@@ -103,8 +103,6 @@ class ProjectsLocationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -113,7 +111,7 @@ class ProjectsLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -153,8 +151,6 @@ class ProjectsLocationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -172,7 +168,7 @@ class ProjectsLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
     final _response = await _requester.request(
@@ -225,8 +221,6 @@ class ProjectsLocationsKeyRingsResource {
     core.String keyRingId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -242,7 +236,7 @@ class ProjectsLocationsKeyRingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/keyRings';
 
     final _response = await _requester.request(
@@ -276,8 +270,6 @@ class ProjectsLocationsKeyRingsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -286,7 +278,7 @@ class ProjectsLocationsKeyRingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -332,8 +324,6 @@ class ProjectsLocationsKeyRingsResource {
     core.int options_requestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -347,7 +337,7 @@ class ProjectsLocationsKeyRingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
@@ -402,8 +392,6 @@ class ProjectsLocationsKeyRingsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -424,7 +412,7 @@ class ProjectsLocationsKeyRingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/keyRings';
 
     final _response = await _requester.request(
@@ -466,8 +454,6 @@ class ProjectsLocationsKeyRingsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -480,7 +466,7 @@ class ProjectsLocationsKeyRingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
@@ -525,8 +511,6 @@ class ProjectsLocationsKeyRingsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -539,7 +523,7 @@ class ProjectsLocationsKeyRingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
@@ -603,8 +587,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.bool skipInitialVersionCreation,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -625,7 +607,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/cryptoKeys';
 
@@ -666,8 +648,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -680,7 +660,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':decrypt';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':decrypt';
 
     final _response = await _requester.request(
       _url,
@@ -721,8 +702,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -735,7 +714,8 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':encrypt';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':encrypt';
 
     final _response = await _requester.request(
       _url,
@@ -770,8 +750,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -780,7 +758,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -826,8 +804,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.int options_requestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -841,7 +817,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
@@ -906,8 +882,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String versionView,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -931,7 +905,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/cryptoKeys';
 
@@ -973,8 +947,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -990,7 +962,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1031,8 +1003,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1045,7 +1015,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
@@ -1090,8 +1060,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1104,7 +1072,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
@@ -1145,8 +1113,6 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1159,7 +1125,7 @@ class ProjectsLocationsKeyRingsCryptoKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':updatePrimaryVersion';
 
@@ -1208,8 +1174,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1222,7 +1186,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':asymmetricDecrypt';
 
@@ -1264,8 +1228,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1278,7 +1240,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':asymmetricSign';
 
@@ -1321,8 +1283,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1335,7 +1295,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/cryptoKeyVersions';
 
@@ -1380,8 +1340,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1394,7 +1352,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':destroy';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':destroy';
 
     final _response = await _requester.request(
       _url,
@@ -1428,8 +1387,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1438,7 +1395,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1473,8 +1430,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1483,7 +1438,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/publicKey';
 
     final _response = await _requester.request(
@@ -1523,8 +1478,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1537,7 +1490,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/cryptoKeyVersions:import';
 
@@ -1604,8 +1557,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1629,7 +1580,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/cryptoKeyVersions';
 
@@ -1676,8 +1627,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1693,7 +1642,7 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1733,8 +1682,6 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1747,7 +1694,8 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':restore';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':restore';
 
     final _response = await _requester.request(
       _url,
@@ -1798,8 +1746,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.String importJobId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1815,7 +1761,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/importJobs';
 
@@ -1850,8 +1796,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1860,7 +1804,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1906,8 +1850,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.int options_requestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -1921,7 +1863,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
@@ -1977,8 +1919,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1999,7 +1939,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/importJobs';
 
@@ -2042,8 +1982,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2056,7 +1994,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
@@ -2101,8 +2039,6 @@ class ProjectsLocationsKeyRingsImportJobsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2115,7 +2051,7 @@ class ProjectsLocationsKeyRingsImportJobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 

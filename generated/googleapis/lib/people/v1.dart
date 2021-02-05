@@ -144,8 +144,6 @@ class ContactGroupsResource {
     core.List<core.String> resourceNames,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (groupFields != null) {
       _queryParams['groupFields'] = [groupFields];
@@ -160,7 +158,7 @@ class ContactGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/contactGroups:batchGet';
+    const _url = 'v1/contactGroups:batchGet';
 
     final _response = await _requester.request(
       _url,
@@ -191,8 +189,6 @@ class ContactGroupsResource {
     CreateContactGroupRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -202,7 +198,7 @@ class ContactGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/contactGroups';
+    const _url = 'v1/contactGroups';
 
     final _response = await _requester.request(
       _url,
@@ -241,8 +237,6 @@ class ContactGroupsResource {
     core.bool deleteContacts,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
@@ -254,7 +248,7 @@ class ContactGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
     final _response = await _requester.request(
       _url,
@@ -296,8 +290,6 @@ class ContactGroupsResource {
     core.int maxMembers,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
@@ -312,7 +304,7 @@ class ContactGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
     final _response = await _requester.request(
       _url,
@@ -363,8 +355,6 @@ class ContactGroupsResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (groupFields != null) {
       _queryParams['groupFields'] = [groupFields];
@@ -382,7 +372,7 @@ class ContactGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/contactGroups';
+    const _url = 'v1/contactGroups';
 
     final _response = await _requester.request(
       _url,
@@ -420,8 +410,6 @@ class ContactGroupsResource {
     core.String resourceName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -434,7 +422,7 @@ class ContactGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
     final _response = await _requester.request(
       _url,
@@ -482,8 +470,6 @@ class ContactGroupsMembersResource {
     core.String resourceName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -496,7 +482,7 @@ class ContactGroupsMembersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         '/members:modify';
 
@@ -542,8 +528,6 @@ class OtherContactsResource {
     core.String resourceName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -556,7 +540,7 @@ class OtherContactsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         ':copyOtherContactToMyContactsGroup';
 
@@ -619,8 +603,6 @@ class OtherContactsResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -641,7 +623,7 @@ class OtherContactsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/otherContacts';
+    const _url = 'v1/otherContacts';
 
     final _response = await _requester.request(
       _url,
@@ -700,8 +682,6 @@ class PeopleResource {
     core.List<core.String> sources,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -717,7 +697,7 @@ class PeopleResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/people:createContact';
+    const _url = 'v1/people:createContact';
 
     final _response = await _requester.request(
       _url,
@@ -751,8 +731,6 @@ class PeopleResource {
     core.String resourceName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
@@ -761,7 +739,7 @@ class PeopleResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         ':deleteContact';
 
@@ -810,8 +788,6 @@ class PeopleResource {
     core.List<core.String> sources,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
@@ -826,7 +802,7 @@ class PeopleResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         ':deleteContactPhoto';
 
@@ -887,8 +863,6 @@ class PeopleResource {
     core.List<core.String> sources,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
@@ -906,7 +880,7 @@ class PeopleResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
     final _response = await _requester.request(
       _url,
@@ -967,8 +941,6 @@ class PeopleResource {
     core.List<core.String> sources,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (personFields != null) {
       _queryParams['personFields'] = [personFields];
@@ -986,7 +958,7 @@ class PeopleResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/people:batchGet';
+    const _url = 'v1/people:batchGet';
 
     final _response = await _requester.request(
       _url,
@@ -1056,8 +1028,6 @@ class PeopleResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (mergeSources != null) {
       _queryParams['mergeSources'] = mergeSources;
@@ -1084,7 +1054,7 @@ class PeopleResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/people:listDirectoryPeople';
+    const _url = 'v1/people:listDirectoryPeople';
 
     final _response = await _requester.request(
       _url,
@@ -1146,8 +1116,6 @@ class PeopleResource {
     core.List<core.String> sources,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (mergeSources != null) {
       _queryParams['mergeSources'] = mergeSources;
@@ -1171,7 +1139,7 @@ class PeopleResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/people:searchDirectoryPeople';
+    const _url = 'v1/people:searchDirectoryPeople';
 
     final _response = await _requester.request(
       _url,
@@ -1247,8 +1215,6 @@ class PeopleResource {
     core.String updatePersonFields,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1270,7 +1236,7 @@ class PeopleResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         ':updateContact';
 
@@ -1307,8 +1273,6 @@ class PeopleResource {
     core.String resourceName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1321,7 +1285,7 @@ class PeopleResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         ':updateContactPhoto';
 
@@ -1428,8 +1392,6 @@ class PeopleConnectionsResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
@@ -1462,7 +1424,7 @@ class PeopleConnectionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resourceName') +
         '/connections';
 

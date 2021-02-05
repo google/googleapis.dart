@@ -107,8 +107,6 @@ class BackupRunsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -123,7 +121,7 @@ class BackupRunsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -164,8 +162,6 @@ class BackupRunsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -180,7 +176,7 @@ class BackupRunsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -223,8 +219,6 @@ class BackupRunsResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -240,7 +234,7 @@ class BackupRunsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -286,8 +280,6 @@ class BackupRunsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -305,7 +297,7 @@ class BackupRunsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -352,8 +344,6 @@ class DatabasesResource {
     core.String database, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -368,7 +358,7 @@ class DatabasesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -410,8 +400,6 @@ class DatabasesResource {
     core.String database, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -426,7 +414,7 @@ class DatabasesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -468,8 +456,6 @@ class DatabasesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -485,7 +471,7 @@ class DatabasesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -523,8 +509,6 @@ class DatabasesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -536,7 +520,7 @@ class DatabasesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -583,8 +567,6 @@ class DatabasesResource {
     core.String database, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -603,7 +585,7 @@ class DatabasesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -649,8 +631,6 @@ class DatabasesResource {
     core.String database, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -669,7 +649,7 @@ class DatabasesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -713,8 +693,6 @@ class FlagsResource {
     core.String databaseVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (databaseVersion != null) {
       _queryParams['databaseVersion'] = [databaseVersion];
@@ -723,7 +701,7 @@ class FlagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/flags';
+    const _url = 'sql/v1beta4/flags';
 
     final _response = await _requester.request(
       _url,
@@ -769,8 +747,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -782,7 +758,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -826,8 +802,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -843,7 +817,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -882,8 +856,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -895,7 +867,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance');
@@ -935,8 +907,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -952,7 +922,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -995,8 +965,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1012,7 +980,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1055,8 +1023,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1072,7 +1038,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1110,8 +1076,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1123,7 +1087,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance');
@@ -1164,8 +1128,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1181,7 +1143,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1220,8 +1182,6 @@ class InstancesResource {
     core.String project, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1234,7 +1194,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances';
 
@@ -1284,8 +1244,6 @@ class InstancesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1303,7 +1261,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances';
 
@@ -1345,8 +1303,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1358,7 +1314,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1401,8 +1357,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1418,7 +1372,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance');
@@ -1457,8 +1411,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1470,7 +1422,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1508,8 +1460,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1521,7 +1471,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1559,8 +1509,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1572,7 +1520,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1614,8 +1562,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1631,7 +1577,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1673,8 +1619,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1690,7 +1634,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1728,8 +1672,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1741,7 +1683,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1778,8 +1720,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1791,7 +1731,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1831,8 +1771,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1848,7 +1786,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -1891,8 +1829,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1908,7 +1844,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance');
@@ -1951,8 +1887,6 @@ class OperationsResource {
     core.String operation, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1964,7 +1898,7 @@ class OperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/operations/' +
         commons.Escaper.ecapeVariable('$operation');
@@ -2008,8 +1942,6 @@ class OperationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2027,7 +1959,7 @@ class OperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/operations';
 
@@ -2081,8 +2013,6 @@ class ProjectsInstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2098,7 +2028,7 @@ class ProjectsInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2149,8 +2079,6 @@ class ProjectsInstancesResource {
     core.String syncMode,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2168,7 +2096,7 @@ class ProjectsInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2219,8 +2147,6 @@ class ProjectsInstancesResource {
     core.bool verifyConnectionOnly,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2238,7 +2164,7 @@ class ProjectsInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2289,8 +2215,6 @@ class SslCertsResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2306,7 +2230,7 @@ class SslCertsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2350,8 +2274,6 @@ class SslCertsResource {
     core.String sha1Fingerprint, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2366,7 +2288,7 @@ class SslCertsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2410,8 +2332,6 @@ class SslCertsResource {
     core.String sha1Fingerprint, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2426,7 +2346,7 @@ class SslCertsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2470,8 +2390,6 @@ class SslCertsResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2487,7 +2405,7 @@ class SslCertsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2526,8 +2444,6 @@ class SslCertsResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2539,7 +2455,7 @@ class SslCertsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2583,8 +2499,6 @@ class TiersResource {
     core.String project, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2593,7 +2507,7 @@ class TiersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/tiers';
 
@@ -2641,8 +2555,6 @@ class UsersResource {
     core.String name,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2660,7 +2572,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2700,8 +2612,6 @@ class UsersResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2717,7 +2627,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2755,8 +2665,6 @@ class UsersResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2768,7 +2676,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +
@@ -2815,8 +2723,6 @@ class UsersResource {
     core.String name,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2838,7 +2744,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sql/v1beta4/projects/' +
+    final _url = 'sql/v1beta4/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/instances/' +
         commons.Escaper.ecapeVariable('$instance') +

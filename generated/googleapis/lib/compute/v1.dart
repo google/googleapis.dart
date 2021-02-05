@@ -359,8 +359,6 @@ class AcceleratorTypesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -387,7 +385,7 @@ class AcceleratorTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/acceleratorTypes';
 
@@ -431,8 +429,6 @@ class AcceleratorTypesResource {
     core.String acceleratorType, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -447,7 +443,7 @@ class AcceleratorTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -544,8 +540,6 @@ class AcceleratorTypesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -572,7 +566,7 @@ class AcceleratorTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -678,8 +672,6 @@ class AddressesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -706,7 +698,7 @@ class AddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/addresses';
 
@@ -764,8 +756,6 @@ class AddressesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -783,7 +773,7 @@ class AddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -829,8 +819,6 @@ class AddressesResource {
     core.String address, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -845,7 +833,7 @@ class AddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -904,8 +892,6 @@ class AddressesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -924,7 +910,7 @@ class AddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -1019,8 +1005,6 @@ class AddressesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1047,7 +1031,7 @@ class AddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -1153,8 +1137,6 @@ class AutoscalersResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1181,7 +1163,7 @@ class AutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/autoscalers';
 
@@ -1239,8 +1221,6 @@ class AutoscalersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1258,7 +1238,7 @@ class AutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -1306,8 +1286,6 @@ class AutoscalersResource {
     core.String autoscaler, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1322,7 +1300,7 @@ class AutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -1382,8 +1360,6 @@ class AutoscalersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1402,7 +1378,7 @@ class AutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -1497,8 +1473,6 @@ class AutoscalersResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1525,7 +1499,7 @@ class AutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -1592,8 +1566,6 @@ class AutoscalersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1615,7 +1587,7 @@ class AutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -1679,8 +1651,6 @@ class AutoscalersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1702,7 +1672,7 @@ class AutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -1767,8 +1737,6 @@ class BackendBucketsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1787,7 +1755,7 @@ class BackendBucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket') +
@@ -1843,8 +1811,6 @@ class BackendBucketsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1859,7 +1825,7 @@ class BackendBucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket');
@@ -1916,8 +1882,6 @@ class BackendBucketsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1936,7 +1900,7 @@ class BackendBucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket') +
@@ -1979,8 +1943,6 @@ class BackendBucketsResource {
     core.String backendBucket, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1992,7 +1954,7 @@ class BackendBucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket');
@@ -2046,8 +2008,6 @@ class BackendBucketsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2063,7 +2023,7 @@ class BackendBucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets';
 
@@ -2153,8 +2113,6 @@ class BackendBucketsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2178,7 +2136,7 @@ class BackendBucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets';
 
@@ -2239,8 +2197,6 @@ class BackendBucketsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2259,7 +2215,7 @@ class BackendBucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket');
@@ -2318,8 +2274,6 @@ class BackendBucketsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2338,7 +2292,7 @@ class BackendBucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendBuckets/' +
         commons.Escaper.ecapeVariable('$backendBucket');
@@ -2402,8 +2356,6 @@ class BackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2422,7 +2374,7 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService') +
@@ -2523,8 +2475,6 @@ class BackendServicesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2551,7 +2501,7 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/backendServices';
 
@@ -2605,8 +2555,6 @@ class BackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2621,7 +2569,7 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService');
@@ -2678,8 +2626,6 @@ class BackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2698,7 +2644,7 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService') +
@@ -2741,8 +2687,6 @@ class BackendServicesResource {
     core.String backendService, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -2754,7 +2698,7 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService');
@@ -2803,8 +2747,6 @@ class BackendServicesResource {
     core.String backendService, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2820,7 +2762,7 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService') +
@@ -2878,8 +2820,6 @@ class BackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2895,7 +2835,7 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices';
 
@@ -2985,8 +2925,6 @@ class BackendServicesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -3010,7 +2948,7 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices';
 
@@ -3071,8 +3009,6 @@ class BackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3091,7 +3027,7 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService');
@@ -3148,8 +3084,6 @@ class BackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3168,7 +3102,7 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService') +
@@ -3230,8 +3164,6 @@ class BackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3250,7 +3182,7 @@ class BackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/backendServices/' +
         commons.Escaper.ecapeVariable('$backendService');
@@ -3355,8 +3287,6 @@ class DiskTypesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -3383,7 +3313,7 @@ class DiskTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/diskTypes';
 
@@ -3429,8 +3359,6 @@ class DiskTypesResource {
     core.String diskType, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -3445,7 +3373,7 @@ class DiskTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -3540,8 +3468,6 @@ class DiskTypesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -3568,7 +3494,7 @@ class DiskTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -3640,8 +3566,6 @@ class DisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3663,7 +3587,7 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -3765,8 +3689,6 @@ class DisksResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -3793,7 +3715,7 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/disks';
 
@@ -3860,8 +3782,6 @@ class DisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3886,7 +3806,7 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -3950,8 +3870,6 @@ class DisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -3969,7 +3887,7 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -4017,8 +3935,6 @@ class DisksResource {
     core.String disk, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -4033,7 +3949,7 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -4084,8 +4000,6 @@ class DisksResource {
     core.int optionsRequestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -4105,7 +4019,7 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -4174,8 +4088,6 @@ class DisksResource {
     core.String sourceImage,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4197,7 +4109,7 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -4292,8 +4204,6 @@ class DisksResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -4320,7 +4230,7 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -4382,8 +4292,6 @@ class DisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4405,7 +4313,7 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -4472,8 +4380,6 @@ class DisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4495,7 +4401,7 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -4548,8 +4454,6 @@ class DisksResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4568,7 +4472,7 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -4635,8 +4539,6 @@ class DisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4658,7 +4560,7 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -4709,8 +4611,6 @@ class DisksResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4729,7 +4629,7 @@ class DisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -4794,8 +4694,6 @@ class ExternalVpnGatewaysResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -4810,7 +4708,7 @@ class ExternalVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways/' +
         commons.Escaper.ecapeVariable('$externalVpnGateway');
@@ -4851,8 +4749,6 @@ class ExternalVpnGatewaysResource {
     core.String externalVpnGateway, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -4864,7 +4760,7 @@ class ExternalVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways/' +
         commons.Escaper.ecapeVariable('$externalVpnGateway');
@@ -4918,8 +4814,6 @@ class ExternalVpnGatewaysResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4935,7 +4829,7 @@ class ExternalVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways';
 
@@ -5025,8 +4919,6 @@ class ExternalVpnGatewaysResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -5050,7 +4942,7 @@ class ExternalVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways';
 
@@ -5095,8 +4987,6 @@ class ExternalVpnGatewaysResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5112,7 +5002,7 @@ class ExternalVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -5157,8 +5047,6 @@ class ExternalVpnGatewaysResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5174,7 +5062,7 @@ class ExternalVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/externalVpnGateways/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -5239,8 +5127,6 @@ class FirewallPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5261,7 +5147,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies/' +
+    final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
         '/addAssociation';
 
@@ -5312,8 +5198,6 @@ class FirewallPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5329,7 +5213,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies/' +
+    final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
         '/addRule';
 
@@ -5380,8 +5264,6 @@ class FirewallPoliciesResource {
     core.String sourceFirewallPolicy,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
@@ -5396,7 +5278,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies/' +
+    final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
         '/cloneRules';
 
@@ -5443,8 +5325,6 @@ class FirewallPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
@@ -5456,7 +5336,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies/' +
+    final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy');
 
     final _response = await _requester.request(
@@ -5488,8 +5368,6 @@ class FirewallPoliciesResource {
     core.String firewallPolicy, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
@@ -5498,7 +5376,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies/' +
+    final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy');
 
     final _response = await _requester.request(
@@ -5535,8 +5413,6 @@ class FirewallPoliciesResource {
     core.String name,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
@@ -5548,7 +5424,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies/' +
+    final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
         '/getAssociation';
 
@@ -5587,8 +5463,6 @@ class FirewallPoliciesResource {
     core.int optionsRequestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -5602,7 +5476,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies/' +
+    final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/getIamPolicy';
 
@@ -5639,8 +5513,6 @@ class FirewallPoliciesResource {
     core.int priority,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
@@ -5652,7 +5524,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies/' +
+    final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
         '/getRule';
 
@@ -5705,8 +5577,6 @@ class FirewallPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5722,7 +5592,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies';
+    const _url = 'locations/global/firewallPolicies';
 
     final _response = await _requester.request(
       _url,
@@ -5808,8 +5678,6 @@ class FirewallPoliciesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
@@ -5833,7 +5701,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies';
+    const _url = 'locations/global/firewallPolicies';
 
     final _response = await _requester.request(
       _url,
@@ -5865,8 +5733,6 @@ class FirewallPoliciesResource {
     core.String targetResource,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (targetResource != null) {
       _queryParams['targetResource'] = [targetResource];
@@ -5875,7 +5741,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies/listAssociations';
+    const _url = 'locations/global/firewallPolicies/listAssociations';
 
     final _response = await _requester.request(
       _url,
@@ -5924,8 +5790,6 @@ class FirewallPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
@@ -5940,7 +5804,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies/' +
+    final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
         '/move';
 
@@ -5990,8 +5854,6 @@ class FirewallPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6007,7 +5869,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies/' +
+    final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy');
 
     final _response = await _requester.request(
@@ -6060,8 +5922,6 @@ class FirewallPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6080,7 +5940,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies/' +
+    final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
         '/patchRule';
 
@@ -6131,8 +5991,6 @@ class FirewallPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
@@ -6147,7 +6005,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies/' +
+    final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
         '/removeAssociation';
 
@@ -6197,8 +6055,6 @@ class FirewallPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (firewallPolicy == null) {
       throw core.ArgumentError('Parameter firewallPolicy is required.');
     }
@@ -6213,7 +6069,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies/' +
+    final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$firewallPolicy') +
         '/removeRule';
 
@@ -6251,8 +6107,6 @@ class FirewallPoliciesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6265,7 +6119,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies/' +
+    final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/setIamPolicy';
 
@@ -6302,8 +6156,6 @@ class FirewallPoliciesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6316,7 +6168,7 @@ class FirewallPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/firewallPolicies/' +
+    final _url = 'locations/global/firewallPolicies/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/testIamPermissions';
 
@@ -6377,8 +6229,6 @@ class FirewallsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -6393,7 +6243,7 @@ class FirewallsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/firewalls/' +
         commons.Escaper.ecapeVariable('$firewall');
@@ -6433,8 +6283,6 @@ class FirewallsResource {
     core.String firewall, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -6446,7 +6294,7 @@ class FirewallsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/firewalls/' +
         commons.Escaper.ecapeVariable('$firewall');
@@ -6499,8 +6347,6 @@ class FirewallsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6516,7 +6362,7 @@ class FirewallsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/firewalls';
 
@@ -6605,8 +6451,6 @@ class FirewallsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -6630,7 +6474,7 @@ class FirewallsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/firewalls';
 
@@ -6690,8 +6534,6 @@ class FirewallsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6710,7 +6552,7 @@ class FirewallsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/firewalls/' +
         commons.Escaper.ecapeVariable('$firewall');
@@ -6771,8 +6613,6 @@ class FirewallsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6791,7 +6631,7 @@ class FirewallsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/firewalls/' +
         commons.Escaper.ecapeVariable('$firewall');
@@ -6896,8 +6736,6 @@ class ForwardingRulesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -6924,7 +6762,7 @@ class ForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/forwardingRules';
 
@@ -6982,8 +6820,6 @@ class ForwardingRulesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -7001,7 +6837,7 @@ class ForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -7047,8 +6883,6 @@ class ForwardingRulesResource {
     core.String forwardingRule, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -7063,7 +6897,7 @@ class ForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -7123,8 +6957,6 @@ class ForwardingRulesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7143,7 +6975,7 @@ class ForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -7239,8 +7071,6 @@ class ForwardingRulesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -7267,7 +7097,7 @@ class ForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -7335,8 +7165,6 @@ class ForwardingRulesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7358,7 +7186,7 @@ class ForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -7424,8 +7252,6 @@ class ForwardingRulesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7447,7 +7273,7 @@ class ForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -7515,8 +7341,6 @@ class ForwardingRulesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7538,7 +7362,7 @@ class ForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -7602,8 +7426,6 @@ class GlobalAddressesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -7618,7 +7440,7 @@ class GlobalAddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/addresses/' +
         commons.Escaper.ecapeVariable('$address');
@@ -7660,8 +7482,6 @@ class GlobalAddressesResource {
     core.String address, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -7673,7 +7493,7 @@ class GlobalAddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/addresses/' +
         commons.Escaper.ecapeVariable('$address');
@@ -7726,8 +7546,6 @@ class GlobalAddressesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7743,7 +7561,7 @@ class GlobalAddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/addresses';
 
@@ -7832,8 +7650,6 @@ class GlobalAddressesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -7857,7 +7673,7 @@ class GlobalAddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/addresses';
 
@@ -7918,8 +7734,6 @@ class GlobalForwardingRulesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -7934,7 +7748,7 @@ class GlobalForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/forwardingRules/' +
         commons.Escaper.ecapeVariable('$forwardingRule');
@@ -7976,8 +7790,6 @@ class GlobalForwardingRulesResource {
     core.String forwardingRule, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -7989,7 +7801,7 @@ class GlobalForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/forwardingRules/' +
         commons.Escaper.ecapeVariable('$forwardingRule');
@@ -8043,8 +7855,6 @@ class GlobalForwardingRulesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -8060,7 +7870,7 @@ class GlobalForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/forwardingRules';
 
@@ -8150,8 +7960,6 @@ class GlobalForwardingRulesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -8175,7 +7983,7 @@ class GlobalForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/forwardingRules';
 
@@ -8237,8 +8045,6 @@ class GlobalForwardingRulesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -8257,7 +8063,7 @@ class GlobalForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/forwardingRules/' +
         commons.Escaper.ecapeVariable('$forwardingRule');
@@ -8303,8 +8109,6 @@ class GlobalForwardingRulesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -8320,7 +8124,7 @@ class GlobalForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/forwardingRules/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -8382,8 +8186,6 @@ class GlobalForwardingRulesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -8402,7 +8204,7 @@ class GlobalForwardingRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/forwardingRules/' +
         commons.Escaper.ecapeVariable('$forwardingRule') +
@@ -8467,8 +8269,6 @@ class GlobalNetworkEndpointGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -8487,7 +8287,7 @@ class GlobalNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups/' +
         commons.Escaper.ecapeVariable('$networkEndpointGroup') +
@@ -8543,8 +8343,6 @@ class GlobalNetworkEndpointGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -8559,7 +8357,7 @@ class GlobalNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups/' +
         commons.Escaper.ecapeVariable('$networkEndpointGroup');
@@ -8615,8 +8413,6 @@ class GlobalNetworkEndpointGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -8635,7 +8431,7 @@ class GlobalNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups/' +
         commons.Escaper.ecapeVariable('$networkEndpointGroup') +
@@ -8679,8 +8475,6 @@ class GlobalNetworkEndpointGroupsResource {
     core.String networkEndpointGroup, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -8692,7 +8486,7 @@ class GlobalNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups/' +
         commons.Escaper.ecapeVariable('$networkEndpointGroup');
@@ -8746,8 +8540,6 @@ class GlobalNetworkEndpointGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -8763,7 +8555,7 @@ class GlobalNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups';
 
@@ -8853,8 +8645,6 @@ class GlobalNetworkEndpointGroupsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -8878,7 +8668,7 @@ class GlobalNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups';
 
@@ -8972,8 +8762,6 @@ class GlobalNetworkEndpointGroupsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -9000,7 +8788,7 @@ class GlobalNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/networkEndpointGroups/' +
         commons.Escaper.ecapeVariable('$networkEndpointGroup') +
@@ -9106,8 +8894,6 @@ class GlobalOperationsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -9134,7 +8920,7 @@ class GlobalOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/operations';
 
@@ -9172,8 +8958,6 @@ class GlobalOperationsResource {
     core.String operation, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -9185,7 +8969,7 @@ class GlobalOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/operations/' +
         commons.Escaper.ecapeVariable('$operation');
@@ -9227,8 +9011,6 @@ class GlobalOperationsResource {
     core.String operation, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -9240,7 +9022,7 @@ class GlobalOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/operations/' +
         commons.Escaper.ecapeVariable('$operation');
@@ -9330,8 +9112,6 @@ class GlobalOperationsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -9355,7 +9135,7 @@ class GlobalOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/operations';
 
@@ -9409,8 +9189,6 @@ class GlobalOperationsResource {
     core.String operation, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -9422,7 +9200,7 @@ class GlobalOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/operations/' +
         commons.Escaper.ecapeVariable('$operation') +
@@ -9466,8 +9244,6 @@ class GlobalOrganizationOperationsResource {
     core.String parentId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
@@ -9479,7 +9255,7 @@ class GlobalOrganizationOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/operations/' +
+    final _url = 'locations/global/operations/' +
         commons.Escaper.ecapeVariable('$operation');
 
     await _requester.request(
@@ -9517,8 +9293,6 @@ class GlobalOrganizationOperationsResource {
     core.String parentId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
@@ -9530,7 +9304,7 @@ class GlobalOrganizationOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/operations/' +
+    final _url = 'locations/global/operations/' +
         commons.Escaper.ecapeVariable('$operation');
 
     final _response = await _requester.request(
@@ -9616,8 +9390,6 @@ class GlobalOrganizationOperationsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
@@ -9641,7 +9413,7 @@ class GlobalOrganizationOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'locations/global/operations';
+    const _url = 'locations/global/operations';
 
     final _response = await _requester.request(
       _url,
@@ -9744,8 +9516,6 @@ class HealthChecksResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -9772,7 +9542,7 @@ class HealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/healthChecks';
 
@@ -9826,8 +9596,6 @@ class HealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -9842,7 +9610,7 @@ class HealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/healthChecks/' +
         commons.Escaper.ecapeVariable('$healthCheck');
@@ -9884,8 +9652,6 @@ class HealthChecksResource {
     core.String healthCheck, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -9897,7 +9663,7 @@ class HealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/healthChecks/' +
         commons.Escaper.ecapeVariable('$healthCheck');
@@ -9951,8 +9717,6 @@ class HealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -9968,7 +9732,7 @@ class HealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/healthChecks';
 
@@ -10058,8 +9822,6 @@ class HealthChecksResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -10083,7 +9845,7 @@ class HealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/healthChecks';
 
@@ -10144,8 +9906,6 @@ class HealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -10164,7 +9924,7 @@ class HealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/healthChecks/' +
         commons.Escaper.ecapeVariable('$healthCheck');
@@ -10223,8 +9983,6 @@ class HealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -10243,7 +10001,7 @@ class HealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/healthChecks/' +
         commons.Escaper.ecapeVariable('$healthCheck');
@@ -10304,8 +10062,6 @@ class HttpHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -10320,7 +10076,7 @@ class HttpHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/httpHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpHealthCheck');
@@ -10362,8 +10118,6 @@ class HttpHealthChecksResource {
     core.String httpHealthCheck, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -10375,7 +10129,7 @@ class HttpHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/httpHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpHealthCheck');
@@ -10429,8 +10183,6 @@ class HttpHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -10446,7 +10198,7 @@ class HttpHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/httpHealthChecks';
 
@@ -10536,8 +10288,6 @@ class HttpHealthChecksResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -10561,7 +10311,7 @@ class HttpHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/httpHealthChecks';
 
@@ -10622,8 +10372,6 @@ class HttpHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -10642,7 +10390,7 @@ class HttpHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/httpHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpHealthCheck');
@@ -10701,8 +10449,6 @@ class HttpHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -10721,7 +10467,7 @@ class HttpHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/httpHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpHealthCheck');
@@ -10782,8 +10528,6 @@ class HttpsHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -10798,7 +10542,7 @@ class HttpsHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/httpsHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpsHealthCheck');
@@ -10840,8 +10584,6 @@ class HttpsHealthChecksResource {
     core.String httpsHealthCheck, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -10853,7 +10595,7 @@ class HttpsHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/httpsHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpsHealthCheck');
@@ -10907,8 +10649,6 @@ class HttpsHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -10924,7 +10664,7 @@ class HttpsHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/httpsHealthChecks';
 
@@ -11014,8 +10754,6 @@ class HttpsHealthChecksResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -11039,7 +10777,7 @@ class HttpsHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/httpsHealthChecks';
 
@@ -11100,8 +10838,6 @@ class HttpsHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -11120,7 +10856,7 @@ class HttpsHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/httpsHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpsHealthCheck');
@@ -11179,8 +10915,6 @@ class HttpsHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -11199,7 +10933,7 @@ class HttpsHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/httpsHealthChecks/' +
         commons.Escaper.ecapeVariable('$httpsHealthCheck');
@@ -11260,8 +10994,6 @@ class ImagesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -11276,7 +11008,7 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$image');
@@ -11335,8 +11067,6 @@ class ImagesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -11355,7 +11085,7 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$image') +
@@ -11399,8 +11129,6 @@ class ImagesResource {
     core.String image, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -11412,7 +11140,7 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$image');
@@ -11453,8 +11181,6 @@ class ImagesResource {
     core.String family, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -11466,7 +11192,7 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/images/family/' +
         commons.Escaper.ecapeVariable('$family');
@@ -11511,8 +11237,6 @@ class ImagesResource {
     core.int optionsRequestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -11529,7 +11253,7 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -11586,8 +11310,6 @@ class ImagesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -11606,7 +11328,7 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/images';
 
@@ -11701,8 +11423,6 @@ class ImagesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -11726,7 +11446,7 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/images';
 
@@ -11785,8 +11505,6 @@ class ImagesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -11805,7 +11523,7 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$image');
@@ -11851,8 +11569,6 @@ class ImagesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -11868,7 +11584,7 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -11915,8 +11631,6 @@ class ImagesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -11932,7 +11646,7 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -11977,8 +11691,6 @@ class ImagesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -11994,7 +11706,7 @@ class ImagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/images/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -12077,8 +11789,6 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -12100,7 +11810,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -12202,8 +11912,6 @@ class InstanceGroupManagersResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -12230,7 +11938,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/instanceGroupManagers';
 
@@ -12278,8 +11986,6 @@ class InstanceGroupManagersResource {
     core.String instanceGroupManager, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -12298,7 +12004,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -12368,8 +12074,6 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -12391,7 +12095,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -12454,8 +12158,6 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -12473,7 +12175,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -12547,8 +12249,6 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -12570,7 +12270,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -12620,8 +12320,6 @@ class InstanceGroupManagersResource {
     core.String instanceGroupManager, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -12640,7 +12338,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -12688,8 +12386,6 @@ class InstanceGroupManagersResource {
     core.String instanceGroupManager, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -12704,7 +12400,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -12773,8 +12469,6 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -12793,7 +12487,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -12888,8 +12582,6 @@ class InstanceGroupManagersResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -12916,7 +12608,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -13020,8 +12712,6 @@ class InstanceGroupManagersResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -13051,7 +12741,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -13157,8 +12847,6 @@ class InstanceGroupManagersResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -13188,7 +12876,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -13293,8 +12981,6 @@ class InstanceGroupManagersResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -13324,7 +13010,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -13394,8 +13080,6 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -13417,7 +13101,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -13483,8 +13167,6 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -13506,7 +13188,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -13581,8 +13263,6 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -13604,7 +13284,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -13689,8 +13369,6 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -13712,7 +13390,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -13778,8 +13456,6 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -13801,7 +13477,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -13870,8 +13546,6 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -13893,7 +13567,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -13960,8 +13634,6 @@ class InstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -13983,7 +13655,7 @@ class InstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -14055,8 +13727,6 @@ class InstanceGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -14078,7 +13748,7 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -14180,8 +13850,6 @@ class InstanceGroupsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -14208,7 +13876,7 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/instanceGroups';
 
@@ -14267,8 +13935,6 @@ class InstanceGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -14286,7 +13952,7 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -14334,8 +14000,6 @@ class InstanceGroupsResource {
     core.String instanceGroup, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -14350,7 +14014,7 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -14409,8 +14073,6 @@ class InstanceGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -14429,7 +14091,7 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -14527,8 +14189,6 @@ class InstanceGroupsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -14555,7 +14215,7 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -14658,8 +14318,6 @@ class InstanceGroupsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -14693,7 +14351,7 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -14762,8 +14420,6 @@ class InstanceGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -14785,7 +14441,7 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -14848,8 +14504,6 @@ class InstanceGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -14871,7 +14525,7 @@ class InstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -14939,8 +14593,6 @@ class InstanceTemplatesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -14955,7 +14607,7 @@ class InstanceTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/instanceTemplates/' +
         commons.Escaper.ecapeVariable('$instanceTemplate');
@@ -14997,8 +14649,6 @@ class InstanceTemplatesResource {
     core.String instanceTemplate, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -15010,7 +14660,7 @@ class InstanceTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/instanceTemplates/' +
         commons.Escaper.ecapeVariable('$instanceTemplate');
@@ -15056,8 +14706,6 @@ class InstanceTemplatesResource {
     core.int optionsRequestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -15074,7 +14722,7 @@ class InstanceTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/instanceTemplates/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -15132,8 +14780,6 @@ class InstanceTemplatesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -15149,7 +14795,7 @@ class InstanceTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/instanceTemplates';
 
@@ -15239,8 +14885,6 @@ class InstanceTemplatesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -15264,7 +14908,7 @@ class InstanceTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/instanceTemplates';
 
@@ -15309,8 +14953,6 @@ class InstanceTemplatesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -15326,7 +14968,7 @@ class InstanceTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/instanceTemplates/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -15371,8 +15013,6 @@ class InstanceTemplatesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -15388,7 +15028,7 @@ class InstanceTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/instanceTemplates/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -15462,8 +15102,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -15489,7 +15127,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -15557,8 +15195,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -15580,7 +15216,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -15683,8 +15319,6 @@ class InstancesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -15711,7 +15345,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/instances';
 
@@ -15781,8 +15415,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -15807,7 +15439,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -15871,8 +15503,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -15890,7 +15520,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -15956,8 +15586,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -15983,7 +15611,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -16048,8 +15676,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -16071,7 +15697,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -16120,8 +15746,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -16136,7 +15760,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -16188,8 +15812,6 @@ class InstancesResource {
     core.String variableKey,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -16210,7 +15832,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -16263,8 +15885,6 @@ class InstancesResource {
     core.int optionsRequestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -16284,7 +15904,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -16331,8 +15951,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -16347,7 +15965,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -16416,8 +16034,6 @@ class InstancesResource {
     core.String start_1,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -16438,7 +16054,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -16486,8 +16102,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -16502,7 +16116,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -16574,8 +16188,6 @@ class InstancesResource {
     core.String sourceInstanceTemplate,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -16597,7 +16209,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -16692,8 +16304,6 @@ class InstancesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -16720,7 +16330,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -16826,8 +16436,6 @@ class InstancesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -16857,7 +16465,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -16922,8 +16530,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -16945,7 +16551,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -17010,8 +16616,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -17029,7 +16633,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -17094,8 +16698,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -17116,7 +16718,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -17186,8 +16788,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -17213,7 +16813,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -17265,8 +16865,6 @@ class InstancesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -17285,7 +16883,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -17352,8 +16950,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -17375,7 +16971,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -17441,8 +17037,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -17464,7 +17058,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -17530,8 +17124,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -17553,7 +17145,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -17619,8 +17211,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -17642,7 +17232,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -17710,8 +17300,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -17733,7 +17321,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -17802,8 +17390,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -17825,7 +17411,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -17893,8 +17479,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -17916,7 +17500,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -17984,8 +17568,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -18007,7 +17589,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -18073,8 +17655,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -18096,7 +17676,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -18144,8 +17724,6 @@ class InstancesResource {
     core.String instance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -18160,7 +17738,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -18223,8 +17801,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -18242,7 +17818,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -18308,8 +17884,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -18331,7 +17905,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -18399,8 +17973,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -18418,7 +17990,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -18468,8 +18040,6 @@ class InstancesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -18488,7 +18058,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -18580,8 +18150,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -18611,7 +18179,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -18683,8 +18251,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -18710,7 +18276,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -18778,8 +18344,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -18801,7 +18365,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -18875,8 +18439,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -18902,7 +18464,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -18970,8 +18532,6 @@ class InstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -18993,7 +18553,7 @@ class InstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -19102,8 +18662,6 @@ class InterconnectAttachmentsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -19130,7 +18688,7 @@ class InterconnectAttachmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/interconnectAttachments';
 
@@ -19188,8 +18746,6 @@ class InterconnectAttachmentsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -19207,7 +18763,7 @@ class InterconnectAttachmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -19253,8 +18809,6 @@ class InterconnectAttachmentsResource {
     core.String interconnectAttachment, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -19269,7 +18823,7 @@ class InterconnectAttachmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -19332,8 +18886,6 @@ class InterconnectAttachmentsResource {
     core.bool validateOnly,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -19355,7 +18907,7 @@ class InterconnectAttachmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -19451,8 +19003,6 @@ class InterconnectAttachmentsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -19479,7 +19029,7 @@ class InterconnectAttachmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -19546,8 +19096,6 @@ class InterconnectAttachmentsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -19569,7 +19117,7 @@ class InterconnectAttachmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -19622,8 +19170,6 @@ class InterconnectLocationsResource {
     core.String interconnectLocation, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -19635,7 +19181,7 @@ class InterconnectLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/interconnectLocations/' +
         commons.Escaper.ecapeVariable('$interconnectLocation');
@@ -19726,8 +19272,6 @@ class InterconnectLocationsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -19751,7 +19295,7 @@ class InterconnectLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/interconnectLocations';
 
@@ -19811,8 +19355,6 @@ class InterconnectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -19827,7 +19369,7 @@ class InterconnectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/interconnects/' +
         commons.Escaper.ecapeVariable('$interconnect');
@@ -19869,8 +19411,6 @@ class InterconnectsResource {
     core.String interconnect, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -19882,7 +19422,7 @@ class InterconnectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/interconnects/' +
         commons.Escaper.ecapeVariable('$interconnect');
@@ -19923,8 +19463,6 @@ class InterconnectsResource {
     core.String interconnect, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -19936,7 +19474,7 @@ class InterconnectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/interconnects/' +
         commons.Escaper.ecapeVariable('$interconnect') +
@@ -19991,8 +19529,6 @@ class InterconnectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -20008,7 +19544,7 @@ class InterconnectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/interconnects';
 
@@ -20097,8 +19633,6 @@ class InterconnectsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -20122,7 +19656,7 @@ class InterconnectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/interconnects';
 
@@ -20182,8 +19716,6 @@ class InterconnectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -20202,7 +19734,7 @@ class InterconnectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/interconnects/' +
         commons.Escaper.ecapeVariable('$interconnect');
@@ -20253,8 +19785,6 @@ class LicenseCodesResource {
     core.String licenseCode, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -20266,7 +19796,7 @@ class LicenseCodesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/licenseCodes/' +
         commons.Escaper.ecapeVariable('$licenseCode');
@@ -20313,8 +19843,6 @@ class LicenseCodesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -20330,7 +19858,7 @@ class LicenseCodesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/licenseCodes/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -20396,8 +19924,6 @@ class LicensesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -20412,7 +19938,7 @@ class LicensesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/licenses/' +
         commons.Escaper.ecapeVariable('$license');
@@ -20455,8 +19981,6 @@ class LicensesResource {
     core.String license, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -20468,7 +19992,7 @@ class LicensesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/licenses/' +
         commons.Escaper.ecapeVariable('$license');
@@ -20515,8 +20039,6 @@ class LicensesResource {
     core.int optionsRequestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -20533,7 +20055,7 @@ class LicensesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/licenses/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -20589,8 +20111,6 @@ class LicensesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -20606,7 +20126,7 @@ class LicensesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/licenses';
 
@@ -20702,8 +20222,6 @@ class LicensesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -20727,7 +20245,7 @@ class LicensesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/licenses';
 
@@ -20773,8 +20291,6 @@ class LicensesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -20790,7 +20306,7 @@ class LicensesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/licenses/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -20838,8 +20354,6 @@ class LicensesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -20855,7 +20369,7 @@ class LicensesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/licenses/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -20962,8 +20476,6 @@ class MachineTypesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -20990,7 +20502,7 @@ class MachineTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/machineTypes';
 
@@ -21036,8 +20548,6 @@ class MachineTypesResource {
     core.String machineType, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -21052,7 +20562,7 @@ class MachineTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -21148,8 +20658,6 @@ class MachineTypesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -21176,7 +20684,7 @@ class MachineTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -21283,8 +20791,6 @@ class NetworkEndpointGroupsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -21311,7 +20817,7 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/networkEndpointGroups';
 
@@ -21372,8 +20878,6 @@ class NetworkEndpointGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -21395,7 +20899,7 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -21460,8 +20964,6 @@ class NetworkEndpointGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -21479,7 +20981,7 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -21542,8 +21044,6 @@ class NetworkEndpointGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -21565,7 +21065,7 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -21615,8 +21115,6 @@ class NetworkEndpointGroupsResource {
     core.String networkEndpointGroup, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -21631,7 +21129,7 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -21691,8 +21189,6 @@ class NetworkEndpointGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -21711,7 +21207,7 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -21807,8 +21303,6 @@ class NetworkEndpointGroupsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -21835,7 +21329,7 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -21938,8 +21432,6 @@ class NetworkEndpointGroupsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -21973,7 +21465,7 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -22025,8 +21517,6 @@ class NetworkEndpointGroupsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -22045,7 +21535,7 @@ class NetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -22113,8 +21603,6 @@ class NetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -22133,7 +21621,7 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network') +
@@ -22189,8 +21677,6 @@ class NetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -22205,7 +21691,7 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network');
@@ -22247,8 +21733,6 @@ class NetworksResource {
     core.String network, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -22260,7 +21744,7 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network');
@@ -22313,8 +21797,6 @@ class NetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -22330,7 +21812,7 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/networks';
 
@@ -22419,8 +21901,6 @@ class NetworksResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -22444,7 +21924,7 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/networks';
 
@@ -22551,8 +22031,6 @@ class NetworksResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -22588,7 +22066,7 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network') +
@@ -22649,8 +22127,6 @@ class NetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -22669,7 +22145,7 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network');
@@ -22727,8 +22203,6 @@ class NetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -22747,7 +22221,7 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network') +
@@ -22803,8 +22277,6 @@ class NetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -22819,7 +22291,7 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network') +
@@ -22881,8 +22353,6 @@ class NetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -22901,7 +22371,7 @@ class NetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/networks/' +
         commons.Escaper.ecapeVariable('$network') +
@@ -22970,8 +22440,6 @@ class NodeGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -22993,7 +22461,7 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -23097,8 +22565,6 @@ class NodeGroupsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -23125,7 +22591,7 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/nodeGroups';
 
@@ -23183,8 +22649,6 @@ class NodeGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -23202,7 +22666,7 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -23265,8 +22729,6 @@ class NodeGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -23288,7 +22750,7 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -23339,8 +22801,6 @@ class NodeGroupsResource {
     core.String nodeGroup, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -23355,7 +22815,7 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -23406,8 +22866,6 @@ class NodeGroupsResource {
     core.int optionsRequestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -23427,7 +22885,7 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -23490,8 +22948,6 @@ class NodeGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -23514,7 +22970,7 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -23611,8 +23067,6 @@ class NodeGroupsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -23639,7 +23093,7 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -23739,8 +23193,6 @@ class NodeGroupsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -23770,7 +23222,7 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -23835,8 +23287,6 @@ class NodeGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -23858,7 +23308,7 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -23910,8 +23360,6 @@ class NodeGroupsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -23930,7 +23378,7 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -23995,8 +23443,6 @@ class NodeGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -24018,7 +23464,7 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -24069,8 +23515,6 @@ class NodeGroupsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -24089,7 +23533,7 @@ class NodeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -24198,8 +23642,6 @@ class NodeTemplatesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -24226,7 +23668,7 @@ class NodeTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/nodeTemplates';
 
@@ -24284,8 +23726,6 @@ class NodeTemplatesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -24303,7 +23743,7 @@ class NodeTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -24351,8 +23791,6 @@ class NodeTemplatesResource {
     core.String nodeTemplate, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -24367,7 +23805,7 @@ class NodeTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -24419,8 +23857,6 @@ class NodeTemplatesResource {
     core.int optionsRequestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -24440,7 +23876,7 @@ class NodeTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -24500,8 +23936,6 @@ class NodeTemplatesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -24520,7 +23954,7 @@ class NodeTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -24615,8 +24049,6 @@ class NodeTemplatesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -24643,7 +24075,7 @@ class NodeTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -24694,8 +24126,6 @@ class NodeTemplatesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -24714,7 +24144,7 @@ class NodeTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -24765,8 +24195,6 @@ class NodeTemplatesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -24785,7 +24213,7 @@ class NodeTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -24894,8 +24322,6 @@ class NodeTypesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -24922,7 +24348,7 @@ class NodeTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/nodeTypes';
 
@@ -24968,8 +24394,6 @@ class NodeTypesResource {
     core.String nodeType, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -24984,7 +24408,7 @@ class NodeTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -25079,8 +24503,6 @@ class NodeTypesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -25107,7 +24529,7 @@ class NodeTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -25213,8 +24635,6 @@ class PacketMirroringsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -25241,7 +24661,7 @@ class PacketMirroringsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/packetMirrorings';
 
@@ -25299,8 +24719,6 @@ class PacketMirroringsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -25318,7 +24736,7 @@ class PacketMirroringsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -25364,8 +24782,6 @@ class PacketMirroringsResource {
     core.String packetMirroring, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -25380,7 +24796,7 @@ class PacketMirroringsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -25440,8 +24856,6 @@ class PacketMirroringsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -25460,7 +24874,7 @@ class PacketMirroringsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -25556,8 +24970,6 @@ class PacketMirroringsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -25584,7 +24996,7 @@ class PacketMirroringsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -25651,8 +25063,6 @@ class PacketMirroringsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -25674,7 +25084,7 @@ class PacketMirroringsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -25724,8 +25134,6 @@ class PacketMirroringsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -25744,7 +25152,7 @@ class PacketMirroringsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -25804,8 +25212,6 @@ class ProjectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -25817,7 +25223,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/disableXpnHost';
 
@@ -25869,8 +25275,6 @@ class ProjectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -25886,7 +25290,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/disableXpnResource';
 
@@ -25935,8 +25339,6 @@ class ProjectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -25948,7 +25350,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/enableXpnHost';
 
@@ -26001,8 +25403,6 @@ class ProjectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -26018,7 +25418,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/enableXpnResource';
 
@@ -26053,8 +25453,6 @@ class ProjectsResource {
     core.String project, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -26063,7 +25461,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' + commons.Escaper.ecapeVariable('$project');
+    final _url = 'projects/' + commons.Escaper.ecapeVariable('$project');
 
     final _response = await _requester.request(
       _url,
@@ -26097,8 +25495,6 @@ class ProjectsResource {
     core.String project, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -26107,7 +25503,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'projects/' + commons.Escaper.ecapeVariable('$project') + '/getXpnHost';
 
     final _response = await _requester.request(
@@ -26195,8 +25591,6 @@ class ProjectsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -26220,7 +25614,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/getXpnResources';
 
@@ -26312,8 +25706,6 @@ class ProjectsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -26341,7 +25733,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/listXpnHosts';
 
@@ -26394,8 +25786,6 @@ class ProjectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -26411,7 +25801,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'projects/' + commons.Escaper.ecapeVariable('$project') + '/moveDisk';
 
     final _response = await _requester.request(
@@ -26463,8 +25853,6 @@ class ProjectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -26480,7 +25868,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/moveInstance';
 
@@ -26533,8 +25921,6 @@ class ProjectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -26550,7 +25936,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/setCommonInstanceMetadata';
 
@@ -26605,8 +25991,6 @@ class ProjectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -26622,7 +26006,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/setDefaultNetworkTier';
 
@@ -26678,8 +26062,6 @@ class ProjectsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -26695,7 +26077,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/setUsageExportBucket';
 
@@ -26759,8 +26141,6 @@ class RegionAutoscalersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -26778,7 +26158,7 @@ class RegionAutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -26824,8 +26204,6 @@ class RegionAutoscalersResource {
     core.String autoscaler, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -26840,7 +26218,7 @@ class RegionAutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -26900,8 +26278,6 @@ class RegionAutoscalersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -26920,7 +26296,7 @@ class RegionAutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -27015,8 +26391,6 @@ class RegionAutoscalersResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -27043,7 +26417,7 @@ class RegionAutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -27110,8 +26484,6 @@ class RegionAutoscalersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -27133,7 +26505,7 @@ class RegionAutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -27197,8 +26569,6 @@ class RegionAutoscalersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -27220,7 +26590,7 @@ class RegionAutoscalersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -27287,8 +26657,6 @@ class RegionBackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -27306,7 +26674,7 @@ class RegionBackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -27352,8 +26720,6 @@ class RegionBackendServicesResource {
     core.String backendService, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -27368,7 +26734,7 @@ class RegionBackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -27420,8 +26786,6 @@ class RegionBackendServicesResource {
     core.String backendService, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -27440,7 +26804,7 @@ class RegionBackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -27504,8 +26868,6 @@ class RegionBackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -27524,7 +26886,7 @@ class RegionBackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -27620,8 +26982,6 @@ class RegionBackendServicesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -27648,7 +27008,7 @@ class RegionBackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -27716,8 +27076,6 @@ class RegionBackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -27739,7 +27097,7 @@ class RegionBackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -27806,8 +27164,6 @@ class RegionBackendServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -27829,7 +27185,7 @@ class RegionBackendServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -27936,8 +27292,6 @@ class RegionCommitmentsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -27964,7 +27318,7 @@ class RegionCommitmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/commitments';
 
@@ -28010,8 +27364,6 @@ class RegionCommitmentsResource {
     core.String commitment, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -28026,7 +27378,7 @@ class RegionCommitmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -28086,8 +27438,6 @@ class RegionCommitmentsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -28106,7 +27456,7 @@ class RegionCommitmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -28201,8 +27551,6 @@ class RegionCommitmentsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -28229,7 +27577,7 @@ class RegionCommitmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -28283,8 +27631,6 @@ class RegionDiskTypesResource {
     core.String diskType, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -28299,7 +27645,7 @@ class RegionDiskTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -28395,8 +27741,6 @@ class RegionDiskTypesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -28423,7 +27767,7 @@ class RegionDiskTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -28495,8 +27839,6 @@ class RegionDisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -28518,7 +27860,7 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -28583,8 +27925,6 @@ class RegionDisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -28606,7 +27946,7 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -28671,8 +28011,6 @@ class RegionDisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -28690,7 +28028,7 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -28736,8 +28074,6 @@ class RegionDisksResource {
     core.String disk, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -28752,7 +28088,7 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -28803,8 +28139,6 @@ class RegionDisksResource {
     core.int optionsRequestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -28824,7 +28158,7 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -28888,8 +28222,6 @@ class RegionDisksResource {
     core.String sourceImage,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -28911,7 +28243,7 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -29007,8 +28339,6 @@ class RegionDisksResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -29035,7 +28365,7 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -29097,8 +28427,6 @@ class RegionDisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -29120,7 +28448,7 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -29185,8 +28513,6 @@ class RegionDisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -29208,7 +28534,7 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -29261,8 +28587,6 @@ class RegionDisksResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -29281,7 +28605,7 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -29346,8 +28670,6 @@ class RegionDisksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -29369,7 +28691,7 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -29420,8 +28742,6 @@ class RegionDisksResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -29440,7 +28760,7 @@ class RegionDisksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -29509,8 +28829,6 @@ class RegionHealthCheckServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -29528,7 +28846,7 @@ class RegionHealthCheckServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -29573,8 +28891,6 @@ class RegionHealthCheckServicesResource {
     core.String healthCheckService, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -29589,7 +28905,7 @@ class RegionHealthCheckServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -29649,8 +28965,6 @@ class RegionHealthCheckServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -29669,7 +28983,7 @@ class RegionHealthCheckServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -29765,8 +29079,6 @@ class RegionHealthCheckServicesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -29793,7 +29105,7 @@ class RegionHealthCheckServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -29859,8 +29171,6 @@ class RegionHealthCheckServicesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -29882,7 +29192,7 @@ class RegionHealthCheckServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -29949,8 +29259,6 @@ class RegionHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -29968,7 +29276,7 @@ class RegionHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -30016,8 +29324,6 @@ class RegionHealthChecksResource {
     core.String healthCheck, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -30032,7 +29338,7 @@ class RegionHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -30092,8 +29398,6 @@ class RegionHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -30112,7 +29416,7 @@ class RegionHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -30208,8 +29512,6 @@ class RegionHealthChecksResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -30236,7 +29538,7 @@ class RegionHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -30303,8 +29605,6 @@ class RegionHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -30326,7 +29626,7 @@ class RegionHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -30391,8 +29691,6 @@ class RegionHealthChecksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -30414,7 +29712,7 @@ class RegionHealthChecksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -30497,8 +29795,6 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -30520,7 +29816,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -30570,8 +29866,6 @@ class RegionInstanceGroupManagersResource {
     core.String instanceGroupManager, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -30590,7 +29884,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -30660,8 +29954,6 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -30683,7 +29975,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -30743,8 +30035,6 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -30762,7 +30052,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -30836,8 +30126,6 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -30859,7 +30147,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -30909,8 +30197,6 @@ class RegionInstanceGroupManagersResource {
     core.String instanceGroupManager, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -30929,7 +30215,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -30974,8 +30260,6 @@ class RegionInstanceGroupManagersResource {
     core.String instanceGroupManager, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -30990,7 +30274,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -31057,8 +30341,6 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -31077,7 +30359,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -31172,8 +30454,6 @@ class RegionInstanceGroupManagersResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -31200,7 +30480,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -31304,8 +30584,6 @@ class RegionInstanceGroupManagersResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -31335,7 +30613,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -31439,8 +30717,6 @@ class RegionInstanceGroupManagersResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -31470,7 +30746,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -31575,8 +30851,6 @@ class RegionInstanceGroupManagersResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -31606,7 +30880,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -31675,8 +30949,6 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -31698,7 +30970,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -31764,8 +31036,6 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -31787,7 +31057,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -31862,8 +31132,6 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -31885,7 +31153,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -31961,8 +31229,6 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -31984,7 +31250,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -32048,8 +31314,6 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -32071,7 +31335,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -32136,8 +31400,6 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -32159,7 +31421,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -32226,8 +31488,6 @@ class RegionInstanceGroupManagersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -32249,7 +31509,7 @@ class RegionInstanceGroupManagersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -32301,8 +31561,6 @@ class RegionInstanceGroupsResource {
     core.String instanceGroup, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -32317,7 +31575,7 @@ class RegionInstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -32413,8 +31671,6 @@ class RegionInstanceGroupsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -32441,7 +31697,7 @@ class RegionInstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -32547,8 +31803,6 @@ class RegionInstanceGroupsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -32582,7 +31836,7 @@ class RegionInstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -32646,8 +31900,6 @@ class RegionInstanceGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -32669,7 +31921,7 @@ class RegionInstanceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -32740,8 +31992,6 @@ class RegionNetworkEndpointGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -32759,7 +32009,7 @@ class RegionNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -32807,8 +32057,6 @@ class RegionNetworkEndpointGroupsResource {
     core.String networkEndpointGroup, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -32823,7 +32071,7 @@ class RegionNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -32883,8 +32131,6 @@ class RegionNetworkEndpointGroupsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -32903,7 +32149,7 @@ class RegionNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -32999,8 +32245,6 @@ class RegionNetworkEndpointGroupsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -33027,7 +32271,7 @@ class RegionNetworkEndpointGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -33095,8 +32339,6 @@ class RegionNotificationEndpointsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -33114,7 +32356,7 @@ class RegionNotificationEndpointsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -33161,8 +32403,6 @@ class RegionNotificationEndpointsResource {
     core.String notificationEndpoint, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -33177,7 +32417,7 @@ class RegionNotificationEndpointsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -33237,8 +32477,6 @@ class RegionNotificationEndpointsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -33257,7 +32495,7 @@ class RegionNotificationEndpointsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -33352,8 +32590,6 @@ class RegionNotificationEndpointsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -33380,7 +32616,7 @@ class RegionNotificationEndpointsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -33430,8 +32666,6 @@ class RegionOperationsResource {
     core.String operation, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -33446,7 +32680,7 @@ class RegionOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -33492,8 +32726,6 @@ class RegionOperationsResource {
     core.String operation, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -33508,7 +32740,7 @@ class RegionOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -33604,8 +32836,6 @@ class RegionOperationsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -33632,7 +32862,7 @@ class RegionOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -33692,8 +32922,6 @@ class RegionOperationsResource {
     core.String operation, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -33708,7 +32936,7 @@ class RegionOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -33776,8 +33004,6 @@ class RegionSslCertificatesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -33795,7 +33021,7 @@ class RegionSslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -33843,8 +33069,6 @@ class RegionSslCertificatesResource {
     core.String sslCertificate, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -33859,7 +33083,7 @@ class RegionSslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -33919,8 +33143,6 @@ class RegionSslCertificatesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -33939,7 +33161,7 @@ class RegionSslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -34035,8 +33257,6 @@ class RegionSslCertificatesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -34063,7 +33283,7 @@ class RegionSslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -34130,8 +33350,6 @@ class RegionTargetHttpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -34149,7 +33367,7 @@ class RegionTargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -34197,8 +33415,6 @@ class RegionTargetHttpProxiesResource {
     core.String targetHttpProxy, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -34213,7 +33429,7 @@ class RegionTargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -34273,8 +33489,6 @@ class RegionTargetHttpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -34293,7 +33507,7 @@ class RegionTargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -34389,8 +33603,6 @@ class RegionTargetHttpProxiesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -34417,7 +33629,7 @@ class RegionTargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -34480,8 +33692,6 @@ class RegionTargetHttpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -34503,7 +33713,7 @@ class RegionTargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -34572,8 +33782,6 @@ class RegionTargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -34591,7 +33799,7 @@ class RegionTargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -34639,8 +33847,6 @@ class RegionTargetHttpsProxiesResource {
     core.String targetHttpsProxy, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -34655,7 +33861,7 @@ class RegionTargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -34715,8 +33921,6 @@ class RegionTargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -34735,7 +33939,7 @@ class RegionTargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -34831,8 +34035,6 @@ class RegionTargetHttpsProxiesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -34859,7 +34061,7 @@ class RegionTargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -34923,8 +34125,6 @@ class RegionTargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -34946,7 +34146,7 @@ class RegionTargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -35011,8 +34211,6 @@ class RegionTargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -35034,7 +34232,7 @@ class RegionTargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -35092,8 +34290,6 @@ class RegionUrlMapsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -35111,7 +34307,7 @@ class RegionUrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -35159,8 +34355,6 @@ class RegionUrlMapsResource {
     core.String urlMap, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -35175,7 +34369,7 @@ class RegionUrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -35224,8 +34418,6 @@ class RegionUrlMapsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -35244,7 +34436,7 @@ class RegionUrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -35340,8 +34532,6 @@ class RegionUrlMapsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -35368,7 +34558,7 @@ class RegionUrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -35425,8 +34615,6 @@ class RegionUrlMapsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -35448,7 +34636,7 @@ class RegionUrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -35503,8 +34691,6 @@ class RegionUrlMapsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -35526,7 +34712,7 @@ class RegionUrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -35579,8 +34765,6 @@ class RegionUrlMapsResource {
     core.String urlMap, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -35599,7 +34783,7 @@ class RegionUrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -35652,8 +34836,6 @@ class RegionsResource {
     core.String region, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -35665,7 +34847,7 @@ class RegionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region');
@@ -35754,8 +34936,6 @@ class RegionsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -35779,7 +34959,8 @@ class RegionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/regions';
+    final _url =
+        'projects/' + commons.Escaper.ecapeVariable('$project') + '/regions';
 
     final _response = await _requester.request(
       _url,
@@ -35881,8 +35062,6 @@ class ReservationsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -35909,7 +35088,7 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/reservations';
 
@@ -35967,8 +35146,6 @@ class ReservationsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -35986,7 +35163,7 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -36032,8 +35209,6 @@ class ReservationsResource {
     core.String reservation, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -36048,7 +35223,7 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -36100,8 +35275,6 @@ class ReservationsResource {
     core.int optionsRequestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -36121,7 +35294,7 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -36182,8 +35355,6 @@ class ReservationsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -36202,7 +35373,7 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -36298,8 +35469,6 @@ class ReservationsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -36326,7 +35495,7 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -36390,8 +35559,6 @@ class ReservationsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -36413,7 +35580,7 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -36466,8 +35633,6 @@ class ReservationsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -36486,7 +35651,7 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -36537,8 +35702,6 @@ class ReservationsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -36557,7 +35720,7 @@ class ReservationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -36666,8 +35829,6 @@ class ResourcePoliciesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -36694,7 +35855,7 @@ class ResourcePoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/resourcePolicies';
 
@@ -36752,8 +35913,6 @@ class ResourcePoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -36771,7 +35930,7 @@ class ResourcePoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -36817,8 +35976,6 @@ class ResourcePoliciesResource {
     core.String resourcePolicy, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -36833,7 +35990,7 @@ class ResourcePoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -36885,8 +36042,6 @@ class ResourcePoliciesResource {
     core.int optionsRequestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -36906,7 +36061,7 @@ class ResourcePoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -36965,8 +36120,6 @@ class ResourcePoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -36985,7 +36138,7 @@ class ResourcePoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -37081,8 +36234,6 @@ class ResourcePoliciesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -37109,7 +36260,7 @@ class ResourcePoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -37160,8 +36311,6 @@ class ResourcePoliciesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -37180,7 +36329,7 @@ class ResourcePoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -37231,8 +36380,6 @@ class ResourcePoliciesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -37251,7 +36398,7 @@ class ResourcePoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -37360,8 +36507,6 @@ class RoutersResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -37388,7 +36533,7 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/routers';
 
@@ -37446,8 +36591,6 @@ class RoutersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -37465,7 +36608,7 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -37513,8 +36656,6 @@ class RoutersResource {
     core.String router, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -37529,7 +36670,7 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -37630,8 +36771,6 @@ class RoutersResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -37661,7 +36800,7 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -37709,8 +36848,6 @@ class RoutersResource {
     core.String router, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -37725,7 +36862,7 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -37786,8 +36923,6 @@ class RoutersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -37806,7 +36941,7 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -37901,8 +37036,6 @@ class RoutersResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -37929,7 +37062,7 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -37996,8 +37129,6 @@ class RoutersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -38019,7 +37150,7 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -38071,8 +37202,6 @@ class RoutersResource {
     core.String router, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -38091,7 +37220,7 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -38162,8 +37291,6 @@ class RoutersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -38185,7 +37312,7 @@ class RoutersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -38248,8 +37375,6 @@ class RoutesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -38264,7 +37389,7 @@ class RoutesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/routes/' +
         commons.Escaper.ecapeVariable('$route');
@@ -38306,8 +37431,6 @@ class RoutesResource {
     core.String route, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -38319,7 +37442,7 @@ class RoutesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/routes/' +
         commons.Escaper.ecapeVariable('$route');
@@ -38372,8 +37495,6 @@ class RoutesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -38389,7 +37510,7 @@ class RoutesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/routes';
 
@@ -38478,8 +37599,6 @@ class RoutesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -38503,7 +37622,7 @@ class RoutesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/routes';
 
@@ -38551,8 +37670,6 @@ class SecurityPoliciesResource {
     core.String securityPolicy, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -38568,7 +37685,7 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy') +
@@ -38624,8 +37741,6 @@ class SecurityPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -38640,7 +37755,7 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy');
@@ -38680,8 +37795,6 @@ class SecurityPoliciesResource {
     core.String securityPolicy, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -38693,7 +37806,7 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy');
@@ -38738,8 +37851,6 @@ class SecurityPoliciesResource {
     core.int priority,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -38754,7 +37865,7 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy') +
@@ -38809,8 +37920,6 @@ class SecurityPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -38826,7 +37935,7 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies';
 
@@ -38915,8 +38024,6 @@ class SecurityPoliciesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -38940,7 +38047,7 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies';
 
@@ -39032,8 +38139,6 @@ class SecurityPoliciesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -39057,7 +38162,7 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/listPreconfiguredExpressionSets';
 
@@ -39117,8 +38222,6 @@ class SecurityPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -39137,7 +38240,7 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy');
@@ -39184,8 +38287,6 @@ class SecurityPoliciesResource {
     core.int priority,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -39204,7 +38305,7 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy') +
@@ -39249,8 +38350,6 @@ class SecurityPoliciesResource {
     core.int priority,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -39265,7 +38364,7 @@ class SecurityPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/securityPolicies/' +
         commons.Escaper.ecapeVariable('$securityPolicy') +
@@ -39333,8 +38432,6 @@ class SnapshotsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -39349,7 +38446,7 @@ class SnapshotsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$snapshot');
@@ -39391,8 +38488,6 @@ class SnapshotsResource {
     core.String snapshot, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -39404,7 +38499,7 @@ class SnapshotsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$snapshot');
@@ -39449,8 +38544,6 @@ class SnapshotsResource {
     core.int optionsRequestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -39467,7 +38560,7 @@ class SnapshotsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -39558,8 +38651,6 @@ class SnapshotsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -39583,7 +38674,7 @@ class SnapshotsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots';
 
@@ -39628,8 +38719,6 @@ class SnapshotsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -39645,7 +38734,7 @@ class SnapshotsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -39692,8 +38781,6 @@ class SnapshotsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -39709,7 +38796,7 @@ class SnapshotsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -39754,8 +38841,6 @@ class SnapshotsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -39771,7 +38856,7 @@ class SnapshotsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/snapshots/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -39879,8 +38964,6 @@ class SslCertificatesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -39907,7 +38990,7 @@ class SslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/sslCertificates';
 
@@ -39961,8 +39044,6 @@ class SslCertificatesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -39977,7 +39058,7 @@ class SslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/sslCertificates/' +
         commons.Escaper.ecapeVariable('$sslCertificate');
@@ -40019,8 +39100,6 @@ class SslCertificatesResource {
     core.String sslCertificate, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -40032,7 +39111,7 @@ class SslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/sslCertificates/' +
         commons.Escaper.ecapeVariable('$sslCertificate');
@@ -40086,8 +39165,6 @@ class SslCertificatesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -40103,7 +39180,7 @@ class SslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/sslCertificates';
 
@@ -40193,8 +39270,6 @@ class SslCertificatesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -40218,7 +39293,7 @@ class SslCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/sslCertificates';
 
@@ -40280,8 +39355,6 @@ class SslPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -40296,7 +39369,7 @@ class SslPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/sslPolicies/' +
         commons.Escaper.ecapeVariable('$sslPolicy');
@@ -40335,8 +39408,6 @@ class SslPoliciesResource {
     core.String sslPolicy, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -40348,7 +39419,7 @@ class SslPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/sslPolicies/' +
         commons.Escaper.ecapeVariable('$sslPolicy');
@@ -40402,8 +39473,6 @@ class SslPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -40419,7 +39488,7 @@ class SslPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/sslPolicies';
 
@@ -40509,8 +39578,6 @@ class SslPoliciesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -40534,7 +39601,7 @@ class SslPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/sslPolicies';
 
@@ -40624,8 +39691,6 @@ class SslPoliciesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -40649,7 +39714,7 @@ class SslPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/sslPolicies/listAvailableFeatures';
 
@@ -40705,8 +39770,6 @@ class SslPoliciesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -40725,7 +39788,7 @@ class SslPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/sslPolicies/' +
         commons.Escaper.ecapeVariable('$sslPolicy');
@@ -40830,8 +39893,6 @@ class SubnetworksResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -40858,7 +39919,7 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/subnetworks';
 
@@ -40916,8 +39977,6 @@ class SubnetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -40935,7 +39994,7 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -40998,8 +40057,6 @@ class SubnetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -41021,7 +40078,7 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -41071,8 +40128,6 @@ class SubnetworksResource {
     core.String subnetwork, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -41087,7 +40142,7 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -41139,8 +40194,6 @@ class SubnetworksResource {
     core.int optionsRequestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -41160,7 +40213,7 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -41220,8 +40273,6 @@ class SubnetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -41240,7 +40291,7 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -41335,8 +40386,6 @@ class SubnetworksResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -41363,7 +40412,7 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -41454,8 +40503,6 @@ class SubnetworksResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -41479,7 +40526,7 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/subnetworks/listUsable';
 
@@ -41554,8 +40601,6 @@ class SubnetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -41580,7 +40625,7 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -41632,8 +40677,6 @@ class SubnetworksResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -41652,7 +40695,7 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -41718,8 +40761,6 @@ class SubnetworksResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -41741,7 +40782,7 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -41792,8 +40833,6 @@ class SubnetworksResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -41812,7 +40851,7 @@ class SubnetworksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -41877,8 +40916,6 @@ class TargetGrpcProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -41893,7 +40930,7 @@ class TargetGrpcProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetGrpcProxies/' +
         commons.Escaper.ecapeVariable('$targetGrpcProxy');
@@ -41933,8 +40970,6 @@ class TargetGrpcProxiesResource {
     core.String targetGrpcProxy, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -41946,7 +40981,7 @@ class TargetGrpcProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetGrpcProxies/' +
         commons.Escaper.ecapeVariable('$targetGrpcProxy');
@@ -42000,8 +41035,6 @@ class TargetGrpcProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -42017,7 +41050,7 @@ class TargetGrpcProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetGrpcProxies';
 
@@ -42106,8 +41139,6 @@ class TargetGrpcProxiesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -42131,7 +41162,7 @@ class TargetGrpcProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetGrpcProxies';
 
@@ -42192,8 +41223,6 @@ class TargetGrpcProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -42212,7 +41241,7 @@ class TargetGrpcProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetGrpcProxies/' +
         commons.Escaper.ecapeVariable('$targetGrpcProxy');
@@ -42318,8 +41347,6 @@ class TargetHttpProxiesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -42346,7 +41373,7 @@ class TargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/targetHttpProxies';
 
@@ -42400,8 +41427,6 @@ class TargetHttpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -42416,7 +41441,7 @@ class TargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpProxy');
@@ -42458,8 +41483,6 @@ class TargetHttpProxiesResource {
     core.String targetHttpProxy, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -42471,7 +41494,7 @@ class TargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpProxy');
@@ -42525,8 +41548,6 @@ class TargetHttpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -42542,7 +41563,7 @@ class TargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpProxies';
 
@@ -42632,8 +41653,6 @@ class TargetHttpProxiesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -42657,7 +41676,7 @@ class TargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpProxies';
 
@@ -42718,8 +41737,6 @@ class TargetHttpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -42738,7 +41755,7 @@ class TargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpProxy');
@@ -42796,8 +41813,6 @@ class TargetHttpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -42816,7 +41831,7 @@ class TargetHttpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/targetHttpProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpProxy') +
@@ -42923,8 +41938,6 @@ class TargetHttpsProxiesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -42951,7 +41964,7 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/targetHttpsProxies';
 
@@ -43005,8 +42018,6 @@ class TargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -43021,7 +42032,7 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy');
@@ -43063,8 +42074,6 @@ class TargetHttpsProxiesResource {
     core.String targetHttpsProxy, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -43076,7 +42085,7 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy');
@@ -43130,8 +42139,6 @@ class TargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -43147,7 +42154,7 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies';
 
@@ -43237,8 +42244,6 @@ class TargetHttpsProxiesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -43262,7 +42267,7 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies';
 
@@ -43323,8 +42328,6 @@ class TargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -43343,7 +42346,7 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy');
@@ -43400,8 +42403,6 @@ class TargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -43420,7 +42421,7 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy') +
@@ -43480,8 +42481,6 @@ class TargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -43500,7 +42499,7 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy') +
@@ -43564,8 +42563,6 @@ class TargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -43584,7 +42581,7 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy') +
@@ -43644,8 +42641,6 @@ class TargetHttpsProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -43664,7 +42659,7 @@ class TargetHttpsProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/targetHttpsProxies/' +
         commons.Escaper.ecapeVariable('$targetHttpsProxy') +
@@ -43770,8 +42765,6 @@ class TargetInstancesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -43798,7 +42791,7 @@ class TargetInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/targetInstances';
 
@@ -43856,8 +42849,6 @@ class TargetInstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -43875,7 +42866,7 @@ class TargetInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -43923,8 +42914,6 @@ class TargetInstancesResource {
     core.String targetInstance, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -43939,7 +42928,7 @@ class TargetInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -43999,8 +42988,6 @@ class TargetInstancesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -44019,7 +43006,7 @@ class TargetInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -44115,8 +43102,6 @@ class TargetInstancesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -44143,7 +43128,7 @@ class TargetInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -44212,8 +43197,6 @@ class TargetPoolsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -44235,7 +43218,7 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -44300,8 +43283,6 @@ class TargetPoolsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -44323,7 +43304,7 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -44425,8 +43406,6 @@ class TargetPoolsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -44453,7 +43432,7 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/targetPools';
 
@@ -44511,8 +43490,6 @@ class TargetPoolsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -44530,7 +43507,7 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -44578,8 +43555,6 @@ class TargetPoolsResource {
     core.String targetPool, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -44594,7 +43569,7 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -44646,8 +43621,6 @@ class TargetPoolsResource {
     core.String targetPool, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -44666,7 +43639,7 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -44728,8 +43701,6 @@ class TargetPoolsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -44748,7 +43719,7 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -44844,8 +43815,6 @@ class TargetPoolsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -44872,7 +43841,7 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -44935,8 +43904,6 @@ class TargetPoolsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -44958,7 +43925,7 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -45023,8 +43990,6 @@ class TargetPoolsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -45046,7 +44011,7 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -45114,8 +44079,6 @@ class TargetPoolsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -45140,7 +44103,7 @@ class TargetPoolsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -45204,8 +44167,6 @@ class TargetSslProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -45220,7 +44181,7 @@ class TargetSslProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy');
@@ -45262,8 +44223,6 @@ class TargetSslProxiesResource {
     core.String targetSslProxy, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -45275,7 +44234,7 @@ class TargetSslProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy');
@@ -45329,8 +44288,6 @@ class TargetSslProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -45346,7 +44303,7 @@ class TargetSslProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies';
 
@@ -45436,8 +44393,6 @@ class TargetSslProxiesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -45461,7 +44416,7 @@ class TargetSslProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies';
 
@@ -45519,8 +44474,6 @@ class TargetSslProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -45539,7 +44492,7 @@ class TargetSslProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy') +
@@ -45599,8 +44552,6 @@ class TargetSslProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -45619,7 +44570,7 @@ class TargetSslProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy') +
@@ -45679,8 +44630,6 @@ class TargetSslProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -45699,7 +44648,7 @@ class TargetSslProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy') +
@@ -45761,8 +44710,6 @@ class TargetSslProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -45781,7 +44728,7 @@ class TargetSslProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetSslProxies/' +
         commons.Escaper.ecapeVariable('$targetSslProxy') +
@@ -45843,8 +44790,6 @@ class TargetTcpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -45859,7 +44804,7 @@ class TargetTcpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetTcpProxies/' +
         commons.Escaper.ecapeVariable('$targetTcpProxy');
@@ -45901,8 +44846,6 @@ class TargetTcpProxiesResource {
     core.String targetTcpProxy, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -45914,7 +44857,7 @@ class TargetTcpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetTcpProxies/' +
         commons.Escaper.ecapeVariable('$targetTcpProxy');
@@ -45968,8 +44911,6 @@ class TargetTcpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -45985,7 +44926,7 @@ class TargetTcpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetTcpProxies';
 
@@ -46075,8 +45016,6 @@ class TargetTcpProxiesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -46100,7 +45039,7 @@ class TargetTcpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetTcpProxies';
 
@@ -46158,8 +45097,6 @@ class TargetTcpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -46178,7 +45115,7 @@ class TargetTcpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetTcpProxies/' +
         commons.Escaper.ecapeVariable('$targetTcpProxy') +
@@ -46238,8 +45175,6 @@ class TargetTcpProxiesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -46258,7 +45193,7 @@ class TargetTcpProxiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/targetTcpProxies/' +
         commons.Escaper.ecapeVariable('$targetTcpProxy') +
@@ -46364,8 +45299,6 @@ class TargetVpnGatewaysResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -46392,7 +45325,7 @@ class TargetVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/targetVpnGateways';
 
@@ -46450,8 +45383,6 @@ class TargetVpnGatewaysResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -46469,7 +45400,7 @@ class TargetVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -46517,8 +45448,6 @@ class TargetVpnGatewaysResource {
     core.String targetVpnGateway, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -46533,7 +45462,7 @@ class TargetVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -46593,8 +45522,6 @@ class TargetVpnGatewaysResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -46613,7 +45540,7 @@ class TargetVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -46709,8 +45636,6 @@ class TargetVpnGatewaysResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -46737,7 +45662,7 @@ class TargetVpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -46844,8 +45769,6 @@ class UrlMapsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -46872,7 +45795,7 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/urlMaps';
 
@@ -46926,8 +45849,6 @@ class UrlMapsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -46942,7 +45863,7 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap');
@@ -46984,8 +45905,6 @@ class UrlMapsResource {
     core.String urlMap, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -46997,7 +45916,7 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap');
@@ -47050,8 +45969,6 @@ class UrlMapsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -47067,7 +45984,7 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps';
 
@@ -47128,8 +46045,6 @@ class UrlMapsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -47148,7 +46063,7 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap') +
@@ -47239,8 +46154,6 @@ class UrlMapsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -47264,7 +46177,7 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps';
 
@@ -47325,8 +46238,6 @@ class UrlMapsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -47345,7 +46256,7 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap');
@@ -47404,8 +46315,6 @@ class UrlMapsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -47424,7 +46333,7 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap');
@@ -47471,8 +46380,6 @@ class UrlMapsResource {
     core.String urlMap, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -47488,7 +46395,7 @@ class UrlMapsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/urlMaps/' +
         commons.Escaper.ecapeVariable('$urlMap') +
@@ -47595,8 +46502,6 @@ class VpnGatewaysResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -47623,7 +46528,7 @@ class VpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/vpnGateways';
 
@@ -47681,8 +46586,6 @@ class VpnGatewaysResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -47700,7 +46603,7 @@ class VpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -47748,8 +46651,6 @@ class VpnGatewaysResource {
     core.String vpnGateway, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -47764,7 +46665,7 @@ class VpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -47811,8 +46712,6 @@ class VpnGatewaysResource {
     core.String vpnGateway, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -47827,7 +46726,7 @@ class VpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -47888,8 +46787,6 @@ class VpnGatewaysResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -47908,7 +46805,7 @@ class VpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -48004,8 +46901,6 @@ class VpnGatewaysResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -48032,7 +46927,7 @@ class VpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -48097,8 +46992,6 @@ class VpnGatewaysResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -48120,7 +47013,7 @@ class VpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -48171,8 +47064,6 @@ class VpnGatewaysResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -48191,7 +47082,7 @@ class VpnGatewaysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -48300,8 +47191,6 @@ class VpnTunnelsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -48328,7 +47217,7 @@ class VpnTunnelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/aggregated/vpnTunnels';
 
@@ -48386,8 +47275,6 @@ class VpnTunnelsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -48405,7 +47292,7 @@ class VpnTunnelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -48453,8 +47340,6 @@ class VpnTunnelsResource {
     core.String vpnTunnel, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -48469,7 +47354,7 @@ class VpnTunnelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -48528,8 +47413,6 @@ class VpnTunnelsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -48548,7 +47431,7 @@ class VpnTunnelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -48644,8 +47527,6 @@ class VpnTunnelsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -48672,7 +47553,7 @@ class VpnTunnelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$region') +
@@ -48722,8 +47603,6 @@ class ZoneOperationsResource {
     core.String operation, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -48738,7 +47617,7 @@ class ZoneOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -48784,8 +47663,6 @@ class ZoneOperationsResource {
     core.String operation, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -48800,7 +47677,7 @@ class ZoneOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -48896,8 +47773,6 @@ class ZoneOperationsResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -48924,7 +47799,7 @@ class ZoneOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -48984,8 +47859,6 @@ class ZoneOperationsResource {
     core.String operation, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -49000,7 +47873,7 @@ class ZoneOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone') +
@@ -49051,8 +47924,6 @@ class ZonesResource {
     core.String zone, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -49064,7 +47935,7 @@ class ZonesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/zones/' +
         commons.Escaper.ecapeVariable('$zone');
@@ -49153,8 +48024,6 @@ class ZonesResource {
     core.bool returnPartialSuccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -49178,7 +48047,8 @@ class ZonesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones';
+    final _url =
+        'projects/' + commons.Escaper.ecapeVariable('$project') + '/zones';
 
     final _response = await _requester.request(
       _url,

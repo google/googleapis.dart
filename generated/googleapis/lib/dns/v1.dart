@@ -114,8 +114,6 @@ class ChangesResource {
     core.String clientOperationId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -134,7 +132,7 @@ class ChangesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone') +
@@ -182,8 +180,6 @@ class ChangesResource {
     core.String clientOperationId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -201,7 +197,7 @@ class ChangesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone') +
@@ -256,8 +252,6 @@ class ChangesResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -281,7 +275,7 @@ class ChangesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone') +
@@ -339,8 +333,6 @@ class DnsKeysResource {
     core.String digestType,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -361,7 +353,7 @@ class DnsKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone') +
@@ -413,8 +405,6 @@ class DnsKeysResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -435,7 +425,7 @@ class DnsKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone') +
@@ -488,8 +478,6 @@ class ManagedZoneOperationsResource {
     core.String clientOperationId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -507,7 +495,7 @@ class ManagedZoneOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone') +
@@ -560,8 +548,6 @@ class ManagedZoneOperationsResource {
     core.String sortBy,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -582,7 +568,7 @@ class ManagedZoneOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone') +
@@ -631,8 +617,6 @@ class ManagedZonesResource {
     core.String clientOperationId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -648,7 +632,7 @@ class ManagedZonesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones';
 
@@ -689,8 +673,6 @@ class ManagedZonesResource {
     core.String clientOperationId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -705,7 +687,7 @@ class ManagedZonesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone');
@@ -747,8 +729,6 @@ class ManagedZonesResource {
     core.String clientOperationId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -763,7 +743,7 @@ class ManagedZonesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone');
@@ -808,8 +788,6 @@ class ManagedZonesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -827,7 +805,7 @@ class ManagedZonesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones';
 
@@ -872,8 +850,6 @@ class ManagedZonesResource {
     core.String clientOperationId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -892,7 +868,7 @@ class ManagedZonesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone');
@@ -938,8 +914,6 @@ class ManagedZonesResource {
     core.String clientOperationId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -958,7 +932,7 @@ class ManagedZonesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone');
@@ -1006,8 +980,6 @@ class PoliciesResource {
     core.String clientOperationId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1023,7 +995,7 @@ class PoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/policies';
 
@@ -1065,8 +1037,6 @@ class PoliciesResource {
     core.String clientOperationId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1081,7 +1051,7 @@ class PoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/policies/' +
         commons.Escaper.ecapeVariable('$policy');
@@ -1123,8 +1093,6 @@ class PoliciesResource {
     core.String clientOperationId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1139,7 +1107,7 @@ class PoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/policies/' +
         commons.Escaper.ecapeVariable('$policy');
@@ -1180,8 +1148,6 @@ class PoliciesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1196,7 +1162,7 @@ class PoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/policies';
 
@@ -1241,8 +1207,6 @@ class PoliciesResource {
     core.String clientOperationId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1261,7 +1225,7 @@ class PoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/policies/' +
         commons.Escaper.ecapeVariable('$policy');
@@ -1308,8 +1272,6 @@ class PoliciesResource {
     core.String clientOperationId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1328,7 +1290,7 @@ class PoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/policies/' +
         commons.Escaper.ecapeVariable('$policy');
@@ -1374,8 +1336,6 @@ class ProjectsResource {
     core.String clientOperationId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1387,7 +1347,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' + commons.Escaper.ecapeVariable('$project');
+    final _url = 'dns/v1/projects/' + commons.Escaper.ecapeVariable('$project');
 
     final _response = await _requester.request(
       _url,
@@ -1443,8 +1403,6 @@ class ResourceRecordSetsResource {
     core.String type,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1468,7 +1426,7 @@ class ResourceRecordSetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'dns/v1/projects/' +
+    final _url = 'dns/v1/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/managedZones/' +
         commons.Escaper.ecapeVariable('$managedZone') +

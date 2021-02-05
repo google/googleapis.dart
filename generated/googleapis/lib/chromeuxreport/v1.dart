@@ -81,8 +81,6 @@ class RecordsResource {
     QueryRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -92,7 +90,7 @@ class RecordsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/records:queryRecord';
+    const _url = 'v1/records:queryRecord';
 
     final _response = await _requester.request(
       _url,

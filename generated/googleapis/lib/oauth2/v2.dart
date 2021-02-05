@@ -84,8 +84,6 @@ class Oauth2Api {
     core.String idToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (accessToken != null) {
       _queryParams['access_token'] = [accessToken];
@@ -97,7 +95,7 @@ class Oauth2Api {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'oauth2/v2/tokeninfo';
+    const _url = 'oauth2/v2/tokeninfo';
 
     final _response = await _requester.request(
       _url,
@@ -130,14 +128,12 @@ class UserinfoResource {
   async.Future<Userinfo> get({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'oauth2/v2/userinfo';
+    const _url = 'oauth2/v2/userinfo';
 
     final _response = await _requester.request(
       _url,
@@ -176,14 +172,12 @@ class UserinfoV2MeResource {
   async.Future<Userinfo> get({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userinfo/v2/me';
+    const _url = 'userinfo/v2/me';
 
     final _response = await _requester.request(
       _url,

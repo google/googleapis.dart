@@ -229,8 +229,6 @@ class UsersDataSourcesResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -243,7 +241,7 @@ class UsersDataSourcesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
+    final _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
 
     final _response = await _requester.request(
       _url,
@@ -281,8 +279,6 @@ class UsersDataSourcesResource {
     core.String dataSourceId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -294,7 +290,7 @@ class UsersDataSourcesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.Escaper.ecapeVariable('$userId') +
         '/dataSources/' +
         commons.Escaper.ecapeVariable('$dataSourceId');
 
@@ -331,8 +327,6 @@ class UsersDataSourcesResource {
     core.String dataSourceId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -344,7 +338,7 @@ class UsersDataSourcesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.Escaper.ecapeVariable('$userId') +
         '/dataSources/' +
         commons.Escaper.ecapeVariable('$dataSourceId');
 
@@ -386,8 +380,6 @@ class UsersDataSourcesResource {
     core.List<core.String> dataTypeName,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -399,7 +391,7 @@ class UsersDataSourcesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
+    final _url = commons.Escaper.ecapeVariable('$userId') + '/dataSources';
 
     final _response = await _requester.request(
       _url,
@@ -441,8 +433,6 @@ class UsersDataSourcesResource {
     core.String dataSourceId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -458,7 +448,7 @@ class UsersDataSourcesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.Escaper.ecapeVariable('$userId') +
         '/dataSources/' +
         commons.Escaper.ecapeVariable('$dataSourceId');
 
@@ -513,8 +503,6 @@ class UsersDataSourcesDataPointChangesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -532,7 +520,7 @@ class UsersDataSourcesDataPointChangesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.Escaper.ecapeVariable('$userId') +
         '/dataSources/' +
         commons.Escaper.ecapeVariable('$dataSourceId') +
         '/dataPointChanges';
@@ -596,8 +584,6 @@ class UsersDataSourcesDatasetsResource {
     core.String modifiedTimeMillis,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -618,7 +604,7 @@ class UsersDataSourcesDatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.Escaper.ecapeVariable('$userId') +
         '/dataSources/' +
         commons.Escaper.ecapeVariable('$dataSourceId') +
         '/datasets/' +
@@ -683,8 +669,6 @@ class UsersDataSourcesDatasetsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -705,7 +689,7 @@ class UsersDataSourcesDatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.Escaper.ecapeVariable('$userId') +
         '/dataSources/' +
         commons.Escaper.ecapeVariable('$dataSourceId') +
         '/datasets/' +
@@ -761,8 +745,6 @@ class UsersDataSourcesDatasetsResource {
     core.String currentTimeMillis,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -784,7 +766,7 @@ class UsersDataSourcesDatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.Escaper.ecapeVariable('$userId') +
         '/dataSources/' +
         commons.Escaper.ecapeVariable('$dataSourceId') +
         '/datasets/' +
@@ -833,8 +815,6 @@ class UsersDatasetResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -847,7 +827,8 @@ class UsersDatasetResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') + '/dataset:aggregate';
+    final _url =
+        commons.Escaper.ecapeVariable('$userId') + '/dataset:aggregate';
 
     final _response = await _requester.request(
       _url,
@@ -891,8 +872,6 @@ class UsersSessionsResource {
     core.String currentTimeMillis,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -907,7 +886,7 @@ class UsersSessionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.Escaper.ecapeVariable('$userId') +
         '/sessions/' +
         commons.Escaper.ecapeVariable('$sessionId');
 
@@ -968,8 +947,6 @@ class UsersSessionsResource {
     core.String startTime,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -994,7 +971,7 @@ class UsersSessionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') + '/sessions';
+    final _url = commons.Escaper.ecapeVariable('$userId') + '/sessions';
 
     final _response = await _requester.request(
       _url,
@@ -1036,8 +1013,6 @@ class UsersSessionsResource {
     core.String currentTimeMillis,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1056,7 +1031,7 @@ class UsersSessionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariable('$userId') +
+    final _url = commons.Escaper.ecapeVariable('$userId') +
         '/sessions/' +
         commons.Escaper.ecapeVariable('$sessionId');
 

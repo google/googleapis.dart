@@ -114,8 +114,6 @@ class ProjectsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -128,7 +126,8 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':test';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':test';
 
     final _response = await _requester.request(
       _url,
@@ -187,8 +186,6 @@ class ProjectsReleasesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -201,7 +198,8 @@ class ProjectsReleasesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/releases';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/releases';
 
     final _response = await _requester.request(
       _url,
@@ -234,8 +232,6 @@ class ProjectsReleasesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -244,7 +240,7 @@ class ProjectsReleasesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -276,8 +272,6 @@ class ProjectsReleasesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -286,7 +280,7 @@ class ProjectsReleasesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -329,8 +323,6 @@ class ProjectsReleasesResource {
     core.String executableVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -342,7 +334,7 @@ class ProjectsReleasesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':getExecutable';
 
@@ -407,8 +399,6 @@ class ProjectsReleasesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -426,7 +416,8 @@ class ProjectsReleasesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/releases';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/releases';
 
     final _response = await _requester.request(
       _url,
@@ -466,8 +457,6 @@ class ProjectsReleasesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -480,7 +469,7 @@ class ProjectsReleasesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -527,8 +516,6 @@ class ProjectsRulesetsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -541,7 +528,8 @@ class ProjectsRulesetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/rulesets';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/rulesets';
 
     final _response = await _requester.request(
       _url,
@@ -576,8 +564,6 @@ class ProjectsRulesetsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -586,7 +572,7 @@ class ProjectsRulesetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -618,8 +604,6 @@ class ProjectsRulesetsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -628,7 +612,7 @@ class ProjectsRulesetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -680,8 +664,6 @@ class ProjectsRulesetsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -699,7 +681,8 @@ class ProjectsRulesetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/rulesets';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/rulesets';
 
     final _response = await _requester.request(
       _url,

@@ -113,8 +113,6 @@ class ClaimsResource {
     core.String reviewPublisherSiteFilter,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (languageCode != null) {
       _queryParams['languageCode'] = [languageCode];
@@ -141,7 +139,7 @@ class ClaimsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/claims:search';
+    const _url = 'v1alpha1/claims:search';
 
     final _response = await _requester.request(
       _url,
@@ -180,8 +178,6 @@ class PagesResource {
     GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -191,7 +187,7 @@ class PagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/pages';
+    const _url = 'v1alpha1/pages';
 
     final _response = await _requester.request(
       _url,
@@ -225,8 +221,6 @@ class PagesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -235,7 +229,7 @@ class PagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -270,8 +264,6 @@ class PagesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -280,7 +272,7 @@ class PagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -339,8 +331,6 @@ class PagesResource {
     core.String url,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (offset != null) {
       _queryParams['offset'] = ['${offset}'];
@@ -361,7 +351,7 @@ class PagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/pages';
+    const _url = 'v1alpha1/pages';
 
     final _response = await _requester.request(
       _url,
@@ -405,8 +395,6 @@ class PagesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -419,7 +407,7 @@ class PagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,

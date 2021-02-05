@@ -79,8 +79,6 @@ class ApisResource {
     core.String version, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (api == null) {
       throw core.ArgumentError('Parameter api is required.');
     }
@@ -92,7 +90,7 @@ class ApisResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'apis/' +
+    final _url = 'apis/' +
         commons.Escaper.ecapeVariable('$api') +
         '/' +
         commons.Escaper.ecapeVariable('$version') +
@@ -130,8 +128,6 @@ class ApisResource {
     core.bool preferred,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (name != null) {
       _queryParams['name'] = [name];
@@ -143,7 +139,7 @@ class ApisResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'apis';
+    const _url = 'apis';
 
     final _response = await _requester.request(
       _url,

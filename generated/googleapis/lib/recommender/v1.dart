@@ -141,8 +141,6 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -151,7 +149,7 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -208,8 +206,6 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -227,7 +223,7 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/insights';
 
     final _response = await _requester.request(
@@ -270,8 +266,6 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -284,7 +278,7 @@ class BillingAccountsLocationsInsightTypesInsightsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':markAccepted';
 
@@ -343,8 +337,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -353,7 +345,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -411,8 +403,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -430,7 +420,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/recommendations';
 
@@ -476,8 +466,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -490,7 +478,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markClaimed';
 
     final _response = await _requester.request(
@@ -536,8 +524,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -550,7 +536,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markFailed';
 
     final _response = await _requester.request(
@@ -596,8 +582,6 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -610,7 +594,7 @@ class BillingAccountsLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':markSucceeded';
 
@@ -686,8 +670,6 @@ class FoldersLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -696,7 +678,7 @@ class FoldersLocationsInsightTypesInsightsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -753,8 +735,6 @@ class FoldersLocationsInsightTypesInsightsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -772,7 +752,7 @@ class FoldersLocationsInsightTypesInsightsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/insights';
 
     final _response = await _requester.request(
@@ -815,8 +795,6 @@ class FoldersLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -829,7 +807,7 @@ class FoldersLocationsInsightTypesInsightsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':markAccepted';
 
@@ -886,8 +864,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -896,7 +872,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -954,8 +930,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -973,7 +947,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/recommendations';
 
@@ -1019,8 +993,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1033,7 +1005,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markClaimed';
 
     final _response = await _requester.request(
@@ -1079,8 +1051,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1093,7 +1063,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markFailed';
 
     final _response = await _requester.request(
@@ -1139,8 +1109,6 @@ class FoldersLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1153,7 +1121,7 @@ class FoldersLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':markSucceeded';
 
@@ -1231,8 +1199,6 @@ class OrganizationsLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1241,7 +1207,7 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1298,8 +1264,6 @@ class OrganizationsLocationsInsightTypesInsightsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1317,7 +1281,7 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/insights';
 
     final _response = await _requester.request(
@@ -1360,8 +1324,6 @@ class OrganizationsLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1374,7 +1336,7 @@ class OrganizationsLocationsInsightTypesInsightsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':markAccepted';
 
@@ -1432,8 +1394,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1442,7 +1402,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1500,8 +1460,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1519,7 +1477,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/recommendations';
 
@@ -1565,8 +1523,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1579,7 +1535,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markClaimed';
 
     final _response = await _requester.request(
@@ -1625,8 +1581,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1639,7 +1593,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markFailed';
 
     final _response = await _requester.request(
@@ -1685,8 +1639,6 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1699,7 +1651,7 @@ class OrganizationsLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':markSucceeded';
 
@@ -1775,8 +1727,6 @@ class ProjectsLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1785,7 +1735,7 @@ class ProjectsLocationsInsightTypesInsightsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1842,8 +1792,6 @@ class ProjectsLocationsInsightTypesInsightsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1861,7 +1809,7 @@ class ProjectsLocationsInsightTypesInsightsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/insights';
 
     final _response = await _requester.request(
@@ -1904,8 +1852,6 @@ class ProjectsLocationsInsightTypesInsightsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1918,7 +1864,7 @@ class ProjectsLocationsInsightTypesInsightsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':markAccepted';
 
@@ -1975,8 +1921,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1985,7 +1929,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2043,8 +1987,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2062,7 +2004,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/recommendations';
 
@@ -2108,8 +2050,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2122,7 +2062,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markClaimed';
 
     final _response = await _requester.request(
@@ -2168,8 +2108,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2182,7 +2120,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':markFailed';
 
     final _response = await _requester.request(
@@ -2228,8 +2166,6 @@ class ProjectsLocationsRecommendersRecommendationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2242,7 +2178,7 @@ class ProjectsLocationsRecommendersRecommendationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':markSucceeded';
 

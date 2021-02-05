@@ -187,8 +187,6 @@ class AbuseReportsResource {
     core.List<core.String> part, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -202,7 +200,7 @@ class AbuseReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/abuseReports';
+    const _url = 'youtube/v3/abuseReports';
 
     final _response = await _requester.request(
       _url,
@@ -275,8 +273,6 @@ class ActivitiesResource {
     core.String regionCode,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -310,7 +306,7 @@ class ActivitiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/activities';
+    const _url = 'youtube/v3/activities';
 
     final _response = await _requester.request(
       _url,
@@ -361,8 +357,6 @@ class CaptionsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
@@ -378,7 +372,7 @@ class CaptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/captions';
+    const _url = 'youtube/v3/captions';
 
     await _requester.request(
       _url,
@@ -435,8 +429,6 @@ class CaptionsResource {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
-    core.String _url;
-
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -457,7 +449,7 @@ class CaptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/captions/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'youtube/v3/captions/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -525,8 +517,6 @@ class CaptionsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -549,6 +539,7 @@ class CaptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'youtube/v3/captions';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
@@ -612,8 +603,6 @@ class CaptionsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -636,7 +625,7 @@ class CaptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/captions';
+    const _url = 'youtube/v3/captions';
 
     final _response = await _requester.request(
       _url,
@@ -700,8 +689,6 @@ class CaptionsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -724,6 +711,7 @@ class CaptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'youtube/v3/captions';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
@@ -811,8 +799,6 @@ class ChannelBannersResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -833,6 +819,7 @@ class ChannelBannersResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'youtube/v3/channelBanners/insert';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
@@ -889,8 +876,6 @@ class ChannelSectionsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
@@ -903,7 +888,7 @@ class ChannelSectionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/channelSections';
+    const _url = 'youtube/v3/channelSections';
 
     await _requester.request(
       _url,
@@ -969,8 +954,6 @@ class ChannelSectionsResource {
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -992,7 +975,7 @@ class ChannelSectionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/channelSections';
+    const _url = 'youtube/v3/channelSections';
 
     final _response = await _requester.request(
       _url,
@@ -1057,8 +1040,6 @@ class ChannelSectionsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -1083,7 +1064,7 @@ class ChannelSectionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/channelSections';
+    const _url = 'youtube/v3/channelSections';
 
     final _response = await _requester.request(
       _url,
@@ -1132,8 +1113,6 @@ class ChannelSectionsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1150,7 +1129,7 @@ class ChannelSectionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/channelSections';
+    const _url = 'youtube/v3/channelSections';
 
     final _response = await _requester.request(
       _url,
@@ -1241,8 +1220,6 @@ class ChannelsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -1282,7 +1259,7 @@ class ChannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/channels';
+    const _url = 'youtube/v3/channels';
 
     final _response = await _requester.request(
       _url,
@@ -1334,8 +1311,6 @@ class ChannelsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1352,7 +1327,7 @@ class ChannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/channels';
+    const _url = 'youtube/v3/channels';
 
     final _response = await _requester.request(
       _url,
@@ -1394,8 +1369,6 @@ class CommentThreadsResource {
     core.List<core.String> part, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1409,7 +1382,7 @@ class CommentThreadsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/commentThreads';
+    const _url = 'youtube/v3/commentThreads';
 
     final _response = await _requester.request(
       _url,
@@ -1495,8 +1468,6 @@ class CommentThreadsResource {
     core.String videoId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -1538,7 +1509,7 @@ class CommentThreadsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/commentThreads';
+    const _url = 'youtube/v3/commentThreads';
 
     final _response = await _requester.request(
       _url,
@@ -1575,8 +1546,6 @@ class CommentThreadsResource {
     core.List<core.String> part, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1590,7 +1559,7 @@ class CommentThreadsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/commentThreads';
+    const _url = 'youtube/v3/commentThreads';
 
     final _response = await _requester.request(
       _url,
@@ -1626,8 +1595,6 @@ class CommentsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
@@ -1637,7 +1604,7 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/comments';
+    const _url = 'youtube/v3/comments';
 
     await _requester.request(
       _url,
@@ -1672,8 +1639,6 @@ class CommentsResource {
     core.List<core.String> part, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1687,7 +1652,7 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/comments';
+    const _url = 'youtube/v3/comments';
 
     final _response = await _requester.request(
       _url,
@@ -1744,8 +1709,6 @@ class CommentsResource {
     core.String textFormat,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -1770,7 +1733,7 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/comments';
+    const _url = 'youtube/v3/comments';
 
     final _response = await _requester.request(
       _url,
@@ -1801,8 +1764,6 @@ class CommentsResource {
     core.List<core.String> id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null || id.isEmpty) {
       throw core.ArgumentError('Parameter id is required.');
@@ -1812,7 +1773,7 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/comments/markAsSpam';
+    const _url = 'youtube/v3/comments/markAsSpam';
 
     await _requester.request(
       _url,
@@ -1857,8 +1818,6 @@ class CommentsResource {
     core.bool banAuthor,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null || id.isEmpty) {
       throw core.ArgumentError('Parameter id is required.');
@@ -1875,7 +1834,7 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/comments/setModerationStatus';
+    const _url = 'youtube/v3/comments/setModerationStatus';
 
     await _requester.request(
       _url,
@@ -1911,8 +1870,6 @@ class CommentsResource {
     core.List<core.String> part, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1926,7 +1883,7 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/comments';
+    const _url = 'youtube/v3/comments';
 
     final _response = await _requester.request(
       _url,
@@ -1968,8 +1925,6 @@ class I18nLanguagesResource {
     core.String hl,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -1982,7 +1937,7 @@ class I18nLanguagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/i18nLanguages';
+    const _url = 'youtube/v3/i18nLanguages';
 
     final _response = await _requester.request(
       _url,
@@ -2023,8 +1978,6 @@ class I18nRegionsResource {
     core.String hl,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -2037,7 +1990,7 @@ class I18nRegionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/i18nRegions';
+    const _url = 'youtube/v3/i18nRegions';
 
     final _response = await _requester.request(
       _url,
@@ -2113,8 +2066,6 @@ class LiveBroadcastsResource {
     core.String streamId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
@@ -2139,7 +2090,7 @@ class LiveBroadcastsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveBroadcasts/bind';
+    const _url = 'youtube/v3/liveBroadcasts/bind';
 
     final _response = await _requester.request(
       _url,
@@ -2198,8 +2149,6 @@ class LiveBroadcastsResource {
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
@@ -2217,7 +2166,7 @@ class LiveBroadcastsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveBroadcasts';
+    const _url = 'youtube/v3/liveBroadcasts';
 
     await _requester.request(
       _url,
@@ -2284,8 +2233,6 @@ class LiveBroadcastsResource {
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2307,7 +2254,7 @@ class LiveBroadcastsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveBroadcasts';
+    const _url = 'youtube/v3/liveBroadcasts';
 
     final _response = await _requester.request(
       _url,
@@ -2406,8 +2353,6 @@ class LiveBroadcastsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -2443,7 +2388,7 @@ class LiveBroadcastsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveBroadcasts';
+    const _url = 'youtube/v3/liveBroadcasts';
 
     final _response = await _requester.request(
       _url,
@@ -2523,8 +2468,6 @@ class LiveBroadcastsResource {
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (broadcastStatus == null) {
       throw core.ArgumentError('Parameter broadcastStatus is required.');
@@ -2550,7 +2493,7 @@ class LiveBroadcastsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveBroadcasts/transition';
+    const _url = 'youtube/v3/liveBroadcasts/transition';
 
     final _response = await _requester.request(
       _url,
@@ -2626,8 +2569,6 @@ class LiveBroadcastsResource {
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2649,7 +2590,7 @@ class LiveBroadcastsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveBroadcasts';
+    const _url = 'youtube/v3/liveBroadcasts';
 
     final _response = await _requester.request(
       _url,
@@ -2685,8 +2626,6 @@ class LiveChatBansResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
@@ -2696,7 +2635,7 @@ class LiveChatBansResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveChat/bans';
+    const _url = 'youtube/v3/liveChat/bans';
 
     await _requester.request(
       _url,
@@ -2732,8 +2671,6 @@ class LiveChatBansResource {
     core.List<core.String> part, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2747,7 +2684,7 @@ class LiveChatBansResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveChat/bans';
+    const _url = 'youtube/v3/liveChat/bans';
 
     final _response = await _requester.request(
       _url,
@@ -2783,8 +2720,6 @@ class LiveChatMessagesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
@@ -2794,7 +2729,7 @@ class LiveChatMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveChat/messages';
+    const _url = 'youtube/v3/liveChat/messages';
 
     await _requester.request(
       _url,
@@ -2829,8 +2764,6 @@ class LiveChatMessagesResource {
     core.List<core.String> part, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2844,7 +2777,7 @@ class LiveChatMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveChat/messages';
+    const _url = 'youtube/v3/liveChat/messages';
 
     final _response = await _requester.request(
       _url,
@@ -2900,8 +2833,6 @@ class LiveChatMessagesResource {
     core.int profileImageSize,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (liveChatId == null) {
       throw core.ArgumentError('Parameter liveChatId is required.');
@@ -2927,7 +2858,7 @@ class LiveChatMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveChat/messages';
+    const _url = 'youtube/v3/liveChat/messages';
 
     final _response = await _requester.request(
       _url,
@@ -2962,8 +2893,6 @@ class LiveChatModeratorsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
@@ -2973,7 +2902,7 @@ class LiveChatModeratorsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveChat/moderators';
+    const _url = 'youtube/v3/liveChat/moderators';
 
     await _requester.request(
       _url,
@@ -3009,8 +2938,6 @@ class LiveChatModeratorsResource {
     core.List<core.String> part, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3024,7 +2951,7 @@ class LiveChatModeratorsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveChat/moderators';
+    const _url = 'youtube/v3/liveChat/moderators';
 
     final _response = await _requester.request(
       _url,
@@ -3072,8 +2999,6 @@ class LiveChatModeratorsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (liveChatId == null) {
       throw core.ArgumentError('Parameter liveChatId is required.');
@@ -3093,7 +3018,7 @@ class LiveChatModeratorsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveChat/moderators';
+    const _url = 'youtube/v3/liveChat/moderators';
 
     final _response = await _requester.request(
       _url,
@@ -3158,8 +3083,6 @@ class LiveStreamsResource {
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
@@ -3177,7 +3100,7 @@ class LiveStreamsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveStreams';
+    const _url = 'youtube/v3/liveStreams';
 
     await _requester.request(
       _url,
@@ -3244,8 +3167,6 @@ class LiveStreamsResource {
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3267,7 +3188,7 @@ class LiveStreamsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveStreams';
+    const _url = 'youtube/v3/liveStreams';
 
     final _response = await _requester.request(
       _url,
@@ -3350,8 +3271,6 @@ class LiveStreamsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -3381,7 +3300,7 @@ class LiveStreamsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveStreams';
+    const _url = 'youtube/v3/liveStreams';
 
     final _response = await _requester.request(
       _url,
@@ -3452,8 +3371,6 @@ class LiveStreamsResource {
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3475,7 +3392,7 @@ class LiveStreamsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/liveStreams';
+    const _url = 'youtube/v3/liveStreams';
 
     final _response = await _requester.request(
       _url,
@@ -3540,8 +3457,6 @@ class MembersResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -3566,7 +3481,7 @@ class MembersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/members';
+    const _url = 'youtube/v3/members';
 
     final _response = await _requester.request(
       _url,
@@ -3605,8 +3520,6 @@ class MembershipsLevelsResource {
     core.List<core.String> part, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -3616,7 +3529,7 @@ class MembershipsLevelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/membershipsLevels';
+    const _url = 'youtube/v3/membershipsLevels';
 
     final _response = await _requester.request(
       _url,
@@ -3663,8 +3576,6 @@ class PlaylistItemsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
@@ -3677,7 +3588,7 @@ class PlaylistItemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/playlistItems';
+    const _url = 'youtube/v3/playlistItems';
 
     await _requester.request(
       _url,
@@ -3724,8 +3635,6 @@ class PlaylistItemsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3742,7 +3651,7 @@ class PlaylistItemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/playlistItems';
+    const _url = 'youtube/v3/playlistItems';
 
     final _response = await _requester.request(
       _url,
@@ -3812,8 +3721,6 @@ class PlaylistItemsResource {
     core.String videoId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -3841,7 +3748,7 @@ class PlaylistItemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/playlistItems';
+    const _url = 'youtube/v3/playlistItems';
 
     final _response = await _requester.request(
       _url,
@@ -3899,8 +3806,6 @@ class PlaylistItemsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3917,7 +3822,7 @@ class PlaylistItemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/playlistItems';
+    const _url = 'youtube/v3/playlistItems';
 
     final _response = await _requester.request(
       _url,
@@ -3965,8 +3870,6 @@ class PlaylistsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
@@ -3979,7 +3882,7 @@ class PlaylistsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/playlists';
+    const _url = 'youtube/v3/playlists';
 
     await _requester.request(
       _url,
@@ -4044,8 +3947,6 @@ class PlaylistsResource {
     core.String onBehalfOfContentOwnerChannel,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4067,7 +3968,7 @@ class PlaylistsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/playlists';
+    const _url = 'youtube/v3/playlists';
 
     final _response = await _requester.request(
       _url,
@@ -4156,8 +4057,6 @@ class PlaylistsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -4193,7 +4092,7 @@ class PlaylistsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/playlists';
+    const _url = 'youtube/v3/playlists';
 
     final _response = await _requester.request(
       _url,
@@ -4247,8 +4146,6 @@ class PlaylistsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4265,7 +4162,7 @@ class PlaylistsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/playlists';
+    const _url = 'youtube/v3/playlists';
 
     final _response = await _requester.request(
       _url,
@@ -4482,8 +4379,6 @@ class SearchResource {
     core.String videoType,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -4583,7 +4478,7 @@ class SearchResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/search';
+    const _url = 'youtube/v3/search';
 
     final _response = await _requester.request(
       _url,
@@ -4618,8 +4513,6 @@ class SubscriptionsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
@@ -4629,7 +4522,7 @@ class SubscriptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/subscriptions';
+    const _url = 'youtube/v3/subscriptions';
 
     await _requester.request(
       _url,
@@ -4664,8 +4557,6 @@ class SubscriptionsResource {
     core.List<core.String> part, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4679,7 +4570,7 @@ class SubscriptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/subscriptions';
+    const _url = 'youtube/v3/subscriptions';
 
     final _response = await _requester.request(
       _url,
@@ -4784,8 +4675,6 @@ class SubscriptionsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -4830,7 +4719,7 @@ class SubscriptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/subscriptions';
+    const _url = 'youtube/v3/subscriptions';
 
     final _response = await _requester.request(
       _url,
@@ -4881,8 +4770,6 @@ class SuperChatEventsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -4901,7 +4788,7 @@ class SuperChatEventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/superChatEvents';
+    const _url = 'youtube/v3/superChatEvents';
 
     final _response = await _requester.request(
       _url,
@@ -4941,8 +4828,6 @@ class TestsResource {
     core.List<core.String> part, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4956,7 +4841,7 @@ class TestsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/tests';
+    const _url = 'youtube/v3/tests';
 
     final _response = await _requester.request(
       _url,
@@ -5002,8 +4887,6 @@ class ThirdPartyLinksResource {
     core.List<core.String> part,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (linkingToken == null) {
       throw core.ArgumentError('Parameter linkingToken is required.');
@@ -5020,7 +4903,7 @@ class ThirdPartyLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/thirdPartyLinks';
+    const _url = 'youtube/v3/thirdPartyLinks';
 
     await _requester.request(
       _url,
@@ -5055,8 +4938,6 @@ class ThirdPartyLinksResource {
     core.List<core.String> part, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5070,7 +4951,7 @@ class ThirdPartyLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/thirdPartyLinks';
+    const _url = 'youtube/v3/thirdPartyLinks';
 
     final _response = await _requester.request(
       _url,
@@ -5115,8 +4996,6 @@ class ThirdPartyLinksResource {
     core.String type,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -5132,7 +5011,7 @@ class ThirdPartyLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/thirdPartyLinks';
+    const _url = 'youtube/v3/thirdPartyLinks';
 
     final _response = await _requester.request(
       _url,
@@ -5168,8 +5047,6 @@ class ThirdPartyLinksResource {
     core.List<core.String> part, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5183,7 +5060,7 @@ class ThirdPartyLinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/thirdPartyLinks';
+    const _url = 'youtube/v3/thirdPartyLinks';
 
     final _response = await _requester.request(
       _url,
@@ -5244,8 +5121,6 @@ class ThumbnailsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (videoId == null) {
       throw core.ArgumentError('Parameter videoId is required.');
@@ -5258,6 +5133,7 @@ class ThumbnailsResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'youtube/v3/thumbnails/set';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
@@ -5308,8 +5184,6 @@ class VideoAbuseReportReasonsResource {
     core.String hl,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -5322,7 +5196,7 @@ class VideoAbuseReportReasonsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/videoAbuseReportReasons';
+    const _url = 'youtube/v3/videoAbuseReportReasons';
 
     final _response = await _requester.request(
       _url,
@@ -5371,8 +5245,6 @@ class VideoCategoriesResource {
     core.String regionCode,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -5391,7 +5263,7 @@ class VideoCategoriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/videoCategories';
+    const _url = 'youtube/v3/videoCategories';
 
     final _response = await _requester.request(
       _url,
@@ -5438,8 +5310,6 @@ class VideosResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
@@ -5452,7 +5322,7 @@ class VideosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/videos';
+    const _url = 'youtube/v3/videos';
 
     await _requester.request(
       _url,
@@ -5495,8 +5365,6 @@ class VideosResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null || id.isEmpty) {
       throw core.ArgumentError('Parameter id is required.');
@@ -5509,7 +5377,7 @@ class VideosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/videos/getRating';
+    const _url = 'youtube/v3/videos/getRating';
 
     final _response = await _requester.request(
       _url,
@@ -5598,8 +5466,6 @@ class VideosResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5630,6 +5496,7 @@ class VideosResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'youtube/v3/videos';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
@@ -5745,8 +5612,6 @@ class VideosResource {
     core.String videoCategoryId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
@@ -5792,7 +5657,7 @@ class VideosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/videos';
+    const _url = 'youtube/v3/videos';
 
     final _response = await _requester.request(
       _url,
@@ -5828,8 +5693,6 @@ class VideosResource {
     core.String rating, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
@@ -5843,7 +5706,7 @@ class VideosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/videos/rate';
+    const _url = 'youtube/v3/videos/rate';
 
     await _requester.request(
       _url,
@@ -5883,8 +5746,6 @@ class VideosResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5897,7 +5758,7 @@ class VideosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/videos/reportAbuse';
+    const _url = 'youtube/v3/videos/reportAbuse';
 
     await _requester.request(
       _url,
@@ -5959,8 +5820,6 @@ class VideosResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5977,7 +5836,7 @@ class VideosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/videos';
+    const _url = 'youtube/v3/videos';
 
     final _response = await _requester.request(
       _url,
@@ -6035,8 +5894,6 @@ class WatermarksResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6053,6 +5910,7 @@ class WatermarksResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'youtube/v3/watermarks/set';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
@@ -6102,8 +5960,6 @@ class WatermarksResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (channelId == null) {
       throw core.ArgumentError('Parameter channelId is required.');
@@ -6116,7 +5972,7 @@ class WatermarksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'youtube/v3/watermarks/unset';
+    const _url = 'youtube/v3/watermarks/unset';
 
     await _requester.request(
       _url,

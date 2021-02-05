@@ -139,8 +139,6 @@ class DatasetsResource {
     core.bool deleteContents,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -155,7 +153,7 @@ class DatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId');
@@ -191,8 +189,6 @@ class DatasetsResource {
     core.String datasetId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -204,7 +200,7 @@ class DatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId');
@@ -240,8 +236,6 @@ class DatasetsResource {
     core.String projectId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -254,7 +248,7 @@ class DatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets';
 
     final _response = await _requester.request(
@@ -304,8 +298,6 @@ class DatasetsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -326,7 +318,7 @@ class DatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/datasets';
 
     final _response = await _requester.request(
@@ -368,8 +360,6 @@ class DatasetsResource {
     core.String datasetId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -385,7 +375,7 @@ class DatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId');
@@ -429,8 +419,6 @@ class DatasetsResource {
     core.String datasetId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -446,7 +434,7 @@ class DatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId');
@@ -498,8 +486,6 @@ class JobsResource {
     core.String location,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -514,7 +500,7 @@ class JobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/jobs/' +
         commons.Escaper.ecapeVariable('$jobId') +
@@ -561,8 +547,6 @@ class JobsResource {
     core.String location,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -577,7 +561,7 @@ class JobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/jobs/' +
         commons.Escaper.ecapeVariable('$jobId');
@@ -633,8 +617,6 @@ class JobsResource {
     core.int timeoutMs,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -661,7 +643,7 @@ class JobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/queries/' +
         commons.Escaper.ecapeVariable('$jobId');
@@ -708,8 +690,6 @@ class JobsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -722,6 +702,7 @@ class JobsResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url =
           'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
@@ -805,8 +786,6 @@ class JobsResource {
     core.List<core.String> stateFilter,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -839,7 +818,8 @@ class JobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
+    final _url =
+        'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/jobs';
 
     final _response = await _requester.request(
       _url,
@@ -873,8 +853,6 @@ class JobsResource {
     core.String projectId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -887,7 +865,7 @@ class JobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/queries';
 
     final _response = await _requester.request(
@@ -933,8 +911,6 @@ class ModelsResource {
     core.String modelId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -949,7 +925,7 @@ class ModelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariableReserved('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariableReserved('$datasetId') +
@@ -993,8 +969,6 @@ class ModelsResource {
     core.String modelId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -1009,7 +983,7 @@ class ModelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariableReserved('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariableReserved('$datasetId') +
@@ -1060,8 +1034,6 @@ class ModelsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -1079,7 +1051,7 @@ class ModelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariableReserved('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariableReserved('$datasetId') +
@@ -1126,8 +1098,6 @@ class ModelsResource {
     core.String modelId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1146,7 +1116,7 @@ class ModelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariableReserved('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariableReserved('$datasetId') +
@@ -1189,8 +1159,6 @@ class ProjectsResource {
     core.String projectId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -1199,7 +1167,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/serviceAccount';
 
@@ -1236,8 +1204,6 @@ class ProjectsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -1249,7 +1215,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects';
+    const _url = 'projects';
 
     final _response = await _requester.request(
       _url,
@@ -1293,8 +1259,6 @@ class RoutinesResource {
     core.String routineId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -1309,7 +1273,7 @@ class RoutinesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariableReserved('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariableReserved('$datasetId') +
@@ -1357,8 +1321,6 @@ class RoutinesResource {
     core.String readMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -1376,7 +1338,7 @@ class RoutinesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariableReserved('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariableReserved('$datasetId') +
@@ -1419,8 +1381,6 @@ class RoutinesResource {
     core.String datasetId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1436,7 +1396,7 @@ class RoutinesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariableReserved('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariableReserved('$datasetId') +
@@ -1500,8 +1460,6 @@ class RoutinesResource {
     core.String readMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -1525,7 +1483,7 @@ class RoutinesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariableReserved('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariableReserved('$datasetId') +
@@ -1574,8 +1532,6 @@ class RoutinesResource {
     core.String routineId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1594,7 +1550,7 @@ class RoutinesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariableReserved('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariableReserved('$datasetId') +
@@ -1646,8 +1602,6 @@ class RowAccessPoliciesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1660,7 +1614,8 @@ class RowAccessPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
+    final _url =
+        commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1708,8 +1663,6 @@ class RowAccessPoliciesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -1730,7 +1683,7 @@ class RowAccessPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariableReserved('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariableReserved('$datasetId') +
@@ -1777,8 +1730,6 @@ class RowAccessPoliciesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1791,7 +1742,8 @@ class RowAccessPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
+    final _url =
+        commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -1834,8 +1786,6 @@ class RowAccessPoliciesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1848,7 +1798,7 @@ class RowAccessPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariableReserved('$resource') +
+    final _url = commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
     final _response = await _requester.request(
@@ -1899,8 +1849,6 @@ class TabledataResource {
     core.String tableId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1919,7 +1867,7 @@ class TabledataResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId') +
@@ -1979,8 +1927,6 @@ class TabledataResource {
     core.String startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2007,7 +1953,7 @@ class TabledataResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId') +
@@ -2056,8 +2002,6 @@ class TablesResource {
     core.String tableId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2072,7 +2016,7 @@ class TablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId') +
@@ -2120,8 +2064,6 @@ class TablesResource {
     core.String selectedFields,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2139,7 +2081,7 @@ class TablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId') +
@@ -2184,8 +2126,6 @@ class TablesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2198,7 +2138,8 @@ class TablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
+    final _url =
+        commons.Escaper.ecapeVariableReserved('$resource') + ':getIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -2235,8 +2176,6 @@ class TablesResource {
     core.String datasetId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2252,7 +2191,7 @@ class TablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId') +
@@ -2299,8 +2238,6 @@ class TablesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2318,7 +2255,7 @@ class TablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId') +
@@ -2365,8 +2302,6 @@ class TablesResource {
     core.String tableId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2385,7 +2320,7 @@ class TablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId') +
@@ -2431,8 +2366,6 @@ class TablesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2445,7 +2378,8 @@ class TablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
+    final _url =
+        commons.Escaper.ecapeVariableReserved('$resource') + ':setIamPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -2488,8 +2422,6 @@ class TablesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2502,7 +2434,7 @@ class TablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = commons.Escaper.ecapeVariableReserved('$resource') +
+    final _url = commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
     final _response = await _requester.request(
@@ -2548,8 +2480,6 @@ class TablesResource {
     core.String tableId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2568,7 +2498,7 @@ class TablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/datasets/' +
         commons.Escaper.ecapeVariable('$datasetId') +

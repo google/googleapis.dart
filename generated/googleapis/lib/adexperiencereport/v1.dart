@@ -82,8 +82,6 @@ class SitesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -92,7 +90,7 @@ class SitesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -127,14 +125,12 @@ class ViolatingSitesResource {
   async.Future<ViolatingSitesResponse> list({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/violatingSites';
+    const _url = 'v1/violatingSites';
 
     final _response = await _requester.request(
       _url,

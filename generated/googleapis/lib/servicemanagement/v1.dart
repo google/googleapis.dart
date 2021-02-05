@@ -104,8 +104,6 @@ class OperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -114,7 +112,7 @@ class OperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -166,8 +164,6 @@ class OperationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
@@ -185,7 +181,7 @@ class OperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/operations';
+    const _url = 'v1/operations';
 
     final _response = await _requester.request(
       _url,
@@ -233,8 +229,6 @@ class ServicesResource {
     ManagedService request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -244,7 +238,7 @@ class ServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/services';
+    const _url = 'v1/services';
 
     final _response = await _requester.request(
       _url,
@@ -282,8 +276,6 @@ class ServicesResource {
     core.String serviceName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
@@ -292,7 +284,7 @@ class ServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/services/' + commons.Escaper.ecapeVariable('$serviceName');
+    final _url = 'v1/services/' + commons.Escaper.ecapeVariable('$serviceName');
 
     final _response = await _requester.request(
       _url,
@@ -329,8 +321,6 @@ class ServicesResource {
     core.String serviceName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -343,7 +333,7 @@ class ServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/services/' +
+    final _url = 'v1/services/' +
         commons.Escaper.ecapeVariable('$serviceName') +
         ':enable';
 
@@ -385,8 +375,6 @@ class ServicesResource {
     GenerateConfigReportRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -396,7 +384,7 @@ class ServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/services:generateConfigReport';
+    const _url = 'v1/services:generateConfigReport';
 
     final _response = await _requester.request(
       _url,
@@ -432,8 +420,6 @@ class ServicesResource {
     core.String serviceName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
@@ -442,7 +428,7 @@ class ServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/services/' + commons.Escaper.ecapeVariable('$serviceName');
+    final _url = 'v1/services/' + commons.Escaper.ecapeVariable('$serviceName');
 
     final _response = await _requester.request(
       _url,
@@ -490,8 +476,6 @@ class ServicesResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
@@ -506,7 +490,7 @@ class ServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/services/' +
+    final _url = 'v1/services/' +
         commons.Escaper.ecapeVariable('$serviceName') +
         '/config';
 
@@ -547,8 +531,6 @@ class ServicesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -561,7 +543,7 @@ class ServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
@@ -613,8 +595,6 @@ class ServicesResource {
     core.String producerProjectId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (consumerId != null) {
       _queryParams['consumerId'] = [consumerId];
@@ -632,7 +612,7 @@ class ServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/services';
+    const _url = 'v1/services';
 
     final _response = await _requester.request(
       _url,
@@ -672,8 +652,6 @@ class ServicesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -686,7 +664,7 @@ class ServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
@@ -730,8 +708,6 @@ class ServicesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -744,7 +720,7 @@ class ServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
@@ -784,8 +760,6 @@ class ServicesResource {
     core.String serviceName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
@@ -794,7 +768,7 @@ class ServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/services/' +
+    final _url = 'v1/services/' +
         commons.Escaper.ecapeVariable('$serviceName') +
         ':undelete';
 
@@ -842,8 +816,6 @@ class ServicesConfigsResource {
     core.String serviceName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -856,7 +828,7 @@ class ServicesConfigsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/services/' +
+    final _url = 'v1/services/' +
         commons.Escaper.ecapeVariable('$serviceName') +
         '/configs';
 
@@ -906,8 +878,6 @@ class ServicesConfigsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
@@ -922,7 +892,7 @@ class ServicesConfigsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/services/' +
+    final _url = 'v1/services/' +
         commons.Escaper.ecapeVariable('$serviceName') +
         '/configs/' +
         commons.Escaper.ecapeVariable('$configId');
@@ -965,8 +935,6 @@ class ServicesConfigsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
@@ -981,7 +949,7 @@ class ServicesConfigsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/services/' +
+    final _url = 'v1/services/' +
         commons.Escaper.ecapeVariable('$serviceName') +
         '/configs';
 
@@ -1028,8 +996,6 @@ class ServicesConfigsResource {
     core.String serviceName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1042,7 +1008,7 @@ class ServicesConfigsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/services/' +
+    final _url = 'v1/services/' +
         commons.Escaper.ecapeVariable('$serviceName') +
         '/configs:submit';
 
@@ -1090,8 +1056,6 @@ class ServicesConsumersResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1104,7 +1068,7 @@ class ServicesConsumersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
@@ -1146,8 +1110,6 @@ class ServicesConsumersResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1160,7 +1122,7 @@ class ServicesConsumersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
@@ -1204,8 +1166,6 @@ class ServicesConsumersResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1218,7 +1178,7 @@ class ServicesConsumersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
@@ -1272,8 +1232,6 @@ class ServicesRolloutsResource {
     core.String serviceName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1286,7 +1244,7 @@ class ServicesRolloutsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/services/' +
+    final _url = 'v1/services/' +
         commons.Escaper.ecapeVariable('$serviceName') +
         '/rollouts';
 
@@ -1324,8 +1282,6 @@ class ServicesRolloutsResource {
     core.String rolloutId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
@@ -1337,7 +1293,7 @@ class ServicesRolloutsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/services/' +
+    final _url = 'v1/services/' +
         commons.Escaper.ecapeVariable('$serviceName') +
         '/rollouts/' +
         commons.Escaper.ecapeVariable('$rolloutId');
@@ -1388,8 +1344,6 @@ class ServicesRolloutsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
@@ -1407,7 +1361,7 @@ class ServicesRolloutsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/services/' +
+    final _url = 'v1/services/' +
         commons.Escaper.ecapeVariable('$serviceName') +
         '/rollouts';
 

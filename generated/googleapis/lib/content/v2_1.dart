@@ -148,14 +148,12 @@ class AccountsResource {
   async.Future<AccountsAuthInfoResponse> authinfo({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/accounts/authinfo';
+    const _url = 'content/v2.1/accounts/authinfo';
 
     final _response = await _requester.request(
       _url,
@@ -196,8 +194,6 @@ class AccountsResource {
     core.bool overwrite,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -212,7 +208,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -248,8 +244,6 @@ class AccountsResource {
     AccountsCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -259,7 +253,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/accounts/batch';
+    const _url = 'content/v2.1/accounts/batch';
 
     final _response = await _requester.request(
       _url,
@@ -297,8 +291,6 @@ class AccountsResource {
     core.bool force,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -313,7 +305,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId');
@@ -358,8 +350,6 @@ class AccountsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -374,7 +364,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId');
@@ -411,8 +401,6 @@ class AccountsResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -425,7 +413,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts';
 
@@ -467,8 +455,6 @@ class AccountsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -484,7 +470,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -539,8 +525,6 @@ class AccountsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -561,7 +545,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts';
 
@@ -606,8 +590,6 @@ class AccountsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -625,7 +607,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -670,8 +652,6 @@ class AccountsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -687,7 +667,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId');
@@ -728,8 +708,6 @@ class AccountsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -745,7 +723,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -790,8 +768,6 @@ class AccountsLabelsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -804,7 +780,7 @@ class AccountsLabelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/accounts/' +
+    final _url = 'content/v2.1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/labels';
 
@@ -839,8 +815,6 @@ class AccountsLabelsResource {
     core.String labelId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -852,7 +826,7 @@ class AccountsLabelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/accounts/' +
+    final _url = 'content/v2.1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/labels/' +
         commons.Escaper.ecapeVariable('$labelId');
@@ -897,8 +871,6 @@ class AccountsLabelsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -913,7 +885,7 @@ class AccountsLabelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/accounts/' +
+    final _url = 'content/v2.1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/labels';
 
@@ -952,8 +924,6 @@ class AccountsLabelsResource {
     core.String labelId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -969,7 +939,7 @@ class AccountsLabelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/accounts/' +
+    final _url = 'content/v2.1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/labels/' +
         commons.Escaper.ecapeVariable('$labelId');
@@ -1015,8 +985,6 @@ class AccountsReturncarrierResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1029,7 +997,7 @@ class AccountsReturncarrierResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/accounts/' +
+    final _url = 'content/v2.1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/returncarrier';
 
@@ -1066,8 +1034,6 @@ class AccountsReturncarrierResource {
     core.String carrierAccountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1079,7 +1045,7 @@ class AccountsReturncarrierResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/accounts/' +
+    final _url = 'content/v2.1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/returncarrier/' +
         commons.Escaper.ecapeVariable('$carrierAccountId');
@@ -1113,8 +1079,6 @@ class AccountsReturncarrierResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1123,7 +1087,7 @@ class AccountsReturncarrierResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/accounts/' +
+    final _url = 'content/v2.1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/returncarrier';
 
@@ -1164,8 +1128,6 @@ class AccountsReturncarrierResource {
     core.String carrierAccountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1181,7 +1143,7 @@ class AccountsReturncarrierResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/accounts/' +
+    final _url = 'content/v2.1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/returncarrier/' +
         commons.Escaper.ecapeVariable('$carrierAccountId');
@@ -1222,8 +1184,6 @@ class AccountstatusesResource {
     AccountstatusesCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1233,7 +1193,7 @@ class AccountstatusesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/accountstatuses/batch';
+    const _url = 'content/v2.1/accountstatuses/batch';
 
     final _response = await _requester.request(
       _url,
@@ -1276,8 +1236,6 @@ class AccountstatusesResource {
     core.List<core.String> destinations,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -1292,7 +1250,7 @@ class AccountstatusesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accountstatuses/' +
         commons.Escaper.ecapeVariable('$accountId');
@@ -1338,8 +1296,6 @@ class AccountstatusesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -1357,7 +1313,7 @@ class AccountstatusesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accountstatuses';
 
@@ -1397,8 +1353,6 @@ class AccounttaxResource {
     AccounttaxCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1408,7 +1362,7 @@ class AccounttaxResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/accounttax/batch';
+    const _url = 'content/v2.1/accounttax/batch';
 
     final _response = await _requester.request(
       _url,
@@ -1446,8 +1400,6 @@ class AccounttaxResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -1459,7 +1411,7 @@ class AccounttaxResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accounttax/' +
         commons.Escaper.ecapeVariable('$accountId');
@@ -1502,8 +1454,6 @@ class AccounttaxResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -1518,7 +1468,7 @@ class AccounttaxResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accounttax';
 
@@ -1562,8 +1512,6 @@ class AccounttaxResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1579,7 +1527,7 @@ class AccounttaxResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/accounttax/' +
         commons.Escaper.ecapeVariable('$accountId');
@@ -1628,8 +1576,6 @@ class CollectionsResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1642,7 +1588,7 @@ class CollectionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/collections';
 
@@ -1679,8 +1625,6 @@ class CollectionsResource {
     core.String collectionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -1692,7 +1636,7 @@ class CollectionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/collections/' +
         commons.Escaper.ecapeVariable('$collectionId');
@@ -1729,8 +1673,6 @@ class CollectionsResource {
     core.String collectionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -1742,7 +1684,7 @@ class CollectionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/collections/' +
         commons.Escaper.ecapeVariable('$collectionId');
@@ -1790,8 +1732,6 @@ class CollectionsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -1806,7 +1746,7 @@ class CollectionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/collections';
 
@@ -1850,8 +1790,6 @@ class CollectionstatusesResource {
     core.String collectionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -1863,7 +1801,7 @@ class CollectionstatusesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/collectionstatuses/' +
         commons.Escaper.ecapeVariable('$collectionId');
@@ -1908,8 +1846,6 @@ class CollectionstatusesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -1924,7 +1860,7 @@ class CollectionstatusesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/collectionstatuses';
 
@@ -1969,8 +1905,6 @@ class CssesResource {
     core.String cssDomainId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (cssGroupId == null) {
       throw core.ArgumentError('Parameter cssGroupId is required.');
     }
@@ -1982,7 +1916,7 @@ class CssesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$cssGroupId') +
         '/csses/' +
         commons.Escaper.ecapeVariable('$cssDomainId');
@@ -2027,8 +1961,6 @@ class CssesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (cssGroupId == null) {
       throw core.ArgumentError('Parameter cssGroupId is required.');
     }
@@ -2043,7 +1975,7 @@ class CssesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$cssGroupId') +
         '/csses';
 
@@ -2082,8 +2014,6 @@ class CssesResource {
     core.String cssDomainId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2099,7 +2029,7 @@ class CssesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$cssGroupId') +
         '/csses/' +
         commons.Escaper.ecapeVariable('$cssDomainId') +
@@ -2141,8 +2071,6 @@ class DatafeedsResource {
     DatafeedsCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2152,7 +2080,7 @@ class DatafeedsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/datafeeds/batch';
+    const _url = 'content/v2.1/datafeeds/batch';
 
     final _response = await _requester.request(
       _url,
@@ -2186,8 +2114,6 @@ class DatafeedsResource {
     core.String datafeedId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -2199,7 +2125,7 @@ class DatafeedsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/datafeeds/' +
         commons.Escaper.ecapeVariable('$datafeedId');
@@ -2239,8 +2165,6 @@ class DatafeedsResource {
     core.String datafeedId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -2252,7 +2176,7 @@ class DatafeedsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/datafeeds/' +
         commons.Escaper.ecapeVariable('$datafeedId') +
@@ -2291,8 +2215,6 @@ class DatafeedsResource {
     core.String datafeedId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -2304,7 +2226,7 @@ class DatafeedsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/datafeeds/' +
         commons.Escaper.ecapeVariable('$datafeedId');
@@ -2341,8 +2263,6 @@ class DatafeedsResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2355,7 +2275,7 @@ class DatafeedsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/datafeeds';
 
@@ -2396,8 +2316,6 @@ class DatafeedsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -2412,7 +2330,7 @@ class DatafeedsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/datafeeds';
 
@@ -2454,8 +2372,6 @@ class DatafeedsResource {
     core.String datafeedId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2471,7 +2387,7 @@ class DatafeedsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/datafeeds/' +
         commons.Escaper.ecapeVariable('$datafeedId');
@@ -2511,8 +2427,6 @@ class DatafeedstatusesResource {
     DatafeedstatusesCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2522,7 +2436,7 @@ class DatafeedstatusesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/datafeedstatuses/batch';
+    const _url = 'content/v2.1/datafeedstatuses/batch';
 
     final _response = await _requester.request(
       _url,
@@ -2570,8 +2484,6 @@ class DatafeedstatusesResource {
     core.String language,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -2589,7 +2501,7 @@ class DatafeedstatusesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/datafeedstatuses/' +
         commons.Escaper.ecapeVariable('$datafeedId');
@@ -2631,8 +2543,6 @@ class DatafeedstatusesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -2647,7 +2557,7 @@ class DatafeedstatusesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/datafeedstatuses';
 
@@ -2687,8 +2597,6 @@ class LiasettingsResource {
     LiasettingsCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2698,7 +2606,7 @@ class LiasettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/liasettings/batch';
+    const _url = 'content/v2.1/liasettings/batch';
 
     final _response = await _requester.request(
       _url,
@@ -2736,8 +2644,6 @@ class LiasettingsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -2749,7 +2655,7 @@ class LiasettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/liasettings/' +
         commons.Escaper.ecapeVariable('$accountId');
@@ -2790,8 +2696,6 @@ class LiasettingsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -2803,7 +2707,7 @@ class LiasettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/liasettings/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -2847,8 +2751,6 @@ class LiasettingsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -2863,7 +2765,7 @@ class LiasettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/liasettings';
 
@@ -2894,14 +2796,12 @@ class LiasettingsResource {
   async.Future<LiasettingsListPosDataProvidersResponse> listposdataproviders({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/liasettings/posdataproviders';
+    const _url = 'content/v2.1/liasettings/posdataproviders';
 
     final _response = await _requester.request(
       _url,
@@ -2940,8 +2840,6 @@ class LiasettingsResource {
     core.String gmbEmail, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -2957,7 +2855,7 @@ class LiasettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/liasettings/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3002,8 +2900,6 @@ class LiasettingsResource {
     core.String country, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -3018,7 +2914,7 @@ class LiasettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/liasettings/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3073,8 +2969,6 @@ class LiasettingsResource {
     core.String contactEmail, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -3102,7 +2996,7 @@ class LiasettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/liasettings/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3153,8 +3047,6 @@ class LiasettingsResource {
     core.String posExternalAccountId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -3176,7 +3068,7 @@ class LiasettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/liasettings/' +
         commons.Escaper.ecapeVariable('$accountId') +
@@ -3222,8 +3114,6 @@ class LiasettingsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3239,7 +3129,7 @@ class LiasettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/liasettings/' +
         commons.Escaper.ecapeVariable('$accountId');
@@ -3281,8 +3171,6 @@ class LocalinventoryResource {
     LocalinventoryCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3292,7 +3180,7 @@ class LocalinventoryResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/localinventory/batch';
+    const _url = 'content/v2.1/localinventory/batch';
 
     final _response = await _requester.request(
       _url,
@@ -3332,8 +3220,6 @@ class LocalinventoryResource {
     core.String productId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3349,7 +3235,7 @@ class LocalinventoryResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -3399,8 +3285,6 @@ class OrderinvoicesResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3416,7 +3300,7 @@ class OrderinvoicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orderinvoices/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -3464,8 +3348,6 @@ class OrderinvoicesResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3481,7 +3363,7 @@ class OrderinvoicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orderinvoices/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -3539,8 +3421,6 @@ class OrderreportsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -3561,7 +3441,7 @@ class OrderreportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orderreports/disbursements';
 
@@ -3615,8 +3495,6 @@ class OrderreportsResource {
     core.String transactionStartDate,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -3640,7 +3518,7 @@ class OrderreportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orderreports/disbursements/' +
         commons.Escaper.ecapeVariable('$disbursementId') +
@@ -3688,8 +3566,6 @@ class OrderreturnsResource {
     core.String returnId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3705,7 +3581,7 @@ class OrderreturnsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orderreturns/' +
         commons.Escaper.ecapeVariable('$returnId') +
@@ -3745,8 +3621,6 @@ class OrderreturnsResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3759,7 +3633,7 @@ class OrderreturnsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orderreturns/createOrderReturn';
 
@@ -3797,8 +3671,6 @@ class OrderreturnsResource {
     core.String returnId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -3810,7 +3682,7 @@ class OrderreturnsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orderreturns/' +
         commons.Escaper.ecapeVariable('$returnId');
@@ -3909,8 +3781,6 @@ class OrderreturnsResource {
     core.List<core.String> shipmentTypes,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -3952,7 +3822,7 @@ class OrderreturnsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orderreturns';
 
@@ -3992,8 +3862,6 @@ class OrderreturnsResource {
     core.String returnId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4009,7 +3877,7 @@ class OrderreturnsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orderreturns/' +
         commons.Escaper.ecapeVariable('$returnId') +
@@ -4058,8 +3926,6 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4075,7 +3941,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -4117,8 +3983,6 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -4130,7 +3994,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/testorders/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -4172,8 +4036,6 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4189,7 +4051,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -4232,8 +4094,6 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4249,7 +4109,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -4295,8 +4155,6 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4312,7 +4170,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/testorders/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -4354,8 +4212,6 @@ class OrdersResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4368,7 +4224,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/testorders';
 
@@ -4411,8 +4267,6 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4428,7 +4282,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -4468,8 +4322,6 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -4481,7 +4333,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId');
@@ -4518,8 +4370,6 @@ class OrdersResource {
     core.String merchantOrderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -4531,7 +4381,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/ordersbymerchantid/' +
         commons.Escaper.ecapeVariable('$merchantOrderId');
@@ -4582,8 +4432,6 @@ class OrdersResource {
     core.String country,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -4598,7 +4446,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/testordertemplates/' +
         commons.Escaper.ecapeVariable('$templateName');
@@ -4649,8 +4497,6 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4666,7 +4512,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -4737,8 +4583,6 @@ class OrdersResource {
     core.List<core.String> statuses,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -4768,7 +4612,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orders';
 
@@ -4808,8 +4652,6 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4825,7 +4667,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -4868,8 +4710,6 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4885,7 +4725,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -4928,8 +4768,6 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4945,7 +4783,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -4995,8 +4833,6 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5012,7 +4848,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -5060,8 +4896,6 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5077,7 +4911,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -5120,8 +4954,6 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5137,7 +4969,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -5181,8 +5013,6 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5198,7 +5028,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -5241,8 +5071,6 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5258,7 +5086,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -5301,8 +5129,6 @@ class OrdersResource {
     core.String orderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5318,7 +5144,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/orders/' +
         commons.Escaper.ecapeVariable('$orderId') +
@@ -5365,8 +5191,6 @@ class OrdertrackingsignalsResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5379,7 +5203,7 @@ class OrdertrackingsignalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/ordertrackingsignals';
 
@@ -5419,8 +5243,6 @@ class PosResource {
     PosCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5430,7 +5252,7 @@ class PosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/pos/batch';
+    const _url = 'content/v2.1/pos/batch';
 
     final _response = await _requester.request(
       _url,
@@ -5466,8 +5288,6 @@ class PosResource {
     core.String storeCode, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -5482,7 +5302,7 @@ class PosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/pos/' +
         commons.Escaper.ecapeVariable('$targetMerchantId') +
@@ -5523,8 +5343,6 @@ class PosResource {
     core.String storeCode, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -5539,7 +5357,7 @@ class PosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/pos/' +
         commons.Escaper.ecapeVariable('$targetMerchantId') +
@@ -5580,8 +5398,6 @@ class PosResource {
     core.String targetMerchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5597,7 +5413,7 @@ class PosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/pos/' +
         commons.Escaper.ecapeVariable('$targetMerchantId') +
@@ -5638,8 +5454,6 @@ class PosResource {
     core.String targetMerchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5655,7 +5469,7 @@ class PosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/pos/' +
         commons.Escaper.ecapeVariable('$targetMerchantId') +
@@ -5694,8 +5508,6 @@ class PosResource {
     core.String targetMerchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -5707,7 +5519,7 @@ class PosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/pos/' +
         commons.Escaper.ecapeVariable('$targetMerchantId') +
@@ -5748,8 +5560,6 @@ class PosResource {
     core.String targetMerchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5765,7 +5575,7 @@ class PosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/pos/' +
         commons.Escaper.ecapeVariable('$targetMerchantId') +
@@ -5807,8 +5617,6 @@ class ProductsResource {
     ProductsCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5818,7 +5626,7 @@ class ProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/products/batch';
+    const _url = 'content/v2.1/products/batch';
 
     final _response = await _requester.request(
       _url,
@@ -5855,8 +5663,6 @@ class ProductsResource {
     core.String feedId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -5871,7 +5677,7 @@ class ProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId');
@@ -5908,8 +5714,6 @@ class ProductsResource {
     core.String productId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -5921,7 +5725,7 @@ class ProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId');
@@ -5964,8 +5768,6 @@ class ProductsResource {
     core.String feedId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5981,7 +5783,7 @@ class ProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/products';
 
@@ -6025,8 +5827,6 @@ class ProductsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -6041,7 +5841,7 @@ class ProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/products';
 
@@ -6083,8 +5883,6 @@ class ProductstatusesResource {
     ProductstatusesCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6094,7 +5892,7 @@ class ProductstatusesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/productstatuses/batch';
+    const _url = 'content/v2.1/productstatuses/batch';
 
     final _response = await _requester.request(
       _url,
@@ -6134,8 +5932,6 @@ class ProductstatusesResource {
     core.List<core.String> destinations,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -6150,7 +5946,7 @@ class ProductstatusesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/productstatuses/' +
         commons.Escaper.ecapeVariable('$productId');
@@ -6196,8 +5992,6 @@ class ProductstatusesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -6215,7 +6009,7 @@ class ProductstatusesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/productstatuses';
 
@@ -6287,8 +6081,6 @@ class ProductstatusesRepricingreportsResource {
     core.String startDate,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -6315,7 +6107,7 @@ class ProductstatusesRepricingreportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/productstatuses/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -6358,8 +6150,6 @@ class PubsubnotificationsettingsResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -6368,7 +6158,7 @@ class PubsubnotificationsettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/pubsubnotificationsettings';
 
@@ -6406,8 +6196,6 @@ class PubsubnotificationsettingsResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6420,7 +6208,7 @@ class PubsubnotificationsettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/pubsubnotificationsettings';
 
@@ -6461,8 +6249,6 @@ class RegionalinventoryResource {
     RegionalinventoryCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6472,7 +6258,7 @@ class RegionalinventoryResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/regionalinventory/batch';
+    const _url = 'content/v2.1/regionalinventory/batch';
 
     final _response = await _requester.request(
       _url,
@@ -6516,8 +6302,6 @@ class RegionalinventoryResource {
     core.String productId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6533,7 +6317,7 @@ class RegionalinventoryResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -6582,8 +6366,6 @@ class RegionsResource {
     core.String regionId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6599,7 +6381,7 @@ class RegionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/regions';
 
@@ -6634,8 +6416,6 @@ class RegionsResource {
     core.String regionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -6647,7 +6427,7 @@ class RegionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$regionId');
@@ -6684,8 +6464,6 @@ class RegionsResource {
     core.String regionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -6697,7 +6475,7 @@ class RegionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$regionId');
@@ -6743,8 +6521,6 @@ class RegionsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -6759,7 +6535,7 @@ class RegionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/regions';
 
@@ -6802,8 +6578,6 @@ class RegionsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6822,7 +6596,7 @@ class RegionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/regions/' +
         commons.Escaper.ecapeVariable('$regionId');
@@ -6872,8 +6646,6 @@ class RepricingrulesResource {
     core.String ruleId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6889,7 +6661,7 @@ class RepricingrulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/repricingrules';
 
@@ -6925,8 +6697,6 @@ class RepricingrulesResource {
     core.String ruleId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -6938,7 +6708,7 @@ class RepricingrulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/repricingrules/' +
         commons.Escaper.ecapeVariable('$ruleId');
@@ -6975,8 +6745,6 @@ class RepricingrulesResource {
     core.String ruleId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -6988,7 +6756,7 @@ class RepricingrulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/repricingrules/' +
         commons.Escaper.ecapeVariable('$ruleId');
@@ -7043,8 +6811,6 @@ class RepricingrulesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -7065,7 +6831,7 @@ class RepricingrulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/repricingrules';
 
@@ -7110,8 +6876,6 @@ class RepricingrulesResource {
     core.String ruleId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7127,7 +6891,7 @@ class RepricingrulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/repricingrules/' +
         commons.Escaper.ecapeVariable('$ruleId');
@@ -7194,8 +6958,6 @@ class RepricingrulesRepricingreportsResource {
     core.String startDate,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -7219,7 +6981,7 @@ class RepricingrulesRepricingreportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/repricingrules/' +
         commons.Escaper.ecapeVariable('$ruleId') +
@@ -7260,8 +7022,6 @@ class ReturnaddressResource {
     ReturnaddressCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7271,7 +7031,7 @@ class ReturnaddressResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/returnaddress/batch';
+    const _url = 'content/v2.1/returnaddress/batch';
 
     final _response = await _requester.request(
       _url,
@@ -7305,8 +7065,6 @@ class ReturnaddressResource {
     core.String returnAddressId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -7318,7 +7076,7 @@ class ReturnaddressResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/returnaddress/' +
         commons.Escaper.ecapeVariable('$returnAddressId');
@@ -7354,8 +7112,6 @@ class ReturnaddressResource {
     core.String returnAddressId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -7367,7 +7123,7 @@ class ReturnaddressResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/returnaddress/' +
         commons.Escaper.ecapeVariable('$returnAddressId');
@@ -7404,8 +7160,6 @@ class ReturnaddressResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7418,7 +7172,7 @@ class ReturnaddressResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/returnaddress';
 
@@ -7463,8 +7217,6 @@ class ReturnaddressResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -7482,7 +7234,7 @@ class ReturnaddressResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/returnaddress';
 
@@ -7521,8 +7273,6 @@ class ReturnpolicyResource {
     ReturnpolicyCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7532,7 +7282,7 @@ class ReturnpolicyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/returnpolicy/batch';
+    const _url = 'content/v2.1/returnpolicy/batch';
 
     final _response = await _requester.request(
       _url,
@@ -7566,8 +7316,6 @@ class ReturnpolicyResource {
     core.String returnPolicyId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -7579,7 +7327,7 @@ class ReturnpolicyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/returnpolicy/' +
         commons.Escaper.ecapeVariable('$returnPolicyId');
@@ -7615,8 +7363,6 @@ class ReturnpolicyResource {
     core.String returnPolicyId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -7628,7 +7374,7 @@ class ReturnpolicyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/returnpolicy/' +
         commons.Escaper.ecapeVariable('$returnPolicyId');
@@ -7665,8 +7411,6 @@ class ReturnpolicyResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7679,7 +7423,7 @@ class ReturnpolicyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/returnpolicy';
 
@@ -7713,8 +7457,6 @@ class ReturnpolicyResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -7723,7 +7465,7 @@ class ReturnpolicyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/returnpolicy';
 
@@ -7765,8 +7507,6 @@ class SettlementreportsResource {
     core.String settlementId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -7778,7 +7518,7 @@ class SettlementreportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/settlementreports/' +
         commons.Escaper.ecapeVariable('$settlementId');
@@ -7828,8 +7568,6 @@ class SettlementreportsResource {
     core.String transferStartDate,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -7850,7 +7588,7 @@ class SettlementreportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/settlementreports';
 
@@ -7905,8 +7643,6 @@ class SettlementtransactionsResource {
     core.List<core.String> transactionIds,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -7927,7 +7663,7 @@ class SettlementtransactionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/settlementreports/' +
         commons.Escaper.ecapeVariable('$settlementId') +
@@ -7969,8 +7705,6 @@ class ShippingsettingsResource {
     ShippingsettingsCustomBatchRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7980,7 +7714,7 @@ class ShippingsettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/shippingsettings/batch';
+    const _url = 'content/v2.1/shippingsettings/batch';
 
     final _response = await _requester.request(
       _url,
@@ -8018,8 +7752,6 @@ class ShippingsettingsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -8031,7 +7763,7 @@ class ShippingsettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/shippingsettings/' +
         commons.Escaper.ecapeVariable('$accountId');
@@ -8067,8 +7799,6 @@ class ShippingsettingsResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -8077,7 +7807,7 @@ class ShippingsettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/supportedCarriers';
 
@@ -8112,8 +7842,6 @@ class ShippingsettingsResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -8122,7 +7850,7 @@ class ShippingsettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/supportedHolidays';
 
@@ -8157,8 +7885,6 @@ class ShippingsettingsResource {
     core.String merchantId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -8167,7 +7893,7 @@ class ShippingsettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/supportedPickupServices';
 
@@ -8209,8 +7935,6 @@ class ShippingsettingsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (merchantId == null) {
       throw core.ArgumentError('Parameter merchantId is required.');
     }
@@ -8225,7 +7949,7 @@ class ShippingsettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/shippingsettings';
 
@@ -8269,8 +7993,6 @@ class ShippingsettingsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -8286,7 +8008,7 @@ class ShippingsettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'content/v2.1/' +
+    final _url = 'content/v2.1/' +
         commons.Escaper.ecapeVariable('$merchantId') +
         '/shippingsettings/' +
         commons.Escaper.ecapeVariable('$accountId');

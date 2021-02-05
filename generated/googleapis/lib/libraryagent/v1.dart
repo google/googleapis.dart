@@ -84,8 +84,6 @@ class ShelvesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -94,7 +92,7 @@ class ShelvesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -135,8 +133,6 @@ class ShelvesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -148,7 +144,7 @@ class ShelvesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/shelves';
+    const _url = 'v1/shelves';
 
     final _response = await _requester.request(
       _url,
@@ -190,8 +186,6 @@ class ShelvesBooksResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -200,7 +194,8 @@ class ShelvesBooksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':borrow';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':borrow';
 
     final _response = await _requester.request(
       _url,
@@ -234,8 +229,6 @@ class ShelvesBooksResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -244,7 +237,7 @@ class ShelvesBooksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -289,8 +282,6 @@ class ShelvesBooksResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -305,7 +296,8 @@ class ShelvesBooksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/books';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/books';
 
     final _response = await _requester.request(
       _url,
@@ -341,8 +333,6 @@ class ShelvesBooksResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -351,7 +341,8 @@ class ShelvesBooksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':return';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':return';
 
     final _response = await _requester.request(
       _url,

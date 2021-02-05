@@ -255,8 +255,6 @@ class AccountActiveAdSummariesResource {
     core.String summaryAccountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -268,7 +266,7 @@ class AccountActiveAdSummariesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountActiveAdSummaries/' +
         commons.Escaper.ecapeVariable('$summaryAccountId');
@@ -312,8 +310,6 @@ class AccountPermissionGroupsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -325,7 +321,7 @@ class AccountPermissionGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountPermissionGroups/' +
         commons.Escaper.ecapeVariable('$id');
@@ -359,8 +355,6 @@ class AccountPermissionGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -369,7 +363,7 @@ class AccountPermissionGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountPermissionGroups';
 
@@ -411,8 +405,6 @@ class AccountPermissionsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -424,7 +416,7 @@ class AccountPermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountPermissions/' +
         commons.Escaper.ecapeVariable('$id');
@@ -458,8 +450,6 @@ class AccountPermissionsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -468,7 +458,7 @@ class AccountPermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountPermissions';
 
@@ -511,8 +501,6 @@ class AccountUserProfilesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -524,7 +512,7 @@ class AccountUserProfilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountUserProfiles/' +
         commons.Escaper.ecapeVariable('$id');
@@ -561,8 +549,6 @@ class AccountUserProfilesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -575,7 +561,7 @@ class AccountUserProfilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountUserProfiles';
 
@@ -652,8 +638,6 @@ class AccountUserProfilesResource {
     core.String userRoleId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -689,7 +673,7 @@ class AccountUserProfilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountUserProfiles';
 
@@ -730,8 +714,6 @@ class AccountUserProfilesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -748,7 +730,7 @@ class AccountUserProfilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountUserProfiles';
 
@@ -785,8 +767,6 @@ class AccountUserProfilesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -799,7 +779,7 @@ class AccountUserProfilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/accountUserProfiles';
 
@@ -842,8 +822,6 @@ class AccountsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -855,7 +833,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/accounts/' +
         commons.Escaper.ecapeVariable('$id');
@@ -924,8 +902,6 @@ class AccountsResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -955,7 +931,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/accounts';
 
@@ -996,8 +972,6 @@ class AccountsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1014,7 +988,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/accounts';
 
@@ -1050,8 +1024,6 @@ class AccountsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1064,7 +1036,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/accounts';
 
@@ -1106,8 +1078,6 @@ class AdsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -1119,7 +1089,7 @@ class AdsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/ads/' +
         commons.Escaper.ecapeVariable('$id');
@@ -1155,8 +1125,6 @@ class AdsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1169,7 +1137,7 @@ class AdsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
     final _response = await _requester.request(
@@ -1301,8 +1269,6 @@ class AdsResource {
     core.List<core.String> type,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -1381,7 +1347,7 @@ class AdsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
     final _response = await _requester.request(
@@ -1421,8 +1387,6 @@ class AdsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1439,7 +1403,7 @@ class AdsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
     final _response = await _requester.request(
@@ -1474,8 +1438,6 @@ class AdsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1488,7 +1450,7 @@ class AdsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'userprofiles/' + commons.Escaper.ecapeVariable('$profileId') + '/ads';
 
     final _response = await _requester.request(
@@ -1527,8 +1489,6 @@ class AdvertiserGroupsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -1540,7 +1500,7 @@ class AdvertiserGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserGroups/' +
         commons.Escaper.ecapeVariable('$id');
@@ -1576,8 +1536,6 @@ class AdvertiserGroupsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -1589,7 +1547,7 @@ class AdvertiserGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserGroups/' +
         commons.Escaper.ecapeVariable('$id');
@@ -1626,8 +1584,6 @@ class AdvertiserGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1640,7 +1596,7 @@ class AdvertiserGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserGroups';
 
@@ -1707,8 +1663,6 @@ class AdvertiserGroupsResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -1735,7 +1689,7 @@ class AdvertiserGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserGroups';
 
@@ -1776,8 +1730,6 @@ class AdvertiserGroupsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1794,7 +1746,7 @@ class AdvertiserGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserGroups';
 
@@ -1831,8 +1783,6 @@ class AdvertiserGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1845,7 +1795,7 @@ class AdvertiserGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserGroups';
 
@@ -1889,8 +1839,6 @@ class AdvertiserLandingPagesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -1902,7 +1850,7 @@ class AdvertiserLandingPagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserLandingPages/' +
         commons.Escaper.ecapeVariable('$id');
@@ -1939,8 +1887,6 @@ class AdvertiserLandingPagesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1953,7 +1899,7 @@ class AdvertiserLandingPagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserLandingPages';
 
@@ -2033,8 +1979,6 @@ class AdvertiserLandingPagesResource {
     core.String subaccountId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -2073,7 +2017,7 @@ class AdvertiserLandingPagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserLandingPages';
 
@@ -2114,8 +2058,6 @@ class AdvertiserLandingPagesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2132,7 +2074,7 @@ class AdvertiserLandingPagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserLandingPages';
 
@@ -2169,8 +2111,6 @@ class AdvertiserLandingPagesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2183,7 +2123,7 @@ class AdvertiserLandingPagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertiserLandingPages';
 
@@ -2226,8 +2166,6 @@ class AdvertisersResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -2239,7 +2177,7 @@ class AdvertisersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertisers/' +
         commons.Escaper.ecapeVariable('$id');
@@ -2276,8 +2214,6 @@ class AdvertisersResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2290,7 +2226,7 @@ class AdvertisersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertisers';
 
@@ -2382,8 +2318,6 @@ class AdvertisersResource {
     core.String subaccountId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -2430,7 +2364,7 @@ class AdvertisersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertisers';
 
@@ -2471,8 +2405,6 @@ class AdvertisersResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2489,7 +2421,7 @@ class AdvertisersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertisers';
 
@@ -2526,8 +2458,6 @@ class AdvertisersResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2540,7 +2470,7 @@ class AdvertisersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/advertisers';
 
@@ -2580,8 +2510,6 @@ class BrowsersResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -2590,7 +2518,7 @@ class BrowsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/browsers';
 
@@ -2639,8 +2567,6 @@ class CampaignCreativeAssociationsResource {
     core.String campaignId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2656,7 +2582,7 @@ class CampaignCreativeAssociationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/campaigns/' +
         commons.Escaper.ecapeVariable('$campaignId') +
@@ -2710,8 +2636,6 @@ class CampaignCreativeAssociationsResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -2732,7 +2656,7 @@ class CampaignCreativeAssociationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/campaigns/' +
         commons.Escaper.ecapeVariable('$campaignId') +
@@ -2776,8 +2700,6 @@ class CampaignsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -2789,7 +2711,7 @@ class CampaignsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/campaigns/' +
         commons.Escaper.ecapeVariable('$id');
@@ -2825,8 +2747,6 @@ class CampaignsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2839,7 +2759,7 @@ class CampaignsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/campaigns';
 
@@ -2930,8 +2850,6 @@ class CampaignsResource {
     core.String subaccountId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -2981,7 +2899,7 @@ class CampaignsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/campaigns';
 
@@ -3022,8 +2940,6 @@ class CampaignsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3040,7 +2956,7 @@ class CampaignsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/campaigns';
 
@@ -3076,8 +2992,6 @@ class CampaignsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3090,7 +3004,7 @@ class CampaignsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/campaigns';
 
@@ -3132,8 +3046,6 @@ class ChangeLogsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -3145,7 +3057,7 @@ class ChangeLogsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/changeLogs/' +
         commons.Escaper.ecapeVariable('$id');
@@ -3281,8 +3193,6 @@ class ChangeLogsResource {
     core.List<core.String> userProfileIds,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -3321,7 +3231,7 @@ class ChangeLogsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/changeLogs';
 
@@ -3372,8 +3282,6 @@ class CitiesResource {
     core.List<core.String> regionDartIds,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -3394,7 +3302,7 @@ class CitiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/cities';
 
@@ -3436,8 +3344,6 @@ class ConnectionTypesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -3449,7 +3355,7 @@ class ConnectionTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/connectionTypes/' +
         commons.Escaper.ecapeVariable('$id');
@@ -3483,8 +3389,6 @@ class ConnectionTypesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -3493,7 +3397,7 @@ class ConnectionTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/connectionTypes';
 
@@ -3533,8 +3437,6 @@ class ContentCategoriesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -3546,7 +3448,7 @@ class ContentCategoriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/contentCategories/' +
         commons.Escaper.ecapeVariable('$id');
@@ -3582,8 +3484,6 @@ class ContentCategoriesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -3595,7 +3495,7 @@ class ContentCategoriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/contentCategories/' +
         commons.Escaper.ecapeVariable('$id');
@@ -3632,8 +3532,6 @@ class ContentCategoriesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3646,7 +3544,7 @@ class ContentCategoriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/contentCategories';
 
@@ -3713,8 +3611,6 @@ class ContentCategoriesResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -3741,7 +3637,7 @@ class ContentCategoriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/contentCategories';
 
@@ -3782,8 +3678,6 @@ class ContentCategoriesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3800,7 +3694,7 @@ class ContentCategoriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/contentCategories';
 
@@ -3837,8 +3731,6 @@ class ContentCategoriesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3851,7 +3743,7 @@ class ContentCategoriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/contentCategories';
 
@@ -3894,8 +3786,6 @@ class ConversionsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3908,7 +3798,7 @@ class ConversionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/conversions/batchinsert';
 
@@ -3945,8 +3835,6 @@ class ConversionsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3959,7 +3847,7 @@ class ConversionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/conversions/batchupdate';
 
@@ -4002,8 +3890,6 @@ class CountriesResource {
     core.String dartId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -4015,7 +3901,7 @@ class CountriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/countries/' +
         commons.Escaper.ecapeVariable('$dartId');
@@ -4048,8 +3934,6 @@ class CountriesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -4058,7 +3942,7 @@ class CountriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/countries';
 
@@ -4106,8 +3990,6 @@ class CreativeAssetsResource {
     core.String $fields,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4123,6 +4005,7 @@ class CreativeAssetsResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'userprofiles/' +
           commons.Escaper.ecapeVariable('$profileId') +
@@ -4180,8 +4063,6 @@ class CreativeFieldValuesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -4196,7 +4077,7 @@ class CreativeFieldValuesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields/' +
         commons.Escaper.ecapeVariable('$creativeFieldId') +
@@ -4237,8 +4118,6 @@ class CreativeFieldValuesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -4253,7 +4132,7 @@ class CreativeFieldValuesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields/' +
         commons.Escaper.ecapeVariable('$creativeFieldId') +
@@ -4295,8 +4174,6 @@ class CreativeFieldValuesResource {
     core.String creativeFieldId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4312,7 +4189,7 @@ class CreativeFieldValuesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields/' +
         commons.Escaper.ecapeVariable('$creativeFieldId') +
@@ -4379,8 +4256,6 @@ class CreativeFieldValuesResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -4410,7 +4285,7 @@ class CreativeFieldValuesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields/' +
         commons.Escaper.ecapeVariable('$creativeFieldId') +
@@ -4456,8 +4331,6 @@ class CreativeFieldValuesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4477,7 +4350,7 @@ class CreativeFieldValuesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields/' +
         commons.Escaper.ecapeVariable('$creativeFieldId') +
@@ -4519,8 +4392,6 @@ class CreativeFieldValuesResource {
     core.String creativeFieldId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4536,7 +4407,7 @@ class CreativeFieldValuesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields/' +
         commons.Escaper.ecapeVariable('$creativeFieldId') +
@@ -4579,8 +4450,6 @@ class CreativeFieldsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -4592,7 +4461,7 @@ class CreativeFieldsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields/' +
         commons.Escaper.ecapeVariable('$id');
@@ -4628,8 +4497,6 @@ class CreativeFieldsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -4641,7 +4508,7 @@ class CreativeFieldsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields/' +
         commons.Escaper.ecapeVariable('$id');
@@ -4678,8 +4545,6 @@ class CreativeFieldsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4692,7 +4557,7 @@ class CreativeFieldsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields';
 
@@ -4764,8 +4629,6 @@ class CreativeFieldsResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -4795,7 +4658,7 @@ class CreativeFieldsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields';
 
@@ -4836,8 +4699,6 @@ class CreativeFieldsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4854,7 +4715,7 @@ class CreativeFieldsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields';
 
@@ -4891,8 +4752,6 @@ class CreativeFieldsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4905,7 +4764,7 @@ class CreativeFieldsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeFields';
 
@@ -4948,8 +4807,6 @@ class CreativeGroupsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -4961,7 +4818,7 @@ class CreativeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeGroups/' +
         commons.Escaper.ecapeVariable('$id');
@@ -4998,8 +4855,6 @@ class CreativeGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5012,7 +4867,7 @@ class CreativeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeGroups';
 
@@ -5088,8 +4943,6 @@ class CreativeGroupsResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -5122,7 +4975,7 @@ class CreativeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeGroups';
 
@@ -5163,8 +5016,6 @@ class CreativeGroupsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5181,7 +5032,7 @@ class CreativeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeGroups';
 
@@ -5218,8 +5069,6 @@ class CreativeGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5232,7 +5081,7 @@ class CreativeGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creativeGroups';
 
@@ -5275,8 +5124,6 @@ class CreativesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -5288,7 +5135,7 @@ class CreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creatives/' +
         commons.Escaper.ecapeVariable('$id');
@@ -5324,8 +5171,6 @@ class CreativesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5338,7 +5183,7 @@ class CreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creatives';
 
@@ -5438,8 +5283,6 @@ class CreativesResource {
     core.List<core.String> types,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -5496,7 +5339,7 @@ class CreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creatives';
 
@@ -5537,8 +5380,6 @@ class CreativesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5555,7 +5396,7 @@ class CreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creatives';
 
@@ -5591,8 +5432,6 @@ class CreativesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5605,7 +5444,7 @@ class CreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/creatives';
 
@@ -5647,8 +5486,6 @@ class CustomEventsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5661,7 +5498,7 @@ class CustomEventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/customEvents/batchinsert';
 
@@ -5711,8 +5548,6 @@ class DimensionValuesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5731,7 +5566,7 @@ class DimensionValuesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/dimensionvalues/query';
 
@@ -5774,8 +5609,6 @@ class DirectorySitesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -5787,7 +5620,7 @@ class DirectorySitesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/directorySites/' +
         commons.Escaper.ecapeVariable('$id');
@@ -5824,8 +5657,6 @@ class DirectorySitesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5838,7 +5669,7 @@ class DirectorySitesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/directorySites';
 
@@ -5925,8 +5756,6 @@ class DirectorySitesResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -5974,7 +5803,7 @@ class DirectorySitesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/directorySites';
 
@@ -6030,8 +5859,6 @@ class DynamicTargetingKeysResource {
     core.String objectType, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -6051,7 +5878,7 @@ class DynamicTargetingKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/dynamicTargetingKeys/' +
         commons.Escaper.ecapeVariable('$objectId');
@@ -6092,8 +5919,6 @@ class DynamicTargetingKeysResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6106,7 +5931,7 @@ class DynamicTargetingKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/dynamicTargetingKeys';
 
@@ -6158,8 +5983,6 @@ class DynamicTargetingKeysResource {
     core.String objectType,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -6180,7 +6003,7 @@ class DynamicTargetingKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/dynamicTargetingKeys';
 
@@ -6220,8 +6043,6 @@ class EventTagsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -6233,7 +6054,7 @@ class EventTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/eventTags/' +
         commons.Escaper.ecapeVariable('$id');
@@ -6269,8 +6090,6 @@ class EventTagsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -6282,7 +6101,7 @@ class EventTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/eventTags/' +
         commons.Escaper.ecapeVariable('$id');
@@ -6318,8 +6137,6 @@ class EventTagsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6332,7 +6149,7 @@ class EventTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/eventTags';
 
@@ -6421,8 +6238,6 @@ class EventTagsResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -6461,7 +6276,7 @@ class EventTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/eventTags';
 
@@ -6502,8 +6317,6 @@ class EventTagsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6520,7 +6333,7 @@ class EventTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/eventTags';
 
@@ -6556,8 +6369,6 @@ class EventTagsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6570,7 +6381,7 @@ class EventTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/eventTags';
 
@@ -6623,8 +6434,6 @@ class FilesResource {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
-    core.String _url;
-
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
     }
@@ -6636,7 +6445,7 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'reports/' +
+    final _url = 'reports/' +
         commons.Escaper.ecapeVariable('$reportId') +
         '/files/' +
         commons.Escaper.ecapeVariable('$fileId');
@@ -6701,8 +6510,6 @@ class FilesResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -6726,7 +6533,7 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/files';
 
@@ -6766,8 +6573,6 @@ class FloodlightActivitiesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -6779,7 +6584,7 @@ class FloodlightActivitiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivities/' +
         commons.Escaper.ecapeVariable('$id');
@@ -6816,8 +6621,6 @@ class FloodlightActivitiesResource {
     core.String floodlightActivityId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -6829,7 +6632,7 @@ class FloodlightActivitiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivities/generatetag';
 
@@ -6865,8 +6668,6 @@ class FloodlightActivitiesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -6878,7 +6679,7 @@ class FloodlightActivitiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivities/' +
         commons.Escaper.ecapeVariable('$id');
@@ -6915,8 +6716,6 @@ class FloodlightActivitiesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6929,7 +6728,7 @@ class FloodlightActivitiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivities';
 
@@ -7032,8 +6831,6 @@ class FloodlightActivitiesResource {
     core.String tagString,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -7087,7 +6884,7 @@ class FloodlightActivitiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivities';
 
@@ -7128,8 +6925,6 @@ class FloodlightActivitiesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7146,7 +6941,7 @@ class FloodlightActivitiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivities';
 
@@ -7183,8 +6978,6 @@ class FloodlightActivitiesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7197,7 +6990,7 @@ class FloodlightActivitiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivities';
 
@@ -7241,8 +7034,6 @@ class FloodlightActivityGroupsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -7254,7 +7045,7 @@ class FloodlightActivityGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivityGroups/' +
         commons.Escaper.ecapeVariable('$id');
@@ -7291,8 +7082,6 @@ class FloodlightActivityGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7305,7 +7094,7 @@ class FloodlightActivityGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivityGroups';
 
@@ -7393,8 +7182,6 @@ class FloodlightActivityGroupsResource {
     core.String type,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -7430,7 +7217,7 @@ class FloodlightActivityGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivityGroups';
 
@@ -7471,8 +7258,6 @@ class FloodlightActivityGroupsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7489,7 +7274,7 @@ class FloodlightActivityGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivityGroups';
 
@@ -7526,8 +7311,6 @@ class FloodlightActivityGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7540,7 +7323,7 @@ class FloodlightActivityGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightActivityGroups';
 
@@ -7584,8 +7367,6 @@ class FloodlightConfigurationsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -7597,7 +7378,7 @@ class FloodlightConfigurationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightConfigurations/' +
         commons.Escaper.ecapeVariable('$id');
@@ -7635,8 +7416,6 @@ class FloodlightConfigurationsResource {
     core.List<core.String> ids,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -7648,7 +7427,7 @@ class FloodlightConfigurationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightConfigurations';
 
@@ -7689,8 +7468,6 @@ class FloodlightConfigurationsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7707,7 +7484,7 @@ class FloodlightConfigurationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightConfigurations';
 
@@ -7744,8 +7521,6 @@ class FloodlightConfigurationsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7758,7 +7533,7 @@ class FloodlightConfigurationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/floodlightConfigurations';
 
@@ -7804,8 +7579,6 @@ class InventoryItemsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -7820,7 +7593,7 @@ class InventoryItemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -7899,8 +7672,6 @@ class InventoryItemsResource {
     core.String type,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -7939,7 +7710,7 @@ class InventoryItemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -7980,8 +7751,6 @@ class LanguagesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -7990,7 +7759,7 @@ class LanguagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/languages';
 
@@ -8029,8 +7798,6 @@ class MetrosResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -8039,7 +7806,7 @@ class MetrosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/metros';
 
@@ -8081,8 +7848,6 @@ class MobileAppsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -8094,7 +7859,7 @@ class MobileAppsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/mobileApps/' +
         commons.Escaper.ecapeVariable('$id');
@@ -8148,8 +7913,6 @@ class MobileAppsResource {
     core.String searchString,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -8173,7 +7936,7 @@ class MobileAppsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/mobileApps';
 
@@ -8215,8 +7978,6 @@ class MobileCarriersResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -8228,7 +7989,7 @@ class MobileCarriersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/mobileCarriers/' +
         commons.Escaper.ecapeVariable('$id');
@@ -8262,8 +8023,6 @@ class MobileCarriersResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -8272,7 +8031,7 @@ class MobileCarriersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/mobileCarriers';
 
@@ -8315,8 +8074,6 @@ class OperatingSystemVersionsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -8328,7 +8085,7 @@ class OperatingSystemVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/operatingSystemVersions/' +
         commons.Escaper.ecapeVariable('$id');
@@ -8362,8 +8119,6 @@ class OperatingSystemVersionsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -8372,7 +8127,7 @@ class OperatingSystemVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/operatingSystemVersions';
 
@@ -8414,8 +8169,6 @@ class OperatingSystemsResource {
     core.String dartId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -8427,7 +8180,7 @@ class OperatingSystemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/operatingSystems/' +
         commons.Escaper.ecapeVariable('$dartId');
@@ -8461,8 +8214,6 @@ class OperatingSystemsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -8471,7 +8222,7 @@ class OperatingSystemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/operatingSystems';
 
@@ -8516,8 +8267,6 @@ class OrderDocumentsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -8532,7 +8281,7 @@ class OrderDocumentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -8616,8 +8365,6 @@ class OrderDocumentsResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -8656,7 +8403,7 @@ class OrderDocumentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -8703,8 +8450,6 @@ class OrdersResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -8719,7 +8464,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -8792,8 +8537,6 @@ class OrdersResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -8826,7 +8569,7 @@ class OrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
@@ -8870,8 +8613,6 @@ class PlacementGroupsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -8883,7 +8624,7 @@ class PlacementGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementGroups/' +
         commons.Escaper.ecapeVariable('$id');
@@ -8920,8 +8661,6 @@ class PlacementGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -8934,7 +8673,7 @@ class PlacementGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementGroups';
 
@@ -9065,8 +8804,6 @@ class PlacementGroupsResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -9132,7 +8869,7 @@ class PlacementGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementGroups';
 
@@ -9173,8 +8910,6 @@ class PlacementGroupsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -9191,7 +8926,7 @@ class PlacementGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementGroups';
 
@@ -9228,8 +8963,6 @@ class PlacementGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -9242,7 +8975,7 @@ class PlacementGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementGroups';
 
@@ -9284,8 +9017,6 @@ class PlacementStrategiesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -9297,7 +9028,7 @@ class PlacementStrategiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementStrategies/' +
         commons.Escaper.ecapeVariable('$id');
@@ -9333,8 +9064,6 @@ class PlacementStrategiesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -9346,7 +9075,7 @@ class PlacementStrategiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementStrategies/' +
         commons.Escaper.ecapeVariable('$id');
@@ -9383,8 +9112,6 @@ class PlacementStrategiesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -9397,7 +9124,7 @@ class PlacementStrategiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementStrategies';
 
@@ -9465,8 +9192,6 @@ class PlacementStrategiesResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -9493,7 +9218,7 @@ class PlacementStrategiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementStrategies';
 
@@ -9534,8 +9259,6 @@ class PlacementStrategiesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -9552,7 +9275,7 @@ class PlacementStrategiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementStrategies';
 
@@ -9589,8 +9312,6 @@ class PlacementStrategiesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -9603,7 +9324,7 @@ class PlacementStrategiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/placementStrategies';
 
@@ -9654,8 +9375,6 @@ class PlacementsResource {
     core.List<core.String> tagFormats,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -9673,7 +9392,7 @@ class PlacementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/placements/generatetags';
 
@@ -9709,8 +9428,6 @@ class PlacementsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -9722,7 +9439,7 @@ class PlacementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/placements/' +
         commons.Escaper.ecapeVariable('$id');
@@ -9758,8 +9475,6 @@ class PlacementsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -9772,7 +9487,7 @@ class PlacementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/placements';
 
@@ -9906,8 +9621,6 @@ class PlacementsResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -9982,7 +9695,7 @@ class PlacementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/placements';
 
@@ -10023,8 +9736,6 @@ class PlacementsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -10041,7 +9752,7 @@ class PlacementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/placements';
 
@@ -10077,8 +9788,6 @@ class PlacementsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -10091,7 +9800,7 @@ class PlacementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/placements';
 
@@ -10133,8 +9842,6 @@ class PlatformTypesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -10146,7 +9853,7 @@ class PlatformTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/platformTypes/' +
         commons.Escaper.ecapeVariable('$id');
@@ -10180,8 +9887,6 @@ class PlatformTypesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -10190,7 +9895,7 @@ class PlatformTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/platformTypes';
 
@@ -10232,8 +9937,6 @@ class PostalCodesResource {
     core.String code, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -10245,7 +9948,7 @@ class PostalCodesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/postalCodes/' +
         commons.Escaper.ecapeVariable('$code');
@@ -10279,8 +9982,6 @@ class PostalCodesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -10289,7 +9990,7 @@ class PostalCodesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/postalCodes';
 
@@ -10331,8 +10032,6 @@ class ProjectsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -10344,7 +10043,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/projects/' +
         commons.Escaper.ecapeVariable('$id');
@@ -10413,8 +10112,6 @@ class ProjectsResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -10444,7 +10141,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/projects';
 
@@ -10483,8 +10180,6 @@ class RegionsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -10493,7 +10188,7 @@ class RegionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/regions';
 
@@ -10536,8 +10231,6 @@ class RemarketingListSharesResource {
     core.String remarketingListId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -10549,7 +10242,7 @@ class RemarketingListSharesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingListShares/' +
         commons.Escaper.ecapeVariable('$remarketingListId');
@@ -10591,8 +10284,6 @@ class RemarketingListSharesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -10609,7 +10300,7 @@ class RemarketingListSharesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingListShares';
 
@@ -10646,8 +10337,6 @@ class RemarketingListSharesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -10660,7 +10349,7 @@ class RemarketingListSharesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingListShares';
 
@@ -10703,8 +10392,6 @@ class RemarketingListsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -10716,7 +10403,7 @@ class RemarketingListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingLists/' +
         commons.Escaper.ecapeVariable('$id');
@@ -10753,8 +10440,6 @@ class RemarketingListsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -10767,7 +10452,7 @@ class RemarketingListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingLists';
 
@@ -10841,8 +10526,6 @@ class RemarketingListsResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -10876,7 +10559,7 @@ class RemarketingListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingLists';
 
@@ -10917,8 +10600,6 @@ class RemarketingListsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -10935,7 +10616,7 @@ class RemarketingListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingLists';
 
@@ -10972,8 +10653,6 @@ class RemarketingListsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -10986,7 +10665,7 @@ class RemarketingListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/remarketingLists';
 
@@ -11031,8 +10710,6 @@ class ReportsResource {
     core.String reportId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -11044,7 +10721,7 @@ class ReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
@@ -11080,8 +10757,6 @@ class ReportsResource {
     core.String reportId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -11093,7 +10768,7 @@ class ReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
@@ -11129,8 +10804,6 @@ class ReportsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -11143,7 +10816,7 @@ class ReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/reports';
 
@@ -11202,8 +10875,6 @@ class ReportsResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -11227,7 +10898,7 @@ class ReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/reports';
 
@@ -11268,8 +10939,6 @@ class ReportsResource {
     core.String reportId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -11285,7 +10954,7 @@ class ReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
@@ -11325,8 +10994,6 @@ class ReportsResource {
     core.bool synchronous,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -11341,7 +11008,7 @@ class ReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId') +
@@ -11381,8 +11048,6 @@ class ReportsResource {
     core.String reportId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -11398,7 +11063,7 @@ class ReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
@@ -11444,8 +11109,6 @@ class ReportsCompatibleFieldsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -11458,7 +11121,7 @@ class ReportsCompatibleFieldsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/reports/compatiblefields/query';
 
@@ -11515,8 +11178,6 @@ class ReportsFilesResource {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -11531,7 +11192,7 @@ class ReportsFilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId') +
@@ -11594,8 +11255,6 @@ class ReportsFilesResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -11619,7 +11278,7 @@ class ReportsFilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId') +
@@ -11662,8 +11321,6 @@ class SitesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -11675,7 +11332,7 @@ class SitesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/sites/' +
         commons.Escaper.ecapeVariable('$id');
@@ -11711,8 +11368,6 @@ class SitesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -11725,7 +11380,7 @@ class SitesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/sites';
 
@@ -11821,8 +11476,6 @@ class SitesResource {
     core.bool unmappedSite,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -11882,7 +11535,7 @@ class SitesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/sites';
 
@@ -11923,8 +11576,6 @@ class SitesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -11941,7 +11592,7 @@ class SitesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/sites';
 
@@ -11977,8 +11628,6 @@ class SitesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -11991,7 +11640,7 @@ class SitesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/sites';
 
@@ -12033,8 +11682,6 @@ class SizesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -12046,7 +11693,7 @@ class SizesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/sizes/' +
         commons.Escaper.ecapeVariable('$id');
@@ -12082,8 +11729,6 @@ class SizesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -12096,7 +11741,7 @@ class SizesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/sizes';
 
@@ -12147,8 +11792,6 @@ class SizesResource {
     core.int width,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -12169,7 +11812,7 @@ class SizesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/sizes';
 
@@ -12211,8 +11854,6 @@ class SubaccountsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -12224,7 +11865,7 @@ class SubaccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/subaccounts/' +
         commons.Escaper.ecapeVariable('$id');
@@ -12261,8 +11902,6 @@ class SubaccountsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -12275,7 +11914,7 @@ class SubaccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/subaccounts';
 
@@ -12342,8 +11981,6 @@ class SubaccountsResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -12370,7 +12007,7 @@ class SubaccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/subaccounts';
 
@@ -12411,8 +12048,6 @@ class SubaccountsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -12429,7 +12064,7 @@ class SubaccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/subaccounts';
 
@@ -12466,8 +12101,6 @@ class SubaccountsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -12480,7 +12113,7 @@ class SubaccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/subaccounts';
 
@@ -12524,8 +12157,6 @@ class TargetableRemarketingListsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -12537,7 +12168,7 @@ class TargetableRemarketingListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/targetableRemarketingLists/' +
         commons.Escaper.ecapeVariable('$id');
@@ -12609,8 +12240,6 @@ class TargetableRemarketingListsResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -12641,7 +12270,7 @@ class TargetableRemarketingListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/targetableRemarketingLists';
 
@@ -12683,8 +12312,6 @@ class TargetingTemplatesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -12696,7 +12323,7 @@ class TargetingTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/targetingTemplates/' +
         commons.Escaper.ecapeVariable('$id');
@@ -12733,8 +12360,6 @@ class TargetingTemplatesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -12747,7 +12372,7 @@ class TargetingTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/targetingTemplates';
 
@@ -12817,8 +12442,6 @@ class TargetingTemplatesResource {
     core.String sortOrder,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -12848,7 +12471,7 @@ class TargetingTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/targetingTemplates';
 
@@ -12889,8 +12512,6 @@ class TargetingTemplatesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -12907,7 +12528,7 @@ class TargetingTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/targetingTemplates';
 
@@ -12944,8 +12565,6 @@ class TargetingTemplatesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -12958,7 +12577,7 @@ class TargetingTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/targetingTemplates';
 
@@ -12998,8 +12617,6 @@ class UserProfilesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -13008,7 +12625,7 @@ class UserProfilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId');
+    final _url = 'userprofiles/' + commons.Escaper.ecapeVariable('$profileId');
 
     final _response = await _requester.request(
       _url,
@@ -13036,14 +12653,12 @@ class UserProfilesResource {
   async.Future<UserProfileList> list({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles';
+    const _url = 'userprofiles';
 
     final _response = await _requester.request(
       _url,
@@ -13084,8 +12699,6 @@ class UserRolePermissionGroupsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -13097,7 +12710,7 @@ class UserRolePermissionGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRolePermissionGroups/' +
         commons.Escaper.ecapeVariable('$id');
@@ -13131,8 +12744,6 @@ class UserRolePermissionGroupsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -13141,7 +12752,7 @@ class UserRolePermissionGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRolePermissionGroups';
 
@@ -13184,8 +12795,6 @@ class UserRolePermissionsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -13197,7 +12806,7 @@ class UserRolePermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRolePermissions/' +
         commons.Escaper.ecapeVariable('$id');
@@ -13234,8 +12843,6 @@ class UserRolePermissionsResource {
     core.List<core.String> ids,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -13247,7 +12854,7 @@ class UserRolePermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRolePermissions';
 
@@ -13287,8 +12894,6 @@ class UserRolesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -13300,7 +12905,7 @@ class UserRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRoles/' +
         commons.Escaper.ecapeVariable('$id');
@@ -13336,8 +12941,6 @@ class UserRolesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -13349,7 +12952,7 @@ class UserRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRoles/' +
         commons.Escaper.ecapeVariable('$id');
@@ -13385,8 +12988,6 @@ class UserRolesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -13399,7 +13000,7 @@ class UserRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRoles';
 
@@ -13472,8 +13073,6 @@ class UserRolesResource {
     core.String subaccountId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -13506,7 +13105,7 @@ class UserRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRoles';
 
@@ -13547,8 +13146,6 @@ class UserRolesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -13565,7 +13162,7 @@ class UserRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRoles';
 
@@ -13601,8 +13198,6 @@ class UserRolesResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -13615,7 +13210,7 @@ class UserRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/userRoles';
 
@@ -13657,8 +13252,6 @@ class VideoFormatsResource {
     core.int id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -13670,7 +13263,7 @@ class VideoFormatsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/videoFormats/' +
         commons.Escaper.ecapeVariable('$id');
@@ -13704,8 +13297,6 @@ class VideoFormatsResource {
     core.String profileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (profileId == null) {
       throw core.ArgumentError('Parameter profileId is required.');
     }
@@ -13714,7 +13305,7 @@ class VideoFormatsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'userprofiles/' +
+    final _url = 'userprofiles/' +
         commons.Escaper.ecapeVariable('$profileId') +
         '/videoFormats';
 

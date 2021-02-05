@@ -78,8 +78,6 @@ class V1Resource {
     GoogleIdentityStsV1ExchangeTokenRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -89,7 +87,7 @@ class V1Resource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/token';
+    const _url = 'v1/token';
 
     final _response = await _requester.request(
       _url,

@@ -49,14 +49,12 @@ class WrapApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<WrapResponse> helloPost(WrapRequest request) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
 
-    _url = 'helloPost';
+    const _url = 'helloPost';
 
     final _response = await _requester.request(
       _url,

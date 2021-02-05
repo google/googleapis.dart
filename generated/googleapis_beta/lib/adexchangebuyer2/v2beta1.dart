@@ -145,8 +145,6 @@ class AccountsClientsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -159,7 +157,7 @@ class AccountsClientsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/clients';
 
@@ -197,8 +195,6 @@ class AccountsClientsResource {
     core.String clientAccountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -210,7 +206,7 @@ class AccountsClientsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/clients/' +
         commons.Escaper.ecapeVariable('$clientAccountId');
@@ -258,8 +254,6 @@ class AccountsClientsResource {
     core.String partnerClientId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -277,7 +271,7 @@ class AccountsClientsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/clients';
 
@@ -319,8 +313,6 @@ class AccountsClientsResource {
     core.String clientAccountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -336,7 +328,7 @@ class AccountsClientsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/clients/' +
         commons.Escaper.ecapeVariable('$clientAccountId');
@@ -386,8 +378,6 @@ class AccountsClientsInvitationsResource {
     core.String clientAccountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -403,7 +393,7 @@ class AccountsClientsInvitationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/clients/' +
         commons.Escaper.ecapeVariable('$clientAccountId') +
@@ -448,8 +438,6 @@ class AccountsClientsInvitationsResource {
     core.String invitationId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -464,7 +452,7 @@ class AccountsClientsInvitationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/clients/' +
         commons.Escaper.ecapeVariable('$clientAccountId') +
@@ -518,8 +506,6 @@ class AccountsClientsInvitationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -537,7 +523,7 @@ class AccountsClientsInvitationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/clients/' +
         commons.Escaper.ecapeVariable('$clientAccountId') +
@@ -587,8 +573,6 @@ class AccountsClientsUsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -603,7 +587,7 @@ class AccountsClientsUsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/clients/' +
         commons.Escaper.ecapeVariable('$clientAccountId') +
@@ -656,8 +640,6 @@ class AccountsClientsUsersResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -675,7 +657,7 @@ class AccountsClientsUsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/clients/' +
         commons.Escaper.ecapeVariable('$clientAccountId') +
@@ -723,8 +705,6 @@ class AccountsClientsUsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -743,7 +723,7 @@ class AccountsClientsUsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/clients/' +
         commons.Escaper.ecapeVariable('$clientAccountId') +
@@ -806,8 +786,6 @@ class AccountsCreativesResource {
     core.String duplicateIdMode,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -823,7 +801,7 @@ class AccountsCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/creatives';
 
@@ -859,8 +837,6 @@ class AccountsCreativesResource {
     core.String creativeId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -872,7 +848,7 @@ class AccountsCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/creatives/' +
         commons.Escaper.ecapeVariable('$creativeId');
@@ -929,8 +905,6 @@ class AccountsCreativesResource {
     core.String query,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -948,7 +922,7 @@ class AccountsCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/creatives';
 
@@ -991,8 +965,6 @@ class AccountsCreativesResource {
     core.String creativeId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1008,7 +980,7 @@ class AccountsCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/creatives/' +
         commons.Escaper.ecapeVariable('$creativeId') +
@@ -1051,8 +1023,6 @@ class AccountsCreativesResource {
     core.String creativeId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1068,7 +1038,7 @@ class AccountsCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/creatives/' +
         commons.Escaper.ecapeVariable('$creativeId');
@@ -1114,8 +1084,6 @@ class AccountsCreativesResource {
     core.String creativeId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1131,7 +1099,7 @@ class AccountsCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/creatives/' +
         commons.Escaper.ecapeVariable('$creativeId') +
@@ -1179,8 +1147,6 @@ class AccountsCreativesDealAssociationsResource {
     core.String creativeId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1196,7 +1162,7 @@ class AccountsCreativesDealAssociationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/creatives/' +
         commons.Escaper.ecapeVariable('$creativeId') +
@@ -1255,8 +1221,6 @@ class AccountsCreativesDealAssociationsResource {
     core.String query,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1277,7 +1241,7 @@ class AccountsCreativesDealAssociationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/creatives/' +
         commons.Escaper.ecapeVariable('$creativeId') +
@@ -1318,8 +1282,6 @@ class AccountsCreativesDealAssociationsResource {
     core.String creativeId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1335,7 +1297,7 @@ class AccountsCreativesDealAssociationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/creatives/' +
         commons.Escaper.ecapeVariable('$creativeId') +
@@ -1405,8 +1367,6 @@ class AccountsFinalizedProposalsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1427,7 +1387,7 @@ class AccountsFinalizedProposalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/finalizedProposals';
 
@@ -1469,8 +1429,6 @@ class AccountsProductsResource {
     core.String productId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1482,7 +1440,7 @@ class AccountsProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId');
@@ -1529,8 +1487,6 @@ class AccountsProductsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1548,7 +1504,7 @@ class AccountsProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/products';
 
@@ -1599,8 +1555,6 @@ class AccountsProposalsResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1616,7 +1570,7 @@ class AccountsProposalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/proposals/' +
         commons.Escaper.ecapeVariable('$proposalId') +
@@ -1660,8 +1614,6 @@ class AccountsProposalsResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1677,7 +1629,7 @@ class AccountsProposalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/proposals/' +
         commons.Escaper.ecapeVariable('$proposalId') +
@@ -1721,8 +1673,6 @@ class AccountsProposalsResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1738,7 +1688,7 @@ class AccountsProposalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/proposals/' +
         commons.Escaper.ecapeVariable('$proposalId') +
@@ -1785,8 +1735,6 @@ class AccountsProposalsResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1802,7 +1750,7 @@ class AccountsProposalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/proposals/' +
         commons.Escaper.ecapeVariable('$proposalId') +
@@ -1843,8 +1791,6 @@ class AccountsProposalsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1857,7 +1803,7 @@ class AccountsProposalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/proposals';
 
@@ -1895,8 +1841,6 @@ class AccountsProposalsResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1908,7 +1852,7 @@ class AccountsProposalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/proposals/' +
         commons.Escaper.ecapeVariable('$proposalId');
@@ -1973,8 +1917,6 @@ class AccountsProposalsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1995,7 +1937,7 @@ class AccountsProposalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/proposals';
 
@@ -2040,8 +1982,6 @@ class AccountsProposalsResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2057,7 +1997,7 @@ class AccountsProposalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/proposals/' +
         commons.Escaper.ecapeVariable('$proposalId') +
@@ -2105,8 +2045,6 @@ class AccountsProposalsResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2122,7 +2060,7 @@ class AccountsProposalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/proposals/' +
         commons.Escaper.ecapeVariable('$proposalId') +
@@ -2173,8 +2111,6 @@ class AccountsProposalsResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2190,7 +2126,7 @@ class AccountsProposalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/proposals/' +
         commons.Escaper.ecapeVariable('$proposalId');
@@ -2234,8 +2170,6 @@ class AccountsPublisherProfilesResource {
     core.String publisherProfileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2247,7 +2181,7 @@ class AccountsPublisherProfilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/publisherProfiles/' +
         commons.Escaper.ecapeVariable('$publisherProfileId');
@@ -2287,8 +2221,6 @@ class AccountsPublisherProfilesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2303,7 +2235,7 @@ class AccountsPublisherProfilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/accounts/' +
+    final _url = 'v2beta1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/publisherProfiles';
 
@@ -2397,8 +2329,6 @@ class BiddersAccountsFilterSetsResource {
     core.bool isTransient,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2414,7 +2344,7 @@ class BiddersAccountsFilterSetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$ownerName') +
         '/filterSets';
 
@@ -2455,8 +2385,6 @@ class BiddersAccountsFilterSetsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -2465,7 +2393,7 @@ class BiddersAccountsFilterSetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2503,8 +2431,6 @@ class BiddersAccountsFilterSetsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -2513,7 +2439,7 @@ class BiddersAccountsFilterSetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2559,8 +2485,6 @@ class BiddersAccountsFilterSetsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (ownerName == null) {
       throw core.ArgumentError('Parameter ownerName is required.');
     }
@@ -2575,7 +2499,7 @@ class BiddersAccountsFilterSetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$ownerName') +
         '/filterSets';
 
@@ -2633,8 +2557,6 @@ class BiddersAccountsFilterSetsBidMetricsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -2649,7 +2571,7 @@ class BiddersAccountsFilterSetsBidMetricsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/bidMetrics';
 
@@ -2709,8 +2631,6 @@ class BiddersAccountsFilterSetsBidResponseErrorsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -2725,7 +2645,7 @@ class BiddersAccountsFilterSetsBidResponseErrorsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/bidResponseErrors';
 
@@ -2786,8 +2706,6 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -2802,7 +2720,7 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/bidResponsesWithoutBids';
 
@@ -2862,8 +2780,6 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -2878,7 +2794,7 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/filteredBidRequests';
 
@@ -2942,8 +2858,6 @@ class BiddersAccountsFilterSetsFilteredBidsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -2958,7 +2872,7 @@ class BiddersAccountsFilterSetsFilteredBidsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/filteredBids';
 
@@ -3023,8 +2937,6 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -3042,7 +2954,7 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/filteredBids/' +
         commons.Escaper.ecapeVariable('$creativeStatusId') +
@@ -3111,8 +3023,6 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -3130,7 +3040,7 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/filteredBids/' +
         commons.Escaper.ecapeVariable('$creativeStatusId') +
@@ -3191,8 +3101,6 @@ class BiddersAccountsFilterSetsImpressionMetricsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -3207,7 +3115,7 @@ class BiddersAccountsFilterSetsImpressionMetricsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/impressionMetrics';
 
@@ -3266,8 +3174,6 @@ class BiddersAccountsFilterSetsLosingBidsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -3282,7 +3188,7 @@ class BiddersAccountsFilterSetsLosingBidsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/losingBids';
 
@@ -3342,8 +3248,6 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -3358,7 +3262,7 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/nonBillableWinningBids';
 
@@ -3430,8 +3334,6 @@ class BiddersFilterSetsResource {
     core.bool isTransient,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3447,7 +3349,7 @@ class BiddersFilterSetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$ownerName') +
         '/filterSets';
 
@@ -3487,8 +3389,6 @@ class BiddersFilterSetsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -3497,7 +3397,7 @@ class BiddersFilterSetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -3534,8 +3434,6 @@ class BiddersFilterSetsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -3544,7 +3442,7 @@ class BiddersFilterSetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -3590,8 +3488,6 @@ class BiddersFilterSetsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (ownerName == null) {
       throw core.ArgumentError('Parameter ownerName is required.');
     }
@@ -3606,7 +3502,7 @@ class BiddersFilterSetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$ownerName') +
         '/filterSets';
 
@@ -3663,8 +3559,6 @@ class BiddersFilterSetsBidMetricsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -3679,7 +3573,7 @@ class BiddersFilterSetsBidMetricsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/bidMetrics';
 
@@ -3737,8 +3631,6 @@ class BiddersFilterSetsBidResponseErrorsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -3753,7 +3645,7 @@ class BiddersFilterSetsBidResponseErrorsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/bidResponseErrors';
 
@@ -3812,8 +3704,6 @@ class BiddersFilterSetsBidResponsesWithoutBidsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -3828,7 +3718,7 @@ class BiddersFilterSetsBidResponsesWithoutBidsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/bidResponsesWithoutBids';
 
@@ -3886,8 +3776,6 @@ class BiddersFilterSetsFilteredBidRequestsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -3902,7 +3790,7 @@ class BiddersFilterSetsFilteredBidRequestsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/filteredBidRequests';
 
@@ -3965,8 +3853,6 @@ class BiddersFilterSetsFilteredBidsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -3981,7 +3867,7 @@ class BiddersFilterSetsFilteredBidsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/filteredBids';
 
@@ -4044,8 +3930,6 @@ class BiddersFilterSetsFilteredBidsCreativesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -4063,7 +3947,7 @@ class BiddersFilterSetsFilteredBidsCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/filteredBids/' +
         commons.Escaper.ecapeVariable('$creativeStatusId') +
@@ -4130,8 +4014,6 @@ class BiddersFilterSetsFilteredBidsDetailsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -4149,7 +4031,7 @@ class BiddersFilterSetsFilteredBidsDetailsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/filteredBids/' +
         commons.Escaper.ecapeVariable('$creativeStatusId') +
@@ -4208,8 +4090,6 @@ class BiddersFilterSetsImpressionMetricsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -4224,7 +4104,7 @@ class BiddersFilterSetsImpressionMetricsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/impressionMetrics';
 
@@ -4282,8 +4162,6 @@ class BiddersFilterSetsLosingBidsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -4298,7 +4176,7 @@ class BiddersFilterSetsLosingBidsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/losingBids';
 
@@ -4356,8 +4234,6 @@ class BiddersFilterSetsNonBillableWinningBidsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
@@ -4372,7 +4248,7 @@ class BiddersFilterSetsNonBillableWinningBidsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2beta1/' +
+    final _url = 'v2beta1/' +
         commons.Escaper.ecapeVariableReserved('$filterSetName') +
         '/nonBillableWinningBids';
 

@@ -100,8 +100,6 @@ class EntitiesResource {
     core.List<core.String> types,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (ids != null) {
       _queryParams['ids'] = ids;
@@ -128,7 +126,7 @@ class EntitiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/entities:search';
+    const _url = 'v1/entities:search';
 
     final _response = await _requester.request(
       _url,

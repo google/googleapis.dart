@@ -81,8 +81,6 @@ class WebResourceResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -91,7 +89,7 @@ class WebResourceResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
     await _requester.request(
       _url,
@@ -121,8 +119,6 @@ class WebResourceResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -131,7 +127,7 @@ class WebResourceResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -162,8 +158,6 @@ class WebResourceResource {
     SiteVerificationWebResourceGettokenRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -173,7 +167,7 @@ class WebResourceResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'token';
+    const _url = 'token';
 
     final _response = await _requester.request(
       _url,
@@ -208,8 +202,6 @@ class WebResourceResource {
     core.String verificationMethod, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -223,7 +215,7 @@ class WebResourceResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'webResource';
+    const _url = 'webResource';
 
     final _response = await _requester.request(
       _url,
@@ -252,14 +244,12 @@ class WebResourceResource {
   async.Future<SiteVerificationWebResourceListResponse> list({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'webResource';
+    const _url = 'webResource';
 
     final _response = await _requester.request(
       _url,
@@ -295,8 +285,6 @@ class WebResourceResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -309,7 +297,7 @@ class WebResourceResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -344,8 +332,6 @@ class WebResourceResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -358,7 +344,7 @@ class WebResourceResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'webResource/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = await _requester.request(
       _url,

@@ -84,8 +84,6 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyCreateAuthUriRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -95,7 +93,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'createAuthUri';
+    const _url = 'createAuthUri';
 
     final _response = await _requester.request(
       _url,
@@ -127,8 +125,6 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyDeleteAccountRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -138,7 +134,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deleteAccount';
+    const _url = 'deleteAccount';
 
     final _response = await _requester.request(
       _url,
@@ -170,8 +166,6 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyDownloadAccountRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -181,7 +175,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'downloadAccount';
+    const _url = 'downloadAccount';
 
     final _response = await _requester.request(
       _url,
@@ -213,8 +207,6 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyEmailLinkSigninRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -224,7 +216,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'emailLinkSignin';
+    const _url = 'emailLinkSignin';
 
     final _response = await _requester.request(
       _url,
@@ -256,8 +248,6 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyGetAccountInfoRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -267,7 +257,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'getAccountInfo';
+    const _url = 'getAccountInfo';
 
     final _response = await _requester.request(
       _url,
@@ -299,8 +289,6 @@ class RelyingpartyResource {
     Relyingparty request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -310,7 +298,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'getOobConfirmationCode';
+    const _url = 'getOobConfirmationCode';
 
     final _response = await _requester.request(
       _url,
@@ -346,8 +334,6 @@ class RelyingpartyResource {
     core.String projectNumber,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (delegatedProjectNumber != null) {
       _queryParams['delegatedProjectNumber'] = [delegatedProjectNumber];
@@ -359,7 +345,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'getProjectConfig';
+    const _url = 'getProjectConfig';
 
     final _response = await _requester.request(
       _url,
@@ -387,14 +373,12 @@ class RelyingpartyResource {
   async.Future<IdentitytoolkitRelyingpartyGetPublicKeysResponse> getPublicKeys({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'publicKeys';
+    const _url = 'publicKeys';
 
     final _response = await _requester.request(
       _url,
@@ -422,14 +406,12 @@ class RelyingpartyResource {
   async.Future<GetRecaptchaParamResponse> getRecaptchaParam({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'getRecaptchaParam';
+    const _url = 'getRecaptchaParam';
 
     final _response = await _requester.request(
       _url,
@@ -460,8 +442,6 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyResetPasswordRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -471,7 +451,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'resetPassword';
+    const _url = 'resetPassword';
 
     final _response = await _requester.request(
       _url,
@@ -505,8 +485,6 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartySendVerificationCodeRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -516,7 +494,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'sendVerificationCode';
+    const _url = 'sendVerificationCode';
 
     final _response = await _requester.request(
       _url,
@@ -548,8 +526,6 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartySetAccountInfoRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -559,7 +535,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'setAccountInfo';
+    const _url = 'setAccountInfo';
 
     final _response = await _requester.request(
       _url,
@@ -592,8 +568,6 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartySetProjectConfigRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -603,7 +577,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'setProjectConfig';
+    const _url = 'setProjectConfig';
 
     final _response = await _requester.request(
       _url,
@@ -635,8 +609,6 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartySignOutUserRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -646,7 +618,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'signOutUser';
+    const _url = 'signOutUser';
 
     final _response = await _requester.request(
       _url,
@@ -678,8 +650,6 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartySignupNewUserRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -689,7 +659,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'signupNewUser';
+    const _url = 'signupNewUser';
 
     final _response = await _requester.request(
       _url,
@@ -721,8 +691,6 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyUploadAccountRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -732,7 +700,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'uploadAccount';
+    const _url = 'uploadAccount';
 
     final _response = await _requester.request(
       _url,
@@ -764,8 +732,6 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyVerifyAssertionRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -775,7 +741,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'verifyAssertion';
+    const _url = 'verifyAssertion';
 
     final _response = await _requester.request(
       _url,
@@ -807,8 +773,6 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyVerifyCustomTokenRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -818,7 +782,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'verifyCustomToken';
+    const _url = 'verifyCustomToken';
 
     final _response = await _requester.request(
       _url,
@@ -850,8 +814,6 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyVerifyPasswordRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -861,7 +823,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'verifyPassword';
+    const _url = 'verifyPassword';
 
     final _response = await _requester.request(
       _url,
@@ -895,8 +857,6 @@ class RelyingpartyResource {
     IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -906,7 +866,7 @@ class RelyingpartyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'verifyPhoneNumber';
+    const _url = 'verifyPhoneNumber';
 
     final _response = await _requester.request(
       _url,

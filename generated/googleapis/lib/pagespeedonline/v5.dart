@@ -114,8 +114,6 @@ class PagespeedapiResource {
     core.String utmSource,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (url == null) {
       throw core.ArgumentError('Parameter url is required.');
@@ -143,7 +141,7 @@ class PagespeedapiResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'pagespeedonline/v5/runPagespeed';
+    const _url = 'pagespeedonline/v5/runPagespeed';
 
     final _response = await _requester.request(
       _url,

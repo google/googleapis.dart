@@ -90,8 +90,6 @@ class ApplicationsResource {
     core.String applicationId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
@@ -100,7 +98,7 @@ class ApplicationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'admin/datatransfer/v1/applications/' +
+    final _url = 'admin/datatransfer/v1/applications/' +
         commons.Escaper.ecapeVariable('$applicationId');
 
     final _response = await _requester.request(
@@ -139,8 +137,6 @@ class ApplicationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
@@ -155,7 +151,7 @@ class ApplicationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'admin/datatransfer/v1/applications';
+    const _url = 'admin/datatransfer/v1/applications';
 
     final _response = await _requester.request(
       _url,
@@ -193,8 +189,6 @@ class TransfersResource {
     core.String dataTransferId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (dataTransferId == null) {
       throw core.ArgumentError('Parameter dataTransferId is required.');
     }
@@ -203,7 +197,7 @@ class TransfersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'admin/datatransfer/v1/transfers/' +
+    final _url = 'admin/datatransfer/v1/transfers/' +
         commons.Escaper.ecapeVariable('$dataTransferId');
 
     final _response = await _requester.request(
@@ -235,8 +229,6 @@ class TransfersResource {
     DataTransfer request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -246,7 +238,7 @@ class TransfersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'admin/datatransfer/v1/transfers';
+    const _url = 'admin/datatransfer/v1/transfers';
 
     final _response = await _requester.request(
       _url,
@@ -295,8 +287,6 @@ class TransfersResource {
     core.String status,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
@@ -320,7 +310,7 @@ class TransfersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'admin/datatransfer/v1/transfers';
+    const _url = 'admin/datatransfer/v1/transfers';
 
     final _response = await _requester.request(
       _url,

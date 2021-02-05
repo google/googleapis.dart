@@ -89,8 +89,6 @@ class DocumentsResource {
     AnalyzeEntitiesRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -100,7 +98,7 @@ class DocumentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/documents:analyzeEntities';
+    const _url = 'v1/documents:analyzeEntities';
 
     final _response = await _requester.request(
       _url,
@@ -133,8 +131,6 @@ class DocumentsResource {
     AnalyzeEntitySentimentRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -144,7 +140,7 @@ class DocumentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/documents:analyzeEntitySentiment';
+    const _url = 'v1/documents:analyzeEntitySentiment';
 
     final _response = await _requester.request(
       _url,
@@ -176,8 +172,6 @@ class DocumentsResource {
     AnalyzeSentimentRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -187,7 +181,7 @@ class DocumentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/documents:analyzeSentiment';
+    const _url = 'v1/documents:analyzeSentiment';
 
     final _response = await _requester.request(
       _url,
@@ -221,8 +215,6 @@ class DocumentsResource {
     AnalyzeSyntaxRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -232,7 +224,7 @@ class DocumentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/documents:analyzeSyntax';
+    const _url = 'v1/documents:analyzeSyntax';
 
     final _response = await _requester.request(
       _url,
@@ -265,8 +257,6 @@ class DocumentsResource {
     AnnotateTextRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -276,7 +266,7 @@ class DocumentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/documents:annotateText';
+    const _url = 'v1/documents:annotateText';
 
     final _response = await _requester.request(
       _url,
@@ -308,8 +298,6 @@ class DocumentsResource {
     ClassifyTextRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -319,7 +307,7 @@ class DocumentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/documents:classifyText';
+    const _url = 'v1/documents:classifyText';
 
     final _response = await _requester.request(
       _url,

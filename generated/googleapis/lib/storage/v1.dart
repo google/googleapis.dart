@@ -136,8 +136,6 @@ class BucketAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -155,7 +153,7 @@ class BucketAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/acl/' +
         commons.Escaper.ecapeVariable('$entity');
@@ -201,8 +199,6 @@ class BucketAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -220,7 +216,7 @@ class BucketAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/acl/' +
         commons.Escaper.ecapeVariable('$entity');
@@ -265,8 +261,6 @@ class BucketAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -285,7 +279,7 @@ class BucketAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
+    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
 
     final _response = await _requester.request(
       _url,
@@ -325,8 +319,6 @@ class BucketAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -341,7 +333,7 @@ class BucketAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
+    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/acl';
 
     final _response = await _requester.request(
       _url,
@@ -388,8 +380,6 @@ class BucketAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -411,7 +401,7 @@ class BucketAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/acl/' +
         commons.Escaper.ecapeVariable('$entity');
@@ -462,8 +452,6 @@ class BucketAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -485,7 +473,7 @@ class BucketAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/acl/' +
         commons.Escaper.ecapeVariable('$entity');
@@ -540,8 +528,6 @@ class BucketsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -562,7 +548,7 @@ class BucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
+    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
     await _requester.request(
       _url,
@@ -616,8 +602,6 @@ class BucketsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -641,7 +625,7 @@ class BucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
+    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
     final _response = await _requester.request(
       _url,
@@ -684,8 +668,6 @@ class BucketsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -705,7 +687,7 @@ class BucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
+    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
 
     final _response = await _requester.request(
       _url,
@@ -783,8 +765,6 @@ class BucketsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -813,7 +793,7 @@ class BucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b';
+    const _url = 'b';
 
     final _response = await _requester.request(
       _url,
@@ -868,8 +848,6 @@ class BucketsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -897,7 +875,7 @@ class BucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b';
+    const _url = 'b';
 
     final _response = await _requester.request(
       _url,
@@ -939,8 +917,6 @@ class BucketsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -959,7 +935,7 @@ class BucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/lockRetentionPolicy';
 
@@ -1051,8 +1027,6 @@ class BucketsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1086,7 +1060,7 @@ class BucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
+    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
     final _response = await _requester.request(
       _url,
@@ -1128,8 +1102,6 @@ class BucketsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1148,7 +1120,7 @@ class BucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
+    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/iam';
 
     final _response = await _requester.request(
       _url,
@@ -1191,8 +1163,6 @@ class BucketsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -1211,7 +1181,7 @@ class BucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/iam/testPermissions';
 
@@ -1304,8 +1274,6 @@ class BucketsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1339,7 +1307,7 @@ class BucketsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
+    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket');
 
     final _response = await _requester.request(
       _url,
@@ -1374,8 +1342,6 @@ class ChannelsResource {
     Channel request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1385,7 +1351,7 @@ class ChannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'channels/stop';
+    const _url = 'channels/stop';
 
     await _requester.request(
       _url,
@@ -1435,8 +1401,6 @@ class DefaultObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -1454,7 +1418,7 @@ class DefaultObjectAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/defaultObjectAcl/' +
         commons.Escaper.ecapeVariable('$entity');
@@ -1501,8 +1465,6 @@ class DefaultObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -1520,7 +1482,7 @@ class DefaultObjectAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/defaultObjectAcl/' +
         commons.Escaper.ecapeVariable('$entity');
@@ -1565,8 +1527,6 @@ class DefaultObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1585,7 +1545,7 @@ class DefaultObjectAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl';
 
     final _response = await _requester.request(
@@ -1634,8 +1594,6 @@ class DefaultObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -1656,7 +1614,7 @@ class DefaultObjectAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'b/' + commons.Escaper.ecapeVariable('$bucket') + '/defaultObjectAcl';
 
     final _response = await _requester.request(
@@ -1704,8 +1662,6 @@ class DefaultObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1727,7 +1683,7 @@ class DefaultObjectAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/defaultObjectAcl/' +
         commons.Escaper.ecapeVariable('$entity');
@@ -1778,8 +1734,6 @@ class DefaultObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1801,7 +1755,7 @@ class DefaultObjectAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/defaultObjectAcl/' +
         commons.Escaper.ecapeVariable('$entity');
@@ -1851,8 +1805,6 @@ class NotificationsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -1870,7 +1822,7 @@ class NotificationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/notificationConfigs/' +
         commons.Escaper.ecapeVariable('$notification');
@@ -1914,8 +1866,6 @@ class NotificationsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -1933,7 +1883,7 @@ class NotificationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/notificationConfigs/' +
         commons.Escaper.ecapeVariable('$notification');
@@ -1978,8 +1928,6 @@ class NotificationsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1998,7 +1946,7 @@ class NotificationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/notificationConfigs';
 
@@ -2040,8 +1988,6 @@ class NotificationsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -2056,7 +2002,7 @@ class NotificationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/notificationConfigs';
 
@@ -2116,8 +2062,6 @@ class ObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -2141,7 +2085,7 @@ class ObjectAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/o/' +
         commons.Escaper.ecapeVariable('$object') +
@@ -2197,8 +2141,6 @@ class ObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -2222,7 +2164,7 @@ class ObjectAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/o/' +
         commons.Escaper.ecapeVariable('$object') +
@@ -2277,8 +2219,6 @@ class ObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2303,7 +2243,7 @@ class ObjectAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/o/' +
         commons.Escaper.ecapeVariable('$object') +
@@ -2355,8 +2295,6 @@ class ObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -2377,7 +2315,7 @@ class ObjectAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/o/' +
         commons.Escaper.ecapeVariable('$object') +
@@ -2436,8 +2374,6 @@ class ObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2465,7 +2401,7 @@ class ObjectAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/o/' +
         commons.Escaper.ecapeVariable('$object') +
@@ -2526,8 +2462,6 @@ class ObjectAccessControlsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2555,7 +2489,7 @@ class ObjectAccessControlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/o/' +
         commons.Escaper.ecapeVariable('$object') +
@@ -2646,8 +2580,6 @@ class ObjectsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2681,7 +2613,7 @@ class ObjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$destinationBucket') +
         '/o/' +
         commons.Escaper.ecapeVariable('$destinationObject') +
@@ -2815,8 +2747,6 @@ class ObjectsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2884,7 +2814,7 @@ class ObjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$sourceBucket') +
         '/o/' +
         commons.Escaper.ecapeVariable('$sourceObject') +
@@ -2958,8 +2888,6 @@ class ObjectsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -2992,7 +2920,7 @@ class ObjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/o/' +
         commons.Escaper.ecapeVariable('$object');
@@ -3075,8 +3003,6 @@ class ObjectsResource {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -3112,7 +3038,7 @@ class ObjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/o/' +
         commons.Escaper.ecapeVariable('$object');
@@ -3167,8 +3093,6 @@ class ObjectsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -3189,7 +3113,7 @@ class ObjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/o/' +
         commons.Escaper.ecapeVariable('$object') +
@@ -3304,8 +3228,6 @@ class ObjectsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3351,6 +3273,7 @@ class ObjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
@@ -3448,8 +3371,6 @@ class ObjectsResource {
     core.bool versions,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -3493,7 +3414,7 @@ class ObjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o';
+    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o';
 
     final _response = await _requester.request(
       _url,
@@ -3583,8 +3504,6 @@ class ObjectsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3627,7 +3546,7 @@ class ObjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/o/' +
         commons.Escaper.ecapeVariable('$object');
@@ -3774,8 +3693,6 @@ class ObjectsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3849,7 +3766,7 @@ class ObjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$sourceBucket') +
         '/o/' +
         commons.Escaper.ecapeVariable('$sourceObject') +
@@ -3907,8 +3824,6 @@ class ObjectsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3933,7 +3848,7 @@ class ObjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/o/' +
         commons.Escaper.ecapeVariable('$object') +
@@ -3988,8 +3903,6 @@ class ObjectsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -4014,7 +3927,7 @@ class ObjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/o/' +
         commons.Escaper.ecapeVariable('$object') +
@@ -4109,8 +4022,6 @@ class ObjectsResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4153,7 +4064,7 @@ class ObjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/o/' +
         commons.Escaper.ecapeVariable('$object');
@@ -4244,8 +4155,6 @@ class ObjectsResource {
     core.bool versions,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4293,7 +4202,7 @@ class ObjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/watch';
+    final _url = 'b/' + commons.Escaper.ecapeVariable('$bucket') + '/o/watch';
 
     final _response = await _requester.request(
       _url,
@@ -4346,8 +4255,6 @@ class ProjectsHmacKeysResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -4363,7 +4270,7 @@ class ProjectsHmacKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/hmacKeys';
 
     final _response = await _requester.request(
@@ -4398,8 +4305,6 @@ class ProjectsHmacKeysResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -4414,7 +4319,7 @@ class ProjectsHmacKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/hmacKeys/' +
         commons.Escaper.ecapeVariable('$accessId');
@@ -4453,8 +4358,6 @@ class ProjectsHmacKeysResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -4469,7 +4372,7 @@ class ProjectsHmacKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/hmacKeys/' +
         commons.Escaper.ecapeVariable('$accessId');
@@ -4525,8 +4428,6 @@ class ProjectsHmacKeysResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -4550,7 +4451,7 @@ class ProjectsHmacKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'projects/' + commons.Escaper.ecapeVariable('$projectId') + '/hmacKeys';
 
     final _response = await _requester.request(
@@ -4593,8 +4494,6 @@ class ProjectsHmacKeysResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4613,7 +4512,7 @@ class ProjectsHmacKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/hmacKeys/' +
         commons.Escaper.ecapeVariable('$accessId');
@@ -4663,8 +4562,6 @@ class ProjectsServiceAccountResource {
     core.String userProject,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -4679,7 +4576,7 @@ class ProjectsServiceAccountResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'projects/' +
+    final _url = 'projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/serviceAccount';
 

@@ -82,8 +82,6 @@ class TasklistsResource {
     core.String tasklist, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
@@ -92,7 +90,7 @@ class TasklistsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tasks/v1/users/@me/lists/' +
+    final _url = 'tasks/v1/users/@me/lists/' +
         commons.Escaper.ecapeVariable('$tasklist');
 
     await _requester.request(
@@ -123,8 +121,6 @@ class TasklistsResource {
     core.String tasklist, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
@@ -133,7 +129,7 @@ class TasklistsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tasks/v1/users/@me/lists/' +
+    final _url = 'tasks/v1/users/@me/lists/' +
         commons.Escaper.ecapeVariable('$tasklist');
 
     final _response = await _requester.request(
@@ -165,8 +161,6 @@ class TasklistsResource {
     TaskList request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -176,7 +170,7 @@ class TasklistsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tasks/v1/users/@me/lists';
+    const _url = 'tasks/v1/users/@me/lists';
 
     final _response = await _requester.request(
       _url,
@@ -211,8 +205,6 @@ class TasklistsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -224,7 +216,7 @@ class TasklistsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tasks/v1/users/@me/lists';
+    const _url = 'tasks/v1/users/@me/lists';
 
     final _response = await _requester.request(
       _url,
@@ -259,8 +251,6 @@ class TasklistsResource {
     core.String tasklist, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -273,7 +263,7 @@ class TasklistsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tasks/v1/users/@me/lists/' +
+    final _url = 'tasks/v1/users/@me/lists/' +
         commons.Escaper.ecapeVariable('$tasklist');
 
     final _response = await _requester.request(
@@ -308,8 +298,6 @@ class TasklistsResource {
     core.String tasklist, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -322,7 +310,7 @@ class TasklistsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tasks/v1/users/@me/lists/' +
+    final _url = 'tasks/v1/users/@me/lists/' +
         commons.Escaper.ecapeVariable('$tasklist');
 
     final _response = await _requester.request(
@@ -361,8 +349,6 @@ class TasksResource {
     core.String tasklist, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
@@ -371,7 +357,7 @@ class TasksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tasks/v1/lists/' +
+    final _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
         '/clear';
 
@@ -404,8 +390,6 @@ class TasksResource {
     core.String task, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
@@ -417,7 +401,7 @@ class TasksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tasks/v1/lists/' +
+    final _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task');
@@ -453,8 +437,6 @@ class TasksResource {
     core.String task, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
@@ -466,7 +448,7 @@ class TasksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tasks/v1/lists/' +
+    final _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task');
@@ -511,8 +493,6 @@ class TasksResource {
     core.String previous,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -531,7 +511,7 @@ class TasksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tasks/v1/lists/' +
+    final _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
         '/tasks';
 
@@ -608,8 +588,6 @@ class TasksResource {
     core.String updatedMin,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
@@ -648,7 +626,7 @@ class TasksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tasks/v1/lists/' +
+    final _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
         '/tasks';
 
@@ -695,8 +673,6 @@ class TasksResource {
     core.String previous,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
@@ -714,7 +690,7 @@ class TasksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tasks/v1/lists/' +
+    final _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task') +
@@ -756,8 +732,6 @@ class TasksResource {
     core.String task, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -773,7 +747,7 @@ class TasksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tasks/v1/lists/' +
+    final _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task');
@@ -813,8 +787,6 @@ class TasksResource {
     core.String task, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -830,7 +802,7 @@ class TasksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tasks/v1/lists/' +
+    final _url = 'tasks/v1/lists/' +
         commons.Escaper.ecapeVariable('$tasklist') +
         '/tasks/' +
         commons.Escaper.ecapeVariable('$task');

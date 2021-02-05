@@ -85,8 +85,6 @@ class ReportsResource {
     GetReportsRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -96,7 +94,7 @@ class ReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/reports:batchGet';
+    const _url = 'v4/reports:batchGet';
 
     final _response = await _requester.request(
       _url,
@@ -134,8 +132,6 @@ class UserActivityResource {
     SearchUserActivityRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -145,7 +141,7 @@ class UserActivityResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/userActivity:search';
+    const _url = 'v4/userActivity:search';
 
     final _response = await _requester.request(
       _url,

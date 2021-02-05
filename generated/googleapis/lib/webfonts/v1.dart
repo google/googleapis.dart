@@ -85,8 +85,6 @@ class WebfontsResource {
     core.String sort,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (sort != null) {
       _queryParams['sort'] = [sort];
@@ -95,7 +93,7 @@ class WebfontsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/webfonts';
+    const _url = 'v1/webfonts';
 
     final _response = await _requester.request(
       _url,

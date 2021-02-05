@@ -95,8 +95,6 @@ class AchievementConfigurationsResource {
     core.String achievementId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
@@ -105,7 +103,7 @@ class AchievementConfigurationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1configuration/achievements/' +
+    final _url = 'games/v1configuration/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId');
 
     await _requester.request(
@@ -136,8 +134,6 @@ class AchievementConfigurationsResource {
     core.String achievementId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
@@ -146,7 +142,7 @@ class AchievementConfigurationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1configuration/achievements/' +
+    final _url = 'games/v1configuration/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId');
 
     final _response = await _requester.request(
@@ -182,8 +178,6 @@ class AchievementConfigurationsResource {
     core.String applicationId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -196,7 +190,7 @@ class AchievementConfigurationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1configuration/applications/' +
+    final _url = 'games/v1configuration/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
         '/achievements';
 
@@ -239,8 +233,6 @@ class AchievementConfigurationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
@@ -255,7 +247,7 @@ class AchievementConfigurationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1configuration/applications/' +
+    final _url = 'games/v1configuration/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
         '/achievements';
 
@@ -291,8 +283,6 @@ class AchievementConfigurationsResource {
     core.String achievementId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -305,7 +295,7 @@ class AchievementConfigurationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1configuration/achievements/' +
+    final _url = 'games/v1configuration/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId');
 
     final _response = await _requester.request(
@@ -355,8 +345,6 @@ class ImageConfigurationsResource {
     core.String $fields,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     if (resourceId == null) {
       throw core.ArgumentError('Parameter resourceId is required.');
     }
@@ -368,6 +356,7 @@ class ImageConfigurationsResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'games/v1configuration/images/' +
           commons.Escaper.ecapeVariable('$resourceId') +
@@ -416,8 +405,6 @@ class LeaderboardConfigurationsResource {
     core.String leaderboardId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
@@ -426,7 +413,7 @@ class LeaderboardConfigurationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1configuration/leaderboards/' +
+    final _url = 'games/v1configuration/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId');
 
     await _requester.request(
@@ -457,8 +444,6 @@ class LeaderboardConfigurationsResource {
     core.String leaderboardId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
@@ -467,7 +452,7 @@ class LeaderboardConfigurationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1configuration/leaderboards/' +
+    final _url = 'games/v1configuration/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId');
 
     final _response = await _requester.request(
@@ -503,8 +488,6 @@ class LeaderboardConfigurationsResource {
     core.String applicationId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -517,7 +500,7 @@ class LeaderboardConfigurationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1configuration/applications/' +
+    final _url = 'games/v1configuration/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
         '/leaderboards';
 
@@ -560,8 +543,6 @@ class LeaderboardConfigurationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
@@ -576,7 +557,7 @@ class LeaderboardConfigurationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1configuration/applications/' +
+    final _url = 'games/v1configuration/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
         '/leaderboards';
 
@@ -612,8 +593,6 @@ class LeaderboardConfigurationsResource {
     core.String leaderboardId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -626,7 +605,7 @@ class LeaderboardConfigurationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1configuration/leaderboards/' +
+    final _url = 'games/v1configuration/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId');
 
     final _response = await _requester.request(

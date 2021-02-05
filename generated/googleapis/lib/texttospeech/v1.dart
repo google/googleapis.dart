@@ -84,8 +84,6 @@ class TextResource {
     SynthesizeSpeechRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -95,7 +93,7 @@ class TextResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/text:synthesize';
+    const _url = 'v1/text:synthesize';
 
     final _response = await _requester.request(
       _url,
@@ -140,8 +138,6 @@ class VoicesResource {
     core.String languageCode,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (languageCode != null) {
       _queryParams['languageCode'] = [languageCode];
@@ -150,7 +146,7 @@ class VoicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/voices';
+    const _url = 'v1/voices';
 
     final _response = await _requester.request(
       _url,

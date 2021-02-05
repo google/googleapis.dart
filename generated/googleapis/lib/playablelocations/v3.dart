@@ -79,8 +79,6 @@ class V3Resource {
     GoogleMapsPlayablelocationsV3LogImpressionsRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -90,7 +88,7 @@ class V3Resource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3:logImpressions';
+    const _url = 'v3:logImpressions';
 
     final _response = await _requester.request(
       _url,
@@ -126,8 +124,6 @@ class V3Resource {
     GoogleMapsPlayablelocationsV3LogPlayerReportsRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -137,7 +133,7 @@ class V3Resource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3:logPlayerReports';
+    const _url = 'v3:logPlayerReports';
 
     final _response = await _requester.request(
       _url,
@@ -175,8 +171,6 @@ class V3Resource {
     GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -186,7 +180,7 @@ class V3Resource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3:samplePlayableLocations';
+    const _url = 'v3:samplePlayableLocations';
 
     final _response = await _requester.request(
       _url,

@@ -95,8 +95,6 @@ class ProjectsResource {
     core.String projectId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -105,7 +103,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/settings';
 
@@ -157,8 +155,6 @@ class ProjectsResource {
     core.String projectId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -167,7 +163,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         ':initializeSettings';
 
@@ -221,8 +217,6 @@ class ProjectsHistoriesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -238,7 +232,7 @@ class ProjectsHistoriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories';
 
@@ -278,8 +272,6 @@ class ProjectsHistoriesResource {
     core.String historyId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -291,7 +283,7 @@ class ProjectsHistoriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId');
@@ -344,8 +336,6 @@ class ProjectsHistoriesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -363,7 +353,7 @@ class ProjectsHistoriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories';
 
@@ -425,8 +415,6 @@ class ProjectsHistoriesExecutionsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -445,7 +433,7 @@ class ProjectsHistoriesExecutionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -490,8 +478,6 @@ class ProjectsHistoriesExecutionsResource {
     core.String executionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -506,7 +492,7 @@ class ProjectsHistoriesExecutionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -560,8 +546,6 @@ class ProjectsHistoriesExecutionsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -579,7 +563,7 @@ class ProjectsHistoriesExecutionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -633,8 +617,6 @@ class ProjectsHistoriesExecutionsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -656,7 +638,7 @@ class ProjectsHistoriesExecutionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -708,8 +690,6 @@ class ProjectsHistoriesExecutionsClustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -727,7 +707,7 @@ class ProjectsHistoriesExecutionsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -778,8 +758,6 @@ class ProjectsHistoriesExecutionsClustersResource {
     core.String executionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -794,7 +772,7 @@ class ProjectsHistoriesExecutionsClustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -851,8 +829,6 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     core.String environmentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -870,7 +846,7 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -927,8 +903,6 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -949,7 +923,7 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -1021,8 +995,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String locale,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1034,7 +1006,7 @@ class ProjectsHistoriesExecutionsStepsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/' +
+    final _url = 'toolresults/v1beta3/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':accessibilityClusters';
 
@@ -1086,8 +1058,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1109,7 +1079,7 @@ class ProjectsHistoriesExecutionsStepsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -1159,8 +1129,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String stepId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -1178,7 +1146,7 @@ class ProjectsHistoriesExecutionsStepsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -1227,8 +1195,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String stepId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -1246,7 +1212,7 @@ class ProjectsHistoriesExecutionsStepsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -1308,8 +1274,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -1330,7 +1294,7 @@ class ProjectsHistoriesExecutionsStepsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -1390,8 +1354,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1416,7 +1378,7 @@ class ProjectsHistoriesExecutionsStepsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -1473,8 +1435,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String stepId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1496,7 +1456,7 @@ class ProjectsHistoriesExecutionsStepsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -1559,8 +1519,6 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
     core.String stepId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1582,7 +1540,7 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -1650,8 +1608,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     core.String stepId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1673,7 +1629,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -1728,8 +1684,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     core.String sampleSeriesId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -1750,7 +1704,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -1809,8 +1763,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     core.List<core.String> filter,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -1831,7 +1783,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -1902,8 +1854,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     core.String sampleSeriesId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1928,7 +1878,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -1999,8 +1949,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2027,7 +1975,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -2093,8 +2041,6 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     core.String testCaseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2115,7 +2061,7 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -2178,8 +2124,6 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2203,7 +2147,7 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +
@@ -2273,8 +2217,6 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -2298,7 +2240,7 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toolresults/v1beta3/projects/' +
+    final _url = 'toolresults/v1beta3/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/histories/' +
         commons.Escaper.ecapeVariable('$historyId') +

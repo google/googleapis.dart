@@ -57,14 +57,12 @@ class DartservicesApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<AnalysisResults> analyze(SourceRequest request) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
 
-    _url = 'analyze';
+    const _url = 'analyze';
 
     final _response = await _requester.request(
       _url,
@@ -89,14 +87,12 @@ class DartservicesApi {
   async.Future<AnalysisResults> analyzeGet({
     core.String source,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (source != null) {
       _queryParams['source'] = [source];
     }
 
-    _url = 'analyze';
+    const _url = 'analyze';
 
     final _response = await _requester.request(
       _url,
@@ -119,14 +115,12 @@ class DartservicesApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<CompileResponse> compile(SourceRequest request) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
 
-    _url = 'compile';
+    const _url = 'compile';
 
     final _response = await _requester.request(
       _url,
@@ -151,14 +145,12 @@ class DartservicesApi {
   async.Future<CompileResponse> compileGet({
     core.String source,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (source != null) {
       _queryParams['source'] = [source];
     }
 
-    _url = 'compile';
+    const _url = 'compile';
 
     final _response = await _requester.request(
       _url,
@@ -179,14 +171,12 @@ class DartservicesApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<void> complete(SourceRequest request) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
 
-    _url = 'complete';
+    const _url = 'complete';
 
     await _requester.request(
       _url,
@@ -211,8 +201,6 @@ class DartservicesApi {
     core.int offset,
     core.String source,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (offset != null) {
       _queryParams['offset'] = ['${offset}'];
@@ -221,7 +209,7 @@ class DartservicesApi {
       _queryParams['source'] = [source];
     }
 
-    _url = 'complete';
+    const _url = 'complete';
 
     await _requester.request(
       _url,
@@ -243,14 +231,12 @@ class DartservicesApi {
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
   async.Future<DocumentResponse> document(SourceRequest request) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
 
-    _url = 'document';
+    const _url = 'document';
 
     final _response = await _requester.request(
       _url,
@@ -278,8 +264,6 @@ class DartservicesApi {
     core.int offset,
     core.String source,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (offset != null) {
       _queryParams['offset'] = ['${offset}'];
@@ -288,7 +272,7 @@ class DartservicesApi {
       _queryParams['source'] = [source];
     }
 
-    _url = 'document';
+    const _url = 'document';
 
     final _response = await _requester.request(
       _url,
@@ -328,8 +312,6 @@ class DartservicesApi {
     core.String object, {
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
-    core.String _url;
-
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
@@ -337,7 +319,7 @@ class DartservicesApi {
       throw core.ArgumentError('Parameter object is required.');
     }
 
-    _url = 'b/' +
+    final _url = 'b/' +
         commons.Escaper.ecapeVariable('$bucket') +
         '/o/' +
         commons.Escaper.ecapeVariable('$object');

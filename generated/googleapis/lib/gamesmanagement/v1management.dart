@@ -92,8 +92,6 @@ class AchievementsResource {
     core.String achievementId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
@@ -102,7 +100,7 @@ class AchievementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/achievements/' +
+    final _url = 'games/v1management/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
         '/reset';
 
@@ -136,14 +134,12 @@ class AchievementsResource {
   async.Future<AchievementResetAllResponse> resetAll({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/achievements/reset';
+    const _url = 'games/v1management/achievements/reset';
 
     final _response = await _requester.request(
       _url,
@@ -171,14 +167,12 @@ class AchievementsResource {
   async.Future<void> resetAllForAllPlayers({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/achievements/resetAllForAllPlayers';
+    const _url = 'games/v1management/achievements/resetAllForAllPlayers';
 
     await _requester.request(
       _url,
@@ -209,8 +203,6 @@ class AchievementsResource {
     core.String achievementId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
@@ -219,7 +211,7 @@ class AchievementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/achievements/' +
+    final _url = 'games/v1management/achievements/' +
         commons.Escaper.ecapeVariable('$achievementId') +
         '/resetForAllPlayers';
 
@@ -252,8 +244,6 @@ class AchievementsResource {
     AchievementResetMultipleForAllRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -263,7 +253,7 @@ class AchievementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/achievements/resetMultipleForAllPlayers';
+    const _url = 'games/v1management/achievements/resetMultipleForAllPlayers';
 
     await _requester.request(
       _url,
@@ -311,8 +301,6 @@ class ApplicationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
@@ -327,7 +315,7 @@ class ApplicationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/applications/' +
+    final _url = 'games/v1management/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
         '/players/hidden';
 
@@ -368,8 +356,6 @@ class EventsResource {
     core.String eventId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (eventId == null) {
       throw core.ArgumentError('Parameter eventId is required.');
     }
@@ -378,7 +364,7 @@ class EventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/events/' +
+    final _url = 'games/v1management/events/' +
         commons.Escaper.ecapeVariable('$eventId') +
         '/reset';
 
@@ -409,14 +395,12 @@ class EventsResource {
   async.Future<void> resetAll({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/events/reset';
+    const _url = 'games/v1management/events/reset';
 
     await _requester.request(
       _url,
@@ -443,14 +427,12 @@ class EventsResource {
   async.Future<void> resetAllForAllPlayers({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/events/resetAllForAllPlayers';
+    const _url = 'games/v1management/events/resetAllForAllPlayers';
 
     await _requester.request(
       _url,
@@ -481,8 +463,6 @@ class EventsResource {
     core.String eventId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (eventId == null) {
       throw core.ArgumentError('Parameter eventId is required.');
     }
@@ -491,7 +471,7 @@ class EventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/events/' +
+    final _url = 'games/v1management/events/' +
         commons.Escaper.ecapeVariable('$eventId') +
         '/resetForAllPlayers';
 
@@ -524,8 +504,6 @@ class EventsResource {
     EventsResetMultipleForAllRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -535,7 +513,7 @@ class EventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/events/resetMultipleForAllPlayers';
+    const _url = 'games/v1management/events/resetMultipleForAllPlayers';
 
     await _requester.request(
       _url,
@@ -577,8 +555,6 @@ class PlayersResource {
     core.String playerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
@@ -590,7 +566,7 @@ class PlayersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/applications/' +
+    final _url = 'games/v1management/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
         '/players/hidden/' +
         commons.Escaper.ecapeVariable('$playerId');
@@ -628,8 +604,6 @@ class PlayersResource {
     core.String playerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
@@ -641,7 +615,7 @@ class PlayersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/applications/' +
+    final _url = 'games/v1management/applications/' +
         commons.Escaper.ecapeVariable('$applicationId') +
         '/players/hidden/' +
         commons.Escaper.ecapeVariable('$playerId');
@@ -684,8 +658,6 @@ class ScoresResource {
     core.String leaderboardId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
@@ -694,7 +666,7 @@ class ScoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/leaderboards/' +
+    final _url = 'games/v1management/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId') +
         '/scores/reset';
 
@@ -728,14 +700,12 @@ class ScoresResource {
   async.Future<PlayerScoreResetAllResponse> resetAll({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/scores/reset';
+    const _url = 'games/v1management/scores/reset';
 
     final _response = await _requester.request(
       _url,
@@ -763,14 +733,12 @@ class ScoresResource {
   async.Future<void> resetAllForAllPlayers({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/scores/resetAllForAllPlayers';
+    const _url = 'games/v1management/scores/resetAllForAllPlayers';
 
     await _requester.request(
       _url,
@@ -801,8 +769,6 @@ class ScoresResource {
     core.String leaderboardId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
@@ -811,7 +777,7 @@ class ScoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/leaderboards/' +
+    final _url = 'games/v1management/leaderboards/' +
         commons.Escaper.ecapeVariable('$leaderboardId') +
         '/scores/resetForAllPlayers';
 
@@ -844,8 +810,6 @@ class ScoresResource {
     ScoresResetMultipleForAllRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -855,7 +819,7 @@ class ScoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'games/v1management/scores/resetMultipleForAllPlayers';
+    const _url = 'games/v1management/scores/resetMultipleForAllPlayers';
 
     await _requester.request(
       _url,

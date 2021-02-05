@@ -112,8 +112,6 @@ class ProjectsTracesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -126,7 +124,7 @@ class ProjectsTracesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' +
+    final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         '/traces:batchWrite';
 
@@ -175,8 +173,6 @@ class ProjectsTracesSpansResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -189,7 +185,7 @@ class ProjectsTracesSpansResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,

@@ -183,8 +183,6 @@ class AssetlinksResource {
     core.String target_web_site,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (relation != null) {
       _queryParams['relation'] = [relation];
@@ -219,7 +217,7 @@ class AssetlinksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/assetlinks:check';
+    const _url = 'v1/assetlinks:check';
 
     final _response = await _requester.request(
       _url,
@@ -316,8 +314,6 @@ class StatementsResource {
     core.String source_web_site,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (relation != null) {
       _queryParams['relation'] = [relation];
@@ -339,7 +335,7 @@ class StatementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/statements:list';
+    const _url = 'v1/statements:list';
 
     final _response = await _requester.request(
       _url,

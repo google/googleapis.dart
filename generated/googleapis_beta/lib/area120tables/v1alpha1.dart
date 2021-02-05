@@ -104,8 +104,6 @@ class TablesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -114,7 +112,7 @@ class TablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -152,8 +150,6 @@ class TablesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -165,7 +161,7 @@ class TablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/tables';
+    const _url = 'v1alpha1/tables';
 
     final _response = await _requester.request(
       _url,
@@ -207,8 +203,6 @@ class TablesRowsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -221,7 +215,7 @@ class TablesRowsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/' +
+    final _url = 'v1alpha1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/rows:batchCreate';
 
@@ -260,8 +254,6 @@ class TablesRowsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -274,7 +266,7 @@ class TablesRowsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/' +
+    final _url = 'v1alpha1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/rows:batchDelete';
 
@@ -312,8 +304,6 @@ class TablesRowsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -326,7 +316,7 @@ class TablesRowsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/' +
+    final _url = 'v1alpha1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/rows:batchUpdate';
 
@@ -373,8 +363,6 @@ class TablesRowsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -390,7 +378,7 @@ class TablesRowsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/' +
+    final _url = 'v1alpha1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/rows';
 
@@ -425,8 +413,6 @@ class TablesRowsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -435,7 +421,7 @@ class TablesRowsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -477,8 +463,6 @@ class TablesRowsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -490,7 +474,7 @@ class TablesRowsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -542,8 +526,6 @@ class TablesRowsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -561,7 +543,7 @@ class TablesRowsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/' +
+    final _url = 'v1alpha1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/rows';
 
@@ -610,8 +592,6 @@ class TablesRowsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -630,7 +610,7 @@ class TablesRowsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -671,8 +651,6 @@ class WorkspacesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -681,7 +659,7 @@ class WorkspacesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -719,8 +697,6 @@ class WorkspacesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -732,7 +708,7 @@ class WorkspacesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha1/workspaces';
+    const _url = 'v1alpha1/workspaces';
 
     final _response = await _requester.request(
       _url,

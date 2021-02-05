@@ -203,8 +203,6 @@ class CoursesResource {
     Course request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -214,7 +212,7 @@ class CoursesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses';
+    const _url = 'v1/courses';
 
     final _response = await _requester.request(
       _url,
@@ -250,8 +248,6 @@ class CoursesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -260,7 +256,7 @@ class CoursesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -295,8 +291,6 @@ class CoursesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -305,7 +299,7 @@ class CoursesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -367,8 +361,6 @@ class CoursesResource {
     core.String teacherId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (courseStates != null) {
       _queryParams['courseStates'] = courseStates;
@@ -389,7 +381,7 @@ class CoursesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses';
+    const _url = 'v1/courses';
 
     final _response = await _requester.request(
       _url,
@@ -441,8 +433,6 @@ class CoursesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -458,7 +448,7 @@ class CoursesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -499,8 +489,6 @@ class CoursesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -513,7 +501,7 @@ class CoursesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'v1/courses/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -561,8 +549,6 @@ class CoursesAliasesResource {
     core.String courseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -575,7 +561,7 @@ class CoursesAliasesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/aliases';
 
     final _response = await _requester.request(
@@ -620,8 +606,6 @@ class CoursesAliasesResource {
     core.String alias, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -633,7 +617,7 @@ class CoursesAliasesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/aliases/' +
         commons.Escaper.ecapeVariable('$alias');
@@ -682,8 +666,6 @@ class CoursesAliasesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -698,7 +680,7 @@ class CoursesAliasesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/aliases';
 
     final _response = await _requester.request(
@@ -749,8 +731,6 @@ class CoursesAnnouncementsResource {
     core.String courseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -763,7 +743,7 @@ class CoursesAnnouncementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/announcements';
 
@@ -811,8 +791,6 @@ class CoursesAnnouncementsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -824,7 +802,7 @@ class CoursesAnnouncementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/announcements/' +
         commons.Escaper.ecapeVariable('$id');
@@ -867,8 +845,6 @@ class CoursesAnnouncementsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -880,7 +856,7 @@ class CoursesAnnouncementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/announcements/' +
         commons.Escaper.ecapeVariable('$id');
@@ -945,8 +921,6 @@ class CoursesAnnouncementsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -967,7 +941,7 @@ class CoursesAnnouncementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/announcements';
 
@@ -1014,8 +988,6 @@ class CoursesAnnouncementsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1031,7 +1003,7 @@ class CoursesAnnouncementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/announcements/' +
         commons.Escaper.ecapeVariable('$id') +
@@ -1091,8 +1063,6 @@ class CoursesAnnouncementsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1111,7 +1081,7 @@ class CoursesAnnouncementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/announcements/' +
         commons.Escaper.ecapeVariable('$id');
@@ -1172,8 +1142,6 @@ class CoursesCourseWorkResource {
     core.String courseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1186,7 +1154,7 @@ class CoursesCourseWorkResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWork';
 
@@ -1234,8 +1202,6 @@ class CoursesCourseWorkResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -1247,7 +1213,7 @@ class CoursesCourseWorkResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWork/' +
         commons.Escaper.ecapeVariable('$id');
@@ -1290,8 +1256,6 @@ class CoursesCourseWorkResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -1303,7 +1267,7 @@ class CoursesCourseWorkResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWork/' +
         commons.Escaper.ecapeVariable('$id');
@@ -1368,8 +1332,6 @@ class CoursesCourseWorkResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -1390,7 +1352,7 @@ class CoursesCourseWorkResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWork';
 
@@ -1437,8 +1399,6 @@ class CoursesCourseWorkResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1454,7 +1414,7 @@ class CoursesCourseWorkResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWork/' +
         commons.Escaper.ecapeVariable('$id') +
@@ -1521,8 +1481,6 @@ class CoursesCourseWorkResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1541,7 +1499,7 @@ class CoursesCourseWorkResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWork/' +
         commons.Escaper.ecapeVariable('$id');
@@ -1595,8 +1553,6 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -1611,7 +1567,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWork/' +
         commons.Escaper.ecapeVariable('$courseWorkId') +
@@ -1695,8 +1651,6 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String userId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -1723,7 +1677,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWork/' +
         commons.Escaper.ecapeVariable('$courseWorkId') +
@@ -1780,8 +1734,6 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1800,7 +1752,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWork/' +
         commons.Escaper.ecapeVariable('$courseWorkId') +
@@ -1866,8 +1818,6 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1889,7 +1839,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWork/' +
         commons.Escaper.ecapeVariable('$courseWorkId') +
@@ -1950,8 +1900,6 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1970,7 +1918,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWork/' +
         commons.Escaper.ecapeVariable('$courseWorkId') +
@@ -2031,8 +1979,6 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2051,7 +1997,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWork/' +
         commons.Escaper.ecapeVariable('$courseWorkId') +
@@ -2110,8 +2056,6 @@ class CoursesCourseWorkStudentSubmissionsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2130,7 +2074,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWork/' +
         commons.Escaper.ecapeVariable('$courseWorkId') +
@@ -2186,8 +2130,6 @@ class CoursesCourseWorkMaterialsResource {
     core.String courseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2200,7 +2142,7 @@ class CoursesCourseWorkMaterialsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWorkMaterials';
 
@@ -2249,8 +2191,6 @@ class CoursesCourseWorkMaterialsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -2262,7 +2202,7 @@ class CoursesCourseWorkMaterialsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWorkMaterials/' +
         commons.Escaper.ecapeVariable('$id');
@@ -2305,8 +2245,6 @@ class CoursesCourseWorkMaterialsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -2318,7 +2256,7 @@ class CoursesCourseWorkMaterialsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWorkMaterials/' +
         commons.Escaper.ecapeVariable('$id');
@@ -2394,8 +2332,6 @@ class CoursesCourseWorkMaterialsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -2422,7 +2358,7 @@ class CoursesCourseWorkMaterialsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWorkMaterials';
 
@@ -2479,8 +2415,6 @@ class CoursesCourseWorkMaterialsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2499,7 +2433,7 @@ class CoursesCourseWorkMaterialsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/courseWorkMaterials/' +
         commons.Escaper.ecapeVariable('$id');
@@ -2558,8 +2492,6 @@ class CoursesStudentsResource {
     core.String enrollmentCode,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2575,7 +2507,7 @@ class CoursesStudentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/students';
 
@@ -2620,8 +2552,6 @@ class CoursesStudentsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -2633,7 +2563,7 @@ class CoursesStudentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/students/' +
         commons.Escaper.ecapeVariable('$userId');
@@ -2678,8 +2608,6 @@ class CoursesStudentsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -2691,7 +2619,7 @@ class CoursesStudentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/students/' +
         commons.Escaper.ecapeVariable('$userId');
@@ -2740,8 +2668,6 @@ class CoursesStudentsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -2756,7 +2682,7 @@ class CoursesStudentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/students';
 
@@ -2808,8 +2734,6 @@ class CoursesTeachersResource {
     core.String courseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2822,7 +2746,7 @@ class CoursesTeachersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/teachers';
 
@@ -2868,8 +2792,6 @@ class CoursesTeachersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -2881,7 +2803,7 @@ class CoursesTeachersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/teachers/' +
         commons.Escaper.ecapeVariable('$userId');
@@ -2926,8 +2848,6 @@ class CoursesTeachersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -2939,7 +2859,7 @@ class CoursesTeachersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/teachers/' +
         commons.Escaper.ecapeVariable('$userId');
@@ -2988,8 +2908,6 @@ class CoursesTeachersResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -3004,7 +2922,7 @@ class CoursesTeachersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/teachers';
 
@@ -3053,8 +2971,6 @@ class CoursesTopicsResource {
     core.String courseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3067,7 +2983,7 @@ class CoursesTopicsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/topics';
 
     final _response = await _requester.request(
@@ -3109,8 +3025,6 @@ class CoursesTopicsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -3122,7 +3036,7 @@ class CoursesTopicsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/topics/' +
         commons.Escaper.ecapeVariable('$id');
@@ -3163,8 +3077,6 @@ class CoursesTopicsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -3176,7 +3088,7 @@ class CoursesTopicsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/topics/' +
         commons.Escaper.ecapeVariable('$id');
@@ -3226,8 +3138,6 @@ class CoursesTopicsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (courseId == null) {
       throw core.ArgumentError('Parameter courseId is required.');
     }
@@ -3242,7 +3152,7 @@ class CoursesTopicsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/courses/' + commons.Escaper.ecapeVariable('$courseId') + '/topics';
 
     final _response = await _requester.request(
@@ -3295,8 +3205,6 @@ class CoursesTopicsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3315,7 +3223,7 @@ class CoursesTopicsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/courses/' +
+    final _url = 'v1/courses/' +
         commons.Escaper.ecapeVariable('$courseId') +
         '/topics/' +
         commons.Escaper.ecapeVariable('$id');
@@ -3364,8 +3272,6 @@ class InvitationsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -3374,7 +3280,8 @@ class InvitationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id') + ':accept';
+    final _url =
+        'v1/invitations/' + commons.Escaper.ecapeVariable('$id') + ':accept';
 
     final _response = await _requester.request(
       _url,
@@ -3413,8 +3320,6 @@ class InvitationsResource {
     Invitation request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3424,7 +3329,7 @@ class InvitationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/invitations';
+    const _url = 'v1/invitations';
 
     final _response = await _requester.request(
       _url,
@@ -3461,8 +3366,6 @@ class InvitationsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -3471,7 +3374,7 @@ class InvitationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -3506,8 +3409,6 @@ class InvitationsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -3516,7 +3417,7 @@ class InvitationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'v1/invitations/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -3570,8 +3471,6 @@ class InvitationsResource {
     core.String userId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (courseId != null) {
       _queryParams['courseId'] = [courseId];
@@ -3589,7 +3488,7 @@ class InvitationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/invitations';
+    const _url = 'v1/invitations';
 
     final _response = await _requester.request(
       _url,
@@ -3649,8 +3548,6 @@ class RegistrationsResource {
     Registration request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3660,7 +3557,7 @@ class RegistrationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/registrations';
+    const _url = 'v1/registrations';
 
     final _response = await _requester.request(
       _url,
@@ -3694,8 +3591,6 @@ class RegistrationsResource {
     core.String registrationId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (registrationId == null) {
       throw core.ArgumentError('Parameter registrationId is required.');
     }
@@ -3704,7 +3599,7 @@ class RegistrationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/registrations/' + commons.Escaper.ecapeVariable('$registrationId');
 
     final _response = await _requester.request(
@@ -3753,8 +3648,6 @@ class UserProfilesResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3763,7 +3656,7 @@ class UserProfilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/userProfiles/' + commons.Escaper.ecapeVariable('$userId');
+    final _url = 'v1/userProfiles/' + commons.Escaper.ecapeVariable('$userId');
 
     final _response = await _requester.request(
       _url,
@@ -3828,8 +3721,6 @@ class UserProfilesGuardianInvitationsResource {
     core.String studentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3842,7 +3733,7 @@ class UserProfilesGuardianInvitationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/userProfiles/' +
+    final _url = 'v1/userProfiles/' +
         commons.Escaper.ecapeVariable('$studentId') +
         '/guardianInvitations';
 
@@ -3891,8 +3782,6 @@ class UserProfilesGuardianInvitationsResource {
     core.String invitationId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (studentId == null) {
       throw core.ArgumentError('Parameter studentId is required.');
     }
@@ -3904,7 +3793,7 @@ class UserProfilesGuardianInvitationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/userProfiles/' +
+    final _url = 'v1/userProfiles/' +
         commons.Escaper.ecapeVariable('$studentId') +
         '/guardianInvitations/' +
         commons.Escaper.ecapeVariable('$invitationId');
@@ -3975,8 +3864,6 @@ class UserProfilesGuardianInvitationsResource {
     core.List<core.String> states,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (studentId == null) {
       throw core.ArgumentError('Parameter studentId is required.');
     }
@@ -3997,7 +3884,7 @@ class UserProfilesGuardianInvitationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/userProfiles/' +
+    final _url = 'v1/userProfiles/' +
         commons.Escaper.ecapeVariable('$studentId') +
         '/guardianInvitations';
 
@@ -4058,8 +3945,6 @@ class UserProfilesGuardianInvitationsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4078,7 +3963,7 @@ class UserProfilesGuardianInvitationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/userProfiles/' +
+    final _url = 'v1/userProfiles/' +
         commons.Escaper.ecapeVariable('$studentId') +
         '/guardianInvitations/' +
         commons.Escaper.ecapeVariable('$invitationId');
@@ -4138,8 +4023,6 @@ class UserProfilesGuardiansResource {
     core.String guardianId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (studentId == null) {
       throw core.ArgumentError('Parameter studentId is required.');
     }
@@ -4151,7 +4034,7 @@ class UserProfilesGuardiansResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/userProfiles/' +
+    final _url = 'v1/userProfiles/' +
         commons.Escaper.ecapeVariable('$studentId') +
         '/guardians/' +
         commons.Escaper.ecapeVariable('$guardianId');
@@ -4201,8 +4084,6 @@ class UserProfilesGuardiansResource {
     core.String guardianId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (studentId == null) {
       throw core.ArgumentError('Parameter studentId is required.');
     }
@@ -4214,7 +4095,7 @@ class UserProfilesGuardiansResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/userProfiles/' +
+    final _url = 'v1/userProfiles/' +
         commons.Escaper.ecapeVariable('$studentId') +
         '/guardians/' +
         commons.Escaper.ecapeVariable('$guardianId');
@@ -4284,8 +4165,6 @@ class UserProfilesGuardiansResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (studentId == null) {
       throw core.ArgumentError('Parameter studentId is required.');
     }
@@ -4303,7 +4182,7 @@ class UserProfilesGuardiansResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/userProfiles/' +
+    final _url = 'v1/userProfiles/' +
         commons.Escaper.ecapeVariable('$studentId') +
         '/guardians';
 

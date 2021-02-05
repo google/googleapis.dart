@@ -160,8 +160,6 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -170,7 +168,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/profile';
 
@@ -201,8 +199,6 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -211,7 +207,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/stop';
 
     await _requester.request(
@@ -246,8 +242,6 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -260,7 +254,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'gmail/v1/users/' + commons.Escaper.ecapeVariable('$userId') + '/watch';
 
     final _response = await _requester.request(
@@ -311,8 +305,6 @@ class UsersDraftsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -325,6 +317,7 @@ class UsersDraftsResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'gmail/v1/users/' +
           commons.Escaper.ecapeVariable('$userId') +
@@ -374,8 +367,6 @@ class UsersDraftsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -387,7 +378,7 @@ class UsersDraftsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/drafts/' +
         commons.Escaper.ecapeVariable('$id');
@@ -438,8 +429,6 @@ class UsersDraftsResource {
     core.String format,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -454,7 +443,7 @@ class UsersDraftsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/drafts/' +
         commons.Escaper.ecapeVariable('$id');
@@ -504,8 +493,6 @@ class UsersDraftsResource {
     core.String q,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -526,7 +513,7 @@ class UsersDraftsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/drafts';
 
@@ -572,8 +559,6 @@ class UsersDraftsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -586,6 +571,7 @@ class UsersDraftsResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'gmail/v1/users/' +
           commons.Escaper.ecapeVariable('$userId') +
@@ -646,8 +632,6 @@ class UsersDraftsResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -663,6 +647,7 @@ class UsersDraftsResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'gmail/v1/users/' +
           commons.Escaper.ecapeVariable('$userId') +
@@ -747,8 +732,6 @@ class UsersHistoryResource {
     core.String startHistoryId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -772,7 +755,7 @@ class UsersHistoryResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/history';
 
@@ -815,8 +798,6 @@ class UsersLabelsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -829,7 +810,7 @@ class UsersLabelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/labels';
 
@@ -865,8 +846,6 @@ class UsersLabelsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -878,7 +857,7 @@ class UsersLabelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/labels/' +
         commons.Escaper.ecapeVariable('$id');
@@ -915,8 +894,6 @@ class UsersLabelsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -928,7 +905,7 @@ class UsersLabelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/labels/' +
         commons.Escaper.ecapeVariable('$id');
@@ -962,8 +939,6 @@ class UsersLabelsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -972,7 +947,7 @@ class UsersLabelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/labels';
 
@@ -1012,8 +987,6 @@ class UsersLabelsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1029,7 +1002,7 @@ class UsersLabelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/labels/' +
         commons.Escaper.ecapeVariable('$id');
@@ -1070,8 +1043,6 @@ class UsersLabelsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1087,7 +1058,7 @@ class UsersLabelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/labels/' +
         commons.Escaper.ecapeVariable('$id');
@@ -1135,8 +1106,6 @@ class UsersMessagesResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1149,7 +1118,7 @@ class UsersMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/messages/batchDelete';
 
@@ -1184,8 +1153,6 @@ class UsersMessagesResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1198,7 +1165,7 @@ class UsersMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/messages/batchModify';
 
@@ -1235,8 +1202,6 @@ class UsersMessagesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -1248,7 +1213,7 @@ class UsersMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/messages/' +
         commons.Escaper.ecapeVariable('$id');
@@ -1305,8 +1270,6 @@ class UsersMessagesResource {
     core.List<core.String> metadataHeaders,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -1324,7 +1287,7 @@ class UsersMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/messages/' +
         commons.Escaper.ecapeVariable('$id');
@@ -1394,8 +1357,6 @@ class UsersMessagesResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1420,6 +1381,7 @@ class UsersMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'gmail/v1/users/' +
           commons.Escaper.ecapeVariable('$userId') +
@@ -1493,8 +1455,6 @@ class UsersMessagesResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1513,6 +1473,7 @@ class UsersMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'gmail/v1/users/' +
           commons.Escaper.ecapeVariable('$userId') +
@@ -1580,8 +1541,6 @@ class UsersMessagesResource {
     core.String q,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -1605,7 +1564,7 @@ class UsersMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/messages';
 
@@ -1645,8 +1604,6 @@ class UsersMessagesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1662,7 +1619,7 @@ class UsersMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/messages/' +
         commons.Escaper.ecapeVariable('$id') +
@@ -1710,8 +1667,6 @@ class UsersMessagesResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1724,6 +1679,7 @@ class UsersMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'gmail/v1/users/' +
           commons.Escaper.ecapeVariable('$userId') +
@@ -1773,8 +1729,6 @@ class UsersMessagesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -1786,7 +1740,7 @@ class UsersMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/messages/' +
         commons.Escaper.ecapeVariable('$id') +
@@ -1824,8 +1778,6 @@ class UsersMessagesResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -1837,7 +1789,7 @@ class UsersMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/messages/' +
         commons.Escaper.ecapeVariable('$id') +
@@ -1885,8 +1837,6 @@ class UsersMessagesAttachmentsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -1901,7 +1851,7 @@ class UsersMessagesAttachmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/messages/' +
         commons.Escaper.ecapeVariable('$messageId') +
@@ -1953,8 +1903,6 @@ class UsersSettingsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -1963,7 +1911,7 @@ class UsersSettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/autoForwarding';
 
@@ -1997,8 +1945,6 @@ class UsersSettingsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2007,7 +1953,7 @@ class UsersSettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/imap';
 
@@ -2041,8 +1987,6 @@ class UsersSettingsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2051,7 +1995,7 @@ class UsersSettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/language';
 
@@ -2085,8 +2029,6 @@ class UsersSettingsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2095,7 +2037,7 @@ class UsersSettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/pop';
 
@@ -2129,8 +2071,6 @@ class UsersSettingsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2139,7 +2079,7 @@ class UsersSettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/vacation';
 
@@ -2180,8 +2120,6 @@ class UsersSettingsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2194,7 +2132,7 @@ class UsersSettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/autoForwarding';
 
@@ -2232,8 +2170,6 @@ class UsersSettingsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2246,7 +2182,7 @@ class UsersSettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/imap';
 
@@ -2290,8 +2226,6 @@ class UsersSettingsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2304,7 +2238,7 @@ class UsersSettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/language';
 
@@ -2342,8 +2276,6 @@ class UsersSettingsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2356,7 +2288,7 @@ class UsersSettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/pop';
 
@@ -2394,8 +2326,6 @@ class UsersSettingsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2408,7 +2338,7 @@ class UsersSettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/vacation';
 
@@ -2465,8 +2395,6 @@ class UsersSettingsDelegatesResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2479,7 +2407,7 @@ class UsersSettingsDelegatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/delegates';
 
@@ -2520,8 +2448,6 @@ class UsersSettingsDelegatesResource {
     core.String delegateEmail, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2533,7 +2459,7 @@ class UsersSettingsDelegatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/delegates/' +
         commons.Escaper.ecapeVariable('$delegateEmail');
@@ -2575,8 +2501,6 @@ class UsersSettingsDelegatesResource {
     core.String delegateEmail, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2588,7 +2512,7 @@ class UsersSettingsDelegatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/delegates/' +
         commons.Escaper.ecapeVariable('$delegateEmail');
@@ -2625,8 +2549,6 @@ class UsersSettingsDelegatesResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2635,7 +2557,7 @@ class UsersSettingsDelegatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/delegates';
 
@@ -2681,8 +2603,6 @@ class UsersSettingsFiltersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2695,7 +2615,7 @@ class UsersSettingsFiltersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/filters';
 
@@ -2730,8 +2650,6 @@ class UsersSettingsFiltersResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2743,7 +2661,7 @@ class UsersSettingsFiltersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/filters/' +
         commons.Escaper.ecapeVariable('$id');
@@ -2780,8 +2698,6 @@ class UsersSettingsFiltersResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2793,7 +2709,7 @@ class UsersSettingsFiltersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/filters/' +
         commons.Escaper.ecapeVariable('$id');
@@ -2827,8 +2743,6 @@ class UsersSettingsFiltersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2837,7 +2751,7 @@ class UsersSettingsFiltersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/filters';
 
@@ -2887,8 +2801,6 @@ class UsersSettingsForwardingAddressesResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2901,7 +2813,7 @@ class UsersSettingsForwardingAddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/forwardingAddresses';
 
@@ -2941,8 +2853,6 @@ class UsersSettingsForwardingAddressesResource {
     core.String forwardingEmail, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2954,7 +2864,7 @@ class UsersSettingsForwardingAddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/forwardingAddresses/' +
         commons.Escaper.ecapeVariable('$forwardingEmail');
@@ -2991,8 +2901,6 @@ class UsersSettingsForwardingAddressesResource {
     core.String forwardingEmail, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3004,7 +2912,7 @@ class UsersSettingsForwardingAddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/forwardingAddresses/' +
         commons.Escaper.ecapeVariable('$forwardingEmail');
@@ -3039,8 +2947,6 @@ class UsersSettingsForwardingAddressesResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3049,7 +2955,7 @@ class UsersSettingsForwardingAddressesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/forwardingAddresses';
 
@@ -3105,8 +3011,6 @@ class UsersSettingsSendAsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3119,7 +3023,7 @@ class UsersSettingsSendAsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/sendAs';
 
@@ -3158,8 +3062,6 @@ class UsersSettingsSendAsResource {
     core.String sendAsEmail, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3171,7 +3073,7 @@ class UsersSettingsSendAsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.Escaper.ecapeVariable('$sendAsEmail');
@@ -3211,8 +3113,6 @@ class UsersSettingsSendAsResource {
     core.String sendAsEmail, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3224,7 +3124,7 @@ class UsersSettingsSendAsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.Escaper.ecapeVariable('$sendAsEmail');
@@ -3261,8 +3161,6 @@ class UsersSettingsSendAsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3271,7 +3169,7 @@ class UsersSettingsSendAsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/sendAs';
 
@@ -3311,8 +3209,6 @@ class UsersSettingsSendAsResource {
     core.String sendAsEmail, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3328,7 +3224,7 @@ class UsersSettingsSendAsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.Escaper.ecapeVariable('$sendAsEmail');
@@ -3374,8 +3270,6 @@ class UsersSettingsSendAsResource {
     core.String sendAsEmail, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3391,7 +3285,7 @@ class UsersSettingsSendAsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.Escaper.ecapeVariable('$sendAsEmail');
@@ -3430,8 +3324,6 @@ class UsersSettingsSendAsResource {
     core.String sendAsEmail, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3443,7 +3335,7 @@ class UsersSettingsSendAsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.Escaper.ecapeVariable('$sendAsEmail') +
@@ -3490,8 +3382,6 @@ class UsersSettingsSendAsSmimeInfoResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3506,7 +3396,7 @@ class UsersSettingsSendAsSmimeInfoResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.Escaper.ecapeVariable('$sendAsEmail') +
@@ -3549,8 +3439,6 @@ class UsersSettingsSendAsSmimeInfoResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3565,7 +3453,7 @@ class UsersSettingsSendAsSmimeInfoResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.Escaper.ecapeVariable('$sendAsEmail') +
@@ -3610,8 +3498,6 @@ class UsersSettingsSendAsSmimeInfoResource {
     core.String sendAsEmail, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3627,7 +3513,7 @@ class UsersSettingsSendAsSmimeInfoResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.Escaper.ecapeVariable('$sendAsEmail') +
@@ -3667,8 +3553,6 @@ class UsersSettingsSendAsSmimeInfoResource {
     core.String sendAsEmail, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3680,7 +3564,7 @@ class UsersSettingsSendAsSmimeInfoResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.Escaper.ecapeVariable('$sendAsEmail') +
@@ -3721,8 +3605,6 @@ class UsersSettingsSendAsSmimeInfoResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3737,7 +3619,7 @@ class UsersSettingsSendAsSmimeInfoResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/settings/sendAs/' +
         commons.Escaper.ecapeVariable('$sendAsEmail') +
@@ -3783,8 +3665,6 @@ class UsersThreadsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3796,7 +3676,7 @@ class UsersThreadsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/threads/' +
         commons.Escaper.ecapeVariable('$id');
@@ -3847,8 +3727,6 @@ class UsersThreadsResource {
     core.List<core.String> metadataHeaders,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3866,7 +3744,7 @@ class UsersThreadsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/threads/' +
         commons.Escaper.ecapeVariable('$id');
@@ -3921,8 +3799,6 @@ class UsersThreadsResource {
     core.String q,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -3946,7 +3822,7 @@ class UsersThreadsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/threads';
 
@@ -3988,8 +3864,6 @@ class UsersThreadsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4005,7 +3879,7 @@ class UsersThreadsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/threads/' +
         commons.Escaper.ecapeVariable('$id') +
@@ -4044,8 +3918,6 @@ class UsersThreadsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -4057,7 +3929,7 @@ class UsersThreadsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/threads/' +
         commons.Escaper.ecapeVariable('$id') +
@@ -4095,8 +3967,6 @@ class UsersThreadsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -4108,7 +3978,7 @@ class UsersThreadsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'gmail/v1/users/' +
+    final _url = 'gmail/v1/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/threads/' +
         commons.Escaper.ecapeVariable('$id') +

@@ -119,8 +119,6 @@ class ActionResultsResource {
     core.bool inlineStdout,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
@@ -144,7 +142,7 @@ class ActionResultsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' +
+    final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$instanceName') +
         '/actionResults/' +
         commons.Escaper.ecapeVariable('$hash') +
@@ -213,8 +211,6 @@ class ActionResultsResource {
     core.int resultsCachePolicy_priority,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -238,7 +234,7 @@ class ActionResultsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' +
+    final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$instanceName') +
         '/actionResults/' +
         commons.Escaper.ecapeVariable('$hash') +
@@ -331,8 +327,6 @@ class ActionsResource {
     core.String instanceName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -345,7 +339,7 @@ class ActionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' +
+    final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$instanceName') +
         '/actions:execute';
 
@@ -403,8 +397,6 @@ class BlobsResource {
     core.String instanceName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -417,7 +409,7 @@ class BlobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' +
+    final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$instanceName') +
         '/blobs:batchRead';
 
@@ -471,8 +463,6 @@ class BlobsResource {
     core.String instanceName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -485,7 +475,7 @@ class BlobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' +
+    final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$instanceName') +
         '/blobs:batchUpdate';
 
@@ -532,8 +522,6 @@ class BlobsResource {
     core.String instanceName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -546,7 +534,7 @@ class BlobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' +
+    final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$instanceName') +
         '/blobs:findMissing';
 
@@ -617,8 +605,6 @@ class BlobsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
@@ -639,7 +625,7 @@ class BlobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' +
+    final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$instanceName') +
         '/blobs/' +
         commons.Escaper.ecapeVariable('$hash') +
@@ -693,8 +679,6 @@ class OperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -707,7 +691,7 @@ class OperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' +
+    final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':waitExecution';
 
@@ -759,8 +743,6 @@ class V2Resource {
     core.String instanceName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
@@ -769,7 +751,7 @@ class V2Resource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' +
+    final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$instanceName') +
         '/capabilities';
 

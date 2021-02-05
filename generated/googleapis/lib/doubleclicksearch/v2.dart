@@ -130,8 +130,6 @@ class ConversionResource {
     core.String criterionId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (agencyId == null) {
       throw core.ArgumentError('Parameter agencyId is required.');
     }
@@ -174,7 +172,7 @@ class ConversionResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'doubleclicksearch/v2/agency/' +
+    final _url = 'doubleclicksearch/v2/agency/' +
         commons.Escaper.ecapeVariable('$agencyId') +
         '/advertiser/' +
         commons.Escaper.ecapeVariable('$advertiserId') +
@@ -211,8 +209,6 @@ class ConversionResource {
     ConversionList request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -222,7 +218,7 @@ class ConversionResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'doubleclicksearch/v2/conversion';
+    const _url = 'doubleclicksearch/v2/conversion';
 
     final _response = await _requester.request(
       _url,
@@ -254,8 +250,6 @@ class ConversionResource {
     ConversionList request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -265,7 +259,7 @@ class ConversionResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'doubleclicksearch/v2/conversion';
+    const _url = 'doubleclicksearch/v2/conversion';
 
     final _response = await _requester.request(
       _url,
@@ -298,8 +292,6 @@ class ConversionResource {
     UpdateAvailabilityRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -309,7 +301,7 @@ class ConversionResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'doubleclicksearch/v2/conversion/updateAvailability';
+    const _url = 'doubleclicksearch/v2/conversion/updateAvailability';
 
     final _response = await _requester.request(
       _url,
@@ -347,8 +339,6 @@ class ReportsResource {
     ReportRequest request_1, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request_1 != null) {
       _body = convert.json.encode(request_1.toJson());
@@ -358,7 +348,7 @@ class ReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'doubleclicksearch/v2/reports/generate';
+    const _url = 'doubleclicksearch/v2/reports/generate';
 
     final _response = await _requester.request(
       _url,
@@ -389,8 +379,6 @@ class ReportsResource {
     core.String reportId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
     }
@@ -399,7 +387,7 @@ class ReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'doubleclicksearch/v2/reports/' +
+    final _url = 'doubleclicksearch/v2/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
 
     final _response = await _requester.request(
@@ -436,8 +424,6 @@ class ReportsResource {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
-    core.String _url;
-
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
     }
@@ -449,7 +435,7 @@ class ReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'doubleclicksearch/v2/reports/' +
+    final _url = 'doubleclicksearch/v2/reports/' +
         commons.Escaper.ecapeVariable('$reportId') +
         '/files/' +
         commons.Escaper.ecapeVariable('$reportFragment');
@@ -488,8 +474,6 @@ class ReportsResource {
     ReportRequest request_1, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request_1 != null) {
       _body = convert.json.encode(request_1.toJson());
@@ -499,7 +483,7 @@ class ReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'doubleclicksearch/v2/reports';
+    const _url = 'doubleclicksearch/v2/reports';
 
     final _response = await _requester.request(
       _url,
@@ -539,8 +523,6 @@ class SavedColumnsResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (agencyId == null) {
       throw core.ArgumentError('Parameter agencyId is required.');
     }
@@ -552,7 +534,7 @@ class SavedColumnsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'doubleclicksearch/v2/agency/' +
+    final _url = 'doubleclicksearch/v2/agency/' +
         commons.Escaper.ecapeVariable('$agencyId') +
         '/advertiser/' +
         commons.Escaper.ecapeVariable('$advertiserId') +

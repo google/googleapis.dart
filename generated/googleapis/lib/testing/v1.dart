@@ -93,8 +93,6 @@ class ApplicationDetailServiceResource {
     FileReference request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -104,7 +102,7 @@ class ApplicationDetailServiceResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/applicationDetailService/getApkDetails';
+    const _url = 'v1/applicationDetailService/getApkDetails';
 
     final _response = await _requester.request(
       _url,
@@ -161,8 +159,6 @@ class ProjectsTestMatricesResource {
     core.String testMatrixId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -174,7 +170,7 @@ class ProjectsTestMatricesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/testMatrices/' +
         commons.Escaper.ecapeVariable('$testMatrixId') +
@@ -223,8 +219,6 @@ class ProjectsTestMatricesResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -240,7 +234,7 @@ class ProjectsTestMatricesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/testMatrices';
 
@@ -281,8 +275,6 @@ class ProjectsTestMatricesResource {
     core.String testMatrixId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -294,7 +286,7 @@ class ProjectsTestMatricesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$projectId') +
         '/testMatrices/' +
         commons.Escaper.ecapeVariable('$testMatrixId');
@@ -354,8 +346,6 @@ class TestEnvironmentCatalogResource {
     core.String projectId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (environmentType == null) {
       throw core.ArgumentError('Parameter environmentType is required.');
     }
@@ -367,7 +357,7 @@ class TestEnvironmentCatalogResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/testEnvironmentCatalog/' +
+    final _url = 'v1/testEnvironmentCatalog/' +
         commons.Escaper.ecapeVariable('$environmentType');
 
     final _response = await _requester.request(

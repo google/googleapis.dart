@@ -84,8 +84,6 @@ class UrlNotificationsResource {
     core.String url,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (url != null) {
       _queryParams['url'] = [url];
@@ -94,7 +92,7 @@ class UrlNotificationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/urlNotifications/metadata';
+    const _url = 'v3/urlNotifications/metadata';
 
     final _response = await _requester.request(
       _url,
@@ -125,8 +123,6 @@ class UrlNotificationsResource {
     UrlNotification request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -136,7 +132,7 @@ class UrlNotificationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/urlNotifications:publish';
+    const _url = 'v3/urlNotifications:publish';
 
     final _response = await _requester.request(
       _url,

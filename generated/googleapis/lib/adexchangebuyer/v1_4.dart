@@ -109,8 +109,6 @@ class AccountsResource {
     core.int id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -119,7 +117,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -146,14 +144,12 @@ class AccountsResource {
   async.Future<AccountsList> list({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts';
+    const _url = 'accounts';
 
     final _response = await _requester.request(
       _url,
@@ -193,8 +189,6 @@ class AccountsResource {
     core.bool confirmUnsafeAccountChange,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -212,7 +206,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -250,8 +244,6 @@ class AccountsResource {
     core.bool confirmUnsafeAccountChange,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -269,7 +261,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'accounts/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -306,8 +298,6 @@ class BillingInfoResource {
     core.int accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -316,7 +306,7 @@ class BillingInfoResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'billinginfo/' + commons.Escaper.ecapeVariable('$accountId');
+    final _url = 'billinginfo/' + commons.Escaper.ecapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -345,14 +335,12 @@ class BillingInfoResource {
   async.Future<BillingInfoList> list({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'billinginfo';
+    const _url = 'billinginfo';
 
     final _response = await _requester.request(
       _url,
@@ -393,8 +381,6 @@ class BudgetResource {
     core.String billingId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -406,7 +392,7 @@ class BudgetResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'billinginfo/' +
+    final _url = 'billinginfo/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/' +
         commons.Escaper.ecapeVariable('$billingId');
@@ -448,8 +434,6 @@ class BudgetResource {
     core.String billingId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -465,7 +449,7 @@ class BudgetResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'billinginfo/' +
+    final _url = 'billinginfo/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/' +
         commons.Escaper.ecapeVariable('$billingId');
@@ -506,8 +490,6 @@ class BudgetResource {
     core.String billingId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -523,7 +505,7 @@ class BudgetResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'billinginfo/' +
+    final _url = 'billinginfo/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/' +
         commons.Escaper.ecapeVariable('$billingId');
@@ -567,8 +549,6 @@ class CreativesResource {
     core.String dealId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -583,7 +563,7 @@ class CreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'creatives/' +
+    final _url = 'creatives/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/' +
         commons.Escaper.ecapeVariable('$buyerCreativeId') +
@@ -623,8 +603,6 @@ class CreativesResource {
     core.String buyerCreativeId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -636,7 +614,7 @@ class CreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'creatives/' +
+    final _url = 'creatives/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/' +
         commons.Escaper.ecapeVariable('$buyerCreativeId');
@@ -669,8 +647,6 @@ class CreativesResource {
     Creative request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -680,7 +656,7 @@ class CreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'creatives';
+    const _url = 'creatives';
 
     final _response = await _requester.request(
       _url,
@@ -751,8 +727,6 @@ class CreativesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (accountId != null) {
       _queryParams['accountId'] = accountId.map((item) => '${item}').toList();
@@ -776,7 +750,7 @@ class CreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'creatives';
+    const _url = 'creatives';
 
     final _response = await _requester.request(
       _url,
@@ -810,8 +784,6 @@ class CreativesResource {
     core.String buyerCreativeId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -823,7 +795,7 @@ class CreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'creatives/' +
+    final _url = 'creatives/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/' +
         commons.Escaper.ecapeVariable('$buyerCreativeId') +
@@ -862,8 +834,6 @@ class CreativesResource {
     core.String dealId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -878,7 +848,7 @@ class CreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'creatives/' +
+    final _url = 'creatives/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/' +
         commons.Escaper.ecapeVariable('$buyerCreativeId') +
@@ -922,8 +892,6 @@ class MarketplacedealsResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -936,7 +904,7 @@ class MarketplacedealsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'proposals/' +
+    final _url = 'proposals/' +
         commons.Escaper.ecapeVariable('$proposalId') +
         '/deals/delete';
 
@@ -973,8 +941,6 @@ class MarketplacedealsResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -987,7 +953,7 @@ class MarketplacedealsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'proposals/' +
+    final _url = 'proposals/' +
         commons.Escaper.ecapeVariable('$proposalId') +
         '/deals/insert';
 
@@ -1025,8 +991,6 @@ class MarketplacedealsResource {
     core.String pqlQuery,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }
@@ -1038,7 +1002,7 @@ class MarketplacedealsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'proposals/' + commons.Escaper.ecapeVariable('$proposalId') + '/deals';
 
     final _response = await _requester.request(
@@ -1073,8 +1037,6 @@ class MarketplacedealsResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1087,7 +1049,7 @@ class MarketplacedealsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'proposals/' +
+    final _url = 'proposals/' +
         commons.Escaper.ecapeVariable('$proposalId') +
         '/deals/update';
 
@@ -1130,8 +1092,6 @@ class MarketplacenotesResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1144,7 +1104,7 @@ class MarketplacenotesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'proposals/' +
+    final _url = 'proposals/' +
         commons.Escaper.ecapeVariable('$proposalId') +
         '/notes/insert';
 
@@ -1184,8 +1144,6 @@ class MarketplacenotesResource {
     core.String pqlQuery,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }
@@ -1197,7 +1155,7 @@ class MarketplacenotesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'proposals/' + commons.Escaper.ecapeVariable('$proposalId') + '/notes';
 
     final _response = await _requester.request(
@@ -1237,8 +1195,6 @@ class MarketplaceprivateauctionResource {
     core.String privateAuctionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1251,7 +1207,7 @@ class MarketplaceprivateauctionResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'privateauction/' +
+    final _url = 'privateauction/' +
         commons.Escaper.ecapeVariable('$privateAuctionId') +
         '/updateproposal';
 
@@ -1308,8 +1264,6 @@ class PerformanceReportResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1333,7 +1287,7 @@ class PerformanceReportResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'performancereport';
+    const _url = 'performancereport';
 
     final _response = await _requester.request(
       _url,
@@ -1371,8 +1325,6 @@ class PretargetingConfigResource {
     core.String configId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1384,7 +1336,7 @@ class PretargetingConfigResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'pretargetingconfigs/' +
+    final _url = 'pretargetingconfigs/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/' +
         commons.Escaper.ecapeVariable('$configId');
@@ -1420,8 +1372,6 @@ class PretargetingConfigResource {
     core.String configId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1433,7 +1383,7 @@ class PretargetingConfigResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'pretargetingconfigs/' +
+    final _url = 'pretargetingconfigs/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/' +
         commons.Escaper.ecapeVariable('$configId');
@@ -1470,8 +1420,6 @@ class PretargetingConfigResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1484,7 +1432,8 @@ class PretargetingConfigResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId');
+    final _url =
+        'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -1516,8 +1465,6 @@ class PretargetingConfigResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1526,7 +1473,8 @@ class PretargetingConfigResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId');
+    final _url =
+        'pretargetingconfigs/' + commons.Escaper.ecapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -1565,8 +1513,6 @@ class PretargetingConfigResource {
     core.String configId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1582,7 +1528,7 @@ class PretargetingConfigResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'pretargetingconfigs/' +
+    final _url = 'pretargetingconfigs/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/' +
         commons.Escaper.ecapeVariable('$configId');
@@ -1623,8 +1569,6 @@ class PretargetingConfigResource {
     core.String configId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1640,7 +1584,7 @@ class PretargetingConfigResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'pretargetingconfigs/' +
+    final _url = 'pretargetingconfigs/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/' +
         commons.Escaper.ecapeVariable('$configId');
@@ -1681,8 +1625,6 @@ class ProductsResource {
     core.String productId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
     }
@@ -1691,7 +1633,7 @@ class ProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'products/' + commons.Escaper.ecapeVariable('$productId');
+    final _url = 'products/' + commons.Escaper.ecapeVariable('$productId');
 
     final _response = await _requester.request(
       _url,
@@ -1721,8 +1663,6 @@ class ProductsResource {
     core.String pqlQuery,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (pqlQuery != null) {
       _queryParams['pqlQuery'] = [pqlQuery];
@@ -1731,7 +1671,7 @@ class ProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'products/search';
+    const _url = 'products/search';
 
     final _response = await _requester.request(
       _url,
@@ -1768,8 +1708,6 @@ class ProposalsResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }
@@ -1778,7 +1716,7 @@ class ProposalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'proposals/' + commons.Escaper.ecapeVariable('$proposalId');
+    final _url = 'proposals/' + commons.Escaper.ecapeVariable('$proposalId');
 
     final _response = await _requester.request(
       _url,
@@ -1808,8 +1746,6 @@ class ProposalsResource {
     CreateOrdersRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1819,7 +1755,7 @@ class ProposalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'proposals/insert';
+    const _url = 'proposals/insert';
 
     final _response = await _requester.request(
       _url,
@@ -1873,8 +1809,6 @@ class ProposalsResource {
     core.String updateAction, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1893,7 +1827,7 @@ class ProposalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'proposals/' +
+    final _url = 'proposals/' +
         commons.Escaper.ecapeVariable('$proposalId') +
         '/' +
         commons.Escaper.ecapeVariable('$revisionNumber') +
@@ -1929,8 +1863,6 @@ class ProposalsResource {
     core.String pqlQuery,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (pqlQuery != null) {
       _queryParams['pqlQuery'] = [pqlQuery];
@@ -1939,7 +1871,7 @@ class ProposalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'proposals/search';
+    const _url = 'proposals/search';
 
     final _response = await _requester.request(
       _url,
@@ -1968,8 +1900,6 @@ class ProposalsResource {
     core.String proposalId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }
@@ -1978,7 +1908,7 @@ class ProposalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'proposals/' +
+    final _url = 'proposals/' +
         commons.Escaper.ecapeVariable('$proposalId') +
         '/setupcomplete';
 
@@ -2030,8 +1960,6 @@ class ProposalsResource {
     core.String updateAction, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2050,7 +1978,7 @@ class ProposalsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'proposals/' +
+    final _url = 'proposals/' +
         commons.Escaper.ecapeVariable('$proposalId') +
         '/' +
         commons.Escaper.ecapeVariable('$revisionNumber') +
@@ -2092,8 +2020,6 @@ class PubprofilesResource {
     core.int accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2102,7 +2028,7 @@ class PubprofilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'publisher/' +
+    final _url = 'publisher/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/profiles';
 

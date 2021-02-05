@@ -195,8 +195,6 @@ class ProcessesResource {
     core.List<core.String> userProcessFilter_userAccessLevels,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -244,7 +242,7 @@ class ProcessesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/processes';
+    const _url = 'v1/processes';
 
     final _response = await _requester.request(
       _url,
@@ -316,8 +314,6 @@ class ProcessesResource {
     core.List<core.String> scriptProcessFilter_userAccessLevels,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -363,7 +359,7 @@ class ProcessesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/processes:listScriptProcesses';
+    const _url = 'v1/processes:listScriptProcesses';
 
     final _response = await _requester.request(
       _url,
@@ -405,8 +401,6 @@ class ProjectsResource {
     CreateProjectRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -416,7 +410,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects';
+    const _url = 'v1/projects';
 
     final _response = await _requester.request(
       _url,
@@ -447,8 +441,6 @@ class ProjectsResource {
     core.String scriptId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
@@ -457,7 +449,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$scriptId');
+    final _url = 'v1/projects/' + commons.Escaper.ecapeVariable('$scriptId');
 
     final _response = await _requester.request(
       _url,
@@ -492,8 +484,6 @@ class ProjectsResource {
     core.int versionNumber,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
@@ -505,7 +495,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
         '/content';
 
@@ -551,8 +541,6 @@ class ProjectsResource {
     core.String metricsGranularity,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
@@ -567,7 +555,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
         '/metrics';
 
@@ -607,8 +595,6 @@ class ProjectsResource {
     core.String scriptId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -621,7 +607,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
         '/content';
 
@@ -664,8 +650,6 @@ class ProjectsDeploymentsResource {
     core.String scriptId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -678,7 +662,7 @@ class ProjectsDeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
         '/deployments';
 
@@ -715,8 +699,6 @@ class ProjectsDeploymentsResource {
     core.String deploymentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
@@ -728,7 +710,7 @@ class ProjectsDeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
         '/deployments/' +
         commons.Escaper.ecapeVariable('$deploymentId');
@@ -764,8 +746,6 @@ class ProjectsDeploymentsResource {
     core.String deploymentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
@@ -777,7 +757,7 @@ class ProjectsDeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
         '/deployments/' +
         commons.Escaper.ecapeVariable('$deploymentId');
@@ -820,8 +800,6 @@ class ProjectsDeploymentsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
@@ -836,7 +814,7 @@ class ProjectsDeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
         '/deployments';
 
@@ -875,8 +853,6 @@ class ProjectsDeploymentsResource {
     core.String deploymentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -892,7 +868,7 @@ class ProjectsDeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
         '/deployments/' +
         commons.Escaper.ecapeVariable('$deploymentId');
@@ -937,8 +913,6 @@ class ProjectsVersionsResource {
     core.String scriptId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -951,7 +925,7 @@ class ProjectsVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
         '/versions';
 
@@ -987,8 +961,6 @@ class ProjectsVersionsResource {
     core.int versionNumber, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
@@ -1000,7 +972,7 @@ class ProjectsVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
         '/versions/' +
         commons.Escaper.ecapeVariable('$versionNumber');
@@ -1042,8 +1014,6 @@ class ProjectsVersionsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (scriptId == null) {
       throw core.ArgumentError('Parameter scriptId is required.');
     }
@@ -1058,7 +1028,7 @@ class ProjectsVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/projects/' +
+    final _url = 'v1/projects/' +
         commons.Escaper.ecapeVariable('$scriptId') +
         '/versions';
 
@@ -1113,8 +1083,6 @@ class ScriptsResource {
     core.String scriptId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1127,7 +1095,8 @@ class ScriptsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/scripts/' + commons.Escaper.ecapeVariable('$scriptId') + ':run';
+    final _url =
+        'v1/scripts/' + commons.Escaper.ecapeVariable('$scriptId') + ':run';
 
     final _response = await _requester.request(
       _url,

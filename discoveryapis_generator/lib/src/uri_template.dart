@@ -73,6 +73,16 @@ class UriTemplate {
 
   UriTemplate(this.parts);
 
+  String variableDeclaration(
+    String varName,
+    Map<String, Identifier> identifiers,
+  ) {
+    final canBeConst = parts.every((element) => element.templateVar == null);
+
+    final theType = canBeConst ? 'const' : 'final';
+    return '$theType $varName = ${stringExpression(identifiers)};';
+  }
+
   /// Generates a dart expression by expanding this [UriTemplate] using
   /// [identifiers].
   ///

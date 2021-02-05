@@ -109,8 +109,6 @@ class FoldersResource {
     core.String parent,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -123,7 +121,7 @@ class FoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/folders';
+    const _url = 'v2/folders';
 
     final _response = await _requester.request(
       _url,
@@ -162,8 +160,6 @@ class FoldersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -172,7 +168,7 @@ class FoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -208,8 +204,6 @@ class FoldersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -218,7 +212,7 @@ class FoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -260,8 +254,6 @@ class FoldersResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -274,7 +266,7 @@ class FoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' +
+    final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
@@ -327,8 +319,6 @@ class FoldersResource {
     core.bool showDeleted,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -346,7 +336,7 @@ class FoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/folders';
+    const _url = 'v2/folders';
 
     final _response = await _requester.request(
       _url,
@@ -396,8 +386,6 @@ class FoldersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -410,7 +398,8 @@ class FoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
+    final _url =
+        'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':move';
 
     final _response = await _requester.request(
       _url,
@@ -461,8 +450,6 @@ class FoldersResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -478,7 +465,7 @@ class FoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -514,8 +501,6 @@ class FoldersResource {
     SearchFoldersRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -525,7 +510,7 @@ class FoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/folders:search';
+    const _url = 'v2/folders:search';
 
     final _response = await _requester.request(
       _url,
@@ -568,8 +553,6 @@ class FoldersResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -582,7 +565,7 @@ class FoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' +
+    final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
@@ -625,8 +608,6 @@ class FoldersResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -639,7 +620,7 @@ class FoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' +
+    final _url = 'v2/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
@@ -685,8 +666,6 @@ class FoldersResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -699,7 +678,8 @@ class FoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
+    final _url =
+        'v2/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
 
     final _response = await _requester.request(
       _url,
@@ -740,8 +720,6 @@ class OperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -750,7 +728,7 @@ class OperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,

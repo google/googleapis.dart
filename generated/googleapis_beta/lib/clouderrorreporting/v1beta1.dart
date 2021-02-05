@@ -95,8 +95,6 @@ class ProjectsResource {
     core.String projectName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectName == null) {
       throw core.ArgumentError('Parameter projectName is required.');
     }
@@ -105,7 +103,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta1/' +
+    final _url = 'v1beta1/' +
         commons.Escaper.ecapeVariableReserved('$projectName') +
         '/events';
 
@@ -186,8 +184,6 @@ class ProjectsEventsResource {
     core.String timeRange_period,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectName == null) {
       throw core.ArgumentError('Parameter projectName is required.');
     }
@@ -217,7 +213,7 @@ class ProjectsEventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta1/' +
+    final _url = 'v1beta1/' +
         commons.Escaper.ecapeVariableReserved('$projectName') +
         '/events';
 
@@ -263,8 +259,6 @@ class ProjectsEventsResource {
     core.String projectName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -277,7 +271,7 @@ class ProjectsEventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta1/' +
+    final _url = 'v1beta1/' +
         commons.Escaper.ecapeVariableReserved('$projectName') +
         '/events:report';
 
@@ -399,8 +393,6 @@ class ProjectsGroupStatsResource {
     core.String timedCountDuration,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectName == null) {
       throw core.ArgumentError('Parameter projectName is required.');
     }
@@ -442,7 +434,7 @@ class ProjectsGroupStatsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta1/' +
+    final _url = 'v1beta1/' +
         commons.Escaper.ecapeVariableReserved('$projectName') +
         '/groupStats';
 
@@ -486,8 +478,6 @@ class ProjectsGroupsResource {
     core.String groupName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (groupName == null) {
       throw core.ArgumentError('Parameter groupName is required.');
     }
@@ -496,7 +486,8 @@ class ProjectsGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$groupName');
+    final _url =
+        'v1beta1/' + commons.Escaper.ecapeVariableReserved('$groupName');
 
     final _response = await _requester.request(
       _url,
@@ -534,8 +525,6 @@ class ProjectsGroupsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -548,7 +537,7 @@ class ProjectsGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,

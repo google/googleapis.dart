@@ -105,8 +105,6 @@ class ProjectsLocationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -115,7 +113,7 @@ class ProjectsLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -155,8 +153,6 @@ class ProjectsLocationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -174,7 +170,7 @@ class ProjectsLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
     final _response = await _requester.request(
@@ -237,8 +233,6 @@ class ProjectsLocationsDatasetsResource {
     core.String datasetId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -254,7 +248,7 @@ class ProjectsLocationsDatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/datasets';
 
     final _response = await _requester.request(
@@ -301,8 +295,6 @@ class ProjectsLocationsDatasetsResource {
     core.String sourceDataset, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -315,7 +307,7 @@ class ProjectsLocationsDatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$sourceDataset') +
         ':deidentify';
 
@@ -355,8 +347,6 @@ class ProjectsLocationsDatasetsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -365,7 +355,7 @@ class ProjectsLocationsDatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -398,8 +388,6 @@ class ProjectsLocationsDatasetsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -408,7 +396,7 @@ class ProjectsLocationsDatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -454,8 +442,6 @@ class ProjectsLocationsDatasetsResource {
     core.int options_requestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -469,7 +455,7 @@ class ProjectsLocationsDatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
@@ -511,8 +497,6 @@ class ProjectsLocationsDatasetsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -527,7 +511,7 @@ class ProjectsLocationsDatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/datasets';
 
     final _response = await _requester.request(
@@ -570,8 +554,6 @@ class ProjectsLocationsDatasetsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -587,7 +569,7 @@ class ProjectsLocationsDatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -628,8 +610,6 @@ class ProjectsLocationsDatasetsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -642,7 +622,7 @@ class ProjectsLocationsDatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
@@ -687,8 +667,6 @@ class ProjectsLocationsDatasetsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -701,7 +679,7 @@ class ProjectsLocationsDatasetsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
@@ -758,8 +736,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     core.int options_requestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -773,7 +749,7 @@ class ProjectsLocationsDatasetsConsentStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
@@ -815,8 +791,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -829,7 +803,7 @@ class ProjectsLocationsDatasetsConsentStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
@@ -874,8 +848,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -888,7 +860,7 @@ class ProjectsLocationsDatasetsConsentStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
@@ -941,8 +913,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String dicomStoreId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -958,7 +928,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomStores';
 
@@ -1007,8 +977,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String sourceStore, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1021,7 +989,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$sourceStore') +
         ':deidentify';
 
@@ -1057,8 +1025,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1067,7 +1033,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1109,8 +1075,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1123,7 +1087,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':export';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':export';
 
     final _response = await _requester.request(
       _url,
@@ -1156,8 +1121,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1166,7 +1129,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1213,8 +1176,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.int options_requestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -1228,7 +1189,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
@@ -1271,8 +1232,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1285,7 +1244,8 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':import';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':import';
 
     final _response = await _requester.request(
       _url,
@@ -1331,8 +1291,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1350,7 +1308,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomStores';
 
@@ -1394,8 +1352,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1411,7 +1367,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1461,8 +1417,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1474,7 +1428,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -1524,8 +1478,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1537,7 +1489,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -1587,8 +1539,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1600,7 +1550,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -1643,8 +1593,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1657,7 +1605,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
@@ -1711,8 +1659,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1728,7 +1674,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -1774,8 +1720,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1788,7 +1732,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
@@ -1849,8 +1793,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1862,7 +1804,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -1913,8 +1855,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1926,7 +1866,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -1976,8 +1916,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1989,7 +1927,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -2040,8 +1978,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2053,7 +1989,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -2103,8 +2039,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2116,7 +2050,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -2170,8 +2104,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2187,7 +2119,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -2252,8 +2184,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2265,7 +2195,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -2316,8 +2246,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2329,7 +2257,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -2379,8 +2307,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2392,7 +2318,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -2443,8 +2369,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2456,7 +2380,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -2519,8 +2443,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2532,7 +2454,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -2587,8 +2509,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2600,7 +2520,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -2654,8 +2574,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2667,7 +2585,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -2720,8 +2638,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2733,7 +2649,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -2794,8 +2710,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2807,7 +2721,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -2861,8 +2775,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
     core.String dicomWebPath, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2874,7 +2786,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/dicomWeb/' +
         commons.Escaper.ecapeVariableReserved('$dicomWebPath');
@@ -2926,8 +2838,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String fhirStoreId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2943,7 +2853,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/fhirStores';
 
@@ -2988,8 +2898,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String sourceStore, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3002,7 +2910,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$sourceStore') +
         ':deidentify';
 
@@ -3037,8 +2945,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -3047,7 +2953,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -3092,8 +2998,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3106,7 +3010,8 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':export';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':export';
 
     final _response = await _requester.request(
       _url,
@@ -3139,8 +3044,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -3149,7 +3052,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -3195,8 +3098,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.int options_requestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -3210,7 +3111,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
@@ -3305,8 +3206,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3319,7 +3218,8 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':import';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':import';
 
     final _response = await _requester.request(
       _url,
@@ -3365,8 +3265,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -3384,7 +3282,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/fhirStores';
 
@@ -3428,8 +3326,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3445,7 +3341,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -3486,8 +3382,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3500,7 +3394,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
@@ -3545,8 +3439,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3559,7 +3451,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
@@ -3654,8 +3546,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String start,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -3682,7 +3572,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         '/\$everything';
 
@@ -3723,8 +3613,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -3733,7 +3621,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/\$purge';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/\$purge';
 
     final _response = await _requester.request(
       _url,
@@ -3779,8 +3668,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -3789,7 +3676,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         '/fhir/metadata';
 
@@ -3851,8 +3738,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String type, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3868,7 +3753,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/fhir/' +
         commons.Escaper.ecapeVariableReserved('$type');
@@ -3915,8 +3800,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -3925,7 +3808,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -3987,8 +3870,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4001,7 +3882,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/fhir';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/fhir';
 
     final _response = await _requester.request(
       _url,
@@ -4075,8 +3957,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String P_since,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -4097,7 +3977,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/_history';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/_history';
 
     final _response = await _requester.request(
       _url,
@@ -4148,8 +4029,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4162,7 +4041,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -4213,8 +4092,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -4223,7 +4100,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -4304,8 +4181,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4318,7 +4193,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/fhir/_search';
 
@@ -4409,8 +4284,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String resourceType, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4426,7 +4299,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/fhir/' +
         commons.Escaper.ecapeVariable('$resourceType') +
@@ -4489,8 +4362,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4503,7 +4374,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -4549,8 +4420,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -4559,7 +4428,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -4608,8 +4477,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String hl7V2StoreId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4625,7 +4492,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/hl7V2Stores';
 
@@ -4662,8 +4529,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -4672,7 +4537,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -4704,8 +4569,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -4714,7 +4577,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -4761,8 +4624,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.int options_requestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -4776,7 +4637,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
@@ -4823,8 +4684,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -4842,7 +4701,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/hl7V2Stores';
 
@@ -4886,8 +4745,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4903,7 +4760,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -4945,8 +4802,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4959,7 +4814,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
@@ -5004,8 +4859,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5018,7 +4871,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
@@ -5072,8 +4925,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5086,7 +4937,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
 
     final _response = await _requester.request(
@@ -5120,8 +4971,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -5130,7 +4979,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -5174,8 +5023,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -5187,7 +5034,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -5232,8 +5079,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5246,7 +5091,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/messages:ingest';
 
@@ -5333,8 +5178,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -5358,7 +5201,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/messages';
 
     final _response = await _requester.request(
@@ -5408,8 +5251,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5425,7 +5266,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -5477,8 +5318,6 @@ class ProjectsLocationsDatasetsOperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5491,7 +5330,8 @@ class ProjectsLocationsDatasetsOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -5527,8 +5367,6 @@ class ProjectsLocationsDatasetsOperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -5537,7 +5375,7 @@ class ProjectsLocationsDatasetsOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -5587,8 +5425,6 @@ class ProjectsLocationsDatasetsOperationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -5606,7 +5442,7 @@ class ProjectsLocationsDatasetsOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
     final _response = await _requester.request(

@@ -107,8 +107,6 @@ class JobsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -121,7 +119,7 @@ class JobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/jobs';
+    const _url = 'v1/jobs';
 
     final _response = await _requester.request(
       _url,
@@ -157,8 +155,6 @@ class JobsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
@@ -170,7 +166,7 @@ class JobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId');
+    final _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
     final _response = await _requester.request(
       _url,
@@ -205,8 +201,6 @@ class JobsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
@@ -218,7 +212,7 @@ class JobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId');
+    final _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId');
 
     final _response = await _requester.request(
       _url,
@@ -265,8 +259,6 @@ class JobsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (includeSystemManaged != null) {
       _queryParams['includeSystemManaged'] = ['${includeSystemManaged}'];
@@ -284,7 +276,7 @@ class JobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/jobs';
+    const _url = 'v1/jobs';
 
     final _response = await _requester.request(
       _url,
@@ -329,8 +321,6 @@ class JobsReportsResource {
     core.String onBehalfOfContentOwner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
@@ -345,7 +335,7 @@ class JobsReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/jobs/' +
+    final _url = 'v1/jobs/' +
         commons.Escaper.ecapeVariable('$jobId') +
         '/reports/' +
         commons.Escaper.ecapeVariable('$reportId');
@@ -407,8 +397,6 @@ class JobsReportsResource {
     core.String startTimeBefore,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
@@ -435,7 +423,8 @@ class JobsReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/reports';
+    final _url =
+        'v1/jobs/' + commons.Escaper.ecapeVariable('$jobId') + '/reports';
 
     final _response = await _requester.request(
       _url,
@@ -484,8 +473,6 @@ class MediaResource {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
-    core.String _url;
-
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
@@ -494,7 +481,8 @@ class MediaResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/media/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+    final _url =
+        'v1/media/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
     final _response = await _requester.request(
       _url,
@@ -554,8 +542,6 @@ class ReportTypesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (includeSystemManaged != null) {
       _queryParams['includeSystemManaged'] = ['${includeSystemManaged}'];
@@ -573,7 +559,7 @@ class ReportTypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/reportTypes';
+    const _url = 'v1/reportTypes';
 
     final _response = await _requester.request(
       _url,

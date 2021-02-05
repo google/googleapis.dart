@@ -117,8 +117,6 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -131,7 +129,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1beta/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = await _requester.request(
@@ -171,8 +169,6 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -185,7 +181,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta/' +
+    final _url = 'v1beta/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/executions';
 
@@ -231,8 +227,6 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -244,7 +238,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1beta/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -305,8 +299,6 @@ class ProjectsLocationsWorkflowsExecutionsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -324,7 +316,7 @@ class ProjectsLocationsWorkflowsExecutionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta/' +
+    final _url = 'v1beta/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/executions';
 

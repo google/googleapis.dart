@@ -92,8 +92,6 @@ class ArchiveResource {
     core.String $fields,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     if (groupId == null) {
       throw core.ArgumentError('Parameter groupId is required.');
     }
@@ -102,6 +100,7 @@ class ArchiveResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'groups/v1/groups/' +
           commons.Escaper.ecapeVariable('$groupId') +

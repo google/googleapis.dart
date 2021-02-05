@@ -105,8 +105,6 @@ class IamPoliciesResource {
     LintPolicyRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -116,7 +114,7 @@ class IamPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/iamPolicies:lintPolicy';
+    const _url = 'v1/iamPolicies:lintPolicy';
 
     final _response = await _requester.request(
       _url,
@@ -152,8 +150,6 @@ class IamPoliciesResource {
     QueryAuditableServicesRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -163,7 +159,7 @@ class IamPoliciesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/iamPolicies:queryAuditableServices';
+    const _url = 'v1/iamPolicies:queryAuditableServices';
 
     final _response = await _requester.request(
       _url,
@@ -228,8 +224,6 @@ class OrganizationsRolesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -242,7 +236,8 @@ class OrganizationsRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
 
     final _response = await _requester.request(
       _url,
@@ -302,8 +297,6 @@ class OrganizationsRolesResource {
     core.String etag,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -315,7 +308,7 @@ class OrganizationsRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -367,8 +360,6 @@ class OrganizationsRolesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -377,7 +368,7 @@ class OrganizationsRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -449,8 +440,6 @@ class OrganizationsRolesResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -471,7 +460,8 @@ class OrganizationsRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
 
     final _response = await _requester.request(
       _url,
@@ -525,8 +515,6 @@ class OrganizationsRolesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -542,7 +530,7 @@ class OrganizationsRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -593,8 +581,6 @@ class OrganizationsRolesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -607,7 +593,8 @@ class OrganizationsRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
 
     final _response = await _requester.request(
       _url,
@@ -647,8 +634,6 @@ class PermissionsResource {
     QueryTestablePermissionsRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -658,7 +643,7 @@ class PermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/permissions:queryTestablePermissions';
+    const _url = 'v1/permissions:queryTestablePermissions';
 
     final _response = await _requester.request(
       _url,
@@ -736,8 +721,6 @@ class ProjectsLocationsWorkloadIdentityPoolsOperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -746,7 +729,7 @@ class ProjectsLocationsWorkloadIdentityPoolsOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -802,8 +785,6 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -812,7 +793,7 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -866,8 +847,6 @@ class ProjectsRolesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -880,7 +859,8 @@ class ProjectsRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
 
     final _response = await _requester.request(
       _url,
@@ -940,8 +920,6 @@ class ProjectsRolesResource {
     core.String etag,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -953,7 +931,7 @@ class ProjectsRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1005,8 +983,6 @@ class ProjectsRolesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1015,7 +991,7 @@ class ProjectsRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1087,8 +1063,6 @@ class ProjectsRolesResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1109,7 +1083,8 @@ class ProjectsRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$parent') + '/roles';
 
     final _response = await _requester.request(
       _url,
@@ -1163,8 +1138,6 @@ class ProjectsRolesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1180,7 +1153,7 @@ class ProjectsRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1231,8 +1204,6 @@ class ProjectsRolesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1245,7 +1216,8 @@ class ProjectsRolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
 
     final _response = await _requester.request(
       _url,
@@ -1291,8 +1263,6 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1305,7 +1275,7 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         '/serviceAccounts';
 
@@ -1355,8 +1325,6 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1365,7 +1333,7 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1415,8 +1383,6 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1429,7 +1395,8 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':disable';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':disable';
 
     final _response = await _requester.request(
       _url,
@@ -1473,8 +1440,6 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1487,7 +1452,8 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':enable';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':enable';
 
     final _response = await _requester.request(
       _url,
@@ -1523,8 +1489,6 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1533,7 +1497,7 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1585,8 +1549,6 @@ class ProjectsServiceAccountsResource {
     core.int options_requestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -1600,7 +1562,7 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':getIamPolicy';
 
@@ -1644,8 +1606,6 @@ class ProjectsServiceAccountsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1660,7 +1620,7 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         '/serviceAccounts';
 
@@ -1708,8 +1668,6 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1722,7 +1680,7 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1770,8 +1728,6 @@ class ProjectsServiceAccountsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1784,7 +1740,7 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':setIamPolicy';
 
@@ -1835,8 +1791,6 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1849,7 +1803,8 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signBlob';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signBlob';
 
     final _response = await _requester.request(
       _url,
@@ -1899,8 +1854,6 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1913,7 +1866,8 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signJwt';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signJwt';
 
     final _response = await _requester.request(
       _url,
@@ -1952,8 +1906,6 @@ class ProjectsServiceAccountsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1966,7 +1918,7 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$resource') +
         ':testIamPermissions';
 
@@ -2012,8 +1964,6 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2026,7 +1976,8 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':undelete';
 
     final _response = await _requester.request(
       _url,
@@ -2076,8 +2027,6 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2090,7 +2039,7 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2137,8 +2086,6 @@ class ProjectsServiceAccountsKeysResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2151,7 +2098,8 @@ class ProjectsServiceAccountsKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/keys';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/keys';
 
     final _response = await _requester.request(
       _url,
@@ -2193,8 +2141,6 @@ class ProjectsServiceAccountsKeysResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -2203,7 +2149,7 @@ class ProjectsServiceAccountsKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2248,8 +2194,6 @@ class ProjectsServiceAccountsKeysResource {
     core.String publicKeyType,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -2261,7 +2205,7 @@ class ProjectsServiceAccountsKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2302,8 +2246,6 @@ class ProjectsServiceAccountsKeysResource {
     core.List<core.String> keyTypes,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -2315,7 +2257,8 @@ class ProjectsServiceAccountsKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/keys';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/keys';
 
     final _response = await _requester.request(
       _url,
@@ -2354,8 +2297,6 @@ class ProjectsServiceAccountsKeysResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2368,7 +2309,7 @@ class ProjectsServiceAccountsKeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/keys:upload';
 
     final _response = await _requester.request(
@@ -2429,8 +2370,6 @@ class RolesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -2439,7 +2378,7 @@ class RolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -2510,8 +2449,6 @@ class RolesResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
@@ -2532,7 +2469,7 @@ class RolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/roles';
+    const _url = 'v1/roles';
 
     final _response = await _requester.request(
       _url,
@@ -2566,8 +2503,6 @@ class RolesResource {
     QueryGrantableRolesRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2577,7 +2512,7 @@ class RolesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/roles:queryGrantableRoles';
+    const _url = 'v1/roles:queryGrantableRoles';
 
     final _response = await _requester.request(
       _url,

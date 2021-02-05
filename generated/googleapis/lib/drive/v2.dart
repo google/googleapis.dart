@@ -156,8 +156,6 @@ class AboutResource {
     core.String startChangeId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (includeSubscribed != null) {
       _queryParams['includeSubscribed'] = ['${includeSubscribed}'];
@@ -172,7 +170,7 @@ class AboutResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'about';
+    const _url = 'about';
 
     final _response = await _requester.request(
       _url,
@@ -208,8 +206,6 @@ class AppsResource {
     core.String appId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appId == null) {
       throw core.ArgumentError('Parameter appId is required.');
     }
@@ -218,7 +214,7 @@ class AppsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'apps/' + commons.Escaper.ecapeVariable('$appId');
+    final _url = 'apps/' + commons.Escaper.ecapeVariable('$appId');
 
     final _response = await _requester.request(
       _url,
@@ -264,8 +260,6 @@ class AppsResource {
     core.String languageCode,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (appFilterExtensions != null) {
       _queryParams['appFilterExtensions'] = [appFilterExtensions];
@@ -280,7 +274,7 @@ class AppsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'apps';
+    const _url = 'apps';
 
     final _response = await _requester.request(
       _url,
@@ -330,8 +324,6 @@ class ChangesResource {
     core.String teamDriveId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (changeId == null) {
       throw core.ArgumentError('Parameter changeId is required.');
     }
@@ -352,7 +344,7 @@ class ChangesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'changes/' + commons.Escaper.ecapeVariable('$changeId');
+    final _url = 'changes/' + commons.Escaper.ecapeVariable('$changeId');
 
     final _response = await _requester.request(
       _url,
@@ -393,8 +385,6 @@ class ChangesResource {
     core.String teamDriveId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (driveId != null) {
       _queryParams['driveId'] = [driveId];
@@ -412,7 +402,7 @@ class ChangesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'changes/startPageToken';
+    const _url = 'changes/startPageToken';
 
     final _response = await _requester.request(
       _url,
@@ -499,8 +489,6 @@ class ChangesResource {
     core.String teamDriveId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (driveId != null) {
       _queryParams['driveId'] = [driveId];
@@ -550,7 +538,7 @@ class ChangesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'changes';
+    const _url = 'changes';
 
     final _response = await _requester.request(
       _url,
@@ -640,8 +628,6 @@ class ChangesResource {
     core.String teamDriveId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -695,7 +681,7 @@ class ChangesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'changes/watch';
+    const _url = 'changes/watch';
 
     final _response = await _requester.request(
       _url,
@@ -730,8 +716,6 @@ class ChannelsResource {
     Channel request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -741,7 +725,7 @@ class ChannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'channels/stop';
+    const _url = 'channels/stop';
 
     await _requester.request(
       _url,
@@ -784,8 +768,6 @@ class ChildrenResource {
     core.bool enforceSingleParent,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
     }
@@ -800,7 +782,7 @@ class ChildrenResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$folderId') +
         '/children/' +
         commons.Escaper.ecapeVariable('$childId');
@@ -836,8 +818,6 @@ class ChildrenResource {
     core.String childId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
     }
@@ -849,7 +829,7 @@ class ChildrenResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$folderId') +
         '/children/' +
         commons.Escaper.ecapeVariable('$childId');
@@ -897,8 +877,6 @@ class ChildrenResource {
     core.bool supportsTeamDrives,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -920,7 +898,8 @@ class ChildrenResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$folderId') + '/children';
+    final _url =
+        'files/' + commons.Escaper.ecapeVariable('$folderId') + '/children';
 
     final _response = await _requester.request(
       _url,
@@ -971,8 +950,6 @@ class ChildrenResource {
     core.String q,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
     }
@@ -993,7 +970,8 @@ class ChildrenResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$folderId') + '/children';
+    final _url =
+        'files/' + commons.Escaper.ecapeVariable('$folderId') + '/children';
 
     final _response = await _requester.request(
       _url,
@@ -1030,8 +1008,6 @@ class CommentsResource {
     core.String commentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -1043,7 +1019,7 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/comments/' +
         commons.Escaper.ecapeVariable('$commentId');
@@ -1083,8 +1059,6 @@ class CommentsResource {
     core.bool includeDeleted,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -1099,7 +1073,7 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/comments/' +
         commons.Escaper.ecapeVariable('$commentId');
@@ -1135,8 +1109,6 @@ class CommentsResource {
     core.String fileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -1149,7 +1121,8 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
+    final _url =
+        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
 
     final _response = await _requester.request(
       _url,
@@ -1198,8 +1171,6 @@ class CommentsResource {
     core.String updatedMin,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -1220,7 +1191,8 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
+    final _url =
+        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/comments';
 
     final _response = await _requester.request(
       _url,
@@ -1257,8 +1229,6 @@ class CommentsResource {
     core.String commentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -1274,7 +1244,7 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/comments/' +
         commons.Escaper.ecapeVariable('$commentId');
@@ -1314,8 +1284,6 @@ class CommentsResource {
     core.String commentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -1331,7 +1299,7 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/comments/' +
         commons.Escaper.ecapeVariable('$commentId');
@@ -1371,8 +1339,6 @@ class DrivesResource {
     core.String driveId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
     }
@@ -1381,7 +1347,7 @@ class DrivesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
+    final _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
 
     await _requester.request(
       _url,
@@ -1416,8 +1382,6 @@ class DrivesResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
     }
@@ -1429,7 +1393,7 @@ class DrivesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
+    final _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
 
     final _response = await _requester.request(
       _url,
@@ -1459,8 +1423,6 @@ class DrivesResource {
     core.String driveId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
     }
@@ -1469,7 +1431,8 @@ class DrivesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId') + '/hide';
+    final _url =
+        'drives/' + commons.Escaper.ecapeVariable('$driveId') + '/hide';
 
     final _response = await _requester.request(
       _url,
@@ -1506,8 +1469,6 @@ class DrivesResource {
     core.String requestId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -1521,7 +1482,7 @@ class DrivesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'drives';
+    const _url = 'drives';
 
     final _response = await _requester.request(
       _url,
@@ -1564,8 +1525,6 @@ class DrivesResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -1583,7 +1542,7 @@ class DrivesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'drives';
+    const _url = 'drives';
 
     final _response = await _requester.request(
       _url,
@@ -1613,8 +1572,6 @@ class DrivesResource {
     core.String driveId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
     }
@@ -1623,7 +1580,8 @@ class DrivesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId') + '/unhide';
+    final _url =
+        'drives/' + commons.Escaper.ecapeVariable('$driveId') + '/unhide';
 
     final _response = await _requester.request(
       _url,
@@ -1661,8 +1619,6 @@ class DrivesResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -1678,7 +1634,7 @@ class DrivesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
+    final _url = 'drives/' + commons.Escaper.ecapeVariable('$driveId');
 
     final _response = await _requester.request(
       _url,
@@ -1764,8 +1720,6 @@ class FilesResource {
     core.String visibility,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -1811,7 +1765,7 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/copy';
+    final _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/copy';
 
     final _response = await _requester.request(
       _url,
@@ -1855,8 +1809,6 @@ class FilesResource {
     core.bool supportsTeamDrives,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -1874,7 +1826,7 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
+    final _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
 
     await _requester.request(
       _url,
@@ -1904,8 +1856,6 @@ class FilesResource {
     core.bool enforceSingleParent,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (enforceSingleParent != null) {
       _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
@@ -1914,7 +1864,7 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/trash';
+    const _url = 'files/trash';
 
     await _requester.request(
       _url,
@@ -1953,8 +1903,6 @@ class FilesResource {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -1967,7 +1915,8 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/export';
+    final _url =
+        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/export';
 
     final _response = await _requester.request(
       _url,
@@ -2009,8 +1958,6 @@ class FilesResource {
     core.String space,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -2022,7 +1969,7 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/generateIds';
+    const _url = 'files/generateIds';
 
     final _response = await _requester.request(
       _url,
@@ -2092,8 +2039,6 @@ class FilesResource {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -2123,7 +2068,7 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
+    final _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
 
     final _response = await _requester.request(
       _url,
@@ -2215,8 +2160,6 @@ class FilesResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -2264,6 +2207,7 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'files';
     } else if (uploadOptions is commons.ResumableUploadOptions) {
@@ -2372,8 +2316,6 @@ class FilesResource {
     core.String teamDriveId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (corpora != null) {
       _queryParams['corpora'] = [corpora];
@@ -2426,7 +2368,7 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files';
+    const _url = 'files';
 
     final _response = await _requester.request(
       _url,
@@ -2543,8 +2485,6 @@ class FilesResource {
     core.bool useContentAsIndexableText,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -2610,7 +2550,7 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
+    final _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
 
     final _response = await _requester.request(
       _url,
@@ -2652,8 +2592,6 @@ class FilesResource {
     core.bool supportsTeamDrives,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -2671,7 +2609,7 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/touch';
+    final _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/touch';
 
     final _response = await _requester.request(
       _url,
@@ -2719,8 +2657,6 @@ class FilesResource {
     core.bool supportsTeamDrives,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -2738,7 +2674,7 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/trash';
+    final _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/trash';
 
     final _response = await _requester.request(
       _url,
@@ -2783,8 +2719,6 @@ class FilesResource {
     core.bool supportsTeamDrives,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -2802,7 +2736,8 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/untrash';
+    final _url =
+        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/untrash';
 
     final _response = await _requester.request(
       _url,
@@ -2925,8 +2860,6 @@ class FilesResource {
     commons.UploadOptions uploadOptions = commons.UploadOptions.Default,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -2992,6 +2925,7 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'files/' + commons.Escaper.ecapeVariable('$fileId');
     } else if (uploadOptions is commons.ResumableUploadOptions) {
@@ -3075,8 +3009,6 @@ class FilesResource {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -3110,7 +3042,7 @@ class FilesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/watch';
+    final _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/watch';
 
     final _response = await _requester.request(
       _url,
@@ -3159,8 +3091,6 @@ class ParentsResource {
     core.bool enforceSingleParent,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -3175,7 +3105,7 @@ class ParentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/parents/' +
         commons.Escaper.ecapeVariable('$parentId');
@@ -3211,8 +3141,6 @@ class ParentsResource {
     core.String parentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -3224,7 +3152,7 @@ class ParentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/parents/' +
         commons.Escaper.ecapeVariable('$parentId');
@@ -3272,8 +3200,6 @@ class ParentsResource {
     core.bool supportsTeamDrives,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -3295,7 +3221,8 @@ class ParentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/parents';
+    final _url =
+        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/parents';
 
     final _response = await _requester.request(
       _url,
@@ -3327,8 +3254,6 @@ class ParentsResource {
     core.String fileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -3337,7 +3262,8 @@ class ParentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/parents';
+    final _url =
+        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/parents';
 
     final _response = await _requester.request(
       _url,
@@ -3388,8 +3314,6 @@ class PermissionsResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -3410,7 +3334,7 @@ class PermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/permissions/' +
         commons.Escaper.ecapeVariable('$permissionId');
@@ -3459,8 +3383,6 @@ class PermissionsResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -3481,7 +3403,7 @@ class PermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/permissions/' +
         commons.Escaper.ecapeVariable('$permissionId');
@@ -3515,8 +3437,6 @@ class PermissionsResource {
     core.String email, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (email == null) {
       throw core.ArgumentError('Parameter email is required.');
     }
@@ -3525,7 +3445,7 @@ class PermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'permissionIds/' + commons.Escaper.ecapeVariable('$email');
+    final _url = 'permissionIds/' + commons.Escaper.ecapeVariable('$email');
 
     final _response = await _requester.request(
       _url,
@@ -3591,8 +3511,6 @@ class PermissionsResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -3626,7 +3544,8 @@ class PermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
+    final _url =
+        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
 
     final _response = await _requester.request(
       _url,
@@ -3687,8 +3606,6 @@ class PermissionsResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -3715,7 +3632,8 @@ class PermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
+    final _url =
+        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/permissions';
 
     final _response = await _requester.request(
       _url,
@@ -3773,8 +3691,6 @@ class PermissionsResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -3805,7 +3721,7 @@ class PermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/permissions/' +
         commons.Escaper.ecapeVariable('$permissionId');
@@ -3867,8 +3783,6 @@ class PermissionsResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -3899,7 +3813,7 @@ class PermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/permissions/' +
         commons.Escaper.ecapeVariable('$permissionId');
@@ -3944,8 +3858,6 @@ class PropertiesResource {
     core.String visibility,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -3960,7 +3872,7 @@ class PropertiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/properties/' +
         commons.Escaper.ecapeVariable('$propertyKey');
@@ -3999,8 +3911,6 @@ class PropertiesResource {
     core.String visibility,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -4015,7 +3925,7 @@ class PropertiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/properties/' +
         commons.Escaper.ecapeVariable('$propertyKey');
@@ -4051,8 +3961,6 @@ class PropertiesResource {
     core.String fileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -4065,7 +3973,8 @@ class PropertiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/properties';
+    final _url =
+        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/properties';
 
     final _response = await _requester.request(
       _url,
@@ -4096,8 +4005,6 @@ class PropertiesResource {
     core.String fileId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -4106,7 +4013,8 @@ class PropertiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/properties';
+    final _url =
+        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/properties';
 
     final _response = await _requester.request(
       _url,
@@ -4147,8 +4055,6 @@ class PropertiesResource {
     core.String visibility,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -4167,7 +4073,7 @@ class PropertiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/properties/' +
         commons.Escaper.ecapeVariable('$propertyKey');
@@ -4211,8 +4117,6 @@ class PropertiesResource {
     core.String visibility,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -4231,7 +4135,7 @@ class PropertiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/properties/' +
         commons.Escaper.ecapeVariable('$propertyKey');
@@ -4275,8 +4179,6 @@ class RepliesResource {
     core.String replyId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -4291,7 +4193,7 @@ class RepliesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/comments/' +
         commons.Escaper.ecapeVariable('$commentId') +
@@ -4336,8 +4238,6 @@ class RepliesResource {
     core.bool includeDeleted,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -4355,7 +4255,7 @@ class RepliesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/comments/' +
         commons.Escaper.ecapeVariable('$commentId') +
@@ -4397,8 +4297,6 @@ class RepliesResource {
     core.String commentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -4414,7 +4312,7 @@ class RepliesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/comments/' +
         commons.Escaper.ecapeVariable('$commentId') +
@@ -4467,8 +4365,6 @@ class RepliesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -4489,7 +4385,7 @@ class RepliesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/comments/' +
         commons.Escaper.ecapeVariable('$commentId') +
@@ -4533,8 +4429,6 @@ class RepliesResource {
     core.String replyId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -4553,7 +4447,7 @@ class RepliesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/comments/' +
         commons.Escaper.ecapeVariable('$commentId') +
@@ -4599,8 +4493,6 @@ class RepliesResource {
     core.String replyId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -4619,7 +4511,7 @@ class RepliesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/comments/' +
         commons.Escaper.ecapeVariable('$commentId') +
@@ -4667,8 +4559,6 @@ class RevisionsResource {
     core.String revisionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -4680,7 +4570,7 @@ class RevisionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/revisions/' +
         commons.Escaper.ecapeVariable('$revisionId');
@@ -4716,8 +4606,6 @@ class RevisionsResource {
     core.String revisionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -4729,7 +4617,7 @@ class RevisionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/revisions/' +
         commons.Escaper.ecapeVariable('$revisionId');
@@ -4771,8 +4659,6 @@ class RevisionsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
@@ -4787,7 +4673,8 @@ class RevisionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions';
+    final _url =
+        'files/' + commons.Escaper.ecapeVariable('$fileId') + '/revisions';
 
     final _response = await _requester.request(
       _url,
@@ -4824,8 +4711,6 @@ class RevisionsResource {
     core.String revisionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -4841,7 +4726,7 @@ class RevisionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/revisions/' +
         commons.Escaper.ecapeVariable('$revisionId');
@@ -4881,8 +4766,6 @@ class RevisionsResource {
     core.String revisionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -4898,7 +4781,7 @@ class RevisionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'files/' +
+    final _url = 'files/' +
         commons.Escaper.ecapeVariable('$fileId') +
         '/revisions/' +
         commons.Escaper.ecapeVariable('$revisionId');
@@ -4936,8 +4819,6 @@ class TeamdrivesResource {
     core.String teamDriveId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (teamDriveId == null) {
       throw core.ArgumentError('Parameter teamDriveId is required.');
     }
@@ -4946,7 +4827,7 @@ class TeamdrivesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
+    final _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
 
     await _requester.request(
       _url,
@@ -4981,8 +4862,6 @@ class TeamdrivesResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (teamDriveId == null) {
       throw core.ArgumentError('Parameter teamDriveId is required.');
     }
@@ -4994,7 +4873,7 @@ class TeamdrivesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
+    final _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
 
     final _response = await _requester.request(
       _url,
@@ -5031,8 +4910,6 @@ class TeamdrivesResource {
     core.String requestId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -5046,7 +4923,7 @@ class TeamdrivesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'teamdrives';
+    const _url = 'teamdrives';
 
     final _response = await _requester.request(
       _url,
@@ -5089,8 +4966,6 @@ class TeamdrivesResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -5108,7 +4983,7 @@ class TeamdrivesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'teamdrives';
+    const _url = 'teamdrives';
 
     final _response = await _requester.request(
       _url,
@@ -5147,8 +5022,6 @@ class TeamdrivesResource {
     core.bool useDomainAdminAccess,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
@@ -5164,7 +5037,7 @@ class TeamdrivesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
+    final _url = 'teamdrives/' + commons.Escaper.ecapeVariable('$teamDriveId');
 
     final _response = await _requester.request(
       _url,

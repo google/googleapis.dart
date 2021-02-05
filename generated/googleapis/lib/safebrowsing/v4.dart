@@ -104,8 +104,6 @@ class EncodedFullHashesResource {
     core.String clientVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (encodedRequest == null) {
       throw core.ArgumentError('Parameter encodedRequest is required.');
     }
@@ -120,7 +118,7 @@ class EncodedFullHashesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/encodedFullHashes/' +
+    final _url = 'v4/encodedFullHashes/' +
         commons.Escaper.ecapeVariable('$encodedRequest');
 
     final _response = await _requester.request(
@@ -164,8 +162,6 @@ class EncodedUpdatesResource {
     core.String clientVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (encodedRequest == null) {
       throw core.ArgumentError('Parameter encodedRequest is required.');
     }
@@ -180,7 +176,7 @@ class EncodedUpdatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v4/encodedUpdates/' + commons.Escaper.ecapeVariable('$encodedRequest');
 
     final _response = await _requester.request(
@@ -218,8 +214,6 @@ class FullHashesResource {
     GoogleSecuritySafebrowsingV4FindFullHashesRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -229,7 +223,7 @@ class FullHashesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/fullHashes:find';
+    const _url = 'v4/fullHashes:find';
 
     final _response = await _requester.request(
       _url,
@@ -269,8 +263,6 @@ class ThreatHitsResource {
     GoogleSecuritySafebrowsingV4ThreatHit request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -280,7 +272,7 @@ class ThreatHitsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/threatHits';
+    const _url = 'v4/threatHits';
 
     final _response = await _requester.request(
       _url,
@@ -322,8 +314,6 @@ class ThreatListUpdatesResource {
     GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -333,7 +323,7 @@ class ThreatListUpdatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/threatListUpdates:fetch';
+    const _url = 'v4/threatListUpdates:fetch';
 
     final _response = await _requester.request(
       _url,
@@ -368,14 +358,12 @@ class ThreatListsResource {
   async.Future<GoogleSecuritySafebrowsingV4ListThreatListsResponse> list({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/threatLists';
+    const _url = 'v4/threatLists';
 
     final _response = await _requester.request(
       _url,
@@ -412,8 +400,6 @@ class ThreatMatchesResource {
     GoogleSecuritySafebrowsingV4FindThreatMatchesRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -423,7 +409,7 @@ class ThreatMatchesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v4/threatMatches:find';
+    const _url = 'v4/threatMatches:find';
 
     final _response = await _requester.request(
       _url,

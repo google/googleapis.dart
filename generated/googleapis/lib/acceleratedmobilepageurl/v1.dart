@@ -79,8 +79,6 @@ class AmpUrlsResource {
     BatchGetAmpUrlsRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -90,7 +88,7 @@ class AmpUrlsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/ampUrls:batchGet';
+    const _url = 'v1/ampUrls:batchGet';
 
     final _response = await _requester.request(
       _url,

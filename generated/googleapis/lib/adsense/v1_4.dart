@@ -141,8 +141,6 @@ class AccountsResource {
     core.bool tree,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -154,7 +152,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId');
+    final _url = 'accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
     final _response = await _requester.request(
       _url,
@@ -191,8 +189,6 @@ class AccountsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -204,7 +200,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts';
+    const _url = 'accounts';
 
     final _response = await _requester.request(
       _url,
@@ -246,8 +242,6 @@ class AccountsAdclientsResource {
     core.String tagPartner,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -262,7 +256,7 @@ class AccountsAdclientsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' +
+    final _url = 'accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/adclients/' +
         commons.Escaper.ecapeVariable('$adClientId') +
@@ -306,8 +300,6 @@ class AccountsAdclientsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -322,7 +314,7 @@ class AccountsAdclientsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' +
+    final _url = 'accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/adclients';
 
@@ -370,8 +362,6 @@ class AccountsAdunitsResource {
     core.String adUnitId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -386,7 +376,7 @@ class AccountsAdunitsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' +
+    final _url = 'accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/adclients/' +
         commons.Escaper.ecapeVariable('$adClientId') +
@@ -427,8 +417,6 @@ class AccountsAdunitsResource {
     core.String adUnitId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -443,7 +431,7 @@ class AccountsAdunitsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' +
+    final _url = 'accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/adclients/' +
         commons.Escaper.ecapeVariable('$adClientId') +
@@ -495,8 +483,6 @@ class AccountsAdunitsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -517,7 +503,7 @@ class AccountsAdunitsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' +
+    final _url = 'accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/adclients/' +
         commons.Escaper.ecapeVariable('$adClientId') +
@@ -574,8 +560,6 @@ class AccountsAdunitsCustomchannelsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -596,7 +580,7 @@ class AccountsAdunitsCustomchannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' +
+    final _url = 'accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/adclients/' +
         commons.Escaper.ecapeVariable('$adClientId') +
@@ -641,8 +625,6 @@ class AccountsAlertsResource {
     core.String alertId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -654,7 +636,7 @@ class AccountsAlertsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' +
+    final _url = 'accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/alerts/' +
         commons.Escaper.ecapeVariable('$alertId');
@@ -692,8 +674,6 @@ class AccountsAlertsResource {
     core.String locale,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -705,7 +685,7 @@ class AccountsAlertsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/alerts';
 
     final _response = await _requester.request(
@@ -753,8 +733,6 @@ class AccountsCustomchannelsResource {
     core.String customChannelId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -769,7 +747,7 @@ class AccountsCustomchannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' +
+    final _url = 'accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/adclients/' +
         commons.Escaper.ecapeVariable('$adClientId') +
@@ -819,8 +797,6 @@ class AccountsCustomchannelsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -838,7 +814,7 @@ class AccountsCustomchannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' +
+    final _url = 'accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/adclients/' +
         commons.Escaper.ecapeVariable('$adClientId') +
@@ -899,8 +875,6 @@ class AccountsCustomchannelsAdunitsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -924,7 +898,7 @@ class AccountsCustomchannelsAdunitsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' +
+    final _url = 'accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/adclients/' +
         commons.Escaper.ecapeVariable('$adClientId') +
@@ -966,8 +940,6 @@ class AccountsPaymentsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -976,7 +948,7 @@ class AccountsPaymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/payments';
 
     final _response = await _requester.request(
@@ -1083,8 +1055,6 @@ class AccountsReportsResource {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1128,7 +1098,7 @@ class AccountsReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'accounts/' + commons.Escaper.ecapeVariable('$accountId') + '/reports';
 
     final _response = await _requester.request(
@@ -1190,8 +1160,6 @@ class AccountsReportsSavedResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1212,7 +1180,7 @@ class AccountsReportsSavedResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' +
+    final _url = 'accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/reports/' +
         commons.Escaper.ecapeVariable('$savedReportId');
@@ -1256,8 +1224,6 @@ class AccountsReportsSavedResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1272,7 +1238,7 @@ class AccountsReportsSavedResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' +
+    final _url = 'accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/reports/saved';
 
@@ -1315,8 +1281,6 @@ class AccountsSavedadstylesResource {
     core.String savedAdStyleId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1328,7 +1292,7 @@ class AccountsSavedadstylesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' +
+    final _url = 'accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/savedadstyles/' +
         commons.Escaper.ecapeVariable('$savedAdStyleId');
@@ -1372,8 +1336,6 @@ class AccountsSavedadstylesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1388,7 +1350,7 @@ class AccountsSavedadstylesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' +
+    final _url = 'accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/savedadstyles';
 
@@ -1442,8 +1404,6 @@ class AccountsUrlchannelsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1461,7 +1421,7 @@ class AccountsUrlchannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'accounts/' +
+    final _url = 'accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/adclients/' +
         commons.Escaper.ecapeVariable('$adClientId') +
@@ -1509,8 +1469,6 @@ class AdclientsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -1522,7 +1480,7 @@ class AdclientsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'adclients';
+    const _url = 'adclients';
 
     final _response = await _requester.request(
       _url,
@@ -1564,8 +1522,6 @@ class AdunitsResource {
     core.String adUnitId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
     }
@@ -1577,7 +1533,7 @@ class AdunitsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'adclients/' +
+    final _url = 'adclients/' +
         commons.Escaper.ecapeVariable('$adClientId') +
         '/adunits/' +
         commons.Escaper.ecapeVariable('$adUnitId');
@@ -1613,8 +1569,6 @@ class AdunitsResource {
     core.String adUnitId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
     }
@@ -1626,7 +1580,7 @@ class AdunitsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'adclients/' +
+    final _url = 'adclients/' +
         commons.Escaper.ecapeVariable('$adClientId') +
         '/adunits/' +
         commons.Escaper.ecapeVariable('$adUnitId') +
@@ -1673,8 +1627,6 @@ class AdunitsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
     }
@@ -1692,7 +1644,7 @@ class AdunitsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'adclients/' +
+    final _url = 'adclients/' +
         commons.Escaper.ecapeVariable('$adClientId') +
         '/adunits';
 
@@ -1744,8 +1696,6 @@ class AdunitsCustomchannelsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
     }
@@ -1763,7 +1713,7 @@ class AdunitsCustomchannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'adclients/' +
+    final _url = 'adclients/' +
         commons.Escaper.ecapeVariable('$adClientId') +
         '/adunits/' +
         commons.Escaper.ecapeVariable('$adUnitId') +
@@ -1802,8 +1752,6 @@ class AlertsResource {
     core.String alertId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
     }
@@ -1812,7 +1760,7 @@ class AlertsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'alerts/' + commons.Escaper.ecapeVariable('$alertId');
+    final _url = 'alerts/' + commons.Escaper.ecapeVariable('$alertId');
 
     await _requester.request(
       _url,
@@ -1844,8 +1792,6 @@ class AlertsResource {
     core.String locale,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (locale != null) {
       _queryParams['locale'] = [locale];
@@ -1854,7 +1800,7 @@ class AlertsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'alerts';
+    const _url = 'alerts';
 
     final _response = await _requester.request(
       _url,
@@ -1896,8 +1842,6 @@ class CustomchannelsResource {
     core.String customChannelId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
     }
@@ -1909,7 +1853,7 @@ class CustomchannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'adclients/' +
+    final _url = 'adclients/' +
         commons.Escaper.ecapeVariable('$adClientId') +
         '/customchannels/' +
         commons.Escaper.ecapeVariable('$customChannelId');
@@ -1954,8 +1898,6 @@ class CustomchannelsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
     }
@@ -1970,7 +1912,7 @@ class CustomchannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'adclients/' +
+    final _url = 'adclients/' +
         commons.Escaper.ecapeVariable('$adClientId') +
         '/customchannels';
 
@@ -2026,8 +1968,6 @@ class CustomchannelsAdunitsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
     }
@@ -2048,7 +1988,7 @@ class CustomchannelsAdunitsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'adclients/' +
+    final _url = 'adclients/' +
         commons.Escaper.ecapeVariable('$adClientId') +
         '/customchannels/' +
         commons.Escaper.ecapeVariable('$customChannelId') +
@@ -2095,14 +2035,12 @@ class MetadataDimensionsResource {
   async.Future<Metadata> list({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'metadata/dimensions';
+    const _url = 'metadata/dimensions';
 
     final _response = await _requester.request(
       _url,
@@ -2135,14 +2073,12 @@ class MetadataMetricsResource {
   async.Future<Metadata> list({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'metadata/metrics';
+    const _url = 'metadata/metrics';
 
     final _response = await _requester.request(
       _url,
@@ -2175,14 +2111,12 @@ class PaymentsResource {
   async.Future<Payments> list({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'payments';
+    const _url = 'payments';
 
     final _response = await _requester.request(
       _url,
@@ -2287,8 +2221,6 @@ class ReportsResource {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (startDate == null) {
       throw core.ArgumentError('Parameter startDate is required.');
@@ -2332,7 +2264,7 @@ class ReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'reports';
+    const _url = 'reports';
 
     final _response = await _requester.request(
       _url,
@@ -2389,8 +2321,6 @@ class ReportsSavedResource {
     core.int startIndex,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (savedReportId == null) {
       throw core.ArgumentError('Parameter savedReportId is required.');
     }
@@ -2408,7 +2338,7 @@ class ReportsSavedResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'reports/' + commons.Escaper.ecapeVariable('$savedReportId');
+    final _url = 'reports/' + commons.Escaper.ecapeVariable('$savedReportId');
 
     final _response = await _requester.request(
       _url,
@@ -2446,8 +2376,6 @@ class ReportsSavedResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -2459,7 +2387,7 @@ class ReportsSavedResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'reports/saved';
+    const _url = 'reports/saved';
 
     final _response = await _requester.request(
       _url,
@@ -2496,8 +2424,6 @@ class SavedadstylesResource {
     core.String savedAdStyleId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (savedAdStyleId == null) {
       throw core.ArgumentError('Parameter savedAdStyleId is required.');
     }
@@ -2506,7 +2432,8 @@ class SavedadstylesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'savedadstyles/' + commons.Escaper.ecapeVariable('$savedAdStyleId');
+    final _url =
+        'savedadstyles/' + commons.Escaper.ecapeVariable('$savedAdStyleId');
 
     final _response = await _requester.request(
       _url,
@@ -2544,8 +2471,6 @@ class SavedadstylesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -2557,7 +2482,7 @@ class SavedadstylesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'savedadstyles';
+    const _url = 'savedadstyles';
 
     final _response = await _requester.request(
       _url,
@@ -2604,8 +2529,6 @@ class UrlchannelsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (adClientId == null) {
       throw core.ArgumentError('Parameter adClientId is required.');
     }
@@ -2620,7 +2543,7 @@ class UrlchannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'adclients/' +
+    final _url = 'adclients/' +
         commons.Escaper.ecapeVariable('$adClientId') +
         '/urlchannels';
 

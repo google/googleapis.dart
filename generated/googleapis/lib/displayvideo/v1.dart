@@ -193,8 +193,6 @@ class AdvertisersResource {
     core.String readMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -206,7 +204,7 @@ class AdvertisersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         ':audit';
 
@@ -249,8 +247,6 @@ class AdvertisersResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -263,7 +259,7 @@ class AdvertisersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         ':bulkEditAdvertiserAssignedTargetingOptions';
 
@@ -327,8 +323,6 @@ class AdvertisersResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -349,7 +343,7 @@ class AdvertisersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         ':bulkListAdvertiserAssignedTargetingOptions';
 
@@ -385,8 +379,6 @@ class AdvertisersResource {
     Advertiser request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -396,7 +388,7 @@ class AdvertisersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers';
+    const _url = 'v1/advertisers';
 
     final _response = await _requester.request(
       _url,
@@ -433,8 +425,6 @@ class AdvertisersResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -443,7 +433,7 @@ class AdvertisersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId');
 
     final _response = await _requester.request(
@@ -475,8 +465,6 @@ class AdvertisersResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -485,7 +473,7 @@ class AdvertisersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId');
 
     final _response = await _requester.request(
@@ -556,8 +544,6 @@ class AdvertisersResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
@@ -578,7 +564,7 @@ class AdvertisersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers';
+    const _url = 'v1/advertisers';
 
     final _response = await _requester.request(
       _url,
@@ -619,8 +605,6 @@ class AdvertisersResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -636,7 +620,7 @@ class AdvertisersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId');
 
     final _response = await _requester.request(
@@ -686,8 +670,6 @@ class AdvertisersAssetsResource {
     core.String $fields,
     commons.Media uploadMedia,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -700,6 +682,7 @@ class AdvertisersAssetsResource {
       _queryParams['fields'] = [$fields];
     }
 
+    core.String _url;
     if (uploadMedia == null) {
       _url = 'v1/advertisers/' +
           commons.Escaper.ecapeVariableReserved('$advertiserId') +
@@ -756,8 +739,6 @@ class AdvertisersCampaignsResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -770,7 +751,7 @@ class AdvertisersCampaignsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/campaigns';
 
@@ -812,8 +793,6 @@ class AdvertisersCampaignsResource {
     core.String campaignId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -825,7 +804,7 @@ class AdvertisersCampaignsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/campaigns/' +
         commons.Escaper.ecapeVariableReserved('$campaignId');
@@ -864,8 +843,6 @@ class AdvertisersCampaignsResource {
     core.String campaignId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -877,7 +854,7 @@ class AdvertisersCampaignsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/campaigns/' +
         commons.Escaper.ecapeVariableReserved('$campaignId');
@@ -951,8 +928,6 @@ class AdvertisersCampaignsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -973,7 +948,7 @@ class AdvertisersCampaignsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/campaigns';
 
@@ -1021,8 +996,6 @@ class AdvertisersCampaignsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1041,7 +1014,7 @@ class AdvertisersCampaignsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/campaigns/' +
         commons.Escaper.ecapeVariableReserved('$campaignId');
@@ -1094,8 +1067,6 @@ class AdvertisersChannelsResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1111,7 +1082,7 @@ class AdvertisersChannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/channels';
 
@@ -1152,8 +1123,6 @@ class AdvertisersChannelsResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -1168,7 +1137,7 @@ class AdvertisersChannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/channels/' +
         commons.Escaper.ecapeVariableReserved('$channelId');
@@ -1231,8 +1200,6 @@ class AdvertisersChannelsResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -1256,7 +1223,7 @@ class AdvertisersChannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/channels';
 
@@ -1305,8 +1272,6 @@ class AdvertisersChannelsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1328,7 +1293,7 @@ class AdvertisersChannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/channels/' +
         commons.Escaper.ecapeVariable('$channelId');
@@ -1381,8 +1346,6 @@ class AdvertisersChannelsSitesResource {
     core.String channelId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1398,7 +1361,7 @@ class AdvertisersChannelsSitesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariable('$advertiserId') +
         '/channels/' +
         commons.Escaper.ecapeVariableReserved('$channelId') +
@@ -1445,8 +1408,6 @@ class AdvertisersChannelsSitesResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1465,7 +1426,7 @@ class AdvertisersChannelsSitesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariable('$advertiserId') +
         '/channels/' +
         commons.Escaper.ecapeVariableReserved('$channelId') +
@@ -1512,8 +1473,6 @@ class AdvertisersChannelsSitesResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -1531,7 +1490,7 @@ class AdvertisersChannelsSitesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariable('$advertiserId') +
         '/channels/' +
         commons.Escaper.ecapeVariableReserved('$channelId') +
@@ -1600,8 +1559,6 @@ class AdvertisersChannelsSitesResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -1628,7 +1585,7 @@ class AdvertisersChannelsSitesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/channels/' +
         commons.Escaper.ecapeVariableReserved('$channelId') +
@@ -1677,8 +1634,6 @@ class AdvertisersCreativesResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1691,7 +1646,7 @@ class AdvertisersCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/creatives';
 
@@ -1733,8 +1688,6 @@ class AdvertisersCreativesResource {
     core.String creativeId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -1746,7 +1699,7 @@ class AdvertisersCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/creatives/' +
         commons.Escaper.ecapeVariableReserved('$creativeId');
@@ -1785,8 +1738,6 @@ class AdvertisersCreativesResource {
     core.String creativeId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -1798,7 +1749,7 @@ class AdvertisersCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/creatives/' +
         commons.Escaper.ecapeVariableReserved('$creativeId');
@@ -1886,8 +1837,6 @@ class AdvertisersCreativesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -1908,7 +1857,7 @@ class AdvertisersCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/creatives';
 
@@ -1956,8 +1905,6 @@ class AdvertisersCreativesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1976,7 +1923,7 @@ class AdvertisersCreativesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/creatives/' +
         commons.Escaper.ecapeVariableReserved('$creativeId');
@@ -2024,8 +1971,6 @@ class AdvertisersInsertionOrdersResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2038,7 +1983,7 @@ class AdvertisersInsertionOrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/insertionOrders';
 
@@ -2081,8 +2026,6 @@ class AdvertisersInsertionOrdersResource {
     core.String insertionOrderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -2094,7 +2037,7 @@ class AdvertisersInsertionOrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/insertionOrders/' +
         commons.Escaper.ecapeVariableReserved('$insertionOrderId');
@@ -2135,8 +2078,6 @@ class AdvertisersInsertionOrdersResource {
     core.String insertionOrderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -2148,7 +2089,7 @@ class AdvertisersInsertionOrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/insertionOrders/' +
         commons.Escaper.ecapeVariableReserved('$insertionOrderId');
@@ -2232,8 +2173,6 @@ class AdvertisersInsertionOrdersResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -2254,7 +2193,7 @@ class AdvertisersInsertionOrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/insertionOrders';
 
@@ -2302,8 +2241,6 @@ class AdvertisersInsertionOrdersResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2322,7 +2259,7 @@ class AdvertisersInsertionOrdersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/insertionOrders/' +
         commons.Escaper.ecapeVariableReserved('$insertionOrderId');
@@ -2383,8 +2320,6 @@ class AdvertisersLineItemsResource {
     core.String lineItemId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2400,7 +2335,7 @@ class AdvertisersLineItemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/lineItems/' +
         commons.Escaper.ecapeVariableReserved('$lineItemId') +
@@ -2476,8 +2411,6 @@ class AdvertisersLineItemsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -2501,7 +2434,7 @@ class AdvertisersLineItemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/lineItems/' +
         commons.Escaper.ecapeVariableReserved('$lineItemId') +
@@ -2543,8 +2476,6 @@ class AdvertisersLineItemsResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2557,7 +2488,7 @@ class AdvertisersLineItemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/lineItems';
 
@@ -2599,8 +2530,6 @@ class AdvertisersLineItemsResource {
     core.String lineItemId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -2612,7 +2541,7 @@ class AdvertisersLineItemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/lineItems/' +
         commons.Escaper.ecapeVariableReserved('$lineItemId');
@@ -2651,8 +2580,6 @@ class AdvertisersLineItemsResource {
     core.String lineItemId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -2664,7 +2591,7 @@ class AdvertisersLineItemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/lineItems/' +
         commons.Escaper.ecapeVariableReserved('$lineItemId');
@@ -2753,8 +2680,6 @@ class AdvertisersLineItemsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -2775,7 +2700,7 @@ class AdvertisersLineItemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/lineItems';
 
@@ -2823,8 +2748,6 @@ class AdvertisersLineItemsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2843,7 +2766,7 @@ class AdvertisersLineItemsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/lineItems/' +
         commons.Escaper.ecapeVariableReserved('$lineItemId');
@@ -2993,8 +2916,6 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
     core.String targetingType, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3013,7 +2934,7 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/lineItems/' +
         commons.Escaper.ecapeVariableReserved('$lineItemId') +
@@ -3147,8 +3068,6 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
     core.String assignedTargetingOptionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -3167,7 +3086,7 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/lineItems/' +
         commons.Escaper.ecapeVariableReserved('$lineItemId') +
@@ -3301,8 +3220,6 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
     core.String assignedTargetingOptionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -3321,7 +3238,7 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/lineItems/' +
         commons.Escaper.ecapeVariableReserved('$lineItemId') +
@@ -3480,8 +3397,6 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -3508,7 +3423,7 @@ class AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/lineItems/' +
         commons.Escaper.ecapeVariableReserved('$lineItemId') +
@@ -3562,8 +3477,6 @@ class AdvertisersLocationListsResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3576,7 +3489,7 @@ class AdvertisersLocationListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/locationLists';
 
@@ -3616,8 +3529,6 @@ class AdvertisersLocationListsResource {
     core.String locationListId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -3629,7 +3540,7 @@ class AdvertisersLocationListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/locationLists/' +
         commons.Escaper.ecapeVariableReserved('$locationListId');
@@ -3692,8 +3603,6 @@ class AdvertisersLocationListsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -3714,7 +3623,7 @@ class AdvertisersLocationListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/locationLists';
 
@@ -3761,8 +3670,6 @@ class AdvertisersLocationListsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3781,7 +3688,7 @@ class AdvertisersLocationListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/locationLists/' +
         commons.Escaper.ecapeVariable('$locationListId');
@@ -3838,8 +3745,6 @@ class AdvertisersLocationListsAssignedLocationsResource {
     core.String locationListId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3855,7 +3760,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariable('$advertiserId') +
         '/locationLists/' +
         commons.Escaper.ecapeVariableReserved('$locationListId') +
@@ -3899,8 +3804,6 @@ class AdvertisersLocationListsAssignedLocationsResource {
     core.String locationListId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3916,7 +3819,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariable('$advertiserId') +
         '/locationLists/' +
         commons.Escaper.ecapeVariable('$locationListId') +
@@ -3962,8 +3865,6 @@ class AdvertisersLocationListsAssignedLocationsResource {
     core.String assignedLocationId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -3978,7 +3879,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariable('$advertiserId') +
         '/locationLists/' +
         commons.Escaper.ecapeVariable('$locationListId') +
@@ -4043,8 +3944,6 @@ class AdvertisersLocationListsAssignedLocationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -4068,7 +3967,7 @@ class AdvertisersLocationListsAssignedLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariable('$advertiserId') +
         '/locationLists/' +
         commons.Escaper.ecapeVariable('$locationListId') +
@@ -4122,8 +4021,6 @@ class AdvertisersManualTriggersResource {
     core.String triggerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4139,7 +4036,7 @@ class AdvertisersManualTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/manualTriggers/' +
         commons.Escaper.ecapeVariableReserved('$triggerId') +
@@ -4182,8 +4079,6 @@ class AdvertisersManualTriggersResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4196,7 +4091,7 @@ class AdvertisersManualTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/manualTriggers';
 
@@ -4239,8 +4134,6 @@ class AdvertisersManualTriggersResource {
     core.String triggerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4256,7 +4149,7 @@ class AdvertisersManualTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/manualTriggers/' +
         commons.Escaper.ecapeVariableReserved('$triggerId') +
@@ -4298,8 +4191,6 @@ class AdvertisersManualTriggersResource {
     core.String triggerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -4311,7 +4202,7 @@ class AdvertisersManualTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/manualTriggers/' +
         commons.Escaper.ecapeVariableReserved('$triggerId');
@@ -4377,8 +4268,6 @@ class AdvertisersManualTriggersResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -4399,7 +4288,7 @@ class AdvertisersManualTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/manualTriggers';
 
@@ -4446,8 +4335,6 @@ class AdvertisersManualTriggersResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4466,7 +4353,7 @@ class AdvertisersManualTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/manualTriggers/' +
         commons.Escaper.ecapeVariableReserved('$triggerId');
@@ -4519,8 +4406,6 @@ class AdvertisersNegativeKeywordListsResource {
     core.String advertiserId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4533,7 +4418,7 @@ class AdvertisersNegativeKeywordListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/negativeKeywordLists';
 
@@ -4575,8 +4460,6 @@ class AdvertisersNegativeKeywordListsResource {
     core.String negativeKeywordListId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -4588,7 +4471,7 @@ class AdvertisersNegativeKeywordListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/negativeKeywordLists/' +
         commons.Escaper.ecapeVariableReserved('$negativeKeywordListId');
@@ -4629,8 +4512,6 @@ class AdvertisersNegativeKeywordListsResource {
     core.String negativeKeywordListId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -4642,7 +4523,7 @@ class AdvertisersNegativeKeywordListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/negativeKeywordLists/' +
         commons.Escaper.ecapeVariableReserved('$negativeKeywordListId');
@@ -4689,8 +4570,6 @@ class AdvertisersNegativeKeywordListsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -4705,7 +4584,7 @@ class AdvertisersNegativeKeywordListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/negativeKeywordLists';
 
@@ -4752,8 +4631,6 @@ class AdvertisersNegativeKeywordListsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4772,7 +4649,7 @@ class AdvertisersNegativeKeywordListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/negativeKeywordLists/' +
         commons.Escaper.ecapeVariable('$negativeKeywordListId');
@@ -4831,8 +4708,6 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
     core.String negativeKeywordListId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4848,7 +4723,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariable('$advertiserId') +
         '/negativeKeywordLists/' +
         commons.Escaper.ecapeVariableReserved('$negativeKeywordListId') +
@@ -4893,8 +4768,6 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
     core.String negativeKeywordListId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4910,7 +4783,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariable('$advertiserId') +
         '/negativeKeywordLists/' +
         commons.Escaper.ecapeVariableReserved('$negativeKeywordListId') +
@@ -4957,8 +4830,6 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
     core.String keywordValue, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -4973,7 +4844,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariable('$advertiserId') +
         '/negativeKeywordLists/' +
         commons.Escaper.ecapeVariableReserved('$negativeKeywordListId') +
@@ -5040,8 +4911,6 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -5065,7 +4934,7 @@ class AdvertisersNegativeKeywordListsNegativeKeywordsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/negativeKeywordLists/' +
         commons.Escaper.ecapeVariableReserved('$negativeKeywordListId') +
@@ -5211,8 +5080,6 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
     core.String targetingType, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -5228,7 +5095,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/targetingTypes/' +
         commons.Escaper.ecapeVariableReserved('$targetingType') +
@@ -5356,8 +5223,6 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
     core.String assignedTargetingOptionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -5373,7 +5238,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/targetingTypes/' +
         commons.Escaper.ecapeVariableReserved('$targetingType') +
@@ -5501,8 +5366,6 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
     core.String assignedTargetingOptionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -5518,7 +5381,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/targetingTypes/' +
         commons.Escaper.ecapeVariableReserved('$targetingType') +
@@ -5668,8 +5531,6 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
@@ -5693,7 +5554,7 @@ class AdvertisersTargetingTypesAssignedTargetingOptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/advertisers/' +
+    final _url = 'v1/advertisers/' +
         commons.Escaper.ecapeVariableReserved('$advertiserId') +
         '/targetingTypes/' +
         commons.Escaper.ecapeVariableReserved('$targetingType') +
@@ -5743,8 +5604,6 @@ class CombinedAudiencesResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (combinedAudienceId == null) {
       throw core.ArgumentError('Parameter combinedAudienceId is required.');
     }
@@ -5759,7 +5618,7 @@ class CombinedAudiencesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/combinedAudiences/' +
+    final _url = 'v1/combinedAudiences/' +
         commons.Escaper.ecapeVariableReserved('$combinedAudienceId');
 
     final _response = await _requester.request(
@@ -5824,8 +5683,6 @@ class CombinedAudiencesResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
@@ -5849,7 +5706,7 @@ class CombinedAudiencesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/combinedAudiences';
+    const _url = 'v1/combinedAudiences';
 
     final _response = await _requester.request(
       _url,
@@ -5897,8 +5754,6 @@ class CustomBiddingAlgorithmsResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (customBiddingAlgorithmId == null) {
       throw core.ArgumentError(
           'Parameter customBiddingAlgorithmId is required.');
@@ -5914,7 +5769,7 @@ class CustomBiddingAlgorithmsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/customBiddingAlgorithms/' +
+    final _url = 'v1/customBiddingAlgorithms/' +
         commons.Escaper.ecapeVariableReserved('$customBiddingAlgorithmId');
 
     final _response = await _requester.request(
@@ -5989,8 +5844,6 @@ class CustomBiddingAlgorithmsResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
@@ -6014,7 +5867,7 @@ class CustomBiddingAlgorithmsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/customBiddingAlgorithms';
+    const _url = 'v1/customBiddingAlgorithms';
 
     final _response = await _requester.request(
       _url,
@@ -6056,8 +5909,6 @@ class CustomListsResource {
     core.String advertiserId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (customListId == null) {
       throw core.ArgumentError('Parameter customListId is required.');
     }
@@ -6069,7 +5920,7 @@ class CustomListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/customLists/' +
+    final _url = 'v1/customLists/' +
         commons.Escaper.ecapeVariableReserved('$customListId');
 
     final _response = await _requester.request(
@@ -6130,8 +5981,6 @@ class CustomListsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
@@ -6152,7 +6001,7 @@ class CustomListsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/customLists';
+    const _url = 'v1/customLists';
 
     final _response = await _requester.request(
       _url,
@@ -6200,8 +6049,6 @@ class FirstAndThirdPartyAudiencesResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (firstAndThirdPartyAudienceId == null) {
       throw core.ArgumentError(
           'Parameter firstAndThirdPartyAudienceId is required.');
@@ -6217,7 +6064,7 @@ class FirstAndThirdPartyAudiencesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/firstAndThirdPartyAudiences/' +
+    final _url = 'v1/firstAndThirdPartyAudiences/' +
         commons.Escaper.ecapeVariableReserved('$firstAndThirdPartyAudienceId');
 
     final _response = await _requester.request(
@@ -6284,8 +6131,6 @@ class FirstAndThirdPartyAudiencesResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
@@ -6309,7 +6154,7 @@ class FirstAndThirdPartyAudiencesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/firstAndThirdPartyAudiences';
+    const _url = 'v1/firstAndThirdPartyAudiences';
 
     final _response = await _requester.request(
       _url,
@@ -6351,8 +6196,6 @@ class FloodlightGroupsResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (floodlightGroupId == null) {
       throw core.ArgumentError('Parameter floodlightGroupId is required.');
     }
@@ -6364,7 +6207,7 @@ class FloodlightGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/floodlightGroups/' +
+    final _url = 'v1/floodlightGroups/' +
         commons.Escaper.ecapeVariableReserved('$floodlightGroupId');
 
     final _response = await _requester.request(
@@ -6409,8 +6252,6 @@ class FloodlightGroupsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6429,7 +6270,7 @@ class FloodlightGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/floodlightGroups/' +
+    final _url = 'v1/floodlightGroups/' +
         commons.Escaper.ecapeVariable('$floodlightGroupId');
 
     final _response = await _requester.request(
@@ -6477,8 +6318,6 @@ class GoogleAudiencesResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (googleAudienceId == null) {
       throw core.ArgumentError('Parameter googleAudienceId is required.');
     }
@@ -6493,7 +6332,7 @@ class GoogleAudiencesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/googleAudiences/' +
+    final _url = 'v1/googleAudiences/' +
         commons.Escaper.ecapeVariableReserved('$googleAudienceId');
 
     final _response = await _requester.request(
@@ -6558,8 +6397,6 @@ class GoogleAudiencesResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
@@ -6583,7 +6420,7 @@ class GoogleAudiencesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/googleAudiences';
+    const _url = 'v1/googleAudiences';
 
     final _response = await _requester.request(
       _url,
@@ -6637,8 +6474,6 @@ class InventorySourceGroupsResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6654,7 +6489,7 @@ class InventorySourceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/inventorySourceGroups';
+    const _url = 'v1/inventorySourceGroups';
 
     final _response = await _requester.request(
       _url,
@@ -6696,8 +6531,6 @@ class InventorySourceGroupsResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (inventorySourceGroupId == null) {
       throw core.ArgumentError('Parameter inventorySourceGroupId is required.');
     }
@@ -6712,7 +6545,7 @@ class InventorySourceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/inventorySourceGroups/' +
+    final _url = 'v1/inventorySourceGroups/' +
         commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId');
 
     final _response = await _requester.request(
@@ -6755,8 +6588,6 @@ class InventorySourceGroupsResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (inventorySourceGroupId == null) {
       throw core.ArgumentError('Parameter inventorySourceGroupId is required.');
     }
@@ -6771,7 +6602,7 @@ class InventorySourceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/inventorySourceGroups/' +
+    final _url = 'v1/inventorySourceGroups/' +
         commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId');
 
     final _response = await _requester.request(
@@ -6837,8 +6668,6 @@ class InventorySourceGroupsResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
@@ -6862,7 +6691,7 @@ class InventorySourceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/inventorySourceGroups';
+    const _url = 'v1/inventorySourceGroups';
 
     final _response = await _requester.request(
       _url,
@@ -6910,8 +6739,6 @@ class InventorySourceGroupsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6933,7 +6760,7 @@ class InventorySourceGroupsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/inventorySourceGroups/' +
+    final _url = 'v1/inventorySourceGroups/' +
         commons.Escaper.ecapeVariable('$inventorySourceGroupId');
 
     final _response = await _requester.request(
@@ -6985,8 +6812,6 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
     core.String inventorySourceGroupId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -6999,7 +6824,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/inventorySourceGroups/' +
+    final _url = 'v1/inventorySourceGroups/' +
         commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId') +
         '/assignedInventorySources:bulkEdit';
 
@@ -7049,8 +6874,6 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7069,7 +6892,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/inventorySourceGroups/' +
+    final _url = 'v1/inventorySourceGroups/' +
         commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId') +
         '/assignedInventorySources';
 
@@ -7121,8 +6944,6 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (inventorySourceGroupId == null) {
       throw core.ArgumentError('Parameter inventorySourceGroupId is required.');
     }
@@ -7141,7 +6962,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/inventorySourceGroups/' +
+    final _url = 'v1/inventorySourceGroups/' +
         commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId') +
         '/assignedInventorySources/' +
         commons.Escaper.ecapeVariableReserved('$assignedInventorySourceId');
@@ -7213,8 +7034,6 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (inventorySourceGroupId == null) {
       throw core.ArgumentError('Parameter inventorySourceGroupId is required.');
     }
@@ -7241,7 +7060,7 @@ class InventorySourceGroupsAssignedInventorySourcesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/inventorySourceGroups/' +
+    final _url = 'v1/inventorySourceGroups/' +
         commons.Escaper.ecapeVariableReserved('$inventorySourceGroupId') +
         '/assignedInventorySources';
 
@@ -7285,8 +7104,6 @@ class InventorySourcesResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (inventorySourceId == null) {
       throw core.ArgumentError('Parameter inventorySourceId is required.');
     }
@@ -7298,7 +7115,7 @@ class InventorySourcesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/inventorySources/' +
+    final _url = 'v1/inventorySources/' +
         commons.Escaper.ecapeVariableReserved('$inventorySourceId');
 
     final _response = await _requester.request(
@@ -7368,8 +7185,6 @@ class InventorySourcesResource {
     core.String partnerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (advertiserId != null) {
       _queryParams['advertiserId'] = [advertiserId];
@@ -7393,7 +7208,7 @@ class InventorySourcesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/inventorySources';
+    const _url = 'v1/inventorySources';
 
     final _response = await _requester.request(
       _url,
@@ -7445,8 +7260,6 @@ class MediaResource {
     core.String $fields,
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
-    core.String _url;
-
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
@@ -7455,7 +7268,8 @@ class MediaResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'download/' + commons.Escaper.ecapeVariableReserved('$resourceName');
+    final _url =
+        'download/' + commons.Escaper.ecapeVariableReserved('$resourceName');
 
     final _response = await _requester.request(
       _url,
@@ -7512,8 +7326,6 @@ class PartnersResource {
     core.String partnerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7526,7 +7338,7 @@ class PartnersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/partners/' +
+    final _url = 'v1/partners/' +
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         ':bulkEditPartnerAssignedTargetingOptions';
 
@@ -7561,8 +7373,6 @@ class PartnersResource {
     core.String partnerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (partnerId == null) {
       throw core.ArgumentError('Parameter partnerId is required.');
     }
@@ -7571,7 +7381,8 @@ class PartnersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/partners/' + commons.Escaper.ecapeVariableReserved('$partnerId');
+    final _url =
+        'v1/partners/' + commons.Escaper.ecapeVariableReserved('$partnerId');
 
     final _response = await _requester.request(
       _url,
@@ -7626,8 +7437,6 @@ class PartnersResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
@@ -7645,7 +7454,7 @@ class PartnersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/partners';
+    const _url = 'v1/partners';
 
     final _response = await _requester.request(
       _url,
@@ -7694,8 +7503,6 @@ class PartnersChannelsResource {
     core.String advertiserId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7711,7 +7518,7 @@ class PartnersChannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/partners/' +
+    final _url = 'v1/partners/' +
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/channels';
 
@@ -7752,8 +7559,6 @@ class PartnersChannelsResource {
     core.String advertiserId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (partnerId == null) {
       throw core.ArgumentError('Parameter partnerId is required.');
     }
@@ -7768,7 +7573,7 @@ class PartnersChannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/partners/' +
+    final _url = 'v1/partners/' +
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/channels/' +
         commons.Escaper.ecapeVariableReserved('$channelId');
@@ -7831,8 +7636,6 @@ class PartnersChannelsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (partnerId == null) {
       throw core.ArgumentError('Parameter partnerId is required.');
     }
@@ -7856,7 +7659,7 @@ class PartnersChannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/partners/' +
+    final _url = 'v1/partners/' +
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/channels';
 
@@ -7905,8 +7708,6 @@ class PartnersChannelsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7928,7 +7729,7 @@ class PartnersChannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/partners/' +
+    final _url = 'v1/partners/' +
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/channels/' +
         commons.Escaper.ecapeVariable('$channelId');
@@ -7981,8 +7782,6 @@ class PartnersChannelsSitesResource {
     core.String channelId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -7998,7 +7797,7 @@ class PartnersChannelsSitesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/partners/' +
+    final _url = 'v1/partners/' +
         commons.Escaper.ecapeVariable('$partnerId') +
         '/channels/' +
         commons.Escaper.ecapeVariableReserved('$channelId') +
@@ -8045,8 +7844,6 @@ class PartnersChannelsSitesResource {
     core.String advertiserId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -8065,7 +7862,7 @@ class PartnersChannelsSitesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/partners/' +
+    final _url = 'v1/partners/' +
         commons.Escaper.ecapeVariable('$partnerId') +
         '/channels/' +
         commons.Escaper.ecapeVariableReserved('$channelId') +
@@ -8112,8 +7909,6 @@ class PartnersChannelsSitesResource {
     core.String advertiserId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (partnerId == null) {
       throw core.ArgumentError('Parameter partnerId is required.');
     }
@@ -8131,7 +7926,7 @@ class PartnersChannelsSitesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/partners/' +
+    final _url = 'v1/partners/' +
         commons.Escaper.ecapeVariable('$partnerId') +
         '/channels/' +
         commons.Escaper.ecapeVariableReserved('$channelId') +
@@ -8200,8 +7995,6 @@ class PartnersChannelsSitesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (partnerId == null) {
       throw core.ArgumentError('Parameter partnerId is required.');
     }
@@ -8228,7 +8021,7 @@ class PartnersChannelsSitesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/partners/' +
+    final _url = 'v1/partners/' +
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/channels/' +
         commons.Escaper.ecapeVariableReserved('$channelId') +
@@ -8372,8 +8165,6 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
     core.String targetingType, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -8389,7 +8180,7 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/partners/' +
+    final _url = 'v1/partners/' +
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/targetingTypes/' +
         commons.Escaper.ecapeVariableReserved('$targetingType') +
@@ -8515,8 +8306,6 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
     core.String assignedTargetingOptionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (partnerId == null) {
       throw core.ArgumentError('Parameter partnerId is required.');
     }
@@ -8532,7 +8321,7 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/partners/' +
+    final _url = 'v1/partners/' +
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/targetingTypes/' +
         commons.Escaper.ecapeVariableReserved('$targetingType') +
@@ -8658,8 +8447,6 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
     core.String assignedTargetingOptionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (partnerId == null) {
       throw core.ArgumentError('Parameter partnerId is required.');
     }
@@ -8675,7 +8462,7 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/partners/' +
+    final _url = 'v1/partners/' +
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/targetingTypes/' +
         commons.Escaper.ecapeVariableReserved('$targetingType') +
@@ -8823,8 +8610,6 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (partnerId == null) {
       throw core.ArgumentError('Parameter partnerId is required.');
     }
@@ -8848,7 +8633,7 @@ class PartnersTargetingTypesAssignedTargetingOptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/partners/' +
+    final _url = 'v1/partners/' +
         commons.Escaper.ecapeVariableReserved('$partnerId') +
         '/targetingTypes/' +
         commons.Escaper.ecapeVariableReserved('$targetingType') +
@@ -8900,8 +8685,6 @@ class SdfdownloadtasksResource {
     CreateSdfDownloadTaskRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -8911,7 +8694,7 @@ class SdfdownloadtasksResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/sdfdownloadtasks';
+    const _url = 'v1/sdfdownloadtasks';
 
     final _response = await _requester.request(
       _url,
@@ -8952,8 +8735,6 @@ class SdfdownloadtasksOperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -8962,7 +8743,7 @@ class SdfdownloadtasksOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -9097,8 +8878,6 @@ class TargetingTypesTargetingOptionsResource {
     core.String advertiserId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (targetingType == null) {
       throw core.ArgumentError('Parameter targetingType is required.');
     }
@@ -9113,7 +8892,7 @@ class TargetingTypesTargetingOptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/targetingTypes/' +
+    final _url = 'v1/targetingTypes/' +
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/targetingOptions/' +
         commons.Escaper.ecapeVariableReserved('$targetingOptionId');
@@ -9264,8 +9043,6 @@ class TargetingTypesTargetingOptionsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (targetingType == null) {
       throw core.ArgumentError('Parameter targetingType is required.');
     }
@@ -9289,7 +9066,7 @@ class TargetingTypesTargetingOptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/targetingTypes/' +
+    final _url = 'v1/targetingTypes/' +
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/targetingOptions';
 
@@ -9407,8 +9184,6 @@ class TargetingTypesTargetingOptionsResource {
     core.String targetingType, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -9421,7 +9196,7 @@ class TargetingTypesTargetingOptionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/targetingTypes/' +
+    final _url = 'v1/targetingTypes/' +
         commons.Escaper.ecapeVariableReserved('$targetingType') +
         '/targetingOptions:search';
 
@@ -9471,8 +9246,6 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -9485,7 +9258,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/users/' +
+    final _url = 'v1/users/' +
         commons.Escaper.ecapeVariableReserved('$userId') +
         ':bulkEditAssignedUserRoles';
 
@@ -9521,8 +9294,6 @@ class UsersResource {
     User request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -9532,7 +9303,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/users';
+    const _url = 'v1/users';
 
     final _response = await _requester.request(
       _url,
@@ -9564,8 +9335,6 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -9574,7 +9343,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/users/' + commons.Escaper.ecapeVariableReserved('$userId');
+    final _url = 'v1/users/' + commons.Escaper.ecapeVariableReserved('$userId');
 
     final _response = await _requester.request(
       _url,
@@ -9605,8 +9374,6 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -9615,7 +9382,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/users/' + commons.Escaper.ecapeVariableReserved('$userId');
+    final _url = 'v1/users/' + commons.Escaper.ecapeVariableReserved('$userId');
 
     final _response = await _requester.request(
       _url,
@@ -9686,8 +9453,6 @@ class UsersResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
@@ -9705,7 +9470,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/users';
+    const _url = 'v1/users';
 
     final _response = await _requester.request(
       _url,
@@ -9745,8 +9510,6 @@ class UsersResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -9762,7 +9525,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/users/' + commons.Escaper.ecapeVariableReserved('$userId');
+    final _url = 'v1/users/' + commons.Escaper.ecapeVariableReserved('$userId');
 
     final _response = await _requester.request(
       _url,

@@ -90,8 +90,6 @@ class OperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -100,7 +98,8 @@ class OperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/operations/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url =
+        'v1/operations/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -148,8 +147,6 @@ class OperationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
@@ -167,7 +164,7 @@ class OperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/operations';
+    const _url = 'v1/operations';
 
     final _response = await _requester.request(
       _url,
@@ -228,8 +225,6 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -238,7 +233,7 @@ class ProjectsLocationsOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -287,8 +282,6 @@ class ProjectsLocationsOperationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -306,7 +299,7 @@ class ProjectsLocationsOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
     final _response = await _requester.request(
@@ -350,8 +343,6 @@ class SpeechResource {
     LongRunningRecognizeRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -361,7 +352,7 @@ class SpeechResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/speech:longrunningrecognize';
+    const _url = 'v1/speech:longrunningrecognize';
 
     final _response = await _requester.request(
       _url,
@@ -393,8 +384,6 @@ class SpeechResource {
     RecognizeRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -404,7 +393,7 @@ class SpeechResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/speech:recognize';
+    const _url = 'v1/speech:recognize';
 
     final _response = await _requester.request(
       _url,

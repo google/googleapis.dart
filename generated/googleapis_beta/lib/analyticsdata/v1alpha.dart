@@ -101,8 +101,6 @@ class PropertiesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -111,7 +109,7 @@ class PropertiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1alpha/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -151,8 +149,6 @@ class PropertiesResource {
     core.String property, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -165,7 +161,7 @@ class PropertiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha/' +
+    final _url = 'v1alpha/' +
         commons.Escaper.ecapeVariableReserved('$property') +
         ':runRealtimeReport';
 
@@ -207,8 +203,6 @@ class V1alphaResource {
     BatchRunPivotReportsRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -218,7 +212,7 @@ class V1alphaResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha:batchRunPivotReports';
+    const _url = 'v1alpha:batchRunPivotReports';
 
     final _response = await _requester.request(
       _url,
@@ -252,8 +246,6 @@ class V1alphaResource {
     BatchRunReportsRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -263,7 +255,7 @@ class V1alphaResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha:batchRunReports';
+    const _url = 'v1alpha:batchRunReports';
 
     final _response = await _requester.request(
       _url,
@@ -300,8 +292,6 @@ class V1alphaResource {
     RunPivotReportRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -311,7 +301,7 @@ class V1alphaResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha:runPivotReport';
+    const _url = 'v1alpha:runPivotReport';
 
     final _response = await _requester.request(
       _url,
@@ -350,8 +340,6 @@ class V1alphaResource {
     RunReportRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -361,7 +349,7 @@ class V1alphaResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1alpha:runReport';
+    const _url = 'v1alpha:runReport';
 
     final _response = await _requester.request(
       _url,

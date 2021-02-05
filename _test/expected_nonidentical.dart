@@ -77,14 +77,12 @@ class ToyApi {
   async.Future<void> failing({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'failing';
+    const _url = 'failing';
 
     await _requester.request(
       _url,
@@ -109,14 +107,12 @@ class ToyApi {
   async.Future<ToyResponse> hello({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'hello';
+    const _url = 'hello';
 
     final _response = await _requester.request(
       _url,
@@ -145,8 +141,6 @@ class ToyApi {
     ListOfToyRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -156,7 +150,7 @@ class ToyApi {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'helloListOfClass';
+    const _url = 'helloListOfClass';
 
     final _response = await _requester.request(
       _url,
@@ -186,8 +180,6 @@ class ToyApi {
     ListOfListOfToyRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -197,7 +189,7 @@ class ToyApi {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'helloListOfListOfClass';
+    const _url = 'helloListOfListOfClass';
 
     final _response = await _requester.request(
       _url,
@@ -227,8 +219,6 @@ class ToyApi {
     MapOfint request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request);
@@ -238,7 +228,7 @@ class ToyApi {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'helloMap';
+    const _url = 'helloMap';
 
     final _response = await _requester.request(
       _url,
@@ -270,8 +260,6 @@ class ToyApi {
     core.int age, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -283,7 +271,7 @@ class ToyApi {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'hello/' +
+    final _url = 'hello/' +
         commons.Escaper.ecapeVariable('$name') +
         '/age/' +
         commons.Escaper.ecapeVariable('$age');
@@ -318,8 +306,6 @@ class ToyApi {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -332,7 +318,7 @@ class ToyApi {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'helloPost/' + commons.Escaper.ecapeVariable('$name');
+    final _url = 'helloPost/' + commons.Escaper.ecapeVariable('$name');
 
     final _response = await _requester.request(
       _url,
@@ -368,8 +354,6 @@ class ToyApi {
     core.String foo,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -384,7 +368,7 @@ class ToyApi {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'helloQuery/' + commons.Escaper.ecapeVariable('$name');
+    final _url = 'helloQuery/' + commons.Escaper.ecapeVariable('$name');
 
     final _response = await _requester.request(
       _url,
@@ -413,8 +397,6 @@ class ToyApi {
     ListOfListOfint request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request);
@@ -424,7 +406,7 @@ class ToyApi {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'helloNestedListList';
+    const _url = 'helloNestedListList';
 
     final _response = await _requester.request(
       _url,
@@ -453,8 +435,6 @@ class ToyApi {
     ListOfMapOfListOfint request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request);
@@ -464,7 +444,7 @@ class ToyApi {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'helloNestedListMapList';
+    const _url = 'helloNestedListMapList';
 
     final _response = await _requester.request(
       _url,
@@ -490,14 +470,12 @@ class ToyApi {
   async.Future<ToyMapResponse> helloNestedMap({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'helloNestedMap';
+    const _url = 'helloNestedMap';
 
     final _response = await _requester.request(
       _url,
@@ -526,8 +504,6 @@ class ToyApi {
     MapOfListOfMapOfint request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request);
@@ -537,7 +513,7 @@ class ToyApi {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'helloNestedMapListMap';
+    const _url = 'helloNestedMapListMap';
 
     final _response = await _requester.request(
       _url,
@@ -567,8 +543,6 @@ class ToyApi {
     MapOfMapOfint request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request);
@@ -578,7 +552,7 @@ class ToyApi {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'helloNestedMapMap';
+    const _url = 'helloNestedMapMap';
 
     final _response = await _requester.request(
       _url,
@@ -608,8 +582,6 @@ class ToyApi {
     ToyRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -619,7 +591,7 @@ class ToyApi {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'helloPost';
+    const _url = 'helloPost';
 
     final _response = await _requester.request(
       _url,
@@ -646,14 +618,12 @@ class ToyApi {
   async.Future<ToyResponse> helloReturnNull({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'helloReturnNull';
+    const _url = 'helloReturnNull';
 
     final _response = await _requester.request(
       _url,
@@ -679,14 +649,12 @@ class ToyApi {
   async.Future<ToyResponse> helloVoid({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'helloVoid';
+    const _url = 'helloVoid';
 
     final _response = await _requester.request(
       _url,
@@ -710,14 +678,12 @@ class ToyApi {
   async.Future<void> noop({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'noop';
+    const _url = 'noop';
 
     await _requester.request(
       _url,
@@ -745,8 +711,6 @@ class ToyApi {
     ListOfString request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request);
@@ -756,7 +720,7 @@ class ToyApi {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'reverseList';
+    const _url = 'reverseList';
 
     final _response = await _requester.request(
       _url,
@@ -795,8 +759,6 @@ class ComputeResource {
     core.String compute, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -808,7 +770,7 @@ class ComputeResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toyresource/' +
+    final _url = 'toyresource/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/compute/' +
         commons.Escaper.ecapeVariable('$compute');
@@ -851,8 +813,6 @@ class StorageResource {
     core.String storage, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
@@ -864,7 +824,7 @@ class StorageResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'toyresource/' +
+    final _url = 'toyresource/' +
         commons.Escaper.ecapeVariable('$resource') +
         '/storage/' +
         commons.Escaper.ecapeVariable('$storage');

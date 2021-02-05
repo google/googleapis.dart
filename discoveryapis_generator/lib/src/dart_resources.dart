@@ -337,10 +337,13 @@ class DartResourceMethod {
     }
 
     final urlPatternCode = StringBuffer();
-    final patternExpr = urlPattern.stringExpression(templateVars);
     if (!mediaUpload) {
-      urlPatternCode.write('    _url = $patternExpr;');
+      urlPatternCode.writeln(
+        urlPattern.variableDeclaration('_url', templateVars),
+      );
     } else {
+      urlPatternCode.writeln('    ${core}String _url;');
+      final patternExpr = urlPattern.stringExpression(templateVars);
       if (!mediaUploadResumable) {
         urlPatternCode.write('''
     if (uploadMedia == null) {
@@ -422,8 +425,6 @@ $urlPatternCode
 
     methodString.write(
       '''
-    ${core}String _url;
-
 $params$requestCode''',
     );
 

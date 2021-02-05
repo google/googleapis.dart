@@ -101,8 +101,6 @@ class ProjectsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -115,7 +113,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/' +
+    final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':detectLanguage';
 
@@ -171,8 +169,6 @@ class ProjectsResource {
     core.String model,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -187,7 +183,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/' +
+    final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/supportedLanguages';
 
@@ -231,8 +227,6 @@ class ProjectsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -245,7 +239,7 @@ class ProjectsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/' +
+    final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':translateText';
 
@@ -305,8 +299,6 @@ class ProjectsLocationsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -319,7 +311,7 @@ class ProjectsLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/' +
+    final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':batchTranslateText';
 
@@ -363,8 +355,6 @@ class ProjectsLocationsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -377,7 +367,7 @@ class ProjectsLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/' +
+    final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':detectLanguage';
 
@@ -412,8 +402,6 @@ class ProjectsLocationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -422,7 +410,7 @@ class ProjectsLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -474,8 +462,6 @@ class ProjectsLocationsResource {
     core.String model,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -490,7 +476,7 @@ class ProjectsLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/' +
+    final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/supportedLanguages';
 
@@ -533,8 +519,6 @@ class ProjectsLocationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -552,7 +536,7 @@ class ProjectsLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/locations';
 
     final _response = await _requester.request(
@@ -595,8 +579,6 @@ class ProjectsLocationsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -609,7 +591,7 @@ class ProjectsLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/' +
+    final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         ':translateText';
 
@@ -656,8 +638,6 @@ class ProjectsLocationsGlossariesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -670,7 +650,7 @@ class ProjectsLocationsGlossariesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/' +
+    final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/glossaries';
 
@@ -708,8 +688,6 @@ class ProjectsLocationsGlossariesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -718,7 +696,7 @@ class ProjectsLocationsGlossariesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -752,8 +730,6 @@ class ProjectsLocationsGlossariesResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -762,7 +738,7 @@ class ProjectsLocationsGlossariesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -825,8 +801,6 @@ class ProjectsLocationsGlossariesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -844,7 +818,7 @@ class ProjectsLocationsGlossariesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/' +
+    final _url = 'v3/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/glossaries';
 
@@ -898,8 +872,6 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -912,7 +884,8 @@ class ProjectsLocationsOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url =
+        'v3/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -949,8 +922,6 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -959,7 +930,7 @@ class ProjectsLocationsOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -994,8 +965,6 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1004,7 +973,7 @@ class ProjectsLocationsOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -1053,8 +1022,6 @@ class ProjectsLocationsOperationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -1072,7 +1039,7 @@ class ProjectsLocationsOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v3/' + commons.Escaper.ecapeVariableReserved('$name') + '/operations';
 
     final _response = await _requester.request(
@@ -1118,8 +1085,6 @@ class ProjectsLocationsOperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1132,7 +1097,8 @@ class ProjectsLocationsOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/' + commons.Escaper.ecapeVariableReserved('$name') + ':wait';
+    final _url =
+        'v3/' + commons.Escaper.ecapeVariableReserved('$name') + ':wait';
 
     final _response = await _requester.request(
       _url,

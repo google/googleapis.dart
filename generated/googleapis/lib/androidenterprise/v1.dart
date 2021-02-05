@@ -126,8 +126,6 @@ class DevicesResource {
     core.String deviceId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -142,7 +140,7 @@ class DevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -184,8 +182,6 @@ class DevicesResource {
     core.String deviceId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -200,7 +196,7 @@ class DevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -247,8 +243,6 @@ class DevicesResource {
     core.String deviceId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -263,7 +257,7 @@ class DevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -303,8 +297,6 @@ class DevicesResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -316,7 +308,7 @@ class DevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -365,8 +357,6 @@ class DevicesResource {
     core.String deviceId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -385,7 +375,7 @@ class DevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -442,8 +432,6 @@ class DevicesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -465,7 +453,7 @@ class DevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -508,8 +496,6 @@ class EnterprisesResource {
     core.String notificationSetId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (notificationSetId != null) {
       _queryParams['notificationSetId'] = [notificationSetId];
@@ -518,7 +504,7 @@ class EnterprisesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/acknowledgeNotificationSet';
+    const _url = 'androidenterprise/v1/enterprises/acknowledgeNotificationSet';
 
     await _requester.request(
       _url,
@@ -556,8 +542,6 @@ class EnterprisesResource {
     core.String enterpriseToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (completionToken != null) {
       _queryParams['completionToken'] = [completionToken];
@@ -569,7 +553,7 @@ class EnterprisesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/completeSignup';
+    const _url = 'androidenterprise/v1/enterprises/completeSignup';
 
     final _response = await _requester.request(
       _url,
@@ -607,8 +591,6 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -621,7 +603,7 @@ class EnterprisesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/createWebToken';
 
@@ -659,8 +641,6 @@ class EnterprisesResource {
     core.String token, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -674,7 +654,7 @@ class EnterprisesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/enroll';
+    const _url = 'androidenterprise/v1/enterprises/enroll';
 
     final _response = await _requester.request(
       _url,
@@ -713,8 +693,6 @@ class EnterprisesResource {
     core.String callbackUrl,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (callbackUrl != null) {
       _queryParams['callbackUrl'] = [callbackUrl];
@@ -723,7 +701,7 @@ class EnterprisesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/signupUrl';
+    const _url = 'androidenterprise/v1/enterprises/signupUrl';
 
     final _response = await _requester.request(
       _url,
@@ -754,8 +732,6 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -764,7 +740,7 @@ class EnterprisesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId');
 
     final _response = await _requester.request(
@@ -818,8 +794,6 @@ class EnterprisesResource {
     core.String keyType,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -831,7 +805,7 @@ class EnterprisesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/serviceAccount';
 
@@ -867,8 +841,6 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -877,7 +849,7 @@ class EnterprisesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout';
 
@@ -916,8 +888,6 @@ class EnterprisesResource {
     core.String domain, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (domain == null) {
       throw core.ArgumentError('Parameter domain is required.');
@@ -927,7 +897,7 @@ class EnterprisesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises';
+    const _url = 'androidenterprise/v1/enterprises';
 
     final _response = await _requester.request(
       _url,
@@ -983,8 +953,6 @@ class EnterprisesResource {
     core.String requestMode,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (requestMode != null) {
       _queryParams['requestMode'] = [requestMode];
@@ -993,7 +961,7 @@ class EnterprisesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/pullNotificationSet';
+    const _url = 'androidenterprise/v1/enterprises/pullNotificationSet';
 
     final _response = await _requester.request(
       _url,
@@ -1026,8 +994,6 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -1036,7 +1002,7 @@ class EnterprisesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/sendTestPushNotification';
 
@@ -1073,8 +1039,6 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1087,7 +1051,7 @@ class EnterprisesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/account';
 
@@ -1132,8 +1096,6 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1146,7 +1108,7 @@ class EnterprisesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout';
 
@@ -1178,8 +1140,6 @@ class EnterprisesResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -1188,7 +1148,7 @@ class EnterprisesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/unenroll';
 
@@ -1231,8 +1191,6 @@ class EntitlementsResource {
     core.String entitlementId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -1247,7 +1205,7 @@ class EntitlementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1289,8 +1247,6 @@ class EntitlementsResource {
     core.String entitlementId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -1305,7 +1261,7 @@ class EntitlementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1346,8 +1302,6 @@ class EntitlementsResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -1359,7 +1313,7 @@ class EntitlementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1410,8 +1364,6 @@ class EntitlementsResource {
     core.bool install,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1433,7 +1385,7 @@ class EntitlementsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1480,8 +1432,6 @@ class GrouplicensesResource {
     core.String groupLicenseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -1493,7 +1443,7 @@ class GrouplicensesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/groupLicenses/' +
         commons.Escaper.ecapeVariable('$groupLicenseId');
@@ -1528,8 +1478,6 @@ class GrouplicensesResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -1538,7 +1486,7 @@ class GrouplicensesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/groupLicenses';
 
@@ -1582,8 +1530,6 @@ class GrouplicenseusersResource {
     core.String groupLicenseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -1595,7 +1541,7 @@ class GrouplicenseusersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/groupLicenses/' +
         commons.Escaper.ecapeVariable('$groupLicenseId') +
@@ -1647,8 +1593,6 @@ class InstallsResource {
     core.String installId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -1666,7 +1610,7 @@ class InstallsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1713,8 +1657,6 @@ class InstallsResource {
     core.String installId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -1732,7 +1674,7 @@ class InstallsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1775,8 +1717,6 @@ class InstallsResource {
     core.String deviceId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -1791,7 +1731,7 @@ class InstallsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1844,8 +1784,6 @@ class InstallsResource {
     core.String installId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1867,7 +1805,7 @@ class InstallsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1921,8 +1859,6 @@ class ManagedconfigurationsfordeviceResource {
     core.String managedConfigurationForDeviceId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -1941,7 +1877,7 @@ class ManagedconfigurationsfordeviceResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -1988,8 +1924,6 @@ class ManagedconfigurationsfordeviceResource {
     core.String managedConfigurationForDeviceId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -2008,7 +1942,7 @@ class ManagedconfigurationsfordeviceResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -2054,8 +1988,6 @@ class ManagedconfigurationsfordeviceResource {
     core.String deviceId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -2070,7 +2002,7 @@ class ManagedconfigurationsfordeviceResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -2121,8 +2053,6 @@ class ManagedconfigurationsfordeviceResource {
     core.String managedConfigurationForDeviceId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2145,7 +2075,7 @@ class ManagedconfigurationsfordeviceResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -2197,8 +2127,6 @@ class ManagedconfigurationsforuserResource {
     core.String managedConfigurationForUserId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -2214,7 +2142,7 @@ class ManagedconfigurationsforuserResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -2257,8 +2185,6 @@ class ManagedconfigurationsforuserResource {
     core.String managedConfigurationForUserId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -2274,7 +2200,7 @@ class ManagedconfigurationsforuserResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -2315,8 +2241,6 @@ class ManagedconfigurationsforuserResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -2328,7 +2252,7 @@ class ManagedconfigurationsforuserResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -2379,8 +2303,6 @@ class ManagedconfigurationsforuserResource {
     core.String managedConfigurationForUserId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2400,7 +2322,7 @@ class ManagedconfigurationsforuserResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -2448,8 +2370,6 @@ class ManagedconfigurationssettingsResource {
     core.String productId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -2461,7 +2381,7 @@ class ManagedconfigurationssettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -2507,8 +2427,6 @@ class PermissionsResource {
     core.String language,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (permissionId == null) {
       throw core.ArgumentError('Parameter permissionId is required.');
     }
@@ -2520,7 +2438,7 @@ class PermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/permissions/' +
+    final _url = 'androidenterprise/v1/permissions/' +
         commons.Escaper.ecapeVariable('$permissionId');
 
     final _response = await _requester.request(
@@ -2567,8 +2485,6 @@ class ProductsResource {
     core.String productId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2584,7 +2500,7 @@ class ProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -2635,8 +2551,6 @@ class ProductsResource {
     core.String languageCode,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -2651,7 +2565,7 @@ class ProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -2693,8 +2607,6 @@ class ProductsResource {
     core.String language,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -2709,7 +2621,7 @@ class ProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId');
@@ -2756,8 +2668,6 @@ class ProductsResource {
     core.String language,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -2772,7 +2682,7 @@ class ProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -2810,8 +2720,6 @@ class ProductsResource {
     core.String productId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -2823,7 +2731,7 @@ class ProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -2883,8 +2791,6 @@ class ProductsResource {
     core.String token,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -2908,7 +2814,7 @@ class ProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/products';
 
@@ -2943,8 +2849,6 @@ class ProductsResource {
     core.String productId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -2956,7 +2860,7 @@ class ProductsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/products/' +
         commons.Escaper.ecapeVariable('$productId') +
@@ -3002,8 +2906,6 @@ class ServiceaccountkeysResource {
     core.String keyId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3015,7 +2917,7 @@ class ServiceaccountkeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/serviceAccountKeys/' +
         commons.Escaper.ecapeVariable('$keyId');
@@ -3057,8 +2959,6 @@ class ServiceaccountkeysResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3071,7 +2971,7 @@ class ServiceaccountkeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/serviceAccountKeys';
 
@@ -3111,8 +3011,6 @@ class ServiceaccountkeysResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3121,7 +3019,7 @@ class ServiceaccountkeysResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/serviceAccountKeys';
 
@@ -3165,8 +3063,6 @@ class StorelayoutclustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3181,7 +3077,7 @@ class StorelayoutclustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.Escaper.ecapeVariable('$pageId') +
@@ -3222,8 +3118,6 @@ class StorelayoutclustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3238,7 +3132,7 @@ class StorelayoutclustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.Escaper.ecapeVariable('$pageId') +
@@ -3280,8 +3174,6 @@ class StorelayoutclustersResource {
     core.String pageId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3297,7 +3189,7 @@ class StorelayoutclustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.Escaper.ecapeVariable('$pageId') +
@@ -3336,8 +3228,6 @@ class StorelayoutclustersResource {
     core.String pageId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3349,7 +3239,7 @@ class StorelayoutclustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.Escaper.ecapeVariable('$pageId') +
@@ -3393,8 +3283,6 @@ class StorelayoutclustersResource {
     core.String clusterId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3413,7 +3301,7 @@ class StorelayoutclustersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.Escaper.ecapeVariable('$pageId') +
@@ -3457,8 +3345,6 @@ class StorelayoutpagesResource {
     core.String pageId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3470,7 +3356,7 @@ class StorelayoutpagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
@@ -3506,8 +3392,6 @@ class StorelayoutpagesResource {
     core.String pageId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3519,7 +3403,7 @@ class StorelayoutpagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
@@ -3555,8 +3439,6 @@ class StorelayoutpagesResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3569,7 +3451,7 @@ class StorelayoutpagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages';
 
@@ -3602,8 +3484,6 @@ class StorelayoutpagesResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3612,7 +3492,7 @@ class StorelayoutpagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages';
 
@@ -3651,8 +3531,6 @@ class StorelayoutpagesResource {
     core.String pageId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3668,7 +3546,7 @@ class StorelayoutpagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/storeLayout/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
@@ -3709,8 +3587,6 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3722,7 +3598,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId');
@@ -3763,8 +3639,6 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3776,7 +3650,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -3814,8 +3688,6 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3827,7 +3699,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId');
@@ -3863,8 +3735,6 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3876,7 +3746,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -3919,8 +3789,6 @@ class UsersResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3933,7 +3801,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users';
 
@@ -3974,8 +3842,6 @@ class UsersResource {
     core.String email, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -3988,7 +3854,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users';
 
@@ -4025,8 +3891,6 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -4038,7 +3902,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -4082,8 +3946,6 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4099,7 +3961,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId') +
@@ -4146,8 +4008,6 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4163,7 +4023,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/users/' +
         commons.Escaper.ecapeVariable('$userId');
@@ -4204,8 +4064,6 @@ class WebappsResource {
     core.String webAppId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -4217,7 +4075,7 @@ class WebappsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/webApps/' +
         commons.Escaper.ecapeVariable('$webAppId');
@@ -4253,8 +4111,6 @@ class WebappsResource {
     core.String webAppId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -4266,7 +4122,7 @@ class WebappsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/webApps/' +
         commons.Escaper.ecapeVariable('$webAppId');
@@ -4302,8 +4158,6 @@ class WebappsResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4316,7 +4170,7 @@ class WebappsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/webApps';
 
@@ -4349,8 +4203,6 @@ class WebappsResource {
     core.String enterpriseId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
@@ -4359,7 +4211,7 @@ class WebappsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/webApps';
 
@@ -4398,8 +4250,6 @@ class WebappsResource {
     core.String webAppId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4415,7 +4265,7 @@ class WebappsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'androidenterprise/v1/enterprises/' +
+    final _url = 'androidenterprise/v1/enterprises/' +
         commons.Escaper.ecapeVariable('$enterpriseId') +
         '/webApps/' +
         commons.Escaper.ecapeVariable('$webAppId');

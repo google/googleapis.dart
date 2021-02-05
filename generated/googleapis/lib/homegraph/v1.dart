@@ -89,8 +89,6 @@ class AgentUsersResource {
     core.String requestId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (agentUserId == null) {
       throw core.ArgumentError('Parameter agentUserId is required.');
     }
@@ -102,7 +100,7 @@ class AgentUsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$agentUserId');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$agentUserId');
 
     final _response = await _requester.request(
       _url,
@@ -143,8 +141,6 @@ class DevicesResource {
     QueryRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -154,7 +150,7 @@ class DevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/devices:query';
+    const _url = 'v1/devices:query';
 
     final _response = await _requester.request(
       _url,
@@ -198,8 +194,6 @@ class DevicesResource {
     ReportStateAndNotificationRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -209,7 +203,7 @@ class DevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/devices:reportStateAndNotification';
+    const _url = 'v1/devices:reportStateAndNotification';
 
     final _response = await _requester.request(
       _url,
@@ -247,8 +241,6 @@ class DevicesResource {
     RequestSyncDevicesRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -258,7 +250,7 @@ class DevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/devices:requestSync';
+    const _url = 'v1/devices:requestSync';
 
     final _response = await _requester.request(
       _url,
@@ -294,8 +286,6 @@ class DevicesResource {
     SyncRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -305,7 +295,7 @@ class DevicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/devices:sync';
+    const _url = 'v1/devices:sync';
 
     final _response = await _requester.request(
       _url,

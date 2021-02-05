@@ -123,8 +123,6 @@ class PresentationsResource {
     core.String presentationId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -137,7 +135,7 @@ class PresentationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/presentations/' +
+    final _url = 'v1/presentations/' +
         commons.Escaper.ecapeVariable('$presentationId') +
         ':batchUpdate';
 
@@ -176,8 +174,6 @@ class PresentationsResource {
     Presentation request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -187,7 +183,7 @@ class PresentationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/presentations';
+    const _url = 'v1/presentations';
 
     final _response = await _requester.request(
       _url,
@@ -220,8 +216,6 @@ class PresentationsResource {
     core.String presentationId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (presentationId == null) {
       throw core.ArgumentError('Parameter presentationId is required.');
     }
@@ -230,7 +224,7 @@ class PresentationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/presentations/' +
+    final _url = 'v1/presentations/' +
         commons.Escaper.ecapeVariableReserved('$presentationId');
 
     final _response = await _requester.request(
@@ -271,8 +265,6 @@ class PresentationsPagesResource {
     core.String pageObjectId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (presentationId == null) {
       throw core.ArgumentError('Parameter presentationId is required.');
     }
@@ -284,7 +276,7 @@ class PresentationsPagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/presentations/' +
+    final _url = 'v1/presentations/' +
         commons.Escaper.ecapeVariable('$presentationId') +
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageObjectId');
@@ -342,8 +334,6 @@ class PresentationsPagesResource {
     core.String thumbnailProperties_thumbnailSize,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (presentationId == null) {
       throw core.ArgumentError('Parameter presentationId is required.');
     }
@@ -365,7 +355,7 @@ class PresentationsPagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/presentations/' +
+    final _url = 'v1/presentations/' +
         commons.Escaper.ecapeVariable('$presentationId') +
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageObjectId') +

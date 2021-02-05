@@ -116,8 +116,6 @@ class AppsResource {
     Application request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -127,7 +125,7 @@ class AppsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps';
+    const _url = 'v1/apps';
 
     final _response = await _requester.request(
       _url,
@@ -159,8 +157,6 @@ class AppsResource {
     core.String appsId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -169,7 +165,7 @@ class AppsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId');
+    final _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId');
 
     final _response = await _requester.request(
       _url,
@@ -211,8 +207,6 @@ class AppsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -228,7 +222,7 @@ class AppsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId');
+    final _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId');
 
     final _response = await _requester.request(
       _url,
@@ -273,8 +267,6 @@ class AppsResource {
     core.String appsId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -287,7 +279,8 @@ class AppsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + ':repair';
+    final _url =
+        'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + ':repair';
 
     final _response = await _requester.request(
       _url,
@@ -329,8 +322,6 @@ class AppsAuthorizedCertificatesResource {
     core.String appsId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -343,7 +334,7 @@ class AppsAuthorizedCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/authorizedCertificates';
 
@@ -382,8 +373,6 @@ class AppsAuthorizedCertificatesResource {
     core.String authorizedCertificatesId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -396,7 +385,7 @@ class AppsAuthorizedCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/authorizedCertificates/' +
         commons.Escaper.ecapeVariable('$authorizedCertificatesId');
@@ -443,8 +432,6 @@ class AppsAuthorizedCertificatesResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -460,7 +447,7 @@ class AppsAuthorizedCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/authorizedCertificates/' +
         commons.Escaper.ecapeVariable('$authorizedCertificatesId');
@@ -510,8 +497,6 @@ class AppsAuthorizedCertificatesResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -529,7 +514,7 @@ class AppsAuthorizedCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/authorizedCertificates';
 
@@ -580,8 +565,6 @@ class AppsAuthorizedCertificatesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -601,7 +584,7 @@ class AppsAuthorizedCertificatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/authorizedCertificates/' +
         commons.Escaper.ecapeVariable('$authorizedCertificatesId');
@@ -650,8 +633,6 @@ class AppsAuthorizedDomainsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -666,7 +647,7 @@ class AppsAuthorizedDomainsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/authorizedDomains';
 
@@ -727,8 +708,6 @@ class AppsDomainMappingsResource {
     core.String overrideStrategy,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -744,7 +723,7 @@ class AppsDomainMappingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/domainMappings';
 
@@ -784,8 +763,6 @@ class AppsDomainMappingsResource {
     core.String domainMappingsId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -797,7 +774,7 @@ class AppsDomainMappingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/domainMappings/' +
         commons.Escaper.ecapeVariable('$domainMappingsId');
@@ -834,8 +811,6 @@ class AppsDomainMappingsResource {
     core.String domainMappingsId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -847,7 +822,7 @@ class AppsDomainMappingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/domainMappings/' +
         commons.Escaper.ecapeVariable('$domainMappingsId');
@@ -888,8 +863,6 @@ class AppsDomainMappingsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -904,7 +877,7 @@ class AppsDomainMappingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/domainMappings';
 
@@ -952,8 +925,6 @@ class AppsDomainMappingsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -972,7 +943,7 @@ class AppsDomainMappingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/domainMappings/' +
         commons.Escaper.ecapeVariable('$domainMappingsId');
@@ -1031,8 +1002,6 @@ class AppsFirewallIngressRulesResource {
     core.String appsId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1045,7 +1014,7 @@ class AppsFirewallIngressRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/firewall/ingressRules:batchUpdate';
 
@@ -1083,8 +1052,6 @@ class AppsFirewallIngressRulesResource {
     core.String appsId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1097,7 +1064,7 @@ class AppsFirewallIngressRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/firewall/ingressRules';
 
@@ -1135,8 +1102,6 @@ class AppsFirewallIngressRulesResource {
     core.String ingressRulesId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -1148,7 +1113,7 @@ class AppsFirewallIngressRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/firewall/ingressRules/' +
         commons.Escaper.ecapeVariable('$ingressRulesId');
@@ -1185,8 +1150,6 @@ class AppsFirewallIngressRulesResource {
     core.String ingressRulesId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -1198,7 +1161,7 @@ class AppsFirewallIngressRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/firewall/ingressRules/' +
         commons.Escaper.ecapeVariable('$ingressRulesId');
@@ -1244,8 +1207,6 @@ class AppsFirewallIngressRulesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -1263,7 +1224,7 @@ class AppsFirewallIngressRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/firewall/ingressRules';
 
@@ -1306,8 +1267,6 @@ class AppsFirewallIngressRulesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1326,7 +1285,7 @@ class AppsFirewallIngressRulesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/firewall/ingressRules/' +
         commons.Escaper.ecapeVariable('$ingressRulesId');
@@ -1370,8 +1329,6 @@ class AppsLocationsResource {
     core.String locationsId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -1383,7 +1340,7 @@ class AppsLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/locations/' +
         commons.Escaper.ecapeVariable('$locationsId');
@@ -1426,8 +1383,6 @@ class AppsLocationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -1445,7 +1400,8 @@ class AppsLocationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/locations';
+    final _url =
+        'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/locations';
 
     final _response = await _requester.request(
       _url,
@@ -1488,8 +1444,6 @@ class AppsOperationsResource {
     core.String operationsId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -1501,7 +1455,7 @@ class AppsOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/operations/' +
         commons.Escaper.ecapeVariable('$operationsId');
@@ -1552,8 +1506,6 @@ class AppsOperationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -1571,7 +1523,7 @@ class AppsOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/operations';
 
     final _response = await _requester.request(
@@ -1616,8 +1568,6 @@ class AppsServicesResource {
     core.String servicesId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -1629,7 +1579,7 @@ class AppsServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId');
@@ -1666,8 +1616,6 @@ class AppsServicesResource {
     core.String servicesId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -1679,7 +1627,7 @@ class AppsServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId');
@@ -1719,8 +1667,6 @@ class AppsServicesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -1735,7 +1681,8 @@ class AppsServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services';
+    final _url =
+        'v1/apps/' + commons.Escaper.ecapeVariable('$appsId') + '/services';
 
     final _response = await _requester.request(
       _url,
@@ -1791,8 +1738,6 @@ class AppsServicesResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1814,7 +1759,7 @@ class AppsServicesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId');
@@ -1865,8 +1810,6 @@ class AppsServicesVersionsResource {
     core.String servicesId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1882,7 +1825,7 @@ class AppsServicesVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId') +
@@ -1924,8 +1867,6 @@ class AppsServicesVersionsResource {
     core.String versionsId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -1940,7 +1881,7 @@ class AppsServicesVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId') +
@@ -1994,8 +1935,6 @@ class AppsServicesVersionsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -2013,7 +1952,7 @@ class AppsServicesVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId') +
@@ -2067,8 +2006,6 @@ class AppsServicesVersionsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -2089,7 +2026,7 @@ class AppsServicesVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId') +
@@ -2170,8 +2107,6 @@ class AppsServicesVersionsResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2193,7 +2128,7 @@ class AppsServicesVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId') +
@@ -2256,8 +2191,6 @@ class AppsServicesVersionsInstancesResource {
     core.String instancesId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2279,7 +2212,7 @@ class AppsServicesVersionsInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId') +
@@ -2340,8 +2273,6 @@ class AppsServicesVersionsInstancesResource {
     core.String instancesId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -2359,7 +2290,7 @@ class AppsServicesVersionsInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId') +
@@ -2406,8 +2337,6 @@ class AppsServicesVersionsInstancesResource {
     core.String instancesId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -2425,7 +2354,7 @@ class AppsServicesVersionsInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId') +
@@ -2477,8 +2406,6 @@ class AppsServicesVersionsInstancesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
@@ -2499,7 +2426,7 @@ class AppsServicesVersionsInstancesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/apps/' +
+    final _url = 'v1/apps/' +
         commons.Escaper.ecapeVariable('$appsId') +
         '/services/' +
         commons.Escaper.ecapeVariable('$servicesId') +

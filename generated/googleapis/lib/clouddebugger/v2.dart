@@ -112,8 +112,6 @@ class ControllerDebuggeesResource {
     RegisterDebuggeeRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -123,7 +121,7 @@ class ControllerDebuggeesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/controller/debuggees/register';
+    const _url = 'v2/controller/debuggees/register';
 
     final _response = await _requester.request(
       _url,
@@ -189,8 +187,6 @@ class ControllerDebuggeesBreakpointsResource {
     core.String waitToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
     }
@@ -208,7 +204,7 @@ class ControllerDebuggeesBreakpointsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/controller/debuggees/' +
+    final _url = 'v2/controller/debuggees/' +
         commons.Escaper.ecapeVariable('$debuggeeId') +
         '/breakpoints';
 
@@ -254,8 +250,6 @@ class ControllerDebuggeesBreakpointsResource {
     core.String id, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -271,7 +265,7 @@ class ControllerDebuggeesBreakpointsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/controller/debuggees/' +
+    final _url = 'v2/controller/debuggees/' +
         commons.Escaper.ecapeVariable('$debuggeeId') +
         '/breakpoints/' +
         commons.Escaper.ecapeVariable('$id');
@@ -333,8 +327,6 @@ class DebuggerDebuggeesResource {
     core.String project,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (clientVersion != null) {
       _queryParams['clientVersion'] = [clientVersion];
@@ -349,7 +341,7 @@ class DebuggerDebuggeesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/debugger/debuggees';
+    const _url = 'v2/debugger/debuggees';
 
     final _response = await _requester.request(
       _url,
@@ -394,8 +386,6 @@ class DebuggerDebuggeesBreakpointsResource {
     core.String clientVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
     }
@@ -410,7 +400,7 @@ class DebuggerDebuggeesBreakpointsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/debugger/debuggees/' +
+    final _url = 'v2/debugger/debuggees/' +
         commons.Escaper.ecapeVariable('$debuggeeId') +
         '/breakpoints/' +
         commons.Escaper.ecapeVariable('$breakpointId');
@@ -450,8 +440,6 @@ class DebuggerDebuggeesBreakpointsResource {
     core.String clientVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
     }
@@ -466,7 +454,7 @@ class DebuggerDebuggeesBreakpointsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/debugger/debuggees/' +
+    final _url = 'v2/debugger/debuggees/' +
         commons.Escaper.ecapeVariable('$debuggeeId') +
         '/breakpoints/' +
         commons.Escaper.ecapeVariable('$breakpointId');
@@ -535,8 +523,6 @@ class DebuggerDebuggeesBreakpointsResource {
     core.String waitToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
     }
@@ -563,7 +549,7 @@ class DebuggerDebuggeesBreakpointsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/debugger/debuggees/' +
+    final _url = 'v2/debugger/debuggees/' +
         commons.Escaper.ecapeVariable('$debuggeeId') +
         '/breakpoints';
 
@@ -617,8 +603,6 @@ class DebuggerDebuggeesBreakpointsResource {
     core.String clientVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -637,7 +621,7 @@ class DebuggerDebuggeesBreakpointsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v2/debugger/debuggees/' +
+    final _url = 'v2/debugger/debuggees/' +
         commons.Escaper.ecapeVariable('$debuggeeId') +
         '/breakpoints/set';
 

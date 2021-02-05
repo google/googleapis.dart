@@ -122,8 +122,6 @@ class AccountsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -132,7 +130,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'tagmanager/v1/accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
     final _response = await _requester.request(
@@ -160,14 +158,12 @@ class AccountsResource {
   async.Future<ListAccountsResponse> list({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts';
+    const _url = 'tagmanager/v1/accounts';
 
     final _response = await _requester.request(
       _url,
@@ -205,8 +201,6 @@ class AccountsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -222,7 +216,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'tagmanager/v1/accounts/' + commons.Escaper.ecapeVariable('$accountId');
 
     final _response = await _requester.request(
@@ -281,8 +275,6 @@ class AccountsContainersResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -295,7 +287,7 @@ class AccountsContainersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers';
 
@@ -329,8 +321,6 @@ class AccountsContainersResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -342,7 +332,7 @@ class AccountsContainersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId');
@@ -378,8 +368,6 @@ class AccountsContainersResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -391,7 +379,7 @@ class AccountsContainersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId');
@@ -424,8 +412,6 @@ class AccountsContainersResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -434,7 +420,7 @@ class AccountsContainersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers';
 
@@ -477,8 +463,6 @@ class AccountsContainersResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -497,7 +481,7 @@ class AccountsContainersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId');
@@ -544,8 +528,6 @@ class AccountsContainersEnvironmentsResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -561,7 +543,7 @@ class AccountsContainersEnvironmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -601,8 +583,6 @@ class AccountsContainersEnvironmentsResource {
     core.String environmentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -617,7 +597,7 @@ class AccountsContainersEnvironmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -658,8 +638,6 @@ class AccountsContainersEnvironmentsResource {
     core.String environmentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -674,7 +652,7 @@ class AccountsContainersEnvironmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -713,8 +691,6 @@ class AccountsContainersEnvironmentsResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -726,7 +702,7 @@ class AccountsContainersEnvironmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -774,8 +750,6 @@ class AccountsContainersEnvironmentsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -797,7 +771,7 @@ class AccountsContainersEnvironmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -850,8 +824,6 @@ class AccountsContainersFoldersResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -867,7 +839,7 @@ class AccountsContainersFoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -906,8 +878,6 @@ class AccountsContainersFoldersResource {
     core.String folderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -922,7 +892,7 @@ class AccountsContainersFoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -963,8 +933,6 @@ class AccountsContainersFoldersResource {
     core.String folderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -979,7 +947,7 @@ class AccountsContainersFoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -1017,8 +985,6 @@ class AccountsContainersFoldersResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1030,7 +996,7 @@ class AccountsContainersFoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -1078,8 +1044,6 @@ class AccountsContainersFoldersResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1101,7 +1065,7 @@ class AccountsContainersFoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -1150,8 +1114,6 @@ class AccountsContainersFoldersEntitiesResource {
     core.String folderId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1166,7 +1128,7 @@ class AccountsContainersFoldersEntitiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -1226,8 +1188,6 @@ class AccountsContainersMoveFoldersResource {
     core.List<core.String> variableId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1255,7 +1215,7 @@ class AccountsContainersMoveFoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -1307,8 +1267,6 @@ class AccountsContainersReauthorizeEnvironmentsResource {
     core.String environmentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1327,7 +1285,7 @@ class AccountsContainersReauthorizeEnvironmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -1377,8 +1335,6 @@ class AccountsContainersTagsResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1394,7 +1350,7 @@ class AccountsContainersTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -1433,8 +1389,6 @@ class AccountsContainersTagsResource {
     core.String tagId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1449,7 +1403,7 @@ class AccountsContainersTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -1490,8 +1444,6 @@ class AccountsContainersTagsResource {
     core.String tagId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1506,7 +1458,7 @@ class AccountsContainersTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -1544,8 +1496,6 @@ class AccountsContainersTagsResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1557,7 +1507,7 @@ class AccountsContainersTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -1605,8 +1555,6 @@ class AccountsContainersTagsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1628,7 +1576,7 @@ class AccountsContainersTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -1677,8 +1625,6 @@ class AccountsContainersTriggersResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1694,7 +1640,7 @@ class AccountsContainersTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -1733,8 +1679,6 @@ class AccountsContainersTriggersResource {
     core.String triggerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1749,7 +1693,7 @@ class AccountsContainersTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -1790,8 +1734,6 @@ class AccountsContainersTriggersResource {
     core.String triggerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1806,7 +1748,7 @@ class AccountsContainersTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -1844,8 +1786,6 @@ class AccountsContainersTriggersResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -1857,7 +1797,7 @@ class AccountsContainersTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -1905,8 +1845,6 @@ class AccountsContainersTriggersResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1928,7 +1866,7 @@ class AccountsContainersTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -1977,8 +1915,6 @@ class AccountsContainersVariablesResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1994,7 +1930,7 @@ class AccountsContainersVariablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -2033,8 +1969,6 @@ class AccountsContainersVariablesResource {
     core.String variableId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2049,7 +1983,7 @@ class AccountsContainersVariablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -2090,8 +2024,6 @@ class AccountsContainersVariablesResource {
     core.String variableId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2106,7 +2038,7 @@ class AccountsContainersVariablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -2144,8 +2076,6 @@ class AccountsContainersVariablesResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2157,7 +2087,7 @@ class AccountsContainersVariablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -2205,8 +2135,6 @@ class AccountsContainersVariablesResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2228,7 +2156,7 @@ class AccountsContainersVariablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -2277,8 +2205,6 @@ class AccountsContainersVersionsResource {
     core.String containerId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2294,7 +2220,7 @@ class AccountsContainersVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -2334,8 +2260,6 @@ class AccountsContainersVersionsResource {
     core.String containerVersionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2350,7 +2274,7 @@ class AccountsContainersVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -2392,8 +2316,6 @@ class AccountsContainersVersionsResource {
     core.String containerVersionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2408,7 +2330,7 @@ class AccountsContainersVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -2453,8 +2375,6 @@ class AccountsContainersVersionsResource {
     core.bool includeDeleted,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2472,7 +2392,7 @@ class AccountsContainersVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -2517,8 +2437,6 @@ class AccountsContainersVersionsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2536,7 +2454,7 @@ class AccountsContainersVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -2583,8 +2501,6 @@ class AccountsContainersVersionsResource {
     core.String containerVersionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2599,7 +2515,7 @@ class AccountsContainersVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -2642,8 +2558,6 @@ class AccountsContainersVersionsResource {
     core.String containerVersionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2658,7 +2572,7 @@ class AccountsContainersVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -2708,8 +2622,6 @@ class AccountsContainersVersionsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2731,7 +2643,7 @@ class AccountsContainersVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/containers/' +
         commons.Escaper.ecapeVariable('$containerId') +
@@ -2778,8 +2690,6 @@ class AccountsPermissionsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2792,7 +2702,7 @@ class AccountsPermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/permissions';
 
@@ -2828,8 +2738,6 @@ class AccountsPermissionsResource {
     core.String permissionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2841,7 +2749,7 @@ class AccountsPermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/permissions/' +
         commons.Escaper.ecapeVariable('$permissionId');
@@ -2877,8 +2785,6 @@ class AccountsPermissionsResource {
     core.String permissionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2890,7 +2796,7 @@ class AccountsPermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/permissions/' +
         commons.Escaper.ecapeVariable('$permissionId');
@@ -2925,8 +2831,6 @@ class AccountsPermissionsResource {
     core.String accountId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
@@ -2935,7 +2839,7 @@ class AccountsPermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/permissions';
 
@@ -2974,8 +2878,6 @@ class AccountsPermissionsResource {
     core.String permissionId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2991,7 +2893,7 @@ class AccountsPermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v1/accounts/' +
+    final _url = 'tagmanager/v1/accounts/' +
         commons.Escaper.ecapeVariable('$accountId') +
         '/permissions/' +
         commons.Escaper.ecapeVariable('$permissionId');

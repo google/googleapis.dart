@@ -114,8 +114,6 @@ class DeploymentsResource {
     core.String deployment, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -131,7 +129,7 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment') +
@@ -177,8 +175,6 @@ class DeploymentsResource {
     core.String deletePolicy,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -193,7 +189,7 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment');
@@ -232,8 +228,6 @@ class DeploymentsResource {
     core.String deployment, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -245,7 +239,7 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment');
@@ -291,8 +285,6 @@ class DeploymentsResource {
     core.int optionsRequestedPolicyVersion,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -309,7 +301,7 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -365,8 +357,6 @@ class DeploymentsResource {
     core.bool preview,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -385,7 +375,7 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/deployments';
 
@@ -461,8 +451,6 @@ class DeploymentsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -483,7 +471,7 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/deployments';
 
@@ -550,8 +538,6 @@ class DeploymentsResource {
     core.bool preview,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -576,7 +562,7 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment');
@@ -622,8 +608,6 @@ class DeploymentsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -639,7 +623,7 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -686,8 +670,6 @@ class DeploymentsResource {
     core.String deployment, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -703,7 +685,7 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment') +
@@ -748,8 +730,6 @@ class DeploymentsResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -765,7 +745,7 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$resource') +
@@ -835,8 +815,6 @@ class DeploymentsResource {
     core.bool preview,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -861,7 +839,7 @@ class DeploymentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment');
@@ -911,8 +889,6 @@ class ManifestsResource {
     core.String manifest, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -927,7 +903,7 @@ class ManifestsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment') +
@@ -1009,8 +985,6 @@ class ManifestsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1034,7 +1008,7 @@ class ManifestsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment') +
@@ -1080,8 +1054,6 @@ class OperationsResource {
     core.String operation, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1093,7 +1065,7 @@ class OperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/operations/' +
         commons.Escaper.ecapeVariable('$operation');
@@ -1169,8 +1141,6 @@ class OperationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1191,7 +1161,7 @@ class OperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/operations';
 
@@ -1239,8 +1209,6 @@ class ResourcesResource {
     core.String resource, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1255,7 +1223,7 @@ class ResourcesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment') +
@@ -1337,8 +1305,6 @@ class ResourcesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1362,7 +1328,7 @@ class ResourcesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/deployments/' +
         commons.Escaper.ecapeVariable('$deployment') +
@@ -1446,8 +1412,6 @@ class TypesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -1468,7 +1432,7 @@ class TypesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'deploymentmanager/v2/projects/' +
+    final _url = 'deploymentmanager/v2/projects/' +
         commons.Escaper.ecapeVariable('$project') +
         '/global/types';
 

@@ -97,8 +97,6 @@ class GoogleServiceAccountsResource {
     core.String projectId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
@@ -107,7 +105,7 @@ class GoogleServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/googleServiceAccounts/' +
+    final _url = 'v1/googleServiceAccounts/' +
         commons.Escaper.ecapeVariable('$projectId');
 
     final _response = await _requester.request(
@@ -145,8 +143,6 @@ class TransferJobsResource {
     TransferJob request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -156,7 +152,7 @@ class TransferJobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/transferJobs';
+    const _url = 'v1/transferJobs';
 
     final _response = await _requester.request(
       _url,
@@ -193,8 +189,6 @@ class TransferJobsResource {
     core.String projectId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (jobName == null) {
       throw core.ArgumentError('Parameter jobName is required.');
     }
@@ -207,7 +201,7 @@ class TransferJobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$jobName');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$jobName');
 
     final _response = await _requester.request(
       _url,
@@ -251,8 +245,6 @@ class TransferJobsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (filter == null) {
       throw core.ArgumentError('Parameter filter is required.');
@@ -268,7 +260,7 @@ class TransferJobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/transferJobs';
+    const _url = 'v1/transferJobs';
 
     final _response = await _requester.request(
       _url,
@@ -308,8 +300,6 @@ class TransferJobsResource {
     core.String jobName, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -322,7 +312,7 @@ class TransferJobsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$jobName');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$jobName');
 
     final _response = await _requester.request(
       _url,
@@ -382,8 +372,6 @@ class TransferOperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -396,7 +384,8 @@ class TransferOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':cancel';
 
     final _response = await _requester.request(
       _url,
@@ -431,8 +420,6 @@ class TransferOperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -441,7 +428,7 @@ class TransferOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -490,8 +477,6 @@ class TransferOperationsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
@@ -510,7 +495,7 @@ class TransferOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
+    final _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name');
 
     final _response = await _requester.request(
       _url,
@@ -545,8 +530,6 @@ class TransferOperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -559,7 +542,8 @@ class TransferOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':pause';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':pause';
 
     final _response = await _requester.request(
       _url,
@@ -594,8 +578,6 @@ class TransferOperationsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -608,7 +590,8 @@ class TransferOperationsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':resume';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':resume';
 
     final _response = await _requester.request(
       _url,

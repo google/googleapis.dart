@@ -125,8 +125,6 @@ class AccountsResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -135,7 +133,8 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -165,8 +164,6 @@ class AccountsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
@@ -175,7 +172,7 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/accounts';
+    const _url = 'tagmanager/v2/accounts';
 
     final _response = await _requester.request(
       _url,
@@ -214,8 +211,6 @@ class AccountsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -231,7 +226,8 @@ class AccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -282,8 +278,6 @@ class AccountsContainersResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -296,7 +290,7 @@ class AccountsContainersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/containers';
 
@@ -329,8 +323,6 @@ class AccountsContainersResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -339,7 +331,8 @@ class AccountsContainersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     await _requester.request(
       _url,
@@ -371,8 +364,6 @@ class AccountsContainersResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -381,7 +372,8 @@ class AccountsContainersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -416,8 +408,6 @@ class AccountsContainersResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -429,7 +419,7 @@ class AccountsContainersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/containers';
 
@@ -471,8 +461,6 @@ class AccountsContainersResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -488,7 +476,8 @@ class AccountsContainersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -531,8 +520,6 @@ class AccountsContainersEnvironmentsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -545,7 +532,7 @@ class AccountsContainersEnvironmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/environments';
 
@@ -580,8 +567,6 @@ class AccountsContainersEnvironmentsResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -590,7 +575,8 @@ class AccountsContainersEnvironmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     await _requester.request(
       _url,
@@ -623,8 +609,6 @@ class AccountsContainersEnvironmentsResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -633,7 +617,8 @@ class AccountsContainersEnvironmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -669,8 +654,6 @@ class AccountsContainersEnvironmentsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -682,7 +665,7 @@ class AccountsContainersEnvironmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/environments';
 
@@ -721,8 +704,6 @@ class AccountsContainersEnvironmentsResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -735,7 +716,7 @@ class AccountsContainersEnvironmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         ':reauthorize';
 
@@ -779,8 +760,6 @@ class AccountsContainersEnvironmentsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -796,7 +775,8 @@ class AccountsContainersEnvironmentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -837,8 +817,6 @@ class AccountsContainersVersionHeadersResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -847,7 +825,7 @@ class AccountsContainersVersionHeadersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/version_headers:latest';
 
@@ -888,8 +866,6 @@ class AccountsContainersVersionHeadersResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -904,7 +880,7 @@ class AccountsContainersVersionHeadersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/version_headers';
 
@@ -945,8 +921,6 @@ class AccountsContainersVersionsResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -955,7 +929,8 @@ class AccountsContainersVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     await _requester.request(
       _url,
@@ -992,8 +967,6 @@ class AccountsContainersVersionsResource {
     core.String containerVersionId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -1005,7 +978,8 @@ class AccountsContainersVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -1038,8 +1012,6 @@ class AccountsContainersVersionsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1048,7 +1020,7 @@ class AccountsContainersVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/versions:live';
 
@@ -1088,8 +1060,6 @@ class AccountsContainersVersionsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -1101,7 +1071,7 @@ class AccountsContainersVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         ':publish';
 
@@ -1138,8 +1108,6 @@ class AccountsContainersVersionsResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -1148,7 +1116,7 @@ class AccountsContainersVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         ':set_latest';
 
@@ -1184,8 +1152,6 @@ class AccountsContainersVersionsResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -1194,7 +1160,7 @@ class AccountsContainersVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         ':undelete';
 
@@ -1237,8 +1203,6 @@ class AccountsContainersVersionsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1254,7 +1218,8 @@ class AccountsContainersVersionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -1313,8 +1278,6 @@ class AccountsContainersWorkspacesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1327,7 +1290,7 @@ class AccountsContainersWorkspacesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/workspaces';
 
@@ -1368,8 +1331,6 @@ class AccountsContainersWorkspacesResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1382,7 +1343,7 @@ class AccountsContainersWorkspacesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         ':create_version';
 
@@ -1417,8 +1378,6 @@ class AccountsContainersWorkspacesResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -1427,7 +1386,8 @@ class AccountsContainersWorkspacesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     await _requester.request(
       _url,
@@ -1460,8 +1420,6 @@ class AccountsContainersWorkspacesResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -1470,7 +1428,8 @@ class AccountsContainersWorkspacesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -1503,8 +1462,6 @@ class AccountsContainersWorkspacesResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -1513,7 +1470,7 @@ class AccountsContainersWorkspacesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         '/status';
 
@@ -1551,8 +1508,6 @@ class AccountsContainersWorkspacesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1564,7 +1519,7 @@ class AccountsContainersWorkspacesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/workspaces';
 
@@ -1601,8 +1556,6 @@ class AccountsContainersWorkspacesResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -1611,7 +1564,7 @@ class AccountsContainersWorkspacesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         ':quick_preview';
 
@@ -1653,8 +1606,6 @@ class AccountsContainersWorkspacesResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1670,7 +1621,7 @@ class AccountsContainersWorkspacesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         ':resolve_conflict';
 
@@ -1708,8 +1659,6 @@ class AccountsContainersWorkspacesResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -1718,7 +1667,7 @@ class AccountsContainersWorkspacesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         ':sync';
 
@@ -1761,8 +1710,6 @@ class AccountsContainersWorkspacesResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1778,7 +1725,8 @@ class AccountsContainersWorkspacesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -1823,8 +1771,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     core.List<core.String> type,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1836,7 +1782,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/built_in_variables';
 
@@ -1873,8 +1819,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     core.List<core.String> type,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -1886,7 +1830,8 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     await _requester.request(
       _url,
@@ -1922,8 +1867,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -1935,7 +1878,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/built_in_variables';
 
@@ -2085,8 +2028,6 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     core.String type,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -2098,7 +2039,7 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         '/built_in_variables:revert';
 
@@ -2144,8 +2085,6 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2158,7 +2097,7 @@ class AccountsContainersWorkspacesFoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/folders';
 
@@ -2192,8 +2131,6 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -2202,7 +2139,8 @@ class AccountsContainersWorkspacesFoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     await _requester.request(
       _url,
@@ -2238,8 +2176,6 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -2251,7 +2187,7 @@ class AccountsContainersWorkspacesFoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         ':entities';
 
@@ -2287,8 +2223,6 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -2297,7 +2231,8 @@ class AccountsContainersWorkspacesFoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -2333,8 +2268,6 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2346,7 +2279,7 @@ class AccountsContainersWorkspacesFoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/folders';
 
@@ -2392,8 +2325,6 @@ class AccountsContainersWorkspacesFoldersResource {
     core.List<core.String> variableId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2415,7 +2346,7 @@ class AccountsContainersWorkspacesFoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         ':move_entities_to_folder';
 
@@ -2455,8 +2386,6 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -2468,7 +2397,7 @@ class AccountsContainersWorkspacesFoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
@@ -2511,8 +2440,6 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2528,7 +2455,8 @@ class AccountsContainersWorkspacesFoldersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -2572,8 +2500,6 @@ class AccountsContainersWorkspacesTagsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2586,7 +2512,7 @@ class AccountsContainersWorkspacesTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/tags';
 
@@ -2620,8 +2546,6 @@ class AccountsContainersWorkspacesTagsResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -2630,7 +2554,8 @@ class AccountsContainersWorkspacesTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     await _requester.request(
       _url,
@@ -2663,8 +2588,6 @@ class AccountsContainersWorkspacesTagsResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -2673,7 +2596,8 @@ class AccountsContainersWorkspacesTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -2709,8 +2633,6 @@ class AccountsContainersWorkspacesTagsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -2722,7 +2644,7 @@ class AccountsContainersWorkspacesTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/tags';
 
@@ -2762,8 +2684,6 @@ class AccountsContainersWorkspacesTagsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -2775,7 +2695,7 @@ class AccountsContainersWorkspacesTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
@@ -2818,8 +2738,6 @@ class AccountsContainersWorkspacesTagsResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2835,7 +2753,8 @@ class AccountsContainersWorkspacesTagsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -2879,8 +2798,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2893,7 +2810,7 @@ class AccountsContainersWorkspacesTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/templates';
 
@@ -2928,8 +2845,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -2938,7 +2853,8 @@ class AccountsContainersWorkspacesTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     await _requester.request(
       _url,
@@ -2971,8 +2887,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -2981,7 +2895,8 @@ class AccountsContainersWorkspacesTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -3018,8 +2933,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -3031,7 +2944,7 @@ class AccountsContainersWorkspacesTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/templates';
 
@@ -3071,8 +2984,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -3084,7 +2995,7 @@ class AccountsContainersWorkspacesTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
@@ -3127,8 +3038,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3144,7 +3053,8 @@ class AccountsContainersWorkspacesTemplatesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -3189,8 +3099,6 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3203,7 +3111,7 @@ class AccountsContainersWorkspacesTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/triggers';
 
@@ -3237,8 +3145,6 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -3247,7 +3153,8 @@ class AccountsContainersWorkspacesTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     await _requester.request(
       _url,
@@ -3280,8 +3187,6 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -3290,7 +3195,8 @@ class AccountsContainersWorkspacesTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -3326,8 +3232,6 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -3339,7 +3243,7 @@ class AccountsContainersWorkspacesTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/triggers';
 
@@ -3379,8 +3283,6 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -3392,7 +3294,7 @@ class AccountsContainersWorkspacesTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
@@ -3435,8 +3337,6 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3452,7 +3352,8 @@ class AccountsContainersWorkspacesTriggersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -3496,8 +3397,6 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3510,7 +3409,7 @@ class AccountsContainersWorkspacesVariablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/variables';
 
@@ -3544,8 +3443,6 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -3554,7 +3451,8 @@ class AccountsContainersWorkspacesVariablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     await _requester.request(
       _url,
@@ -3587,8 +3485,6 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -3597,7 +3493,8 @@ class AccountsContainersWorkspacesVariablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -3633,8 +3530,6 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -3646,7 +3541,7 @@ class AccountsContainersWorkspacesVariablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/variables';
 
@@ -3686,8 +3581,6 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -3699,7 +3592,7 @@ class AccountsContainersWorkspacesVariablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
@@ -3742,8 +3635,6 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3759,7 +3650,8 @@ class AccountsContainersWorkspacesVariablesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -3803,8 +3695,6 @@ class AccountsContainersWorkspacesZonesResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -3817,7 +3707,7 @@ class AccountsContainersWorkspacesZonesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/zones';
 
@@ -3851,8 +3741,6 @@ class AccountsContainersWorkspacesZonesResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -3861,7 +3749,8 @@ class AccountsContainersWorkspacesZonesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     await _requester.request(
       _url,
@@ -3894,8 +3783,6 @@ class AccountsContainersWorkspacesZonesResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -3904,7 +3791,8 @@ class AccountsContainersWorkspacesZonesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -3940,8 +3828,6 @@ class AccountsContainersWorkspacesZonesResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -3953,7 +3839,7 @@ class AccountsContainersWorkspacesZonesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/zones';
 
@@ -3993,8 +3879,6 @@ class AccountsContainersWorkspacesZonesResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -4006,7 +3890,7 @@ class AccountsContainersWorkspacesZonesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$path') +
         ':revert';
 
@@ -4049,8 +3933,6 @@ class AccountsContainersWorkspacesZonesResource {
     core.String fingerprint,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4066,7 +3948,8 @@ class AccountsContainersWorkspacesZonesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -4108,8 +3991,6 @@ class AccountsUserPermissionsResource {
     core.String parent, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4122,7 +4003,7 @@ class AccountsUserPermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/user_permissions';
 
@@ -4157,8 +4038,6 @@ class AccountsUserPermissionsResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -4167,7 +4046,8 @@ class AccountsUserPermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     await _requester.request(
       _url,
@@ -4199,8 +4079,6 @@ class AccountsUserPermissionsResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -4209,7 +4087,8 @@ class AccountsUserPermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,
@@ -4246,8 +4125,6 @@ class AccountsUserPermissionsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
@@ -4259,7 +4136,7 @@ class AccountsUserPermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' +
+    final _url = 'tagmanager/v2/' +
         commons.Escaper.ecapeVariableReserved('$parent') +
         '/user_permissions';
 
@@ -4297,8 +4174,6 @@ class AccountsUserPermissionsResource {
     core.String path, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -4311,7 +4186,8 @@ class AccountsUserPermissionsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
+    final _url =
+        'tagmanager/v2/' + commons.Escaper.ecapeVariableReserved('$path');
 
     final _response = await _requester.request(
       _url,

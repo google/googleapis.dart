@@ -100,8 +100,6 @@ class PhotoResource {
     Photo request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -111,7 +109,7 @@ class PhotoResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/photo';
+    const _url = 'v1/photo';
 
     final _response = await _requester.request(
       _url,
@@ -147,8 +145,6 @@ class PhotoResource {
     core.String photoId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (photoId == null) {
       throw core.ArgumentError('Parameter photoId is required.');
     }
@@ -157,7 +153,7 @@ class PhotoResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$photoId');
+    final _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$photoId');
 
     final _response = await _requester.request(
       _url,
@@ -209,8 +205,6 @@ class PhotoResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (photoId == null) {
       throw core.ArgumentError('Parameter photoId is required.');
     }
@@ -225,7 +219,7 @@ class PhotoResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$photoId');
+    final _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$photoId');
 
     final _response = await _requester.request(
       _url,
@@ -267,8 +261,6 @@ class PhotoResource {
     Empty request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -278,7 +270,7 @@ class PhotoResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/photo:startUpload';
+    const _url = 'v1/photo:startUpload';
 
     final _response = await _requester.request(
       _url,
@@ -335,8 +327,6 @@ class PhotoResource {
     core.String updateMask,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -352,7 +342,7 @@ class PhotoResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$id');
+    final _url = 'v1/photo/' + commons.Escaper.ecapeVariable('$id');
 
     final _response = await _requester.request(
       _url,
@@ -396,8 +386,6 @@ class PhotosResource {
     BatchDeletePhotosRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -407,7 +395,7 @@ class PhotosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/photos:batchDelete';
+    const _url = 'v1/photos:batchDelete';
 
     final _response = await _requester.request(
       _url,
@@ -462,8 +450,6 @@ class PhotosResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (languageCode != null) {
       _queryParams['languageCode'] = [languageCode];
@@ -478,7 +464,7 @@ class PhotosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/photos:batchGet';
+    const _url = 'v1/photos:batchGet';
 
     final _response = await _requester.request(
       _url,
@@ -522,8 +508,6 @@ class PhotosResource {
     BatchUpdatePhotosRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -533,7 +517,7 @@ class PhotosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/photos:batchUpdate';
+    const _url = 'v1/photos:batchUpdate';
 
     final _response = await _requester.request(
       _url,
@@ -597,8 +581,6 @@ class PhotosResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
@@ -619,7 +601,7 @@ class PhotosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/photos';
+    const _url = 'v1/photos';
 
     final _response = await _requester.request(
       _url,

@@ -82,8 +82,6 @@ class ChallengeResource {
     Empty request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -93,7 +91,7 @@ class ChallengeResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/challenge';
+    const _url = 'v1/challenge';
 
     final _response = await _requester.request(
       _url,
@@ -124,8 +122,6 @@ class ChallengeResource {
     VerifyChallengeResponseRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -135,7 +131,7 @@ class ChallengeResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/challenge:verify';
+    const _url = 'v1/challenge:verify';
 
     final _response = await _requester.request(
       _url,

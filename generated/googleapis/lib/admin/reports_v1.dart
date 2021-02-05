@@ -275,8 +275,6 @@ class ActivitiesResource {
     core.String startTime,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
@@ -318,7 +316,7 @@ class ActivitiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'admin/reports/v1/activity/users/' +
+    final _url = 'admin/reports/v1/activity/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
         '/applications/' +
         commons.Escaper.ecapeVariable('$applicationName');
@@ -527,8 +525,6 @@ class ActivitiesResource {
     core.String startTime,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -574,7 +570,7 @@ class ActivitiesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'admin/reports/v1/activity/users/' +
+    final _url = 'admin/reports/v1/activity/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
         '/applications/' +
         commons.Escaper.ecapeVariable('$applicationName') +
@@ -613,8 +609,6 @@ class ChannelsResource {
     Channel request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -624,7 +618,7 @@ class ChannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'admin/reports_v1/channels/stop';
+    const _url = 'admin/reports_v1/channels/stop';
 
     await _requester.request(
       _url,
@@ -699,8 +693,6 @@ class CustomerUsageReportsResource {
     core.String parameters,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (date == null) {
       throw core.ArgumentError('Parameter date is required.');
     }
@@ -718,7 +710,7 @@ class CustomerUsageReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'admin/reports/v1/usage/dates/' +
+    final _url = 'admin/reports/v1/usage/dates/' +
         commons.Escaper.ecapeVariable('$date');
 
     final _response = await _requester.request(
@@ -833,8 +825,6 @@ class EntityUsageReportsResource {
     core.String parameters,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (entityType == null) {
       throw core.ArgumentError('Parameter entityType is required.');
     }
@@ -864,7 +854,7 @@ class EntityUsageReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'admin/reports/v1/usage/' +
+    final _url = 'admin/reports/v1/usage/' +
         commons.Escaper.ecapeVariable('$entityType') +
         '/' +
         commons.Escaper.ecapeVariable('$entityKey') +
@@ -989,8 +979,6 @@ class UserUsageReportResource {
     core.String parameters,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
     }
@@ -1023,7 +1011,7 @@ class UserUsageReportResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'admin/reports/v1/usage/users/' +
+    final _url = 'admin/reports/v1/usage/users/' +
         commons.Escaper.ecapeVariable('$userKey') +
         '/dates/' +
         commons.Escaper.ecapeVariable('$date');

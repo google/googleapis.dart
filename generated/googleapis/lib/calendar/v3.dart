@@ -113,8 +113,6 @@ class AclResource {
     core.String ruleId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -126,7 +124,7 @@ class AclResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' +
+    final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
         '/acl/' +
         commons.Escaper.ecapeVariable('$ruleId');
@@ -164,8 +162,6 @@ class AclResource {
     core.String ruleId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -177,7 +173,7 @@ class AclResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' +
+    final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
         '/acl/' +
         commons.Escaper.ecapeVariable('$ruleId');
@@ -219,8 +215,6 @@ class AclResource {
     core.bool sendNotifications,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -236,7 +230,8 @@ class AclResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
+    final _url =
+        'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
 
     final _response = await _requester.request(
       _url,
@@ -294,8 +289,6 @@ class AclResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -316,7 +309,8 @@ class AclResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
+    final _url =
+        'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/acl';
 
     final _response = await _requester.request(
       _url,
@@ -361,8 +355,6 @@ class AclResource {
     core.bool sendNotifications,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -381,7 +373,7 @@ class AclResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' +
+    final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
         '/acl/' +
         commons.Escaper.ecapeVariable('$ruleId');
@@ -428,8 +420,6 @@ class AclResource {
     core.bool sendNotifications,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -448,7 +438,7 @@ class AclResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' +
+    final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
         '/acl/' +
         commons.Escaper.ecapeVariable('$ruleId');
@@ -512,8 +502,6 @@ class AclResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -538,7 +526,7 @@ class AclResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' +
+    final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
         '/acl/watch';
 
@@ -577,8 +565,6 @@ class CalendarListResource {
     core.String calendarId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -587,7 +573,7 @@ class CalendarListResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
     await _requester.request(
@@ -620,8 +606,6 @@ class CalendarListResource {
     core.String calendarId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -630,7 +614,7 @@ class CalendarListResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
     final _response = await _requester.request(
@@ -668,8 +652,6 @@ class CalendarListResource {
     core.bool colorRgbFormat,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -682,7 +664,7 @@ class CalendarListResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'users/me/calendarList';
+    const _url = 'users/me/calendarList';
 
     final _response = await _requester.request(
       _url,
@@ -752,8 +734,6 @@ class CalendarListResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -777,7 +757,7 @@ class CalendarListResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'users/me/calendarList';
+    const _url = 'users/me/calendarList';
 
     final _response = await _requester.request(
       _url,
@@ -821,8 +801,6 @@ class CalendarListResource {
     core.bool colorRgbFormat,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -838,7 +816,7 @@ class CalendarListResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
     final _response = await _requester.request(
@@ -882,8 +860,6 @@ class CalendarListResource {
     core.bool colorRgbFormat,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -899,7 +875,7 @@ class CalendarListResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'users/me/calendarList/' + commons.Escaper.ecapeVariable('$calendarId');
 
     final _response = await _requester.request(
@@ -973,8 +949,6 @@ class CalendarListResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1002,7 +976,7 @@ class CalendarListResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'users/me/calendarList/watch';
+    const _url = 'users/me/calendarList/watch';
 
     final _response = await _requester.request(
       _url,
@@ -1042,8 +1016,6 @@ class CalendarsResource {
     core.String calendarId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -1052,7 +1024,7 @@ class CalendarsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/clear';
 
     await _requester.request(
@@ -1085,8 +1057,6 @@ class CalendarsResource {
     core.String calendarId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -1095,7 +1065,7 @@ class CalendarsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
+    final _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
     await _requester.request(
       _url,
@@ -1127,8 +1097,6 @@ class CalendarsResource {
     core.String calendarId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -1137,7 +1105,7 @@ class CalendarsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
+    final _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
     final _response = await _requester.request(
       _url,
@@ -1167,8 +1135,6 @@ class CalendarsResource {
     Calendar request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1178,7 +1144,7 @@ class CalendarsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars';
+    const _url = 'calendars';
 
     final _response = await _requester.request(
       _url,
@@ -1216,8 +1182,6 @@ class CalendarsResource {
     core.String calendarId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1230,7 +1194,7 @@ class CalendarsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
+    final _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
     final _response = await _requester.request(
       _url,
@@ -1266,8 +1230,6 @@ class CalendarsResource {
     core.String calendarId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1280,7 +1242,7 @@ class CalendarsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
+    final _url = 'calendars/' + commons.Escaper.ecapeVariable('$calendarId');
 
     final _response = await _requester.request(
       _url,
@@ -1315,8 +1277,6 @@ class ChannelsResource {
     Channel request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1326,7 +1286,7 @@ class ChannelsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'channels/stop';
+    const _url = 'channels/stop';
 
     await _requester.request(
       _url,
@@ -1360,14 +1320,12 @@ class ColorsResource {
   async.Future<Colors> get({
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'colors';
+    const _url = 'colors';
 
     final _response = await _requester.request(
       _url,
@@ -1424,8 +1382,6 @@ class EventsResource {
     core.String sendUpdates,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -1443,7 +1399,7 @@ class EventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' +
+    final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
         '/events/' +
         commons.Escaper.ecapeVariable('$eventId');
@@ -1496,8 +1452,6 @@ class EventsResource {
     core.String timeZone,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -1518,7 +1472,7 @@ class EventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' +
+    final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
         '/events/' +
         commons.Escaper.ecapeVariable('$eventId');
@@ -1571,8 +1525,6 @@ class EventsResource {
     core.bool supportsAttachments,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1591,7 +1543,7 @@ class EventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' +
+    final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
         '/events/import';
 
@@ -1665,8 +1617,6 @@ class EventsResource {
     core.bool supportsAttachments,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1694,7 +1644,7 @@ class EventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
 
     final _response = await _requester.request(
@@ -1774,8 +1724,6 @@ class EventsResource {
     core.String timeZone,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -1814,7 +1762,7 @@ class EventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' +
+    final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
         '/events/' +
         commons.Escaper.ecapeVariable('$eventId') +
@@ -1968,8 +1916,6 @@ class EventsResource {
     core.DateTime updatedMin,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -2029,7 +1975,7 @@ class EventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'calendars/' + commons.Escaper.ecapeVariable('$calendarId') + '/events';
 
     final _response = await _requester.request(
@@ -2086,8 +2032,6 @@ class EventsResource {
     core.String sendUpdates,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -2109,7 +2053,7 @@ class EventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' +
+    final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
         '/events/' +
         commons.Escaper.ecapeVariable('$eventId') +
@@ -2194,8 +2138,6 @@ class EventsResource {
     core.bool supportsAttachments,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2229,7 +2171,7 @@ class EventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' +
+    final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
         '/events/' +
         commons.Escaper.ecapeVariable('$eventId');
@@ -2286,8 +2228,6 @@ class EventsResource {
     core.String sendUpdates,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
@@ -2306,7 +2246,7 @@ class EventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' +
+    final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
         '/events/quickAdd';
 
@@ -2387,8 +2327,6 @@ class EventsResource {
     core.bool supportsAttachments,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2422,7 +2360,7 @@ class EventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' +
+    final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
         '/events/' +
         commons.Escaper.ecapeVariable('$eventId');
@@ -2579,8 +2517,6 @@ class EventsResource {
     core.DateTime updatedMin,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2644,7 +2580,7 @@ class EventsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'calendars/' +
+    final _url = 'calendars/' +
         commons.Escaper.ecapeVariable('$calendarId') +
         '/events/watch';
 
@@ -2683,8 +2619,6 @@ class FreebusyResource {
     FreeBusyRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2694,7 +2628,7 @@ class FreebusyResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'freeBusy';
+    const _url = 'freeBusy';
 
     final _response = await _requester.request(
       _url,
@@ -2732,8 +2666,6 @@ class SettingsResource {
     core.String setting, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (setting == null) {
       throw core.ArgumentError('Parameter setting is required.');
     }
@@ -2742,7 +2674,8 @@ class SettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'users/me/settings/' + commons.Escaper.ecapeVariable('$setting');
+    final _url =
+        'users/me/settings/' + commons.Escaper.ecapeVariable('$setting');
 
     final _response = await _requester.request(
       _url,
@@ -2787,8 +2720,6 @@ class SettingsResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
@@ -2803,7 +2734,7 @@ class SettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'users/me/settings';
+    const _url = 'users/me/settings';
 
     final _response = await _requester.request(
       _url,
@@ -2851,8 +2782,6 @@ class SettingsResource {
     core.String syncToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2871,7 +2800,7 @@ class SettingsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'users/me/settings/watch';
+    const _url = 'users/me/settings/watch';
 
     final _response = await _requester.request(
       _url,

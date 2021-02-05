@@ -110,8 +110,6 @@ class DocumentsResource {
     core.String documentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -124,7 +122,7 @@ class DocumentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/documents/' +
+    final _url = 'v1/documents/' +
         commons.Escaper.ecapeVariable('$documentId') +
         ':batchUpdate';
 
@@ -161,8 +159,6 @@ class DocumentsResource {
     Document request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -172,7 +168,7 @@ class DocumentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/documents';
+    const _url = 'v1/documents';
 
     final _response = await _requester.request(
       _url,
@@ -225,8 +221,6 @@ class DocumentsResource {
     core.String suggestionsViewMode,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (documentId == null) {
       throw core.ArgumentError('Parameter documentId is required.');
     }
@@ -238,7 +232,7 @@ class DocumentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/documents/' + commons.Escaper.ecapeVariable('$documentId');
+    final _url = 'v1/documents/' + commons.Escaper.ecapeVariable('$documentId');
 
     final _response = await _requester.request(
       _url,

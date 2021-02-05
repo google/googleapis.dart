@@ -126,8 +126,6 @@ class AccountReportsResource {
     core.int startDate_year,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (endDate_day != null) {
       _queryParams['endDate.day'] = ['${endDate_day}'];
@@ -160,7 +158,7 @@ class AccountReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/accountReports:search';
+    const _url = 'v1/accountReports:search';
 
     final _response = await _requester.request(
       _url,
@@ -247,8 +245,6 @@ class DetailedLeadReportsResource {
     core.int startDate_year,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (endDate_day != null) {
       _queryParams['endDate.day'] = ['${endDate_day}'];
@@ -281,7 +277,7 @@ class DetailedLeadReportsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/detailedLeadReports:search';
+    const _url = 'v1/detailedLeadReports:search';
 
     final _response = await _requester.request(
       _url,

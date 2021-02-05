@@ -105,8 +105,6 @@ class BlogUserInfosResource {
     core.int maxPosts,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -121,7 +119,7 @@ class BlogUserInfosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/users/' +
+    final _url = 'v3/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/blogs/' +
         commons.Escaper.ecapeVariable('$blogId');
@@ -172,8 +170,6 @@ class BlogsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -188,7 +184,7 @@ class BlogsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId');
+    final _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId');
 
     final _response = await _requester.request(
       _url,
@@ -226,8 +222,6 @@ class BlogsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (url == null) {
       throw core.ArgumentError('Parameter url is required.');
@@ -240,7 +234,7 @@ class BlogsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/byurl';
+    const _url = 'v3/blogs/byurl';
 
     final _response = await _requester.request(
       _url,
@@ -287,8 +281,6 @@ class BlogsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -309,7 +301,8 @@ class BlogsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs';
+    final _url =
+        'v3/users/' + commons.Escaper.ecapeVariable('$userId') + '/blogs';
 
     final _response = await _requester.request(
       _url,
@@ -351,8 +344,6 @@ class CommentsResource {
     core.String commentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -367,7 +358,7 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId') +
@@ -407,8 +398,6 @@ class CommentsResource {
     core.String commentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -423,7 +412,7 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId') +
@@ -472,8 +461,6 @@ class CommentsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -491,7 +478,7 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId') +
@@ -560,8 +547,6 @@ class CommentsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -594,7 +579,7 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId') +
@@ -647,8 +632,6 @@ class CommentsResource {
     core.List<core.String> status,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -675,7 +658,8 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/comments';
+    final _url =
+        'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/comments';
 
     final _response = await _requester.request(
       _url,
@@ -712,8 +696,6 @@ class CommentsResource {
     core.String commentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -728,7 +710,7 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId') +
@@ -770,8 +752,6 @@ class CommentsResource {
     core.String commentId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -786,7 +766,7 @@ class CommentsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId') +
@@ -831,8 +811,6 @@ class PageViewsResource {
     core.List<core.String> range,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -844,7 +822,7 @@ class PageViewsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url =
+    final _url =
         'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pageviews';
 
     final _response = await _requester.request(
@@ -882,8 +860,6 @@ class PagesResource {
     core.String pageId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -895,7 +871,7 @@ class PagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
@@ -939,8 +915,6 @@ class PagesResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -955,7 +929,7 @@ class PagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
@@ -994,8 +968,6 @@ class PagesResource {
     core.bool isDraft,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1011,7 +983,8 @@ class PagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
+    final _url =
+        'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
 
     final _response = await _requester.request(
       _url,
@@ -1062,8 +1035,6 @@ class PagesResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -1087,7 +1058,8 @@ class PagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
+    final _url =
+        'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/pages';
 
     final _response = await _requester.request(
       _url,
@@ -1129,8 +1101,6 @@ class PagesResource {
     core.bool revert_1,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1152,7 +1122,7 @@ class PagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
@@ -1189,8 +1159,6 @@ class PagesResource {
     core.String pageId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -1202,7 +1170,7 @@ class PagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId') +
@@ -1239,8 +1207,6 @@ class PagesResource {
     core.String pageId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -1252,7 +1218,7 @@ class PagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId') +
@@ -1298,8 +1264,6 @@ class PagesResource {
     core.bool revert_1,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1321,7 +1285,7 @@ class PagesResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/pages/' +
         commons.Escaper.ecapeVariable('$pageId');
@@ -1370,8 +1334,6 @@ class PostUserInfosResource {
     core.int maxComments,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -1389,7 +1351,7 @@ class PostUserInfosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/users/' +
+    final _url = 'v3/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -1464,8 +1426,6 @@ class PostUserInfosResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -1504,7 +1464,7 @@ class PostUserInfosResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/users/' +
+    final _url = 'v3/users/' +
         commons.Escaper.ecapeVariable('$userId') +
         '/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
@@ -1546,8 +1506,6 @@ class PostsResource {
     core.String postId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -1559,7 +1517,7 @@ class PostsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
@@ -1612,8 +1570,6 @@ class PostsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -1637,7 +1593,7 @@ class PostsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
@@ -1684,8 +1640,6 @@ class PostsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -1704,7 +1658,7 @@ class PostsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/bypath';
 
@@ -1748,8 +1702,6 @@ class PostsResource {
     core.bool isDraft,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1771,7 +1723,8 @@ class PostsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
+    final _url =
+        'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
 
     final _response = await _requester.request(
       _url,
@@ -1841,8 +1794,6 @@ class PostsResource {
     core.String view,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -1881,7 +1832,8 @@ class PostsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
+    final _url =
+        'v3/blogs/' + commons.Escaper.ecapeVariable('$blogId') + '/posts';
 
     final _response = await _requester.request(
       _url,
@@ -1932,8 +1884,6 @@ class PostsResource {
     core.bool revert_1,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -1964,7 +1914,7 @@ class PostsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
@@ -2004,8 +1954,6 @@ class PostsResource {
     core.String publishDate,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -2020,7 +1968,7 @@ class PostsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId') +
@@ -2057,8 +2005,6 @@ class PostsResource {
     core.String postId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -2070,7 +2016,7 @@ class PostsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId') +
@@ -2117,8 +2063,6 @@ class PostsResource {
     core.String orderBy,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
@@ -2137,7 +2081,7 @@ class PostsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/search';
 
@@ -2190,8 +2134,6 @@ class PostsResource {
     core.bool revert_1,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -2222,7 +2164,7 @@ class PostsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/blogs/' +
+    final _url = 'v3/blogs/' +
         commons.Escaper.ecapeVariable('$blogId') +
         '/posts/' +
         commons.Escaper.ecapeVariable('$postId');
@@ -2262,8 +2204,6 @@ class UsersResource {
     core.String userId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
@@ -2272,7 +2212,7 @@ class UsersResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v3/users/' + commons.Escaper.ecapeVariable('$userId');
+    final _url = 'v3/users/' + commons.Escaper.ecapeVariable('$userId');
 
     final _response = await _requester.request(
       _url,

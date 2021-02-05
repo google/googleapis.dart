@@ -312,8 +312,6 @@ class CseResource {
     core.int start,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (c2coff != null) {
       _queryParams['c2coff'] = [c2coff];
@@ -412,7 +410,7 @@ class CseResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'customsearch/v1';
+    const _url = 'customsearch/v1';
 
     final _response = await _requester.request(
       _url,
@@ -683,8 +681,6 @@ class CseSiterestrictResource {
     core.int start,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (c2coff != null) {
       _queryParams['c2coff'] = [c2coff];
@@ -783,7 +779,7 @@ class CseSiterestrictResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'customsearch/v1/siterestrict';
+    const _url = 'customsearch/v1/siterestrict';
 
     final _response = await _requester.request(
       _url,

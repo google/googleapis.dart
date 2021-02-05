@@ -84,8 +84,6 @@ class AlertsResource {
     BatchDeleteAlertsRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -95,7 +93,7 @@ class AlertsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta1/alerts:batchDelete';
+    const _url = 'v1beta1/alerts:batchDelete';
 
     final _response = await _requester.request(
       _url,
@@ -127,8 +125,6 @@ class AlertsResource {
     BatchUndeleteAlertsRequest request, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -138,7 +134,7 @@ class AlertsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta1/alerts:batchUndelete';
+    const _url = 'v1beta1/alerts:batchUndelete';
 
     final _response = await _requester.request(
       _url,
@@ -180,8 +176,6 @@ class AlertsResource {
     core.String customerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
     }
@@ -193,7 +187,7 @@ class AlertsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta1/alerts/' + commons.Escaper.ecapeVariable('$alertId');
+    final _url = 'v1beta1/alerts/' + commons.Escaper.ecapeVariable('$alertId');
 
     final _response = await _requester.request(
       _url,
@@ -230,8 +224,6 @@ class AlertsResource {
     core.String customerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
     }
@@ -243,7 +235,7 @@ class AlertsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta1/alerts/' + commons.Escaper.ecapeVariable('$alertId');
+    final _url = 'v1beta1/alerts/' + commons.Escaper.ecapeVariable('$alertId');
 
     final _response = await _requester.request(
       _url,
@@ -282,8 +274,6 @@ class AlertsResource {
     core.String customerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
     }
@@ -295,7 +285,7 @@ class AlertsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta1/alerts/' +
+    final _url = 'v1beta1/alerts/' +
         commons.Escaper.ecapeVariable('$alertId') +
         '/metadata';
 
@@ -354,8 +344,6 @@ class AlertsResource {
     core.String pageToken,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
@@ -376,7 +364,7 @@ class AlertsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta1/alerts';
+    const _url = 'v1beta1/alerts';
 
     final _response = await _requester.request(
       _url,
@@ -416,8 +404,6 @@ class AlertsResource {
     core.String alertId, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -430,7 +416,7 @@ class AlertsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta1/alerts/' +
+    final _url = 'v1beta1/alerts/' +
         commons.Escaper.ecapeVariable('$alertId') +
         ':undelete';
 
@@ -482,8 +468,6 @@ class AlertsFeedbackResource {
     core.String customerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -499,7 +483,7 @@ class AlertsFeedbackResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta1/alerts/' +
+    final _url = 'v1beta1/alerts/' +
         commons.Escaper.ecapeVariable('$alertId') +
         '/feedback';
 
@@ -549,8 +533,6 @@ class AlertsFeedbackResource {
     core.String filter,
     core.String $fields,
   }) async {
-    core.String _url;
-
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
     }
@@ -565,7 +547,7 @@ class AlertsFeedbackResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta1/alerts/' +
+    final _url = 'v1beta1/alerts/' +
         commons.Escaper.ecapeVariable('$alertId') +
         '/feedback';
 
@@ -606,8 +588,6 @@ class V1beta1Resource {
     core.String customerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
@@ -616,7 +596,7 @@ class V1beta1Resource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta1/settings';
+    const _url = 'v1beta1/settings';
 
     final _response = await _requester.request(
       _url,
@@ -651,8 +631,6 @@ class V1beta1Resource {
     core.String customerId,
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -665,7 +643,7 @@ class V1beta1Resource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1beta1/settings';
+    const _url = 'v1beta1/settings';
 
     final _response = await _requester.request(
       _url,

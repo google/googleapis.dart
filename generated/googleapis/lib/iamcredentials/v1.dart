@@ -101,8 +101,6 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -115,7 +113,7 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':generateAccessToken';
 
@@ -156,8 +154,6 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -170,7 +166,7 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' +
+    final _url = 'v1/' +
         commons.Escaper.ecapeVariableReserved('$name') +
         ':generateIdToken';
 
@@ -211,8 +207,6 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -225,7 +219,8 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signBlob';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signBlob';
 
     final _response = await _requester.request(
       _url,
@@ -264,8 +259,6 @@ class ProjectsServiceAccountsResource {
     core.String name, {
     core.String $fields,
   }) async {
-    core.String _url;
-
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
@@ -278,7 +271,8 @@ class ProjectsServiceAccountsResource {
       _queryParams['fields'] = [$fields];
     }
 
-    _url = 'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signJwt';
+    final _url =
+        'v1/' + commons.Escaper.ecapeVariableReserved('$name') + ':signJwt';
 
     final _response = await _requester.request(
       _url,
