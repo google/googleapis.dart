@@ -157,8 +157,8 @@ class AboutResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (includeSubscribed != null) {
       _queryParams['includeSubscribed'] = ['${includeSubscribed}'];
     }
@@ -209,11 +209,11 @@ class AppsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appId == null) {
       throw core.ArgumentError('Parameter appId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -265,8 +265,8 @@ class AppsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (appFilterExtensions != null) {
       _queryParams['appFilterExtensions'] = [appFilterExtensions];
     }
@@ -331,11 +331,11 @@ class ChangesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (changeId == null) {
       throw core.ArgumentError('Parameter changeId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (driveId != null) {
       _queryParams['driveId'] = [driveId];
     }
@@ -394,8 +394,8 @@ class ChangesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (driveId != null) {
       _queryParams['driveId'] = [driveId];
     }
@@ -500,8 +500,8 @@ class ChangesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (driveId != null) {
       _queryParams['driveId'] = [driveId];
     }
@@ -641,12 +641,12 @@ class ChangesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (driveId != null) {
       _queryParams['driveId'] = [driveId];
     }
@@ -731,12 +731,12 @@ class ChannelsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -785,7 +785,6 @@ class ChildrenResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
@@ -793,6 +792,7 @@ class ChildrenResource {
     if (childId == null) {
       throw core.ArgumentError('Parameter childId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (enforceSingleParent != null) {
       _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
     }
@@ -837,7 +837,6 @@ class ChildrenResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
@@ -845,6 +844,7 @@ class ChildrenResource {
     if (childId == null) {
       throw core.ArgumentError('Parameter childId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -898,7 +898,6 @@ class ChildrenResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -907,6 +906,7 @@ class ChildrenResource {
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (enforceSingleParent != null) {
       _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
     }
@@ -972,11 +972,11 @@ class ChildrenResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -1031,7 +1031,6 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -1039,6 +1038,7 @@ class CommentsResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1084,7 +1084,6 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -1092,6 +1091,7 @@ class CommentsResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (includeDeleted != null) {
       _queryParams['includeDeleted'] = ['${includeDeleted}'];
     }
@@ -1136,7 +1136,6 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1145,6 +1144,7 @@ class CommentsResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1199,11 +1199,11 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (includeDeleted != null) {
       _queryParams['includeDeleted'] = ['${includeDeleted}'];
     }
@@ -1258,7 +1258,6 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1270,6 +1269,7 @@ class CommentsResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1315,7 +1315,6 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1327,6 +1326,7 @@ class CommentsResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1372,11 +1372,11 @@ class DrivesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1417,11 +1417,11 @@ class DrivesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (useDomainAdminAccess != null) {
       _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
     }
@@ -1460,11 +1460,11 @@ class DrivesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1507,12 +1507,12 @@ class DrivesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (requestId == null) {
       throw core.ArgumentError('Parameter requestId is required.');
     }
@@ -1565,8 +1565,8 @@ class DrivesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -1614,11 +1614,11 @@ class DrivesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1662,7 +1662,6 @@ class DrivesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1671,6 +1670,7 @@ class DrivesResource {
     if (driveId == null) {
       throw core.ArgumentError('Parameter driveId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (useDomainAdminAccess != null) {
       _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
     }
@@ -1765,7 +1765,6 @@ class FilesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1774,6 +1773,7 @@ class FilesResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (convert != null) {
       _queryParams['convert'] = ['${convert}'];
     }
@@ -1856,11 +1856,11 @@ class FilesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (enforceSingleParent != null) {
       _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
     }
@@ -1905,8 +1905,8 @@ class FilesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (enforceSingleParent != null) {
       _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
     }
@@ -1954,11 +1954,11 @@ class FilesResource {
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (mimeType == null) {
       throw core.ArgumentError('Parameter mimeType is required.');
     }
@@ -2010,8 +2010,8 @@ class FilesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -2093,11 +2093,11 @@ class FilesResource {
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (acknowledgeAbuse != null) {
       _queryParams['acknowledgeAbuse'] = ['${acknowledgeAbuse}'];
     }
@@ -2216,12 +2216,12 @@ class FilesResource {
     commons.Media uploadMedia,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (convert != null) {
       _queryParams['convert'] = ['${convert}'];
     }
@@ -2373,8 +2373,8 @@ class FilesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (corpora != null) {
       _queryParams['corpora'] = [corpora];
     }
@@ -2544,7 +2544,6 @@ class FilesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2553,6 +2552,7 @@ class FilesResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (addParents != null) {
       _queryParams['addParents'] = [addParents];
     }
@@ -2653,11 +2653,11 @@ class FilesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (includePermissionsForView != null) {
       _queryParams['includePermissionsForView'] = [includePermissionsForView];
     }
@@ -2720,11 +2720,11 @@ class FilesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (includePermissionsForView != null) {
       _queryParams['includePermissionsForView'] = [includePermissionsForView];
     }
@@ -2784,11 +2784,11 @@ class FilesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (includePermissionsForView != null) {
       _queryParams['includePermissionsForView'] = [includePermissionsForView];
     }
@@ -2926,7 +2926,6 @@ class FilesResource {
     commons.Media uploadMedia,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2935,6 +2934,7 @@ class FilesResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (addParents != null) {
       _queryParams['addParents'] = [addParents];
     }
@@ -3076,7 +3076,6 @@ class FilesResource {
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3085,6 +3084,7 @@ class FilesResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (acknowledgeAbuse != null) {
       _queryParams['acknowledgeAbuse'] = ['${acknowledgeAbuse}'];
     }
@@ -3160,7 +3160,6 @@ class ParentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -3168,6 +3167,7 @@ class ParentsResource {
     if (parentId == null) {
       throw core.ArgumentError('Parameter parentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (enforceSingleParent != null) {
       _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
     }
@@ -3212,7 +3212,6 @@ class ParentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -3220,6 +3219,7 @@ class ParentsResource {
     if (parentId == null) {
       throw core.ArgumentError('Parameter parentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3273,7 +3273,6 @@ class ParentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3282,6 +3281,7 @@ class ParentsResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (enforceSingleParent != null) {
       _queryParams['enforceSingleParent'] = ['${enforceSingleParent}'];
     }
@@ -3328,11 +3328,11 @@ class ParentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3389,7 +3389,6 @@ class PermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -3397,6 +3396,7 @@ class PermissionsResource {
     if (permissionId == null) {
       throw core.ArgumentError('Parameter permissionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (supportsAllDrives != null) {
       _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
     }
@@ -3460,7 +3460,6 @@ class PermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -3468,6 +3467,7 @@ class PermissionsResource {
     if (permissionId == null) {
       throw core.ArgumentError('Parameter permissionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (supportsAllDrives != null) {
       _queryParams['supportsAllDrives'] = ['${supportsAllDrives}'];
     }
@@ -3516,11 +3516,11 @@ class PermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (email == null) {
       throw core.ArgumentError('Parameter email is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3592,7 +3592,6 @@ class PermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3601,6 +3600,7 @@ class PermissionsResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (emailMessage != null) {
       _queryParams['emailMessage'] = [emailMessage];
     }
@@ -3688,11 +3688,11 @@ class PermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (includePermissionsForView != null) {
       _queryParams['includePermissionsForView'] = [includePermissionsForView];
     }
@@ -3774,7 +3774,6 @@ class PermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3786,6 +3785,7 @@ class PermissionsResource {
     if (permissionId == null) {
       throw core.ArgumentError('Parameter permissionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (removeExpiration != null) {
       _queryParams['removeExpiration'] = ['${removeExpiration}'];
     }
@@ -3868,7 +3868,6 @@ class PermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3880,6 +3879,7 @@ class PermissionsResource {
     if (permissionId == null) {
       throw core.ArgumentError('Parameter permissionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (removeExpiration != null) {
       _queryParams['removeExpiration'] = ['${removeExpiration}'];
     }
@@ -3945,7 +3945,6 @@ class PropertiesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -3953,6 +3952,7 @@ class PropertiesResource {
     if (propertyKey == null) {
       throw core.ArgumentError('Parameter propertyKey is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (visibility != null) {
       _queryParams['visibility'] = [visibility];
     }
@@ -4000,7 +4000,6 @@ class PropertiesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -4008,6 +4007,7 @@ class PropertiesResource {
     if (propertyKey == null) {
       throw core.ArgumentError('Parameter propertyKey is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (visibility != null) {
       _queryParams['visibility'] = [visibility];
     }
@@ -4052,7 +4052,6 @@ class PropertiesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4061,6 +4060,7 @@ class PropertiesResource {
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4097,11 +4097,11 @@ class PropertiesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4148,7 +4148,6 @@ class PropertiesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4160,6 +4159,7 @@ class PropertiesResource {
     if (propertyKey == null) {
       throw core.ArgumentError('Parameter propertyKey is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (visibility != null) {
       _queryParams['visibility'] = [visibility];
     }
@@ -4212,7 +4212,6 @@ class PropertiesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4224,6 +4223,7 @@ class PropertiesResource {
     if (propertyKey == null) {
       throw core.ArgumentError('Parameter propertyKey is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (visibility != null) {
       _queryParams['visibility'] = [visibility];
     }
@@ -4276,7 +4276,6 @@ class RepliesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -4287,6 +4286,7 @@ class RepliesResource {
     if (replyId == null) {
       throw core.ArgumentError('Parameter replyId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4337,7 +4337,6 @@ class RepliesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -4348,6 +4347,7 @@ class RepliesResource {
     if (replyId == null) {
       throw core.ArgumentError('Parameter replyId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (includeDeleted != null) {
       _queryParams['includeDeleted'] = ['${includeDeleted}'];
     }
@@ -4398,7 +4398,6 @@ class RepliesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4410,6 +4409,7 @@ class RepliesResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4468,7 +4468,6 @@ class RepliesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -4476,6 +4475,7 @@ class RepliesResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (includeDeleted != null) {
       _queryParams['includeDeleted'] = ['${includeDeleted}'];
     }
@@ -4534,7 +4534,6 @@ class RepliesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4549,6 +4548,7 @@ class RepliesResource {
     if (replyId == null) {
       throw core.ArgumentError('Parameter replyId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4600,7 +4600,6 @@ class RepliesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4615,6 +4614,7 @@ class RepliesResource {
     if (replyId == null) {
       throw core.ArgumentError('Parameter replyId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4668,7 +4668,6 @@ class RevisionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -4676,6 +4675,7 @@ class RevisionsResource {
     if (revisionId == null) {
       throw core.ArgumentError('Parameter revisionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4717,7 +4717,6 @@ class RevisionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
@@ -4725,6 +4724,7 @@ class RevisionsResource {
     if (revisionId == null) {
       throw core.ArgumentError('Parameter revisionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4772,11 +4772,11 @@ class RevisionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (fileId == null) {
       throw core.ArgumentError('Parameter fileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -4825,7 +4825,6 @@ class RevisionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4837,6 +4836,7 @@ class RevisionsResource {
     if (revisionId == null) {
       throw core.ArgumentError('Parameter revisionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4882,7 +4882,6 @@ class RevisionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4894,6 +4893,7 @@ class RevisionsResource {
     if (revisionId == null) {
       throw core.ArgumentError('Parameter revisionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4937,11 +4937,11 @@ class TeamdrivesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (teamDriveId == null) {
       throw core.ArgumentError('Parameter teamDriveId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4982,11 +4982,11 @@ class TeamdrivesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (teamDriveId == null) {
       throw core.ArgumentError('Parameter teamDriveId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (useDomainAdminAccess != null) {
       _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
     }
@@ -5032,12 +5032,12 @@ class TeamdrivesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert_1.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (requestId == null) {
       throw core.ArgumentError('Parameter requestId is required.');
     }
@@ -5090,8 +5090,8 @@ class TeamdrivesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -5148,7 +5148,6 @@ class TeamdrivesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -5157,6 +5156,7 @@ class TeamdrivesResource {
     if (teamDriveId == null) {
       throw core.ArgumentError('Parameter teamDriveId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (useDomainAdminAccess != null) {
       _queryParams['useDomainAdminAccess'] = ['${useDomainAdminAccess}'];
     }

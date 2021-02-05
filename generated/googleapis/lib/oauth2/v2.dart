@@ -85,8 +85,8 @@ class Oauth2Api {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (accessToken != null) {
       _queryParams['access_token'] = [accessToken];
     }
@@ -131,8 +131,8 @@ class UserinfoResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -177,8 +177,8 @@ class UserinfoV2MeResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }

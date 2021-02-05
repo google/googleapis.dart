@@ -115,8 +115,8 @@ class PagespeedapiResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (url == null) {
       throw core.ArgumentError('Parameter url is required.');
     }

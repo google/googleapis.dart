@@ -96,11 +96,11 @@ class ProjectsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectName == null) {
       throw core.ArgumentError('Parameter projectName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -187,11 +187,11 @@ class ProjectsEventsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectName == null) {
       throw core.ArgumentError('Parameter projectName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (groupId != null) {
       _queryParams['groupId'] = [groupId];
     }
@@ -264,7 +264,6 @@ class ProjectsEventsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -273,6 +272,7 @@ class ProjectsEventsResource {
     if (projectName == null) {
       throw core.ArgumentError('Parameter projectName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -400,11 +400,11 @@ class ProjectsGroupStatsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectName == null) {
       throw core.ArgumentError('Parameter projectName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (alignment != null) {
       _queryParams['alignment'] = [alignment];
     }
@@ -487,11 +487,11 @@ class ProjectsGroupsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (groupName == null) {
       throw core.ArgumentError('Parameter groupName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -535,7 +535,6 @@ class ProjectsGroupsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -544,6 +543,7 @@ class ProjectsGroupsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }

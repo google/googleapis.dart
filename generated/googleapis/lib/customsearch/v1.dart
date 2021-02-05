@@ -313,8 +313,8 @@ class CseResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (c2coff != null) {
       _queryParams['c2coff'] = [c2coff];
     }
@@ -684,8 +684,8 @@ class CseSiterestrictResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (c2coff != null) {
       _queryParams['c2coff'] = [c2coff];
     }

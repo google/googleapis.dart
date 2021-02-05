@@ -113,8 +113,8 @@ class GroupItemsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id != null) {
       _queryParams['id'] = [id];
     }
@@ -169,12 +169,12 @@ class GroupItemsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (onBehalfOfContentOwner != null) {
       _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
@@ -227,8 +227,8 @@ class GroupItemsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (groupId != null) {
       _queryParams['groupId'] = [groupId];
     }
@@ -290,8 +290,8 @@ class GroupsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id != null) {
       _queryParams['id'] = [id];
     }
@@ -346,12 +346,12 @@ class GroupsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (onBehalfOfContentOwner != null) {
       _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
@@ -421,8 +421,8 @@ class GroupsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id != null) {
       _queryParams['id'] = [id];
     }
@@ -485,12 +485,12 @@ class GroupsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (onBehalfOfContentOwner != null) {
       _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
@@ -606,8 +606,8 @@ class ReportsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (currency != null) {
       _queryParams['currency'] = [currency];
     }

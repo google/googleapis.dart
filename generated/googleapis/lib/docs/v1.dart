@@ -111,7 +111,6 @@ class DocumentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -120,6 +119,7 @@ class DocumentsResource {
     if (documentId == null) {
       throw core.ArgumentError('Parameter documentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -162,12 +162,12 @@ class DocumentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -226,11 +226,11 @@ class DocumentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (documentId == null) {
       throw core.ArgumentError('Parameter documentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (suggestionsViewMode != null) {
       _queryParams['suggestionsViewMode'] = [suggestionsViewMode];
     }

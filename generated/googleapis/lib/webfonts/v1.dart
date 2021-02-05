@@ -86,8 +86,8 @@ class WebfontsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (sort != null) {
       _queryParams['sort'] = [sort];
     }

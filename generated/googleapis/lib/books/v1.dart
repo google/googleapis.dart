@@ -126,7 +126,6 @@ class BookshelvesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
@@ -134,6 +133,7 @@ class BookshelvesResource {
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (source != null) {
       _queryParams['source'] = [source];
     }
@@ -178,11 +178,11 @@ class BookshelvesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (source != null) {
       _queryParams['source'] = [source];
     }
@@ -246,7 +246,6 @@ class BookshelvesVolumesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
@@ -254,6 +253,7 @@ class BookshelvesVolumesResource {
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -323,8 +323,8 @@ class CloudloadingResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (driveDocumentId != null) {
       _queryParams['drive_document_id'] = [driveDocumentId];
     }
@@ -373,8 +373,8 @@ class CloudloadingResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
@@ -414,12 +414,12 @@ class CloudloadingResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -463,8 +463,8 @@ class DictionaryResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (cpksver == null) {
       throw core.ArgumentError('Parameter cpksver is required.');
     }
@@ -510,8 +510,8 @@ class FamilysharingResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (source != null) {
       _queryParams['source'] = [source];
     }
@@ -559,8 +559,8 @@ class FamilysharingResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (docId != null) {
       _queryParams['docId'] = [docId];
     }
@@ -614,8 +614,8 @@ class FamilysharingResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (docId != null) {
       _queryParams['docId'] = [docId];
     }
@@ -680,7 +680,6 @@ class LayersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
@@ -688,6 +687,7 @@ class LayersResource {
     if (summaryId == null) {
       throw core.ArgumentError('Parameter summaryId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (contentVersion != null) {
       _queryParams['contentVersion'] = [contentVersion];
     }
@@ -746,11 +746,11 @@ class LayersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (contentVersion != null) {
       _queryParams['contentVersion'] = [contentVersion];
     }
@@ -840,7 +840,6 @@ class LayersAnnotationDataResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
@@ -851,6 +850,7 @@ class LayersAnnotationDataResource {
     if (annotationDataId == null) {
       throw core.ArgumentError('Parameter annotationDataId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (contentVersion == null) {
       throw core.ArgumentError('Parameter contentVersion is required.');
     }
@@ -957,7 +957,6 @@ class LayersAnnotationDataResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
@@ -965,6 +964,7 @@ class LayersAnnotationDataResource {
     if (layerId == null) {
       throw core.ArgumentError('Parameter layerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (contentVersion == null) {
       throw core.ArgumentError('Parameter contentVersion is required.');
     }
@@ -1059,7 +1059,6 @@ class LayersVolumeAnnotationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
@@ -1070,6 +1069,7 @@ class LayersVolumeAnnotationsResource {
     if (annotationId == null) {
       throw core.ArgumentError('Parameter annotationId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (locale != null) {
       _queryParams['locale'] = [locale];
     }
@@ -1165,7 +1165,6 @@ class LayersVolumeAnnotationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
@@ -1173,6 +1172,7 @@ class LayersVolumeAnnotationsResource {
     if (layerId == null) {
       throw core.ArgumentError('Parameter layerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (contentVersion == null) {
       throw core.ArgumentError('Parameter contentVersion is required.');
     }
@@ -1259,8 +1259,8 @@ class MyconfigResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (country != null) {
       _queryParams['country'] = [country];
     }
@@ -1310,8 +1310,8 @@ class MyconfigResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (cpksver == null) {
       throw core.ArgumentError('Parameter cpksver is required.');
     }
@@ -1384,8 +1384,8 @@ class MyconfigResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (cpksver == null) {
       throw core.ArgumentError('Parameter cpksver is required.');
     }
@@ -1469,8 +1469,8 @@ class MyconfigResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (cpksver == null) {
       throw core.ArgumentError('Parameter cpksver is required.');
     }
@@ -1537,12 +1537,12 @@ class MyconfigResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1603,11 +1603,11 @@ class MylibraryAnnotationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (annotationId == null) {
       throw core.ArgumentError('Parameter annotationId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (source != null) {
       _queryParams['source'] = [source];
     }
@@ -1660,12 +1660,12 @@ class MylibraryAnnotationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (annotationId != null) {
       _queryParams['annotationId'] = [annotationId];
     }
@@ -1748,8 +1748,8 @@ class MylibraryAnnotationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (contentVersion != null) {
       _queryParams['contentVersion'] = [contentVersion];
     }
@@ -1819,8 +1819,8 @@ class MylibraryAnnotationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (layerIds == null || layerIds.isEmpty) {
       throw core.ArgumentError('Parameter layerIds is required.');
     }
@@ -1871,7 +1871,6 @@ class MylibraryAnnotationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1880,6 +1879,7 @@ class MylibraryAnnotationsResource {
     if (annotationId == null) {
       throw core.ArgumentError('Parameter annotationId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (source != null) {
       _queryParams['source'] = [source];
     }
@@ -1945,11 +1945,11 @@ class MylibraryBookshelvesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
@@ -2000,11 +2000,11 @@ class MylibraryBookshelvesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (source != null) {
       _queryParams['source'] = [source];
     }
@@ -2049,11 +2049,11 @@ class MylibraryBookshelvesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (source != null) {
       _queryParams['source'] = [source];
     }
@@ -2093,8 +2093,8 @@ class MylibraryBookshelvesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (source != null) {
       _queryParams['source'] = [source];
     }
@@ -2145,11 +2145,11 @@ class MylibraryBookshelvesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
@@ -2210,11 +2210,11 @@ class MylibraryBookshelvesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
@@ -2295,11 +2295,11 @@ class MylibraryBookshelvesVolumesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (shelf == null) {
       throw core.ArgumentError('Parameter shelf is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (country != null) {
       _queryParams['country'] = [country];
     }
@@ -2372,11 +2372,11 @@ class MylibraryReadingpositionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (contentVersion != null) {
       _queryParams['contentVersion'] = [contentVersion];
     }
@@ -2448,11 +2448,11 @@ class MylibraryReadingpositionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (position == null) {
       throw core.ArgumentError('Parameter position is required.');
     }
@@ -2523,8 +2523,8 @@ class NotificationResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (notificationId == null) {
       throw core.ArgumentError('Parameter notificationId is required.');
     }
@@ -2578,8 +2578,8 @@ class OnboardingResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (locale != null) {
       _queryParams['locale'] = [locale];
     }
@@ -2637,8 +2637,8 @@ class OnboardingResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (categoryId != null) {
       _queryParams['categoryId'] = categoryId;
     }
@@ -2708,8 +2708,8 @@ class PersonalizedstreamResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (locale != null) {
       _queryParams['locale'] = [locale];
     }
@@ -2782,8 +2782,8 @@ class PromoofferResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (androidId != null) {
       _queryParams['androidId'] = [androidId];
     }
@@ -2861,8 +2861,8 @@ class PromoofferResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (androidId != null) {
       _queryParams['androidId'] = [androidId];
     }
@@ -2934,8 +2934,8 @@ class PromoofferResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (androidId != null) {
       _queryParams['androidId'] = [androidId];
     }
@@ -2998,8 +2998,8 @@ class SeriesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (seriesId == null || seriesId.isEmpty) {
       throw core.ArgumentError('Parameter seriesId is required.');
     }
@@ -3052,8 +3052,8 @@ class SeriesMembershipResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (seriesId == null) {
       throw core.ArgumentError('Parameter seriesId is required.');
     }
@@ -3137,11 +3137,11 @@ class VolumesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (country != null) {
       _queryParams['country'] = [country];
     }
@@ -3271,8 +3271,8 @@ class VolumesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (q == null) {
       throw core.ArgumentError('Parameter q is required.');
     }
@@ -3381,11 +3381,11 @@ class VolumesAssociatedResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (volumeId == null) {
       throw core.ArgumentError('Parameter volumeId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (association != null) {
       _queryParams['association'] = [association];
     }
@@ -3463,8 +3463,8 @@ class VolumesMybooksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (acquireMethod != null) {
       _queryParams['acquireMethod'] = acquireMethod;
     }
@@ -3540,8 +3540,8 @@ class VolumesRecommendedResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (locale != null) {
       _queryParams['locale'] = [locale];
     }
@@ -3600,8 +3600,8 @@ class VolumesRecommendedResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (rating == null) {
       throw core.ArgumentError('Parameter rating is required.');
     }
@@ -3678,8 +3678,8 @@ class VolumesUseruploadedResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (locale != null) {
       _queryParams['locale'] = [locale];
     }

@@ -96,11 +96,11 @@ class AchievementConfigurationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -137,11 +137,11 @@ class AchievementConfigurationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -183,7 +183,6 @@ class AchievementConfigurationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -192,6 +191,7 @@ class AchievementConfigurationsResource {
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -240,11 +240,11 @@ class AchievementConfigurationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -292,7 +292,6 @@ class AchievementConfigurationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -301,6 +300,7 @@ class AchievementConfigurationsResource {
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -356,7 +356,6 @@ class ImageConfigurationsResource {
     commons.Media uploadMedia,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (resourceId == null) {
       throw core.ArgumentError('Parameter resourceId is required.');
@@ -364,6 +363,7 @@ class ImageConfigurationsResource {
     if (imageType == null) {
       throw core.ArgumentError('Parameter imageType is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -417,11 +417,11 @@ class LeaderboardConfigurationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -458,11 +458,11 @@ class LeaderboardConfigurationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -504,7 +504,6 @@ class LeaderboardConfigurationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -513,6 +512,7 @@ class LeaderboardConfigurationsResource {
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -561,11 +561,11 @@ class LeaderboardConfigurationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -613,7 +613,6 @@ class LeaderboardConfigurationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -622,6 +621,7 @@ class LeaderboardConfigurationsResource {
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }

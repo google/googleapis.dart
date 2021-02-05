@@ -146,7 +146,6 @@ class AccountsClientsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -155,6 +154,7 @@ class AccountsClientsResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -198,7 +198,6 @@ class AccountsClientsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -206,6 +205,7 @@ class AccountsClientsResource {
     if (clientAccountId == null) {
       throw core.ArgumentError('Parameter clientAccountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -259,11 +259,11 @@ class AccountsClientsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -320,7 +320,6 @@ class AccountsClientsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -332,6 +331,7 @@ class AccountsClientsResource {
     if (clientAccountId == null) {
       throw core.ArgumentError('Parameter clientAccountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -387,7 +387,6 @@ class AccountsClientsInvitationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -399,6 +398,7 @@ class AccountsClientsInvitationsResource {
     if (clientAccountId == null) {
       throw core.ArgumentError('Parameter clientAccountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -449,7 +449,6 @@ class AccountsClientsInvitationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -460,6 +459,7 @@ class AccountsClientsInvitationsResource {
     if (invitationId == null) {
       throw core.ArgumentError('Parameter invitationId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -519,7 +519,6 @@ class AccountsClientsInvitationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -527,6 +526,7 @@ class AccountsClientsInvitationsResource {
     if (clientAccountId == null) {
       throw core.ArgumentError('Parameter clientAccountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -588,7 +588,6 @@ class AccountsClientsUsersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -599,6 +598,7 @@ class AccountsClientsUsersResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -657,7 +657,6 @@ class AccountsClientsUsersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -665,6 +664,7 @@ class AccountsClientsUsersResource {
     if (clientAccountId == null) {
       throw core.ArgumentError('Parameter clientAccountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -724,7 +724,6 @@ class AccountsClientsUsersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -739,6 +738,7 @@ class AccountsClientsUsersResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -807,7 +807,6 @@ class AccountsCreativesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -816,6 +815,7 @@ class AccountsCreativesResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (duplicateIdMode != null) {
       _queryParams['duplicateIdMode'] = [duplicateIdMode];
     }
@@ -860,7 +860,6 @@ class AccountsCreativesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -868,6 +867,7 @@ class AccountsCreativesResource {
     if (creativeId == null) {
       throw core.ArgumentError('Parameter creativeId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -930,11 +930,11 @@ class AccountsCreativesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -992,7 +992,6 @@ class AccountsCreativesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1004,6 +1003,7 @@ class AccountsCreativesResource {
     if (creativeId == null) {
       throw core.ArgumentError('Parameter creativeId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1052,7 +1052,6 @@ class AccountsCreativesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1064,6 +1063,7 @@ class AccountsCreativesResource {
     if (creativeId == null) {
       throw core.ArgumentError('Parameter creativeId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1115,7 +1115,6 @@ class AccountsCreativesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1127,6 +1126,7 @@ class AccountsCreativesResource {
     if (creativeId == null) {
       throw core.ArgumentError('Parameter creativeId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1180,7 +1180,6 @@ class AccountsCreativesDealAssociationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1192,6 +1191,7 @@ class AccountsCreativesDealAssociationsResource {
     if (creativeId == null) {
       throw core.ArgumentError('Parameter creativeId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1256,7 +1256,6 @@ class AccountsCreativesDealAssociationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1264,6 +1263,7 @@ class AccountsCreativesDealAssociationsResource {
     if (creativeId == null) {
       throw core.ArgumentError('Parameter creativeId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -1319,7 +1319,6 @@ class AccountsCreativesDealAssociationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1331,6 +1330,7 @@ class AccountsCreativesDealAssociationsResource {
     if (creativeId == null) {
       throw core.ArgumentError('Parameter creativeId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1406,11 +1406,11 @@ class AccountsFinalizedProposalsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -1470,7 +1470,6 @@ class AccountsProductsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1478,6 +1477,7 @@ class AccountsProductsResource {
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1530,11 +1530,11 @@ class AccountsProductsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -1600,7 +1600,6 @@ class AccountsProposalsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1612,6 +1611,7 @@ class AccountsProposalsResource {
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1661,7 +1661,6 @@ class AccountsProposalsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1673,6 +1672,7 @@ class AccountsProposalsResource {
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1722,7 +1722,6 @@ class AccountsProposalsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1734,6 +1733,7 @@ class AccountsProposalsResource {
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1786,7 +1786,6 @@ class AccountsProposalsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1798,6 +1797,7 @@ class AccountsProposalsResource {
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1844,7 +1844,6 @@ class AccountsProposalsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1853,6 +1852,7 @@ class AccountsProposalsResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1896,7 +1896,6 @@ class AccountsProposalsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1904,6 +1903,7 @@ class AccountsProposalsResource {
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1974,11 +1974,11 @@ class AccountsProposalsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -2041,7 +2041,6 @@ class AccountsProposalsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2053,6 +2052,7 @@ class AccountsProposalsResource {
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2106,7 +2106,6 @@ class AccountsProposalsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2118,6 +2117,7 @@ class AccountsProposalsResource {
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2174,7 +2174,6 @@ class AccountsProposalsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2186,6 +2185,7 @@ class AccountsProposalsResource {
     if (proposalId == null) {
       throw core.ArgumentError('Parameter proposalId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2235,7 +2235,6 @@ class AccountsPublisherProfilesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2243,6 +2242,7 @@ class AccountsPublisherProfilesResource {
     if (publisherProfileId == null) {
       throw core.ArgumentError('Parameter publisherProfileId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2288,11 +2288,11 @@ class AccountsPublisherProfilesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -2398,7 +2398,6 @@ class BiddersAccountsFilterSetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2407,6 +2406,7 @@ class BiddersAccountsFilterSetsResource {
     if (ownerName == null) {
       throw core.ArgumentError('Parameter ownerName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (isTransient != null) {
       _queryParams['isTransient'] = ['${isTransient}'];
     }
@@ -2456,11 +2456,11 @@ class BiddersAccountsFilterSetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2504,11 +2504,11 @@ class BiddersAccountsFilterSetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2560,11 +2560,11 @@ class BiddersAccountsFilterSetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (ownerName == null) {
       throw core.ArgumentError('Parameter ownerName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -2634,11 +2634,11 @@ class BiddersAccountsFilterSetsBidMetricsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -2710,11 +2710,11 @@ class BiddersAccountsFilterSetsBidResponseErrorsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -2787,11 +2787,11 @@ class BiddersAccountsFilterSetsBidResponsesWithoutBidsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -2863,11 +2863,11 @@ class BiddersAccountsFilterSetsFilteredBidRequestsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -2943,11 +2943,11 @@ class BiddersAccountsFilterSetsFilteredBidsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -3024,7 +3024,6 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -3032,6 +3031,7 @@ class BiddersAccountsFilterSetsFilteredBidsCreativesResource {
     if (creativeStatusId == null) {
       throw core.ArgumentError('Parameter creativeStatusId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -3112,7 +3112,6 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -3120,6 +3119,7 @@ class BiddersAccountsFilterSetsFilteredBidsDetailsResource {
     if (creativeStatusId == null) {
       throw core.ArgumentError('Parameter creativeStatusId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -3192,11 +3192,11 @@ class BiddersAccountsFilterSetsImpressionMetricsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -3267,11 +3267,11 @@ class BiddersAccountsFilterSetsLosingBidsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -3343,11 +3343,11 @@ class BiddersAccountsFilterSetsNonBillableWinningBidsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -3431,7 +3431,6 @@ class BiddersFilterSetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3440,6 +3439,7 @@ class BiddersFilterSetsResource {
     if (ownerName == null) {
       throw core.ArgumentError('Parameter ownerName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (isTransient != null) {
       _queryParams['isTransient'] = ['${isTransient}'];
     }
@@ -3488,11 +3488,11 @@ class BiddersFilterSetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3535,11 +3535,11 @@ class BiddersFilterSetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3591,11 +3591,11 @@ class BiddersFilterSetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (ownerName == null) {
       throw core.ArgumentError('Parameter ownerName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -3664,11 +3664,11 @@ class BiddersFilterSetsBidMetricsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -3738,11 +3738,11 @@ class BiddersFilterSetsBidResponseErrorsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -3813,11 +3813,11 @@ class BiddersFilterSetsBidResponsesWithoutBidsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -3887,11 +3887,11 @@ class BiddersFilterSetsFilteredBidRequestsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -3966,11 +3966,11 @@ class BiddersFilterSetsFilteredBidsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -4045,7 +4045,6 @@ class BiddersFilterSetsFilteredBidsCreativesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -4053,6 +4052,7 @@ class BiddersFilterSetsFilteredBidsCreativesResource {
     if (creativeStatusId == null) {
       throw core.ArgumentError('Parameter creativeStatusId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -4131,7 +4131,6 @@ class BiddersFilterSetsFilteredBidsDetailsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
@@ -4139,6 +4138,7 @@ class BiddersFilterSetsFilteredBidsDetailsResource {
     if (creativeStatusId == null) {
       throw core.ArgumentError('Parameter creativeStatusId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -4209,11 +4209,11 @@ class BiddersFilterSetsImpressionMetricsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -4283,11 +4283,11 @@ class BiddersFilterSetsLosingBidsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -4357,11 +4357,11 @@ class BiddersFilterSetsNonBillableWinningBidsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (filterSetName == null) {
       throw core.ArgumentError('Parameter filterSetName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }

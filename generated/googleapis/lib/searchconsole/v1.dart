@@ -105,7 +105,6 @@ class SearchanalyticsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -114,6 +113,7 @@ class SearchanalyticsResource {
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -162,7 +162,6 @@ class SitemapsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
@@ -170,6 +169,7 @@ class SitemapsResource {
     if (feedpath == null) {
       throw core.ArgumentError('Parameter feedpath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -213,7 +213,6 @@ class SitemapsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
@@ -221,6 +220,7 @@ class SitemapsResource {
     if (feedpath == null) {
       throw core.ArgumentError('Parameter feedpath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -267,11 +267,11 @@ class SitemapsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (sitemapIndex != null) {
       _queryParams['sitemapIndex'] = [sitemapIndex];
     }
@@ -316,7 +316,6 @@ class SitemapsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
@@ -324,6 +323,7 @@ class SitemapsResource {
     if (feedpath == null) {
       throw core.ArgumentError('Parameter feedpath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -366,11 +366,11 @@ class SitesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -405,11 +405,11 @@ class SitesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -446,11 +446,11 @@ class SitesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (siteUrl == null) {
       throw core.ArgumentError('Parameter siteUrl is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -483,8 +483,8 @@ class SitesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -537,12 +537,12 @@ class UrlTestingToolsMobileFriendlyTestResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }

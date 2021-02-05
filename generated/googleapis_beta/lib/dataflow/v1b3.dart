@@ -130,11 +130,11 @@ class ProjectsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (location != null) {
       _queryParams['location'] = [location];
     }
@@ -182,7 +182,6 @@ class ProjectsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -191,6 +190,7 @@ class ProjectsResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -249,7 +249,6 @@ class ProjectsCatalogTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -258,6 +257,7 @@ class ProjectsCatalogTemplatesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -300,11 +300,11 @@ class ProjectsCatalogTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -349,11 +349,11 @@ class ProjectsCatalogTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -399,7 +399,6 @@ class ProjectsCatalogTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -408,6 +407,7 @@ class ProjectsCatalogTemplatesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -456,7 +456,6 @@ class ProjectsCatalogTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -465,6 +464,7 @@ class ProjectsCatalogTemplatesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -518,7 +518,6 @@ class ProjectsCatalogTemplatesTemplateVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -527,6 +526,7 @@ class ProjectsCatalogTemplatesTemplateVersionsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -619,11 +619,11 @@ class ProjectsJobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -708,7 +708,6 @@ class ProjectsJobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -717,6 +716,7 @@ class ProjectsJobsResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (location != null) {
       _queryParams['location'] = [location];
     }
@@ -792,7 +792,6 @@ class ProjectsJobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -800,6 +799,7 @@ class ProjectsJobsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (location != null) {
       _queryParams['location'] = [location];
     }
@@ -862,7 +862,6 @@ class ProjectsJobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -870,6 +869,7 @@ class ProjectsJobsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (location != null) {
       _queryParams['location'] = [location];
     }
@@ -964,11 +964,11 @@ class ProjectsJobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -1028,7 +1028,6 @@ class ProjectsJobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1040,6 +1039,7 @@ class ProjectsJobsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1098,7 +1098,6 @@ class ProjectsJobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1110,6 +1109,7 @@ class ProjectsJobsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (location != null) {
       _queryParams['location'] = [location];
     }
@@ -1166,7 +1166,6 @@ class ProjectsJobsDebugResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1178,6 +1177,7 @@ class ProjectsJobsDebugResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1225,7 +1225,6 @@ class ProjectsJobsDebugResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1237,6 +1236,7 @@ class ProjectsJobsDebugResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1345,7 +1345,6 @@ class ProjectsJobsMessagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1353,6 +1352,7 @@ class ProjectsJobsMessagesResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (endTime != null) {
       _queryParams['endTime'] = [endTime];
     }
@@ -1424,7 +1424,6 @@ class ProjectsJobsWorkItemsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1436,6 +1435,7 @@ class ProjectsJobsWorkItemsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1483,7 +1483,6 @@ class ProjectsJobsWorkItemsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1495,6 +1494,7 @@ class ProjectsJobsWorkItemsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1561,7 +1561,6 @@ class ProjectsLocationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1573,6 +1572,7 @@ class ProjectsLocationsResource {
     if (location == null) {
       throw core.ArgumentError('Parameter location is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1630,7 +1630,6 @@ class ProjectsLocationsFlexTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1642,6 +1641,7 @@ class ProjectsLocationsFlexTemplatesResource {
     if (location == null) {
       throw core.ArgumentError('Parameter location is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1732,7 +1732,6 @@ class ProjectsLocationsJobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1744,6 +1743,7 @@ class ProjectsLocationsJobsResource {
     if (location == null) {
       throw core.ArgumentError('Parameter location is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (replaceJobId != null) {
       _queryParams['replaceJobId'] = [replaceJobId];
     }
@@ -1818,7 +1818,6 @@ class ProjectsLocationsJobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1829,6 +1828,7 @@ class ProjectsLocationsJobsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (view != null) {
       _queryParams['view'] = [view];
     }
@@ -1892,7 +1892,6 @@ class ProjectsLocationsJobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1903,6 +1902,7 @@ class ProjectsLocationsJobsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -1969,7 +1969,6 @@ class ProjectsLocationsJobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1980,6 +1979,7 @@ class ProjectsLocationsJobsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (startTime != null) {
       _queryParams['startTime'] = [startTime];
     }
@@ -2073,7 +2073,6 @@ class ProjectsLocationsJobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2081,6 +2080,7 @@ class ProjectsLocationsJobsResource {
     if (location == null) {
       throw core.ArgumentError('Parameter location is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -2142,7 +2142,6 @@ class ProjectsLocationsJobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2157,6 +2156,7 @@ class ProjectsLocationsJobsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2217,7 +2217,6 @@ class ProjectsLocationsJobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2232,6 +2231,7 @@ class ProjectsLocationsJobsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2293,7 +2293,6 @@ class ProjectsLocationsJobsDebugResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2308,6 +2307,7 @@ class ProjectsLocationsJobsDebugResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2362,7 +2362,6 @@ class ProjectsLocationsJobsDebugResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2377,6 +2376,7 @@ class ProjectsLocationsJobsDebugResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2487,7 +2487,6 @@ class ProjectsLocationsJobsMessagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2498,6 +2497,7 @@ class ProjectsLocationsJobsMessagesResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (endTime != null) {
       _queryParams['endTime'] = [endTime];
     }
@@ -2568,7 +2568,6 @@ class ProjectsLocationsJobsSnapshotsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2579,6 +2578,7 @@ class ProjectsLocationsJobsSnapshotsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2658,7 +2658,6 @@ class ProjectsLocationsJobsStagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2672,6 +2671,7 @@ class ProjectsLocationsJobsStagesResource {
     if (stageId == null) {
       throw core.ArgumentError('Parameter stageId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (endTime != null) {
       _queryParams['endTime'] = [endTime];
     }
@@ -2746,7 +2746,6 @@ class ProjectsLocationsJobsWorkItemsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2761,6 +2760,7 @@ class ProjectsLocationsJobsWorkItemsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2815,7 +2815,6 @@ class ProjectsLocationsJobsWorkItemsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2830,6 +2829,7 @@ class ProjectsLocationsJobsWorkItemsResource {
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2887,7 +2887,6 @@ class ProjectsLocationsSnapshotsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2898,6 +2897,7 @@ class ProjectsLocationsSnapshotsResource {
     if (snapshotId == null) {
       throw core.ArgumentError('Parameter snapshotId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2946,7 +2946,6 @@ class ProjectsLocationsSnapshotsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2957,6 +2956,7 @@ class ProjectsLocationsSnapshotsResource {
     if (snapshotId == null) {
       throw core.ArgumentError('Parameter snapshotId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3003,7 +3003,6 @@ class ProjectsLocationsSnapshotsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -3011,6 +3010,7 @@ class ProjectsLocationsSnapshotsResource {
     if (location == null) {
       throw core.ArgumentError('Parameter location is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (jobId != null) {
       _queryParams['jobId'] = [jobId];
     }
@@ -3074,7 +3074,6 @@ class ProjectsLocationsSqlResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -3082,6 +3081,7 @@ class ProjectsLocationsSqlResource {
     if (location == null) {
       throw core.ArgumentError('Parameter location is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (query != null) {
       _queryParams['query'] = [query];
     }
@@ -3141,7 +3141,6 @@ class ProjectsLocationsTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3153,6 +3152,7 @@ class ProjectsLocationsTemplatesResource {
     if (location == null) {
       throw core.ArgumentError('Parameter location is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3209,7 +3209,6 @@ class ProjectsLocationsTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -3217,6 +3216,7 @@ class ProjectsLocationsTemplatesResource {
     if (location == null) {
       throw core.ArgumentError('Parameter location is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (gcsPath != null) {
       _queryParams['gcsPath'] = [gcsPath];
     }
@@ -3288,7 +3288,6 @@ class ProjectsLocationsTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3300,6 +3299,7 @@ class ProjectsLocationsTemplatesResource {
     if (location == null) {
       throw core.ArgumentError('Parameter location is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (dynamicTemplate_gcsPath != null) {
       _queryParams['dynamicTemplate.gcsPath'] = [dynamicTemplate_gcsPath];
     }
@@ -3368,7 +3368,6 @@ class ProjectsSnapshotsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -3376,6 +3375,7 @@ class ProjectsSnapshotsResource {
     if (snapshotId == null) {
       throw core.ArgumentError('Parameter snapshotId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (location != null) {
       _queryParams['location'] = [location];
     }
@@ -3423,11 +3423,11 @@ class ProjectsSnapshotsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (jobId != null) {
       _queryParams['jobId'] = [jobId];
     }
@@ -3493,11 +3493,11 @@ class ProjectsTemplateVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -3552,7 +3552,6 @@ class ProjectsTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3561,6 +3560,7 @@ class ProjectsTemplatesResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3615,11 +3615,11 @@ class ProjectsTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (gcsPath != null) {
       _queryParams['gcsPath'] = [gcsPath];
     }
@@ -3692,7 +3692,6 @@ class ProjectsTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3701,6 +3700,7 @@ class ProjectsTemplatesResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (dynamicTemplate_gcsPath != null) {
       _queryParams['dynamicTemplate.gcsPath'] = [dynamicTemplate_gcsPath];
     }

@@ -137,7 +137,6 @@ class BucketAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -145,6 +144,7 @@ class BucketAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (provisionalUserProject != null) {
       _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
@@ -202,7 +202,6 @@ class BucketAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -210,6 +209,7 @@ class BucketAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (provisionalUserProject != null) {
       _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
@@ -266,7 +266,6 @@ class BucketAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -275,6 +274,7 @@ class BucketAccessControlsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (provisionalUserProject != null) {
       _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
@@ -326,11 +326,11 @@ class BucketAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (provisionalUserProject != null) {
       _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
@@ -389,7 +389,6 @@ class BucketAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -401,6 +400,7 @@ class BucketAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (provisionalUserProject != null) {
       _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
@@ -463,7 +463,6 @@ class BucketAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -475,6 +474,7 @@ class BucketAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (provisionalUserProject != null) {
       _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
@@ -541,11 +541,11 @@ class BucketsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (ifMetagenerationMatch != null) {
       _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
@@ -617,11 +617,11 @@ class BucketsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (ifMetagenerationMatch != null) {
       _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
@@ -685,11 +685,11 @@ class BucketsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (optionsRequestedPolicyVersion != null) {
       _queryParams['optionsRequestedPolicyVersion'] = [
         '${optionsRequestedPolicyVersion}'
@@ -784,12 +784,12 @@ class BucketsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -869,8 +869,8 @@ class BucketsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
@@ -940,11 +940,11 @@ class BucketsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (ifMetagenerationMatch == null) {
       throw core.ArgumentError('Parameter ifMetagenerationMatch is required.');
     }
@@ -1052,7 +1052,6 @@ class BucketsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1061,6 +1060,7 @@ class BucketsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (ifMetagenerationMatch != null) {
       _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
@@ -1129,7 +1129,6 @@ class BucketsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1138,6 +1137,7 @@ class BucketsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (provisionalUserProject != null) {
       _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
@@ -1192,11 +1192,11 @@ class BucketsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (permissions == null || permissions.isEmpty) {
       throw core.ArgumentError('Parameter permissions is required.');
     }
@@ -1305,7 +1305,6 @@ class BucketsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1314,6 +1313,7 @@ class BucketsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (ifMetagenerationMatch != null) {
       _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
@@ -1375,12 +1375,12 @@ class ChannelsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1436,7 +1436,6 @@ class DefaultObjectAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -1444,6 +1443,7 @@ class DefaultObjectAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (provisionalUserProject != null) {
       _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
@@ -1502,7 +1502,6 @@ class DefaultObjectAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -1510,6 +1509,7 @@ class DefaultObjectAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (provisionalUserProject != null) {
       _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
@@ -1566,7 +1566,6 @@ class DefaultObjectAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1575,6 +1574,7 @@ class DefaultObjectAccessControlsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (provisionalUserProject != null) {
       _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
@@ -1635,11 +1635,11 @@ class DefaultObjectAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (ifMetagenerationMatch != null) {
       _queryParams['ifMetagenerationMatch'] = [ifMetagenerationMatch];
     }
@@ -1705,7 +1705,6 @@ class DefaultObjectAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1717,6 +1716,7 @@ class DefaultObjectAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (provisionalUserProject != null) {
       _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
@@ -1779,7 +1779,6 @@ class DefaultObjectAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1791,6 +1790,7 @@ class DefaultObjectAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (provisionalUserProject != null) {
       _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
@@ -1852,7 +1852,6 @@ class NotificationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -1860,6 +1859,7 @@ class NotificationsResource {
     if (notification == null) {
       throw core.ArgumentError('Parameter notification is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (provisionalUserProject != null) {
       _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
@@ -1915,7 +1915,6 @@ class NotificationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -1923,6 +1922,7 @@ class NotificationsResource {
     if (notification == null) {
       throw core.ArgumentError('Parameter notification is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (provisionalUserProject != null) {
       _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
@@ -1979,7 +1979,6 @@ class NotificationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1988,6 +1987,7 @@ class NotificationsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (provisionalUserProject != null) {
       _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
@@ -2041,11 +2041,11 @@ class NotificationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (provisionalUserProject != null) {
       _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }
@@ -2117,7 +2117,6 @@ class ObjectAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -2128,6 +2127,7 @@ class ObjectAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (generation != null) {
       _queryParams['generation'] = [generation];
     }
@@ -2198,7 +2198,6 @@ class ObjectAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -2209,6 +2208,7 @@ class ObjectAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (generation != null) {
       _queryParams['generation'] = [generation];
     }
@@ -2278,7 +2278,6 @@ class ObjectAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2290,6 +2289,7 @@ class ObjectAccessControlsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (generation != null) {
       _queryParams['generation'] = [generation];
     }
@@ -2356,7 +2356,6 @@ class ObjectAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -2364,6 +2363,7 @@ class ObjectAccessControlsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (generation != null) {
       _queryParams['generation'] = [generation];
     }
@@ -2437,7 +2437,6 @@ class ObjectAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2452,6 +2451,7 @@ class ObjectAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (generation != null) {
       _queryParams['generation'] = [generation];
     }
@@ -2527,7 +2527,6 @@ class ObjectAccessControlsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2542,6 +2541,7 @@ class ObjectAccessControlsResource {
     if (entity == null) {
       throw core.ArgumentError('Parameter entity is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (generation != null) {
       _queryParams['generation'] = [generation];
     }
@@ -2647,7 +2647,6 @@ class ObjectsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2659,6 +2658,7 @@ class ObjectsResource {
     if (destinationObject == null) {
       throw core.ArgumentError('Parameter destinationObject is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (destinationPredefinedAcl != null) {
       _queryParams['destinationPredefinedAcl'] = [destinationPredefinedAcl];
     }
@@ -2816,7 +2816,6 @@ class ObjectsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2834,6 +2833,7 @@ class ObjectsResource {
     if (destinationObject == null) {
       throw core.ArgumentError('Parameter destinationObject is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (destinationKmsKeyName != null) {
       _queryParams['destinationKmsKeyName'] = [destinationKmsKeyName];
     }
@@ -2959,7 +2959,6 @@ class ObjectsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -2967,6 +2966,7 @@ class ObjectsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (generation != null) {
       _queryParams['generation'] = [generation];
     }
@@ -3076,7 +3076,6 @@ class ObjectsResource {
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -3084,6 +3083,7 @@ class ObjectsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (generation != null) {
       _queryParams['generation'] = [generation];
     }
@@ -3168,7 +3168,6 @@ class ObjectsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -3176,6 +3175,7 @@ class ObjectsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (generation != null) {
       _queryParams['generation'] = [generation];
     }
@@ -3305,7 +3305,6 @@ class ObjectsResource {
     commons.Media uploadMedia,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3314,6 +3313,7 @@ class ObjectsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (contentEncoding != null) {
       _queryParams['contentEncoding'] = [contentEncoding];
     }
@@ -3449,11 +3449,11 @@ class ObjectsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (delimiter != null) {
       _queryParams['delimiter'] = [delimiter];
     }
@@ -3584,7 +3584,6 @@ class ObjectsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3596,6 +3595,7 @@ class ObjectsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (generation != null) {
       _queryParams['generation'] = [generation];
     }
@@ -3775,7 +3775,6 @@ class ObjectsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3793,6 +3792,7 @@ class ObjectsResource {
     if (destinationObject == null) {
       throw core.ArgumentError('Parameter destinationObject is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (destinationKmsKeyName != null) {
       _queryParams['destinationKmsKeyName'] = [destinationKmsKeyName];
     }
@@ -3908,7 +3908,6 @@ class ObjectsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3920,6 +3919,7 @@ class ObjectsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (generation != null) {
       _queryParams['generation'] = [generation];
     }
@@ -3989,7 +3989,6 @@ class ObjectsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -3997,6 +3996,7 @@ class ObjectsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (permissions == null || permissions.isEmpty) {
       throw core.ArgumentError('Parameter permissions is required.');
     }
@@ -4110,7 +4110,6 @@ class ObjectsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4122,6 +4121,7 @@ class ObjectsResource {
     if (object == null) {
       throw core.ArgumentError('Parameter object is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (generation != null) {
       _queryParams['generation'] = [generation];
     }
@@ -4245,7 +4245,6 @@ class ObjectsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4254,6 +4253,7 @@ class ObjectsResource {
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (delimiter != null) {
       _queryParams['delimiter'] = [delimiter];
     }
@@ -4347,11 +4347,11 @@ class ProjectsHmacKeysResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (serviceAccountEmail == null) {
       throw core.ArgumentError('Parameter serviceAccountEmail is required.');
     }
@@ -4399,7 +4399,6 @@ class ProjectsHmacKeysResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -4407,6 +4406,7 @@ class ProjectsHmacKeysResource {
     if (accessId == null) {
       throw core.ArgumentError('Parameter accessId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (userProject != null) {
       _queryParams['userProject'] = [userProject];
     }
@@ -4454,7 +4454,6 @@ class ProjectsHmacKeysResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -4462,6 +4461,7 @@ class ProjectsHmacKeysResource {
     if (accessId == null) {
       throw core.ArgumentError('Parameter accessId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (userProject != null) {
       _queryParams['userProject'] = [userProject];
     }
@@ -4526,11 +4526,11 @@ class ProjectsHmacKeysResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -4594,7 +4594,6 @@ class ProjectsHmacKeysResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4606,6 +4605,7 @@ class ProjectsHmacKeysResource {
     if (accessId == null) {
       throw core.ArgumentError('Parameter accessId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (userProject != null) {
       _queryParams['userProject'] = [userProject];
     }
@@ -4664,11 +4664,11 @@ class ProjectsServiceAccountResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (provisionalUserProject != null) {
       _queryParams['provisionalUserProject'] = [provisionalUserProject];
     }

@@ -113,12 +113,12 @@ class ControllerDebuggeesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -190,11 +190,11 @@ class ControllerDebuggeesBreakpointsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (agentId != null) {
       _queryParams['agentId'] = [agentId];
     }
@@ -255,7 +255,6 @@ class ControllerDebuggeesBreakpointsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -267,6 +266,7 @@ class ControllerDebuggeesBreakpointsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -334,8 +334,8 @@ class DebuggerDebuggeesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientVersion != null) {
       _queryParams['clientVersion'] = [clientVersion];
     }
@@ -395,7 +395,6 @@ class DebuggerDebuggeesBreakpointsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
@@ -403,6 +402,7 @@ class DebuggerDebuggeesBreakpointsResource {
     if (breakpointId == null) {
       throw core.ArgumentError('Parameter breakpointId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientVersion != null) {
       _queryParams['clientVersion'] = [clientVersion];
     }
@@ -451,7 +451,6 @@ class DebuggerDebuggeesBreakpointsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
@@ -459,6 +458,7 @@ class DebuggerDebuggeesBreakpointsResource {
     if (breakpointId == null) {
       throw core.ArgumentError('Parameter breakpointId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientVersion != null) {
       _queryParams['clientVersion'] = [clientVersion];
     }
@@ -536,11 +536,11 @@ class DebuggerDebuggeesBreakpointsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (action_value != null) {
       _queryParams['action.value'] = [action_value];
     }
@@ -618,7 +618,6 @@ class DebuggerDebuggeesBreakpointsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -627,6 +626,7 @@ class DebuggerDebuggeesBreakpointsResource {
     if (debuggeeId == null) {
       throw core.ArgumentError('Parameter debuggeeId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (canaryOption != null) {
       _queryParams['canaryOption'] = [canaryOption];
     }

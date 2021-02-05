@@ -94,12 +94,12 @@ class ApplicationDetailServiceResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -162,7 +162,6 @@ class ProjectsTestMatricesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -170,6 +169,7 @@ class ProjectsTestMatricesResource {
     if (testMatrixId == null) {
       throw core.ArgumentError('Parameter testMatrixId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -224,7 +224,6 @@ class ProjectsTestMatricesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -233,6 +232,7 @@ class ProjectsTestMatricesResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (requestId != null) {
       _queryParams['requestId'] = [requestId];
     }
@@ -282,7 +282,6 @@ class ProjectsTestMatricesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -290,6 +289,7 @@ class ProjectsTestMatricesResource {
     if (testMatrixId == null) {
       throw core.ArgumentError('Parameter testMatrixId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -355,11 +355,11 @@ class TestEnvironmentCatalogResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (environmentType == null) {
       throw core.ArgumentError('Parameter environmentType is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (projectId != null) {
       _queryParams['projectId'] = [projectId];
     }

@@ -86,8 +86,8 @@ class DivisionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (query != null) {
       _queryParams['query'] = [query];
     }
@@ -130,8 +130,8 @@ class ElectionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -187,8 +187,8 @@ class ElectionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (address == null) {
       throw core.ArgumentError('Parameter address is required.');
     }
@@ -261,8 +261,8 @@ class RepresentativesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (address != null) {
       _queryParams['address'] = [address];
     }
@@ -328,11 +328,11 @@ class RepresentativesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (ocdId == null) {
       throw core.ArgumentError('Parameter ocdId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (levels != null) {
       _queryParams['levels'] = levels;
     }

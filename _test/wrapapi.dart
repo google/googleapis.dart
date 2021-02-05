@@ -50,7 +50,6 @@ class WrapApi {
   /// this method will complete with the same error.
   async.Future<WrapResponse> helloPost(WrapRequest request) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -63,7 +62,6 @@ class WrapApi {
       _url,
       'POST',
       body: _body,
-      queryParams: _queryParams,
     );
     return WrapResponse.fromJson(
         _response['data'] as core.Map<core.String, core.dynamic>);

@@ -117,12 +117,12 @@ class AppsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -160,11 +160,11 @@ class AppsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -212,7 +212,6 @@ class AppsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -221,6 +220,7 @@ class AppsResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (updateMask != null) {
       _queryParams['updateMask'] = [updateMask];
     }
@@ -274,7 +274,6 @@ class AppsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -283,6 +282,7 @@ class AppsResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -330,7 +330,6 @@ class AppsAuthorizedCertificatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -339,6 +338,7 @@ class AppsAuthorizedCertificatesResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -383,7 +383,6 @@ class AppsAuthorizedCertificatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -392,6 +391,7 @@ class AppsAuthorizedCertificatesResource {
       throw core.ArgumentError(
           'Parameter authorizedCertificatesId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -444,7 +444,6 @@ class AppsAuthorizedCertificatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -453,6 +452,7 @@ class AppsAuthorizedCertificatesResource {
       throw core.ArgumentError(
           'Parameter authorizedCertificatesId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (view != null) {
       _queryParams['view'] = [view];
     }
@@ -511,11 +511,11 @@ class AppsAuthorizedCertificatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -581,7 +581,6 @@ class AppsAuthorizedCertificatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -594,6 +593,7 @@ class AppsAuthorizedCertificatesResource {
       throw core.ArgumentError(
           'Parameter authorizedCertificatesId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (updateMask != null) {
       _queryParams['updateMask'] = [updateMask];
     }
@@ -651,11 +651,11 @@ class AppsAuthorizedDomainsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -728,7 +728,6 @@ class AppsDomainMappingsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -737,6 +736,7 @@ class AppsDomainMappingsResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (overrideStrategy != null) {
       _queryParams['overrideStrategy'] = [overrideStrategy];
     }
@@ -785,7 +785,6 @@ class AppsDomainMappingsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -793,6 +792,7 @@ class AppsDomainMappingsResource {
     if (domainMappingsId == null) {
       throw core.ArgumentError('Parameter domainMappingsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -835,7 +835,6 @@ class AppsDomainMappingsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -843,6 +842,7 @@ class AppsDomainMappingsResource {
     if (domainMappingsId == null) {
       throw core.ArgumentError('Parameter domainMappingsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -889,11 +889,11 @@ class AppsDomainMappingsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -953,7 +953,6 @@ class AppsDomainMappingsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -965,6 +964,7 @@ class AppsDomainMappingsResource {
     if (domainMappingsId == null) {
       throw core.ArgumentError('Parameter domainMappingsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (updateMask != null) {
       _queryParams['updateMask'] = [updateMask];
     }
@@ -1032,7 +1032,6 @@ class AppsFirewallIngressRulesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1041,6 +1040,7 @@ class AppsFirewallIngressRulesResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1084,7 +1084,6 @@ class AppsFirewallIngressRulesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1093,6 +1092,7 @@ class AppsFirewallIngressRulesResource {
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1136,7 +1136,6 @@ class AppsFirewallIngressRulesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -1144,6 +1143,7 @@ class AppsFirewallIngressRulesResource {
     if (ingressRulesId == null) {
       throw core.ArgumentError('Parameter ingressRulesId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1186,7 +1186,6 @@ class AppsFirewallIngressRulesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -1194,6 +1193,7 @@ class AppsFirewallIngressRulesResource {
     if (ingressRulesId == null) {
       throw core.ArgumentError('Parameter ingressRulesId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1245,11 +1245,11 @@ class AppsFirewallIngressRulesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (matchingAddress != null) {
       _queryParams['matchingAddress'] = [matchingAddress];
     }
@@ -1307,7 +1307,6 @@ class AppsFirewallIngressRulesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1319,6 +1318,7 @@ class AppsFirewallIngressRulesResource {
     if (ingressRulesId == null) {
       throw core.ArgumentError('Parameter ingressRulesId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (updateMask != null) {
       _queryParams['updateMask'] = [updateMask];
     }
@@ -1371,7 +1371,6 @@ class AppsLocationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -1379,6 +1378,7 @@ class AppsLocationsResource {
     if (locationsId == null) {
       throw core.ArgumentError('Parameter locationsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1427,11 +1427,11 @@ class AppsLocationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -1489,7 +1489,6 @@ class AppsOperationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -1497,6 +1496,7 @@ class AppsOperationsResource {
     if (operationsId == null) {
       throw core.ArgumentError('Parameter operationsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1553,11 +1553,11 @@ class AppsOperationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -1617,7 +1617,6 @@ class AppsServicesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -1625,6 +1624,7 @@ class AppsServicesResource {
     if (servicesId == null) {
       throw core.ArgumentError('Parameter servicesId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1667,7 +1667,6 @@ class AppsServicesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -1675,6 +1674,7 @@ class AppsServicesResource {
     if (servicesId == null) {
       throw core.ArgumentError('Parameter servicesId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1720,11 +1720,11 @@ class AppsServicesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -1792,7 +1792,6 @@ class AppsServicesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1804,6 +1803,7 @@ class AppsServicesResource {
     if (servicesId == null) {
       throw core.ArgumentError('Parameter servicesId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (migrateTraffic != null) {
       _queryParams['migrateTraffic'] = ['${migrateTraffic}'];
     }
@@ -1866,7 +1866,6 @@ class AppsServicesVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1878,6 +1877,7 @@ class AppsServicesVersionsResource {
     if (servicesId == null) {
       throw core.ArgumentError('Parameter servicesId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1925,7 +1925,6 @@ class AppsServicesVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -1936,6 +1935,7 @@ class AppsServicesVersionsResource {
     if (versionsId == null) {
       throw core.ArgumentError('Parameter versionsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1995,7 +1995,6 @@ class AppsServicesVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -2006,6 +2005,7 @@ class AppsServicesVersionsResource {
     if (versionsId == null) {
       throw core.ArgumentError('Parameter versionsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (view != null) {
       _queryParams['view'] = [view];
     }
@@ -2068,7 +2068,6 @@ class AppsServicesVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -2076,6 +2075,7 @@ class AppsServicesVersionsResource {
     if (servicesId == null) {
       throw core.ArgumentError('Parameter servicesId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -2171,7 +2171,6 @@ class AppsServicesVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2186,6 +2185,7 @@ class AppsServicesVersionsResource {
     if (versionsId == null) {
       throw core.ArgumentError('Parameter versionsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (updateMask != null) {
       _queryParams['updateMask'] = [updateMask];
     }
@@ -2257,7 +2257,6 @@ class AppsServicesVersionsInstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2275,6 +2274,7 @@ class AppsServicesVersionsInstancesResource {
     if (instancesId == null) {
       throw core.ArgumentError('Parameter instancesId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2341,7 +2341,6 @@ class AppsServicesVersionsInstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -2355,6 +2354,7 @@ class AppsServicesVersionsInstancesResource {
     if (instancesId == null) {
       throw core.ArgumentError('Parameter instancesId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2407,7 +2407,6 @@ class AppsServicesVersionsInstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -2421,6 +2420,7 @@ class AppsServicesVersionsInstancesResource {
     if (instancesId == null) {
       throw core.ArgumentError('Parameter instancesId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2478,7 +2478,6 @@ class AppsServicesVersionsInstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (appsId == null) {
       throw core.ArgumentError('Parameter appsId is required.');
@@ -2489,6 +2488,7 @@ class AppsServicesVersionsInstancesResource {
     if (versionsId == null) {
       throw core.ArgumentError('Parameter versionsId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }

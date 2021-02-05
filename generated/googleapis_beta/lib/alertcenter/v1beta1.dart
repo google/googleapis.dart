@@ -85,12 +85,12 @@ class AlertsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -128,12 +128,12 @@ class AlertsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -181,11 +181,11 @@ class AlertsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
     }
@@ -231,11 +231,11 @@ class AlertsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
     }
@@ -283,11 +283,11 @@ class AlertsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
     }
@@ -355,8 +355,8 @@ class AlertsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
     }
@@ -417,7 +417,6 @@ class AlertsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -426,6 +425,7 @@ class AlertsResource {
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -483,7 +483,6 @@ class AlertsFeedbackResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -492,6 +491,7 @@ class AlertsFeedbackResource {
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
     }
@@ -550,11 +550,11 @@ class AlertsFeedbackResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (alertId == null) {
       throw core.ArgumentError('Parameter alertId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
     }
@@ -607,8 +607,8 @@ class V1beta1Resource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
     }
@@ -652,12 +652,12 @@ class V1beta1Resource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
     }

@@ -114,7 +114,6 @@ class AclResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -122,6 +121,7 @@ class AclResource {
     if (ruleId == null) {
       throw core.ArgumentError('Parameter ruleId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -165,7 +165,6 @@ class AclResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -173,6 +172,7 @@ class AclResource {
     if (ruleId == null) {
       throw core.ArgumentError('Parameter ruleId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -220,7 +220,6 @@ class AclResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -229,6 +228,7 @@ class AclResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (sendNotifications != null) {
       _queryParams['sendNotifications'] = ['${sendNotifications}'];
     }
@@ -295,11 +295,11 @@ class AclResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -362,7 +362,6 @@ class AclResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -374,6 +373,7 @@ class AclResource {
     if (ruleId == null) {
       throw core.ArgumentError('Parameter ruleId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (sendNotifications != null) {
       _queryParams['sendNotifications'] = ['${sendNotifications}'];
     }
@@ -429,7 +429,6 @@ class AclResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -441,6 +440,7 @@ class AclResource {
     if (ruleId == null) {
       throw core.ArgumentError('Parameter ruleId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (sendNotifications != null) {
       _queryParams['sendNotifications'] = ['${sendNotifications}'];
     }
@@ -513,7 +513,6 @@ class AclResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -522,6 +521,7 @@ class AclResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -578,11 +578,11 @@ class CalendarListResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -621,11 +621,11 @@ class CalendarListResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -669,12 +669,12 @@ class CalendarListResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (colorRgbFormat != null) {
       _queryParams['colorRgbFormat'] = ['${colorRgbFormat}'];
     }
@@ -753,8 +753,8 @@ class CalendarListResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -822,7 +822,6 @@ class CalendarListResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -831,6 +830,7 @@ class CalendarListResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (colorRgbFormat != null) {
       _queryParams['colorRgbFormat'] = ['${colorRgbFormat}'];
     }
@@ -883,7 +883,6 @@ class CalendarListResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -892,6 +891,7 @@ class CalendarListResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (colorRgbFormat != null) {
       _queryParams['colorRgbFormat'] = ['${colorRgbFormat}'];
     }
@@ -974,12 +974,12 @@ class CalendarListResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -1043,11 +1043,11 @@ class CalendarsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1086,11 +1086,11 @@ class CalendarsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1128,11 +1128,11 @@ class CalendarsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1168,12 +1168,12 @@ class CalendarsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1217,7 +1217,6 @@ class CalendarsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1226,6 +1225,7 @@ class CalendarsResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1267,7 +1267,6 @@ class CalendarsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1276,6 +1275,7 @@ class CalendarsResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1316,12 +1316,12 @@ class ChannelsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1361,8 +1361,8 @@ class ColorsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1425,7 +1425,6 @@ class EventsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -1433,6 +1432,7 @@ class EventsResource {
     if (eventId == null) {
       throw core.ArgumentError('Parameter eventId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (sendNotifications != null) {
       _queryParams['sendNotifications'] = ['${sendNotifications}'];
     }
@@ -1497,7 +1497,6 @@ class EventsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -1505,6 +1504,7 @@ class EventsResource {
     if (eventId == null) {
       throw core.ArgumentError('Parameter eventId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (alwaysIncludeEmail != null) {
       _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
     }
@@ -1572,7 +1572,6 @@ class EventsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1581,6 +1580,7 @@ class EventsResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (conferenceDataVersion != null) {
       _queryParams['conferenceDataVersion'] = ['${conferenceDataVersion}'];
     }
@@ -1666,7 +1666,6 @@ class EventsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1675,6 +1674,7 @@ class EventsResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (conferenceDataVersion != null) {
       _queryParams['conferenceDataVersion'] = ['${conferenceDataVersion}'];
     }
@@ -1775,7 +1775,6 @@ class EventsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -1783,6 +1782,7 @@ class EventsResource {
     if (eventId == null) {
       throw core.ArgumentError('Parameter eventId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (alwaysIncludeEmail != null) {
       _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
     }
@@ -1969,11 +1969,11 @@ class EventsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (alwaysIncludeEmail != null) {
       _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
     }
@@ -2087,7 +2087,6 @@ class EventsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
@@ -2095,6 +2094,7 @@ class EventsResource {
     if (eventId == null) {
       throw core.ArgumentError('Parameter eventId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (destination == null) {
       throw core.ArgumentError('Parameter destination is required.');
     }
@@ -2195,7 +2195,6 @@ class EventsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2207,6 +2206,7 @@ class EventsResource {
     if (eventId == null) {
       throw core.ArgumentError('Parameter eventId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (alwaysIncludeEmail != null) {
       _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
     }
@@ -2287,11 +2287,11 @@ class EventsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (text == null) {
       throw core.ArgumentError('Parameter text is required.');
     }
@@ -2388,7 +2388,6 @@ class EventsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2400,6 +2399,7 @@ class EventsResource {
     if (eventId == null) {
       throw core.ArgumentError('Parameter eventId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (alwaysIncludeEmail != null) {
       _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
     }
@@ -2580,7 +2580,6 @@ class EventsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2589,6 +2588,7 @@ class EventsResource {
     if (calendarId == null) {
       throw core.ArgumentError('Parameter calendarId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (alwaysIncludeEmail != null) {
       _queryParams['alwaysIncludeEmail'] = ['${alwaysIncludeEmail}'];
     }
@@ -2684,12 +2684,12 @@ class FreebusyResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2733,11 +2733,11 @@ class SettingsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (setting == null) {
       throw core.ArgumentError('Parameter setting is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2788,8 +2788,8 @@ class SettingsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -2852,12 +2852,12 @@ class SettingsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }

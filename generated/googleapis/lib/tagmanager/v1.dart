@@ -123,11 +123,11 @@ class AccountsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -161,8 +161,8 @@ class AccountsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -206,7 +206,6 @@ class AccountsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -215,6 +214,7 @@ class AccountsResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -282,7 +282,6 @@ class AccountsContainersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -291,6 +290,7 @@ class AccountsContainersResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -330,7 +330,6 @@ class AccountsContainersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -338,6 +337,7 @@ class AccountsContainersResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -379,7 +379,6 @@ class AccountsContainersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -387,6 +386,7 @@ class AccountsContainersResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -425,11 +425,11 @@ class AccountsContainersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -478,7 +478,6 @@ class AccountsContainersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -490,6 +489,7 @@ class AccountsContainersResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -545,7 +545,6 @@ class AccountsContainersEnvironmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -557,6 +556,7 @@ class AccountsContainersEnvironmentsResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -602,7 +602,6 @@ class AccountsContainersEnvironmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -613,6 +612,7 @@ class AccountsContainersEnvironmentsResource {
     if (environmentId == null) {
       throw core.ArgumentError('Parameter environmentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -659,7 +659,6 @@ class AccountsContainersEnvironmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -670,6 +669,7 @@ class AccountsContainersEnvironmentsResource {
     if (environmentId == null) {
       throw core.ArgumentError('Parameter environmentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -714,7 +714,6 @@ class AccountsContainersEnvironmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -722,6 +721,7 @@ class AccountsContainersEnvironmentsResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -775,7 +775,6 @@ class AccountsContainersEnvironmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -790,6 +789,7 @@ class AccountsContainersEnvironmentsResource {
     if (environmentId == null) {
       throw core.ArgumentError('Parameter environmentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -851,7 +851,6 @@ class AccountsContainersFoldersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -863,6 +862,7 @@ class AccountsContainersFoldersResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -907,7 +907,6 @@ class AccountsContainersFoldersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -918,6 +917,7 @@ class AccountsContainersFoldersResource {
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -964,7 +964,6 @@ class AccountsContainersFoldersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -975,6 +974,7 @@ class AccountsContainersFoldersResource {
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1018,7 +1018,6 @@ class AccountsContainersFoldersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1026,6 +1025,7 @@ class AccountsContainersFoldersResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1079,7 +1079,6 @@ class AccountsContainersFoldersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1094,6 +1093,7 @@ class AccountsContainersFoldersResource {
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -1151,7 +1151,6 @@ class AccountsContainersFoldersEntitiesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1162,6 +1161,7 @@ class AccountsContainersFoldersEntitiesResource {
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1227,7 +1227,6 @@ class AccountsContainersMoveFoldersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1242,6 +1241,7 @@ class AccountsContainersMoveFoldersResource {
     if (folderId == null) {
       throw core.ArgumentError('Parameter folderId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (tagId != null) {
       _queryParams['tagId'] = tagId;
     }
@@ -1308,7 +1308,6 @@ class AccountsContainersReauthorizeEnvironmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1323,6 +1322,7 @@ class AccountsContainersReauthorizeEnvironmentsResource {
     if (environmentId == null) {
       throw core.ArgumentError('Parameter environmentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1378,7 +1378,6 @@ class AccountsContainersTagsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1390,6 +1389,7 @@ class AccountsContainersTagsResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1434,7 +1434,6 @@ class AccountsContainersTagsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1445,6 +1444,7 @@ class AccountsContainersTagsResource {
     if (tagId == null) {
       throw core.ArgumentError('Parameter tagId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1491,7 +1491,6 @@ class AccountsContainersTagsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1502,6 +1501,7 @@ class AccountsContainersTagsResource {
     if (tagId == null) {
       throw core.ArgumentError('Parameter tagId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1545,7 +1545,6 @@ class AccountsContainersTagsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1553,6 +1552,7 @@ class AccountsContainersTagsResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1606,7 +1606,6 @@ class AccountsContainersTagsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1621,6 +1620,7 @@ class AccountsContainersTagsResource {
     if (tagId == null) {
       throw core.ArgumentError('Parameter tagId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -1678,7 +1678,6 @@ class AccountsContainersTriggersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1690,6 +1689,7 @@ class AccountsContainersTriggersResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1734,7 +1734,6 @@ class AccountsContainersTriggersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1745,6 +1744,7 @@ class AccountsContainersTriggersResource {
     if (triggerId == null) {
       throw core.ArgumentError('Parameter triggerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1791,7 +1791,6 @@ class AccountsContainersTriggersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1802,6 +1801,7 @@ class AccountsContainersTriggersResource {
     if (triggerId == null) {
       throw core.ArgumentError('Parameter triggerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1845,7 +1845,6 @@ class AccountsContainersTriggersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -1853,6 +1852,7 @@ class AccountsContainersTriggersResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1906,7 +1906,6 @@ class AccountsContainersTriggersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1921,6 +1920,7 @@ class AccountsContainersTriggersResource {
     if (triggerId == null) {
       throw core.ArgumentError('Parameter triggerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -1978,7 +1978,6 @@ class AccountsContainersVariablesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1990,6 +1989,7 @@ class AccountsContainersVariablesResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2034,7 +2034,6 @@ class AccountsContainersVariablesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2045,6 +2044,7 @@ class AccountsContainersVariablesResource {
     if (variableId == null) {
       throw core.ArgumentError('Parameter variableId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2091,7 +2091,6 @@ class AccountsContainersVariablesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2102,6 +2101,7 @@ class AccountsContainersVariablesResource {
     if (variableId == null) {
       throw core.ArgumentError('Parameter variableId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2145,7 +2145,6 @@ class AccountsContainersVariablesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2153,6 +2152,7 @@ class AccountsContainersVariablesResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2206,7 +2206,6 @@ class AccountsContainersVariablesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2221,6 +2220,7 @@ class AccountsContainersVariablesResource {
     if (variableId == null) {
       throw core.ArgumentError('Parameter variableId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -2278,7 +2278,6 @@ class AccountsContainersVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2290,6 +2289,7 @@ class AccountsContainersVersionsResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2335,7 +2335,6 @@ class AccountsContainersVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2346,6 +2345,7 @@ class AccountsContainersVersionsResource {
     if (containerVersionId == null) {
       throw core.ArgumentError('Parameter containerVersionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2393,7 +2393,6 @@ class AccountsContainersVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2404,6 +2403,7 @@ class AccountsContainersVersionsResource {
     if (containerVersionId == null) {
       throw core.ArgumentError('Parameter containerVersionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2454,7 +2454,6 @@ class AccountsContainersVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2462,6 +2461,7 @@ class AccountsContainersVersionsResource {
     if (containerId == null) {
       throw core.ArgumentError('Parameter containerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (headers != null) {
       _queryParams['headers'] = ['${headers}'];
     }
@@ -2518,7 +2518,6 @@ class AccountsContainersVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2529,6 +2528,7 @@ class AccountsContainersVersionsResource {
     if (containerVersionId == null) {
       throw core.ArgumentError('Parameter containerVersionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -2584,7 +2584,6 @@ class AccountsContainersVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2595,6 +2594,7 @@ class AccountsContainersVersionsResource {
     if (containerVersionId == null) {
       throw core.ArgumentError('Parameter containerVersionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2643,7 +2643,6 @@ class AccountsContainersVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2654,6 +2653,7 @@ class AccountsContainersVersionsResource {
     if (containerVersionId == null) {
       throw core.ArgumentError('Parameter containerVersionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2709,7 +2709,6 @@ class AccountsContainersVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2724,6 +2723,7 @@ class AccountsContainersVersionsResource {
     if (containerVersionId == null) {
       throw core.ArgumentError('Parameter containerVersionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -2779,7 +2779,6 @@ class AccountsPermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2788,6 +2787,7 @@ class AccountsPermissionsResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2829,7 +2829,6 @@ class AccountsPermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2837,6 +2836,7 @@ class AccountsPermissionsResource {
     if (permissionId == null) {
       throw core.ArgumentError('Parameter permissionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2878,7 +2878,6 @@ class AccountsPermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
@@ -2886,6 +2885,7 @@ class AccountsPermissionsResource {
     if (permissionId == null) {
       throw core.ArgumentError('Parameter permissionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2926,11 +2926,11 @@ class AccountsPermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2975,7 +2975,6 @@ class AccountsPermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2987,6 +2986,7 @@ class AccountsPermissionsResource {
     if (permissionId == null) {
       throw core.ArgumentError('Parameter permissionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }

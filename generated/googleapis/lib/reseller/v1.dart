@@ -94,11 +94,11 @@ class CustomersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -143,12 +143,12 @@ class CustomersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerAuthToken != null) {
       _queryParams['customerAuthToken'] = [customerAuthToken];
     }
@@ -194,7 +194,6 @@ class CustomersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -203,6 +202,7 @@ class CustomersResource {
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -246,7 +246,6 @@ class CustomersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -255,6 +254,7 @@ class CustomersResource {
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -295,8 +295,8 @@ class ResellernotifyResource_1 {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -334,8 +334,8 @@ class ResellernotifyResource_1 {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (serviceAccountEmailAddress != null) {
       _queryParams['serviceAccountEmailAddress'] = [serviceAccountEmailAddress];
     }
@@ -376,8 +376,8 @@ class ResellernotifyResource_1 {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (serviceAccountEmailAddress != null) {
       _queryParams['serviceAccountEmailAddress'] = [serviceAccountEmailAddress];
     }
@@ -433,7 +433,6 @@ class SubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
@@ -441,6 +440,7 @@ class SubscriptionsResource {
     if (subscriptionId == null) {
       throw core.ArgumentError('Parameter subscriptionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -497,7 +497,6 @@ class SubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -509,6 +508,7 @@ class SubscriptionsResource {
     if (subscriptionId == null) {
       throw core.ArgumentError('Parameter subscriptionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -565,7 +565,6 @@ class SubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -577,6 +576,7 @@ class SubscriptionsResource {
     if (subscriptionId == null) {
       throw core.ArgumentError('Parameter subscriptionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -631,7 +631,6 @@ class SubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -643,6 +642,7 @@ class SubscriptionsResource {
     if (subscriptionId == null) {
       throw core.ArgumentError('Parameter subscriptionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -705,7 +705,6 @@ class SubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
@@ -713,6 +712,7 @@ class SubscriptionsResource {
     if (subscriptionId == null) {
       throw core.ArgumentError('Parameter subscriptionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (deletionType == null) {
       throw core.ArgumentError('Parameter deletionType is required.');
     }
@@ -765,7 +765,6 @@ class SubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
@@ -773,6 +772,7 @@ class SubscriptionsResource {
     if (subscriptionId == null) {
       throw core.ArgumentError('Parameter subscriptionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -826,7 +826,6 @@ class SubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -835,6 +834,7 @@ class SubscriptionsResource {
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerAuthToken != null) {
       _queryParams['customerAuthToken'] = [customerAuthToken];
     }
@@ -909,8 +909,8 @@ class SubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerAuthToken != null) {
       _queryParams['customerAuthToken'] = [customerAuthToken];
     }
@@ -973,7 +973,6 @@ class SubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
@@ -981,6 +980,7 @@ class SubscriptionsResource {
     if (subscriptionId == null) {
       throw core.ArgumentError('Parameter subscriptionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1031,7 +1031,6 @@ class SubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
@@ -1039,6 +1038,7 @@ class SubscriptionsResource {
     if (subscriptionId == null) {
       throw core.ArgumentError('Parameter subscriptionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }

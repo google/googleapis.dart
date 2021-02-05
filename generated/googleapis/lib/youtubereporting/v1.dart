@@ -108,12 +108,12 @@ class JobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (onBehalfOfContentOwner != null) {
       _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
@@ -158,11 +158,11 @@ class JobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (onBehalfOfContentOwner != null) {
       _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
@@ -206,11 +206,11 @@ class JobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (onBehalfOfContentOwner != null) {
       _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
@@ -266,8 +266,8 @@ class JobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (includeSystemManaged != null) {
       _queryParams['includeSystemManaged'] = ['${includeSystemManaged}'];
     }
@@ -330,7 +330,6 @@ class JobsReportsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
@@ -338,6 +337,7 @@ class JobsReportsResource {
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (onBehalfOfContentOwner != null) {
       _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
@@ -408,11 +408,11 @@ class JobsReportsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (jobId == null) {
       throw core.ArgumentError('Parameter jobId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (createdAfter != null) {
       _queryParams['createdAfter'] = [createdAfter];
     }
@@ -485,11 +485,11 @@ class MediaResource {
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -555,8 +555,8 @@ class ReportTypesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (includeSystemManaged != null) {
       _queryParams['includeSystemManaged'] = ['${includeSystemManaged}'];
     }

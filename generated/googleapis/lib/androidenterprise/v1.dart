@@ -127,7 +127,6 @@ class DevicesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -138,6 +137,7 @@ class DevicesResource {
     if (deviceId == null) {
       throw core.ArgumentError('Parameter deviceId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -185,7 +185,6 @@ class DevicesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -196,6 +195,7 @@ class DevicesResource {
     if (deviceId == null) {
       throw core.ArgumentError('Parameter deviceId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -248,7 +248,6 @@ class DevicesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -259,6 +258,7 @@ class DevicesResource {
     if (deviceId == null) {
       throw core.ArgumentError('Parameter deviceId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -304,7 +304,6 @@ class DevicesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -312,6 +311,7 @@ class DevicesResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -366,7 +366,6 @@ class DevicesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -381,6 +380,7 @@ class DevicesResource {
     if (deviceId == null) {
       throw core.ArgumentError('Parameter deviceId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -443,7 +443,6 @@ class DevicesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -458,6 +457,7 @@ class DevicesResource {
     if (deviceId == null) {
       throw core.ArgumentError('Parameter deviceId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (updateMask != null) {
       _queryParams['updateMask'] = [updateMask];
     }
@@ -509,8 +509,8 @@ class EnterprisesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (notificationSetId != null) {
       _queryParams['notificationSetId'] = [notificationSetId];
     }
@@ -557,8 +557,8 @@ class EnterprisesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (completionToken != null) {
       _queryParams['completionToken'] = [completionToken];
     }
@@ -608,7 +608,6 @@ class EnterprisesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -617,6 +616,7 @@ class EnterprisesResource {
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -660,12 +660,12 @@ class EnterprisesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
@@ -714,8 +714,8 @@ class EnterprisesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (callbackUrl != null) {
       _queryParams['callbackUrl'] = [callbackUrl];
     }
@@ -755,11 +755,11 @@ class EnterprisesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -819,11 +819,11 @@ class EnterprisesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (keyType != null) {
       _queryParams['keyType'] = [keyType];
     }
@@ -868,11 +868,11 @@ class EnterprisesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -917,8 +917,8 @@ class EnterprisesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (domain == null) {
       throw core.ArgumentError('Parameter domain is required.');
     }
@@ -984,8 +984,8 @@ class EnterprisesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (requestMode != null) {
       _queryParams['requestMode'] = [requestMode];
     }
@@ -1027,11 +1027,11 @@ class EnterprisesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1074,7 +1074,6 @@ class EnterprisesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1083,6 +1082,7 @@ class EnterprisesResource {
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1133,7 +1133,6 @@ class EnterprisesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1142,6 +1141,7 @@ class EnterprisesResource {
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1179,11 +1179,11 @@ class EnterprisesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1232,7 +1232,6 @@ class EntitlementsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1243,6 +1242,7 @@ class EntitlementsResource {
     if (entitlementId == null) {
       throw core.ArgumentError('Parameter entitlementId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1290,7 +1290,6 @@ class EntitlementsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1301,6 +1300,7 @@ class EntitlementsResource {
     if (entitlementId == null) {
       throw core.ArgumentError('Parameter entitlementId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1347,7 +1347,6 @@ class EntitlementsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1355,6 +1354,7 @@ class EntitlementsResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1411,7 +1411,6 @@ class EntitlementsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1426,6 +1425,7 @@ class EntitlementsResource {
     if (entitlementId == null) {
       throw core.ArgumentError('Parameter entitlementId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (install != null) {
       _queryParams['install'] = ['${install}'];
     }
@@ -1481,7 +1481,6 @@ class GrouplicensesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1489,6 +1488,7 @@ class GrouplicensesResource {
     if (groupLicenseId == null) {
       throw core.ArgumentError('Parameter groupLicenseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1529,11 +1529,11 @@ class GrouplicensesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1583,7 +1583,6 @@ class GrouplicenseusersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1591,6 +1590,7 @@ class GrouplicenseusersResource {
     if (groupLicenseId == null) {
       throw core.ArgumentError('Parameter groupLicenseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1648,7 +1648,6 @@ class InstallsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1662,6 +1661,7 @@ class InstallsResource {
     if (installId == null) {
       throw core.ArgumentError('Parameter installId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1714,7 +1714,6 @@ class InstallsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1728,6 +1727,7 @@ class InstallsResource {
     if (installId == null) {
       throw core.ArgumentError('Parameter installId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1776,7 +1776,6 @@ class InstallsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1787,6 +1786,7 @@ class InstallsResource {
     if (deviceId == null) {
       throw core.ArgumentError('Parameter deviceId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1845,7 +1845,6 @@ class InstallsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1863,6 +1862,7 @@ class InstallsResource {
     if (installId == null) {
       throw core.ArgumentError('Parameter installId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1922,7 +1922,6 @@ class ManagedconfigurationsfordeviceResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -1937,6 +1936,7 @@ class ManagedconfigurationsfordeviceResource {
       throw core.ArgumentError(
           'Parameter managedConfigurationForDeviceId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1989,7 +1989,6 @@ class ManagedconfigurationsfordeviceResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2004,6 +2003,7 @@ class ManagedconfigurationsfordeviceResource {
       throw core.ArgumentError(
           'Parameter managedConfigurationForDeviceId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2055,7 +2055,6 @@ class ManagedconfigurationsfordeviceResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2066,6 +2065,7 @@ class ManagedconfigurationsfordeviceResource {
     if (deviceId == null) {
       throw core.ArgumentError('Parameter deviceId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2122,7 +2122,6 @@ class ManagedconfigurationsfordeviceResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2141,6 +2140,7 @@ class ManagedconfigurationsfordeviceResource {
       throw core.ArgumentError(
           'Parameter managedConfigurationForDeviceId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2198,7 +2198,6 @@ class ManagedconfigurationsforuserResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2210,6 +2209,7 @@ class ManagedconfigurationsforuserResource {
       throw core.ArgumentError(
           'Parameter managedConfigurationForUserId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2258,7 +2258,6 @@ class ManagedconfigurationsforuserResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2270,6 +2269,7 @@ class ManagedconfigurationsforuserResource {
       throw core.ArgumentError(
           'Parameter managedConfigurationForUserId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2316,7 +2316,6 @@ class ManagedconfigurationsforuserResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2324,6 +2323,7 @@ class ManagedconfigurationsforuserResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2380,7 +2380,6 @@ class ManagedconfigurationsforuserResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2396,6 +2395,7 @@ class ManagedconfigurationsforuserResource {
       throw core.ArgumentError(
           'Parameter managedConfigurationForUserId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2449,7 +2449,6 @@ class ManagedconfigurationssettingsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2457,6 +2456,7 @@ class ManagedconfigurationssettingsResource {
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2508,11 +2508,11 @@ class PermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (permissionId == null) {
       throw core.ArgumentError('Parameter permissionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
     }
@@ -2568,7 +2568,6 @@ class ProductsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2580,6 +2579,7 @@ class ProductsResource {
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2636,7 +2636,6 @@ class ProductsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2644,6 +2643,7 @@ class ProductsResource {
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (languageCode != null) {
       _queryParams['languageCode'] = [languageCode];
     }
@@ -2694,7 +2694,6 @@ class ProductsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2702,6 +2701,7 @@ class ProductsResource {
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
     }
@@ -2757,7 +2757,6 @@ class ProductsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2765,6 +2764,7 @@ class ProductsResource {
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
     }
@@ -2811,7 +2811,6 @@ class ProductsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2819,6 +2818,7 @@ class ProductsResource {
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2884,11 +2884,11 @@ class ProductsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (approved != null) {
       _queryParams['approved'] = ['${approved}'];
     }
@@ -2944,7 +2944,6 @@ class ProductsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -2952,6 +2951,7 @@ class ProductsResource {
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3003,7 +3003,6 @@ class ServiceaccountkeysResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3011,6 +3010,7 @@ class ServiceaccountkeysResource {
     if (keyId == null) {
       throw core.ArgumentError('Parameter keyId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3058,7 +3058,6 @@ class ServiceaccountkeysResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3067,6 +3066,7 @@ class ServiceaccountkeysResource {
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3112,11 +3112,11 @@ class ServiceaccountkeysResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3166,7 +3166,6 @@ class StorelayoutclustersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3177,6 +3176,7 @@ class StorelayoutclustersResource {
     if (clusterId == null) {
       throw core.ArgumentError('Parameter clusterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3223,7 +3223,6 @@ class StorelayoutclustersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3234,6 +3233,7 @@ class StorelayoutclustersResource {
     if (clusterId == null) {
       throw core.ArgumentError('Parameter clusterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3281,7 +3281,6 @@ class StorelayoutclustersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3293,6 +3292,7 @@ class StorelayoutclustersResource {
     if (pageId == null) {
       throw core.ArgumentError('Parameter pageId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3337,7 +3337,6 @@ class StorelayoutclustersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3345,6 +3344,7 @@ class StorelayoutclustersResource {
     if (pageId == null) {
       throw core.ArgumentError('Parameter pageId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3394,7 +3394,6 @@ class StorelayoutclustersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3409,6 +3408,7 @@ class StorelayoutclustersResource {
     if (clusterId == null) {
       throw core.ArgumentError('Parameter clusterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3458,7 +3458,6 @@ class StorelayoutpagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3466,6 +3465,7 @@ class StorelayoutpagesResource {
     if (pageId == null) {
       throw core.ArgumentError('Parameter pageId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3507,7 +3507,6 @@ class StorelayoutpagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3515,6 +3514,7 @@ class StorelayoutpagesResource {
     if (pageId == null) {
       throw core.ArgumentError('Parameter pageId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3556,7 +3556,6 @@ class StorelayoutpagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3565,6 +3564,7 @@ class StorelayoutpagesResource {
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3603,11 +3603,11 @@ class StorelayoutpagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3652,7 +3652,6 @@ class StorelayoutpagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3664,6 +3663,7 @@ class StorelayoutpagesResource {
     if (pageId == null) {
       throw core.ArgumentError('Parameter pageId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3710,7 +3710,6 @@ class UsersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3718,6 +3717,7 @@ class UsersResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3764,7 +3764,6 @@ class UsersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3772,6 +3771,7 @@ class UsersResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3815,7 +3815,6 @@ class UsersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3823,6 +3822,7 @@ class UsersResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3864,7 +3864,6 @@ class UsersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -3872,6 +3871,7 @@ class UsersResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3920,7 +3920,6 @@ class UsersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3929,6 +3928,7 @@ class UsersResource {
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3975,11 +3975,11 @@ class UsersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (email == null) {
       throw core.ArgumentError('Parameter email is required.');
     }
@@ -4026,7 +4026,6 @@ class UsersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -4034,6 +4033,7 @@ class UsersResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4083,7 +4083,6 @@ class UsersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4095,6 +4094,7 @@ class UsersResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4147,7 +4147,6 @@ class UsersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4159,6 +4158,7 @@ class UsersResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4205,7 +4205,6 @@ class WebappsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -4213,6 +4212,7 @@ class WebappsResource {
     if (webAppId == null) {
       throw core.ArgumentError('Parameter webAppId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4254,7 +4254,6 @@ class WebappsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
@@ -4262,6 +4261,7 @@ class WebappsResource {
     if (webAppId == null) {
       throw core.ArgumentError('Parameter webAppId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4303,7 +4303,6 @@ class WebappsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4312,6 +4311,7 @@ class WebappsResource {
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4350,11 +4350,11 @@ class WebappsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (enterpriseId == null) {
       throw core.ArgumentError('Parameter enterpriseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4399,7 +4399,6 @@ class WebappsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4411,6 +4410,7 @@ class WebappsResource {
     if (webAppId == null) {
       throw core.ArgumentError('Parameter webAppId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }

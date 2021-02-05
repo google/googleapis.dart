@@ -120,8 +120,8 @@ class AchievementDefinitionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
     }
@@ -182,11 +182,11 @@ class AchievementsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (stepsToIncrement == null) {
       throw core.ArgumentError('Parameter stepsToIncrement is required.');
     }
@@ -256,11 +256,11 @@ class AchievementsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
     }
@@ -312,11 +312,11 @@ class AchievementsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -363,11 +363,11 @@ class AchievementsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (steps == null) {
       throw core.ArgumentError('Parameter steps is required.');
     }
@@ -410,11 +410,11 @@ class AchievementsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (achievementId == null) {
       throw core.ArgumentError('Parameter achievementId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -453,12 +453,12 @@ class AchievementsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -519,11 +519,11 @@ class ApplicationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
     }
@@ -575,8 +575,8 @@ class ApplicationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (applicationId != null) {
       _queryParams['applicationId'] = [applicationId];
     }
@@ -614,8 +614,8 @@ class ApplicationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -654,11 +654,11 @@ class ApplicationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (applicationId == null) {
       throw core.ArgumentError('Parameter applicationId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -713,8 +713,8 @@ class EventsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
     }
@@ -769,8 +769,8 @@ class EventsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
     }
@@ -821,12 +821,12 @@ class EventsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
     }
@@ -877,11 +877,11 @@ class LeaderboardsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
     }
@@ -931,8 +931,8 @@ class LeaderboardsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
     }
@@ -981,8 +981,8 @@ class MetagameResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1040,7 +1040,6 @@ class MetagameResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
@@ -1048,6 +1047,7 @@ class MetagameResource {
     if (collection == null) {
       throw core.ArgumentError('Parameter collection is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
     }
@@ -1110,11 +1110,11 @@ class PlayersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
     }
@@ -1172,11 +1172,11 @@ class PlayersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (collection == null) {
       throw core.ArgumentError('Parameter collection is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
     }
@@ -1233,8 +1233,8 @@ class RevisionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientRevision == null) {
       throw core.ArgumentError('Parameter clientRevision is required.');
     }
@@ -1326,7 +1326,6 @@ class ScoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
@@ -1337,6 +1336,7 @@ class ScoresResource {
     if (timeSpan == null) {
       throw core.ArgumentError('Parameter timeSpan is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (includeRankType != null) {
       _queryParams['includeRankType'] = [includeRankType];
     }
@@ -1418,7 +1418,6 @@ class ScoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
@@ -1426,6 +1425,7 @@ class ScoresResource {
     if (collection == null) {
       throw core.ArgumentError('Parameter collection is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (timeSpan == null) {
       throw core.ArgumentError('Parameter timeSpan is required.');
     }
@@ -1516,7 +1516,6 @@ class ScoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
@@ -1524,6 +1523,7 @@ class ScoresResource {
     if (collection == null) {
       throw core.ArgumentError('Parameter collection is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (timeSpan == null) {
       throw core.ArgumentError('Parameter timeSpan is required.');
     }
@@ -1600,11 +1600,11 @@ class ScoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (leaderboardId == null) {
       throw core.ArgumentError('Parameter leaderboardId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (score == null) {
       throw core.ArgumentError('Parameter score is required.');
     }
@@ -1657,12 +1657,12 @@ class ScoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
     }
@@ -1713,11 +1713,11 @@ class SnapshotsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (snapshotId == null) {
       throw core.ArgumentError('Parameter snapshotId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
     }
@@ -1770,11 +1770,11 @@ class SnapshotsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (playerId == null) {
       throw core.ArgumentError('Parameter playerId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (language != null) {
       _queryParams['language'] = [language];
     }
@@ -1833,7 +1833,6 @@ class SnapshotsExtendedResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1842,6 +1841,7 @@ class SnapshotsExtendedResource {
     if (snapshotName == null) {
       throw core.ArgumentError('Parameter snapshotName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1885,8 +1885,8 @@ class StatsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }

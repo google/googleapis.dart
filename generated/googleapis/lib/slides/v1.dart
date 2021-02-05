@@ -124,7 +124,6 @@ class PresentationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -133,6 +132,7 @@ class PresentationsResource {
     if (presentationId == null) {
       throw core.ArgumentError('Parameter presentationId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -177,12 +177,12 @@ class PresentationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -221,11 +221,11 @@ class PresentationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (presentationId == null) {
       throw core.ArgumentError('Parameter presentationId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -272,7 +272,6 @@ class PresentationsPagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (presentationId == null) {
       throw core.ArgumentError('Parameter presentationId is required.');
@@ -280,6 +279,7 @@ class PresentationsPagesResource {
     if (pageObjectId == null) {
       throw core.ArgumentError('Parameter pageObjectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -343,7 +343,6 @@ class PresentationsPagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (presentationId == null) {
       throw core.ArgumentError('Parameter presentationId is required.');
@@ -351,6 +350,7 @@ class PresentationsPagesResource {
     if (pageObjectId == null) {
       throw core.ArgumentError('Parameter pageObjectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (thumbnailProperties_mimeType != null) {
       _queryParams['thumbnailProperties.mimeType'] = [
         thumbnailProperties_mimeType

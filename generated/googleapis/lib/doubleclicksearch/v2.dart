@@ -131,7 +131,6 @@ class ConversionResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (agencyId == null) {
       throw core.ArgumentError('Parameter agencyId is required.');
@@ -142,6 +141,7 @@ class ConversionResource {
     if (engineAccountId == null) {
       throw core.ArgumentError('Parameter engineAccountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (endDate == null) {
       throw core.ArgumentError('Parameter endDate is required.');
     }
@@ -212,12 +212,12 @@ class ConversionResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -255,12 +255,12 @@ class ConversionResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -299,12 +299,12 @@ class ConversionResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -348,12 +348,12 @@ class ReportsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request_1 != null) {
       _body = convert.json.encode(request_1.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -390,11 +390,11 @@ class ReportsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -437,7 +437,6 @@ class ReportsResource {
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (reportId == null) {
       throw core.ArgumentError('Parameter reportId is required.');
@@ -445,6 +444,7 @@ class ReportsResource {
     if (reportFragment == null) {
       throw core.ArgumentError('Parameter reportFragment is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -489,12 +489,12 @@ class ReportsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request_1 != null) {
       _body = convert.json.encode(request_1.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -540,7 +540,6 @@ class SavedColumnsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (agencyId == null) {
       throw core.ArgumentError('Parameter agencyId is required.');
@@ -548,6 +547,7 @@ class SavedColumnsResource {
     if (advertiserId == null) {
       throw core.ArgumentError('Parameter advertiserId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }

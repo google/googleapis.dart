@@ -96,11 +96,11 @@ class ProjectsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -158,11 +158,11 @@ class ProjectsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -222,7 +222,6 @@ class ProjectsHistoriesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -231,6 +230,7 @@ class ProjectsHistoriesResource {
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (requestId != null) {
       _queryParams['requestId'] = [requestId];
     }
@@ -279,7 +279,6 @@ class ProjectsHistoriesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -287,6 +286,7 @@ class ProjectsHistoriesResource {
     if (historyId == null) {
       throw core.ArgumentError('Parameter historyId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -345,11 +345,11 @@ class ProjectsHistoriesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filterByName != null) {
       _queryParams['filterByName'] = [filterByName];
     }
@@ -426,7 +426,6 @@ class ProjectsHistoriesExecutionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -438,6 +437,7 @@ class ProjectsHistoriesExecutionsResource {
     if (historyId == null) {
       throw core.ArgumentError('Parameter historyId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (requestId != null) {
       _queryParams['requestId'] = [requestId];
     }
@@ -491,7 +491,6 @@ class ProjectsHistoriesExecutionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -502,6 +501,7 @@ class ProjectsHistoriesExecutionsResource {
     if (executionId == null) {
       throw core.ArgumentError('Parameter executionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -561,7 +561,6 @@ class ProjectsHistoriesExecutionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -569,6 +568,7 @@ class ProjectsHistoriesExecutionsResource {
     if (historyId == null) {
       throw core.ArgumentError('Parameter historyId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -634,7 +634,6 @@ class ProjectsHistoriesExecutionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -649,6 +648,7 @@ class ProjectsHistoriesExecutionsResource {
     if (executionId == null) {
       throw core.ArgumentError('Parameter executionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (requestId != null) {
       _queryParams['requestId'] = [requestId];
     }
@@ -709,7 +709,6 @@ class ProjectsHistoriesExecutionsClustersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -723,6 +722,7 @@ class ProjectsHistoriesExecutionsClustersResource {
     if (clusterId == null) {
       throw core.ArgumentError('Parameter clusterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -779,7 +779,6 @@ class ProjectsHistoriesExecutionsClustersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -790,6 +789,7 @@ class ProjectsHistoriesExecutionsClustersResource {
     if (executionId == null) {
       throw core.ArgumentError('Parameter executionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -852,7 +852,6 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -866,6 +865,7 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     if (environmentId == null) {
       throw core.ArgumentError('Parameter environmentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -928,7 +928,6 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -939,6 +938,7 @@ class ProjectsHistoriesExecutionsEnvironmentsResource {
     if (executionId == null) {
       throw core.ArgumentError('Parameter executionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -1022,11 +1022,11 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (locale != null) {
       _queryParams['locale'] = [locale];
     }
@@ -1087,7 +1087,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1102,6 +1101,7 @@ class ProjectsHistoriesExecutionsStepsResource {
     if (executionId == null) {
       throw core.ArgumentError('Parameter executionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (requestId != null) {
       _queryParams['requestId'] = [requestId];
     }
@@ -1160,7 +1160,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1174,6 +1173,7 @@ class ProjectsHistoriesExecutionsStepsResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1228,7 +1228,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1242,6 +1241,7 @@ class ProjectsHistoriesExecutionsStepsResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1309,7 +1309,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1320,6 +1319,7 @@ class ProjectsHistoriesExecutionsStepsResource {
     if (executionId == null) {
       throw core.ArgumentError('Parameter executionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -1391,7 +1391,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1409,6 +1408,7 @@ class ProjectsHistoriesExecutionsStepsResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (requestId != null) {
       _queryParams['requestId'] = [requestId];
     }
@@ -1474,7 +1474,6 @@ class ProjectsHistoriesExecutionsStepsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1492,6 +1491,7 @@ class ProjectsHistoriesExecutionsStepsResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1560,7 +1560,6 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1578,6 +1577,7 @@ class ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1651,7 +1651,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1669,6 +1668,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1729,7 +1729,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1746,6 +1745,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     if (sampleSeriesId == null) {
       throw core.ArgumentError('Parameter sampleSeriesId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1810,7 +1810,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -1824,6 +1823,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = filter;
     }
@@ -1903,7 +1903,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1924,6 +1923,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     if (sampleSeriesId == null) {
       throw core.ArgumentError('Parameter sampleSeriesId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2000,7 +2000,6 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2017,6 +2016,7 @@ class ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource {
     if (sampleSeriesId == null) {
       throw core.ArgumentError('Parameter sampleSeriesId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -2094,7 +2094,6 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2111,6 +2110,7 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     if (testCaseId == null) {
       throw core.ArgumentError('Parameter testCaseId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2179,7 +2179,6 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2193,6 +2192,7 @@ class ProjectsHistoriesExecutionsStepsTestCasesResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -2274,7 +2274,6 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (projectId == null) {
       throw core.ArgumentError('Parameter projectId is required.');
@@ -2288,6 +2287,7 @@ class ProjectsHistoriesExecutionsStepsThumbnailsResource {
     if (stepId == null) {
       throw core.ArgumentError('Parameter stepId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }

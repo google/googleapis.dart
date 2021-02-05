@@ -181,11 +181,11 @@ class FeaturetilesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (alwaysIncludeBuildingFootprints != null) {
       _queryParams['alwaysIncludeBuildingFootprints'] = [
         '${alwaysIncludeBuildingFootprints}'
@@ -358,11 +358,11 @@ class TerraintilesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (altitudePrecisionCentimeters != null) {
       _queryParams['altitudePrecisionCentimeters'] = [
         '${altitudePrecisionCentimeters}'

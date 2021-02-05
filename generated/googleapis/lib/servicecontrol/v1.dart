@@ -99,7 +99,6 @@ class ServicesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -108,6 +107,7 @@ class ServicesResource {
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -164,7 +164,6 @@ class ServicesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -173,6 +172,7 @@ class ServicesResource {
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -229,7 +229,6 @@ class ServicesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -238,6 +237,7 @@ class ServicesResource {
     if (serviceName == null) {
       throw core.ArgumentError('Parameter serviceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }

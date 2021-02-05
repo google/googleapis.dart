@@ -230,7 +230,6 @@ class UsersDataSourcesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -239,6 +238,7 @@ class UsersDataSourcesResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -282,7 +282,6 @@ class UsersDataSourcesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
@@ -290,6 +289,7 @@ class UsersDataSourcesResource {
     if (dataSourceId == null) {
       throw core.ArgumentError('Parameter dataSourceId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -332,7 +332,6 @@ class UsersDataSourcesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
@@ -340,6 +339,7 @@ class UsersDataSourcesResource {
     if (dataSourceId == null) {
       throw core.ArgumentError('Parameter dataSourceId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -387,11 +387,11 @@ class UsersDataSourcesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (dataTypeName != null) {
       _queryParams['dataTypeName'] = dataTypeName;
     }
@@ -442,7 +442,6 @@ class UsersDataSourcesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -454,6 +453,7 @@ class UsersDataSourcesResource {
     if (dataSourceId == null) {
       throw core.ArgumentError('Parameter dataSourceId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -514,7 +514,6 @@ class UsersDataSourcesDataPointChangesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
@@ -522,6 +521,7 @@ class UsersDataSourcesDataPointChangesResource {
     if (dataSourceId == null) {
       throw core.ArgumentError('Parameter dataSourceId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (limit != null) {
       _queryParams['limit'] = ['${limit}'];
     }
@@ -597,7 +597,6 @@ class UsersDataSourcesDatasetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
@@ -608,6 +607,7 @@ class UsersDataSourcesDatasetsResource {
     if (datasetId == null) {
       throw core.ArgumentError('Parameter datasetId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (currentTimeMillis != null) {
       _queryParams['currentTimeMillis'] = [currentTimeMillis];
     }
@@ -684,7 +684,6 @@ class UsersDataSourcesDatasetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
@@ -695,6 +694,7 @@ class UsersDataSourcesDatasetsResource {
     if (datasetId == null) {
       throw core.ArgumentError('Parameter datasetId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (limit != null) {
       _queryParams['limit'] = ['${limit}'];
     }
@@ -762,7 +762,6 @@ class UsersDataSourcesDatasetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -777,6 +776,7 @@ class UsersDataSourcesDatasetsResource {
     if (datasetId == null) {
       throw core.ArgumentError('Parameter datasetId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (currentTimeMillis != null) {
       _queryParams['currentTimeMillis'] = [currentTimeMillis];
     }
@@ -834,7 +834,6 @@ class UsersDatasetResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -843,6 +842,7 @@ class UsersDatasetResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -892,7 +892,6 @@ class UsersSessionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
@@ -900,6 +899,7 @@ class UsersSessionsResource {
     if (sessionId == null) {
       throw core.ArgumentError('Parameter sessionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (currentTimeMillis != null) {
       _queryParams['currentTimeMillis'] = [currentTimeMillis];
     }
@@ -969,11 +969,11 @@ class UsersSessionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (activityType != null) {
       _queryParams['activityType'] =
           activityType.map((item) => '${item}').toList();
@@ -1037,7 +1037,6 @@ class UsersSessionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1049,6 +1048,7 @@ class UsersSessionsResource {
     if (sessionId == null) {
       throw core.ArgumentError('Parameter sessionId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (currentTimeMillis != null) {
       _queryParams['currentTimeMillis'] = [currentTimeMillis];
     }

@@ -126,11 +126,11 @@ class AccountsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -166,8 +166,8 @@ class AccountsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
@@ -215,7 +215,6 @@ class AccountsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -224,6 +223,7 @@ class AccountsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -283,7 +283,6 @@ class AccountsContainersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -292,6 +291,7 @@ class AccountsContainersResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -330,11 +330,11 @@ class AccountsContainersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -372,11 +372,11 @@ class AccountsContainersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -417,11 +417,11 @@ class AccountsContainersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
@@ -472,7 +472,6 @@ class AccountsContainersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -481,6 +480,7 @@ class AccountsContainersResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -532,7 +532,6 @@ class AccountsContainersEnvironmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -541,6 +540,7 @@ class AccountsContainersEnvironmentsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -581,11 +581,11 @@ class AccountsContainersEnvironmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -624,11 +624,11 @@ class AccountsContainersEnvironmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -670,11 +670,11 @@ class AccountsContainersEnvironmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
@@ -722,7 +722,6 @@ class AccountsContainersEnvironmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -731,6 +730,7 @@ class AccountsContainersEnvironmentsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -780,7 +780,6 @@ class AccountsContainersEnvironmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -789,6 +788,7 @@ class AccountsContainersEnvironmentsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -838,11 +838,11 @@ class AccountsContainersVersionHeadersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -889,11 +889,11 @@ class AccountsContainersVersionHeadersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (includeDeleted != null) {
       _queryParams['includeDeleted'] = ['${includeDeleted}'];
     }
@@ -946,11 +946,11 @@ class AccountsContainersVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -993,11 +993,11 @@ class AccountsContainersVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (containerVersionId != null) {
       _queryParams['containerVersionId'] = [containerVersionId];
     }
@@ -1039,11 +1039,11 @@ class AccountsContainersVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1089,11 +1089,11 @@ class AccountsContainersVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -1139,11 +1139,11 @@ class AccountsContainersVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1185,11 +1185,11 @@ class AccountsContainersVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1238,7 +1238,6 @@ class AccountsContainersVersionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1247,6 +1246,7 @@ class AccountsContainersVersionsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -1314,7 +1314,6 @@ class AccountsContainersWorkspacesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1323,6 +1322,7 @@ class AccountsContainersWorkspacesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1369,7 +1369,6 @@ class AccountsContainersWorkspacesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1378,6 +1377,7 @@ class AccountsContainersWorkspacesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1418,11 +1418,11 @@ class AccountsContainersWorkspacesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1461,11 +1461,11 @@ class AccountsContainersWorkspacesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1504,11 +1504,11 @@ class AccountsContainersWorkspacesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1552,11 +1552,11 @@ class AccountsContainersWorkspacesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
@@ -1602,11 +1602,11 @@ class AccountsContainersWorkspacesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1654,7 +1654,6 @@ class AccountsContainersWorkspacesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1663,6 +1662,7 @@ class AccountsContainersWorkspacesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -1709,11 +1709,11 @@ class AccountsContainersWorkspacesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1762,7 +1762,6 @@ class AccountsContainersWorkspacesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1771,6 +1770,7 @@ class AccountsContainersWorkspacesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -1824,11 +1824,11 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (type != null) {
       _queryParams['type'] = type;
     }
@@ -1874,11 +1874,11 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (type != null) {
       _queryParams['type'] = type;
     }
@@ -1923,11 +1923,11 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
@@ -2086,11 +2086,11 @@ class AccountsContainersWorkspacesBuiltInVariablesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (type != null) {
       _queryParams['type'] = [type];
     }
@@ -2145,7 +2145,6 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2154,6 +2153,7 @@ class AccountsContainersWorkspacesFoldersResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2193,11 +2193,11 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2239,11 +2239,11 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
@@ -2288,11 +2288,11 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2334,11 +2334,11 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
@@ -2393,7 +2393,6 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2402,6 +2401,7 @@ class AccountsContainersWorkspacesFoldersResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (tagId != null) {
       _queryParams['tagId'] = tagId;
     }
@@ -2456,11 +2456,11 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -2512,7 +2512,6 @@ class AccountsContainersWorkspacesFoldersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2521,6 +2520,7 @@ class AccountsContainersWorkspacesFoldersResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -2573,7 +2573,6 @@ class AccountsContainersWorkspacesTagsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2582,6 +2581,7 @@ class AccountsContainersWorkspacesTagsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2621,11 +2621,11 @@ class AccountsContainersWorkspacesTagsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2664,11 +2664,11 @@ class AccountsContainersWorkspacesTagsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2710,11 +2710,11 @@ class AccountsContainersWorkspacesTagsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
@@ -2763,11 +2763,11 @@ class AccountsContainersWorkspacesTagsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -2819,7 +2819,6 @@ class AccountsContainersWorkspacesTagsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2828,6 +2827,7 @@ class AccountsContainersWorkspacesTagsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -2880,7 +2880,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2889,6 +2888,7 @@ class AccountsContainersWorkspacesTemplatesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2929,11 +2929,11 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2972,11 +2972,11 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3019,11 +3019,11 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
@@ -3072,11 +3072,11 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -3128,7 +3128,6 @@ class AccountsContainersWorkspacesTemplatesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3137,6 +3136,7 @@ class AccountsContainersWorkspacesTemplatesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -3190,7 +3190,6 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3199,6 +3198,7 @@ class AccountsContainersWorkspacesTriggersResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3238,11 +3238,11 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3281,11 +3281,11 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3327,11 +3327,11 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
@@ -3380,11 +3380,11 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -3436,7 +3436,6 @@ class AccountsContainersWorkspacesTriggersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3445,6 +3444,7 @@ class AccountsContainersWorkspacesTriggersResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -3497,7 +3497,6 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3506,6 +3505,7 @@ class AccountsContainersWorkspacesVariablesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3545,11 +3545,11 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3588,11 +3588,11 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3634,11 +3634,11 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
@@ -3687,11 +3687,11 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -3743,7 +3743,6 @@ class AccountsContainersWorkspacesVariablesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3752,6 +3751,7 @@ class AccountsContainersWorkspacesVariablesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -3804,7 +3804,6 @@ class AccountsContainersWorkspacesZonesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3813,6 +3812,7 @@ class AccountsContainersWorkspacesZonesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3852,11 +3852,11 @@ class AccountsContainersWorkspacesZonesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3895,11 +3895,11 @@ class AccountsContainersWorkspacesZonesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3941,11 +3941,11 @@ class AccountsContainersWorkspacesZonesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
@@ -3994,11 +3994,11 @@ class AccountsContainersWorkspacesZonesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -4050,7 +4050,6 @@ class AccountsContainersWorkspacesZonesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4059,6 +4058,7 @@ class AccountsContainersWorkspacesZonesResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fingerprint != null) {
       _queryParams['fingerprint'] = [fingerprint];
     }
@@ -4109,7 +4109,6 @@ class AccountsUserPermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4118,6 +4117,7 @@ class AccountsUserPermissionsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4158,11 +4158,11 @@ class AccountsUserPermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4200,11 +4200,11 @@ class AccountsUserPermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4247,11 +4247,11 @@ class AccountsUserPermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageToken != null) {
       _queryParams['pageToken'] = [pageToken];
     }
@@ -4298,7 +4298,6 @@ class AccountsUserPermissionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4307,6 +4306,7 @@ class AccountsUserPermissionsResource {
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }

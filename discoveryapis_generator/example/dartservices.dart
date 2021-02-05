@@ -58,7 +58,6 @@ class DartservicesApi {
   /// this method will complete with the same error.
   async.Future<AnalysisResults> analyze(SourceRequest request) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -71,7 +70,6 @@ class DartservicesApi {
       _url,
       'POST',
       body: _body,
-      queryParams: _queryParams,
     );
     return AnalysisResults.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -92,8 +90,8 @@ class DartservicesApi {
     core.String source,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (source != null) {
       _queryParams['source'] = [source];
     }
@@ -122,7 +120,6 @@ class DartservicesApi {
   /// this method will complete with the same error.
   async.Future<CompileResponse> compile(SourceRequest request) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -135,7 +132,6 @@ class DartservicesApi {
       _url,
       'POST',
       body: _body,
-      queryParams: _queryParams,
     );
     return CompileResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -156,8 +152,8 @@ class DartservicesApi {
     core.String source,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (source != null) {
       _queryParams['source'] = [source];
     }
@@ -184,7 +180,6 @@ class DartservicesApi {
   /// this method will complete with the same error.
   async.Future<void> complete(SourceRequest request) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -197,7 +192,6 @@ class DartservicesApi {
       _url,
       'POST',
       body: _body,
-      queryParams: _queryParams,
       downloadOptions: null,
     );
   }
@@ -218,8 +212,8 @@ class DartservicesApi {
     core.String source,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (offset != null) {
       _queryParams['offset'] = ['${offset}'];
     }
@@ -250,7 +244,6 @@ class DartservicesApi {
   /// this method will complete with the same error.
   async.Future<DocumentResponse> document(SourceRequest request) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -263,7 +256,6 @@ class DartservicesApi {
       _url,
       'POST',
       body: _body,
-      queryParams: _queryParams,
     );
     return DocumentResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
@@ -287,8 +279,8 @@ class DartservicesApi {
     core.String source,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (offset != null) {
       _queryParams['offset'] = ['${offset}'];
     }
@@ -337,7 +329,6 @@ class DartservicesApi {
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (bucket == null) {
       throw core.ArgumentError('Parameter bucket is required.');
@@ -354,7 +345,6 @@ class DartservicesApi {
     final _response = await _requester.request(
       _url,
       'GET',
-      queryParams: _queryParams,
       downloadOptions: downloadOptions,
     );
     if (downloadOptions == null ||

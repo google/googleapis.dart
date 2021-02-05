@@ -96,7 +96,6 @@ class LicenseAssignmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
@@ -107,6 +106,7 @@ class LicenseAssignmentsResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -159,7 +159,6 @@ class LicenseAssignmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
@@ -170,6 +169,7 @@ class LicenseAssignmentsResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -219,7 +219,6 @@ class LicenseAssignmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -231,6 +230,7 @@ class LicenseAssignmentsResource {
     if (skuId == null) {
       throw core.ArgumentError('Parameter skuId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -290,11 +290,11 @@ class LicenseAssignmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
@@ -365,7 +365,6 @@ class LicenseAssignmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (productId == null) {
       throw core.ArgumentError('Parameter productId is required.');
@@ -373,6 +372,7 @@ class LicenseAssignmentsResource {
     if (skuId == null) {
       throw core.ArgumentError('Parameter skuId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId == null) {
       throw core.ArgumentError('Parameter customerId is required.');
     }
@@ -440,7 +440,6 @@ class LicenseAssignmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -455,6 +454,7 @@ class LicenseAssignmentsResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -512,7 +512,6 @@ class LicenseAssignmentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -527,6 +526,7 @@ class LicenseAssignmentsResource {
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }

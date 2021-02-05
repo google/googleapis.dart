@@ -120,7 +120,6 @@ class ActionResultsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
@@ -131,6 +130,7 @@ class ActionResultsResource {
     if (sizeBytes == null) {
       throw core.ArgumentError('Parameter sizeBytes is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (inlineOutputFiles != null) {
       _queryParams['inlineOutputFiles'] = inlineOutputFiles;
     }
@@ -214,7 +214,6 @@ class ActionResultsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -229,6 +228,7 @@ class ActionResultsResource {
     if (sizeBytes == null) {
       throw core.ArgumentError('Parameter sizeBytes is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (resultsCachePolicy_priority != null) {
       _queryParams['resultsCachePolicy.priority'] = [
         '${resultsCachePolicy_priority}'
@@ -332,7 +332,6 @@ class ActionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -341,6 +340,7 @@ class ActionsResource {
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -404,7 +404,6 @@ class BlobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -413,6 +412,7 @@ class BlobsResource {
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -472,7 +472,6 @@ class BlobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -481,6 +480,7 @@ class BlobsResource {
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -533,7 +533,6 @@ class BlobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -542,6 +541,7 @@ class BlobsResource {
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -618,7 +618,6 @@ class BlobsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
@@ -629,6 +628,7 @@ class BlobsResource {
     if (sizeBytes == null) {
       throw core.ArgumentError('Parameter sizeBytes is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -694,7 +694,6 @@ class OperationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -703,6 +702,7 @@ class OperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -760,11 +760,11 @@ class V2Resource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (instanceName == null) {
       throw core.ArgumentError('Parameter instanceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }

@@ -272,7 +272,15 @@ class DartResourceMethod {
       }
     }
 
+    var queryParamsWritten = false;
     void encodeQueryParam(MethodParameter param) {
+      if (!queryParamsWritten) {
+        queryParamsWritten = true;
+        params.writeln(
+          'final _queryParams = <${core}String, ${core}List<${core}String>>{};',
+        );
+      }
+
       String propertyAssignment;
       // NOTE: We need to special case array values, since they get encoded
       // as repeated query parameters.
@@ -364,7 +372,8 @@ class DartResourceMethod {
             : '';
 
     final bodyOption = requestParameter == null ? '' : 'body: _body,';
-
+    final queryParamsArg =
+        queryParamsWritten ? 'queryParams: _queryParams,' : '';
     final mediaUploadArg = mediaUpload ? 'uploadMedia: uploadMedia,' : '';
     final mediaResumableArg = mediaUploadResumable
         ? 'uploadOptions: uploadOptions,'
@@ -382,7 +391,7 @@ $urlPatternCode
       _url,
       '$httpMethod',
       $bodyOption
-      queryParams: _queryParams,
+      $queryParamsArg
       $mediaUploadArg
       $mediaResumableArg
       $downloadOptions
@@ -414,7 +423,6 @@ $urlPatternCode
     methodString.write(
       '''
     ${core}String _url;
-    final _queryParams = <${core}String, ${core}List<${core}String>>{};
 
 $params$requestCode''',
     );

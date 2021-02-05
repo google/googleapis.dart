@@ -106,11 +106,11 @@ class ProjectsLocationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -156,11 +156,11 @@ class ProjectsLocationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -238,7 +238,6 @@ class ProjectsLocationsDatasetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -247,6 +246,7 @@ class ProjectsLocationsDatasetsResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (datasetId != null) {
       _queryParams['datasetId'] = [datasetId];
     }
@@ -302,7 +302,6 @@ class ProjectsLocationsDatasetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -311,6 +310,7 @@ class ProjectsLocationsDatasetsResource {
     if (sourceDataset == null) {
       throw core.ArgumentError('Parameter sourceDataset is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -356,11 +356,11 @@ class ProjectsLocationsDatasetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -399,11 +399,11 @@ class ProjectsLocationsDatasetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -455,11 +455,11 @@ class ProjectsLocationsDatasetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (options_requestedPolicyVersion != null) {
       _queryParams['options.requestedPolicyVersion'] = [
         '${options_requestedPolicyVersion}'
@@ -512,11 +512,11 @@ class ProjectsLocationsDatasetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -571,7 +571,6 @@ class ProjectsLocationsDatasetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -580,6 +579,7 @@ class ProjectsLocationsDatasetsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (updateMask != null) {
       _queryParams['updateMask'] = [updateMask];
     }
@@ -629,7 +629,6 @@ class ProjectsLocationsDatasetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -638,6 +637,7 @@ class ProjectsLocationsDatasetsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -688,7 +688,6 @@ class ProjectsLocationsDatasetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -697,6 +696,7 @@ class ProjectsLocationsDatasetsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -759,11 +759,11 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (options_requestedPolicyVersion != null) {
       _queryParams['options.requestedPolicyVersion'] = [
         '${options_requestedPolicyVersion}'
@@ -816,7 +816,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -825,6 +824,7 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -875,7 +875,6 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -884,6 +883,7 @@ class ProjectsLocationsDatasetsConsentStoresResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -942,7 +942,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -951,6 +950,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (dicomStoreId != null) {
       _queryParams['dicomStoreId'] = [dicomStoreId];
     }
@@ -1008,7 +1008,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1017,6 +1016,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     if (sourceStore == null) {
       throw core.ArgumentError('Parameter sourceStore is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1058,11 +1058,11 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1110,7 +1110,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1119,6 +1118,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1157,11 +1157,11 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1214,11 +1214,11 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (options_requestedPolicyVersion != null) {
       _queryParams['options.requestedPolicyVersion'] = [
         '${options_requestedPolicyVersion}'
@@ -1272,7 +1272,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1281,6 +1280,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1332,11 +1332,11 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -1395,7 +1395,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1404,6 +1403,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (updateMask != null) {
       _queryParams['updateMask'] = [updateMask];
     }
@@ -1462,7 +1462,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1470,6 +1469,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1525,7 +1525,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1533,6 +1532,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1588,7 +1588,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1596,6 +1595,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1644,7 +1644,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1653,6 +1652,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1712,7 +1712,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1724,6 +1723,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1775,7 +1775,6 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1784,6 +1783,7 @@ class ProjectsLocationsDatasetsDicomStoresResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1850,7 +1850,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1858,6 +1857,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1914,7 +1914,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1922,6 +1921,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1977,7 +1977,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -1985,6 +1984,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2041,7 +2041,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2049,6 +2048,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2104,7 +2104,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2112,6 +2111,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2171,7 +2171,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2183,6 +2182,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2253,7 +2253,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2261,6 +2260,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2317,7 +2317,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2325,6 +2324,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2380,7 +2380,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2388,6 +2387,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2444,7 +2444,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2452,6 +2451,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2520,7 +2520,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2528,6 +2527,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2588,7 +2588,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2596,6 +2595,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2655,7 +2655,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2663,6 +2662,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2721,7 +2721,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2729,6 +2728,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2795,7 +2795,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2803,6 +2802,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2862,7 +2862,6 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
@@ -2870,6 +2869,7 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource {
     if (dicomWebPath == null) {
       throw core.ArgumentError('Parameter dicomWebPath is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2927,7 +2927,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2936,6 +2935,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fhirStoreId != null) {
       _queryParams['fhirStoreId'] = [fhirStoreId];
     }
@@ -2989,7 +2989,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2998,6 +2997,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     if (sourceStore == null) {
       throw core.ArgumentError('Parameter sourceStore is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3038,11 +3038,11 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3093,7 +3093,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3102,6 +3101,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3140,11 +3140,11 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3196,11 +3196,11 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (options_requestedPolicyVersion != null) {
       _queryParams['options.requestedPolicyVersion'] = [
         '${options_requestedPolicyVersion}'
@@ -3306,7 +3306,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3315,6 +3314,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3366,11 +3366,11 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -3429,7 +3429,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3438,6 +3437,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (updateMask != null) {
       _queryParams['updateMask'] = [updateMask];
     }
@@ -3487,7 +3487,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3496,6 +3495,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3546,7 +3546,6 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3555,6 +3554,7 @@ class ProjectsLocationsDatasetsFhirStoresResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3655,11 +3655,11 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (P_count != null) {
       _queryParams['_count'] = ['${P_count}'];
     }
@@ -3724,11 +3724,11 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3780,11 +3780,11 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3852,7 +3852,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3864,6 +3863,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     if (type == null) {
       throw core.ArgumentError('Parameter type is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3916,11 +3916,11 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3988,7 +3988,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3997,6 +3996,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4076,11 +4076,11 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (P_at != null) {
       _queryParams['_at'] = [P_at];
     }
@@ -4149,7 +4149,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4158,6 +4157,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4214,11 +4214,11 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4305,7 +4305,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4314,6 +4313,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4410,7 +4410,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4422,6 +4421,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     if (resourceType == null) {
       throw core.ArgumentError('Parameter resourceType is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4490,7 +4490,6 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4499,6 +4498,7 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4550,11 +4550,11 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4609,7 +4609,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4618,6 +4617,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (hl7V2StoreId != null) {
       _queryParams['hl7V2StoreId'] = [hl7V2StoreId];
     }
@@ -4663,11 +4663,11 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4705,11 +4705,11 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4762,11 +4762,11 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (options_requestedPolicyVersion != null) {
       _queryParams['options.requestedPolicyVersion'] = [
         '${options_requestedPolicyVersion}'
@@ -4824,11 +4824,11 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -4887,7 +4887,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4896,6 +4895,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (updateMask != null) {
       _queryParams['updateMask'] = [updateMask];
     }
@@ -4946,7 +4946,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -4955,6 +4954,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -5005,7 +5005,6 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -5014,6 +5013,7 @@ class ProjectsLocationsDatasetsHl7V2StoresResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -5073,7 +5073,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -5082,6 +5081,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -5121,11 +5121,11 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -5175,11 +5175,11 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (view != null) {
       _queryParams['view'] = [view];
     }
@@ -5233,7 +5233,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -5242,6 +5241,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -5334,11 +5334,11 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (parent == null) {
       throw core.ArgumentError('Parameter parent is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -5409,7 +5409,6 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -5418,6 +5417,7 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (updateMask != null) {
       _queryParams['updateMask'] = [updateMask];
     }
@@ -5478,7 +5478,6 @@ class ProjectsLocationsDatasetsOperationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -5487,6 +5486,7 @@ class ProjectsLocationsDatasetsOperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -5528,11 +5528,11 @@ class ProjectsLocationsDatasetsOperationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -5588,11 +5588,11 @@ class ProjectsLocationsDatasetsOperationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }

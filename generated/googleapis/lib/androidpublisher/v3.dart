@@ -129,7 +129,6 @@ class EditsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -137,6 +136,7 @@ class EditsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -177,7 +177,6 @@ class EditsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -185,6 +184,7 @@ class EditsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -226,7 +226,6 @@ class EditsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -234,6 +233,7 @@ class EditsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -275,7 +275,6 @@ class EditsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -284,6 +283,7 @@ class EditsResource {
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -325,7 +325,6 @@ class EditsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -333,6 +332,7 @@ class EditsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -388,7 +388,6 @@ class EditsApksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -400,6 +399,7 @@ class EditsApksResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -444,7 +444,6 @@ class EditsApksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -452,6 +451,7 @@ class EditsApksResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -503,7 +503,6 @@ class EditsApksResource {
     commons.Media uploadMedia,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -511,6 +510,7 @@ class EditsApksResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -575,7 +575,6 @@ class EditsBundlesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -583,6 +582,7 @@ class EditsBundlesResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -645,7 +645,6 @@ class EditsBundlesResource {
     commons.Media uploadMedia,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -653,6 +652,7 @@ class EditsBundlesResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (ackBundleInstallationWarning != null) {
       _queryParams['ackBundleInstallationWarning'] = [
         '${ackBundleInstallationWarning}'
@@ -743,7 +743,6 @@ class EditsDeobfuscationfilesResource {
     commons.Media uploadMedia,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -757,6 +756,7 @@ class EditsDeobfuscationfilesResource {
     if (deobfuscationFileType == null) {
       throw core.ArgumentError('Parameter deobfuscationFileType is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -831,7 +831,6 @@ class EditsDetailsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -839,6 +838,7 @@ class EditsDetailsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -885,7 +885,6 @@ class EditsDetailsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -897,6 +896,7 @@ class EditsDetailsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -944,7 +944,6 @@ class EditsDetailsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -956,6 +955,7 @@ class EditsDetailsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1019,7 +1019,6 @@ class EditsExpansionfilesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1033,6 +1032,7 @@ class EditsExpansionfilesResource {
     if (expansionFileType == null) {
       throw core.ArgumentError('Parameter expansionFileType is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1097,7 +1097,6 @@ class EditsExpansionfilesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1115,6 +1114,7 @@ class EditsExpansionfilesResource {
     if (expansionFileType == null) {
       throw core.ArgumentError('Parameter expansionFileType is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1180,7 +1180,6 @@ class EditsExpansionfilesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1198,6 +1197,7 @@ class EditsExpansionfilesResource {
     if (expansionFileType == null) {
       throw core.ArgumentError('Parameter expansionFileType is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1265,7 +1265,6 @@ class EditsExpansionfilesResource {
     commons.Media uploadMedia,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1279,6 +1278,7 @@ class EditsExpansionfilesResource {
     if (expansionFileType == null) {
       throw core.ArgumentError('Parameter expansionFileType is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1372,7 +1372,6 @@ class EditsImagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1389,6 +1388,7 @@ class EditsImagesResource {
     if (imageId == null) {
       throw core.ArgumentError('Parameter imageId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1457,7 +1457,6 @@ class EditsImagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1471,6 +1470,7 @@ class EditsImagesResource {
     if (imageType == null) {
       throw core.ArgumentError('Parameter imageType is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1538,7 +1538,6 @@ class EditsImagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1552,6 +1551,7 @@ class EditsImagesResource {
     if (imageType == null) {
       throw core.ArgumentError('Parameter imageType is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1625,7 +1625,6 @@ class EditsImagesResource {
     commons.Media uploadMedia,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1639,6 +1638,7 @@ class EditsImagesResource {
     if (imageType == null) {
       throw core.ArgumentError('Parameter imageType is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1715,7 +1715,6 @@ class EditsListingsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1726,6 +1725,7 @@ class EditsListingsResource {
     if (language == null) {
       throw core.ArgumentError('Parameter language is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1767,7 +1767,6 @@ class EditsListingsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1775,6 +1774,7 @@ class EditsListingsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1821,7 +1821,6 @@ class EditsListingsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1832,6 +1831,7 @@ class EditsListingsResource {
     if (language == null) {
       throw core.ArgumentError('Parameter language is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1875,7 +1875,6 @@ class EditsListingsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -1883,6 +1882,7 @@ class EditsListingsResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1933,7 +1933,6 @@ class EditsListingsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1948,6 +1947,7 @@ class EditsListingsResource {
     if (language == null) {
       throw core.ArgumentError('Parameter language is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1999,7 +1999,6 @@ class EditsListingsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2014,6 +2013,7 @@ class EditsListingsResource {
     if (language == null) {
       throw core.ArgumentError('Parameter language is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2067,7 +2067,6 @@ class EditsTestersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -2078,6 +2077,7 @@ class EditsTestersResource {
     if (track == null) {
       throw core.ArgumentError('Parameter track is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2127,7 +2127,6 @@ class EditsTestersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2142,6 +2141,7 @@ class EditsTestersResource {
     if (track == null) {
       throw core.ArgumentError('Parameter track is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2192,7 +2192,6 @@ class EditsTestersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2207,6 +2206,7 @@ class EditsTestersResource {
     if (track == null) {
       throw core.ArgumentError('Parameter track is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2260,7 +2260,6 @@ class EditsTracksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -2271,6 +2270,7 @@ class EditsTracksResource {
     if (track == null) {
       throw core.ArgumentError('Parameter track is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2314,7 +2314,6 @@ class EditsTracksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -2322,6 +2321,7 @@ class EditsTracksResource {
     if (editId == null) {
       throw core.ArgumentError('Parameter editId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2371,7 +2371,6 @@ class EditsTracksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2386,6 +2385,7 @@ class EditsTracksResource {
     if (track == null) {
       throw core.ArgumentError('Parameter track is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2436,7 +2436,6 @@ class EditsTracksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2451,6 +2450,7 @@ class EditsTracksResource {
     if (track == null) {
       throw core.ArgumentError('Parameter track is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2499,7 +2499,6 @@ class InappproductsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -2507,6 +2506,7 @@ class InappproductsResource {
     if (sku == null) {
       throw core.ArgumentError('Parameter sku is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2548,7 +2548,6 @@ class InappproductsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -2556,6 +2555,7 @@ class InappproductsResource {
     if (sku == null) {
       throw core.ArgumentError('Parameter sku is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2604,7 +2604,6 @@ class InappproductsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2613,6 +2612,7 @@ class InappproductsResource {
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (autoConvertMissingPrices != null) {
       _queryParams['autoConvertMissingPrices'] = [
         '${autoConvertMissingPrices}'
@@ -2666,11 +2666,11 @@ class InappproductsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -2730,7 +2730,6 @@ class InappproductsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2742,6 +2741,7 @@ class InappproductsResource {
     if (sku == null) {
       throw core.ArgumentError('Parameter sku is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (autoConvertMissingPrices != null) {
       _queryParams['autoConvertMissingPrices'] = [
         '${autoConvertMissingPrices}'
@@ -2799,7 +2799,6 @@ class InappproductsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2811,6 +2810,7 @@ class InappproductsResource {
     if (sku == null) {
       throw core.ArgumentError('Parameter sku is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (autoConvertMissingPrices != null) {
       _queryParams['autoConvertMissingPrices'] = [
         '${autoConvertMissingPrices}'
@@ -2877,11 +2877,11 @@ class InternalappsharingartifactsResource {
     commons.Media uploadMedia,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2947,11 +2947,11 @@ class InternalappsharingartifactsResource {
     commons.Media uploadMedia,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3019,7 +3019,6 @@ class OrdersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3027,6 +3026,7 @@ class OrdersResource {
     if (orderId == null) {
       throw core.ArgumentError('Parameter orderId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (revoke != null) {
       _queryParams['revoke'] = ['${revoke}'];
     }
@@ -3098,7 +3098,6 @@ class PurchasesProductsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3113,6 +3112,7 @@ class PurchasesProductsResource {
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3164,7 +3164,6 @@ class PurchasesProductsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3175,6 +3174,7 @@ class PurchasesProductsResource {
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3233,7 +3233,6 @@ class PurchasesSubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3248,6 +3247,7 @@ class PurchasesSubscriptionsResource {
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3299,7 +3299,6 @@ class PurchasesSubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3310,6 +3309,7 @@ class PurchasesSubscriptionsResource {
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3364,7 +3364,6 @@ class PurchasesSubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3379,6 +3378,7 @@ class PurchasesSubscriptionsResource {
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3432,7 +3432,6 @@ class PurchasesSubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3443,6 +3442,7 @@ class PurchasesSubscriptionsResource {
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3492,7 +3492,6 @@ class PurchasesSubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3503,6 +3502,7 @@ class PurchasesSubscriptionsResource {
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3554,7 +3554,6 @@ class PurchasesSubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3565,6 +3564,7 @@ class PurchasesSubscriptionsResource {
     if (token == null) {
       throw core.ArgumentError('Parameter token is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3653,11 +3653,11 @@ class PurchasesVoidedpurchasesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (endTime != null) {
       _queryParams['endTime'] = [endTime];
     }
@@ -3726,7 +3726,6 @@ class ReviewsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3734,6 +3733,7 @@ class ReviewsResource {
     if (reviewId == null) {
       throw core.ArgumentError('Parameter reviewId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (translationLanguage != null) {
       _queryParams['translationLanguage'] = [translationLanguage];
     }
@@ -3787,11 +3787,11 @@ class ReviewsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -3848,7 +3848,6 @@ class ReviewsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3860,6 +3859,7 @@ class ReviewsResource {
     if (reviewId == null) {
       throw core.ArgumentError('Parameter reviewId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3923,7 +3923,6 @@ class SystemapksVariantsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -3935,6 +3934,7 @@ class SystemapksVariantsResource {
     if (versionCode == null) {
       throw core.ArgumentError('Parameter versionCode is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -3985,7 +3985,6 @@ class SystemapksVariantsResource {
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -3996,6 +3995,7 @@ class SystemapksVariantsResource {
     if (variantId == null) {
       throw core.ArgumentError('Parameter variantId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4049,7 +4049,6 @@ class SystemapksVariantsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -4060,6 +4059,7 @@ class SystemapksVariantsResource {
     if (variantId == null) {
       throw core.ArgumentError('Parameter variantId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -4103,7 +4103,6 @@ class SystemapksVariantsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (packageName == null) {
       throw core.ArgumentError('Parameter packageName is required.');
@@ -4111,6 +4110,7 @@ class SystemapksVariantsResource {
     if (versionCode == null) {
       throw core.ArgumentError('Parameter versionCode is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }

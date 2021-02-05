@@ -108,7 +108,6 @@ class BackupRunsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -119,6 +118,7 @@ class BackupRunsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -165,7 +165,6 @@ class BackupRunsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -176,6 +175,7 @@ class BackupRunsResource {
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -224,7 +224,6 @@ class BackupRunsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -236,6 +235,7 @@ class BackupRunsResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -287,7 +287,6 @@ class BackupRunsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -295,6 +294,7 @@ class BackupRunsResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -353,7 +353,6 @@ class DatabasesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -364,6 +363,7 @@ class DatabasesResource {
     if (database == null) {
       throw core.ArgumentError('Parameter database is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -411,7 +411,6 @@ class DatabasesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -422,6 +421,7 @@ class DatabasesResource {
     if (database == null) {
       throw core.ArgumentError('Parameter database is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -469,7 +469,6 @@ class DatabasesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -481,6 +480,7 @@ class DatabasesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -524,7 +524,6 @@ class DatabasesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -532,6 +531,7 @@ class DatabasesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -584,7 +584,6 @@ class DatabasesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -599,6 +598,7 @@ class DatabasesResource {
     if (database == null) {
       throw core.ArgumentError('Parameter database is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -650,7 +650,6 @@ class DatabasesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -665,6 +664,7 @@ class DatabasesResource {
     if (database == null) {
       throw core.ArgumentError('Parameter database is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -714,8 +714,8 @@ class FlagsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (databaseVersion != null) {
       _queryParams['databaseVersion'] = [databaseVersion];
     }
@@ -770,7 +770,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -778,6 +777,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -827,7 +827,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -839,6 +838,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -883,7 +883,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -891,6 +890,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -936,7 +936,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -948,6 +947,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -996,7 +996,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1008,6 +1007,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1056,7 +1056,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1068,6 +1067,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1111,7 +1111,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1119,6 +1118,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1165,7 +1165,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1177,6 +1176,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1221,7 +1221,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1230,6 +1229,7 @@ class InstancesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1285,11 +1285,11 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -1346,7 +1346,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1354,6 +1353,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1402,7 +1402,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1414,6 +1413,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1458,7 +1458,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1466,6 +1465,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1509,7 +1509,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1517,6 +1516,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1560,7 +1560,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1568,6 +1567,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1615,7 +1615,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1627,6 +1626,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1674,7 +1674,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1686,6 +1685,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1729,7 +1729,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1737,6 +1736,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1779,7 +1779,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1787,6 +1786,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1832,7 +1832,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1844,6 +1843,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1892,7 +1892,6 @@ class InstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1904,6 +1903,7 @@ class InstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1952,7 +1952,6 @@ class OperationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1960,6 +1959,7 @@ class OperationsResource {
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2009,11 +2009,11 @@ class OperationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (instance != null) {
       _queryParams['instance'] = [instance];
     }
@@ -2082,7 +2082,6 @@ class ProjectsInstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2094,6 +2093,7 @@ class ProjectsInstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2150,7 +2150,6 @@ class ProjectsInstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -2158,6 +2157,7 @@ class ProjectsInstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (skipVerification != null) {
       _queryParams['skipVerification'] = ['${skipVerification}'];
     }
@@ -2220,7 +2220,6 @@ class ProjectsInstancesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -2228,6 +2227,7 @@ class ProjectsInstancesResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (syncMode != null) {
       _queryParams['syncMode'] = [syncMode];
     }
@@ -2290,7 +2290,6 @@ class SslCertsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2302,6 +2301,7 @@ class SslCertsResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2351,7 +2351,6 @@ class SslCertsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -2362,6 +2361,7 @@ class SslCertsResource {
     if (sha1Fingerprint == null) {
       throw core.ArgumentError('Parameter sha1Fingerprint is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2411,7 +2411,6 @@ class SslCertsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -2422,6 +2421,7 @@ class SslCertsResource {
     if (sha1Fingerprint == null) {
       throw core.ArgumentError('Parameter sha1Fingerprint is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2471,7 +2471,6 @@ class SslCertsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2483,6 +2482,7 @@ class SslCertsResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2527,7 +2527,6 @@ class SslCertsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -2535,6 +2534,7 @@ class SslCertsResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2584,11 +2584,11 @@ class TiersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2642,7 +2642,6 @@ class UsersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -2650,6 +2649,7 @@ class UsersResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (host != null) {
       _queryParams['host'] = [host];
     }
@@ -2701,7 +2701,6 @@ class UsersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2713,6 +2712,7 @@ class UsersResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2756,7 +2756,6 @@ class UsersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -2764,6 +2763,7 @@ class UsersResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2816,7 +2816,6 @@ class UsersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2828,6 +2827,7 @@ class UsersResource {
     if (instance == null) {
       throw core.ArgumentError('Parameter instance is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (host != null) {
       _queryParams['host'] = [host];
     }

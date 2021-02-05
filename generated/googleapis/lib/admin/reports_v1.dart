@@ -276,7 +276,6 @@ class ActivitiesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
@@ -284,6 +283,7 @@ class ActivitiesResource {
     if (applicationName == null) {
       throw core.ArgumentError('Parameter applicationName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (actorIpAddress != null) {
       _queryParams['actorIpAddress'] = [actorIpAddress];
     }
@@ -528,7 +528,6 @@ class ActivitiesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -540,6 +539,7 @@ class ActivitiesResource {
     if (applicationName == null) {
       throw core.ArgumentError('Parameter applicationName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (actorIpAddress != null) {
       _queryParams['actorIpAddress'] = [actorIpAddress];
     }
@@ -614,12 +614,12 @@ class ChannelsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -700,11 +700,11 @@ class CustomerUsageReportsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (date == null) {
       throw core.ArgumentError('Parameter date is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
     }
@@ -834,7 +834,6 @@ class EntityUsageReportsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (entityType == null) {
       throw core.ArgumentError('Parameter entityType is required.');
@@ -845,6 +844,7 @@ class EntityUsageReportsResource {
     if (date == null) {
       throw core.ArgumentError('Parameter date is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
     }
@@ -990,7 +990,6 @@ class UserUsageReportResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userKey == null) {
       throw core.ArgumentError('Parameter userKey is required.');
@@ -998,6 +997,7 @@ class UserUsageReportResource {
     if (date == null) {
       throw core.ArgumentError('Parameter date is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (customerId != null) {
       _queryParams['customerId'] = [customerId];
     }

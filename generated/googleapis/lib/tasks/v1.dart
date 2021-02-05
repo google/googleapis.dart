@@ -83,11 +83,11 @@ class TasklistsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -124,11 +124,11 @@ class TasklistsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -166,12 +166,12 @@ class TasklistsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -212,8 +212,8 @@ class TasklistsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -260,7 +260,6 @@ class TasklistsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -269,6 +268,7 @@ class TasklistsResource {
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -309,7 +309,6 @@ class TasklistsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -318,6 +317,7 @@ class TasklistsResource {
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -362,11 +362,11 @@ class TasksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -405,7 +405,6 @@ class TasksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
@@ -413,6 +412,7 @@ class TasksResource {
     if (task == null) {
       throw core.ArgumentError('Parameter task is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -454,7 +454,6 @@ class TasksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
@@ -462,6 +461,7 @@ class TasksResource {
     if (task == null) {
       throw core.ArgumentError('Parameter task is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -512,7 +512,6 @@ class TasksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -521,6 +520,7 @@ class TasksResource {
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (parent != null) {
       _queryParams['parent'] = [parent];
     }
@@ -609,11 +609,11 @@ class TasksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (completedMax != null) {
       _queryParams['completedMax'] = [completedMax];
     }
@@ -696,7 +696,6 @@ class TasksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (tasklist == null) {
       throw core.ArgumentError('Parameter tasklist is required.');
@@ -704,6 +703,7 @@ class TasksResource {
     if (task == null) {
       throw core.ArgumentError('Parameter task is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (parent != null) {
       _queryParams['parent'] = [parent];
     }
@@ -757,7 +757,6 @@ class TasksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -769,6 +768,7 @@ class TasksResource {
     if (task == null) {
       throw core.ArgumentError('Parameter task is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -814,7 +814,6 @@ class TasksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -826,6 +825,7 @@ class TasksResource {
     if (task == null) {
       throw core.ArgumentError('Parameter task is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }

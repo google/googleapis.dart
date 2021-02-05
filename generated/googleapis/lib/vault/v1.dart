@@ -97,7 +97,6 @@ class MattersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -106,6 +105,7 @@ class MattersResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -150,7 +150,6 @@ class MattersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -159,6 +158,7 @@ class MattersResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -201,7 +201,6 @@ class MattersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -210,6 +209,7 @@ class MattersResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -250,12 +250,12 @@ class MattersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -294,11 +294,11 @@ class MattersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -343,11 +343,11 @@ class MattersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (view != null) {
       _queryParams['view'] = [view];
     }
@@ -408,8 +408,8 @@ class MattersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -461,7 +461,6 @@ class MattersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -470,6 +469,7 @@ class MattersResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -513,7 +513,6 @@ class MattersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -522,6 +521,7 @@ class MattersResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -565,7 +565,6 @@ class MattersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -574,6 +573,7 @@ class MattersResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -619,7 +619,6 @@ class MattersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -628,6 +627,7 @@ class MattersResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -673,7 +673,6 @@ class MattersExportsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -682,6 +681,7 @@ class MattersExportsResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -722,7 +722,6 @@ class MattersExportsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
@@ -730,6 +729,7 @@ class MattersExportsResource {
     if (exportId == null) {
       throw core.ArgumentError('Parameter exportId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -771,7 +771,6 @@ class MattersExportsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
@@ -779,6 +778,7 @@ class MattersExportsResource {
     if (exportId == null) {
       throw core.ArgumentError('Parameter exportId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -823,11 +823,11 @@ class MattersExportsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -889,7 +889,6 @@ class MattersHoldsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -901,6 +900,7 @@ class MattersHoldsResource {
     if (holdId == null) {
       throw core.ArgumentError('Parameter holdId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -945,7 +945,6 @@ class MattersHoldsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -954,6 +953,7 @@ class MattersHoldsResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -996,7 +996,6 @@ class MattersHoldsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
@@ -1004,6 +1003,7 @@ class MattersHoldsResource {
     if (holdId == null) {
       throw core.ArgumentError('Parameter holdId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1056,7 +1056,6 @@ class MattersHoldsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
@@ -1064,6 +1063,7 @@ class MattersHoldsResource {
     if (holdId == null) {
       throw core.ArgumentError('Parameter holdId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (view != null) {
       _queryParams['view'] = [view];
     }
@@ -1127,11 +1127,11 @@ class MattersHoldsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -1188,7 +1188,6 @@ class MattersHoldsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1200,6 +1199,7 @@ class MattersHoldsResource {
     if (holdId == null) {
       throw core.ArgumentError('Parameter holdId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1251,7 +1251,6 @@ class MattersHoldsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1263,6 +1262,7 @@ class MattersHoldsResource {
     if (holdId == null) {
       throw core.ArgumentError('Parameter holdId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1318,7 +1318,6 @@ class MattersHoldsAccountsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1330,6 +1329,7 @@ class MattersHoldsAccountsResource {
     if (holdId == null) {
       throw core.ArgumentError('Parameter holdId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1380,7 +1380,6 @@ class MattersHoldsAccountsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
@@ -1391,6 +1390,7 @@ class MattersHoldsAccountsResource {
     if (accountId == null) {
       throw core.ArgumentError('Parameter accountId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1437,7 +1437,6 @@ class MattersHoldsAccountsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
@@ -1445,6 +1444,7 @@ class MattersHoldsAccountsResource {
     if (holdId == null) {
       throw core.ArgumentError('Parameter holdId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1496,7 +1496,6 @@ class MattersSavedQueriesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1505,6 +1504,7 @@ class MattersSavedQueriesResource {
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1548,7 +1548,6 @@ class MattersSavedQueriesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
@@ -1556,6 +1555,7 @@ class MattersSavedQueriesResource {
     if (savedQueryId == null) {
       throw core.ArgumentError('Parameter savedQueryId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1598,7 +1598,6 @@ class MattersSavedQueriesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
@@ -1606,6 +1605,7 @@ class MattersSavedQueriesResource {
     if (savedQueryId == null) {
       throw core.ArgumentError('Parameter savedQueryId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1656,11 +1656,11 @@ class MattersSavedQueriesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (matterId == null) {
       throw core.ArgumentError('Parameter matterId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -1724,7 +1724,6 @@ class OperationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1733,6 +1732,7 @@ class OperationsResource {
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1774,11 +1774,11 @@ class OperationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1818,11 +1818,11 @@ class OperationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1877,11 +1877,11 @@ class OperationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (name == null) {
       throw core.ArgumentError('Parameter name is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }

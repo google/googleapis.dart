@@ -80,7 +80,6 @@ class ApisResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (api == null) {
       throw core.ArgumentError('Parameter api is required.');
@@ -88,6 +87,7 @@ class ApisResource {
     if (version == null) {
       throw core.ArgumentError('Parameter version is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -131,8 +131,8 @@ class ApisResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (name != null) {
       _queryParams['name'] = [name];
     }

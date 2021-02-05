@@ -106,7 +106,6 @@ class BlogUserInfosResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
@@ -114,6 +113,7 @@ class BlogUserInfosResource {
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxPosts != null) {
       _queryParams['maxPosts'] = ['${maxPosts}'];
     }
@@ -173,11 +173,11 @@ class BlogsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxPosts != null) {
       _queryParams['maxPosts'] = ['${maxPosts}'];
     }
@@ -227,8 +227,8 @@ class BlogsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (url == null) {
       throw core.ArgumentError('Parameter url is required.');
     }
@@ -288,11 +288,11 @@ class BlogsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fetchUserInfo != null) {
       _queryParams['fetchUserInfo'] = ['${fetchUserInfo}'];
     }
@@ -352,7 +352,6 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
@@ -363,6 +362,7 @@ class CommentsResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -408,7 +408,6 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
@@ -419,6 +418,7 @@ class CommentsResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -473,7 +473,6 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
@@ -484,6 +483,7 @@ class CommentsResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (view != null) {
       _queryParams['view'] = [view];
     }
@@ -561,7 +561,6 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
@@ -569,6 +568,7 @@ class CommentsResource {
     if (postId == null) {
       throw core.ArgumentError('Parameter postId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (endDate != null) {
       _queryParams['endDate'] = [endDate];
     }
@@ -648,11 +648,11 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (endDate != null) {
       _queryParams['endDate'] = [endDate];
     }
@@ -713,7 +713,6 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
@@ -724,6 +723,7 @@ class CommentsResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -771,7 +771,6 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
@@ -782,6 +781,7 @@ class CommentsResource {
     if (commentId == null) {
       throw core.ArgumentError('Parameter commentId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -832,11 +832,11 @@ class PageViewsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (range != null) {
       _queryParams['range'] = range;
     }
@@ -883,7 +883,6 @@ class PagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
@@ -891,6 +890,7 @@ class PagesResource {
     if (pageId == null) {
       throw core.ArgumentError('Parameter pageId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -940,7 +940,6 @@ class PagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
@@ -948,6 +947,7 @@ class PagesResource {
     if (pageId == null) {
       throw core.ArgumentError('Parameter pageId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (view != null) {
       _queryParams['view'] = [view];
     }
@@ -995,7 +995,6 @@ class PagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1004,6 +1003,7 @@ class PagesResource {
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (isDraft != null) {
       _queryParams['isDraft'] = ['${isDraft}'];
     }
@@ -1063,11 +1063,11 @@ class PagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fetchBodies != null) {
       _queryParams['fetchBodies'] = ['${fetchBodies}'];
     }
@@ -1130,7 +1130,6 @@ class PagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1142,6 +1141,7 @@ class PagesResource {
     if (pageId == null) {
       throw core.ArgumentError('Parameter pageId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (publish_1 != null) {
       _queryParams['publish'] = ['${publish_1}'];
     }
@@ -1190,7 +1190,6 @@ class PagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
@@ -1198,6 +1197,7 @@ class PagesResource {
     if (pageId == null) {
       throw core.ArgumentError('Parameter pageId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1240,7 +1240,6 @@ class PagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
@@ -1248,6 +1247,7 @@ class PagesResource {
     if (pageId == null) {
       throw core.ArgumentError('Parameter pageId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1299,7 +1299,6 @@ class PagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1311,6 +1310,7 @@ class PagesResource {
     if (pageId == null) {
       throw core.ArgumentError('Parameter pageId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (publish_1 != null) {
       _queryParams['publish'] = ['${publish_1}'];
     }
@@ -1371,7 +1371,6 @@ class PostUserInfosResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
@@ -1382,6 +1381,7 @@ class PostUserInfosResource {
     if (postId == null) {
       throw core.ArgumentError('Parameter postId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxComments != null) {
       _queryParams['maxComments'] = ['${maxComments}'];
     }
@@ -1465,7 +1465,6 @@ class PostUserInfosResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
@@ -1473,6 +1472,7 @@ class PostUserInfosResource {
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (endDate != null) {
       _queryParams['endDate'] = [endDate];
     }
@@ -1547,7 +1547,6 @@ class PostsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
@@ -1555,6 +1554,7 @@ class PostsResource {
     if (postId == null) {
       throw core.ArgumentError('Parameter postId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1613,7 +1613,6 @@ class PostsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
@@ -1621,6 +1620,7 @@ class PostsResource {
     if (postId == null) {
       throw core.ArgumentError('Parameter postId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fetchBody != null) {
       _queryParams['fetchBody'] = ['${fetchBody}'];
     }
@@ -1685,11 +1685,11 @@ class PostsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (path == null) {
       throw core.ArgumentError('Parameter path is required.');
     }
@@ -1749,7 +1749,6 @@ class PostsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1758,6 +1757,7 @@ class PostsResource {
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fetchBody != null) {
       _queryParams['fetchBody'] = ['${fetchBody}'];
     }
@@ -1842,11 +1842,11 @@ class PostsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (endDate != null) {
       _queryParams['endDate'] = [endDate];
     }
@@ -1933,7 +1933,6 @@ class PostsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1945,6 +1944,7 @@ class PostsResource {
     if (postId == null) {
       throw core.ArgumentError('Parameter postId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fetchBody != null) {
       _queryParams['fetchBody'] = ['${fetchBody}'];
     }
@@ -2005,7 +2005,6 @@ class PostsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
@@ -2013,6 +2012,7 @@ class PostsResource {
     if (postId == null) {
       throw core.ArgumentError('Parameter postId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (publishDate != null) {
       _queryParams['publishDate'] = [publishDate];
     }
@@ -2058,7 +2058,6 @@ class PostsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
@@ -2066,6 +2065,7 @@ class PostsResource {
     if (postId == null) {
       throw core.ArgumentError('Parameter postId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -2118,11 +2118,11 @@ class PostsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (blogId == null) {
       throw core.ArgumentError('Parameter blogId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (q == null) {
       throw core.ArgumentError('Parameter q is required.');
     }
@@ -2191,7 +2191,6 @@ class PostsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -2203,6 +2202,7 @@ class PostsResource {
     if (postId == null) {
       throw core.ArgumentError('Parameter postId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (fetchBody != null) {
       _queryParams['fetchBody'] = ['${fetchBody}'];
     }
@@ -2263,11 +2263,11 @@ class UsersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (userId == null) {
       throw core.ArgumentError('Parameter userId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }

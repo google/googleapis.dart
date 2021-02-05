@@ -121,7 +121,6 @@ class SpreadsheetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -130,6 +129,7 @@ class SpreadsheetsResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -169,12 +169,12 @@ class SpreadsheetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -230,11 +230,11 @@ class SpreadsheetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (includeGridData != null) {
       _queryParams['includeGridData'] = ['${includeGridData}'];
     }
@@ -293,7 +293,6 @@ class SpreadsheetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -302,6 +301,7 @@ class SpreadsheetsResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -354,7 +354,6 @@ class SpreadsheetsDeveloperMetadataResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
@@ -362,6 +361,7 @@ class SpreadsheetsDeveloperMetadataResource {
     if (metadataId == null) {
       throw core.ArgumentError('Parameter metadataId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -409,7 +409,6 @@ class SpreadsheetsDeveloperMetadataResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -418,6 +417,7 @@ class SpreadsheetsDeveloperMetadataResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -471,7 +471,6 @@ class SpreadsheetsSheetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -483,6 +482,7 @@ class SpreadsheetsSheetsResource {
     if (sheetId == null) {
       throw core.ArgumentError('Parameter sheetId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -608,7 +608,6 @@ class SpreadsheetsValuesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -620,6 +619,7 @@ class SpreadsheetsValuesResource {
     if (range == null) {
       throw core.ArgumentError('Parameter range is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (includeValuesInResponse != null) {
       _queryParams['includeValuesInResponse'] = ['${includeValuesInResponse}'];
     }
@@ -685,7 +685,6 @@ class SpreadsheetsValuesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -694,6 +693,7 @@ class SpreadsheetsValuesResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -741,7 +741,6 @@ class SpreadsheetsValuesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -750,6 +749,7 @@ class SpreadsheetsValuesResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -839,11 +839,11 @@ class SpreadsheetsValuesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (dateTimeRenderOption != null) {
       _queryParams['dateTimeRenderOption'] = [dateTimeRenderOption];
     }
@@ -901,7 +901,6 @@ class SpreadsheetsValuesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -910,6 +909,7 @@ class SpreadsheetsValuesResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -955,7 +955,6 @@ class SpreadsheetsValuesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -964,6 +963,7 @@ class SpreadsheetsValuesResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1009,7 +1009,6 @@ class SpreadsheetsValuesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1018,6 +1017,7 @@ class SpreadsheetsValuesResource {
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1067,7 +1067,6 @@ class SpreadsheetsValuesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1079,6 +1078,7 @@ class SpreadsheetsValuesResource {
     if (range == null) {
       throw core.ArgumentError('Parameter range is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1170,7 +1170,6 @@ class SpreadsheetsValuesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (spreadsheetId == null) {
       throw core.ArgumentError('Parameter spreadsheetId is required.');
@@ -1178,6 +1177,7 @@ class SpreadsheetsValuesResource {
     if (range == null) {
       throw core.ArgumentError('Parameter range is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (dateTimeRenderOption != null) {
       _queryParams['dateTimeRenderOption'] = [dateTimeRenderOption];
     }
@@ -1288,7 +1288,6 @@ class SpreadsheetsValuesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1300,6 +1299,7 @@ class SpreadsheetsValuesResource {
     if (range == null) {
       throw core.ArgumentError('Parameter range is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (includeValuesInResponse != null) {
       _queryParams['includeValuesInResponse'] = ['${includeValuesInResponse}'];
     }

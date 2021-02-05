@@ -145,8 +145,8 @@ class ContactGroupsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (groupFields != null) {
       _queryParams['groupFields'] = [groupFields];
     }
@@ -192,12 +192,12 @@ class ContactGroupsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -242,11 +242,11 @@ class ContactGroupsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (deleteContacts != null) {
       _queryParams['deleteContacts'] = ['${deleteContacts}'];
     }
@@ -297,11 +297,11 @@ class ContactGroupsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (groupFields != null) {
       _queryParams['groupFields'] = [groupFields];
     }
@@ -364,8 +364,8 @@ class ContactGroupsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (groupFields != null) {
       _queryParams['groupFields'] = [groupFields];
     }
@@ -421,7 +421,6 @@ class ContactGroupsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -430,6 +429,7 @@ class ContactGroupsResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -483,7 +483,6 @@ class ContactGroupsMembersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -492,6 +491,7 @@ class ContactGroupsMembersResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -543,7 +543,6 @@ class OtherContactsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -552,6 +551,7 @@ class OtherContactsResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -620,8 +620,8 @@ class OtherContactsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }
@@ -701,12 +701,12 @@ class PeopleResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (personFields != null) {
       _queryParams['personFields'] = [personFields];
     }
@@ -752,11 +752,11 @@ class PeopleResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -811,11 +811,11 @@ class PeopleResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (personFields != null) {
       _queryParams['personFields'] = [personFields];
     }
@@ -888,11 +888,11 @@ class PeopleResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (personFields != null) {
       _queryParams['personFields'] = [personFields];
     }
@@ -968,8 +968,8 @@ class PeopleResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (personFields != null) {
       _queryParams['personFields'] = [personFields];
     }
@@ -1057,8 +1057,8 @@ class PeopleResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (mergeSources != null) {
       _queryParams['mergeSources'] = mergeSources;
     }
@@ -1147,8 +1147,8 @@ class PeopleResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (mergeSources != null) {
       _queryParams['mergeSources'] = mergeSources;
     }
@@ -1248,7 +1248,6 @@ class PeopleResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1257,6 +1256,7 @@ class PeopleResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (personFields != null) {
       _queryParams['personFields'] = [personFields];
     }
@@ -1308,7 +1308,6 @@ class PeopleResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1317,6 +1316,7 @@ class PeopleResource {
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1429,11 +1429,11 @@ class PeopleConnectionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (resourceName == null) {
       throw core.ArgumentError('Parameter resourceName is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (pageSize != null) {
       _queryParams['pageSize'] = ['${pageSize}'];
     }

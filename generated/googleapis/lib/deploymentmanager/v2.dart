@@ -115,7 +115,6 @@ class DeploymentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -127,6 +126,7 @@ class DeploymentsResource {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -178,7 +178,6 @@ class DeploymentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -186,6 +185,7 @@ class DeploymentsResource {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (deletePolicy != null) {
       _queryParams['deletePolicy'] = [deletePolicy];
     }
@@ -233,7 +233,6 @@ class DeploymentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -241,6 +240,7 @@ class DeploymentsResource {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -292,7 +292,6 @@ class DeploymentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -300,6 +299,7 @@ class DeploymentsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (optionsRequestedPolicyVersion != null) {
       _queryParams['optionsRequestedPolicyVersion'] = [
         '${optionsRequestedPolicyVersion}'
@@ -366,7 +366,6 @@ class DeploymentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -375,6 +374,7 @@ class DeploymentsResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (createPolicy != null) {
       _queryParams['createPolicy'] = [createPolicy];
     }
@@ -462,11 +462,11 @@ class DeploymentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -551,7 +551,6 @@ class DeploymentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -563,6 +562,7 @@ class DeploymentsResource {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (createPolicy != null) {
       _queryParams['createPolicy'] = [createPolicy];
     }
@@ -623,7 +623,6 @@ class DeploymentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -635,6 +634,7 @@ class DeploymentsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -687,7 +687,6 @@ class DeploymentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -699,6 +698,7 @@ class DeploymentsResource {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -749,7 +749,6 @@ class DeploymentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -761,6 +760,7 @@ class DeploymentsResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -836,7 +836,6 @@ class DeploymentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -848,6 +847,7 @@ class DeploymentsResource {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (createPolicy != null) {
       _queryParams['createPolicy'] = [createPolicy];
     }
@@ -912,7 +912,6 @@ class ManifestsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -923,6 +922,7 @@ class ManifestsResource {
     if (manifest == null) {
       throw core.ArgumentError('Parameter manifest is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1010,7 +1010,6 @@ class ManifestsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1018,6 +1017,7 @@ class ManifestsResource {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -1081,7 +1081,6 @@ class OperationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1089,6 +1088,7 @@ class OperationsResource {
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1170,11 +1170,11 @@ class OperationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -1240,7 +1240,6 @@ class ResourcesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1251,6 +1250,7 @@ class ResourcesResource {
     if (resource == null) {
       throw core.ArgumentError('Parameter resource is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if ($fields != null) {
       _queryParams['fields'] = [$fields];
     }
@@ -1338,7 +1338,6 @@ class ResourcesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1346,6 +1345,7 @@ class ResourcesResource {
     if (deployment == null) {
       throw core.ArgumentError('Parameter deployment is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }
@@ -1447,11 +1447,11 @@ class TypesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (filter != null) {
       _queryParams['filter'] = [filter];
     }

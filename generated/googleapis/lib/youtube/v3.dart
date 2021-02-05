@@ -188,12 +188,12 @@ class AbuseReportsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -276,8 +276,8 @@ class ActivitiesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -362,8 +362,8 @@ class CaptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -436,11 +436,11 @@ class CaptionsResource {
     commons.DownloadOptions downloadOptions = commons.DownloadOptions.Metadata,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (onBehalfOf != null) {
       _queryParams['onBehalfOf'] = [onBehalfOf];
     }
@@ -526,12 +526,12 @@ class CaptionsResource {
     commons.Media uploadMedia,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -613,8 +613,8 @@ class CaptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -701,12 +701,12 @@ class CaptionsResource {
     commons.Media uploadMedia,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -812,12 +812,12 @@ class ChannelBannersResource {
     commons.Media uploadMedia,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (channelId != null) {
       _queryParams['channelId'] = [channelId];
     }
@@ -890,8 +890,8 @@ class ChannelSectionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -970,12 +970,12 @@ class ChannelSectionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -1058,8 +1058,8 @@ class ChannelSectionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -1133,12 +1133,12 @@ class ChannelSectionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -1242,8 +1242,8 @@ class ChannelsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -1335,12 +1335,12 @@ class ChannelsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -1395,12 +1395,12 @@ class CommentThreadsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -1496,8 +1496,8 @@ class CommentThreadsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -1576,12 +1576,12 @@ class CommentThreadsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -1627,8 +1627,8 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -1673,12 +1673,12 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -1745,8 +1745,8 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -1802,8 +1802,8 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null || id.isEmpty) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -1858,8 +1858,8 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null || id.isEmpty) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -1912,12 +1912,12 @@ class CommentsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -1969,8 +1969,8 @@ class I18nLanguagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -2024,8 +2024,8 @@ class I18nRegionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -2114,8 +2114,8 @@ class LiveBroadcastsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -2199,8 +2199,8 @@ class LiveBroadcastsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -2285,12 +2285,12 @@ class LiveBroadcastsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -2407,8 +2407,8 @@ class LiveBroadcastsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -2524,8 +2524,8 @@ class LiveBroadcastsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (broadcastStatus == null) {
       throw core.ArgumentError('Parameter broadcastStatus is required.');
     }
@@ -2627,12 +2627,12 @@ class LiveBroadcastsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -2686,8 +2686,8 @@ class LiveChatBansResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -2733,12 +2733,12 @@ class LiveChatBansResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -2784,8 +2784,8 @@ class LiveChatMessagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -2830,12 +2830,12 @@ class LiveChatMessagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -2901,8 +2901,8 @@ class LiveChatMessagesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (liveChatId == null) {
       throw core.ArgumentError('Parameter liveChatId is required.');
     }
@@ -2963,8 +2963,8 @@ class LiveChatModeratorsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -3010,12 +3010,12 @@ class LiveChatModeratorsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -3073,8 +3073,8 @@ class LiveChatModeratorsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (liveChatId == null) {
       throw core.ArgumentError('Parameter liveChatId is required.');
     }
@@ -3159,8 +3159,8 @@ class LiveStreamsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -3245,12 +3245,12 @@ class LiveStreamsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -3351,8 +3351,8 @@ class LiveStreamsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -3453,12 +3453,12 @@ class LiveStreamsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -3541,8 +3541,8 @@ class MembersResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -3606,8 +3606,8 @@ class MembershipsLevelsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -3664,8 +3664,8 @@ class PlaylistItemsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -3725,12 +3725,12 @@ class PlaylistItemsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -3813,8 +3813,8 @@ class PlaylistItemsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -3900,12 +3900,12 @@ class PlaylistItemsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -3966,8 +3966,8 @@ class PlaylistsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -4045,12 +4045,12 @@ class PlaylistsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -4157,8 +4157,8 @@ class PlaylistsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -4248,12 +4248,12 @@ class PlaylistsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -4483,8 +4483,8 @@ class SearchResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -4619,8 +4619,8 @@ class SubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -4665,12 +4665,12 @@ class SubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -4785,8 +4785,8 @@ class SubscriptionsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -4882,8 +4882,8 @@ class SuperChatEventsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -4942,12 +4942,12 @@ class TestsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -5003,8 +5003,8 @@ class ThirdPartyLinksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (linkingToken == null) {
       throw core.ArgumentError('Parameter linkingToken is required.');
     }
@@ -5056,12 +5056,12 @@ class ThirdPartyLinksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -5116,8 +5116,8 @@ class ThirdPartyLinksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -5169,12 +5169,12 @@ class ThirdPartyLinksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -5245,8 +5245,8 @@ class ThumbnailsResource {
     commons.Media uploadMedia,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (videoId == null) {
       throw core.ArgumentError('Parameter videoId is required.');
     }
@@ -5309,8 +5309,8 @@ class VideoAbuseReportReasonsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -5372,8 +5372,8 @@ class VideoCategoriesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -5439,8 +5439,8 @@ class VideosResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -5496,8 +5496,8 @@ class VideosResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null || id.isEmpty) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -5599,12 +5599,12 @@ class VideosResource {
     commons.Media uploadMedia,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -5746,8 +5746,8 @@ class VideosResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -5829,8 +5829,8 @@ class VideosResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (id == null) {
       throw core.ArgumentError('Parameter id is required.');
     }
@@ -5884,12 +5884,12 @@ class VideosResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (onBehalfOfContentOwner != null) {
       _queryParams['onBehalfOfContentOwner'] = [onBehalfOfContentOwner];
     }
@@ -5960,12 +5960,12 @@ class VideosResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (part == null || part.isEmpty) {
       throw core.ArgumentError('Parameter part is required.');
     }
@@ -6036,12 +6036,12 @@ class WatermarksResource {
     commons.Media uploadMedia,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
       _body = convert.json.encode(request.toJson());
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (channelId == null) {
       throw core.ArgumentError('Parameter channelId is required.');
     }
@@ -6103,8 +6103,8 @@ class WatermarksResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (channelId == null) {
       throw core.ArgumentError('Parameter channelId is required.');
     }

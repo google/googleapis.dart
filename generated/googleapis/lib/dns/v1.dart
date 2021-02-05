@@ -115,7 +115,6 @@ class ChangesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -127,6 +126,7 @@ class ChangesResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientOperationId != null) {
       _queryParams['clientOperationId'] = [clientOperationId];
     }
@@ -183,7 +183,6 @@ class ChangesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -194,6 +193,7 @@ class ChangesResource {
     if (changeId == null) {
       throw core.ArgumentError('Parameter changeId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientOperationId != null) {
       _queryParams['clientOperationId'] = [clientOperationId];
     }
@@ -257,7 +257,6 @@ class ChangesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -265,6 +264,7 @@ class ChangesResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -340,7 +340,6 @@ class DnsKeysResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -351,6 +350,7 @@ class DnsKeysResource {
     if (dnsKeyId == null) {
       throw core.ArgumentError('Parameter dnsKeyId is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientOperationId != null) {
       _queryParams['clientOperationId'] = [clientOperationId];
     }
@@ -414,7 +414,6 @@ class DnsKeysResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -422,6 +421,7 @@ class DnsKeysResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (digestType != null) {
       _queryParams['digestType'] = [digestType];
     }
@@ -489,7 +489,6 @@ class ManagedZoneOperationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -500,6 +499,7 @@ class ManagedZoneOperationsResource {
     if (operation == null) {
       throw core.ArgumentError('Parameter operation is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientOperationId != null) {
       _queryParams['clientOperationId'] = [clientOperationId];
     }
@@ -561,7 +561,6 @@ class ManagedZoneOperationsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -569,6 +568,7 @@ class ManagedZoneOperationsResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -632,7 +632,6 @@ class ManagedZonesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -641,6 +640,7 @@ class ManagedZonesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientOperationId != null) {
       _queryParams['clientOperationId'] = [clientOperationId];
     }
@@ -690,7 +690,6 @@ class ManagedZonesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -698,6 +697,7 @@ class ManagedZonesResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientOperationId != null) {
       _queryParams['clientOperationId'] = [clientOperationId];
     }
@@ -748,7 +748,6 @@ class ManagedZonesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -756,6 +755,7 @@ class ManagedZonesResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientOperationId != null) {
       _queryParams['clientOperationId'] = [clientOperationId];
     }
@@ -809,11 +809,11 @@ class ManagedZonesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (dnsName != null) {
       _queryParams['dnsName'] = [dnsName];
     }
@@ -873,7 +873,6 @@ class ManagedZonesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -885,6 +884,7 @@ class ManagedZonesResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientOperationId != null) {
       _queryParams['clientOperationId'] = [clientOperationId];
     }
@@ -939,7 +939,6 @@ class ManagedZonesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -951,6 +950,7 @@ class ManagedZonesResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientOperationId != null) {
       _queryParams['clientOperationId'] = [clientOperationId];
     }
@@ -1007,7 +1007,6 @@ class PoliciesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1016,6 +1015,7 @@ class PoliciesResource {
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientOperationId != null) {
       _queryParams['clientOperationId'] = [clientOperationId];
     }
@@ -1066,7 +1066,6 @@ class PoliciesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1074,6 +1073,7 @@ class PoliciesResource {
     if (policy == null) {
       throw core.ArgumentError('Parameter policy is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientOperationId != null) {
       _queryParams['clientOperationId'] = [clientOperationId];
     }
@@ -1124,7 +1124,6 @@ class PoliciesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1132,6 +1131,7 @@ class PoliciesResource {
     if (policy == null) {
       throw core.ArgumentError('Parameter policy is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientOperationId != null) {
       _queryParams['clientOperationId'] = [clientOperationId];
     }
@@ -1181,11 +1181,11 @@ class PoliciesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
@@ -1242,7 +1242,6 @@ class PoliciesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1254,6 +1253,7 @@ class PoliciesResource {
     if (policy == null) {
       throw core.ArgumentError('Parameter policy is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientOperationId != null) {
       _queryParams['clientOperationId'] = [clientOperationId];
     }
@@ -1309,7 +1309,6 @@ class PoliciesResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     core.String _body;
     if (request != null) {
@@ -1321,6 +1320,7 @@ class PoliciesResource {
     if (policy == null) {
       throw core.ArgumentError('Parameter policy is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientOperationId != null) {
       _queryParams['clientOperationId'] = [clientOperationId];
     }
@@ -1375,11 +1375,11 @@ class ProjectsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (clientOperationId != null) {
       _queryParams['clientOperationId'] = [clientOperationId];
     }
@@ -1444,7 +1444,6 @@ class ResourceRecordSetsResource {
     core.String $fields,
   }) async {
     core.String _url;
-    final _queryParams = <core.String, core.List<core.String>>{};
 
     if (project == null) {
       throw core.ArgumentError('Parameter project is required.');
@@ -1452,6 +1451,7 @@ class ResourceRecordSetsResource {
     if (managedZone == null) {
       throw core.ArgumentError('Parameter managedZone is required.');
     }
+    final _queryParams = <core.String, core.List<core.String>>{};
     if (maxResults != null) {
       _queryParams['maxResults'] = ['${maxResults}'];
     }
