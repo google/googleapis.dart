@@ -1,9 +1,43 @@
-## 1.0.0-dev
+## 1.0.0-beta.0
 
-TODO: document many changes!
+### BREAKING changes to API shape
 
-## 0.57.0
- * [api-removed] youtubeanalytics:v1
+* `USER_AGENT` has been removed from each library. All libraries within the
+  package share a common user-agent value.
+* API classes have been renamed to use more standard casing.
+  For example: `FirebasedynamiclinksApi` to `FirebaseDynamicLinksApi`.
+* Resource classes have been renamed to drop the `Api` suffix.
+  For example: `ManagedShortLinksResourceApi` to `ManagedShortLinksResource`.
+
+### API updates
+
+- `apigateway` - new
+- `artifactregistry` - new
+- `assuredworkloads` - new
+- `billingbudgets` - new
+- `chromeuxreport` - new
+- `datafusion` - new
+- `dialogflow` - added v3 API
+- `eventarc` - new
+- `firebasehosting` - new
+- `firebaseml` - new
+- `gameservices` - new
+- `gmailpostmastertools` - new
+- `jobs` - dropped v2, added v3 API
+- `localservices` - new
+- `memcache` - new
+- `notebooks` - new
+- `playablelocations` - new
+- `pubsublite` - new
+- `realtimebidding` - new
+- `retail` - new
+- `servicecontrol` - added v2 API
+- `servicedirectory` - new
+- `smartdevicemanagement` - new
+- `sts` - new
+- `trafficdirector` - new
+- `vectortile` - new
+- `youtubeAnalytics` - dropped v1 API
 
 ## 0.56.1
  * [api-add] oauth2:v2 (appears to have been unintentionally missing from 0.55.0)

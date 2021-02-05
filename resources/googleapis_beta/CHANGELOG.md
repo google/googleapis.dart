@@ -1,6 +1,51 @@
-## 1.0.0-dev
+## 1.0.0-beta.0
 
-TODO: document many changes!
+### BREAKING changes to API shape
+
+* `USER_AGENT` has been removed from each library. All libraries within the
+  package share a common user-agent value.
+* API classes have been renamed to use more standard casing.
+  For example: `FirebasedynamiclinksApi` to `FirebaseDynamicLinksApi`.
+* Resource classes have been renamed to drop the `Api` suffix.
+  For example: `ManagedShortLinksResourceApi` to `ManagedShortLinksResource`.
+
+### API changes
+
+See [package:googleapis](https://pub.dev/packages/googleapis)
+for the stable versions of the changed APIs.
+
+* `analyticsadmin` - new
+* `analyticsdata` - new
+* `appengine` - removed. Use stable.
+* `area120tables` - new
+* `artifactregistry` - removed. Now stable.
+* `billingbudgets` - removed. Now stable.
+* `cloudresourcemanager` - removed. Use stable.
+* `datafusion` - removed. Now stable.
+* `datalabeling` - new
+* `datamigration` - new
+* `dialogflow` - removed. Now stable.
+* `documentai` - new
+* `domains` - new
+* `firebasedatabase` - new
+* `firebasehosting` - removed. Now stable.
+* `firebaseml` - removed. Now stable.
+* `gameservices` - removed. Now stable.
+* `language` - removed. Use stable.
+* `memcache` - removed. Now stable.
+* `metastore` - new
+* `networkconnectivity` - new
+* `oslogin` - removed. Use stable.
+* `privateca` - new
+* `pubsub` - removed. Use stable.
+* `recommendationengine` - new
+* `runtimeconfig` - removed. Use stable.
+* `servicedirectory` - removed. Now stable.
+* `speech` - removed. Use stable.
+* `tpu` - removed. Use stable.
+* `transcoder` - new
+* `workflowexecutions` - new
+* `workflows` - new
 
 ## 0.51.0
  * [api-new] artifactregistry:v1beta1
@@ -11,7 +56,6 @@ TODO: document many changes!
  * [api-removed] commentanalyzer:v1alpha1
  * [api-removed] networkmanagement:v1beta1
  * [api-removed] recommender:v1beta1
-
 
 ## 0.50.0
  * [api-new] bigqueryconnection:v1beta1
